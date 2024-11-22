@@ -366,43 +366,43 @@
 %%
 % Set the font sizes and baselines to match Tufte's books
 \renewcommand\normalsize{%
-   \@setfontsize\normalsize\@xpt{14}%
-   \abovedisplayskip 10\p@ \@plus2\p@ \@minus5\p@
+   \@setfontsize\normalsize\@xipt{15}%
+   \abovedisplayskip 11\p@ \@plus2\p@ \@minus5\p@
    \abovedisplayshortskip \z@ \@plus3\p@
-   \belowdisplayshortskip 6\p@ \@plus3\p@ \@minus3\p@
+   \belowdisplayshortskip 6.5\p@ \@plus3\p@ \@minus3\p@
    \belowdisplayskip \abovedisplayskip
    \let\@listi\@listI}
-\normalbaselineskip=14pt
+\normalbaselineskip=15pt
 \normalsize
 \renewcommand\small{%
-   \@setfontsize\small\@ixpt{12}%
-   \abovedisplayskip 8.5\p@ \@plus3\p@ \@minus4\p@
+   \@setfontsize\small\@xpt{14}%
+   \abovedisplayskip 9.5\p@ \@plus3\p@ \@minus4\p@
    \abovedisplayshortskip \z@ \@plus2\p@
-   \belowdisplayshortskip 4\p@ \@plus2\p@ \@minus2\p@
+   \belowdisplayshortskip 4.5\p@ \@plus2\p@ \@minus2\p@
    \def\@listi{\leftmargin\leftmargini
-               \topsep 4\p@ \@plus2\p@ \@minus2\p@
-               \parsep 2\p@ \@plus\p@ \@minus\p@
+               \topsep 4.4\p@ \@plus2\p@ \@minus2\p@
+               \parsep 2.2\p@ \@plus\p@ \@minus\p@
                \itemsep \parsep}%
    \belowdisplayskip \abovedisplayskip
 }
 \renewcommand\footnotesize{%
-   \@setfontsize\footnotesize\@viiipt{10}%
-   \abovedisplayskip 6\p@ \@plus2\p@ \@minus4\p@
+   \@setfontsize\footnotesize\@ixpt{12}%
+   \abovedisplayskip 6.5\p@ \@plus2\p@ \@minus4\p@
    \abovedisplayshortskip \z@ \@plus\p@
    \belowdisplayshortskip 3\p@ \@plus\p@ \@minus2\p@
    \def\@listi{\leftmargin\leftmargini
-               \topsep 3\p@ \@plus\p@ \@minus\p@
-               \parsep 2\p@ \@plus\p@ \@minus\p@
+               \topsep 3.3\p@ \@plus\p@ \@minus\p@
+               \parsep 2.2\p@ \@plus\p@ \@minus\p@
                \itemsep \parsep}%
    \belowdisplayskip \abovedisplayskip
 }
-\renewcommand\scriptsize{\@setfontsize\scriptsize\@viipt\@viiipt}
-\renewcommand\tiny{\@setfontsize\tiny\@vpt\@vipt}
-\renewcommand\large{\@setfontsize\large\@xipt{15}}
-\renewcommand\Large{\@setfontsize\Large\@xiipt{16}}
-\renewcommand\LARGE{\@setfontsize\LARGE\@xivpt{18}}
-\renewcommand\huge{\@setfontsize\huge\@xxpt{30}}
-\renewcommand\Huge{\@setfontsize\Huge{24}{36}}
+\renewcommand\tiny{\@setfontsize\tiny\@viipt\@viiipt}
+\renewcommand\scriptsize{\@setfontsize\scriptsize\@viiipt\@xpt}
+\renewcommand\large{\@setfontsize\large\@xiipt{16}}
+\renewcommand\Large{\@setfontsize\Large\@xivpt{18}}
+\renewcommand\LARGE{\@setfontsize\LARGE\@xxpt{30}}
+\renewcommand\huge{\@setfontsize\huge{24}{36}}
+\renewcommand\Huge{\@setfontsize\Huge{30}{40}}
 
 \setlength\leftmargini   {1pc}
 \setlength\leftmarginii  {1pc}
