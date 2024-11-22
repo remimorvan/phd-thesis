@@ -21,7 +21,7 @@
   {\centering\scshape\LARGE{Part~\thepart}}% label
   {0pt}% horizontal separation between label and title body
   {\centering\Huge\rmfamily\itshape}% before the title body
-  [\ifthenelse{\NOT\boolean{@tufte@symmetric}}{\vspace{2cm}\hfill\pgfornament[width=6cm]{75}\hfill\end{fullwidth}}{}]% after the title body
+  [\ifthenelse{\NOT\boolean{@tufte@symmetric}}{\vspace{2cm}\hfill\pgfornament[width=6cm]{123}\hfill\end{fullwidth}}{}]% after the title body
 
 % \renewcommand{\thechapter}{\Roman{chapter}}
 \titleformat{\chapter}%
