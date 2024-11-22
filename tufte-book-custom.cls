@@ -17,11 +17,11 @@
 \RequirePackage{pgfornament}
 \titleformat{\part}%
   [display]% shape
-  {\relax\ifthenelse{\NOT\boolean{@tufte@symmetric}}{\begin{fullwidth}}{}}% format applied to label+text
-  {\centering{\rotatebox{180}{\pgfornament[width=6cm]{75}}}\\[.5cm]\centering\scshape\LARGE{Part~\thepart}}% label
+  {\vspace{4cm}\relax\ifthenelse{\NOT\boolean{@tufte@symmetric}}{\begin{fullwidth}}{}}% format applied to label+text
+  {\centering\scshape\LARGE{Part~\thepart}}% label
   {0pt}% horizontal separation between label and title body
   {\centering\Huge\rmfamily\itshape}% before the title body
-  [\ifthenelse{\NOT\boolean{@tufte@symmetric}}{\vspace{.5cm}\hfill\pgfornament[width=6cm]{75}\hfill\end{fullwidth}}{}]% after the title body
+  [\ifthenelse{\NOT\boolean{@tufte@symmetric}}{\vspace{2cm}\hfill\pgfornament[width=6cm]{75}\hfill\end{fullwidth}}{}]% after the title body
 
 % \renewcommand{\thechapter}{\Roman{chapter}}
 \titleformat{\chapter}%
