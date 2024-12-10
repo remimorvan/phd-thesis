@@ -43,7 +43,7 @@
 \RequirePackage{unicode-math}
 \setmainfont{Libertinus Serif}
 \setsansfont{Libertinus Sans}
-\setmonofont{Libertinus Mono}
+\setmonofont[Scale=0.8]{Libertinus Mono}
 \setmathfont[math-style=TeX]{Asana Math}
 \setmathfont[math-style=TeX, range={cal, bfcal}]{Latin Modern Math}
 
@@ -56,6 +56,19 @@
 
 
 \mainmatter
+\chapter{Ideas/Todos}
+
+\begin{itemize}
+	\item Change definition of CQ/CRPQ to have vertices. This allows for better duality,
+		and also better statement for the Semantical Structure Theorem (in some prop we get
+		``foo is an edge cotnraction of bla'' instead of ``is a minor of'').
+		Update the definition of `one-way internal path' to allow for $n=0$.
+	\item Extend the notion of `strong minimality` using the axioms used in the lower bound (`str-onto`): call such canonical databases / extensions `structurally minimal'.
+	Prove or disprove the following result: ``a "CRPQ" has "one-way semantic tree-width" at least $k$ "iff" it has an expansion that is structurally minimal and whose core has tree-width at least $k$''. In general: what about minor-closed classes?
+	Extend Grohe's Theorem to CRPQs (or maybe to a subclass of CRPQs, "eg" those whose
+	structurally minimal canonical databases characterize membership to minor-closed classes).
+\end{itemize}
+
 \chapter{Introduction}
 
 \part{Querying Graph Databases}
@@ -66,15 +79,41 @@
 
 \subsection{Blabla}
 
-Hello Q\sidenote{Qy first sidenote!} world.
+% \begin{figure}
+% 	\centering
+% 	\includegraphics[width=\linewidth]{fig/free_algebras.png}
+% 	\caption{My super nice caption.}
+% \end{figure}
+
+\begin{table}
+	\centering
+	\begin{tabular}{cc}
+		\toprule
+		a & b \\ \midrule
+		0 & 1 \\
+		1 & 0 \\ \bottomrule
+	\end{tabular}
+	\caption{My super nice caption.}
+\end{table}
+
+Hello this is a citation\cite{Bringhurst2005}.
+Hello Q\sidenote{Qy first sidenote!} world\sidenote{Another side note}.
 \[\forall x \in \gamma,\, \exists y\in \delta, \delta \to \gamma\]
 \[L \subseteq \Sigma^*\]
 \[0 \in \mathbb{N}\]
 \[\mathcal{AbcDefGhiJkl}\]
 
-\lipsum[1-10]
+\lipsum[1-2]
 
-\chapter{Evaluation and Containment of Conjunctive Regular Path Queries}
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=\linewidth]{fig/landscape.png}
+	\caption{The landscape of rationality.}
+\end{figure}
+
+\lipsum[3-10]
+
+\chapter[Evaluation and Containment of Conjunctive Regular Path Queries]{Evaluation and Containment\\ of Conjunctive Regular Path Queries}
 
 \chapter{Minimization of Conjunctive Regular Path Queries}
 
@@ -88,11 +127,9 @@ Hello Q\sidenote{Qy first sidenote!} world.
 
 \chapter{Preliminaries on Automatic Structures}
 
-\chapter{Separating \fancyand~Colouring Automatic Graphs}
-
 \chapter{A Dichotomy Theorem for Automatic Structures}
 
-\chapter{The Algebras for Automatic Relations and Beyond:\\the Relative Membership Problem for Pseudovarieties}
+\chapter{The Algebras for Automatic Relations and Beyond:\\the Relative Membership Problem for Pseudovarieties of Regular Languages}
 
 \chapter{Conclusion \fancyand~Open Problems}
 
