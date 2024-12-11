@@ -306,3 +306,5 @@ TSWLatexianTemp*
 #*Notes.bib
 *.DS_Store
 thesis-morvan.pdf
+*.kaux
+*.diagnose

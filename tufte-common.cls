@@ -1469,7 +1469,7 @@
   \fancyhf{} % clear header and footer fields
   % Uncomment the following five lines of code if you want the opening page
   % of the chapter to express the folio in the lower outside corner.
-  %\ifthenelse{\boolean{@tufte@twoside}}
+  % \ifthenelse{\boolean{@tufte@twoside}}
   %  {\fancyfoot[LE,RO]{\thepage}}
   %  {\fancyfoot[RE,RO]{\thepage}}
 }

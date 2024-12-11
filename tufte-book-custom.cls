@@ -2,15 +2,17 @@
 
 \input{tufte-book.cls}
 
+\setlength\marginparpush{1.15em} % More vpsace between sidenotes.
+
 % ---
 % Narrower margins
 % ---
 
 \ifthenelse{\boolean{@tufte@afourpaper}}
-  {\geometry{a4paper,left=16mm,top=27.4mm,headsep=2\baselineskip,textwidth=120mm,marginparsep=8mm,marginparwidth=50mm,textheight=46\baselineskip,headheight=\baselineskip}}
+  {\geometry{a4paper,left=16mm,top=27.4mm,headsep=2\baselineskip,textwidth=120mm,marginparsep=8mm,marginparwidth=50mm,textheight=46\baselineskip,headheight=\baselineskip,footskip=2.5\baselineskip}}
   {}
 
-  
+
 % ---
 % Title formats
 % ---
@@ -39,13 +41,15 @@
 % ---
 
 \ifthenelse{\boolean{@tufte@toc}}{%
+  \renewcommand{\thepart}{\arabic{part}} % Part number in arabic numerals
   \titlecontents{part}% FIXME
     [0em] % distance from left margin
-    {\vspace{1\baselineskip}\begin{fullwidth}\LARGE\rmfamily\itshape} % above (global formatting of entry)
+    {\vspace{1\baselineskip}\begin{fullwidth}\Large\rmfamily\scshape\partname~} % above (global formatting of entry)
     {\contentslabel{1cm}} % before w/label (label = ``II'')
     {} % before w/o label
     {\rmfamily\upshape\qquad\thecontentspage} % filler + page (leaders and page num)
     [\end{fullwidth}] % after
+  \renewcommand{\thechapter}{\Roman{chapter}} % Chapter number in roman numerals
   \titlecontents{chapter}%
     [0em] % distance from left margin
     {\vspace{.75\baselineskip}\begin{fullwidth}\Large\rmfamily\itshape} % above (global formatting of entry)
@@ -76,6 +80,41 @@
     [\end{fullwidth}] % after
 }{}
 
+
+% ---
+% Header
+% ---
+
+% The `plain' page style is used on chapter opening pages.
+% Page number in footing.
+\fancypagestyle{plain}{
+  \fancyhf{} % clear header and footer fields
+  \fancyfoot[C]{\thepage}
+}
+
+% Chapter number in heading (left).
+% Section in heading (right). 
+% Page number in footing.
+\renewcommand\mainmatter{%
+  \if@openright%
+    \cleardoublepage%
+  \else%
+    \clearpage%
+  \fi%
+  \@mainmattertrue%
+  \fancyhf{}%
+  \ifthenelse{\boolean{@tufte@twoside}}%
+    {% two-side
+      \renewcommand{\chaptermark}[1]{\markboth{\thechapter. ##1}{}}%
+      \fancyhead[LE]{\smallcaps{\newlinetospace{\leftmark}}}% chapter title
+      \renewcommand{\sectionmark}[1]{\markright{\thesection. ##1}{}}%
+      \fancyhead[RO]{\smallcaps{\newlinetospace{\rightmark}}}% section title
+      \fancyfoot[C]{\thepage}
+    }%
+    {% one-side
+      \fancyhead[RE,RO]{\smallcaps{\newlinetospace{\plaintitle}}\quad\thepage}% book title
+    }%
+}
 
 % ---
 % Custom fonts 
