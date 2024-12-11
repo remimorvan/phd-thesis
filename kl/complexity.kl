@@ -1,0 +1,54 @@
+% ---
+% Basic classes
+% ---
+
+\knowledge{wrap=\textsf}
+ | NL
+
+\knowledge{wrap=\textsf}
+ | coNL
+
+\knowledge{text={P}, wrap=\textsf}
+ | P
+
+\knowledge{text={NP}, wrap=\textsf}
+ | NP
+
+\knowledge{text={coNP}, wrap=\textsf}
+ | coNP
+
+\knowledge{text={\ensuremath{\Sigma^p_2}}, wrap=\textsf}
+ | SigmaP2
+
+\knowledge{text={\ensuremath{\Pi^p_2}}, wrap=\textsf}
+ | PiP2
+
+\knowledge{text={PSpace}, wrap=\textsf}
+ | PSpace
+ | PSPACE
+
+
+% ---
+% Parametrized classes
+% ---
+
+\knowledge{notion, text={paraNL}, wrap=\textsf}
+ | para-NL
+ | paraNL
+
+\knowledge{notion, wrap=\textsf}
+| FPT
+| fixed-parameter tractable
+
+\knowledge{text={ExpSpace}, wrap=\textsf}
+| EXPSPACE
+| ExpSpace
+
+
+% ---
+% Misc.
+% ---
+
+% \knowledge{url={https://en.wikipedia.org/wiki/Savitch\%27s_theorem}}
+%   | Savitch's Theorem
+

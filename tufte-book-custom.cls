@@ -10,6 +10,7 @@
   {\geometry{a4paper,left=16mm,top=27.4mm,headsep=2\baselineskip,textwidth=120mm,marginparsep=8mm,marginparwidth=50mm,textheight=46\baselineskip,headheight=\baselineskip}}
   {}
 
+  
 % ---
 % Title formats
 % ---
@@ -31,6 +32,7 @@
   {0pt}% horizontal separation between label and title body
   {\huge\rmfamily\itshape}% before the title body
   [\ifthenelse{\NOT\boolean{@tufte@symmetric}}{\end{fullwidth}}{}]% after the title body
+
 
 % ---
 % Title contents
@@ -73,3 +75,20 @@
     {\rmfamily\upshape\qquad\thecontentspage} % filler + page (leaders and page num)
     [\end{fullwidth}] % after
 }{}
+
+
+% ---
+% Custom fonts 
+% ---
+
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{latexsym}
+\RequirePackage{mathtools}
+\RequirePackage{fontenc}
+\RequirePackage{unicode-math}
+\setmainfont{Libertinus Serif}
+\setsansfont{Libertinus Sans}
+\setmonofont[Scale=0.8]{Libertinus Mono}
+\setmathfont[math-style=TeX]{Asana Math}
+\setmathfont[math-style=TeX, range={cal, bfcal}]{Latin Modern Math}

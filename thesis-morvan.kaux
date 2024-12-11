@@ -1,0 +1,128 @@
+
+\KAuxCommand \KAuxEOF {m}{Does nothing, useless empty argument, and is searched for knowing if the kaux file was written till the end.}
+\KAuxCommand \KAuxUndeclaredScopeTag {m}{Package scope: States that a labelname is used in a knowledge definition.}
+\KAuxCommand \KAuxDeclaredScopeTag {m}{Package scope: States that a labelname has been declared.}
+\KAuxCommand \KAuxNewLinkScopetagInstance {mm}{Package scope: Declares that a label is declared in an instance of a scope.}
+\KAuxCommand \KAuxScopeNewInstance {mmm}{Package scope: Declares a new instance of a scope.}
+\KAuxCommand \KAuxScopeTag {mm}{Package scope: Links a scopetag to an instance of a scope.}
+\KAuxCommand \KAuxKnowledge {mmmm}{Package knowledge: Declares a knowledge. Takes the {namespace}{instance}{knowledge}{directives}.}
+\KAuxCommand \KAuxErrorKnowledgeRecursive {mmmm}{Package 'knowledge: A knowledge has recursive definition. {namespace}{scope}{undefined knowledge}{base knowledge}}
+\KAuxCommand \KAuxErrorKnowledgeUnknown {mmmmm}{Package 'knowledge: A knowledge is not defined. {namespace}{scope/empty}{undefined knowledge}{base knowledge}{command}}
+\KAuxCommand \KAuxErrorLabelUnknown {m}{Package 'knowledge: A label is not defined. {label}}
+\KAuxCommand \KAuxAutoref {mmm}{Package knowledge: Declares an autoref knowledge. Arguments {namespace}{instance}{knowledge}.}
+\KAuxCommand \KAuxAutorefTarget {mmm}{Package knowledge: Declares the use of a target to an autoref knowledge. Arguments {namespace}{instance}{knowledge}.}
+\KAuxCommand \KAuxUseKnowledge {mmm}{Package knowledge: Identifies the use of some knowledge. Arguments {namespace}{instance}{knowledge}.}
+
+
+\KAuxFileAt {abbreviations.kl}{5}
+
+\KAuxFileAt {abbreviations.kl}{6}
+
+\KAuxFileAt {abbreviations.kl}{8}
+
+\KAuxFileAt {abbreviations.kl}{9}
+
+\KAuxFileAt {abbreviations.kl}{11}
+
+\KAuxFileAt {abbreviations.kl}{12}
+
+\KAuxFileAt {abbreviations.kl}{14}
+
+\KAuxFileAt {abbreviations.kl}{15}
+
+\KAuxFileAt {abbreviations.kl}{17}
+
+\KAuxFileAt {abbreviations.kl}{18}
+
+\KAuxFileAt {abbreviations.kl}{20}
+
+\KAuxFileAt {abbreviations.kl}{21}
+
+\KAuxFileAt {abbreviations.kl}{23}
+
+\KAuxFileAt {abbreviations.kl}{24}
+
+\KAuxFileAt {abbreviations.kl}{26}
+
+\KAuxFileAt {abbreviations.kl}{27}
+
+\KAuxFileAt {abbreviations.kl}{29}
+
+\KAuxFileAt {abbreviations.kl}{30}
+
+\KAuxFileAt {abbreviations.kl}{32}
+
+\KAuxFileAt {abbreviations.kl}{33}
+
+\KAuxFileAt {abbreviations.kl}{35}
+
+\KAuxFileAt {abbreviations.kl}{36}
+
+\KAuxFileAt {complexity.kl}{5}
+
+\KAuxFileAt {complexity.kl}{6}
+
+\KAuxFileAt {complexity.kl}{8}
+
+\KAuxFileAt {complexity.kl}{9}
+
+\KAuxFileAt {complexity.kl}{11}
+
+\KAuxFileAt {complexity.kl}{12}
+
+\KAuxFileAt {complexity.kl}{14}
+
+\KAuxFileAt {complexity.kl}{15}
+
+\KAuxFileAt {complexity.kl}{17}
+
+\KAuxFileAt {complexity.kl}{18}
+
+\KAuxFileAt {complexity.kl}{20}
+
+\KAuxFileAt {complexity.kl}{21}
+
+\KAuxFileAt {complexity.kl}{23}
+
+\KAuxFileAt {complexity.kl}{24}
+
+\KAuxFileAt {complexity.kl}{26}
+
+\KAuxFileAt {complexity.kl}{27}
+
+\KAuxFileAt {complexity.kl}{28}
+
+\KAuxFileAt {complexity.kl}{35}
+
+\KAuxFileAt {complexity.kl}{36}
+\KAuxAutoref {default}{base}{para-NL}
+
+\KAuxFileAt {complexity.kl}{37}
+
+\KAuxFileAt {complexity.kl}{39}
+
+\KAuxFileAt {complexity.kl}{40}
+\KAuxAutoref {default}{base}{FPT}
+
+\KAuxFileAt {complexity.kl}{41}
+
+\KAuxFileAt {complexity.kl}{43}
+
+\KAuxFileAt {complexity.kl}{44}
+
+\KAuxFileAt {complexity.kl}{45}
+
+\KAuxFileAt {misc.kl}{1}
+
+\KAuxFileAt {misc.kl}{2}
+\KAuxAutoref {default}{base}{CRPQ}
+
+\KAuxFileAt {misc.kl}{4}
+
+\KAuxFileAt {misc.kl}{5}
+\KAuxAutoref {default}{base}{one-way semantic tree-width}
+
+\KAuxFileAt {thesis-morvan.tex}{23}
+\KAuxScopeNewInstance {base}{base}{}
+\KAuxScopeNewInstance {document}{document}{base}
+\KAuxEOF {}

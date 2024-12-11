@@ -1,0 +1,47 @@
+\usepackage[xcolor, hyperref, cleveref, notion, quotation, composition]{knowledge}
+\knowledgeconfigure{quotation, protect quotation={tikzcd}}
+\knowledgeconfigure{diagnose line=true, diagnose bar=true}
+
+\IfKnowledgePaperModeTF{
+    %
+}{
+    % If we are NOT in paper mode (i.e. in composition mode or electronic mode)
+    \knowledgestyle{intro notion}{color={KlDefn}, emphasize}
+    \knowledgestyle{notion}{color={KlLink}}
+    \hypersetup{
+        colorlinks=true,
+        breaklinks=true,
+        linkcolor={KlLink}, % Links to sections, pages, etc.
+        citecolor={KlLink}, % Links to bibliography
+        filecolor={KlLink}, % Links to local file
+        urlcolor={KlLink},
+    }
+    \IfKnowledgeElectronicModeTF{
+        %
+    }{
+        % If we are in composition mode, highlight unknown stuff (in yellow) and display the anchor point.
+        \knowledgeconfigure{anchor point color={KlDefn}, anchor point shape=corner}
+        \knowledgestyle{intro unknown}{color={KlWarning}, emphasize}
+        \knowledgestyle{intro unknown cont}{color={KlWarning}, emphasize}
+        \knowledgestyle{kl unknown}{color={KlWarning}}
+        \knowledgestyle{kl unknown cont}{color={KlWarning}}
+    }
+}
+
+% ---
+% Correctly handling \mathop/\mathrel with \knowledgenewrobuscmd
+% ---
+\ExplSyntaxOn
+\RenewDocumentCommand\withkl{mm}{
+\int_gincr:N\knowledge_inner_modifier_count_int
+\cs_gset:cpx
+{\knowledge_inner_command:}
+{\exp_not:N\cs_gset:Npn
+\exp_not:c{\knowledge_inner_command:}
+{\knowledge_inner_modifer_re_tl\knowledge_kl_modifiers_tl\exp_not:n{#1}}
+\knowledge_kl_modifiers_tl\exp_not:n{#1}}
+\knowledge_kl_modifiers_reset:
+#2
+\int_gdecr:N\knowledge_inner_modifier_count_int
+}
+\ExplSyntaxOff

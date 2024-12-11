@@ -1,0 +1,37 @@
+% ---
+% Abbreviations
+% ---
+
+\knowledge{text={resp.}, italic}
+  | resp
+
+\knowledge{text={i.e.}, italic}
+  | ie
+
+\knowledge{text={s.t.}, italic}
+  | st
+
+\knowledge{text={e.g.}, italic}
+  | eg
+
+\knowledge{text={vs.}, italic}
+  | vs
+
+\knowledge{text={w.r.t.}, italic}
+  | wrt
+
+\knowledge{text={a.k.a.}, italic}
+  | aka
+
+\knowledge{text={w.l.o.g.}, italic}
+  | wlog
+
+\knowledge{text={W.l.o.g.}, italic}
+  | Wlog
+
+\knowledge{text={cf.}, italic}
+  | cf
+
+\knowledge{text={iff}, italic}
+  | iff
+%  | iff
