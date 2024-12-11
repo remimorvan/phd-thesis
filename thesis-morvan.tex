@@ -1,5 +1,5 @@
 \RequirePackage{luatex85}
-\documentclass[a4paper,sfsidenotes,twoside,justified]{tufte-book-custom}
+\documentclass[a4paper,sfsidenotes,twoside,justified,nobib]{tufte-book-custom}
 % \usepackage{showframe}
 
 \hypersetup{colorlinks}
@@ -8,13 +8,27 @@
 \author[The Tufte-LaTeX Developers]{The Tufte-LaTeX\ Developers}
 \publisher{Publisher of This Book}
 
+% Biblio
+\usepackage[
+  style=alphabetic,
+  autocite=footnote,
+  backend=biber
+]{biblatex}
+\bibliography{sample-handout}
+
+%todo: add \citereset at end of each chapter
+
+% Dependencies
 \input{header/color-palette}
 \input{header/dependencies}
 \input{header/kl-config}
 \input{header/theorems}
+
+% Macros and math commands
 \input{header/macros}
 \input{header/math}
 
+% Knowledge files
 \input{kl/abbreviations.kl}
 \input{kl/complexity.kl}
 \input{kl/misc.kl}
@@ -71,8 +85,9 @@
 	\caption{My super nice caption.}
 \end{table}
 
-Hello this is a citation\cite{Bringhurst2005}.
-Hello Q\sidenote{Qy first sidenote!} world\sidenote{Another side note}.
+\citereset
+Hello this is a citation \cite{Bringhurst2005}.
+Hello Q\sidenote{Qy first sidenote!} world and another test \cite{Bringhurst2005}.
 \[\forall x \in \gamma,\, \exists y\in \delta, \delta \to \gamma\]
 \[L \subseteq \Sigma^*\]
 \[0 \in \mathbb{N}\]
@@ -110,9 +125,8 @@ Hello Q\sidenote{Qy first sidenote!} world\sidenote{Another side note}.
 
 
 \backmatter
+\printbibliography
 
-\bibliography{sample-handout}
-\bibliographystyle{plainnat}
 
 \end{document}
 

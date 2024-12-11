@@ -308,3 +308,4 @@ TSWLatexianTemp*
 thesis-morvan.pdf
 *.kaux
 *.diagnose
+test/*
