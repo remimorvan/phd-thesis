@@ -1,0 +1,46 @@
+\section{Preliminaries}
+
+For \AP""first-order reductions"", see
+\cite[Definition 2.11 \& Definition 1.26]{Immerman1998DescriptiveComplexity}.
+
+Given two "structures" $\?A$ and $\?B$, we define the structure \AP$\intro*\powstruct{\?B}{\?A}$ as follows:
+\begin{itemize}
+  \item its domain are "homomorphisms" $\?A \to \?B$,
+  \item for every "relation symbol" $\+R$ of arity $k$, for any homomorphism $f_1,\hdots,f_k$,
+  we have $\langle f_1,\hdots,f_k\rangle \in \+R$ when for every
+  $\langle a_1,\hdots,a_k\rangle \in \+R(\?A)$
+  then $\langle f_1(a_1), \hdots, f_k(a_k) \rangle \in \+R(\?B)$.
+\end{itemize}
+
+\begin{proposition}[Folklore]
+	Given "structures" $\?A$, $\?B$ and $\?C$, if $f\colon \?A\prodstruct \?B \to \?C$
+	is a "homomorphism", then $F\colon \?A \to \powstruct{\?C}{\?B}$,
+	defined by $a \mapsto (b \mapsto f(a,b))$, is a "homomorphism".
+	In fact, this mapping $f \mapsto F$ is a bijection
+	between "homomorphisms" $\?A\prodstruct \?B \to \?C$
+	and "homomorphisms" $\?A \to \powstruct{\?C}{\?B}$.
+  \end{proposition}
+  
+  \begin{proof}
+	Let $\+R$ be a relational symbol of arity $k$, and let
+	$\langle a_1,\hdots,a_k \rangle \in \+R(\?A)$.
+	We want to show that $\langle F(a_1),\hdots,F(a_k) \rangle \in \+R(\powstruct{\?C}{\?B})$:
+	for any $\langle b_1,\hdots,b_k \rangle \in \+R(\?B)$, we have
+	\[\langle F(a_1)(b_1), \hdots, F(a_k)(b_k)\rangle = \langle f(a_1,b_1),\hdots,f(a_k,b_k) \rangle \in \+R(\?C)\] since $f$ is a "homomorphism" from $\?A\prodstruct \?B$ to $\?C$.
+	Hence, $F$ is indeed a "homomorphism" from $\?A$ to $\powstruct{\?C}{\?B}$.
+  
+	Dually, if $F$ is a "homomorphism" from $\?A$ to $\powstruct{\?C}{\?B}$,
+	we define $f\colon \?A\prodstruct \?B \to \?C$ by $\langle a,b \rangle \mapsto F(a)(b)$,
+	and claim that $f$ is a "homomorphism". Indeed, if $\+R$ be a relational symbol of arity $k$,
+	for any $\langle a_1, \hdots, a_k \rangle \in \+R(\?A)$
+	and $\langle b_1, \hdots, b_k \rangle \in \+R(\?B)$,
+	we have $\langle f(a_1,b_1), \hdots, f(a_k,b_k) \rangle
+	= \langle F(a_1)(b_1), \hdots, F(a_k)(b_k) \rangle$.
+	Since $\langle F(a_1), \hdots, F(a_k) \rangle \in \+R(\powstruct{\?C}{\?B})$
+	and $\langle b_1, \hdots,b_k \rangle \in \+R(\?B)$ 
+	it follows that $\langle F(a_1)(b_1), \hdots, F(a_k)(b_k) \rangle \in \+R(\?C)$.
+	Therefore, $f$ is a "homomorphism" from $\?A \prodstruct \?B$ to $\?C$.
+  
+	It is then routine to check that the maps $f \mapsto F$ and $F \mapsto f$ defined
+	in the two previous paragraphs are mutually inverse bijections.
+  \end{proof}

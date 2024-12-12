@@ -1,1 +1,170 @@
 \chapter{A Dichotomy Theorem for Automatic Structures}
+
+Let \AP$\intro*\Fin$ denote the class of all "finite $\sigma$-structures",
+\AP$\intro*\Aut$ the class of all "automatic $\sigma$-structures".
+We let \AP$\intro*\AutPres$ be the class of all "automatic presentations of $\sigma$-structures",
+and \AP$\intro*\FinPres$ be the subclass of "presentations" of "finite $\sigma$-structures".
+
+Given a "$\sigma$-structure" $\?B$, and a class $\classStruct$ of "automatic presentations of $\sigma$-structures", we denote by \AP$\intro*\HomPb{\classStruct}{\?B}$ the class of all presentations $\•A \in \classStruct$ such that the "$\sigma$-structure" $\?A$
+that they "represent" admits a "homomorphism" to $\?B$.
+Similarly, we denote by \AP$\intro*\HomRegPb{\classStruct}{\?B}$ the class 
+associated to "regular homomorphisms".
+
+While the existence of a "homomorphism" from some "automatic presentation" of $\?A$ 
+to a "finite $\sigma$-structure" $\?B$ only depends on $\?A$ and not the "presentation" itself,
+this is not true for "regular homomorphism".
+For a $\sigma$-structure $\?B$,
+we use \AP$\intro*\HomFin{\?B}$, $\intro*\HomAut{\?B}$, $\intro*\HomRegFin{\?B}$
+and $\intro*\HomRegAut{\?B}$ as shorthands for $\HomPb{\FinPres}{\?B}$, $\HomPb{\AutPres}{\?B}$,
+$\HomRegPb{\FinPres}{\?B}$ and $\HomRegPb{\AutPres}{\?B}$, respectively.
+
+Note that any "homomorphism" from an "automatic presentation" of a "finite structure"
+to a "finite structure" is also "regular@@hom" and so $\HomFin{\?B} = \HomRegFin{\?B}$.\sidenote{Note also that membership in $\HomFin{-} = \HomRegFin{-}$ and in
+$\HomAut{-}$, but not $\HomRegAut{-}$, only depends on the "structure represented"
+by the "automatic presentation", and not on the "presentation" itself. However, we use these definitions for two reasons: (1) for consistency with $\HomRegAut{-}$ and (2) for the associated decision problem to be defined unambiguously. Note moreover that in the case of "finite structures", the size of its representation, say using a adjacency lists, and of its "automatic presentation" are equal up to a TODO.}
+
+\begin{theorem}
+  Let $\?B$ be a "finite $\sigma$-structure". The following are equivalent:
+  \begin{enumerate}
+    \item $\?B$ has "finite duality";
+    \item $\HomAut{\?B}$ is "decidable";
+    \item $\HomRegAut{\?B}$ is "decidable";
+    \item $\HomAut{\?B} = \HomRegAut{\?B}$ "ie" for any "automatic presentation" $\•A$ of a 
+      "$\sigma$-structure" $\?A$, there is a "homomorphism" from $\?A$ to $\?B$ "iff" 
+      there is a "regular homomorphism" from $\•A$ to $\?B$.
+  \end{enumerate}
+\end{theorem}
+
+\input{parts/dichotomy-theorem/sec-preliminaries}
+
+\section{Idempotent Core}
+
+We fix a "purely relational signature" $\sigma$.
+Given a "$\sigma$-structure" $\?B$,
+we denote by \AP$\intro*\extendedSignature{\sigma}{\?B}$
+the signature obtained from $\sigma$ by adding
+a unary predicate \AP$\intro*\unarypred{b}$ for each $b\in B$.
+The "marked structure" \AP$\intro*\marked{\?B}$ of $\?B$ is the
+"$\extendedSignature{\sigma}{\?B}$-structure"
+obtained from $\?B$ by "interpreting@@symbol" each predicate $\unarypred{b}$ as the
+singleton $\{b\}$.\sidenote{TODO: ASIA'S REMARK: this is called the ``idempotent core''.}
+
+\begin{lemma}
+  \AP\label{lemma:marking-preserves-csp-complexity}
+  If $\?B$ is a finite "core", then the problems $\HomFin{\marked{\?B}}$ and 
+  $\HomFin{\?B}$ are equivalent under "first-order reductions".\sidenote{The non-trivial
+  reduction is to reduce $\HomFin{\marked{\?B}}$ to $\HomFin{\?B}$---only this reduction
+  requires the assumption that $\?B$ is a core. It is a consequence of the highly non-trivial
+  \cite[Theorem 2.1]{LaroseTesson2009UniversalAlgebraCSP}. TODO:UNDERSTAND AND EXPLAIN WHY.}
+\end{lemma}
+
+\begin{proof}[Proof of \Cref{lemma:marking-preserves-csp-complexity}]
+  \proofcase{Reduction from $\HomFin{\?B}$ to $\HomFin{\marked{\?B}}$.}
+  We reduce a "$\sigma$-structure" $\?A$ to the
+  "$\extendedSignature{\sigma}{\?B}$-structure" $\?A'$ obtained
+  from $\?A$ by "interpreting@@symbol" each predicate $\unarypred{b}$ as the emptyset.
+  Clearly, a function from $A$ to $B$ is a "homomorphism" from $\?A$ to $\?B$
+  "iff" it is a "homomorphism" from $\?A'$ to $\marked{\?B}$, proving the correctness
+  of the reduction. It is, by definition, "first-order@@reduction".
+
+  \proofcase{Reduction from $\HomFin{\marked{\?B}}$ to $\HomFin{\?B}$: reduction.}
+  We first define the reduction $\Phi$ and show its correctness, we will show later that it
+  is a "first-order reduction". We reduce a "$\extendedSignature{\sigma}{\?B}$-structure" $\?A$ to the "$\sigma$-structure"
+  $\Phi(\?A)$ defined as follows:
+  \begin{itemize}
+    \item its underlying universe is the disjoint union $A \sqcup B$,
+    \item given a "relation symbol" $\+R$ of arity $k$, its "hyperedges" are:
+    \begin{itemize}
+      \item all $\+R$-"hyperedges" of $A$,
+      \item all $\+R$-"hyperedges" of $B$, and
+      \item all $\+R$-"hyperedges" $(b_1,\hdots,b_{i-1}, a_i, b_{i+1},\hdots,b_k)$
+        "st" there exists $b_i$ for which the $\+R$-"hyperedge"
+        $(b_1,\hdots,b_{i-1}, b_i, b_{i+1},\hdots,b_k)$
+        is in $\+R(\?A)$, and $a_i$ belongs to the "interpretation@@symbol" of 
+        $\unarypred{b_i}$ in $\?A$.
+    \end{itemize}
+  \end{itemize}
+  Note that by construction, the neighbourhood (TODO: TO BE DEFINED) of $a \in A$ in $\Phi(\?A)$ is
+  the union of its neighbourhood in $\?A$, and the union of the neighbourhoods of
+  $b$ in $\?B$ for all $b$ "st" $a \in \unarypred{b}(\?A)$.
+  To be concluded.  
+\end{proof}
+
+\section{From Regular Unreachability to the Regular Homomorphism Problem}
+
+An \AP""undirected path"" in a "$\sigma$-structure" $\?A$ consists of a sequence
+\[\big\langle a_0,\, e_0,\, a_1,\, \hdots,\, e_{n-1},\, a_n\big\rangle, \text{ with } n \in \N,\]
+where $a_i \in \?A$ and each $e_i$ is a "hyperedge" of $\?A$ "st" both
+$a_i$ and $a_{i+1}$ occur in $e_i$. When such an "undirected path" exists, we say that
+there is an "undirected path" between $a_0$ and $a_n$, or equivalently
+that $a_0$ and $a_n$ are \AP""connected"". Note that this relation is reflexive
+and symmetric.
+A \AP"connected component" of $\?A$ consists of an equivalence class of the transitive closure
+of this relation.
+
+\begin{lemma}
+  A "$\sigma$-structure" $\?B$ has "finite duality" "iff" there is no "undirected path"
+  in $\powstruct{\?B}{(\iterstruct{\?B}{2})}$ between the "first projection"
+  $\projHom{1}$ and the "second projection" $\projHom{2}$.
+\end{lemma}
+
+We introduce a decision problem on "Turing machines".
+\decisionproblem{""Regular Unreachability of Turing Machine Configurations""}{
+  A "Turing machine" $\+M$, two "configurations" $s$ and $t$ of $\+M$.
+}{
+  Is there a regular language $L$ (over the same alphabet as the "configurations" of $\+M$)
+  such that $s \in L$, $t\not\in L$ and $L$ is a union of "connected components"
+  of "configurations" of $\+M$?
+}
+
+\begin{lemma}
+  "Regular Unreachability of Turing Machine Configurations" is undecidable.\sidenote{TODO:add precise complexity}
+\end{lemma}
+
+\begin{proof}[Proof sketch]
+  \proofcase{An undecidable problem on Turing machines.}
+  We claim first that the following promise problem is undecidable.
+  \decisionproblem{""Restricted Membership for Deterministic Reversible Turing Machines""}{
+    A "deterministic" "reversible Turing machine" $\+M$, a state $q_0$,
+    words $u_\top,u_\bot \in \Sigma^*$
+    "st"
+    \begin{enumerate}
+      \item $u_\bot \not\in \semTM{\+M}$,
+      \item neither $q_0\cdot u_\top$ nor $q_0\cdot u_\bot$ have a predecessor in the "configuration graph" of $\+M$, and
+      \item all "configurations" except those "connected" to $q_0\cdot u_\top$ or $q_0\cdot u_\bot$ belong to the same "connected component" of the "configuration graph" of $\+M$.
+    \end{enumerate}
+  }{
+    Does $u_\top \in \semTM{\+M}$?
+  }
+
+  \proofcase{Reduction to "Regular Unreachability of Turing Machine Configurations".}
+  We reduce the complement of this problem to "Regular Unreachability of Turing Machine Configurations". More precisely, we map an instance
+  $\langle \+M,\, q_0,\, u_\bot,\, u_\top \rangle$ to $\langle \+M',\, q_0\cdot u_\top,\, q_0\cdot u_\bot \rangle$ where $\+M'$ does the same thing as $\+M$ except that it adds `$cd$' at the end of the tape
+  whenever it takes a transition of $\+M'$, where $c$ and $d$ are new letters.
+  We also add all necessary transitions in order to have the following property:
+  the connected components of $\+M'$ are (essentially):
+  \begin{itemize}
+    \item $\gamma_0 \to \gamma_1\cdot cd \to \gamma_2\cdot c^2d^2 \to \cdots$
+    where $\gamma_0 \to \gamma_1 \to \gamma_2 \to \cdots$ is the reachable configurations from $q_0\cdot u_\top$ in $\+M$,
+    \item same for $q_0\cdot u_\bot$,
+    \item all other configurations.
+  \end{itemize}
+  If $u_\bot \in \semTM{\+M}$ then the first component is finite and hence regular, and it clearly separated $q_0\cdot u_\top, q_0\cdot u_\bot$.
+  If $u_\bot \not\in \semTM{\+M}$, then the possible separators are $\textrm{Reach}(q_0\cdot u_\top)$
+  and $\complement\,\textrm{Reach}(q_0\cdot u_\bot)$, but neither of them is regular because of the
+  $c^nd^n$ business. 
+\end{proof}
+
+% \begin{lemma}
+% 	Let $\?B$ be a "$\sigma$-structure".
+% 	Then $\?B$ has "finite duality" if, and only if,
+% 	there is path from $\projHom{1}$ to $\projHom{2}$ in $\powstruct{\?B}{(\iterstruct{\?B}{2})}$.
+% \end{lemma}
+
+% \begin{lemma}
+% 	There is a "first-order reduction" from BLABLA
+% 	to BLABLA
+% \end{lemma}
+
+\cite{LaroseLotenTardif2007CharacterisationFOCSP}
+\cite{LaroseTesson2009UniversalAlgebraCSP}

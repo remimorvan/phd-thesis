@@ -14,7 +14,7 @@
   autocite=footnote,
   backend=biber
 ]{biblatex}
-\bibliography{sample-handout}
+\bibliography{bib-automatic-graphs}
 
 %todo: add \citereset at end of each chapter
 
@@ -125,7 +125,9 @@ Hello Q\sidenote{Qy first sidenote!} world and another test \cite{Bringhurst2005
 
 
 \backmatter
-\printbibliography
+\begin{fullwidth}
+	\printbibliography
+\end{fullwidth}
 
 
 \end{document}

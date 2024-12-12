@@ -9,7 +9,7 @@
 % ---
 
 \ifthenelse{\boolean{@tufte@afourpaper}}
-  {\geometry{a4paper,left=16mm,top=27.4mm,headsep=2\baselineskip,textwidth=120mm,marginparsep=8mm,marginparwidth=50mm,textheight=46\baselineskip,headheight=\baselineskip,footskip=2.5\baselineskip}}
+  {\geometry{a4paper,left=14mm,top=23.4mm,headsep=1.5\baselineskip,textwidth=127mm,marginparsep=8mm,marginparwidth=47mm,textheight=48\baselineskip,headheight=\baselineskip,footskip=2\baselineskip}}
   {}
 
 
@@ -115,6 +115,15 @@
       \fancyhead[RE,RO]{\smallcaps{\newlinetospace{\plaintitle}}\quad\thepage}% book title
     }%
 }
+
+
+% ---
+% Enumitem
+% ---
+
+\RequirePackage{enumitem}
+\setlist{noitemsep,nosep}
+
 
 % ---
 % Custom fonts 
