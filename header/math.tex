@@ -2,6 +2,8 @@
 \newrobustcmd\+[1]{\mathcal{#1}}
 \newrobustcmd\•[1]{\mathfrak{#1}}
 
+\knowledgenewrobustcmd\id[1][]{\cmdkl{\mathrm{id}_{#1}}}
+
 \newrobustcmd\N{\mathbb{N}}
 \newrobustcmd\Np{\N_{>0}}
 
@@ -17,11 +19,12 @@
 \knowledgenewrobustcmd\powstruct[2]{\cmdkl{#1^{#2}}}
 \knowledgenewrobustcmd\iterstruct[2]{\cmdkl{#1^{#2}}}
 
+\knowledgenewrobustcmd\marked[1]{\cmdkl{#1^{\dag}}}
 \knowledgenewrobustcmd\unarypred[1]{\cmdkl{P_{#1}}}
 
 \knowledgenewrobustcmd\Fin[1][\sigma]{\cmdkl{\mathcal{F\!in}_{#1}}}
 \knowledgenewrobustcmd\Aut[1][\sigma]{\cmdkl{\mathcal{Aut}_{#1}}}
-\knowledgenewrobustcmd\FinPres[1][\sigma]{\cmdkl{\mathcal{Fin}^{\smash{\textsf{pres}}}_{#1}}}
+\knowledgenewrobustcmd\FinPres[1][\sigma]{\cmdkl{\mathcal{F\!in}^{\smash{\textsf{pres}}}_{#1}}}
 \knowledgenewrobustcmd\AutPres[1][\sigma]{\cmdkl{\mathcal{Aut}^{\smash{\textsf{pres}}}_{#1}}}
 
 
@@ -37,4 +40,25 @@
 \knowledgenewrobustcmd\HomRegFin[1]{\cmdkl{\HomRegPbNoKl{\mathrm{Fin}}{#1}}}
 \knowledgenewrobustcmd\HomRegAut[1]{\cmdkl{\HomRegPbNoKl{\mathrm{Aut}}{#1}}}
 
-\knowledgenewrobustcmd\marked[1]{\cmdkl{#1^{\dag}}}
+\knowledgenewrobustcmd\link[1]{\cmdkl{\?L_{#1}}}
+
+\newrobustcmd\smashxrightarrow[1]{%
+  \raisebox{-.04em}{$%
+    \xrightarrow{\smash{\raisebox{-.1em}{%
+      \tiny{#1}%
+    }}}%
+  $}%
+}%
+\newrobustcmd\smashxleftarrow[1]{%
+  \raisebox{-.04em}{$%
+    \xleftarrow{\smash{\raisebox{-.1em}{%
+      \tiny{#1}%
+    }}}%
+  $}%
+}%
+
+\knowledgenewrobustcmd{\homto}{\mathrel{\cmdkl{\smashxrightarrow{hom}}}}
+\newrobustcmd{\cohomto}{\mathrel{\kl[\homto]{\smashxleftarrow{hom}}}}
+\RequirePackage{centernot}
+\newrobustcmd{\nothomto}{\mathrel{\kl[\homto]{\centernot{\smashxrightarrow{hom}}}}}
+\newrobustcmd{\notcohomto}{\mathrel{\kl[\homto]{\centernot{\smashxleftarrow{hom}}}}}

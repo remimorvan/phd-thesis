@@ -3,6 +3,9 @@
 % ---
 
 \knowledge{wrap=\textsf}
+ | L
+
+\knowledge{wrap=\textsf}
  | NL
 
 \knowledge{wrap=\textsf}
@@ -26,6 +29,12 @@
 \knowledge{text={PSpace}, wrap=\textsf}
  | PSpace
  | PSPACE
+
+\knowledge{text={RE}, wrap=\textsf}
+| RE
+
+\knowledge{text={coRE}, wrap=\textsf}
+| coRE
 
 
 % ---

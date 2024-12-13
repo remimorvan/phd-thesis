@@ -1,0 +1,1 @@
+{"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qwhose domain is \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q, and every \"relation symbol\" \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q of arity \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q, is interpreted as the set of tuples \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q \"st\" \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q for all \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q.\\E$"}

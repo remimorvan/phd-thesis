@@ -3,6 +3,19 @@
 For \AP""first-order reductions"", see
 \cite[Definition 2.11 \& Definition 1.26]{Immerman1998DescriptiveComplexity}.
 
+\subsection{Undirected Paths}
+
+An \AP""undirected path"" in a "$\sigma$-structure" $\?A$ consists of a sequence
+\[\big\langle a_0,\, e_0,\, a_1,\, \hdots,\, e_{n-1},\, a_n\big\rangle, \text{ with } n \in \N,\]
+where $a_i \in \?A$ and each $e_i$ is a "hyperedge" of $\?A$ "st" both
+$a_i$ and $a_{i+1}$ occur in $e_i$. When such an "undirected path" exists, we say that
+there is an "undirected path" between $a_0$ and $a_n$, or equivalently
+that $a_0$ and $a_n$ are \AP""connected"".\sidenote{Note that this relation is reflexive
+and symmetric.} A \AP"connected component" of $\?A$ consists of an equivalence class of the 
+transitive closure of this relation.
+
+\subsection{Constructions on Structures}
+
 Given two "structures" $\?A$ and $\?B$, we define the structure \AP$\intro*\powstruct{\?B}{\?A}$ as follows:
 \begin{itemize}
   \item its domain are "homomorphisms" $\?A \to \?B$,
@@ -12,7 +25,9 @@ Given two "structures" $\?A$ and $\?B$, we define the structure \AP$\intro*\pows
   then $\langle f_1(a_1), \hdots, f_k(a_k) \rangle \in \+R(\?B)$.
 \end{itemize}
 
-\begin{proposition}[Folklore]
+
+\begin{proposition}[Folklore: Currying Homomorphisms]
+	\AP\label{prop:currying-hom}
 	Given "structures" $\?A$, $\?B$ and $\?C$, if $f\colon \?A\prodstruct \?B \to \?C$
 	is a "homomorphism", then $F\colon \?A \to \powstruct{\?C}{\?B}$,
 	defined by $a \mapsto (b \mapsto f(a,b))$, is a "homomorphism".
@@ -43,4 +58,57 @@ Given two "structures" $\?A$ and $\?B$, we define the structure \AP$\intro*\pows
   
 	It is then routine to check that the maps $f \mapsto F$ and $F \mapsto f$ defined
 	in the two previous paragraphs are mutually inverse bijections.
+  \end{proof}
+
+  \subsection{Idempotent Core}
+
+  We fix a "purely relational signature" $\sigma$.
+  Given a "$\sigma$-structure" $\?B$,
+  we denote by \AP$\intro*\extendedSignature{\sigma}{\?B}$
+  the signature obtained from $\sigma$ by adding
+  a unary predicate \AP$\intro*\unarypred{b}$ for each $b\in B$.
+  The "marked structure" \AP$\intro*\marked{\?B}$ of $\?B$ is the
+  "$\extendedSignature{\sigma}{\?B}$-structure"
+  obtained from $\?B$ by "interpreting@@symbol" each predicate $\unarypred{b}$ as the
+  singleton $\{b\}$.\sidenote{TODO: ASIA'S REMARK: this is called the ``idempotent core''.}
+  
+  \begin{proposition}[Folklore]
+	\AP\label{prop:marking-preserves-csp-complexity}
+	If $\?B$ is a finite "core", then the problems $\HomFin{\marked{\?B}}$ and 
+	$\HomFin{\?B}$ are equivalent under "first-order reductions".\sidenote{The non-easy part is to reduce $\HomFin{\marked{\?B}}$ to $\HomFin{\?B}$: only this reduction
+	requires the assumption that $\?B$ is a core. It is a consequence of the highly non-trivial
+	\cite[Theorem 2.1]{LaroseTesson2009UniversalAlgebraCSP}. TODO:UNDERSTAND AND EXPLAIN WHY.
+	We provide here a self-contained proof.}
+  \end{proposition}
+  
+  \begin{proof}[Proof of \Cref{prop:marking-preserves-csp-complexity}]
+	\proofcase{Reduction from $\HomFin{\?B}$ to $\HomFin{\marked{\?B}}$.}
+	We reduce a "$\sigma$-structure" $\?A$ to the
+	"$\extendedSignature{\sigma}{\?B}$-structure" $\?A'$ obtained
+	from $\?A$ by "interpreting@@symbol" each predicate $\unarypred{b}$ as the emptyset.
+	Clearly, a function from $A$ to $B$ is a "homomorphism" from $\?A$ to $\?B$
+	"iff" it is a "homomorphism" from $\?A'$ to $\marked{\?B}$, proving the correctness
+	of the reduction. It is, by definition, "first-order@@reduction".
+  
+	\proofcase{Reduction from $\HomFin{\marked{\?B}}$ to $\HomFin{\?B}$: reduction.}
+	We first define the reduction $\Phi$ and show its correctness, we will show later that it
+	is a "first-order reduction". We reduce a "$\extendedSignature{\sigma}{\?B}$-structure" $\?A$ to the "$\sigma$-structure"
+	$\Phi(\?A)$ defined as follows:
+	\begin{itemize}
+	  \item its underlying universe is the disjoint union $A \sqcup B$,
+	  \item given a "relation symbol" $\+R$ of arity $k$, its "hyperedges" are:
+	  \begin{itemize}
+		\item all $\+R$-"hyperedges" of $A$,
+		\item all $\+R$-"hyperedges" of $B$, and
+		\item all $\+R$-"hyperedges" $(b_1,\hdots,b_{i-1}, a_i, b_{i+1},\hdots,b_k)$
+		  "st" there exists $b_i$ for which the $\+R$-"hyperedge"
+		  $(b_1,\hdots,b_{i-1}, b_i, b_{i+1},\hdots,b_k)$
+		  is in $\+R(\?A)$, and $a_i$ belongs to the "interpretation@@symbol" of 
+		  $\unarypred{b_i}$ in $\?A$.
+	  \end{itemize}
+	\end{itemize}
+	Note that by construction, the neighbourhood (TODO: TO BE DEFINED) of $a \in A$ in $\Phi(\?A)$ is
+	the union of its neighbourhood in $\?A$, and the union of the neighbourhoods of
+	$b$ in $\?B$ for all $b$ "st" $a \in \unarypred{b}(\?A)$.
+	To be concluded.  
   \end{proof}

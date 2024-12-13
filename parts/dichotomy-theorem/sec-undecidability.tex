@@ -1,0 +1,252 @@
+\section{\AP\label{sec:undecidability}%
+	Undecidability of the Homomorphism Problems}
+
+
+We prove the undecidability of $\HomAut{\?B}$ and $\HomRegFin{\?B}$
+when $\?B$ does not have "finite duality". Both reductions are
+nearly identical to the proof that $\HomFin{\?B}$ is "L"-hard when $\?B$ does not
+have finite duality by \textcite[Theorem 3.2]{LaroseTesson2009UniversalAlgebraCSP}.
+However, proving the undecidability of the problem that is reduced
+to $\HomRegFin{\?B}$ is not entirely trivial and requires some work.
+
+\subsection{\AP\label{sec:undecidability-hom}%
+	Undecidability of \,$\HomAut{\?B}$}
+
+Define the \AP""$n$-link"" $\intro*\link{n}$ be the "$\sigma$-structure"\sidenote{From \cite[\S~2]{LaroseLotenTardif2007CharacterisationFOCSP}.} 
+whose domain is $\lBrack 0,n\rBrack$, and every "relation symbol" $\+R$
+of arity $k$, is interpreted as the set of tuples $\langle a_1,\, \hdots,\, a_k \rangle$
+"st" $|a_i-a_j| \leq 1$ for all $i,j \in \lBrack 0,n \rBrack$.\sidenote{Todo: add figure for digraphs.}
+Given a "$\sigma$-structure" $\?B$, say that $b \in \?B$ and $b'$ are
+\AP""$n$-linked"" if there exists a "homomorphism" from $\link{n}$ to $\?B$
+that sends $0$ to $b$ and $n$ to $b'$. We say that $b$ and $b'$ are \AP""linked"" if
+they are "$n$-linked" for some $n \in \N$.
+
+Note that the fact that $k \mapsto n-k$
+defines an "automorphism" of $\link{n}$ implies that the relation of being "$n$-linked"---
+and to a greater extent of being "linked"---is symmetric.
+Moreover, being "linked" is transitive.
+
+% \begin{fact}[Link Composition]
+% 	\AP\label{fact:link-composition}
+% 	Let $n,m \in \N$, let $\?B$ be a "$\sigma$-structure", and let $b,b',b'' \in B$.
+% 	If $b$ and $b'$ are "$n$-linked" and $b'$ and $b''$ are "$m$-linked", then
+% 	$b$ and $b''$ are "$(n+m)$-linked".
+% \end{fact}
+% We define the binary relation $\sim_n$
+% on $\link{n} \prodstruct \iterstruct{\?B}{2}$ as follows:\sidenote{From \cite[\S~4.3]{LaroseLotenTardif2007CharacterisationFOCSP}.}%
+% \[
+% 	\langle k,\, b_1,\, b_2\rangle \sim_n \langle k',\, b'_1,\, b'_2\rangle
+% 	\quad\text{when}\quad
+% 	\begin{cases*}
+% 		\;\langle k,\,  b_1,\, b_2\rangle = \langle k',\, b'_1,\, b'_2\rangle\text{, or}\\
+% 		\;k = k' = 0 \text{ and } b_1 = b'_1\text{, or}\\
+% 		\;k = k' = n \text{ and } b_2 = b'_2.
+% 	\end{cases*}
+% \]
+
+\begin{proposition}[{\cite[Theorem 4.7]{LaroseLotenTardif2007CharacterisationFOCSP}}]%
+	\!\footnote{Actually \cite[Theorem 4.7]{LaroseLotenTardif2007CharacterisationFOCSP} assumes
+	that $\HomFin{\?B}$ is "first-order definable", but this condition
+	is equivalent to $\?B$ having "finite duality" by Atserias' result
+	\cite[Corollary 4]{Atserias2008DigraphColoring}.}%
+	%%%
+	\AP\label{prop:characterization-finite-duality-path-projections}
+	A finite "$\sigma$-structure" $\?B$ has "finite duality" "iff"
+	$\projHom{1}$ and $\projHom{2}$ are "linked" in $\powstruct{\?B}{(\iterstruct{\?B}{2})}$.
+\end{proposition}
+
+Equipped with the previous proposition, we can now show the undecidability 
+of $\HomAut{\?B}$ by reduction from the following problem.
+
+\decisionproblem{""Connectivity in Automatic Graphs""}{
+	An "automatic presentation of a directed graph" $\•G$,
+	and two elements $s,t \in \Sigma^*$.
+}{
+	Are $\•G(s)$ and $\•G(t)$ "connected" in $\?G$?
+}
+\begin{property}
+	\AP\label{prop:undecidability-connectivity}
+	For any "signature" $\sigma$ containing at least one "relation symbol" of
+	arity at least 2, "Connectivity in Automatic Graphs" is "RE"-complete.
+\end{property}
+
+\begin{proof}
+	This follows from the fact that the "configuration graph" of
+	a "Turing machine" is always "automatic" by TODO:addref.
+	TOdo:Give more precisions.
+\end{proof}
+
+\begin{lemma}
+	\AP\label{lem:reduction-hom}
+	Assume that $\sigma$ contains at least one "relation symbol" of arity at least 2.%
+	\sidenote{TODO: Does the main theorem hold for degenerate signatures?}
+	If $\?B$ does not have "finite duality", then there is a polynomial-time reduction 
+	from the complement of "Connectivity in Automatic Graphs" to $\HomAut{\marked{\?B}}$.
+\end{lemma}
+
+\begin{proof}
+	Given an instance $\langle \•G, s, t \rangle$ of "Connectivity in Automatic Graphs",
+	we first define the $\sigma$-structure $\?A$ with "automatic presentation" $\•A$
+	obtained by replacing any edge by a "$1$-link".
+	\begin{claim}
+		\AP\label{claim:reduction-hom-from-graph-to-link}
+		By construction, $\•G(s)$ and $\•G(t)$ are "connected" "iff"
+		$\•A(s)$ and $\•A(t)$ are "linked".
+	\end{claim}
+
+	We reduce the instance $\langle \•G, s, t \rangle$
+	to an "automatic presentation" of the "$\extendedSignature{\sigma}{\?B}$-structure" 
+	$\?A\prodstruct \iterstruct{\?B}{2}$ in which for each $b_0 \in B$,
+	we "interpret" the unary predicate $\unarypred{b_0}$ as
+	\[
+		\big\{\;
+			\langle a,\, b,\, b'\rangle \;\big\vert\;
+			a = \•A(s) \text{ and } b = b_0 \text{, or }
+			a = \•A(t) \text{ and } b' = b_0
+		\;\big\}.
+	\]
+	\begin{claim}
+		\AP\label{claim:reduction-hom-direct}
+		If $\?A\prodstruct \iterstruct{\?B}{2} \homto \marked{\?B}$,
+		then $\•G(s)$ and $\•G(t)$ are not "connected" in $\?G$.
+	\end{claim}
+	Let $f\colon \?A\prodstruct \iterstruct{\?B}{2} \homto \marked{\?B}$
+	be a "homomorphism".\sidenote{Recall that both sides are
+	"$\extendedSignature{\sigma}{\?B}$-structures".}
+	It induces a "homomorphism"
+	\[
+		\overbar f\colon \?A\prodstruct \iterstruct{\?B}{2} \homto \?B
+	\]
+	between "$\sigma$-structures", and by currying (\Cref{prop:currying-hom}),
+	$\overbar f$ can be seen as a "homomorphism"
+	\[
+		\widehat f\colon \?A \homto \powstruct{\?B}{(\iterstruct{\?B}{2})}.
+	\]
+	Note moreover that because $\overbar f$ comes from a "homomorphism" between
+	$\extendedSignature{\sigma}{\?B}$ then we must have  
+	any triplet $f(\•A(s),\, b,\, b') = b$
+	and $f(\•A(t),\, b,\, b') = b'$ for all $b,b' \in B$.
+	This implies that $\widehat f(\•A(s)) = \projHom{1}$ and $\widehat f(\•A(s)) = \projHom{2}$.
+	
+	We now assume by contradiction that there is some $n \in \N$
+	"st" there is a "homomorphism" $g\colon \link{n} \to \?A$
+	with $g(0) = \•A(s)$ and $g(n) = \•A(t)$.
+	Then by composition, we obtain a "homomorphism"
+	\[
+		\widehat f \circ g\colon
+		\link{n} \to \powstruct{\?B}{(\iterstruct{\?B}{2})},
+ 	\]	
+	which sends $0$ to $\widehat f(g(0)) = \widehat f(\•A(s)) = \projHom{1}$
+	and sends $n$ to $\widehat f(g(n)) = \widehat f(\•A(t)) = \projHom{2}$.
+	So, by \Cref{prop:characterization-finite-duality-path-projections},
+	$\?B$ would have "finite duality", which is a contradiction.
+
+	\begin{claim}
+		\AP\label{claim:reduction-hom-converse}
+		If $\•G(s)$ and $\•G(t)$ are not "connected" in $\?G$,
+		then $\?A\prodstruct \iterstruct{\?B}{2} \homto \marked{\?B}$.
+	\end{claim}
+	We define a homomorphism $f\colon \?A\prodstruct \iterstruct{\?B}{2} \to \marked{\?B}$ by:
+	\[
+		f(a, b, b') \defeq \begin{cases*}
+			b & \text{ if $\•A(s)$ and $a$ are "linked",} \\
+			b' & \text{ otherwise.}
+		\end{cases*}
+	\]
+	We show that this is indeed a "homomorphism": for any "relational symbol" $\+R$
+	of arity $k$ in $\sigma$, if
+	\[
+		\langle a_1,\, b_1,\, b'_1 \rangle,\;
+		\langle a_2,\, b_2,\, b'_2 \rangle,\;
+		\hdots,\;
+		\langle a_k,\, b_k,\, b'_k \rangle
+	\]
+	are all "$\+R$-hyperedges" of $\?A\prodstruct \iterstruct{\?B}{2}$,
+	then we denote by $g_1,\, \hdots,\, g_k$ the vertices of $\?G$
+	associated to $a_1,\; \hdots,\; g_k$, respectively.
+	By definition of $\?A$, we have that either (1) all $g_i$'s are equal,
+	or (2) $\{g_1,\, \hdots,\, g_k\} = {g,g'}$ for some $g \neq g' \in G$
+	and there is an edge from $g$ to $g'$ or from $g'$ to $g$ in $\?G$.
+	In both cases, it follows that $\•A(s)$ and $a_i$ are "linked"
+	"iff" $\•A(s)$ and $a_j$ for all $i,j\in \lBrack 1,k\rBrack$.
+	Hence, either $f(a_i,\, b_i,\, b'_i) = b_i$ for all $i\in \lBrack 1,k\rBrack$,
+	or $f(a_i,\, b_i,\, b'_i) = b'_i$ for all $i\in \lBrack 1,k\rBrack$.
+	In both cases, we get that
+	\[
+		\big\langle
+			f(a_1,\, b_1,\, b'_1),\;
+			f(a_2,\, b_2,\, b'_2),\;
+			\hdots,\;
+			f(a_k,\, b_k,\, b'_k)
+		\big\rangle
+		\in \+R(\?B).
+	\]
+	We also need to show that this map preserves the new unary predicates of
+	$\extendedSignature{\sigma}{\?B}$: this follows from---and is in fact equivalent to---the
+	fact that $\•A(s)$ and $\•A(t)$ are not "linked" by \Cref{claim:reduction-hom-from-graph-to-link}
+	and the assumption that $\•G(s)$ and $\•G(t)$ are not "connected" in $\?G$.
+	Overall, this proves that $\?A\prodstruct \iterstruct{\?B}{2} \homto \marked{\?B}$.
+
+	Putting \Cref{claim:reduction-hom-direct,claim:reduction-hom-converse} together,
+	we get that the reduction is correct.
+\end{proof}
+
+\begin{corollary}
+	\!\footnote{This follows from \Cref{prop:marking-preserves-csp-complexity,prop:undecidability-connectivity,lem:reduction-hom}.}%
+	\AP\label{coro:lowerbound-hom}
+	If $\?B$ does not have "finite duality", then $\HomAut{\?B}$
+	is "coRE"-hard.
+\end{corollary}
+
+
+\subsection{\AP\label{sec:undecidability-homreg}%
+	Undecidability of \,$\HomRegAut{\?B}$}
+
+We introduce a decision problem on "Turing machines".
+\decisionproblem{""Regular Unreachability of Turing Machine Configurations""}{
+  A "Turing machine" $\+M$, two "configurations" $s$ and $t$ of $\+M$.
+}{
+  Is there a regular language $L$ (over the same alphabet as the "configurations" of $\+M$)
+  such that $s \in L$, $t\not\in L$ and $L$ is a union of "connected components"
+  of "configurations" of $\+M$?
+}
+
+\begin{lemma}
+	\label{}
+  	"Regular Unreachability of Turing Machine Configurations" is
+	undecidable.\sidenote{TODO:add precise complexity}
+\end{lemma}
+
+\begin{proof}[Proof sketch]
+  \proofcase{An undecidable problem on Turing machines.}
+  We claim first that the following promise problem is undecidable.
+  \decisionproblem{""Restricted Membership for Deterministic Reversible Turing Machines""}{
+    A "deterministic" "reversible Turing machine" $\+M$, a state $q_0$,
+    words $u_\top,u_\bot \in \Sigma^*$
+    "st"
+    \begin{enumerate}
+      \item $u_\bot \not\in \semTM{\+M}$,
+      \item neither $q_0\cdot u_\top$ nor $q_0\cdot u_\bot$ have a predecessor in the "configuration graph" of $\+M$, and
+      \item all "configurations" except those "connected" to $q_0\cdot u_\top$ or $q_0\cdot u_\bot$ belong to the same "connected component" of the "configuration graph" of $\+M$.
+    \end{enumerate}
+  }{
+    Does $u_\top \in \semTM{\+M}$?
+  }
+
+  \proofcase{Reduction to "Regular Unreachability of Turing Machine Configurations".}
+  We reduce the complement of this problem to "Regular Unreachability of Turing Machine Configurations". More precisely, we map an instance
+  $\langle \+M,\, q_0,\, u_\bot,\, u_\top \rangle$ to $\langle \+M',\, q_0\cdot u_\top,\, q_0\cdot u_\bot \rangle$ where $\+M'$ does the same thing as $\+M$ except that it adds `$cd$' at the end of the tape
+  whenever it takes a transition of $\+M'$, where $c$ and $d$ are new letters.
+  We also add all necessary transitions in order to have the following property:
+  the connected components of $\+M'$ are (essentially):
+  \begin{itemize}
+    \item $\gamma_0 \to \gamma_1\cdot cd \to \gamma_2\cdot c^2d^2 \to \cdots$
+    where $\gamma_0 \to \gamma_1 \to \gamma_2 \to \cdots$ is the reachable configurations from $q_0\cdot u_\top$ in $\+M$,
+    \item same for $q_0\cdot u_\bot$,
+    \item all other configurations.
+  \end{itemize}
+  If $u_\bot \in \semTM{\+M}$ then the first component is finite and hence regular, and it clearly separated $q_0\cdot u_\top, q_0\cdot u_\bot$.
+  If $u_\bot \not\in \semTM{\+M}$, then the possible separators are $\textrm{Reach}(q_0\cdot u_\top)$
+  and $\complement\,\textrm{Reach}(q_0\cdot u_\bot)$, but neither of them is regular because of the
+  $c^nd^n$ business. 
+\end{proof}
