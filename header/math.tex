@@ -1,6 +1,6 @@
-\newrobustcmd\?[1]{\mathbf{#1}}
-\newrobustcmd\+[1]{\mathcal{#1}}
-\newrobustcmd\•[1]{\mathfrak{#1}}
+\newrobustcmd\?[1]{\symbf{#1}}
+\newrobustcmd\+[1]{\symcal{#1}}
+\newrobustcmd\•{\+}
 
 \knowledgenewrobustcmd\id[1][]{\cmdkl{\mathrm{id}_{#1}}}
 
@@ -19,6 +19,7 @@
 \knowledgenewrobustcmd\powstruct[2]{\cmdkl{#1^{#2}}}
 \knowledgenewrobustcmd\iterstruct[2]{\cmdkl{#1^{#2}}}
 
+\knowledgenewrobustcmd\core[1]{\cmdkl{\check{{#1}}}}
 \knowledgenewrobustcmd\marked[1]{\cmdkl{#1^{\dag}}}
 \knowledgenewrobustcmd\unarypred[1]{\cmdkl{P_{#1}}}
 
@@ -62,3 +63,6 @@
 \RequirePackage{centernot}
 \newrobustcmd{\nothomto}{\mathrel{\kl[\homto]{\centernot{\smashxrightarrow{hom}}}}}
 \newrobustcmd{\notcohomto}{\mathrel{\kl[\homto]{\centernot{\smashxleftarrow{hom}}}}}
+
+\knowledgenewrobustcmd{\unaryType}[2]{\cmdkl{\mu_{#2}(#1)}}
+\knowledgenewrobustcmd{\structOfUnaryType}[1]{\cmdkl{\?1_{#1}}}

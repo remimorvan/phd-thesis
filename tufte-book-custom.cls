@@ -116,6 +116,14 @@
     }%
 }
 
+% ---
+% Black font in margin (fix bug with hyperref)
+% see https://tex.stackexchange.com/questions/199797/sidenotes-and-marginnotes-change-color-when-hyperlinks-break-over-a-line-in-tuft
+% ---
+\ifthenelse{\boolean{@tufte@sfsidenotes}}
+  {\renewcommand{\@tufte@marginfont}{\normalfont\color{black}\footnotesize\sffamily}}
+  {\renewcommand{\@tufte@marginfont}{\normalfont\color{black}\footnotesize}}
+
 
 % ---
 % Enumitem
@@ -124,19 +132,20 @@
 \RequirePackage{enumitem}
 \setlist{noitemsep,nosep}
 
-
 % ---
 % Custom fonts 
 % ---
 
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
-\RequirePackage{latexsym}
-\RequirePackage{mathtools}
+% \RequirePackage{latexsym}
+\RequirePackage{mathtools} % cases* environment 
 \RequirePackage{fontenc}
 \RequirePackage{unicode-math}
+
 \setmainfont{Libertinus Serif}
 \setsansfont{Libertinus Sans}
 \setmonofont[Scale=0.8]{Libertinus Mono}
-\setmathfont[math-style=TeX]{Asana Math}
-\setmathfont[math-style=TeX, range={cal, bfcal}]{Latin Modern Math}
+\setmathfont[math-style=ISO]{Asana Math}
+\setmathfont[math-style=ISO, range={cal, bfcal}]{Latin Modern Math}
+% todo: find better bb and cal fonts.

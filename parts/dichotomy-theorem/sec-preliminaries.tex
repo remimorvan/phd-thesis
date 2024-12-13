@@ -73,12 +73,21 @@ Given two "structures" $\?A$ and $\?B$, we define the structure \AP$\intro*\pows
   singleton $\{b\}$.\sidenote{TODO: ASIA'S REMARK: this is called the ``idempotent core''.}
   
   \begin{proposition}[Folklore]
+	\!\sidenote{The non-easy part is to reduce $\HomFin{\marked{\?B}}$ to $\HomFin{\?B}$: only this reduction
+	requires the assumption that $\?B$ is a core. This reduction is folklore, see "eg"
+	\cite[Lemma 2.5]{LaroseTesson2009UniversalAlgebraCSP}.
+	TODO: understand if the proof is indentical to us. We provide here a self-contained proof.}%
+	\sidenote{The "marked structure" $\marked{\core{\?B}}$ of the "core" of $\?B$ is
+	usually called the \AP""idempotent core""
+	of $\?B$. By TODO:addref and this proposition, $\HomFin{\?B}$ and
+	$\HomFin{\marked{\core{\?B}}}$ are equivalent under "first-order reductions".
+	This reduction is heavily used in the algebraic approach to understand "constraint satisfaction
+	problem" since the algebra associated to the "CSP" over an "idempotent core"
+	only has idempotent operations, making it much easier to work with. See TODO:addref for
+	more details.}%
 	\AP\label{prop:marking-preserves-csp-complexity}
 	If $\?B$ is a finite "core", then the problems $\HomFin{\marked{\?B}}$ and 
-	$\HomFin{\?B}$ are equivalent under "first-order reductions".\sidenote{The non-easy part is to reduce $\HomFin{\marked{\?B}}$ to $\HomFin{\?B}$: only this reduction
-	requires the assumption that $\?B$ is a core. It is a consequence of the highly non-trivial
-	\cite[Theorem 2.1]{LaroseTesson2009UniversalAlgebraCSP}. TODO:UNDERSTAND AND EXPLAIN WHY.
-	We provide here a self-contained proof.}
+	$\HomFin{\?B}$ are equivalent under "first-order reductions".
   \end{proposition}
   
   \begin{proof}[Proof of \Cref{prop:marking-preserves-csp-complexity}]
