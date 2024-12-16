@@ -144,7 +144,7 @@ of $\HomAut{\?B}$ by reduction from the following problem.
 	$\extendedSignature{\sigma}{\?B}$ then we must have  
 	any triplet $f(\•A(s),\, b,\, b') = b$
 	and $f(\•A(t),\, b,\, b') = b'$ for all $b,b' \in B$.
-	This implies that $\widehat f(\•A(s)) = \projHom{1}$ and $\widehat f(\•A(s)) = \projHom{2}$.
+	This implies that $\widehat f(\•A(s)) = \projHom{1}$ and $\widehat f(\•A(t)) = \projHom{2}$.
 	
 	We now assume by contradiction that there is some $n \in \N$
 	"st" there is a "homomorphism" $g\colon \link{n} \to \?A$
@@ -183,11 +183,9 @@ of $\HomAut{\?B}$ by reduction from the following problem.
 		\langle a_k,\, b_k,\, b'_k \rangle
 	\]
 	are all "$\+R$-hyperedges" of $\ConstrUndecHom{(\?A\prodstruct \iterstruct{\?B}{2})}$,
-	then we denote by $g_1,\, \hdots,\, g_k$ the vertices of $\?G$
-	associated to $a_1,\; \hdots,\; g_k$, respectively.
-	By definition of $\?A$, we have that either (1) all $g_i$'s are equal,
-	or (2) $\{g_1,\, \hdots,\, g_k\} = {g,g'}$ for some $g \neq g' \in G$
-	and there is an edge from $g$ to $g'$ or from $g'$ to $g$ in $\?G$.
+	then by definition of $\?A$, we have that either (1) all $a_i$'s are equal,
+	or (2) $\{a_1,\, \hdots,\, a_k\} = {a,a'}$ for some $a \neq a' \in A$
+	and there is an edge from $a$ to $a'$ or from $a'$ to $a$ in $\?G$.
 	In both cases, it follows that $\•A(s)$ and $a_i$ are "linked"
 	"iff" $\•A(s)$ and $a_j$ for all $i,j\in \lBrack 1,k\rBrack$.
 	Hence, either $f(a_i,\, b_i,\, b'_i) = b_i$ for all $i\in \lBrack 1,k\rBrack$,
@@ -204,8 +202,7 @@ of $\HomAut{\?B}$ by reduction from the following problem.
 	\]
 	We also need to show that this map preserves the new unary predicates of
 	$\extendedSignature{\sigma}{\?B}$: this follows from---and is in fact equivalent to---the
-	fact that $\•A(s)$ and $\•A(t)$ are not "linked" by \Cref{claim:reduction-hom-from-graph-to-link}
-	and the assumption that $\•G(s)$ and $\•G(t)$ are not "connected" in $\?G$.
+	fact that $\•A(s)$ and $\•A(t)$ are not "linked" by \Cref{claim:reduction-hom-from-graph-to-link}.
 	Overall, this proves that $\ConstrUndecHom{(\?A\prodstruct \iterstruct{\?B}{2})} \homto \marked{\?B}$.
 
 	Putting \Cref{claim:reduction-hom-direct,claim:reduction-hom-converse} together,
@@ -339,8 +336,7 @@ We will first reduce this problem to $\HomRegAut{\?B}$, and will later settle it
 		under ``being "linked"''.
 	\end{claim}
 	The proof is similar to \Cref{claim:reduction-homreg-from-graph-to-link}.
-
-	Again, we reduce the instance $\langle \•G, s, t \rangle$
+	Then again, we reduce the instance $\langle \•G, s, t \rangle$
 	to an "automatic presentation" of \(\ConstrUndecHom{(\?A\prodstruct \iterstruct{\?B}{2})}\),
 	as in \Cref{lem:reduction-hom}.
 	\begin{claim}
@@ -351,7 +347,7 @@ We will first reduce this problem to $\HomRegAut{\?B}$, and will later settle it
 	
 	Let \(f\colon \ConstrUndecHom{(\•A\prodpres \iterstruct{\?B}{2})} \to \marked{\?B}\)
 	be a "regular homomorphism".
-	By "currying" (\Cref{coro:homreg-currying}) of the underlying "homomorphism"
+	By currying---see \Cref{coro:homreg-currying}---of the underlying "homomorphism"
 	between "\(\sigma\)-structures", we obtain a "regular homomorphism"
 	\[
 		\widehat f\colon \•A \homto \powstruct{\?B}{(\iterstruct{\?B}{2})}.
@@ -359,93 +355,53 @@ We will first reduce this problem to $\HomRegAut{\?B}$, and will later settle it
 	Moreover, using the unary predicates \(\unarypred{b}\), \(b \in B\),
 	we get that $\widehat f(\•A(s)) = \projHom{1}$ and $\widehat f(\•A(s)) = \projHom{2}$.
 
-	% Let $f\colon \?A\prodstruct \iterstruct{\?B}{2} \homto \marked{\?B}$
-	% be a "homomorphism".\sidenote{Recall that both sides are
-	% "$\extendedSignature{\sigma}{\?B}$-structures".}
-	% It induces a "homomorphism"
-	% \[
-	% 	\overbar f\colon \?A\prodstruct \iterstruct{\?B}{2} \homto \?B
-	% \]
-	% between "$\sigma$-structures", and by currying (\Cref{prop:currying-hom}),
-	% $\overbar f$ can be seen as a "homomorphism"
-	% \[
-	% 	\widehat f\colon \?A \homto \powstruct{\?B}{(\iterstruct{\?B}{2})}.
-	% \]
-	% Note moreover that because $\overbar f$ comes from a "homomorphism" between
-	% $\extendedSignature{\sigma}{\?B}$ then we must have  
-	% any triplet $f(\•A(s),\, b,\, b') = b$
-	% and $f(\•A(t),\, b,\, b') = b'$ for all $b,b' \in B$.
-	% This implies that $\widehat f(\•A(s)) = \projHom{1}$ and $\widehat f(\•A(s)) = \projHom{2}$.
-	
-	% We now assume by contradiction that there is some $n \in \N$
-	% "st" there is a "homomorphism" $g\colon \link{n} \to \?A$
-	% with $g(0) = \•A(s)$ and $g(n) = \•A(t)$.
-	% Then by composition, we obtain a "homomorphism"
-	% \[
-	% 	\widehat f \circ g\colon
-	% 	\link{n} \to \powstruct{\?B}{(\iterstruct{\?B}{2})},
- 	% \]	
-	% which sends $0$ to $\widehat f(g(0)) = \widehat f(\•A(s)) = \projHom{1}$
-	% and sends $n$ to $\widehat f(g(n)) = \widehat f(\•A(t)) = \projHom{2}$.
-	% So, by \Cref{prop:characterization-finite-duality-path-projections},
-	% $\?B$ would have "finite duality", which is a contradiction.
+	We then define \[\+X \defeq \{g \in \powstruct{\?B}{(\iterstruct{\?B}{2})} \mid \text{ $g$ and $\projHom{1}$ are "linked" or $g = \projHom{1}$}\}.\]
+	We claim that ${\widehat f}^{-1}[\+X]$ witnesses the fact that
+	$\•G(s)$ and $\•G(t)$ are "regularly unconnected".
+	First, $\projHom{1} \in \+X$ so $\•A(s) \in {\widehat f}^{-1}[\+X]$.
+	Since $\?B$ has "finite duality", by \Cref{prop:characterization-finite-duality-path-projections}, $\projHom{2} \not\in \+X$
+	and so $\•A(t) \not\in {\widehat f}^{-1}[\+X]$.
+	Then, ${\widehat f}^{-1}[\+X]$ is "regular@@lang" since $\widehat f$ is a "regular homomorphism". Finally, ${\widehat f}^{-1}[\+X]$ is a union of
+	equivalences classes of $\domainPres{\•A}$ under ``being "linked"''.\footnote{Indeed,
+	if $c_1, c_2 \in \?C$ are "linked" in some "structure" $\?C$ and if $f\colon \?C to \?D$ is a "homomorphism", then $f(c_1)$ and $f(c_2)$ are "linked" in $\?D$.}
+	Hence, by \Cref{claim:reduction-homreg-from-graph-to-link}, $\•G(s)$ and $\•G(t)$ are "regularly unconnected".
 
 	\begin{claim}
 		\AP\label{claim:reduction-homreg-converse}
 		If $\•G(s)$ and $\•G(t)$ are "regularly unconnected" in $\?G$,
 		then $\•A\prodpres \iterstruct{\?B}{2} \homregto \marked{\?B}$.
 	\end{claim}
-	% We define a homomorphism $f\colon \?A\prodstruct \iterstruct{\?B}{2} \to \marked{\?B}$ by:
-	% \[
-	% 	f(a, b, b') \defeq \begin{cases*}
-	% 		\;b & \text{ if $\•A(s)$ and $a$ are "linked",} \\
-	% 		\;b' & \text{ otherwise.}
-	% 	\end{cases*}
-	% \]
-	% We show that this is indeed a "homomorphism": for any "relational symbol" $\+R$
-	% of arity $k$ in $\sigma$, if
-	% \[
-	% 	\langle a_1,\, b_1,\, b'_1 \rangle,\;
-	% 	\langle a_2,\, b_2,\, b'_2 \rangle,\;
-	% 	\hdots,\;
-	% 	\langle a_k,\, b_k,\, b'_k \rangle
-	% \]
-	% are all "$\+R$-hyperedges" of $\?A\prodstruct \iterstruct{\?B}{2}$,
-	% then we denote by $g_1,\, \hdots,\, g_k$ the vertices of $\?G$
-	% associated to $a_1,\; \hdots,\; g_k$, respectively.
-	% By definition of $\?A$, we have that either (1) all $g_i$'s are equal,
-	% or (2) $\{g_1,\, \hdots,\, g_k\} = {g,g'}$ for some $g \neq g' \in G$
-	% and there is an edge from $g$ to $g'$ or from $g'$ to $g$ in $\?G$.
-	% In both cases, it follows that $\•A(s)$ and $a_i$ are "linked"
-	% "iff" $\•A(s)$ and $a_j$ for all $i,j\in \lBrack 1,k\rBrack$.
-	% Hence, either $f(a_i,\, b_i,\, b'_i) = b_i$ for all $i\in \lBrack 1,k\rBrack$,
-	% or $f(a_i,\, b_i,\, b'_i) = b'_i$ for all $i\in \lBrack 1,k\rBrack$.
-	% In both cases, we get that
-	% \[
-	% 	\Big\langle
-	% 		f(a_1,\, b_1,\, b'_1),\;
-	% 		f(a_2,\, b_2,\, b'_2),\;
-	% 		\hdots,\;
-	% 		f(a_k,\, b_k,\, b'_k)
-	% 	\Big\rangle
-	% 	\in \+R(\?B).
-	% \]
-	% We also need to show that this map preserves the new unary predicates of
-	% $\extendedSignature{\sigma}{\?B}$: this follows from---and is in fact equivalent to---the
-	% fact that $\•A(s)$ and $\•A(t)$ are not "linked" by \Cref{claim:reduction-hom-from-graph-to-link}
-	% and the assumption that $\•G(s)$ and $\•G(t)$ are not "connected" in $\?G$.
-	% Overall, this proves that $\?A\prodstruct \iterstruct{\?B}{2} \homto \marked{\?B}$.
 
-	% Putting \Cref{claim:reduction-homreg-direct,claim:reduction-homreg-converse} together,
-	% we get that the reduction is correct.
-	% Lastly, note that is works in TODO:complexity because TODO.
+	Since $\•G(s)$ and $\•G(t)$ are "regularly unconnected" in $\?G$,
+	by \Cref{claim:reduction-homreg-from-graph-to-link} there is a "regular language" $L \subseteq \Sigma^*$ "st" $\•A(s)\in L$ and $\•A(t) \not\in L$,
+	and $L$ is a union of equivalences classes of $\domainPres{\•A}$
+	under ``being "linked"''.
+	We define a function $f\colon \domainPres{\•A}\times B^2 \to B$ by 
+	\[
+		f(a, b, b') \defeq \begin{cases*}
+			\;b & \text{ if $\•A(s) \in L$,} \\
+			\;b' & \text{ otherwise,}
+		\end{cases*}
+	\]
+	and we claim that $f$ is a "regular homomorphism" from
+	\(\•A\prodpres \iterstruct{\?B}{2}\) to \(\marked{\?B}\).
+	The proof that it is a "homomorphism" is similar to \Cref{claim:reduction-hom-converse}:
+	in particular, we use the fact that $\•G(s)$ and $\•G(t)$ are not "connected" in $\?G$,
+	which is a consequence of the fact that they are "regularly unconnected".
+	"Regularity@@hom" follows from the "regularity@@lang" of $L$. 
+	Hence, $\•A\prodpres \iterstruct{\?B}{2} \homregto \marked{\?B}$.
+
+	Putting \Cref{claim:reduction-homreg-direct,claim:reduction-homreg-converse} together,
+	we get that the reduction is correct.
+	Lastly, note that is works in TODO:complexity because TODO.
 \end{proof}
 
+We then prove a lower bound on the complexity of "Regular Unreachability of Turing Machine Configurations".
 
 \begin{lemma}
 	\label{}
   	"Regular Unreachability of Turing Machine Configurations" is
-	undecidable.\sidenote{TODO:add precise complexity}
+	"RE"-hard.
 \end{lemma}
 
 \begin{proof}[Proof sketch]
@@ -480,4 +436,14 @@ We will first reduce this problem to $\HomRegAut{\?B}$, and will later settle it
   If $u_\bot \not\in \semTM{\+M}$, then the possible separators are $\textrm{Reach}(q_0\cdot u_\top)$
   and $\complement\,\textrm{Reach}(q_0\cdot u_\bot)$, but neither of them is regular because of the
   $c^nd^n$ business. 
+\end{proof}
+
+\begin{corollary}
+	\AP\label{coro:lowerbound-homreg}
+	If $\?B$ does not have "finite duality", then $\HomAut{\?B}$
+	is "RE"-hard.
+\end{corollary}
+
+\begin{proof}
+	TODO.
 \end{proof}
