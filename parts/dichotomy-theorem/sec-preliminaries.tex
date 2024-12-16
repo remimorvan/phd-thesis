@@ -61,6 +61,7 @@ in the two previous paragraphs are mutually inverse bijections.
 \end{proof}
 
 \subsection{Constructions on Automatic Presentations}
+\label{sec:construction-automatic-presentations}
 
 Let $\•A$ and $\•B$ be "automatic presentations" of some "$\sigma$-structures"
 $\?A$ and $\?B$. We define \AP$\•A \intro*\prodpres \•B$ to be the "presentation@@auto"
@@ -73,13 +74,47 @@ $\?A$ and $\?B$. We define \AP$\•A \intro*\prodpres \•B$ to be the "presenta
 	\}
 \end{align*}
 for each "relation symbol" $\+R$ of arity $k$ in $\sigma$.
-It is an "automatic presentation" of $\?A \prodstruct \?B$.
+It is an "automatic presentation" of $\?A \prodstruct \?B$. TODO:proof.
 
-$\•A \prodpres \•B \homregto \•C$ does not depend on the "automatic presentation"
-of $\?B$ nor of $\?C$: this is used implicitly in \Cref{sec:undecidability-homreg}.
-Also add reminder there + notation.
-Curryfying in this case.
+\begin{proposition}
+	\label{prop:homreg-prod-finite}
+	Let $\?A$, $\?B$ and $\?C$ be "automatic $\sigma$-structures", such that
+	$\?B$ and $\?C$ are finite.
+	Let $\•A$ (resp. $\•B$ and $\•B'$, resp. $\•C$ and $\•C'$) be an "automatic presentation"
+	of $\?A$ (resp. $\?B$, resp. $\?C$).
+	Then $\•A \prodpres \•B \homregto \•C$ "iff" $\•A \prodpres \•B' \homregto \•C'$.
+\end{proposition}
 
+\begin{proof}
+	The proof will follow from the following claim.
+	\begin{claim}
+		\label{claim:homreg-prod-finite}
+		A function $f\colon\•A \prodpres \•B \homregto \•C$ is a "regular homomorphism"
+		"iff" for every $b\in \domainPres{\•B}$, for every $c\in \domainPres{\•C}$,
+		\(\{
+			a\in \domainPres{\•A} \mid f(a,b) = c
+		\}\)
+		is a "regular language".
+	\end{claim}
+	TODO.
+\end{proof}
+
+In other words, the existence of a "regular homomorphism" does not depend on the
+"automatic presentation" of the \emph{finite} "structures" that are involved, but only
+on the "structure" they represent.
+As a consequence of \Cref{prop:homreg-prod-finite}, we write
+\(\•A \prodpres \?B \homregto \?C\) as a synonym for \(\•A \prodpres \•B \homregto \•C\).
+
+\begin{corollary}[Currying]
+	\label{coro:homreg-currying}
+	Let $\?A$, $\?B$ and $\?C$ be "automatic $\sigma$-structures",
+	and let $\•A$ be an "automatic presentation" of $\?A$.
+	Then $\•A \prodpres \?B \homregto \?C$ "iff" $\•A \homregto \powstruct{\?C}{\?B}$.
+\end{corollary}
+
+\begin{proof}
+	By \Cref{claim:homreg-prod-finite}… TODO.
+\end{proof}
 
 \subsection{Idempotent Core}
 

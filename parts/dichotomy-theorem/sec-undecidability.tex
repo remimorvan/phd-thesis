@@ -24,7 +24,7 @@ they are "$n$-linked" for some $n \in \N$.
 Note that the fact that $k \mapsto n-k$
 defines an "automorphism" of $\link{n}$ implies that the relation of being "$n$-linked"---
 and to a greater extent of being "linked"---is symmetric.
-Moreover, being "linked" is transitive.
+Moreover, being "linked" is transitive, but not necessarily reflexive.
 
 % \begin{fact}[Link Composition]
 % 	\AP\label{fact:link-composition}
@@ -110,9 +110,10 @@ of $\HomAut{\?B}$ by reduction from the following problem.
 	is the only part of the proof of \Cref{lem:reduction-hom} that requires
 	the assumption that $\sigma$ contains at least one "relation symbol" of arity at least 2.}
 
-	We reduce the instance $\langle \•G, s, t \rangle$
-	to an "automatic presentation" of the "$\extendedSignature{\sigma}{\?B}$-structure" 
-	$\?A\prodstruct \iterstruct{\?B}{2}$ in which for each $b_0 \in B$,
+	We then consider the "automatic $\sigma$-structure" $\?A\prodstruct \iterstruct{\?B}{2}$---see
+	\Cref{sec:construction-automatic-presentations} to have an explicit construction of an "automatic presentation" for this structure---, and extend it to a
+	"$\extendedSignature{\sigma}{\?B}$-structure" \AP\(\intro*\ConstrUndecHom{(\?A\prodstruct \iterstruct{\?B}{2})}\)
+	in which for each $b_0 \in B$,
 	we "interpret" the unary predicate $\unarypred{b_0}$ as
 	\[
 		\big\{\;
@@ -121,17 +122,18 @@ of $\HomAut{\?B}$ by reduction from the following problem.
 			a = \•A(t) \text{ and } b' = b_0
 		\;\big\}.
 	\]
+	To construct an "automatic presentation" for this structure, see \Cref{sec:construction-automatic-presentations}.
 	\begin{claim}
 		\AP\label{claim:reduction-hom-direct}
-		If $\?A\prodstruct \iterstruct{\?B}{2} \homto \marked{\?B}$,
+		If $\ConstrUndecHom{(\?A\prodstruct \iterstruct{\?B}{2})} \homto \marked{\?B}$,
 		then $\•G(s)$ and $\•G(t)$ are not "connected" in $\?G$.
 	\end{claim}
-	Let $f\colon \?A\prodstruct \iterstruct{\?B}{2} \homto \marked{\?B}$
+	Let $f\colon \ConstrUndecHom{(\?A\prodstruct \iterstruct{\?B}{2})} \homto \marked{\?B}$
 	be a "homomorphism".\sidenote{Recall that both sides are
 	"$\extendedSignature{\sigma}{\?B}$-structures".}
 	It induces a "homomorphism"
 	\[
-		\overbar f\colon \?A\prodstruct \iterstruct{\?B}{2} \homto \?B
+		\overbar f\colon \ConstrUndecHom{(\?A\prodstruct \iterstruct{\?B}{2})} \homto \?B
 	\]
 	between "$\sigma$-structures", and by currying (\Cref{prop:currying-hom}),
 	$\overbar f$ can be seen as a "homomorphism"
@@ -156,13 +158,16 @@ of $\HomAut{\?B}$ by reduction from the following problem.
 	and sends $n$ to $\widehat f(g(n)) = \widehat f(\•A(t)) = \projHom{2}$.
 	So, by \Cref{prop:characterization-finite-duality-path-projections},
 	$\?B$ would have "finite duality", which is a contradiction.
+	Hence, $\•A(s)$ and $\•A(t)$ are not "linked",
+	and so by \Cref{claim:reduction-hom-from-graph-to-link}, $\•G(s)$ and $\•G(t)$
+	are not "connected".
 
 	\begin{claim}
 		\AP\label{claim:reduction-hom-converse}
 		If $\•G(s)$ and $\•G(t)$ are not "connected" in $\?G$,
-		then $\?A\prodstruct \iterstruct{\?B}{2} \homto \marked{\?B}$.
+		then $\ConstrUndecHom{(\?A\prodstruct \iterstruct{\?B}{2})} \homto \marked{\?B}$.
 	\end{claim}
-	We define a homomorphism $f\colon \?A\prodstruct \iterstruct{\?B}{2} \to \marked{\?B}$ by:
+	We define a homomorphism $f\colon \ConstrUndecHom{(\?A\prodstruct \iterstruct{\?B}{2})} \to \marked{\?B}$ by:
 	\[
 		f(a, b, b') \defeq \begin{cases*}
 			\;b & \text{ if $\•A(s)$ and $a$ are "linked",} \\
@@ -177,7 +182,7 @@ of $\HomAut{\?B}$ by reduction from the following problem.
 		\hdots,\;
 		\langle a_k,\, b_k,\, b'_k \rangle
 	\]
-	are all "$\+R$-hyperedges" of $\?A\prodstruct \iterstruct{\?B}{2}$,
+	are all "$\+R$-hyperedges" of $\ConstrUndecHom{(\?A\prodstruct \iterstruct{\?B}{2})}$,
 	then we denote by $g_1,\, \hdots,\, g_k$ the vertices of $\?G$
 	associated to $a_1,\; \hdots,\; g_k$, respectively.
 	By definition of $\?A$, we have that either (1) all $g_i$'s are equal,
@@ -201,7 +206,7 @@ of $\HomAut{\?B}$ by reduction from the following problem.
 	$\extendedSignature{\sigma}{\?B}$: this follows from---and is in fact equivalent to---the
 	fact that $\•A(s)$ and $\•A(t)$ are not "linked" by \Cref{claim:reduction-hom-from-graph-to-link}
 	and the assumption that $\•G(s)$ and $\•G(t)$ are not "connected" in $\?G$.
-	Overall, this proves that $\?A\prodstruct \iterstruct{\?B}{2} \homto \marked{\?B}$.
+	Overall, this proves that $\ConstrUndecHom{(\?A\prodstruct \iterstruct{\?B}{2})} \homto \marked{\?B}$.
 
 	Putting \Cref{claim:reduction-hom-direct,claim:reduction-hom-converse} together,
 	we get that the reduction is correct.
@@ -324,23 +329,36 @@ We will first reduce this problem to $\HomRegAut{\?B}$, and will later settle it
 	we first define the $\sigma$-structure $\?A$ with "automatic presentation" $\•A$
 	obtained by replacing every edge by a "$1$-link", as in \Cref{lem:reduction-hom}.
 
-	Again, we reduce the instance $\langle \•G, s, t \rangle$
-	to an "automatic presentation" of the "$\extendedSignature{\sigma}{\?B}$-structure" 
-	$\?A\prodstruct \iterstruct{\?B}{2}$ in which for each $b_0 \in B$,
-	we "interpret" the unary predicate $\unarypred{b_0}$ as
-	\[
-		\big\{\;
-			\langle a,\, b,\, b'\rangle \;\big\vert\;
-			a = \•A(s) \text{ and } b = b_0 \text{, or }
-			a = \•A(t) \text{ and } b' = b_0
-		\;\big\}.
-	\]
 	\begin{claim}
-		\AP\label{claim:reduction-hom-direct}
-		If $\•A\prodpres \iterstruct{\?B}{2} \homregto \marked{\?B}$,
+		\!\footnote{While ``being "linked"'' is not reflexive in general, it is over the
+		structure $\?A$, by reflexivity of ``being "connected"'' in $\•G$.}%
+		\AP\label{claim:reduction-homreg-from-graph-to-link}
+		$\•G(s)$ and $\•G(t)$ are "regularly unconnected" "iff"
+		there is no $L \subseteq \Sigma^*$ "st" $\•A(s)\in L$ and $t \not\in L$,
+		and $L$ is a union of equivalences classes of $\domainPres{\•A}$
+		under ``being "linked"''.
+	\end{claim}
+	The proof is similar to \Cref{claim:reduction-homreg-from-graph-to-link}.
+
+	Again, we reduce the instance $\langle \•G, s, t \rangle$
+	to an "automatic presentation" of \(\ConstrUndecHom{(\?A\prodstruct \iterstruct{\?B}{2})}\),
+	as in \Cref{lem:reduction-hom}.
+	\begin{claim}
+		\AP\label{claim:reduction-homreg-direct}
+		If $\ConstrUndecHom{(\•A\prodpres \iterstruct{\?B}{2})} \homregto \marked{\?B}$,
 		then $\•G(s)$ and $\•G(t)$ are "regularly unconnected" in $\?G$.
 	\end{claim}
-	TODO
+	
+	Let \(f\colon \ConstrUndecHom{(\•A\prodpres \iterstruct{\?B}{2})} \to \marked{\?B}\)
+	be a "regular homomorphism".
+	By "currying" (\Cref{coro:homreg-currying}) of the underlying "homomorphism"
+	between "\(\sigma\)-structures", we obtain a "regular homomorphism"
+	\[
+		\widehat f\colon \•A \homto \powstruct{\?B}{(\iterstruct{\?B}{2})}.
+	\]
+	Moreover, using the unary predicates \(\unarypred{b}\), \(b \in B\),
+	we get that $\widehat f(\•A(s)) = \projHom{1}$ and $\widehat f(\•A(s)) = \projHom{2}$.
+
 	% Let $f\colon \?A\prodstruct \iterstruct{\?B}{2} \homto \marked{\?B}$
 	% be a "homomorphism".\sidenote{Recall that both sides are
 	% "$\extendedSignature{\sigma}{\?B}$-structures".}
@@ -373,7 +391,7 @@ We will first reduce this problem to $\HomRegAut{\?B}$, and will later settle it
 	% $\?B$ would have "finite duality", which is a contradiction.
 
 	\begin{claim}
-		\AP\label{claim:reduction-hom-converse}
+		\AP\label{claim:reduction-homreg-converse}
 		If $\•G(s)$ and $\•G(t)$ are "regularly unconnected" in $\?G$,
 		then $\•A\prodpres \iterstruct{\?B}{2} \homregto \marked{\?B}$.
 	\end{claim}
@@ -418,7 +436,7 @@ We will first reduce this problem to $\HomRegAut{\?B}$, and will later settle it
 	% and the assumption that $\•G(s)$ and $\•G(t)$ are not "connected" in $\?G$.
 	% Overall, this proves that $\?A\prodstruct \iterstruct{\?B}{2} \homto \marked{\?B}$.
 
-	% Putting \Cref{claim:reduction-hom-direct,claim:reduction-hom-converse} together,
+	% Putting \Cref{claim:reduction-homreg-direct,claim:reduction-homreg-converse} together,
 	% we get that the reduction is correct.
 	% Lastly, note that is works in TODO:complexity because TODO.
 \end{proof}
