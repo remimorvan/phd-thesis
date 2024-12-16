@@ -23,8 +23,8 @@
   {\vspace{4cm}\relax\ifthenelse{\NOT\boolean{@tufte@symmetric}}{\begin{fullwidth}}{}}% format applied to label+text
   {\centering\scshape\LARGE{Part~\thepart}}% label
   {0pt}% horizontal separation between label and title body
-  {\centering\Huge\rmfamily\itshape}% before the title body
-  [\ifthenelse{\NOT\boolean{@tufte@symmetric}}{\vspace{2cm}\hfill\pgfornament[width=6cm]{123}\hfill\end{fullwidth}}{}]% after the title body
+  {\centering\Huge\rmfamily\itshape\setlength{\parindent}{0pt}}% before the title body
+  [\ifthenelse{\NOT\boolean{@tufte@symmetric}}{\hspace{56mm}\pgfornament[width=6cm]{88}\end{fullwidth}}{}]% after the title body
 
 % \renewcommand{\thechapter}{\Roman{chapter}}
 \titleformat{\chapter}%
@@ -146,6 +146,6 @@
 \setmainfont{Libertinus Serif}
 \setsansfont{Libertinus Sans}
 \setmonofont[Scale=0.8]{Libertinus Mono}
-\setmathfont[math-style=ISO]{Asana Math}
-\setmathfont[math-style=ISO, range={cal, bfcal}]{Latin Modern Math}
+\setmathfont[math-style=TeX]{Asana Math}
+\setmathfont[math-style=TeX, range={cal, bfcal}]{Latin Modern Math}
 % todo: find better bb and cal fonts.

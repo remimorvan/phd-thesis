@@ -8,7 +8,7 @@ and \AP$\intro*\FinPres$ be the subclass of "presentations" of "finite $\sigma$-
 Given a "$\sigma$-structure" $\?B$, and a class $\classStruct$ of "automatic presentations of $\sigma$-structures", we denote by \AP$\intro*\HomPb{\classStruct}{\?B}$ the class of all presentations $\•A \in \classStruct$ such that the "$\sigma$-structure" $\?A$
 that they "represent" admits a "homomorphism" to $\?B$.
 Similarly, we denote by \AP$\intro*\HomRegPb{\classStruct}{\?B}$ the class 
-associated to "regular homomorphisms".
+associated to "regular homomorphisms".%
 \sidenote{Todo: set-theoretic bullshit. Not a set but it is if we fix an alphabet. Blabla.}
 
 While the existence of a "homomorphism" from some "automatic presentation" of $\?A$ 
@@ -26,7 +26,12 @@ by the "automatic presentation", and not on the "presentation" itself.
 This is not the case for $\HomRegAut{-}$. We use these definitions for two reasons: (1) for consistency with $\HomRegAut{-}$ and (2) for the associated decision problem to be defined unambiguously. Note moreover that in the case of "finite structures", the size of its representation, say using a adjacency lists, and of its "automatic presentation" are equal up to a TODO.}
 
 \begin{theorem}[Dichotomy Theorem for Automatic Structures]
-  \label{thm:dichotomy-theorem-automatic-structures}
+  \!\footnote{The equivalence between (1) and (2) still holds
+  when the "homomorphism problem" takes as input ``higher-order automatic
+  structures'' as defined in \cite[last remark of \S~XII.3]{Blumensath2024MSOModelTheory},
+  since such structures have a decidable first-order theory.}%
+  %%%
+  \AP\label{thm:dichotomy-theorem-automatic-structures}
   Let $\?B$ be a "finite $\sigma$-structure". The following are equivalent:
   \begin{enumerate}
     \item $\?B$ has "finite duality";

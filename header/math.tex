@@ -4,7 +4,7 @@
 
 \knowledgenewrobustcmd\id[1][]{\cmdkl{\mathrm{id}_{#1}}}
 
-\newrobustcmd\N{\mathbb{N}}
+\newrobustcmd\N{\symbb{N}}
 \newrobustcmd\Np{\N_{>0}}
 
 \newrobustcmd\defeq{\mathrel{\hat{=}}}
@@ -16,6 +16,7 @@
 \knowledgenewrobustcmd\extendedSignature[2]{\cmdkl{#1_{#2}}}
 
 \knowledgenewrobustcmd\prodstruct{\mathbin{\cmdkl{\times}}}
+\knowledgenewrobustcmd\prodpres{\mathbin{\cmdkl{\times}}}
 \knowledgenewrobustcmd\powstruct[2]{\cmdkl{#1^{#2}}}
 \knowledgenewrobustcmd\iterstruct[2]{\cmdkl{#1^{#2}}}
 
@@ -64,5 +65,12 @@
 \newrobustcmd{\nothomto}{\mathrel{\kl[\homto]{\centernot{\smashxrightarrow{hom}}}}}
 \newrobustcmd{\notcohomto}{\mathrel{\kl[\homto]{\centernot{\smashxleftarrow{hom}}}}}
 
+\knowledgenewrobustcmd{\homregto}{\mathrel{\cmdkl{\smashxrightarrow{reg hom}}}}
+\newrobustcmd{\nothomregto}{\mathrel{\kl[\homregto]{\centernot{\smashxrightarrow{reg hom}}}}}
+
 \knowledgenewrobustcmd{\unaryType}[2]{\cmdkl{\mu_{#2}(#1)}}
 \knowledgenewrobustcmd{\structOfUnaryType}[1]{\cmdkl{\?1_{#1}}}
+
+\knowledgenewrobustcmd{\domainPres}[1]{\cmdkl{\textsf{dom}}_{#1}}
+\knowledgenewrobustcmd{\relPres}[2]{\cmdkl{#2}_{#1}}
+\knowledgenewrobustcmd{\convol}{\mathbin{\cmdkl{\otimes}}}

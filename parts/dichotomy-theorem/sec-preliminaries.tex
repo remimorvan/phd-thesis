@@ -34,91 +34,112 @@ Given two "structures" $\?A$ and $\?B$, we define the structure \AP$\intro*\pows
 	In fact, this mapping $f \mapsto F$ is a bijection
 	between "homomorphisms" $\?A\prodstruct \?B \to \?C$
 	and "homomorphisms" $\?A \to \powstruct{\?C}{\?B}$.
-  \end{proposition}
-  
-  \begin{proof}
-	Let $\+R$ be a relational symbol of arity $k$, and let
-	$\langle a_1,\hdots,a_k \rangle \in \+R(\?A)$.
-	We want to show that $\langle F(a_1),\hdots,F(a_k) \rangle \in \+R(\powstruct{\?C}{\?B})$:
-	for any $\langle b_1,\hdots,b_k \rangle \in \+R(\?B)$, we have
-	\[\langle F(a_1)(b_1), \hdots, F(a_k)(b_k)\rangle = \langle f(a_1,b_1),\hdots,f(a_k,b_k) \rangle \in \+R(\?C)\] since $f$ is a "homomorphism" from $\?A\prodstruct \?B$ to $\?C$.
-	Hence, $F$ is indeed a "homomorphism" from $\?A$ to $\powstruct{\?C}{\?B}$.
-  
-	Dually, if $F$ is a "homomorphism" from $\?A$ to $\powstruct{\?C}{\?B}$,
-	we define $f\colon \?A\prodstruct \?B \to \?C$ by $\langle a,b \rangle \mapsto F(a)(b)$,
-	and claim that $f$ is a "homomorphism". Indeed, if $\+R$ be a relational symbol of arity $k$,
-	for any $\langle a_1, \hdots, a_k \rangle \in \+R(\?A)$
-	and $\langle b_1, \hdots, b_k \rangle \in \+R(\?B)$,
-	we have $\langle f(a_1,b_1), \hdots, f(a_k,b_k) \rangle
-	= \langle F(a_1)(b_1), \hdots, F(a_k)(b_k) \rangle$.
-	Since $\langle F(a_1), \hdots, F(a_k) \rangle \in \+R(\powstruct{\?C}{\?B})$
-	and $\langle b_1, \hdots,b_k \rangle \in \+R(\?B)$ 
-	it follows that $\langle F(a_1)(b_1), \hdots, F(a_k)(b_k) \rangle \in \+R(\?C)$.
-	Therefore, $f$ is a "homomorphism" from $\?A \prodstruct \?B$ to $\?C$.
-  
-	It is then routine to check that the maps $f \mapsto F$ and $F \mapsto f$ defined
-	in the two previous paragraphs are mutually inverse bijections.
-  \end{proof}
+\end{proposition}
 
-  \subsection{Idempotent Core}
+\begin{proof}
+Let $\+R$ be a relational symbol of arity $k$, and let
+$\langle a_1,\hdots,a_k \rangle \in \+R(\?A)$.
+We want to show that $\langle F(a_1),\hdots,F(a_k) \rangle \in \+R(\powstruct{\?C}{\?B})$:
+for any $\langle b_1,\hdots,b_k \rangle \in \+R(\?B)$, we have
+\[\langle F(a_1)(b_1), \hdots, F(a_k)(b_k)\rangle = \langle f(a_1,b_1),\hdots,f(a_k,b_k) \rangle \in \+R(\?C)\] since $f$ is a "homomorphism" from $\?A\prodstruct \?B$ to $\?C$.
+Hence, $F$ is indeed a "homomorphism" from $\?A$ to $\powstruct{\?C}{\?B}$.
 
-  We fix a "purely relational signature" $\sigma$.
-  Given a "$\sigma$-structure" $\?B$,
-  we denote by \AP$\intro*\extendedSignature{\sigma}{\?B}$
-  the signature obtained from $\sigma$ by adding
-  a unary predicate \AP$\intro*\unarypred{b}$ for each $b\in B$.
-  The "marked structure" \AP$\intro*\marked{\?B}$ of $\?B$ is the
-  "$\extendedSignature{\sigma}{\?B}$-structure"
-  obtained from $\?B$ by "interpreting@@symbol" each predicate $\unarypred{b}$ as the
-  singleton $\{b\}$.\sidenote{TODO: ASIA'S REMARK: this is called the ``idempotent core''.}
-  
-  \begin{proposition}[Folklore]
-	\!\sidenote{The non-easy part is to reduce $\HomFin{\marked{\?B}}$ to $\HomFin{\?B}$: only this reduction
-	requires the assumption that $\?B$ is a core. This reduction is folklore, see "eg"
-	\cite[Lemma 2.5]{LaroseTesson2009UniversalAlgebraCSP}.
-	TODO: understand if the proof is indentical to us. We provide here a self-contained proof.}%
-	\sidenote{The "marked structure" $\marked{\core{\?B}}$ of the "core" of $\?B$ is
-	usually called the \AP""idempotent core""
-	of $\?B$. By TODO:addref and this proposition, $\HomFin{\?B}$ and
-	$\HomFin{\marked{\core{\?B}}}$ are equivalent under "first-order reductions".
-	This reduction is a central tool
-	in the algebraic approach to understand "constraint satisfaction
-	problem" since the algebra associated to the "CSP" over an "idempotent core"
-	only has idempotent operations, making it much easier to work with. See TODO:addref for
-	more details.}%
-	\AP\label{prop:marking-preserves-csp-complexity}
-	If $\?B$ is a finite "core", then the problems $\HomFin{\marked{\?B}}$ and 
-	$\HomFin{\?B}$ are equivalent under "first-order reductions".
-  \end{proposition}
-  
-  \begin{proof}[Proof of \Cref{prop:marking-preserves-csp-complexity}]
-	\proofcase{Reduction from $\HomFin{\?B}$ to $\HomFin{\marked{\?B}}$.}
-	We reduce a "$\sigma$-structure" $\?A$ to the
-	"$\extendedSignature{\sigma}{\?B}$-structure" $\?A'$ obtained
-	from $\?A$ by "interpreting@@symbol" each predicate $\unarypred{b}$ as the emptyset.
-	Clearly, a function from $A$ to $B$ is a "homomorphism" from $\?A$ to $\?B$
-	"iff" it is a "homomorphism" from $\?A'$ to $\marked{\?B}$, proving the correctness
-	of the reduction. It is, by definition, "first-order@@reduction".
-  
-	\proofcase{Reduction from $\HomFin{\marked{\?B}}$ to $\HomFin{\?B}$.}
-	We first define the reduction $\Phi$ and show its correctness, we will show later that it
-	is a "first-order reduction". We reduce a "$\extendedSignature{\sigma}{\?B}$-structure" $\?A$ to the "$\sigma$-structure"
-	$\Phi(\?A)$ defined as follows:
+Dually, if $F$ is a "homomorphism" from $\?A$ to $\powstruct{\?C}{\?B}$,
+we define $f\colon \?A\prodstruct \?B \to \?C$ by $\langle a,b \rangle \mapsto F(a)(b)$,
+and claim that $f$ is a "homomorphism". Indeed, if $\+R$ be a relational symbol of arity $k$,
+for any $\langle a_1, \hdots, a_k \rangle \in \+R(\?A)$
+and $\langle b_1, \hdots, b_k \rangle \in \+R(\?B)$,
+we have $\langle f(a_1,b_1), \hdots, f(a_k,b_k) \rangle
+= \langle F(a_1)(b_1), \hdots, F(a_k)(b_k) \rangle$.
+Since $\langle F(a_1), \hdots, F(a_k) \rangle \in \+R(\powstruct{\?C}{\?B})$
+and $\langle b_1, \hdots,b_k \rangle \in \+R(\?B)$ 
+it follows that $\langle F(a_1)(b_1), \hdots, F(a_k)(b_k) \rangle \in \+R(\?C)$.
+Therefore, $f$ is a "homomorphism" from $\?A \prodstruct \?B$ to $\?C$.
+
+It is then routine to check that the maps $f \mapsto F$ and $F \mapsto f$ defined
+in the two previous paragraphs are mutually inverse bijections.
+\end{proof}
+
+\subsection{Constructions on Automatic Presentations}
+
+Let $\•A$ and $\•B$ be "automatic presentations" of some "$\sigma$-structures"
+$\?A$ and $\?B$. We define \AP$\•A \intro*\prodpres \•B$ to be the "presentation@@auto"
+"st":
+\begin{align*}
+	\domainPres{\•A\prodpres \•B} & \defeq \{u\#v \mid u \in \domainPres{\•A} \land v \in \domainPres{\•B}\}\\
+	\relPres{\•A\prodpres \•B}{\+R} & \defeq \{(u_1\#v_1) \convol \cdots \convol (u_k\#v_k) \mid
+		u_1 \convol \cdots \convol u_k \in \relPres{\•A}{\+R} \land
+		v_1 \convol \cdots \convol v_k \in \relPres{\•B}{\+R}
+	\}
+\end{align*}
+for each "relation symbol" $\+R$ of arity $k$ in $\sigma$.
+It is an "automatic presentation" of $\?A \prodstruct \?B$.
+
+$\•A \prodpres \•B \homregto \•C$ does not depend on the "automatic presentation"
+of $\?B$ nor of $\?C$: this is used implicitly in \Cref{sec:undecidability-homreg}.
+Also add reminder there + notation.
+Curryfying in this case.
+
+
+\subsection{Idempotent Core}
+
+We fix a "purely relational signature" $\sigma$.
+Given a "$\sigma$-structure" $\?B$,
+we denote by \AP$\intro*\extendedSignature{\sigma}{\?B}$
+the signature obtained from $\sigma$ by adding
+a unary predicate \AP$\intro*\unarypred{b}$ for each $b\in B$.
+The "marked structure" \AP$\intro*\marked{\?B}$ of $\?B$ is the
+"$\extendedSignature{\sigma}{\?B}$-structure"
+obtained from $\?B$ by "interpreting@@symbol" each predicate $\unarypred{b}$ as the
+singleton $\{b\}$.\sidenote{TODO: ASIA'S REMARK: this is called the ``idempotent core''.}
+
+\begin{proposition}[Folklore]
+\!\sidenote{The non-easy part is to reduce $\HomFin{\marked{\?B}}$ to $\HomFin{\?B}$: only this reduction
+requires the assumption that $\?B$ is a core. This reduction is folklore, see "eg"
+\cite[Lemma 2.5]{LaroseTesson2009UniversalAlgebraCSP}.
+TODO: understand if the proof is indentical to us. We provide here a self-contained proof.}%
+\sidenote{The "marked structure" $\marked{\core{\?B}}$ of the "core" of $\?B$ is
+usually called the \AP""idempotent core""
+of $\?B$. By TODO:addref and this proposition, $\HomFin{\?B}$ and
+$\HomFin{\marked{\core{\?B}}}$ are equivalent under "first-order reductions".
+This reduction is a central tool
+in the algebraic approach to understand "constraint satisfaction
+problem" since the algebra associated to the "CSP" over an "idempotent core"
+only has idempotent operations, making it much easier to work with. See TODO:addref for
+more details.}%
+\AP\label{prop:marking-preserves-csp-complexity}
+If $\?B$ is a finite "core", then the problems $\HomFin{\marked{\?B}}$ and 
+$\HomFin{\?B}$ are equivalent under "first-order reductions".
+\end{proposition}
+
+\begin{proof}[Proof of \Cref{prop:marking-preserves-csp-complexity}]
+\proofcase{Reduction from $\HomFin{\?B}$ to $\HomFin{\marked{\?B}}$.}
+We reduce a "$\sigma$-structure" $\?A$ to the
+"$\extendedSignature{\sigma}{\?B}$-structure" $\?A'$ obtained
+from $\?A$ by "interpreting@@symbol" each predicate $\unarypred{b}$ as the emptyset.
+Clearly, a function from $A$ to $B$ is a "homomorphism" from $\?A$ to $\?B$
+"iff" it is a "homomorphism" from $\?A'$ to $\marked{\?B}$, proving the correctness
+of the reduction. It is, by definition, "first-order@@reduction".
+
+\proofcase{Reduction from $\HomFin{\marked{\?B}}$ to $\HomFin{\?B}$.}
+We first define the reduction $\Phi$ and show its correctness, we will show later that it
+is a "first-order reduction". We reduce a "$\extendedSignature{\sigma}{\?B}$-structure" $\?A$ to the "$\sigma$-structure"
+$\Phi(\?A)$ defined as follows:
+\begin{itemize}
+	\item its underlying universe is the disjoint union $A \sqcup B$,
+	\item given a "relation symbol" $\+R$ of arity $k$, its "hyperedges" are:
 	\begin{itemize}
-	  \item its underlying universe is the disjoint union $A \sqcup B$,
-	  \item given a "relation symbol" $\+R$ of arity $k$, its "hyperedges" are:
-	  \begin{itemize}
-		\item all $\+R$-"hyperedges" of $A$,
-		\item all $\+R$-"hyperedges" of $B$, and
-		\item all $\+R$-"hyperedges" $(b_1,\hdots,b_{i-1}, a_i, b_{i+1},\hdots,b_k)$
-		  "st" there exists $b_i$ for which the $\+R$-"hyperedge"
-		  $(b_1,\hdots,b_{i-1}, b_i, b_{i+1},\hdots,b_k)$
-		  is in $\+R(\?A)$, and $a_i$ belongs to the "interpretation@@symbol" of 
-		  $\unarypred{b_i}$ in $\?A$.
-	  \end{itemize}
+	\item all $\+R$-"hyperedges" of $A$,
+	\item all $\+R$-"hyperedges" of $B$, and
+	\item all $\+R$-"hyperedges" $(b_1,\hdots,b_{i-1}, a_i, b_{i+1},\hdots,b_k)$
+		"st" there exists $b_i$ for which the $\+R$-"hyperedge"
+		$(b_1,\hdots,b_{i-1}, b_i, b_{i+1},\hdots,b_k)$
+		is in $\+R(\?A)$, and $a_i$ belongs to the "interpretation@@symbol" of 
+		$\unarypred{b_i}$ in $\?A$.
 	\end{itemize}
-	Note that by construction, the neighbourhood (TODO: TO BE DEFINED) of $a \in A$ in $\Phi(\?A)$ is
-	the union of its neighbourhood in $\?A$, and the union of the neighbourhoods of
-	$b$ in $\?B$ for all $b$ "st" $a \in \unarypred{b}(\?A)$.
-	To be concluded.  
-  \end{proof}
+\end{itemize}
+Note that by construction, the neighbourhood (TODO: TO BE DEFINED) of $a \in A$ in $\Phi(\?A)$ is
+the union of its neighbourhood in $\?A$, and the union of the neighbourhoods of
+$b$ in $\?B$ for all $b$ "st" $a \in \unarypred{b}(\?A)$.
+To be concluded.  
+\end{proof}

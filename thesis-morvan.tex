@@ -14,6 +14,7 @@
   backend=biber
 ]{biblatex}
 \bibliography{bib-automatic-graphs}
+\bibliography{bib-complexity}
 
 %todo: add \citereset at end of each chapter
 
@@ -31,6 +32,7 @@
 \input{kl/abbreviations.kl}
 \input{kl/complexity.kl}
 \input{kl/misc.kl}
+\input{kl/default.kl}
 
 \setcounter{secnumdepth}{3}
 
@@ -42,7 +44,14 @@
 \include{parts/contents}
 
 \mainmatter
-\chapter{Ideas/Todos}
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+
+\chapter*{Résumé long}
+\addcontentsline{toc}{chapter}{Résumé long}
+
+\chapter*{Ideas/Todos}
+\addcontentsline{toc}{chapter}{Ideas/Todos}
 
 \begin{itemize}
 	\item Change definition of CQ/CRPQ to have vertices. This allows for better duality,
@@ -54,8 +63,6 @@
 	Extend Grohe's Theorem to CRPQs (or maybe to a subclass of CRPQs, "eg" those whose
 	structurally minimal canonical databases characterize membership to minor-closed classes).
 \end{itemize}
-
-\lipsum[1-4]
 
 \chapter{Introduction}
 
@@ -89,8 +96,10 @@ Hello this is a citation \cite{Bringhurst2005}.
 Hello Q\sidenote{Qy first sidenote!} world and another test \cite{Bringhurst2005}.
 \[\forall x \in \gamma,\, \exists y\in \delta, \delta \to \gamma\]
 \[L \subseteq \Sigma^*\]
-\[0 \in \mathbb{N}\]
-\[\mathcal{AbcDefGhiJkl}\]
+\[0 \in \symbb{N}\]
+\[\symcal{AbcDefGhiJkl}\]
+\[\symscr{AbcDefGhiJkl}\]
+\[\symfrak{AbcDefGhiJkl}\]
 
 \lipsum[1-2]
 
@@ -108,7 +117,7 @@ Hello Q\sidenote{Qy first sidenote!} world and another test \cite{Bringhurst2005
 
 \chapter[{Semantic Tree-Width and Path-Width of Conjunctive Regular Path Queries}]{Semantic Tree-Width and Path-Width\\of Conjunctive Regular Path Queries}
 
-\chapter{Synthesis of Conjunctive Regular Path Queries}
+% \chapter{Synthesis of Conjunctive Regular Path Queries}
 
 \chapter{Conclusion \& Open Problems}
 
@@ -125,7 +134,12 @@ Hello Q\sidenote{Qy first sidenote!} world and another test \cite{Bringhurst2005
 
 \backmatter
 \begin{fullwidth}
-	\printbibliography
+	\chapter*{Bibliography}
+	\addcontentsline{toc}{chapter}{Bibliography}
+	\setlength{\columnsep}{8mm}
+	\begin{multicols}{2}
+		\printbibliography[heading=none]
+	\end{multicols}
 \end{fullwidth}
 
 

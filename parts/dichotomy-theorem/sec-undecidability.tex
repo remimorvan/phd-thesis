@@ -4,7 +4,7 @@
 
 We prove the undecidability of $\HomAut{\?B}$ and $\HomRegFin{\?B}$
 when $\?B$ does not have "finite duality". Both reductions are
-nearly identical to the proof that $\HomFin{\?B}$ is "L"-hard when $\?B$ does not
+direct adaptations of the proof that $\HomFin{\?B}$ is "L"-hard when $\?B$ does not
 have finite duality by \textcite[Theorem 3.2]{LaroseTesson2009UniversalAlgebraCSP}.
 However, proving the undecidability of the problem that is reduced
 to $\HomRegFin{\?B}$ is not entirely trivial and requires some work.
@@ -79,7 +79,7 @@ of $\HomAut{\?B}$ by reduction from the following problem.
 \begin{lemma}
 	\AP\label{lem:reduction-hom}
 	Assume that $\sigma$ contains at least one "relation symbol" of arity at least 2.
-	If $\?B$ does not have "finite duality", then there is a polynomial-time reduction 
+	If $\?B$ does not have "finite duality", then there is a TODO:complexity reduction 
 	from the complement of "Connectivity in Automatic Graphs" to $\HomAut{\marked{\?B}}$.
 \end{lemma}
 
@@ -205,6 +205,7 @@ of $\HomAut{\?B}$ by reduction from the following problem.
 
 	Putting \Cref{claim:reduction-hom-direct,claim:reduction-hom-converse} together,
 	we get that the reduction is correct.
+	Lastly, note that is works in TODO:complexity because TODO.
 \end{proof}
 
 By \Cref{prop:undecidability-connectivity}, the complement of "Connectivity in Automatic Graphs"
@@ -254,8 +255,8 @@ $\HomAut{\?B}$, which is thus "coRE"-hard. It remains to deal with "signatures" 
 	and so since $\?A \nothomto \?B$, it follows that it must be partial,
 	"ie" that some element $a \in \?A$ "st" $\unaryType{a}{\?A} \not\subseteq
 	\unaryType{b}{\?B}$ for any $b \in B$. It follows that $\unaryType{a}{\?A}$
-	is "obstructing@@unarytype". Since $\structOfUnaryType{\unaryType{a}{\?A}} \homto \?A$,
-	the conclusion follows.
+	is "obstructing@@unarytype". Since $\structOfUnaryType{\unaryType{a}{\?A}} \homto \?A$
+	"via" $* \mapsto a$, the conclusion follows.
 
 	Putting \Cref{claim:finite-duality-unary-predicates-direct,claim:finite-duality-unary-predicates-converse} together, we get that
 	\[
@@ -269,6 +270,18 @@ $\HomAut{\?B}$, which is thus "coRE"-hard. It remains to deal with "signatures" 
 \end{proof}
 
 \begin{corollary}
+	\!\sidenote[][-15em]{In the case of Larose and Tesson, they study the problem
+	$\HomFin{-}$, and prove in \cite[Theorem 3.2]{LaroseTesson2009UniversalAlgebraCSP}
+	that there is a "first-order reduction" from "Connectivity in Finite Graphs" to
+	$\HomFin{\marked{\?B}}$ assuming that $\?B$ does not have finite duality.
+	Moreover, "Connectivity in Finite Graphs" is "L"-hard under "first-order reductions" since
+	Etessami \cite[Theorem 3.2]{Etessami1997CountingLogSpace} proved that the problem
+	of given a directed path and two vertices $s$, $t$ to decide if there is a path from
+	$s$ to $t$ is "L"-hard under "first-order reductions"-in fact even under quantifier-free reductions. It turn, this problem can be reduced in "first-order@@reduction"
+	to "Connectivity in Finite Graphs" \cite{SamiD2015USTCONNLogspace}.
+	Overall, and together with \Cref{prop:marking-preserves-csp-complexity},
+	this shows that $\HomFin{\?B}$ is "L"-hard under "first-order reductions".}%
+	%%%
 	\AP\label{coro:lowerbound-hom}
 	If $\?B$ does not have "finite duality", then $\HomAut{\?B}$
 	is "coRE"-hard.
@@ -283,14 +296,133 @@ $\HomAut{\?B}$, which is thus "coRE"-hard. It remains to deal with "signatures" 
 \subsection{\AP\label{sec:undecidability-homreg}%
 	Undecidability of \,$\HomRegAut{\?B}$}
 
-We introduce a decision problem on "Turing machines".
-\decisionproblem{""Regular Unreachability of Turing Machine Configurations""}{
-  A "Turing machine" $\+M$, two "configurations" $s$ and $t$ of $\+M$.
+The reduction to show undecidability of is nearly identical to \Cref{lem:reduction-hom},
+but the input problem differs quite a lot.
+\decisionproblem{""Regular Unconnectivity in Automatic Graphs""}{
+	An "automatic presentation" $\•G$ of a "directed graph" $\?G$,
+	and two elements $s,t \in \Sigma^*$.
 }{
-  Is there a regular language $L$ (over the same alphabet as the "configurations" of $\+M$)
-  such that $s \in L$, $t\not\in L$ and $L$ is a union of "connected components"
-  of "configurations" of $\+M$?
+	Is there a regular language $L \subseteq \Sigma^*$ 
+	such that $s \in L$, $t\not\in L$ and $L$ is a union of "connected components"
+	of $\+G$?\footnotemark{}
+	In this case we say that $s$ and $t$ are \AP""regularly unconnected"".
 }
+\footnotetext{Formally, we mean that $L = \•G^{-1}[U]$ for some union $U$ of "connected components" of $\?G$.}
+
+We will first reduce this problem to $\HomRegAut{\?B}$, and will later settle its complexity.
+
+\begin{lemma}
+	\AP\label{lem:reduction-hom-reg}
+	Assume that $\sigma$ contains at least one "relation symbol" of arity at least 2.
+	If $\?B$ does not have "finite duality", then there is a TODO:complexity reduction 
+	from the complement of "Regular Unconnectivity in Automatic Graphs"
+	to $\HomRegAut{\marked{\?B}}$.
+\end{lemma}
+
+\begin{proof}
+	Given an instance $\langle \•G, s, t \rangle$ of "Regular Unconnectivity in Automatic Graphs",
+	we first define the $\sigma$-structure $\?A$ with "automatic presentation" $\•A$
+	obtained by replacing every edge by a "$1$-link", as in \Cref{lem:reduction-hom}.
+
+	Again, we reduce the instance $\langle \•G, s, t \rangle$
+	to an "automatic presentation" of the "$\extendedSignature{\sigma}{\?B}$-structure" 
+	$\?A\prodstruct \iterstruct{\?B}{2}$ in which for each $b_0 \in B$,
+	we "interpret" the unary predicate $\unarypred{b_0}$ as
+	\[
+		\big\{\;
+			\langle a,\, b,\, b'\rangle \;\big\vert\;
+			a = \•A(s) \text{ and } b = b_0 \text{, or }
+			a = \•A(t) \text{ and } b' = b_0
+		\;\big\}.
+	\]
+	\begin{claim}
+		\AP\label{claim:reduction-hom-direct}
+		If $\•A\prodpres \iterstruct{\?B}{2} \homregto \marked{\?B}$,
+		then $\•G(s)$ and $\•G(t)$ are "regularly unconnected" in $\?G$.
+	\end{claim}
+	TODO
+	% Let $f\colon \?A\prodstruct \iterstruct{\?B}{2} \homto \marked{\?B}$
+	% be a "homomorphism".\sidenote{Recall that both sides are
+	% "$\extendedSignature{\sigma}{\?B}$-structures".}
+	% It induces a "homomorphism"
+	% \[
+	% 	\overbar f\colon \?A\prodstruct \iterstruct{\?B}{2} \homto \?B
+	% \]
+	% between "$\sigma$-structures", and by currying (\Cref{prop:currying-hom}),
+	% $\overbar f$ can be seen as a "homomorphism"
+	% \[
+	% 	\widehat f\colon \?A \homto \powstruct{\?B}{(\iterstruct{\?B}{2})}.
+	% \]
+	% Note moreover that because $\overbar f$ comes from a "homomorphism" between
+	% $\extendedSignature{\sigma}{\?B}$ then we must have  
+	% any triplet $f(\•A(s),\, b,\, b') = b$
+	% and $f(\•A(t),\, b,\, b') = b'$ for all $b,b' \in B$.
+	% This implies that $\widehat f(\•A(s)) = \projHom{1}$ and $\widehat f(\•A(s)) = \projHom{2}$.
+	
+	% We now assume by contradiction that there is some $n \in \N$
+	% "st" there is a "homomorphism" $g\colon \link{n} \to \?A$
+	% with $g(0) = \•A(s)$ and $g(n) = \•A(t)$.
+	% Then by composition, we obtain a "homomorphism"
+	% \[
+	% 	\widehat f \circ g\colon
+	% 	\link{n} \to \powstruct{\?B}{(\iterstruct{\?B}{2})},
+ 	% \]	
+	% which sends $0$ to $\widehat f(g(0)) = \widehat f(\•A(s)) = \projHom{1}$
+	% and sends $n$ to $\widehat f(g(n)) = \widehat f(\•A(t)) = \projHom{2}$.
+	% So, by \Cref{prop:characterization-finite-duality-path-projections},
+	% $\?B$ would have "finite duality", which is a contradiction.
+
+	\begin{claim}
+		\AP\label{claim:reduction-hom-converse}
+		If $\•G(s)$ and $\•G(t)$ are "regularly unconnected" in $\?G$,
+		then $\•A\prodpres \iterstruct{\?B}{2} \homregto \marked{\?B}$.
+	\end{claim}
+	% We define a homomorphism $f\colon \?A\prodstruct \iterstruct{\?B}{2} \to \marked{\?B}$ by:
+	% \[
+	% 	f(a, b, b') \defeq \begin{cases*}
+	% 		\;b & \text{ if $\•A(s)$ and $a$ are "linked",} \\
+	% 		\;b' & \text{ otherwise.}
+	% 	\end{cases*}
+	% \]
+	% We show that this is indeed a "homomorphism": for any "relational symbol" $\+R$
+	% of arity $k$ in $\sigma$, if
+	% \[
+	% 	\langle a_1,\, b_1,\, b'_1 \rangle,\;
+	% 	\langle a_2,\, b_2,\, b'_2 \rangle,\;
+	% 	\hdots,\;
+	% 	\langle a_k,\, b_k,\, b'_k \rangle
+	% \]
+	% are all "$\+R$-hyperedges" of $\?A\prodstruct \iterstruct{\?B}{2}$,
+	% then we denote by $g_1,\, \hdots,\, g_k$ the vertices of $\?G$
+	% associated to $a_1,\; \hdots,\; g_k$, respectively.
+	% By definition of $\?A$, we have that either (1) all $g_i$'s are equal,
+	% or (2) $\{g_1,\, \hdots,\, g_k\} = {g,g'}$ for some $g \neq g' \in G$
+	% and there is an edge from $g$ to $g'$ or from $g'$ to $g$ in $\?G$.
+	% In both cases, it follows that $\•A(s)$ and $a_i$ are "linked"
+	% "iff" $\•A(s)$ and $a_j$ for all $i,j\in \lBrack 1,k\rBrack$.
+	% Hence, either $f(a_i,\, b_i,\, b'_i) = b_i$ for all $i\in \lBrack 1,k\rBrack$,
+	% or $f(a_i,\, b_i,\, b'_i) = b'_i$ for all $i\in \lBrack 1,k\rBrack$.
+	% In both cases, we get that
+	% \[
+	% 	\Big\langle
+	% 		f(a_1,\, b_1,\, b'_1),\;
+	% 		f(a_2,\, b_2,\, b'_2),\;
+	% 		\hdots,\;
+	% 		f(a_k,\, b_k,\, b'_k)
+	% 	\Big\rangle
+	% 	\in \+R(\?B).
+	% \]
+	% We also need to show that this map preserves the new unary predicates of
+	% $\extendedSignature{\sigma}{\?B}$: this follows from---and is in fact equivalent to---the
+	% fact that $\•A(s)$ and $\•A(t)$ are not "linked" by \Cref{claim:reduction-hom-from-graph-to-link}
+	% and the assumption that $\•G(s)$ and $\•G(t)$ are not "connected" in $\?G$.
+	% Overall, this proves that $\?A\prodstruct \iterstruct{\?B}{2} \homto \marked{\?B}$.
+
+	% Putting \Cref{claim:reduction-hom-direct,claim:reduction-hom-converse} together,
+	% we get that the reduction is correct.
+	% Lastly, note that is works in TODO:complexity because TODO.
+\end{proof}
+
 
 \begin{lemma}
 	\label{}
