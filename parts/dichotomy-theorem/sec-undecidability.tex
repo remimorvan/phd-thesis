@@ -7,7 +7,13 @@ when $\?B$ does not have "finite duality". Both reductions are
 direct adaptations of the proof that $\HomFin{\?B}$ is "L"-hard when $\?B$ does not
 have finite duality by \textcite[Theorem 3.2]{LaroseTesson2009UniversalAlgebraCSP}.
 However, proving the undecidability of the problem that is reduced
-to $\HomRegFin{\?B}$ is not entirely trivial and requires some work.
+to $\HomRegFin{\?B}$ is not entirely trivial and requires some work:
+\begin{itemize}
+	\item For $\HomFin{\?B}$, we reduce the complement of "Connectivity in Automatic Graphs",
+		providing a "coRE"-lowerbound.
+	\item For $\HomRegFin{\?B}$, we reduce "Regular Unconnectivity in Automatic Graphs",
+		which in turn is reduced from "Restricted Membership for Deterministic Reversible Turing Machines", providing a "RE"-lowerbound.
+\end{itemize}
 
 \subsection{\AP\label{sec:undecidability-hom}%
 	Undecidability of \,$\HomAut{\?B}$}
