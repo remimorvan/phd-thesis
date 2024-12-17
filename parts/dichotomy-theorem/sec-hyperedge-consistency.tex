@@ -1,0 +1,109 @@
+\section{\AP\label{sec:hyperedge-consistency}%
+	Hyperedge Consistency}
+
+In this section, we introduce the "hyperedge consistency algorithm for automatic structures",
+which is a variation of the classical "hyperedge consistency algorithm" for "finite structures".
+We start by explaining the later algorithm,
+which solves $\HomFin{\?B}$ for some $\?B$'s.\footnote{We will
+see later that the algorithm is correct for "$\sigma$-structures" with so-called "tree duality",
+which is a superclass of the "structures" with "finite duality".}
+Then, we will use the former algorithm to prove that assuming that $\?B$ has "finite duality",
+then $\HomRegAut{\?B}$ is decidable.\footnote{Interestingly, this algorithm cannot solve
+$\HomRegAut{\?B}$ when $\?B$ has only "tree duality" but not "finite duality". 
+We discuss this in more details in TODO.}
+
+\subsection{Hyperedge Consistency for Finite Structures}
+
+Given a "homomorphism" $f\colon \?G \to \?H$ between "graphs",
+note that if $g\in G$ has at least one successor in $\?G$, then must have $f(g)$ in $\?H$.
+As a consequence, such an $g$ cannot be mapped by any "homomorphism" to a vertex of $\?H$ with no
+successor. The idea behind "hyperedge consistency@@finite" is precisely to identify for each
+$g\in G$ the set $\textrm{Im}_g$ of all elements of $\?H$ to which it can be mapped: initially this set is $H$,
+and we try to find some ``obstructions''. These obstructions take the following form:
+if $g \in G$ has a successor $g' \in G$, then any vertex of $\textrm{Im}_g$
+must have a successor in $\?H$ that lives in $\textrm{Im}_{g'}$.
+
+TODO:example $T_2$.
+
+We formalize this algorithm as the greatest fixpoint of some operator.
+Given a finite "$\sigma$-structure" $\?B$, and an arbitrary\sidenote{Note that in this part, while some results---mostly complexity/decidability ones---require the assumption that the "left structure" is finite, some results do not,
+and are stated for arbitrary "structures".}%
+"$\sigma$-structure" $\?A$, we say that a function $F\colon A \to \pset{B}$ is "subsumed"
+by $G\colon A \to \pset{B}$, denoted by \AP\(F \intro*\subsumed G\),
+if $F(a) \subseteq G(a)$ for each $a \in A$. We denote by
+\AP\(\intro*\LatticeGuessFunctions{A}{B}\) the set of functions $A \to \pset{B}$ under this order.%
+\footnote{Equivalently, $\LatticeGuessFunctions{A}{B}$ is the
+set of binary relations between $A$ and $B$, ordered by inclusion.}
+
+We then define an operator on this space, which corresponds to one step of the "hyperedge consistency algorithm@@finite":
+\begin{center}
+	\begin{tabular}{rccc}
+		$\HCOperator\colon$ & $\LatticeGuessFunctions{A}{B}$ & $\to$ & $\LatticeGuessFunctions{A}{B}$ \\
+		& $F$ & $\mapsto$ & $\HCOperator(F)$,
+	\end{tabular}
+\end{center}
+where for each $a \in A$, \AP$\intro*\HCOperator(F)(a)$ is the set of $b \in F(a)$ "st"
+for every $\+R_{(k)} \in \sigma$, for every $i \in \lBrack 1,k\rBrack$,
+if $\langle a_1,\, \hdots,\, a_{k-1} \rangle \in \neighbourhood{a}{\?A}$,
+then there exists $b_1 \in F(a_1)$, $\hdots$, $b_{k-1} \in F(a_{k-1})$ "st" 
+$\langle b_1,\, \hdots,\, b_{k-1} \rangle \in \neighbourhood{b}{\?B}$.
+
+\begin{fact}
+	The ordered set $\LatticeGuessFunctions{A}{B}$ is a "complete lattice",
+	and moreover $\HCOperator$ is monotonic.
+\end{fact}
+
+As a consequence of the "Knaster-Tarski theorem", $\HCOperator$ admits a greatest fixpoint, that
+we denote by \AP$\intro*\HCFixpoint{\?A}{\?B} \in \LatticeGuessFunctions{A}{B}$.\footnote{Recall 
+that this greatest fixpoint can be obtained by ordinal induction by starting from
+the greatest element of $\LatticeGuessFunctions{A}{B}$, namely the map $a \mapsto B$,
+and iterating $\HCOperator$.}
+
+\begin{proposition}
+	If $f\colon \?A \to \?B$ is a "homomorphism" then $f(a) \in \HCFixpoint{\?A}{\?B}(a)$
+	for each $a \in A$.
+\end{proposition}
+
+\begin{proof}
+	The property ``$f(a) \in F(a)$ for each $a\in A$'' holds for the greatest element
+	of $\LatticeGuessFunctions{A}{B}$, is stable under application of $\HCOperator$ and
+	under arbitrary meets.\footnote{Meaning that if all $F_i$ ($i \in I$ for some arbitrary set $I$)
+	satisfy the property, then so does $a \mapsto \bigcap_{i \in I} F(a)$}
+	Hence, by ordinal induction, it holds for $\HCFixpoint{\?A}{\?B}$.
+\end{proof}
+
+\begin{corollary}
+	If $\HCFixpoint{\?A}{\?B}(a) = \emptyset$ for some $a\in A$, then
+	$\?A \nothomto \?B$.
+\end{corollary}
+
+In general, the converse property does not hold. For instance, if $\sigma$ is the
+"signature of graphs" and $\?B$ is the "$2$-clique", then $\HCFixpoint{\?A}{\?B}$
+is always the map $a \mapsto B$, no matter whether there is a "homomorphism" from
+$\?A$ to $\?B$.
+
+Yet, TODO managed to identify a necessary and sufficient condition on $\?B$ for
+the "hyperedge consistency algorithm@@finute" to decide whether $\?A \in \HomFin{\?B}$.
+\begin{definition}
+	A finite "$\sigma$-structure" $\?B$ has ""tree duality"" when TODO.
+\end{definition}
+
+\begin{proposition}[TODO:addref]
+	If $\?B$ has "tree duality" then $\?A \homto \?B$ "iff"
+	$\HCFixpoint{\?A}{\?B}(a) \neq \emptyset$ for all $a\in A$.
+\end{proposition}
+
+When $\?A$ is moreover finite, this immediately gives an algorithm to decide
+$\?A \homto \?B$ since $\HCFixpoint{\?A}{\?B}$ can be computed not only
+by an ordinal induction but with a finite induction.
+
+TODO:add algo.
+
+\begin{corollary}
+	If $\?B$ has "tree duality", then $\HomFin{\?B}$ can be solved in
+	polynomial time.\sidenote{TODO: Precise complexity.}
+\end{corollary}
+
+
+\subsection{Hyperedge Consistency for Automatic Structures}
+

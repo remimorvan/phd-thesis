@@ -116,6 +116,26 @@ As a consequence of \Cref{prop:homreg-prod-finite}, we write
 	By \Cref{claim:homreg-prod-finite}… TODO.
 \end{proof}
 
+\subsection{Neighbourhoods}
+
+Given a "$\sigma$-structure" $\?A$ and $a \in A$, we define the \AP""neighbourhood"" of $a$
+in $\?A$
+to be the tuple
+\[
+	\intro*\neighbourhood{x}{\?A} \defeq
+	\Big\langle
+		\{
+			\langle a_1, \hdots, a_{i-1}, a_{i+1}, \hdots, a_k \rangle \in A^{k-1} \mid
+			\langle a_1, \hdots, a_{i-1}, x, a_{i+1}, \hdots, a_k \rangle \in \+R(\?A)
+		\}
+		\;\big\vert\;
+		\+R_{(k)} \in \sigma \text{ and } i \in \lBrack 1,k\rBrack
+	\Big\rangle.
+\]
+\marginnote{TODO: introduce notation $\+R_{(k)} \in \sigma$}
+For "graphs", the "neighbourhood" of a vertex corresponds to its set of predecessors and
+its set of successors.
+
 \subsection{Idempotent Core}
 
 We fix a "purely relational signature" $\sigma$.
@@ -173,8 +193,8 @@ $\Phi(\?A)$ defined as follows:
 		$\unarypred{b_i}$ in $\?A$.
 	\end{itemize}
 \end{itemize}
-Note that by construction, the neighbourhood (TODO: TO BE DEFINED) of $a \in A$ in $\Phi(\?A)$ is
-the union of its neighbourhood in $\?A$, and the union of the neighbourhoods of
+Note that by construction, the "neighbourhood" of $a \in A$ in $\Phi(\?A)$ is
+the union of its "neighbourhood" in $\?A$, and the union of the "neighbourhoods" of
 $b$ in $\?B$ for all $b$ "st" $a \in \unarypred{b}(\?A)$.
-To be concluded.  
+TODO: To be concluded.  
 \end{proof}

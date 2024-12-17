@@ -2,6 +2,8 @@
 \newrobustcmd\+[1]{\symcal{#1}}
 \newrobustcmd\•{\+}
 
+\knowledgenewrobustcmd\pset[1]{\cmdkl{\wp(#1)}}
+
 \knowledgenewrobustcmd\id[1][]{\cmdkl{\mathrm{id}_{#1}}}
 
 \newrobustcmd\N{\symbb{N}}
@@ -10,6 +12,7 @@
 \newrobustcmd\defeq{\mathrel{\hat{=}}}
 
 \knowledgenewrobustcmd\semTM[1]{\cmdkl{\lBrack}#1\cmdkl{\rBrack}}
+\knowledgenewrobustcmd\statesTM[1]{\cmdkl{Q^{#1}}}
 
 \knowledgenewrobustcmd\projHom[1]{\cmdkl{\pi_{#1}}} % Projection homomorphism
 
@@ -76,3 +79,13 @@
 \knowledgenewrobustcmd{\convol}{\mathbin{\cmdkl{\otimes}}}
 
 \knowledgenewrobustcmd{\ConstrUndecHom}[1]{#1^{\cmdkl{\ddag}}}
+
+\knowledgenewrobustcmd{\rightquotient}[2]{#1\mathbin{\cmdkl{/}}#2}
+
+\knowledgenewrobustcmd{\neighbourhood}[2]{\cmdkl{\+N_{\!#2}(#1)}}
+
+\knowledgenewrobustcmd{\subsumed}{\mathrel{\cmdkl{\sqsubseteq}}}
+\knowledgenewrobustcmd{\LatticeGuessFunctions}[2]{\cmdkl{\langle \pset{B}^{A},\, \subsumed \rangle}}
+
+\knowledgenewrobustcmd{\HCOperator}{\cmdkl{\symcal{H\!C}}}
+\knowledgenewrobustcmd{\HCFixpoint}[2]{\cmdkl{H^{\,*}_{#1,#2}}}
