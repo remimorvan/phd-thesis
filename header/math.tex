@@ -48,18 +48,18 @@
 \knowledgenewrobustcmd\link[1]{\cmdkl{\?L_{#1}}}
 
 \newrobustcmd\smashxrightarrow[1]{%
-  \raisebox{-.04em}{$%
-    \xrightarrow{\smash{\raisebox{-.1em}{%
-      \tiny{#1}%
-    }}}%
-  $}%
+  	\raisebox{-.04em}{$%
+		\xrightarrow{\smash{\raisebox{-.1em}{%
+	  		\tiny{#1}%
+		}}}%
+  	$}%
 }%
 \newrobustcmd\smashxleftarrow[1]{%
-  \raisebox{-.04em}{$%
-    \xleftarrow{\smash{\raisebox{-.1em}{%
-      \tiny{#1}%
-    }}}%
-  $}%
+	\raisebox{-.04em}{$%
+		\xleftarrow{\smash{\raisebox{-.1em}{%
+			\tiny{#1}%
+		}}}%
+	$}%
 }%
 
 \knowledgenewrobustcmd{\homto}{\mathrel{\cmdkl{\smashxrightarrow{hom}}}}
@@ -82,10 +82,24 @@
 
 \knowledgenewrobustcmd{\rightquotient}[2]{#1\mathbin{\cmdkl{/}}#2}
 
-\knowledgenewrobustcmd{\neighbourhood}[2]{\cmdkl{\+N_{\!#2}(#1)}}
+\knowledgenewrobustcmd{\neighbourhood}[4]{\cmdkl{\+N_{\!#2}^{\smash{#3,#4}}(#1)}}
 
 \knowledgenewrobustcmd{\subsumed}{\mathrel{\cmdkl{\sqsubseteq}}}
-\knowledgenewrobustcmd{\LatticeGuessFunctions}[2]{\cmdkl{\langle \pset{B}^{A},\, \subsumed \rangle}}
+\knowledgenewrobustcmd{\LatticeGuessFunctions}[2]{\cmdkl{\langle \pset{#2}^{#1},\, \subsumed \rangle}}
+\knowledgenewrobustcmd{\topLatticeGuessFunctions}[1]{\cmdkl{\Lambda_{#1}}}
 
-\knowledgenewrobustcmd{\HCOperator}{\cmdkl{\symcal{H\!C}}}
+\newcommandPIE{\HCOperator}{\withkl{\kl[\HCOperator]}{\cmdkl{\symcal{H\!C}#1#2#3}}}
+	\knowledge{\HCOperator}{notion}
 \knowledgenewrobustcmd{\HCFixpoint}[2]{\cmdkl{H^{\,*}_{#1,#2}}}
+
+\knowledgenewrobustcmd\restr[2]{{
+  #1 \cmdkl{\raisebox{-.1em}{\(\vert\)}{}_{#2}}
+}}
+
+\knowledgenewrobustcmd{\lastLetter}[1]{\cmdkl{\+l_{#1}}}
+\knowledgenewrobustcmd{\equalLength}{\cmdkl{\+{el}}}
+\knowledgenewrobustcmd{\prefix}{\cmdkl{\preceq_{\textrm{pref}}}}
+\knowledgenewrobustcmd{\univStructSynchronous}[1]{\cmdkl{#1^*}}
+\knowledgenewrobustcmd{\signatureSynchronous}[1]{\sigma_{#1}^{\smash{\textrm{sync}}}}
+
+\knowledgenewrobustcmd{\semFO}[2]{\cmdkl{\lBrack} #1 \cmdkl{\rBrack^{#2}}}

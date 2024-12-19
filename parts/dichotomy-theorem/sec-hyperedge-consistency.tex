@@ -38,15 +38,17 @@ set of binary relations between $A$ and $B$, ordered by inclusion.}
 We then define an operator on this space, which corresponds to one step of the "hyperedge consistency algorithm@@finite":
 \begin{center}
 	\begin{tabular}{rccc}
-		$\HCOperator\colon$ & $\LatticeGuessFunctions{A}{B}$ & $\to$ & $\LatticeGuessFunctions{A}{B}$ \\
+		$\HCOperator_{\!\?A,\?B}\colon$ & $\LatticeGuessFunctions{A}{B}$ & $\to$ & $\LatticeGuessFunctions{A}{B}$ \\
 		& $F$ & $\mapsto$ & $\HCOperator(F)$,
 	\end{tabular}
 \end{center}
-where for each $a \in A$, \AP$\intro*\HCOperator(F)(a)$ is the set of $b \in F(a)$ "st"
+where for each $a \in A$, \AP$\intro*\HCOperator_{\!\?A,\?B}(F)(a)$ is the set of $b \in F(a)$ "st"
 for every $\+R_{(k)} \in \sigma$, for every $i \in \lBrack 1,k\rBrack$,
-if $\langle a_1,\, \hdots,\, a_{k-1} \rangle \in \neighbourhood{a}{\?A}$,
+if $\langle a_1,\, \hdots,\, a_{k-1} \rangle \in \neighbourhood{a}{\?A}{\+R}{i}$,
 then there exists $b_1 \in F(a_1)$, $\hdots$, $b_{k-1} \in F(a_{k-1})$ "st" 
-$\langle b_1,\, \hdots,\, b_{k-1} \rangle \in \neighbourhood{b}{\?B}$.
+$\langle b_1,\, \hdots,\, b_{k-1} \rangle \in \neighbourhood{b}{\?B}{\+R}{i}$.\footnote{%
+We write $\HCOperator$ for $\HCOperator_{\!\?A,\?B}$ when there is no ambiguity on
+the "structures" involved.}
 
 \begin{fact}
 	The ordered set $\LatticeGuessFunctions{A}{B}$ is a "complete lattice",
@@ -89,6 +91,7 @@ the "hyperedge consistency algorithm@@finute" to decide whether $\?A \in \HomFin
 \end{definition}
 
 \begin{proposition}[TODO:addref]
+	\AP\label{prop:hyperedge-consistency-tree-duality}
 	If $\?B$ has "tree duality" then $\?A \homto \?B$ "iff"
 	$\HCFixpoint{\?A}{\?B}(a) \neq \emptyset$ for all $a\in A$.
 \end{proposition}
@@ -97,8 +100,6 @@ When $\?A$ is moreover finite, this immediately gives an algorithm to decide
 $\?A \homto \?B$ since $\HCFixpoint{\?A}{\?B}$ can be computed not only
 by an ordinal induction but with a finite induction.
 
-TODO:add algo.
-
 \begin{corollary}
 	If $\?B$ has "tree duality", then $\HomFin{\?B}$ can be solved in
 	polynomial time.\sidenote{TODO: Precise complexity.}
@@ -106,4 +107,142 @@ TODO:add algo.
 
 
 \subsection{Hyperedge Consistency for Automatic Structures}
+
+When $\?A$ is "automatic", \Cref{prop:hyperedge-consistency-tree-duality} still applies,
+however it is not clear how to compute $\HCFixpoint{\?A}{\?B}$ since this element cannot
+necessarily be obtained by finite induction, namely as
+$\HCOperator^n(\topLatticeGuessFunctions{B})$ for some $n\in\N$, where
+\AP$\intro*\topLatticeGuessFunctions{B}$ is the maximum element
+of $\LatticeGuessFunctions{A}{B}$, namely the constant map $a \mapsto B$.
+Another issue is to have a finite representation of the functions of
+$\LatticeGuessFunctions{A}{B}$ since $A$ can be infinite. This last point is easy to address.
+
+Given an "automatic presentation" $\•A$ of $\?A$, we extend
+$\HCOperator_{\!\•A,\?B}$ and $\HCFixpoint{\•A}{\?B}$ to be defined on $\domainPres{•A}$
+instead of $\?A$.
+
+\begin{lemma}[$\HCOperator$ preserves "regularity@@fun".]
+	\AP\label{lem:hyperedge-consistency-preserves-regularity}
+	Let $\?A$ be an arbitrary "$\sigma$-structure" and $\?B$ a finite "$\sigma$-structure".
+	For any $F\in \LatticeGuessFunctions{\•A}{B}$, if $F$ is "regular@@hom",
+	then $\HCOperator(F)$ is "regular@@hom".
+\end{lemma}
+
+\begin{proof}
+	Let $F\in \LatticeGuessFunctions{\•A}{B}$ be "regular@@hom",
+	so for each $Y \in \pset{B}$, $F^{-1}[Y]$ is "regular@@lang", and so by \Cref{prop:synchronous-first-order}, there exists a "first-order formula" $\phi_Y(x)$ over
+	\(\signatureSynchronous{\Sigma}\)
+	"st" $F^{-1}[Y] = \semFO{\phi_Y(x)}{\univStructSynchronous{\Sigma}}$.
+	Also, since $\•A$ is an "automatic presentation", for any $\+R \in \sigma$ of arity $k$,
+	there exists by \Cref{prop:synchronous-first-order} a "first-order formula" $\psi_{\+R}(x_1,\ldots,x_k)$ over \(\signatureSynchronous{\Sigma}\) "st"
+	$\relPres{\•A}{\•R} = \semFO{\psi_{\+R}(x_1,\hdots,x_k)}{\univStructSynchronous{\Sigma}}$.
+	Similarly, $\domainPres{\•A} = \semFO{\psi_{\textrm{dom}}(x)}{\univStructSynchronous{\Sigma}}$
+	for some "formula@@FO" $\psi_{\textrm{dom}}(x)$.
+
+	It is then easy to prove that $\HCOperator(F)$ is "regular@@hom" by providing a "first-order 
+	formula" $\widehat \phi_Y(x)$ for each $Y \in \pset{B}$, describing $\HCOperator(F)^{-1}[Y]$,
+	using both the formulas above, and the definition of $\HCOperator$.
+	Indeed, recall that an element $u \in \domainPres{\•A}$ should be sent via $\HCOperator(F)$ 
+	onto $Y\in \pset{B}$ if $Y$ is exactly the set of elements $b \in B$ "st" for every $\+R_{(k)} \in \sigma$, for every $i \in \lBrack 1,k\rBrack$, if
+	$\langle a_1,\, \hdots,\, a_{k-1} \rangle \in \neighbourhood{a}{\?A}{\+R}{i}$,
+	then there exists $b_1 \in F(a_1)$, $\hdots$, $b_{k-1} \in F(a_{k-1})$ "st" 
+	$\langle b_1,\, \hdots,\, b_{k-1} \rangle \in \neighbourhood{b}{\?B}{\+R}{i}$.
+	Symbolically the set of such $u$'s can be written as
+	$\semFO{\widehat \phi_Y(x)}{\univStructSynchronous{\Sigma}}$, where
+	\[
+		\widehat \phi_Y(x) \defeq 
+			\psi_{\textrm{dom}}(x) \land \big(\bigwedge_{b\in Y} \chi_b(x) \land \bigwedge_{b\not\in Y} \neg\chi_b(x)\big)
+	\]
+	where $\chi_b(x)$ is the formula\footnote{Notice that since
+	$\chi_b$ appear both positively and negatively in $\widehat \phi_Y$, going from
+	the $\phi$'s to the $\widehat \phi's$ increases the "quantifier alternation" of the
+	"formulas@@FO" by one. And so the "formulas@@FO" we build to describe $\HCOperator^n(\topLatticeGuessFunctions{B})$ are of "quantifier alternation" $n$.
+	TODO:CONCLUDE SOMEWHERE THAT CONSTRUCTION IS NOT ELEMENTARY.}
+	\begin{align*}
+		\chi_b(x) \defeq\; &
+			\bigwedge_{\+R_{(k)} \in \sigma} \bigwedge_{i\in \lBrack 1,k\rBrack}\;
+			\forall x_1.\, \hdots\, \forall x_{i-1}.\, \forall x_{i+1}.\, \hdots \, \forall x_{k}.\,\\
+			& \hspace{2em}\psi_{\+R}(x_1,\hdots, x_{i-1}, x, x_{i+1}, \hdots, x_k)
+			\\ 
+			& \hspace{2em} \Rightarrow \Big(\bigvee_{\substack{\langle b_1,\hdots,b_{i-1},b_{i+1},\hdots b_k\rangle \in \neighbourhood{b}{\?B}{\+R}{i}}}\;
+			\bigwedge_{i \in \lBrack 1,k\rBrack \smallsetminus \{i\}}
+			\underbrace{%
+				\bigvee_{\substack{Y' \in \pset{B}\\ b_i\in Y'}} \phi_{Y'}(x_i)
+			}_{%
+				b_i \in F(x_i)
+			}%
+			\Big).\qedhere
+	\end{align*}
+\end{proof}
+
+Notice that $\topLatticeGuessFunctions{B}$ is trivially "regular@@fun", and so
+by immediate induction, each $\HCOperator^n(\topLatticeGuessFunctions{B})$ with $n\in \N$ is
+also "regular@@fun". While this opens the door to solving $\HomRegAut{\?B}$ when $\?B$ has
+"tree duality" using the "hyperedge consistency algorithm@@finite", the problem
+of finite convergence remains.
+
+First, we show that finite iterations are enough to detect the absence of "homomorphism".
+\begin{proposition}
+	\AP\label{prop:hyperedge-consistency-no-hom}
+	Let $\?A$ be an arbitrary "$\sigma$-structure" and $\?B$ a "finite $\sigma$-structure"
+	with "tree duality". If $\?A \nothomto \?B$, then there exists $n\in\N$ and $a\in A$ "st"
+	$\HCOperator^n(\topLatticeGuessFunctions{B})(a) = \emptyset$. 
+\end{proposition}
+
+In order to prove this proposition, we rely on the following property.
+\begin{property}[Monotonicity of $\HCOperator$]
+	\AP\label{prop:hyperedge-consistency-antimonotonicity}
+	Let $\?A'$ be a "substructure" of $\?A$ and $\?B$ a "finite $\sigma$-structure".
+	For any $F\in \LatticeGuessFunctions{A}{B}$ and $F' \in \LatticeGuessFunctions{\?A'}{\?B}$,
+	if $F(a) \subseteq F'(a)$ for all $a\in A'$, then $\HCOperator(F)(a) \subseteq \HCOperator(F')(a)$ for all $a\in A'$.\footnote{In other words, if $\restr{F}{A'} \subsumed F'$, then
+	$\restr{\HCOperator(F)}{A'} \subsumed \HCOperator(F')$.}
+\end{property}
+
+\begin{proof}
+	Assume that $\restr{F}{A'} \subsumed F'$, and let us show that 
+	$\restr{\HCOperator(F)}{A'} \subsumed \HCOperator(F')$.
+	Let $a \in A'$, and let $b \in \restr{\HCOperator(F)}{A'}(a) = \HCOperator(F)(a)$.
+	Then for every $\+R_{(k)} \in \sigma$,
+	for every $i \in \lBrack 1,k\rBrack$,
+	if $\langle a_1,\, \hdots,\, a_{k-1} \rangle \in \neighbourhood{a}{\?A}{\+R}{i}$,
+	then there exists $b_1 \in F(a_1)$, $\hdots$, $b_{k-1} \in F(a_{k-1})$ "st" 
+	$\langle b_1,\, \hdots,\, b_{k-1} \rangle \in \neighbourhood{b}{\?B}{\+R}{i}$.
+	Using the inclusions $\neighbourhood{a}{\?A'}{\+R}{i} \subseteq \neighbourhood{a}{\?A}{\+R}{i}$
+	and $F(a_i) \subseteq F'(a_i)$ (for any $a_i \in A'$), it follows that
+	for every $\+R_{(k)} \in \sigma$, for every $i \in \lBrack 1,k\rBrack$,
+	if $\langle a_1,\, \hdots,\, a_{k-1} \rangle \in \neighbourhood{a}{\?A'}{\+R}{i}$, then
+	there exists $b_1 \in F'(a_1)$, $\hdots$, $b_{k-1} \in F'(a_{k-1})$
+	"st" $\langle b_1,\, \hdots,\, b_{k-1} \rangle \in \neighbourhood{b}{\?B}{\+R}{i}$.
+	And hence $b \in \HCOperator(F')(a)$, which concludes the proof.
+\end{proof}
+
+\begin{proof}[Proof of \Cref{prop:hyperedge-consistency-no-hom}]
+	Let $\?A$ be an arbitrary "$\sigma$-structure" and $\?B$ a "finite $\sigma$-structure"
+	with "tree duality". Assume that $\?A \nothomto \?B$.
+	Then by \Cref{prop:de-bruijn-erdos} there exists a finite "substructure" $\?A'$
+	of $\?A$ "st" $\?A' \nothomto \?B$,
+	and so by \Cref{prop:hyperedge-consistency-tree-duality},
+	there exists some $a\in A$ "st" $\HCFixpoint{\?A'}{\?B}(a) = \emptyset$.
+	But since $\?A'$ is finite, $\HCFixpoint{\?A'}{\?B} = \HCOperator^n(\topLatticeGuessFunctions{B})$ for some $n\in\N$. Then using \Cref{prop:hyperedge-consistency-antimonotonicity},
+	\[
+		\HCOperator_{\!\?A,\?B}^{\,n}(\topLatticeGuessFunctions{B})(a)
+		\subseteq \HCOperator_{\!\?A',\?B}^{\,n}(\topLatticeGuessFunctions{B})(a)
+		= \HCFixpoint{\?A'}{\?B}(a)
+		= \emptyset.\qedhere
+	\]
+\end{proof}
+
+So, if $\?A \nothomto \?B$, then "hyperedge consistency" will detect it in finite time assuming 
+that $\?B$ has "tree duality".
+We then show that if $\?A \homto \?B$, $\HCOperator$ will also detect it in finite time,
+under the stronger assumption that $\?B$ has "finite duality".
+\begin{proposition}
+	\AP\label{prop:hyperedge-consistency-finite-convergence}
+	Let $\?A$ be an arbitrary "$\sigma$-structure" and $\?B$ a finite "$\sigma$-structure"
+	with "finite duality". If $\?A \homto \?B$, then there exists $n\in\N$ "st" $\HCOperator^n(\topLatticeGuessFunctions{B}) = \HCOperator^{n+1}(\topLatticeGuessFunctions{B})$.
+\end{proposition}
+
+\begin{proof}
+	First, note that TODO.
+\end{proof}
 

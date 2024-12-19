@@ -3,6 +3,24 @@
 For \AP""first-order reductions"", see
 \cite[Definition 2.11 \& Definition 1.26]{Immerman1998DescriptiveComplexity}.
 
+\subsection{A Model-Theoretic Perspective}
+
+Given an alphabet $\Sigma$, we define on $\Sigma^*$:
+\begin{itemize}
+	\itemAP a predicate $\intro*\lastLetter{a}$ indicating that the last letter of a word is $a$,
+	\itemAP a binary relation $\intro*\equalLength$ indicating that two words have the same length,
+	\itemAP a binary relation $\intro*\prefix$ indicating that a word is a prefix of another.
+\end{itemize} 
+We denote by $\intro*\signatureSynchronous{\Sigma}$ the "signature" $\langle \langle\lastLetter{a}\rangle_{a \in \Sigma},\, \equalLength,\, \prefix \rangle$\footnote{We abusively use the same notations for
+the "relation symbols" and their "interpretations@@relation" in the "signature".} and
+by \AP$\intro*\univStructSynchronous{\Sigma}$ the "$\signatureSynchronous{\Sigma}$-structure" over $\Sigma^*$ where
+the "symbols@@relation" are "interpreted@@relation" as above.
+
+\begin{proposition}
+	\label{prop:synchronous-first-order}
+	A relation over $\Sigma^*$ is "synchronous" "iff" it is definable by a "first-order formula" over \(\univStructSynchronous{\Sigma}\).
+\end{proposition}
+
 \subsection{Undirected Paths}
 
 An \AP""undirected path"" in a "$\sigma$-structure" $\?A$ consists of a sequence
@@ -120,18 +138,19 @@ As a consequence of \Cref{prop:homreg-prod-finite}, we write
 
 Given a "$\sigma$-structure" $\?A$ and $a \in A$, we define the \AP""neighbourhood"" of $a$
 in $\?A$
-to be the tuple
+to be the tuple of sets
 \[
-	\intro*\neighbourhood{x}{\?A} \defeq
-	\Big\langle
-		\{
+	\intro*\neighbourhood{x}{\?A}{\+R}{i} \defeq
+	% \Big\langle
+		\big\{
 			\langle a_1, \hdots, a_{i-1}, a_{i+1}, \hdots, a_k \rangle \in A^{k-1} \mid
 			\langle a_1, \hdots, a_{i-1}, x, a_{i+1}, \hdots, a_k \rangle \in \+R(\?A)
-		\}
-		\;\big\vert\;
-		\+R_{(k)} \in \sigma \text{ and } i \in \lBrack 1,k\rBrack
-	\Big\rangle.
+		\big\},
+		% \;\big\vert\;
+		% \+R_{(k)} \in \sigma \text{ and } i \in \lBrack 1,k\rBrack
+	% \Big\rangle.
 \]
+when $\+R$ ranges over "relation symbol" of arity $k$ of $\sigma$ and $i \in \lBrack 1,k\rBrack$. 
 \marginnote{TODO: introduce notation $\+R_{(k)} \in \sigma$}
 For "graphs", the "neighbourhood" of a vertex corresponds to its set of predecessors and
 its set of successors.
@@ -198,3 +217,14 @@ the union of its "neighbourhood" in $\?A$, and the union of the "neighbourhoods"
 $b$ in $\?B$ for all $b$ "st" $a \in \unarypred{b}(\?A)$.
 TODO: To be concluded.  
 \end{proof}
+
+\subsection{De Bruijn–Erdős Theorem}
+
+\begin{proposition}[De Bruijn–Erdős Theorem]
+	\label{prop:de-bruijn-erdos}
+	Let $\?A$ be an arbitrary "$\sigma$-structure" and $\?B$ a "finite $\sigma$-structure".
+	There is a "homomorphism" from $\?A$ to $\?B$ "iff" for every finite "substructure" $\?A'$
+	of $\?A$, there is a "homomorphism" from $\?A$ to $\?B$.
+\end{proposition}
+
+TODO:proofs.
