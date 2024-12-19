@@ -250,28 +250,26 @@ then this $n$ can be chosen uniformly for all $\?A$'s.
 \end{proposition}
 
 \begin{proof}
-	Let $\?D_1, \hdots, \?D_p$ be a finite set of "obstructions" for $\?B$.
-	For each $i\in\lBrack 1,p\rBrack$, since $\?D_i \nothomto \?B$, there exists
-	$n_i\in\N$ "st" $\HCOperator^{n_i}(\topLatticeGuessFunctions{B})(d_i) = \emptyset$ for some $d_i\in D_i$. We let $n \defeq \max_{i\in\lBrack 1,p\rBrack} n_i$.
-
-	\begin{claim}
-		If $\?A \nothomto \?B$, then there
-		exists $a\in A$ "st" $\HCOperator^n(\topLatticeGuessFunctions{B})(a) = \emptyset$. 
-	\end{claim}
-
-	Indeed, let $\?A$ be an arbitrary "$\sigma$-structure" such that $\?A \nothomto \?B$.
-	Then $\?D_i \homto \?A$ for some $i \in \lBrack 1,p\rBrack$. 
-	Let $h\colon \?D_i \to \?A$ be such a "homomorphism". 
-	Then by \Cref{prop:hyperedge-consistency-no-hom}, 
-	$\HCOperator^{n_i}_{\!\?A,\?B}(h(d_i)) \subseteq \HCOperator^{n_i}_{\!\?D_i,\?B}(d_i) = \emptyset$.
-	In particular, $\HCOperator^n_{\!\?A,\?B}(\topLatticeGuessFunctions{B})(a)$ for some
-	$a \in \?A$.
-
-	We then proceed with the proof of \Cref{prop:hyperedge-consistency-uniform-convergence}.
-	Let $m\in \N$ be "st" for all $i \in \lBrack 1,p\rBrack$, $\HCOperator^m_{\!\?D_i,\?B}(\topLatticeGuessFunctions{B}) = \HCFixpoint{\?D_i}{\?B}$.
-	
-	If $\?A \nothomto \?B$, then $\?A $
+	TODO: Proof.
+	IDEA: Use locality of $\{\?A \mid \?A \homto \?B\}$.
 \end{proof}
+
+% \begin{claim}
+% 	If $\?A \nothomto \?B$, then there
+% 	exists $a\in A$ "st" $\HCOperator^n(\topLatticeGuessFunctions{B})(a) = \emptyset$. 
+% \end{claim}
+
+% Indeed, let $\?D_1, \hdots, \?D_p$ be a finite set of "obstructions" for $\?B$.
+% For each $i\in\lBrack 1,p\rBrack$, since $\?D_i \nothomto \?B$, there exists
+% $n_i\in\N$ "st" $\HCOperator^{n_i}(\topLatticeGuessFunctions{B})(d_i) = \emptyset$ for some $d_i\in D_i$. We let $n \defeq \max_{i\in\lBrack 1,p\rBrack} n_i$.
+
+% Then let $\?A$ be an arbitrary "$\sigma$-structure" such that $\?A \nothomto \?B$.
+% Then $\?D_i \homto \?A$ for some $i \in \lBrack 1,p\rBrack$. 
+% Let $h\colon \?D_i \to \?A$ be such a "homomorphism". 
+% Then by \Cref{prop:hyperedge-consistency-no-hom}, 
+% $\HCOperator^{n_i}_{\!\?A,\?B}(h(d_i)) \subseteq \HCOperator^{n_i}_{\!\?D_i,\?B}(d_i) = \emptyset$.
+% In particular, $\HCOperator^n_{\!\?A,\?B}(\topLatticeGuessFunctions{B})(a)$ for some
+% $a \in \?A$.
 
 TODO: Is it true that $\{\?A \mid \?A \homto \?B\}$ is Gaifman-local iff
 $\?B$ has "tree duality"?
