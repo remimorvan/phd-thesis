@@ -253,22 +253,19 @@ infinite "$\sigma$-structures".
 	Let $\?B$ be a finite "$\sigma$-structure" with "tree duality".
 	The following are equivalent:
 	\begin{enumerate}
-		\itemAP\label{item:hc-uniform-finite-duality}
+		\itemAP\label{item:hc-uniform-finite-duality}%
 			$\?B$ has finite duality;
-		\itemAP\label{item:hc-uniform-finite-structures}
+		\itemAP\label{item:hc-uniform-finite-structures}%
 			there exists $n\in\N$ "st" for every \emph{finite} "$\sigma$-structure" $\?A$, $\HCOperator^{\,n}_{\!\?A,\?B}(\topLatticeGuessFunctions{B}) = \HCFixpoint{\?A}{\?B}$;
-		\itemAP\label{item:hc-uniform-arbitrary-structures}
+		\itemAP\label{item:hc-uniform-arbitrary-structures}%
 			there exists $n\in\N$ "st" for every \emph{arbitrary} "$\sigma$-structure" $\?A$, $\HCOperator^{\,n}_{\!\?A,\?B}(\topLatticeGuessFunctions{B}) = \HCFixpoint{\?A}{\?B}$;
-		\itemAP\label{item:hc-uniform-first-order}
+		\itemAP\label{item:hc-uniform-first-order}%
 			for each $Y \subseteq B$, the class of "pointed $\sigma$-structures"
 			$\{\langle \?A, a \rangle \mid \HCFixpoint_{\?A,\?B}(\topLatticeGuessFunctions{B})(a) = Y\}$ is "first-order definable".
 	\end{enumerate}
 \end{lemma}
 
 \begin{proof}
-	\proofcase{\eqref{item:hc-uniform-finite-duality} $\Rightarrow$
-		\eqref{item:hc-uniform-finite-structures}.}
-
 	\proofcase{\eqref{item:hc-uniform-finite-structures} $\Rightarrow$
 		\eqref{item:hc-uniform-arbitrary-structures}.}
 	Let $n\in \N$ "st" $\HCOperator^{\,n}_{\!\?A',\?B}(\topLatticeGuessFunctions{B}) = \HCFixpoint{\?A'}{\?B}$ for every finite "$\sigma$-structure" $\?A'$. Let $\?A$ be an arbitrary
@@ -323,6 +320,54 @@ infinite "$\sigma$-structures".
 	$\{\?A \mid \?A \homto \?B\}$ by \Cref{prop:hyperedge-consistency-tree-duality}, since
 	$\?B$ has "tree duality".\footnote{Note that this implication requires the assumption that
 	$\?B$ has "tree duality": indeed, if $\?B$ is the "2-clique", then \eqref{item:hc-uniform-first-order} holds as $\HCFixpoint_{\?A,\?B}(\topLatticeGuessFunctions{B})(a) = B$ for each $a\in \?A$ and each $\?A$. Yet, \eqref{item:hc-uniform-finite-duality} does not hold since $\?B$ does not even have "tree duality" by TODO:addref.} 
+
+	\proofcase{\eqref{item:hc-uniform-finite-duality} $\Rightarrow$
+		\eqref{item:hc-uniform-finite-structures}.}
+	To prove this implication, we first need a characterization of
+	what it means for an element $b\in B$ not to be in $\HCFixpoint{\?A}{\?B}(a)$,
+	where $a\in A$.
+	% \begin{claim}
+	% 	\!\footnote{This claim is a strengthening of \cite[Lemma 3.2]{LaroseLotenTardif2007CharacterisationFOCSP}, which is itself an adaptation of \cite[Theorem 21]{FederVardi1998ComputationalStructure}. The former
+	% 	states that if $\HCFixpoint{\?A}{\?B}(a) = \emptyset$ for some $a \in A$,
+	% 	then there exists a "$\sigma$-tree" $\?T$ "st" $\?T \homto \?A$ but $\?T \nothomto \?B$.}%
+	% 	\AP\label{claim:hyperedge-consistency-uniform-convergence-tree-obstructions}
+	% 	Let $a\in A$ and $b\in B$. If $b \not\in \HCFixpoint{\?A}{\?B}(a)$, then there
+	% 	exists a "$\sigma$-tree" $\?T$ "st" there is a "homomorphism" $f\colon \?T \to \?A$
+	% 	and an element $t \in T$ "st" $f(t) = a$ but no "homomorphism" from $\?A$ to $\?B$
+	% 	can map $a$ to $b$.
+	% 	Moreover, the "diameter" of $\?T$ is linearly bounded by the
+	% 	least $n\in \N$ "st"
+	% 	$b\not\in \HCOperator^{\,n}_{\?A,\?B}(\topLatticeGuessFunctions{B})(a)$.
+	% \end{claim}
+	This claim is actually proven in \cite[Proof of Lemma 3.2]{LaroseLotenTardif2007CharacterisationFOCSP}. 
+	What we actually need is the converse to this property:
+	\begin{claim}
+		\AP\label{claim:hyperedge-consistency-uniform-convergence-tree-witnesses}
+		Let $a\in A$ and $b\in B$. Assume that there exists a "$\sigma$-tree" $\?T$ "st" there is a "homomorphism" $f\colon \?T \to \?A$
+		and an element $t \in T$ "st" $f(t) = a$ but no "homomorphism" from $\?A$ to $\?B$
+		can map $a$ to $b$. Then, letting $n$ denote the "height@@struct" of $\?T$ when rooted
+		at $t$, we have $b \not\in \HCOperator^{\,n}_{\?A,\?B}(\topLatticeGuessFunctions{B})(a)$.
+	\end{claim}
+	We prove it by induction on $n$. TODO.
+
+	\begin{claim}
+		\footnote{In fact, Larose, Loten \& Tardif implicitely showed, by adapting
+			\cite[Theorem 21]{FederVardi1998ComputationalStructure}, in
+			\cite[Proof of Lemma 3.2]{LaroseLotenTardif2007CharacterisationFOCSP} that
+			if $b \not\in \HCFixpoint{\?A}{\?B}(a)$, then there
+			exists a "$\sigma$-tree" $\?T$ "st" there is a "homomorphism" $f\colon \?T \to \?A$
+			and an element $t \in T$ "st" $f(t) = a$ but no "homomorphism" from $\?A$ to $\?B$
+			can map $a$ to $b$. Moreover, the "height" of their "$\sigma$-tree" $\?T$ is linearly 
+			bounded by the least $n\in \N$ "st"
+			$b\not\in \HCOperator^{\,n}_{\?A,\?B}(\topLatticeGuessFunctions{B})(a)$.
+			This property is true without any duality assumption on $\?B$, and only follows
+			from the inner workings of the "hyperedge consistency algorithm".}%
+		\AP\label{claim:hyperedge-consistency-uniform-convergence-size-trees}
+		Let $a\in A$ and $b\in B$. Assume that $b \not\in \HCFixpoint{\?A}{\?B}(a)$. Then there exists a "$\sigma$-tree" $\?T$, and $t\in T$ "st" there is a "homomorphism" $f\colon \?T \to \?A$ sending $t$ to $a$, but no "homomorphism" from $\?T$ to $\?B$ sending $t$ to $b$.
+		Moreover, the "height@@struct" of $\?T$ can be assumed to be linearly bounded
+		by the "diameter" of the greatest "critical obstruction" of $\?B$.
+	\end{claim}
+	TODO:proof.
 \end{proof}
 
 % \begin{claim}
