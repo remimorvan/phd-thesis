@@ -20,8 +20,25 @@ As a consequence, such an $g$ cannot be mapped by any "homomorphism" to a vertex
 successor. The idea behind "hyperedge consistency@@finite" is precisely to identify for each
 $g\in G$ the set $\textrm{Im}_g$ of all elements of $\?H$ to which it can be mapped: initially this set is $H$,
 and we try to find some ``obstructions''. These obstructions take the following form:
-if $g \in G$ has a successor $g' \in G$, then any vertex of $\textrm{Im}_g$
-must have a successor in $\?H$ that lives in $\textrm{Im}_{g'}$.
+if $g \in G$ has a successor (resp. predecessor) $g' \in G$, then any vertex of $\textrm{Im}_g$
+must have a successor (resp. predecessor) in $\?H$ that lives in $\textrm{Im}_{g'}$.
+
+
+\begin{figure}
+	\centering
+	\begin{tikzpicture}
+		\input{tikz/zigzag-graph}
+		\input{tikz/example-hyperedge-consistency-T2}
+	\end{tikzpicture}
+	\caption{The "zigzag graph" $\zigzag{5}{2}$.}
+\end{figure}
+\begin{example}
+	Let $n\in\?N$.
+	We define the \AP""zigzag graph"" $\intro*\zigzag{n}{2}$ of width $n$ and length 2
+	to be "graph" whose vertices are $a_0, \hdots, a_n$, $b_0, \hdots, b_{n}$,
+	$a'_0$ and $b'_n$, with edges from $a_i$ to $b_{i-1}$ and to $b_{i}$ (for $i \in \lBrack 0,n\rBrack$, whenever the nodes exist), and with an edge from $a'_0$ to $a_0$ and from $b_n$
+	to $b'_n$.
+\end{example}
 
 TODO:example $T_2$.
 

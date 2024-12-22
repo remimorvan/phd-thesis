@@ -1,0 +1,22 @@
+\usepackage{tikz}
+\usepackage{tikz-cd}
+
+\usetikzlibrary{calc, arrows.meta, hobby, decorations.pathreplacing, decorations.markings, patterns, positioning}
+
+\tikzset{
+	node distance = 1.5em,
+	line width = .75pt,
+	>={Classical TikZ Rightarrow},
+	font = \footnotesize,
+	vertex/.style={
+		draw,
+		circle,
+		line width=1pt,
+		outer sep=2pt,
+		inner sep=2pt
+	},
+	edge/.style={
+		->,
+		line width=1pt
+	}
+}

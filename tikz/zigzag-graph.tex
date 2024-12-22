@@ -1,0 +1,22 @@
+\node[vertex] (0) at (0,0) {};
+\node[vertex, below right=of 0] (1) {};
+\foreach \i in {1, 3, 5, 7, 9} {
+	\pgfmathtruncatemacro{\next}{\i + 1}
+	\pgfmathtruncatemacro{\nnext}{\i + 2}
+	\node[vertex, below right=of \i] (\next) {};
+	\node[vertex, above right=of \next] (\nnext) {};
+};
+\node[vertex, below right=of 11] (12) {};
+\node[vertex, below right=of 12] (13) {};
+
+% ---
+% Transitions
+% ---
+\foreach \i in {0,1,3,5,7,9,11,12} {
+	\pgfmathtruncatemacro{\next}{\i + 1}
+	\draw[edge] (\i) to (\next);
+};
+\foreach \i in {2,4,6,8,10} {
+	\pgfmathtruncatemacro{\next}{\i + 1}
+	\draw[edge] (\next) to (\i);
+}
