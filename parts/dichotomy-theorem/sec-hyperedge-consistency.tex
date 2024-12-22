@@ -343,31 +343,41 @@ infinite "$\sigma$-structures".
 	What we actually need is the converse to this property:
 	\begin{claim}
 		\AP\label{claim:hyperedge-consistency-uniform-convergence-tree-witnesses}
-		Let $a\in A$ and $b\in B$. Assume that there exists a "$\sigma$-tree" $\?T$ "st" there is a "homomorphism" $f\colon \?T \to \?A$
-		and an element $t \in T$ "st" $f(t) = a$ but no "homomorphism" from $\?A$ to $\?B$
-		can map $a$ to $b$. Then, letting $n$ denote the "height@@struct" of $\?T$ when rooted
+		Let $a\in A$ and $b\in B$. Assume that there exists a "$\sigma$-tree" $\?T$ "st" there is a "homomorphism" from $\?T$ to $\?A$ that maps some element $t \in T$ to $a$, but no "homomorphism" from $\?T$ to $\?B$
+		can map $t$ to $b$. Then, letting $n$ denote the "height@@struct" of $\?T$ when rooted
 		at $t$, we have $b \not\in \HCOperator^{\,n}_{\?A,\?B}(\topLatticeGuessFunctions{B})(a)$.
 	\end{claim}
 	We prove it by induction on $n$. TODO.
 
-	\begin{claim}
-		\footnote{In fact, Larose, Loten \& Tardif implicitely showed, by adapting
+	\begin{claim}%
+		\!\footnote{In fact, Larose, Loten \& Tardif implicitely showed a weaker result, by adapting
 			\cite[Theorem 21]{FederVardi1998ComputationalStructure}, in
-			\cite[Proof of Lemma 3.2]{LaroseLotenTardif2007CharacterisationFOCSP} that
+			\cite[Proof of Lemma 3.2]{LaroseLotenTardif2007CharacterisationFOCSP}.
+			Is states that
 			if $b \not\in \HCFixpoint{\?A}{\?B}(a)$, then there
-			exists a "$\sigma$-tree" $\?T$ "st" there is a "homomorphism" $f\colon \?T \to \?A$
-			and an element $t \in T$ "st" $f(t) = a$ but no "homomorphism" from $\?A$ to $\?B$
-			can map $a$ to $b$. Moreover, the "height" of their "$\sigma$-tree" $\?T$ is linearly 
+			exists a "$\sigma$-tree" $\?T$ "st" there is a "homomorphism" from $\?T$ to $\?A$
+			that maps some element $t \in T$ to $a$, but no "homomorphism" from $\?T$ to $\?B$
+			can map $t$ to $b$. Moreover, the "height" of their "$\sigma$-tree" $\?T$ is linearly 
 			bounded by the least $n\in \N$ "st"
 			$b\not\in \HCOperator^{\,n}_{\?A,\?B}(\topLatticeGuessFunctions{B})(a)$.
 			This property is true without any duality assumption on $\?B$, and only follows
 			from the inner workings of the "hyperedge consistency algorithm".}%
 		\AP\label{claim:hyperedge-consistency-uniform-convergence-size-trees}
-		Let $a\in A$ and $b\in B$. Assume that $b \not\in \HCFixpoint{\?A}{\?B}(a)$. Then there exists a "$\sigma$-tree" $\?T$, and $t\in T$ "st" there is a "homomorphism" $f\colon \?T \to \?A$ sending $t$ to $a$, but no "homomorphism" from $\?T$ to $\?B$ sending $t$ to $b$.
+		Assume that $\?B$ has "tree duality".
+		Let $a\in A$ and $b\in B$. Assume that $b \not\in \HCFixpoint{\?A}{\?B}(a)$. Then there exists a "$\sigma$-tree" $\?T$, and $t\in T$ "st" there is a "homomorphism" from $\?T$ to $\?A$ sending $t$ to $a$, but no "homomorphism" from $\?T$ to $\?B$ sending $t$ to $b$.
 		Moreover, the "height@@struct" of $\?T$ can be assumed to be linearly bounded
-		by the "diameter" of the greatest "critical obstruction" of $\?B$.
+		by the greatest "diameter" of a "critical obstruction" of $\?B$.
 	\end{claim}
 	TODO:proof.
+
+	Putting \Cref{claim:hyperedge-consistency-uniform-convergence-tree-witnesses,claim:hyperedge-consistency-uniform-convergence-size-trees} together with the fact that if $\?B$ has "finite duality", then the "diameter" of its "critical obstructions" must be bounded,
+	we get that there exists some $n \in \N$ (that only depends on $\?B$),
+	"st" for any finite "$\sigma$-structure" $\?A$, for all $a\in A$ and $b\in B$,
+	if $b\not\in \HCFixpoint{\?A}{\?B}(a)$ then
+	$b \not\in \HCOperator^{\,n}_{\?A,\?B}(\topLatticeGuessFunctions{B})(a)$.
+	And hence, $\HCOperator^{\,n}_{\?A,\?B}(\topLatticeGuessFunctions{B}) = \HCFixpoint{\?A}{\?B}$,
+	proving that \eqref{item:hc-uniform-finite-structures} holds.
+	This concludes the proof of \Cref{lem:hyperedge-consistency-uniform-convergence}.
 \end{proof}
 
 % \begin{claim}
