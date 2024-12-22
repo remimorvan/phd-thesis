@@ -90,7 +90,7 @@
 
 \newcommandPIE{\HCOperator}{\withkl{\kl[\HCOperator]}{\cmdkl{\symcal{H\!C}#1#2#3}}}
 	\knowledge{\HCOperator}{notion}
-\knowledgenewrobustcmd{\HCFixpoint}[2]{\cmdkl{H^{\,*}_{#1,#2}}}
+\knowledgenewrobustcmd{\HCFixpoint}[2]{\cmdkl{H^{\,*}_{\smash{#1,#2}}}}
 
 \knowledgenewrobustcmd\restr[2]{{
   #1 \cmdkl{\raisebox{-.1em}{\(\vert\)}{}_{#2}}
@@ -103,3 +103,5 @@
 \knowledgenewrobustcmd{\signatureSynchronous}[1]{\sigma_{#1}^{\smash{\textrm{sync}}}}
 
 \knowledgenewrobustcmd{\semFO}[2]{\cmdkl{\lBrack} #1 \cmdkl{\rBrack^{#2}}}
+
+\knowledgenewrobustcmd{\ball}[3]{\cmdkl{\+B}_{#1}^{#3}(#2)}
