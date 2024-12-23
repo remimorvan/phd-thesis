@@ -228,3 +228,47 @@ TODO: To be concluded.
 \end{proposition}
 
 TODO:proofs.
+
+\subsection{Transitive Tournaments "vs" Paths}
+
+\begin{figure}
+	\centering
+	\begin{tikzpicture}
+		\input{tikz/zigzag-graph}
+		\input{tikz/zigzag-graph-label}
+	\end{tikzpicture}
+	\caption{\AP\label{fig:zigzag-graph}The "zigzag graph" $\zigzag{5}{2}$.}
+\end{figure}
+\begin{example}
+	\AP\label{example:zigzag-defn}
+	Let $n\in\?N$.
+	We define the \AP""zigzag graph"" $\intro*\zigzag{n}{2}$ of width $n$ and length 2
+	to be "graph" whose vertices are $a_0, \hdots, a_n$, $b_0, \hdots, b_{n}$,
+	$a'_0$ and $b'_n$, with edges from $a_i$ to $b_{i-1}$ and to $b_{i}$ (for $i \in \lBrack 0,n\rBrack$, whenever the nodes exist), and with an edge from $a'_0$ to $a_0$ and from $b_n$
+	to $b'_n$. See \Cref{fig:zigzag-graph} for an illustration.
+	
+	Note that $\zigzag{n}{2}$ does not admit a "homomorphism" to the "$2$-path"---indeed, such a homomorphism should send $a'_0$, $a_0$ and $b_0$ onto $0$, $1$, and $2$, respectively, 
+	and so all $a_i$'s (resp. $b_i$'s) must be sent onto $1$ (resp. $2$), but then $b'_n$ cannot be mapped anywhere.
+
+	On the other hand, $\zigzag{n}{2}$ admits a "homomorphism" to the "$2$-transitive tournament", as witnessed by \Cref{fig:zigzag-graph-hom-T2}.
+	In fact, this "homomorphism" is far from being unique:
+	each vertex $a_1,\,a_2,\,\hdots,\,a_{n-1}$ can be sent on either $0$ or $1$
+	(the red and purple vertices), 
+	and similarly, each vertex $b_1,\,b_2,\,\hdots,\,b_{n-1}$ can be sent on either $1$ or $2$
+	(the purple and blue vertices).\footnote{Note that it is straightforward
+	to extend these results---namely $\zigzag{n}{2} \homto \transitiveTournament{2}$
+	and $\zigzag{n}{2} \nothomto \pathGraph{2}$---to arbitrary values of $k\in \N$ with
+	$k\geq 2$, namely $\zigzag{n}{k} \homto \transitiveTournament{k}$
+	and $\zigzag{n}{k} \nothomto \pathGraph{k}$, by letting
+	$\zigzag{n}{k}$ be the graph obtained from $\zigzag{n}{2}$ by
+	replacing the path leading to $a_0$ by a path of length $k-1$.
+	}
+\end{example}
+\begin{figure}
+	\centering 
+	\begin{tikzpicture}
+		\input{tikz/zigzag-graph-hom-T2}
+		\input{tikz/2-transitive-tournament}
+	\end{tikzpicture}
+	\caption{\AP\label{fig:zigzag-graph-hom-T2}A "homomorphism" from the "zigzag graph" (left-hand side) to the "$2$-transitive tournament" (right-hand side).}
+\end{figure}

@@ -1,0 +1,10 @@
+% ---
+% 2-transitive tournament
+% ---
+\node[vertex, draw=c2, fill=c2, fill opacity=.4] at (0,0) (t2-2) {};
+\node[vertex, above=of t2-2, draw=c1, fill=c1, fill opacity=.4] (t2-1) {};
+\node[vertex, above=of t2-1, draw=c0, fill=c0, fill opacity=.4] (t2-0) {};
+
+\draw[edge] (t2-0) to (t2-1);
+\draw[edge] (t2-1) to (t2-2);
+\draw[edge] (t2-0) to[bend left=60] (t2-2);

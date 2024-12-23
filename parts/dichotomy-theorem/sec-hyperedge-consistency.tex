@@ -23,35 +23,48 @@ and we try to find some ``obstructions''. These obstructions take the following 
 if $g \in G$ has a successor (resp. predecessor) $g' \in G$, then any vertex of $\textrm{Im}_g$
 must have a successor (resp. predecessor) in $\?H$ that lives in $\textrm{Im}_{g'}$.
 
+
+\begin{example}[{\Cref{example:zigzag-defn}, continued}]
+	\AP\label{example:zigzag-hyperedge-consistency}
+	We depict in \Cref{fig:zigzag-graph-HC-T2} the first steps of the "hyperedge consistency algorithm"---that we will define formally after this example---, when the "target structure"
+	if $\transitiveTournament{2}$ and the "input structure" is $\zigzag{n}{2}$.
+	The second step is a fixpoint, and so the procedure stops there. Note also that
+	each $\textrm{Im}_g$ ($g\in \zigzag{n}{2}$) is non-empty. 
+\end{example}
+
 \begin{figure}
 	\centering
 	\begin{tikzpicture}
 		\input{tikz/zigzag-graph}
-		\input{tikz/zigzag-graph-label}
-	\end{tikzpicture}
-	\caption{\AP\label{fig:zigzag-graph}The "zigzag graph" $\zigzag{5}{2}$.}
-\end{figure}
-\begin{example}
-	Let $n\in\?N$.
-	We define the \AP""zigzag graph"" $\intro*\zigzag{n}{2}$ of width $n$ and length 2
-	to be "graph" whose vertices are $a_0, \hdots, a_n$, $b_0, \hdots, b_{n}$,
-	$a'_0$ and $b'_n$, with edges from $a_i$ to $b_{i-1}$ and to $b_{i}$ (for $i \in \lBrack 0,n\rBrack$, whenever the nodes exist), and with an edge from $a'_0$ to $a_0$ and from $b_n$
-	to $b'_n$. See \Cref{fig:zigzag-graph} for an illustration.
-	
-	Note that $\zigzag{n}{2}$ does not admit a "homomorphism" to the "$2$-path"---indeed, such a homomorphism should send $a'_0$, $a_0$ and $b_0$ onto $0$, $1$, and $2$, respectively, 
-	and so all $a_i$'s (resp. $b_i$'s) must be sent onto $1$ (resp. $2$), but then $b'_n$ cannot be mapped anywhere.
-
-	On the other hand, $\zigzag{n}{2}$ admits a "homomorphism" to the "$2$-transitive tournament", as witnessed by \Cref{fig:zigzag-graph-hom-T2}.
-
-\end{example}
-\begin{figure}
-	\centering 
+		% \input{tikz/2-transitive-tournament}
+		\input{tikz/zigzag-graph-HC-T2-step0}
+	\end{tikzpicture}\\[2em]
 	\begin{tikzpicture}
-		\input{tikz/zigzag-graph-hom-T2}
+		\input{tikz/zigzag-graph}
+		% \input{tikz/2-transitive-tournament}
+		\input{tikz/zigzag-graph-HC-T2-step1}
+	\end{tikzpicture}\\[2em]
+	\begin{tikzpicture}
+		\input{tikz/zigzag-graph}
+		% \input{tikz/2-transitive-tournament}
+		\input{tikz/zigzag-graph-HC-T2-step2}
 	\end{tikzpicture}
-	\caption{\AP\label{fig:zigzag-graph-hom-T2}A "homomorphism" from the "zigzag graph" to the "$2$-transitive tournament".}
+	\caption{\AP\label{fig:zigzag-graph-HC-T2} Zeroth (above), first (middle) and second step (below) of the "hyperedge consistency algorithm" on $\zigzag{n}{2}$
+	when the "target structure" is $\transitiveTournament{2}$, depicted in \Cref{fig:zigzag-graph-HC-T2-side-T2}. Next to each vertex $g$ of $\zigzag{n}{2}$ we represent
+	all vertices $h$ of $\transitiveTournament{2}$: if the vertex is filled
+	when $h \in \textrm{Im}_{g}$.
+	}
 \end{figure}
-
+\begin{marginfigure}[-16em]
+	\centering
+	\begin{tikzpicture}
+		\input{tikz/2-transitive-tournament}
+	\end{tikzpicture}
+	\caption{
+		\AP\label{fig:zigzag-graph-HC-T2-side-T2}
+		The "$2$-transitive tournament" $\transitiveTournament{2}$.
+	}
+\end{marginfigure}
 
 We formalize this algorithm as the greatest fixpoint of some operator.
 Given a finite "$\sigma$-structure" $\?B$, and an arbitrary\sidenote{Note that in this part, while some results---mostly complexity/decidability ones---require the assumption that the "left structure" is finite, some results do not,
@@ -103,6 +116,7 @@ and iterating $\HCOperator$.}
 \end{proof}
 
 \begin{corollary}
+	\AP\label{coro:HC-empty-implies-no-hom}
 	If $\HCFixpoint{\?A}{\?B}(a) = \emptyset$ for some $a\in A$, then
 	$\?A \nothomto \?B$.
 \end{corollary}
@@ -115,8 +129,15 @@ $\?A$ to $\?B$.
 Yet, TODO managed to identify a necessary and sufficient condition on $\?B$ for
 the "hyperedge consistency algorithm@@finute" to decide whether $\?A \in \HomFin{\?B}$.
 \begin{definition}
+	\AP\label{defn:tree-duality}
 	A finite "$\sigma$-structure" $\?B$ has ""tree duality"" when TODO.
 \end{definition}
+
+\begin{proposition}[todo:addref]
+	\AP\label{prop:finite-duality-implies-tree-duality}
+	If a finite "$\sigma$-structure" $\?B$ has ""finite duality"",
+	then it has "tree duality".
+\end{proposition}
 
 \begin{proposition}[TODO:addref]
 	\AP\label{prop:hyperedge-consistency-tree-duality}
@@ -127,6 +148,79 @@ the "hyperedge consistency algorithm@@finute" to decide whether $\?A \in \HomFin
 When $\?A$ is moreover finite, this immediately gives an algorithm to decide
 $\?A \homto \?B$ since $\HCFixpoint{\?A}{\?B}$ can be computed not only
 by an ordinal induction but with a finite induction.
+
+As an example, \Cref{example:zigzag-hyperedge-consistency} witnesses that
+$\zigzag{n}{2} \homto \transitiveTournament{2}$ since $\transitiveTournament{2}$
+has "tree duality" by \Cref{prop:finite-duality-implies-tree-duality} and TODO:ADDREF.
+
+\begin{figure}
+	\centering
+	\begin{tikzpicture}
+		\input{tikz/zigzag-graph}
+		\input{tikz/zigzag-graph-HC-P2-step2}
+	\end{tikzpicture}
+	\quad\emph{(step $2$)~}\\[2em]
+	\begin{tikzpicture}
+		\input{tikz/zigzag-graph}
+		\input{tikz/zigzag-graph-HC-P2-step3}
+	\end{tikzpicture}
+	\quad\emph{(step $3$)~}\\[2em]
+	\begin{tikzpicture}
+		\input{tikz/zigzag-graph}
+		\input{tikz/zigzag-graph-HC-P2-step6}
+	\end{tikzpicture}
+	\quad\emph{(step $6$)~}\\[2em]
+	\begin{tikzpicture}
+		\input{tikz/zigzag-graph}
+		\input{tikz/zigzag-graph-HC-P2-step7}
+	\end{tikzpicture}
+	\quad\emph{(step $7$)~}\\[2em]
+	\begin{tikzpicture}
+		\input{tikz/zigzag-graph}
+		\input{tikz/zigzag-graph-HC-P2-step13}
+	\end{tikzpicture}
+	\quad\emph{(step $13$)}
+	\caption{%
+		\AP\label{fig:zigzag-graph-HC-P2}
+		Steps $2$, $3$, $6$, $7$ and $13$ of the "hyperedge consistency algorithm"
+		on $\zigzag{5}{2}$,
+		when the "target structure" is $\pathGraph{2}$, depicted in \Cref{fig:zigzag-graph-HC-P2-side-P2}.%
+	}
+\end{figure}
+\begin{marginfigure}[-12em]
+	\centering
+	\begin{tikzpicture}
+		\input{tikz/2-path-graph}
+	\end{tikzpicture}
+	\caption{
+		\AP\label{fig:zigzag-graph-HC-P2-side-P2}
+		The "$2$-path" $\pathGraph{2}$.
+	}
+\end{marginfigure}
+\begin{example}[{\Cref{example:zigzag-hyperedge-consistency}, continued}]
+	On the other hand, while $\pathGraph{2}$ does not have "finite duality", it has
+	"tree duality", by TODO:ADDREF, and so the "hyperedge consistency algorithm"
+	decides whether a finite "$\sigma$-structure" has a "homomorphism" to $\pathGraph{2}$.
+	We represent some steps of the algorithm in \Cref{fig:zigzag-graph-HC-P2},
+	on the "input structure" $\zigzag{5}{2}$.
+	Steps $0$, $1$ and $2$ of the "hyperedge consistency algorithm"
+	are identical to \Cref{example:zigzag-hyperedge-consistency}.
+	Yet, in step $2$, we have not reached the fixpoint.
+	In step $7$, this is the first time
+	we have $\HCOperator^{7}(g) = \emptyset$ for some
+	$g\in \zigzag{5}{2}$. This propagates until step 13, 
+	when $\HCOperator^{13}(g) = \emptyset$
+	for all $g\in \zigzag{5}{2}$. This is of course the fixpoint of $\HCOperator$,
+	proving that $\HCFixpoint{\zigzag{5}{2}}{\pathGraph{2}}$ is the constant map
+	equal to $\emptyset$, and by \Cref{coro:HC-empty-implies-no-hom}
+	that $\zigzag{5}{2} \nothomto \pathGraph{2}$.
+
+	In general, on "input structure" $\zigzag{n}{2}$ (with $n\in\Np$),
+	the smallest $k$ "st" $\HCOperator^{\,k}(g) = \emptyset$
+	for some $g \in \zigzag{n}{2}$ is of size $\frac{n}{2} + \+O(1)$,
+	and if we want to the property to hold for \emph{all} $g$'s,
+	then $k$ has size $n + \+O(1)$.
+\end{example}
 
 \begin{corollary}
 	If $\?B$ has "tree duality", then $\HomFin{\?B}$ can be solved in
@@ -347,7 +441,7 @@ infinite "$\sigma$-structures".
 	$\phi(x)$. Then $\forall x.\, \neg \phi(x)$ is a "first-order formula" describing the class of
 	$\{\?A \mid \?A \homto \?B\}$ by \Cref{prop:hyperedge-consistency-tree-duality}, since
 	$\?B$ has "tree duality".\footnote{Note that this implication requires the assumption that
-	$\?B$ has "tree duality": indeed, if $\?B$ is the "2-clique", then \eqref{item:hc-uniform-first-order} holds as $\HCFixpoint_{\?A,\?B}(\topLatticeGuessFunctions{B})(a) = B$ for each $a\in \?A$ and each $\?A$. Yet, \eqref{item:hc-uniform-finite-duality} does not hold since $\?B$ does not even have "tree duality" by TODO:addref.} 
+	$\?B$ has "tree duality": indeed, if $\?B$ is the "$2$-clique", then \eqref{item:hc-uniform-first-order} holds as $\HCFixpoint_{\?A,\?B}(\topLatticeGuessFunctions{B})(a) = B$ for each $a\in \?A$ and each $\?A$. Yet, \eqref{item:hc-uniform-finite-duality} does not hold since $\?B$ does not even have "tree duality" by TODO:addref.} 
 
 	\proofcase{\eqref{item:hc-uniform-finite-duality} $\Rightarrow$
 		\eqref{item:hc-uniform-finite-structures}.}
