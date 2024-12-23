@@ -24,8 +24,8 @@ if $g \in G$ has a successor (resp. predecessor) $g' \in G$, then any vertex of 
 must have a successor (resp. predecessor) in $\?H$ that lives in $\textrm{Im}_{g'}$.
 
 
-\begin{example}[{\Cref{example:zigzag-defn}, continued}]
-	\AP\label{example:zigzag-hyperedge-consistency}
+\begin{example}[{\Cref{ex:zigzag-defn}, continued}]
+	\AP\label{ex:zigzag-HC-T2}
 	We depict in \Cref{fig:zigzag-graph-HC-T2} the first steps of the "hyperedge consistency algorithm"---that we will define formally after this example---, when the "target structure"
 	if $\transitiveTournament{2}$ and the "input structure" is $\zigzag{n}{2}$.
 	The second step is a fixpoint, and so the procedure stops there. Note also that
@@ -149,7 +149,7 @@ When $\?A$ is moreover finite, this immediately gives an algorithm to decide
 $\?A \homto \?B$ since $\HCFixpoint{\?A}{\?B}$ can be computed not only
 by an ordinal induction but with a finite induction.
 
-As an example, \Cref{example:zigzag-hyperedge-consistency} witnesses that
+As an example, \Cref{ex:zigzag-HC-T2} witnesses that
 $\zigzag{n}{2} \homto \transitiveTournament{2}$ since $\transitiveTournament{2}$
 has "tree duality" by \Cref{prop:finite-duality-implies-tree-duality} and TODO:ADDREF.
 
@@ -197,14 +197,15 @@ has "tree duality" by \Cref{prop:finite-duality-implies-tree-duality} and TODO:A
 		The "$2$-path" $\pathGraph{2}$.
 	}
 \end{marginfigure}
-\begin{example}[{\Cref{example:zigzag-hyperedge-consistency}, continued}]
+\begin{example}[{\Cref{ex:zigzag-HC-T2}, continued}]
+	\AP\label{ex:zigzag-HC-P2}
 	On the other hand, while $\pathGraph{2}$ does not have "finite duality", it has
 	"tree duality", by TODO:ADDREF, and so the "hyperedge consistency algorithm"
 	decides whether a finite "$\sigma$-structure" has a "homomorphism" to $\pathGraph{2}$.
 	We represent some steps of the algorithm in \Cref{fig:zigzag-graph-HC-P2},
 	on the "input structure" $\zigzag{5}{2}$.
 	Steps $0$, $1$ and $2$ of the "hyperedge consistency algorithm"
-	are identical to \Cref{example:zigzag-hyperedge-consistency}.
+	are identical to \Cref{ex:zigzag-HC-T2}.
 	Yet, in step $2$, we have not reached the fixpoint.
 	In step $7$, this is the first time
 	we have $\HCOperator^{7}(g) = \emptyset$ for some
@@ -366,9 +367,16 @@ So, if $\?A \nothomto \?B$, then "hyperedge consistency" will detect it in finit
 that $\?B$ has "tree duality".
 We will then show the dual implication, under the stronger assumption that $\?B$ has "finite 
 duality": the reason we need this stronger assumption is that while the "hyperedge consistency algorithm@@finite" converges for finite "$\sigma$-structures" when $\?B$ has "tree duality",
-the number of iterations needed to reach the fixpoint depends on $\?A$. For "structures"
-with "finite duality", we show that this is not the case---and hence, converge generalizes to 
-infinite "$\sigma$-structures".
+the number of iterations needed to reach the fixpoint depends on $\?A$:
+for instance, in \Cref{ex:zigzag-HC-P2}, we showed that when the target structure
+is $\pathGraph{2}$, then "hyperedge consistency algorithm@@finite" converges
+on $\zigzag{n}{2}$ in $n + \+O(1)$ steps.
+On the other hand, for "structures"
+with "finite duality", we show that this is not the case---and hence, convergence generalizes to 
+infinite "$\sigma$-structures": for instance, we showed in \Cref{ex:zigzag-HC-P2}
+that over the "target structure" $\transitiveTournament{2}$, which has "finite duality", 
+then "hyperedge consistency algorithm@@finite" converges
+on $\zigzag{n}{5}$ in only $2$ steps.
 
 \begin{lemma}[Uniform Convergence of Hyperedge Consistency for Structures with Finite Duality]
 	\AP\label{lem:hyperedge-consistency-uniform-convergence}
@@ -461,8 +469,8 @@ infinite "$\sigma$-structures".
 	% 	least $n\in \N$ "st"
 	% 	$b\not\in \HCOperator^{\,n}_{\?A,\?B}(\topLatticeGuessFunctions{B})(a)$.
 	% \end{claim}
-	This claim is actually proven in \cite[Proof of Lemma 3.2]{LaroseLotenTardif2007CharacterisationFOCSP}. 
-	What we actually need is the converse to this property:
+	% This claim is actually proven in \cite[Proof of Lemma 3.2]{LaroseLotenTardif2007CharacterisationFOCSP}. 
+	% What we actually need is the converse to this property:
 	\begin{claim}
 		\AP\label{claim:hyperedge-consistency-uniform-convergence-tree-witnesses}
 		Let $a\in A$ and $b\in B$. Assume that there exists a "$\sigma$-tree" $\?T$ "st" there is a "homomorphism" from $\?T$ to $\?A$ that maps some element $t \in T$ to $a$, but no "homomorphism" from $\?T$ to $\?B$
