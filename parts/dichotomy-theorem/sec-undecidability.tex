@@ -2,21 +2,21 @@
 	Undecidability of the Homomorphism Problems}
 
 
-We prove the undecidability of $\HomAut{\?B}$ and $\HomRegFin{\?B}$
+We prove the undecidability of $\HomAutDec{\?B}$ and $\HomRegFinDec{\?B}$
 when $\?B$ does not have "finite duality". Both reductions are
-direct adaptations of the proof that $\HomFin{\?B}$ is "L"-hard when $\?B$ does not
+direct adaptations of the proof that $\HomFinDec{\?B}$ is "L"-hard when $\?B$ does not
 have finite duality by \textcite[Theorem 3.2]{LaroseTesson2009UniversalAlgebraCSP}.
 However, proving the undecidability of the problem that is reduced
-to $\HomRegFin{\?B}$ is not entirely trivial and requires some work:
+to $\HomRegFinDec{\?B}$ is not entirely trivial and requires some work:
 \begin{itemize}
-	\item For $\HomFin{\?B}$, we reduce the complement of "Connectivity in Automatic Graphs",
+	\item For $\HomFinDec{\?B}$, we reduce the complement of "Connectivity in Automatic Graphs",
 		providing a "coRE"-lowerbound.
-	\item For $\HomRegFin{\?B}$, we reduce "Regular Unconnectivity in Automatic Graphs",
+	\item For $\HomRegFinDec{\?B}$, we reduce "Regular Unconnectivity in Automatic Graphs",
 		which in turn is reduced from "Restricted Membership for Deterministic Reversible Turing Machines", providing a "RE"-lowerbound. TODO:update.
 \end{itemize}
 
 \subsection{\AP\label{sec:undecidability-hom}%
-	Undecidability of \,$\HomAut{\?B}$}
+	Undecidability of \,$\HomAutDec{\?B}$}
 
 For $n\in\N$, we define the \AP""$n$-link"" $\intro*\link{n}$ be the "$\sigma$-structure"\sidenote{From \cite[\S~2]{LaroseLotenTardif2007CharacterisationFOCSP}.} 
 whose domain is $\lBrack 0,n\rBrack$, and every "relation symbol" $\+R$
@@ -52,7 +52,7 @@ Moreover, being "linked" is transitive, but not necessarily reflexive.
 
 \begin{proposition}[{\cite[Theorem 4.7]{LaroseLotenTardif2007CharacterisationFOCSP}}]%
 	\!\footnote{Actually \cite[Theorem 4.7]{LaroseLotenTardif2007CharacterisationFOCSP} assumes
-	that $\HomFin{\?B}$ is "first-order definable", but this condition
+	that $\HomFinDec{\?B}$ is "first-order definable", but this condition
 	is equivalent to $\?B$ having "finite duality" by Atserias' result
 	\cite[Corollary 4]{Atserias2008DigraphColoring}.}%
 	%%%
@@ -62,7 +62,7 @@ Moreover, being "linked" is transitive, but not necessarily reflexive.
 \end{proposition}
 
 Equipped with the previous proposition, we can now show the undecidability 
-of $\HomAut{\?B}$ by reduction from the following problem.
+of $\HomAutDec{\?B}$ by reduction from the following problem.
 
 \decisionproblem{""Connectivity in Automatic Graphs""}{
 	An "automatic presentation of a directed graph" $\•G$,
@@ -86,7 +86,7 @@ of $\HomAut{\?B}$ by reduction from the following problem.
 	\AP\label{lem:reduction-hom}
 	Assume that $\sigma$ contains at least one "relation symbol" of arity at least 2.
 	If $\?B$ does not have "finite duality", then there is a TODO:complexity reduction 
-	from the complement of "Connectivity in Automatic Graphs" to $\HomAut{\marked{\?B}}$.
+	from the complement of "Connectivity in Automatic Graphs" to $\HomAutDec{\marked{\?B}}$.
 \end{lemma}
 
 \begin{proof}
@@ -218,8 +218,8 @@ of $\HomAut{\?B}$ by reduction from the following problem.
 
 By \Cref{prop:undecidability-connectivity}, the complement of "Connectivity in Automatic Graphs"
 is "coRE"-complete, and assuming that $\sigma$ contains at least one "relation symbol" of "arity" 2,
-it reduces by \Cref{lem:reduction-hom} to any problem $\HomAut{\marked{\?B}}$ when $\?B$ has "finite duality". In turns, by \Cref{prop:marking-preserves-csp-complexity}, it reduces to
-$\HomAut{\?B}$, which is thus "coRE"-hard. It remains to deal with "signatures" consisting of only
+it reduces by \Cref{lem:reduction-hom} to any problem $\HomAutDec{\marked{\?B}}$ when $\?B$ has "finite duality". In turns, by \Cref{prop:marking-preserves-csp-complexity}, it reduces to
+$\HomAutDec{\?B}$, which is thus "coRE"-hard. It remains to deal with "signatures" consisting of only
 "unary predicates".\sidenote{It is not clear to us whether this case was properly handled in
 \cite{LaroseLotenTardif2007CharacterisationFOCSP}.}
 
@@ -279,19 +279,19 @@ $\HomAut{\?B}$, which is thus "coRE"-hard. It remains to deal with "signatures" 
 
 \begin{corollary}
 	\!\sidenote[][-15em]{In the case of Larose and Tesson, they study the problem
-	$\HomFin{-}$, and prove in \cite[Theorem 3.2]{LaroseTesson2009UniversalAlgebraCSP}
+	$\HomFinDec{-}$, and prove in \cite[Theorem 3.2]{LaroseTesson2009UniversalAlgebraCSP}
 	that there is a "first-order reduction" from "Connectivity in Finite Graphs" to
-	$\HomFin{\marked{\?B}}$ assuming that $\?B$ does not have finite duality.
+	$\HomFinDec{\marked{\?B}}$ assuming that $\?B$ does not have finite duality.
 	Moreover, "Connectivity in Finite Graphs" is "L"-hard under "first-order reductions" since
 	Etessami \cite[Theorem 3.2]{Etessami1997CountingLogSpace} proved that the problem
 	of given a directed path and two vertices $s$, $t$ to decide if there is a path from
 	$s$ to $t$ is "L"-hard under "first-order reductions"-in fact even under quantifier-free reductions. It turn, this problem can be reduced in "first-order@@reduction"
 	to "Connectivity in Finite Graphs" \cite{SamiD2015USTCONNLogspace}.
 	Overall, and together with \Cref{prop:marking-preserves-csp-complexity},
-	this shows that $\HomFin{\?B}$ is "L"-hard under "first-order reductions".}%
+	this shows that $\HomFinDec{\?B}$ is "L"-hard under "first-order reductions".}%
 	%%%
 	\AP\label{coro:lowerbound-hom}
-	If $\?B$ does not have "finite duality", then $\HomAut{\?B}$
+	If $\?B$ does not have "finite duality", then $\HomAutDec{\?B}$
 	is "coRE"-hard.
 \end{corollary}
 
@@ -302,7 +302,7 @@ $\HomAut{\?B}$, which is thus "coRE"-hard. It remains to deal with "signatures" 
 \end{proof}
 
 \subsection{\AP\label{sec:undecidability-homreg}%
-	Undecidability of \,$\HomRegAut{\?B}$}
+	Undecidability of \,$\HomRegAutDec{\?B}$}
 
 The reduction to show undecidability of is nearly identical to \Cref{lem:reduction-hom},
 but the input problem differs quite a lot.
@@ -317,7 +317,7 @@ but the input problem differs quite a lot.
 }
 \footnotetext{Formally, we mean that $L = \•G^{-1}[U]$ for some union $U$ of "connected components" of $\?G$.}
 
-We will first reduce this problem to $\HomRegAut{\?B}$,
+We will first reduce this problem to $\HomRegAutDec{\?B}$,
 and will later settle its complexity.
 
 \begin{lemma}
@@ -325,7 +325,7 @@ and will later settle its complexity.
 	Assume that $\sigma$ contains at least one "relation symbol" of arity at least 2.
 	If $\?B$ does not have "finite duality", then there is a TODO:complexity reduction 
 	from "Regular Unconnectivity in Automatic Graphs"
-	to $\HomRegAut{\marked{\?B}}$.
+	to $\HomRegAutDec{\marked{\?B}}$.
 \end{lemma}
 
 \begin{proof}
@@ -500,7 +500,7 @@ We then prove a lower bound on the complexity of "Regular Unreachability of Turi
 
 \begin{corollary}
 	\AP\label{coro:lowerbound-homreg}
-	If $\?B$ does not have "finite duality", then $\HomAut{\?B}$
+	If $\?B$ does not have "finite duality", then $\HomAutDec{\?B}$
 	is "RE"-hard.
 \end{corollary}
 

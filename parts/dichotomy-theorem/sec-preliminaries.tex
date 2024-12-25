@@ -168,26 +168,26 @@ obtained from $\?B$ by "interpreting@@symbol" each predicate $\unarypred{b}$ as 
 singleton $\{b\}$.\sidenote{TODO: ASIA'S REMARK: this is called the ``idempotent core''.}
 
 \begin{proposition}[Folklore]
-\!\sidenote{The non-easy part is to reduce $\HomFin{\marked{\?B}}$ to $\HomFin{\?B}$: only this reduction
+\!\sidenote{The non-easy part is to reduce $\HomFinDec{\marked{\?B}}$ to $\HomFinDec{\?B}$: only this reduction
 requires the assumption that $\?B$ is a core. This reduction is folklore, see "eg"
 \cite[Lemma 2.5]{LaroseTesson2009UniversalAlgebraCSP}.
 TODO: understand if the proof is indentical to us. We provide here a self-contained proof.}%
 \sidenote{The "marked structure" $\marked{\core{\?B}}$ of the "core" of $\?B$ is
 usually called the \AP""idempotent core""
-of $\?B$. By TODO:addref and this proposition, $\HomFin{\?B}$ and
-$\HomFin{\marked{\core{\?B}}}$ are equivalent under "first-order reductions".
+of $\?B$. By TODO:addref and this proposition, $\HomFinDec{\?B}$ and
+$\HomFinDec{\marked{\core{\?B}}}$ are equivalent under "first-order reductions".
 This reduction is a central tool
 in the algebraic approach to understand "constraint satisfaction
 problem" since the algebra associated to the "CSP" over an "idempotent core"
 only has idempotent operations, making it much easier to work with. See TODO:addref for
 more details.}%
 \AP\label{prop:marking-preserves-csp-complexity}
-If $\?B$ is a finite "core", then the problems $\HomFin{\marked{\?B}}$ and 
-$\HomFin{\?B}$ are equivalent under "first-order reductions".
+If $\?B$ is a finite "core", then the problems $\HomFinDec{\marked{\?B}}$ and 
+$\HomFinDec{\?B}$ are equivalent under "first-order reductions".
 \end{proposition}
 
 \begin{proof}[Proof of \Cref{prop:marking-preserves-csp-complexity}]
-\proofcase{Reduction from $\HomFin{\?B}$ to $\HomFin{\marked{\?B}}$.}
+\proofcase{Reduction from $\HomFinDec{\?B}$ to $\HomFinDec{\marked{\?B}}$.}
 We reduce a "$\sigma$-structure" $\?A$ to the
 "$\extendedSignature{\sigma}{\?B}$-structure" $\?A'$ obtained
 from $\?A$ by "interpreting@@symbol" each predicate $\unarypred{b}$ as the emptyset.
@@ -195,7 +195,7 @@ Clearly, a function from $A$ to $B$ is a "homomorphism" from $\?A$ to $\?B$
 "iff" it is a "homomorphism" from $\?A'$ to $\marked{\?B}$, proving the correctness
 of the reduction. It is, by definition, "first-order@@reduction".
 
-\proofcase{Reduction from $\HomFin{\marked{\?B}}$ to $\HomFin{\?B}$.}
+\proofcase{Reduction from $\HomFinDec{\marked{\?B}}$ to $\HomFinDec{\?B}$.}
 We first define the reduction $\Phi$ and show its correctness, we will show later that it
 is a "first-order reduction". We reduce a "$\extendedSignature{\sigma}{\?B}$-structure" $\?A$ to the "$\sigma$-structure"
 $\Phi(\?A)$ defined as follows:

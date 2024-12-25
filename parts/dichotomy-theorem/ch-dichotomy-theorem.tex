@@ -5,9 +5,12 @@ Let \AP$\intro*\Fin$ denote the class of all "finite $\sigma$-structures",
 We let \AP$\intro*\AutPres$ be the class of all "automatic presentations of $\sigma$-structures",
 and \AP$\intro*\FinPres$ be the subclass of "presentations" of "finite $\sigma$-structures".
 
-Given a "$\sigma$-structure" $\?B$, and a class $\classStruct$ of "automatic presentations of $\sigma$-structures", we denote by \AP$\intro*\HomPb{\classStruct}{\?B}$ the class of all presentations $\•A \in \classStruct$ such that the "$\sigma$-structure" $\?A$
+We denote by \AP$\intro*\HomFinClass{\?B}$ and $\intro*\HomAllClass{\?B}$ the class
+of all finite (resp. all) "$\sigma$-structures" that admit a "homomorphism" to $\?B$.
+
+Given a "$\sigma$-structure" $\?B$, and a class $\classStruct$ of "automatic presentations of $\sigma$-structures", we denote by \AP$\intro*\HomDec{\classStruct}{\?B}$ the class of all presentations $\•A \in \classStruct$ such that the "$\sigma$-structure" $\?A$
 that they "represent" admits a "homomorphism" to $\?B$.
-Similarly, we denote by \AP$\intro*\HomRegPb{\classStruct}{\?B}$ the class 
+Similarly, we denote by \AP$\intro*\HomRegDec{\classStruct}{\?B}$ the class 
 associated to "regular homomorphisms".%
 \sidenote{Todo: set-theoretic bullshit. Not a set but it is if we fix an alphabet. Blabla.}
 
@@ -15,15 +18,15 @@ While the existence of a "homomorphism" from some "automatic presentation" of $\
 to a "finite $\sigma$-structure" $\?B$ only depends on $\?A$ and not the "presentation" itself,
 this is not true for "regular homomorphism".
 For a $\sigma$-structure $\?B$,
-we use \AP$\intro*\HomFin{\?B}$, $\intro*\HomAut{\?B}$, $\intro*\HomRegFin{\?B}$
-and $\intro*\HomRegAut{\?B}$ as shorthands for $\HomPb{\FinPres}{\?B}$, $\HomPb{\AutPres}{\?B}$,
-$\HomRegPb{\FinPres}{\?B}$ and $\HomRegPb{\AutPres}{\?B}$, respectively.
+we use \AP$\intro*\HomFinDec{\?B}$, $\intro*\HomAutDec{\?B}$, $\intro*\HomRegFinDec{\?B}$
+and $\intro*\HomRegAutDec{\?B}$ as shorthands for $\HomDec{\FinPres}{\?B}$, $\HomDec{\AutPres}{\?B}$,
+$\HomRegDec{\FinPres}{\?B}$ and $\HomRegDec{\AutPres}{\?B}$, respectively.
 
 Note that any "homomorphism" from an "automatic presentation" of a "finite structure"
-to a "finite structure" is also "regular@@hom" and so $\HomFin{\?B} = \HomRegFin{\?B}$.\sidenote{Note also that membership in $\HomFin{-} = \HomRegFin{-}$ and in
-$\HomAut{-}$ only depends on the "structure represented"
+to a "finite structure" is also "regular@@hom" and so $\HomFinDec{\?B} = \HomRegFinDec{\?B}$.\sidenote{Note also that membership in $\HomFinDec{-} = \HomRegFinDec{-}$ and in
+$\HomAutDec{-}$ only depends on the "structure represented"
 by the "automatic presentation", and not on the "presentation" itself.
-This is not the case for $\HomRegAut{-}$. We use these definitions for two reasons: (1) for consistency with $\HomRegAut{-}$ and (2) for the associated decision problem to be defined unambiguously. Note moreover that in the case of "finite structures", the size of its representation, say using a adjacency lists, and of its "automatic presentation" are equal up to a TODO.}
+This is not the case for $\HomRegAutDec{-}$. We use these definitions for two reasons: (1) for consistency with $\HomRegAutDec{-}$ and (2) for the associated decision problem to be defined unambiguously. Note moreover that in the case of "finite structures", the size of its representation, say using a adjacency lists, and of its "automatic presentation" are equal up to a TODO.}
 
 \begin{theorem}[Dichotomy Theorem for Automatic Structures]
   \!\footnote{The equivalence between (1) and (2) still holds
@@ -35,14 +38,14 @@ This is not the case for $\HomRegAut{-}$. We use these definitions for two reaso
   Let $\?B$ be a "finite $\sigma$-structure". The following are equivalent:
   \begin{enumerate}
     \item $\?B$ has "finite duality";
-    \item $\HomAut{\?B}$ is "decidable";
-    \item $\HomRegAut{\?B}$ is "decidable";
-    \item $\HomAut{\?B} = \HomRegAut{\?B}$ "ie" for any "automatic presentation" $\•A$ of a 
+    \item $\HomAutDec{\?B}$ is "decidable";
+    \item $\HomRegAutDec{\?B}$ is "decidable";
+    \item $\HomAutDec{\?B} = \HomRegAutDec{\?B}$ "ie" for any "automatic presentation" $\•A$ of a 
       "$\sigma$-structure" $\?A$, there is a "homomorphism" from $\?A$ to $\?B$ "iff" 
       there is a "regular homomorphism" from $\•A$ to $\?B$;
-    \item $\HomRegAut{\?B}$ is "invariant under graph isomorphisms".
+    \item $\HomRegAutDec{\?B}$ is "invariant under graph isomorphisms".
   \end{enumerate}
-  Moreover, when $\HomAut{\?B}$ and $\HomRegAut{\?B}$ undecidable, they are "coRE"-complete
+  Moreover, when $\HomAutDec{\?B}$ and $\HomRegAutDec{\?B}$ undecidable, they are "coRE"-complete
   and "RE"-complete, respectively. When they are decidable, they are "NL" and TODO, respectively.
 \end{theorem}
 

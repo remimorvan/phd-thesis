@@ -1,8 +1,10 @@
 \newrobustcmd\?[1]{\symbf{#1}}
 \newrobustcmd\+[1]{\symcal{#1}}
 \newrobustcmd\•{\+}
+\newrobustcmd\card[1]{|1|}
 
 \knowledgenewrobustcmd\pset[1]{\cmdkl{\wp(#1)}}
+\knowledgenewrobustcmd\psetp[1]{\cmdkl{\wp_+(#1)}}
 
 \knowledgenewrobustcmd\id[1][]{\cmdkl{\mathrm{id}_{#1}}}
 
@@ -27,23 +29,26 @@
 \knowledgenewrobustcmd\marked[1]{#1^{\cmdkl{\dag}}}
 \knowledgenewrobustcmd\unarypred[1]{\cmdkl{P_{#1}}}
 
-\knowledgenewrobustcmd\Fin[1][\sigma]{\cmdkl{\mathcal{F\!in}_{#1}}}
-\knowledgenewrobustcmd\Aut[1][\sigma]{\cmdkl{\mathcal{Aut}_{#1}}}
+\knowledgenewrobustcmd\Fin[1][\sigma]{\cmdkl{\mathrm{Fin}_{#1}}}
+\knowledgenewrobustcmd\Aut[1][\sigma]{\cmdkl{\mathrm{Aut}_{#1}}}
 \knowledgenewrobustcmd\FinPres[1][\sigma]{\cmdkl{\mathcal{F\!in}^{\smash{\textsf{pres}}}_{#1}}}
 \knowledgenewrobustcmd\AutPres[1][\sigma]{\cmdkl{\mathcal{Aut}^{\smash{\textsf{pres}}}_{#1}}}
 
+\newrobustcmd{\HomClassNoKl}[2]{\mathrm{Hom}(#1,\,#2)}
+\knowledgenewrobustcmd\HomFinClass[1]{\cmdkl{\HomClassNoKl{\mathrm{Fin}}{#1}}}
+\knowledgenewrobustcmd\HomAllClass[1]{\cmdkl{\HomClassNoKl{\mathrm{All}}{#1}}}
 
 \newrobustcmd{\classStruct}{\mathcal{Cls}}
 
-\newrobustcmd{\HomPbNoKl}[2]{\mathrm{Hom}(#1,\,#2)}
-\knowledgenewrobustcmd\HomPb[2]{\cmdkl{\HomPbNoKl{#1}{#2}}}
-\knowledgenewrobustcmd\HomFin[1]{\cmdkl{\HomPbNoKl{\mathrm{Fin}}{#1}}}
-\knowledgenewrobustcmd\HomAut[1]{\cmdkl{\HomPbNoKl{\mathrm{Aut}}{#1}}}
+\newrobustcmd{\HomDecNoKl}[2]{\mathcal{H\!om}(#1,\,#2)}
+\knowledgenewrobustcmd\HomDec[2]{\cmdkl{\HomDecNoKl{#1}{#2}}}
+\knowledgenewrobustcmd\HomFinDec[1]{\cmdkl{\HomDecNoKl{\mathrm{Fin}}{#1}}}
+\knowledgenewrobustcmd\HomAutDec[1]{\cmdkl{\HomDecNoKl{\mathrm{Aut}}{#1}}}
 
-\newrobustcmd{\HomRegPbNoKl}[2]{\mathrm{Hom}^{\smash{\textsf{reg}}}(#1,\,#2)}
-\knowledgenewrobustcmd\HomRegPb[2]{\cmdkl{\HomRegPbNoKl{#1}{#2}}}
-\knowledgenewrobustcmd\HomRegFin[1]{\cmdkl{\HomRegPbNoKl{\mathrm{Fin}}{#1}}}
-\knowledgenewrobustcmd\HomRegAut[1]{\cmdkl{\HomRegPbNoKl{\mathrm{Aut}}{#1}}}
+\newrobustcmd{\HomRegDecNoKl}[2]{\mathcal{H\!om}^{\smash{\textsf{reg}}}(#1,\,#2)}
+\knowledgenewrobustcmd\HomRegDec[2]{\cmdkl{\HomRegDecNoKl{#1}{#2}}}
+\knowledgenewrobustcmd\HomRegFinDec[1]{\cmdkl{\HomRegDecNoKl{\mathrm{Fin}}{#1}}}
+\knowledgenewrobustcmd\HomRegAutDec[1]{\cmdkl{\HomRegDecNoKl{\mathrm{Aut}}{#1}}}
 
 \knowledgenewrobustcmd\link[1]{\cmdkl{\?L_{#1}}}
 
@@ -109,3 +114,5 @@
 \knowledgenewrobustcmd{\zigzag}[2]{\cmdkl{Z_{#2}^{(#1)}}}
 \knowledgenewrobustcmd{\transitiveTournament}[1]{\cmdkl{T_{#1}}}
 \knowledgenewrobustcmd{\pathGraph}[1]{\cmdkl{P_{#1}}}
+
+\knowledgenewrobustcmd{\FederVardi}[1]{\cmdkl{\+U(#1)}}
