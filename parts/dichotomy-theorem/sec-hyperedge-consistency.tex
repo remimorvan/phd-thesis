@@ -4,7 +4,7 @@
 In this section, we show that if $\?B$ has "finite duality", then $\HomRegAutDec{\?B}$ is decidable.
 We provide two alternative proofs. In \Cref{sec:uniformly-first-order-definable-hom} we provide
 a logic-based proof that if $\?B$ has "finite duality", then $\HomRegAutDec{\?B} = \HomAutDec{\?B}$,
-which in turns implies the decidability of $\HomRegAutDec{\?B}$.
+and that $\HomRegAutDec{\?B}$ is decidable.
 Independently, in \Cref{sec:hyperedge-consistency-finite,sec:hyperedge-consistency-automatic},
 we introduce the "hyperedge consistency algorithm for automatic structures",
 which is a variation of the classical "hyperedge consistency algorithm" for "finite structures".
@@ -172,15 +172,28 @@ we show that such "homomorphisms" are always "regular".
 	Hence, we have built a "regular homomorphism" from $\•A$ to $\?B$, which concludes the proof.
 \end{proof}
 
-\begin{corollary}[of \Cref{lemma:finite-duality-uniformly-definable-homomorphisms,prop:uniformly-first-order-implies-regular}]
+\begin{corollary}[of "Atserias' theorem", \Cref{lemma:finite-duality-uniformly-definable-homomorphisms,prop:uniformly-first-order-implies-regular}]
 	\AP\label{coro:finite-duality-implies-hom-equals-homreg}
-	Let $\?B$ be a finite "$\sigma$-structure" with "finite duality".
-	Then $\HomRegAutDec{\?B} = \HomAutDec{\?B}$.
+	If $\?B$ has "finite duality",
+	then $\HomRegAutDec{\?B} = \HomAutDec{\?B}$.
 \end{corollary}
 
 In turn, since $\HomAutDec{\?B}$ is "coRE" and $\HomRegAutDec{\?B}$ is "RE", this implies
-that $\HomRegAutDec{\?B}$ is decidable---and even TODO:complexity since $\HomAutDec{\?B}$
-is TODO:complexity when $\?B$ has "finite duality".
+that $\HomRegAutDec{\?B}$ is decidable.
+In fact, using the formulas $\phi^*_b(x)$, we can build a "first-order formula"
+saying ``every $x$ satisfies exactly one $\phi^*_b(x)$, and moreover
+if $\langle x_1,\hdots,x_k\rangle$ is an "$\+R$-hyperedge" then
+$\langle b_1,\hdots,b_k \rangle$ is an $\+R$-hyperedge, where $b_i$ is the unique element of $B$
+"st" $\phi_{b_i}(x_i)$ holds''. Each property ``$\langle x_1,\hdots,x_k\rangle$ is an "$\+R$-hyperedge"'' can be expressed using a "first-order formula" expressing the "relations"
+of the "automatic presentation" given as input.
+
+\begin{corollary}[of "Atserias' theorem" and \Cref{lemma:finite-duality-uniformly-definable-homomorphisms}]
+	\AP\label{coro:finite-duality-implies-homreg-decidable}
+	Let $\?B$ be a finite "$\sigma$-structure" with "finite duality".
+	For each "automatic presentation" $\•A$ over alphabet $\Sigma$, there exists a "first-order 
+	formula" $\phi$, whose size is linear in $\•A$, "st" $\univStructSynchronous{\Sigma} \models 
+	\phi$ "iff" $\•A \homregto \?B$.
+\end{corollary}
 
 \subsection{\AP\label{sec:hyperedge-consistency-finite}%
 	Hyperedge Consistency for Finite Structures}
@@ -274,6 +287,7 @@ the greatest element of $\LatticeGuessFunctions{A}{B}$, namely the map $a \mapst
 and iterating $\HCOperator$.}
 
 \begin{proposition}
+	\AP\label{prop:existence-homomorphism-implies-lowerbound-HC}
 	If $f\colon \?A \to \?B$ is a "homomorphism" then $f(a) \in \HCFixpoint{\?A}{\?B}(a)$
 	for each $a \in A$.
 \end{proposition}
@@ -398,6 +412,19 @@ has "tree duality" by \Cref{prop:finite-duality-implies-tree-duality} and TODO:A
 	If $\?B$ has "tree duality", then $\HomFinDec{\?B}$ can be solved in
 	polynomial time.\sidenote{TODO: Precise complexity.}
 \end{corollary}
+
+Finally, we will prove a proposition that we will prove useful later in TODO.
+\begin{proposition}
+	\AP\label{prop:HC-on-same-structure}
+	Let $\?B$ be a "$\sigma$-structure" with "tree duality". Then
+	$\HCFixpoint{\?B}{\?B}(b) = \{b\}$ for each $b\in B$.\footnote{Note that
+	this is false if $\?B$ does not have finite duality. For instance,
+	if $\?B$ is the "$2$-clique", then $\HCFixpoint{\?B}{\?B}(b) = B$
+	for each $b \in B$.}
+\end{proposition}
+\begin{proof}
+	TODO: Use rigidity.
+\end{proof}
 
 \subsection{\AP\label{sec:hyperedge-consistency-automatic}%
 	Hyperedge Consistency for Automatic Structures}
@@ -564,13 +591,6 @@ on $\zigzag{n}{5}$ in only $2$ steps.
 			there exists $n\in\N$ "st" for every \emph{arbitrary} "$\sigma$-structure" $\?A$, $\HCOperator^{\,n}_{\!\?A,\?B}(\topLatticeGuessFunctions{B}) = \HCFixpoint{\?A}{\?B}$
 			when $\?A \homto \?B$, and
 			$\HCOperator^{\,n}_{\!\?A,\?B}(\topLatticeGuessFunctions{B})(a) = \emptyset$ for some $a\in A$ when $\?A \nothomto \?B$;
-		\itemAP\label{item:hc-uniform-first-order-fin-homs}
-			$\HomFinClass{\?B}$ has "uniformly first-order definable homomorphisms";
-		\itemAP\label{item:hc-uniform-first-order-all-homs}
-			$\HomAllClass{\?B}$ has "uniformly first-order definable homomorphisms";
-		% \itemAP\label{item:hc-uniform-first-order-class}%
-		% 	for each $Y \subseteq B$, the class of "pointed $\sigma$-structures"
-		% 	$\{\langle \?A, a \rangle \mid \HCFixpoint_{\?A,\?B}(\topLatticeGuessFunctions{B})(a) = Y\}$ is "first-order definable".
 	\end{enumerate}
 \end{lemma}
 
@@ -661,6 +681,19 @@ on $\zigzag{n}{5}$ in only $2$ steps.
 	We prove it by induction on $m \in \N$. TODO.
 
 	\begin{claim}%
+		\AP\label{claim:hyperedge-consistency-uniform-convergence-no-hom}
+		Let $a\in A$ and $b\in B$.
+		If $\?A \nothomto \?B$, then $\HCOperator^{\,n(\?B)}_{\?A,\?B}(\topLatticeGuessFunctions{B})(a) = \emptyset$ for some $a \in A$.
+	\end{claim}
+	Indeed, since $\?A \nothomto \?B$, there exists a "critical obstruction" $\?T$ of $\?B$
+	"st" $\?T \homto \?A$. Since $\?T \nothomto \?B$, for any $t \in T$ and $a\in A$
+	"st" $t$ is mapped on $a$, we have by \Cref{claim:hyperedge-consistency-uniform-convergence-tree-witnesses} that for any $b\in B$,
+	$b \not\in \HCOperator^{\,m}_{\?A,\?B}(\topLatticeGuessFunctions{B})(a)$,
+	where $m$ is the "height" of $\?T$ when rooted at $t$.
+	And hence $\HCOperator^{\,m}_{\?A,\?B}(\topLatticeGuessFunctions{B})(a) = \emptyset$.
+	Since $m \leq n(\?B)$, the conclusion follows.
+	
+	\begin{claim}%
 		\!\footnote{In fact, Larose, Loten \& Tardif implicitely showed a weaker result, by adapting
 			\cite[Theorem 21]{FederVardi1998ComputationalStructure}, in
 			\cite[Proof of Lemma 3.2]{LaroseLotenTardif2007CharacterisationFOCSP}.
@@ -673,23 +706,62 @@ on $\zigzag{n}{5}$ in only $2$ steps.
 			$b\not\in \HCOperator^{\,n}_{\?A,\?B}(\topLatticeGuessFunctions{B})(a)$.
 			This property is true without any duality assumption on $\?B$, and only follows
 			from the inner workings of the "hyperedge consistency algorithm".}%
-		\AP\label{claim:hyperedge-consistency-uniform-convergence-no-hom}
-		Assume that $\?B$ has "tree duality".
+		\AP\label{claim:hyperedge-consistency-uniform-convergence-hom}
 		Let $a\in A$ and $b\in B$.
-		If $\?A \nothomto \?B$, then $\HCOperator^{\,n(\?B)}_{\?A,\?B}(\topLatticeGuessFunctions{B})(a) = \emptyset$ for some $a \in A$.
+		If $\?A \homto \?B$ and $b \not\in \HCFixpoint{\?A}{\?B}(a)$,
+		then $b \not\in \HCOperator^{\,n(\?B)}_{\?A,\?B}(\topLatticeGuessFunctions{B})(a)$.
 	\end{claim}
-	Indeed, since $\?A \nothomto \?B$, there exists a "critical obstruction" $\?T$ of $\?B$
-	"st" $\?T \homto \?A$. Then TODO.
+
+	To prove this claim, we use a construction that is similar to \Cref{prop:marking-preserves-csp-complexity}.
+	Let $\?A'$ be defined as follows:
+	\begin{itemize}
+		\item its underlying universe is the disjoint union $A \sqcup B$,
+		\item given a "relation symbol" $\+R$ of arity $k$, its "hyperedges" are:
+		\begin{itemize}
+		\item all $\+R$-"hyperedges" of $A$,
+		\item all $\+R$-"hyperedges" of $B$, and
+		\item all $\+R$-"hyperedges"
+			$\langle b_1,\,\hdots,\,b_{i-1},\, a_i,\, b_{i+1},\,\hdots,\,b_k\rangle$
+			when $i\in \lBrack 1,k\rBrack$, $a_i = a$ and $\langle b_1,\,\hdots,\,b_{i-1},\, b,\, b_{i+1},\,\hdots,\,b_k\rangle \in \+R(\?B)$.
+		\end{itemize}
+	\end{itemize}
+	In other words, by construction, for any $a' \in A'$ we have
+	\[
+		\neighbourhood{a'}{\?A'}{\+R}{i} =
+		\begin{cases*}
+			\neighbourhood{a'}{\?A}{\+R}{i} & \text{ if $a' \neq a$,}\\
+			\neighbourhood{a}{\?A}{\+R}{i} \cup \neighbourhood{b}{\?B}{\+R}{i}  & \text{ if $a' = a$.}\\
+		\end{cases*}	
+	\]
+	The goal of this construction
+	is that, when running the "hyperedge consistency algorithm" on $\?A'$,
+	vertex $b$ will be removed as a potential image for $a$ since $b \not\in \HCFixpoint{\?A}{\?B}(a)$, but because of the copy of $\?B$ included in $\?A'$, any "homomorphism" from $\?A'$ to $\?B$ must map $a$ to $b$.
+	\begin{claim}
+		\AP\label{claim:hyperedge-consistency-uniform-convergence-idempotent-core}
+		$\HCFixpoint{\?A'}{\?B}(a) = \emptyset$.
+	\end{claim} 
+	Using \Cref{prop:hyperedge-consistency-antimonotonicity} on the natural embedding
+	$\?A \homto \?A'$, we get $\HCFixpoint{\?A'}{\?B}(a) \subseteq \HCFixpoint{\?A}{\?B}(a)$,
+	and so $b \not\in \HCFixpoint{\?A'}{\?B}(a)$.
+	Similarly, using the "homomorphism" $\?B \homto \?A'$ that sends $b' \neq b$ to $b'$
+	and $b$ to $a$, we get $\HCFixpoint{\?A'}{\?B}(a) \subseteq \HCFixpoint{\?B}{\?B}(b)$,
+	which equals $\{b\}$ by \Cref{prop:HC-on-same-structure}.
+	And hence, $\HCFixpoint{\?A'}{\?B}(a) = \emptyset$.
+
+	\begin{claim}
+		\AP\label{claim:hyperedge-consistency-uniform-convergence-idempotent-core-strong}
+		TODO.
+	\end{claim} 
 	
 
-	Putting \Cref{claim:hyperedge-consistency-uniform-convergence-tree-witnesses,claim:hyperedge-consistency-uniform-convergence-size-trees} together with the fact that if $\?B$ has "finite duality", then the "diameter" of its "critical obstructions" must be bounded,
-	we get that there exists some $n \in \N$ (that only depends on $\?B$),
-	"st" for any finite "$\sigma$-structure" $\?A$, for all $a\in A$ and $b\in B$,
-	if $b\not\in \HCFixpoint{\?A}{\?B}(a)$ then
-	$b \not\in \HCOperator^{\,n}_{\?A,\?B}(\topLatticeGuessFunctions{B})(a)$.
-	And hence, $\HCOperator^{\,n}_{\?A,\?B}(\topLatticeGuessFunctions{B}) = \HCFixpoint{\?A}{\?B}$,
-	proving that \eqref{item:hc-uniform-finite-structures} holds.
-	This concludes the proof of \Cref{lem:hyperedge-consistency-uniform-convergence}.
+	% Putting \Cref{claim:hyperedge-consistency-uniform-convergence-tree-witnesses,claim:hyperedge-consistency-uniform-convergence-size-trees} together with the fact that if $\?B$ has "finite duality", then the "diameter" of its "critical obstructions" must be bounded,
+	% we get that there exists some $n \in \N$ (that only depends on $\?B$),
+	% "st" for any finite "$\sigma$-structure" $\?A$, for all $a\in A$ and $b\in B$,
+	% if $b\not\in \HCFixpoint{\?A}{\?B}(a)$ then
+	% $b \not\in \HCOperator^{\,n}_{\?A,\?B}(\topLatticeGuessFunctions{B})(a)$.
+	% And hence, $\HCOperator^{\,n}_{\?A,\?B}(\topLatticeGuessFunctions{B}) = \HCFixpoint{\?A}{\?B}$,
+	% proving that \eqref{item:hc-uniform-finite-structures} holds.
+	% This concludes the proof of \Cref{lem:hyperedge-consistency-uniform-convergence}.
 \end{proof}
 
 % \begin{claim}
@@ -709,5 +781,5 @@ on $\zigzag{n}{5}$ in only $2$ steps.
 % In particular, $\HCOperator^{\,n}_{\!\?A,\?B}(\topLatticeGuessFunctions{B})(a)$ for some
 % $a \in \?A$.
 
-TODO: Is it true that $\{\?A \mid \?A \homto \?B\}$ is Gaifman-local iff
-$\?B$ has "tree duality"?
+% TODO: Is it true that $\{\?A \mid \?A \homto \?B\}$ is Gaifman-local iff
+% $\?B$ has "tree duality"?
