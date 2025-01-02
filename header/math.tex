@@ -1,6 +1,6 @@
-\newrobustcmd\?[1]{\symbf{#1}}
-\newrobustcmd\+[1]{\symcal{#1}}
-\newrobustcmd\•{\+}
+\newrobustcmd\?{\symbf}
+\newrobustcmd\+{\symcal}
+\newrobustcmd\•{\symcal}
 \newrobustcmd\card[1]{|1|}
 
 \knowledgenewrobustcmd\pset[1]{\cmdkl{\wp(#1)}}
@@ -79,7 +79,7 @@
 \knowledgenewrobustcmd{\unaryType}[2]{\cmdkl{\mu_{#2}(#1)}}
 \knowledgenewrobustcmd{\structOfUnaryType}[1]{\cmdkl{\?1_{#1}}}
 
-\knowledgenewrobustcmd{\domainPres}[1]{\cmdkl{\textsf{dom}}_{#1}}
+\knowledgenewrobustcmd{\domainPres}[1]{\cmdkl{\mathrm{dom}}_{#1}}
 \knowledgenewrobustcmd{\relPres}[2]{\cmdkl{#2}_{#1}}
 \knowledgenewrobustcmd{\convol}{\mathbin{\cmdkl{\otimes}}}
 

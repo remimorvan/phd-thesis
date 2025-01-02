@@ -147,5 +147,5 @@
 \setsansfont{Libertinus Sans}
 \setmonofont[Scale=0.8]{Libertinus Mono}
 \setmathfont[math-style=TeX]{Asana Math}
+\setmathfont[math-style=TeX, range={frak, bb}]{TeX Gyre Termes Math}
 \setmathfont[math-style=TeX, range={cal, bfcal}]{Latin Modern Math}
-% todo: find better bb and cal fonts.
