@@ -578,7 +578,7 @@ on $\zigzag{n}{5}$ in only $2$ steps.
 
 \begin{lemma}[Uniform Convergence of Hyperedge Consistency for Structures with Finite Duality]
 	\AP\label{lem:hyperedge-consistency-uniform-convergence}
-	Let $\?B$ be a finite "$\sigma$-structure" with "tree duality".
+	Let $\?B$ be a finite "$\sigma$-structure".
 	The following are equivalent:
 	\begin{enumerate}
 		\itemAP\label{item:hc-uniform-finite-duality}%
@@ -634,21 +634,33 @@ on $\zigzag{n}{5}$ in only $2$ steps.
 	for arbitrary values of $a\in A$, it follows that $\HCOperator^{\,n}_{\!\?A,\?B}(\topLatticeGuessFunctions{B}) = \HCFixpoint{\?A}{\?B}$. 
 
 	\proofcase{\eqref{item:hc-uniform-arbitrary-structures} $\Rightarrow$
-		\eqref{item:hc-uniform-first-order}.}
-	Observe that if $F \in \LatticeGuessFunctions{A}{B}$ is first-order
-	definable---in the sense that for each $X \subseteq B$, the class of "pointed structures"
-	$\langle \?A, a\rangle$ "st" $F(a) = X$ is "first-order definable"---, then so is
-	$\HCOperator(F)$. By immediate induction and \eqref{item:hc-uniform-arbitrary-structures},
-	it follows that $\HCFixpoint{\?A}{\?B}$ is first-order definable in this sense.\footnote{Note 
-	that this proof crucially uses the fact that $n$ does not depend on $\?A$.}
-
-	\proofcase{\eqref{item:hc-uniform-first-order} $\Rightarrow$
-	\eqref{item:hc-uniform-finite-duality}.}
-	For $Y = \emptyset$, we get that $\{\langle \?A, a \rangle \mid \HCFixpoint_{\?A,\?B}(\topLatticeGuessFunctions{B})(a) = \emptyset\}$ is "first-order definable", say by a formula
-	$\phi(x)$. Then $\forall x.\, \neg \phi(x)$ is a "first-order formula" describing the class of
-	$\{\?A \mid \?A \homto \?B\}$ by \Cref{prop:hyperedge-consistency-tree-duality}, since
-	$\?B$ has "tree duality".\footnote{Note that this implication requires the assumption that
-	$\?B$ has "tree duality": indeed, if $\?B$ is the "$2$-clique", then \eqref{item:hc-uniform-first-order} holds as $\HCFixpoint_{\?A,\?B}(\topLatticeGuessFunctions{B})(a) = B$ for each $a\in \?A$ and each $\?A$. Yet, \eqref{item:hc-uniform-finite-duality} does not hold since $\?B$ does not even have "tree duality" by TODO:addref.} 
+		\eqref{item:hc-uniform-finite-duality}.}
+	One can show---exactly as in the proof
+	of \Cref{lem:hyperedge-consistency-preserves-regularity}---by induction on $m \in \N$
+	that $\HCOperator^{\,m}_{\!\?A,\?B}(\topLatticeGuessFunctions{B})$
+	is "first-order definable", in the sense that for all $Y \in \pset{B}$,
+	there exists a "first-order formula" $\phi_{m,Y}(x)$ over $\sigma$ "st"
+	$\HCOperator^{\,m}_{\!\?A,\?B}(\topLatticeGuessFunctions{B})^{-1}[Y] = \semFO{\phi_{m,Y}(x)}{\?A}$,
+	"ie" for any $a\in A$, we have
+	\[
+		\langle \?A, a\rangle \models \phi_{m,Y}(x)
+		\text{ "iff" }
+		\HCOperator^{\,m}_{\!\?A,\?B}(\topLatticeGuessFunctions{B})(a) = Y.
+	\]
+	We then claim that
+	\[
+		\?A \models \forall x. \neg \phi_{n(\?B),\emptyset}(x)
+		\text{ "iff" }
+		\?A \homto \?B.
+	\]
+	The left-to-right implication can be proven by contraposition, 
+	since if $\?A \nothomto \?B$ then by \eqref{item:hc-uniform-arbitrary-structures}
+	we have $\HCOperator^{\,n(\?B)}_{\!\?A,\?B}(\topLatticeGuessFunctions{B})(a) = \emptyset$
+	for some $a \in A$.
+	For the right-to-left implication, we again use \eqref{item:hc-uniform-arbitrary-structures}, 
+	which yields that $\HCOperator^{\,n(\?B)}_{\!\?A,\?B}(\topLatticeGuessFunctions{B}) = \HCFixpoint{\?A}{\?B}$. Together with the contraposition of \Cref{coro:HC-empty-implies-no-hom},
+	this implies that $\HCOperator^{\,n(\?B)}_{\!\?A,\?B}(\topLatticeGuessFunctions{B})(a) \neq \emptyset$ for all $a\in A$. The conclusion that
+	$\?B$ has "finite duality" follows from "Atserias' theorem".
 
 	\proofcase{\eqref{item:hc-uniform-finite-duality} $\Rightarrow$
 		\eqref{item:hc-uniform-finite-structures}.}
@@ -715,141 +727,87 @@ on $\zigzag{n}{5}$ in only $2$ steps.
 	\end{claim}
 
 	To prove this claim, we use a construction that is similar to \Cref{prop:marking-preserves-csp-complexity}.
-	Let $\?A'$ be defined as follows:
-	\begin{itemize}
-		\item its underlying universe is the disjoint union $A \sqcup B$,
-		\item given a "relation symbol" $\+R$ of arity $k$, its "hyperedges" are:
-		\begin{itemize}
-		\item all $\+R$-"hyperedges" of $A$,
-		\item all $\+R$-"hyperedges" of $B$, and
-		\item all $\+R$-"hyperedges"
-			$\langle b_1,\,\hdots,\,b_{i-1},\, a_i,\, b_{i+1},\,\hdots,\,b_k\rangle$
-			when $i\in \lBrack 1,k\rBrack$, $a_i = a$ and $\langle b_1,\,\hdots,\,b_{i-1},\, b,\, b_{i+1},\,\hdots,\,b_k\rangle \in \+R(\?B)$.
-		\end{itemize}
-	\end{itemize}
-	In other words, by construction, for any $a' \in A$ we have\footnote{The "neighbourhood" of
-	elements $a'\in B$ are less straightforward to describe.}
+	Fix $a\in A$ and $b\in B$ "st" $b \not\in \HCFixpoint{\?A}{\?B}(a)$.
+	Let $\?C$ be defined as the disjoint union of $\?A$ and $\?B$,
+	in which we identify $a$ and $b$.
+	Note that for any $a' \in A$, we have:
 	\[
-		\neighbourhood{a'}{\?A'}{\+R}{i} =
+		\neighbourhood{a'}{\?C}{\+R}{i} =
 		\begin{cases*}
-			\neighbourhood{a'}{\?A}{\+R}{i} & \text{ if $a' \neq a$ and $a'\in A$,}\\
-			\neighbourhood{a}{\?A}{\+R}{i} \cup \neighbourhood{b}{\?B}{\+R}{i}  & \text{ if $a' = a$.}
+			\neighbourhood{a'}{\?A}{\+R}{i} & \text{ if $a' \neq a$,}\\
+			\neighbourhood{a}{\?A}{\+R}{i} \cup \neighbourhood{b}{\?B}{\+R}{i}  & \text{ if $a' = a = b$.}
 		\end{cases*}	
 	\]
 	The goal of this construction
-	is that, when running the "hyperedge consistency algorithm" on $\?A'$,
-	vertex $b$ will be removed as a potential image for $a$ since $b \not\in \HCFixpoint{\?A}{\?B}(a)$, but because of the copy of $\?B$ included in $\?A'$, any "homomorphism" from $\?A'$ to $\?B$ must map $a$ to $b$.
+	is that, when running the "hyperedge consistency algorithm" on $\?C$,
+	vertex $b$ will be removed as a potential image for $a$ since $b \not\in \HCFixpoint{\?A}{\?B}(a)$, but because of the copy of $\?B$ included in $\?C$, any "homomorphism" from $\?C$ to $\?B$ must map $a$ to $b$.
+	\marginnote{TODO:add figure ($\?B$ is $\transitiveTournament{2}$, $\?A$ is 2-path.)}
+	% \begin{claim}
+	% 	\AP\label{claim:hyperedge-consistency-uniform-convergence-idempotent-core}
+	% 	$\HCFixpoint{\?C}{\?B}(a) = \emptyset$.
+	% \end{claim} 
+	% Using \Cref{prop:hyperedge-consistency-antimonotonicity} on the natural embedding
+	% $\?A \homto \?C$, we get $\HCFixpoint{\?C}{\?B}(a) \subseteq \HCFixpoint{\?A}{\?B}(a)$,
+	% and so $b \not\in \HCFixpoint{\?C}{\?B}(a)$.
+	% Similarly, using the natural embedding $\?B \homto \?C$
+	% we get $\HCFixpoint{\?C}{\?B}(a) \subseteq \HCFixpoint{\?B}{\?B}(b)$,
+	% which equals $\{b\}$ by \Cref{prop:HC-on-same-structure}.
+	% And hence, $\HCFixpoint{\?C}{\?B}(a) = \emptyset$.
+
 	\begin{claim}
-		\AP\label{claim:hyperedge-consistency-uniform-convergence-idempotent-core}
-		$\HCFixpoint{\?A'}{\?B}(a) = \emptyset$.
+		\AP\label{claim:hyperedge-consistency-uniform-convergence-no-hom}
+		$\?C \nothomto \?B$.
 	\end{claim} 
-	Using \Cref{prop:hyperedge-consistency-antimonotonicity} on the natural embedding
-	$\?A \homto \?A'$, we get $\HCFixpoint{\?A'}{\?B}(a) \subseteq \HCFixpoint{\?A}{\?B}(a)$,
-	and so $b \not\in \HCFixpoint{\?A'}{\?B}(a)$.
-	Similarly, using the "homomorphism" $\?B \homto \?A'$ that sends $b' \neq b$ to $b'$
-	and $b$ to $a$, we get $\HCFixpoint{\?A'}{\?B}(a) \subseteq \HCFixpoint{\?B}{\?B}(b)$,
-	which equals $\{b\}$ by \Cref{prop:HC-on-same-structure}.
-	And hence, $\HCFixpoint{\?A'}{\?B}(a) = \emptyset$.
-	We actually need a slightly stronger property.
 
-	\begin{claim}
-		\!\footnote{Note that this does not follow from \Cref{claim:hyperedge-consistency-uniform-convergence-no-hom,claim:hyperedge-consistency-uniform-convergence-idempotent-core} since
-		these claims only imply that $\HCOperator^{\,n(\?B)}_{\?A',\?B}(\topLatticeGuessFunctions{B})(a') = \emptyset$ for some $a' \in A'$.}%
-		\AP\label{claim:hyperedge-consistency-uniform-convergence-idempotent-core-strong}
-		$\HCOperator^{\,n(\?B)}_{\?A',\?B}(\topLatticeGuessFunctions{B})(a) = \emptyset$.
-	\end{claim} 
-	Indeed, by \Cref{claim:hyperedge-consistency-uniform-convergence-idempotent-core,coro:HC-empty-implies-no-hom}, there $\?A' \nothomto \?B$, and so there is a "critical obstruction" $\?T$ of $\?B$ "st" there is a "homomorphism" $f\colon \?T \to \?A'$. Since $\?B$ has "finite duality",
-	by todo:addref, $\?T$ is a "tree", and in particular it is connected.
-	Note that $\?A'$ consists of a copy of $\?A$ and a copy of $\?B$, glued at $a=b$.
-	Using the fact that $\?T$ is connected, we get that the "homomorphism" $f\colon \?T \to \?A'$
-	must contain $a$ in its image, say $a = f(t)$ for some $t\in T$: indeed, we would otherwise
-	obtain a "homomorphism" from $\?T$ to $\?B$ (contradicting that $\?T$ is a "critical obstruction" of $\?B$) or from $\?T$ to $\?A$ (contradicting that $\?A \homto \?B$).
-	The conclusion then follows from \Cref{claim:hyperedge-consistency-uniform-convergence-tree-witnesses}, since the "height" of $\?T$ rooted at $t$ must smaller or equal to $n(\?B)$.
+	Indeed, if there was a "homomorphism" from $\?C$ to $\?B$, say $f$, then
+	$\restr{f}{\?B}$ would be a "homomorphism" from $\?B$ to $\?B$.
+	Since $\?B$ has "finite duality", it is "rigid" by TODO:ADDREF, and
+	so in particular $f(b) = b$.
+	Hence, we would get that $\restr{f}{A}$ is a "homomorphism" from $\?A$ to $\?B$
+	which sends $a$ to $b$, and so by \Cref{prop:existence-homomorphism-implies-lowerbound-HC}
+	we would have $b \in \HCFixpoint{\?A}{\?B}(a)$, which is a contradiction.
 
-	We still need two ingredients to prove \Cref{claim:hyperedge-consistency-uniform-convergence-hom}, which very roughly say that
-	the "hyperedge consistency algorithm" on $\?A'$ is somewhat determined by
-	the behaviour of the same algorithm on $\?A$.
-	\begin{claim}
-		\AP\label{claim:hyperedge-consistency-uniform-convergence-induction-1}
-		Let $F \in \LatticeGuessFunctions{A'}{B}$.
-		If $F(a) \ni b$ and $F(b') \ni b'$ for all $b' \in B$,
-		then $\HCOperator_{\?A',\?B}(F)(b') \ni b'$ for all $b' \in B$.
-	\end{claim}
-	Indeed, observe that $\neighbourhood{b'}{\?A'}{\+R}{i}$ 
-	consists of all tuples
-	$\langle a'_1,\hdots,a'_{k-1} \rangle$ "st"
-	there exists
-	$\langle b'_1,\hdots,b'_{k-1} \rangle
-	\in \neighbourhood{b'}{\?B}{\+R}{i}$, where for each $j \in \lBrack 1,k-1\rBrack$, either $b'_j = a'_j$, or $a'_j = a$ and $b'_j = b$.
-	To show that for all $b' \in B$, we have $\HCOperator_{\?A',\?B}(F)(b') \ni b'$,
-	let $\+R_{(k)} \in \sigma$ and $i \in \lBrack 1,k\rBrack$,
-	and let $\langle a'_1,\hdots,a'_{k-1} \rangle \in \neighbourhood{b'}{\?A'}{\+R}{i}$.
-	If $a'_j \in B$, define $b'_j \defeq a'_j$. Otherwise, we must have $a'_j = a$
-	and so we let $b'_j \defeq b$. Then using the hypothesis of \Cref{claim:hyperedge-consistency-uniform-convergence-induction-1}, we have $b'_j \in F(a'_j)$ for all $j \in \lBrack 1,k-1\rBrack$, and moreover $\langle b'_1,\hdots,b'_{j-1} \rangle \in \neighbourhood{b'}{\?B}{\+R}{i}$. And hence, $\HCOperator_{\?A',\?B}(F)(b') \ni b'$.
-
-	\begin{claim}
-		\AP\label{claim:hyperedge-consistency-uniform-convergence-induction-2}
-		Let $F \in \LatticeGuessFunctions{A'}{B}$.
-		If $\HCOperator_{\?A,\?B}(\restr{F}{A})(a) \ni b$ and $F(b') \ni b'$ for all $b' \in B$,
-		then $\HCOperator_{\?A',\?B}(F)(a) \ni b$.
-	\end{claim}
-	Again, let $\+R_{(k)} \in \sigma$ and $i \in \lBrack 1,k\rBrack$,
-	and let $\langle a'_1,\hdots,a'_{k-1} \rangle \in \neighbourhood{a}{\?A'}{\+R}{i}$.
-	Recall that
-	\[
-		\neighbourhood{a}{\?A'}{\+R}{i}
-		= \neighbourhood{a}{\?A}{\+R}{i} \cup \neighbourhood{b}{\?B}{\+R}{i},
-	\]
-	and we want to show that there exists $b'_1 \in F(a'_1)$, $\hdots$, $b'_{k-1} \in F(a'_{k-1})$
-	"st" $\langle b'_1,\hdots,b'_{k-1}\rangle \in \neighbourhood{b}{\?B}{\+R}{i}$.
-	If $\langle a'_1,\hdots,a'_{k-1} \rangle \in \neighbourhood{b}{\?B}{\+R}{i}$,
-	it suffices to take $b'_j \defeq a'_j$ ($j \in \lBrack 1,k-1 \rBrack$):
-	the fact $b'_j \in F(a'_j)$ follows from the hypothesis of
-	\Cref{claim:hyperedge-consistency-uniform-convergence-induction-2}.
-	Otherwise, we must have $\langle a'_1,\hdots,a'_{k-1} \rangle \in
-	\neighbourhood{a}{\?A}{\+R}{i}$, and so using the assumption $\HCOperator_{\?A,\?B}(\restr{F}{A})(a) \ni b$, we also reach the same conclusion.
-	Therefore, we showed $\HCOperator_{\?A',\?B}(F)(a) \ni b$.
-
-	We are now ready to prove \Cref{claim:hyperedge-consistency-uniform-convergence-hom},
-	namely that $b \not\in \HCOperator^{\,n(\?B)}_{\?A,\?B}(\topLatticeGuessFunctions{B})(a)$.
-	We prove it by contradiction, and so assume that $b \in \HCOperator^{\,n(\?B)}_{\?A,\?B}(\topLatticeGuessFunctions{B})(a)$.
-	We show by induction on $m \in \lBrack 0,n(\?B) \rBrack$ that
-	$b \in \HCOperator^{\,m}_{\?A',\?B}(\topLatticeGuessFunctions{B})(a)$
-	and $b' \in \HCOperator^{\,m}_{\?A',\?B}(\topLatticeGuessFunctions{B})(b')$ for all $b' \in B$.
-	For $m=0$, this is trivial.
-	If the property holds at rank $m \in \lBrack 0, n(\?B)-1 \rBrack$,
-	then by \Cref{claim:hyperedge-consistency-uniform-convergence-induction-1},
-	$b' \in \HCOperator^{\,m}_{\?A',\?B}(\topLatticeGuessFunctions{B})(b')$ for all $b' \in B$.
-	Similarly, by \Cref{claim:hyperedge-consistency-uniform-convergence-induction-2},
-	we have $b \in \HCOperator^{\,k}_{\?A',\?B}(\topLatticeGuessFunctions{B})(a)$.
-	To apply \Cref{claim:hyperedge-consistency-uniform-convergence-induction-2}, we must show that $\HCOperator_{\?A,\?B}(\restr{F}{A})(a) \ni b$
-	where $F \defeq \HCOperator^{\,m}_{\?A',\?B}(\topLatticeGuessFunctions{B})$.
-	Since we assumed $\HCOperator^{\,n(\?B)}_{\?A,\?B}(\topLatticeGuessFunctions{B})(a) \ni b$,
-	we have
-	\[\HCOperator_{\?A,\?B}(\HCOperator^{\,m}_{\?A,\?B}(\topLatticeGuessFunctions{B}))(a) =
-	\HCOperator^{\,m+1}_{\?A,\?B}(\topLatticeGuessFunctions{B})(a) \ni b.\footnotemark\]
-	\footnotetext{Unfortunately, we cannot prove
-	$\HCOperator_{\?A,\?B}(\restr{F}{A})(a) \ni b$
-	by using \Cref{prop:hyperedge-consistency-antimonotonicity}
-	since the inclusions $\HCOperator^{\,m}_{\?A,\?B}(\topLatticeGuessFunctions{B})(a') \subseteq \restr{F}{A}(a')$ ($a' \in A$) do not hold \emph{a priori}. Note however that
-	the converse inclusions hold since $\?A \homto \?A'$.}
-	If by contradiction we had $\HCOperator_{\?A,\?B}(\restr{F}{A})(a) \not\ni b$,
-	since $b \in F(a)$ by induction hypothesis, it means that
-	there exists $\+R_{(k)} \in \sigma$ and $i \in \lBrack 1,k\rBrack$ "st"
-	$$
-
+	So, since $\?C \nothomto \?B$, there exists a "critical obstruction" $\?T$ of $\?B$
+	"st" there is a "homomorphism" $f$ from $\?T$ to $\?C$. 
+	We claim that $a=b$ must be in the image of $f$. Indeed, since $a=b$ is the only vertex
+	of $\?A$ that is adjacent to $\?B$ in $\?C$, and since $\?T$ is "connected" by TODO:ADDREF,
+	we would otherwise get that either $\?T \homto \?B$---contradicting that $\?T$ is a "critical obstruction" of $\?B$---or that $\?T \homto \?A$---contradicting that $\?A \homto \?B$.
 	
+	And so, there exists $t \in T$ "st" $f(t) = a = b$. We let $\?T_{\?A}$
+	be the "subtree" of $\?T$, rooted at $t$, induced by elements
+	of $T$ that are sent via $f$ on $\?A$ (resp. $\?B$).
+	We define $\?T_{\?A}$ (resp. $\?T_{\?B}$) to be the "substructure" of $\?T$
+	induces by elements of $T$ that are sent via $f$ on $\?A$ (resp. $\?B$).
+	\begin{claim}
+		\AP\label{claim:hyperedge-consistency-uniform-convergence-trees-are-trees}
+		$\?T_{\?A}$ and $\?T_{\?B}$ are "trees".
+	\end{claim}
+	TODO.
 
-
- 	
-	% Putting \Cref{claim:hyperedge-consistency-uniform-convergence-tree-witnesses,claim:hyperedge-consistency-uniform-convergence-size-trees} together with the fact that if $\?B$ has "finite duality", then the "diameter" of its "critical obstructions" must be bounded,
-	% we get that there exists some $n \in \N$ (that only depends on $\?B$),
-	% "st" for any finite "$\sigma$-structure" $\?A$, for all $a\in A$ and $b\in B$,
-	% if $b\not\in \HCFixpoint{\?A}{\?B}(a)$ then
-	% $b \not\in \HCOperator^{\,n}_{\?A,\?B}(\topLatticeGuessFunctions{B})(a)$.
-	% And hence, $\HCOperator^{\,n}_{\?A,\?B}(\topLatticeGuessFunctions{B}) = \HCFixpoint{\?A}{\?B}$,
-	% proving that \eqref{item:hc-uniform-finite-structures} holds.
-	% This concludes the proof of \Cref{lem:hyperedge-consistency-uniform-convergence}.
+	\begin{claim}
+		\AP\label{claim:hyperedge-consistency-uniform-convergence-tree}
+		There is a "homomorphism" from $\?T_{\?A}$ to $\?A$ that maps $t$ to $a$,
+		but no "homomorphism" from $\?T_{\?A}$ to $\?B$ that maps $t$ to $b$.
+	\end{claim}
+	The first point is trivial: it suffices to consider the restriction of $f$ to $A$.
+	For the second point, assume by contradiction that there is a "homomorphism" $g$ from
+	$\?T_{\?A}$ to $\?B$ that maps $t$ to $b$.
+	Then the function
+	\[
+		t' \in T \mapsto \begin{cases*}
+			g(t') & \text{ if $t' \in T_A$,}\\
+			f(t') & \text{ if $t' \in T_B$,}
+		\end{cases*}
+	\]
+	is well-defined---if $t' \in T_A \cap T_B$, then $f(t') = b = g(t)$---and is a "homomorphism"
+	from $\?T$ to $\?B$. This contradicts that $\?T$ is a "critical obstruction" of $\?B$.
+	And hence, no "homomorphism" from $\?T_{\?A}$ to $\?B$ can map $t$ to $b$.
+	We then apply \Cref{claim:hyperedge-consistency-uniform-convergence-tree-witnesses}
+	to get that $b \not\in \HCOperator^{\,n(\?B)}_{\?A,\?B}(\topLatticeGuessFunctions{B})(a)$,
+	concluding the proof of \Cref{claim:hyperedge-consistency-uniform-convergence-hom}.
+	
+	Overall, \Cref{claim:hyperedge-consistency-uniform-convergence-no-hom,claim:hyperedge-consistency-uniform-convergence-hom} prove 
+	\eqref{item:hc-uniform-finite-structures}, which concludes the proof of \Cref{lem:hyperedge-consistency-uniform-convergence}.
 \end{proof}
 
 % \begin{claim}
