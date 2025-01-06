@@ -595,6 +595,12 @@ on $\zigzag{n}{5}$ in only $2$ steps.
 \end{lemma}
 
 \begin{proof}
+	We prove the implications
+	\eqref{item:hc-uniform-finite-duality} $\Rightarrow$
+	\eqref{item:hc-uniform-finite-structures} $\Rightarrow$
+	\eqref{item:hc-uniform-arbitrary-structures} $\Rightarrow$
+	\eqref{item:hc-uniform-finite-duality}.
+	
 	\proofcase{\eqref{item:hc-uniform-finite-structures} $\Rightarrow$
 		\eqref{item:hc-uniform-arbitrary-structures}.}
 	Let $n\in \N$ "st" $\HCOperator^{\,n}_{\!\?A',\?B}(\topLatticeGuessFunctions{B}) = \HCFixpoint{\?A'}{\?B}$ for every finite "$\sigma$-structure" $\?A'$. Let $\?A$ be an arbitrary
@@ -690,7 +696,13 @@ on $\zigzag{n}{5}$ in only $2$ steps.
 		can map $t$ to $b$. Then, letting $m$ denote the "height@@struct" of $\?T$ when rooted
 		at $t$, we have $b \not\in \HCOperator^{\,m}_{\?A,\?B}(\topLatticeGuessFunctions{B})(a)$.
 	\end{claim}
-	We prove it by induction on $m \in \N$. TODO. Or use monotonicty?
+	We prove by induction on $\?T$ that if there are no "homomorphism" from $\?T$ to $\?B$
+	that can map $t$ to $b$, then $b \not\in \HCOperator^{\,m}_{\?T,\?B}(\topLatticeGuessFunctions{B})(t)$ where $m$ is the "height" of $\?T$ rooted at $t$.
+	TODO.
+	Then by \Cref{prop:hyperedge-consistency-antimonotonicity}, 
+	$\HCOperator^{\,m}_{\?A,\?B}(\topLatticeGuessFunctions{B})(a) \subseteq
+	\HCOperator^{\,m}_{\?T,\?B}(\topLatticeGuessFunctions{B})(t)$ and so
+	$b \not\in \HCOperator^{\,m}_{\?A,\?B}(\topLatticeGuessFunctions{B})(a)$.
 
 	\begin{claim}%
 		\AP\label{claim:hyperedge-consistency-uniform-convergence-no-hom}
@@ -755,7 +767,7 @@ on $\zigzag{n}{5}$ in only $2$ steps.
 	% And hence, $\HCFixpoint{\?C}{\?B}(a) = \emptyset$.
 
 	\begin{claim}
-		\AP\label{claim:hyperedge-consistency-uniform-convergence-no-hom}
+		\AP\label{claim:hyperedge-consistency-uniform-convergence-hom-union}
 		$\?C \nothomto \?B$.
 	\end{claim} 
 
@@ -773,15 +785,37 @@ on $\zigzag{n}{5}$ in only $2$ steps.
 	of $\?A$ that is adjacent to $\?B$ in $\?C$, and since $\?T$ is "connected" by TODO:ADDREF,
 	we would otherwise get that either $\?T \homto \?B$---contradicting that $\?T$ is a "critical obstruction" of $\?B$---or that $\?T \homto \?A$---contradicting that $\?A \homto \?B$.
 	
-	And so, there exists $t \in T$ "st" $f(t) = a = b$. We let $\?T_{\?A}$
-	be the "subtree" of $\?T$, rooted at $t$, induced by elements
-	of $T$ that are sent via $f$ on $\?A$ (resp. $\?B$).
-	We define $\?T_{\?A}$ (resp. $\?T_{\?B}$) to be the "substructure" of $\?T$
-	induces by elements of $T$ that are sent via $f$ on $\?A$ (resp. $\?B$).
+	And so, there exists $t \in T$ "st" $f(t) = a = b$.
+	Consider the "congruence induced" $\ker{f}$ by $f$ on $T$, namely $x \ker{f} y$ "iff"
+	$f(x) = f(y)$. Let $\?U$ be the "quotient" of $\?T$ by $\ker{f}$,
+	and let $\?U_{\?A}$ be the "substructure" of $\?U$, induced by elements
+	of $U$ that are sent via $f$ on $\?A$.
 	\begin{claim}
 		\AP\label{claim:hyperedge-consistency-uniform-convergence-trees-are-trees}
-		$\?T_{\?A}$ and $\?T_{\?B}$ are "trees".
+		$\?U_{\?A}$ is a "tree".
 	\end{claim}
+	First, we show that $\?U_{\?A}$ is "connected". This amounts to showing that for
+	every "path"\footnote{$t_i$ denotes an element of $\?T$ and $\bar h_i$ denotes a "hyperedge" of $\?T$. By definition of $\IncidenceGraph{\?T}$, $t_i \in \bar h_i$ and
+	$t_{i+1} \in \bar h_i$.}
+	\[
+		t_0,\, \bar h_0,\, t_1,\, \bar h_1,\, \hdots,\, t_{n-1},\, \bar h_{n-1},\, t_n
+	\]
+	in $\IncidenceGraph{\?T}$, if the "path" it induces in $\?U$ is "simple",
+	if $f(t_0) \in A$ and $f(t_n) \in A$,
+	then $f(t_i) \in A$ for all $i \in \lBrack 0,n \rBrack$.
+	By contradiction, we assume that $f(t_i) \not\in A$ for some $i \in \lBrack 0,n \rBrack$.
+	Since the only vertex that is adjacent to both $\?A$ and $\?B$ in $\?C$ is $a=b$,
+	we get that $f(t_j) = a = b$ for some $j < i$ and $f(t_{j'}) = a = b$ for some $j' > i$.
+	And hence, the "path" $f(t_0), \hdots, f(t_n)$ is not "simple", which is a contradiction.
+
+	We then show that $\?U_{\?A}$ is "acyclic". We consider a "path"
+	\[
+		t_0,\, \bar h_0,\, t_1,\, \bar h_1,\, \hdots,\, t_{n-1},\, \bar h_{n-1},\, t_n
+	\]
+	in $\IncidenceGraph{\?U_{\?A}}$, and assume that $t_i \neq t_j$ for all pairs
+	$(i,j) \in \lBrack 0,n\rBrack \smallsetminus \{(0,n),\, (n,0)\}$.
+	We want to show that $t_0 \neq t_n$.
+
 	TODO.
 
 	\begin{claim}
@@ -789,7 +823,7 @@ on $\zigzag{n}{5}$ in only $2$ steps.
 		There is a "homomorphism" from $\?T_{\?A}$ to $\?A$ that maps $t$ to $a$,
 		but no "homomorphism" from $\?T_{\?A}$ to $\?B$ that maps $t$ to $b$.
 	\end{claim}
-	The first point is trivial: it suffices to consider the restriction of $f$ to $A$.
+	The first point is trivial: it suffices to consider the restriction of $f$ to $T_A$.
 	For the second point, assume by contradiction that there is a "homomorphism" $g$ from
 	$\?T_{\?A}$ to $\?B$ that maps $t$ to $b$.
 	Then the function

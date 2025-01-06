@@ -116,3 +116,8 @@
 \knowledgenewrobustcmd{\pathGraph}[1]{\cmdkl{P_{#1}}}
 
 \knowledgenewrobustcmd{\FederVardi}[1]{\cmdkl{\+U(#1)}}
+
+\renewrobustcmd{\ker}[1]{\withkl{\kl[\ker]}{\mathrel{\cmdkl{\mathrm{ker}_{#1}}}}}
+	\knowledge{\ker}{notion}
+
+\knowledgenewrobustcmd{\IncidenceGraph}[1]{\cmdkl{\mathrm{Inc}(#1)}}
