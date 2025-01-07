@@ -1,4 +1,4 @@
-\section{\AP\label{sec:hyperedge-consistency}%
+\section{\AP\label{sec:dichotomy-hyperedge-consistency}%
 	Decidability of the Regular Homomorphism Problem}
 
 In this section, we show that if $\?B$ has "finite duality", then $\HomRegAutDec{\?B}$ is decidable.
@@ -194,6 +194,8 @@ of the "automatic presentation" given as input.
 	formula" $\phi$, whose size is linear in $\•A$, "st" $\univStructSynchronous{\Sigma} \models 
 	\phi$ "iff" $\•A \homregto \?B$.
 \end{corollary}
+
+In particular, this implies the decidability of $\HomRegAutDec{\?B}$.
 
 \subsection{\AP\label{sec:hyperedge-consistency-finite}%
 	Hyperedge Consistency for Finite Structures}
@@ -416,14 +418,14 @@ has "tree duality" by \Cref{prop:finite-duality-implies-tree-duality} and TODO:A
 Finally, we will prove a proposition that we will prove useful later in TODO.
 \begin{proposition}
 	\AP\label{prop:HC-on-same-structure}
-	Let $\?B$ be a "$\sigma$-structure" with "tree duality". Then
+	Let $\?B$ be a "$\sigma$-core" with "tree duality". Then
 	$\HCFixpoint{\?B}{\?B}(b) = \{b\}$ for each $b\in B$.\footnote{Note that
 	this is false if $\?B$ does not have finite duality. For instance,
 	if $\?B$ is the "$2$-clique", then $\HCFixpoint{\?B}{\?B}(b) = B$
 	for each $b \in B$.}
 \end{proposition}
 \begin{proof}
-	TODO: Use rigidity.
+	TODO. Rigidity?
 \end{proof}
 
 \subsection{\AP\label{sec:hyperedge-consistency-automatic}%
@@ -813,10 +815,9 @@ on $\zigzag{n}{5}$ in only $2$ steps.
 		t_0,\, \bar h_0,\, t_1,\, \bar h_1,\, \hdots,\, t_{n-1},\, \bar h_{n-1},\, t_n
 	\]
 	in $\IncidenceGraph{\?U_{\?A}}$, and assume that $t_i \neq t_j$ for all pairs
-	$(i,j) \in \lBrack 0,n\rBrack \smallsetminus \{(0,n),\, (n,0)\}$.
+	$(i,j) \in \lBrack 0,n\rBrack^2 \smallsetminus \{(0,n),\, (n,0)\}$.
 	We want to show that $t_0 \neq t_n$.
-
-	TODO.
+		
 
 	\begin{claim}
 		\AP\label{claim:hyperedge-consistency-uniform-convergence-tree}

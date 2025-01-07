@@ -1,0 +1,18 @@
+\node[vertex] (0) at (0,0) {};
+\node[vertex, right=of 0] (1) {};
+\node[vertex, right=of 1] (2) {};
+\node[vertex, right=of 2, opacity=0] (3) {};
+\node[vertex, right=of 3] (4) {};
+\node[yshift=-.1em] at (3) (3-label)  {$\cdots$};
+
+% ---
+% Transitions
+% ---
+\foreach \i in {0,1,2,3} {
+	\pgfmathtruncatemacro{\next}{\i + 1}
+	\draw[edge, bend right=30] (\i) to (\next);
+	\draw[edge, bend right=30] (\next) to (\i);
+};
+\foreach \i in {0,1,2,4} {
+	\draw[edge, loop, out=60,in=120,looseness=6] (\i) to (\i);
+}

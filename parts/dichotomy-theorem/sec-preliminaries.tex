@@ -1,4 +1,5 @@
-\section{Preliminaries}
+\section{\AP\label{sec:dichotomy-preliminaries}%
+	Preliminaries}
 
 For \AP""first-order reductions"", see
 \cite[Definition 2.11 \& Definition 1.26]{Immerman1998DescriptiveComplexity}.
@@ -220,14 +221,58 @@ TODO: To be concluded.
 
 \subsection{De Bruijn–Erdős Theorem}
 
-\begin{proposition}[De Bruijn–Erdős Theorem]
-	\label{prop:de-bruijn-erdos}
+\begin{proposition}[""De Bruijn–Erdős Theorem""]
+	\!\footnote{It is straightforward to note that
+	one can replace ``every finite "substructure"'' by
+	``every finite "induced substructure"'' in the statement of the theorem.}%
+	\AP\label{prop:de-bruijn-erdos}
 	Let $\?A$ be an arbitrary "$\sigma$-structure" and $\?B$ a "finite $\sigma$-structure".
 	There is a "homomorphism" from $\?A$ to $\?B$ "iff" for every finite "substructure" $\?A'$
 	of $\?A$, there is a "homomorphism" from $\?A$ to $\?B$.
 \end{proposition}
 
-TODO:proofs.
+\begin{proof}
+	The left-to-right implication is direct.
+	We prove the converse by using the "Tychonoff's compactness theorem".\footnote{This is a direct adaptation from todo:addref-wiki, which proves this result in the particular case of graph colouring.}
+	So, assume that for every finite "substructure" $\?A'$ of $\?A$,
+	there is a "homomorphism" from $\?A$ to $\?B$. 
+	Consider the topological space $B^A$, consisting of all functions from $A$ to $B$,
+	together with the "product topology".\footnote{We equip $B$ with the discrete topology,
+	making it compact since $B$ is finite.} By "Tychonoff's compactness theorem",
+	$B^A$ is "compact". For each finite subset $X$ of $A$, let
+	$H_X$ denote the set of all $f \in B^A$ "st" $\restr{f}{X}$ is a "homomorphism"
+	from the "substructure" of $\?A$ "induced@@structure" by $X$ to $\?B$.
+	Then, each $H_X$ is closed---indeed, whether $f\in B^A$ belongs to $H_X$ only depends
+	on finitely many $f(x)$'s---, and moreover the intersection of finitely many
+	$H_X$'s, say $H_{X_1} \cap \cdots \cap H_{X_n}$, is non-empty since
+	$H_{X_1} \cap \cdots \cap H_{X_n} \supseteq H_{X_1\cup \hdots \cup X_n}$
+	and by assumption $H_{X_1\cup \hdots \cup X_n}$ is non-empty since $X_1 \cup \cdots \cup X_n$ is finite. Hence, by compactness of $B^A$ and the "finite intersection property", it follows
+	that $\bigcap_X H_X$ is non-empty, which means that there is a "homomorphism" from $\?A$ to $\?B$.
+\end{proof}
+
+\begin{corollary}
+	\!\footnote{Another important consequence of the ""De Bruijn–Erdős Theorem"" is that,
+	for instance, the notion of "dual" does not depend on whether we are considering finite or
+	arbitrary "$\sigma$-structures".}
+	\AP\label{coro:de-bruijn-erdos}
+	Given arbitrary $\sigma$-structures $\?B_1$ and $\?B_2$, the following are equivalent:
+	\begin{enumerate}
+		\itemAP\label{item:de-bruijn-erdos-finite} for every finite "$\sigma$-structure" $\?A$, then $\?A \homto \?B_1$
+		"iff" $\?A \homto \?B_2$;
+		\itemAP\label{item:de-bruijn-erdos-arbitrary} for every arbitrary "$\sigma$-structure" $\?A$, then $\?A \homto \?B_1$
+			"iff" $\?A \homto \?B_2$;
+		\itemAP\label{item:de-bruijn-erdos-hom} $\?B_1$ and $\?B_2$ are "homomorphically equivalent".
+	\end{enumerate}
+\end{corollary}
+\begin{proof}
+	\eqref{item:de-bruijn-erdos-arbitrary} $\Rightarrow$ \eqref{item:de-bruijn-erdos-hom}
+	and \eqref{item:de-bruijn-erdos-hom} $\Rightarrow$ \eqref{item:de-bruijn-erdos-finite}
+	are trivial.
+	For \eqref{item:de-bruijn-erdos-finite} $\Rightarrow$ \eqref{item:de-bruijn-erdos-arbitrary},
+	we assume "wlog" by contradiction that there is an arbitrary "$\sigma$-structure" $\?A$ "st" $\?A \homto \?B_1$ but $\?A \nothomto \?B_2$. Then by \Cref{prop:de-bruijn-erdos},
+	there exists a finite "substructure" $\?A_0$ of $\?A$ "st" $\?A_0 \nothomto \?B_2$.
+	But then $\?A_0 \homto \?A \homto \?B_1$, which contradicts \eqref{item:de-bruijn-erdos-finite}.
+\end{proof}
 
 \subsection{Transitive Tournaments "vs" Paths}
 

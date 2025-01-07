@@ -1,4 +1,4 @@
-\section{\AP\label{sec:undecidability-hom-homreg}%
+\section{\AP\label{sec:dichotomy-undecidability-hom-homreg}%
 	Undecidability of the Homomorphism Problems}
 
 
@@ -21,7 +21,14 @@ to $\HomRegFinDec{\?B}$ is not entirely trivial and requires some work:
 For $n\in\N$, we define the \AP""$n$-link"" $\intro*\link{n}$ be the "$\sigma$-structure"\sidenote{From \cite[\S~2]{LaroseLotenTardif2007CharacterisationFOCSP}.} 
 whose domain is $\lBrack 0,n\rBrack$, and every "relation symbol" $\+R$
 of arity $k$, is interpreted as the set of tuples $\langle a_1,\, \hdots,\, a_k \rangle$
-"st" $|a_i-a_j| \leq 1$ for all $i,j \in \lBrack 0,n \rBrack$.\sidenote{Todo: add figure for digraphs.}
+"st" $|a_i-a_j| \leq 1$ for all $i,j \in \lBrack 0,n \rBrack$. See \Cref{fig:n-link}.
+\begin{marginfigure}
+	\centering
+	\begin{tikzpicture}
+		\input{tikz/n-link}
+	\end{tikzpicture}
+	\caption{\AP\label{fig:n-link}The "$n$-link" $\link{n}$ over the "digraph signature".}
+\end{marginfigure}
 Given a "$\sigma$-structure" $\?B$, say that $b \in \?B$ and $b'$ are
 \AP""$n$-linked"" if there exists a "homomorphism" from $\link{n}$ to $\?B$
 that sends $0$ to $b$ and $n$ to $b'$. We say that $b$ and $b'$ are \AP""linked"" if
@@ -93,7 +100,7 @@ of $\HomAutDec{\?B}$ by reduction from the following problem.
 	\marginnote{TODO:Addfigure}%
 	Given an instance $\langle \•G, s, t \rangle$ of "Connectivity in Automatic Graphs",
 	we first define the $\sigma$-structure $\?A$ with "automatic presentation" $\•A$
-	obtained by replacing every edge by a "$1$-link".
+	obtained by replacing every edge of $\•G$ by a "$1$-link".
 	Formally, $\?A$ has the same domain as $\?G$, and for any
 	"relation symbol" $\+R \in \sigma$ of arity $k$,
 	$\langle g_1,\, \hdots,\, g_k \rangle \in \+R(\?A)$ "iff"
@@ -139,7 +146,7 @@ of $\HomAutDec{\?B}$ by reduction from the following problem.
 	"$\extendedSignature{\sigma}{\?B}$-structures".}
 	It induces a "homomorphism"
 	\[
-		\overbar f\colon \ConstrUndecHom{(\?A\prodstruct \iterstruct{\?B}{2})} \homto \?B
+		\overbar f\colon \?A\prodstruct \iterstruct{\?B}{2} \homto \?B
 	\]
 	between "$\sigma$-structures", and by currying (\Cref{prop:currying-hom}),
 	$\overbar f$ can be seen as a "homomorphism"
@@ -148,7 +155,7 @@ of $\HomAutDec{\?B}$ by reduction from the following problem.
 	\]
 	Note moreover that because $\overbar f$ comes from a "homomorphism" between
 	$\extendedSignature{\sigma}{\?B}$ then we must have  
-	any triplet $f(\•A(s),\, b,\, b') = b$
+	$f(\•A(s),\, b,\, b') = b$
 	and $f(\•A(t),\, b,\, b') = b'$ for all $b,b' \in B$.
 	This implies that $\widehat f(\•A(s)) = \projHom{1}$ and $\widehat f(\•A(t)) = \projHom{2}$.
 	
