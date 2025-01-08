@@ -53,7 +53,7 @@ Before proving this lemma, we show an intermediate result.
 	"uniformly first-order definable homomorphisms", say by $\langle \phi_b(x) \rangle_{b\in B}$.
 	Then the conjunctions of the properties 
 	``every $x$ must satisfy exactly one $\phi_b(x)$ ($b\in \?B$)'',
-	and ``for every "relation symbol" $\+R$ of arity $k$, for any $\langle x_1,\, \hdots,\, x_k \rangle$ in $\+R$, there exists $\langle b_1,\, \hdots,\, b_k \rangle \in \+R(\?B)$ "st"
+	and ``for every "predicate" $\+R$ of arity $k$, for any $\langle x_1,\, \hdots,\, x_k \rangle$ in $\+R$, there exists $\langle b_1,\, \hdots,\, b_k \rangle \in \+R(\?B)$ "st"
 	each $x_i$ satisfies $b_i$ ($i \in \lBrack 1,k \rBrack$)'' is a "first-order sentence"
 	describing all "$\sigma$-structures" of $\HomAllClass{\?B}$.
 
@@ -68,7 +68,7 @@ Before proving this lemma, we show an intermediate result.
 	\end{claim}
 	Indeed, since $\?A\homto\?B$, for each $a\in A$ the set
 	$F(a)$ is non-empty subset of $B$---and hence an element of the domain of $\FederVardi{\?B}$.
-	We then prove that it is a "homomorphism": let $\+R$ be a "relation symbol" of arity $l$,
+	We then prove that it is a "homomorphism": let $\+R$ be a "predicate" of arity $l$,
 	and let $\langle a_1,\,\hdots,\,a_l \rangle \in \+R(\?A)$. Then for each $i \in \lBrack 1,l\rBrack$, for every $b_i \in F(a_i)$, there exists a "homomorphism" $f$ from $\?A$ to $\?B$
 	that sends $a_i$ to $b_i$. Then $f(a_j) \in F(a_j)$ for every $j\in \lBrack 1,l\rBrack$
 	and moreover $\langle f(a_1),\,\hdots,\, f(a_l) \rangle \in \+R(\?B)$.
@@ -159,7 +159,7 @@ we show that such "homomorphisms" are always "regular".
 	as in the definition of "uniformly first-order definable homomorphisms".
 	
 	Since $\•A$ is an "automatic presentation" over $\Sigma$,
-	for each "relation symbol" $\+R$ of arity $k$
+	for each "predicate" $\+R$ of arity $k$
 	of $\sigma$, there exists a "first-order formula" $\psi_{\+R}(x_1,\hdots,x_k)$ over 
 	$\signatureSynchronous{\Sigma}$ describing each relation $\+R$.
 	We then define $\phi^*_b(x)$ as the formulas obtained from $\phi_b(x)$
@@ -253,7 +253,7 @@ must have a successor (resp. predecessor) in $\?H$ that lives in $\textrm{Im}_{g
 \end{marginfigure}
 
 We formalize this algorithm as the greatest fixpoint of some operator.
-Given a finite "$\sigma$-structure" $\?B$, and an arbitrary\sidenote{Note that in this part, while some results---mostly complexity/decidability ones---require the assumption that the "left structure" is finite, some results do not,
+Given a finite "$\sigma$-structure" $\?B$, and an arbitrary\sidenote{Note that in this part, while some results---mostly complexity/decidability ones---require the assumption that the "input structure" is finite, some results do not,
 and are stated for arbitrary "structures".}%
 "$\sigma$-structure" $\?A$, we say that a function $F\colon A \to \pset{B}$ is "subsumed"
 by $G\colon A \to \pset{B}$, denoted by \AP\(F \intro*\subsumed G\),
@@ -309,7 +309,7 @@ and iterating $\HCOperator$.}
 \end{corollary}
 
 In general, the converse property does not hold. For instance, if $\sigma$ is the
-"signature of graphs" and $\?B$ is the "$2$-clique", then $\HCFixpoint{\?A}{\?B}$
+"graph signature" and $\?B$ is the "$2$-clique", then $\HCFixpoint{\?A}{\?B}$
 is always the map $a \mapsto B$, no matter whether there is a "homomorphism" from
 $\?A$ to $\?B$.
 
@@ -620,7 +620,7 @@ on $\zigzag{n}{5}$ in only $2$ steps.
 	\end{claim}
 	We give a proof sketch of this claim. Note that by definition,
 	$\HCOperator_{\?A,\?B}(F)(a)$ only depends on the values of $F(a')$ where $a'$ is at distance 1.
-	More precisely, it only depends on whether for any "relation symbol" $\+R$ of arity $k$,
+	More precisely, it only depends on whether for any "predicate" $\+R$ of arity $k$,
 	for any $i\in\lBrack 1,k\rBrack$, for any $Y_1,\hdots,Y_{k-1} \subseteq B$, whether there
 	are elements $\langle a_1,\,\hdots,\,a_{k-1}\rangle \in \neighbourhood{a}{\?A}{\+R}{i}$
 	"st"  
@@ -788,7 +788,7 @@ on $\zigzag{n}{5}$ in only $2$ steps.
 	we would otherwise get that either $\?T \homto \?B$---contradicting that $\?T$ is a "critical obstruction" of $\?B$---or that $\?T \homto \?A$---contradicting that $\?A \homto \?B$.
 	
 	And so, there exists $t \in T$ "st" $f(t) = a = b$.
-	Consider the "congruence induced" $\ker{f}$ by $f$ on $T$, namely $x \ker{f} y$ "iff"
+	Consider the "congruence induced" by $f$ on $T$, namely $x \ker{f} y$ "iff"
 	$f(x) = f(y)$. Let $\?U$ be the "quotient" of $\?T$ by $\ker{f}$,
 	and let $\?U_{\?A}$ be the "substructure" of $\?U$, induced by elements
 	of $U$ that are sent via $f$ on $\?A$.

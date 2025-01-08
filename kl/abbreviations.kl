@@ -34,4 +34,6 @@
 
 \knowledge{text={iff}, italic}
   | iff
-%  | iff
+
+\knowledge{text={via}, italic}
+  | via

@@ -1,0 +1,36 @@
+% ---
+% Homomorphism
+% ---
+
+\knowledge{notion}
+ | homomorphism
+ | homomorphisms
+
+\knowledge{notion}
+ | automorphism
+
+\knowledge{notion}
+ | homomorphically equivalent
+
+\knowledge{notion}
+ | congruence induced
+
+\knowledge{notion}
+ | quotient
+
+% ---
+% Homomorphism problem
+% ---
+
+\knowledge{notion}
+ | homomorphism problem
+
+\knowledge{notion}
+ | constraint satisfaction problem
+ | CSP
+
+\knowledge{notion}
+| input structure
+
+\knowledge{notion}
+ | target structure

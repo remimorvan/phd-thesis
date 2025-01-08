@@ -13,7 +13,7 @@ Given an alphabet $\Sigma$, we define on $\Sigma^*$:
 	\itemAP a binary relation $\intro*\prefix$ indicating that a word is a prefix of another.
 \end{itemize} 
 We denote by $\intro*\signatureSynchronous{\Sigma}$ the "signature" $\langle \langle\lastLetter{a}\rangle_{a \in \Sigma},\, \equalLength,\, \prefix \rangle$\footnote{We abusively use the same notations for
-the "relation symbols" and their "interpretations@@relation" in the "signature".} and
+the "predicates" and their "interpretations@@relation" in the "signature".} and
 by \AP$\intro*\univStructSynchronous{\Sigma}$ the "$\signatureSynchronous{\Sigma}$-structure" over $\Sigma^*$ where
 the "symbols@@relation" are "interpreted@@relation" as above.
 
@@ -38,7 +38,7 @@ transitive closure of this relation.
 Given two "structures" $\?A$ and $\?B$, we define the structure \AP$\intro*\powstruct{\?B}{\?A}$ as follows:
 \begin{itemize}
   \item its domain are "homomorphisms" $\?A \to \?B$,
-  \item for every "relation symbol" $\+R$ of arity $k$, for any homomorphism $f_1,\hdots,f_k$,
+  \item for every "predicate" $\+R$ of arity $k$, for any homomorphism $f_1,\hdots,f_k$,
   we have $\langle f_1,\hdots,f_k\rangle \in \+R$ when for every
   $\langle a_1,\hdots,a_k\rangle \in \+R(\?A)$
   then $\langle f_1(a_1), \hdots, f_k(a_k) \rangle \in \+R(\?B)$.
@@ -56,7 +56,7 @@ Given two "structures" $\?A$ and $\?B$, we define the structure \AP$\intro*\pows
 \end{proposition}
 
 \begin{proof}
-Let $\+R$ be a relational symbol of arity $k$, and let
+Let $\+R$ be a predicate of arity $k$, and let
 $\langle a_1,\hdots,a_k \rangle \in \+R(\?A)$.
 We want to show that $\langle F(a_1),\hdots,F(a_k) \rangle \in \+R(\powstruct{\?C}{\?B})$:
 for any $\langle b_1,\hdots,b_k \rangle \in \+R(\?B)$, we have
@@ -65,7 +65,7 @@ Hence, $F$ is indeed a "homomorphism" from $\?A$ to $\powstruct{\?C}{\?B}$.
 
 Dually, if $F$ is a "homomorphism" from $\?A$ to $\powstruct{\?C}{\?B}$,
 we define $f\colon \?A\prodstruct \?B \to \?C$ by $\langle a,b \rangle \mapsto F(a)(b)$,
-and claim that $f$ is a "homomorphism". Indeed, if $\+R$ be a relational symbol of arity $k$,
+and claim that $f$ is a "homomorphism". Indeed, if $\+R$ be a predicate of arity $k$,
 for any $\langle a_1, \hdots, a_k \rangle \in \+R(\?A)$
 and $\langle b_1, \hdots, b_k \rangle \in \+R(\?B)$,
 we have $\langle f(a_1,b_1), \hdots, f(a_k,b_k) \rangle
@@ -92,7 +92,7 @@ $\?A$ and $\?B$. We define \AP$\•A \intro*\prodpres \•B$ to be the "presenta
 		v_1 \convol \cdots \convol v_k \in \relPres{\•B}{\+R}
 	\}
 \end{align*}
-for each "relation symbol" $\+R$ of arity $k$ in $\sigma$.
+for each "predicate" $\+R$ of arity $k$ in $\sigma$.
 It is an "automatic presentation" of $\?A \prodstruct \?B$. TODO:proof.
 
 \begin{proposition}
@@ -151,7 +151,7 @@ to be the tuple of sets
 		% \+R_{(k)} \in \sigma \text{ and } i \in \lBrack 1,k\rBrack
 	% \Big\rangle.
 \]
-when $\+R$ ranges over "relation symbol" of arity $k$ of $\sigma$ and $i \in \lBrack 1,k\rBrack$. 
+when $\+R$ ranges over "predicate" of arity $k$ of $\sigma$ and $i \in \lBrack 1,k\rBrack$. 
 \marginnote{TODO: introduce notation $\+R_{(k)} \in \sigma$}
 For "graphs", the "neighbourhood" of a vertex corresponds to its set of predecessors and
 its set of successors.
@@ -202,7 +202,7 @@ is a "first-order reduction". We reduce a "$\extendedSignature{\sigma}{\?B}$-str
 $\Phi(\?A)$ defined as follows:
 \begin{itemize}
 	\item its underlying universe is the disjoint union $A \sqcup B$,
-	\item given a "relation symbol" $\+R$ of arity $k$, its "hyperedges" are:
+	\item given a "predicate" $\+R$ of arity $k$, its "hyperedges" are:
 	\begin{itemize}
 	\item all $\+R$-"hyperedges" of $A$,
 	\item all $\+R$-"hyperedges" of $B$, and

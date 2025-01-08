@@ -1,0 +1,83 @@
+% ---
+% Signatures
+% ---
+
+\knowledge{notion}
+ | signature
+ | signatures
+
+\knowledge{notion}
+ | predicate
+ | predicates
+
+\knowledge{notion}
+ | purely relational signature
+
+\knowledge{notion}
+ | graph signature
+
+% ---
+% Structures
+% ---
+
+\knowledge{notion}
+ | $\sigma $-structures
+ | $\sigma $-structure
+ | $\signatureSynchronous {\Sigma }$-structure
+ | structures
+ | structure
+ | $\extendedSignature {\sigma }{\?B}$-structure
+ | $\extendedSignature {\sigma }{\?B}$-structures
+ | \(\sigma \)-structures
+
+\knowledge{notion}
+ | interpretations@relation
+ | interpreted@relation
+ | interpreting@symbol
+ | interpretation@symbol
+
+\knowledge{notion}
+ | finite $\sigma $-structures
+ | finite $\sigma $-structure
+ | finite structure
+ | finite structures
+
+\knowledge{notion}
+ | hyperedge
+ | hyperedges
+ | $\+R$-hyperedges
+ | $\+R$-hyperedge
+
+\knowledge{notion}
+ | locally finite
+
+% ---
+% Graph-ish
+% ---
+
+\knowledge{notion}
+ | graphs
+ | graph
+
+\knowledge{notion}
+ | undirected path
+
+\knowledge{notion}
+ | connected
+ | connected component
+ | connected components
+
+\knowledge{notion}
+ | neighbourhood
+ | neighbourhoods
+
+% ---
+% Substructures & misc 
+% ---
+
+\knowledge{notion}
+ | substructure
+
+\knowledge{notion}
+ | induced substructure
+ | induced@structure

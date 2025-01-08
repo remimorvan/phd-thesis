@@ -19,7 +19,7 @@ to $\HomRegFinDec{\?B}$ is not entirely trivial and requires some work.
 	Undecidability of \,$\HomAutDec{\?B}$}
 
 For $n\in\N$, we define the \AP""$n$-link"" $\intro*\link{n}$ be the "$\sigma$-structure"\sidenote{From \cite[\S~2]{LaroseLotenTardif2007CharacterisationFOCSP}.} 
-whose domain is $\lBrack 0,n\rBrack$, and every "relation symbol" $\+R$
+whose domain is $\lBrack 0,n\rBrack$, and every "predicate" $\+R$
 of arity $k$, is interpreted as the set of tuples $\langle a_1,\, \hdots,\, a_k \rangle$
 "st" $|a_i-a_j| \leq 1$ for all $i,j \in \lBrack 0,n \rBrack$. See \Cref{fig:n-link}.
 \begin{marginfigure}
@@ -27,7 +27,7 @@ of arity $k$, is interpreted as the set of tuples $\langle a_1,\, \hdots,\, a_k 
 	\begin{tikzpicture}
 		\input{tikz/n-link}
 	\end{tikzpicture}
-	\caption{\AP\label{fig:n-link}The "$n$-link" $\link{n}$ over the "digraph signature".}
+	\caption{\AP\label{fig:n-link}The "$n$-link" $\link{n}$ over the "graph signature".}
 \end{marginfigure}
 Given a "$\sigma$-structure" $\?B$, say that $b \in \?B$ and $b'$ are
 \AP""$n$-linked"" if there exists a "homomorphism" from $\link{n}$ to $\?B$
@@ -79,7 +79,7 @@ of $\HomAutDec{\?B}$ by reduction from the following problem.
 }
 \begin{property}
 	\AP\label{prop:undecidability-connectivity}
-	For any "signature" $\sigma$ containing at least one "relation symbol" of
+	For any "signature" $\sigma$ containing at least one "predicate" of
 	arity at least 2, "Connectivity in Automatic Graphs" is "RE"-complete.
 \end{property}
 
@@ -91,7 +91,7 @@ of $\HomAutDec{\?B}$ by reduction from the following problem.
 
 \begin{lemma}
 	\AP\label{lem:reduction-hom}
-	Assume that $\sigma$ contains at least one "relation symbol" of arity at least 2.
+	Assume that $\sigma$ contains at least one "predicate" of arity at least 2.
 	If $\?B$ does not have "finite duality", then there is a TODO:complexity reduction 
 	from the complement of "Connectivity in Automatic Graphs" to $\HomAutDec{\marked{\?B}}$.
 \end{lemma}
@@ -102,7 +102,7 @@ of $\HomAutDec{\?B}$ by reduction from the following problem.
 	we first define the $\sigma$-structure $\?A$ with "automatic presentation" $\•A$
 	obtained by replacing every edge of $\•G$ by a "$1$-link".
 	Formally, $\?A$ has the same domain as $\?G$, and for any
-	"relation symbol" $\+R \in \sigma$ of arity $k$,
+	"predicate" $\+R \in \sigma$ of arity $k$,
 	$\langle g_1,\, \hdots,\, g_k \rangle \in \+R(\?A)$ "iff"
 	$\{g_1, \hdots, g_k\} = \{g,g'\}$ for some $g,g' \in G$ "st"
 	there is an edge from $g$ to $g'$ in $\?G$.
@@ -116,18 +116,18 @@ of $\HomAutDec{\?B}$ by reduction from the following problem.
 	in $\?G$, then they are "$1$-linked" in $\?A$. Since being "linked" is
 	reflexive and transitive, the conclusion follows.
 	Conversely, if two elements $a$ and $a'$ of $\?A$ are "$1$-linked", 
-	then pick a "relation symbol" $\+R \in \sigma$ of arity at least 2.
+	then pick a "predicate" $\+R \in \sigma$ of arity at least 2.
 	Then $\langle a,\, \hdots,\, a,\, a' \rangle \in \+R(\?A)$,
 	and so by definition of $\?A$ there is either an edge from $a$ to $a'$
 	or from $a'$ to $a$ in $\?G$.\sidenote{Note that the proof of this claim
 	is the only part of the proof of \Cref{lem:reduction-hom} that requires
-	the assumption that $\sigma$ contains at least one "relation symbol" of arity at least 2.}
+	the assumption that $\sigma$ contains at least one "predicate" of arity at least 2.}
 
 	We then consider the "automatic $\sigma$-structure" $\?A\prodstruct \iterstruct{\?B}{2}$---see
 	\Cref{sec:construction-automatic-presentations} to have an explicit construction of an "automatic presentation" for this structure---, and extend it to a
 	"$\extendedSignature{\sigma}{\?B}$-structure" \AP\(\intro*\ConstrUndecHom{(\?A\prodstruct \iterstruct{\?B}{2})}\)
 	in which for each $b_0 \in B$,
-	we "interpret" the unary predicate $\unarypred{b_0}$ as
+	we "interpret" the unary "predicate" $\unarypred{b_0}$ as
 	\[
 		\big\{\;
 			\langle a,\, b,\, b'\rangle \;\big\vert\;
@@ -187,7 +187,7 @@ of $\HomAutDec{\?B}$ by reduction from the following problem.
 			\;b' & \text{ otherwise.}
 		\end{cases*}
 	\]
-	We show that this is indeed a "homomorphism": for any "relational symbol" $\+R$
+	We show that this is indeed a "homomorphism": for any "predicate" $\+R$
 	of arity $k$ in $\sigma$, if
 	\[
 		\langle a_1,\, b_1,\, b'_1 \rangle,\;
@@ -213,7 +213,7 @@ of $\HomAutDec{\?B}$ by reduction from the following problem.
 		\Big\rangle
 		\in \+R(\?B).
 	\]
-	We also need to show that this map preserves the new unary predicates of
+	We also need to show that this map preserves the new unary "predicates" of
 	$\extendedSignature{\sigma}{\?B}$: this follows from---and is in fact equivalent to---the
 	fact that $\•A(s)$ and $\•A(t)$ are not "linked" by \Cref{claim:reduction-hom-from-graph-to-link}.
 	Overall, this proves that $\ConstrUndecHom{(\?A\prodstruct \iterstruct{\?B}{2})} \homto \marked{\?B}$.
@@ -224,22 +224,22 @@ of $\HomAutDec{\?B}$ by reduction from the following problem.
 \end{proof}
 
 By \Cref{prop:undecidability-connectivity}, the complement of "Connectivity in Automatic Graphs"
-is "coRE"-complete, and assuming that $\sigma$ contains at least one "relation symbol" of "arity" 2,
+is "coRE"-complete, and assuming that $\sigma$ contains at least one "predicate" of "arity" 2,
 it reduces by \Cref{lem:reduction-hom} to any problem $\HomAutDec{\marked{\?B}}$ when $\?B$ has "finite duality". In turns, by \Cref{prop:marking-preserves-csp-complexity}, it reduces to
 $\HomAutDec{\?B}$, which is thus "coRE"-hard. It remains to deal with "signatures" consisting of only
-"unary predicates".\sidenote{It is not clear to us whether this case was properly handled in
+unary "predicates".\sidenote{It is not clear to us whether this case was properly handled in
 \cite{LaroseLotenTardif2007CharacterisationFOCSP}.}
 
 \begin{property}
 	\AP\label{prop:finite-duality-unary-predicates}
-	If $\sigma$ only consists of unary predicates, then all $\sigma$-structures
+	If $\sigma$ only consists of unary "predicates", then all "$\sigma$-structures"
 	have "finite duality".
 \end{property}	
 
 \begin{proof}
 	Fix a $\sigma$-structure $\?B$. We define the \AP""unary type@@elem""
 	$\intro*\unaryType{b}{\?B}$ of $b \in \?B$
-	to be the set of "relation symbols" $\+P$ "st" $b \in \+P(\?B)$.
+	to be the set of "predicates" $\+P$ "st" $b \in \+P(\?B)$.
 	
 	Given $\tau \subseteq \sigma$, define \AP$\intro*\structOfUnaryType{\tau}$
 	to be the "$\sigma$-structure"
@@ -304,7 +304,7 @@ $\HomAutDec{\?B}$, which is thus "coRE"-hard. It remains to deal with "signature
 
 \begin{proof}
 	By \Cref{prop:finite-duality-unary-predicates}, since $\?B$ does not have "finite duality",
-	then $\sigma$ has at least one "relation symbol" of arity at least 2.
+	then $\sigma$ has at least one "predicate" of arity at least 2.
 	The conclusion follows from \Cref{prop:marking-preserves-csp-complexity,prop:undecidability-connectivity,lem:reduction-hom}.
 \end{proof}
 
@@ -329,7 +329,7 @@ and will later settle its complexity.
 
 \begin{lemma}
 	\AP\label{lem:reduction-hom-reg}
-	Assume that $\sigma$ contains at least one "relation symbol" of arity at least 2.
+	Assume that $\sigma$ contains at least one "predicate" of arity at least 2.
 	If $\?B$ does not have "finite duality", then there is a TODO:complexity reduction 
 	from "Regular Unconnectivity in Automatic Graphs"
 	to $\HomRegAutDec{\marked{\?B}}$.
@@ -366,7 +366,7 @@ and will later settle its complexity.
 	\[
 		\widehat f\colon \•A \homto \powstruct{\?B}{(\iterstruct{\?B}{2})}.
 	\]
-	Moreover, using the unary predicates \(\unarypred{b}\), \(b \in B\),
+	Moreover, using the "predicates" \(\unarypred{b}\), \(b \in B\),
 	we get that $\widehat f(\•A(s)) = \projHom{1}$ and $\widehat f(\•A(s)) = \projHom{2}$.
 
 	We then define \[\+X \defeq \{g \in \powstruct{\?B}{(\iterstruct{\?B}{2})} \mid \text{ $g$ and $\projHom{1}$ are "linked" or $g = \projHom{1}$}\}.\]
