@@ -151,24 +151,24 @@ of $\HomAutDec{\?B}$ by reduction from the following problem.
 	between "$\sigma$-structures", and by currying (\Cref{prop:currying-hom}),
 	$\overbar f$ can be seen as a "homomorphism"
 	\[
-		\widehat f\colon \?A \homto \powstruct{\?B}{(\iterstruct{\?B}{2})}.
+		F\colon \?A \homto \powstruct{\?B}{(\iterstruct{\?B}{2})}.
 	\]
 	Note moreover that because $\overbar f$ comes from a "homomorphism" between
 	$\extendedSignature{\sigma}{\?B}$ then we must have  
 	$f(\•A(s),\, b,\, b') = b$
 	and $f(\•A(t),\, b,\, b') = b'$ for all $b,b' \in B$.
-	This implies that $\widehat f(\•A(s)) = \projHom{1}$ and $\widehat f(\•A(t)) = \projHom{2}$.
+	This implies that $F(\•A(s)) = \projHom{1}$ and $F(\•A(t)) = \projHom{2}$.
 	
 	We now assume by contradiction that there is some $n \in \N$
 	"st" there is a "homomorphism" $g\colon \link{n} \to \?A$
 	with $g(0) = \•A(s)$ and $g(n) = \•A(t)$.
 	Then by composition, we obtain a "homomorphism"
 	\[
-		\widehat f \circ g\colon
+		F \circ g\colon
 		\link{n} \to \powstruct{\?B}{(\iterstruct{\?B}{2})},
  	\]	
-	which sends $0$ to $\widehat f(g(0)) = \widehat f(\•A(s)) = \projHom{1}$
-	and sends $n$ to $\widehat f(g(n)) = \widehat f(\•A(t)) = \projHom{2}$.
+	which sends $0$ to $F(g(0)) = F(\•A(s)) = \projHom{1}$
+	and sends $n$ to $F(g(n)) = F(\•A(t)) = \projHom{2}$.
 	So, by \Cref{prop:characterization-finite-duality-path-projections},
 	$\?B$ would have "finite duality", which is a contradiction.
 	Hence, $\•A(s)$ and $\•A(t)$ are not "linked",
@@ -364,18 +364,18 @@ and will later settle its complexity.
 	By currying---see \Cref{coro:homreg-currying}---of the underlying "homomorphism"
 	between "\(\sigma\)-structures", we obtain a "regular homomorphism"
 	\[
-		\widehat f\colon \•A \homto \powstruct{\?B}{(\iterstruct{\?B}{2})}.
+		F\colon \•A \homto \powstruct{\?B}{(\iterstruct{\?B}{2})}.
 	\]
 	Moreover, using the "predicates" \(\unarypred{b}\), \(b \in B\),
-	we get that $\widehat f(\•A(s)) = \projHom{1}$ and $\widehat f(\•A(s)) = \projHom{2}$.
+	we get that $F(\•A(s)) = \projHom{1}$ and $F(\•A(s)) = \projHom{2}$.
 
 	We then define \[\+X \defeq \{g \in \powstruct{\?B}{(\iterstruct{\?B}{2})} \mid \text{ $g$ and $\projHom{1}$ are "linked" or $g = \projHom{1}$}\}.\]
-	We claim that ${\widehat f}^{-1}[\+X]$ witnesses the fact that
+	We claim that ${F}^{-1}[\+X]$ witnesses the fact that
 	$\•G(s)$ and $\•G(t)$ are "regularly unconnected".
-	First, $\projHom{1} \in \+X$ so $\•A(s) \in {\widehat f}^{-1}[\+X]$.
+	First, $\projHom{1} \in \+X$ so $\•A(s) \in {F}^{-1}[\+X]$.
 	Since $\?B$ has "finite duality", by \Cref{prop:characterization-finite-duality-path-projections}, $\projHom{2} \not\in \+X$
-	and so $\•A(t) \not\in {\widehat f}^{-1}[\+X]$.
-	Then, ${\widehat f}^{-1}[\+X]$ is "regular@@lang" since $\widehat f$ is a "regular homomorphism". Finally, ${\widehat f}^{-1}[\+X]$ is a union of
+	and so $\•A(t) \not\in {F}^{-1}[\+X]$.
+	Then, ${F}^{-1}[\+X]$ is "regular@@lang" since $F$ is a "regular homomorphism". Finally, ${F}^{-1}[\+X]$ is a union of
 	equivalences classes of $\domainPres{\•A}$ under ``being "linked"''.\footnote{Indeed,
 	if $c_1, c_2 \in \?C$ are "linked" in some "structure" $\?C$ and if $f\colon \?C \to \?D$ is a "homomorphism", then $f(c_1)$ and $f(c_2)$ are "linked" in $\?D$.}
 	Hence, by \Cref{claim:reduction-homreg-from-graph-to-link}, $\•G(s)$ and $\•G(t)$ are "regularly unconnected".

@@ -26,9 +26,12 @@
  | $\signatureSynchronous {\Sigma }$-structure
  | structures
  | structure
+ | \(\sigma \)-structures
+
+\knowledge{notion}
+ | marked structure
  | $\extendedSignature {\sigma }{\?B}$-structure
  | $\extendedSignature {\sigma }{\?B}$-structures
- | \(\sigma \)-structures
 
 \knowledge{notion}
  | interpretations@relation

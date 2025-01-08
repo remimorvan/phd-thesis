@@ -1,0 +1,24 @@
+% ---
+% Regular functions / homos
+% ---
+
+\knowledge{notion}
+ | regularity@fun
+ | regular@fun
+
+\knowledge{notion}
+ | regular homomorphisms
+ | regular homomorphism
+ | regular@hom
+ | Regularity@hom
+
+% ---
+% Hyperedge consistency 
+% --- 
+
+\knowledge{notion}
+ | hyperedge consistency@finite
+ | hyperedge consistency algorithm@finite
+
+\knowledge{notion}
+ | hyperedge consistency algorithm for automatic structures

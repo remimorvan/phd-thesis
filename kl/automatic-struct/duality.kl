@@ -1,0 +1,44 @@
+% ---
+% Dual & Obstructions 
+% ---
+
+\knowledge{notion}
+ | dual
+ | complete set of obstructions
+
+\knowledge{notion}
+ | obstruction
+
+\knowledge{notion}
+ | critical obstruction
+
+\knowledge{notion}
+ | diameter
+
+
+% ---
+% Finite / Tree duality
+% ---
+
+\knowledge{notion}
+ | finite duality
+
+\knowledge{notion}
+ | Atserias' theorem
+
+\knowledge{notion}
+ | $\sigma $-tree
+ | tree
+
+\knowledge{notion}
+ | tree duality
+
+% ---
+% Misc 
+% ---
+
+\knowledge{notion}
+ | idempotent core
+
+\knowledge{notion}
+ | rigid
