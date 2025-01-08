@@ -26,34 +26,11 @@ Note that any "homomorphism" from an "automatic presentation" of a "finite struc
 to a "finite structure" is also "regular@@hom" and so $\HomFinDec{\?B} = \HomRegFinDec{\?B}$.\sidenote{Note also that membership in $\HomFinDec{-} = \HomRegFinDec{-}$ and in
 $\HomAutDec{-}$ only depends on the "structure represented"
 by the "automatic presentation", and not on the "presentation" itself.
-This is not the case for $\HomRegAutDec{-}$. We use these definitions for two reasons: (1) for consistency with $\HomRegAutDec{-}$ and (2) for the associated decision problem to be defined unambiguously. Note moreover that in the case of "finite structures", the size of its representation, say using a adjacency lists, and of its "automatic presentation" are equal up to a TODO.}
-
-\begin{theorem}[Dichotomy Theorem for Automatic Structures]
-  \!\footnote{The equivalence between (1) and (2) still holds
-  when the "homomorphism problem" takes as input ``higher-order automatic
-  structures'' as defined in \cite[last remark of \S~XII.3]{Blumensath2024MSOModelTheory},
-  since such structures have a decidable first-order theory.}%
-  %%%
-  \AP\label{thm:dichotomy-theorem-automatic-structures}
-  Let $\?B$ be a "finite $\sigma$-structure". The following are equivalent:
-  \begin{enumerate}
-    \item $\?B$ has "finite duality";
-    \item $\HomAutDec{\?B}$ is "decidable";
-    \item $\HomRegAutDec{\?B}$ is "decidable";
-    \item $\HomAutDec{\?B} = \HomRegAutDec{\?B}$ "ie" for any "automatic presentation" $\•A$ of a 
-      "$\sigma$-structure" $\?A$, there is a "homomorphism" from $\?A$ to $\?B$ "iff" 
-      there is a "regular homomorphism" from $\•A$ to $\?B$;
-    \item $\HomAllClass{\?B}$ has "uniformly first-order definable homomorphisms".
-  \end{enumerate}
-  Moreover, when $\HomAutDec{\?B}$ and $\HomRegAutDec{\?B}$ undecidable, they are "coRE"-complete
-  and "RE"-complete, respectively. When they are decidable, they are TODO.
-\end{theorem}
-
-TODO: say that to have "finite duality" can be decided.
-
+This is not the case for $\HomRegAutDec{-}$. We use these definitions for two reasons: (1) for consistency with $\HomRegAutDec{-}$ and (2) for the associated decision problem to be defined unambiguously. Note moreover that in the case of "finite structures", the size of its representation, say using a adjacency lists, and of its "automatic presentation" are equal up to a TODO}
 
 \input{parts/dichotomy-theorem/sec-introduction}
 \input{parts/dichotomy-theorem/sec-preliminaries}
+\input{parts/dichotomy-theorem/sec-overview}
 \input{parts/dichotomy-theorem/sec-undecidability}
-\input{parts/dichotomy-theorem/sec-hyperedge-consistency}
+\input{parts/dichotomy-theorem/sec-decidability}
 \input{parts/dichotomy-theorem/sec-discussion}

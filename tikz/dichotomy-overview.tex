@@ -1,0 +1,15 @@
+\node (1) at (0,0) {\itemDTFinDual};
+\node[below=2em of 1] (5) {\itemDTFirstOrder};
+\node[below=2em of 5] (4) {\itemDTEqual};
+\node[below left=2em and -1em of 4] (3) {\itemDTHomRegDec};
+\node[below right=2em and -1em of 4] (2) {\itemDTHomDec};
+
+% ---
+% Transitions
+% ---
+\draw[implication] (1) to (5);
+\draw[implication] (5) to (4);
+\draw[implication] (4) to (3);
+\draw[implication] (4) to (2);
+\draw[implication, bend left=30] (3) to (1.west);
+\draw[implication, bend right=30] (2) to (1.east);
