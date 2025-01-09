@@ -34,10 +34,11 @@
  | $\extendedSignature {\sigma }{\?B}$-structures
 
 \knowledge{notion}
- | interpretations@relation
- | interpreted@relation
- | interpreting@symbol
- | interpretation@symbol
+ | interpret@predicate
+ | interpreted@predicate
+ | interpreting@predicate
+ | interpretation@predicate
+ | interpretations@predicate
 
 \knowledge{notion}
  | finite $\sigma $-structures
@@ -61,9 +62,17 @@
 \knowledge{notion}
  | graphs
  | graph
+ | directed graph
 
 \knowledge{notion}
  | undirected path
+
+\knowledge{notion}
+ | simple@path
+ | simple path
+
+\knowledge{notion}
+ | acyclic@struct
 
 \knowledge{notion}
  | connected

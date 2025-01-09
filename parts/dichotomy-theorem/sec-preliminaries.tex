@@ -13,9 +13,9 @@ Given an alphabet $\Sigma$, we define on $\Sigma^*$:
 	\itemAP a binary relation $\intro*\prefix$ indicating that a word is a prefix of another.
 \end{itemize} 
 We denote by $\intro*\signatureSynchronous{\Sigma}$ the "signature" $\langle \langle\lastLetter{a}\rangle_{a \in \Sigma},\, \equalLength,\, \prefix \rangle$\footnote{We abusively use the same notations for
-the "predicates" and their "interpretations@@relation" in the "signature".} and
+the "predicates" and their "interpretations@@predicate" in the "signature".} and
 by \AP$\intro*\univStructSynchronous{\Sigma}$ the "$\signatureSynchronous{\Sigma}$-structure" over $\Sigma^*$ where
-the "symbols@@relation" are "interpreted@@relation" as above.
+the "predicates" are "interpreted@@predicate" as above.
 
 \begin{proposition}
 	\label{prop:synchronous-first-order}
@@ -165,7 +165,7 @@ the signature obtained from $\sigma$ by adding
 a unary predicate \AP$\intro*\unarypred{b}$ for each $b\in B$.
 The "marked structure" \AP$\intro*\marked{\?B}$ of $\?B$ is the
 "$\extendedSignature{\sigma}{\?B}$-structure"
-obtained from $\?B$ by "interpreting@@symbol" each predicate $\unarypred{b}$ as the
+obtained from $\?B$ by "interpreting@@predicate" each predicate $\unarypred{b}$ as the
 singleton $\{b\}$.\sidenote{TODO: ASIA'S REMARK: this is called the ``idempotent core''.}
 
 \begin{proposition}[Folklore]
@@ -191,7 +191,7 @@ $\HomFinDec{\?B}$ are equivalent under "first-order reductions".
 \proofcase{Reduction from $\HomFinDec{\?B}$ to $\HomFinDec{\marked{\?B}}$.}
 We reduce a "$\sigma$-structure" $\?A$ to the
 "$\extendedSignature{\sigma}{\?B}$-structure" $\?A'$ obtained
-from $\?A$ by "interpreting@@symbol" each predicate $\unarypred{b}$ as the emptyset.
+from $\?A$ by "interpreting@@predicate" each predicate $\unarypred{b}$ as the emptyset.
 Clearly, a function from $A$ to $B$ is a "homomorphism" from $\?A$ to $\?B$
 "iff" it is a "homomorphism" from $\?A'$ to $\marked{\?B}$, proving the correctness
 of the reduction. It is, by definition, "first-order@@reduction".
@@ -209,7 +209,7 @@ $\Phi(\?A)$ defined as follows:
 	\item all $\+R$-"hyperedges" $(b_1,\hdots,b_{i-1}, a_i, b_{i+1},\hdots,b_k)$
 		"st" there exists $b_i$ for which the $\+R$-"hyperedge"
 		$(b_1,\hdots,b_{i-1}, b_i, b_{i+1},\hdots,b_k)$
-		is in $\+R(\?A)$, and $a_i$ belongs to the "interpretation@@symbol" of 
+		is in $\+R(\?A)$, and $a_i$ belongs to the "interpretation@@predicate" of 
 		$\unarypred{b_i}$ in $\?A$.
 	\end{itemize}
 \end{itemize}
@@ -237,9 +237,9 @@ TODO: To be concluded.
 	So, assume that for every finite "substructure" $\?A'$ of $\?A$,
 	there is a "homomorphism" from $\?A$ to $\?B$. 
 	Consider the topological space $B^A$, consisting of all functions from $A$ to $B$,
-	together with the "product topology".\footnote{We equip $B$ with the discrete topology,
+	together with the product topology.\footnote{We equip $B$ with the discrete topology,
 	making it compact since $B$ is finite.} By "Tychonoff's compactness theorem",
-	$B^A$ is "compact". For each finite subset $X$ of $A$, let
+	$B^A$ is compact. For each finite subset $X$ of $A$, let
 	$H_X$ denote the set of all $f \in B^A$ "st" $\restr{f}{X}$ is a "homomorphism"
 	from the "substructure" of $\?A$ "induced@@structure" by $X$ to $\?B$.
 	Then, each $H_X$ is closed---indeed, whether $f\in B^A$ belongs to $H_X$ only depends
@@ -251,7 +251,7 @@ TODO: To be concluded.
 \end{proof}
 
 \begin{corollary}
-	\!\footnote{Another important consequence of the ""De Bruijn–Erdős Theorem"" is that,
+	\!\footnote{Another important consequence of the "De Bruijn–Erdős Theorem" is that,
 	for instance, the notion of "dual" does not depend on whether we are considering finite or
 	arbitrary "$\sigma$-structures".}
 	\AP\label{coro:de-bruijn-erdos}

@@ -18,6 +18,10 @@
 \knowledge{notion}
  | quotient
 
+\knowledge{notion}
+ | core
+ | $\sigma $-core
+
 % ---
 % Homomorphism problem
 % ---

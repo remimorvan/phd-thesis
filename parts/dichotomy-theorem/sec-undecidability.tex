@@ -31,7 +31,7 @@ of arity $k$, is interpreted as the set of tuples $\langle a_1,\, \hdots,\, a_k 
 \end{marginfigure}
 Given a "$\sigma$-structure" $\?B$, say that $b \in \?B$ and $b'$ are
 \AP""$n$-linked"" if there exists a "homomorphism" from $\link{n}$ to $\?B$
-that sends $0$ to $b$ and $n$ to $b'$. We say that $b$ and $b'$ are \AP""linked"" if
+that sends $0$ to $b$ and $n$ to $b'$. We say that $b$ and $b'$ are \AP\reintro{linked} if
 they are "$n$-linked" for some $n \in \N$.
 
 Note that the fact that $k \mapsto n-k$
@@ -127,7 +127,7 @@ of $\HomAutDec{\?B}$ by reduction from the following problem.
 	\Cref{sec:construction-automatic-presentations} to have an explicit construction of an "automatic presentation" for this structure---, and extend it to a
 	"$\extendedSignature{\sigma}{\?B}$-structure" \AP\(\intro*\ConstrUndecHom{(\?A\prodstruct \iterstruct{\?B}{2})}\)
 	in which for each $b_0 \in B$,
-	we "interpret" the unary "predicate" $\unarypred{b_0}$ as
+	we "interpret@@predicate" the unary "predicate" $\unarypred{b_0}$ as
 	\[
 		\big\{\;
 			\langle a,\, b,\, b'\rangle \;\big\vert\;
@@ -224,7 +224,7 @@ of $\HomAutDec{\?B}$ by reduction from the following problem.
 \end{proof}
 
 By \Cref{prop:undecidability-connectivity}, the complement of "Connectivity in Automatic Graphs"
-is "coRE"-complete, and assuming that $\sigma$ contains at least one "predicate" of "arity" 2,
+is "coRE"-complete, and assuming that $\sigma$ contains at least one "predicate" of arity 2,
 it reduces by \Cref{lem:reduction-hom} to any problem $\HomAutDec{\marked{\?B}}$ when $\?B$ has "finite duality". In turns, by \Cref{prop:marking-preserves-csp-complexity}, it reduces to
 $\HomAutDec{\?B}$, which is thus "coRE"-hard. It remains to deal with "signatures" consisting of only
 unary "predicates".\sidenote{It is not clear to us whether this case was properly handled in
@@ -237,7 +237,7 @@ unary "predicates".\sidenote{It is not clear to us whether this case was properl
 \end{property}	
 
 \begin{proof}
-	Fix a $\sigma$-structure $\?B$. We define the \AP""unary type@@elem""
+	Fix a $\sigma$-structure $\?B$. We define the \AP""unary type""
 	$\intro*\unaryType{b}{\?B}$ of $b \in \?B$
 	to be the set of "predicates" $\+P$ "st" $b \in \+P(\?B)$.
 	

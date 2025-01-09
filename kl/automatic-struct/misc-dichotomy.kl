@@ -1,4 +1,17 @@
 % ---
+% De Bruijn-Erdos
+% ---
+
+\knowledge{notion}
+ | De Bruijn–Erdős Theorem
+
+\knowledge{notion}
+ | unary type
+
+\knowledge{notion}
+ | obstructing@unarytype
+
+% ---
 % Regular functions / homos
 % ---
 
@@ -12,6 +25,9 @@
  | regular@hom
  | Regularity@hom
 
+\knowledge{notion}
+ | invariant under graph isomorphisms
+
 % ---
 % Hyperedge consistency 
 % --- 
@@ -19,6 +35,27 @@
 \knowledge{notion}
  | hyperedge consistency@finite
  | hyperedge consistency algorithm@finite
+ | hyperedge consistency algorithm for finite structures
 
 \knowledge{notion}
  | hyperedge consistency algorithm for automatic structures
+
+\knowledge{notion}
+ | uniformly first-order definable homomorphisms
+ | Uniformly first-order definable homomorphisms
+
+% ---
+% Misc math
+% --- 
+
+\knowledge{url={https://en.wikipedia.org/wiki/Complete_lattice}}
+ | complete lattice
+
+\knowledge{url={https://en.wikipedia.org/wiki/Tychonoff\%27s_theorem}}
+ | Tychonoff's compactness theorem
+
+\knowledge{url={https://en.wikipedia.org/wiki/Knaster\%E2\%80\%93Tarski_theorem}}
+ | Knaster-Tarski theorem
+
+\knowledge{url={https://en.wikipedia.org/wiki/Finite_intersection_property}}
+ | finite intersection property
