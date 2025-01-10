@@ -1,5 +1,37 @@
 \chapter{A Dichotomy Theorem for Automatic Structures}
 
+\begin{abstract}
+	\marginnote[1.3em]{
+		Sections X to Y have been published in BLA.
+
+		We thank X for Y.
+	}%
+	We study the separation problem of "synchronous relations", "aka" "automatic relations",
+	by "recognizable relations"---namely finite unions of Cartesian products of "regular languages".
+	We prove it to be computationally equivalent to the "finite regular colourability of automatic graphs", that takes an "automatic presentation" of a "graph" as input, and asks whether
+	it admits a "regular colouring"---meaning that for each colour, the set of words representing the elements having this colour is a "regular language"---with finitely many colours.
+
+	We first show that, if the number of colours is fixed to be any natural number $k \geq 2$, then
+	this problem is undecidable. This implies the undecidability of the separation problem
+	of "synchronous relations" by "recognizable relations" where the number of unions allowed is bounded.
+
+	We then generalize this result, and prove a dichotomy theorem for automatic structures:
+	for any "relational structure" $\?B$, the problem of whether an "automatic structure"
+	admits a "homomorphism" to $\?B$ is either decidable in "NL", or is undecidable.
+	We extend these results to "regular homomorphisms", in which we require the "homomorphisms"
+	to be "regular@@hom", in the sense that every preimage of any element of the "target structure" $\?B$ must be a "regular language". In both cases, "structures" for which the problem is 
+	decidable are those with ``"finite duality"''. 
+	
+	Using this dichotomy theorem, we then prove that the original problem, 
+	namely the separation problem of "synchronous relations"
+	by "recognizable relations" is undecidable.
+\end{abstract}
+\clearpage
+\chaptertoc
+\clearpage
+
+
+
 Let \AP$\intro*\Fin$ denote the class of all "finite $\sigma$-structures",
 \AP$\intro*\Aut$ the class of all "automatic $\sigma$-structures".
 We let \AP$\intro*\AutPres$ be the class of all "automatic presentations of $\sigma$-structures",
@@ -26,11 +58,11 @@ Note that any "homomorphism" from an "automatic presentation" of a "finite struc
 to a "finite structure" is also "regular@@hom" and so $\HomFinDec{\?B} = \HomRegFinDec{\?B}$.\sidenote{Note also that membership in $\HomFinDec{-} = \HomRegFinDec{-}$ and in
 $\HomAutDec{-}$ only depends on the "structure represented"
 by the "automatic presentation", and not on the "presentation" itself.
-This is not the case for $\HomRegAutDec{-}$. We use these definitions for two reasons: (1) for consistency with $\HomRegAutDec{-}$ and (2) for the associated decision problem to be defined unambiguously. Note moreover that in the case of "finite structures", the size of its representation, say using a adjacency lists, and of its "automatic presentation" are equal up to a TODO}
+This is not the case for $\HomRegAutDec{-}$. We use these definitions for two reasons: (1) for consistency with $\HomRegAutDec{-}$ and (2) for the associated decision problem to be defined unambiguously. Note moreover that in the case of "finite structures", the size of its representation, say using adjacency lists, and of its "automatic presentation" are equal up to a TODO}
 
 \input{parts/dichotomy-theorem/sec-introduction}
 \input{parts/dichotomy-theorem/sec-preliminaries}
-\input{parts/dichotomy-theorem/sec-overview}
+\input{parts/dichotomy-theorem/sec-colouring}
 \input{parts/dichotomy-theorem/sec-undecidability}
 \input{parts/dichotomy-theorem/sec-decidability}
 \input{parts/dichotomy-theorem/sec-discussion}

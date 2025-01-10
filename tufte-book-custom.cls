@@ -44,7 +44,7 @@
   \renewcommand{\thepart}{\arabic{part}} % Part number in arabic numerals
   \titlecontents{part}% FIXME
     [0em] % distance from left margin
-    {\vspace{1\baselineskip}\begin{fullwidth}\Large\rmfamily\scshape\partname~} % above (global formatting of entry)
+    {\vspace{1\baselineskip}\begin{fullwidth}\large\rmfamily\bfseries\scshape\partname~} % above (global formatting of entry)
     {\contentslabel{1cm}} % before w/label (label = ``II'')
     {} % before w/o label
     {\rmfamily\upshape\qquad\thecontentspage} % filler + page (leaders and page num)
@@ -52,30 +52,23 @@
   \renewcommand{\thechapter}{\Roman{chapter}} % Chapter number in roman numerals
   \titlecontents{chapter}%
     [0em] % distance from left margin
-    {\vspace{.75\baselineskip}\begin{fullwidth}\Large\rmfamily\itshape} % above (global formatting of entry)
+    {\vspace{.75\baselineskip}\begin{fullwidth}\large\rmfamily\itshape} % above (global formatting of entry)
     {\hspace*{1cm}\contentslabel{1cm}} % before w/label (label = ``2'')
     {\hspace*{1cm}} % before w/o label
     {\rmfamily\upshape\qquad\thecontentspage} % filler + page (leaders and page num)
     [\end{fullwidth}] % after
   \titlecontents{section}% FIXME
     [0em] % distance from left margin
-    {\vspace{0\baselineskip}\begin{fullwidth}\large\rmfamily\itshape} % above (global formatting of entry)
+    {\vspace{0\baselineskip}\begin{fullwidth}\normalsize\rmfamily\itshape} % above (global formatting of entry)
     {\hspace*{2cm}\contentslabel{1cm}} % before w/label (label = ``2.6'')
     {\hspace*{2cm}} % before w/o label
     {\rmfamily\upshape\qquad\thecontentspage} % filler + page (leaders and page num)
     [\end{fullwidth}] % after
   \titlecontents{subsection}% FIXME
     [0em] % distance from left margin
-    {\vspace{0\baselineskip}\begin{fullwidth}\normalsize\rmfamily\itshape} % above (global formatting of entry)
-    {\hspace*{2.5cm}\contentslabel{1.5cm}} % before w/label (label = ``2.6.1'')
-    {\hspace*{2.5cm}} % before w/o label
-    {\rmfamily\upshape\qquad\thecontentspage} % filler + page (leaders and page num)
-    [\end{fullwidth}] % after
-  \titlecontents{paragraph}% FIXME
-    [0em] % distance from left margin
     {\vspace{0\baselineskip}\begin{fullwidth}\small\rmfamily\itshape} % above (global formatting of entry)
-    {\hspace*{3cm}\contentslabel{2cm}} % before w/label (label = ``2.6.0.0.1'')
-    {\hspace*{3cm}} % before w/o label
+    {\hspace*{3.5cm}\contentslabel{1.5cm}} % before w/label (label = ``2.6.1'')
+    {\hspace*{3.5cm}} % before w/o label
     {\rmfamily\upshape\qquad\thecontentspage} % filler + page (leaders and page num)
     [\end{fullwidth}] % after
 }{}

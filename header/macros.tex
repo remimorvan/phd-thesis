@@ -12,3 +12,24 @@
 
 \usepackage{adforn}
 \newrobustcmd{\proofcase}[1]{\adforn{39}~\emph{#1}~}
+
+% ---
+% Abstract and Chapter TOC 
+% ---
+
+\newenvironment{abstract}{\null\vfill\begin{center}\large\textsc{Abstract}\end{center}\bigskip}{\vfill\null}
+
+\newrobustcmd{\chaptertoc}{
+  \thispagestyle{plain}
+  \begin{fullwidth}
+	\null\vfill
+    \startcontents
+    \begin{center}
+      \large\textsc{Contents}
+    \end{center}
+    \bigskip
+	\printcontents{p}{1}{\setcounter{tocdepth}{2}}
+	\vfill
+  \end{fullwidth}
+  \vfill\null
+}
