@@ -1,17 +1,17 @@
-\knowledge{notion, up, smallcaps}
+\knowledge{notion, wrap=\DPfont}
  | Connectivity in Finite Graphs
 
-\knowledge{notion, up, smallcaps}
+\knowledge{notion, wrap=\DPfont}
  | Regular Unreachability of Turing Machine Configurations
 
 \knowledge{notion}
  | regularly unconnected
 
-\knowledge{notion, up, smallcaps}
+\knowledge{notion, wrap=\DPfont}
  | Connectivity in Automatic Graphs
 
-\knowledge{notion, up, smallcaps}
+\knowledge{notion, wrap=\DPfont}
  | Regular Unconnectivity in Automatic Graphs
 
-\knowledge{notion, up, smallcaps}
+\knowledge{notion, wrap=\DPfont}
  | Restricted Membership for Deterministic Reversible Turing Machines
