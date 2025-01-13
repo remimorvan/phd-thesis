@@ -34,3 +34,21 @@
   \end{fullwidth}
   \vfill\null
 }
+
+% ---
+% Smash left/right arrow (used for "hom")
+% ---
+\newrobustcmd\smashxrightarrow[1]{%
+  	\raisebox{-.04em}{$%
+		\xrightarrow{\smash{\raisebox{-.1em}{%
+	  		\tiny{#1}%
+		}}}%
+  	$}%
+}%
+\newrobustcmd\smashxleftarrow[1]{%
+	\raisebox{-.04em}{$%
+		\xleftarrow{\smash{\raisebox{-.1em}{%
+			\tiny{#1}%
+		}}}%
+	$}%
+}%

@@ -1,0 +1,124 @@
+% ---
+% First tape
+% ---
+\node (0) at (0,0) {0};
+\node[right = 0cm of 0] (1) {0};
+\node[right = 0cm of 1] (2) {1};
+\node[right = 0cm of 2] (3) {0};
+\node[right = 0cm of 3] (4) {1};
+\node[right = 0cm of 4] (5) {$a\vphantom{b}$};
+\node[right = 0cm of 5] (6) {$a\vphantom{b}$};
+\node[right = 0cm of 6] (7) {$a\vphantom{b}$};
+\node[right = 0cm of 7] (8) {$b$};
+\node[right = 0cm of 8] (9) {$b$};
+\node[right = 0cm of 9] (10) {$b$};
+
+\draw[rounded corners=4pt] (0.south west) rectangle (10.north east);
+\draw[->, thick] ($(5.north)+(0,.4)$) -- ($(5.north)+(0,.1)$);
+\node[above=.05cm, circle, draw=cBlue, fill=cBlue, opacity=.5, text opacity=1, inner sep=1.5pt] at ($(5.north)+(0,.4)$) {$p$};
+
+% ---
+% Second tape
+% ---
+\node[below = 1.2cm of 0] (0') {0};
+\node[right = 0cm of 0'] (1') {0};
+\node[right = 0cm of 1'] (2') {1};
+\node[right = 0cm of 2'] (3') {0};
+\node[right = 0cm of 3'] (4') {1};
+\node[right = 0cm of 4'] (5') {1};
+\node[right = 0cm of 5'] (6') {$a\vphantom{b}$};
+\node[right = 0cm of 6'] (7') {$a\vphantom{b}$};
+\node[right = 0cm of 7'] (8') {$b$};
+\node[right = 0cm of 8'] (9') {$b$};
+\node[right = 0cm of 9'] (10') {$b$};
+
+\draw[rounded corners=4pt] (0'.south west) rectangle (10'.north east);
+\draw[->, thick] ($(6'.north)+(0,.4)$) -- ($(6'.north)+(0,.1)$);
+\node[above=.05cm, circle, draw=cRed, fill=cRed, opacity=.5, text opacity=1, inner sep=1.5pt] at ($(6'.north)+(0,.4)$) {$\phantom{q}$};
+
+% ---
+% Third tape
+% ---
+\node[below = 1.2cm of 0'] (0'') {0};
+\node[right = 0cm of 0''] (1'') {0};
+\node[right = 0cm of 1''] (2'') {1};
+\node[right = 0cm of 2''] (3'') {0};
+\node[right = 0cm of 3''] (4'') {1};
+\node[right = 0cm of 4''] (5'') {1};
+\node[right = 0cm of 5''] (6'') {$a\vphantom{b}$};
+\node[right = 0cm of 6''] (7'') {$a\vphantom{b}$};
+\node[right = 0cm of 7''] (8'') {$a\vphantom{b}$};
+\node[right = 0cm of 8''] (9'') {$a\vphantom{b}$};
+\node[right = 0cm of 9''] (10'') {$b$};
+
+\draw[rounded corners=4pt] (0''.south west) rectangle (10''.north east);
+\draw[->, thick] ($(10''.north)+(0,.4)$) -- ($(10''.north)+(0,.1)$);
+\node[above=.05cm, circle, draw=cRed, fill=cRed, opacity=.5, text opacity=1, inner sep=1.5pt] at ($(10''.north)+(0,.4)$) {$\phantom{q}$};
+
+% ---
+% Fourth tape
+% ---
+\node[below = 1.2cm of 0''] (0''') {0};
+\node[right = 0cm of 0'''] (1''') {0};
+\node[right = 0cm of 1'''] (2''') {1};
+\node[right = 0cm of 2'''] (3''') {0};
+\node[right = 0cm of 3'''] (4''') {1};
+\node[right = 0cm of 4'''] (5''') {1};
+\node[right = 0cm of 5'''] (6''') {$a\vphantom{b}$};
+\node[right = 0cm of 6'''] (7''') {$a\vphantom{b}$};
+\node[right = 0cm of 7'''] (8''') {$a\vphantom{b}$};
+\node[right = 0cm of 8'''] (9''') {$a\vphantom{b}$};
+\node[right = 0cm of 9'''] (10''') {$b$};
+\node[right = 0cm of 10'''] (11''') {$b$};
+\node[right = 0cm of 11'''] (12''') {$b$};
+\node[right = 0cm of 12'''] (13''') {$b$};
+
+\draw[rounded corners=4pt] (0'''.south west) rectangle (13'''.north east);
+\draw[->, thick] ($(13'''.north)+(0,.4)$) -- ($(13'''.north)+(0,.1)$);
+\node[above=.05cm, circle, draw=cRed, fill=cRed, opacity=.5, text opacity=1, inner sep=1.5pt] at ($(13'''.north)+(0,.4)$) {$\phantom{q}$};
+
+% ---
+% Fifth tape
+% ---
+\node[below = 1.2cm of 0'''] (0'''') {0};
+\node[right = 0cm of 0''''] (1'''') {0};
+\node[right = 0cm of 1''''] (2'''') {1};
+\node[right = 0cm of 2''''] (3'''') {0};
+\node[right = 0cm of 3''''] (4'''') {1};
+\node[right = 0cm of 4''''] (5'''') {1};
+\node[right = 0cm of 5''''] (6'''') {$a\vphantom{b}$};
+\node[right = 0cm of 6''''] (7'''') {$a\vphantom{b}$};
+\node[right = 0cm of 7''''] (8'''') {$a\vphantom{b}$};
+\node[right = 0cm of 8''''] (9'''') {$a\vphantom{b}$};
+\node[right = 0cm of 9''''] (10'''') {$b$};
+\node[right = 0cm of 10''''] (11'''') {$b$};
+\node[right = 0cm of 11''''] (12'''') {$b$};
+\node[right = 0cm of 12''''] (13'''') {$b$};
+
+\draw[rounded corners=4pt] (0''''.south west) rectangle (13''''.north east);
+\draw[->, thick] ($(6''''.north)+(0,.4)$) -- ($(6''''.north)+(0,.1)$);
+\node[above=.05cm, circle, draw=cBlue, fill=cBlue, opacity=.5, text opacity=1, inner sep=1.5pt] at ($(6''''.north)+(0,.4)$) {$q$};
+
+% ---
+% Transitions
+% ---
+\draw[->, dashed] ($(10.east)+(.3,-.2)$) to[bend left=50]
+	node[midway, right=.15cm, align=left, text width=3.5cm, font=\footnotesize] {simulate $T$}
+	($(10'.east)+(.3,.2)$);
+
+\draw[->, dashed] ($(10'.east)+(.3,-.2)$) to[bend left=50]
+	node[midway, right=.15cm, align=left, text width=3.5cm, font=\footnotesize]
+		{overwrite the first two $b$'s with $a$'s}
+	($(10''.east)+(.3,.2)$);
+
+% \draw[-, dashed] ($(10''.east)+(.3,-.1)$) to ($(10''.east)+(1.5,-.1)$);
+\draw[->, dashed] ($(10''.east)+(1.5,-.2)$) to[bend left=50]
+	node[midway, right=.15cm, align=left, text width=3.5cm, font=\footnotesize]
+		{append three $b$'s}
+	($(13'''.east)+(.3,.2)$);
+
+
+\draw[->, dashed] ($(13'''.east)+(.3,-.2)$) to[bend left=50]
+	node[midway, right=.15cm, align=left, text width=3.5cm, font=\footnotesize]
+		{go back to the new position, in the new state}
+	($(13''''.east)+(.3,.2)$);

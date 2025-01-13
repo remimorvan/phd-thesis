@@ -1,0 +1,62 @@
+% Coloring
+\fill[rounded corners, fill=cBlue, opacity=.5]
+	(-.4,-0.25) rectangle (.4,0.23)
+	(2.1,-0.25) rectangle (2.9,0.23)
+	(0.85,-0.52) rectangle (1.65, -2.5)
+	(3.35,-0.52) rectangle (4.15, -2.5);
+
+\fill[rounded corners, fill=cRed, opacity=.5, xshift=1.25cm]
+	(-.4,-0.25) rectangle (.4,0.23)
+	(2.1,-0.25) rectangle (2.9,0.23);
+\fill[rounded corners, fill=cRed, opacity=.5, xshift=-1.25cm]
+	(0.85,-0.52) rectangle (1.65, -2.5)
+	(3.35,-0.52) rectangle (4.15, -2.5);
+
+% Tree
+\node (eps) at (0,0) {$\varepsilon$};
+\node (ab) at (1.25,0) {$ab$};
+\node (aabb) at (2.5,0) {$a^2b^2$};
+\node (aaabbb) at (3.75,0) {$a^3b^3$};
+
+\node (a) at (0,-.75) {$a$};
+\node (aab) at (1.25,-.75) {$aab$};
+\node (aaabb) at (2.5,-.75) {$a^3b^2$};
+\node (aaaabbb) at (3.75,-.75) {$a^4b^3$};
+
+\node (b) at (0,-1.5) {$b$};
+\node (abb) at (1.25,-1.5) {$abb$};
+\node (aabbb) at (2.5,-1.5) {$a^2b^3$};
+\node (aaabbbb) at (3.75,-1.5) {$a^3b^4$};
+
+\node (aa) at (0,-2.25) {$aa$};
+\node (aaab) at (1.25,-2.25) {$a^3b$};
+\node (aaaabb) at (2.5,-2.25) {$a^4b^2$};
+\node (aaaaabbb) at (3.75,-2.25) {$a^5b^3$};
+
+\draw[->] (eps) to (ab);
+\draw[->] (ab) to (aabb);
+\draw[->] (aabb) to (aaabbb);
+\draw[->, dashed] (aaabbb) to ($(aaabbb)+(1,0)$);
+
+\draw[->] (a) to (aab);
+\draw[->] (aab) to (aaabb);
+\draw[->] (aaabb) to (aaaabbb);
+\draw[->, dashed] (aaaabbb) to ($(aaaabbb)+(1,0)$);
+
+\draw[->] (b) to (abb);
+\draw[->] (abb) to (aabbb);
+\draw[->] (aabbb) to (aaabbbb);
+\draw[->, dashed] (aaabbbb) to ($(aaabbbb)+(1,0)$);
+
+\draw[->] (aa) to (aaab);
+\draw[->] (aaab) to (aaaabb);
+\draw[->] (aaaabb) to (aaaaabbb);
+\draw[->, dashed] (aaaaabbb) to ($(aaaaabbb)+(1,0)$);
+
+\draw[->] (eps) edge[bend right=40] (a)
+	edge[bend right=40] (b)
+	edge[bend right=40] (aa)
+	edge[dashed, bend right=40] ($(aa)+(0,-.75)$);
+
+\node[below = .25cm of aaab, color=cBlue] {$C$}; 
+\node[below = .25cm of aaaabb, color=cRed] {$V \setminus C$}; 

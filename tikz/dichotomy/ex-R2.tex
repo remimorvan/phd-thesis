@@ -1,0 +1,21 @@
+\tikzset{
+	level distance=.9cm,
+	level 1/.style={sibling distance=2.8cm},
+	level 2/.style={sibling distance=1.4cm},
+	level 3/.style={sibling distance=.7cm},
+	edge from parent/.style={draw,->}
+}
+
+\node (t) {$\varepsilon\vphantom{b}$}
+	child {node {$a\vphantom{b}$}
+		child {node {$aa\vphantom{b}$}
+		}
+		child {node {$ab$}
+		}
+	}
+	child {node {$b$}
+		child {node {$ba$}
+		}
+		child {node {$bb$}
+		}
+	};

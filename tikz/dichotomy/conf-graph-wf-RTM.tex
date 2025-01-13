@@ -1,0 +1,38 @@
+
+	
+% Reachable configuration
+\fill[rounded corners, draw=cGreen, fill=cGreen, opacity=.3]
+	(-.2,-.2) rectangle (2.3, .2);
+% Initial configuration
+\fill[rounded corners, draw=cYellow, fill=cYellow, opacity=.3]
+	(-.2,.2) rectangle (.2, -1.6);
+
+% First line
+\node[vertex] (a0) at (0,0) {};
+\foreach \i in {0,...,2} {
+	\pgfmathtruncatemacro{\next}{\i + 1}
+	\node[vertex, right of = a\i] (a\next) {};
+	\draw[->] (a\i) edge (a\next);
+}
+
+% Second line
+\node[vertex, below of = a0] (b0) {};
+\foreach \i in {0,...,4} {
+	\pgfmathtruncatemacro{\next}{\i + 1}
+	\node[vertex, right of = b\i] (b\next) {};
+	\draw[->] (b\i) edge (b\next);
+}
+\node[draw=none, fill=none, right = 0cm of b5] (binf) {$\cdots$};
+
+% Third line
+\node[vertex, below of = b0] (c0) {};
+\foreach \i in {0,1} {
+	\pgfmathtruncatemacro{\next}{\i + 1}
+	\node[vertex, right of = c\i] (c\next) {};
+	\draw[->] (c\i) edge (c\next);
+}
+
+% Labels
+\node[draw=none, fill=none, font=\small] [left = 0cm of b0] {$\InitC{cYellow}$};
+\node[draw=none, fill=none, font=\small, align=center] [above = -.1cm of $(a1)!0.5!(a2)$]
+	{$\ReachC{cGreen}$};

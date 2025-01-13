@@ -1,0 +1,77 @@
+\tikzset{use Hobby shortcut}
+
+\newcommand{\curveA}{(0,0) .. (.5,-.3) .. (2,2) .. (1.1,.8)}
+\newcommand{\curveB}{(.65,.9) .. (.55, 2) .. (-.1, 1.6) .. (-.9, 1.4) .. (-1.3, 1) .. (-1.1, .5) .. (0, 1) .. (.45, .9)};
+
+% Separator
+\draw[rounded corners=2pt, draw=cGrey, fill=cGrey, opacity=.5] (1.14,.85) rectangle (-.15,2.1);
+\draw[rounded corners=2pt, draw=cGrey, fill=cGrey, opacity=.5] (-.15,1.7) rectangle (-1.4,.4);
+
+% R2
+\draw[
+	closed,
+	fill=cRed,
+	draw=cRed,
+	opacity=.5
+] \curveA;
+
+% R1
+\draw[
+	closed,
+	fill=cBlue,
+	draw=cBlue,
+	opacity=.5
+] \curveB;
+
+% Labels
+\node[cRed, font=\small] at (1.5, -.6) {$R_2$};
+\node[cBlue, font=\small] at (-.7, 2) {$R_1$};
+\node[cGrey, font=\small] at (-1.65, 1.05) {$S$};
+
+% Extra nodes
+\foreach \x in {0,...,2} {
+	\coordinate (ca\x) at ($(3.75,1.25)+(.75*\x,0)$);
+	\coordinate (cb\x) at ($(3.75,.5)+(.75*\x,0)$);
+}
+
+% New separator
+\draw[rounded corners=2pt, draw=cGrey, fill=cGrey, opacity=.5]
+	($(ca0)+(0,-.1)$) rectangle ($(cb0)+(-.15,.1)$)
+	($(ca1)+(0,-.1)$) rectangle ($(cb1)+(-.15,.1)$)
+	($(ca2)+(0,-.1)$) rectangle ($(cb2)+(-.15,.1)$);
+\node[cGrey, font=\small, right] at (5.4, .875) {$S'\setminus S$};
+
+% Extra edges
+\foreach \x in {0,...,2} {
+	\node[circle, fill, inner sep=1pt, outer sep=2pt] (a\x) at (ca\x) {};
+		\node[above = 0cm of a\x, font=\small] {$a_{\x}$};
+	\node[circle, fill, inner sep=1pt, outer sep=2pt] (b\x) at (cb\x) {};
+		\node[below = 0cm of b\x, font=\small] {$b_{\x}$};
+}
+
+\foreach \x in {1,2} {
+	\draw[<->, cRed] (a0) edge (b\x);
+}
+\foreach \x in {0,2} {
+	\draw[<->, cRed] (a1) edge (b\x);
+}
+\foreach \x in {0,1} {
+	\draw[<->, cRed] (a2) edge (b\x);
+}
+\foreach \x in {0,...,2} {
+	\draw[->, cBlue, bend right=20] (a\x) edge (b\x);
+	\draw[->, cRed, bend right=20] (b\x) edge (a\x);
+}
+
+\draw[<-, cRed] (1.44, 2.46) .. (1.64, 2.56) .. (2, 2.55) ..  ($(a0)+(-.2,0)$) .. ($(a0)+(-.08,0)$);
+\foreach \x in {1,2} {
+	\draw[-, cRed] (1.45, 2.465) .. (1.64, 2.56) .. (2, 2.55) ..  ($(a\x)+(-.2,0)$) .. ($(a\x)+(-.08,0)$);
+}
+\node[circle, draw, inner sep=1pt, outer sep=1pt, fill=white] at (1.37, 2.45) {};
+\node[below=-2pt, font=\tiny, align=center] at (1.37, 2.45) {$u \in \Sigma^*$};
+
+\foreach \x in {0,...,2} {
+	\draw[<-, cRed] ($(b\x)+(-.08,-.05)$) .. ($(b\x)+(-.2,-.25)$) .. ($(b\x)+(-.3,-.7)$) .. (3.2, -.5) ..  (2.85, -.55) .. (2.65, -.55);
+}
+\node[circle, draw, inner sep=1pt, outer sep=1pt, fill=white] at (2.6, -.6) {};
+\node[below=-2pt, font=\tiny, align=center] at (2.6, -.6) {$v \in \Sigma^*$};

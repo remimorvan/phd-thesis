@@ -523,7 +523,7 @@ We then prove a lower bound on the complexity of "Regular Unreachability of Turi
 	% 	If $q_0\cdot u_\top$ and $q_0\cdot u_\bot$ are "regularly unconnected" in the "configuration graph" of $\+M'$, then $u_\top \in \semTM{\+M}$.
 	% \end{claim}
 	
-	% Indeed, let $L' \subseteq \Gamma^*$ be a "regular language" "st" $q_0\cdot u_\top \in L'$ $q_0\cdot u_\bot \not\in L'$, "st" $L'$ is a union of "connected components" of the "configuration graph" of $\+M$.\footnote{Here, $\Gamma$ denotes the alphabet used in the "automatic presentation" of the "configuration graph" of $\+M'$. Namely, $\Gamma = \Sigma \sqcup \statesTM{\+M} \sqcup (\statesTM{\+M'} \smallsetminus \statesTM{\+M})$.} 
+	% Indeed, let $L' \subseteq \Gamma^*$ be a "regular language" "st" $q_0\cdot u_\top \in L'$ $q_0\cdot u_\bot \not\in L'$, "st" $L'$ is a union of "connected components" of the "configuration graph" of $\+M$.\footnote{Here, $\Gamma$ denotes the alphabet used in the "automatic presentation" of the "configuration graph" of $\+M'$. Namely, $\Gamma = \Sigma \dcup \statesTM{\+M} \dcup (\statesTM{\+M'} \smallsetminus \statesTM{\+M})$.} 
 	% Then let \[L
 	% 	\defeq \rightquotient{(L' \cap \Sigma^* \statesTM{\+M} \Sigma^*)}{(\triangleright^* \triangleleft^*)}.
 	% \]
