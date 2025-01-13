@@ -3,3 +3,14 @@
 
 \knowledge{notion}
  | configuration graph
+ | Configuration graph
+
+\knowledge{notion}
+ | initial configuration
+
+\knowledge{notion}
+ | reversible
+
+\knowledge{notion}
+ | well-founded Reversible Turing Machine
+ | wf-RTM
