@@ -5,7 +5,7 @@
  | separability problem
  | $\REC $-separability problem
 
-\knowledge{notion, wrap=\DPfont}
+\knowledge{notion}
  | regular colourability problem
  | $k$-regular colourability problem
  | $2$-regular colourability problem

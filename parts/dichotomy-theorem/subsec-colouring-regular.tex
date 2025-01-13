@@ -1,6 +1,7 @@
 \subsection{$k$-Regular Colourability Problem}
 
-While we do not know how to approach the "regular colorability problem", we show that as soon as we add the restriction that the number of colors is bounded, the problem becomes undecidable; i.e., the "$k$-regular colorability problem" is undecidable for $k\geq 2$. Using this, we obtain in the next section 
+While we do not know how to approach the "regular colourability problem", we show that as soon as we add the restriction that the number of colours is bounded, the problem becomes undecidable;
+"ie", the "$k$-regular colourability problem" is undecidable for $k\geq 2$. Using this, we obtain in the next section 
 the undecidability for the "separability problem" on two natural classes of 
 "recognizable relations". This is proven by a reduction from a suitable problem on reversible 
 Turing Machines with certain restrictions, which we call ``well-founded''.
@@ -109,8 +110,8 @@ For more details and pointers on "reversible" Turing machines, see \cite[Chapter
 \end{proof}
 
 
-\paragraph*{Undecidability of the $k$-Regular Colorability Problem.}
-We can now show undecidability for the "$k$-regular colorability problem" by reduction from the "reachable regularity problem" as defined before.
+\paragraph*{Undecidability of the $k$-Regular Colourability Problem.}
+We can now show undecidability for the "$k$-regular colourability problem" by reduction from the "reachable regularity problem" as defined before.
 
 \begin{fact}
     \AP\label{fact:initial-nodes-are-regular}
@@ -119,7 +120,7 @@ We can now show undecidability for the "$k$-regular colorability problem" by red
 
 \begin{theorem}
     \AP\label{thm:k-reg-col-undec}
-    The {\sc"$k$-regular colorability problem"} on "automatic graphs" is undecidable, for every $k\geq 2$. More precisely, the problem is recursively enumerable-complete. This holds also for connected "automatic graphs".
+    The "$k$-regular colourability problem" on "automatic graphs" is undecidable, for every $k\geq 2$. More precisely, the problem is recursively enumerable-complete. This holds also for connected "automatic graphs".
 \end{theorem}
 
 \begin{proof}%
@@ -129,7 +130,7 @@ We can now show undecidability for the "$k$-regular colorability problem" by red
             \input{tikz/dichotomy/conf-graph-wf-RTM}
         \end{tikzpicture}
         \caption{
-            \AP\label{fig:reduction-wf-RTM-to-coloring-config-graph-wf-RTM}
+            \AP\label{fig:reduction-wf-RTM-to-colouring-config-graph-wf-RTM}
             Configuration graph of a "well-founded Reversible Turing Machine".
         }
     \end{marginfigure}%
@@ -139,9 +140,9 @@ We can now show undecidability for the "$k$-regular colorability problem" by red
             \input{tikz/dichotomy/reduction-wf-RTM}
         \end{tikzpicture}
         \caption{
-            \AP\label{subfig:reduction-wf-RTM-to-coloring}
+            \AP\label{subfig:reduction-wf-RTM-to-colouring}
             The automatic graph to which the "configuration graph"
-            of \Cref{fig:reduction-wf-RTM-to-coloring-config-graph-wf-RTM} is reduced.
+            of \Cref{fig:reduction-wf-RTM-to-colouring-config-graph-wf-RTM} is reduced.
         }
     \end{marginfigure}%
 	\proofcase{Lower bound.}
@@ -157,53 +158,53 @@ We can now show undecidability for the "$k$-regular colorability problem" by red
         \item $(z,z') = (B,B)$, $c = c_{\textit{init}}$ and $c' \in \Init \setminus \set{c_{\textit{init}}}$.
     \end{enumerate}
 Fresh symbols $B$ and $R$ are utilized to represent two versions of each configuration - one in Blue and one in Red. This graph is depicted
-    on \Cref{fig:reduction-wf-RTM-to-coloring}.
-    Note that $\AutGraph{L}{E}$ is connected and "2-colorable": in fact, it is a directed (possibly infinite) tree with root $(B,c_{\textit{init}})$. 
+    on \Cref{fig:reduction-wf-RTM-to-colouring}.
+    Note that $\AutGraph{L}{E}$ is connected and "2-colourable": in fact, it is a directed (possibly infinite) tree with root $(B,c_{\textit{init}})$. 
     
-    We claim that $\AutGraph{L}{E}$ is "$2$-regular colorable" if, and only if, the set of "reachable configurations" of $T$ is a regular language. 
-    In fact, up to permuting the two-colors, 
-  $\AutGraph{L}{E}$ admits a unique 2-coloring, defined by:
+    We claim that $\AutGraph{L}{E}$ is "$2$-regular colourable" if, and only if, the set of "reachable configurations" of $T$ is a regular language. 
+    In fact, up to permuting the two-colours, 
+  $\AutGraph{L}{E}$ admits a unique 2-colouring, defined by:
     \[
         C_1 ~~ \defeq ~~ \{B\} \times \Reach ~~\cup~~ \{R\} \times (\configs \setminus \Reach)
     \]
     and $C_2$ is the complement of $C_1$.
     If $\Reach$ is regular, then so is $C_1$. Dually, if $C_1$ is regular, then
     $\Reach$ is the set of configurations $c$ such that $(B,c) \in C_1$ and hence is regular.
-    It follows that $\AutGraph{\Sigma^*}{E}$ is "$2$-regular colorable" if and only if
+    It follows that $\AutGraph{\Sigma^*}{E}$ is "$2$-regular colourable" if and only if
     the "reachable configurations" of $T$ are regular, which concludes the proof for $k=2$.
 
-    % In one direction, if the "reachable configurations" of $T$ is a regular language $L$, then consider the regular sets of vertices of $G$ defined as $C_1 = (\set B \times L) \cup (\set R \times (\configs \setminus L))$ and $C_2$ as its complement. It is easy to verify that $(C_1,C_2)$ is a "two-regular coloring@$k$-regular coloring" of $\AutGraph[E]$.
+    % In one direction, if the "reachable configurations" of $T$ is a regular language $L$, then consider the regular sets of vertices of $G$ defined as $C_1 = (\set B \times L) \cup (\set R \times (\configs \setminus L))$ and $C_2$ as its complement. It is easy to verify that $(C_1,C_2)$ is a "two-regular colouring@$k$-regular colouring" of $\AutGraph[E]$.
 
-    % In the converse direction, suppose there is a "two-regular coloring@$k$-regular coloring" $(C_1,C_2)$ of $\AutGraph[E]$, and suppose without loss of generality that $(B,c_{\textit{init}}) \in C_1$. Since $\AutGraph[E]$ is connected, the coloring is uniquely determined by the color of any of its vertices, and hence $C_1 = (\set B \times \hat L) \cup (\set R \times (\configs \setminus \hat L))$, where $\hat L$ is the set of "reachable configurations" of $T$. Now $\hat L$ can be obtained from $C_1$ by means of projection and thus $\hat L$ is regular.
+    % In the converse direction, suppose there is a "two-regular colouring@$k$-regular colouring" $(C_1,C_2)$ of $\AutGraph[E]$, and suppose without loss of generality that $(B,c_{\textit{init}}) \in C_1$. Since $\AutGraph[E]$ is connected, the colouring is uniquely determined by the colour of any of its vertices, and hence $C_1 = (\set B \times \hat L) \cup (\set R \times (\configs \setminus \hat L))$, where $\hat L$ is the set of "reachable configurations" of $T$. Now $\hat L$ can be obtained from $C_1$ by means of projection and thus $\hat L$ is regular.
 
-    To prove the statement for any $k>2$, we define $\AutGraph{L}{E_k}$ as the result of adding a $(k-2)$-clique to $\AutGraph{L}{E}$ and adding an edge from every vertex of the clique to every vertex incident to an edge of $E$. This forces the clique to use $k-2$ colors that cannot be used in the remaining part of the graph and the proof is then analogous.
+    To prove the statement for any $k>2$, we define $\AutGraph{L}{E_k}$ as the result of adding a $(k-2)$-clique to $\AutGraph{L}{E}$ and adding an edge from every vertex of the clique to every vertex incident to an edge of $E$. This forces the clique to use $k-2$ colours that cannot be used in the remaining part of the graph and the proof is then analogous.
 
-	\proofcase{Upper-bound.} We show that the problem is recursively enumerable. Let us define a $k$-colored automaton like a regular (complete) DFA, except that instead of having
+	\proofcase{Upper-bound.} We show that the problem is recursively enumerable. Let us define a $k$-coloured automaton like a regular (complete) DFA, except that instead of having
 	a set of final states, it has a partition $\langle C_1,\hdots,C_k \rangle$ of its states.
-	Such an automaton recognizes a regular coloring $\Sigma^* \to \set{1, \dotsc, k}$.
+	Such an automaton recognizes a regular colouring $\Sigma^* \to \set{1, \dotsc, k}$.
 	Given an "automatic graph" $\AutGraph{L}{R}$---specified by
-	 NFA's $\+A_1$ and $\+A_2$ recognizing $L$ and $\lotimes R$  respectively--- and a $k$-colored automaton $\+B$,
+	 NFA's $\+A_1$ and $\+A_2$ recognizing $L$ and $\lotimes R$  respectively--- and a $k$-coloured automaton $\+B$,
 	we can build, by a product construction, an NFA $\+A'_2$  which accepts
-	all $u \otimes v \in \lotimes R$ such that the color of $u$ is distinct from the color of $v$.
-	Then, $\+A'_2$ is equivalent to $\+A_2$ if, and only if, $\+B$ describes a proper "$k$-coloring" 
-	of $\AutGraph{L}{R}$. The "RE" upper-bound of the "$k$-regular colorability problem" follows: it 
-	suffices to enumerate all $k$-colored automata and check for equivalence.
+	all $u \otimes v \in \lotimes R$ such that the colour of $u$ is distinct from the colour of $v$.
+	Then, $\+A'_2$ is equivalent to $\+A_2$ if, and only if, $\+B$ describes a proper "$k$-colouring" 
+	of $\AutGraph{L}{R}$. The "RE" upper-bound of the "$k$-regular colourability problem" follows: it 
+	suffices to enumerate all $k$-coloured automata and check for equivalence.
 \end{proof}
 
 Note that this reduction provides an easy way of building
-graphs in the shape of \Cref{subfig:reduction-wf-RTM} that are "2-colorable" (in fact, they are trees) but not "2-regular colorable". In fact, we can provide a slightly more
+graphs in the shape of \Cref{subfig:reduction-wf-RTM} that are "2-colourable" (in fact, they are trees) but not "2-regular colourable". In fact, we can provide a slightly more
 direct construction.
 
 \begin{example}
-    \AP\label{ex:tree-not-2-reg-colorable}
-    On the alphabet $\Sigma = \{a,b\}$, the tree $\+T$ depicted in \Cref{fig:tree-not-2reg-color} whose set of vertices is $V = a^*b^*$ and whose set 
+    \AP\label{ex:tree-not-2-reg-colourable}
+    On the alphabet $\Sigma = \{a,b\}$, the tree $\+T$ depicted in \Cref{fig:tree-not-2reg-colour} whose set of vertices is $V = a^*b^*$ and whose set 
     of edges is $E = E_{\mathrm{incr}} \cup E_{\mathrm{init}}$, with 
     \begin{align*}
         E_{\mathrm{incr}} & = \{(a^pb^q,\, a^{p+1}b^{q+1}) \mid p,q \in \N\} \\
         E_{\mathrm{init}} & = \{(\varepsilon,\, a^p) \mid p \in \N\} \cup \{(\varepsilon,\, b^q) \mid q \in \N\}, 
     \end{align*}    
-    is "automatic" but not "2-regular colorable". 
-    Indeed, its only "2-coloring"
+    is "automatic" but not "2-regular colourable". 
+    Indeed, its only "2-colouring"
     consists in partitioning the vertices of $\+T$ into
     \[
         C = \{a^n b^n \mid n \in 2\N\}
@@ -213,7 +214,7 @@ direct construction.
     and its complement $V \setminus C$.
     Let $P = \{a^p b^q \mid p, q \in 2\N\} = (aa)^*(bb)^*$:
     $P$ is regular, yet $C \cap P = \{a^n b^n \mid n \in 2\N\}$ is not.
-    Hence, $C$ is not regular, and thus $\+T$ is not "2-regular colorable".
+    Hence, $C$ is not regular, and thus $\+T$ is not "2-regular colourable".
     \qed 
 \end{example}
 
@@ -223,8 +224,8 @@ direct construction.
         \input{tikz/dichotomy/tree-not-2reg-colour}
     \end{tikzpicture}
     \caption{
-        \label{fig:tree-not-2reg-color}
-        The "automatic tree@automatic graph" $\+T$ of \Cref{ex:tree-not-2-reg-colorable},
-        and its unique "2-coloring" $(C, V\setminus C)$, which is not "regular@@coloring".
+        \label{fig:tree-not-2reg-colour}
+        The "automatic tree@automatic graph" $\+T$ of \Cref{ex:tree-not-2-reg-colourable},
+        and its unique "2-colouring" $(C, V\setminus C)$, which is not "regular@@colouring".
     }
 \end{figure}
