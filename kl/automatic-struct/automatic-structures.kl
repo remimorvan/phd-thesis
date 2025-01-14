@@ -8,11 +8,12 @@
  | presentation@auto
  | represent@structure
  | rational $\sigma$-presentation
+ | rational structure
 
 \knowledge{notion}
  | rational presentation of a directed graph
- | synchronous graph
- | synchronous graphs
+ | rational graph
+ | rational graphs
 
 \knowledge{notion}
  | automatic $\sigma $-structures

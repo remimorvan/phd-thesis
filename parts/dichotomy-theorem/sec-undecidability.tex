@@ -47,9 +47,9 @@ have finite duality by \textcite[Theorem 3.2]{LaroseTesson2009UniversalAlgebraCS
 However, proving the undecidability of the problem that is reduced
 to $\HomRegFinDec{\?B}$ is not entirely trivial and requires some work.
 \begin{itemize}
-	\item For $\HomFinDec{\?B}$, we reduce the complement of "Connectivity in synchronous graphs",
+	\item For $\HomFinDec{\?B}$, we reduce the complement of "Connectivity in rational graphs",
 		providing a "coRE"-lowerbound.
-	\item For $\HomRegFinDec{\?B}$, we reduce "Regular Unconnectivity in synchronous graphs",
+	\item For $\HomRegFinDec{\?B}$, we reduce "Regular Unconnectivity in rational graphs",
 		which in turn is reduced from "Restricted Membership for Deterministic Reversible Turing Machines", providing a "RE"-lowerbound. TODO:update.
 \end{itemize}
 
@@ -109,7 +109,7 @@ Moreover, being "linked" is transitive, but not necessarily reflexive.
 Equipped with the previous proposition, we can now show the undecidability 
 of $\HomAutDec{\?B}$ by reduction from the following problem.
 
-\decisionproblem{""Connectivity in synchronous graphs""}{
+\decisionproblem{""Connectivity in rational graphs""}{
 	An "rational presentation of a directed graph" $\•G$,
 	and two elements $s,t \in \Sigma^*$.
 }{
@@ -118,7 +118,7 @@ of $\HomAutDec{\?B}$ by reduction from the following problem.
 \begin{property}
 	\AP\label{prop:undecidability-connectivity}
 	For any "signature" $\sigma$ containing at least one "predicate" of
-	arity at least 2, "Connectivity in synchronous graphs" is "RE"-complete.
+	arity at least 2, "Connectivity in rational graphs" is "RE"-complete.
 \end{property}
 
 \begin{proof}
@@ -131,12 +131,12 @@ of $\HomAutDec{\?B}$ by reduction from the following problem.
 	\AP\label{lem:reduction-hom}
 	Assume that $\sigma$ contains at least one "predicate" of arity at least 2.
 	If $\?B$ does not have "finite duality", then there is a TODO:complexity reduction 
-	from the complement of "Connectivity in synchronous graphs" to $\HomAutDec{\marked{\?B}}$.
+	from the complement of "Connectivity in rational graphs" to $\HomAutDec{\marked{\?B}}$.
 \end{lemma}
 
 \begin{proof}
 	\marginnote{TODO:Addfigure}%
-	Given an instance $\langle \•G, s, t \rangle$ of "Connectivity in synchronous graphs",
+	Given an instance $\langle \•G, s, t \rangle$ of "Connectivity in rational graphs",
 	we first define the $\sigma$-structure $\?A$ with "rational presentation" $\•A$
 	obtained by replacing every edge of $\•G$ by a "$1$-link".
 	Formally, $\?A$ has the same domain as $\?G$, and for any
@@ -261,7 +261,7 @@ of $\HomAutDec{\?B}$ by reduction from the following problem.
 	Lastly, note that is works in TODO:complexity because TODO.
 \end{proof}
 
-By \Cref{prop:undecidability-connectivity}, the complement of "Connectivity in synchronous graphs"
+By \Cref{prop:undecidability-connectivity}, the complement of "Connectivity in rational graphs"
 is "coRE"-complete, and assuming that $\sigma$ contains at least one "predicate" of arity 2,
 it reduces by \Cref{lem:reduction-hom} to any problem $\HomAutDec{\marked{\?B}}$ when $\?B$ has "finite duality". In turns, by \Cref{prop:marking-preserves-csp-complexity}, it reduces to
 $\HomAutDec{\?B}$, which is thus "coRE"-hard. It remains to deal with "signatures" consisting of only
@@ -351,7 +351,7 @@ unary "predicates".\sidenote{It is not clear to us whether this case was properl
 
 The reduction to show undecidability of is nearly identical to \Cref{lem:reduction-hom},
 but the input problem differs quite a lot.
-\decisionproblem{""Regular Unconnectivity in synchronous graphs""}{
+\decisionproblem{""Regular Unconnectivity in rational graphs""}{
 	An "rational presentation" $\•G$ of a "directed graph" $\?G$,
 	and two elements $s,t \in \Sigma^*$.
 }{
@@ -369,12 +369,12 @@ and will later settle its complexity.
 	\AP\label{lem:reduction-hom-reg}
 	Assume that $\sigma$ contains at least one "predicate" of arity at least 2.
 	If $\?B$ does not have "finite duality", then there is a TODO:complexity reduction 
-	from "Regular Unconnectivity in synchronous graphs"
+	from "Regular Unconnectivity in rational graphs"
 	to $\HomRegAutDec{\marked{\?B}}$.
 \end{lemma}
 
 \begin{proof}
-	Given an instance $\langle \•G, s, t \rangle$ of "Regular Unconnectivity in synchronous graphs",
+	Given an instance $\langle \•G, s, t \rangle$ of "Regular Unconnectivity in rational graphs",
 	we first define the $\sigma$-structure $\?A$ with "rational presentation" $\•A$
 	obtained by replacing every edge by a "$1$-link", as in \Cref{lem:reduction-hom}.
 
@@ -452,7 +452,7 @@ We then prove a lower bound on the complexity of "Regular Unreachability of Turi
 
 \begin{lemma}
 	\AP\label{lemma:regular-unconnectivity-lowerbound}
-	"Regular Unconnectivity in synchronous graphs" is "RE"-hard.
+	"Regular Unconnectivity in rational graphs" is "RE"-hard.
 \end{lemma}
 
 \begin{proof}
@@ -473,11 +473,11 @@ We then prove a lower bound on the complexity of "Regular Unreachability of Turi
 	% }
 	% We will prove that:
 	% \begin{enumerate}
-	% 	\item there is a reduction from "Restricted Membership for Deterministic Reversible Turing Machines" to "Regular Unconnectivity in synchronous graphs", and 
+	% 	\item there is a reduction from "Restricted Membership for Deterministic Reversible Turing Machines" to "Regular Unconnectivity in rational graphs", and 
 	% 	\item the former problem is "RE"-hard.
 	% \end{enumerate}
 
-	% \proofcase{Reduction from "Restricted Membership for Deterministic Reversible Turing Machines" to "Regular Unconnectivity in synchronous graphs".}
+	% \proofcase{Reduction from "Restricted Membership for Deterministic Reversible Turing Machines" to "Regular Unconnectivity in rational graphs".}
 	% We map an instance
 	% $\langle \+M,\, u_\bot,\, u_\top \rangle$ to $\langle \+M',\, q_0\cdot u_\top,\, q_0\cdot 
 	% u_\bot \rangle$ where $\+M'$ is defined in such a way that for any "configuration transition"
