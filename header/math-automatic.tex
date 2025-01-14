@@ -20,11 +20,19 @@
 \newrobustcmd{\nothomregto}{\mathrel{\kl[\homregto]{\centernot{\smashxrightarrow{reg hom}}}}}
 
 % ---
-% Automatic presentations
+% rational presentations
 % ---
 \knowledgenewrobustcmd{\domainPres}[1]{\cmdkl{\mathrm{dom}}_{#1}}
-\knowledgenewrobustcmd{\relPres}[2]{\cmdkl{#2}_{#1}}
-\knowledgenewrobustcmd{\convol}{\mathbin{\cmdkl{\otimes}}}
+\knowledgenewrobustcmd{\relPres}[2]{\cmdkl{#2}_{\! #1}}
+\newrobustcmd{\smallpad}{%
+	\hspace{.05em}\rule{.3em}{.075em}\hspace{.05em}
+}
+\knowledgenewrobustcmd{\pad}{%
+	\cmdkl{\textvisiblespace}
+}
+\knowledgenewrobustcmd{\SigmaPair}[1][2]{\cmdkl{\Sigma}^{#1}_{\raisebox{.25em}{\smallpad}}\!\!}
+\knowledgenewrobustcmd{\convol}{\mathbin{\cmdkl{\otimes}}} % convolution of two words of languages
+\knowledgenewrobustcmd{\convolRel}[1]{#1^{\cmdkl{\otimes}}} % convolution of a relation
 
 % ---
 % Hom problem & classes 
@@ -124,4 +132,3 @@
 \knowledgenewrobustcmd{\confGraph}[1][T]{\cmdkl{{\+G}^{#1}}}
 
 \knowledgenewrobustcmd{\autequiv}[1][R]{\cmdkl{\sim_{#1}}} % todo:wtf is this?
-\knowledgenewrobustcmd{\lotimes}[1]{\cmdkl{\otimes}#1} % todo:wtf is this?

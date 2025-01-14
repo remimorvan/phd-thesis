@@ -22,7 +22,7 @@ Let us denote by $\intro*\Id$ the identity relation (on any implicit alphabet). 
    
 \begin{proof}
    We start with the last two reductions.
-    Given an "automatic graph" $\AutGraph{L}{E}$ over an alphabet $\Sigma$, consider the instance $R_1,R_2$ for the "$\REC$-separability problem", where 
+    Given an "synchronous graph" $\AutGraph{L}{E}$ over an alphabet $\Sigma$, consider the instance $R_1,R_2$ for the "$\REC$-separability problem", where 
     $R_1 = E$ and $R_2 = \Id$. 
     %
     If $\AutGraph{L}{E}$ is "$k$-regular colourable" via the colouring $V_1, \dotsc, V_k$ then the $\kREC$ relation
@@ -128,7 +128,7 @@ Note that $\incompGraph{R}{\Id}$ is exactly the graph $\AutGraph{\Sigma^*}{R}$.
 %    \AP\label{prop:sep-to-col-reduction}
 %    There is a polynomial-time reduction
 %    from the "$\REC$-separability problem" to the 
-%    "regular colourability problem" on "automatic graphs".
+%    "regular colourability problem" on "synchronous graphs".
 %\end{proposition}
 
 %\begin{proof}
@@ -179,6 +179,6 @@ Note that $\incompGraph{R}{\Id}$ is exactly the graph $\AutGraph{\Sigma^*}{R}$.
 
 It is not known to date whether the "regular colourability problem" is decidable, and hence 
 the same holds for the "$\REC$-separability problem"
-in light of the previous theorem. This is due to the fact that there are no known characterizations of when an "automatic graph" is finitely colourable. 
+in light of the previous theorem. This is due to the fact that there are no known characterizations of when an "synchronous graph" is finitely colourable. 
 In spite of this, we believe that the connection between separability and finite colourability is of interest, as it provides us with a way to define and study meaningful 
-restrictions of our problems. The first such restriction corresponds to the "$k$-regular colourability problem" for "automatic graphs", which we study in the next section. 
+restrictions of our problems. The first such restriction corresponds to the "$k$-regular colourability problem" for "synchronous graphs", which we study in the next section. 

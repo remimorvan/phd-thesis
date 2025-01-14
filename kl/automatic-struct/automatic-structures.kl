@@ -1,13 +1,18 @@
 \knowledge{notion}
- | automatic presentation
- | automatic presentations
+ | rational presentation
+ | rational presentations
  | presentations
  | presentation
  | structure represented
- | automatic presentations of $\sigma $-structures
+ | rational presentations of $\sigma $-structures
  | presentation@auto
- | automatic presentation of a directed graph
  | represent@structure
+ | rational $\sigma$-presentation
+
+\knowledge{notion}
+ | rational presentation of a directed graph
+ | synchronous graph
+ | synchronous graphs
 
 \knowledge{notion}
  | automatic $\sigma $-structures
@@ -15,6 +20,4 @@
  | automatic
  | automatic structure
 
-\knowledge{notion}
- | automatic graph
- | automatic graphs
+

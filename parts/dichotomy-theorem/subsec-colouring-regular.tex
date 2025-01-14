@@ -17,7 +17,7 @@ We represent a configuration with tape content $w \cdot \bot^\omega$ (where $w \
 \]
 over the alphabet $\Sigma_T = \Gamma \cup (\Gamma_\bot \times Q)$.
 \AP In light of this representation, we will henceforth denote by ``configuration'' any string from the set  $\intro*\configs \defeq (\Gamma^* \cdot (\Gamma_\bot \times Q)) \cup  (\Gamma^* \cdot (\Gamma \times Q) \cdot \Gamma^*)$. The ""initial configuration"" is $(\bot,q_0)$.
-\AP The ""configuration graph"" of $T$ is the infinite graph $\intro*\confGraph$ having $\configs$ as set of vertices and an edge from $c$ to $c'$, denoted $c \rightarrow c'$, if $c'$ is the configuration of the next step of $T$ starting from $c$. Observe that the "configuration graph" $\confGraph$ of any TM $T$ is an effective "automatic graph" (see, e.g., \cite{KuskeLohrey2010AutomaticGraphs}).
+\AP The ""configuration graph"" of $T$ is the infinite graph $\intro*\confGraph$ having $\configs$ as set of vertices and an edge from $c$ to $c'$, denoted $c \rightarrow c'$, if $c'$ is the configuration of the next step of $T$ starting from $c$. Observe that the "configuration graph" $\confGraph$ of any TM $T$ is an effective "synchronous graph" (see, e.g., \cite{KuskeLohrey2010AutomaticGraphs}).
 
 \AP We say that a deterministic TM $T$ is ""reversible"" if every node of $\confGraph$ has in-degree at most 1, in other words if the machine is co-deterministic\footnote{Note
 that a modern proof of undecidability of the isomorphism problem for automatic structures by
@@ -115,12 +115,12 @@ We can now show undecidability for the "$k$-regular colourability problem" by re
 
 \begin{fact}
     \AP\label{fact:initial-nodes-are-regular}
-    Given an "automatic graph", the set of nodes with no predecessor is effectively a regular language. 
+    Given an "synchronous graph", the set of nodes with no predecessor is effectively a regular language. 
 \end{fact}
 
 \begin{theorem}
     \AP\label{thm:k-reg-col-undec}
-    The "$k$-regular colourability problem" on "automatic graphs" is undecidable, for every $k\geq 2$. More precisely, the problem is recursively enumerable-complete. This holds also for connected "automatic graphs".
+    The "$k$-regular colourability problem" on "synchronous graphs" is undecidable, for every $k\geq 2$. More precisely, the problem is recursively enumerable-complete. This holds also for connected "synchronous graphs".
 \end{theorem}
 
 \begin{proof}%
@@ -141,7 +141,7 @@ We can now show undecidability for the "$k$-regular colourability problem" by re
         \end{tikzpicture}
         \caption{
             \AP\label{subfig:reduction-wf-RTM-to-colouring}
-            The automatic graph to which the "configuration graph"
+            The synchronous graph to which the "configuration graph"
             of \Cref{fig:reduction-wf-RTM-to-colouring-config-graph-wf-RTM} is reduced.
         }
     \end{marginfigure}%
@@ -150,7 +150,7 @@ We can now show undecidability for the "$k$-regular colourability problem" by re
     (\Cref{lem:reachable-regularity}). We first show it for $k=2$.
     \AP Given a "wf-RTM" $T$, let $c_{\textit{init}}$ be its "initial configuration".
     Observe that the set $\intro*\Init$ of all vertices of $\confGraph$ with in-degree $0$ is an effective regular language (by \Cref{fact:initial-nodes-are-regular}), and that $c_{\textit{init}} \in \Init$. Let $B$ and $R$ be fresh symbols. 
-    Consider the "automatic graph" $\AutGraph{L}{E}$ for $L = \set{B,R} \times \configs$, having 
+    Consider the "synchronous graph" $\AutGraph{L}{E}$ for $L = \set{B,R} \times \configs$, having 
     an edge from $(z,c) \in \{B,R\} \times \configs$ to $(z',c') \in \{B,R\} \times \configs$ if either 
     \begin{enumerate}
         \item $(z,z') = (B,R)$ and $c=c'$;
@@ -182,10 +182,10 @@ Fresh symbols $B$ and $R$ are utilized to represent two versions of each configu
 	\proofcase{Upper-bound.} We show that the problem is recursively enumerable. Let us define a $k$-coloured automaton like a regular (complete) DFA, except that instead of having
 	a set of final states, it has a partition $\langle C_1,\hdots,C_k \rangle$ of its states.
 	Such an automaton recognizes a regular colouring $\Sigma^* \to \set{1, \dotsc, k}$.
-	Given an "automatic graph" $\AutGraph{L}{R}$---specified by
-	 NFA's $\+A_1$ and $\+A_2$ recognizing $L$ and $\lotimes R$  respectively--- and a $k$-coloured automaton $\+B$,
+	Given an "synchronous graph" $\AutGraph{L}{R}$---specified by
+	 NFA's $\+A_1$ and $\+A_2$ recognizing $L$ and $\convolRel{R}$  respectively--- and a $k$-coloured automaton $\+B$,
 	we can build, by a product construction, an NFA $\+A'_2$  which accepts
-	all $u \otimes v \in \lotimes R$ such that the colour of $u$ is distinct from the colour of $v$.
+	all $u \otimes v \in \convolRel{R}$ such that the colour of $u$ is distinct from the colour of $v$.
 	Then, $\+A'_2$ is equivalent to $\+A_2$ if, and only if, $\+B$ describes a proper "$k$-colouring" 
 	of $\AutGraph{L}{R}$. The "RE" upper-bound of the "$k$-regular colourability problem" follows: it 
 	suffices to enumerate all $k$-coloured automata and check for equivalence.
@@ -225,7 +225,7 @@ direct construction.
     \end{tikzpicture}
     \caption{
         \label{fig:tree-not-2reg-colour}
-        The "automatic tree@automatic graph" $\+T$ of \Cref{ex:tree-not-2-reg-colourable},
+        The "automatic tree@synchronous graph" $\+T$ of \Cref{ex:tree-not-2-reg-colourable},
         and its unique "2-colouring" $(C, V\setminus C)$, which is not "regular@@colouring".
     }
 \end{figure}

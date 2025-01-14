@@ -153,12 +153,12 @@ we show that such "homomorphisms" are always "regular@@hom".
 \end{proposition}
 
 \begin{proof}
-	Let $\•A$ be an "automatic presentation" of a "$\sigma$-structure" $\?A$,
+	Let $\•A$ be an "rational presentation" of a "$\sigma$-structure" $\?A$,
 	and assume that $\?A \homto \?B$. We need to show that $\•A \homregto \?B$.
 	Let $\langle \phi_b(x) \rangle_{b\in B}$ be "first-order formulas" over $\sigma$
 	as in the definition of "uniformly first-order definable homomorphisms".
 	
-	Since $\•A$ is an "automatic presentation" over $\Sigma$,
+	Since $\•A$ is an "rational presentation" over $\Sigma$,
 	for each "predicate" $\+R$ of arity $k$
 	of $\sigma$, there exists a "first-order formula" $\psi_{\+R}(x_1,\hdots,x_k)$ over 
 	$\signatureSynchronous{\Sigma}$ describing each relation $\+R$.
@@ -185,12 +185,12 @@ saying ``every $x$ satisfies exactly one $\phi^*_b(x)$, and moreover
 if $\langle x_1,\hdots,x_k\rangle$ is an "$\+R$-hyperedge" then
 $\langle b_1,\hdots,b_k \rangle$ is an $\+R$-hyperedge, where $b_i$ is the unique element of $B$
 "st" $\phi_{b_i}(x_i)$ holds''. Each property ``$\langle x_1,\hdots,x_k\rangle$ is an "$\+R$-hyperedge"'' can be expressed using a "first-order formula" expressing the relations
-of the "automatic presentation" given as input.
+of the "rational presentation" given as input.
 
 \begin{corollary}[of "Atserias' theorem" and \Cref{lemma:finite-duality-uniformly-definable-homomorphisms}]
 	\AP\label{coro:finite-duality-implies-homreg-decidable}
 	Let $\?B$ be a finite "$\sigma$-structure" with "finite duality".
-	For each "automatic presentation" $\•A$ over alphabet $\Sigma$, there exists a "first-order 
+	For each "rational presentation" $\•A$ over alphabet $\Sigma$, there exists a "first-order 
 	formula" $\phi$, whose size is linear in $\•A$, "st" $\univStructSynchronous{\Sigma} \models 
 	\phi$ "iff" $\•A \homregto \?B$.
 \end{corollary}
@@ -440,7 +440,7 @@ of $\LatticeGuessFunctions{A}{B}$, namely the constant map $a \mapsto B$.
 Another issue is to have a finite representation of the functions of
 $\LatticeGuessFunctions{A}{B}$ since $A$ can be infinite. This last point is easy to address.
 
-Given an "automatic presentation" $\•A$ of $\?A$, we extend
+Given an "rational presentation" $\•A$ of $\?A$, we extend
 $\HCOperator_{\!\•A,\?B}$ and $\HCFixpoint{\•A}{\?B}$ to be defined on $\domainPres{\•A}$
 instead of $\?A$.
 
@@ -456,7 +456,7 @@ instead of $\?A$.
 	so for each $Y \in \pset{B}$, $F^{-1}[Y]$ is "regular@@lang", and so by \Cref{prop:synchronous-first-order}, there exists a "first-order formula" $\phi_Y(x)$ over
 	\(\signatureSynchronous{\Sigma}\)
 	"st" $F^{-1}[Y] = \semFO{\phi_Y(x)}{\univStructSynchronous{\Sigma}}$.
-	Also, since $\•A$ is an "automatic presentation", for any $\+R \in \sigma$ of arity $k$,
+	Also, since $\•A$ is an "rational presentation", for any $\+R \in \sigma$ of arity $k$,
 	there exists by \Cref{prop:synchronous-first-order} a "first-order formula" $\psi_{\+R}(x_1,\ldots,x_k)$ over \(\signatureSynchronous{\Sigma}\) "st"
 	$\relPres{\•A}{\•R} = \semFO{\psi_{\+R}(x_1,\hdots,x_k)}{\univStructSynchronous{\Sigma}}$.
 	Similarly, $\domainPres{\•A} = \semFO{\psi_{\textrm{dom}}(x)}{\univStructSynchronous{\Sigma}}$

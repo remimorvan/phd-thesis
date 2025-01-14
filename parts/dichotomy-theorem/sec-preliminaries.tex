@@ -47,10 +47,10 @@ It is then routine to check that the maps $f \mapsto F$ and $F \mapsto f$ define
 in the two previous paragraphs are mutually inverse bijections.
 \end{proof}
 
-\subsection{Constructions on Automatic Presentations}
+\subsection{Constructions on rational presentations}
 \label{sec:construction-automatic-presentations}
 
-Let $\•A$ and $\•B$ be "automatic presentations" of some "$\sigma$-structures"
+Let $\•A$ and $\•B$ be "rational presentations" of some "$\sigma$-structures"
 $\?A$ and $\?B$. We define \AP$\•A \intro*\prodpres \•B$ to be the "presentation@@auto"
 "st":
 \begin{align*}
@@ -61,13 +61,13 @@ $\?A$ and $\?B$. We define \AP$\•A \intro*\prodpres \•B$ to be the "presenta
 	\}
 \end{align*}
 for each "predicate" $\+R$ of arity $k$ in $\sigma$.
-It is an "automatic presentation" of $\?A \prodstruct \?B$. TODO:proof.
+It is an "rational presentation" of $\?A \prodstruct \?B$. TODO:proof.
 
 \begin{proposition}
 	\label{prop:homreg-prod-finite}
 	Let $\?A$, $\?B$ and $\?C$ be "automatic $\sigma$-structures", such that
 	$\?B$ and $\?C$ are finite.
-	Let $\•A$ (resp. $\•B$ and $\•B'$, resp. $\•C$ and $\•C'$) be an "automatic presentation"
+	Let $\•A$ (resp. $\•B$ and $\•B'$, resp. $\•C$ and $\•C'$) be an "rational presentation"
 	of $\?A$ (resp. $\?B$, resp. $\?C$).
 	Then $\•A \prodpres \•B \homregto \•C$ "iff" $\•A \prodpres \•B' \homregto \•C'$.
 \end{proposition}
@@ -87,7 +87,7 @@ It is an "automatic presentation" of $\?A \prodstruct \?B$. TODO:proof.
 \end{proof}
 
 In other words, the existence of a "regular homomorphism" does not depend on the
-"automatic presentation" of the \emph{finite} "structures" that are involved, but only
+"rational presentation" of the \emph{finite} "structures" that are involved, but only
 on the "structure" they represent.
 As a consequence of \Cref{prop:homreg-prod-finite}, we write
 \(\•A \prodpres \?B \homregto \?C\) as a synonym for \(\•A \prodpres \•B \homregto \•C\).
@@ -95,7 +95,7 @@ As a consequence of \Cref{prop:homreg-prod-finite}, we write
 \begin{corollary}[Currying]
 	\label{coro:homreg-currying}
 	Let $\?A$, $\?B$ and $\?C$ be "automatic $\sigma$-structures",
-	and let $\•A$ be an "automatic presentation" of $\?A$.
+	and let $\•A$ be an "rational presentation" of $\?A$.
 	Then $\•A \prodpres \?B \homregto \?C$ "iff" $\•A \homregto \powstruct{\?C}{\?B}$.
 \end{corollary}
 

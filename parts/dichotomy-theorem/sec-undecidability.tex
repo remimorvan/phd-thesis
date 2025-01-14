@@ -47,9 +47,9 @@ have finite duality by \textcite[Theorem 3.2]{LaroseTesson2009UniversalAlgebraCS
 However, proving the undecidability of the problem that is reduced
 to $\HomRegFinDec{\?B}$ is not entirely trivial and requires some work.
 \begin{itemize}
-	\item For $\HomFinDec{\?B}$, we reduce the complement of "Connectivity in Automatic Graphs",
+	\item For $\HomFinDec{\?B}$, we reduce the complement of "Connectivity in synchronous graphs",
 		providing a "coRE"-lowerbound.
-	\item For $\HomRegFinDec{\?B}$, we reduce "Regular Unconnectivity in Automatic Graphs",
+	\item For $\HomRegFinDec{\?B}$, we reduce "Regular Unconnectivity in synchronous graphs",
 		which in turn is reduced from "Restricted Membership for Deterministic Reversible Turing Machines", providing a "RE"-lowerbound. TODO:update.
 \end{itemize}
 
@@ -109,8 +109,8 @@ Moreover, being "linked" is transitive, but not necessarily reflexive.
 Equipped with the previous proposition, we can now show the undecidability 
 of $\HomAutDec{\?B}$ by reduction from the following problem.
 
-\decisionproblem{""Connectivity in Automatic Graphs""}{
-	An "automatic presentation of a directed graph" $\•G$,
+\decisionproblem{""Connectivity in synchronous graphs""}{
+	An "rational presentation of a directed graph" $\•G$,
 	and two elements $s,t \in \Sigma^*$.
 }{
 	Are $\•G(s)$ and $\•G(t)$ "connected" in $\?G$?
@@ -118,7 +118,7 @@ of $\HomAutDec{\?B}$ by reduction from the following problem.
 \begin{property}
 	\AP\label{prop:undecidability-connectivity}
 	For any "signature" $\sigma$ containing at least one "predicate" of
-	arity at least 2, "Connectivity in Automatic Graphs" is "RE"-complete.
+	arity at least 2, "Connectivity in synchronous graphs" is "RE"-complete.
 \end{property}
 
 \begin{proof}
@@ -131,13 +131,13 @@ of $\HomAutDec{\?B}$ by reduction from the following problem.
 	\AP\label{lem:reduction-hom}
 	Assume that $\sigma$ contains at least one "predicate" of arity at least 2.
 	If $\?B$ does not have "finite duality", then there is a TODO:complexity reduction 
-	from the complement of "Connectivity in Automatic Graphs" to $\HomAutDec{\marked{\?B}}$.
+	from the complement of "Connectivity in synchronous graphs" to $\HomAutDec{\marked{\?B}}$.
 \end{lemma}
 
 \begin{proof}
 	\marginnote{TODO:Addfigure}%
-	Given an instance $\langle \•G, s, t \rangle$ of "Connectivity in Automatic Graphs",
-	we first define the $\sigma$-structure $\?A$ with "automatic presentation" $\•A$
+	Given an instance $\langle \•G, s, t \rangle$ of "Connectivity in synchronous graphs",
+	we first define the $\sigma$-structure $\?A$ with "rational presentation" $\•A$
 	obtained by replacing every edge of $\•G$ by a "$1$-link".
 	Formally, $\?A$ has the same domain as $\?G$, and for any
 	"predicate" $\+R \in \sigma$ of arity $k$,
@@ -162,7 +162,7 @@ of $\HomAutDec{\?B}$ by reduction from the following problem.
 	the assumption that $\sigma$ contains at least one "predicate" of arity at least 2.}
 
 	We then consider the "automatic $\sigma$-structure" $\?A\prodstruct \iterstruct{\?B}{2}$---see
-	\Cref{sec:construction-automatic-presentations} to have an explicit construction of an "automatic presentation" for this structure---, and extend it to a
+	\Cref{sec:construction-automatic-presentations} to have an explicit construction of an "rational presentation" for this structure---, and extend it to a
 	"$\extendedSignature{\sigma}{\?B}$-structure" \AP\(\intro*\ConstrUndecHom{(\?A\prodstruct \iterstruct{\?B}{2})}\)
 	in which for each $b_0 \in B$,
 	we "interpret@@predicate" the unary "predicate" $\unarypred{b_0}$ as
@@ -173,7 +173,7 @@ of $\HomAutDec{\?B}$ by reduction from the following problem.
 			a = \•A(t) \text{ and } b' = b_0
 		\;\big\}.
 	\]
-	To construct an "automatic presentation" for this structure, see \Cref{sec:construction-automatic-presentations}.
+	To construct an "rational presentation" for this structure, see \Cref{sec:construction-automatic-presentations}.
 	\begin{claim}
 		\AP\label{claim:reduction-hom-direct}
 		If $\ConstrUndecHom{(\?A\prodstruct \iterstruct{\?B}{2})} \homto \marked{\?B}$,
@@ -261,7 +261,7 @@ of $\HomAutDec{\?B}$ by reduction from the following problem.
 	Lastly, note that is works in TODO:complexity because TODO.
 \end{proof}
 
-By \Cref{prop:undecidability-connectivity}, the complement of "Connectivity in Automatic Graphs"
+By \Cref{prop:undecidability-connectivity}, the complement of "Connectivity in synchronous graphs"
 is "coRE"-complete, and assuming that $\sigma$ contains at least one "predicate" of arity 2,
 it reduces by \Cref{lem:reduction-hom} to any problem $\HomAutDec{\marked{\?B}}$ when $\?B$ has "finite duality". In turns, by \Cref{prop:marking-preserves-csp-complexity}, it reduces to
 $\HomAutDec{\?B}$, which is thus "coRE"-hard. It remains to deal with "signatures" consisting of only
@@ -351,8 +351,8 @@ unary "predicates".\sidenote{It is not clear to us whether this case was properl
 
 The reduction to show undecidability of is nearly identical to \Cref{lem:reduction-hom},
 but the input problem differs quite a lot.
-\decisionproblem{""Regular Unconnectivity in Automatic Graphs""}{
-	An "automatic presentation" $\•G$ of a "directed graph" $\?G$,
+\decisionproblem{""Regular Unconnectivity in synchronous graphs""}{
+	An "rational presentation" $\•G$ of a "directed graph" $\?G$,
 	and two elements $s,t \in \Sigma^*$.
 }{
 	Is there a regular language $L \subseteq \Sigma^*$ 
@@ -369,13 +369,13 @@ and will later settle its complexity.
 	\AP\label{lem:reduction-hom-reg}
 	Assume that $\sigma$ contains at least one "predicate" of arity at least 2.
 	If $\?B$ does not have "finite duality", then there is a TODO:complexity reduction 
-	from "Regular Unconnectivity in Automatic Graphs"
+	from "Regular Unconnectivity in synchronous graphs"
 	to $\HomRegAutDec{\marked{\?B}}$.
 \end{lemma}
 
 \begin{proof}
-	Given an instance $\langle \•G, s, t \rangle$ of "Regular Unconnectivity in Automatic Graphs",
-	we first define the $\sigma$-structure $\?A$ with "automatic presentation" $\•A$
+	Given an instance $\langle \•G, s, t \rangle$ of "Regular Unconnectivity in synchronous graphs",
+	we first define the $\sigma$-structure $\?A$ with "rational presentation" $\•A$
 	obtained by replacing every edge by a "$1$-link", as in \Cref{lem:reduction-hom}.
 
 	\begin{claim}
@@ -389,7 +389,7 @@ and will later settle its complexity.
 	\end{claim}
 	The proof is similar to \Cref{claim:reduction-homreg-from-graph-to-link}.
 	Then again, we reduce the instance $\langle \•G, s, t \rangle$
-	to an "automatic presentation" of \(\ConstrUndecHom{(\?A\prodstruct \iterstruct{\?B}{2})}\),
+	to an "rational presentation" of \(\ConstrUndecHom{(\?A\prodstruct \iterstruct{\?B}{2})}\),
 	as in \Cref{lem:reduction-hom}.
 	\begin{claim}
 		\AP\label{claim:reduction-homreg-direct}
@@ -452,7 +452,7 @@ We then prove a lower bound on the complexity of "Regular Unreachability of Turi
 
 \begin{lemma}
 	\AP\label{lemma:regular-unconnectivity-lowerbound}
-	"Regular Unconnectivity in Automatic Graphs" is "RE"-hard.
+	"Regular Unconnectivity in synchronous graphs" is "RE"-hard.
 \end{lemma}
 
 \begin{proof}
@@ -473,11 +473,11 @@ We then prove a lower bound on the complexity of "Regular Unreachability of Turi
 	% }
 	% We will prove that:
 	% \begin{enumerate}
-	% 	\item there is a reduction from "Restricted Membership for Deterministic Reversible Turing Machines" to "Regular Unconnectivity in Automatic Graphs", and 
+	% 	\item there is a reduction from "Restricted Membership for Deterministic Reversible Turing Machines" to "Regular Unconnectivity in synchronous graphs", and 
 	% 	\item the former problem is "RE"-hard.
 	% \end{enumerate}
 
-	% \proofcase{Reduction from "Restricted Membership for Deterministic Reversible Turing Machines" to "Regular Unconnectivity in Automatic Graphs".}
+	% \proofcase{Reduction from "Restricted Membership for Deterministic Reversible Turing Machines" to "Regular Unconnectivity in synchronous graphs".}
 	% We map an instance
 	% $\langle \+M,\, u_\bot,\, u_\top \rangle$ to $\langle \+M',\, q_0\cdot u_\top,\, q_0\cdot 
 	% u_\bot \rangle$ where $\+M'$ is defined in such a way that for any "configuration transition"
@@ -523,7 +523,7 @@ We then prove a lower bound on the complexity of "Regular Unreachability of Turi
 	% 	If $q_0\cdot u_\top$ and $q_0\cdot u_\bot$ are "regularly unconnected" in the "configuration graph" of $\+M'$, then $u_\top \in \semTM{\+M}$.
 	% \end{claim}
 	
-	% Indeed, let $L' \subseteq \Gamma^*$ be a "regular language" "st" $q_0\cdot u_\top \in L'$ $q_0\cdot u_\bot \not\in L'$, "st" $L'$ is a union of "connected components" of the "configuration graph" of $\+M$.\footnote{Here, $\Gamma$ denotes the alphabet used in the "automatic presentation" of the "configuration graph" of $\+M'$. Namely, $\Gamma = \Sigma \dcup \statesTM{\+M} \dcup (\statesTM{\+M'} \smallsetminus \statesTM{\+M})$.} 
+	% Indeed, let $L' \subseteq \Gamma^*$ be a "regular language" "st" $q_0\cdot u_\top \in L'$ $q_0\cdot u_\bot \not\in L'$, "st" $L'$ is a union of "connected components" of the "configuration graph" of $\+M$.\footnote{Here, $\Gamma$ denotes the alphabet used in the "rational presentation" of the "configuration graph" of $\+M'$. Namely, $\Gamma = \Sigma \dcup \statesTM{\+M} \dcup (\statesTM{\+M'} \smallsetminus \statesTM{\+M})$.} 
 	% Then let \[L
 	% 	\defeq \rightquotient{(L' \cap \Sigma^* \statesTM{\+M} \Sigma^*)}{(\triangleright^* \triangleleft^*)}.
 	% \]

@@ -1,5 +1,5 @@
 \knowledge{notion, wrap=\DPfont}
- | finite regular colourability of automatic graphs
+ | finite regular colourability of synchronous graphs
 
 \knowledge{notion, wrap=\DPfont}
  | reachable regularity problem
@@ -31,10 +31,10 @@
  | regularly unconnected
 
 \knowledge{notion, wrap=\DPfont}
- | Connectivity in Automatic Graphs
+ | Connectivity in synchronous graphs
 
 \knowledge{notion, wrap=\DPfont}
- | Regular Unconnectivity in Automatic Graphs
+ | Regular Unconnectivity in synchronous graphs
 
 \knowledge{notion, wrap=\DPfont}
  | Restricted Membership for Deterministic Reversible Turing Machines
