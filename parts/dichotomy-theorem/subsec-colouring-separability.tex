@@ -1,9 +1,9 @@
 \subsection{Separability is Equivalent to Regular Colourability}
 
-We start by showing that the "separability problem" in terms of arbitrary "recognizable relations" is equivalent, under polynomial time reductions, 
-to the "regular colourability problem". To make our statement precise, we need some terminology introduced below. 
-\AP
-Let $\intro*\kREC$ be the class of languages expressed by unions of products of $k$ regular languages which form a partition, that is (in the binary case), relations of the form $(L_{i_1} \times L_{j_1}) \cup \dotsb \cup (L_{i_\ell} \times L_{j_\ell})$, with $i_1,j_1,\hdots,i_\ell, j_\ell \in \lBrack 1,k \rBrack$, for some regular partition $L_1, \dotsc, L_{k}$ of $\Sigma^*$ and $\ell \in \N$.
+We start by showing that the "$\REC$-separability problem" is equivalent,
+under polynomial time reductions, to the "regular colourability problem". To make our statement precise, we need some terminology introduced below. 
+
+\AP Let $\intro*\kREC$ be the class of languages expressed by unions of products of $k$ regular languages which form a partition, that is (in the binary case), relations of the form $(L_{i_1} \times L_{j_1}) \cup \dotsb \cup (L_{i_\ell} \times L_{j_\ell})$, with $i_1,j_1,\hdots,i_\ell, j_\ell \in \lBrack 1,k \rBrack$, for some regular partition $L_1, \dotsc, L_{k}$ of $\Sigma^*$ and $\ell \in \N$.
 \AP
 Note that $\REC = \bigcup_k \kREC$.
 \AP%
@@ -15,20 +15,20 @@ Let us denote by $\intro*\Id$ the identity relation (on any implicit alphabet). 
     \begin{enumerate}
         \item from the "$\REC$-separability problem" to the "regular colourability problem"; 
         \item from the "regular colourability problem" to the "$\REC$-separability problem"; and
-        \item from the "$k$-regular colourability problem" to the $\kREC$-"separability problem", for every $k > 0$.
+        \item from the "$k$-regular colourability problem" to the "$\kREC$-separability problem", for every $k > 0$.
     \end{enumerate}
-    Further, the last two reductions are so that the second relation in the instance of the "separability problem" is the identity $\Id$.
+    Further, the last two reductions are so that the second relation in the instance of the separability problem is the identity $\Id$.
 \end{theorem}
    
 \begin{proof}
    We start with the last two reductions.
-    Given an "automatic graph" $\AutGraph{L}{E}$ over an alphabet $\Sigma$, consider the instance $R_1,R_2$ for the $\REC$-"separability problem", where 
+    Given an "automatic graph" $\AutGraph{L}{E}$ over an alphabet $\Sigma$, consider the instance $R_1,R_2$ for the "$\REC$-separability problem", where 
     $R_1 = E$ and $R_2 = \Id$. 
     %
     If $\AutGraph{L}{E}$ is "$k$-regular colourable" via the colouring $V_1, \dotsc, V_k$ then the $\kREC$ relation
-    $\bigcup_{i \neq j} V_i \times V_j$ separates $R_1$ and $R_2$.
+    $\bigcup_{i \neq j} V_i \times V_j$ "separates@@rel" $R_1$ and $R_2$.
     %
-    Conversely, if a $\kREC$ relation $R \subseteq \Sigma^* \times \Sigma^*$ on the partition $V_1 \dcup \dotsb \dcup V_k = \Sigma^*$ separates $R_1$ and $R_2$, then $\bigcup_{i \neq j} V_i \times V_j$ also separates $R_1$ and $R_2$, and this implies that $V_1, \dotsc, V_k$ is a $k$-colouring for $\AutGraph{\Sigma^*}{E}$.
+    Conversely, if a $\kREC$ relation $R \subseteq \Sigma^* \times \Sigma^*$ on the partition $V_1 \dcup \dotsb \dcup V_k = \Sigma^*$ "separates@@rel" $R_1$ and $R_2$, then $\bigcup_{i \neq j} V_i \times V_j$ also "separates@@rel" $R_1$ and $R_2$, and this implies that $V_1, \dotsc, V_k$ is a $k$-colouring for $\AutGraph{\Sigma^*}{E}$.
 %\end{proof}
 
 \AP For the first reduction, let us introduce some terminology.
@@ -36,10 +36,10 @@ Given two relations $R_1,R_2$ over $\Sigma^*$, say that $u \in \Sigma^*$ is ""co
 $u' \in \Sigma^*$ when for all words $v \in \Sigma^*$:
 \begin{center}
     \intro*\compL: $(u,v) \in R_1 \Rightarrow (u',v) \not\in R_2$%
-    ,\hphantom{\quad and \quad}
+    ,\hphantom{\text{ \fancyand }}
     \intro*\compR: $(v,u) \in R_1 \Rightarrow (v,u') \not\in R_2$,\\
     \intro*\compLpr: $(u',v) \in R_1 \Rightarrow (u,v) \not\in R_2$%
-    \hphantom{,}\quad and \quad
+    \hphantom{,}\text{ \fancyand }
     \intro*\compRpr: $(v,u') \in R_1 \Rightarrow (v,u) \not\in R_2$.
 \end{center}
 \AP
@@ -48,8 +48,16 @@ as the graph whose vertices are all words of $\Sigma^*$,
 and with an edge from $u$ to $v$ whenever $u$ is not "compatible" with $v$.
 Note that $\incompGraph{R}{\Id}$ is exactly the graph $\AutGraph{\Sigma^*}{R}$.
 
-\begin{example}
+\begin{example}%
     \AP\label{ex:equal-length-plusone}%
+    Let $\Sigma = \{a,b\}$, $R_1$ be the equal-length relation,
+    and
+    \[
+        R_2 = \{(u, ua) \mid u \in \Sigma^*\} \cup \{(u, ub) \mid u \in \Sigma^*\}.
+    \]
+    Then, $u$ is "incompatible" with $u'$ if $|u| = |u'|+1$ (this is given by \compL~or \compR),
+    or if $|u'| = |u|+1$ (this is given by \compLpr~or \compRpr).
+    $R_2$ and the "incompatibility graph" are depicted in \Cref{fig:equal-length-plusone-relation,fig:equal-length-plusone-incompatibility}.
     \begin{marginfigure}%
         \centering
         \begin{tikzpicture}
@@ -69,16 +77,7 @@ Note that $\incompGraph{R}{\Id}$ is exactly the graph $\AutGraph{\Sigma^*}{R}$.
             Incompatibility graph $\incompGraph{R_1}{R_2}$ and its "2-regular colouring".%
         }
     \end{marginfigure}%
-    Let $\Sigma = \{a,b\}$, $R_1$ be the equal-length relation,
-    and
-    \[
-        R_2 = \{(u, ua) \mid u \in \Sigma^*\} \cup \{(u, ub) \mid u \in \Sigma^*\}.
-    \]
-    Then, $u$ is "incompatible" with $u'$ if $|u| = |u'|+1$ (this is given by \compL~or \compR),
-    or if $|u'| = |u|+1$ (this is given by \compLpr~or \compRpr).
-    $R_2$ and the "incompatibility graph" are depicted in \Cref{fig:equal-length-plusone-relation,fig:equal-length-plusone-incompatibility}.
-    
-    Note that $R_1$ and $R_2$ are separable by the "recognizable" relation
+    Note that $R_1$ and $R_2$ are "separable@@rel" by the "recognizable" relation
     $S$ consisting of all pairs $(u,v)$ such that $|u|$ and $|v|$ have the same parity.
     Moreover, $\incompGraph{R_1}{R_2}$ is "2-regular colourable", the two colours being
     the words of even and odd length.
@@ -128,16 +127,16 @@ Note that $\incompGraph{R}{\Id}$ is exactly the graph $\AutGraph{\Sigma^*}{R}$.
 %\begin{proposition}
 %    \AP\label{prop:sep-to-col-reduction}
 %    There is a polynomial-time reduction
-%    from the $\REC$-"separability problem" to the 
+%    from the "$\REC$-separability problem" to the 
 %    "regular colourability problem" on "automatic graphs".
 %\end{proposition}
 
 %\begin{proof}
-    \AP Given an instance $(R_1,R_2)$ of the "separability problem", we
+    \AP Given an instance $(R_1,R_2)$ of the separability problem, we
     reduce it to the "regular colourability problem" on its "incompatibility graph" $\incompGraph{R_1}{R_2}$.
 
     \proofcase{Left-to-right implication:} 
-   Assume that there exists $S$ in $\kREC$ that "separates" $R_1$ from $R_2$.
+   Assume that there exists $S$ in $\kREC$ that "separates@@rel" $R_1$ from $R_2$.
    %, where each $A_i$ and $B_i$ is regular.
     Then $S$ can be written as $(A_{i_1}\times A_{j_1}) \cup \cdots \cup (A_{i_\ell}\times A_{j_\ell})$, 
     where $(A_1,\hdots,A_k)$ is a partition of $\Sigma^*$ in $k$ regular languages.
@@ -149,7 +148,7 @@ Note that $\incompGraph{R}{\Id}$ is exactly the graph $\AutGraph{\Sigma^*}{R}$.
     then $(u,v) \in S$, so $(u,v) \in A_{i_m}\times A_{j_m}$ for some $m$. But since $u$ has the same colour 
     as $u'$, the fact that $u \in A_{i_m}$ implies $u' \in A_{i_m}$, and hence 
     $(u',v) \in A_{i_m}\times A_{j_m}\subseteq S$.
-    But $S$ separates $R_1$ from $R_2$, and therefore $(u',v) \not\in R_2$. This tells us that \compL\ holds. 
+    But $S$ "separates@@rel" $R_1$ from $R_2$, and therefore $(u',v) \not\in R_2$. This tells us that \compL\ holds. 
     The other conditions hold by symmetry.
     We conclude that $(A_1,\hdots,A_k)$ defines
     a proper colouring of $\incompGraph{R_1}{R_2}$, and this colouring, with $k$ colours, is 
@@ -163,23 +162,23 @@ Note that $\incompGraph{R}{\Id}$ is exactly the graph $\AutGraph{\Sigma^*}{R}$.
     \end{align*}
     Since $(A_1,\hdots,A_k)$ covers every node of $\incompGraph{R_1}{R_2}$, we get $R_1 \subseteq S$.
     Moreover, we claim that $R_2 \cap S = \emptyset$. Indeed, if $(u,v) \in S$,
-    then $(u,v) \in S_{i}$ for some $i,j$. It either means that \proofcase{1}
-    $(u',v) \in R_1$ for some $u' \in A_i$, or \proofcase{2} $(u,v') \in R_2$
-    for some $v' \in A_i$. In case \proofcase{1}, the fact that $u \in A_i$ implies that $u$ and $u'$
+    then $(u,v) \in S_{i}$ for some $i,j$. It either means that (1)
+    $(u',v) \in R_1$ for some $u' \in A_i$, or (2) $(u,v') \in R_2$
+    for some $v' \in A_i$. In case (1), the fact that $u \in A_i$ implies that $u$ and $u'$
     have the same colour. Thus, $u$ must be "compatible" with $u'$ and hence
     $(u,v) \not\in R_2$ using \compLpr. The other case is symmetric.
-    Therefore, $(u,v) \not\in R_2$, and thus $S$ separates $R_1$ from $R_2$.
+    Therefore, $(u,v) \not\in R_2$, and thus $S$ "separates@@rel" $R_1$ from $R_2$.
 
-    Finally,  $S$ is "recognizable"; in fact, 
+    Finally, $S$ is "recognizable"; in fact, 
     $S = \bigcup_{i=1}^k \bigl( A_i \times R_1[A_i] \bigr) \cup \bigl( R_1^{-1}[A_i] \times A_i \bigr)$, 
     where for any set $X \subseteq \Sigma^*$ we define $R_1[X]$ (resp. $R_1^{-1}[X]$) as the set
     of $v\in \Sigma^*$ (resp. $u \in \Sigma^*$) such that $(u,v) \in R_1$ for some $u \in X$
     (resp. $v\in X$).
-    Hence, $R_1$ and $R_2$ are $\REC$-"separable". 
+    Hence, $R_1$ and $R_2$ are $\REC$-"separable@@rel". 
 \end{proof}
 
 It is not known to date whether the "regular colourability problem" is decidable, and hence 
-the same holds for the $\REC$-"separability problem"
+the same holds for the "$\REC$-separability problem"
 in light of the previous theorem. This is due to the fact that there are no known characterizations of when an "automatic graph" is finitely colourable. 
 In spite of this, we believe that the connection between separability and finite colourability is of interest, as it provides us with a way to define and study meaningful 
 restrictions of our problems. The first such restriction corresponds to the "$k$-regular colourability problem" for "automatic graphs", which we study in the next section. 

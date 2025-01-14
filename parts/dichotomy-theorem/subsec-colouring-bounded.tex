@@ -2,13 +2,13 @@
 
 \paragraph*{Separability for Bounded Recognizable Relations.}
 
-In this section we capitalize on the undecidability result of the previous section, showing how this implies the undecidability for the "separability problem" on two natural classes of bounded "recognizable relations", namely: $\kREC$, and $\kPROD$.
+In this section we capitalize on the undecidability result of the previous section, showing how this implies the undecidability for the separability problem on two natural classes of bounded "recognizable relations", namely $\kREC$ and $\kPROD$.
 Remember that, for any $k$, $\reintro*\kPROD$ is the subclass of $\REC$ consisting of unions of $k$ cross-products of regular languages (which is a subclass of $\kREC[2^{2k}]$).
 
-First, observe that the $\kREC[1]$-"separability problem" is trivially decidable, since the only possible "separator" is $\Sigma^* \times \Sigma^*$. However, for any other $k>1$, the problem is undecidable.
+First, observe that the "$\kREC[1]$-separability problem" is trivially decidable, since the only possible "separator@@rel" is $\Sigma^* \times \Sigma^*$. However, for any other $k>1$, the problem is undecidable.
 
 \begin{proposition}
-    The $\kREC$-"separability problem" is undecidable, for every $k>1$.
+    The "$\kREC$-separability problem" is undecidable, for every $k>1$.
 \end{proposition}
 \begin{proof}
 A consequence of the reduction from the "$k$-regular colourability problem" of \Cref{thm:reg-colourability-equiv-separability}, combined with the undecidability of the latter for every $k>1$ (\Cref{thm:k-reg-col-undec}).
@@ -17,25 +17,25 @@ A consequence of the reduction from the "$k$-regular colourability problem" of \
 On the $\kPROD$ hierarchy we will find the same phenomenon. In particular the case $k=1$ is also trivially decidable.
 
 \begin{proposition}
-    The $\kPROD[1]$-"separability problem" is decidable.
+    The "$\kPROD[1]$-separability problem" is decidable.
 \end{proposition}
 \begin{proof}
     Given two "automatic relations" $R_1, R_2$, there exists $S \in $ \kPROD[1]
-    that "separates" $R_1$ from $R_2$ if and only if $\pi_1(R_1)\times \pi_2(R_1)$
-    "separates" $R_1$ from $R_2$.
+    that "separates@@rel" $R_1$ from $R_2$ if and only if $\pi_1(R_1)\times \pi_2(R_1)$
+    "separates@@rel" $R_1$ from $R_2$.
 \end{proof}
 
-As soon as $k>1$, the $\kPROD$ "separability problem" becomes undecidable. This is a consequence of the following simple lemma.
+As soon as $k>1$, the "$\kPROD$-separability problem" becomes undecidable. This is a consequence of the following simple lemma.
 
 \begin{lemma}
-    A symmetric "automatic relation" $R$ and the identity $\Id$ are "separable" by a relation in $\kPROD[2]$ iff they have a "separator" of the form $(A \times B) \cup (B \times A)$.
+    A symmetric "automatic relation" $R$ and the identity $\Id$ are "separable@@rel" by a relation in $\kPROD[2]$ iff they have a "separator@@rel" of the form $(A \times B) \cup (B \times A)$.
 \end{lemma}
 \begin{proof}
-    Assume that $S \in \kPROD[2]$ "separates" $R$ from $\Id$.
+    Assume that $S \in \kPROD[2]$ "separates@@rel" $R$ from $\Id$.
     Then $R \subseteq S$, but since $R$ is symmetric, $R = R^{-1} \subseteq S^{-1}$ so
     $R \subseteq S \cap S^{-1}$, and hence $R \subseteq S \cap S^{-1}$.
     Moreover, since $S$ has a trivial intersection with $\Id$, so does $S \cap S^{-1}$.
-    Hence, $S \cap S^{-1}$ "separates" $R$ from $\Id$.
+    Hence, $S \cap S^{-1}$ "separates@@rel" $R$ from $\Id$.
 
     Since $S \in \kPROD[2]$, there exists $A_1,A_2,B_1,B_2 \subseteq \Sigma^*$ such that
     $S = A_1 \times B_1 \cup B_2 \times A_2$.
@@ -69,26 +69,26 @@ As soon as $k>1$, the $\kPROD$ "separability problem" becomes undecidable. This 
 We can then establish the following: 
 
 \begin{corollary}\AP\label{cor:2reg-2prod}
-    A symmetric "automatic relation" $R$ and $\Id$ are "separable" by a relation in $\kPROD[2]$ if{f} $\AutGraph{\Sigma^*}{R}$ is "$2$-regular colourable".
+    A symmetric "automatic relation" $R$ and $\Id$ are "separable@@rel" by a relation in $\kPROD[2]$ "iff" $\AutGraph{\Sigma^*}{R}$ is "$2$-regular colourable".
 \end{corollary}
 \begin{proof}
-    By observing that for any symmetric relation $R \subseteq \Sigma^* \times \Sigma^*$, we have that $A,B \subseteq \Sigma^*$ is a colouring of $\AutGraph{\Sigma^*}{R}$ if, and only if, $(A \times B) \cup (B \times A)$ "separates" $R$ from $\Id$.
+    By observing that for any symmetric relation $R \subseteq \Sigma^* \times \Sigma^*$, we have that $A,B \subseteq \Sigma^*$ is a colouring of $\AutGraph{\Sigma^*}{R}$ if, and only if, $(A \times B) \cup (B \times A)$ "separates@@rel" $R$ from $\Id$.
 \end{proof}
 
-We can now easily show undecidability for the $\kPROD[2]$ "separability problem" by reduction from the "$2$-regular colourability problem".
+We can now easily show undecidability for the "$\kPROD[2]$-separability problem" by reduction from the "$2$-regular colourability problem".
 \begin{lemma}\AP\label{lem:aut-2prod-sep-undec}
-    The $\kPROD[2]$-"separability problem" is undecidable.
+    The "$\kPROD[2]$-separability problem" is undecidable.
 \end{lemma}
 \begin{proof}
-    By reduction from the "$2$-regular colourability problem" on "automatic graphs", which is undecidable by \Cref{thm:k-reg-col-undec}. Let $\AutGraph{L}{R}$ be an "automatic graph" and $\AutGraph{L}{R'}$ the symmetric closure of $\AutGraph{L}{R}$. It follows that $\AutGraph{L}{R'}$ is still "automatic" and that there is a "$2$-regular colouring" for $\AutGraph{L}{R'}$ if{f} there is a "$2$-regular colouring" for $\AutGraph{L}{R}$ (the same colouring in fact).
-    Thus, by \Cref{cor:2reg-2prod}, $\AutGraph{L}{R}$ is "$2$-regular colourable" if{f} 
-    there is a $\kPROD[2]$ relation that "separates" $R'$ from $\Id$.
+    By reduction from the "$2$-regular colourability problem" on "automatic graphs", which is undecidable by \Cref{thm:k-reg-col-undec}. Let $\AutGraph{L}{R}$ be an "automatic graph" and $\AutGraph{L}{R'}$ the symmetric closure of $\AutGraph{L}{R}$. It follows that $\AutGraph{L}{R'}$ is still "automatic" and that there is a "$2$-regular colouring" for $\AutGraph{L}{R'}$ "iff" there is a "$2$-regular colouring" for $\AutGraph{L}{R}$ (the same colouring in fact).
+    Thus, by \Cref{cor:2reg-2prod}, $\AutGraph{L}{R}$ is "$2$-regular colourable" "iff" 
+    there is a $\kPROD[2]$ relation that "separates@@rel" $R'$ from $\Id$.
 \end{proof}
 
 Further, this implies undecidability for every larger $k$:
 \begin{theorem}
     \AP\label{thm:kprod-undecidable}
-    The $\kPROD$-"separability problem" is undecidable, for every $k \geq 2$.
+    The "$\kPROD$-separability problem" is undecidable, for every $k \geq 2$.
 \end{theorem}
 
 \begin{figure}
@@ -109,7 +109,7 @@ Further, this implies undecidability for every larger $k$:
 
 \begin{proof}
     The case $k=2$ is shown in \Cref{lem:aut-2prod-sep-undec}, so suppose $k>2$.
-    The proof goes by reduction from the $\kPROD[2]$-"separability problem". Let $R_1,R_2$ be a pair of "automatic relations" over an alphabet $\Sigma$. Consider the alphabet extended with $2(k-2)$ fresh symbols $\Sigma' = \Sigma \dcup \set{a_1, \dotsc, a_{k-2}, b_1, \dotsc, b_{k-2}}$. We build "automatic relations" $R'_1,R'_2$ over $\Sigma'$ such that $(R_1,R_2)$ are $\kPROD[2]$ "separable" over $\Sigma$ if{f} $(R'_1,R'_2)$ are $\kPROD$ "separable" over $\Sigma'$.
+    The proof goes by reduction from the "$\kPROD[2]$-separability problem". Let $R_1,R_2$ be a pair of "automatic relations" over an alphabet $\Sigma$. Consider the alphabet extended with $2(k-2)$ fresh symbols $\Sigma' = \Sigma \dcup \set{a_1, \dotsc, a_{k-2}, b_1, \dotsc, b_{k-2}}$. We build "automatic relations" $R'_1,R'_2$ over $\Sigma'$ such that $(R_1,R_2)$ are $\kPROD[2]$ "separable@@rel" over $\Sigma$ "iff" $(R'_1,R'_2)$ are $\kPROD$ "separable@@rel" over $\Sigma'$.
 
     Let $R'_1 = R_1 \dcup \set{ (a_i,b_i) : 1 \leq i \leq k-2}$ and 
     \begin{align*}
@@ -119,29 +119,29 @@ Further, this implies undecidability for every larger $k$:
                     &\set{(b_i,a_j) : 1 \leq i,j \leq k-2}
     \end{align*}
     
-    If $(R_1,R_2)$ has a $\kPROD[2]$ "separator" $S$, then $\tilde S \dcup \set{(a_i,b_i) : 1 \leq i \leq k-2}$ is a $\kPROD$ "separator" of $(R'_1,R'_2)$.
+    If $(R_1,R_2)$ has a $\kPROD[2]$ "separator@@rel" $S$, then $\tilde S \dcup \set{(a_i,b_i) : 1 \leq i \leq k-2}$ is a $\kPROD$ "separator@@rel" of $(R'_1,R'_2)$.
     
 
-    Conversely, if $S' = (A_1 \times B_1) \cup \dotsb \cup (A_k \times B_k)$ is a $\kPROD$ "separator" of $(R'_1,R'_2)$, then for every $i$ there must be some $j_i$ such that $A_{j_i} \times B_{j_i}$ contains $(a_i,b_i)$. Observe that 
+    Conversely, if $S' = (A_1 \times B_1) \cup \dotsb \cup (A_k \times B_k)$ is a $\kPROD$ "separator@@rel" of $(R'_1,R'_2)$, then for every $i$ there must be some $j_i$ such that $A_{j_i} \times B_{j_i}$ contains $(a_i,b_i)$. Observe that 
     \begin{itemize}
         \item $A_{j_i} \cup B_{j_i}$ cannot contain any $a_{i'}$ or $b_{i'}$ for $i' \neq i$, and
         \item $A_{j_i} \cup B_{j_i}$ cannot contain any $w \in \Sigma^*$;
     \end{itemize}
     since otherwise we would have $(A_{j_i} \times B_{j_i}) \cap R'_2 \neq \emptyset$.
-    Hence, $\set{i \mapsto j_i}_i$ is injective, and thus $S'$ is of the form $S' = (A_1 \times B_1) \cup (A_2 \times B_2)  \cup (\set{a_1} \times \set{b_1}) \cup \dotsb \cup (\set{a_{k-2}} \times \set{b_{k-2}})$. We can further assume that $A_1,B_1,A_2,B_2$ do not contain any $a_i$ or $b_i$ since otherwise we can remove them preserving the property of being a $\kPROD$ "separator" of $R'_1$ and $R'_2$.
-    Hence, $S \defeq (A_1 \times B_1) \cup (A_2 \times B_2)$ must cover $R_1$ and be disjoint from $R_2$, obtaining that $S$ is a $\kPROD[2]$ "separator" of $R_1$ and $R_2$.
+    Hence, $\set{i \mapsto j_i}_i$ is injective, and thus $S'$ is of the form $S' = (A_1 \times B_1) \cup (A_2 \times B_2)  \cup (\set{a_1} \times \set{b_1}) \cup \dotsb \cup (\set{a_{k-2}} \times \set{b_{k-2}})$. We can further assume that $A_1,B_1,A_2,B_2$ do not contain any $a_i$ or $b_i$ since otherwise we can remove them preserving the property of being a $\kPROD$ "separator@@rel" of $R'_1$ and $R'_2$.
+    Hence, $S \defeq (A_1 \times B_1) \cup (A_2 \times B_2)$ must cover $R_1$ and be disjoint from $R_2$, obtaining that $S$ is a $\kPROD[2]$ "separator@@rel" of $R_1$ and $R_2$.
 \end{proof}
 
 
-\paragraph*{Definability for Bounded Recognizable Relations.}
+\paragraph*{Membership for Bounded Recognizable Relations.}
 Up until now, we have examined two hierarchies of bounded recognizable relations, namely $\kPROD$ and $\kREC$. 
-Our previous analysis demonstrated that, for any element in these hierarchies (where $k>1$), the "separability problem" is undecidable. Nevertheless, 
-we will now establish that the "definability problem" is decidable.
+Our previous analysis demonstrated that, for any element in these hierarchies (where $k>1$), their separability problem is undecidable. Nevertheless, 
+we will now establish that their membership problem are decidable.
 
 \AP Given an "automatic" relation $R \subseteq \Sigma^* \times \Sigma^*$, consider the "automatic" equivalence relation $\intro*\autequiv \subseteq \Sigma^* \times \Sigma^*$, defined as $w \mathrel{\autequiv} w'$ if for every $v \in \Sigma^*$ we have 
 \begin{enumerate}
-    \item $(w,v) \in R$ if{f} $(w',v) \in R$, and
-    \item $(v,w) \in R$ if{f} $(v,w') \in R$.
+    \item $(w,v) \in R$ "iff" $(w',v) \in R$, and
+    \item $(v,w) \in R$ "iff" $(v,w') \in R$.
 \end{enumerate}
 
 It turns out that equivalence classes of $\autequiv$ define the coarsest partition onto which $R$ can be recognized in terms of $\kREC$:
@@ -160,16 +160,16 @@ It turns out that equivalence classes of $\autequiv$ define the coarsest partiti
     If $R$ is a union of products of sets from the partition $E_1 \dcup \dotsb \dcup E_k = \Sigma^*$, then every two elements of each $E_i$ are $\autequiv$-related, and thus $\autequiv$ has index at most $k$.
 \end{proof}
 
-We can then conclude that the definability problem for $\kREC$ is decidable. 
+We can then conclude that the membership problem for $\kREC$ is decidable. 
 
 \begin{corollary}
-    The $\kREC$-"definability problem" is decidable, for every $k > 0$.
+    The "$\kREC$-membership problem" is decidable, for every $k > 0$.
 \end{corollary}
 \begin{proof}
-    An "automatic relation" $R$ is in $\kREC$ if{f} $\autequiv$ has at most $k$ equivalence classes by \Cref{lem:krec-characterization}. 
+    An "automatic relation" $R$ is in $\kREC$ "iff" $\autequiv$ has at most $k$ equivalence classes by \Cref{lem:krec-characterization}. 
     % This can be tested with the formula $\forall w_1, \dotsc, w_{k+1} ~ \bigvee_{i \neq j} w_i \mathrel{\autequiv} w_j$.
     %    
-    In other words, an "automatic relation" $R$ is not in $\kREC$ if{f} the complement of $\autequiv$ contains a $(k+1)$-clique, which can be easily tested.
+    In other words, an "automatic relation" $R$ is not in $\kREC$ "iff" the complement of $\autequiv$ contains a $(k+1)$-clique, which can be easily tested.
 \end{proof}
 
 The relation $\autequiv$ can also be used to characterize which automatic relations are definable in the class $\kPROD$.
@@ -181,10 +181,10 @@ The relation $\autequiv$ can also be used to characterize which automatic relati
     It suffices to show that for every equivalence class $E$ from $\autequiv$, if $A_1 \cap E \neq \emptyset$ then $R = ((A_1 \cup E) \times B_1) \cup \dotsb \cup (A_k \times B_k)$, and similarly for $B_1$. Assume $w \in A_1 \cap E$ and take any pair $(u,v) \in E \times B_1$. We show that $(u,v) \in R$. By definition of $\autequiv$, since $(w,v) \in R$ and $w \mathrel{\autequiv} u$, we have that $(u,v) \in R$.
 \end{proof}
 
-Again, this characterization allows us to show that definability in the class $\kPROD$ is decidable. 
+Again, this characterization allows us to show that membership in the class $\kPROD$ is decidable. 
 
 \begin{corollary}
-    The $\kPROD$-"definability problem" is decidable, for every $k > 0$.
+    The "$\kPROD$-membership problem" is decidable, for every $k > 0$.
 \end{corollary}
 
 \begin{proof}

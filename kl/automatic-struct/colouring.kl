@@ -1,9 +1,20 @@
 \knowledge{notion}
+ | 2-colourable
+
+\knowledge{notion}
+ | 2-colouring
+ | $k$-colouring
+
+\knowledge{notion}
  | regular colouring
- | $k$-regular colourable
- | $2$-regular colourable
  | regular@colouring
  | $2$-regular colouring
+ | 2-regular colouring
+
+\knowledge{notion}
+ | $k$-regular colourable
+ | $2$-regular colourable
+ | 2-regular colourable
 
 \knowledge{notion}
  | compatible
@@ -12,3 +23,10 @@
 \knowledge{notion}
  | incompatibility graph
  | incompatibility relation
+
+\knowledge{notion}
+ | separates@rel
+ | separator@rel
+ 
+\knowledge{notion}
+ | separable@rel

@@ -2,7 +2,7 @@
 
 While we do not know how to approach the "regular colourability problem", we show that as soon as we add the restriction that the number of colours is bounded, the problem becomes undecidable;
 "ie", the "$k$-regular colourability problem" is undecidable for $k\geq 2$. Using this, we obtain in the next section 
-the undecidability for the "separability problem" on two natural classes of 
+the undecidability for the separability problem on two natural classes of 
 "recognizable relations". This is proven by a reduction from a suitable problem on reversible 
 Turing Machines with certain restrictions, which we call ``well-founded''.
 
@@ -17,11 +17,11 @@ We represent a configuration with tape content $w \cdot \bot^\omega$ (where $w \
 \]
 over the alphabet $\Sigma_T = \Gamma \cup (\Gamma_\bot \times Q)$.
 \AP In light of this representation, we will henceforth denote by ``configuration'' any string from the set  $\intro*\configs \defeq (\Gamma^* \cdot (\Gamma_\bot \times Q)) \cup  (\Gamma^* \cdot (\Gamma \times Q) \cdot \Gamma^*)$. The ""initial configuration"" is $(\bot,q_0)$.
-\AP The ""configuration graph"" of $T$ is the infinite graph $\intro*\confGraph$ having $\configs$ as set of vertices and an edge from $c$ to $c'$, denoted $c \rightarrow c'$, if $c'$ is the configuration of the next step of $T$ starting from $c$. Observe that the "configuration graph" $\confGraph$ of any TM $T$ is an effective "automatic graph" (see, e.g., \cite{KL10}).
+\AP The ""configuration graph"" of $T$ is the infinite graph $\intro*\confGraph$ having $\configs$ as set of vertices and an edge from $c$ to $c'$, denoted $c \rightarrow c'$, if $c'$ is the configuration of the next step of $T$ starting from $c$. Observe that the "configuration graph" $\confGraph$ of any TM $T$ is an effective "automatic graph" (see, e.g., \cite{KuskeLohrey2010AutomaticGraphs}).
 
 \AP We say that a deterministic TM $T$ is ""reversible"" if every node of $\confGraph$ has in-degree at most 1, in other words if the machine is co-deterministic\footnote{Note
 that a modern proof of undecidability of the isomorphism problem for automatic structures by
-Blumensath \cite[\S VIII. Theorem 4.3, p. 396 \& second claim, p. 398]{blumensath2023MSO} also relies on the use of "reversible" Turing machines.}.
+Blumensath \cite[\S VIII. Theorem 4.3, p. 396 \& second claim, p. 398]{Blumensath2023MSO} also relies on the use of "reversible" Turing machines.}.
 We say that a TM $T$ is a ""well-founded Reversible Turing Machine"" (\reintro{wf-RTM}) if its "configuration graph" is such that (1) the "initial configuration" has in-degree 0 (2) every node has in-degree and out-degree at most one (3) there are no infinite backward paths $c_1 \leftarrow c_2 \leftarrow \dotsb$ in $\confGraph$. 
 
 \AP Note that every "well-founded Reversible Turing Machine" is deterministic and "reversible" and, moreover,
@@ -35,12 +35,12 @@ Such a configuration graph is depicted on \Cref{subfig:config-graph-wf-RTM}.
 
 \AP The ""reachable regularity problem"" is the problem of, given a "wf-RTM" $T$, whether its set of "reachable configurations" is a regular language. To show that is it undecidable, we exhibit a reduction from the halting problem on deterministic "reversible" Turing machines.
 
-\begin{proposition}[{\cite[Theorem 1]{lecerf1963machines}}]
+\begin{proposition}[{\cite[Theorem 1]{Lecerf1963MachinesReversibles}}]
     \AP\label{prop:halting-problem-detrevTM}
     The halting problem on deterministic "reversible" Turing machines is undecidable.
 \end{proposition}
 
-For more details and pointers on "reversible" Turing machines, see \cite[Chapter 5]{Morita2017}.
+For more details and pointers on "reversible" Turing machines, see \cite[Chapter 5]{Morita2017Reversible}.
 
 \begin{lemma}
     \AP\label{lem:reachable-regularity}
