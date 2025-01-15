@@ -232,27 +232,26 @@ direct construction.
 \begin{example}
     \AP\label{ex:tree-not-2-reg-colourable}
     On the alphabet $\Sigma = \{a,b\}$, the tree $\+T$ depicted in \Cref{fig:tree-not-2reg-colour} whose set of vertices is $V = a^*b^*$ and whose set 
-    of edges is $E = E_{\mathrm{incr}} \cup E_{\mathrm{init}}$, with 
+    of edges is $\+E = \+E_{\mathrm{incr}} \cup \+E_{\mathrm{init}}$, with 
     \begin{align*}
-        E_{\mathrm{incr}} & = \{(a^pb^q,\, a^{p+1}b^{q+1}) \mid p,q \in \N\} \\
-        E_{\mathrm{init}} & = \{(\varepsilon,\, a^p) \mid p \in \N\} \cup \{(\varepsilon,\, b^q) \mid q \in \N\}, 
+        \+E_{\mathrm{incr}} & = \{(a^pb^q,\, a^{p+1}b^{q+1}) \mid p,q \in \N\} \\
+        \+E_{\mathrm{init}} & = \{(\varepsilon,\, a^p) \mid p \in \N\} \cup \{(\varepsilon,\, b^q) \mid q \in \N\}, 
     \end{align*}    
-    is "rational@@rational graph" but not "2-regular colourable". 
+    is "rational@@rational graph" but not "2-regular colourable".
     Indeed, its only "2-colouring"
     consists in partitioning the vertices of $\+T$ into
-    \[
-        C = \{a^n b^n \mid n \in 2\N\}
-            \cup \{a^p b^q \mid p > q \text{ and $q$ is odd}\}
-            \cup \{a^p b^q \mid p < q \text{ and $p$ is odd}\}
-    \]
+    \begin{align*}
+        C =\;& \{a^n b^n \mid n \in 2\N\} \\
+            & \cup \{a^p b^q \mid p > q \text{ and $q$ is odd}\} \\
+            & \cup \{a^p b^q \mid p < q \text{ and $p$ is odd}\}
+    \end{align*}
     and its complement $V \setminus C$.
     Let $P = \{a^p b^q \mid p, q \in 2\N\} = (aa)^*(bb)^*$:
     $P$ is regular, yet $C \cap P = \{a^n b^n \mid n \in 2\N\}$ is not.
     Hence, $C$ is not regular, and thus $\+T$ is not "2-regular colourable".
-    \qed 
 \end{example}
 
-\begin{figure}[htb]
+\begin{figure}
     \centering
     \begin{tikzpicture}
         \input{tikz/dichotomy/tree-not-2reg-colour}
