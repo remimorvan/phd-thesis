@@ -2,16 +2,17 @@
 
 \paragraph*{Separability for Bounded Recognizable Relations.}
 
-In this section we capitalize on the undecidability result of the previous section, showing how this implies the undecidability for the separability problem on two natural classes of bounded "recognizable relations", namely $\kREC$ and $\kPROD$.
-Remember that, for any $k$, $\reintro*\kPROD$ is the subclass of $\REC$ consisting of unions of $k$ cross-products of regular languages (which is a subclass of $\kREC[2^{2k}]$).
+In this part, we capitalize on the undecidability result of \Cref{sec:dichotomy-k-regular-colourability}, showing how this implies the undecidability for the separability problem on two natural classes of bounded "recognizable relations", namely $\kREC$ and $\kPROD$.
+For any $k$, $\reintro*\kPROD$ is the subclass of $\REC$ consisting of unions of $k$ Cartesian products of "regular languages" (which is a subclass of $\kREC[2^{2k}]$).
 
 First, observe that the "$\kREC[1]$-separability problem" is trivially decidable, since the only possible "separator@@rel" is $\Sigma^* \times \Sigma^*$. However, for any other $k>1$, the problem is undecidable.
 
-\begin{proposition}
+\begin{corollary}
     The "$\kREC$-separability problem" is undecidable, for every $k>1$.
-\end{proposition}
+\end{corollary}
+
 \begin{proof}
-A consequence of the reduction from the "$k$-regular colourability problem" of \Cref{thm:reg-colourability-equiv-separability}, combined with the undecidability of the latter for every $k>1$ (\Cref{thm:k-reg-col-undec}).
+    This is a consequence of the reduction from the "$k$-regular colourability problem" of \Cref{thm:reg-colourability-equiv-separability}, combined with the undecidability of the latter for every $k>1$ (\Cref{thm:k-reg-col-undec}).
 \end{proof}
 
 On the $\kPROD$ hierarchy we will find the same phenomenon. In particular the case $k=1$ is also trivially decidable.
@@ -20,29 +21,39 @@ On the $\kPROD$ hierarchy we will find the same phenomenon. In particular the ca
     The "$\kPROD[1]$-separability problem" is decidable.
 \end{proposition}
 \begin{proof}
-    Given two "synchronous relations" $R_1, R_2$, there exists $S \in $ \kPROD[1]
-    that "separates@@rel" $R_1$ from $R_2$ if and only if $\pi_1(R_1)\times \pi_2(R_1)$
-    "separates@@rel" $R_1$ from $R_2$.
+    Given two "synchronous relations" $\+R_1, \+R_2$, there exists $S \in $ \kPROD[1]
+    that "separates@@rel" $\+R_1$ from $\+R_2$ if and only if $\pi_1(\+R_1)\times \pi_2(\+R_1)$
+    "separates@@rel" $\+R_1$ from $\+R_2$.\footnote{Here,
+    \(
+        \pi_1(\+R_1) \defeq 
+        \{u \in \Sigma^* \mid \exists v\in \Sigma^*,\,\tup{u,v} \in \+R_1\},
+    \)
+    and similarly,
+    \(
+        \pi_2(\+R_1) \defeq 
+        \{v \in \Sigma^* \mid \exists u\in \Sigma^*,\,\tup{u,v} \in \+R_1\}.
+    \)
+    Both languages can be effectively computed from $\+R_1$.}
 \end{proof}
 
-As soon as $k>1$, the "$\kPROD$-separability problem" becomes undecidable. This is a consequence of the following simple lemma.
+As soon as $k>1$, the "$\kPROD$-separability problem" becomes undecidable.
 
 \begin{lemma}
-    A symmetric "synchronous relation" $R$ and the identity $\Id$ are "separable@@rel" by a relation in $\kPROD[2]$ iff they have a "separator@@rel" of the form $(A \times B) \cup (B \times A)$.
+    A "symmetric@@rel" "synchronous relation" $\+R$ and the identity $\Id$ are "separable@@rel" by a relation in $\kPROD[2]$ iff they have a "separator@@rel" of the form $(A \times B) \cup (B \times A)$.
 \end{lemma}
 \begin{proof}
-    Assume that $S \in \kPROD[2]$ "separates@@rel" $R$ from $\Id$.
-    Then $R \subseteq S$, but since $R$ is symmetric, $R = R^{-1} \subseteq S^{-1}$ so
-    $R \subseteq S \cap S^{-1}$, and hence $R \subseteq S \cap S^{-1}$.
-    Moreover, since $S$ has a trivial intersection with $\Id$, so does $S \cap S^{-1}$.
-    Hence, $S \cap S^{-1}$ "separates@@rel" $R$ from $\Id$.
+    Assume that $\+S \in \kPROD[2]$ "separates@@rel" $\+R$ from $\Id$.
+    Then $\+R \subseteq \+S$, but since $\+R$ is symmetric, $\+R = \+R^{-1} \subseteq S^{-1}$,
+    and so $\+R \subseteq \+S \cap \+S^{-1}$.
+    Moreover, since $\+S$ has empty intersection with $\Id$, so does $\+S \cap \+S^{-1}$.
+    Hence, $\+S \cap \+S^{-1}$ "separates@@rel" $\+R$ from $\Id$.
 
-    Since $S \in \kPROD[2]$, there exists $A_1,A_2,B_1,B_2 \subseteq \Sigma^*$ such that
-    $S = A_1 \times B_1 \cup B_2 \times A_2$.
-    Note that $S \cap \Id = \emptyset$ yields $A_i \cap B_i = \emptyset$ for each $i \in \{1,2\}$.
+    Since $\+S \in \kPROD[2]$, there exists $A_1,A_2,B_1,B_2 \subseteq \Sigma^*$ such that
+    $\+S = A_1 \times B_1 \cup B_2 \times A_2$.
+    Note that $\+S \cap \Id = \emptyset$ yields $A_i \cap B_i = \emptyset$ for each $i \in \{1,2\}$.
     Finally:
     \begin{align*}
-        S \cap S^{-1} &
+        \+S \cap \+S^{-1} &
         =
             \bigl( A_1 \times B_1 \cup B_2 \times A_2 \bigr)
             \cap \bigl( B_1 \times A_1 \cup A_2 \times B_2 \bigr) \\
@@ -62,17 +73,17 @@ As soon as $k>1$, the "$\kPROD$-separability problem" becomes undecidable. This 
             \cup \bigl( \underbrace{(A_2 \cap B_2) \times (A_2 \cap B_2)}_{= \emptyset} \bigr)\\
         &
         = \bigl( (A_1 \cap A_2) \times (B_1 \cap B_2) \bigr)
-            \cup \bigl( (B_1 \cap B_2) \times (A_1 \cap A_2) \bigr).\qedhere
+            \cup \bigl( (B_1 \cap B_2) \times (A_1 \cap A_2) \bigr).
     \end{align*}
+    Therefore, $\+S \cap \+S^{-1}$ is a "separator@@rel" of $\+R$ and $\Id$ of the desired shape.
 \end{proof}
 
-We can then establish the following: 
-
 \begin{corollary}\AP\label{cor:2reg-2prod}
-    A symmetric "synchronous relation" $R$ and $\Id$ are "separable@@rel" by a relation in $\kPROD[2]$ "iff" $\AutGraph{\Sigma^*}{R}$ is "$2$-regular colourable".
+    A "symmetric@@rel" "synchronous relation" $\+R$ and $\Id$ are "separable@@rel" by a relation in $\kPROD[2]$ "iff" $\AutGraph{\Sigma^*}{\+R}$ is "$2$-regular colourable".
 \end{corollary}
+
 \begin{proof}
-    By observing that for any symmetric relation $R \subseteq \Sigma^* \times \Sigma^*$, we have that $A,B \subseteq \Sigma^*$ is a colouring of $\AutGraph{\Sigma^*}{R}$ if, and only if, $(A \times B) \cup (B \times A)$ "separates@@rel" $R$ from $\Id$.
+    By observing that for any "symmetric relation" $\+R \subseteq \Sigma^* \times \Sigma^*$, we have that $A,B \subseteq \Sigma^*$ is a "colouring" of $\AutGraph{\Sigma^*}{\+R}$ if, and only if, $(A \times B) \cup (B \times A)$ "separates@@rel" $\+R$ from $\Id$.
 \end{proof}
 
 We can now easily show undecidability for the "$\kPROD[2]$-separability problem" by reduction from the "$2$-regular colourability problem".
@@ -80,9 +91,9 @@ We can now easily show undecidability for the "$\kPROD[2]$-separability problem"
     The "$\kPROD[2]$-separability problem" is undecidable.
 \end{lemma}
 \begin{proof}
-    By reduction from the "$2$-regular colourability problem" on "rational graphs", which is undecidable by \Cref{thm:k-reg-col-undec}. Let $\AutGraph{L}{R}$ be an "rational graph" and $\AutGraph{L}{R'}$ the symmetric closure of $\AutGraph{L}{R}$. It follows that $\AutGraph{L}{R'}$ is still "automatic" and that there is a "$2$-regular colouring" for $\AutGraph{L}{R'}$ "iff" there is a "$2$-regular colouring" for $\AutGraph{L}{R}$ (the same colouring in fact).
-    Thus, by \Cref{cor:2reg-2prod}, $\AutGraph{L}{R}$ is "$2$-regular colourable" "iff" 
-    there is a $\kPROD[2]$ relation that "separates@@rel" $R'$ from $\Id$.
+    By reduction from the "$2$-regular colourability problem" on "rational graphs", which is undecidable by \Cref{thm:k-reg-col-undec}. Let $\AutGraph{V}{\+E}$ be an "rational graph" and $\AutGraph{V}{\+E'}$ the symmetric closure of $\AutGraph{V}{\+E}$. It follows that $\AutGraph{V}{\+E'}$ is still "rational" and that there is a "$2$-regular colouring" for $\AutGraph{V}{\+E'}$ "iff" there is a "$2$-regular colouring" for $\AutGraph{V}{\+E}$---take the same colouring.
+    Thus, by \Cref{cor:2reg-2prod}, $\AutGraph{V}{\+E}$ is "$2$-regular colourable" "iff" 
+    there is a $\kPROD[2]$ relation that "separates@@rel" $\+E'$ from $\Id$.
 \end{proof}
 
 Further, this implies undecidability for every larger $k$.
@@ -109,27 +120,27 @@ Further, this implies undecidability for every larger $k$.
 
 \begin{proof}
     The case $k=2$ is shown in \Cref{lem:aut-2prod-sep-undec}, so suppose $k>2$.
-    The proof goes by reduction from the "$\kPROD[2]$-separability problem". Let $R_1,R_2$ be a pair of "synchronous relations" over an alphabet $\Sigma$. Consider the alphabet extended with $2(k-2)$ fresh symbols $\Sigma' = \Sigma \dcup \set{a_1, \dotsc, a_{k-2}, b_1, \dotsc, b_{k-2}}$. We build "synchronous relations" $R'_1,R'_2$ over $\Sigma'$ such that $(R_1,R_2)$ are $\kPROD[2]$ "separable@@rel" over $\Sigma$ "iff" $(R'_1,R'_2)$ are $\kPROD$ "separable@@rel" over $\Sigma'$.
+    The proof goes by reduction from the "$\kPROD[2]$-separability problem". Let $\+R_1,\+R_2$ be a pair of "synchronous relations" over an alphabet $\Sigma$. Consider the alphabet extended with $2(k-2)$ fresh symbols $\Sigma' = \Sigma \dcup \set{a_1, \cdots, a_{k-2}, b_1, \cdots, b_{k-2}}$. We build "synchronous relations" $\+R'_1,\+R'_2$ over $\Sigma'$ such that $\tup{\+R_1, \+R_2}$ are $\kPROD[2]$ "separable@@rel" over $\Sigma$ "iff" $\tup{\+R'_1, \+R'_2}$ are $\kPROD$ "separable@@rel" over $\Sigma'$.
 
-    Let $R'_1 = R_1 \dcup \set{ (a_i,b_i) : 1 \leq i \leq k-2}$ and 
+    Let $\+R'_1 \defeq \+R_1 \dcup \set{\tup{a_i,b_i} : 1 \leq i \leq k-2}$ and 
     \begin{align*}
-    R'_2 =  R_2 \dcup {}&\set{(a_i,w) : w \in \Sigma^*, 1 \leq i \leq k-2} \dcup {}\\
-                    &\set{(w,b_i) : w \in \Sigma^*, 1 \leq i \leq k-2} \dcup {}\\
-                    &\set{(a_i,b_j) : 1 \leq i,j \leq k-2, i \neq j} \dcup {}\\
-                    &\set{(b_i,a_j) : 1 \leq i,j \leq k-2}
+    \+R'_2 =  \+R_2 \dcup~&\set{\tup{a_i,v} \mid v \in \Sigma^*,\; i \in \lBrack 1,k-2\rBrack} \\
+    \dcup~&\set{\tup{u,b_i} \mid u \in \Sigma^*,\; i \in \lBrack 1,k-2\rBrack}\\
+    \dcup~&\set{\tup{a_i,b_j} \mid i,j \in \lBrack 1,k-2\rBrack \text{ and } i \neq j}\\
+    \dcup~&\set{\tup{b_i,a_j} \mid i,j \in \lBrack 1,k-2\rBrack}
     \end{align*}
     
-    If $(R_1,R_2)$ has a $\kPROD[2]$ "separator@@rel" $S$, then $\tilde S \dcup \set{(a_i,b_i) : 1 \leq i \leq k-2}$ is a $\kPROD$ "separator@@rel" of $(R'_1,R'_2)$.
+    If $\+R_1$ and $\+R_2$ have a $\kPROD[2]$ "separator@@rel" $\+S$, then $\+S \dcup \set{\tup{a_i,b_i} \mid i \in \lBrack 1,k-2\rBrack}$ is a $\kPROD$ "separator@@rel" of $\+R'_1$ and $\+R'_2$.
     
 
-    Conversely, if $S' = (A_1 \times B_1) \cup \dotsb \cup (A_k \times B_k)$ is a $\kPROD$ "separator@@rel" of $(R'_1,R'_2)$, then for every $i$ there must be some $j_i$ such that $A_{j_i} \times B_{j_i}$ contains $(a_i,b_i)$. Observe that 
+    Conversely, if $\+S' = (A_1 \times B_1) \cup \dotsb \cup (A_k \times B_k)$ is a $\kPROD$ "separator@@rel" of $\+R'_1$ and $\+R'_2$, then for every $i$ there must be some $j_i$ such that $A_{j_i} \times B_{j_i}$ contains $(a_i,b_i)$. From $\+S' \cap \+R'_2 = \emptyset$, we get:
     \begin{itemize}
         \item $A_{j_i} \cup B_{j_i}$ cannot contain any $a_{i'}$ or $b_{i'}$ for $i' \neq i$, and
         \item $A_{j_i} \cup B_{j_i}$ cannot contain any $w \in \Sigma^*$;
     \end{itemize}
-    since otherwise we would have $(A_{j_i} \times B_{j_i}) \cap R'_2 \neq \emptyset$.
-    Hence, $\set{i \mapsto j_i}_i$ is injective, and thus $S'$ is of the form $S' = (A_1 \times B_1) \cup (A_2 \times B_2)  \cup (\set{a_1} \times \set{b_1}) \cup \dotsb \cup (\set{a_{k-2}} \times \set{b_{k-2}})$. We can further assume that $A_1,B_1,A_2,B_2$ do not contain any $a_i$ or $b_i$ since otherwise we can remove them preserving the property of being a $\kPROD$ "separator@@rel" of $R'_1$ and $R'_2$.
-    Hence, $S \defeq (A_1 \times B_1) \cup (A_2 \times B_2)$ must cover $R_1$ and be disjoint from $R_2$, obtaining that $S$ is a $\kPROD[2]$ "separator@@rel" of $R_1$ and $R_2$.
+    since otherwise we would have $(A_{j_i} \times B_{j_i}) \cap \+R'_2 \neq \emptyset$.
+    Hence, $\set{i \mapsto j_i}_i$ is injective, and thus $\+S'$ is of the form $\+S' = (A_1 \times B_1) \cup (A_2 \times B_2)  \cup (\set{a_1} \times \set{b_1}) \cup \dotsb \cup (\set{a_{k-2}} \times \set{b_{k-2}})$. We can further assume that $A_1,B_1,A_2,B_2$ do not contain any $a_i$ or $b_i$ since otherwise we can remove them preserving the property of being a $\kPROD$ "separator@@rel" of $\+R'_1$ and $\+R'_2$.
+    Hence, $\+S \defeq (A_1 \times B_1) \cup (A_2 \times B_2)$ must cover $\+R_1$ and be disjoint from $\+R_2$, obtaining that $\+S$ is a $\kPROD[2]$ "separator@@rel" of $\+R_1$ and $\+R_2$.
 \end{proof}
 
 
@@ -138,47 +149,57 @@ Up until now, we have examined two hierarchies of bounded recognizable relations
 Our previous analysis demonstrated that, for any element in these hierarchies (where $k>1$), their separability problem is undecidable. Nevertheless, 
 we will now establish that their membership problem are decidable.
 
-\AP Given an "automatic" relation $R \subseteq \Sigma^* \times \Sigma^*$, consider the "automatic" equivalence relation $\intro*\autequiv \subseteq \Sigma^* \times \Sigma^*$, defined as $w \mathrel{\autequiv} w'$ if for every $v \in \Sigma^*$ we have 
+\AP Given an "synchronous" relation $\+R \subseteq \Sigma^* \times \Sigma^*$, consider the "synchronous" equivalence relation $\intro*\autequiv \subseteq \Sigma^* \times \Sigma^*$, defined as $w \mathrel{\autequiv} w'$ if for every $v \in \Sigma^*$ we have 
 \begin{enumerate}
-    \item $(w,v) \in R$ "iff" $(w',v) \in R$, and
-    \item $(v,w) \in R$ "iff" $(v,w') \in R$.
+    \item $(w,v) \in \+R$ "iff" $(w',v) \in \+R$, and
+    \item $(v,w) \in \+R$ "iff" $(v,w') \in \+R$.
 \end{enumerate}
 
-It turns out that equivalence classes of $\autequiv$ define the coarsest partition onto which $R$ can be recognized in terms of $\kREC$:
+It turns out that equivalence classes of $\autequiv$ define the coarsest partition onto which $R$ can be recognized in terms of $\kREC$.
 
 \begin{lemma}\AP\label{lem:krec-characterization}
-    For every "automatic" $R \subseteq \Sigma^* \times \Sigma^*$, $\autequiv$ has index at most $k$ if, and only if, $R$ is in $\kREC$.
+    For every "synchronous" $\+R \subseteq \Sigma^* \times \Sigma^*$, $\autequiv$ has index at most $k$ if, and only if, $\+R$ is in $\kREC$.\footnote{Recall that the index of an equivalence relation is its number of equivalence classes.}
 \end{lemma}
 \begin{proof}
-    \proofcase{Left-to-right}
-    Assume that $\autequiv$ has the equivalence classes $E_1, \dotsc, E_k$. Consider the set $P \subseteq \set{1, \dotsc, k}^2$ of all pairs $(i,j)$ such that there are $u_i \in E_i$ and $u_j \in E_j$ with $(u_i,u_j) \in R$. Define the $\kREC$ relation $R' = \bigcup_{(i,j) \in P} E_i \times E_j$. We claim that $R=R'$. 
-    In fact, by definition of $\autequiv$, note that if there are $u_i \in E_i$ and $u_j \in E_j$ with $(u_i,u_j) \in R$, then $E_i \times E_j \subseteq R$. Hence, $R' \subseteq R$.
-    On the other hand, for every pair $(u,v) \in R$ there is $(i,j) \in P$ such that $u \in E_i$, $v \in E_j$ implying $(u,v) \in R'$.
-    Hence, $R \subseteq R'$.
+    \proofcase{Left-to-right.}
+    Assume that $\autequiv$ has the equivalence classes $C_1, \cdots, C_k$. Consider the set $P \subseteq \lBrack 1,k\rBrack^2$ of all pairs $\tup{i,j}$ such that there are $u_i \in C_i$ and $u_j \in C_j$ with $\tup{u_i,u_j} \in \+R$. Define the $\kREC$ relation $\+R' = \bigcup_{(i,j) \in P} C_i \times C_j$. We claim that $\+R=\+R'$. 
+    In fact, by definition of $\autequiv$, note that if there are $u_i \in C_i$ and $u_j \in C_j$ with $\tup{u_i,u_j} \in \+R$, then $C_i \times C_j \subseteq \+R$. Hence, $\+R' \subseteq \+R$.
+    On the other hand, for every pair $\tup{u,v} \in \+R$ there exists $\tup{i,j} \in P$ such that $u \in C_i$, $v \in C_j$ implying $\tup{u,v} \in \+R'$.
+    Hence, $\+R \subseteq \+R'$.
 
-    \proofcase{Right-to-left}
-    If $R$ is a union of products of sets from the partition $E_1 \dcup \dotsb \dcup E_k = \Sigma^*$, then every two elements of each $E_i$ are $\autequiv$-related, and thus $\autequiv$ has index at most $k$.
+    \proofcase{Right-to-left.}
+    If $\+R$ is a union of products of sets from the partition $C_1 \dcup \hdots \dcup C_k = \Sigma^*$, then every two elements of each $C_i$ are $\autequiv$-related, and thus $\autequiv$ has index at most $k$.
 \end{proof}
 
 We can then conclude that the membership problem for $\kREC$ is decidable. 
 
 \begin{corollary}
-    The "$\kREC$-membership problem" is decidable, for every $k > 0$.
+    The "$\kREC$-membership problem" is decidable, for every $k \in \Np$.
 \end{corollary}
 \begin{proof}
-    An "synchronous relation" $R$ is in $\kREC$ "iff" $\autequiv$ has at most $k$ equivalence classes by \Cref{lem:krec-characterization}. 
+    An "synchronous relation" $\+R$ is in $\kREC$ "iff" $\autequiv$ has at most $k$ equivalence classes by \Cref{lem:krec-characterization}. 
     % This can be tested with the formula $\forall w_1, \dotsc, w_{k+1} ~ \bigvee_{i \neq j} w_i \mathrel{\autequiv} w_j$.
     %    
-    In other words, an "synchronous relation" $R$ is not in $\kREC$ "iff" the complement of $\autequiv$ contains a $(k+1)$-clique, which can be easily tested.
+    In other words, a "synchronous relation" $\+R$ is not in $\kREC$ "iff" the complement of $\autequiv$ contains a $(k+1)$-clique, which can be easily tested.
 \end{proof}
 
 The relation $\autequiv$ can also be used to characterize which synchronous relations are definable in the class $\kPROD$.
 
-\begin{lemma}
-    An "synchronous relation" $R$ is in $\kPROD$ if, and only if, $R=(A_1 \times B_1) \cup \dotsb \cup (A_k \times B_k)$ where each $A_i$ and $B_i$ is a union of equivalence classes of $\autequiv$.
-\end{lemma}
+\begin{proposition}
+    An "synchronous relation" $\+R$ is in $\kPROD$ if, and only if, $\+R=(A_1 \times B_1) \cup \hdots \cup (A_k \times B_k)$ where each $A_i$ and $B_i$ is a union of equivalence classes of $\autequiv$.
+\end{proposition}
 \begin{proof}
-    It suffices to show that for every equivalence class $E$ from $\autequiv$, if $A_1 \cap E \neq \emptyset$ then $R = ((A_1 \cup E) \times B_1) \cup \dotsb \cup (A_k \times B_k)$, and similarly for $B_1$. Assume $w \in A_1 \cap E$ and take any pair $(u,v) \in E \times B_1$. We show that $(u,v) \in R$. By definition of $\autequiv$, since $(w,v) \in R$ and $w \mathrel{\autequiv} u$, we have that $(u,v) \in R$.
+    The right-to-left implication is trivial. For the converse implication,
+    assume that $\+R$ is in $\kPROD$, say
+    \[
+        \+R=(A_1 \times B_1) \cup \hdots \cup (A_k \times B_k)
+    \]
+    for some arbitrary "regular languages" $A_1,\hdots,A_k$ and $B_1,\hdots,B_k$.
+    By definition of $\autequiv$, we also have
+    \[
+        \+R=(\equivclass{A_1}{\autequiv} \times \equivclass{B_1}{\autequiv})
+        \cup \hdots \cup (\equivclass{A_k}{\autequiv} \times \equivclass{B_k}{\autequiv}).\qedhere
+    \]
 \end{proof}
 
 Again, this characterization allows us to show that membership in the class $\kPROD$ is decidable. 
@@ -188,5 +209,5 @@ Again, this characterization allows us to show that membership in the class $\kP
 \end{corollary}
 
 \begin{proof}
-    By brute force testing whether the "synchronous relation" $R$ is equivalent to $(A_1 \times B_1) \cup \dotsb \cup (A_k \times B_k)$ for every possible $A_i,B_i$ which is a union of equivalence classes of $\autequiv$.
+    By brute force testing whether the "synchronous relation" $\+R$ is equivalent to $(A_1 \times B_1) \cup \hdots \cup (A_k \times B_k)$ for every possible $A_i,B_i$ which is a union of equivalence classes of $\autequiv$.
 \end{proof}

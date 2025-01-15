@@ -64,14 +64,14 @@
 }
 
 \node[vertex] at (1.47, 2.55) (u) {};
-\node[below=-.1em, align=center] at (1.47, 2.55) {$u \in \Sigma^*$};
+\node[below=-.1em, align=center] at (1.47, 2.55) {$v \in \Sigma^*$};
 \draw[edge, <-, cRed] (u) .. (1.64, 2.92) .. (2.3, 3.02) ..  ($(a0)+(-.1,.2)$) .. ($(a0)+(-.04,.08)$);
 \foreach \x in {1,2} {
 	\draw[edge, -, cRed] (u) .. (1.64, 2.92) .. (2.3, 3.02) ..  ($(a\x)+(-.1,.2)$) .. ($(a\x)+(-.04,.08)$);
 }
 
 \node[vertex] at (2.6, -.6) (v) {};
-\node[below=-.1em, align=center] at (2.6, -.6) {$v \in \Sigma^*$};
+\node[below=-.1em, align=center] at (2.6, -.6) {$u \in \Sigma^*$};
 \foreach \x in {0,...,2} {
 	\draw[edge, <-, cRed] ($(b\x)+(-.08,-.05)$) .. ($(b\x)+(-.2,-.25)$) .. ($(b\x)+(-.3,-.7)$) .. (3.2, -.65) .. (2.9, -.6) ..  (v);
 }
