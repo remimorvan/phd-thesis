@@ -11,15 +11,19 @@
  | $\kREC [1]$-separability problem
  | $\kPROD $-separability problem
  | $\kPROD [2]$-separability problem
+ | $\REC $-separability@problem
+ | $\kREC $-separability@problem
 
 \knowledge{notion, wrap=\DPfont}
  | $\kREC $-membership problem
  | $\kPROD $-membership problem
 
-\knowledge{notion}
+\knowledge{notion, wrap=\DPfont}
  | regular colourability problem
  | $k$-regular colourability problem
  | $2$-regular colourability problem
+ | regular colourability@problem
+ | $k$-regular colourability@problem
 
 \knowledge{notion, wrap=\DPfont}
  | Connectivity in Finite Graphs

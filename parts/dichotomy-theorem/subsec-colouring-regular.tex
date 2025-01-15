@@ -30,8 +30,8 @@ directed paths, which are all finite, or isomorphic to $(\mathbb{N}, +1)$.
 The set of ""reachable configurations"", denoted by $\intro*\Reach$, is 
 the set of all configurations that admit a path from the "initial configuration"
 % the set of all "configurations" in the connected component of the "initial configuration" 
-in $\confGraph$, for a given TM $T$.
-Such a configuration graph is depicted on \Cref{subfig:config-graph-wf-RTM}.
+in $\confGraph$, for a given TM $T$. Such a configuration graph is depicted on
+\Cref{fig:reduction-wf-RTM-to-colouring-config-graph-wf-RTM}.
 
 \AP The ""reachable regularity problem"" is the problem of, given a "wf-RTM" $T$, whether its set of "reachable configurations" is a regular language. To show that is it undecidable, we exhibit a reduction from the halting problem on deterministic "reversible" Turing machines.
 
@@ -143,7 +143,7 @@ We can now show undecidability for the "$k$-regular colourability problem" by re
             \input{tikz/dichotomy/reduction-wf-RTM}
         \end{tikzpicture}
         \caption{
-            \AP\label{subfig:reduction-wf-RTM-to-colouring}
+            \AP\label{fig:reduction-wf-RTM-to-colouring}
             The "rational graph" to which the "configuration graph"
             of \Cref{fig:reduction-wf-RTM-to-colouring-config-graph-wf-RTM} is reduced.
         }
@@ -192,7 +192,7 @@ Fresh symbols $B$ and $R$ are utilized to represent two versions of each configu
 \end{proof}
 
 Note that this reduction provides an easy way of building
-graphs in the shape of \Cref{subfig:reduction-wf-RTM} that are "2-colourable" (in fact, they are trees) but not "2-regular colourable". In fact, we can provide a slightly more
+graphs in the shape of \Cref{fig:reduction-wf-RTM-to-colouring} that are "2-colourable" (in fact, they are trees) but not "2-regular colourable". In fact, we can provide a slightly more
 direct construction.
 
 \begin{example}

@@ -7,38 +7,38 @@
 	(-.3,.3) rectangle (.3, -3.8);
 
 % First line
-\node[vertex, cBlue] (a0) at (0,0) {};
-\node[vertex, cRed] (a'0) [below = .3cm of a0] {};
+\node[vertex, cBlue, fill=cBlue, fill opacity=.4] (a0) at (0,0) {};
+\node[vertex, cRed, fill=cRed, fill opacity=.4] (a'0) [below = .3cm of a0] {};
 \draw[edge, densely dotted] (a0) to (a'0);
 \foreach \i in {0,...,2} {
 	\pgfmathtruncatemacro{\next}{\i + 1}
-	\node[vertex, cBlue, right = of a\i] (a\next) {};
-	\node[vertex, cRed, right = of a'\i] (a'\next) {};
+	\node[vertex, cBlue, fill=cBlue, fill opacity=.4, right = of a\i] (a\next) {};
+	\node[vertex, cRed, fill=cRed, fill opacity=.4, right = of a'\i] (a'\next) {};
 	\draw[edge] (a'\i) to (a\next);
 	\draw[edge, densely dotted] (a\next) to (a'\next);
 }
 
 % Second line
-\node[vertex, cBlue, below = of a'0] (b0) {};
-\node[vertex, cRed] (b'0) [below = .3cm of b0] {};
+\node[vertex, cBlue, fill=cBlue, fill opacity=.4, below = of a'0] (b0) {};
+\node[vertex, cRed, fill=cRed, fill opacity=.4, below =.3cm of b0] (b'0) {};
 \draw[edge, densely dotted] (b0) to (b'0);
 \foreach \i in {0,...,3} {
 	\pgfmathtruncatemacro{\next}{\i + 1}
-	\node[vertex, cBlue, right = of b\i] (b\next) {};
-	\node[vertex, cRed, right = of b'\i] (b'\next) {};
+	\node[vertex, cBlue, fill=cBlue, fill opacity=.4, right = of b\i] (b\next) {};
+	\node[vertex, cRed, fill=cRed, fill opacity=.4, right = of b'\i] (b'\next) {};
 	\draw[edge] (b'\i) to (b\next);
 	\draw[edge, densely dotted] (b\next) to (b'\next);
 }
 \node[draw=none, fill=none, right = .6em of $(b4)!0.5!(b'4)$] (binf) {$\cdots$};
 
 % Third line
-\node[vertex, cBlue, below = of b'0] (c0) {};
-\node[vertex, cRed] (c'0) [below = .3cm of c0] {};
+\node[vertex, cBlue, fill=cBlue, fill opacity=.4, below = of b'0] (c0) {};
+\node[vertex, cRed, fill=cRed, fill opacity=.4, below = .3cm of c0] (c'0) {};
 \draw[edge, densely dotted] (c0) to (c'0);
 \foreach \i in {0,1} {
 	\pgfmathtruncatemacro{\next}{\i + 1}
-	\node[vertex, cBlue, right = of c\i] (c\next) {};
-	\node[vertex, cRed, right = of c'\i] (c'\next) {};
+	\node[vertex, cBlue, fill=cBlue, fill opacity=.4, right = of c\i] (c\next) {};
+	\node[vertex, cRed, fill=cRed, fill opacity=.4, right = of c'\i] (c'\next) {};
 	\draw[edge] (c'\i) to (c\next);
 	\draw[edge, densely dotted] (c\next) to (c'\next);
 }
