@@ -1,60 +1,75 @@
 \subsection{$k$-Regular Colourability Problem}
 
-While we do not know how to approach the "regular colourability problem", we show that as soon as we add the restriction that the number of colours is bounded, the problem becomes undecidable;
-"ie", the "$k$-regular colourability problem" is undecidable for $k\geq 2$. Using this, we obtain in the next section 
-the undecidability for the separability problem on two natural classes of 
-"recognizable relations". This is proven by a reduction from a suitable problem on reversible 
-Turing Machines with certain restrictions, which we call ``well-founded''.
+We show that the "$k$-regular colourability problem" is undecidable for $k\geq 2$.%
+\footnote{
+    Using this, we obtain in the next subsection 
+    the undecidability for the separability problem on two natural classes of 
+    "recognizable relations".
+    On the other hand, the undecidability of "regular colourability problem" is more involved and will only come later, in todo:addref.
+}
+This is proven by a reduction from a suitable problem on reversible 
+Turing machines with certain restrictions, which we call ``well-founded''.
 
 \paragraph*{Regularity of Reachability for Turing Machines.}
-We use the standard notation $u[i..j]$ to denote the factor of a word $u$ between (and including) positions $i$ and $j$, and $u[i]$ to denote $u[i..i]$.
-%\sidediego{Should this go the preliminaries?}
-Consider any deterministic Turing Machine (TM) $T = \tup{Q,\Gamma,\bot,\delta,q_0,F}$, where $Q$ is the set of states, $\Gamma$ is tape alphabet, $\bot$ is the blank symbol, $\delta: (Q \setminus F) \times \Gamma_\bot \to Q \times \Gamma \times \set{L,R}$ is the transition (partial) function, where $\Gamma_\bot = \Gamma \cup \set\bot$, and $q_0$ and $F$ is the initial and set of final states, respectively.
-%
-We represent a configuration with tape content $w \cdot \bot^\omega$ (where $w \in \Gamma^* \cdot \set{\bot}$), in state $q$ and with the head pointing to the cell number $1 \leq i \leq |w|$, as the string
+Consider a Turing machine $\+T = \tup{Q,\Gamma,\delta,q_0,\Acc}$, where $Q$ is the set of states, $\Gamma$ is tape alphabet,
 \[
-   w[1..i-1] \cdot (w[i],q) \cdot w[i+1..|w|] 
+    \delta\colon (Q \setminus \Acc) \times \Gamma_{\pad} \to \pset{Q \times \Gamma \times \set{\leftarrow, \downarrow, \rightarrow}}
 \]
-over the alphabet $\Sigma_T = \Gamma \cup (\Gamma_\bot \times Q)$.
-\AP In light of this representation, we will henceforth denote by ``configuration'' any string from the set  $\intro*\configs \defeq (\Gamma^* \cdot (\Gamma_\bot \times Q)) \cup  (\Gamma^* \cdot (\Gamma \times Q) \cdot \Gamma^*)$. The ""initial configuration"" is $(\bot,q_0)$.
-\AP The ""configuration graph"" of $T$ is the infinite graph $\intro*\confGraph$ having $\configs$ as set of vertices and an edge from $c$ to $c'$, denoted $c \rightarrow c'$, if $c'$ is the configuration of the next step of $T$ starting from $c$. Observe that the "configuration graph" $\confGraph$ of any TM $T$ is an effective "rational graph" (see, e.g., \cite{KuskeLohrey2010AutomaticGraphs}).
+is the transition relation, $\Gamma_{\pad} = \Gamma \dcup \set{\pad}$, and $q_0$ and $\Acc$ are the initial and set of final states, respectively.
+%
+We represent a "configuration@@TM" $\tup{u, q, v}$ by the word $uqv \in \Gamma^* Q \Gamma^*$:
+in light of this, we will henceforth denote by ``configuration'' any string from the set  \AP$\intro*\configs \defeq  \Gamma^* Q \Gamma^*$.\footnote{We will often write
+$uqv$ as the concatenation $u\cdot q \cdot v$ to emphasize
+the separation between all three words.}
+The \AP""configuration graph"" of $\+T$ is the infinite graph $\intro*\confGraph$ having $\configs$ as set of vertices and an edge from $\gamma$ to $\gamma'$, denoted $\gamma \rightarrow \gamma'$ if there is a one-step transition from $\gamma$ to $\gamma'$ in $\+T$. Observe that the "configuration graph" $\confGraph$ of any Turing machine $\+T$ is an effective "rational graph" (see, e.g., \cite{KuskeLohrey2010AutomaticGraphs} TODO:update pointer to prelims).
 
-\AP We say that a deterministic TM $T$ is ""reversible"" if every node of $\confGraph$ has in-degree at most 1, in other words if the machine is co-deterministic\footnote{Note
-that a modern proof of undecidability of the isomorphism problem for automatic structures by
-Blumensath \cite[\S VIII. Theorem 4.3, p. 396 \& second claim, p. 398]{Blumensath2023MSO} also relies on the use of "reversible" Turing machines.}.
-We say that a TM $T$ is a ""well-founded Reversible Turing Machine"" (\reintro{wf-RTM}) if its "configuration graph" is such that (1) the "initial configuration" has in-degree 0 (2) every node has in-degree and out-degree at most one (3) there are no infinite backward paths $c_1 \leftarrow c_2 \leftarrow \dotsb$ in $\confGraph$. 
+\AP We say that a Turing machine $\+T$ is ""reversible"", if every node of $\confGraph$ has in-degree at most 1, in other words if the machine is co-deterministic.%
+\footnote{
+    Note that a modern proof of undecidability of the isomorphism problem for automatic structures 
+    by Blumensath \cite[\S VIII. Theorem 4.3, p. 396 \& second claim, p. 398]{Blumensath2023MSO} 
+    also relies on the use of "reversible" Turing machines.
+}%
+\footnote{
+    For more details and pointers on "reversible" Turing machines,
+    see \cite[Chapter 5]{Morita2017Reversible}.
+}
+We say that a Turing machine $\+T$ is ""well-founded"" if its "configuration graph" is such that:
+\begin{enumerate}
+    \item the "initial configuration" has in-degree zero, and
+    \item there are no infinite backward paths $\gamma_0 \leftarrow \gamma_1 \leftarrow \cdots$ in $\confGraph$. 
+\end{enumerate}
 
-\AP Note that every "well-founded Reversible Turing Machine" is deterministic and "reversible" and, moreover,
-its "configuration graph" is a (possibly infinite) disjoint union of
-directed paths, which are all finite, or isomorphic to $(\mathbb{N}, +1)$.
-The set of ""reachable configurations"", denoted by $\intro*\Reach$, is 
-the set of all configurations that admit a path from the "initial configuration"
-% the set of all "configurations" in the connected component of the "initial configuration" 
-in $\confGraph$, for a given TM $T$. Such a configuration graph is depicted on
-\Cref{fig:reduction-wf-RTM-to-colouring-config-graph-wf-RTM}.
+We say that a Turing machine is ""linear@@TM"" if it is "well-founded", deterministic and "reversible".
+By construction, a Turing machine is "linear@@TM" "iff" (1) its "configuration graph" consists of a possibly infinite disjoint union of directed paths, which are all finite, or isomorphic to $\tup{\N, +1}$ and (2) the "initial configuration" has in-degree zero.
+Such a configuration graph is depicted on
+\Cref{fig:reduction-wf-RTM-to-colouring-config-graph-wf-RTM}.\footnote{Note
+that it is decidable whether a "Turing machine" is "linear@@TM". In fact, condition (1) can be expressed in "first-order logic" over $\univStructSynchronous{\Sigma}$.}
 
-\AP The ""reachable regularity problem"" is the problem of, given a "wf-RTM" $T$, whether its set of "reachable configurations" is a regular language. To show that is it undecidable, we exhibit a reduction from the halting problem on deterministic "reversible" Turing machines.
+\AP The ""reachable regularity problem"" is the problem of, given a "Turing machine" $\+T$, to decide whether its set of "reachable configurations" is a "regular language". To show that is it undecidable, we exhibit a reduction from the halting problem on deterministic "reversible" Turing machines.
 
 \begin{proposition}[{\cite[Theorem 1]{Lecerf1963MachinesReversibles}}]
     \AP\label{prop:halting-problem-detrevTM}
-    The halting problem on deterministic "reversible" Turing machines is undecidable.
+    The \DPfont{halting problem} on deterministic "reversible" Turing machines is undecidable.
 \end{proposition}
-
-For more details and pointers on "reversible" Turing machines, see \cite[Chapter 5]{Morita2017Reversible}.
 
 \begin{lemma}
     \AP\label{lem:reachable-regularity}
-    The "reachable regularity problem" is undecidable.
+    The "reachable regularity problem" is undecidable, even if restricted
+    to "linear Turing machines".
 \end{lemma}
 
 \begin{proof}[Proof sketch]
-    By reducing the halting problem on deterministic "reversible" Turing machines,
+    We reduce the \DPfont{halting problem} on deterministic "reversible" Turing machines,
     in such a way that the "reachable configurations" whose
     state $q$ coincide with the state of the original machine are
-    of the form $(u q v a^n b^n)$ where $(u q v)$ is a configuration of the original machine,
-    $a$ and $b$ are new symbols,
-    and $n\in\N$. Transitions are defined in such a way that the new machine is a
-    "wf-RTM": this is implemented by having, for every transition $uqv \to u'q'v'$ of the original machine and every $n\in \N$, a (multi-step) transition $(u q v a^n b^n) \to^* (u' q' v' a^{n+1} b^{n+1})$---and is illustrated in \Cref{fig:reachable-regularity}.
+    of the form $u \cdot q \cdot v \triangleright^n \triangleleft^n$ where $u \cdot q \cdot v$ is a configuration of the 
+    original machine, $\triangleright$ and $\triangleleft$ are new symbols,
+    and $n\in\N$. Transitions are defined in such a way that the new machine is
+    "linear@@TM": this is implemented by having, for every transition $u\cdot q \cdot v \to u' \cdot q' \cdot v'$ of the original machine and every $n,m\in \N$, a multistep transition
+    \[ 
+        u \cdot q\cdot v \triangleright^{n} \triangleleft^{m} \to^* u' \cdot q' \cdot v' \triangleright^{n+1} \triangleleft^{m+1}.
+    \]
+    The construction is illustrated in \Cref{fig:reachable-regularity}.
 	\begin{figure}[htb]
 		\centering
         \begin{tikzpicture}
@@ -71,62 +86,90 @@ For more details and pointers on "reversible" Turing machines, see \cite[Chapter
 			that are not originally present in $T$.
 		}
 	\end{figure}
-	Moreover:
+	
+    Moreover:
     \begin{itemize}
         \item if the original machine was halting, then the "reachable configurations"
             of the new one are finite and hence regular;
         \item otherwise, the set of "reachable configurations" is not regular,
-            which follows from the non-regularity of any infinite subset of $\{a^n b^n \mid n \in \N\}$.
+            which follows from the non-regularity of any infinite subset of $\{\triangleright^n \triangleleft^n \mid n \in \N\}$.\qedhere
     \end{itemize}
 \end{proof}
 
-\begin{proof}
-    By reduction from the halting problem for deterministic and "reversible" TMs, which is undecidable by \Cref{prop:halting-problem-detrevTM}. Given a deterministic and "reversible" TM $T$ (running on the empty input), consider the TM $T'$ where every time there is a transition $(u, p, v) \to (u', q, v')$ from configuration $c$ to configuration $c'$ in $T$,
-	simulate this transition in $T'$---$a$'s should be treated as blank symbols---,
-	and then rewrite $a^n b^n$ into $a^{n+1}b^{n+1}$.
-	When $T$ writes on a blank symbol that was actually a $a$ in $T'$,
-	we must also add an extra $a$ (to account for the one that was overwritten):
-	this case is depicted \Cref{fig:reachable-regularity}.
-	Moreover, when $T$ deletes a symbol at the end of the tape,
-	we must shift the $a^n b^n$ prefix. This can be done by replacing the blank
-	with an $a$, the last $a$ with a $b$, and deleting the last $b$.
+\begin{proof}[Some proof details]
+    Letting $\+T$ denote the instance of the \DPfont{halting problem}, which runs on the empty word,
+    we denote by $\+T'$ the instance of the "reachable regularity problem" to which it
+    is reduced.
+
+    $\+T'$ is defined as follows: every time there is a transition
+    $u\cdot p \cdot v \to u' \cdot q \cdot v'$ in $\+T$,
+	we simulate this transition in $T'$: to achieve this, `$\triangleright$' and `$\triangleleft$'s should be treated as blank symbols,
+	and then we rewrite $\triangleright^n \triangleleft^m$ into $\triangleright^{n+1}\triangleleft^{m+1}$.
+	When $\+T$ writes on a blank symbol that was actually an `$\triangleright$' in $\+T'$,
+	we must also add an extra $\triangleright$ (to account for the one that was overwritten):
+	this case is depicted in \Cref{fig:reachable-regularity}.
+	Moreover, when $\+T$ deletes a symbol at the end of the tape,
+	we must shift the $\triangleright^n \triangleright^m$ suffix. This can be done by replacing the blank
+	with an `$\triangleright$', the last `$\triangleright$' with a `$\triangleleft$', and deleting the last `$\triangleleft$'.
 	
-	% in \Cref{fig:reachable-regularity}, by a series of steps that ``make some room'' between $c$ and $c'$ if needed (for example because the head was at the last position of $c$ and moves to the right), and make some room between the $a$'s and the $b$'s to accomodate for the extra $a$, and writes an extra $b$ at the end. This can be done with the invariant that at all times there are roughly as many $a$'s as $b$'s ($\pm 1$) in the working tape.
-    Observe that $T'$ is a "wf-RTM":
+    We now prove that $\+T'$ is "linear@@TM":
     \begin{enumerate}
-        \item the "initial configuration" $(\bot,q_0,\bot)$ has no predecessor;
-        \item it is deterministic and co-deterministic:
+        \item it is deterministic and "reversible":
         \begin{itemize}
-            \item every configuration inside a path $(u, q, v a^n b^n) \xrightarrow{*} (u, q, v a^{n+1} b^{n+1})$ 
+            \item every "configuration" inside a path
+            \[u \cdot q\cdot v \triangleright^{n} \triangleleft^{m} \to^* u' \cdot q' \cdot v' \triangleright^{n+1} \triangleleft^{m+1}\]
             has, by definition, exactly in- and out-degree one;
-            \item every configuration of the form $(u, p, v a^n b^n)$ has as many predecessors 
-            [resp. successors] in $T'$ as $(u,q,v)$ in $T$, namely one since $T$ was assumed to be
-                deterministic and "reversible";
+            \item every "configuration" of the form $u \cdot q \cdot v a^n b^m$ has as many 
+            predecessors (resp. successors) in $\+T'$ as $u \cdot q \cdot v$ in $\+T$, namely one since $\+T$ was assumed to be deterministic and "reversible";
         \end{itemize}
-        \item it has no infinite descending chain since $\N$ is well-founded.
+        \item the "initial configuration" $\pad \cdot q_0 \cdot \pad$ has no predecessor;
+        \item it has no infinite backward path since $\N$ is well-founded,
     \end{enumerate}
-    Moreover, $T'$ has no cycle,
-    so if $T$ is halting (on an empty input) then the set of "reachable configurations" of $T'$ is finite (since it is a "wf-RTM") and thus regular. If $T$ is not halting, the set of "reachable configurations" of $T'$ is infinite and its projection onto $\set{a,b}$ is an infinite set of words of the form $a^{n} b^{n'}$ where $n-2 \leq n' \leq n+2$. Hence, since regular languages are closed under homomorphic images, the "reachable configurations" of $T'$ cannot be regular.
+    Moreover, $\+T'$ has no cycle,\footnote{Indeed, we encoded a strictly increasing counter inside the configurations of $\+T'$.} and so if $\+T$ is halting on an empty input, then the set of "reachable configurations" of $\+T'$ is finite, and thus regular. If $\+T$ is not halting, the set of "reachable configurations" of $\+T'$ is infinite and its projection onto $\set{\triangleright,\triangleleft}$ is an infinite set of words of the form $a^{n} b^{m}$ where $n-2 \leq m \leq n+2$. Hence, since regular languages are closed under homomorphic images, the "reachable configurations" of $\+T'$ cannot be regular.
 \end{proof}
 
 
 \paragraph*{Undecidability of the $k$-Regular Colourability Problem.}
-We can now show undecidability for the "$k$-regular colourability problem" by reduction from the "reachable regularity problem" as defined before.
+We can now show undecidability for the "$k$-regular colourability problem" by reduction from the "reachable regularity problem" restricted to "linear Turing machines".
 
-\begin{fact}
-    \AP\label{fact:initial-nodes-are-regular}
-    Given an "rational graph", the set of nodes with no predecessor is effectively a regular language. 
-\end{fact}
+\begin{marginfigure}
+    \centering
+    \includegraphics[width=\linewidth]{fig/germinal.jpg}
+    \caption{\emph{Allégorie pour le mois de Germinal}, Louis Lafitte.}
+\end{marginfigure}
+
+A configuration of a "Turing machine"---or more generally the node of a "rational graph"---is said 
+to be \AP""germinal"" if it has in-degree 0.
+% \sidenote{A natural terminology would be ``initial'' but it clashes with the well-established notion of "initial configuration".}
 
 \begin{theorem}
     \AP\label{thm:k-reg-col-undec}
-    The "$k$-regular colourability problem" on "rational graphs" is undecidable, for every $k\geq 2$. More precisely, the problem is recursively enumerable-complete. This holds also for connected "rational graphs".
+    The "$k$-regular colourability problem" on "rational graphs" is undecidable, for every $k\geq 2$. More precisely, the problem is "RE"-complete. This holds also for "connected" "rational graphs".
 \end{theorem}
 
 \begin{proof}%
 	\proofcase{Lower bound.}
-    By reduction from the "reachable regularity problem" for "wf-RTM"s
+    By reduction from the "reachable regularity problem" for "linear Turing machines"
     (\Cref{lem:reachable-regularity}). We first show it for $k=2$.
+
+    \AP Given a "linear Turing machine" $T$,
+    observe that the set $\intro*\Germ$ of all "germinal configurations" of $\confGraph$.
+    \begin{claim}
+        $\Germ$ is effectively a "regular language". 
+    \end{claim}
+    
+    Observe moreover that, by definition of "linear Turing machines",
+    the "initial configuration" $\pad\cdot q_0 \cdot \pad$ is "germinal".
+    Let $\bSymb$ and $\rSymb$ be fresh symbols. 
+    Consider the "rational graph" $\AutGraph{V}{\+E}$ for $V \defeq \configs\cdot (\bSymb + \rSymb)$,
+    having an edge from $\gamma \cdot c$ to $\gamma' \cdot c$ if either 
+    \begin{enumerate}
+        \item $\tup{c,c'} = \tup{\bSymb,\rSymb}$ and $\gamma=\gamma'$;
+        \item $\tup{c,c'} = \tup{\rSymb,\bSymb}$ and there is an edge from $\gamma$ to $\gamma'$ in $\confGraph$; or
+        \item $\tup{c,c'} = \tup{\bSymb,\bSymb}$, $\gamma$ is the "initial configuration",
+        and $\gamma' \neq \gamma$ is "germinal".
+    \end{enumerate}
+
     \begin{marginfigure}%
         \centering
         \begin{tikzpicture}
@@ -134,7 +177,7 @@ We can now show undecidability for the "$k$-regular colourability problem" by re
         \end{tikzpicture}
         \caption{
             \AP\label{fig:reduction-wf-RTM-to-colouring-config-graph-wf-RTM}
-            Configuration graph of a "well-founded Reversible Turing Machine".
+            Configuration graph of a "linear Turing machine".
         }
     \end{marginfigure}%
     \begin{marginfigure}%
@@ -148,47 +191,38 @@ We can now show undecidability for the "$k$-regular colourability problem" by re
             of \Cref{fig:reduction-wf-RTM-to-colouring-config-graph-wf-RTM} is reduced.
         }
     \end{marginfigure}%
-    \AP Given a "wf-RTM" $T$, let $c_{\textit{init}}$ be its "initial configuration".
-    Observe that the set $\intro*\Init$ of all vertices of $\confGraph$ with in-degree $0$ is an effective regular language (by \Cref{fact:initial-nodes-are-regular}), and that $c_{\textit{init}} \in \Init$. Let $B$ and $R$ be fresh symbols. 
-    Consider the "rational graph" $\AutGraph{L}{E}$ for $L = \set{B,R} \times \configs$, having 
-    an edge from $(z,c) \in \{B,R\} \times \configs$ to $(z',c') \in \{B,R\} \times \configs$ if either 
-    \begin{enumerate}
-        \item $(z,z') = (B,R)$ and $c=c'$;
-        \item $(z,z') = (R,B)$ and there is an edge from $c$ to $c'$ in $\confGraph$; or
-        \item $(z,z') = (B,B)$, $c = c_{\textit{init}}$ and $c' \in \Init \setminus \set{c_{\textit{init}}}$.
-    \end{enumerate}
-Fresh symbols $B$ and $R$ are utilized to represent two versions of each configuration - one in Blue and one in Red. This graph is depicted
-    on \Cref{fig:reduction-wf-RTM-to-colouring}.
-    Note that $\AutGraph{L}{E}$ is connected and "2-colourable": in fact, it is a directed (possibly infinite) tree with root $(B,c_{\textit{init}})$. 
+
+    Symbols $\bSymb$ and $\rSymb$ are utilized to represent two versions of each configuration.
+    This graph is depicted in \Cref{fig:reduction-wf-RTM-to-colouring}.
+    Note that $\AutGraph{V}{\+E}$ is "connected" and "2-colourable": in fact, it is a "directed tree" whose root is $\pad\cdot q_0\cdot \pad\cdot \bSymb$. 
     
-    We claim that $\AutGraph{L}{E}$ is "$2$-regular colourable" if, and only if, the set of "reachable configurations" of $T$ is a regular language. 
-    In fact, up to permuting the two-colours, 
-  $\AutGraph{L}{E}$ admits a unique 2-colouring, defined by:
+    We claim that $\AutGraph{V}{\+E}$ is "$2$-regular colourable" if, and only if, the set of "reachable configurations" of $T$ is a "regular language". 
+    In fact, up to permuting the two-colours, $\AutGraph{V}{\+E}$
+    admits a unique 2-colouring $\tup{C_1,C_2}$, defined by:
     \[
-        C_1 ~~ \defeq ~~ \{B\} \times \Reach ~~\cup~~ \{R\} \times (\configs \setminus \Reach)
+        C_1 \defeq \Reach\cdot\bSymb \cup (\configs \setminus \Reach)\cdot\rSymb
     \]
     and $C_2$ is the complement of $C_1$.
     If $\Reach$ is regular, then so is $C_1$. Dually, if $C_1$ is regular, then
-    $\Reach$ is the set of configurations $c$ such that $(B,c) \in C_1$ and hence is regular.
-    It follows that $\AutGraph{\Sigma^*}{E}$ is "$2$-regular colourable" if and only if
-    the "reachable configurations" of $T$ are regular, which concludes the proof for $k=2$.
+    $\Reach$ is exactly the set of configurations $\gamma$ such that
+    $\gamma\cdot \bSymb \in C_1$ and hence is regular.
+    It follows that $\AutGraph{V}{\+E}$ is "$2$-regular colourable" if and only if
+    the "reachable configurations" of $\+T$ are regular, which concludes the proof for $k=2$.
 
-    % In one direction, if the "reachable configurations" of $T$ is a regular language $L$, then consider the regular sets of vertices of $G$ defined as $C_1 = (\set B \times L) \cup (\set R \times (\configs \setminus L))$ and $C_2$ as its complement. It is easy to verify that $(C_1,C_2)$ is a "two-regular colouring@$k$-regular colouring" of $\AutGraph[E]$.
+    To prove the statement for any $k>2$, we define $\AutGraph{V}{\+E_k}$ as the result of adding a $(k-2)$-clique to $\AutGraph{V}{\+E}$ and adding an edge from every vertex of the clique to every vertex incident to an edge of $\+E$. This forces the clique to use $k-2$ colours that cannot be used in the remaining part of the graph and the proof is then analogous.
 
-    % In the converse direction, suppose there is a "two-regular colouring@$k$-regular colouring" $(C_1,C_2)$ of $\AutGraph[E]$, and suppose without loss of generality that $(B,c_{\textit{init}}) \in C_1$. Since $\AutGraph[E]$ is connected, the colouring is uniquely determined by the colour of any of its vertices, and hence $C_1 = (\set B \times \hat L) \cup (\set R \times (\configs \setminus \hat L))$, where $\hat L$ is the set of "reachable configurations" of $T$. Now $\hat L$ can be obtained from $C_1$ by means of projection and thus $\hat L$ is regular.
-
-    To prove the statement for any $k>2$, we define $\AutGraph{L}{E_k}$ as the result of adding a $(k-2)$-clique to $\AutGraph{L}{E}$ and adding an edge from every vertex of the clique to every vertex incident to an edge of $E$. This forces the clique to use $k-2$ colours that cannot be used in the remaining part of the graph and the proof is then analogous.
-
-	\proofcase{Upper-bound.} We show that the problem is recursively enumerable. Let us define a $k$-coloured automaton like a regular (complete) DFA, except that instead of having
+	\proofcase{Upper-bound.} We show that the problem is "RE". Let us define a \AP""$k$-coloured automaton"" like a regular (complete) DFA, except that instead of having
 	a set of final states, it has a partition $\langle C_1,\hdots,C_k \rangle$ of its states.
-	Such an automaton recognizes a regular colouring $\Sigma^* \to \set{1, \dotsc, k}$.
-	Given an "rational graph" $\AutGraph{L}{R}$---specified by
-	 NFA's $\+A_1$ and $\+A_2$ recognizing $L$ and $\convolRel{R}$  respectively--- and a $k$-coloured automaton $\+B$,
-	we can build, by a product construction, an NFA $\+A'_2$  which accepts
-	all $u \otimes v \in \convolRel{R}$ such that the colour of $u$ is distinct from the colour of $v$.
-	Then, $\+A'_2$ is equivalent to $\+A_2$ if, and only if, $\+B$ describes a proper "$k$-colouring" 
-	of $\AutGraph{L}{R}$. The "RE" upper-bound of the "$k$-regular colourability problem" follows: it 
-	suffices to enumerate all $k$-coloured automata and check for equivalence.
+	Such an automaton recognizes a "regular colouring" $\Sigma^* \to \lBrack 1, k\rBrack$.
+	Given a "rational graph" $\+G = \AutGraph{V}{\+E}$---whose edge relations is given by
+    a "synchronous automaton" $\relPres{\+E}{\+G}$---and a $k$-coloured automaton $\+B$,
+	we can build, by a product construction, an automaton $\+A'$ which accepts
+	all $u \otimes v \in \convolRel{R}$ such that the colour of $u$ is distinct from
+    the colour of $v$.
+	Then, $\+A'$ is equivalent to $\relPres{\+E}{\+G}$ if, and only if,
+    $\+B$ describes a proper "$k$-colouring" of $\AutGraph{V}{\+E}$.
+    The "RE" upper-bound of the "$k$-regular colourability problem" follows: 
+    it suffices to enumerate all "$k$-coloured automata" and check for equivalence.
 \end{proof}
 
 Note that this reduction provides an easy way of building
@@ -203,7 +237,7 @@ direct construction.
         E_{\mathrm{incr}} & = \{(a^pb^q,\, a^{p+1}b^{q+1}) \mid p,q \in \N\} \\
         E_{\mathrm{init}} & = \{(\varepsilon,\, a^p) \mid p \in \N\} \cup \{(\varepsilon,\, b^q) \mid q \in \N\}, 
     \end{align*}    
-    is "automatic" but not "2-regular colourable". 
+    is "rational@@rational graph" but not "2-regular colourable". 
     Indeed, its only "2-colouring"
     consists in partitioning the vertices of $\+T$ into
     \[
@@ -225,7 +259,7 @@ direct construction.
     \end{tikzpicture}
     \caption{
         \label{fig:tree-not-2reg-colour}
-        The "automatic tree@rational graph" $\+T$ of \Cref{ex:tree-not-2-reg-colourable},
+        The "rational tree@rational graph" $\+T$ of \Cref{ex:tree-not-2-reg-colourable},
         and its unique "2-colouring" $(C, V\setminus C)$, which is not "regular@@colouring".
     }
 \end{figure}

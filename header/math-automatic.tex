@@ -114,8 +114,8 @@
 % ---
 % Separation to Colourability
 % ---
-\knowledgenewrobustcmd{\Init}{\cmdkl{\textrm{Init}}}
-\newrobustcmd{\InitC}[1]{\kl[\Init]{\color{#1}\textrm{Init}}} % variant with color
+\knowledgenewrobustcmd{\Germ}{\cmdkl{\textrm{Germ}}} % germinal configurations
+\newrobustcmd{\GermC}[1]{\kl[\Germ]{\color{#1}\textrm{Germ}}} % variant with color
 \knowledgenewrobustcmd{\Reach}{\cmdkl{\textrm{Reach}}}
 \newrobustcmd{\ReachC}[1]{\kl[\Reach]{\color{#1}\textrm{Reach}}} % variant with color
 
@@ -127,8 +127,11 @@
 
 \knowledgenewrobustcmd{\Id}{\cmdkl{\+{I\mkern-1.5mu d}}} % identity relation
 
-\knowledgenewrobustcmd{\AutGraph}[2]{\cmdkl{\langle #1,#2\rangle}}%
-\knowledgenewrobustcmd{\configs}[1][T]{\cmdkl{\textrm{Conf}_{#1}}}
-\knowledgenewrobustcmd{\confGraph}[1][T]{\cmdkl{{\+{C\mkern-1.5mu on\!f}}_{#1}}}
+\newrobustcmd{\bSymb}{\textcolor{cBlue}{b}}
+\newrobustcmd{\rSymb}{\textcolor{cRed}{r}}
 
-\knowledgenewrobustcmd{\autequiv}[1][R]{\cmdkl{\sim_{#1}}} % todo:wtf is this?
+\knowledgenewrobustcmd{\AutGraph}[2]{\cmdkl{\langle #1,#2\rangle}}%
+\knowledgenewrobustcmd{\configs}[1][\+T]{\cmdkl{\textrm{Conf}_{#1}}}
+\knowledgenewrobustcmd{\confGraph}[1][\+T]{\cmdkl{{\+{C\mkern-1.5mu on\!f}}_{\!#1}}}
+
+\knowledgenewrobustcmd{\autequiv}[1][\+R]{\cmdkl{\sim_{\!#1}}} % todo:wtf is this?

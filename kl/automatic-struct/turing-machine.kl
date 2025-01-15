@@ -15,5 +15,13 @@
  | reversible
 
 \knowledge{notion}
- | well-founded Reversible Turing Machine
- | wf-RTM
+ | well-founded
+
+\knowledge{notion}
+ | linear@TM
+ | linear Turing machine
+
+\knowledge{notion}
+ | germinal
+ | germinal elements
+ | germinal configurations
