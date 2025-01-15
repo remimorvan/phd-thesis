@@ -26,6 +26,27 @@ TODO:generalized presentation (non-injective) + effective construction to make t
 For \AP""first-order reductions"", see
 \cite[Definition 2.11 \& Definition 1.26]{Immerman1998DescriptiveComplexity}.
 
+\subsection{Neighbourhoods}
+
+Given a "$\sigma$-structure" $\?A$ and $a \in A$, we define the \AP""neighbourhood"" of $a$
+in $\?A$
+to be the tuple of sets
+\[
+	\intro*\neighbourhood{a}{\?A}{\+R}{i} \defeq
+	% \Big\langle
+		\big\{
+			\langle a_1, \hdots, a_{i-1}, a_{i+1}, \hdots, a_k \rangle \in A^{k-1} \mid
+			\langle a_1, \hdots, a_{i-1}, a, a_{i+1}, \hdots, a_k \rangle \in \+R(\?A)
+		\big\},
+		% \;\big\vert\;
+		% \+R_{(k)} \in \sigma \text{ and } i \in \lBrack 1,k\rBrack
+	% \Big\rangle.
+\]
+when $\+R$ ranges over "predicate" of arity $k$ of $\sigma$ and $i \in \lBrack 1,k\rBrack$. 
+\marginnote{TODO: introduce notation $\+R_{(k)} \in \sigma$}
+For "graphs", the "neighbourhood" of a vertex corresponds to its set of predecessors and
+its set of successors.
+
 \subsection{A Model-Theoretic Perspective}
 
 Given an alphabet $\Sigma$, we define on $\Sigma^*$:

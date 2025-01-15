@@ -1,56 +1,56 @@
 
 % Reachable configuration
 \fill[rounded corners, draw=cGreen, fill=cGreen, opacity=.3]
-	(-.2,-.7) rectangle (2.3, .2);
+	(-.3,-.9) rectangle (2.75, .3);
 % Initial configuration
 \fill[rounded corners, draw=cYellow, fill=cYellow, opacity=.3]
-	(-.2,.2) rectangle (.2, -3.1);
+	(-.3,.3) rectangle (.3, -3.8);
 
 % First line
 \node[vertex, cBlue] (a0) at (0,0) {};
-\node[vertex, cRed] (a'0) [below = .2cm of a0] {};
-\draw[->, densely dotted] (a0) edge (a'0);
+\node[vertex, cRed] (a'0) [below = .3cm of a0] {};
+\draw[edge, densely dotted] (a0) to (a'0);
 \foreach \i in {0,...,2} {
 	\pgfmathtruncatemacro{\next}{\i + 1}
-	\node[vertex, cBlue, right of = a\i] (a\next) {};
-	\node[vertex, cRed, right of = a'\i] (a'\next) {};
-	\draw[->] (a'\i) edge (a\next);
-	\draw[->, densely dotted] (a\next) edge (a'\next);
+	\node[vertex, cBlue, right = of a\i] (a\next) {};
+	\node[vertex, cRed, right = of a'\i] (a'\next) {};
+	\draw[edge] (a'\i) to (a\next);
+	\draw[edge, densely dotted] (a\next) to (a'\next);
 }
 
 % Second line
-\node[vertex, cBlue, below of = a'0] (b0) {};
-\node[vertex, cRed] (b'0) [below = .2cm of b0] {};
-\draw[->, densely dotted] (b0) edge (b'0);
-\foreach \i in {0,...,4} {
+\node[vertex, cBlue, below = of a'0] (b0) {};
+\node[vertex, cRed] (b'0) [below = .3cm of b0] {};
+\draw[edge, densely dotted] (b0) to (b'0);
+\foreach \i in {0,...,3} {
 	\pgfmathtruncatemacro{\next}{\i + 1}
-	\node[vertex, cBlue, right of = b\i] (b\next) {};
-	\node[vertex, cRed, right of = b'\i] (b'\next) {};
-	\draw[->] (b'\i) edge (b\next);
-	\draw[->, densely dotted] (b\next) edge (b'\next);
+	\node[vertex, cBlue, right = of b\i] (b\next) {};
+	\node[vertex, cRed, right = of b'\i] (b'\next) {};
+	\draw[edge] (b'\i) to (b\next);
+	\draw[edge, densely dotted] (b\next) to (b'\next);
 }
-\node[draw=none, fill=none, right = 0cm of $(b5)!0.5!(b'5)$] (binf) {$\cdots$};
+\node[draw=none, fill=none, right = .6em of $(b4)!0.5!(b'4)$] (binf) {$\cdots$};
 
 % Third line
-\node[vertex, cBlue, below of = b'0] (c0) {};
-\node[vertex, cRed] (c'0) [below = .2cm of c0] {};
-\draw[->, densely dotted] (c0) edge (c'0);
+\node[vertex, cBlue, below = of b'0] (c0) {};
+\node[vertex, cRed] (c'0) [below = .3cm of c0] {};
+\draw[edge, densely dotted] (c0) to (c'0);
 \foreach \i in {0,1} {
 	\pgfmathtruncatemacro{\next}{\i + 1}
-	\node[vertex, cBlue, right of = c\i] (c\next) {};
-	\node[vertex, cRed, right of = c'\i] (c'\next) {};
-	\draw[->] (c'\i) edge (c\next);
-	\draw[->, densely dotted] (c\next) edge (c'\next);
+	\node[vertex, cBlue, right = of c\i] (c\next) {};
+	\node[vertex, cRed, right = of c'\i] (c'\next) {};
+	\draw[edge] (c'\i) to (c\next);
+	\draw[edge, densely dotted] (c\next) to (c'\next);
 }
 
 % Edges between Init nodes
-\draw[->, densely dashed] (a0) edge[bend right] (b0);
-\draw[->, densely dashed] (a0) edge[bend right] (c0);
+\draw[edge, densely dashed] (a0) to[bend right] (b0);
+\draw[edge, densely dashed] (a0) to[bend right] (c0);
 
 % Labels
-\node[draw=none, fill=none, cYellow, font=\footnotesize, text width=2cm, align=right]
-	[left = .35cm of $(b0)!0.5!(b'0)$]
+\node[draw=none, fill=none, cYellow, font=\footnotesize, align=left]
+	[below right = 1em and -1em of $(c'0)$]
 	{nodes originating from	$\InitC{cYellow}$};
-\node[draw=none, fill=none, cGreen, font=\footnotesize, align=center]
-	[above = -1.6cm of $(a1)!0.5!(a2)$]
+\node[draw=none, fill=none, cGreen, font=\footnotesize, align=left]
+	[above right = 1em and -1em of $(a0)$]
 	{nodes originating from $\ReachC{cGreen}$};

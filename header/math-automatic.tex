@@ -30,7 +30,7 @@
 \knowledgenewrobustcmd{\pad}{%
 	\cmdkl{\textvisiblespace}
 }
-\knowledgenewrobustcmd{\SigmaPair}[1][2]{\cmdkl{\Sigma}^{#1}_{\raisebox{.25em}{\smallpad}}\!\!}
+\knowledgenewrobustcmd{\SigmaPair}[1][2]{\cmdkl{\Sigma}^{#1}_{\raisebox{.25em}{\smallpad}}\mkern-5mu}
 \knowledgenewrobustcmd{\convol}{\mathbin{\cmdkl{\otimes}}} % convolution of two words of languages
 \knowledgenewrobustcmd{\convolRel}[1]{#1^{\cmdkl{\otimes}}} % convolution of a relation
 
@@ -128,7 +128,7 @@
 \knowledgenewrobustcmd{\Id}{\cmdkl{\textrm{Id}}} % identity relation
 
 \knowledgenewrobustcmd{\AutGraph}[2]{\cmdkl{\langle #1,#2\rangle}}%
-\knowledgenewrobustcmd{\configs}[1][T]{\cmdkl{\textrm{Confs}_{#1}}}
-\knowledgenewrobustcmd{\confGraph}[1][T]{\cmdkl{{\+G}^{#1}}}
+\knowledgenewrobustcmd{\configs}[1][T]{\cmdkl{\textrm{Conf}_{#1}}}
+\knowledgenewrobustcmd{\confGraph}[1][T]{\cmdkl{{\+{C\mkern-1.5mu on\!f}}_{#1}}}
 
 \knowledgenewrobustcmd{\autequiv}[1][R]{\cmdkl{\sim_{#1}}} % todo:wtf is this?

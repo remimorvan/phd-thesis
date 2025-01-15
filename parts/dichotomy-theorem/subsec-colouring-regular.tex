@@ -124,6 +124,9 @@ We can now show undecidability for the "$k$-regular colourability problem" by re
 \end{theorem}
 
 \begin{proof}%
+	\proofcase{Lower bound.}
+    By reduction from the "reachable regularity problem" for "wf-RTM"s
+    (\Cref{lem:reachable-regularity}). We first show it for $k=2$.
     \begin{marginfigure}%
         \centering
         \begin{tikzpicture}
@@ -134,20 +137,17 @@ We can now show undecidability for the "$k$-regular colourability problem" by re
             Configuration graph of a "well-founded Reversible Turing Machine".
         }
     \end{marginfigure}%
-    \begin{marginfigure}
+    \begin{marginfigure}%
         \centering
         \begin{tikzpicture}
             \input{tikz/dichotomy/reduction-wf-RTM}
         \end{tikzpicture}
         \caption{
             \AP\label{subfig:reduction-wf-RTM-to-colouring}
-            The rational graph to which the "configuration graph"
+            The "rational graph" to which the "configuration graph"
             of \Cref{fig:reduction-wf-RTM-to-colouring-config-graph-wf-RTM} is reduced.
         }
     \end{marginfigure}%
-	\proofcase{Lower bound.}
-    By reduction from the "reachable regularity problem" for "wf-RTM"s
-    (\Cref{lem:reachable-regularity}). We first show it for $k=2$.
     \AP Given a "wf-RTM" $T$, let $c_{\textit{init}}$ be its "initial configuration".
     Observe that the set $\intro*\Init$ of all vertices of $\confGraph$ with in-degree $0$ is an effective regular language (by \Cref{fact:initial-nodes-are-regular}), and that $c_{\textit{init}} \in \Init$. Let $B$ and $R$ be fresh symbols. 
     Consider the "rational graph" $\AutGraph{L}{E}$ for $L = \set{B,R} \times \configs$, having 
