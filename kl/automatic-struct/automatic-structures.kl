@@ -9,6 +9,7 @@
  | represent@structure
  | rational $\sigma$-presentation
  | rational structure
+ | rational@struct
 
 \knowledge{notion}
  | rational presentation of a directed graph
@@ -20,5 +21,6 @@
  | automatic $\sigma $-structure
  | automatic
  | automatic structure
+ | automatic structures
 
 

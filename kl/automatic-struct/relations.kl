@@ -7,3 +7,11 @@
 \knowledge{notion}
  | recognizable relations
  | recognizable
+
+\knowledge{notion}
+ | symmetric@rel
+ | symmetric relation
+
+\knowledge{notion}
+ | synchronous automaton 
+ | automaton@sync

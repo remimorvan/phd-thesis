@@ -91,7 +91,7 @@ We can now easily show undecidability for the "$\kPROD[2]$-separability problem"
     The "$\kPROD[2]$-separability problem" is undecidable.
 \end{lemma}
 \begin{proof}
-    By reduction from the "$2$-regular colourability problem" on "rational graphs", which is undecidable by \Cref{thm:k-reg-col-undec}. Let $\AutGraph{V}{\+E}$ be an "rational graph" and $\AutGraph{V}{\+E'}$ the symmetric closure of $\AutGraph{V}{\+E}$. It follows that $\AutGraph{V}{\+E'}$ is still "rational" and that there is a "$2$-regular colouring" for $\AutGraph{V}{\+E'}$ "iff" there is a "$2$-regular colouring" for $\AutGraph{V}{\+E}$---take the same colouring.
+    By reduction from the "$2$-regular colourability problem" on "rational graphs", which is undecidable by \Cref{thm:k-reg-col-undec}. Let $\AutGraph{V}{\+E}$ be an "rational graph" and $\AutGraph{V}{\+E'}$ the symmetric closure of $\AutGraph{V}{\+E}$. It follows that $\AutGraph{V}{\+E'}$ is still "rational@@struct" and that there is a "$2$-regular colouring" for $\AutGraph{V}{\+E'}$ "iff" there is a "$2$-regular colouring" for $\AutGraph{V}{\+E}$---take the same colouring.
     Thus, by \Cref{cor:2reg-2prod}, $\AutGraph{V}{\+E}$ is "$2$-regular colourable" "iff" 
     there is a $\kPROD[2]$ relation that "separates@@rel" $\+E'$ from $\Id$.
 \end{proof}
@@ -155,7 +155,7 @@ we will now establish that their membership problem are decidable.
     \item $(v,w) \in \+R$ "iff" $(v,w') \in \+R$.
 \end{enumerate}
 
-It turns out that equivalence classes of $\autequiv$ define the coarsest partition onto which $R$ can be recognized in terms of $\kREC$.
+It turns out that equivalence classes of $\autequiv$ define the coarsest partition onto which $\+R$ can be recognized in terms of $\kREC$.
 
 \begin{lemma}\AP\label{lem:krec-characterization}
     For every "synchronous" $\+R \subseteq \Sigma^* \times \Sigma^*$, $\autequiv$ has index at most $k$ if, and only if, $\+R$ is in $\kREC$.\footnote{Recall that the index of an equivalence relation is its number of equivalence classes.}

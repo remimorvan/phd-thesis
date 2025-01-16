@@ -4,6 +4,8 @@
 \subsection{\AP\label{sec:dichotomy-overview}%
 Overview \& Easy Implications of the Dichotomy Theorem}
 
+\DichotomyThmDichotomyAutomatic
+
 \begin{marginfigure}
 	\centering
 	\begin{tikzpicture}
@@ -14,11 +16,10 @@ Overview \& Easy Implications of the Dichotomy Theorem}
 \end{marginfigure}
 We prove \Cref{thm:dichotomy-theorem-automatic-structures} by showing the
 implications depicted in \Cref{fig:dichotomy-overview}.
-
 The most difficult implications are $\itemDTFinDual \Rightarrow \itemDTFirstOrder$,
 which we prove in \Cref{sec:dichotomy-decidability}, and the implications
 $\itemDTHomDec \Rightarrow \itemDTFinDual$ and $\itemDTHomRegDec \Rightarrow \itemDTFinDual$,
-which we prove by contraposition in \Cref{sec:dichotomy-undecidability}.
+which we prove by contraposition in \Cref{sec:undecidability-hom,sec:undecidability-homreg}.
 
 On the other hand, the implications $\itemDTFirstOrder \Rightarrow \itemDTEqual$,
 $\itemDTEqual \Rightarrow \itemDTHomRegDec$ and $\itemDTEqual \Rightarrow \itemDTHomDec$ are straightforward: we prove them in this section. 
@@ -28,17 +29,124 @@ the implication which, together with the fact that both $\HomAutDec{\clique{2}}$
 and $\HomRegAutDec{\clique{2}}$ are undecidable by todo:addrefs, that lead us to conjecture
 \Cref{thm:dichotomy-theorem-automatic-structures}.}
 
-% \paragraph*{Decidability of the Homomorphism Problem.}
+\paragraph*{Decidability of the Homomorphism Problem.}
 
-TODO.
+\begin{proposition}
+	\!\footnote{This corresponds to the implication $\itemDTFinDual \Rightarrow \itemDTHomDec$
+	of \Cref{thm:dichotomy-theorem-automatic-structures}.}
+	\AP\label{prop:dichotomy-FinDual-implies-HomDec}
+	Let $\?B$ be a "finite $\sigma$-structure".
+	If $\?B$ has finite duality, then $\HomAutDec{\?B}$ is decidable in "NL".
+\end{proposition}
 
-% \paragraph*{Uniformly First-Order Definable Homomorphisms Imply Equality.}
+\begin{proof}
+	Given a "finite $\sigma$-structure" $\?D$ with domain $\{d_1,\hdots,d_n\}$,
+	we build the "first-order sentence"
+	\[
+		\phi_{\?D} \defeq \exists x_1,\; \cdots \exists x_n,\;
+		\bigwedge_{\+R_{(k)} \in \sigma} \bigwedge_{\substack{\tup{i_1,\hdots,i_k} \in \lBrack 1,n\rBrack^k\\\text{"st" }\tup{d_{i_1},\hdots,d_{i_k}} \in \+R(\?D)}}
+		\+R(x_{i_1},\hdots,x_{i_k}).
+	\]
+	By construction, for any arbitrary "$\sigma$-structure" $\?A$, we have $\?A \models \phi_{\?D}$
+	"iff" $\?D \homto \?A$.
+	Then, since $\?B$ has "finite duality", it admits a finite "complete set of obstructions" $\?D_1,\hdots,\?D_m$.
+	Then
+	\[
+		\?A \models \bigwedge_{i=1}^m \neg \phi_{\?D_i}
+		\quad\text{"iff"}\quad 
+		\?A \homto \?B.
+	\]
+	The conclusion follows from the fact that the "data complexity"
+	of "first-order model checking" for
+	"automatic structures" is "NL" (todo:addref).
+\end{proof}
 
-TODO.
+\paragraph*{Uniformly First-Order Definable Homomorphisms Imply Equality.}
 
-% \paragraph*{Equality of the Homomorphism Problems Imply their Decidability.}
+\begin{proposition}
+	\!\footnote{This corresponds to the implication $\itemDTFirstOrder \Rightarrow \itemDTEqual$
+	of \Cref{thm:dichotomy-theorem-automatic-structures}.}
+	\AP\label{prop:dichotomy-FirstOrder-implies-Equal}.
+	Let $\?B$ be a "finite $\sigma$-structure".
+	If $\HomAllClass{\?B}$ has "uniformly first-order definable homomorphisms", then
+	$\HomAutDec{\?B} = \HomRegAutDec{\?B}$.
+\end{proposition}
 
-TODO.
+\begin{proof}
+	By assumption,there exists "first-order formulas"
+	$\langle \phi_b(x) \rangle_{b\in B}$ over $\sigma$ "st" for any
+	arbitrary "$\sigma$-structure" $\?A$, for any $a\in A$,
+	there is at most one $b \in B$ "st" $\langle \?A, a \rangle \models \phi_b(x)$, and moreover $\?A \homto \?B$
+	"iff" for each $a\in A$, there is exactly one $b(a) \in B$ "st" $\langle \?A, a \rangle \models \phi_{b(a)}(x)$, and $a \mapsto b(a)$ is a "homomorphism".
+	Now, when the right-hand side holds, given a "rational structure" $\+A$,
+	for each $b\in \?B$, we let $\tilde\phi_b(x)$ be the "first-order formula" over $\signatureSynchronous{\Sigma}$ obtained from $\phi_b(x)$
+	by substituting $\+R(x_1,\hdots,x_k)$ for the "first-order formula"
+	over $\signatureSynchronous{\Sigma}$ describing $\+R_{(k)}$ in $\+A$.
+	It follows that if $\?A \homto \?B$, then the function
+	mapping $u \in \Sigma^*$ to the unique $b \in B$ "st" $\Sigma^*, u \models \tilde\phi_b(x)$
+	defines a "regular homomorphism" from $\+A$ to $\?B$---the regularity follows from
+	todo:addref-first-order-iff-synchronous.
+	And hence $\HomAutDec{\?B} \subseteq \HomRegAutDec{\?B}$. The conclusion follows since
+	the other implication is trivial.
+\end{proof}
+
+\paragraph*{Equality of the Homomorphism Problems Imply their Decidability.}
+
+\begin{proposition}
+	\!\footnote{This corresponds to the implication $\itemDTEqual \Rightarrow \itemDTHomDec$
+	of \Cref{thm:dichotomy-theorem-automatic-structures}.}
+	\AP\label{prop:dichotomy-Equal-implies-HomDec}.
+	Let $\?B$ be a "finite $\sigma$-structure".
+	If $\HomAutDec{\?B} = \HomRegAutDec{\?B}$ then $\HomAutDec{\?B}$ and $\HomRegAutDec{\?B}$
+	are decidable.
+\end{proposition}
+
+To prove this, we first give an upper bound on the homomorphism problems independently
+of any assumption on $\?B$.
+\begin{proposition}
+	\AP\label{prop:dichotomy-general-upper-bounds}
+	Let $\?B$ be a "finite $\sigma$-structure".
+	Then $\HomAutDec{\?B}$ is "coRE" and $\HomRegAutDec{\?B}$ is "RE".
+\end{proposition}
+
+\begin{proof}
+	\proofcase{$\HomAutDec{\?B}$ is "coRE".}
+	By the "De Bruijn–Erdős Theorem", for any arbitrary "$\sigma$-structure" $\?A$,
+	we have $\?A \nothomto \?B$ "iff" there exists a finite "substructure" $\?A'$ of $\?A$
+	"st" $\?A' \nothomto \?B$.
+	Given a "finite $\sigma$-structure" $\?A'$ and an "automatic $\sigma$-structure",
+	it is decidable whether $\?A'$ is a "substructure" of $\?A$: indeed, it suffices
+	to check, using todo:addref-model-checking if
+	\[
+		\Bigl(
+			\exists x_1,\; \cdots \exists x_n,\;
+			\bigwedge_{\+R_{(k)} \in \sigma} \bigwedge_{\substack{\tup{i_1,\hdots,i_k} \in \lBrack 1,n\rBrack^k\\\text{"st" }\tup{a_{i_1},\hdots,a_{i_k}} \in \+R(\?A')}}
+			\+R(x_{i_1},\hdots,x_{i_k})
+		\Bigr)
+		\models^{?} \?A,
+	\]
+	by letting $\{a_1,\hdots,a_n\} = A'$. 
+	Moreover, whether $\?A' \nothomto \?B$ is also decidable---in "coNP"---by todo:addref.
+	Overall, this provides a co-semi-algorithm for $\HomAutDec{\?B}$: we enumerate finite
+	"$\sigma$-structure" $\?A'$, and test if (1) $\?A'$ is a "substructure" of $\?A$ and if (2)
+	$\?A' \homto \?B$. And hence $\HomAutDec{\?B}$ is "coRE".
+
+	\proofcase{$\HomRegAutDec{\?B}$ is "RE".} This is an easy generalization of
+	\Cref{thm:k-reg-col-undec}: instead of having "$k$-coloured automaton", we define
+	``$\?B$-automaton'', that admit a partition $\langle C_{b} \rangle_{b \in B}$.
+	The semantics of such an automaton is a partial function $f\colon \Sigma^* \to B$. 
+	Given a "rational structure" $\+A$, we can then effectively test if $f$ is defined on $\domainPres{\+A}$, and if $f$ defines a "homomorphism" from $\?A$ to $\?B$---see
+	the proof of \Cref{thm:k-reg-col-undec}. If so, $\+A \homregto \?B$. Dually, any "regular homomorphism" $\+A \homregto \?B$ can be described by such a $\?B$-automaton.
+	Therefore, $\HomRegAutDec{\?B}$ is "RE".
+\end{proof}
+
+\begin{proof}[Proof of \Cref{prop:dichotomy-Equal-implies-HomDec}.]
+	If $\HomAutDec{\?B} = \HomRegAutDec{\?B}$, then by \Cref{prop:dichotomy-general-upper-bounds},
+	these problems are both "RE" and "coRE", and are hence decidable.
+\end{proof}
+
+\subsection{\AP\label{sec:undecidability-hom}%
+	Undecidability of \,$\HomAutDec{\?B}$}
 
 We now prove the undecidability of $\HomAutDec{\?B}$ and $\HomRegFinDec{\?B}$
 when $\?B$ does not have "finite duality". Both reductions are
@@ -53,10 +161,7 @@ to $\HomRegFinDec{\?B}$ is not entirely trivial and requires some work.
 		which in turn is reduced from "Restricted Membership for Deterministic Reversible Turing Machines", providing a "RE"-lowerbound. TODO:update.
 \end{itemize}
 
-\subsection{\AP\label{sec:undecidability-hom}%
-	Undecidability of \,$\HomAutDec{\?B}$}
-
-For $n\in\N$, we define the \AP""$n$-link"" $\intro*\link{n}$ be the "$\sigma$-structure"\sidenote{From \cite[\S~2]{LaroseLotenTardif2007CharacterisationFOCSP}.} 
+For $n\in\N$, we define the \AP""$n$-link"" $\intro*\link{n}$ be the "$\sigma$-structure"\sidenote{From \autocite[\S~2]{LaroseLotenTardif2007CharacterisationFOCSP}.} 
 whose domain is $\lBrack 0,n\rBrack$, and every "predicate" $\+R$
 of arity $k$, is interpreted as the set of tuples $\langle a_1,\, \hdots,\, a_k \rangle$
 "st" $|a_i-a_j| \leq 1$ for all $i,j \in \lBrack 0,n \rBrack$. See \Cref{fig:n-link}.
@@ -99,7 +204,7 @@ Moreover, being "linked" is transitive, but not necessarily reflexive.
 	\!\footnote{Actually \cite[Theorem 4.7]{LaroseLotenTardif2007CharacterisationFOCSP} assumes
 	that $\HomFinDec{\?B}$ is "first-order definable", but this condition
 	is equivalent to $\?B$ having "finite duality" by Atserias' result
-	\cite[Corollary 4]{Atserias2008DigraphColoring}.}%
+	\autocite[Corollary 4]{Atserias2008DigraphColoring}.}%
 	%%%
 	\AP\label{prop:characterization-finite-duality-path-projections}
 	A finite "$\sigma$-structure" $\?B$ has "finite duality" "iff"
@@ -266,7 +371,7 @@ is "coRE"-complete, and assuming that $\sigma$ contains at least one "predicate"
 it reduces by \Cref{lem:reduction-hom} to any problem $\HomAutDec{\marked{\?B}}$ when $\?B$ has "finite duality". In turns, by \Cref{prop:marking-preserves-csp-complexity}, it reduces to
 $\HomAutDec{\?B}$, which is thus "coRE"-hard. It remains to deal with "signatures" consisting of only
 unary "predicates".\sidenote{It is not clear to us whether this case was properly handled in
-\cite{LaroseLotenTardif2007CharacterisationFOCSP}.}
+\autocite{LaroseLotenTardif2007CharacterisationFOCSP}.}
 
 \begin{property}
 	\AP\label{prop:finite-duality-unary-predicates}
@@ -324,14 +429,14 @@ unary "predicates".\sidenote{It is not clear to us whether this case was properl
 
 \begin{corollary}
 	\!\sidenote[][-15em]{In the case of Larose and Tesson, they study the problem
-	$\HomFinDec{-}$, and prove in \cite[Theorem 3.2]{LaroseTesson2009UniversalAlgebraCSP}
+	$\HomFinDec{-}$, and prove in \autocite[Theorem 3.2]{LaroseTesson2009UniversalAlgebraCSP}
 	that there is a "first-order reduction" from "Connectivity in Finite Graphs" to
 	$\HomFinDec{\marked{\?B}}$ assuming that $\?B$ does not have finite duality.
 	Moreover, "Connectivity in Finite Graphs" is "L"-hard under "first-order reductions" since
-	Etessami \cite[Theorem 3.2]{Etessami1997CountingLogSpace} proved that the problem
+	Etessami \autocite[Theorem 3.2]{Etessami1997CountingLogSpace} proved that the problem
 	of given a directed path and two vertices $s$, $t$ to decide if there is a path from
 	$s$ to $t$ is "L"-hard under "first-order reductions"-in fact even under quantifier-free reductions. It turn, this problem can be reduced in "first-order@@reduction"
-	to "Connectivity in Finite Graphs" \cite{SamiD2015USTCONNLogspace}.
+	to "Connectivity in Finite Graphs" \autocite{SamiD2015USTCONNLogspace}.
 	Overall, and together with \Cref{prop:marking-preserves-csp-complexity},
 	this shows that $\HomFinDec{\?B}$ is "L"-hard under "first-order reductions".}%
 	%%%

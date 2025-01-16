@@ -4,17 +4,20 @@
 \knowledge{notion}
  | 2-colouring
  | $k$-colouring
+ | colouring
 
 \knowledge{notion}
  | regular colouring
  | regular@colouring
  | $2$-regular colouring
  | 2-regular colouring
+ | regular colourings
 
 \knowledge{notion}
  | $k$-regular colourable
  | $2$-regular colourable
  | 2-regular colourable
+ | finitely regularly colourable
 
 \knowledge{notion}
  | compatible
@@ -23,6 +26,7 @@
 \knowledge{notion}
  | incompatibility graph
  | incompatibility relation
+ | Incompatibility graph
 
 \knowledge{notion}
  | separates@rel
@@ -30,3 +34,7 @@
  
 \knowledge{notion}
  | separable@rel
+
+\knowledge{notion}
+ | $k$-coloured automaton
+ | $k$-coloured automata

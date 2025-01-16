@@ -8,15 +8,8 @@
 \author{Rémi Morvan}
 
 % Biblio
-\usepackage[
-  style=alphabetic,
-  autocite=footnote,
-  backend=biber
-]{biblatex}
 \bibliography{bib-automatic-graphs}
 \bibliography{bib-complexity}
-
-%todo: add \citereset at end of each chapter
 
 % Dependencies
 \input{header/colour-palette}
@@ -107,8 +100,8 @@
 \end{table}
 
 \citereset
-Hello this is a citation \cite{Bringhurst2005}.
-Hello Q\sidenote{Qy first sidenote!} world and another test \cite{Bringhurst2005}.
+Hello this is a citation \autocite{Bringhurst2005}.
+Hello Q\sidenote{Qy first sidenote!} world and another test \autocite{Bringhurst2005}.
 \[\forall x \in \gamma,\, \exists y\in \delta, \delta \to \gamma\]
 \[L \subseteq \Sigma^*\]
 \[0 \in \symbb{N}\]

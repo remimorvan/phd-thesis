@@ -142,3 +142,83 @@
 \setmathfont[math-style=TeX]{Asana Math}
 \setmathfont[math-style=TeX, range={frak, bb}]{TeX Gyre Termes Math}
 \setmathfont[math-style=TeX, range={cal, bfcal}]{Latin Modern Math}
+
+% ---
+% Sidenotes in sidenotes
+% By default: sidenote in sidenote raises an issue. We change them into new paragraphs.
+% This is important for the ``better citations'' part, when citing something in the margin.
+% ---
+
+\newif\ifsidenote
+\let\Sidenote\sidenote
+\renewcommand\sidenote[1]{\ifsidenote \par\noindent #1\else \begingroup\sidenotetrue\Sidenote{#1}\endgroup\fi}
+\let\Footnote\footnote
+\renewcommand\footnote[1]{\ifsidenote \par\noindent #1\else \begingroup\sidenotetrue\Footnote{#1}\endgroup\fi}
+\let\Marginnote\marginnote
+\renewcommand\marginnote[1]{\ifsidenote \par\noindent #1\else \begingroup\sidenotetrue\Marginnote{#1}\endgroup\fi}
+
+% ---
+% Better citations
+% based on https://tex.stackexchange.com/questions/624641/biblatex-ifentryseen-command-not-working
+% ---
+\RequirePackage[
+	style=alphabetic,
+	citetracker=true,	
+	citereset=chapter,
+	backend=biber
+]{biblatex}
+
+\newbibmacro{cite:authortitleyear}{%
+  [\printtext[labelnumberwidth]{%
+    \usebibmacro{cite}%
+  }]%
+  \setunit{\addspace}%
+  \printnames{labelname}%
+  \setunit{\nametitledelim}%
+  \begingroup
+  \DeclareFieldFormat{title}{\mkbibparens{##1}}%
+  \printfield{title}
+  \endgroup
+  \setunit{\addspace}%
+  \begingroup
+  \DeclareFieldFormat{date}{\mkbibparens{##1}}%
+  \printdate
+  \endgroup
+}
+
+\makeatletter
+\newrobustcmd*{\makebibmarginnote}[1]{%
+  \marginnote{\blxmkbibnote{foot}{#1}}}
+
+\DeclareCiteCommand{\maycite}[\makebibmarginnote]
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite:authortitleyear}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
+\newcommand*{\cbx@savedcites}{}
+
+\newcommand*{\cbx@margcitewrap}[1]{%
+  \global\let\cbx@savedcites\empty
+  \mkbibbrackets{#1}%
+  \cbx@savedcites
+}
+
+\DeclareCiteCommand{\margincite}[\cbx@margcitewrap]
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite}%
+   \ifciteseen
+     {}
+     {\xappto\cbx@savedcites{\noexpand\maycite{\thefield{entrykey}}}}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
+\DeclareMultiCiteCommand{\margincites}[\cbx@margcitewrap]{\margincite}{\multicitedelim}
+
+\DeclareAutoCiteCommand{margin}{\margincite}{\margincites}
+\ExecuteBibliographyOptions{autocite=margin}
+\makeatother
+% \renewcommand{Atserias2008DigraphColoring}\marginnote{\cite{Atserias2008DigraphColoring}~\citeauthor*{Atserias2008DigraphColoring}, \emph{\citetitle{Atserias2008DigraphColoring}},
+% \citeyear{Atserias2008DigraphColoring}.}

@@ -1,4 +1,7 @@
 \knowledge{notion}
+ | first-order logic
+
+\knowledge{notion}
  | first-order formula
  | first-order formulas
  | formula@FO
@@ -15,7 +18,7 @@
 
 \knowledge{notion}
  | first-order definable
- 
+
 % ---
 % FO reductions 
 % ---

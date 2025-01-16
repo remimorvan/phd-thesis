@@ -20,8 +20,12 @@
 \knowledge{notion}
  | linear@TM
  | linear Turing machine
+ | linear Turing machines
 
 \knowledge{notion}
  | germinal
  | germinal elements
  | germinal configurations
+
+\knowledge{notion}
+ | configuration@TM

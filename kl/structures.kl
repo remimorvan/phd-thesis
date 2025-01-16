@@ -85,6 +85,12 @@
  | neighbourhood
  | neighbourhoods
 
+\knowledge{notion}
+ | directed tree
+
+\knowledge{notion}
+ | $\sigma $-tree
+
 % ---
 % Substructures & misc 
 % ---
