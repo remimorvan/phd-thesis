@@ -8,8 +8,14 @@
 \author{Rémi Morvan}
 
 % Biblio
-\bibliography{bib-automatic-graphs}
-\bibliography{bib-complexity}
+\usepackage[
+	style=alphabetic,
+	citetracker=true,	
+	citereset=chapter,
+	backend=biber
+]{biblatex}
+\addbibresource{bib-automatic-graphs}
+\addbibresource{bib-complexity}
 
 % Dependencies
 \input{header/colour-palette}
@@ -63,13 +69,16 @@
 \addcontentsline{toc}{chapter}{Résumé long}
 
 \chapter*{Ideas/Todos}
-\addcontentsline{toc}{chapter}{Ideas/Todos}
 
 \begin{itemize}
 	\item Change definition of CQ/CRPQ to have vertices. This allows for better duality,
 		and also better statement for the Semantical Structure Theorem (in some prop we get
 		``foo is an edge contraction of bla'' instead of ``is a minor of'').
 		Update the definition of `one-way internal path' to allow for $n=0$.
+	\item TODO:allow autocite in margin.
+		TODO: citation at wrong place in margin.
+		TODO:do NOT overwrite options for sidenote, etc.
+		See \texttt{tufte-book-custom.cls}.
 \end{itemize}
 
 \chapter{Introduction}
@@ -100,8 +109,8 @@
 \end{table}
 
 \citereset
-Hello this is a citation \autocite{Bringhurst2005}.
-Hello Q\sidenote{Qy first sidenote!} world and another test \autocite{Bringhurst2005}.
+Hello this is a citation \cite{Bringhurst2005}.
+Hello Q\sidenote{Qy first sidenote!} world and another test \cite{Bringhurst2005}.
 \[\forall x \in \gamma,\, \exists y\in \delta, \delta \to \gamma\]
 \[L \subseteq \Sigma^*\]
 \[0 \in \symbb{N}\]
