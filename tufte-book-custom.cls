@@ -71,6 +71,13 @@
 		{\hspace*{3.5cm}} % before w/o label
 		{\rmfamily\upshape\qquad\thecontentspage} % filler + page (leaders and page num)
 		[\end{fullwidth}] % after
+	\titleformat{\paragraph}%
+		[runin]% shape
+		{\normalfont\itshape}% format applied to label+text
+		{\theparagraph}% label
+		{1em}% horizontal separation between label and title body
+		{}% before the title body
+		[]% after the title body
 }{}
 
 

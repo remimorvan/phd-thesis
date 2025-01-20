@@ -23,7 +23,7 @@ which we prove by contraposition in \Cref{sec:undecidability-hom,sec:undecidabil
 
 On the other hand, the implications $\itemDTFirstOrder \Rightarrow \itemDTEqual$,
 $\itemDTEqual \Rightarrow \itemDTHomRegDec$ and $\itemDTEqual \Rightarrow \itemDTHomDec$ are straightforward: we prove them in this section. 
-We start by proving $\itemDTFinDual \Rightarrow \itemDTHomDec$.\footnote{While it is redundant with the implications of \Cref{fig:dichotomy-overview}, 
+Before showing these implications, we start by proving $\itemDTFinDual \Rightarrow \itemDTHomDec$.\footnote{While it is redundant with the implications of \Cref{fig:dichotomy-overview}, 
 we prove this implication for two reasons: not only is it straightforward, it is also
 the implication which, together with the fact that both $\HomAutDec{\clique{2}}$
 and $\HomRegAutDec{\clique{2}}$ are undecidable by todo:addrefs, that lead us to conjecture
@@ -657,3 +657,56 @@ We then prove a lower bound on the complexity of "Regular Unreachability of Turi
 \begin{proof}
 	TODO.
 \end{proof}
+
+
+\subsection{\AP\label{sec:undecidability-finite-colourability} Undecidable of Finite Regular Colourability}
+
+In this subsection, we capitalize on \Cref{sec:undecidability-hom,sec:undecidability-homreg} to 
+prove that both the "finite regular colourability" and the "finite colourability problems@finite colourability@problem" are undecidable.
+
+\begin{theorem}
+	"Finite regular colourability of rational graphs" is "RE"-complete.
+\end{theorem}
+
+The upper bound is trivial: given a "rational graph" $\+G$,
+we guess some $k\in \N$ and check if $\+G \in \HomRegAutDec{\clique{k}}$, which is "RE"
+by \Cref{prop:dichotomy-general-upper-bounds}.
+
+We define \AP$\intro*\omegaClique$ to be the "disjoint union" $\bigoplus_{k\in\N} \clique{2^k}$ of all finite "cliques". Note that it is "homomorphically equivalent" to $\bigoplus_{k\in\N} \clique{k}$.
+Moreover, it admits a simple "rational presentation" \AP$\intro*\omegaCliquePres$: take the binary alphabet $\Sigma \defeq \{0,1\}$ and let%
+\footnote{In this presentation, words of length $k$ are used to encode $\clique{2^k}$.}
+\begin{align*}
+	\domainPres{\omegaCliquePres} & \defeq \Sigma^*, \\ 
+	\relPres{\+E}{\omegaCliquePres} & \defeq \{\tup{u,v} \in \Sigma^* \times \Sigma^* \mid |u| = |v| \text{ and }
+	u \neq v\}.
+\end{align*}
+
+While there is some "graph" $\+G$ does not admit a "homomorphism" to $\omegaClique$, then it is not "finitely colourable", the converse implication does not hold---"eg" $\omegaClique$ itself is not "finitely colourable". However, the equivalence holds for a substantially large class of graphs.
+
+\begin{property}
+	\AP\label{prop:finite-regular-colourability-as-homreg-pb}
+	Let $\?G$ be an arbitrary "connected" "graph". $\?G \homto \omegaClique$ "iff" $\?G$ is "finitely colourable".	
+	Similarly, let $\•G$ be a "connected" "rational graph". $\•G \homregto \omegaCliquePres$ "iff" $\?G$ is "finitely regularly colourable".
+\end{property}
+
+\begin{proof}
+	A "homomorphism" must send pairs of "connected" vertices to pairs of "connected" vertices.
+\end{proof}
+
+\begin{proposition}
+	\AP\label{prop:finite-colourability-of-connected-graphs}
+	The "finite regular colourability problem" and its restriction to "connected" "rational graphs"
+	are Turing-equivalent.
+\end{proposition}
+
+\begin{proof}
+	The reduction from the restricted to the general problem is straightforward.
+	For the converse one, we add a new element $*$ to the "structure" $\+A$,\footnote{In particular, we extend the alphabet of the "presentation@@rational".} and put an edge
+	from $*$ to any element $u$ of the original "structure". 
+	Clearly, the original structure is "finitely regularly colourable" "iff" the new one is---one direction is trivial, for the other one it suffices to assign to $*$ a new colour.
+\end{proof}
+
+% Putting \Cref{prop:finite-regular-colourability-as-homreg-pb,prop:finite-colourability-of-connected-graphs} together, we obtain a reduction from
+% $\HomRegAutDec{\cliqueOmegaPres}$ to "finite regular colourability@@problem".
+
+TODO

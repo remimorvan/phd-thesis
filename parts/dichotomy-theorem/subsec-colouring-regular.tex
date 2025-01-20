@@ -119,10 +119,10 @@ that it is decidable whether a "Turing machine" is "linear@@TM". In fact, condit
     \begin{enumerate}
         \item it is deterministic and "reversible":
         \begin{itemize}
-            \item every "configuration" inside a path
+            \item every "configuration@@TM" inside a path
             \[u \cdot q\cdot v \triangleright^{n} \triangleleft^{m} \to^* u' \cdot q' \cdot v' \triangleright^{n+1} \triangleleft^{m+1}\]
             has, by definition, exactly in- and out-degree one;
-            \item every "configuration" of the form $u \cdot q \cdot v a^n b^m$ has as many 
+            \item every "configuration@@TM" of the form $u \cdot q \cdot v a^n b^m$ has as many 
             predecessors (resp. successors) in $\+T'$ as $u \cdot q \cdot v$ in $\+T$, namely one since $\+T$ was assumed to be deterministic and "reversible";
         \end{itemize}
         \item the "initial configuration" $\pad \cdot q_0 \cdot \pad$ has no predecessor;

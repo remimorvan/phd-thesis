@@ -3,6 +3,11 @@
 
 \knowledge{notion, wrap=\DPfont}
  | finite regular colourability of rational graphs
+ | finite regular colourability@problem
+
+\knowledge{notion, wrap=\DPfont}
+ | finite colourability of automatic graphs
+ | finite colourability@problem
 
 \knowledge{notion, wrap=\DPfont}
  | reachable regularity problem
@@ -22,10 +27,8 @@
  | $\kPROD $-membership problem
 
 \knowledge{notion, wrap=\DPfont}
- | regular colourability problem
  | $k$-regular colourability problem
  | $2$-regular colourability problem
- | regular colourability@problem
  | $k$-regular colourability@problem
 
 \knowledge{notion, wrap=\DPfont}
