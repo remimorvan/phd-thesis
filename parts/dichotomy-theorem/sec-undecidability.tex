@@ -161,7 +161,7 @@ to $\HomRegFinDec{\?B}$ is not entirely trivial and requires some work.
 		which in turn is reduced from "Restricted Membership for Deterministic Reversible Turing Machines", providing a "RE"-lowerbound. TODO:update.
 \end{itemize}
 
-For $n\in\N$, we define the \AP""$n$-link"" $\intro*\link{n}$ be the "$\sigma$-structure"\sidenote{From \autocite[\S~2]{LaroseLotenTardif2007CharacterisationFOCSP}.} 
+For $n\in\N$, we define the \AP""$n$-link"" $\intro*\link{n}$ be the "$\sigma$-structure"\sidenote{From \cite[\S~2]{LaroseLotenTardif2007CharacterisationFOCSP}.} 
 whose domain is $\lBrack 0,n\rBrack$, and every "predicate" $\+R$
 of arity $k$, is interpreted as the set of tuples $\langle a_1,\, \hdots,\, a_k \rangle$
 "st" $|a_i-a_j| \leq 1$ for all $i,j \in \lBrack 0,n \rBrack$. See \Cref{fig:n-link}.
@@ -204,7 +204,7 @@ Moreover, being "linked" is transitive, but not necessarily reflexive.
 	\!\footnote{Actually \cite[Theorem 4.7]{LaroseLotenTardif2007CharacterisationFOCSP} assumes
 	that $\HomFinDec{\?B}$ is "first-order definable", but this condition
 	is equivalent to $\?B$ having "finite duality" by Atserias' result
-	\autocite[Corollary 4]{Atserias2008DigraphColoring}.}%
+	\cite[Corollary 4]{Atserias2008DigraphColoring}.}%
 	%%%
 	\AP\label{prop:characterization-finite-duality-path-projections}
 	A finite "$\sigma$-structure" $\?B$ has "finite duality" "iff"
@@ -371,7 +371,7 @@ is "coRE"-complete, and assuming that $\sigma$ contains at least one "predicate"
 it reduces by \Cref{lem:reduction-hom} to any problem $\HomAutDec{\marked{\?B}}$ when $\?B$ has "finite duality". In turns, by \Cref{prop:marking-preserves-csp-complexity}, it reduces to
 $\HomAutDec{\?B}$, which is thus "coRE"-hard. It remains to deal with "signatures" consisting of only
 unary "predicates".\sidenote{It is not clear to us whether this case was properly handled in
-\autocite{LaroseLotenTardif2007CharacterisationFOCSP}.}
+\cite{LaroseLotenTardif2007CharacterisationFOCSP}.}
 
 \begin{property}
 	\AP\label{prop:finite-duality-unary-predicates}
@@ -429,14 +429,14 @@ unary "predicates".\sidenote{It is not clear to us whether this case was properl
 
 \begin{corollary}
 	\!\sidenote[][-15em]{In the case of Larose and Tesson, they study the problem
-	$\HomFinDec{-}$, and prove in \autocite[Theorem 3.2]{LaroseTesson2009UniversalAlgebraCSP}
+	$\HomFinDec{-}$, and prove in \cite[Theorem 3.2]{LaroseTesson2009UniversalAlgebraCSP}
 	that there is a "first-order reduction" from "Connectivity in Finite Graphs" to
 	$\HomFinDec{\marked{\?B}}$ assuming that $\?B$ does not have finite duality.
 	Moreover, "Connectivity in Finite Graphs" is "L"-hard under "first-order reductions" since
-	Etessami \autocite[Theorem 3.2]{Etessami1997CountingLogSpace} proved that the problem
+	Etessami \cite[Theorem 3.2]{Etessami1997CountingLogSpace} proved that the problem
 	of given a directed path and two vertices $s$, $t$ to decide if there is a path from
 	$s$ to $t$ is "L"-hard under "first-order reductions"-in fact even under quantifier-free reductions. It turn, this problem can be reduced in "first-order@@reduction"
-	to "Connectivity in Finite Graphs" \autocite{SamiD2015USTCONNLogspace}.
+	to "Connectivity in Finite Graphs" \cite{SamiD2015USTCONNLogspace}.
 	Overall, and together with \Cref{prop:marking-preserves-csp-complexity},
 	this shows that $\HomFinDec{\?B}$ is "L"-hard under "first-order reductions".}%
 	%%%

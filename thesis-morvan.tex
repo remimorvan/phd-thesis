@@ -8,14 +8,21 @@
 \author{Rémi Morvan}
 
 % Biblio
+% \usepackage[
+% 	style=alphabetic,
+% 	citetracker=true,	
+% 	citereset=chapter,
+% 	backend=biber
+% ]{biblatex}
+% \addbibresource{bib-automatic-graphs}
+% \addbibresource{bib-complexity}
 \usepackage[
-	style=alphabetic,
-	citetracker=true,	
-	citereset=chapter,
-	backend=biber
+  style=alphabetic,
+  autocite=footnote,
+  backend=biber
 ]{biblatex}
-\addbibresource{bib-automatic-graphs}
-\addbibresource{bib-complexity}
+\bibliography{bib-automatic-graphs}
+\bibliography{bib-complexity}
 
 % Dependencies
 \input{header/colour-palette}

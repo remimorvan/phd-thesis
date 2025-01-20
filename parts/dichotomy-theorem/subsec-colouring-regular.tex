@@ -24,17 +24,17 @@ We represent a "configuration@@TM" $\tup{u, q, v}$ by the word $uqv \in \Gamma^*
 in light of this, we will henceforth denote by ``configuration'' any string from the set  \AP$\intro*\configs \defeq  \Gamma^* Q \Gamma^*$.\footnote{We will often write
 $uqv$ as the concatenation $u\cdot q \cdot v$ to emphasize
 the separation between all three words.}
-The \AP""configuration graph"" of $\+T$ is the infinite graph $\intro*\confGraph$ having $\configs$ as set of vertices and an edge from $\gamma$ to $\gamma'$, denoted $\gamma \rightarrow \gamma'$ if there is a one-step transition from $\gamma$ to $\gamma'$ in $\+T$. Observe that the "configuration graph" $\confGraph$ of any Turing machine $\+T$ is an effective "rational graph" (see, e.g., \autocite{KuskeLohrey2010AutomaticGraphs} TODO:update pointer to prelims).
+The \AP""configuration graph"" of $\+T$ is the infinite graph $\intro*\confGraph$ having $\configs$ as set of vertices and an edge from $\gamma$ to $\gamma'$, denoted $\gamma \rightarrow \gamma'$ if there is a one-step transition from $\gamma$ to $\gamma'$ in $\+T$. Observe that the "configuration graph" $\confGraph$ of any Turing machine $\+T$ is an effective "rational graph" (see, e.g., \cite{KuskeLohrey2010AutomaticGraphs} TODO:update pointer to prelims).
 
 \AP We say that a Turing machine $\+T$ is ""reversible"", if every node of $\confGraph$ has in-degree at most 1, in other words if the machine is co-deterministic.%
 \footnote{
     Note that a modern proof of undecidability of the isomorphism problem for automatic structures 
-    by Blumensath \autocite[\S VIII. Theorem 4.3, p. 396 \& second claim, p. 398]{Blumensath2023MSO} 
+    by Blumensath \cite[\S VIII. Theorem 4.3, p. 396 \& second claim, p. 398]{Blumensath2023MSO} 
     also relies on the use of "reversible" Turing machines.
 }%
 \footnote{
     For more details and pointers on "reversible" Turing machines,
-    see \autocite[Chapter 5]{Morita2017Reversible}.
+    see \cite[Chapter 5]{Morita2017Reversible}.
 }
 We say that a Turing machine $\+T$ is ""well-founded"" if its "configuration graph" is such that:
 \begin{enumerate}
