@@ -665,6 +665,7 @@ In this subsection, we capitalize on \Cref{sec:undecidability-hom,sec:undecidabi
 prove that both the "finite regular colourability" and the "finite colourability problems@finite colourability@problem" are undecidable.
 
 \begin{theorem}
+	\AP\label{thm:finite-regular-colourability-undecidable}
 	"Finite regular colourability of rational graphs" is "RE"-complete.
 \end{theorem}
 
@@ -706,7 +707,22 @@ While there is some "graph" $\+G$ does not admit a "homomorphism" to $\omegaCliq
 	Clearly, the original structure is "finitely regularly colourable" "iff" the new one is---one direction is trivial, for the other one it suffices to assign to $*$ a new colour.
 \end{proof}
 
-% Putting \Cref{prop:finite-regular-colourability-as-homreg-pb,prop:finite-colourability-of-connected-graphs} together, we obtain a reduction from
-% $\HomRegAutDec{\cliqueOmegaPres}$ to "finite regular colourability@@problem".
+\begin{proof}[Proof of \Cref{coro:finite-regular-colourability-undecidable}.]
+	Putting \Cref{prop:finite-regular-colourability-as-homreg-pb,prop:finite-colourability-of-connected-graphs} together, we obtain a reduction from
+	$\HomRegAutDec{\cliqueOmegaPres}$ to "finite regular colourability@@problem".
+	
+	\begin{claim}
+		$\HomRegAutDec{\cliqueOmegaPres}$ is "RE"-hard.
+	\end{claim}
+	As for \Cref{coro:lowerbound-homreg}, we prove that
+	there is a reduction from "Regular Unconnectivity in Rational Graphs"
+	to $\HomRegAutDec{\marked{\cliqueOmegaPres}}$.
 
-TODO
+	\begin{claim}
+		$\omegaClique$ does not have finite duality.
+	\end{claim}
+	TODO.
+	
+	Moreover, by \Cref{thm:dichotomy-theorem-automatic-structures},
+	$\HomRegAutDec{\cliqueOmegaPres}$ is "RE"-hard.
+\end{proof}
