@@ -7,7 +7,7 @@ Given two "structures" $\?A$ and $\?B$, we define the structure \AP$\intro*\pows
 \begin{itemize}
   \item its domain are "homomorphisms" $\?A \to \?B$,
   \item for every "predicate" $\+R$ of arity $k$, for any homomorphism $f_1,\hdots,f_k$,
-  we have $\langle f_1,\hdots,f_k\rangle \in \+R$ when for every
+  we have $\langle f_1,\hdots,f_k\rangle \in \+R(\powstruct{\?B}{\?A})$ when for every
   $\langle a_1,\hdots,a_k\rangle \in \+R(\?A)$
   then $\langle f_1(a_1), \hdots, f_k(a_k) \rangle \in \+R(\?B)$.
 \end{itemize}
@@ -51,17 +51,29 @@ in the two previous paragraphs are mutually inverse bijections.
 \label{sec:construction-automatic-presentations}
 
 Let $\•A$ and $\•B$ be "rational presentations" of some "$\sigma$-structures"
-$\?A$ and $\?B$. We define \AP$\•A \intro*\prodpres \•B$ to be the "presentation@@auto"
-"st":
+$\?A$ and $\?B$, over alphabets $\Sigma$ and $\Gamma$, respectively.
+We define \AP$\•A \intro*\prodpres \•B$ to be the "presentation@@auto"
+over the alphabet $(\Sigma \times \Gamma) \dcup \Sigma \times \{\pad\} \dcup \{\pad\} \times 
+\Gamma$  "st":
 \begin{align*}
-	\domainPres{\•A\prodpres \•B} & \defeq \{u\#v \mid u \in \domainPres{\•A} \land v \in \domainPres{\•B}\}\\
-	\relPres{\•A\prodpres \•B}{\+R} & \defeq \{(u_1\#v_1) \convol \cdots \convol (u_k\#v_k) \mid
-		u_1 \convol \cdots \convol u_k \in \relPres{\•A}{\+R} \land
-		v_1 \convol \cdots \convol v_k \in \relPres{\•B}{\+R}
+	\domainPres{\•A\prodpres \•B} & \defeq \{u\convol v \mid u \in \domainPres{\•A} \land v \in \domainPres{\•B}\}\\
+	\relPres{\+R}{\•A\prodpres \•B} & \defeq
+		\{\tup{u_1\convol v_1,\, \hdots,\, u_k\convol v_k} \mid
+		\tup{u_1,\, \hdots,\, u_k} \in \relPres{\+R}{\•A} \land
+		\tup{v_1,\, \hdots,\, v_k} \in \relPres{\+R}{\•B}
 	\}
 \end{align*}
 for each "predicate" $\+R$ of arity $k$ in $\sigma$.
-It is an "rational presentation" of $\?A \prodstruct \?B$. TODO:proof.
+It is an "rational presentation" of $\?A \prodstruct \?B$.
+Indeed, given a "first-order formula" $\phi(x_1,\hdots,x_k)$
+over $\signatureSynchronous{\Sigma}$, describing $\relPres{\+R}{\•A}$,
+and a "first-order formula" $\psi(x_1,\hdots,x_k)$
+over $\signatureSynchronous{\Sigma}$, describing $\relPres{\+R}{\•B}$,
+we let $\phi^*$ (resp. $\psi^*$) be the "formula@@FO" obtained from $\phi$ (resp. $\psi$)
+by substituting $\lastLetter{a}(x)$ for $\bigvee_{b \in \Gamma \dcup \{\pad\}} \lastLetter{\tup{a,b}}(x)$ (resp. $\bigvee_{b \in \Sigma \dcup \{\pad\}} \lastLetter{\tup{b,a}}(x)$).
+Then $\phi^* \land \psi^*$ is a "first-order formula", over the product alphabet,
+that describes $\relPres{\+R}{\•A\prodpres \•B}$. The same construction
+works for $\domainPres{\•A\prodpres \•B}$.
 
 \begin{proposition}
 	\label{prop:homreg-prod-finite}
@@ -74,16 +86,40 @@ It is an "rational presentation" of $\?A \prodstruct \?B$. TODO:proof.
 
 \begin{proof}
 	The proof will follow from the following claim.
+
 	\begin{claim}
 		\label{claim:homreg-prod-finite}
-		A function $f\colon\•A \prodpres \•B \homregto \•C$ is a "regular homomorphism"
+		Assuming again that $\?B$ and $\?C$ are finite,
+		a function $f\colon\•A \prodpres \•B \to \•C$ is a "regular homomorphism"
 		"iff" for every $b\in \domainPres{\•B}$, for every $c\in \domainPres{\•C}$,
 		\(\{
 			a\in \domainPres{\•A} \mid f(a,b) = c
 		\}\)
 		is a "regular language".
 	\end{claim}
-	TODO.
+	
+	The left-to-right implication is easy, and does not use the assumption that $\?B$ and $\?C$ are if $f\colon\•A \prodpres \•B \to \•C$ is a "regular homomorphism", then there exists
+	a first-order formula $\phi(x,y,z)$ "st" for all words $u,v,w$
+	in $\domainPres{\•A}$, $\domainPres{\•B}$ and $\domainPres{\•C}$, respectively, then
+	\[
+		\univStructSynchronous{\Sigma}, u, v, w \models \phi(x,y,z)
+		\text{ "iff" }
+		w = f(u, v).
+	\]
+	Then given $b\in \domainPres{\•B}$ and $c\in \domainPres{\•C}$,
+	the formula\footnote{``y = b'' is not properly defined in the syntax of "first-order logic" but it is straightforward to come up with a formula expressing this property.}
+	\[
+		\exists y,\,\exists z,\, \phi(x,y,z) \land y = b \land z = c
+	\]
+	describes $\{ a\in \domainPres{\•A} \mid f(a,b) = c \}$, which is hence "regular@@lang".
+
+	Conversely, we consider "first-order formulas" $\phi_{b,c}$ describing each set
+	$\{ a\in \domainPres{\•A} \mid f(a,b) = c \}$ for $b\in \domainPres{\•B}$ and $c\in \domainPres{\•C}$. Then
+	\[
+		\phi(x,y,z) \defeq \bigwedge_{b\in \domainPres{\•B}} \bigwedge_{c \in \domainPres{\•C}}
+			\phi_{b,c}(x) \land y = b \land z = c
+	\]
+	is a "first-order formula" (since $\?B$ and $\?C$ are "finite@@struct") describing $f$.
 \end{proof}
 
 In other words, the existence of a "regular homomorphism" does not depend on the
@@ -100,7 +136,7 @@ As a consequence of \Cref{prop:homreg-prod-finite}, we write
 \end{corollary}
 
 \begin{proof}
-	By \Cref{claim:homreg-prod-finite}… TODO.
+	This also follows from \Cref{claim:homreg-prod-finite}.
 \end{proof}
 
 \subsection{Idempotent Core}
@@ -113,7 +149,7 @@ a unary predicate \AP$\intro*\unarypred{b}$ for each $b\in B$.
 The \AP""marked structure"" \AP$\intro*\marked{\?B}$ of $\?B$ is the
 "$\extendedSignature{\sigma}{\?B}$-structure"
 obtained from $\?B$ by "interpreting@@predicate" each predicate $\unarypred{b}$ as the
-singleton $\{b\}$.\sidenote{TODO: ASIA'S REMARK: this is called the ``idempotent core''.}
+singleton $\{b\}$.
 
 \begin{proposition}[Folklore]
 	\!\sidenote{The non-easy part is to reduce $\HomFinDec{\marked{\?B}}$ to $\HomFinDec{\?B}$: only this reduction
@@ -122,13 +158,12 @@ singleton $\{b\}$.\sidenote{TODO: ASIA'S REMARK: this is called the ``idempotent
 	TODO: understand if the proof is indentical to us. We provide here a self-contained proof.}%
 	\sidenote{The "marked structure" $\marked{\core{\?B}}$ of the "core" of $\?B$ is
 	usually called the \AP""idempotent core""
-	of $\?B$. By TODO:addref and this proposition, $\HomFinDec{\?B}$ and
-	$\HomFinDec{\marked{\core{\?B}}}$ are equivalent under "first-order reductions".
+	of $\?B$. From this proposition, we get that $\HomFinClass{\?B}$ and
+	$\HomFinClass{\marked{\core{\?B}}}$ are "first-order equivalent".
 	This reduction is a central tool
 	in the algebraic approach to understand "constraint satisfaction
 	problem" since the algebra associated to the "CSP" over an "idempotent core"
-	only has idempotent operations, making it much easier to work with. See TODO:addref for
-	more details.}%
+	only has idempotent operations, making it much easier to work with.}%
 	%%%
 	\AP\label{prop:marking-preserves-csp-complexity}
 	If $\?B$ is a finite "core", then the problems $\HomAllClass{\marked{\?B}}$ and 
@@ -195,7 +230,7 @@ singleton $\{b\}$.\sidenote{TODO: ASIA'S REMARK: this is called the ``idempotent
 	Dually, let $g\colon \Phi(\?A) \to \?B$ be a "homomorphism".
 	Its restriction to $\?B$, namely $\restr{g}{B}$ is a "homomorphism" from $\?B$
 	to itself, and since $\?B$ is a "core", it must be an "automorphism" over $\?B$
-	by todo:addref.
+	by \Cref{prop:automorphism-core}.
 	We then define a map $g' \colon A \to B$ by sending
 	$a$ to $(\restr{g}{B})^{-1}\circ g(a)$, and claim that it is a "homomorphism"
 	from $\?A$ to $\marked{\?B}$. As a matter of fact, it clearly preserves $\+R$-"hyperedges"
@@ -204,7 +239,7 @@ singleton $\{b\}$.\sidenote{TODO: ASIA'S REMARK: this is called the ``idempotent
 	let $a \in A$ "st" $\unarypred{b}$ holds, "ie" $a \in \unarypred{b}(\?A)$.
 	Now, by construction of $\Phi(\?A)$, the "neighbourhood" of $g(a)$ in $\?B$
 	and the "neighbourhood" of $g(b)$ in $\?B$ are equal.
-	Since $\?B$ is a "core", it follows by todo:addref that $g(a) = g(b)$.
+	Since $\?B$ is a "core", it follows by \Cref{prop:neighbourhood-core} that $g(a) = g(b)$.
 	By definition of $g'$, this rewrites as $g'(a) = b$, "ie" $g'(a) = \unarypred{b}(\marked{\?B})$.
 	Therefore, we have built a "homomorphism" from $\?A$ to $\marked{\?B}$.
 

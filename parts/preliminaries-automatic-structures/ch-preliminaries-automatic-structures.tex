@@ -9,8 +9,8 @@ Distinction between "rational presentation" of a "structure" (or "rational struc
 
 Given a "relational signature" $\sigma$, a \AP"rational $\sigma$-presentation" $\+A$
 over the alphabet $\Sigma$ consists of a "regular language"
-$\domainPres{\+A} \subseteq \Sigma^*$ and for each $\+R_{(k)} \in \sigma$
-a "synchronous relation" $\relPres{\+A}{\+R} \subseteq (\Sigma^*)^k$.
+$\domainPres{\•A} \subseteq \Sigma^*$ and for each $\+R_{(k)} \in \sigma$
+a "synchronous relation" $\relPres{\+R}{\•A} \subseteq (\Sigma^*)^k$.
 
 \AP A ""rational graph"" is a "rational $\sigma$-presentation" when $\sigma$ is the
 "graph signature". It boils down a pair $\+G = \langle V, \+E \rangle$, where $V$
@@ -25,6 +25,48 @@ TODO:generalized presentation (non-injective) + effective construction to make t
 
 For \AP""first-order reductions"", see
 \cite[Definition 2.11 \& Definition 1.26]{Immerman1998DescriptiveComplexity}.
+
+\subsection{First-order Model Checking}
+
+\decisionproblem{"First-order Model Checking of Automatic Structures"}{
+	A "first-order formula" $\phi(x_1,\hdots,x_k)$ over $\sigma$,
+	a "rational presentation" $\•A$ of an "automatic $\sigma$-structure" $\?A$,
+	and words $u_1,\hdots,u_k \in \domainPres{\+A}$.
+}{
+	Does $\?A, u_1,\hdots, u_k \models \phi$?
+}
+
+\begin{proposition}[Folklore.]
+	\!\footnote{See "eg" \cite[Theorem XII.1.7]{Blumensath2024MSOModelTheory}.}
+	%
+	\label{prop:first-order-model-checking-automatic-structures}
+	"First-order model checking of automatic structures" is decidable in todo.
+	Its "data complexity" is "NL"-complete.
+\end{proposition}
+
+\begin{proof}
+	TODO.
+
+	For the "NL" lower bound, reduction from NFA non-emptiness.
+\end{proof}
+
+\subsection{A Model-Theoretic Perspective}
+
+Given an alphabet $\Sigma$, we define on $\Sigma^*$:
+\begin{itemize}
+	\itemAP a predicate $\intro*\lastLetter{a}$ indicating that the last letter of a word is $a$,
+	\itemAP a binary relation $\intro*\equalLength$ indicating that two words have the same length,
+	\itemAP a binary relation $\intro*\prefix$ indicating that a word is a prefix of another.
+\end{itemize} 
+We denote by $\intro*\signatureSynchronous{\Sigma}$ the "signature" $\langle \langle\lastLetter{a}\rangle_{a \in \Sigma},\, \equalLength,\, \prefix \rangle$\footnote{We abusively use the same notations for
+the "predicates" and their "interpretations@@predicate" in the "signature".} and
+by \AP$\intro*\univStructSynchronous{\Sigma}$ the "$\signatureSynchronous{\Sigma}$-structure" over $\Sigma^*$ where
+the "predicates" are "interpreted@@predicate" as above.
+
+\begin{proposition}
+	\label{prop:synchronous-first-order}
+	A relation over $\Sigma^*$ is "synchronous" "iff" it is definable by a "first-order formula" over \(\univStructSynchronous{\Sigma}\).
+\end{proposition}
 
 \subsection{Neighbourhoods}
 
@@ -47,23 +89,20 @@ when $\+R$ ranges over "predicate" of arity $k$ of $\sigma$ and $i \in \lBrack 1
 For "graphs", the "neighbourhood" of a vertex corresponds to its set of predecessors and
 its set of successors.
 
-\subsection{A Model-Theoretic Perspective}
-
-Given an alphabet $\Sigma$, we define on $\Sigma^*$:
-\begin{itemize}
-	\itemAP a predicate $\intro*\lastLetter{a}$ indicating that the last letter of a word is $a$,
-	\itemAP a binary relation $\intro*\equalLength$ indicating that two words have the same length,
-	\itemAP a binary relation $\intro*\prefix$ indicating that a word is a prefix of another.
-\end{itemize} 
-We denote by $\intro*\signatureSynchronous{\Sigma}$ the "signature" $\langle \langle\lastLetter{a}\rangle_{a \in \Sigma},\, \equalLength,\, \prefix \rangle$\footnote{We abusively use the same notations for
-the "predicates" and their "interpretations@@predicate" in the "signature".} and
-by \AP$\intro*\univStructSynchronous{\Sigma}$ the "$\signatureSynchronous{\Sigma}$-structure" over $\Sigma^*$ where
-the "predicates" are "interpreted@@predicate" as above.
-
 \begin{proposition}
-	\label{prop:synchronous-first-order}
-	A relation over $\Sigma^*$ is "synchronous" "iff" it is definable by a "first-order formula" over \(\univStructSynchronous{\Sigma}\).
+	\AP\label{prop:neighbourhood-core}
+	Given a "$\sigma$-structure" $\?B$, if $\?B$ is a "core", then
+	two elements $b_1$ and $b_2$ of $\?B$ have the same "neighbourhood" "iff" $b_1 = b_2$.
 \end{proposition}
+
+\begin{proof}
+	The right-to-left implication is trivial.
+	For the converse one, consider the "homomorphism" from $\?B$ to itself
+	which maps $b_2$ to $b_1$, and all elements of $B \smallsetminus \{b_2\}$
+	to themselves. Since we assumed that $b_1$ and $b_2$ have the same "neighbourhood",
+	this is indeed a "homomorphism", which is clearly not bijective, and
+	hence by \Cref{prop:automorphism-core}, $\?B$ is not a "core".
+\end{proof}
 
 \subsection{Undirected Paths}
 

@@ -22,13 +22,20 @@
 % ---
 % rational presentations
 % ---
-\knowledgenewrobustcmd{\domainPres}[1]{\cmdkl{#1_{\mathrm{dom}}}}
-\knowledgenewrobustcmd{\relPres}[2]{\cmdkl{#2}_{\! #1}}
+\knowledgenewrobustcmd{\domainPres}[1]{\cmdkl{\mathrm{dom}_{#1}}}
+\knowledgenewrobustcmd{\relPres}[2]{\cmdkl{#1}_{\! #2}}
 \newrobustcmd{\smallpad}{%
 	\hspace{.05em}\rule{.3em}{.075em}\hspace{.05em}
 }
+\newcommand\vartextvisiblespace[1][.5em]{%
+	\kern.07em
+	\vrule width.12ex height.5ex
+	\vrule width#1 height.12ex
+	\vrule width.12ex height.5ex
+	\kern.07em
+}
 \knowledgenewrobustcmd{\pad}{%
-	\cmdkl{\text{\textvisiblespace}}
+	\cmdkl{\vartextvisiblespace}
 }
 \knowledgenewrobustcmd{\SigmaPair}[1][2]{\cmdkl{\Sigma}^{#1}_{\raisebox{.25em}{\smallpad}}\mkern-5mu}
 \knowledgenewrobustcmd{\convol}{\mathbin{\cmdkl{\otimes}}} % convolution of two words of languages

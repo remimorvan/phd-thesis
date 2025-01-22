@@ -2,7 +2,7 @@
 
 \input{tufte-book.cls}
 
-\setlength\marginparpush{1.15em} % More vpsace between sidenotes.
+% \setlength\marginparpush{1.15em} % More vpsace between sidenotes.
 
 % ---
 % Narrower margins

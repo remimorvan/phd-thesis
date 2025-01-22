@@ -1,8 +1,8 @@
-\section{\AP\label{sec:dichotomy-undecidability}%
-	Undecidability of the Homomorphism Problems}
+\section{Undecidability of the Homomorphism Problems}
+\AP\label{sec:dichotomy-undecidability}
 
-\subsection{\AP\label{sec:dichotomy-overview}%
-Overview \& Easy Implications of the Dichotomy Theorem}
+\subsection{Overview \& Easy Implications of the Dichotomy Theorem}
+\AP\label{sec:dichotomy-overview}
 
 \DichotomyThmDichotomyAutomatic
 
@@ -57,8 +57,8 @@ and $\HomRegAutDec{\clique{2}}$ are undecidable by todo:addrefs, that lead us to
 		\?A \homto \?B.
 	\]
 	The conclusion follows from the fact that the "data complexity"
-	of "first-order model checking" for
-	"automatic structures" is "NL" (todo:addref).
+	of "first-order model checking of automatic structures" is "NL"
+	by \Cref{prop:first-order-model-checking-automatic-structures}.
 \end{proof}
 
 \paragraph*{Uniformly First-Order Definable Homomorphisms Imply Equality.}
@@ -145,8 +145,8 @@ of any assumption on $\?B$.
 	these problems are both "RE" and "coRE", and are hence decidable.
 \end{proof}
 
-\subsection{\AP\label{sec:undecidability-hom}%
-	Undecidability of \,$\HomAutDec{\?B}$}
+\subsection{Undecidability of \,$\HomAutDec{\?B}$}
+\AP\label{sec:undecidability-hom}
 
 We now prove the undecidability of $\HomAutDec{\?B}$ and $\HomRegFinDec{\?B}$
 when $\?B$ does not have "finite duality". Both reductions are
@@ -207,7 +207,7 @@ Moreover, being "linked" is transitive, but not necessarily reflexive.
 	\cite[Corollary 4]{Atserias2008DigraphColoring}.}%
 	%%%
 	\AP\label{prop:characterization-finite-duality-path-projections}
-	A finite "$\sigma$-structure" $\?B$ has "finite duality" "iff"
+	An arbitrary "$\sigma$-structure" $\?B$ has "finite duality" "iff"
 	$\projHom{1}$ and $\projHom{2}$ are "linked" in $\powstruct{\?B}{(\iterstruct{\?B}{2})}$.
 \end{proposition}
 
@@ -215,7 +215,7 @@ Equipped with the previous proposition, we can now show the undecidability
 of $\HomAutDec{\?B}$ by reduction from the following problem.
 
 \decisionproblem{""Connectivity in rational graphs""}{
-	An "rational presentation of a directed graph" $\•G$,
+	A "rational presentation of a directed graph" $\•G$,
 	and two elements $s,t \in \Sigma^*$.
 }{
 	Are $\•G(s)$ and $\•G(t)$ "connected" in $\?G$?
@@ -661,10 +661,12 @@ We then prove a lower bound on the complexity of "Regular Unreachability of Turi
 \end{proof}
 
 
-\subsection{\AP\label{sec:undecidability-finite-colourability} Undecidable of Finite Regular Colourability}
+\subsection{\AP\label{sec:undecidability-finite-colourability}Undecidability of Finite Regular Colourability}
 
 In this subsection, we capitalize on \Cref{sec:undecidability-hom,sec:undecidability-homreg} to 
 prove that both the "finite regular colourability" and the "finite colourability problems@finite colourability@problem" are undecidable.
+
+TODO:NOT CLEAR IF TRUE.
 
 \begin{theorem}
 	\AP\label{thm:finite-regular-colourability-undecidable}
@@ -679,8 +681,8 @@ We define \AP$\intro*\omegaClique$ to be the "disjoint union" $\bigoplus_{k\in\N
 Moreover, it admits a simple "rational presentation" \AP$\intro*\omegaCliquePres$: take the binary alphabet $\Sigma \defeq \{0,1\}$ and let%
 \footnote{In this presentation, words of length $k$ are used to encode $\clique{2^k}$.}
 \begin{align*}
-	\domainPres{(\omegaCliquePres)} & \defeq \Sigma^*, \\ 
-	\relPres{\+E}{(\omegaCliquePres)} & \defeq \{\tup{u,v} \in \Sigma^* \times \Sigma^* \mid |u| = |v| \text{ and }
+	\domainPres{\omegaCliquePres} & \defeq \Sigma^*, \\ 
+	\relPres{\+E}{\omegaCliquePres} & \defeq \{\tup{u,v} \in \Sigma^* \times \Sigma^* \mid |u| = |v| \text{ and }
 	u \neq v\}.
 \end{align*}
 

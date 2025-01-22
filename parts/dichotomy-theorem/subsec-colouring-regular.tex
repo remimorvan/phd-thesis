@@ -8,7 +8,7 @@ We show that the "$k$-regular colourability problem" is undecidable for $k\geq 2
     Using this, we obtain in the next subsection 
     the undecidability for the separability problem on two natural classes of 
     "recognizable relations".
-    On the other hand, the undecidability of "regular colourability problem" is more involved and will only come later, in todo:addref.
+    % On the other hand, the undecidability of "regular colourability problem" is more involved and will only come later, in todo:addref.
 }
 This is proven by a reduction from a suitable problem on reversible 
 Turing machines with certain restrictions, which we call ``well-founded''.
@@ -16,9 +16,9 @@ Turing machines with certain restrictions, which we call ``well-founded''.
 \paragraph*{Regularity of Reachability for Turing Machines.}
 Consider a Turing machine $\+T = \tup{Q,\Gamma,\delta,q_0,\Acc}$, where $Q$ is the set of states, $\Gamma$ is tape alphabet,
 \[
-    \delta\colon (Q \setminus \Acc) \times \Gamma_{\pad} \to \pset{Q \times \Gamma \times \set{\leftarrow, \downarrow, \rightarrow}}
+    \delta\colon (Q \setminus \Acc) \times \Gamma_{\smallpad} \to \pset{Q \times \Gamma \times \set{\leftarrow, \downarrow, \rightarrow}}
 \]
-is the transition relation, $\Gamma_{\pad} = \Gamma \dcup \set{\pad}$, and $q_0$ and $\Acc$ are the initial and set of final states, respectively.
+is the transition relation, $\Gamma_{\smallpad} = \Gamma \dcup \set{\pad}$, and $q_0$ and $\Acc$ are the initial and set of final states, respectively.
 %
 We represent a "configuration@@TM" $\tup{u, q, v}$ by the word $uqv \in \Gamma^* Q \Gamma^*$:
 in light of this, we will henceforth denote by ``configuration'' any string from the set  \AP$\intro*\configs \defeq  \Gamma^* Q \Gamma^*$.\footnote{We will often write
@@ -83,10 +83,10 @@ that it is decidable whether a "Turing machine" is "linear@@TM". In fact, condit
 			Encoding of a single transition of the form
 			``when reading a blank in state $\color{cBlue} p$, write a
 			$1$, go in state $\color{cBlue} q$ and move right''
-			of the machine $T$ in the machine $T'$
+			of the machine $\+T$ in the machine $\+T'$
 			in the proof of \Cref{lem:reachable-regularity}.
-			Red unlabelled states represent states of $T'$
-			that are not originally present in $T$.
+			Red unlabelled states represent states of $\+T'$
+			that are not originally present in $\+T$.
 		}
 	\end{figure}
 	
@@ -112,7 +112,7 @@ that it is decidable whether a "Turing machine" is "linear@@TM". In fact, condit
 	we must also add an extra $\triangleright$ (to account for the one that was overwritten):
 	this case is depicted in \Cref{fig:reachable-regularity}.
 	Moreover, when $\+T$ deletes a symbol at the end of the tape,
-	we must shift the $\triangleright^n \triangleright^m$ suffix. This can be done by replacing the blank
+	we must shift the $\triangleright^n \triangleleft^m$ suffix. This can be done by replacing the blank
 	with an `$\triangleright$', the last `$\triangleright$' with a `$\triangleleft$', and deleting the last `$\triangleleft$'.
 	
     We now prove that $\+T'$ is "linear@@TM":
