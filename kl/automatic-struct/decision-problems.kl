@@ -46,7 +46,9 @@
  | Connectivity in rational graphs
 
 \knowledge{notion, wrap=\DPfont}
- | Regular Unconnectivity in rational graphs
+ | regular unconnectivity in rational graphs
+ | Regular unconnectivity in rational graphs
+ | Regular Unconnectivity in Rational Graphs
 
 \knowledge{notion, wrap=\DPfont}
  | Restricted Membership for Deterministic Reversible Turing Machines

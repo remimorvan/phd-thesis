@@ -5,8 +5,14 @@
 % Basic classes
 % ---
 
+\knowledge{text={FO${}^{\textsf{fin}}$}, wrap=\textsf}
+ | FOfin
+
 \knowledge{wrap=\textsf}
  | L
+
+\knowledge{text={FO${}^{\textsf{aut}}$}, wrap=\textsf}
+ | FOaut
 
 \knowledge{wrap=\textsf}
  | NL

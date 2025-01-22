@@ -116,7 +116,7 @@ of any assumption on $\?B$.
 	"st" $\?A' \nothomto \?B$.
 	Given a "finite $\sigma$-structure" $\?A'$ and an "automatic $\sigma$-structure",
 	it is decidable whether $\?A'$ is a "substructure" of $\?A$: indeed, it suffices
-	to check, using todo:addref-model-checking if
+	to check, using \Cref{prop:first-order-model-checking-automatic-structures} if
 	\[
 		\Bigl(
 			\exists x_1,\; \cdots \exists x_n,\;
@@ -157,8 +157,8 @@ to $\HomRegFinDec{\?B}$ is not entirely trivial and requires some work.
 \begin{itemize}
 	\item For $\HomFinDec{\?B}$, we reduce the complement of "Connectivity in rational graphs",
 		providing a "coRE"-lowerbound.
-	\item For $\HomRegFinDec{\?B}$, we reduce "Regular Unconnectivity in rational graphs",
-		which in turn is reduced from "Restricted Membership for Deterministic Reversible Turing Machines", providing a "RE"-lowerbound. TODO:update.
+	\item For $\HomRegFinDec{\?B}$, we reduce "regular unconnectivity in rational graphs",
+		which in turn is reduced from  TODO:update.
 \end{itemize}
 
 For $n\in\N$, we define the \AP""$n$-link"" $\intro*\link{n}$ be the "$\sigma$-structure"\sidenote{From \cite[\S~2]{LaroseLotenTardif2007CharacterisationFOCSP}.} 
@@ -235,7 +235,7 @@ of $\HomAutDec{\?B}$ by reduction from the following problem.
 \begin{lemma}
 	\AP\label{lem:reduction-hom}
 	Assume that $\sigma$ contains at least one "predicate" of arity at least 2.
-	If $\?B$ does not have "finite duality", then there is a TODO:complexity reduction 
+	If $\?B$ does not have "finite duality", then there is a "first-order reduction" 
 	from the complement of "Connectivity in rational graphs" to $\HomAutDec{\marked{\?B}}$.
 \end{lemma}
 
@@ -458,7 +458,7 @@ unary "predicates".\sidenote{It is not clear to us whether this case was properl
 
 The reduction to show undecidability of is nearly identical to \Cref{lem:reduction-hom},
 but the input problem differs quite a lot.
-\decisionproblem{""Regular Unconnectivity in rational graphs""}{
+\decisionproblem{""Regular Unconnectivity in Rational Graphs""}{
 	An "rational presentation" $\•G$ of a "directed graph" $\?G$,
 	and two elements $s,t \in \Sigma^*$.
 }{
@@ -475,13 +475,13 @@ and will later settle its complexity.
 \begin{lemma}
 	\AP\label{lem:reduction-hom-reg}
 	Assume that $\sigma$ contains at least one "predicate" of arity at least 2.
-	If $\?B$ does not have "finite duality", then there is a TODO:complexity reduction 
-	from "Regular Unconnectivity in rational graphs"
+	If $\?B$ does not have "finite duality", then there is a "first-order reduction"
+	from "regular unconnectivity in rational graphs"
 	to $\HomRegAutDec{\marked{\?B}}$.
 \end{lemma}
 
 \begin{proof}
-	Given an instance $\langle \•G, s, t \rangle$ of "Regular Unconnectivity in rational graphs",
+	Given an instance $\langle \•G, s, t \rangle$ of "regular unconnectivity in rational graphs",
 	we first define the $\sigma$-structure $\?A$ with "rational presentation" $\•A$
 	obtained by replacing every edge by a "$1$-link", as in \Cref{lem:reduction-hom}.
 
@@ -552,14 +552,14 @@ and will later settle its complexity.
 
 	Putting \Cref{claim:reduction-homreg-direct,claim:reduction-homreg-converse} together,
 	we get that the reduction is correct.
-	Lastly, note that is works in TODO:complexity because TODO.
+	Lastly, note that this is a first-order reduction because TODO.
 \end{proof}
 
 We then prove a lower bound on the complexity of "Regular Unreachability of Turing Machine Configurations".
 
 \begin{lemma}
 	\AP\label{lemma:regular-unconnectivity-lowerbound}
-	"Regular Unconnectivity in rational graphs" is "RE"-hard.
+	"Regular unconnectivity in rational graphs" is "RE"-hard.
 \end{lemma}
 
 \begin{proof}
@@ -722,7 +722,7 @@ We can now prove the undecidability of "Finite regular colourability of rational
 	we prove the following reductions:
 	\begin{enumerate}
 		\itemAP\label{item:finite-regular-colourability-undecidable-link}%
-			from "Regular Unconnectivity in Rational Graphs"
+			from "regular unconnectivity in rational graphs"
 			to $\restrConnected{\HomRegAutDec{\marked{\omegaCliquePres}}}$,
 		\itemAP\label{item:finite-regular-colourability-undecidable-icore}%
 			from $\restrConnected{\HomRegAutDec{\marked{\omegaCliquePres}}}$
@@ -746,7 +746,7 @@ We can now prove the undecidability of "Finite regular colourability of rational
 	TODO.
 	
 	\proofcase{Reduction \eqref{item:finite-regular-colourability-undecidable-link}
-	from the restriction of "Regular Unconnectivity in Rational Graphs"
+	from the restriction of "regular unconnectivity in rational graphs"
 	to "connected graphs" to 
 	$\restrConnected{\HomRegAutDec{\marked{\omegaCliquePres}}}$.}
 	TODO.
