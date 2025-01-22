@@ -44,7 +44,7 @@ Before proving this lemma, we show an intermediate result.
 \end{fact}
 
 \begin{proof}
-	By \Cref{prop:marking-preserves-csp-complexity} the problems are "first-order equivalent" and so
+	By \Cref{prop:idempotent-core-preserves-csp-complexity} the problems are "first-order equivalent" and so
 	one is "first-order definable" "iff" the other is. TODO:fix (ref is about decision pb).
 \end{proof}
 
@@ -740,7 +740,7 @@ on $\zigzag{n}{5}$ in only $2$ steps.
 		then $b \not\in \HCOperator^{\,n(\?B)}_{\?A,\?B}(\topLatticeGuessFunctions{B})(a)$.
 	\end{claim}
 
-	To prove this claim, we use a construction that is similar to \Cref{prop:marking-preserves-csp-complexity}.
+	To prove this claim, we use a construction that is similar to \Cref{prop:idempotent-core-preserves-csp-complexity}.
 	Fix $a\in A$ and $b\in B$ "st" $b \not\in \HCFixpoint{\?A}{\?B}(a)$.
 	Let $\?C$ be defined as the disjoint union of $\?A$ and $\?B$,
 	in which we identify $a$ and $b$.

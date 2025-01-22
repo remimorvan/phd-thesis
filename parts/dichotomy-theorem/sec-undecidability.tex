@@ -390,12 +390,12 @@ of $\HomAutDec{\?B}$ by reduction from the following problem.
 
 	Putting \Cref{claim:reduction-hom-direct,claim:reduction-hom-converse} together,
 	we get that the reduction is correct.
-	Lastly, note that is works in TODO:complexity because TODO.
+	Lastly, note that it is a "first-order reduction" because TODO.
 \end{proof}
 
 By \Cref{prop:undecidability-connectivity}, the complement of "Connectivity in rational graphs"
 is "coRE"-complete, and assuming that $\sigma$ contains at least one "predicate" of arity 2,
-it reduces by \Cref{lem:reduction-hom} to any problem $\HomAutDec{\marked{\?B}}$ when $\?B$ has "finite duality". In turns, by \Cref{prop:marking-preserves-csp-complexity}, it reduces to
+it reduces by \Cref{lem:reduction-hom} to any problem $\HomAutDec{\marked{\?B}}$ when $\?B$ has "finite duality". In turns, by \Cref{prop:idempotent-core-preserves-csp-complexity}, it reduces to
 $\HomAutDec{\?B}$, which is thus "coRE"-hard. It remains to deal with "signatures" consisting of only
 unary "predicates".\sidenote{It is not clear to us whether this case was properly handled in
 \cite{LaroseLotenTardif2007CharacterisationFOCSP}.}
@@ -464,7 +464,7 @@ unary "predicates".\sidenote{It is not clear to us whether this case was properl
 	of given a directed path and two vertices $s$, $t$ to decide if there is a path from
 	$s$ to $t$ is "L"-hard under "first-order reductions"-in fact even under quantifier-free reductions. It turn, this problem can be reduced in "first-order@@reduction"
 	to "Connectivity in Finite Graphs" \cite{SamiD2015USTCONNLogspace}.
-	Overall, and together with \Cref{prop:marking-preserves-csp-complexity},
+	Overall, and together with \Cref{prop:idempotent-core-preserves-csp-complexity},
 	this shows that $\HomFinDec{\?B}$ is "L"-hard under "first-order reductions".}%
 	%%%
 	\AP\label{coro:lowerbound-hom}
@@ -475,7 +475,7 @@ unary "predicates".\sidenote{It is not clear to us whether this case was properl
 \begin{proof}
 	By \Cref{prop:finite-duality-unary-predicates}, since $\?B$ does not have "finite duality",
 	then $\sigma$ has at least one "predicate" of arity at least 2.
-	The conclusion follows from \Cref{prop:marking-preserves-csp-complexity,prop:undecidability-connectivity,lem:reduction-hom}.
+	The conclusion follows from \Cref{prop:idempotent-core-preserves-csp-complexity,prop:undecidability-connectivity,lem:reduction-hom}.
 \end{proof}
 
 \subsection{\AP\label{sec:undecidability-homreg}%
@@ -682,97 +682,109 @@ We then prove a lower bound on the complexity of "Regular Unreachability of Turi
 \end{corollary}
 
 \begin{proof}
-	TODO.
+	Recall that $\HomAutDec{\?B} = \HomAutDec{\core{\?B}}$, so we assume "wlog"
+	that $\?B$ is a "core".
+	By \Cref{lemma:regular-unconnectivity-lowerbound},
+	"regular unconnectivity in rational graphs" is "RE"-hard.
+	Then by \Cref{prop:finite-duality-unary-predicates}, since $\?B$ does not have "finite
+	duality", $\sigma$ does not consist only of unary "predicates",
+	and hence by \Cref{lem:reduction-hom-reg}, we get
+	a reduction from "regular unconnectivity in rational graphs" to
+	$\HomRegAutDec{\marked{\?B}}$, which in turns
+	reduces to $\HomRegAutDec{\?B}$ by \Cref{prop:idempotent-core-preserves-csp-complexity}
+	since $\?B$ was assumed to be a "core".
+	Indeed, "first-order reductions" preserves "regularity@@hom", by 
+	todo:addref-synchronous-iff-first-order.
 \end{proof}
 
 
-\subsection{\AP\label{sec:undecidability-finite-colourability}Undecidability of Finite Regular Colourability}
+% \subsection{\AP\label{sec:undecidability-finite-colourability}Undecidability of Finite Regular Colourability}
 
-In this subsection, we capitalize on \Cref{sec:undecidability-hom,sec:undecidability-homreg} to 
-prove that both the "finite regular colourability" and the "finite colourability problems@finite colourability@problem" are undecidable.
+% In this subsection, we capitalize on \Cref{sec:undecidability-hom,sec:undecidability-homreg} to 
+% prove that both the "finite regular colourability" and the "finite colourability problems@finite colourability@problem" are undecidable.
 
-TODO:NOT CLEAR IF TRUE.
+% TODO:NOT CLEAR IF TRUE.
 
-\begin{theorem}
-	\AP\label{thm:finite-regular-colourability-undecidable}
-	"Finite regular colourability of rational graphs" is "RE"-complete.
-\end{theorem}
+% \begin{theorem}
+% 	\AP\label{thm:finite-regular-colourability-undecidable}
+% 	"Finite regular colourability of rational graphs" is "RE"-complete.
+% \end{theorem}
 
-The upper bound is trivial: given a "rational graph" $\+G$,
-we guess some $k\in \N$ and check if $\+G \in \HomRegAutDec{\clique{k}}$, which is "RE"
-by \Cref{prop:dichotomy-general-upper-bounds}.
+% The upper bound is trivial: given a "rational graph" $\+G$,
+% we guess some $k\in \N$ and check if $\+G \in \HomRegAutDec{\clique{k}}$, which is "RE"
+% by \Cref{prop:dichotomy-general-upper-bounds}.
 
-We define \AP$\intro*\omegaClique$ to be the "disjoint union" $\bigoplus_{k\in\N} \clique{2^k}$ of all finite "cliques". Note that it is "homomorphically equivalent" to $\bigoplus_{k\in\N} \clique{k}$.
-Moreover, it admits a simple "rational presentation" \AP$\intro*\omegaCliquePres$: take the binary alphabet $\Sigma \defeq \{0,1\}$ and let%
-\footnote{In this presentation, words of length $k$ are used to encode $\clique{2^k}$.}
-\begin{align*}
-	\domainPres{\omegaCliquePres} & \defeq \Sigma^*, \\ 
-	\relPres{\+E}{\omegaCliquePres} & \defeq \{\tup{u,v} \in \Sigma^* \times \Sigma^* \mid |u| = |v| \text{ and }
-	u \neq v\}.
-\end{align*}
+% We define \AP$\intro*\omegaClique$ to be the "disjoint union" $\bigoplus_{k\in\N} \clique{2^k}$ of all finite "cliques". Note that it is "homomorphically equivalent" to $\bigoplus_{k\in\N} \clique{k}$.
+% Moreover, it admits a simple "rational presentation" \AP$\intro*\omegaCliquePres$: take the binary alphabet $\Sigma \defeq \{0,1\}$ and let%
+% \footnote{In this presentation, words of length $k$ are used to encode $\clique{2^k}$.}
+% \begin{align*}
+% 	\domainPres{\omegaCliquePres} & \defeq \Sigma^*, \\ 
+% 	\relPres{\+E}{\omegaCliquePres} & \defeq \{\tup{u,v} \in \Sigma^* \times \Sigma^* \mid |u| = |v| \text{ and }
+% 	u \neq v\}.
+% \end{align*}
 
-While there is some "graph" $\+G$ does not admit a "homomorphism" to $\omegaClique$, then it is not "finitely colourable", the converse implication does not hold---"eg" $\omegaClique$ itself is not "finitely colourable". However, the equivalence holds for a substantially large class of graphs.
+% While there is some "graph" $\+G$ does not admit a "homomorphism" to $\omegaClique$, then it is not "finitely colourable", the converse implication does not hold---"eg" $\omegaClique$ itself is not "finitely colourable". However, the equivalence holds for a substantially large class of graphs.
 
-\begin{property}
-	\AP\label{prop:finite-regular-colourability-as-homreg-pb}
-	Let $\?G$ be an arbitrary "connected" "graph". $\?G \homto \omegaClique$ "iff" $\?G$ is "finitely colourable".	
-	Similarly, let $\•G$ be a "connected" "rational graph". $\•G \homregto \omegaCliquePres$ "iff" $\?G$ is "finitely regularly colourable".
-\end{property}
+% \begin{property}
+% 	\AP\label{prop:finite-regular-colourability-as-homreg-pb}
+% 	Let $\?G$ be an arbitrary "connected" "graph". $\?G \homto \omegaClique$ "iff" $\?G$ is "finitely colourable".	
+% 	Similarly, let $\•G$ be a "connected" "rational graph". $\•G \homregto \omegaCliquePres$ "iff" $\?G$ is "finitely regularly colourable".
+% \end{property}
 
-\begin{proof}
-	A "homomorphism" must send pairs of "connected" vertices to pairs of "connected" vertices.
-\end{proof}
+% \begin{proof}
+% 	A "homomorphism" must send pairs of "connected" vertices to pairs of "connected" vertices.
+% \end{proof}
 
-\begin{proposition}
-	\AP\label{prop:finite-colourability-of-connected-graphs}
-	The "finite regular colourability problem" and its restriction to "connected" "rational graphs"
-	are Turing-equivalent.
-\end{proposition}
+% \begin{proposition}
+% 	\AP\label{prop:finite-colourability-of-connected-graphs}
+% 	The "finite regular colourability problem" and its restriction to "connected" "rational graphs"
+% 	are Turing-equivalent.
+% \end{proposition}
 
-\begin{proof}
-	The reduction from the restricted to the general problem is straightforward.
-	For the converse one, we add a new element $*$ to the "structure" $\+A$,\footnote{In particular, we extend the alphabet of the "presentation@@rational".} and put an edge
-	from $*$ to any element $u$ of the original "structure". 
-	Clearly, the original structure is "finitely regularly colourable" "iff" the new one is---one direction is trivial, for the other one it suffices to assign to $*$ a new colour.
-\end{proof}
+% \begin{proof}
+% 	The reduction from the restricted to the general problem is straightforward.
+% 	For the converse one, we add a new element $*$ to the "structure" $\+A$,\footnote{In particular, we extend the alphabet of the "presentation@@rational".} and put an edge
+% 	from $*$ to any element $u$ of the original "structure". 
+% 	Clearly, the original structure is "finitely regularly colourable" "iff" the new one is---one direction is trivial, for the other one it suffices to assign to $*$ a new colour.
+% \end{proof}
 
-We can now prove the undecidability of "Finite regular colourability of rational graphs".
+% We can now prove the undecidability of "Finite regular colourability of rational graphs".
 
-\begin{proof}[Proof of \Cref{thm:finite-regular-colourability-undecidable}.]
-	Similarly to \Cref{coro:lowerbound-homreg},
-	to prove the undecidability of "finite regular colourability@@problem"
-	"via" a sequence of reductions.\footnote{However, we need to make some adaptations.}
-	Given a problem $P$ on "structures", we denote by \AP$\intro*\restrConnected{P}$
-	its restriction to "connected structures".
-	we prove the following reductions:
-	\begin{enumerate}
-		\itemAP\label{item:finite-regular-colourability-undecidable-link}%
-			from "regular unconnectivity in rational graphs"
-			to $\restrConnected{\HomRegAutDec{\marked{\omegaCliquePres}}}$,
-		\itemAP\label{item:finite-regular-colourability-undecidable-icore}%
-			from $\restrConnected{\HomRegAutDec{\marked{\omegaCliquePres}}}$
-			to $\restrConnected{\HomRegAutDec{\omegaCliquePres}}$,
-		\itemAP\label{item:finite-regular-colourability-undecidable-homcolour}%
-			from $\restrConnected{\HomRegAutDec{\omegaCliquePres}}$ to 
-			the restriction of "finite regular colourability@@problem" to "connected graphs",
-		\itemAP\label{item:finite-regular-colourability-undecidable-restr}%
-			from the restriction of "finite regular colourability@@problem" to "connected graphs"
-			to the general "finite regular colourability problem".
-	\end{enumerate}
-	Item \eqref{item:finite-regular-colourability-undecidable-restr} is
-	trivial---it is the easy implication of
-	\Cref{prop:finite-colourability-of-connected-graphs}---, and
-	\eqref{item:finite-regular-colourability-undecidable-homcolour} 
-	follows from \Cref{prop:finite-regular-colourability-as-homreg-pb}.
+% \begin{proof}[Proof of \Cref{thm:finite-regular-colourability-undecidable}.]
+% 	Similarly to \Cref{coro:lowerbound-homreg},
+% 	to prove the undecidability of "finite regular colourability@@problem"
+% 	"via" a sequence of reductions.\footnote{However, we need to make some adaptations.}
+% 	Given a problem $P$ on "structures", we denote by \AP$\intro*\restrConnected{P}$
+% 	its restriction to "connected structures".
+% 	we prove the following reductions:
+% 	\begin{enumerate}
+% 		\itemAP\label{item:finite-regular-colourability-undecidable-link}%
+% 			from "regular unconnectivity in rational graphs"
+% 			to $\restrConnected{\HomRegAutDec{\marked{\omegaCliquePres}}}$,
+% 		\itemAP\label{item:finite-regular-colourability-undecidable-icore}%
+% 			from $\restrConnected{\HomRegAutDec{\marked{\omegaCliquePres}}}$
+% 			to $\restrConnected{\HomRegAutDec{\omegaCliquePres}}$,
+% 		\itemAP\label{item:finite-regular-colourability-undecidable-homcolour}%
+% 			from $\restrConnected{\HomRegAutDec{\omegaCliquePres}}$ to 
+% 			the restriction of "finite regular colourability@@problem" to "connected graphs",
+% 		\itemAP\label{item:finite-regular-colourability-undecidable-restr}%
+% 			from the restriction of "finite regular colourability@@problem" to "connected graphs"
+% 			to the general "finite regular colourability problem".
+% 	\end{enumerate}
+% 	Item \eqref{item:finite-regular-colourability-undecidable-restr} is
+% 	trivial---it is the easy implication of
+% 	\Cref{prop:finite-colourability-of-connected-graphs}---, and
+% 	\eqref{item:finite-regular-colourability-undecidable-homcolour} 
+% 	follows from \Cref{prop:finite-regular-colourability-as-homreg-pb}.
 
-	\proofcase{Reduction \eqref{item:finite-regular-colourability-undecidable-icore}
-	from $\restrConnected{\HomRegAutDec{\marked{\omegaCliquePres}}}$
-	to $\restrConnected{\HomRegAutDec{\omegaCliquePres}}$.}
-	TODO.
+% 	\proofcase{Reduction \eqref{item:finite-regular-colourability-undecidable-icore}
+% 	from $\restrConnected{\HomRegAutDec{\marked{\omegaCliquePres}}}$
+% 	to $\restrConnected{\HomRegAutDec{\omegaCliquePres}}$.}
+% 	TODO.
 	
-	\proofcase{Reduction \eqref{item:finite-regular-colourability-undecidable-link}
-	from the restriction of "regular unconnectivity in rational graphs"
-	to "connected graphs" to 
-	$\restrConnected{\HomRegAutDec{\marked{\omegaCliquePres}}}$.}
-	TODO.
-\end{proof}
+% 	\proofcase{Reduction \eqref{item:finite-regular-colourability-undecidable-link}
+% 	from the restriction of "regular unconnectivity in rational graphs"
+% 	to "connected graphs" to 
+% 	$\restrConnected{\HomRegAutDec{\marked{\omegaCliquePres}}}$.}
+% 	TODO.
+% \end{proof}
