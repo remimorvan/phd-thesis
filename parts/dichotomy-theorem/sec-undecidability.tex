@@ -709,22 +709,44 @@ While there is some "graph" $\+G$ does not admit a "homomorphism" to $\omegaCliq
 	Clearly, the original structure is "finitely regularly colourable" "iff" the new one is---one direction is trivial, for the other one it suffices to assign to $*$ a new colour.
 \end{proof}
 
-\begin{proof}[Proof of \Cref{thm:finite-regular-colourability-undecidable}.]
-	Putting \Cref{prop:finite-regular-colourability-as-homreg-pb,prop:finite-colourability-of-connected-graphs} together, we obtain a reduction from
-	$\HomRegAutDec{\omegaCliquePres}$ to "finite regular colourability@@problem".
-	
-	\begin{claim}
-		$\HomRegAutDec{\omegaCliquePres}$ is "RE"-hard.
-	\end{claim}
-	As for \Cref{coro:lowerbound-homreg}, we prove that
-	there is a reduction from "Regular Unconnectivity in Rational Graphs"
-	to $\HomRegAutDec{(\marked{\omegaCliquePres})}$.
+We can now prove the undecidability of "Finite regular colourability of rational graphs".
 
-	\begin{claim}
-		$\omegaClique$ does not have finite duality.
-	\end{claim}
+\begin{proof}[Proof of \Cref{thm:finite-regular-colourability-undecidable}.]
+	Similarly to \Cref{coro:lowerbound-homreg},
+	to prove the undecidability of "finite regular colourability@@problem"
+	"via" a sequence of reductions.\footnote{However, we need to make some adaptations.}
+	Given a problem $P$ on "structures", we denote by \AP$\intro*\restrConnected{P}$
+	its restriction to "connected structures".
+	we prove the following reductions:
+	\begin{enumerate}
+		\itemAP\label{item:finite-regular-colourability-undecidable-link}
+			from the restriction of "Regular Unconnectivity in Rational Graphs"
+			to "connected graphs" to 
+			$\restrConnected{\HomRegAutDec{\marked{\omegaCliquePres}}}$,
+		\itemAP\label{item:finite-regular-colourability-undecidable-icore}
+			from $\restrConnected{\HomRegAutDec{\marked{\omegaCliquePres}}}$
+			to $\restrConnected{\HomRegAutDec{\omegaCliquePres}}$,
+		\itemAP\label{item:finite-regular-colourability-undecidable-homcolour}
+			from $\restrConnected{\HomRegAutDec{\omegaCliquePres}}$ to 
+			the restriction of "finite regular colourability@@problem" to "connected graphs",
+		\itemAP\label{item:finite-regular-colourability-undecidable-restr}
+			from the restriction of "finite regular colourability@@problem" to "connected graphs"
+			to the general "finite regular colourability problem".
+	\end{enumerate}
+	Item \eqref{item:finite-regular-colourability-undecidable-restr} is
+	trivial---it is the easy implication of
+	\Cref{prop:finite-colourability-of-connected-graphs}---, and
+	\eqref{item:finite-regular-colourability-undecidable-homcolour} 
+	follows from \Cref{prop:finite-regular-colourability-as-homreg-pb}.
+
+	\proofcase{Reduction \eqref{item:finite-regular-colourability-undecidable-icore}
+	from $\restrConnected{\HomRegAutDec{\marked{\omegaCliquePres}}}$
+	to $\restrConnected{\HomRegAutDec{\omegaCliquePres}}$.}
 	TODO.
 	
-	Moreover, by \Cref{thm:dichotomy-theorem-automatic-structures},
-	$\HomRegAutDec{\omegaCliquePres}$ is "RE"-hard.
+	\proofcase{Reduction \eqref{item:finite-regular-colourability-undecidable-link}
+	from the restriction of "Regular Unconnectivity in Rational Graphs"
+	to "connected graphs" to 
+	$\restrConnected{\HomRegAutDec{\marked{\omegaCliquePres}}}$.}
+	TODO.
 \end{proof}

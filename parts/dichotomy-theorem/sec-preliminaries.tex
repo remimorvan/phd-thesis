@@ -139,7 +139,7 @@ singleton $\{b\}$.\sidenote{TODO: ASIA'S REMARK: this is called the ``idempotent
 \end{proposition}
 
 \begin{proof}[Proof of \Cref{prop:marking-preserves-csp-complexity}]
-	\proofcase{Reduction from $\,\HomAllClass{\?B}$ to $\,\HomAllClass{\marked{\?B}}$.}
+	\proofcase{Reduction from $\,\HomAllClass{\?B}$ to $\,\HomAllClass{\marked{\?B}}$.}\\
 	We reduce a "$\sigma$-structure" $\?A$ to the
 	"$\extendedSignature{\sigma}{\?B}$-structure" $\?A'$ obtained
 	from $\?A$ by "interpreting@@predicate" each predicate $\unarypred{b}$ as the empty set.
@@ -209,7 +209,8 @@ singleton $\{b\}$.\sidenote{TODO: ASIA'S REMARK: this is called the ``idempotent
 	Therefore, we have built a "homomorphism" from $\?A$ to $\marked{\?B}$.
 
 	Overall, this proves that $\Phi$ is correct. It is straightforward to notice that
-	it is a "first-order reduction" and that it preserves "finiteness@@structure".
+	it is a "first-order reduction" and that it preserves "finiteness@@structure" since $\?B$
+	is "finite@@structure".
 \end{proof}
 
 \subsection{Transitive Tournaments "vs" Paths}

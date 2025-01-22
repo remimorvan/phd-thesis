@@ -66,8 +66,10 @@
 \knowledgenewrobustcmd{\transitiveTournament}[1]{\cmdkl{\?T_{#1}}}
 \knowledgenewrobustcmd{\pathGraph}[1]{\cmdkl{\?P_{#1}}}
 \knowledgenewrobustcmd{\clique}[1]{\cmdkl{\?K_{#1}}}
-\knowledgenewrobustcmd{\omegaClique}{\cmdkl{\?K_{<\omega}}}
-\knowledgenewrobustcmd{\omegaCliquePres}{\cmdkl{\•K_{<\omega}}}
+\newcommandPIE{\omegaClique}{\withkl{\kl[\omegaClique]}{\cmdkl{\?K_{<\omega}#1#2#3}}}
+	\knowledge{\omegaClique}{notion}
+\newcommandPIE{\omegaCliquePres}{\withkl{\kl[\omegaCliquePres]}{\cmdkl{\+K_{\!<\omega}#1#2#3}}}
+	\knowledge{\omegaCliquePres}{notion}
 
 \knowledgenewrobustcmd\projHom[1]{\cmdkl{\pi_{#1}}} % projection homomorphism
 \knowledgenewrobustcmd{\FederVardi}[1]{\cmdkl{\+U(#1)}} % Feder-Vardi construction
@@ -99,6 +101,7 @@
 \knowledgenewrobustcmd{\structOfUnaryType}[1]{\cmdkl{\?1_{#1}}}
 \knowledgenewrobustcmd{\ConstrUndecHom}[1]{#1^{\cmdkl{\star}}}
 \knowledgenewrobustcmd{\rightquotient}[2]{#1\mathbin{\cmdkl{/}}#2}
+\knowledgenewrobustcmd{\restrConnected}[1]{\cmdkl{\restr{#1}{\textrm{conn}}}}
 
 \knowledgenewrobustcmd{\itemDTFinDual}{\cmdkl{\text{\bfseries\textup{(\textsf{DT})$_\textsf{fin-dual}$}}}}
 \knowledgenewrobustcmd{\itemDTHomDec}{\cmdkl{\text{\bfseries\textup{(\textsf{DT})$_\textsf{hom-dec}$}}}}
