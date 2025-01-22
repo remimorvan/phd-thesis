@@ -1,0 +1,15 @@
+\node[vertex] (0) at (0,0) {};
+\node[vertex, right = 2.5 em of 0] (1) {};
+\node[vertex, above right = 1em and 2em of 1] (2) {};
+\node[vertex, below right = 1em and 2em of 1] (3) {};
+
+\draw[edge, bend right=15] (1) to (2);
+\draw[edge, bend right=15] (2) to (1);
+\draw[edge, bend right=15] (2) to (3);
+\draw[edge, bend right=15] (3) to (2);
+\draw[edge, bend right=15] (1) to (3);
+\draw[edge, bend right=15] (3) to (1);
+
+\draw[edge, loop, out=150,in=210,looseness=6] (1) to (1);
+\draw[edge, loop, out=60,in=120,looseness=6] (2) to (2);
+\draw[edge, loop, out=-120,in=-60,looseness=6] (3) to (3);

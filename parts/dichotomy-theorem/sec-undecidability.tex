@@ -26,7 +26,9 @@ $\itemDTEqual \Rightarrow \itemDTHomRegDec$ and $\itemDTEqual \Rightarrow \itemD
 Before showing these implications, we start by proving $\itemDTFinDual \Rightarrow \itemDTHomDec$.\footnote{While it is redundant with the implications of \Cref{fig:dichotomy-overview}, 
 we prove this implication for two reasons: not only is it straightforward, it is also
 the implication which, together with the fact that both $\HomAutDec{\clique{2}}$
-and $\HomRegAutDec{\clique{2}}$ are undecidable by todo:addrefs, that lead us to conjecture
+and $\HomRegAutDec{\clique{2}}$ are undecidable by
+\cite[Proposition 6.5]{Kocher2014AutomatischenGraphen}
+and \cite[Theorem 4.4]{BarceloFigueiraMorvan2023SeparatingAutomatic}, that lead us to conjecture
 \Cref{thm:dichotomy-theorem-automatic-structures}.}
 
 \paragraph*{Decidability of the Homomorphism Problem.}
@@ -239,8 +241,30 @@ of $\HomAutDec{\?B}$ by reduction from the following problem.
 	from the complement of "Connectivity in rational graphs" to $\HomAutDec{\marked{\?B}}$.
 \end{lemma}
 
+\begin{marginfigure}
+	\centering
+	\begin{tikzpicture}
+		\input{tikz/dichotomy/graph-to-struct-graph}
+	\end{tikzpicture}
+	\caption{
+		\AP\label{fig:graph-to-struct-graph}
+		A "graph" $\?G$.
+	}
+\end{marginfigure}
+\begin{marginfigure}
+	\centering
+	\begin{tikzpicture}
+		\input{tikz/dichotomy/graph-to-struct-struct}
+	\end{tikzpicture}
+	\caption{
+		\AP\label{fig:graph-to-struct-struct}
+		The "structure" $\?A$ defined from $\?G$ (in \Cref{fig:graph-to-struct-graph}),
+		using the construction done in the proof of \Cref{lem:reduction-hom},
+		when $\sigma$ consists of a single binary relation.
+	}
+\end{marginfigure}
+
 \begin{proof}
-	\marginnote{TODO:Addfigure}%
 	Given an instance $\langle \•G, s, t \rangle$ of "Connectivity in rational graphs",
 	we first define the $\sigma$-structure $\?A$ with "rational presentation" $\•A$
 	obtained by replacing every edge of $\•G$ by a "$1$-link".
@@ -249,6 +273,7 @@ of $\HomAutDec{\?B}$ by reduction from the following problem.
 	$\langle g_1,\, \hdots,\, g_k \rangle \in \+R(\?A)$ "iff"
 	$\{g_1, \hdots, g_k\} = \{g,g'\}$ for some $g,g' \in G$ "st"
 	there is an edge from $g$ to $g'$ in $\?G$.
+	See \Cref{fig:graph-to-struct-graph,fig:graph-to-struct-struct}.
 
 	\begin{claim}
 		\AP\label{claim:reduction-hom-from-graph-to-link}
