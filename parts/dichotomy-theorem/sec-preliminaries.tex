@@ -116,54 +116,100 @@ obtained from $\?B$ by "interpreting@@predicate" each predicate $\unarypred{b}$ 
 singleton $\{b\}$.\sidenote{TODO: ASIA'S REMARK: this is called the ``idempotent core''.}
 
 \begin{proposition}[Folklore]
-\!\sidenote{The non-easy part is to reduce $\HomFinDec{\marked{\?B}}$ to $\HomFinDec{\?B}$: only this reduction
-requires the assumption that $\?B$ is a core. This reduction is folklore, see "eg"
-\cite[Lemma 2.5]{LaroseTesson2009UniversalAlgebraCSP}.
-TODO: understand if the proof is indentical to us. We provide here a self-contained proof.}%
-\sidenote{The "marked structure" $\marked{\core{\?B}}$ of the "core" of $\?B$ is
-usually called the \AP""idempotent core""
-of $\?B$. By TODO:addref and this proposition, $\HomFinDec{\?B}$ and
-$\HomFinDec{\marked{\core{\?B}}}$ are equivalent under "first-order reductions".
-This reduction is a central tool
-in the algebraic approach to understand "constraint satisfaction
-problem" since the algebra associated to the "CSP" over an "idempotent core"
-only has idempotent operations, making it much easier to work with. See TODO:addref for
-more details.}%
-\AP\label{prop:marking-preserves-csp-complexity}
-If $\?B$ is a finite "core", then the problems $\HomFinDec{\marked{\?B}}$ and 
-$\HomFinDec{\?B}$ are equivalent under "first-order reductions".
+	\!\sidenote{The non-easy part is to reduce $\HomFinDec{\marked{\?B}}$ to $\HomFinDec{\?B}$: only this reduction
+	requires the assumption that $\?B$ is a core. This reduction is folklore, see "eg"
+	\cite[Lemma 2.5]{LaroseTesson2009UniversalAlgebraCSP}.
+	TODO: understand if the proof is indentical to us. We provide here a self-contained proof.}%
+	\sidenote{The "marked structure" $\marked{\core{\?B}}$ of the "core" of $\?B$ is
+	usually called the \AP""idempotent core""
+	of $\?B$. By TODO:addref and this proposition, $\HomFinDec{\?B}$ and
+	$\HomFinDec{\marked{\core{\?B}}}$ are equivalent under "first-order reductions".
+	This reduction is a central tool
+	in the algebraic approach to understand "constraint satisfaction
+	problem" since the algebra associated to the "CSP" over an "idempotent core"
+	only has idempotent operations, making it much easier to work with. See TODO:addref for
+	more details.}%
+	%%%
+	\AP\label{prop:marking-preserves-csp-complexity}
+	If $\?B$ is a finite "core", then the problems $\HomAllClass{\marked{\?B}}$ and 
+	$\HomAllClass{\?B}$ are "first-order equivalent".
+	Moreover, this equivalence preserves "finiteness@@structure".%
+	\footnote{And hence, by restricting this equivalence, we obtain that
+	$\HomFinClass{\marked{\?B}}$ and $\HomFinClass{\?B}$ are "first-order equivalent".}
 \end{proposition}
 
 \begin{proof}[Proof of \Cref{prop:marking-preserves-csp-complexity}]
-\proofcase{Reduction from $\HomFinDec{\?B}$ to $\HomFinDec{\marked{\?B}}$.}
-We reduce a "$\sigma$-structure" $\?A$ to the
-"$\extendedSignature{\sigma}{\?B}$-structure" $\?A'$ obtained
-from $\?A$ by "interpreting@@predicate" each predicate $\unarypred{b}$ as the emptyset.
-Clearly, a function from $A$ to $B$ is a "homomorphism" from $\?A$ to $\?B$
-"iff" it is a "homomorphism" from $\?A'$ to $\marked{\?B}$, proving the correctness
-of the reduction. It is, by definition, "first-order@@reduction".
+	\proofcase{Reduction from $\,\HomAllClass{\?B}$ to $\,\HomAllClass{\marked{\?B}}$.}
+	We reduce a "$\sigma$-structure" $\?A$ to the
+	"$\extendedSignature{\sigma}{\?B}$-structure" $\?A'$ obtained
+	from $\?A$ by "interpreting@@predicate" each predicate $\unarypred{b}$ as the empty set.
+	Clearly, a function from $A$ to $B$ is a "homomorphism" from $\?A$ to $\?B$
+	"iff" it is a "homomorphism" from $\?A'$ to $\marked{\?B}$, proving the correctness
+	of the reduction. It is, by definition, "first-order@@reduction".
 
-\proofcase{Reduction from $\HomFinDec{\marked{\?B}}$ to $\HomFinDec{\?B}$.}
-We first define the reduction $\Phi$ and show its correctness, we will show later that it
-is a "first-order reduction". We reduce a "$\extendedSignature{\sigma}{\?B}$-structure" $\?A$ to the "$\sigma$-structure"
-$\Phi(\?A)$ defined as follows:
-\begin{itemize}
-	\item its underlying universe is the disjoint union $A \dcup B$,
-	\item given a "predicate" $\+R$ of arity $k$, its "hyperedges" are:
+	\proofcase{Reduction from $\,\HomAllClass{\marked{\?B}}$ to $\,\HomAllClass{\?B}$.}
+	We first define the reduction $\Phi$ and show its correctness, we will show later that it
+	is a "first-order reduction". We reduce a "$\extendedSignature{\sigma}{\?B}$-structure" $\?A$ to the "$\sigma$-structure"
+	$\Phi(\?A)$ defined as follows:
 	\begin{itemize}
-	\item all $\+R$-"hyperedges" of $A$,
-	\item all $\+R$-"hyperedges" of $B$, and
-	\item all $\+R$-"hyperedges" $(b_1,\hdots,b_{i-1}, a_i, b_{i+1},\hdots,b_k)$
-		"st" there exists $b_i$ for which the $\+R$-"hyperedge"
-		$(b_1,\hdots,b_{i-1}, b_i, b_{i+1},\hdots,b_k)$
-		is in $\+R(\?A)$, and $a_i$ belongs to the "interpretation@@predicate" of 
-		$\unarypred{b_i}$ in $\?A$.
+		\item its underlying universe is the disjoint union $A \dcup B$,
+		\item given a "predicate" $\+R$ of arity $k$, its "hyperedges" are:
+		\begin{itemize}
+		\item all $\+R$-"hyperedges" of $\?A$,
+		\item all $\+R$-"hyperedges" of $\?B$, and
+		\item all $\+R$-"hyperedges" $\tup{b_1,\hdots,b_{i-1}, a_i, b_{i+1},\hdots,b_k}$
+			"st" there exists $b_i$ for which the $\+R$-"hyperedge"
+			$\tup{b_1,\hdots,b_{i-1}, b_i, b_{i+1},\hdots,b_k}$
+			is in $\+R(\?B)$, and $a_i$ belongs to the "interpretation@@predicate" of 
+			$\unarypred{b_i}$ in $\?A$.
+		\end{itemize}
 	\end{itemize}
-\end{itemize}
-Note that by construction, the "neighbourhood" of $a \in A$ in $\Phi(\?A)$ is
-the union of its "neighbourhood" in $\?A$, and the union of the "neighbourhoods" of
-$b$ in $\?B$ for all $b$ "st" $a \in \unarypred{b}(\?A)$.
-TODO: To be concluded.  
+	Note that by construction, the "neighbourhood" of $a \in A$ in $\Phi(\?A)$ is
+	the union of its "neighbourhood" in $\?A$, and the union of the "neighbourhoods" of
+	$b$ in $\?B$ for all $b$ "st" $a \in \unarypred{b}(\?A)$.
+
+	We show that $\?A \in \HomAllClass{\marked{\?B}}$ "iff" $\Phi(\?A) \in \HomAllClass{\?B}$.
+	So, assume that there exists a "homomorphism" $f\colon \?A \to \marked{\?B}$.
+	Then we let $f'\colon A \dcup B \to B$ be defined by $f'(a) = f(a)$ for all $a\in A$ and
+	$f'(b) = b$ for all $b \in B$. We claim that $f'$ is a "homomorphism" from
+	$\Phi(\?A)$ to $\?B$. Indeed, consider a "hyperedge" of $\Phi(\?A)$:
+	\begin{itemize}
+		\item if it is a "hyperedge" of $\?A$, its image by $f'$ is still a "hyperedge"
+			of $\?B$ since $f$ is a "homomorphism" from $\?A$ to $\marked{\?B}$;
+		\item if it is a "hyperedge" of $\?B$, then its image by $f'$ is itself, and is hence
+			a "hyperedge" of $\?B$;
+		\item otherwise, it must be of the form 
+			\[\tup{b_1,\hdots,b_{i-1}, a_i, b_{i+1},\hdots,b_k}\]
+			"st" there exists $b_i$ for which
+			$\tup{b_1,\hdots,b_{i-1}, b_i, b_{i+1},\hdots,b_k} \in \+R(\?B)$
+			and $a_i \in \unarypred{b_i}(\?A)$:
+			in this case, its image by $f'$ is 
+			\[f'(\tup{b_1,\hdots,b_{i-1}, a_i, b_{i+1},\hdots,b_k})
+			= \tup{b_1,\hdots,b_{i-1}, b_i, b_{i+1},\hdots,b_k} \in \+R(\?B)\]
+			since $f'(b) = b$ for all $b\in B$ and $f'(a_i) = f(a_i) = b_i$ since
+			$a_i \in \unarypred{b_i}(\?A)$ and $f$ is a "homomorphism" from
+			$\?A$ to $\marked{\?B}$.
+	\end{itemize}
+	And hence, $\Phi(\?A) \homto \?B$.
+
+	Dually, let $g\colon \Phi(\?A) \to \?B$ be a "homomorphism".
+	Its restriction to $\?B$, namely $\restr{g}{B}$ is a "homomorphism" from $\?B$
+	to itself, and since $\?B$ is a "core", it must be an "automorphism" over $\?B$
+	by todo:addref.
+	We then define a map $g' \colon A \to B$ by sending
+	$a$ to $(\restr{g}{B})^{-1}\circ g(a)$, and claim that it is a "homomorphism"
+	from $\?A$ to $\marked{\?B}$. As a matter of fact, it clearly preserves $\+R$-"hyperedges"
+	for any $\+R$ in $\sigma$, since $g$ and $(\restr{g}{B})^{-1}$ are "homomorphisms".
+	We must then show that it preserves all unary "predicates" $\unarypred{b}$, with $b\in B$:
+	let $a \in A$ "st" $\unarypred{b}$ holds, "ie" $a \in \unarypred{b}(\?A)$.
+	Now, by construction of $\Phi(\?A)$, the "neighbourhood" of $g(a)$ in $\?B$
+	and the "neighbourhood" of $g(b)$ in $\?B$ are equal.
+	Since $\?B$ is a "core", it follows by todo:addref that $g(a) = g(b)$.
+	By definition of $g'$, this rewrites as $g'(a) = b$, "ie" $g'(a) = \unarypred{b}(\marked{\?B})$.
+	Therefore, we have built a "homomorphism" from $\?A$ to $\marked{\?B}$.
+
+	Overall, this proves that $\Phi$ is correct. It is straightforward to notice that
+	it is a "first-order reduction" and that it preserves "finiteness@@structure".
 \end{proof}
 
 \subsection{Transitive Tournaments "vs" Paths}

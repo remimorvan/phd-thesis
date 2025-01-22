@@ -22,7 +22,7 @@
 % ---
 % rational presentations
 % ---
-\knowledgenewrobustcmd{\domainPres}[1]{\cmdkl{\mathrm{dom}}_{#1}}
+\knowledgenewrobustcmd{\domainPres}[1]{\cmdkl{#1_{\mathrm{dom}}}}
 \knowledgenewrobustcmd{\relPres}[2]{\cmdkl{#2}_{\! #1}}
 \newrobustcmd{\smallpad}{%
 	\hspace{.05em}\rule{.3em}{.075em}\hspace{.05em}
@@ -97,7 +97,7 @@
 % ---
 \knowledgenewrobustcmd{\unaryType}[2]{\cmdkl{\mu_{#2}(#1)}}
 \knowledgenewrobustcmd{\structOfUnaryType}[1]{\cmdkl{\?1_{#1}}}
-\knowledgenewrobustcmd{\ConstrUndecHom}[1]{#1^{\cmdkl{\ddag}}}
+\knowledgenewrobustcmd{\ConstrUndecHom}[1]{#1^{\cmdkl{\star}}}
 \knowledgenewrobustcmd{\rightquotient}[2]{#1\mathbin{\cmdkl{/}}#2}
 
 \knowledgenewrobustcmd{\itemDTFinDual}{\cmdkl{\text{\bfseries\textup{(\textsf{DT})$_\textsf{fin-dual}$}}}}

@@ -266,8 +266,10 @@ of $\HomAutDec{\?B}$ by reduction from the following problem.
 	is the only part of the proof of \Cref{lem:reduction-hom} that requires
 	the assumption that $\sigma$ contains at least one "predicate" of arity at least 2.}
 
-	We then consider the "automatic $\sigma$-structure" $\?A\prodstruct \iterstruct{\?B}{2}$---see
-	\Cref{sec:construction-automatic-presentations} to have an explicit construction of an "rational presentation" for this structure---, and extend it to a
+	We then consider the "automatic $\sigma$-structure" $\?A\prodstruct \iterstruct{\?B}{2}$,%
+	\footnote{See \Cref{sec:construction-automatic-presentations} to have an explicit construction 
+	of an "rational presentation" for this structure.}
+	and extend it to a
 	"$\extendedSignature{\sigma}{\?B}$-structure" \AP\(\intro*\ConstrUndecHom{(\?A\prodstruct \iterstruct{\?B}{2})}\)
 	in which for each $b_0 \in B$,
 	we "interpret@@predicate" the unary "predicate" $\unarypred{b_0}$ as
@@ -677,8 +679,8 @@ We define \AP$\intro*\omegaClique$ to be the "disjoint union" $\bigoplus_{k\in\N
 Moreover, it admits a simple "rational presentation" \AP$\intro*\omegaCliquePres$: take the binary alphabet $\Sigma \defeq \{0,1\}$ and let%
 \footnote{In this presentation, words of length $k$ are used to encode $\clique{2^k}$.}
 \begin{align*}
-	\domainPres{\omegaCliquePres} & \defeq \Sigma^*, \\ 
-	\relPres{\+E}{\omegaCliquePres} & \defeq \{\tup{u,v} \in \Sigma^* \times \Sigma^* \mid |u| = |v| \text{ and }
+	\domainPres{(\omegaCliquePres)} & \defeq \Sigma^*, \\ 
+	\relPres{\+E}{(\omegaCliquePres)} & \defeq \{\tup{u,v} \in \Sigma^* \times \Sigma^* \mid |u| = |v| \text{ and }
 	u \neq v\}.
 \end{align*}
 
@@ -707,16 +709,16 @@ While there is some "graph" $\+G$ does not admit a "homomorphism" to $\omegaCliq
 	Clearly, the original structure is "finitely regularly colourable" "iff" the new one is---one direction is trivial, for the other one it suffices to assign to $*$ a new colour.
 \end{proof}
 
-\begin{proof}[Proof of \Cref{coro:finite-regular-colourability-undecidable}.]
+\begin{proof}[Proof of \Cref{thm:finite-regular-colourability-undecidable}.]
 	Putting \Cref{prop:finite-regular-colourability-as-homreg-pb,prop:finite-colourability-of-connected-graphs} together, we obtain a reduction from
-	$\HomRegAutDec{\cliqueOmegaPres}$ to "finite regular colourability@@problem".
+	$\HomRegAutDec{\omegaCliquePres}$ to "finite regular colourability@@problem".
 	
 	\begin{claim}
-		$\HomRegAutDec{\cliqueOmegaPres}$ is "RE"-hard.
+		$\HomRegAutDec{\omegaCliquePres}$ is "RE"-hard.
 	\end{claim}
 	As for \Cref{coro:lowerbound-homreg}, we prove that
 	there is a reduction from "Regular Unconnectivity in Rational Graphs"
-	to $\HomRegAutDec{\marked{\cliqueOmegaPres}}$.
+	to $\HomRegAutDec{(\marked{\omegaCliquePres})}$.
 
 	\begin{claim}
 		$\omegaClique$ does not have finite duality.
@@ -724,5 +726,5 @@ While there is some "graph" $\+G$ does not admit a "homomorphism" to $\omegaCliq
 	TODO.
 	
 	Moreover, by \Cref{thm:dichotomy-theorem-automatic-structures},
-	$\HomRegAutDec{\cliqueOmegaPres}$ is "RE"-hard.
+	$\HomRegAutDec{\omegaCliquePres}$ is "RE"-hard.
 \end{proof}
