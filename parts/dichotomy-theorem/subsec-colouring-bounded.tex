@@ -1,4 +1,5 @@
 \subsection{Bounded Recognizable Relations}
+\AP\label{sec:dichotomy-bounded}
 
 \paragraph*{Separability for Bounded Recognizable Relations.}
 
@@ -8,6 +9,7 @@ For any $k$, $\reintro*\kPROD$ is the subclass of $\REC$ consisting of unions of
 First, observe that the "$\kREC[1]$-separability problem" is trivially decidable, since the only possible "separator@@rel" is $\Sigma^* \times \Sigma^*$. However, for any other $k>1$, the problem is undecidable.
 
 \begin{corollary}
+    \label{coro:krec-sep-undec}
     The "$\kREC$-separability problem" is undecidable, for every $k>1$.
 \end{corollary}
 
@@ -97,10 +99,10 @@ We can now easily show undecidability for the "$\kPROD[2]$-separability problem"
 \end{proof}
 
 Further, this implies undecidability for every larger $k$.
-\begin{theorem}
-    \AP\label{thm:kprod-undecidable}
+\begin{proposition}
+    \AP\label{prop:kprod-undecidable}
     The "$\kPROD$-separability problem" is undecidable, for every $k \geq 2$.
-\end{theorem}
+\end{proposition}
 
 \begin{figure}
     \centering
@@ -109,7 +111,7 @@ Further, this implies undecidability for every larger $k$.
     \end{tikzpicture}
     \caption{
         \AP\label{fig:2prod-to-kprod}
-        Construction in the proof of \Cref{thm:kprod-undecidable} for $k = 5$. $\+S$ is depicted as the union of two grey rectangles since $\+S \in \kPROD[2]$.
+        Construction in the proof of \Cref{prop:kprod-undecidable} for $k = 5$. $\+S$ is depicted as the union of two grey rectangles since $\+S \in \kPROD[2]$.
         The relation $\+R'_1$ is obtained from $\+R_1$ (blue shape) by adding all blue edges,
         namely $a_i \to b_i$ for $1\leq i \leq k-2$. The relation $\+R'_2$ is obtained from $\+R_2$ (red shape) by adding
         all red edges, namely every other non-self-loop edge involving a vertex $a_i$ or $b_i$.

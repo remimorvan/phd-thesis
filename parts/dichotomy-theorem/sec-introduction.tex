@@ -67,7 +67,7 @@ As for definability, the "$\RAT$/$\REC$-separability problem"
 is in general undecidable, so in this chapter we focus on its restriction to
 "synchronous relations".
 \decisionproblem{
-	"$\SYNC$/$\REC$-separability problem".
+	"$\AUT$/$\REC$-separability problem".
 }{
 	Two "synchronous relations" $\+R$ and $\+R'$.
 }{
@@ -75,13 +75,13 @@ is in general undecidable, so in this chapter we focus on its restriction to
 	and $\+R' \cap \+S = \emptyset$?
 }
 Notice that when $\+R'$ is the complement of $\+R$ this problem boils down to "$\REC$-definability" on "synchronous relations"---which is decidable. 
-However, "$\SYNC$/$\REC$-separability" is more general than this problem,
+However, "$\AUT$/$\REC$-separability" is more general than this problem,
 and to this day it is unknown whether it is decidable. 
 
 
 \subsection{Constraint Satisfaction Problems}
 
-Our work on the "$\SYNC$/$\REC$-separability problem" will eventually lead up to
+Our work on the "$\AUT$/$\REC$-separability problem" will eventually lead up to
 the study of "homomorphisms problem" where the "target structure" is fixed.
 These problems are the central topic of "constraint satisfaction problems" ("CSPs").%
 \footnote{A typical example of such a problem is to work on the "graph signature", and to fix the
@@ -94,11 +94,14 @@ and is tightly connected to the algebraic properties of the algebra associated t
 
 A central conjecture of the domain, stated by Feder and Vardi,
 known as the ``dichotomy conjecture'', stated that any "CSP"---whose "target structure" is 
-finite---is either in "P" or "NP"-complete,\footnote{In other words, there is no "NP"-intermediate 
+finite---is either in "P" or "NP"-complete
+\cite[\S~2, ``Dichotomy question'']{FederVardi1998ComputationalStructure},%
+\footnote{In other words, there is no "NP"-intermediate 
 problem amongst these problems.} and the characterization of "structures" for which the problem
 was tractable is precisely formulated in algebraic terms.%
 \footnote{Tractable structures are those whose algebra admit a
 ``weak near-unanimity operation'', see "eg" \cite[\S~1, p.~3]{Zhuk2020CSPDichotomy}.}
+This conjecture extended a result of Schaefer, who proved that "CSPs" over the Boolean domain\footnote{Meaning that the "target structure" can have only two elements---but recall that $\sigma$ can be arbitrary complex.} was either "P" or "NP"-complete, proven two decades earlier.
 Twenty-four years later, this conjecture was proven independently by
 Bulatov \cite[Theorem 1]{Bulatov2017DichotomyCSPs}
 and Zhuk \cite[Theorem 1.4]{Zhuk2020CSPDichotomy}.
@@ -127,6 +130,13 @@ the scope of this thesis: we refer the reader to \cite{BartoKrokhinWillard2017Po
 \end{marginfigure}
 Beyond "P" and "NP", the complexity of the "homomorphism" problem can reach some
 surprisingly low complexities.
+Even for Boolean CSPs\footnote{Meaning again that the "target structure" has only two elements},
+Allender, Bauland, Immerman, Schnoor and Vollmer extended Schaefer's theorem to
+prove that every not-so-easy problem---meaning that it is not solvable in "coNLogTime"---is
+complete for one class among "NP", "P", "modL", "NL" or "L" under "AC0"-reductions
+\cite[Theorem~3.1]{AllenderBaulandImmermanSchnoorVollmer2009Schaefer}.
+
+For non-Boolean CSPs, the landscape becomes even more complex.
 For instance, given $k\in\N$, we define the \AP""$k$-transitive tournament"", denoted
 by \AP$\intro*\transitiveTournament{k}$ and illustrated on \Cref{fig:T2},
 to be the "directed graph" with vertices $0$, $1$, $\hdots$, $k$,
@@ -152,15 +162,20 @@ the existence of a "homomorphism" to them amounts to not containing any "obstruc
 among a fixed finite set of "obstructions" are said to have "finite duality".
 Like $\transitiveTournament{k}$, their "constraint satisfaction problem"
 is in "FOfin".\footnote{Recall that "FOfin" $\subseteq$ "L", see \Cref{prop:FO-in-L}.}
-Atserias proved the converse implication to this result.
-todo:addref.
+Atserias proved the converse implication to this result \cite[Corollary 4]{Atserias2008DigraphColoring}.
 
-\AP\begin{proposition}[""Atserias' theorem"", {\cite[Corollary 4]{Atserias2008DigraphColoring}}]
+\AP\begin{proposition}[""Atserias' theorem""]
 	Let $\?B$ be a "finite $\sigma$-structure". Then $\?B$ has "finite duality"
 	if, and only if, $\HomAllClass{\?B}$ is "first-order definable".
 \end{proposition}
 
-This chapter will generalize some results on the "homomorphism problem"
+Moreover, Larose and Tesson proved a dichotomy theorem for "CSPs" with small complexity.
+\begin{proposition}[""Larose-Tesson's theorem""]
+	Let $\?B$ be a "finite $\sigma$-structure". If $\?B$ does not have "finite duality",
+	then $\HomFinDec{\?B}$ is "L"-hard under "first-order reductions".
+\end{proposition}
+
+This chapter will generalize some results---including the latter---on the "homomorphism problem"
 from "finite structures" to "automatic structures". The study of "CSPs" beyond finite set
 is far from a new topic, and has been the subject of many works in the past decade:
 see for instance \cite{KlinKopczynskiOchremiakTorunczyk2015LocallyFiniteCSP} for "CSPs"
@@ -169,17 +184,58 @@ or \cite{KlinLasotaOchremiakTorunczyk2016HomomorphismProblems} for "CSPs" over
 "$\sigma$-structures" which are "first-order definable" over $\tup{\N,{=}}$.
 
 
-\subsection{Contributions}
+\subsection{Contributions \& Organization}
 
+In \Cref{sec:dichotomy-colouring}, we start
+by rephrasing the "$\AUT$/$\REC$-separability problem" in graph-theoretic terms.
 
+\decisionproblem{
+	"Finite Regular Colourability of Automatic Graphs"
+}{
+	A "presentation" $\•G$ of an "automatic graph" $\•G$.
+}{
+	Does $\•G$ admit a "regular colouring" with finitely many colours?
+}
+A "regular colouring" with finitely many colours (resp. a $k$-regular colouring)
+is a partition of the vertices of $\•G$ into finitely many (resp. $k$) regular languages
+"st" adjacent vertices cannot belong to the same set.
 
-\subsection*{Old}
+\begin{restatable*}{theorem}{regcolourabilityequivseparability}
+    \AP\label{thm:reg-colourability-equiv-separability}
+    There are polynomial-time reductions: 
+    \begin{enumerate}
+        \itemAP\label{item:reg-colourability-equiv-separability-1} from "$\AUT$/$\REC$-separability@@problem" to "finite regular colourability@@problem", 
+        \itemAP\label{item:reg-colourability-equiv-separability-2} from "finite regular colourability@@problem" to "$\AUT$/$\REC$-separability@@problem", and
+        \itemAP\label{item:reg-colourability-equiv-separability-3} from "$k$-regular colourability@@problem" to "$\AUT$/$\kREC$-separability@@problem", for every $k > 0$.
+    \end{enumerate}
+    Further, the last two reductions are so that the second relation in the instance of the separability problem is the identity $\Id$.
+\end{restatable*}
 
-\begin{restatable*}{theorem}{DichotomyThmDichotomyAutomatic}[Dichotomy Theorem for Automatic Structures]
+While we do not know how to solve the "finite regular colourability@@problem",
+we prove the problem to be undecidable if the number of colours is fixed.
+
+\begin{restatable*}{theorem}{kregcolundec}
+    \AP\label{thm:k-reg-col-undec}
+    The "$k$-regular colourability problem" on "rational graphs" is undecidable, for every $k\geq 2$. More precisely, the problem is "RE"-complete. This holds also for "connected" "rational graphs".
+\end{restatable*}
+
+Then, in \Cref{sec:dichotomy-bounded}, we build on this result to prove the undecidability of
+some separability problems for "automatic relations" (\Cref{coro:krec-sep-undec,prop:kprod-undecidable}).
+
+todo:figure $3$-clique.
+
+Observing that "$k$-regular colourability" can be rephrased as the existence of a 
+"regular homomorphism"---meaning, in this context, a "homomorphism" whose preimages are all
+"regular languages"---to the "$k$-clique", this motivates us to study the "homomorphism problem"
+and "regular homomorphism problem" for "automatic structures" in \Cref{sec:dichotomy-undecidability,sec:dichotomy-decidability}. Our main result is a dichotomy theorem for "automatic structures".\footnote{Note that while for "finite structures" the dichotomy theorems either separate
+"FOfin" from "L"---in the case of Larose and Tesson---, or "P" from "NP"---for Bulatov and Zhuk---, in our case the dichotomy is between "NL" and… undecidability!}
+
+\begin{restatable*}[Dichotomy Theorem for Automatic Structures]{theorem}{DichotomyThmDichotomyAutomatic}
 	\!\footnote{The equivalence between (1) and (2) still holds
 	when the "homomorphism problem" takes as input ``higher-order automatic
 	structures'' as defined in \cite[last remark of \S~XII.3]{Blumensath2024MSOModelTheory},
-	since such structures have a decidable first-order theory.}%
+	since such structures have a decidable first-order theory.
+	TODO:wtf did I mean by this?}%
 	%%%
 	\AP\label{thm:dichotomy-theorem-automatic-structures}
 	Let $\?B$ be an arbitrary "$\sigma$-structure". The following are equivalent:
@@ -195,5 +251,9 @@ or \cite{KlinLasotaOchremiakTorunczyk2016HomomorphismProblems} for "CSPs" over
 	Moreover, when $\HomAutDec{\?B}$ and $\HomRegAutDec{\?B}$ undecidable, they are "coRE"-complete
 	and "RE"-complete, respectively. When they are decidable, they are "NL".
 \end{restatable*}
-	  
-TODO: say that to have "finite duality" can be decided.
+
+The easy implications of this theorem are proven in \Cref{sec:dichotomy-overview},
+the undecidability results in the rest of \Cref{sec:dichotomy-undecidability},
+and we conclude with decidability results in \Cref{sec:dichotomy-decidability}.
+TODO:give more details?
+We conclude in \Cref{sec:dichotomy-discussion}.
