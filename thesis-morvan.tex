@@ -21,8 +21,7 @@
   autocite=footnote,
   backend=biber
 ]{biblatex}
-\bibliography{bib-automatic-graphs}
-\bibliography{bib-complexity}
+\bibliography{bib-abbrev,bib-automatic-graphs,bib-complexity}
 
 % Dependencies
 \input{header/colour-palette}
@@ -123,8 +122,8 @@ structurally minimal canonical databases characterize membership to minor-closed
 
 \part[The Frontier of Decidability in Automatic Structures]{The Frontier of Decidability\\in Automatic Structures}
 
-\input{parts/preliminaries-automatic-structures/ch-preliminaries-automatic-structures}
-\input{parts/dichotomy-theorem/ch-dichotomy-theorem}
+\include{parts/preliminaries-automatic-structures/ch-preliminaries-automatic-structures}
+\include{parts/dichotomy-theorem/ch-dichotomy-theorem}
 
 \chapter{The Algebras for synchronous relations and Beyond:\\the Relative Membership Problem for Pseudovarieties of Regular Languages}
 

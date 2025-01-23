@@ -2,8 +2,9 @@
 
 \begin{abstract}%
 	\marginnote[2.5em]{%
-		\Cref{sec:dichotomy-colouring} has been published in MFCS '23 \cite{BarceloFigueiraMorvan2023SeparatingAutomatic},
-		and is a joint work with Pablo Barceló and Diego Figueira. 
+		\Cref{sec:dichotomy-colouring} corresponds to \cite[\S\S~3--6]{BarceloFigueiraMorvan2023SeparatingAutomatic}, which has been published at MFCS '23,
+		and is a joint work with Pablo Barceló and Diego Figueira.
+		Part of the introduction also comes from \cite{BarceloFigueiraMorvan2023SeparatingAutomatic}.
 		\par{}Part of the dichotomy theorem---\Cref{sec:dichotomy-overview,sec:undecidability-hom,sec:hyperedge-consistency-finite,sec:hyperedge-consistency-automatic}---was proven during 
 		the internship of Antoine Cuvelier that I supervised in Summer 2024.
 		\par{}We thank Joanna Fijalkow for helpful discussions on constraint satisfaction problems.%
@@ -37,34 +38,6 @@
 
 % \lipsum[1]
 % \footnote{Test: \citeside[Definition 2.11 \& Definition 1.26]{Immerman1998DescriptiveComplexity}. \simplecite{Immerman1998DescriptiveComplexity}}
-
-Let \AP$\intro*\Fin$ denote the class of all "finite $\sigma$-structures",
-\AP$\intro*\Aut$ the class of all "automatic $\sigma$-structures".
-We let \AP$\intro*\AutPres$ be the class of all "rational presentations of $\sigma$-structures",
-and \AP$\intro*\FinPres$ be the subclass of "presentations" of "finite $\sigma$-structures".
-
-We denote by \AP$\intro*\HomFinClass{\?B}$ and $\intro*\HomAllClass{\?B}$ the class
-of all finite (resp. all) "$\sigma$-structures" that admit a "homomorphism" to $\?B$.
-
-Given a "$\sigma$-structure" $\?B$, and a class $\classStruct$ of "rational presentations of $\sigma$-structures", we denote by \AP$\intro*\HomDec{\classStruct}{\?B}$ the class of all presentations $\•A \in \classStruct$ such that the "$\sigma$-structure" $\?A$
-that they "represent@@structure" admits a "homomorphism" to $\?B$.
-Similarly, we denote by \AP$\intro*\HomRegDec{\classStruct}{\?B}$ the class 
-associated to "regular homomorphisms".%
-\sidenote{Todo: set-theoretic bullshit. Not a set but it is if we fix an alphabet. Blabla.}
-
-While the existence of a "homomorphism" from some "rational presentation" of $\?A$ 
-to a "finite $\sigma$-structure" $\?B$ only depends on $\?A$ and not the "presentation" itself,
-this is not true for "regular homomorphism".
-For a $\sigma$-structure $\?B$,
-we use \AP$\intro*\HomFinDec{\?B}$, $\intro*\HomAutDec{\?B}$, $\intro*\HomRegFinDec{\?B}$
-and $\intro*\HomRegAutDec{\?B}$ as shorthands for $\HomDec{\FinPres}{\?B}$, $\HomDec{\AutPres}{\?B}$,
-$\HomRegDec{\FinPres}{\?B}$ and $\HomRegDec{\AutPres}{\?B}$, respectively.
-
-Note that any "homomorphism" from an "rational presentation" of a "finite structure"
-to a "finite structure" is also "regular@@hom" and so $\HomFinDec{\?B} = \HomRegFinDec{\?B}$.\sidenote{Note also that membership in $\HomFinDec{-} = \HomRegFinDec{-}$ and in
-$\HomAutDec{-}$ only depends on the "structure represented"
-by the "rational presentation", and not on the "presentation" itself.
-This is not the case for $\HomRegAutDec{-}$. We use these definitions for two reasons: (1) for consistency with $\HomRegAutDec{-}$ and (2) for the associated decision problem to be defined unambiguously. Note moreover that in the case of "finite structures", the size of its representation, say using adjacency lists, and of its "rational presentation" are equal up to a TODO}
 
 \input{parts/dichotomy-theorem/sec-introduction}
 \input{parts/dichotomy-theorem/sec-preliminaries}
