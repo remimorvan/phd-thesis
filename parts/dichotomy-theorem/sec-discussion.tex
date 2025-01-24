@@ -136,8 +136,8 @@ We pointed out that for arbitrary "graphs", the property was clearly true
 since there are \AP""triangle-free graphs@@dir""%
 \footnote{Meaning that $\clique{3} \nothomto \?G$.}
 $\?G$ that are not finitely colourable \cite{UngarDescartes1954ChromaticGraphs}.
-However, we believe(d) that the graphs built using Ungar-Descartes' technique
-were not "automatic".
+However, we believe(d) that the infinite graph built using Ungar-Descartes' technique
+is not "automatic".
 Since then, we managed to prove this conjecture, by relying on another classical construction of
 triangle-free graphs with arbitrary large "chromatic number".
 
@@ -162,21 +162,47 @@ path of size 1: we made this choice to make the proof of "automaticity" of the g
 easier.
 
 \begin{definition}
-  Given an undirected graph $G = \langle V, \+E \rangle$, let
-  \AP$\intro*\Myc(G)$ be the undirected graph whose set of vertices is
-  $V\times\{0,1\} \dcup \{\bullet\}$, with the following edges:
-  \begin{itemize}
-    \item $\{\langle u, 0 \rangle,\, \langle v, 0 \rangle\}$
-      for every edge $\{ u,v \} \in \+E$,
-    \item $\{\langle u, 0 \rangle,\, \langle v, 1 \rangle\}$
-      for every edge $\{ u,v \} \in \+E$, and
-    \item $\{ \bullet,\, \langle v, 1 \rangle\}$
-      for every $v \in \+E$.
-  \end{itemize}
+	Given an undirected graph $G = \langle V, \+E \rangle$, let
+	\AP$\intro*\Myc(G)$ be the undirected graph whose set of vertices is
+	$V\times\{0,1\} \dcup \{\bullet\}$, with the following edges:
+	\begin{itemize}
+		\item $\{\langle u, 0 \rangle,\, \langle v, 0 \rangle\}$
+			for every edge $\{ u,v \} \in \+E$,
+		\item $\{\langle u, 0 \rangle,\, \langle v, 1 \rangle\}$
+			for every edge $\{ u,v \} \in \+E$, and
+		\item $\{ \bullet,\, \langle v, 1 \rangle\}$
+			for every $v \in \+E$.
+	\end{itemize}
 \end{definition}
 
 Note that $u \mapsto \langle u,0\rangle$ always defines an embedding of
 $G$ into $\Myc(G)$.
+
+\begin{property}
+	\label{prop:triangle-free}
+	If $G$ is "triangle-free@@undir", then so is $\Myc(G)$.
+\end{property}
+
+\begin{proof}
+	All neighbours of $\bullet$ are of the form $\langle -, 1\rangle$,
+	and two vertices of the form $\langle -, 1\rangle$ are never adjacent.
+	Hence, any potential triangle in $\Myc$ must be of the form
+	\[
+	\{
+		\langle u, 0 \rangle,\,
+		\langle v, 0 \rangle,\,
+		\langle w, 0 \rangle
+	\}
+	\quad\text{or}\quad
+	\{
+		\langle u, 0 \rangle,\,
+		\langle v, 1 \rangle,\,
+		\langle w, 0 \rangle
+	\}.
+	\]
+	In both cases, this would imply that $\{u,v,w\}$ is a triangle in $G$:
+	contradiction.
+\end{proof}
 
 \begin{figure}
 	\centering
@@ -185,43 +211,19 @@ $G$ into $\Myc(G)$.
 	\end{tikzpicture}
 	\caption{
 		\AP\label{fig:Mycielski}
-		The (undirected) path of length 1,
-		and two iterations of Mycielski's construction $\Myc$ on this graph,
-		together with a $2$-, $3$-, and $4$-colouring of these graphs. 
+		The undirected path of length 1,
+		and two iterations of Mycielski's construction $\Myc$ on this graph.
+		Each of these graphs is equipped with a $2$-, $3$-, and $4$-colouring, respectively, 
+		which are built using the construction described in the proof
+		of \Cref{prop:chromatic-number}.
 	}
 \end{figure}
 
-\begin{fact}
-  \label{fact:triangle-free}
-  If $G$ is "triangle-free@@undir", then so is $\Myc(G)$.
-\end{fact}
-
-\begin{proof}
-  All neighbours of $\bullet$ are of the form $\langle -, 1\rangle$,
-  and two vertices of the form $\langle -, 1\rangle$ are never adjacent.
-  Hence, any potential triangle in $\Myc$ must be of the form
-  \[
-    \{
-      \langle u, 0 \rangle,\,
-      \langle v, 0 \rangle,\,
-      \langle w, 0 \rangle
-    \}
-    \quad\text{or}\quad
-    \{
-      \langle u, 0 \rangle,\,
-      \langle v, 1 \rangle,\,
-      \langle w, 0 \rangle
-    \}.
-  \]
-  In both cases, this would imply that $\{u,v,w\}$ is a triangle in $G$:
-  contradiction.
-\end{proof}
-
-\begin{fact}
-  \label{fact:chromatic-number}
-  The "chromatic number" of $\Myc(G)$
-  is exactly one more than the "chromatic number" of $G$.
-\end{fact}
+\begin{property}
+	\label{prop:chromatic-number}
+	The "chromatic number" of $\Myc(G)$
+	is exactly one more than the "chromatic number" of $G$.
+\end{property}
 
 \begin{proof}
   \proofcase{Upper bound.}
@@ -249,60 +251,71 @@ We can now prove our result.
   Let $\Sigma \defeq \{0,1,\bullet\}$, and let $H$ be the "directed
   graph" on a single vertex with no edge.
   We are going to define an "automatic graph" whose underlying undirected graph
-  is $\bigdcup_{n\in\N} \Myc^n(H)$, and vertices of $\Myc^n(H)$ will be
-  encoded by words of length $n$.
+  is $\bigdcup_{n\in\N} \Myc^n(H)$, in such a way that the vertices of $\Myc^n(H)$
+  will be encoded by words of length $n$.
 
   We are going to define by induction
   disjoint subsets $(V_i)_{i\in\N}$ of $\Sigma^*$
-  and $(E_i)_{i\in\N}$ of $\Sigma^* \times \Sigma^*$ such that
-  $(V_i, E_i)$ is a directed version of $\Myc^n(H)$.
+  and $(\+E_i)_{i\in\N}$ of $V_i \times V_i$ such that
+  $(V_i, \+E_i)$ is a directed version of $\Myc^n(H)$.
 
-  Define $V_0 \defeq \{\varepsilon\}$ and $E_0 \defeq \emptyset$.
+  Define $V_0 \defeq \{\varepsilon\}$ and $\+E_0 \defeq \emptyset$.
   Then for $n \in \N$, let
   \begin{align*}
     V_{n+1} & \defeq \{u0\mid u \in V_n\}\cup \{u1\mid u \in V_n\}\cup\{\bullet^{n+1}\}\\
-    E_{n+1} & \defeq \{\langle u0,v0\rangle \mid \langle u,v\rangle \in E_n\}
-      \cup \{\langle u0,v1\rangle \mid \langle u,v\rangle \in E_n\}
-      \cup \{\langle \bullet^{n+1}, u1\rangle \mid u\in V_n\}.
+    \+E_{n+1} & \defeq \{\langle u0,v0\rangle \mid \langle u,v\rangle \in \+E_n\}
+		\cup \{\langle v0,u0\rangle \mid \langle u,v\rangle \in \+E_n\} \\
+		& \cup \{\langle u0,v1\rangle \mid \langle u,v\rangle \in \+E_n\}
+		\cup \{\langle v1,u0\rangle \mid \langle u,v\rangle \in \+E_n\} \\
+    	& \cup \{\langle u1, \bullet^{n+1}\rangle \mid u\in V_n\}
+		\cup \{\langle \bullet^{n+1}, u1\rangle \mid u\in V_n\}.
   \end{align*}
-  Then let $V \defeq \bigcup_{n\in \N} V_n$ and $E \defeq \bigcup_{n\in \N} E_n$.
-  By construction, the underlying undirected graph of $\langle V,E\rangle$ is
-  $\bigdcup_{n\in\N} \Myc^n(H)$ \textcolor{red}{DIEGO: THIS IS NOT TRUE BECAUSE OF RECURSIVE STUFF. FIX THIS BY MAKING THE GRAPH SYMMETRIC.}, and so it is "triangle-free@@dir" (since $H$ is "triangle-free@@undir") by \Cref{fact:triangle-free} but has infinite
-  "chromatic number" by \Cref{fact:chromatic-number}. 
-  It remains to show that $\langle V,E\rangle$ is "automatic".
+  Then let \AP$\intro*\MycInf \defeq \tup{V, \+E}$ be
+  the ""infinite Mycielski graph"" where $V \defeq \bigcup_{n\in \N} V_n$
+  and $E \defeq \bigcup_{n\in \N} E_n$.
+  By construction, each $\+E_n$ is "symmetric@@rel",%
+  \footnote{In fact some of the sets defining $\+E_{n+1}$ are redundant because of these,
+  but we keep them in the definition to emphasize this symmetry.}
+  and moreover $V_n \subseteq \Sigma^n$ by immediate induction on $n\in\N$.
 
+  Also, the underlying undirected graph of $\MycInf$ is
+  $\bigdcup_{n\in\N} \Myc^n(H)$, and so it is "triangle-free@@dir" (since $H$ is "triangle-free@@undir") by \Cref{prop:triangle-free} but has infinite
+  "chromatic number" by \Cref{prop:chromatic-number}. 
+  
+  It remains to show that $\MycInf$ is "automatic@@graph".
   First, notice that $V = \bullet^*(0+1)^*$ since by trivial induction
-  on $n\in\N$ we have $V_n = (\bullet^*(0+1)^*)\cap \Sigma^n$. Hence $V$ is regular.
+  on $n\in\N$ we have $V_n = (\bullet^*(0+1)^*)\cap \Sigma^n$. And hence,
+  $V$ is "regular@@lang".
 
   Now we claim that there is an edge from $u \in V$ to $v \in V$ if and only if
   \begin{itemize}
     \item $u$ and $v$ have the same length,
     \item $u$ contains at least one $\bullet$
-      and letting $i$ be the index of the last occurence of $\bullet$ in $u$,
-      we have $v_i = 1$,
-    \item for all $j \in \lBrack i+1,n\rBrack$, $u_i = 0$
-    and $v_i \in \{0,1\}$.
+      and letting $i$ be the index of the last occurrence of $\bullet$ in $u$,
+      we have $v_i = 1$, and
+    \item for all $j \in \lBrack i+1,n\rBrack$, $u_j = 0$
+    and $v_j \in \{0,1\}$.
   \end{itemize}
   Call the property above $\+P$.
-  To prove it, observe first that $E$ contains no edge
+  To prove it, observe first that $\+E$ contains no edge
   between vertices of distinct length, and then we prove
-  by induction on $n\in\N$ that $E_n = \{\langle u,v\rangle \in V_n \mid (u,v) \models \+P\}$.
-  For $n=0$ the result is trivial, and if it holds at rank $n$,
-  then it is clear that $E_{n+1} \subseteq
+  by induction on $n\in\N$ that $\+E_n = \{\langle u,v\rangle \in V_n \mid (u,v) \models \+P\}$.
+  For $n=0$ the result is trivial, and if it holds at rank $n\in\N$,
+  then it is clear that $\+E_{n+1} \subseteq
   \{\langle u,v\rangle \in V_{n+1} \mid (u,v) \models \+P\}$.
   Conversely, if $u,v \in V_{n+1}$ satisfies $\+P$, then
   either:
   \begin{itemize}
     \item the last letter of $u$ is $\bullet$ and so $v$ ends with a
     1, and thus $\langle u,v \rangle \in \{\langle \bullet^{n+1}, v'1\rangle \mid v'\in V_n\}
-    \subseteq E_{n+1}$, or 
+    \subseteq \+E_{n+1}$, or 
     \item the last letter of $u$ is $0$, and the last letter of $v$ is $0$ or $1$;
       letting $u = u'0$ and $v = v'a$ with $a \in \{0,1\}$, we have
       that $\langle u', v'\rangle$ satisfy $\+P$, so by induction hypothesis,
-      $\langle u', v'\rangle \in E_n$ and hence
-      \[\langle u,v \rangle \in \{\langle u'0,v'0\rangle \mid \langle u',v'\rangle \in E_n\}
-      \cup \{\langle u'0,v'1\rangle \mid \langle u',v'\rangle \in E_n\} \subseteq E_{n+1}.\]
+      $\langle u', v'\rangle \in \+E_n$ and hence
+      \[\langle u,v \rangle \in \{\langle u'0,v'0\rangle \mid \langle u',v'\rangle \in \+E_n\}
+      \cup \{\langle u'0,v'1\rangle \mid \langle u',v'\rangle \in E_n\} \subseteq \+E_{n+1}.\]
   \end{itemize}
-  In all cases, $\langle u,v\rangle \in E_{n+1}$ which concludes the induction.
+  In all cases, $\langle u,v\rangle \in \+E_{n+1}$ which concludes the induction.
   To conclude, it suffices to notice that the condition $\+P$ is clearly "automatic".
 \end{proof}
