@@ -2,29 +2,88 @@
 \AP\label{sec:dichotomy-preliminaries}
 
 
-\subsection{Notations}
+\subsection{Regular Homomorphisms}
 
-Let \AP$\intro*\Fin$ denote the class of all "finite $\sigma$-structures",
-\AP$\intro*\Aut$ the class of all "automatic $\sigma$-structures".
-We let \AP$\intro*\AutPres$ be the class of all "automatic presentations of $\sigma$-structures",
-and \AP$\intro*\FinPres$ be the subclass of "presentations" of "finite $\sigma$-structures".
+Given two regular languages $K$ and $L$,\footnote{Note that whether $K$ and $L$ share the same alphabet is irrelevant since we can always work on the union of their alphabet.},
+a \AP""regular function"" from
+$K$ to $L$ is a function $f\colon K \to L$ "st" the relation
+\[
+	\{\tup{u, f(u)} \mid u \in K\}
+\]
+is "automatic".
+A \AP""regular homomorphism"" between two "presentations of automatic $\sigma$-structures"
+$\•A$ and $\•B$ is a "regular function" from $\domainPres{\•A}$ to $\domainPres{\•B}$
+that defines a "homomorphism" from $\?A$ to $\?B$.\footnote{We use the terminology ``regular''
+instead of ``automatic'' simply because ``automatic homomorphism'' sounds somewhat weird.}
 
-We denote by \AP$\intro*\HomFinClass{\?B}$ and $\intro*\HomAllClass{\?B}$ the class
-of all finite (resp. all) "$\sigma$-structures" that admit a "homomorphism" to $\?B$.
+\begin{property}
+	\label{prop:regular-function-finite-domain}
+	Let $f\colon K \to L$ be a function, where $L$ is finite.
+	Then $f$ is a "regular function" "iff" for every $v \in L$,
+	$f^{-1}[v]$ is a "regular language".
+\end{property}
 
-Given a "$\sigma$-structure" $\?B$, and a class $\classStruct$ of "automatic presentations of $\sigma$-structures", we denote by \AP$\intro*\HomDec{\classStruct}{\?B}$ the class of all presentations $\•A \in \classStruct$ such that the "$\sigma$-structure" $\?A$
-that they "represent@@structure" admits a "homomorphism" to $\?B$.
-Similarly, we denote by \AP$\intro*\HomRegDec{\classStruct}{\?B}$ the class 
-associated to "regular homomorphisms".%
-\sidenote{Todo: set-theoretic bullshit. Not a set but it is if we fix an alphabet. Blabla.}
+\begin{proof}
+	For the left-to-right implication, if $f$ is a "regular function",
+	then there exists a first-order formula $\phi(x,y)$ "st"
+	for all $\tup{u,v} \in K\times L$, then
+	\[
+		\univStructSynchronous{\Sigma}, u, v \models \phi(x,y)
+		\text{ "iff" }
+		v = f(u).
+	\]
+	Then given $v\in L$,
+	the formula\footnote{``$y = v$'' is not properly defined in the syntax of "first-order logic" but it is straightforward to come up with a formula expressing this property.}
+	\[
+		\exists y,\, \phi(x,y) \land y = v
+	\]
+	describes $\{ u\in K \mid f(u) = v \}$, which is hence "regular@@lang".
 
-While the existence of a "homomorphism" from some "automatic presentation" of $\?A$ 
-to a "finite $\sigma$-structure" $\?B$ only depends on $\?A$ and not the "presentation" itself,
-this is not true for "regular homomorphism".
-For a $\sigma$-structure $\?B$,
-we use \AP$\intro*\HomFinDec{\?B}$, $\intro*\HomAutDec{\?B}$, $\intro*\HomRegFinDec{\?B}$
-and $\intro*\HomRegAutDec{\?B}$ as shorthands for $\HomDec{\FinPres}{\?B}$, $\HomDec{\AutPres}{\?B}$,
-$\HomRegDec{\FinPres}{\?B}$ and $\HomRegDec{\AutPres}{\?B}$, respectively.
+	Conversely, we consider "first-order formulas" $\phi_{v}$ describing each set
+	$\{ u\in K \mid f(u) = v \}$, with $v\in L$. Then
+	\[
+		\phi(x) \defeq \bigwedge_{v\in L} 
+			\phi_{b}(x) \land y = v
+	\]
+	is a "first-order formula"---since $L$ is finite---describing $f$.
+\end{proof}
+
+In particular, a \AP""$k$-regular colouring"" of a "presentation of an automatic graph"
+$\•G$ is equivalently a "regular homomorphism" from $\•G$ to $\?K_k$,
+or a "$k$-colouring" "st" for any colour, the set of words of $\domainPres{\•G}$
+sharing this colour is a "regular language". 
+
+\begin{figure}
+	\centering
+	\begin{tikzpicture}
+		\input{tikz/dichotomy/grid-2-reg-colouring}
+	\end{tikzpicture}
+	\caption{
+		\AP\label{fig:grid-2-reg-colouring}
+		A "$2$-regular colouring" of an "automatic presentation" of the infinite quarter-grid.
+	}
+\end{figure}
+In \label{fig:grid-2-reg-colouring}, we provide an example of a "$2$-regular colouring".
+The let $\+G = \tup{V,\+E}$ be the "automatic presentation" of the infinite quarter-grid,
+defined over the alphabet $\{x,y\}$, with $V \defeq x^*y^*$ and
+\[
+	\+E = \set{\tup{x^p y^q, x^{p+1}y^q} \mid p,q \in \N}
+	\cup
+	\set{\tup{x^p y^q, x^p y^{q+1}} \mid p,q \in \N}.
+\]
+Then the unique "$2$-colouring" of $\+G$ 
+assign one colour to the vertices of the form $x^p y^q$ "st" $p-q$ is even.
+This "colouring" is of course ""regular@@colouring"".
+
+Given a fixed "signature" $\sigma$ and a $\sigma$-structure $\?B$,
+we denote by:
+\begin{itemize}
+	\itemAP $\intro*\HomFinDec{\?B}$ (resp. $\intro*\HomAutDec{\?B}$) the problem of, given a "finite $\sigma$-structure" (resp. "presentation of an automatic $\sigma$-structure"),
+	whether it has a "homomorphism" to $\?B$,
+	\itemAP $\intro*\HomRegFinDec{\?B}$ (resp. $\intro*\HomRegAutDec{\?B}$), the problem of,
+	given a "finite $\sigma$-structure" (resp. "presentation of an automatic $\sigma$-structure"),
+	whether it has a "regular homomorphism" to $\?B$.
+\end{itemize}
 
 Note that any "homomorphism" from an "automatic presentation" of a "finite structure"
 to a "finite structure" is also "regular@@hom" and so $\HomFinDec{\?B} = \HomRegFinDec{\?B}$.\sidenote{Note also that membership in $\HomFinDec{-} = \HomRegFinDec{-}$ and in
@@ -78,7 +137,7 @@ It is then routine to check that the maps $f \mapsto F$ and $F \mapsto f$ define
 in the two previous paragraphs are mutually inverse bijections.
 \end{proof}
 
-\subsection{Constructions on automatic presentations}
+\subsection{Constructions on Automatic Presentations}
 \label{sec:construction-automatic-presentations}
 
 Let $\•A$ and $\•B$ be "automatic presentations" of some "$\sigma$-structures"
@@ -116,7 +175,8 @@ works for $\domainPres{\•A\prodpres \•B}$.
 \end{proposition}
 
 \begin{proof}
-	The proof will follow from the following claim.
+	The proof follows from the following claim, which can be proven
+	exactly in the same fashion as \Cref{prop:regular-function-finite-domain}.
 
 	\begin{claim}
 		\label{claim:homreg-prod-finite}
@@ -128,29 +188,6 @@ works for $\domainPres{\•A\prodpres \•B}$.
 		\}\)
 		is a "regular language".
 	\end{claim}
-	
-	The left-to-right implication is easy, and does not use the assumption that $\?B$ and $\?C$ are if $f\colon\•A \prodpres \•B \to \•C$ is a "regular homomorphism", then there exists
-	a first-order formula $\phi(x,y,z)$ "st" for all words $u,v,w$
-	in $\domainPres{\•A}$, $\domainPres{\•B}$ and $\domainPres{\•C}$, respectively, then
-	\[
-		\univStructSynchronous{\Sigma}, u, v, w \models \phi(x,y,z)
-		\text{ "iff" }
-		w = f(u, v).
-	\]
-	Then given $b\in \domainPres{\•B}$ and $c\in \domainPres{\•C}$,
-	the formula\footnote{``y = b'' is not properly defined in the syntax of "first-order logic" but it is straightforward to come up with a formula expressing this property.}
-	\[
-		\exists y,\,\exists z,\, \phi(x,y,z) \land y = b \land z = c
-	\]
-	describes $\{ a\in \domainPres{\•A} \mid f(a,b) = c \}$, which is hence "regular@@lang".
-
-	Conversely, we consider "first-order formulas" $\phi_{b,c}$ describing each set
-	$\{ a\in \domainPres{\•A} \mid f(a,b) = c \}$ for $b\in \domainPres{\•B}$ and $c\in \domainPres{\•C}$. Then
-	\[
-		\phi(x,y,z) \defeq \bigwedge_{b\in \domainPres{\•B}} \bigwedge_{c \in \domainPres{\•C}}
-			\phi_{b,c}(x) \land y = b \land z = c
-	\]
-	is a "first-order formula" (since $\?B$ and $\?C$ are "finite@@struct") describing $f$.
 \end{proof}
 
 In other words, the existence of a "regular homomorphism" does not depend on the
