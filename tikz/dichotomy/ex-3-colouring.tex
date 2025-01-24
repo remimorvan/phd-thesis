@@ -1,0 +1,67 @@
+% ---
+% Example 3-colouring
+% ---
+\tikzset{every node/.style={fill opacity=.4}}
+\node[vertex, color=c0, fill=c0] at (0,0) (0) {};
+\node[vertex, above left=.75em of 0, color=c1, fill=c1] (0al) {};
+\node[vertex, above right=.75em of 0, color=c2, fill=c2] (0ar) {};
+\node[vertex, below left=2em of 0al, color=c0, fill=c0] (0l) {};
+\node[vertex, below right=2em of 0ar, color=c0, fill=c0] (0r) {};
+\node[vertex, above left=of 0l, color=c1, fill=c1] (0ll) {};
+\node[vertex, above right=of 0r, color=c2, fill=c2] (0rr) {};
+\node[vertex, below left=of 0, color=c2, fill=c2] (0bl) {};
+\node[vertex, below right=of 0, color=c1, fill=c1] (0br) {};
+
+\node[vertex, below=2em of 0, color=c0, fill=c0] (1) {};
+\node[vertex, below left=1em of 1, color=c1, fill=c1] (1bl) {};
+\node[vertex, below right=1em of 1, color=c2, fill=c2] (1br) {};
+\node[vertex, above left=0em and 1.5em of 1bl, color=c2, fill=c2] (1bll) {};
+\node[vertex, above right=0em and 1.5em of 1br, color=c1, fill=c1] (1brr) {};
+
+\node[vertex, below=4em of 1, color=c0, fill=c0] (2) {};
+\node[vertex, below left=1.5em and .75em of 1bl, color=c2, fill=c2] (2al) {};
+\node[vertex, below right=1.5em and .75em of 1br, color=c1, fill=c1] (2ar) {};
+\node[vertex, below left=.5em and 1.5em of 2, color=c1, fill=c1] (2bl) {};
+\node[vertex, below right=.5em and 1.5em of 2, color=c2, fill=c2] (2br) {};
+\node[vertex, below left=of 2al, color=c0, fill=c0] (2ll) {};
+\node[vertex, below right=of 2ar, color=c0, fill=c0] (2rr) {};
+
+\draw[edge] (0) to (0al);
+\draw[edge] (0) to (0ar);
+
+\draw[edge] (0al) to (0l);
+\draw[edge] (0l) to (0bl);
+\draw[edge] (0bl) to (0);
+\draw[edge] (0l) to (0ll);
+
+\draw[edge] (0ar) to (0r);
+\draw[edge] (0r) to (0br);
+\draw[edge] (0br) to (0);
+\draw[edge] (0r) to (0rr);
+
+\draw[edge] (0bl) to (1);
+\draw[edge] (1) to (1bl);
+\draw[edge] (1bl) to (0l);
+
+\draw[edge] (0br) to (1);
+\draw[edge] (1) to (1br);
+\draw[edge] (1br) to (0r);
+
+\draw[edge] (1bl) to (2al);
+\draw[edge] (2al) to (2ll);
+\draw[edge] (2) to (2al);
+\draw[edge] (2) to (2bl);
+\draw[edge] (2bl) to (2al);
+
+\draw[edge] (1br) to (2ar);
+\draw[edge] (2ar) to (2rr);
+\draw[edge] (2) to (2ar);
+\draw[edge] (2) to (2br);
+\draw[edge] (2br) to (2ar);
+
+\draw[edge] (1bl) to (1bll);
+\draw[edge] (1br) to (1brr);
+
+\draw[edge, bend right=20] (2) to (1bl);
+\draw[edge, bend left=20] (2) to (1br);
+

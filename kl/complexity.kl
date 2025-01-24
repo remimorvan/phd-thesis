@@ -48,11 +48,14 @@
  | PSpace
  | PSPACE
 
-\knowledge{text={RE}, wrap=\textsf}
+\knowledge{wrap=\textsf}
 | RE
 
-\knowledge{text={coRE}, wrap=\textsf}
+\knowledge{wrap=\textsf}
 | coRE
+
+\knowledge{text={$\Sigma^0_2$}, wrap=\textsf}
+| Sigma0-2
 
 
 % ---

@@ -1,26 +1,21 @@
 \knowledge{notion}
- | rational presentation
- | rational presentations
- | presentations
+ | automatic@struct
  | presentation
- | structure represented
- | rational presentations of $\sigma $-structures
+ | presentations
+ | automatic presentation
+ | automatic presentations
+ | automatic $\sigma$-presentation
+ | automatic presentations of $\sigma $-structures
  | presentation@auto
+ | structure represented
  | represent@structure
- | rational $\sigma$-presentation
- | rational structure
- | rational@struct
-
-\knowledge{notion}
- | rational presentation of a directed graph
- | rational graph
- | rational graphs
-
-\knowledge{notion}
- | automatic $\sigma $-structures
- | automatic $\sigma $-structure
- | automatic
  | automatic structure
  | automatic structures
+ | automatic $\sigma $-structures
+ | automatic $\sigma $-structure
 
+\knowledge{notion}
+ | automatic presentation of a directed graph
+ | automatic graph
+ | automatic graphs
 

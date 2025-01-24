@@ -6,23 +6,23 @@
 
 Classes of relations on words\footnote{In this context, ``relations on words''
 are often called ``transductions''.} have always been a central topic in language theory
-\cite{ElgotMezi1965RelationsGeneralizedAutomata,Nivat1968TransductionChomsky,Berstel1979Transductions,FrougnySakarovitch1993SynchronizedRationalRelations,Choffrut2006Survey}. 
+\cite{ElgotMezi1965RelationsGeneralizedAutomata,Nivat1968TransductionChomsky,Berstel1979Transductions,FrougnySakarovitch1993SynchronizedAutomaticRelations,Choffrut2006Survey}. 
 More recently, their study has been motivated by database theory and verification,
 where they are used to build expressive languages. For instance, classes of relations of this kind are relevant for querying strings over relational 
 databases \cite{BenediktLibkinSchwentickSegoufin2003DefinableRelations}, comparing paths in graph databases \cite{BarceloLibkinLinWood2012ExpressiveLanguages}, or defining  
 string constraints for model checking \cite{LinBarcelo2016StringSolvingWordEquationsTransducers}. 
-The most studied such classes include "recognizable@@rel", "automatic@@rel" "aka" "synchronous@@rel", and "rational relations", each one of the latter two strictly extending the previous one. 
+The most studied such classes include "recognizable@@rel", "automatic@@rel" "aka" "synchronous@@rel", and "automatic relations", each one of the latter two strictly extending the previous one. 
 
-% \AP ""Rational relations"" are those definable by multi-head automata, with heads possibly moving asynchronously; "automatic relations" are "rational relations" that are accepted by multi-head automata whose heads are forced to move synchronously; and 
+% \AP ""Automatic relations"" are those definable by multi-head automata, with heads possibly moving asynchronously; "automatic relations" are "automatic relations" that are accepted by multi-head automata whose heads are forced to move synchronously; and 
 % "recognizable relations" correspond to finite unions of products of regular languages (or, equivalently, to languages recognized via finite monoids, by Mezei's Theorem). By definition, all of these classes coincide with the 
 % class of regular languages when restricted to unary relations.
 
 Prior work has focused on the ""$\REC$-definability problem"", 
-which takes as input an $n$-ary "rational relation"%
+which takes as input an $n$-ary "automatic relation"%
 \footnote{
-	Recall that "rational relations" are those definable by multi-head automata,
+	Recall that "automatic relations" are those definable by multi-head automata,
 	with heads possibly moving asynchronously;
-	"synchronous relations" are "rational relations" that are accepted by multi-head automata
+	"synchronous relations" are "automatic relations" that are accepted by multi-head automata
 	whose heads are forced to move synchronously; and 
 	"recognizable relations" correspond to finite unions of products of regular languages---or, equivalently, to languages recognized via finite monoids, by Mezei theorem.
 	By definition, all of these classes coincide with the 
@@ -31,16 +31,16 @@ which takes as input an $n$-ary "rational relation"%
 $\+R$ and asks whether it is equivalent to a "recognizable relation"
 $\bigcup_i L_{i,1} \times \cdots \times L_{i,n}$, where each $L_{i,j}$ is a "regular language". 
 Intuitively, the problem asks whether the different components of  
-the "rational relation" $\+R$ are almost independent of one another.
+the "automatic relation" $\+R$ are almost independent of one another.
 The study of "$\REC$-definability"
 is relevant since relations enjoying this property are often amenable to some analysis including,
 "eg", abstract interpretations in program verification, variable elimination in constraint logic 
 programming, and query processing over constraint databases---see \cite[Introduction]{BarceloHongLeLinNiskanen2019MonadicDecomposability} for a more thorough discussion on this topic.
 
-In general, "$\REC$-definability" of "rational relations" is undecidable, but it becomes decidable 
+In general, "$\REC$-definability" of "automatic relations" is undecidable, but it becomes decidable 
 for two important subclasses: 
-deterministic "rational relations" and "synchronous relations". 
-For deterministic "rational relations",  "$\REC$-definability" has been shown to be decidable in 
+deterministic "automatic relations" and "synchronous relations". 
+For deterministic "automatic relations",  "$\REC$-definability" has been shown to be decidable in 
 double-exponential time for binary relations
 by Valiant \cite{Valiant1975RegularityDeterministicPushdown}---improving Stearns's
 triple-exponential bound \cite{Stearns1967RegularityPushdown}.
@@ -56,7 +56,7 @@ By applying techniques based on Ramsey Theorem over infinite graphs, it was show
 "PSpace"-complete when relations are specified by non-deterministic automata
 \cite[Theorem 1]{BarceloHongLeLinNiskanen2019MonadicDecomposability} \cite[Corollary 2.9]{BergstrasserGanardiLinZetzsche2022RamseyQuantifiers}.
 
-\AP On the other hand, much less is known about the ""$\RAT$/$\REC$-separability problem"", which takes two $n$-ary "rational relations" 
+\AP On the other hand, much less is known about the ""$\RAT$/$\REC$-separability problem"", which takes two $n$-ary "automatic relations" 
 $\+R,\+R' \subseteq \Sigma^* \times \Sigma^*$ and checks whether there is a "recognizable relation" 
 $S = \bigcup_i L_{i,1} \times \cdots \times L_{i,n}$
 with $\+R \subseteq \+S$ and $\+R' \cap \+S = \emptyset$. In other words, this problem asks whether we can \emph{over approximate} $\+R$ with a recognizable 
@@ -216,21 +216,42 @@ we prove the problem to be undecidable if the number of colours is fixed.
 
 \begin{restatable*}{theorem}{kregcolundec}
     \AP\label{thm:k-reg-col-undec}
-    The "$k$-regular colourability problem" on "rational graphs" is undecidable, for every $k\geq 2$. More precisely, the problem is "RE"-complete. This holds also for "connected" "rational graphs".
+    The "$k$-regular colourability problem" on "automatic graphs" is undecidable, for every $k\geq 2$. More precisely, the problem is "RE"-complete. This holds also for "connected" "automatic graphs".
 \end{restatable*}
 
 Then, in \Cref{sec:dichotomy-bounded}, we build on this result to prove the undecidability of
 some separability problems for "automatic relations" (\Cref{coro:krec-sep-undec,prop:kprod-undecidable}).
 
-todo:figure $3$-clique.
+\begin{marginfigure}[-10em]
+	\centering
+	\begin{tikzpicture}
+		\input{tikz/dichotomy/3-clique}
+	\end{tikzpicture}
+	\caption{
+		\AP\label{fig:dichotomy-3-clique}
+		The "$3$-clique" $\clique{3}$.
+	}
+\end{marginfigure}
+\begin{marginfigure}
+	\centering
+	\begin{tikzpicture}
+		\input{tikz/dichotomy/ex-3-colouring}
+	\end{tikzpicture}
+	\caption{
+		\AP\label{fig:dichotomy-ex-3-colouring}
+		A "$3$-colouring" of some "graph".
+	}
+\end{marginfigure}
 
 Observing that "$k$-regular colourability" can be rephrased as the existence of a 
 "regular homomorphism"---meaning, in this context, a "homomorphism" whose preimages are all
-"regular languages"---to the "$k$-clique", this motivates us to study the "homomorphism problem"
+"regular languages"---to the "$k$-clique",%
+\footnote{See \Cref{fig:dichotomy-3-clique,fig:dichotomy-ex-3-colouring}.}
+this motivates us to study the "homomorphism problem"
 and "regular homomorphism problem" for "automatic structures" in \Cref{sec:dichotomy-undecidability,sec:dichotomy-decidability}. Our main result is a dichotomy theorem for "automatic structures".\footnote{Note that while for "finite structures" the dichotomy theorems either separate
 "FOfin" from "L"---in the case of Larose and Tesson---, or "P" from "NP"---for Bulatov and Zhuk---, in our case the dichotomy is between "NL" and… undecidability!}
 
-\begin{restatable*}[Dichotomy Theorem for Automatic Structures]{theorem}{DichotomyThmDichotomyAutomatic}
+\begin{restatable*}[""Dichotomy Theorem for Automatic Structures""]{theorem}{DichotomyThmDichotomyAutomatic}
 	\!\footnote{The equivalence between (1) and (2) still holds
 	when the "homomorphism problem" takes as input ``higher-order automatic
 	structures'' as defined in \cite[last remark of \S~XII.3]{Blumensath2024MSOModelTheory},
@@ -243,7 +264,7 @@ and "regular homomorphism problem" for "automatic structures" in \Cref{sec:dicho
 		\itemAP[\intro*\itemDTFinDual.] $\?B$ has "finite duality";
 		\itemAP[\intro*\itemDTHomDec.] $\HomAutDec{\?B}$ is decidable;
 		\itemAP[\intro*\itemDTHomRegDec.] $\HomRegAutDec{\?B}$ is decidable;
-		\itemAP[\intro*\itemDTEqual.] $\HomAutDec{\?B} = \HomRegAutDec{\?B}$ "ie" for any "rational presentation" $\•A$ of a 
+		\itemAP[\intro*\itemDTEqual.] $\HomAutDec{\?B} = \HomRegAutDec{\?B}$ "ie" for any "automatic presentation" $\•A$ of a 
 		"$\sigma$-structure" $\?A$, there is a "homomorphism" from $\?A$ to $\?B$ "iff" 
 		there is a "regular homomorphism" from $\•A$ to $\?B$;
 		\itemAP[\intro*\itemDTFirstOrder.] $\HomAllClass{\?B}$ has "uniformly first-order definable homomorphisms".

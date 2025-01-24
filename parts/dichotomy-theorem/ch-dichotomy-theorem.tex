@@ -7,11 +7,12 @@
 		Part of the introduction also comes from \cite{BarceloFigueiraMorvan2023SeparatingAutomatic}.
 		\par{}Part of the dichotomy theorem---\Cref{sec:dichotomy-overview,sec:undecidability-hom,sec:hyperedge-consistency-finite,sec:hyperedge-consistency-automatic}---was proven during 
 		the internship of Antoine Cuvelier that I supervised in Summer 2024.
-		\par{}We thank Joanna Fijalkow for helpful discussions on constraint satisfaction problems.%
+		\par{}We thank Joanna Fijalkow for helpful discussions on constraint satisfaction problems,
+		and Edgar Baucher for pointing us to Mycielski's construction.
 	}%
-	We study the separation problem of "synchronous relations", "aka" "synchronous relations",
+	We study the separation problem of "automatic relations", "aka" "synchronous relations",
 	by "recognizable relations"---namely finite unions of Cartesian products of "regular languages".
-	We prove it to be computationally equivalent to the "finite regular colourability of rational graphs", that takes an "rational presentation" of a "graph" as input, and asks whether
+	We prove it to be computationally equivalent to the "finite regular colourability of automatic graphs", that takes an "automatic presentation" of a "graph" as input, and asks whether
 	it admits a "regular colouring"---meaning that for each colour, the set of words representing the elements having this colour is a "regular language"---with finitely many colours.
 
 	We first show that, if the number of colours is fixed to be any natural number $k \geq 2$, then
@@ -25,9 +26,9 @@
 	to be "regular@@hom", in the sense that every preimage of any element of the "target structure" $\?B$ must be a "regular language". In both cases, "structures" for which the problem is 
 	decidable are those with ``"finite duality"''. 
 	
-	Using this dichotomy theorem, we then prove that the original problem, 
-	namely the separation problem of "synchronous relations"
-	by "recognizable relations" is undecidable.
+	% Using this dichotomy theorem, we then prove that the original problem, 
+	% namely the separation problem of "synchronous relations"
+	% by "recognizable relations" is undecidable.
 \end{abstract}
 \clearpage
 \chaptertoc

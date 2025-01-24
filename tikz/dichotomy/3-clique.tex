@@ -1,0 +1,13 @@
+% ---
+% 3-clique
+% ---
+\node[vertex, draw=c0, fill=c0, fill opacity=.4] at (0,0) (k3-0) {};
+\node[vertex, above right=1em and 2em of k3-0, draw=c1, fill=c1, fill opacity=.4] (k3-1) {};
+\node[vertex, below right=1em and 2em of k3-0, draw=c2, fill=c2, fill opacity=.4] (k3-2) {};
+
+\draw[edge, bend right=15] (k3-0) to (k3-1);
+\draw[edge, bend right=15] (k3-0) to (k3-2);
+\draw[edge, bend right=15] (k3-1) to (k3-0);
+\draw[edge, bend right=15] (k3-1) to (k3-2);
+\draw[edge, bend right=15] (k3-2) to (k3-0);
+\draw[edge, bend right=15] (k3-2) to (k3-1);

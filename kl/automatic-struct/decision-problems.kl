@@ -4,7 +4,7 @@
  | First-order model checking of automatic structures
 
 \knowledge{notion, wrap=\DPfont}
- | finite regular colourability of rational graphs
+ | finite regular colourability of automatic graphs
  | finite regular colourability@problem
 
 \knowledge{notion, wrap=\DPfont}
@@ -36,9 +36,6 @@
 \knowledge{notion, wrap=\DPfont}
  | Connectivity in Finite Graphs
 
-\knowledge{notion, wrap=\DPfont}
- | Regular Unreachability of Turing Machine Configurations
-
 \knowledge{notion}
  | regularly unconnected
 
@@ -46,9 +43,9 @@
  | Connectivity in rational graphs
 
 \knowledge{notion, wrap=\DPfont}
- | regular unconnectivity in rational graphs
- | Regular unconnectivity in rational graphs
- | Regular Unconnectivity in Rational Graphs
+ | regular unconnectivity in automatic graphs
+ | Regular unconnectivity in automatic graphs
+ | Regular Unconnectivity in Automatic Graphs
 
 \knowledge{notion, wrap=\DPfont}
  | Restricted Membership for Deterministic Reversible Turing Machines

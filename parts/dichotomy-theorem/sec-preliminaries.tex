@@ -1,24 +1,24 @@
-\section{\AP\label{sec:dichotomy-preliminaries}%
-	Preliminaries}
+\section{Preliminaries}
+\AP\label{sec:dichotomy-preliminaries}
 
 
 \subsection{Notations}
 
 Let \AP$\intro*\Fin$ denote the class of all "finite $\sigma$-structures",
 \AP$\intro*\Aut$ the class of all "automatic $\sigma$-structures".
-We let \AP$\intro*\AutPres$ be the class of all "rational presentations of $\sigma$-structures",
+We let \AP$\intro*\AutPres$ be the class of all "automatic presentations of $\sigma$-structures",
 and \AP$\intro*\FinPres$ be the subclass of "presentations" of "finite $\sigma$-structures".
 
 We denote by \AP$\intro*\HomFinClass{\?B}$ and $\intro*\HomAllClass{\?B}$ the class
 of all finite (resp. all) "$\sigma$-structures" that admit a "homomorphism" to $\?B$.
 
-Given a "$\sigma$-structure" $\?B$, and a class $\classStruct$ of "rational presentations of $\sigma$-structures", we denote by \AP$\intro*\HomDec{\classStruct}{\?B}$ the class of all presentations $\•A \in \classStruct$ such that the "$\sigma$-structure" $\?A$
+Given a "$\sigma$-structure" $\?B$, and a class $\classStruct$ of "automatic presentations of $\sigma$-structures", we denote by \AP$\intro*\HomDec{\classStruct}{\?B}$ the class of all presentations $\•A \in \classStruct$ such that the "$\sigma$-structure" $\?A$
 that they "represent@@structure" admits a "homomorphism" to $\?B$.
 Similarly, we denote by \AP$\intro*\HomRegDec{\classStruct}{\?B}$ the class 
 associated to "regular homomorphisms".%
 \sidenote{Todo: set-theoretic bullshit. Not a set but it is if we fix an alphabet. Blabla.}
 
-While the existence of a "homomorphism" from some "rational presentation" of $\?A$ 
+While the existence of a "homomorphism" from some "automatic presentation" of $\?A$ 
 to a "finite $\sigma$-structure" $\?B$ only depends on $\?A$ and not the "presentation" itself,
 this is not true for "regular homomorphism".
 For a $\sigma$-structure $\?B$,
@@ -26,11 +26,11 @@ we use \AP$\intro*\HomFinDec{\?B}$, $\intro*\HomAutDec{\?B}$, $\intro*\HomRegFin
 and $\intro*\HomRegAutDec{\?B}$ as shorthands for $\HomDec{\FinPres}{\?B}$, $\HomDec{\AutPres}{\?B}$,
 $\HomRegDec{\FinPres}{\?B}$ and $\HomRegDec{\AutPres}{\?B}$, respectively.
 
-Note that any "homomorphism" from an "rational presentation" of a "finite structure"
+Note that any "homomorphism" from an "automatic presentation" of a "finite structure"
 to a "finite structure" is also "regular@@hom" and so $\HomFinDec{\?B} = \HomRegFinDec{\?B}$.\sidenote{Note also that membership in $\HomFinDec{-} = \HomRegFinDec{-}$ and in
 $\HomAutDec{-}$ only depends on the "structure represented"
-by the "rational presentation", and not on the "presentation" itself.
-This is not the case for $\HomRegAutDec{-}$. We use these definitions for two reasons: (1) for consistency with $\HomRegAutDec{-}$ and (2) for the associated decision problem to be defined unambiguously. Note moreover that in the case of "finite structures", the size of its representation, say using adjacency lists, and of its "rational presentation" are equal up to a TODO}
+by the "automatic presentation", and not on the "presentation" itself.
+This is not the case for $\HomRegAutDec{-}$. We use these definitions for two reasons: (1) for consistency with $\HomRegAutDec{-}$ and (2) for the associated decision problem to be defined unambiguously. Note moreover that in the case of "finite structures", the size of its representation, say using adjacency lists, and of its "automatic presentation" are equal up to a TODO}
 
 \subsection{Constructions on Structures}
 
@@ -78,10 +78,10 @@ It is then routine to check that the maps $f \mapsto F$ and $F \mapsto f$ define
 in the two previous paragraphs are mutually inverse bijections.
 \end{proof}
 
-\subsection{Constructions on rational presentations}
+\subsection{Constructions on automatic presentations}
 \label{sec:construction-automatic-presentations}
 
-Let $\•A$ and $\•B$ be "rational presentations" of some "$\sigma$-structures"
+Let $\•A$ and $\•B$ be "automatic presentations" of some "$\sigma$-structures"
 $\?A$ and $\?B$, over alphabets $\Sigma$ and $\Gamma$, respectively.
 We define \AP$\•A \intro*\prodpres \•B$ to be the "presentation@@auto"
 over the alphabet $(\Sigma \times \Gamma) \dcup \Sigma \times \{\pad\} \dcup \{\pad\} \times 
@@ -95,7 +95,7 @@ over the alphabet $(\Sigma \times \Gamma) \dcup \Sigma \times \{\pad\} \dcup \{\
 	\}
 \end{align*}
 for each "predicate" $\+R$ of arity $k$ in $\sigma$.
-It is an "rational presentation" of $\?A \prodstruct \?B$.
+It is an "automatic presentation" of $\?A \prodstruct \?B$.
 Indeed, given a "first-order formula" $\phi(x_1,\hdots,x_k)$
 over $\signatureSynchronous{\Sigma}$, describing $\relPres{\+R}{\•A}$,
 and a "first-order formula" $\psi(x_1,\hdots,x_k)$
@@ -110,7 +110,7 @@ works for $\domainPres{\•A\prodpres \•B}$.
 	\label{prop:homreg-prod-finite}
 	Let $\?A$, $\?B$ and $\?C$ be "automatic $\sigma$-structures", such that
 	$\?B$ and $\?C$ are finite.
-	Let $\•A$ (resp. $\•B$ and $\•B'$, resp. $\•C$ and $\•C'$) be an "rational presentation"
+	Let $\•A$ (resp. $\•B$ and $\•B'$, resp. $\•C$ and $\•C'$) be an "automatic presentation"
 	of $\?A$ (resp. $\?B$, resp. $\?C$).
 	Then $\•A \prodpres \•B \homregto \•C$ "iff" $\•A \prodpres \•B' \homregto \•C'$.
 \end{proposition}
@@ -154,7 +154,7 @@ works for $\domainPres{\•A\prodpres \•B}$.
 \end{proof}
 
 In other words, the existence of a "regular homomorphism" does not depend on the
-"rational presentation" of the \emph{finite} "structures" that are involved, but only
+"automatic presentation" of the \emph{finite} "structures" that are involved, but only
 on the "structure" they represent.
 As a consequence of \Cref{prop:homreg-prod-finite}, we write
 \(\•A \prodpres \?B \homregto \?C\) as a synonym for \(\•A \prodpres \•B \homregto \•C\).
@@ -162,7 +162,7 @@ As a consequence of \Cref{prop:homreg-prod-finite}, we write
 \begin{corollary}[Currying]
 	\label{coro:homreg-currying}
 	Let $\?A$, $\?B$ and $\?C$ be "automatic $\sigma$-structures",
-	and let $\•A$ be an "rational presentation" of $\?A$.
+	and let $\•A$ be an "automatic presentation" of $\?A$.
 	Then $\•A \prodpres \?B \homregto \?C$ "iff" $\•A \homregto \powstruct{\?C}{\?B}$.
 \end{corollary}
 

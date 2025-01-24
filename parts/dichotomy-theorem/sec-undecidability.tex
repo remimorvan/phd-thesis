@@ -80,7 +80,7 @@ and \cite[Theorem 4.4]{BarceloFigueiraMorvan2023SeparatingAutomatic}, that lead 
 	arbitrary "$\sigma$-structure" $\?A$, for any $a\in A$,
 	there is at most one $b \in B$ "st" $\langle \?A, a \rangle \models \phi_b(x)$, and moreover $\?A \homto \?B$
 	"iff" for each $a\in A$, there is exactly one $b(a) \in B$ "st" $\langle \?A, a \rangle \models \phi_{b(a)}(x)$, and $a \mapsto b(a)$ is a "homomorphism".
-	Now, when the right-hand side holds, given a "rational structure" $\+A$,
+	Now, when the right-hand side holds, given a "automatic structure" $\+A$,
 	for each $b\in \?B$, we let $\tilde\phi_b(x)$ be the "first-order formula" over $\signatureSynchronous{\Sigma}$ obtained from $\phi_b(x)$
 	by substituting $\+R(x_1,\hdots,x_k)$ for the "first-order formula"
 	over $\signatureSynchronous{\Sigma}$ describing $\+R_{(k)}$ in $\+A$.
@@ -137,7 +137,7 @@ of any assumption on $\?B$.
 	\Cref{thm:k-reg-col-undec}: instead of having "$k$-coloured automaton", we define
 	``$\?B$-automaton'', that admit a partition $\langle C_{b} \rangle_{b \in B}$.
 	The semantics of such an automaton is a partial function $f\colon \Sigma^* \to B$. 
-	Given a "rational structure" $\+A$, we can then effectively test if $f$ is defined on $\domainPres{\+A}$, and if $f$ defines a "homomorphism" from $\?A$ to $\?B$---see
+	Given a "automatic structure" $\+A$, we can then effectively test if $f$ is defined on $\domainPres{\+A}$, and if $f$ defines a "homomorphism" from $\?A$ to $\?B$---see
 	the proof of \Cref{thm:k-reg-col-undec}. If so, $\+A \homregto \?B$. Dually, any "regular homomorphism" $\+A \homregto \?B$ can be described by such a $\?B$-automaton.
 	Therefore, $\HomRegAutDec{\?B}$ is "RE".
 \end{proof}
@@ -157,9 +157,9 @@ have finite duality by \textcite[Theorem 3.2]{LaroseTesson2009UniversalAlgebraCS
 However, proving the undecidability of the problem that is reduced
 to $\HomRegFinDec{\?B}$ is not entirely trivial and requires some work.
 \begin{itemize}
-	\item For $\HomFinDec{\?B}$, we reduce the complement of "Connectivity in rational graphs",
+	\item For $\HomFinDec{\?B}$, we reduce the complement of "Connectivity in automatic graphs",
 		providing a "coRE"-lowerbound.
-	\item For $\HomRegFinDec{\?B}$, we reduce "regular unconnectivity in rational graphs",
+	\item For $\HomRegFinDec{\?B}$, we reduce "regular unconnectivity in automatic graphs",
 		which in turn is reduced from  TODO:update.
 \end{itemize}
 
@@ -216,8 +216,8 @@ Moreover, being "linked" is transitive, but not necessarily reflexive.
 Equipped with the previous proposition, we can now show the undecidability 
 of $\HomAutDec{\?B}$ by reduction from the following problem.
 
-\decisionproblem{""Connectivity in rational graphs""}{
-	A "rational presentation of a directed graph" $\•G$,
+\decisionproblem{""Connectivity in automatic graphs""}{
+	A "automatic presentation of a directed graph" $\•G$,
 	and two elements $s,t \in \Sigma^*$.
 }{
 	Are $\•G(s)$ and $\•G(t)$ "connected" in $\?G$?
@@ -225,7 +225,7 @@ of $\HomAutDec{\?B}$ by reduction from the following problem.
 \begin{property}
 	\AP\label{prop:undecidability-connectivity}
 	For any "signature" $\sigma$ containing at least one "predicate" of
-	arity at least 2, "Connectivity in rational graphs" is "RE"-complete.
+	arity at least 2, "Connectivity in automatic graphs" is "RE"-complete.
 \end{property}
 
 \begin{proof}
@@ -238,7 +238,7 @@ of $\HomAutDec{\?B}$ by reduction from the following problem.
 	\AP\label{lem:reduction-hom}
 	Assume that $\sigma$ contains at least one "predicate" of arity at least 2.
 	If $\?B$ does not have "finite duality", then there is a "first-order reduction" 
-	from the complement of "Connectivity in rational graphs" to $\HomAutDec{\marked{\?B}}$.
+	from the complement of "Connectivity in automatic graphs" to $\HomAutDec{\marked{\?B}}$.
 \end{lemma}
 
 \begin{marginfigure}
@@ -265,8 +265,8 @@ of $\HomAutDec{\?B}$ by reduction from the following problem.
 \end{marginfigure}
 
 \begin{proof}
-	Given an instance $\langle \•G, s, t \rangle$ of "Connectivity in rational graphs",
-	we first define the $\sigma$-structure $\?A$ with "rational presentation" $\•A$
+	Given an instance $\langle \•G, s, t \rangle$ of "Connectivity in automatic graphs",
+	we first define the $\sigma$-structure $\?A$ with "automatic presentation" $\•A$
 	obtained by replacing every edge of $\•G$ by a "$1$-link".
 	Formally, $\?A$ has the same domain as $\?G$, and for any
 	"predicate" $\+R \in \sigma$ of arity $k$,
@@ -293,7 +293,7 @@ of $\HomAutDec{\?B}$ by reduction from the following problem.
 
 	We then consider the "automatic $\sigma$-structure" $\?A\prodstruct \iterstruct{\?B}{2}$,%
 	\footnote{See \Cref{sec:construction-automatic-presentations} to have an explicit construction 
-	of an "rational presentation" for this structure.}
+	of an "automatic presentation" for this structure.}
 	and extend it to a
 	"$\extendedSignature{\sigma}{\?B}$-structure" \AP\(\intro*\ConstrUndecHom{(\?A\prodstruct \iterstruct{\?B}{2})}\)
 	in which for each $b_0 \in B$,
@@ -305,7 +305,7 @@ of $\HomAutDec{\?B}$ by reduction from the following problem.
 			a = \•A(t) \text{ and } b' = b_0
 		\;\big\}.
 	\]
-	To construct an "rational presentation" for this structure, see \Cref{sec:construction-automatic-presentations}.
+	To construct an "automatic presentation" for this structure, see \Cref{sec:construction-automatic-presentations}.
 	\begin{claim}
 		\AP\label{claim:reduction-hom-direct}
 		If $\ConstrUndecHom{(\?A\prodstruct \iterstruct{\?B}{2})} \homto \marked{\?B}$,
@@ -393,7 +393,7 @@ of $\HomAutDec{\?B}$ by reduction from the following problem.
 	Lastly, note that it is a "first-order reduction" because TODO.
 \end{proof}
 
-By \Cref{prop:undecidability-connectivity}, the complement of "Connectivity in rational graphs"
+By \Cref{prop:undecidability-connectivity}, the complement of "Connectivity in automatic graphs"
 is "coRE"-complete, and assuming that $\sigma$ contains at least one "predicate" of arity 2,
 it reduces by \Cref{lem:reduction-hom} to any problem $\HomAutDec{\marked{\?B}}$ when $\?B$ has "finite duality". In turns, by \Cref{prop:idempotent-core-preserves-csp-complexity}, it reduces to
 $\HomAutDec{\?B}$, which is thus "coRE"-hard. It remains to deal with "signatures" consisting of only
@@ -478,13 +478,13 @@ unary "predicates".\sidenote{It is not clear to us whether this case was properl
 	The conclusion follows from \Cref{prop:idempotent-core-preserves-csp-complexity,prop:undecidability-connectivity,lem:reduction-hom}.
 \end{proof}
 
-\subsection{\AP\label{sec:undecidability-homreg}%
-	Undecidability of \,$\HomRegAutDec{\?B}$}
+\subsection{Undecidability of \,$\HomRegAutDec{\?B}$}
+\AP\label{sec:undecidability-homreg}
 
 The reduction to show undecidability of is nearly identical to \Cref{lem:reduction-hom},
 but the input problem differs quite a lot.
-\decisionproblem{""Regular Unconnectivity in Rational Graphs""}{
-	An "rational presentation" $\•G$ of a "directed graph" $\?G$,
+\decisionproblem{""Regular Unconnectivity in Automatic Graphs""}{
+	An "automatic presentation" $\•G$ of a "directed graph" $\?G$,
 	and two elements $s,t \in \Sigma^*$.
 }{
 	Is there a regular language $L \subseteq \Sigma^*$ 
@@ -501,13 +501,13 @@ and will later settle its complexity.
 	\AP\label{lem:reduction-hom-reg}
 	Assume that $\sigma$ contains at least one "predicate" of arity at least 2.
 	If $\?B$ does not have "finite duality", then there is a "first-order reduction"
-	from "regular unconnectivity in rational graphs"
+	from "regular unconnectivity in automatic graphs"
 	to $\HomRegAutDec{\marked{\?B}}$.
 \end{lemma}
 
 \begin{proof}
-	Given an instance $\langle \•G, s, t \rangle$ of "regular unconnectivity in rational graphs",
-	we first define the $\sigma$-structure $\?A$ with "rational presentation" $\•A$
+	Given an instance $\langle \•G, s, t \rangle$ of "regular unconnectivity in automatic graphs",
+	we first define the $\sigma$-structure $\?A$ with "automatic presentation" $\•A$
 	obtained by replacing every edge by a "$1$-link", as in \Cref{lem:reduction-hom}.
 
 	\begin{claim}
@@ -521,7 +521,7 @@ and will later settle its complexity.
 	\end{claim}
 	The proof is similar to \Cref{claim:reduction-homreg-from-graph-to-link}.
 	Then again, we reduce the instance $\langle \•G, s, t \rangle$
-	to an "rational presentation" of \(\ConstrUndecHom{(\?A\prodstruct \iterstruct{\?B}{2})}\),
+	to an "automatic presentation" of \(\ConstrUndecHom{(\?A\prodstruct \iterstruct{\?B}{2})}\),
 	as in \Cref{lem:reduction-hom}.
 	\begin{claim}
 		\AP\label{claim:reduction-homreg-direct}
@@ -584,7 +584,7 @@ We then prove a lower bound on the complexity of "Regular Unreachability of Turi
 
 \begin{lemma}
 	\AP\label{lemma:regular-unconnectivity-lowerbound}
-	"Regular unconnectivity in rational graphs" is "RE"-hard.
+	"Regular unconnectivity in automatic graphs" is "RE"-hard.
 \end{lemma}
 
 \begin{proof}
@@ -605,11 +605,11 @@ We then prove a lower bound on the complexity of "Regular Unreachability of Turi
 	% }
 	% We will prove that:
 	% \begin{enumerate}
-	% 	\item there is a reduction from "Restricted Membership for Deterministic Reversible Turing Machines" to "Regular Unconnectivity in rational graphs", and 
+	% 	\item there is a reduction from "Restricted Membership for Deterministic Reversible Turing Machines" to "Regular Unconnectivity in automatic graphs", and 
 	% 	\item the former problem is "RE"-hard.
 	% \end{enumerate}
 
-	% \proofcase{Reduction from "Restricted Membership for Deterministic Reversible Turing Machines" to "Regular Unconnectivity in rational graphs".}
+	% \proofcase{Reduction from "Restricted Membership for Deterministic Reversible Turing Machines" to "Regular Unconnectivity in automatic graphs".}
 	% We map an instance
 	% $\langle \+M,\, u_\bot,\, u_\top \rangle$ to $\langle \+M',\, q_0\cdot u_\top,\, q_0\cdot 
 	% u_\bot \rangle$ where $\+M'$ is defined in such a way that for any "configuration transition"
@@ -655,7 +655,7 @@ We then prove a lower bound on the complexity of "Regular Unreachability of Turi
 	% 	If $q_0\cdot u_\top$ and $q_0\cdot u_\bot$ are "regularly unconnected" in the "configuration graph" of $\+M'$, then $u_\top \in \semTM{\+M}$.
 	% \end{claim}
 	
-	% Indeed, let $L' \subseteq \Gamma^*$ be a "regular language" "st" $q_0\cdot u_\top \in L'$ $q_0\cdot u_\bot \not\in L'$, "st" $L'$ is a union of "connected components" of the "configuration graph" of $\+M$.\footnote{Here, $\Gamma$ denotes the alphabet used in the "rational presentation" of the "configuration graph" of $\+M'$. Namely, $\Gamma = \Sigma \dcup \statesTM{\+M} \dcup (\statesTM{\+M'} \smallsetminus \statesTM{\+M})$.} 
+	% Indeed, let $L' \subseteq \Gamma^*$ be a "regular language" "st" $q_0\cdot u_\top \in L'$ $q_0\cdot u_\bot \not\in L'$, "st" $L'$ is a union of "connected components" of the "configuration graph" of $\+M$.\footnote{Here, $\Gamma$ denotes the alphabet used in the "automatic presentation" of the "configuration graph" of $\+M'$. Namely, $\Gamma = \Sigma \dcup \statesTM{\+M} \dcup (\statesTM{\+M'} \smallsetminus \statesTM{\+M})$.} 
 	% Then let \[L
 	% 	\defeq \rightquotient{(L' \cap \Sigma^* \statesTM{\+M} \Sigma^*)}{(\triangleright^* \triangleleft^*)}.
 	% \]
@@ -685,106 +685,14 @@ We then prove a lower bound on the complexity of "Regular Unreachability of Turi
 	Recall that $\HomAutDec{\?B} = \HomAutDec{\core{\?B}}$, so we assume "wlog"
 	that $\?B$ is a "core".
 	By \Cref{lemma:regular-unconnectivity-lowerbound},
-	"regular unconnectivity in rational graphs" is "RE"-hard.
+	"regular unconnectivity in automatic graphs" is "RE"-hard.
 	Then by \Cref{prop:finite-duality-unary-predicates}, since $\?B$ does not have "finite
 	duality", $\sigma$ does not consist only of unary "predicates",
 	and hence by \Cref{lem:reduction-hom-reg}, we get
-	a reduction from "regular unconnectivity in rational graphs" to
+	a reduction from "regular unconnectivity in automatic graphs" to
 	$\HomRegAutDec{\marked{\?B}}$, which in turns
 	reduces to $\HomRegAutDec{\?B}$ by \Cref{prop:idempotent-core-preserves-csp-complexity}
 	since $\?B$ was assumed to be a "core".
 	Indeed, "first-order reductions" preserves "regularity@@hom", by 
 	todo:addref-synchronous-iff-first-order.
 \end{proof}
-
-
-% \subsection{\AP\label{sec:undecidability-finite-colourability}Undecidability of Finite Regular Colourability}
-
-% In this subsection, we capitalize on \Cref{sec:undecidability-hom,sec:undecidability-homreg} to 
-% prove that both the "finite regular colourability" and the "finite colourability problems@finite colourability@problem" are undecidable.
-
-% TODO:NOT CLEAR IF TRUE.
-
-% \begin{theorem}
-% 	\AP\label{thm:finite-regular-colourability-undecidable}
-% 	"Finite regular colourability of rational graphs" is "RE"-complete.
-% \end{theorem}
-
-% The upper bound is trivial: given a "rational graph" $\+G$,
-% we guess some $k\in \N$ and check if $\+G \in \HomRegAutDec{\clique{k}}$, which is "RE"
-% by \Cref{prop:dichotomy-general-upper-bounds}.
-
-% We define \AP$\intro*\omegaClique$ to be the "disjoint union" $\bigoplus_{k\in\N} \clique{2^k}$ of all finite "cliques". Note that it is "homomorphically equivalent" to $\bigoplus_{k\in\N} \clique{k}$.
-% Moreover, it admits a simple "rational presentation" \AP$\intro*\omegaCliquePres$: take the binary alphabet $\Sigma \defeq \{0,1\}$ and let%
-% \footnote{In this presentation, words of length $k$ are used to encode $\clique{2^k}$.}
-% \begin{align*}
-% 	\domainPres{\omegaCliquePres} & \defeq \Sigma^*, \\ 
-% 	\relPres{\+E}{\omegaCliquePres} & \defeq \{\tup{u,v} \in \Sigma^* \times \Sigma^* \mid |u| = |v| \text{ and }
-% 	u \neq v\}.
-% \end{align*}
-
-% While there is some "graph" $\+G$ does not admit a "homomorphism" to $\omegaClique$, then it is not "finitely colourable", the converse implication does not hold---"eg" $\omegaClique$ itself is not "finitely colourable". However, the equivalence holds for a substantially large class of graphs.
-
-% \begin{property}
-% 	\AP\label{prop:finite-regular-colourability-as-homreg-pb}
-% 	Let $\?G$ be an arbitrary "connected" "graph". $\?G \homto \omegaClique$ "iff" $\?G$ is "finitely colourable".	
-% 	Similarly, let $\•G$ be a "connected" "rational graph". $\•G \homregto \omegaCliquePres$ "iff" $\?G$ is "finitely regularly colourable".
-% \end{property}
-
-% \begin{proof}
-% 	A "homomorphism" must send pairs of "connected" vertices to pairs of "connected" vertices.
-% \end{proof}
-
-% \begin{proposition}
-% 	\AP\label{prop:finite-colourability-of-connected-graphs}
-% 	The "finite regular colourability problem" and its restriction to "connected" "rational graphs"
-% 	are Turing-equivalent.
-% \end{proposition}
-
-% \begin{proof}
-% 	The reduction from the restricted to the general problem is straightforward.
-% 	For the converse one, we add a new element $*$ to the "structure" $\+A$,\footnote{In particular, we extend the alphabet of the "presentation@@rational".} and put an edge
-% 	from $*$ to any element $u$ of the original "structure". 
-% 	Clearly, the original structure is "finitely regularly colourable" "iff" the new one is---one direction is trivial, for the other one it suffices to assign to $*$ a new colour.
-% \end{proof}
-
-% We can now prove the undecidability of "Finite regular colourability of rational graphs".
-
-% \begin{proof}[Proof of \Cref{thm:finite-regular-colourability-undecidable}.]
-% 	Similarly to \Cref{coro:lowerbound-homreg},
-% 	to prove the undecidability of "finite regular colourability@@problem"
-% 	"via" a sequence of reductions.\footnote{However, we need to make some adaptations.}
-% 	Given a problem $P$ on "structures", we denote by \AP$\intro*\restrConnected{P}$
-% 	its restriction to "connected structures".
-% 	we prove the following reductions:
-% 	\begin{enumerate}
-% 		\itemAP\label{item:finite-regular-colourability-undecidable-link}%
-% 			from "regular unconnectivity in rational graphs"
-% 			to $\restrConnected{\HomRegAutDec{\marked{\omegaCliquePres}}}$,
-% 		\itemAP\label{item:finite-regular-colourability-undecidable-icore}%
-% 			from $\restrConnected{\HomRegAutDec{\marked{\omegaCliquePres}}}$
-% 			to $\restrConnected{\HomRegAutDec{\omegaCliquePres}}$,
-% 		\itemAP\label{item:finite-regular-colourability-undecidable-homcolour}%
-% 			from $\restrConnected{\HomRegAutDec{\omegaCliquePres}}$ to 
-% 			the restriction of "finite regular colourability@@problem" to "connected graphs",
-% 		\itemAP\label{item:finite-regular-colourability-undecidable-restr}%
-% 			from the restriction of "finite regular colourability@@problem" to "connected graphs"
-% 			to the general "finite regular colourability problem".
-% 	\end{enumerate}
-% 	Item \eqref{item:finite-regular-colourability-undecidable-restr} is
-% 	trivial---it is the easy implication of
-% 	\Cref{prop:finite-colourability-of-connected-graphs}---, and
-% 	\eqref{item:finite-regular-colourability-undecidable-homcolour} 
-% 	follows from \Cref{prop:finite-regular-colourability-as-homreg-pb}.
-
-% 	\proofcase{Reduction \eqref{item:finite-regular-colourability-undecidable-icore}
-% 	from $\restrConnected{\HomRegAutDec{\marked{\omegaCliquePres}}}$
-% 	to $\restrConnected{\HomRegAutDec{\omegaCliquePres}}$.}
-% 	TODO.
-	
-% 	\proofcase{Reduction \eqref{item:finite-regular-colourability-undecidable-link}
-% 	from the restriction of "regular unconnectivity in rational graphs"
-% 	to "connected graphs" to 
-% 	$\restrConnected{\HomRegAutDec{\marked{\omegaCliquePres}}}$.}
-% 	TODO.
-% \end{proof}

@@ -1,0 +1,33 @@
+% P1
+\node[vertex] at (0,0) (0-0) {};
+\node[vertex, right=of 0-0] (0-1) {};
+
+\draw[edge,-] (0-0) to (0-1);
+
+% M(P1)
+\begin{scope}[transform canvas={xshift = 9em}]
+    \foreach \a/\i in {0/0,72/1,144/2,216/3,288/4}
+		\node[vertex] at (\a:2em) (1-\i) {};
+	\foreach \x/\y in {1/1} {
+		\draw[edge,-] (\x-0) to (\y-1);
+		\draw[edge,-] (\x-1) to (\y-2);
+		\draw[edge,-] (\x-2) to (\y-3);
+		\draw[edge,-] (\x-3) to (\y-4);
+		\draw[edge,-] (\x-4) to (\y-0);
+	}
+\end{scope}
+
+% M(M(P1))
+\begin{scope}[transform canvas={xshift = 18em}]
+    \foreach \a/\i in {0/0,72/1,144/2,216/3,288/4}
+		\node[vertex] at (\a:3em) (2-\i) {};
+	\foreach \a/\i in {324/0,36/1,108/2,170/3,252/4}
+		\node[vertex] at (\a:1.5em) (2b-\i) {};
+	\foreach \x/\y in {2/2,2/2b} {
+		\draw[edge,-] (\x-0) to (\y-1);
+		\draw[edge,-] (\x-1) to (\y-2);
+		\draw[edge,-] (\x-2) to (\y-3);
+		\draw[edge,-] (\x-3) to (\y-4);
+		\draw[edge,-] (\x-4) to (\y-0);
+	}
+\end{scope}
