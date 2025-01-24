@@ -23,13 +23,13 @@
 }
 
 % M(M(P1))
-\node[vertex, draw=c3, fill=c3] at (7.5,0) (2center) {};
+\node[vertex, draw=c3, fill=c3] at (7,0) (2center) {};
 \foreach \copy in {2,4} {
-	\node[vertex, draw=c2, fill=c2] at ($(7.5,0)+(0:\copy em)$) (2-\copy-0) {};
+	\node[vertex, draw=c2, fill=c2] at ($(7,0)+(0:\copy em)$) (2-\copy-0) {};
 	\foreach \a/\i in {72/1,216/3}
-		\node[vertex, draw=c0, fill=c0] at ($(7.5,0)+(\a:\copy em)$) (2-\copy-\i) {};
+		\node[vertex, draw=c0, fill=c0] at ($(7,0)+(\a:\copy em)$) (2-\copy-\i) {};
 	\foreach \a/\i in {144/2,288/4}
-		\node[vertex, draw=c1, fill=c1] at ($(7.5,0)+(\a:\copy em)$) (2-\copy-\i) {};
+		\node[vertex, draw=c1, fill=c1] at ($(7,0)+(\a:\copy em)$) (2-\copy-\i) {};
 }
 % \foreach \a/\i in {0/0,72/1,144/2,216/3,288/4}
 % 	\node[vertex] at ($(7.5,0)+(\a:4em)$) (2-\i) {};
