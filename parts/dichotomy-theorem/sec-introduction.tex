@@ -6,7 +6,7 @@
 
 Classes of relations on words\footnote{In this context, ``relations on words''
 are often called ``transductions''.} have always been a central topic in language theory
-\cite{ElgotMezi1965RelationsGeneralizedAutomata,Nivat1968TransductionChomsky,Berstel1979Transductions,FrougnySakarovitch1993SynchronizedAutomaticRelations,Choffrut2006Survey}. 
+\cite{ElgotMezi1965RelationsGeneralizedAutomata,Nivat1968TransductionChomsky,Berstel1979Transductions,FrougnySakarovitch1993SynchronizedRationalRelations,Choffrut2006Survey}. 
 More recently, their study has been motivated by database theory and verification,
 where they are used to build expressive languages. For instance, classes of relations of this kind are relevant for querying strings over relational 
 databases \cite{BenediktLibkinSchwentickSegoufin2003DefinableRelations}, comparing paths in graph databases \cite{BarceloLibkinLinWood2012ExpressiveLanguages}, or defining  
@@ -18,11 +18,12 @@ The most studied such classes include "recognizable@@rel", "automatic@@rel" "aka
 % class of regular languages when restricted to unary relations.
 
 Prior work has focused on the ""$\REC$-definability problem"", 
-which takes as input an $n$-ary "automatic relation"%
+which takes as input an $n$-ary "rational relation"%
 \footnote{
-	Recall that "automatic relations" are those definable by multi-head automata,
+	Recall that "rational relations" are those definable by multi-head automata,
 	with heads possibly moving asynchronously;
-	"synchronous relations" are "automatic relations" that are accepted by multi-head automata
+	"automatic relations", "aka" "synchronous relations",
+	are those that are accepted by multi-head automata
 	whose heads are forced to move synchronously; and 
 	"recognizable relations" correspond to finite unions of products of regular languages---or, equivalently, to languages recognized via finite monoids, by Mezei theorem.
 	By definition, all of these classes coincide with the 
@@ -31,32 +32,32 @@ which takes as input an $n$-ary "automatic relation"%
 $\+R$ and asks whether it is equivalent to a "recognizable relation"
 $\bigcup_i L_{i,1} \times \cdots \times L_{i,n}$, where each $L_{i,j}$ is a "regular language". 
 Intuitively, the problem asks whether the different components of  
-the "automatic relation" $\+R$ are almost independent of one another.
+the "rational relation" $\+R$ are almost independent of one another.
 The study of "$\REC$-definability"
 is relevant since relations enjoying this property are often amenable to some analysis including,
 "eg", abstract interpretations in program verification, variable elimination in constraint logic 
 programming, and query processing over constraint databases---see \cite[Introduction]{BarceloHongLeLinNiskanen2019MonadicDecomposability} for a more thorough discussion on this topic.
 
-In general, "$\REC$-definability" of "automatic relations" is undecidable, but it becomes decidable 
+In general, "$\REC$-definability" of "rational relations" is undecidable, but it becomes decidable 
 for two important subclasses: 
-deterministic "automatic relations" and "synchronous relations". 
-For deterministic "automatic relations",  "$\REC$-definability" has been shown to be decidable in 
+deterministic "rational relations" and "automatic relations". 
+For deterministic "rational relations",  "$\REC$-definability" has been shown to be decidable in 
 double-exponential time for binary relations
 by Valiant \cite{Valiant1975RegularityDeterministicPushdown}---improving Stearns's
 triple-exponential bound \cite{Stearns1967RegularityPushdown}.
 The decidability result was later extended to relations of arbitrary arity by Carton, Choffrut and 
 Grigorieff \cite[Theorem 3.7]{CartonChoffrutGrigorieff2006DecisionProblems}.
-For "synchronous relations", the decidability of "$\REC$-definability"
+For "automatic relations", the decidability of "$\REC$-definability"
 can be obtained by a  simple reduction to the problem of checking whether a finite automaton 
 recognizes an infinite language \cite{LodingSpinrath2019DecisionProblems}---which is decidable via 
 a standard reachability argument. 
 The precise complexity of the problem, however, was only recently pinned down.
 By applying techniques based on Ramsey Theorem over infinite graphs, it was shown that 
-"$\REC$-definability" of "synchronous relations" is 
+"$\REC$-definability" of "automatic relations" is 
 "PSpace"-complete when relations are specified by non-deterministic automata
 \cite[Theorem 1]{BarceloHongLeLinNiskanen2019MonadicDecomposability} \cite[Corollary 2.9]{BergstrasserGanardiLinZetzsche2022RamseyQuantifiers}.
 
-\AP On the other hand, much less is known about the ""$\RAT$/$\REC$-separability problem"", which takes two $n$-ary "automatic relations" 
+\AP On the other hand, much less is known about the ""$\RAT$/$\REC$-separability problem"", which takes two $n$-ary "rational relations" 
 $\+R,\+R' \subseteq \Sigma^* \times \Sigma^*$ and checks whether there is a "recognizable relation" 
 $S = \bigcup_i L_{i,1} \times \cdots \times L_{i,n}$
 with $\+R \subseteq \+S$ and $\+R' \cap \+S = \emptyset$. In other words, this problem asks whether we can \emph{over approximate} $\+R$ with a recognizable 
@@ -65,11 +66,11 @@ in formal language theory where they have gained a lot of attention over the las
 
 As for definability, the "$\RAT$/$\REC$-separability problem"
 is in general undecidable, so in this chapter we focus on its restriction to
-"synchronous relations".
+"automatic relations".
 \decisionproblem{
 	"$\AUT$/$\REC$-separability problem".
 }{
-	Two "synchronous relations" $\+R$ and $\+R'$.
+	Two "automatic relations" $\+R$ and $\+R'$.
 }{
 	Does there exist a "recognizable relation" $\+S$ "st" $\+R \subseteq \+S$
 	and $\+R' \cap \+S = \emptyset$?
@@ -82,8 +83,8 @@ and to this day it is unknown whether it is decidable.
 \subsection{Constraint Satisfaction Problems}
 
 Our work on the "$\AUT$/$\REC$-separability problem" will eventually lead up to
-the study of "homomorphisms problem" where the "target structure" is fixed.
-These problems are the central topic of "constraint satisfaction problems" ("CSPs").%
+the study of "homomorphism problems" where the "target structure" is fixed.
+These problems are the central topic in the domain of "constraint satisfaction problems" ("CSPs").%
 \footnote{A typical example of such a problem is to work on the "graph signature", and to fix the
 target structure to be the "$k$-clique" ($k \in \Np$): it exactly corresponds to
 the "$k$-colourability problem".}
@@ -92,16 +93,17 @@ in "NP". The precise complexity of the problem, however, depends on the "structu
 and is tightly connected to the algebraic properties of the algebra associated to the
 "structure".
 
-A central conjecture of the domain, stated by Feder and Vardi,
-known as the ``dichotomy conjecture'', stated that any "CSP"---whose "target structure" is 
-finite---is either in "P" or "NP"-complete
+A central question in the domain, stated by Feder and Vardi,
+and known as the ``dichotomy conjecture'', states that any "CSP" whose "target structure" is 
+finite is either in "P" or "NP"-complete
 \cite[\S~2, ``Dichotomy question'']{FederVardi1998ComputationalStructure},%
 \footnote{In other words, there is no "NP"-intermediate 
 problem amongst these problems.} and the characterization of "structures" for which the problem
 was tractable is precisely formulated in algebraic terms.%
-\footnote{Tractable structures are those whose algebra admit a
-``weak near-unanimity operation'', see "eg" \cite[\S~1, p.~3]{Zhuk2020CSPDichotomy}.}
-This conjecture extended a result of Schaefer, who proved that "CSPs" over the Boolean domain\footnote{Meaning that the "target structure" can have only two elements---but recall that $\sigma$ can be arbitrary complex.} was either "P" or "NP"-complete, proven two decades earlier.
+\footnote{Tractable structures are those whose algebra admits a
+``weak near-unanimity operation''---see "eg" \cite[\S~1, p.~3]{Zhuk2020CSPDichotomy}.}
+This conjecture extended a result of Schaefer, who proved two decades earlier
+that "CSPs" over the Boolean domain\footnote{Meaning that the "target structure" can have only two elements---but recall that $\sigma$ can be arbitrary complex.} was either "P" or "NP"-complete.
 Twenty-four years later, this conjecture was proven independently by
 Bulatov \cite[Theorem 1]{Bulatov2017DichotomyCSPs}
 and Zhuk \cite[Theorem 1.4]{Zhuk2020CSPDichotomy}.
