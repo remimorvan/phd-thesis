@@ -146,24 +146,24 @@ triangle-free graphs with arbitrary large "chromatic number".
 	There exists a "triangle-free@@dir" "automatic graph" that is not "finitely colourable".
 \end{proposition}
 
-Mycielski's construction is an operator $\Myc$ on undirected graphs,
-introduced in \cite{Mycielski55Coloriage}, with the property that if $G$ is \AP""triangle-free@@undir""%
+"Mycielski's construction" is an operator $\Myc$ on undirected graphs,
+introduced in \cite{Mycielski55Coloriage}, with the property that if $\?G$ is \AP""triangle-free@@undir""%
 \footnote{Unsurprisingly, for undirected graphs, ``"triangle-free@@undir"'' means that there are no
 three vertices that are pairwise adjacent.},
-then so is $\Myc(G)$, and moreover
-the "chromatic number" of $\Myc(G)$ is exactly one more than the "chromatic number" of $G$.
+then so is $\Myc(\?G)$, and moreover
+the "chromatic number" of $\Myc(\?G)$ is exactly one more than the "chromatic number" of $G$.
 Iterating this operator on a "triangle-free graph@@undir" shows that there exists
 "triangle-free graphs@@undir" with arbitrarily high "chromatic number".
 To prove \Cref{prop:automatic-graph-not-fin-colourable}, we will build
 an "automatic graph" whose underlying undirected graph is
-$\bigdcup_{n\in\N} \Myc^n(H)$ where $H$ is the "graph" on a single vertex with no edge.
-Note that usually Mycielski's construction is not iterated on $H$ but on "the"
+$\bigdcup_{n\in\N} \Myc^n(\?0)$ where $\?0$ is the "graph" on a single vertex with no edge.
+Note that usually "Mycielski's construction" is not iterated on $\?0$ but on the undirected
 path of size 1: we made this choice to make the proof of "automaticity" of the graph
 easier.
 
 \begin{definition}
-	Given an undirected graph $G = \langle V, \+E \rangle$, let
-	\AP$\intro*\Myc(G)$ be the undirected graph whose set of vertices is
+	Given an undirected graph $\?G = \langle V, \+E \rangle$, its \AP""Mycielskian"",
+	denoted by \AP$\intro*\Myc(\?G)$ is the undirected graph whose set of vertices is
 	$V\times\{0,1\} \dcup \{\bullet\}$, with the following edges:
 	\begin{itemize}
 		\item $\{\langle u, 0 \rangle,\, \langle v, 0 \rangle\}$
@@ -176,17 +176,17 @@ easier.
 \end{definition}
 
 Note that $u \mapsto \langle u,0\rangle$ always defines an embedding of
-$G$ into $\Myc(G)$.
+$\?G$ into $\Myc(\?G)$.
 
 \begin{property}
 	\label{prop:triangle-free}
-	If $G$ is "triangle-free@@undir", then so is $\Myc(G)$.
+	If $\?G$ is "triangle-free@@undir", then so is $\Myc(\?G)$.
 \end{property}
 
 \begin{proof}
 	All neighbours of $\bullet$ are of the form $\langle -, 1\rangle$,
 	and two vertices of the form $\langle -, 1\rangle$ are never adjacent.
-	Hence, any potential triangle in $\Myc$ must be of the form
+	Hence, any potential triangle in $\Myc(\?G)$ must be of the form
 	\[
 	\{
 		\langle u, 0 \rangle,\,
@@ -200,7 +200,7 @@ $G$ into $\Myc(G)$.
 		\langle w, 0 \rangle
 	\}.
 	\]
-	In both cases, this would imply that $\{u,v,w\}$ is a triangle in $G$:
+	In both cases, this would imply that $\{u,v,w\}$ is a triangle in $\?G$:
 	contradiction.
 \end{proof}
 
@@ -212,7 +212,7 @@ $G$ into $\Myc(G)$.
 	\caption{
 		\AP\label{fig:Mycielski}
 		The undirected path of length 1,
-		and two iterations of Mycielski's construction $\Myc$ on this graph.
+		and two iterations of "Mycielski's construction" $\Myc$ on this graph.
 		Each of these graphs is equipped with a $2$-, $3$-, and $4$-colouring, respectively, 
 		which are built using the construction described in the proof
 		of \Cref{prop:chromatic-number}.
@@ -221,43 +221,43 @@ $G$ into $\Myc(G)$.
 
 \begin{property}
 	\label{prop:chromatic-number}
-	The "chromatic number" of $\Myc(G)$
-	is exactly one more than the "chromatic number" of $G$.
+	The "chromatic number" of $\Myc(\?G)$
+	is exactly one more than the "chromatic number" of $\?G$.
 \end{property}
 
 \begin{proof}
   \proofcase{Upper bound.}
-  Let $f\colon G \to \lBrack 1,k \rBrack$ be a "colouring" of $G$ for some $k\in \N$.
-  Then mapping $\langle u, i \rangle$ to $f(u)$ for $u \in G$ and $i \in \{0,1\}$
-  and mapping $\bullet$ to colour $k+1$ defines a "$(k+1)$-colouring" of $\Myc(G)$.
+  Let $f\colon \?G \to \lBrack 1,k \rBrack$ be a "colouring" of $\?G$ for some $k\in \N$.
+  Then mapping $\langle u, i \rangle$ to $f(u)$ for $u \in V$ and $i \in \{0,1\}$
+  and mapping $\bullet$ to colour $k+1$ defines a "$(k+1)$-colouring" of $\Myc(\?G)$.
 
   \proofcase{Lower bound.}
-  Let $k \in \Np$ and let $g\colon \Myc(G) \to \lBrack 1,k\rBrack$ be a
-  $k$-colouring of $\Myc(G)$.
-  Let $g'\colon \Myc(G) \to \lBrack 1,k\rBrack$
+  Let $k \in \Np$ and let $g\colon \Myc(\?G) \to \lBrack 1,k\rBrack$ be a
+  $k$-colouring of $\Myc(\?G)$.
+  Let $g'\colon \Myc(\?G) \to \lBrack 1,k\rBrack$
   be defined by $g'\langle u,i\rangle \defeq g\langle u,1 \rangle$,
   and $g'(\bullet) \defeq g(\bullet)$.
   Since the neighbourhood of $\langle u,0 \rangle$ is included in the
   one of $\langle u,1 \rangle$, it follows that $g'$ is still a "$k$-colouring"
-  of $\Myc(G)$. But then $\bullet$ is adjacent to all vertices of the form $\langle u, 1\rangle$
-  where $u\in G$, so $\{g'\langle u, 1\rangle \mid u \in G\}$ can only contain at most $k-1$ colours.
+  of $\Myc(\?G)$. But then $\bullet$ is adjacent to all vertices of the form $\langle u, 1\rangle$
+  where $u\in \?G$, so $\{g'\langle u, 1\rangle \mid u \in \?G\}$ can only contain at most $k-1$ colours.
   By construction of $g'$, $g'\langle u, 1\rangle = g'\langle u, 0\rangle$.
-  And hence $u \mapsto g' \langle u,0 \rangle$ defines a "$(k-1)$-colouring" of $G$.
+  And hence $u \mapsto g' \langle u,0 \rangle$ defines a "$(k-1)$-colouring" of $\?G$.
 \end{proof}
 
 We can now prove our result.
 
 \begin{proof}[Proof of \Cref{prop:automatic-graph-not-fin-colourable}]
-  Let $\Sigma \defeq \{0,1,\bullet\}$, and let $H$ be the "directed
+  Let $\Sigma \defeq \{0,1,\bullet\}$, and let $\?0$ be the "directed
   graph" on a single vertex with no edge.
   We are going to define an "automatic graph" whose underlying undirected graph
-  is $\bigdcup_{n\in\N} \Myc^n(H)$, in such a way that the vertices of $\Myc^n(H)$
+  is $\bigdcup_{n\in\N} \Myc^n(\?0)$, in such a way that the vertices of $\Myc^n(\?0)$
   will be encoded by words of length $n$.
 
   We are going to define by induction
   disjoint subsets $(V_i)_{i\in\N}$ of $\Sigma^*$
   and $(\+E_i)_{i\in\N}$ of $V_i \times V_i$ such that
-  $(V_i, \+E_i)$ is a directed version of $\Myc^n(H)$.
+  $(V_i, \+E_i)$ is a directed version of $\Myc^n(\?0)$.
 
   Define $V_0 \defeq \{\varepsilon\}$ and $\+E_0 \defeq \emptyset$.
   Then for $n \in \N$, let
@@ -279,7 +279,7 @@ We can now prove our result.
   and moreover $V_n \subseteq \Sigma^n$ by immediate induction on $n\in\N$.
 
   Also, the underlying undirected graph of $\MycInf$ is
-  $\bigdcup_{n\in\N} \Myc^n(H)$, and so it is "triangle-free@@dir" (since $H$ is "triangle-free@@undir") by \Cref{prop:triangle-free} but has infinite
+  $\bigdcup_{n\in\N} \Myc^n(\?0)$, and so it is "triangle-free@@dir"---since $\?0$ is "triangle-free@@undir"---by \Cref{prop:triangle-free} but has infinite
   "chromatic number" by \Cref{prop:chromatic-number}. 
   
   It remains to show that $\MycInf$ is "automatic@@graph".
