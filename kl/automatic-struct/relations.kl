@@ -8,6 +8,7 @@
  | automatic binary relation
  | automatic@rel
  | synchronous relation
+ | synchronous relations
  | synchronous@rel
 
 \knowledge{notion}

@@ -63,15 +63,16 @@
  | $\+R$-hyperedge
 
 \knowledge{notion}
- | locally finite
+ | locally finite@struct
+ | locally finite structure
 
 % ---
 % Graph-ish
 % ---
 
 \knowledge{notion}
- | graphs
- | graph
+ | graphs@dir
+ | graph@dir
  | directed graph
 
 \knowledge{notion}
@@ -112,7 +113,7 @@
 \knowledge{notion}
  | substructure
  | finite subgraph
- 
+
 \knowledge{notion}
  | induced substructure
  | induced@structure
@@ -126,6 +127,7 @@
 
 \knowledge{notion}
  | Cartesian product
+ | Cartesian products
 
 \knowledge{notion}
  | block product

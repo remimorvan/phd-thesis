@@ -52,3 +52,27 @@
 		}}}%
 	$}%
 }%
+
+% ---
+% Knowledge: intro in restatable
+% Usage: instead of \intro use \introinrestatable in restable environments.
+% Surround the main statement (where you want the notions to be introduced)
+% with a `mainstatement` environment.
+% ---
+
+\newif\ifmainstatement
+\mainstatementfalse
+
+\newrobustcmd\introinrestatable[1]{%
+	\ifmainstatement%
+		\intro{#1}%
+	\else%
+		\kl{#1}%
+	\fi%
+}
+
+\newenvironment{mainstatement}{
+  \mainstatementtrue
+}{
+  \mainstatementfalse
+}

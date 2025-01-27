@@ -22,14 +22,14 @@ $L_3 = (a^3)^* \smallsetminus L_6$, $L_2 = (a^2)^* \smallsetminus L_6$ and $L_\b
 \begin{proof}[Proof of \eqref{item:reg-colourability-equiv-separability-2} and
     \eqref{item:reg-colourability-equiv-separability-3}.]
     We start with the last two reductions.
-    Given an "automatic graph" $\AutGraph{V}{\+E}$ over an alphabet $\Sigma$, consider the instance
+    Given an "automatic graph" $\tup{V,\+E}$ over an alphabet $\Sigma$, consider the instance
     $\tup{\+R_1, \+R_2}$ for the "$\REC$-separability problem", where 
     $\+R_1 = \+E$ and $\+R_2 = \Id$. 
-    If $\AutGraph{V}{\+E}$ is "$k$-regular colourable" via the colouring $V_1, \dotsc, V_k$ then the $\kREC$ relation
+    If $\tup{V,\+E}$ is "$k$-regular colourable" via the colouring $V_1, \dotsc, V_k$ then the $\kREC$ relation
     $\bigcup_{i \neq j} V_i \times V_j$ "separates@@rel" $\+R_1 = \+E$ and $\+R_2 = \Id$. 
     Conversely, if a $\kREC$ relation $\+R \subseteq \Sigma^* \times \Sigma^*$ on the regular 
-    partition $V_1 \dcup \dotsb \dcup V_k = \Sigma^*$ "separates@@rel" $\+R_1$ and $\+R_2$, then $\bigcup_{i \neq j} V_i \times V_j$ also "separates@@rel" $\+R_1$ and $\+R_2$, and this implies that $V_1, \dotsc, V_k$ is a "$k$-colouring" for $\AutGraph{\Sigma^*}{\+E}$, and in particular
-    for $\AutGraph{V}{\+E}$.
+    partition $V_1 \dcup \dotsb \dcup V_k = \Sigma^*$ "separates@@rel" $\+R_1$ and $\+R_2$, then $\bigcup_{i \neq j} V_i \times V_j$ also "separates@@rel" $\+R_1$ and $\+R_2$, and this implies that $V_1, \dotsc, V_k$ is a "$k$-colouring" for $\tup{\Sigma^*,\+E}$, and in particular
+    for $\tup{V,\+E}$.
 \end{proof}
 
 \AP For the first reduction, let us introduce some terminology.
@@ -48,7 +48,7 @@ $u' \in \Sigma^*$ when for all words $v \in \Sigma^*$:
 Define the ""incompatibility graph"" $\intro*\incompGraph{\+R_1}{\+R_2}$
 as the graph whose vertices are all words of $\Sigma^*$,
 and with an edge from $u$ to $v$ whenever $u$ is not "compatible" with $v$.
-Note that $\incompGraph{\+R}{\Id}$ is exactly the graph $\AutGraph{\Sigma^*}{\+R}$.
+Note that $\incompGraph{\+R}{\Id}$ is exactly the graph $\tup{\Sigma^*,\+R}$.
 
 \begin{example}%
     \AP\label{ex:equal-length-plusone}%

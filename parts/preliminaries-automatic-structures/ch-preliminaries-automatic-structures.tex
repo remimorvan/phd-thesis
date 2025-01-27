@@ -3,9 +3,18 @@
 	Automatic Structures and Synchronous Relations%
 }
 
-Should either go to the introduction (general stuff of structures), or here.
+Should either go to the introduction (general stuff of structures), or prelim of
+databases, or here.
 
-Distinction between "automatic presentation" of a "structure" (or "automatic structure" for short) and an "automatic structure"---existential quantifier.
+\section{Automatic Structures}
+
+\begin{itemize}
+	\itemAP padding symbol $\intro*\pad$
+	\itemAP convolution of words $\intro*\convol$
+	\itemAP convolution of a relation $\intro*\convolRel{\+R}$
+	\itemAP ""automatic relation"" and $\intro*\AUT$
+	\itemAP domain and relation of a presentation: $\intro*\domainPres{\+A}$ and $\intro*\relPres{\+R}{\+A}$  
+\end{itemize}
 
 Given a "relational signature" $\sigma$, a \AP"automatic $\sigma$-presentation" $\+A$
 over the alphabet $\Sigma$ consists of a "regular language"
@@ -137,7 +146,7 @@ to be the tuple of sets
 \]
 when $\+R$ ranges over "predicate" of arity $k$ of $\sigma$ and $i \in \lBrack 1,k\rBrack$. 
 \marginnote{TODO: introduce notation $\+R_{(k)} \in \sigma$}
-For "graphs", the "neighbourhood" of a vertex corresponds to its set of predecessors and
+For "graphs@@dir", the "neighbourhood" of a vertex corresponds to its set of predecessors and
 its set of successors.
 
 \begin{proposition}
@@ -162,9 +171,14 @@ An \AP""undirected path"" in a "$\sigma$-structure" $\?A$ consists of a sequence
 where $a_i \in \?A$ and each $e_i$ is a "hyperedge" of $\?A$ "st" both
 $a_i$ and $a_{i+1}$ occur in $e_i$. When such an "undirected path" exists, we say that
 there is an "undirected path" between $a_0$ and $a_n$, or equivalently
-that $a_0$ and $a_n$ are \AP""connected"".\sidenote{Note that this relation is reflexive
-and symmetric.} A \AP"connected component" of $\?A$ consists of an equivalence class of the 
-transitive closure of this relation.
+that $a_0$ and $a_n$ are \AP""connected"".%
+\sidenote{Note that this defines an equivalence relation.}
+A \AP"connected component" of $\?A$ consists of an equivalence class under this relation.
+
+\begin{itemize}
+	\itemAP $\intro*\IncidenceGraph{\?A}$
+	\itemAP ""simple path""
+\end{itemize}
 
 \subsection{De Bruijn–Erdős Theorem}
 

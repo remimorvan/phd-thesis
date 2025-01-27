@@ -161,7 +161,7 @@ to be \AP""germinal"" if it has in-degree 0.
     Observe moreover that, by definition of "linear Turing machines",
     the "initial configuration" $\pad\cdot q_0 \cdot \pad$ is "germinal".
     Let $\bSymb$ and $\rSymb$ be fresh symbols. 
-    Consider the "automatic graph" $\AutGraph{V}{\+E}$ for $V \defeq \configs\cdot (\bSymb + \rSymb)$,
+    Consider the "automatic graph" $\tup{V,\+E}$ for $V \defeq \configs\cdot (\bSymb + \rSymb)$,
     having an edge from $\gamma \cdot c$ to $\gamma' \cdot c$ if either 
     \begin{enumerate}
         \item $\tup{c,c'} = \tup{\bSymb,\rSymb}$ and $\gamma=\gamma'$;
@@ -194,10 +194,10 @@ to be \AP""germinal"" if it has in-degree 0.
 
     Symbols $\bSymb$ and $\rSymb$ are utilized to represent two versions of each configuration.
     This graph is depicted in \Cref{fig:reduction-wf-RTM-to-colouring}.
-    Note that $\AutGraph{V}{\+E}$ is "connected" and "2-colourable": in fact, it is a "directed tree" whose root is $\pad\cdot q_0\cdot \pad\cdot \bSymb$. 
+    Note that $\tup{V,\+E}$ is "connected" and "2-colourable": in fact, it is a "directed tree" whose root is $\pad\cdot q_0\cdot \pad\cdot \bSymb$. 
     
-    We claim that $\AutGraph{V}{\+E}$ is "$2$-regular colourable" if, and only if, the set of "reachable configurations" of $T$ is a "regular language". 
-    In fact, up to permuting the two-colours, $\AutGraph{V}{\+E}$
+    We claim that $\tup{V,\+E}$ is "$2$-regular colourable" if, and only if, the set of "reachable configurations" of $T$ is a "regular language". 
+    In fact, up to permuting the two-colours, $\tup{V,\+E}$
     admits a unique 2-colouring $\tup{C_1,C_2}$, defined by:
     \[
         C_1 \defeq \Reach\cdot\bSymb \cup (\configs \setminus \Reach)\cdot\rSymb
@@ -206,21 +206,21 @@ to be \AP""germinal"" if it has in-degree 0.
     If $\Reach$ is regular, then so is $C_1$. Dually, if $C_1$ is regular, then
     $\Reach$ is exactly the set of configurations $\gamma$ such that
     $\gamma\cdot \bSymb \in C_1$ and hence is regular.
-    It follows that $\AutGraph{V}{\+E}$ is "$2$-regular colourable" if and only if
+    It follows that $\tup{V,\+E}$ is "$2$-regular colourable" if and only if
     the "reachable configurations" of $\+T$ are regular, which concludes the proof for $k=2$.
 
-    To prove the statement for any $k>2$, we define $\AutGraph{V}{\+E_k}$ as the result of adding a $(k-2)$-clique to $\AutGraph{V}{\+E}$ and adding an edge from every vertex of the clique to every vertex incident to an edge of $\+E$. This forces the clique to use $k-2$ colours that cannot be used in the remaining part of the graph and the proof is then analogous.
+    To prove the statement for any $k>2$, we define $\tup{V,\+E_k}$ as the result of adding a $(k-2)$-clique to $\tup{V,\+E}$ and adding an edge from every vertex of the clique to every vertex incident to an edge of $\+E$. This forces the clique to use $k-2$ colours that cannot be used in the remaining part of the graph and the proof is then analogous.
 
 	\proofcase{Upper-bound.} We show that the problem is "RE". Let us define a \AP""$k$-coloured automaton"" like a regular (complete) DFA, except that instead of having
 	a set of final states, it has a partition $\langle C_1,\hdots,C_k \rangle$ of its states.
 	Such an automaton recognizes a "regular colouring" $\Sigma^* \to \lBrack 1, k\rBrack$.
-	Given a "automatic graph" $\+G = \AutGraph{V}{\+E}$---whose edge relations is given by
+	Given a "automatic graph" $\+G = \tup{V,\+E}$---whose edge relations is given by
     a "synchronous automaton" $\relPres{\+E}{\+G}$---and a $k$-coloured automaton $\+B$,
 	we can build, by a product construction, an automaton $\+A'$ which accepts
 	all $u \otimes v \in \convolRel{R}$ such that the colour of $u$ is distinct from
     the colour of $v$.
 	Then, $\+A'$ is equivalent to $\relPres{\+E}{\+G}$ if, and only if,
-    $\+B$ describes a proper "$k$-colouring" of $\AutGraph{V}{\+E}$.
+    $\+B$ describes a proper "$k$-colouring" of $\tup{V,\+E}$.
     The "RE" upper-bound of the "$k$-regular colourability problem" follows: 
     it suffices to enumerate all "$k$-coloured automata" and check for equivalence.
 \end{proof}

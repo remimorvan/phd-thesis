@@ -32,6 +32,10 @@
 \knowledgenewrobustcmd{\transition}[1]{\mathrel{\cmdkl{\smashxrightarrow{\ensuremath{#1}}}}}
 
 \knowledgenewrobustcmd{\semFO}[2]{\cmdkl{\lBrack} #1 \cmdkl{\rBrack^{#2}}} % semantics of FO
+% \let\modelsNoKL\models
+% \renewrobustcmd\models{\mathrel{\kl[\models]{\modelsNoKL}}} % models relation
+% \knowledge{\models}{notion}
+
 
 \newrobustcmd\Acc{\textrm{Acc}}
 \knowledgenewrobustcmd\semTM[1]{\cmdkl{\lBrack}#1\cmdkl{\rBrack}} % semantics of Turing machine

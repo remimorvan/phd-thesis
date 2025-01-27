@@ -27,11 +27,11 @@ Moreover, it admits a simple "automatic presentation" \AP$\intro*\omegaCliquePre
 	u \neq v\}.
 \end{align*}
 
-While there is some "graph" $\+G$ does not admit a "homomorphism" to $\omegaClique$, then it is not "finitely colourable", the converse implication does not hold---"eg" $\omegaClique$ itself is not "finitely colourable". However, the equivalence holds for a substantially large class of graphs.
+While there is some "graph@@dir" $\+G$ does not admit a "homomorphism" to $\omegaClique$, then it is not "finitely colourable", the converse implication does not hold---"eg" $\omegaClique$ itself is not "finitely colourable". However, the equivalence holds for a substantially large class of graphs.
 
 \begin{property}
 	\AP\label{prop:finite-regular-colourability-as-homreg-pb}
-	Let $\?G$ be an arbitrary "connected" "graph". $\?G \homto \omegaClique$ "iff" $\?G$ is "finitely colourable".	
+	Let $\?G$ be an arbitrary "connected" "graph@@dir". $\?G \homto \omegaClique$ "iff" $\?G$ is "finitely colourable".	
 	Similarly, let $\•G$ be a "connected" "automatic graph". $\•G \homregto \omegaCliquePres$ "iff" $\?G$ is "finitely regularly colourable".
 \end{property}
 
@@ -100,7 +100,7 @@ Similarly, we do not know whether "finite colourability problem" is undecidable.
 Note that given an "automatic presentation" $\•A$ of some "$\sigma$-structure" $\?A$,
 the property of whether $\•A \homregto \?B$, where $\?B$ is a "finite $\sigma$-structure",
 does not depend only on the "structure" $\?A$, but on its "presentation" $\•A$---see \Cref{ex:tree-not-2-reg-colourable} for an example; it is trivial to come up with a "presentation" of the
-same "graph" that admits a "regular $2$-colouring".
+same "graph@@dir" that admits a "regular $2$-colouring".
 
 On the other hand, the implication
 \itemDTFinDual\ $\Rightarrow$ \itemDTEqual\ prove that if $\?B$ has "finite duality",
@@ -120,7 +120,7 @@ We do not know whether the converse implication holds.
 
 Given that we do not know whether "finite colourability of automatic graphs"
 is decidable, a natural question would be find algorithm to identify sufficient conditions
-for a "graph" not to be "finitely colourable". A typical example of such a condition
+for a "graph@@dir" not to be "finitely colourable". A typical example of such a condition
 is to \AP""contain unbounded cliques""---meaning that $\clique{k} \homto \?A$ for all $k\in\N$.
 
 \begin{conjecture}
@@ -132,7 +132,7 @@ is to \AP""contain unbounded cliques""---meaning that $\clique{k} \homto \?A$ fo
 In \cite[Conjecture 7.2]{BarceloFigueiraMorvan2023SeparatingAutomatic}, we conjectured
 that there was some "automatic graphs" that were not "finitely colourable",
 but did not "contain unbounded cliques".
-We pointed out that for arbitrary "graphs", the property was clearly true 
+We pointed out that for arbitrary "graphs@@dir", the property was clearly true 
 since there are \AP""triangle-free graphs@@dir""%
 \footnote{Meaning that $\clique{3} \nothomto \?G$.}
 $\?G$ that are not finitely colourable \cite{UngarDescartes1954ChromaticGraphs}.
@@ -156,7 +156,7 @@ Iterating this operator on a "triangle-free graph@@undir" shows that there exist
 "triangle-free graphs@@undir" with arbitrarily high "chromatic number".
 To prove \Cref{prop:automatic-graph-not-fin-colourable}, we will build
 an "automatic graph" whose underlying undirected graph is
-$\bigdcup_{n\in\N} \Myc^n(\?0)$ where $\?0$ is the "graph" on a single vertex with no edge.
+$\bigdcup_{n\in\N} \Myc^n(\?0)$ where $\?0$ is the "graph@@dir" on a single vertex with no edge.
 Note that usually "Mycielski's construction" is not iterated on $\?0$ but on the undirected
 path of size 1: we made this choice to make the proof of "automaticity@@graph" of the graph
 easier.

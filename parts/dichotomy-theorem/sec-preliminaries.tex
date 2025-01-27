@@ -16,6 +16,8 @@ $\•A$ and $\•B$ is a "regular function" from $\domainPres{\•A}$ to $\domai
 that defines a "homomorphism" from $\?A$ to $\?B$.\footnote{We use the terminology ``regular''
 instead of ``automatic'' simply because ``automatic homomorphism'' sounds somewhat weird.}\footnote{Note that "regular homomorphisms" are to "automatic structures" what ``definable homomorphisms''
 are to ``definable structures'' in \cite{KlinLasotaOchremiakTorunczyk2016HomomorphismProblems}: they form a restriction on the notion of "homomorphisms" to make then finitely describable---although the "input structure" might be infinite---, using the same logical framework as the one used to describe the "input structure".}
+We denote by \AP$\•A \intro*\homregto \•B$ the existence of a "regular homomorphism" from
+$\•A$ to $\•B$.
 
 \begin{property}
 	\label{prop:regular-function-finite-domain}
@@ -49,6 +51,8 @@ are to ``definable structures'' in \cite{KlinLasotaOchremiakTorunczyk2016Homomor
 	is a "first-order formula"---since $L$ is finite---describing $f$.
 \end{proof}
 
+As a consequence, when $\•B$ is finite, we will write $\•A \reintro*\homregto \?B$ 
+to mean that $\•A \homregto \•B$.
 In particular, a \AP""$k$-regular colouring"" of a "presentation of an automatic graph"
 $\•G$ is equivalently a "regular homomorphism" from $\•G$ to $\?K_k$,
 or a "$k$-colouring" "st" for any colour, the set of words of $\domainPres{\•G}$
@@ -337,7 +341,7 @@ singleton $\{b\}$.
 	\AP\label{ex:zigzag-defn}
 	Let $n\in\?N$.
 	We define the \AP""zigzag graph"" $\intro*\zigzag{n}{2}$ of width $n$ and length 2
-	to be "graph" whose vertices are $a_0, \hdots, a_n$, $b_0, \hdots, b_{n}$,
+	to be "graph@@dir" whose vertices are $a_0, \hdots, a_n$, $b_0, \hdots, b_{n}$,
 	$a'_0$ and $b'_n$, with edges from $a_i$ to $b_{i-1}$ and to $b_{i}$ (for $i \in \lBrack 0,n\rBrack$, whenever the nodes exist), and with an edge from $a'_0$ to $a_0$ and from $b_n$
 	to $b'_n$. See \Cref{fig:zigzag-graph} for an illustration.
 	
@@ -365,3 +369,17 @@ singleton $\{b\}$.
 	\end{tikzpicture}
 	\caption{\AP\label{fig:zigzag-graph-hom-T2}A "homomorphism" from the "zigzag graph" (left-hand side) to the "$2$-transitive tournament" (right-hand side).}
 \end{figure}
+
+
+\subsection{Obstructions and Finite Duality}
+
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\subsection{Trees and Tree Duality}
+
+\begin{itemize}
+	\item ""acyclic@@struct""
+	\item ""$\sigma$-tree""
+\end{itemize}

@@ -146,7 +146,7 @@ and with an edge from $i$ to $j$ "iff" $i < j$.
 Similarly, the \AP""$k$-path"" \AP$\intro*\pathGraph{k}$ has $\lBrack 0,k\rBrack$ as
 its set of vertices, with an edge from $i$ to $j$ "iff" $j = i + 1$---see \Cref{fig:P2}.
 
-Then, a "graph" $\?G$ admits a "homomorphism" to $\transitiveTournament{k}$ "iff"
+Then, a "graph@@dir" $\?G$ admits a "homomorphism" to $\transitiveTournament{k}$ "iff"
 it has no directed path of size $k+1$, in the sense that this is no "homomorphism"
 from $\pathGraph{k+1}$ to $\?G$. Symbolically:
 \[
@@ -241,7 +241,7 @@ some separability problems for "automatic relations" (\Cref{coro:krec-sep-undec,
 	\end{tikzpicture}
 	\caption{
 		\AP\label{fig:dichotomy-ex-3-colouring}
-		A "$3$-colouring" of some beetle-shaped "graph".
+		A "$3$-colouring" of some beetle-shaped "graph@@dir".
 	}
 \end{marginfigure}
 
@@ -253,7 +253,7 @@ this motivates us to study the "homomorphism problem"
 and "regular homomorphism problem" for "automatic structures" in \Cref{sec:dichotomy-undecidability,sec:dichotomy-decidability}. Our main result is a dichotomy theorem for "automatic structures".\footnote{Note that while for "finite structures" the dichotomy theorems either separate
 "FOfin" from "L"---in the case of Larose and Tesson---, or "P" from "NP"---for Bulatov and Zhuk---, in our case the dichotomy is between "NL" and… undecidability!}
 
-\begin{restatable*}[""Dichotomy Theorem for Automatic Structures""]{theorem}{DichotomyThmDichotomyAutomatic}
+\begin{restatable*}[\introinrestatable{Dichotomy Theorem for Automatic Structures}]{theorem}{DichotomyThmDichotomyAutomatic}
 	\!\footnote{The equivalence between (1) and (2) still holds
 	when the "homomorphism problem" takes as input ``higher-order automatic
 	structures'' as defined in \cite[last remark of \S~XII.3]{Blumensath2024MSOModelTheory},
@@ -263,13 +263,13 @@ and "regular homomorphism problem" for "automatic structures" in \Cref{sec:dicho
 	\AP\label{thm:dichotomy-theorem-automatic-structures}
 	Let $\?B$ be an arbitrary "$\sigma$-structure". The following are equivalent:
 	\begin{description}
-		\itemAP[\intro*\itemDTFinDual.] $\?B$ has "finite duality";
-		\itemAP[\intro*\itemDTHomDec.] $\HomAutDec{\?B}$ is decidable;
-		\itemAP[\intro*\itemDTHomRegDec.] $\HomRegAutDec{\?B}$ is decidable;
-		\itemAP[\intro*\itemDTEqual.] $\HomAutDec{\?B} = \HomRegAutDec{\?B}$ "ie" for any "automatic presentation" $\•A$ of a 
+		\itemAP[\introinrestatable\itemDTFinDual.] $\?B$ has "finite duality";
+		\itemAP[\introinrestatable\itemDTHomDec.] $\HomAutDec{\?B}$ is decidable;
+		\itemAP[\introinrestatable\itemDTHomRegDec.] $\HomRegAutDec{\?B}$ is decidable;
+		\itemAP[\introinrestatable\itemDTEqual.] $\HomAutDec{\?B} = \HomRegAutDec{\?B}$ "ie" for any "automatic presentation" $\•A$ of a 
 		"$\sigma$-structure" $\?A$, there is a "homomorphism" from $\?A$ to $\?B$ "iff" 
 		there is a "regular homomorphism" from $\•A$ to $\?B$;
-		\itemAP[\intro*\itemDTFirstOrder.] $\HomAllClass{\?B}$ has "uniformly first-order definable homomorphisms".
+		\itemAP[\introinrestatable\itemDTFirstOrder.] $\HomAllClass{\?B}$ has "uniformly first-order definable homomorphisms".
 	\end{description}
 	Moreover, when $\HomAutDec{\?B}$ and $\HomRegAutDec{\?B}$ undecidable, they are "coRE"-complete
 	and "RE"-complete, respectively. When they are decidable, they are "NL".

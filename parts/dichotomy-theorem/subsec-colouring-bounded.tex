@@ -81,11 +81,11 @@ As soon as $k>1$, the "$\kPROD$-separability problem" becomes undecidable.
 \end{proof}
 
 \begin{corollary}\AP\label{cor:2reg-2prod}
-    A "symmetric@@rel" "automatic relation" $\+R$ and $\Id$ are "separable@@rel" by a relation in $\kPROD[2]$ "iff" $\AutGraph{\Sigma^*}{\+R}$ is "$2$-regular colourable".
+    A "symmetric@@rel" "automatic relation" $\+R$ and $\Id$ are "separable@@rel" by a relation in $\kPROD[2]$ "iff" $\tup{\Sigma^*,\+R}$ is "$2$-regular colourable".
 \end{corollary}
 
 \begin{proof}
-    By observing that for any "symmetric relation" $\+R \subseteq \Sigma^* \times \Sigma^*$, we have that $A,B \subseteq \Sigma^*$ is a "colouring" of $\AutGraph{\Sigma^*}{\+R}$ if, and only if, $(A \times B) \cup (B \times A)$ "separates@@rel" $\+R$ from $\Id$.
+    By observing that for any "symmetric relation" $\+R \subseteq \Sigma^* \times \Sigma^*$, we have that $A,B \subseteq \Sigma^*$ is a "colouring" of $\tup{\Sigma^*,\+R}$ if, and only if, $(A \times B) \cup (B \times A)$ "separates@@rel" $\+R$ from $\Id$.
 \end{proof}
 
 We can now easily show undecidability for the "$\kPROD[2]$-separability problem" by reduction from the "$2$-regular colourability problem".
@@ -93,8 +93,8 @@ We can now easily show undecidability for the "$\kPROD[2]$-separability problem"
     The "$\kPROD[2]$-separability problem" is undecidable.
 \end{lemma}
 \begin{proof}
-    By reduction from the "$2$-regular colourability problem" on "automatic graphs", which is undecidable by \Cref{thm:k-reg-col-undec}. Let $\AutGraph{V}{\+E}$ be an "automatic graph" and $\AutGraph{V}{\+E'}$ the symmetric closure of $\AutGraph{V}{\+E}$. It follows that $\AutGraph{V}{\+E'}$ is still "automatic@@struct" and that there is a "$2$-regular colouring" for $\AutGraph{V}{\+E'}$ "iff" there is a "$2$-regular colouring" for $\AutGraph{V}{\+E}$---take the same colouring.
-    Thus, by \Cref{cor:2reg-2prod}, $\AutGraph{V}{\+E}$ is "$2$-regular colourable" "iff" 
+    By reduction from the "$2$-regular colourability problem" on "automatic graphs", which is undecidable by \Cref{thm:k-reg-col-undec}. Let $\tup{V,\+E}$ be an "automatic graph" and $\tup{V,\+E'}$ the symmetric closure of $\tup{V,\+E}$. It follows that $\tup{V,\+E'}$ is still "automatic@@struct" and that there is a "$2$-regular colouring" for $\tup{V,\+E'}$ "iff" there is a "$2$-regular colouring" for $\tup{V,\+E}$---take the same colouring.
+    Thus, by \Cref{cor:2reg-2prod}, $\tup{V,\+E}$ is "$2$-regular colourable" "iff" 
     there is a $\kPROD[2]$ relation that "separates@@rel" $\+E'$ from $\Id$.
 \end{proof}
 
