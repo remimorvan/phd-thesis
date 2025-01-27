@@ -1,10 +1,9 @@
 \knowledge{notion}
- | 2-colouring
- | $k$-colouring
  | colouring
- | $3$-colouring
  | $2$-colouring
+ | $3$-colouring
  | $4$-colouring
+ | $k$-colouring
  | $(k+1)$-colouring
  | $(k-1)$-colouring
 
@@ -21,11 +20,9 @@
 \knowledge{notion}
  | regular colouring
  | regular@colouring
- | regular $2$-colouring
- | regular $2$-colouring
  | regular colourings
- | regular $k$-colouring
  | regular $2$-colouring
+ | regular $k$-colouring
 
 \knowledge{notion}
  | regularly $k$-colourable
