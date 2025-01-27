@@ -1,8 +1,8 @@
 \section{Undecidability of the Homomorphism Problems}
-\AP\label{sec:dichotomy-undecidability}
+\label{sec:dichotomy-undecidability}
 
 \subsection{Overview \& Easy Implications of the Dichotomy Theorem}
-\AP\label{sec:dichotomy-overview}
+\label{sec:dichotomy-overview}
 
 \begin{mainstatement}
 	\DichotomyThmDichotomyAutomatic
@@ -64,6 +64,12 @@ and \cite[Theorem 4.4]{BarceloFigueiraMorvan2023SeparatingAutomatic}, that lead 
 	of "first-order model checking of automatic structures" is "NL"
 	by \Cref{prop:first-order-model-checking-automatic-structures}.
 \end{proof}
+
+Note that \Cref{prop:dichotomy-FinDual-implies-HomDec} still holds
+when the "homomorphism problem" takes as input ``higher-order automatic
+structures'' as defined in \cite[last remark of \S~XII.3]{Blumensath2024MSOModelTheory},
+since such structures have a decidable first-order theory.
+
 
 \paragraph*{Uniformly First-Order Definable Homomorphisms Imply Equality.}
 
@@ -150,7 +156,7 @@ of any assumption on $\?B$.
 \end{proof}
 
 \subsection{Undecidability of \,$\HomAut{\?B}$}
-\AP\label{sec:undecidability-hom}
+\label{sec:undecidability-hom}
 
 We now prove the undecidability of $\HomAut{\?B}$ and $\HomRegAut{\?B}$
 when $\?B$ does not have "finite duality". Both reductions are
@@ -482,7 +488,7 @@ unary "predicates".\sidenote{It is not clear to us whether this case was properl
 \end{proof}
 
 \subsection{Undecidability of \,$\HomRegAut{\?B}$}
-\AP\label{sec:undecidability-homreg}
+\label{sec:undecidability-homreg}
 
 The reduction to show undecidability of is nearly identical to \Cref{lem:reduction-hom},
 but the input problem differs quite a lot.
