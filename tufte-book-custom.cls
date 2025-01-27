@@ -2,14 +2,15 @@
 
 \input{tufte-book.cls}
 
-% \setlength\marginparpush{1.15em} % More vpsace between sidenotes.
+\linespread{1.05} % Slightly more space
+\setlength\marginparpush{1.2em} % More vertical space between sidenotes.
 
 % ---
 % Narrower margins
 % ---
 
 \ifthenelse{\boolean{@tufte@afourpaper}}
-	{\geometry{a4paper,left=18mm,top=23.4mm,headsep=1.5\baselineskip,textwidth=119mm,marginparsep=8mm,marginparwidth=47mm,textheight=47\baselineskip,headheight=\baselineskip,footskip=2\baselineskip}}
+	{\geometry{a4paper,left=18mm,top=23.4mm,headsep=1.5\baselineskip,textwidth=119mm,marginparsep=8mm,marginparwidth=47mm,textheight=46\baselineskip,headheight=\baselineskip,footskip=2\baselineskip}}
 	{}
 
 
@@ -18,10 +19,13 @@
 % ---
 
 \RequirePackage{pgfornament}
+
+\newcommand\raiseAP{\parbox[t][1em]{0em}{\AP}}
+
 \titleformat{\part}%
 	[display]% shape
 	{\vspace{4cm}\relax\ifthenelse{\NOT\boolean{@tufte@symmetric}}{\begin{fullwidth}}{}}% format applied to label+text
-	{\centering\scshape\LARGE{Part~\thepart}}% label
+	{\raiseAP\centering\scshape\LARGE{Part~\thepart}}% label
 	{0pt}% horizontal separation between label and title body
 	{\centering\Huge\rmfamily\itshape\setlength{\parindent}{0pt}}% before the title body
 	[\ifthenelse{\NOT\boolean{@tufte@symmetric}}{\hspace{56mm}\pgfornament[width=6cm]{88}\end{fullwidth}}{}]% after the title body
@@ -30,11 +34,34 @@
 \titleformat{\chapter}%
 	[display]% shape
 	{\relax\ifthenelse{\NOT\boolean{@tufte@symmetric}}{\begin{fullwidth}}{}}% format applied to label+text
-	{\scshape\LARGE{Chapter~{\Huge\color{maincolor}\thechapter}}}% label
+	{\raiseAP\scshape\LARGE{Chapter{\Huge\color{maincolor}~\thechapter}}}% label
 	{0pt}% horizontal separation between label and title body
 	{\huge\rmfamily\itshape}% before the title body
 	[\ifthenelse{\NOT\boolean{@tufte@symmetric}}{\end{fullwidth}}{}]% after the title body
 
+\titleformat{\section}%
+	[hang]% shape
+	{\normalfont\Large\itshape}% format applied to label+text
+	{\raiseAP\thesection}% label
+	{1em}% horizontal separation between label and title body
+	{}% before the title body
+	[]% after the title body
+  
+\titleformat{\subsection}%
+	[hang]% shape
+	{\normalfont\large\itshape}% format applied to label+text
+	{\raiseAP\thesubsection}% label
+	{1em}% horizontal separation between label and title body
+	{}% before the title body
+	[]% after the title body
+  
+\titleformat{\paragraph}%
+	[runin]% shape
+	{\normalfont\itshape}% format applied to label+text
+	{\theparagraph}% label
+	{1em}% horizontal separation between label and title body
+	{}% before the title body
+	[]% after the title body
 
 % ---
 % Title contents

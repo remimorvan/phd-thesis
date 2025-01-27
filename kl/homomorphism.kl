@@ -33,8 +33,12 @@
 
 
 % ---
-% Isomorphisms
+% Embeddings & Isomorphisms
 % ---
+
+\knowledge{notion}
+ | embedding
+ | embeddings
 
 \knowledge{notion}
  | isomorphism

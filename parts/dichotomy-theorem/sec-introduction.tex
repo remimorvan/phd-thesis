@@ -1,5 +1,5 @@
 \section{Introduction}
-\AP\label{sec:dichotomy-introduction}
+\label{sec:dichotomy-introduction}
 
 
 \subsection{Classes of Relations}
@@ -116,19 +116,14 @@ the scope of this thesis: we refer the reader to \cite{BartoKrokhinWillard2017Po
 	\begin{tikzpicture}
 		\input{tikz/dichotomy/2-transitive-tournament}
 	\end{tikzpicture}
-	\caption{
-		\AP\label{fig:T2}
-		The "$2$-transitive tournament" $\transitiveTournament{2}$.
-	}
-\end{marginfigure}
-\begin{marginfigure}
-	\centering
+	\hspace{4em}
 	\begin{tikzpicture}
 		\input{tikz/dichotomy/2-path-graph}
 	\end{tikzpicture}
 	\caption{
-		\AP\label{fig:P2}
-		The "$2$-path" $\pathGraph{2}$.
+		\AP\label{fig:T2-P2}
+		The "$2$-transitive tournament" $\transitiveTournament{2}$
+		(left-hand side) and the "$2$-path" $\pathGraph{2}$ (right-hand side).
 	}
 \end{marginfigure}
 Beyond "P" and "NP", the complexity of the "homomorphism" problem can reach some
@@ -141,11 +136,11 @@ complete for one class among "NP", "P", "modL", "NL" or "L" under "AC0"-reductio
 
 For non-Boolean CSPs, the landscape becomes even more complex.
 For instance, given $k\in\N$, we define the \AP""$k$-transitive tournament"", denoted
-by \AP$\intro*\transitiveTournament{k}$ and illustrated on \Cref{fig:T2},
+by \AP$\intro*\transitiveTournament{k}$ and illustrated on \Cref{fig:T2-P2},
 to be the "directed graph" with vertices $0$, $1$, $\hdots$, $k$,
 and with an edge from $i$ to $j$ "iff" $i < j$.
 Similarly, the \AP""$k$-path"" \AP$\intro*\pathGraph{k}$ has $\lBrack 0,k\rBrack$ as
-its set of vertices, with an edge from $i$ to $j$ "iff" $j = i + 1$---see \Cref{fig:P2}.
+its set of vertices, with an edge from $i$ to $j$ "iff" $j = i + 1$---see \Cref{fig:T2-P2}.
 
 Then, a "graph@@dir" $\?G$ admits a "homomorphism" to $\transitiveTournament{k}$ "iff"
 it has no directed path of size $k+1$, in the sense that this is no "homomorphism"
@@ -167,8 +162,8 @@ Like $\transitiveTournament{k}$, their "constraint satisfaction problem"
 is in "FOfin".\footnote{Recall that "FOfin" $\subseteq$ "L", see \Cref{prop:FO-in-L}.}
 Atserias proved the converse implication to this result \cite[Corollary 4]{Atserias2008DigraphColoring}.
 
-\AP\begin{proposition}[""Atserias' theorem""]
-	Let $\?B$ be a "finite $\sigma$-structure". Then $\?B$ has "finite duality"
+\begin{proposition}[""Atserias' theorem""]
+	\AP Let $\?B$ be a "finite $\sigma$-structure". Then $\?B$ has "finite duality"
 	if, and only if, $\HomAll{\?B}$ is "first-order definable".
 \end{proposition}
 

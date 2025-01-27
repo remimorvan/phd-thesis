@@ -16,7 +16,7 @@ $\•A$ and $\•B$ is a "regular function" from $\domainPres{\•A}$ to $\domai
 that defines a "homomorphism" from $\?A$ to $\?B$.\footnote{We use the terminology ``regular''
 instead of ``automatic'' simply because ``automatic homomorphism'' sounds somewhat weird.}\footnote{Note that "regular homomorphisms" are to "automatic structures" what ``definable homomorphisms''
 are to ``definable structures'' in \cite{KlinLasotaOchremiakTorunczyk2016HomomorphismProblems}: they form a restriction on the notion of "homomorphisms" to make then finitely describable---although the "input structure" might be infinite---, using the same logical framework as the one used to describe the "input structure".}
-We denote by \AP$\•A \intro*\homregto \•B$ the existence of a "regular homomorphism" from
+We denote by \AP $\•A \intro*\homregto \•B$ the existence of a "regular homomorphism" from
 $\•A$ to $\•B$.
 
 \begin{property}
@@ -195,7 +195,7 @@ can also be constructed as the "block product" of $\tup{\N,+1}$ with itself.}
 		\(\{
 			a\in \domainPres{\•A} \mid f(a,b) = c
 		\}\)
-		is a "regular language".
+		is a "regular language".\qedhere
 	\end{claim}
 \end{proof}
 
@@ -351,13 +351,19 @@ singleton $\{b\}$.
 	each vertex $a_1,\,a_2,\,\hdots,\,a_{n-1}$ can be sent on either $0$ or $1$
 	(the red and yellow vertices), 
 	and similarly, each vertex $b_1,\,b_2,\,\hdots,\,b_{n-1}$ can be sent on either $1$ or $2$
-	(the yellow and blue vertices).\footnote{Note that it is straightforward
-	to extend these results---namely $\zigzag{n}{2} \homto \transitiveTournament{2}$
-	and $\zigzag{n}{2} \nothomto \pathGraph{2}$---to arbitrary values of $k\in \N$ with
-	$k\geq 2$, namely $\zigzag{n}{k} \homto \transitiveTournament{k}$
-	and $\zigzag{n}{k} \nothomto \pathGraph{k}$, by letting
-	$\zigzag{n}{k}$ be the graph obtained from $\zigzag{n}{2}$ by
-	replacing the path leading to $a_0$ by a path of length $k-1$.
+	(the yellow and blue vertices).%
+	\sidenote[][-11em]{
+		Note that it is straightforward to extend the fact that
+		\[\zigzag{n}{2} \homto \transitiveTournament{2}
+		\text{ and }
+		\zigzag{n}{2} \nothomto \pathGraph{2}\]
+		to arbitrary values of $k\in \N$, in the sense that
+		\[\zigzag{n}{k} \homto \transitiveTournament{k}
+		\text{ and }
+		\zigzag{n}{k} \nothomto \pathGraph{k},\]
+		by letting
+		$\zigzag{n}{k}$ be the graph obtained from $\zigzag{n}{2}$ by
+		replacing the path leading to $a_0$ by a path of length $k-1$.
 	}
 \end{example}
 \begin{figure}

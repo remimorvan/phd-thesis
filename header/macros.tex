@@ -2,11 +2,13 @@
 
 \newrobustcmd\decisionproblem[3]{
 	\begin{center}\AP
-	\fbox{\begin{tabular}{rl}
-	\multicolumn{2}{l}{#1} \\\midrule
+	\fbox{%
+	\begin{tabular}{rl}
+	\multicolumn{2}{l}{#1} \\
 	{\emph{Input}}: & \parbox[t]{.73\linewidth}{#2} \\
 	{\emph{Question}}: & \parbox[t]{.73\linewidth}{#3}
-	\end{tabular}} 
+	\end{tabular}%
+	} 
 	\end{center}
 }
 \newrobustcmd{\DPfont}[1]{\normalfont{\scshape #1}}
@@ -18,7 +20,9 @@
 % Abstract and Chapter TOC 
 % ---
 
-\newenvironment{abstract}{\null\vfill\begin{center}\large\textsc{Abstract}\end{center}\bigskip}{\vfill\null}
+\newenvironment{abstract}{\begin{center}\large\textsc{Abstract}\end{center}}{}
+\newenvironment{acknowledgements}{\begin{center}\large\textsc{Acknowledgements}\end{center}}{}
+
 
 \newrobustcmd{\chaptertoc}{
   \thispagestyle{plain}
