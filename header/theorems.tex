@@ -4,13 +4,15 @@
 % https://tex.stackexchange.com/questions/232655/mysterious-vertical-space-after-theorem-proof-environments 
 \let\proof\undefined
 \declaretheoremstyle[%
+  spaceabove=.5em,%
   headfont=\normalfont\itshape,%
+  postheadspace=1em,%
   qed=\qedsymbol%
 ]{proofstyle} 
 \declaretheorem[name={Proof},style=proofstyle,unnumbered]{proof}
 
-\declaretheoremstyle[bodyfont=\normalfont]{noitalics}
-\declaretheoremstyle[headfont=\normalfont\itshape,bodyfont=\normalfont]{noitalicsminor}
+\declaretheoremstyle[spaceabove=.5em,bodyfont=\normalfont]{noitalics}
+\declaretheoremstyle[headfont=\normalfont\itshape,spaceabove=.5em,bodyfont=\normalfont]{noitalicsminor}
 
 \declaretheorem[name=Theorem, refname={Theorem,Theorems}, numberwithin=section, style=noitalics]{theorem}
 \declaretheorem[name=Proposition, refname={Proposition,Propositions}, sibling=theorem, style=noitalics]{proposition}

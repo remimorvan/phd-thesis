@@ -1,7 +1,10 @@
 % r.5 contents
-\addcontentsline{toc}{chapter}{Contents}
-\setcounter{tocdepth}{1}
-\tableofcontents
+{ % env necessary for the parskip not to leak in the rest of the doc.
+	\setlength{\parskip}{0em}
+	\addcontentsline{toc}{chapter}{Contents}
+	\setcounter{tocdepth}{1}
+	\tableofcontents
+}
 % \listoffigures
 % \listoftables
 

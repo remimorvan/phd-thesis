@@ -20,6 +20,18 @@
 % Abstract and Chapter TOC 
 % ---
 
+\newenvironment{chapterpresentation}{%
+	\null\vfill
+	\begin{fullwidth}
+	\begin{center}
+	\begin{minipage}{.8\linewidth}
+}{%
+	\end{minipage}
+	\end{center}
+	\end{fullwidth}
+	\vfill\null
+	\clearpage
+}
 \newenvironment{abstract}{\begin{center}\large\textsc{Abstract}\end{center}}{}
 \newenvironment{acknowledgements}{\begin{center}\large\textsc{Acknowledgements}\end{center}}{}
 
@@ -27,6 +39,7 @@
 \newrobustcmd{\chaptertoc}{
   \thispagestyle{plain}
   \begin{fullwidth}
+	\setlength{\parskip}{0em}
 	\null\vfill
     \startcontents
     \begin{center}
@@ -37,6 +50,7 @@
 	\vfill
   \end{fullwidth}
   \vfill\null
+  \clearpage
 }
 
 % ---
