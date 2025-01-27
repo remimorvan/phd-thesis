@@ -17,6 +17,9 @@
 \knowledge{notion}
  | graph signature
 
+\knowledge{notion}
+ | signature of binary strings
+
 % ---
 % Structures
 % ---
@@ -49,6 +52,9 @@
  | finite structure
  | finite structures
  | finite@struct
+ | finite graph
+ | finiteness@structure
+ | finite@structure
 
 \knowledge{notion}
  | hyperedge

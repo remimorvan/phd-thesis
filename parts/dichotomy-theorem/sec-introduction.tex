@@ -17,7 +17,7 @@ The most studied such classes include "recognizable@@rel", "automatic@@rel" "aka
 % "recognizable relations" correspond to finite unions of products of regular languages (or, equivalently, to languages recognized via finite monoids, by Mezei's Theorem). By definition, all of these classes coincide with the 
 % class of regular languages when restricted to unary relations.
 
-Prior work has focused on the ""$\REC$-definability problem"", 
+Prior work has focused on the ""$\REC$-membership problem"", 
 which takes as input an $n$-ary "rational relation"%
 \footnote{
 	Recall that "rational relations" are those definable by multi-head automata,
@@ -33,27 +33,27 @@ $\+R$ and asks whether it is equivalent to a "recognizable relation"
 $\bigcup_i L_{i,1} \times \cdots \times L_{i,n}$, where each $L_{i,j}$ is a "regular language". 
 Intuitively, the problem asks whether the different components of  
 the "rational relation" $\+R$ are almost independent of one another.
-The study of "$\REC$-definability"
+The study of "$\REC$-membership@@problem"
 is relevant since relations enjoying this property are often amenable to some analysis including,
 "eg", abstract interpretations in program verification, variable elimination in constraint logic 
 programming, and query processing over constraint databases---see \cite[Introduction]{BarceloHongLeLinNiskanen2019MonadicDecomposability} for a more thorough discussion on this topic.
 
-In general, "$\REC$-definability" of "rational relations" is undecidable, but it becomes decidable 
+In general, "$\REC$-membership@@problem" of "rational relations" is undecidable, but it becomes decidable 
 for two important subclasses: 
 deterministic "rational relations" and "automatic relations". 
-For deterministic "rational relations",  "$\REC$-definability" has been shown to be decidable in 
+For deterministic "rational relations",  "$\REC$-membership@@problem" has been shown to be decidable in 
 double-exponential time for binary relations
 by Valiant \cite{Valiant1975RegularityDeterministicPushdown}---improving Stearns's
 triple-exponential bound \cite{Stearns1967RegularityPushdown}.
 The decidability result was later extended to relations of arbitrary arity by Carton, Choffrut and 
 Grigorieff \cite[Theorem 3.7]{CartonChoffrutGrigorieff2006DecisionProblems}.
-For "automatic relations", the decidability of "$\REC$-definability"
+For "automatic relations", the decidability of "$\REC$-membership@@problem"
 can be obtained by a  simple reduction to the problem of checking whether a finite automaton 
 recognizes an infinite language \cite{LodingSpinrath2019DecisionProblems}---which is decidable via 
 a standard reachability argument. 
 The precise complexity of the problem, however, was only recently pinned down.
 By applying techniques based on Ramsey Theorem over infinite graphs, it was shown that 
-"$\REC$-definability" of "automatic relations" is 
+"$\REC$-membership@@problem" of "automatic relations" is 
 "PSpace"-complete when relations are specified by non-deterministic automata
 \cite[Theorem 1]{BarceloHongLeLinNiskanen2019MonadicDecomposability} \cite[Corollary 2.9]{BergstrasserGanardiLinZetzsche2022RamseyQuantifiers}.
 
@@ -64,7 +64,7 @@ with $\+R \subseteq \+S$ and $\+R' \cap \+S = \emptyset$. In other words, this p
 relation $\+S$ that is constrained not to intersect with $\+R'$. Separability problems of this kind abound in theoretical computer science, in particular
 in formal language theory where they have gained a lot of attention over the last few years---see "eg" \cite{PlaceZeitoun2016SeparatingRegularLanguages,Kopczynski2016InvisiblePushdownLanguages,CzerwinskiMartensRooijenZeitounZetzsche2017DecidableSeparabilityPiecewiseTestable,ClementeCzerwinskiLasotaPaperman2017RegularSeparabilityParikhAutomata}. 
 
-As for definability, the "$\RAT$/$\REC$-separability problem"
+As for membership, the "$\RAT$/$\REC$-separability problem"
 is in general undecidable, so in this chapter we focus on its restriction to
 "automatic relations".
 \decisionproblem{
@@ -75,8 +75,8 @@ is in general undecidable, so in this chapter we focus on its restriction to
 	Does there exist a "recognizable relation" $\+S$ "st" $\+R \subseteq \+S$
 	and $\+R' \cap \+S = \emptyset$?
 }
-Notice that when $\+R'$ is the complement of $\+R$ this problem boils down to "$\REC$-definability" on "automatic relations"---which is decidable. 
-However, "$\AUT$/$\REC$-separability" is more general than this problem,
+Notice that when $\+R'$ is the complement of $\+R$ this problem boils down to "$\REC$-membership@@problem" on "automatic relations"---which is decidable. 
+However, "$\AUT$/$\REC$-separability@@problem" is more general than this problem,
 and to this day it is unknown whether it is decidable. 
 
 

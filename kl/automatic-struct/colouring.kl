@@ -13,6 +13,9 @@
  | $(k-1)$-colouring
 
 \knowledge{notion}
+ | chromatic number
+
+\knowledge{notion}
  | regular colouring
  | regular@colouring
  | $2$-regular colouring

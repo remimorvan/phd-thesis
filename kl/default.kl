@@ -1,47 +1,5 @@
 %%%%% NEW KNOWLEDGES 
-%
-%\knowledge{notion}
-%  | CRPQ
-%
-%\knowledge{notion}
-%  | one-way semantic tree-width
-%
-%\knowledge{notion}
-%  | signature of binary strings
-%
-%\knowledge{notion}
-%  | i.e.
-%
-%\knowledge{notion}
-%  | Mycielski's construction
-%
-%\knowledge{notion}
-%  | synchronous relations
-%  | synchronous@rel
-%
-%\knowledge{notion}
-%  | $\REC $-definability problem
-%
-%\knowledge{notion}
-%  | rational relation
-%  | rational relations
-%
-%\knowledge{notion}
-%  | $\REC $-definability
-%
-%\knowledge{notion}
-%  | $\RAT $/$\REC $-separability problem
-%  | $\AUT $/$\REC $-separability problem
-%
-%\knowledge{notion}
-%  | $\AUT $/$\REC $-separability
-%
-%\knowledge{notion}
-%  | $k$-colourability problem
-%
-%\knowledge{notion}
-%  | finite graph
-%
+
 %\knowledge{notion}
 %  | Larose-Tesson's theorem
 %
@@ -63,10 +21,6 @@
 %
 %\knowledge{notion}
 %  | block product
-%
-%\knowledge{notion}
-%  | finiteness@structure
-%  | finite@structure
 %
 %\knowledge{notion}
 %  | Regular Unreachability of Turing Machine Configurations
@@ -104,32 +58,5 @@
 %  | isomorphic
 %
 %\knowledge{notion}
-%  | contain unbounded cliques
-%
-%\knowledge{notion}
-%  | has bounded cliques
-%
-%\knowledge{notion}
-%  | triangle-free graphs@dir
-%
-%\knowledge{notion}
-%  | chromatic number
-%
-%\knowledge{notion}
-%  | triangle-free@dir
-%
-%\knowledge{notion}
-%  | triangle-free@undir
-%
-%\knowledge{notion}
-%  | triangle-free graph@undir
-%  | triangle-free graphs@undir
-%
-%\knowledge{notion}
 %  | automaticity
-%
-%\knowledge{notion}
-%  | Mycielskian
-%
-%\knowledge{notion}
-%  | infinite Mycielski graph
+

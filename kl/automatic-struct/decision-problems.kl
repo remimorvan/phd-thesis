@@ -3,6 +3,9 @@
  | First-order Model Checking of Automatic Structures
  | First-order model checking of automatic structures
 
+\knowledge{notion}
+ | $k$-colourability problem
+
 \knowledge{notion, wrap=\DPfont}
  | finite regular colourability of automatic graphs
  | finite regular colourability@problem
@@ -17,6 +20,10 @@
  | reachable regularity problem
 
 \knowledge{notion, wrap=\DPfont}
+ | $\RAT $/$\REC $-separability problem
+
+\knowledge{notion, wrap=\DPfont}
+ | $\AUT $/$\REC $-separability problem
  | $\REC $-separability problem
  | $\kPROD[1]$-separability problem
  | $\kREC $-separability problem
@@ -25,6 +32,9 @@
  | $\kPROD [2]$-separability problem
  | $\REC $-separability@problem
  | $\kREC $-separability@problem
+
+\knowledge{notion}
+ | $\REC $-membership problem
 
 \knowledge{notion, wrap=\DPfont}
  | $\kREC $-membership problem

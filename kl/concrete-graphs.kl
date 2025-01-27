@@ -24,3 +24,27 @@
 
 \knowledge{notion}
  | zigzag graph
+
+% ---
+% Mycielski
+% ---
+
+\knowledge{notion}
+ | Mycielski's construction
+ | Mycielskian
+
+\knowledge{notion}
+ | infinite Mycielski graph
+
+\knowledge{notion}
+ | contain unbounded cliques
+ | has bounded cliques
+
+\knowledge{notion}
+ | triangle-free graphs@dir
+ | triangle-free@dir
+
+\knowledge{notion}
+ | triangle-free@undir
+ | triangle-free graph@undir
+ | triangle-free graphs@undir
