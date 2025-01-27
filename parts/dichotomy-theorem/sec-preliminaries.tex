@@ -14,7 +14,8 @@ is "automatic".
 A \AP""regular homomorphism"" between two "presentations of automatic $\sigma$-structures"
 $\•A$ and $\•B$ is a "regular function" from $\domainPres{\•A}$ to $\domainPres{\•B}$
 that defines a "homomorphism" from $\?A$ to $\?B$.\footnote{We use the terminology ``regular''
-instead of ``automatic'' simply because ``automatic homomorphism'' sounds somewhat weird.}
+instead of ``automatic'' simply because ``automatic homomorphism'' sounds somewhat weird.}\footnote{Note that "regular homomorphisms" are to "automatic structures" what ``definable homomorphisms''
+are to ``definable structures'' in \cite{KlinLasotaOchremiakTorunczyk2016HomomorphismProblems}: they form a restriction on the notion of "homomorphisms" to make then finitely describable---although the "input structure" might be infinite---, using the same logical framework as the one used to describe the "input structure".}
 
 \begin{property}
 	\label{prop:regular-function-finite-domain}
@@ -63,15 +64,16 @@ sharing this colour is a "regular language".
 		A "$2$-regular colouring" of an "automatic presentation" of the infinite quarter-grid.
 	}
 \end{figure}
-In \label{fig:grid-2-reg-colouring}, we provide an example of a "$2$-regular colouring".
+In \Cref{fig:grid-2-reg-colouring}, we provide an example of a "$2$-regular colouring".
 The let $\+G = \tup{V,\+E}$ be the "automatic presentation" of the infinite quarter-grid,
-defined over the alphabet $\{x,y\}$, with $V \defeq x^*y^*$ and
+defined over the alphabet $\{x,y\}$ by $V \defeq x^*y^*$ and
 \[
 	\+E = \set{\tup{x^p y^q, x^{p+1}y^q} \mid p,q \in \N}
 	\cup
 	\set{\tup{x^p y^q, x^p y^{q+1}} \mid p,q \in \N}.
 \]
-Then the unique "$2$-colouring" of $\+G$ assigns one colour to the
+Then the unique "$2$-colouring" of $\+G$ assigns one colour%
+\footnote{In yellow in \Cref{fig:grid-2-reg-colouring}.} to the
 vertices of the form $x^p y^q$ "st" $p-q$ is even.
 This "colouring" is of course "regular@@colouring".
 
