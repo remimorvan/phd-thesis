@@ -82,7 +82,7 @@ and \cite[Theorem 4.4]{BarceloFigueiraMorvan2023SeparatingAutomatic}, that lead 
 	arbitrary "$\sigma$-structure" $\?A$, for any $a\in A$,
 	there is at most one $b \in B$ "st" $\langle \?A, a \rangle \FOmodels \phi_b(x)$, and moreover $\?A \homto \?B$
 	"iff" for each $a\in A$, there is exactly one $b(a) \in B$ "st" $\langle \?A, a \rangle \FOmodels \phi_{b(a)}(x)$, and $a \mapsto b(a)$ is a "homomorphism".
-	Now, when the right-hand side holds, given a "automatic structure" $\+A$,
+	Now, when the right-hand side holds, given an "automatic structure" $\+A$,
 	for each $b\in \?B$, we let $\tilde\phi_b(x)$ be the "first-order formula" over $\signatureSynchronous{\Sigma}$ obtained from $\phi_b(x)$
 	by substituting $\+R(x_1,\hdots,x_k)$ for the "first-order formula"
 	over $\signatureSynchronous{\Sigma}$ describing $\+R_{(k)}$ in $\+A$.
@@ -139,7 +139,7 @@ of any assumption on $\?B$.
 	\Cref{thm:k-reg-col-undec}: instead of having "$k$-coloured automaton", we define
 	``$\?B$-automaton'', that admit a partition $\langle C_{b} \rangle_{b \in B}$.
 	The semantics of such an automaton is a partial function $f\colon \Sigma^* \to B$. 
-	Given a "automatic structure" $\+A$, we can then effectively test if $f$ is defined on $\domainPres{\+A}$, and if $f$ defines a "homomorphism" from $\?A$ to $\?B$---see
+	Given an "automatic structure" $\+A$, we can then effectively test if $f$ is defined on $\domainPres{\+A}$, and if $f$ defines a "homomorphism" from $\?A$ to $\?B$---see
 	the proof of \Cref{thm:k-reg-col-undec}. If so, $\+A \homregto \?B$. Dually, any "regular homomorphism" $\+A \homregto \?B$ can be described by such a $\?B$-automaton.
 	Therefore, $\HomRegAut{\?B}$ is "RE".
 \end{proof}

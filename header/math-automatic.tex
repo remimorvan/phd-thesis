@@ -128,8 +128,8 @@
 % ---
 % Separation to Colourability
 % ---
-\knowledgenewrobustcmd{\Germ}{\cmdkl{\textrm{Germ}}} % germinal configurations
-\newrobustcmd{\GermC}[1]{\kl[\Germ]{\color{#1}\textrm{Germ}}} % variant with color
+\knowledgenewrobustcmd{\Germ}[1]{\cmdkl{\textrm{Germ}_{#1}}} % germinal configurations
+\newrobustcmd{\GermC}[2]{\kl[\Germ]{\color{#2}\textrm{Germ}_{#1}}} % variant with color
 \knowledgenewrobustcmd{\Reach}[1]{\cmdkl{\textrm{Reach}_{#1}}}
 \newrobustcmd{\ReachC}[2]{\kl[\Reach]{\color{#2}\textrm{Reach}_{#1}}} % variant with color
 

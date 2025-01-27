@@ -10,7 +10,7 @@
 % ---
 
 \ifthenelse{\boolean{@tufte@afourpaper}}
-	{\geometry{a4paper,left=18mm,top=23.4mm,headsep=1.5\baselineskip,textwidth=119mm,marginparsep=8mm,marginparwidth=47mm,textheight=46\baselineskip,headheight=\baselineskip,footskip=2\baselineskip}}
+	{\geometry{a4paper,left=18mm,top=23.4mm,headsep=1.5\baselineskip,textwidth=119mm,marginparsep=8mm,marginparwidth=47mm,textheight=47\baselineskip,headheight=\baselineskip,footskip=2.5\baselineskip}}
 	{}
 
 

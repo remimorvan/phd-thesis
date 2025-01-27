@@ -141,9 +141,10 @@ We can now show undecidability for the "regular $k$-colourability problem" by re
     \caption{\emph{Allégorie pour le mois de Germinal}, Louis Lafitte.}
 \end{marginfigure}
 
-A configuration of a "Turing machine"---or more generally the node of a "automatic graph"---is said 
-to be \AP""germinal"" if it has in-degree 0.
-% \sidenote{A natural terminology would be ``initial'' but it clashes with the well-established notion of "initial configuration".}
+A configuration of a "Turing machine"---or more generally the node of an
+"automatic graph"---is said 
+to be \AP""germinal"" if it has in-degree 0.%
+\sidenote{A natural terminology would be ``initial'' but it clashes with the well-established notion of "initial configuration".}
 
 \kregcolundec%
 
@@ -152,10 +153,10 @@ to be \AP""germinal"" if it has in-degree 0.
     By reduction from the "reachable regularity problem" for "linear Turing machines"
     (\Cref{lem:reachable-regularity}). We first show it for $k=2$.
 
-    \AP Given a "linear Turing machine" $T$,
-    observe that the set $\intro*\Germ$ of all "germinal configurations" of $\confGraph$.
+    \AP Given a "linear Turing machine" $\+T$,
+    observe that the set $\intro*\Germ{\+T}$ of all "germinal configurations" of $\confGraph$.
     \begin{claim}
-        $\Germ$ is effectively a "regular language". 
+        $\Germ{\+T}$ is effectively a "regular language". 
     \end{claim}
     
     Observe moreover that, by definition of "linear Turing machines",
@@ -214,7 +215,7 @@ to be \AP""germinal"" if it has in-degree 0.
 	\proofcase{Upper-bound.} We show that the problem is "RE". Let us define a \AP""$k$-coloured automaton"" like a regular (complete) DFA, except that instead of having
 	a set of final states, it has a partition $\langle C_1,\hdots,C_k \rangle$ of its states.
 	Such an automaton recognizes a "regular colouring" $\Sigma^* \to \lBrack 1, k\rBrack$.
-	Given a "automatic graph" $\+G = \tup{V,\+E}$---whose edge relations is given by
+	Given an "automatic graph" $\+G = \tup{V,\+E}$---whose edge relations is given by
     a "synchronous automaton" $\relPres{\+E}{\+G}$---and a $k$-coloured automaton $\+B$,
 	we can build, by a product construction, an automaton $\+A'$ which accepts
 	all $u \otimes v \in \convolRel{R}$ such that the colour of $u$ is distinct from
