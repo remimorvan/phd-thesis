@@ -1,9 +1,9 @@
 \subsection{
     \AP\label{sec:dichotomy-k-regular-colourability}%
-    $k$-Regular Colourability Problem
+    regular $k$-colourability Problem
 }
 
-We show that the "$k$-regular colourability problem" is undecidable for $k\geq 2$.%
+We show that the "regular $k$-colourability problem" is undecidable for $k\geq 2$.%
 \footnote{
     Using this, we obtain in the next subsection 
     the undecidability for the separability problem on two natural classes of 
@@ -48,7 +48,7 @@ Such a configuration graph is depicted on
 \Cref{fig:reduction-wf-RTM-to-colouring-config-graph-wf-RTM}.\footnote{Note
 that it is decidable whether a "Turing machine" is "linear@@TM". In fact, condition (1) can be expressed in "first-order logic" over $\univStructSynchronous{\Sigma}$.}
 
-\AP The ""reachable regularity problem"" is the problem of, given a "Turing machine" $\+T$, to decide whether its set of "reachable configurations" is a "regular language". To show that is it undecidable, we exhibit a reduction from the halting problem on deterministic "reversible" Turing machines.
+\AP The ""reachable regularity problem"" is the problem of, given a "Turing machine" $\+T$, to decide whether its set of "reachable configurations" \AP$\intro*\Reach{\+T}$ is a "regular language". To show that is it undecidable, we exhibit a reduction from the halting problem on deterministic "reversible" Turing machines.
 
 \begin{proposition}[{\cite[Theorem 1]{Lecerf1963MachinesReversibles}}]
     \AP\label{prop:halting-problem-detrevTM}
@@ -132,8 +132,8 @@ that it is decidable whether a "Turing machine" is "linear@@TM". In fact, condit
 \end{proof}
 
 
-\paragraph*{Undecidability of the $k$-Regular Colourability Problem.}
-We can now show undecidability for the "$k$-regular colourability problem" by reduction from the "reachable regularity problem" restricted to "linear Turing machines".
+\paragraph*{Undecidability of the regular $k$-colourability Problem.}
+We can now show undecidability for the "regular $k$-colourability problem" by reduction from the "reachable regularity problem" restricted to "linear Turing machines".
 
 \begin{marginfigure}
     \centering
@@ -196,17 +196,17 @@ to be \AP""germinal"" if it has in-degree 0.
     This graph is depicted in \Cref{fig:reduction-wf-RTM-to-colouring}.
     Note that $\tup{V,\+E}$ is "connected" and "2-colourable": in fact, it is a "directed tree" whose root is $\pad\cdot q_0\cdot \pad\cdot \bSymb$. 
     
-    We claim that $\tup{V,\+E}$ is "$2$-regular colourable" if, and only if, the set of "reachable configurations" of $T$ is a "regular language". 
+    We claim that $\tup{V,\+E}$ is "regularly $2$-colourable" if, and only if, the set of "reachable configurations" of $T$ is a "regular language". 
     In fact, up to permuting the two-colours, $\tup{V,\+E}$
     admits a unique 2-colouring $\tup{C_1,C_2}$, defined by:
     \[
-        C_1 \defeq \Reach\cdot\bSymb \cup (\configs \setminus \Reach)\cdot\rSymb
+        C_1 \defeq \Reach{\+T}\cdot\bSymb \cup (\configs \setminus \Reach{\+T})\cdot\rSymb
     \]
     and $C_2$ is the complement of $C_1$.
-    If $\Reach$ is regular, then so is $C_1$. Dually, if $C_1$ is regular, then
-    $\Reach$ is exactly the set of configurations $\gamma$ such that
+    If $\Reach{\+T}$ is regular, then so is $C_1$. Dually, if $C_1$ is regular, then
+    $\Reach{\+T}$ is exactly the set of configurations $\gamma$ such that
     $\gamma\cdot \bSymb \in C_1$ and hence is regular.
-    It follows that $\tup{V,\+E}$ is "$2$-regular colourable" if and only if
+    It follows that $\tup{V,\+E}$ is "regularly $2$-colourable" if and only if
     the "reachable configurations" of $\+T$ are regular, which concludes the proof for $k=2$.
 
     To prove the statement for any $k>2$, we define $\tup{V,\+E_k}$ as the result of adding a $(k-2)$-clique to $\tup{V,\+E}$ and adding an edge from every vertex of the clique to every vertex incident to an edge of $\+E$. This forces the clique to use $k-2$ colours that cannot be used in the remaining part of the graph and the proof is then analogous.
@@ -221,12 +221,12 @@ to be \AP""germinal"" if it has in-degree 0.
     the colour of $v$.
 	Then, $\+A'$ is equivalent to $\relPres{\+E}{\+G}$ if, and only if,
     $\+B$ describes a proper "$k$-colouring" of $\tup{V,\+E}$.
-    The "RE" upper-bound of the "$k$-regular colourability problem" follows: 
+    The "RE" upper-bound of the "regular $k$-colourability problem" follows: 
     it suffices to enumerate all "$k$-coloured automata" and check for equivalence.
 \end{proof}
 
 Note that this reduction provides an easy way of building
-graphs in the shape of \Cref{fig:reduction-wf-RTM-to-colouring} that are "2-colourable" (in fact, they are trees) but not "2-regular colourable". In fact, we can provide a slightly more
+graphs in the shape of \Cref{fig:reduction-wf-RTM-to-colouring} that are "2-colourable" (in fact, they are trees) but not "regularly $2$-colourable". In fact, we can provide a slightly more
 direct construction.
 
 \begin{figure}
@@ -248,7 +248,7 @@ direct construction.
         \+E_{\mathrm{incr}} & = \{(a^pb^q,\, a^{p+1}b^{q+1}) \mid p,q \in \N\} \\
         \+E_{\mathrm{init}} & = \{(\varepsilon,\, a^p) \mid p \in \N\} \cup \{(\varepsilon,\, b^q) \mid q \in \N\}, 
     \end{align*}    
-    is "automatic@automatic graph" but not "2-regular colourable".
+    is "automatic@automatic graph" but not "regularly $2$-colourable".
     Indeed, its only "2-colouring"
     consists in partitioning the vertices of $\+T$ into
     \begin{align*}
@@ -259,5 +259,5 @@ direct construction.
     and its complement $V \setminus C$.
     Let $P = \{a^p b^q \mid p, q \in 2\N\} = (aa)^*(bb)^*$:
     $P$ is regular, yet $C \cap P = \{a^n b^n \mid n \in 2\N\}$ is not.
-    Hence, $C$ is not regular, and thus $\+T$ is not "2-regular colourable".
+    Hence, $C$ is not regular, and thus $\+T$ is not "regularly $2$-colourable".
 \end{example}

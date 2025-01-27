@@ -9,7 +9,7 @@ or equivalently by \Cref{thm:reg-colourability-equiv-separability}, the "finite 
 
 \begin{conjecture}%
 	\!\footnote{The upper bound is trivial: given a "automatic graph" $\+G$,
-	we guess some $k\in \N$ and check if $\+G \in \HomRegAutDec{\clique{k}}$, which is "RE"
+	we guess some $k\in \N$ and check if $\+G \in \HomRegAut{\clique{k}}$, which is "RE"
 	by \Cref{prop:dichotomy-general-upper-bounds}.}
 	\AP\label{conj:finite-regular-colourability-undecidable}
 	"finite regular colourability of automatic graphs" is "RE"-complete.
@@ -55,14 +55,14 @@ While there is some "graph@@dir" $\+G$ does not admit a "homomorphism" to $\omeg
 Putting \Cref{prop:finite-regular-colourability-as-homreg-pb,prop:finite-colourability-of-connected-graphs} together, we obtain the following corollary.
 \begin{corollary}
 	The "finite regular colourability problem" and the restriction
-	of $\HomRegAutDec{\omegaCliquePres}$ to "connected graphs" are "computationally equivalent".
+	of $\HomRegAut{\omegaCliquePres}$ to "connected graphs" are "computationally equivalent".
 \end{corollary}
 
 On the other hand, we strongly believe that the proof of \Cref{lem:reduction-hom-reg} can be adapted
-to obtain a lower bound on $\HomRegAutDec{\marked{\omegaCliquePres}}$.
+to obtain a lower bound on $\HomRegAut{\marked{\omegaCliquePres}}$.
 \begin{conjecture}
 	There is a reduction from "regular unconnectivity in automatic graphs" to
-	$\HomRegAutDec{\marked{\omegaCliquePres}}$.
+	$\HomRegAut{\marked{\omegaCliquePres}}$.
 \end{conjecture}
 Note however that \Cref{lem:reduction-hom-reg} does not directly apply since the "target structure"
 is not finite---a fact that we use throughout the proof of \Cref{lem:reduction-hom-reg}.
@@ -71,15 +71,15 @@ Putting these last two statements together, to prove the "RE"-hardness of
 "finite regular colourability of automatic graphs", it would ``suffice'' to
 build the following reduction.
 \begin{conjecture}
-	There is a reduction from $\HomRegAutDec{\marked{\omegaCliquePres}}$
-	to the restriction of $\HomRegAutDec{\omegaCliquePres}$ to "connected graphs".
+	There is a reduction from $\HomRegAut{\marked{\omegaCliquePres}}$
+	to the restriction of $\HomRegAut{\omegaCliquePres}$ to "connected graphs".
 \end{conjecture}
 
 This question seems however quite challenging. Note first that the reduction from 
-"regular unconnectivity in automatic graphs" to $\HomRegAutDec{\marked{\omegaCliquePres}}$
+"regular unconnectivity in automatic graphs" to $\HomRegAut{\marked{\omegaCliquePres}}$
 heavily uses the fact that the "input structure" can be "unconnected@@struct".
 Moreover, beyond this issue of "connectivity@@struct",
-whether $\HomRegAutDec{\marked{\omegaCliquePres}}$ and $\HomRegAutDec{\omegaCliquePres}$
+whether $\HomRegAut{\marked{\omegaCliquePres}}$ and $\HomRegAut{\omegaCliquePres}$
 are equivalent is also not straightforward: note in particular that \Cref{prop:idempotent-core-preserves-csp-complexity} does not apply: not only $\omegaClique$ is not
 finite, but more importantly it is not a "core".%
 \footnote{Indeed, $\bigoplus_{k\in\N} \clique{k}$ is "homomorphically equivalent" to
@@ -112,7 +112,7 @@ We do not know whether the converse implication holds.
 
 \begin{conjecture}
 	\AP\label{conj:invariance-under-graph-isomorphisms}
-	For any "finite $\sigma$-structure" $\?B$, $\HomRegAutDec{\?B}$ is invariant
+	For any "finite $\sigma$-structure" $\?B$, $\HomRegAut{\?B}$ is invariant
 	under "graph isomorphisms" "iff" $\?B$ has "finite duality".
 \end{conjecture}
 
@@ -299,10 +299,10 @@ We can now prove our result.
   Call the property above $\+P$.
   To prove it, observe first that $\+E$ contains no edge
   between vertices of distinct length, and then we prove
-  by induction on $n\in\N$ that $\+E_n = \{\langle u,v\rangle \in V_n \mid (u,v) \models \+P\}$.
+  by induction on $n\in\N$ that $\+E_n = \{\langle u,v\rangle \in V_n \mid (u,v) \FOmodels \+P\}$.
   For $n=0$ the result is trivial, and if it holds at rank $n\in\N$,
   then it is clear that $\+E_{n+1} \subseteq
-  \{\langle u,v\rangle \in V_{n+1} \mid (u,v) \models \+P\}$.
+  \{\langle u,v\rangle \in V_{n+1} \mid (u,v) \FOmodels \+P\}$.
   Conversely, if $u,v \in V_{n+1}$ satisfies $\+P$, then
   either:
   \begin{itemize}

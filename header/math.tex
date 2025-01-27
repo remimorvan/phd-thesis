@@ -32,9 +32,9 @@
 \knowledgenewrobustcmd{\transition}[1]{\mathrel{\cmdkl{\smashxrightarrow{\ensuremath{#1}}}}}
 
 \knowledgenewrobustcmd{\semFO}[2]{\cmdkl{\lBrack} #1 \cmdkl{\rBrack^{#2}}} % semantics of FO
-% \let\modelsNoKL\models
-% \renewrobustcmd\models{\mathrel{\kl[\models]{\modelsNoKL}}} % models relation
-% \knowledge{\models}{notion}
+\disablecommand{\models}
+\suggestcommand\models{\FOmodels}
+\knowledgenewrobustcmd\FOmodels{\mathrel{\cmdkl{\LaTeXmodels}}} % models relation
 
 
 \newrobustcmd\Acc{\textrm{Acc}}

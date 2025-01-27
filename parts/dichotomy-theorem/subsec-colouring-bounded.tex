@@ -4,7 +4,7 @@
 \paragraph*{Separability for Bounded Recognizable Relations.}
 
 In this part, we capitalize on the undecidability result of \Cref{sec:dichotomy-k-regular-colourability}, showing how this implies the undecidability for the separability problem on two natural classes of bounded "recognizable relations", namely $\kREC$ and $\kPROD$.
-For any $k$, $\reintro*\kPROD$ is the subclass of $\REC$ consisting of unions of $k$ "Cartesian products" of "regular languages" (which is a subclass of $\kREC[2^{2k}]$).
+For any $k$, \AP$\intro*\kPROD$ is the subclass of $\REC$ consisting of unions of $k$ "Cartesian products" of "regular languages" (which is a subclass of $\kREC[2^{2k}]$).
 
 First, observe that the "$\kREC[1]$-separability problem" is trivially decidable, since the only possible "separator@@rel" is $\Sigma^* \times \Sigma^*$. However, for any other $k>1$, the problem is undecidable.
 
@@ -14,7 +14,7 @@ First, observe that the "$\kREC[1]$-separability problem" is trivially decidable
 \end{corollary}
 
 \begin{proof}
-    This is a consequence of the reduction from the "$k$-regular colourability problem" of \Cref{thm:reg-colourability-equiv-separability}, combined with the undecidability of the latter for every $k>1$ (\Cref{thm:k-reg-col-undec}).
+    This is a consequence of the reduction from the "regular $k$-colourability problem" of \Cref{thm:reg-colourability-equiv-separability}, combined with the undecidability of the latter for every $k>1$ (\Cref{thm:k-reg-col-undec}).
 \end{proof}
 
 On the $\kPROD$ hierarchy we will find the same phenomenon. In particular the case $k=1$ is also trivially decidable.
@@ -81,20 +81,20 @@ As soon as $k>1$, the "$\kPROD$-separability problem" becomes undecidable.
 \end{proof}
 
 \begin{corollary}\AP\label{cor:2reg-2prod}
-    A "symmetric@@rel" "automatic relation" $\+R$ and $\Id$ are "separable@@rel" by a relation in $\kPROD[2]$ "iff" $\tup{\Sigma^*,\+R}$ is "$2$-regular colourable".
+    A "symmetric@@rel" "automatic relation" $\+R$ and $\Id$ are "separable@@rel" by a relation in $\kPROD[2]$ "iff" $\tup{\Sigma^*,\+R}$ is "regularly $2$-colourable".
 \end{corollary}
 
 \begin{proof}
     By observing that for any "symmetric relation" $\+R \subseteq \Sigma^* \times \Sigma^*$, we have that $A,B \subseteq \Sigma^*$ is a "colouring" of $\tup{\Sigma^*,\+R}$ if, and only if, $(A \times B) \cup (B \times A)$ "separates@@rel" $\+R$ from $\Id$.
 \end{proof}
 
-We can now easily show undecidability for the "$\kPROD[2]$-separability problem" by reduction from the "$2$-regular colourability problem".
+We can now easily show undecidability for the "$\kPROD[2]$-separability problem" by reduction from the "regular $2$-colourability problem".
 \begin{lemma}\AP\label{lem:aut-2prod-sep-undec}
     The "$\kPROD[2]$-separability problem" is undecidable.
 \end{lemma}
 \begin{proof}
-    By reduction from the "$2$-regular colourability problem" on "automatic graphs", which is undecidable by \Cref{thm:k-reg-col-undec}. Let $\tup{V,\+E}$ be an "automatic graph" and $\tup{V,\+E'}$ the symmetric closure of $\tup{V,\+E}$. It follows that $\tup{V,\+E'}$ is still "automatic@@struct" and that there is a "$2$-regular colouring" for $\tup{V,\+E'}$ "iff" there is a "$2$-regular colouring" for $\tup{V,\+E}$---take the same colouring.
-    Thus, by \Cref{cor:2reg-2prod}, $\tup{V,\+E}$ is "$2$-regular colourable" "iff" 
+    By reduction from the "regular $2$-colourability problem" on "automatic graphs", which is undecidable by \Cref{thm:k-reg-col-undec}. Let $\tup{V,\+E}$ be an "automatic graph" and $\tup{V,\+E'}$ the symmetric closure of $\tup{V,\+E}$. It follows that $\tup{V,\+E'}$ is still "automatic@@struct" and that there is a "regular $2$-colouring" for $\tup{V,\+E'}$ "iff" there is a "regular $2$-colouring" for $\tup{V,\+E}$---take the same colouring.
+    Thus, by \Cref{cor:2reg-2prod}, $\tup{V,\+E}$ is "regularly $2$-colourable" "iff" 
     there is a $\kPROD[2]$ relation that "separates@@rel" $\+E'$ from $\Id$.
 \end{proof}
 

@@ -25,7 +25,7 @@ $L_3 = (a^3)^* \smallsetminus L_6$, $L_2 = (a^2)^* \smallsetminus L_6$ and $L_\b
     Given an "automatic graph" $\tup{V,\+E}$ over an alphabet $\Sigma$, consider the instance
     $\tup{\+R_1, \+R_2}$ for the "$\REC$-separability problem", where 
     $\+R_1 = \+E$ and $\+R_2 = \Id$. 
-    If $\tup{V,\+E}$ is "$k$-regular colourable" via the colouring $V_1, \dotsc, V_k$ then the $\kREC$ relation
+    If $\tup{V,\+E}$ is "regularly $k$-colourable" via the colouring $V_1, \dotsc, V_k$ then the $\kREC$ relation
     $\bigcup_{i \neq j} V_i \times V_j$ "separates@@rel" $\+R_1 = \+E$ and $\+R_2 = \Id$. 
     Conversely, if a $\kREC$ relation $\+R \subseteq \Sigma^* \times \Sigma^*$ on the regular 
     partition $V_1 \dcup \dotsb \dcup V_k = \Sigma^*$ "separates@@rel" $\+R_1$ and $\+R_2$, then $\bigcup_{i \neq j} V_i \times V_j$ also "separates@@rel" $\+R_1$ and $\+R_2$, and this implies that $V_1, \dotsc, V_k$ is a "$k$-colouring" for $\tup{\Sigma^*,\+E}$, and in particular
@@ -78,14 +78,14 @@ Note that $\incompGraph{\+R}{\Id}$ is exactly the graph $\tup{\Sigma^*,\+R}$.
             \input{tikz/dichotomy/ex-Inc}
         \end{tikzpicture}
         \caption{\AP\label{fig:equal-length-plusone-incompatibility}%
-            "Incompatibility graph" $\incompGraph{\+R_1}{\+R_2}$ and its "2-regular colouring".%
+            "Incompatibility graph" $\incompGraph{\+R_1}{\+R_2}$ and its "regular $2$-colouring".%
         }
     \end{marginfigure}%
 
     Note that while neither $\+R_1$ nor $\+R_2$ are "recognizable@@rel",
     they are "separable@@rel" by the "recognizable@@rel" relation
     $\+S$ consisting of all pairs $\tup{u,v}$ such that $|u|$ and $|v|$ have the same parity.
-    Moreover, $\incompGraph{\+R_1}{\+R_2}$ is "2-regular colourable", the two colours being
+    Moreover, $\incompGraph{\+R_1}{\+R_2}$ is "regularly $2$-colourable", the two colours being
     the words of even and odd length.
 \end{example}
 
@@ -193,5 +193,5 @@ We can now finish the proof of \Cref{thm:reg-colourability-equiv-separability}.
 \end{proof}
 
 Motivated by these reductions, we focus our attention to "regular colourings" of "automatic graphs",
-eventually proving that both the "$k$-regular colourability@@problem" and
+eventually proving that both the "regular $k$-colourability@@problem" and
 "regular colourability problems@regular colourability problem" are undecidable.

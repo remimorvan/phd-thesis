@@ -13,18 +13,9 @@ databases, or here.
 	\itemAP convolution of words $\intro*\convol$
 	\itemAP convolution of a relation $\intro*\convolRel{\+R}$
 	\itemAP ""automatic relation"" and $\intro*\AUT$
-	\itemAP domain and relation of a presentation: $\intro*\domainPres{\+A}$ and $\intro*\relPres{\+R}{\+A}$  
+	\itemAP domain and relation of a ""presentation"": $\intro*\domainPres{\+A}$ and $\intro*\relPres{\+R}{\+A}$ 
+	\itemAP ""automatic structure"" and ""automatic graph""
 \end{itemize}
-
-Given a "relational signature" $\sigma$, a \AP"automatic $\sigma$-presentation" $\+A$
-over the alphabet $\Sigma$ consists of a "regular language"
-$\domainPres{\•A} \subseteq \Sigma^*$ and for each $\+R_{(k)} \in \sigma$
-a "automatic relation" $\relPres{\+R}{\•A} \subseteq (\Sigma^*)^k$.
-
-\AP A ""automatic graph"" is a "automatic $\sigma$-presentation" when $\sigma$ is the
-"graph signature". It boils down a pair $\+G = \langle V, \+E \rangle$, where $V$
-is a "regular language" over some alphabet $\Sigma$, and $\+E$ is a
-"automatic binary relation".
 
 TODO:generalized presentation (non-injective) + effective construction to make them injective.
 -> this explains our choice. We avoid the terminology ``regular structure'' because of
@@ -78,12 +69,12 @@ What we said above work with the implicit assumptions that all structures at han
 	TODO
 \end{proof}
 
-\decisionproblem{"First-order Model Checking of Automatic Structures"}{
+\decisionproblem{""First-Order Model Checking of Automatic Structures""}{
 	A "first-order formula" $\phi(x_1,\hdots,x_k)$ over $\sigma$,
-	a "automatic presentation" $\•A$ of an "automatic $\sigma$-structure" $\?A$,
+	an "automatic presentation" $\•A$ of an "automatic $\sigma$-structure" $\?A$,
 	and words $u_1,\hdots,u_k \in \domainPres{\+A}$.
 }{
-	Does $\?A, u_1,\hdots, u_k \models \phi$?
+	Does $\?A, u_1,\hdots, u_k \FOmodels \phi$?
 }
 
 \begin{proposition}

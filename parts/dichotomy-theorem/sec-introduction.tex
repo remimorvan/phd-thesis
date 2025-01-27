@@ -59,8 +59,9 @@ By applying techniques based on Ramsey Theorem over infinite graphs, it was show
 
 \AP On the other hand, much less is known about the ""$\RAT$/$\REC$-separability problem"", which takes two $n$-ary "rational relations" 
 $\+R,\+R' \subseteq \Sigma^* \times \Sigma^*$ and checks whether there is a "recognizable relation" 
-$S = \bigcup_i L_{i,1} \times \cdots \times L_{i,n}$
-with $\+R \subseteq \+S$ and $\+R' \cap \+S = \emptyset$. In other words, this problem asks whether we can \emph{over approximate} $\+R$ with a recognizable 
+$S = \bigcup_i L_{i,1} \times \cdots \times L_{i,n}$ that \AP""separates@@rel"" $\+R$ from $\+R'$, meaning that $\+R \subseteq \+S$ and $\+R' \cap \+S = \emptyset$, in we case we say that $\+R$
+and $\+R'$ are \AP""separable@@rel"" by a "recognizable relation".
+In other words, this problem asks whether we can \emph{over approximate} $\+R$ with a recognizable 
 relation $\+S$ that is constrained not to intersect with $\+R'$. Separability problems of this kind abound in theoretical computer science, in particular
 in formal language theory where they have gained a lot of attention over the last few years---see "eg" \cite{PlaceZeitoun2016SeparatingRegularLanguages,Kopczynski2016InvisiblePushdownLanguages,CzerwinskiMartensRooijenZeitounZetzsche2017DecidableSeparabilityPiecewiseTestable,ClementeCzerwinskiLasotaPaperman2017RegularSeparabilityParikhAutomata}. 
 
@@ -68,7 +69,7 @@ As for membership, the "$\RAT$/$\REC$-separability problem"
 is in general undecidable, so in this chapter we focus on its restriction to
 "automatic relations".
 \decisionproblem{
-	"$\AUT$/$\REC$-separability problem".
+	""$\AUT$/$\REC$-separability problem"".
 }{
 	Two "automatic relations" $\+R$ and $\+R'$.
 }{
@@ -168,13 +169,13 @@ Atserias proved the converse implication to this result \cite[Corollary 4]{Atser
 
 \AP\begin{proposition}[""Atserias' theorem""]
 	Let $\?B$ be a "finite $\sigma$-structure". Then $\?B$ has "finite duality"
-	if, and only if, $\HomAllClass{\?B}$ is "first-order definable".
+	if, and only if, $\HomAll{\?B}$ is "first-order definable".
 \end{proposition}
 
 Moreover, Larose and Tesson proved a dichotomy theorem for "CSPs" with small complexity.
 \begin{proposition}[""Larose-Tesson theorem""]
 	Let $\?B$ be a "finite $\sigma$-structure". If $\?B$ does not have "finite duality",
-	then $\HomFinDec{\?B}$ is "L"-hard under "first-order reductions".
+	then $\HomFin{\?B}$ is "L"-hard under "first-order reductions".
 \end{proposition}
 
 This chapter will generalize some results---including the latter---on the "homomorphism problem"
@@ -192,15 +193,18 @@ In \Cref{sec:dichotomy-colouring}, we start
 by rephrasing the "$\AUT$/$\REC$-separability problem" in graph-theoretic terms.
 
 \decisionproblem{
-	"Finite Regular Colourability of Automatic Graphs"
+	""Finite Regular Colourability of Automatic Graphs""
 }{
 	A "presentation" $\•G$ of an "automatic graph" $\•G$.
 }{
 	Does $\•G$ admit a "regular colouring" with finitely many colours?
 }
-A "regular colouring" with finitely many colours (resp. a $k$-regular colouring)
+A "regular colouring" with finitely many colours (resp. a "regular $k$-colouring")
 is a partition of the vertices of $\•G$ into finitely many (resp. $k$) regular languages
 "st" adjacent vertices cannot belong to the same set.
+Similarly, the \AP""regular $k$-colourability problem"" asks instead if
+$\•G$ admit a "regular $k$-colouring", in which case we say that $\•G$ is
+\AP""regularly $k$-colourable"".
 
 \begin{restatable*}{theorem}{regcolourabilityequivseparability}
     \AP\label{thm:reg-colourability-equiv-separability}
@@ -208,7 +212,7 @@ is a partition of the vertices of $\•G$ into finitely many (resp. $k$) regular
     \begin{enumerate}
         \itemAP\label{item:reg-colourability-equiv-separability-1} from "$\AUT$/$\REC$-separability@@problem" to "finite regular colourability@@problem", 
         \itemAP\label{item:reg-colourability-equiv-separability-2} from "finite regular colourability@@problem" to "$\AUT$/$\REC$-separability@@problem", and
-        \itemAP\label{item:reg-colourability-equiv-separability-3} from "$k$-regular colourability@@problem" to "$\AUT$/$\kREC$-separability@@problem", for every $k > 0$.
+        \itemAP\label{item:reg-colourability-equiv-separability-3} from "regular $k$-colourability@@problem" to "$\AUT$/$\kREC$-separability@@problem", for every $k > 0$.
     \end{enumerate}
     Further, the last two reductions are so that the second relation in the instance of the separability problem is the identity $\Id$.
 \end{restatable*}
@@ -218,7 +222,7 @@ we prove the problem to be undecidable if the number of colours is fixed.
 
 \begin{restatable*}{theorem}{kregcolundec}
     \AP\label{thm:k-reg-col-undec}
-    The "$k$-regular colourability problem" on "automatic graphs" is undecidable, for every $k\geq 2$. More precisely, the problem is "RE"-complete. This holds also for "connected" "automatic graphs".
+    The "regular $k$-colourability problem" on "automatic graphs" is undecidable, for every $k\geq 2$. More precisely, the problem is "RE"-complete. This holds also for "connected" "automatic graphs".
 \end{restatable*}
 
 Then, in \Cref{sec:dichotomy-bounded}, we build on this result to prove the undecidability of
@@ -245,7 +249,7 @@ some separability problems for "automatic relations" (\Cref{coro:krec-sep-undec,
 	}
 \end{marginfigure}
 
-Observing that "$k$-regular colourability" can be rephrased as the existence of a 
+Observing that "regular $k$-colourability" can be rephrased as the existence of a 
 "regular homomorphism"---meaning, in this context, a "homomorphism" whose preimages are all
 "regular languages"---to the "$k$-clique",%
 \footnote{See \Cref{fig:dichotomy-3-clique,fig:dichotomy-ex-3-colouring}.}
@@ -264,14 +268,14 @@ and "regular homomorphism problem" for "automatic structures" in \Cref{sec:dicho
 	Let $\?B$ be an arbitrary "$\sigma$-structure". The following are equivalent:
 	\begin{description}
 		\itemAP[\introinrestatable\itemDTFinDual.] $\?B$ has "finite duality";
-		\itemAP[\introinrestatable\itemDTHomDec.] $\HomAutDec{\?B}$ is decidable;
-		\itemAP[\introinrestatable\itemDTHomRegDec.] $\HomRegAutDec{\?B}$ is decidable;
-		\itemAP[\introinrestatable\itemDTEqual.] $\HomAutDec{\?B} = \HomRegAutDec{\?B}$ "ie" for any "automatic presentation" $\•A$ of a 
+		\itemAP[\introinrestatable\itemDTHomDec.] $\HomAut{\?B}$ is decidable;
+		\itemAP[\introinrestatable\itemDTHomRegDec.] $\HomRegAut{\?B}$ is decidable;
+		\itemAP[\introinrestatable\itemDTEqual.] $\HomAut{\?B} = \HomRegAut{\?B}$ "ie" for any "automatic presentation" $\•A$ of a 
 		"$\sigma$-structure" $\?A$, there is a "homomorphism" from $\?A$ to $\?B$ "iff" 
 		there is a "regular homomorphism" from $\•A$ to $\?B$;
-		\itemAP[\introinrestatable\itemDTFirstOrder.] $\HomAllClass{\?B}$ has "uniformly first-order definable homomorphisms".
+		\itemAP[\introinrestatable\itemDTFirstOrder.] $\HomAll{\?B}$ has "uniformly first-order definable homomorphisms".
 	\end{description}
-	Moreover, when $\HomAutDec{\?B}$ and $\HomRegAutDec{\?B}$ undecidable, they are "coRE"-complete
+	Moreover, when $\HomAut{\?B}$ and $\HomRegAut{\?B}$ undecidable, they are "coRE"-complete
 	and "RE"-complete, respectively. When they are decidable, they are "NL".
 \end{restatable*}
 

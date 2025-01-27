@@ -13,7 +13,8 @@
  | congruence induced
 
 \knowledge{notion}
- | quotient
+ | quotient@struct
+ | quotient structure
 
 \knowledge{notion}
  | core

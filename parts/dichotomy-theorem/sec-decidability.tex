@@ -1,37 +1,37 @@
 \section{Decidability of the Regular Homomorphism Problem}
 \AP\label{sec:dichotomy-decidability}
 
-In this section, we show that if $\?B$ has "finite duality", then $\HomRegAutDec{\?B}$ is decidable.
+In this section, we show that if $\?B$ has "finite duality", then $\HomRegAut{\?B}$ is decidable.
 We provide two alternative proofs. In \Cref{sec:uniformly-first-order-definable-hom} we provide
-a logic-based proof that if $\?B$ has "finite duality", then $\HomRegAutDec{\?B} = \HomAutDec{\?B}$,
-and that $\HomRegAutDec{\?B}$ is decidable.
+a logic-based proof that if $\?B$ has "finite duality", then $\HomRegAut{\?B} = \HomAut{\?B}$,
+and that $\HomRegAut{\?B}$ is decidable.
 Independently, in \Cref{sec:hyperedge-consistency-finite,sec:hyperedge-consistency-automatic},
 we introduce the "hyperedge consistency algorithm for automatic structures",
 which is a variation of the classical "hyperedge consistency algorithm for finite structures".
 We start by explaining the later algorithm,
-which solves $\HomFinDec{\?B}$ for some $\?B$'s.\footnote{We will
+which solves $\HomFin{\?B}$ for some $\?B$'s.\footnote{We will
 see later that the algorithm is correct for "$\sigma$-structures" with so-called "tree duality",
 which is a superclass of the "structures" with "finite duality".}
 Then, we will use the former algorithm to prove that assuming that $\?B$ has "finite duality",
-then $\HomRegAutDec{\?B}$ is decidable.\footnote{Interestingly, this algorithm cannot solve
-$\HomRegAutDec{\?B}$ when $\?B$ has only "tree duality" but not "finite duality". 
+then $\HomRegAut{\?B}$ is decidable.\footnote{Interestingly, this algorithm cannot solve
+$\HomRegAut{\?B}$ when $\?B$ has only "tree duality" but not "finite duality". 
 We discuss this in more details in TODO.}
 
 \subsection{Uniformly First-Order Definable Homomorphisms}
 \AP\label{sec:uniformly-first-order-definable-hom}
 
-We say that $\HomFinClass{\?B}$ (resp. $\HomAllClass{\?B}$)
+We say that $\HomFin{\?B}$ (resp. $\HomAll{\?B}$)
 have \AP""uniformly first-order definable homomorphisms"" if there exists "first-order formulas"
 $\langle \phi_b(x) \rangle_{b\in B}$ over $\sigma$ "st" for any finite
 (resp. arbitrary) "$\sigma$-structure" $\?A$, for any $a\in A$,
-there is at most one $b \in B$ "st" $\langle \?A, a \rangle \models \phi_b(x)$, and moreover $\?A \homto \?B$
-"iff" for each $a\in A$, there is exactly one $b(a) \in B$ "st" $\langle \?A, a \rangle \models \phi_{b(a)}(x)$, and $a \mapsto b(a)$ is a "homomorphism".
+there is at most one $b \in B$ "st" $\langle \?A, a \rangle \FOmodels \phi_b(x)$, and moreover $\?A \homto \?B$
+"iff" for each $a\in A$, there is exactly one $b(a) \in B$ "st" $\langle \?A, a \rangle \FOmodels \phi_{b(a)}(x)$, and $a \mapsto b(a)$ is a "homomorphism".
 
 \begin{lemma}
 	\AP\label{lemma:finite-duality-uniformly-definable-homomorphisms}
-	Let $\?B$ be a finite structure. Then $\HomAllClass{\?B}$ is "first-order definable" "iff"
-	$\HomAllClass{\?B}$ has "uniformly first-order definable homomorphisms".\footnote{The same 
-	equivalence holds if one replaces $\HomAllClass{\?B}$ with $\HomFinClass{\?B}$.
+	Let $\?B$ be a finite structure. Then $\HomAll{\?B}$ is "first-order definable" "iff"
+	$\HomAll{\?B}$ has "uniformly first-order definable homomorphisms".\footnote{The same 
+	equivalence holds if one replaces $\HomAll{\?B}$ with $\HomFin{\?B}$.
 	In both cases, these conditions are equivalent, by "Atserias' theorem", to asking that $\?B$
 	has "finite duality".}
 \end{lemma}
@@ -39,8 +39,8 @@ there is at most one $b \in B$ "st" $\langle \?A, a \rangle \models \phi_b(x)$, 
 Before proving this lemma, we show an intermediate result.
 \begin{fact}
 	\AP\label{fact:marking-preserves-finite-duality}
-	If $\?B$ is a finite "core", then is $\HomAllClass{\?B}$ is "first-order definable"
-	"iff" $\HomAllClass{\marked{\?B}}$ is "first-order definable".
+	If $\?B$ is a finite "core", then is $\HomAll{\?B}$ is "first-order definable"
+	"iff" $\HomAll{\marked{\?B}}$ is "first-order definable".
 \end{fact}
 
 \begin{proof}
@@ -49,16 +49,16 @@ Before proving this lemma, we show an intermediate result.
 \end{proof}
 
 \begin{proof}[Proof \Cref{lemma:finite-duality-uniformly-definable-homomorphisms}]
-	\proofcase{Converse implication.} Assume that $\HomAllClass{\?B}$ has
+	\proofcase{Converse implication.} Assume that $\HomAll{\?B}$ has
 	"uniformly first-order definable homomorphisms", say by $\langle \phi_b(x) \rangle_{b\in B}$.
 	Then the conjunctions of the properties 
 	``every $x$ must satisfy exactly one $\phi_b(x)$ ($b\in \?B$)'',
 	and ``for every "predicate" $\+R$ of arity $k$, for any $\langle x_1,\, \hdots,\, x_k \rangle$ in $\+R$, there exists $\langle b_1,\, \hdots,\, b_k \rangle \in \+R(\?B)$ "st"
 	each $x_i$ satisfies $b_i$ ($i \in \lBrack 1,k \rBrack$)'' is a "first-order sentence"
-	describing all "$\sigma$-structures" of $\HomAllClass{\?B}$.
+	describing all "$\sigma$-structures" of $\HomAll{\?B}$.
 
 	\proofcase{Direct implication.} 
-	Let $\?B$ such that $\HomAllClass{\?B}$ is "first-order definable".
+	Let $\?B$ such that $\HomAll{\?B}$ is "first-order definable".
 	Given an arbitrary "$\sigma$-structure" $\?A$, we define a function $F\colon A \to \pset{B}$
 	by mapping each $a$ to the set of $b$'s ($b \in \?B$) "st"
 	there is a "homomorphism" from $\?A$ to $\?B$ that maps $a$ to $b$.
@@ -75,16 +75,16 @@ Before proving this lemma, we show an intermediate result.
 	Hence, $\langle F(a_1),\,\hdots,\,F(a_l) \rangle \in \+R(\FederVardi{\?B})$,
 	which concludes the proof that $F$ is a "homomorphism" from $\?A$ to $\FederVardi{\?B}$.
 
-	By "Atserias' theorem", since $\HomAllClass{\?B}$ is "first-order definable",
+	By "Atserias' theorem", since $\HomAll{\?B}$ is "first-order definable",
 	then $\?B$ has "finite duality", and in particular it has TODO:addref
 	"tree duality" and so by TODO:addref, there is a "homomorphism"
 	$g\colon \FederVardi{\?B} \to \?B$.
 	We will now produce "first-order formulas" to describe $g \circ F$.
 
-	If $\HomAllClass{\?B}$ is "first-order definable", then so is
-	$\HomAllClass{\marked{\?B}}$ by \Cref{fact:marking-preserves-finite-duality}.
+	If $\HomAll{\?B}$ is "first-order definable", then so is
+	$\HomAll{\marked{\?B}}$ by \Cref{fact:marking-preserves-finite-duality}.
 	So, let $\phi$ be a "first-order formula" over $\extendedSignature{\sigma}{\?B}$
-	that describes $\HomAllClass{\marked{\?B}}$. We let $B = \{b_1,\hdots,b_k\}$.
+	that describes $\HomAll{\marked{\?B}}$. We let $B = \{b_1,\hdots,b_k\}$.
 	We define a "first-order formula" $\phi^*_i(x_i)$ over $\sigma$,
 	by substituting each occurrence of $\unarypred{b_i}(y)$ in $\phi$ for $y = x_i$,
 	and $\unarypred{b_j}(y)$ ($j \neq i$) for $\bot$.
@@ -96,50 +96,50 @@ Before proving this lemma, we show an intermediate result.
 
 	\begin{claim}
 		\AP\label{claim:finite-duality-uniformly-definable-homomorphisms-new-formulas}
-		$\?A_{a,i} \models \phi$
-		"iff" $\langle \?A, a \rangle \models \phi^*_i(x_i)$.
+		$\?A_{a,i} \FOmodels \phi$
+		"iff" $\langle \?A, a \rangle \FOmodels \phi^*_i(x_i)$.
 	\end{claim}
 	We prove it by induction on formulas $\phi(\bar x)$
-	that $\langle\?A_{a,i}, \bar a \rangle \models \phi$
-		"iff" $\langle \?A, \bar a, a \rangle \models \phi^*_i(x_i)$.
+	that $\langle\?A_{a,i}, \bar a \rangle \FOmodels \phi$
+		"iff" $\langle \?A, \bar a, a \rangle \FOmodels \phi^*_i(x_i)$.
 	The base case $\unarypred{b_i}(y)$ is trivial since
-	$\langle \?A_{a,i}, a' \rangle \models \unarypred{b_i}(y)$ "iff"
-	$a' = a$ "ie" $\langle \?A, a', a \rangle \models y = x_i$.
+	$\langle \?A_{a,i}, a' \rangle \FOmodels \unarypred{b_i}(y)$ "iff"
+	$a' = a$ "ie" $\langle \?A, a', a \rangle \FOmodels y = x_i$.
 	Similarly, for  $\unarypred{b_j}(y)$ ($j \neq i$),
 	$\langle \?A_{a,i}, a' \rangle$ never "models" $\unarypred{b_j}(y)$
-	and so this is equivalent to $\langle \?A, a', a \rangle \models \bot$.
+	and so this is equivalent to $\langle \?A, a', a \rangle \FOmodels \bot$.
 	The other atomic cases, and inductive cases are trivial.
 
 	\begin{claim}
 		\AP\label{claim:finite-duality-uniformly-definable-homomorphisms-formulas}
 		There exists first-order formulas $\langle \chi_Y(x)\rangle_{Y\in \pset{B}}$,
 		that do not depend on $\?A$, "st" for every arbitrary "$\sigma$-structure" $\?A$,
-		for every $a\in A$, then $\langle \?A,a \rangle \models \chi_Y(x)$ "iff"
+		for every $a\in A$, then $\langle \?A,a \rangle \FOmodels \chi_Y(x)$ "iff"
 		$F(a) = Y$.
 	\end{claim}
 	Indeed, given $a\in A$ and $i \in \lBrack 1,k\rBrack$, there is a "homomorphism" from $\?A$
-	to $\?B$ that sends $a$ to $b_i$ "iff" $\?A_{a,i} \models \phi$, and so by \Cref{claim:finite-duality-uniformly-definable-homomorphisms-new-formulas}, this is equivalent to
-	$\langle \?A,a\rangle \models \phi^*_i(x_i)$. Hence, each $\chi_Y(x)$ can be defined as
+	to $\?B$ that sends $a$ to $b_i$ "iff" $\?A_{a,i} \FOmodels \phi$, and so by \Cref{claim:finite-duality-uniformly-definable-homomorphisms-new-formulas}, this is equivalent to
+	$\langle \?A,a\rangle \FOmodels \phi^*_i(x_i)$. Hence, each $\chi_Y(x)$ can be defined as
 	a Boolean combination of the $\phi^*_i(x_i)$'s, after renaming $x_i$ to $x$.\footnote{In 
 	particular, note that $\exists x.\psi_\emptyset(x)$ is a "first-order formula"
-	that defines $\HomAllClass{\?B}$.}
+	that defines $\HomAll{\?B}$.}
 
 	We can now prove that
-	$\HomAllClass{\?B}$ has "uniformly first-order definable homomorphisms".
+	$\HomAll{\?B}$ has "uniformly first-order definable homomorphisms".
 	For each $b\in B$, we let $\psi_b(x) \defeq \bigvee_{Y \in g^{-1}[b]} \chi_Y(x)$.
 	Now for any arbitrary "$\sigma$-structure" $\?A$, for any $a\in A$,
-	there is at most one $b\in B$ "st" $\langle \?A, a \rangle \models \psi_b(x)$---indeed,
+	there is at most one $b\in B$ "st" $\langle \?A, a \rangle \FOmodels \psi_b(x)$---indeed,
 	there is a unique $Y \in \pset{B}$ (and so at most one $Y \in \psetp{B}$) "st"
-	$\langle \?A, a \rangle \models \chi_Y(x)$ by
+	$\langle \?A, a \rangle \FOmodels \chi_Y(x)$ by
 	\Cref{claim:finite-duality-uniformly-definable-homomorphisms-formulas}.
 	Moreover, if $\?A \homto \?B$, then for each $a$ there is a unique $b(a) \in B$
-	"st" $\langle \?A, a \rangle \models \psi_{b(a)}(x)$, and moreover $a \mapsto b(a)$
+	"st" $\langle \?A, a \rangle \FOmodels \psi_{b(a)}(x)$, and moreover $a \mapsto b(a)$
 	is a "homomorphism" by 
 	\Cref{claim:finite-duality-uniformly-definable-homomorphisms-homomorphism}, and
 	moreover $\?A \homto \?B$
-	"iff" for each $a\in A$, there is exactly one $b(a) \in B$ "st" $\langle \?A, a \rangle \models \phi_{b(a)}(x)$, and $a \mapsto b(a)$ is a "homomorphism"
+	"iff" for each $a\in A$, there is exactly one $b(a) \in B$ "st" $\langle \?A, a \rangle \FOmodels \phi_{b(a)}(x)$, and $a \mapsto b(a)$ is a "homomorphism"
 	by \Cref{claim:finite-duality-uniformly-definable-homomorphisms-homomorphism}
-	since it equals $g \circ F$. And hence $\HomAllClass{\?B}$
+	since it equals $g \circ F$. And hence $\HomAll{\?B}$
 	has "uniformly first-order definable homomorphisms".
 \end{proof}
 
@@ -148,8 +148,8 @@ we show that such "homomorphisms" are always "regular@@hom".
 \begin{proposition}
 	\AP\label{prop:uniformly-first-order-implies-regular}
 	Let $\?B$ be a finite "$\sigma$-structure".
-	If $\HomAllClass{\?B}$ has "uniformly first-order definable homomorphisms",
-	then $\HomRegAutDec{\?B} = \HomAutDec{\?B}$.
+	If $\HomAll{\?B}$ has "uniformly first-order definable homomorphisms",
+	then $\HomRegAut{\?B} = \HomAut{\?B}$.
 \end{proposition}
 
 \begin{proof}
@@ -166,20 +166,20 @@ we show that such "homomorphisms" are always "regular@@hom".
 	by substituting $\+R(x_1,\hdots,x_k)$ for $\psi_{\+R}(x_1,\hdots,x_k)$.
 
 	Then, for each $b\in B$, $\phi^*_b(x)$ is a "first-order formula" over $\signatureSynchronous{\Sigma}$,
-	and so \[\{u \in \Sigma^* \mid \langle \univStructSynchronous{\Sigma},u \rangle \models \phi^*_b(x)\}\] is "regular@@lang" by TODO:ADDREF.
+	and so \[\{u \in \Sigma^* \mid \langle \univStructSynchronous{\Sigma},u \rangle \FOmodels \phi^*_b(x)\}\] is "regular@@lang" by TODO:ADDREF.
 	Clearly, this sets are disjoint and cover $\domainPres{\•A}$, and the function that
-	maps $u \in \domainPres{\•A}$ to the unique $b$ "st" $\langle \univStructSynchronous{\Sigma},u \rangle \models \phi^*_b(x)$ is a "homomorphism".
+	maps $u \in \domainPres{\•A}$ to the unique $b$ "st" $\langle \univStructSynchronous{\Sigma},u \rangle \FOmodels \phi^*_b(x)$ is a "homomorphism".
 	Hence, we have built a "regular homomorphism" from $\•A$ to $\?B$, which concludes the proof.
 \end{proof}
 
 \begin{corollary}[of "Atserias' theorem", \Cref{lemma:finite-duality-uniformly-definable-homomorphisms,prop:uniformly-first-order-implies-regular}]
 	\AP\label{coro:finite-duality-implies-hom-equals-homreg}
 	If $\?B$ has "finite duality",
-	then $\HomRegAutDec{\?B} = \HomAutDec{\?B}$.
+	then $\HomRegAut{\?B} = \HomAut{\?B}$.
 \end{corollary}
 
-In turn, since $\HomAutDec{\?B}$ is "coRE" and $\HomRegAutDec{\?B}$ is "RE", this implies
-that $\HomRegAutDec{\?B}$ is decidable.
+In turn, since $\HomAut{\?B}$ is "coRE" and $\HomRegAut{\?B}$ is "RE", this implies
+that $\HomRegAut{\?B}$ is decidable.
 In fact, using the formulas $\phi^*_b(x)$, we can build a "first-order formula"
 saying ``every $x$ satisfies exactly one $\phi^*_b(x)$, and moreover
 if $\langle x_1,\hdots,x_k\rangle$ is an "$\+R$-hyperedge" then
@@ -191,11 +191,11 @@ of the "automatic presentation" given as input.
 	\AP\label{coro:finite-duality-implies-homreg-decidable}
 	Let $\?B$ be a finite "$\sigma$-structure" with "finite duality".
 	For each "automatic presentation" $\•A$ over alphabet $\Sigma$, there exists a "first-order 
-	formula" $\phi$, whose size is linear in $\•A$, "st" $\univStructSynchronous{\Sigma} \models 
+	formula" $\phi$, whose size is linear in $\•A$, "st" $\univStructSynchronous{\Sigma} \FOmodels 
 	\phi$ "iff" $\•A \homregto \?B$.
 \end{corollary}
 
-In particular, this implies the decidability of $\HomRegAutDec{\?B}$.
+In particular, this implies the decidability of $\HomRegAut{\?B}$.
 
 \subsection{Hyperedge Consistency for Finite Structures}
 \AP\label{sec:hyperedge-consistency-finite}
@@ -314,17 +314,7 @@ is always the map $a \mapsto B$, no matter whether there is a "homomorphism" fro
 $\?A$ to $\?B$.
 
 Yet, TODO managed to identify a necessary and sufficient condition on $\?B$ for
-the "hyperedge consistency algorithm@@finite" to decide whether $\?A \in \HomFinDec{\?B}$.
-\begin{definition}
-	\AP\label{defn:tree-duality}
-	A finite "$\sigma$-structure" $\?B$ has ""tree duality"" when TODO.
-\end{definition}
-
-\begin{proposition}[todo:addref]
-	\AP\label{prop:finite-duality-implies-tree-duality}
-	If a finite "$\sigma$-structure" $\?B$ has ""finite duality"",
-	then it has "tree duality".
-\end{proposition}
+the "hyperedge consistency algorithm@@finite" to decide whether $\?A \in \HomFin{\?B}$.
 
 \begin{proposition}[TODO:addref]
 	\AP\label{prop:hyperedge-consistency-tree-duality}
@@ -411,7 +401,7 @@ has "tree duality" by \Cref{prop:finite-duality-implies-tree-duality} and TODO:A
 \end{example}
 
 \begin{corollary}
-	If $\?B$ has "tree duality", then $\HomFinDec{\?B}$ can be solved in
+	If $\?B$ has "tree duality", then $\HomFin{\?B}$ can be solved in
 	polynomial time.\sidenote{TODO: Precise complexity.}
 \end{corollary}
 
@@ -427,6 +417,8 @@ Finally, we will prove a proposition that we will prove useful later in TODO.
 \begin{proof}
 	TODO. Rigidity?
 \end{proof}
+
+todo: somewhere \AP""hyperedge consistency@@finite"" algo.
 
 \subsection{Hyperedge Consistency for Automatic Structures}
 \AP\label{sec:hyperedge-consistency-automatic}
@@ -500,7 +492,7 @@ instead of $\?A$.
 
 Notice that $\topLatticeGuessFunctions{B}$ is trivially "regular@@fun", and so
 by immediate induction, each $\HCOperator^{\,n}(\topLatticeGuessFunctions{B})$ with $n\in \N$ is
-also "regular@@fun". While this opens the door to solving $\HomRegAutDec{\?B}$ when $\?B$ has
+also "regular@@fun". While this opens the door to solving $\HomRegAut{\?B}$ when $\?B$ has
 "tree duality" using the "hyperedge consistency algorithm@@finite", the problem
 of finite convergence remains.
 
@@ -651,13 +643,13 @@ on $\zigzag{n}{5}$ in only $2$ steps.
 	$\HCOperator^{\,m}_{\!\?A,\?B}(\topLatticeGuessFunctions{B})^{-1}[Y] = \semFO{\phi_{m,Y}(x)}{\?A}$,
 	"ie" for any $a\in A$, we have
 	\[
-		\langle \?A, a\rangle \models \phi_{m,Y}(x)
+		\langle \?A, a\rangle \FOmodels \phi_{m,Y}(x)
 		\text{ "iff" }
 		\HCOperator^{\,m}_{\!\?A,\?B}(\topLatticeGuessFunctions{B})(a) = Y.
 	\]
 	We then claim that
 	\[
-		\?A \models \forall x. \neg \phi_{n(\?B),\emptyset}(x)
+		\?A \FOmodels \forall x. \neg \phi_{n(\?B),\emptyset}(x)
 		\text{ "iff" }
 		\?A \homto \?B.
 	\]
@@ -789,7 +781,7 @@ on $\zigzag{n}{5}$ in only $2$ steps.
 	
 	And so, there exists $t \in T$ "st" $f(t) = a = b$.
 	Consider the "congruence induced" by $f$ on $T$, namely $x \ker{f} y$ "iff"
-	$f(x) = f(y)$. Let $\?U$ be the "quotient" of $\?T$ by $\ker{f}$,
+	$f(x) = f(y)$. Let $\?U$ be the "quotient@@struct" of $\?T$ by $\ker{f}$,
 	and let $\?U_{\?A}$ be the "substructure" of $\?U$, induced by elements
 	of $U$ that are sent via $f$ on $\?A$.
 	\begin{claim}
@@ -844,6 +836,8 @@ on $\zigzag{n}{5}$ in only $2$ steps.
 	Overall, \Cref{claim:hyperedge-consistency-uniform-convergence-no-hom,claim:hyperedge-consistency-uniform-convergence-hom} prove 
 	\eqref{item:hc-uniform-finite-structures}, which concludes the proof of \Cref{lem:hyperedge-consistency-uniform-convergence}.
 \end{proof}
+
+todo: \AP""hyperedge consistency algorithm for automatic structures""
 
 % \begin{claim}
 % 	If $\?A \nothomto \?B$, then there

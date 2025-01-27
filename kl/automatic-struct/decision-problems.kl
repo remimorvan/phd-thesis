@@ -1,6 +1,6 @@
 \knowledge{notion, wrap=\DPfont}
  | first-order model checking of automatic structures
- | First-order Model Checking of Automatic Structures
+ | First-Order Model Checking of Automatic Structures
  | First-order model checking of automatic structures
 
 \knowledge{notion, wrap=\DPfont}
@@ -44,9 +44,9 @@
  | $\kPROD $-membership problem
 
 \knowledge{notion, wrap=\DPfont}
- | $k$-regular colourability problem
- | $2$-regular colourability problem
- | $k$-regular colourability@problem
+ | regular $k$-colourability problem
+ | regular $2$-colourability problem
+ | regular $k$-colourability@problem
  | regular colourability problem
 
 \knowledge{notion, wrap=\DPfont}

@@ -31,7 +31,7 @@ $\•A$ to $\•B$.
 	then there exists a first-order formula $\phi(x,y)$ "st"
 	for all $\tup{u,v} \in K\times L$, then
 	\[
-		\univStructSynchronous{\Sigma}, u, v \models \phi(x,y)
+		\univStructSynchronous{\Sigma}, u, v \FOmodels \phi(x,y)
 		\text{ "iff" }
 		v = f(u).
 	\]
@@ -53,7 +53,7 @@ $\•A$ to $\•B$.
 
 As a consequence, when $\•B$ is finite, we will write $\•A \reintro*\homregto \?B$ 
 to mean that $\•A \homregto \•B$.
-In particular, a \AP""$k$-regular colouring"" of a "presentation of an automatic graph"
+In particular, a \AP""regular $k$-colouring"" of a "presentation of an automatic graph"
 $\•G$ is equivalently a "regular homomorphism" from $\•G$ to $\?K_k$,
 or a "$k$-colouring" "st" for any colour, the set of words of $\domainPres{\•G}$
 sharing this colour is a "regular language". 
@@ -65,10 +65,10 @@ sharing this colour is a "regular language".
 	\end{tikzpicture}
 	\caption{
 		\AP\label{fig:grid-2-reg-colouring}
-		A "$2$-regular colouring" of an "automatic presentation" of the infinite quarter-grid.
+		A "regular $2$-colouring" of an "automatic presentation" of the infinite quarter-grid.
 	}
 \end{figure}
-In \Cref{fig:grid-2-reg-colouring}, we provide an example of a "$2$-regular colouring".
+In \Cref{fig:grid-2-reg-colouring}, we provide an example of a "regular $2$-colouring".
 The let $\+G = \tup{V,\+E}$ be the "automatic presentation" of the infinite quarter-grid,
 defined over the alphabet $\{x,y\}$ by $V \defeq x^*y^*$ and
 \[
@@ -84,18 +84,16 @@ This "colouring" is of course "regular@@colouring".
 Given a fixed "signature" $\sigma$ and a $\sigma$-structure $\?B$,
 we denote by:
 \begin{itemize}
-	\itemAP $\intro*\HomFinDec{\?B}$ (resp. $\intro*\HomAutDec{\?B}$) the problem of, given a "finite $\sigma$-structure" (resp. "presentation of an automatic $\sigma$-structure"),
-	whether it has a "homomorphism" to $\?B$,
-	\itemAP $\intro*\HomRegFinDec{\?B}$ (resp. $\intro*\HomRegAutDec{\?B}$), the problem of,
-	given a "finite $\sigma$-structure" (resp. "presentation of an automatic $\sigma$-structure"),
-	whether it has a "regular homomorphism" to $\?B$.
+	\itemAP $\intro*\HomFin{\?B}$ (resp. $\intro*\HomAut{\?B}$, resp.
+	$\intro*\HomAll{\?B}$) the class of all "finite $\sigma$-structure"
+	(resp. "automatic $\sigma$-structure", resp. arbitrary "$\sigma$-structures")
+	that admit a "homomorphism" to $\?B$,
+	\itemAP $\intro*\HomRegAut{\?B}$ is the class of all "automatic presentations of  $\sigma$-structures" that admit a "regular homomorphism" to $\?B$.
 \end{itemize}
-
-Note that any "homomorphism" from an "automatic presentation" of a "finite structure"
-to a "finite structure" is also "regular@@hom" and so $\HomFinDec{\?B} = \HomRegFinDec{\?B}$.\sidenote{Note also that membership in $\HomFinDec{-} = \HomRegFinDec{-}$ and in
-$\HomAutDec{-}$ only depends on the "structure represented"
-by the "automatic presentation", and not on the "presentation" itself.
-This is not the case for $\HomRegAutDec{-}$. We use these definitions for two reasons: (1) for consistency with $\HomRegAutDec{-}$ and (2) for the associated decision problem to be defined unambiguously. Note moreover that in the case of "finite structures", the size of its representation, say using adjacency lists, and of its "automatic presentation" are equal up to a TODO}
+Somewhat abusively, we identify these classes with the associated decision problems---except
+for $\HomAll{\?B}$ since arbitrary "$\sigma$-structures" cannot be encoded as finite strings---:
+for finite structures, we assume the input to be given suing adjacency lists, and for automatic presentations, we assume the input to be described by an "automatic presentation".
+We call $\HomRegAut{\?B}$ the \AP""regular homomorphism problem"" over $\?B$.
 
 \subsection{Constructions on Structures}
 
@@ -231,29 +229,29 @@ obtained from $\?B$ by "interpreting@@predicate" each predicate $\unarypred{b}$ 
 singleton $\{b\}$.
 
 \begin{proposition}[Folklore]
-	\!\sidenote{The non-easy part is to reduce $\HomFinDec{\marked{\?B}}$ to $\HomFinDec{\?B}$: only this reduction
+	\!\sidenote{The non-easy part is to reduce $\HomFin{\marked{\?B}}$ to $\HomFin{\?B}$: only this reduction
 	requires the assumption that $\?B$ is a core. This reduction is folklore, see "eg"
 	\cite[Lemma 2.5]{LaroseTesson2009UniversalAlgebraCSP}.
 	TODO: understand if the proof is indentical to us. We provide here a self-contained proof.}%
 	\sidenote{The "marked structure" $\marked{\core{\?B}}$ of the "core" of $\?B$ is
 	usually called the \AP""idempotent core""
-	of $\?B$. From this proposition, we get that $\HomFinClass{\?B}$ and
-	$\HomFinClass{\marked{\core{\?B}}}$ are "first-order equivalent".
+	of $\?B$. From this proposition, we get that $\HomFin{\?B}$ and
+	$\HomFin{\marked{\core{\?B}}}$ are "first-order equivalent".
 	This reduction is a central tool
 	in the algebraic approach to understand "constraint satisfaction
 	problem" since the algebra associated to the "CSP" over an "idempotent core"
 	only has idempotent operations, making it much easier to work with.}%
 	%%%
 	\AP\label{prop:idempotent-core-preserves-csp-complexity}
-	If $\?B$ is a finite "core", then the problems $\HomAllClass{\marked{\?B}}$ and 
-	$\HomAllClass{\?B}$ are "first-order equivalent".
+	If $\?B$ is a finite "core", then the problems $\HomAll{\marked{\?B}}$ and 
+	$\HomAll{\?B}$ are "first-order equivalent".
 	Moreover, this equivalence preserves "finiteness@@structure".%
 	\footnote{And hence, by restricting this equivalence, we obtain that
-	$\HomFinClass{\marked{\?B}}$ and $\HomFinClass{\?B}$ are "first-order equivalent".}
+	$\HomFin{\marked{\?B}}$ and $\HomFin{\?B}$ are "first-order equivalent".}
 \end{proposition}
 
 \begin{proof}[Proof of \Cref{prop:idempotent-core-preserves-csp-complexity}]
-	\proofcase{Reduction from $\,\HomAllClass{\?B}$ to $\,\HomAllClass{\marked{\?B}}$.}\\
+	\proofcase{Reduction from $\,\HomAll{\?B}$ to $\,\HomAll{\marked{\?B}}$.}\\
 	We reduce a "$\sigma$-structure" $\?A$ to the
 	"$\extendedSignature{\sigma}{\?B}$-structure" $\?A'$ obtained
 	from $\?A$ by "interpreting@@predicate" each predicate $\unarypred{b}$ as the empty set.
@@ -261,7 +259,7 @@ singleton $\{b\}$.
 	"iff" it is a "homomorphism" from $\?A'$ to $\marked{\?B}$, proving the correctness
 	of the reduction. It is, by definition, "first-order@@reduction".
 
-	\proofcase{Reduction from $\,\HomAllClass{\marked{\?B}}$ to $\,\HomAllClass{\?B}$.}
+	\proofcase{Reduction from $\,\HomAll{\marked{\?B}}$ to $\,\HomAll{\?B}$.}
 	We first define the reduction $\Phi$ and show its correctness, we will show later that it
 	is a "first-order reduction". We reduce a "$\extendedSignature{\sigma}{\?B}$-structure" $\?A$ to the "$\sigma$-structure"
 	$\Phi(\?A)$ defined as follows:
@@ -282,7 +280,7 @@ singleton $\{b\}$.
 	the union of its "neighbourhood" in $\?A$, and the union of the "neighbourhoods" of
 	$b$ in $\?B$ for all $b$ "st" $a \in \unarypred{b}(\?A)$.
 
-	We show that $\?A \in \HomAllClass{\marked{\?B}}$ "iff" $\Phi(\?A) \in \HomAllClass{\?B}$.
+	We show that $\?A \in \HomAll{\marked{\?B}}$ "iff" $\Phi(\?A) \in \HomAll{\?B}$.
 	So, assume that there exists a "homomorphism" $f\colon \?A \to \marked{\?B}$.
 	Then we let $f'\colon A \dcup B \to B$ be defined by $f'(a) = f(a)$ for all $a\in A$ and
 	$f'(b) = b$ for all $b \in B$. We claim that $f'$ is a "homomorphism" from
@@ -374,7 +372,10 @@ singleton $\{b\}$.
 \subsection{Obstructions and Finite Duality}
 
 \begin{itemize}
-	\item 
+	\itemAP ""dual""
+	\itemAP ""obstruction""
+	\itemAP ""critical obstruction""
+	\itemAP ""diameter"" and ""height@@struct""
 \end{itemize}
 
 \subsection{Trees and Tree Duality}
@@ -382,4 +383,29 @@ singleton $\{b\}$.
 \begin{itemize}
 	\item ""acyclic@@struct""
 	\item ""$\sigma$-tree""
+	\item $\intro*\FederVardi{-}$
+\end{itemize}
+
+\begin{definition}
+	\AP\label{defn:tree-duality}
+	A finite "$\sigma$-structure" $\?B$ has ""tree duality"" when TODO.
+\end{definition}
+
+\begin{proposition}[todo:addref]
+	\AP\label{prop:finite-duality-implies-tree-duality}
+	If a finite "$\sigma$-structure" $\?B$ has ""finite duality"",
+	then it has "tree duality".
+\end{proposition}
+
+\subsection{Class of Relations}
+
+\begin{itemize}
+	\itemAP ""rational relation"" $\intro*\RAT$
+	\itemAP ""recognizable relation"" $\intro*\REC$
+\end{itemize}
+
+\subsection{Misc}
+
+\begin{itemize}
+	\itemAP ""finite colourability of automatic graphs""
 \end{itemize}
