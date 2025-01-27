@@ -1,4 +1,13 @@
-\usepackage{amsthm, thmtools, thm-restate}
+\usepackage{amsthm, thmtools, thm-restate, xpatch}
+
+% No more extra space around proof env.
+% https://tex.stackexchange.com/questions/232655/mysterious-vertical-space-after-theorem-proof-environments 
+\let\proof\undefined
+\declaretheoremstyle[%
+  headfont=\normalfont\itshape,%
+  qed=\qedsymbol%
+]{proofstyle} 
+\declaretheorem[name={Proof},style=proofstyle,unnumbered]{proof}
 
 \declaretheoremstyle[bodyfont=\normalfont]{noitalics}
 \declaretheoremstyle[headfont=\normalfont\itshape,bodyfont=\normalfont]{noitalicsminor}
