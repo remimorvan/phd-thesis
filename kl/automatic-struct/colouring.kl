@@ -1,10 +1,16 @@
 \knowledge{notion}
  | 2-colourable
+ | $k$-colourable
 
 \knowledge{notion}
  | 2-colouring
  | $k$-colouring
  | colouring
+ | $3$-colouring
+ | $2$-colouring
+ | $4$-colouring
+ | $(k+1)$-colouring
+ | $(k-1)$-colouring
 
 \knowledge{notion}
  | regular colouring
@@ -12,12 +18,15 @@
  | $2$-regular colouring
  | 2-regular colouring
  | regular colourings
+ | $k$-regular colouring
+ | regular $2$-colouring
 
 \knowledge{notion}
  | $k$-regular colourable
  | $2$-regular colourable
  | 2-regular colourable
  | finitely regularly colourable
+ | $k$-regular colourability
 
 \knowledge{notion}
  | compatible

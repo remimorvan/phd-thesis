@@ -87,7 +87,7 @@ and \cite[Theorem 4.4]{BarceloFigueiraMorvan2023SeparatingAutomatic}, that lead 
 	It follows that if $\?A \homto \?B$, then the function
 	mapping $u \in \Sigma^*$ to the unique $b \in B$ "st" $\Sigma^*, u \models \tilde\phi_b(x)$
 	defines a "regular homomorphism" from $\+A$ to $\?B$---the regularity follows from
-	todo:addref-first-order-iff-synchronous.
+	todo:addref-first-order-iff-automatic.
 	And hence $\HomAutDec{\?B} \subseteq \HomRegAutDec{\?B}$. The conclusion follows since
 	the other implication is trivial.
 \end{proof}
@@ -216,7 +216,7 @@ Moreover, being "linked" is transitive, but not necessarily reflexive.
 Equipped with the previous proposition, we can now show the undecidability 
 of $\HomAutDec{\?B}$ by reduction from the following problem.
 
-\decisionproblem{""Connectivity in automatic graphs""}{
+\decisionproblem{""Connectivity in Automatic Graphs""}{
 	A "automatic presentation of a directed graph" $\•G$,
 	and two elements $s,t \in \Sigma^*$.
 }{
@@ -230,7 +230,7 @@ of $\HomAutDec{\?B}$ by reduction from the following problem.
 
 \begin{proof}
 	This follows from the fact that the "configuration graph" of
-	a "Turing machine" is always "automatic" by TODO:addref.
+	a "Turing machine" is always "automatic@@struct" by TODO:addref.
 	TOdo:Give more precisions.
 \end{proof}
 
@@ -238,7 +238,7 @@ of $\HomAutDec{\?B}$ by reduction from the following problem.
 	\AP\label{lem:reduction-hom}
 	Assume that $\sigma$ contains at least one "predicate" of arity at least 2.
 	If $\?B$ does not have "finite duality", then there is a "first-order reduction" 
-	from the complement of "Connectivity in automatic graphs" to $\HomAutDec{\marked{\?B}}$.
+	from the complement of "connectivity in automatic graphs" to $\HomAutDec{\marked{\?B}}$.
 \end{lemma}
 
 \begin{marginfigure}
@@ -265,7 +265,7 @@ of $\HomAutDec{\?B}$ by reduction from the following problem.
 \end{marginfigure}
 
 \begin{proof}
-	Given an instance $\langle \•G, s, t \rangle$ of "Connectivity in automatic graphs",
+	Given an instance $\langle \•G, s, t \rangle$ of "connectivity in automatic graphs",
 	we first define the $\sigma$-structure $\?A$ with "automatic presentation" $\•A$
 	obtained by replacing every edge of $\•G$ by a "$1$-link".
 	Formally, $\?A$ has the same domain as $\?G$, and for any
@@ -348,9 +348,10 @@ of $\HomAutDec{\?B}$ by reduction from the following problem.
 	\begin{claim}
 		\AP\label{claim:reduction-hom-converse}
 		If $\•G(s)$ and $\•G(t)$ are not "connected" in $\?G$,
-		then $\ConstrUndecHom{(\?A\prodstruct \iterstruct{\?B}{2})} \homto \marked{\?B}$.
+		then there is a "homomorphism" from
+		$\ConstrUndecHom{(\?A\prodstruct \iterstruct{\?B}{2})}$ to $\marked{\?B}$.
 	\end{claim}
-	We define a homomorphism $f\colon \ConstrUndecHom{(\?A\prodstruct \iterstruct{\?B}{2})} \to \marked{\?B}$ by:
+	We define a "homomorphism" $f\colon \ConstrUndecHom{(\?A\prodstruct \iterstruct{\?B}{2})} \to \marked{\?B}$ by:
 	\[
 		f(a, b, b') \defeq \begin{cases*}
 			\;b & \text{ if $\•A(s)$ and $a$ are "linked",} \\
@@ -694,5 +695,5 @@ We then prove a lower bound on the complexity of "Regular Unreachability of Turi
 	reduces to $\HomRegAutDec{\?B}$ by \Cref{prop:idempotent-core-preserves-csp-complexity}
 	since $\?B$ was assumed to be a "core".
 	Indeed, "first-order reductions" preserves "regularity@@hom", by 
-	todo:addref-synchronous-iff-first-order.
+	todo:addref-automatic-iff-first-order.
 \end{proof}

@@ -23,7 +23,7 @@ On the $\kPROD$ hierarchy we will find the same phenomenon. In particular the ca
     The "$\kPROD[1]$-separability problem" is decidable.
 \end{proposition}
 \begin{proof}
-    Given two "synchronous relations" $\+R_1, \+R_2$, there exists $S \in $ \kPROD[1]
+    Given two "automatic relations" $\+R_1, \+R_2$, there exists $S \in $ \kPROD[1]
     that "separates@@rel" $\+R_1$ from $\+R_2$ if and only if $\pi_1(\+R_1)\times \pi_2(\+R_1)$
     "separates@@rel" $\+R_1$ from $\+R_2$.\footnote{Here,
     \(
@@ -41,7 +41,7 @@ On the $\kPROD$ hierarchy we will find the same phenomenon. In particular the ca
 As soon as $k>1$, the "$\kPROD$-separability problem" becomes undecidable.
 
 \begin{lemma}
-    A "symmetric@@rel" "synchronous relation" $\+R$ and the identity $\Id$ are "separable@@rel" by a relation in $\kPROD[2]$ iff they have a "separator@@rel" of the form $(A \times B) \cup (B \times A)$.
+    A "symmetric@@rel" "automatic relation" $\+R$ and the identity $\Id$ are "separable@@rel" by a relation in $\kPROD[2]$ iff they have a "separator@@rel" of the form $(A \times B) \cup (B \times A)$.
 \end{lemma}
 \begin{proof}
     Assume that $\+S \in \kPROD[2]$ "separates@@rel" $\+R$ from $\Id$.
@@ -81,7 +81,7 @@ As soon as $k>1$, the "$\kPROD$-separability problem" becomes undecidable.
 \end{proof}
 
 \begin{corollary}\AP\label{cor:2reg-2prod}
-    A "symmetric@@rel" "synchronous relation" $\+R$ and $\Id$ are "separable@@rel" by a relation in $\kPROD[2]$ "iff" $\AutGraph{\Sigma^*}{\+R}$ is "$2$-regular colourable".
+    A "symmetric@@rel" "automatic relation" $\+R$ and $\Id$ are "separable@@rel" by a relation in $\kPROD[2]$ "iff" $\AutGraph{\Sigma^*}{\+R}$ is "$2$-regular colourable".
 \end{corollary}
 
 \begin{proof}
@@ -122,7 +122,7 @@ Further, this implies undecidability for every larger $k$.
 
 \begin{proof}
     The case $k=2$ is shown in \Cref{lem:aut-2prod-sep-undec}, so suppose $k>2$.
-    The proof goes by reduction from the "$\kPROD[2]$-separability problem". Let $\+R_1,\+R_2$ be a pair of "synchronous relations" over an alphabet $\Sigma$. Consider the alphabet extended with $2(k-2)$ fresh symbols $\Sigma' = \Sigma \dcup \set{a_1, \cdots, a_{k-2}, b_1, \cdots, b_{k-2}}$. We build "synchronous relations" $\+R'_1,\+R'_2$ over $\Sigma'$ such that $\tup{\+R_1, \+R_2}$ are $\kPROD[2]$ "separable@@rel" over $\Sigma$ "iff" $\tup{\+R'_1, \+R'_2}$ are $\kPROD$ "separable@@rel" over $\Sigma'$.
+    The proof goes by reduction from the "$\kPROD[2]$-separability problem". Let $\+R_1,\+R_2$ be a pair of "automatic relations" over an alphabet $\Sigma$. Consider the alphabet extended with $2(k-2)$ fresh symbols $\Sigma' = \Sigma \dcup \set{a_1, \cdots, a_{k-2}, b_1, \cdots, b_{k-2}}$. We build "automatic relations" $\+R'_1,\+R'_2$ over $\Sigma'$ such that $\tup{\+R_1, \+R_2}$ are $\kPROD[2]$ "separable@@rel" over $\Sigma$ "iff" $\tup{\+R'_1, \+R'_2}$ are $\kPROD$ "separable@@rel" over $\Sigma'$.
 
     Let $\+R'_1 \defeq \+R_1 \dcup \set{\tup{a_i,b_i} : 1 \leq i \leq k-2}$ and 
     \begin{align*}
@@ -151,7 +151,7 @@ Up until now, we have examined two hierarchies of bounded recognizable relations
 Our previous analysis demonstrated that, for any element in these hierarchies (where $k>1$), their separability problem is undecidable. Nevertheless, 
 we will now establish that their membership problem are decidable.
 
-\AP Given an "synchronous" relation $\+R \subseteq \Sigma^* \times \Sigma^*$, consider the "synchronous" equivalence relation $\intro*\autequiv \subseteq \Sigma^* \times \Sigma^*$, defined as $w \mathrel{\autequiv} w'$ if for every $v \in \Sigma^*$ we have 
+\AP Given an "automatic@@rel" relation $\+R \subseteq \Sigma^* \times \Sigma^*$, consider the "automatic@@rel" equivalence relation $\intro*\autequiv \subseteq \Sigma^* \times \Sigma^*$, defined as $w \mathrel{\autequiv} w'$ if for every $v \in \Sigma^*$ we have 
 \begin{enumerate}
     \item $(w,v) \in \+R$ "iff" $(w',v) \in \+R$, and
     \item $(v,w) \in \+R$ "iff" $(v,w') \in \+R$.
@@ -160,7 +160,7 @@ we will now establish that their membership problem are decidable.
 It turns out that equivalence classes of $\autequiv$ define the coarsest partition onto which $\+R$ can be recognized in terms of $\kREC$.
 
 \begin{lemma}\AP\label{lem:krec-characterization}
-    For every "synchronous" $\+R \subseteq \Sigma^* \times \Sigma^*$, $\autequiv$ has index at most $k$ if, and only if, $\+R$ is in $\kREC$.\footnote{Recall that the index of an equivalence relation is its number of equivalence classes.}
+    For every "automatic@@rel" $\+R \subseteq \Sigma^* \times \Sigma^*$, $\autequiv$ has index at most $k$ if, and only if, $\+R$ is in $\kREC$.\footnote{Recall that the index of an equivalence relation is its number of equivalence classes.}
 \end{lemma}
 \begin{proof}
     \proofcase{Left-to-right.}
@@ -179,16 +179,16 @@ We can then conclude that the membership problem for $\kREC$ is decidable.
     The "$\kREC$-membership problem" is decidable, for every $k \in \Np$.
 \end{corollary}
 \begin{proof}
-    An "synchronous relation" $\+R$ is in $\kREC$ "iff" $\autequiv$ has at most $k$ equivalence classes by \Cref{lem:krec-characterization}. 
+    An "automatic relation" $\+R$ is in $\kREC$ "iff" $\autequiv$ has at most $k$ equivalence classes by \Cref{lem:krec-characterization}. 
     % This can be tested with the formula $\forall w_1, \dotsc, w_{k+1} ~ \bigvee_{i \neq j} w_i \mathrel{\autequiv} w_j$.
     %    
-    In other words, a "synchronous relation" $\+R$ is not in $\kREC$ "iff" the complement of $\autequiv$ contains a $(k+1)$-clique, which can be easily tested.
+    In other words, a "automatic relation" $\+R$ is not in $\kREC$ "iff" the complement of $\autequiv$ contains a $(k+1)$-clique, which can be easily tested.
 \end{proof}
 
-The relation $\autequiv$ can also be used to characterize which synchronous relations are definable in the class $\kPROD$.
+The relation $\autequiv$ can also be used to characterize which automatic relations are definable in the class $\kPROD$.
 
 \begin{proposition}
-    An "synchronous relation" $\+R$ is in $\kPROD$ if, and only if, $\+R=(A_1 \times B_1) \cup \hdots \cup (A_k \times B_k)$ where each $A_i$ and $B_i$ is a union of equivalence classes of $\autequiv$.
+    An "automatic relation" $\+R$ is in $\kPROD$ if, and only if, $\+R=(A_1 \times B_1) \cup \hdots \cup (A_k \times B_k)$ where each $A_i$ and $B_i$ is a union of equivalence classes of $\autequiv$.
 \end{proposition}
 \begin{proof}
     The right-to-left implication is trivial. For the converse implication,
@@ -211,5 +211,5 @@ Again, this characterization allows us to show that membership in the class $\kP
 \end{corollary}
 
 \begin{proof}
-    By brute force testing whether the "synchronous relation" $\+R$ is equivalent to $(A_1 \times B_1) \cup \hdots \cup (A_k \times B_k)$ for every possible $A_i,B_i$ which is a union of equivalence classes of $\autequiv$.
+    By brute force testing whether the "automatic relation" $\+R$ is equivalent to $(A_1 \times B_1) \cup \hdots \cup (A_k \times B_k)$ for every possible $A_i,B_i$ which is a union of equivalence classes of $\autequiv$.
 \end{proof}

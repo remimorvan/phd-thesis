@@ -29,6 +29,7 @@
  | structure
  | \(\sigma \)-structures
  | relational structure
+ | relational structures
 
 \knowledge{notion}
  | marked structure
@@ -47,6 +48,7 @@
  | finite $\sigma $-structure
  | finite structure
  | finite structures
+ | finite@struct
 
 \knowledge{notion}
  | hyperedge

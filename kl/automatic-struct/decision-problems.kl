@@ -6,10 +6,12 @@
 \knowledge{notion, wrap=\DPfont}
  | finite regular colourability of automatic graphs
  | finite regular colourability@problem
+ | Finite Regular Colourability of Automatic Graphs
 
 \knowledge{notion, wrap=\DPfont}
  | finite colourability of automatic graphs
  | finite colourability@problem
+ | Finite colourability of automatic graphs
 
 \knowledge{notion, wrap=\DPfont}
  | reachable regularity problem
@@ -32,6 +34,7 @@
  | $k$-regular colourability problem
  | $2$-regular colourability problem
  | $k$-regular colourability@problem
+ | regular colourability problem
 
 \knowledge{notion, wrap=\DPfont}
  | Connectivity in Finite Graphs
@@ -40,7 +43,9 @@
  | regularly unconnected
 
 \knowledge{notion, wrap=\DPfont}
- | Connectivity in rational graphs
+ | Connectivity in Automatic Graphs
+ | Connectivity in automatic graphs
+ | connectivity in automatic graphs
 
 \knowledge{notion, wrap=\DPfont}
  | regular unconnectivity in automatic graphs

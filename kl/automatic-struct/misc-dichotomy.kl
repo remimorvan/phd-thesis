@@ -4,6 +4,7 @@
 
 \knowledge{notion}
  | De Bruijn–Erdős Theorem
+ | De Bruijn-Erdős theorem
 
 \knowledge{notion}
  | unary type
@@ -24,6 +25,7 @@
  | regular homomorphism
  | regular@hom
  | Regularity@hom
+ | regularity@hom
 
 \knowledge{notion}
  | invariant under graph isomorphisms

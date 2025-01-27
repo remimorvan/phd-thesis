@@ -1,5 +1,4 @@
 \knowledge{notion}
- | automatic@struct
  | presentation
  | presentations
  | automatic presentation
@@ -7,15 +6,22 @@
  | automatic $\sigma$-presentation
  | automatic presentations of $\sigma $-structures
  | presentation@auto
+ | presentation@automatic
  | structure represented
  | represent@structure
+ | presentations of automatic $\sigma $-structures
+ | presentation of an automatic $\sigma $-structure
+
+\knowledge{notion}
+ | automatic@struct
  | automatic structure
  | automatic structures
- | automatic $\sigma $-structures
  | automatic $\sigma $-structure
+ | automatic $\sigma $-structures
 
 \knowledge{notion}
  | automatic presentation of a directed graph
  | automatic graph
  | automatic graphs
+ | automatic@graph
 

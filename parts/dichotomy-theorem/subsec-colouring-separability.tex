@@ -15,7 +15,7 @@ $(aa)^*$ and $(aaa)^*$ can be expressed as the union of some of these languages.
 upper bound $k=4$, consider the partition $\tup{L_6, L_3, L_2, L_\bot}$ where $L_6 = (a^6)^*$,
 $L_3 = (a^3)^* \smallsetminus L_6$, $L_2 = (a^2)^* \smallsetminus L_6$ and $L_\bot = a^* \smallsetminus (L_2 \cup L_3 \cup L_6)$.}
 
-\AP Let us denote by $\intro*\Id$ the identity relation (on any implicit alphabet). Observe that $\Id$ is "automatic" but not "recognizable".
+\AP Let us denote by $\intro*\Id$ the identity relation (on any implicit alphabet). Observe that $\Id$ is "automatic@@rel" but not "recognizable@@rel".
 
 \regcolourabilityequivseparability%
    
@@ -82,8 +82,8 @@ Note that $\incompGraph{\+R}{\Id}$ is exactly the graph $\AutGraph{\Sigma^*}{\+R
         }
     \end{marginfigure}%
 
-    Note that while neither $\+R_1$ nor $\+R_2$ are "recognizable",
-    they are "separable@@rel" by the "recognizable" relation
+    Note that while neither $\+R_1$ nor $\+R_2$ are "recognizable@@rel",
+    they are "separable@@rel" by the "recognizable@@rel" relation
     $\+S$ consisting of all pairs $\tup{u,v}$ such that $|u|$ and $|v|$ have the same parity.
     Moreover, $\incompGraph{\+R_1}{\+R_2}$ is "2-regular colourable", the two colours being
     the words of even and odd length.
@@ -91,7 +91,7 @@ Note that $\incompGraph{\+R}{\Id}$ is exactly the graph $\AutGraph{\Sigma^*}{\+R
 
 \begin{proposition}
     \AP\label{prop:incomp-is-automatic}
-    If $\+R_1$ and $\+R_2$ are "automatic", then so is $\incompGraph{\+R_1}{\+R_2}$.
+    If $\+R_1$ and $\+R_2$ are "automatic@@rel", then so is $\incompGraph{\+R_1}{\+R_2}$.
     Moreover, we can build an automaton for $\incompGraph{\+R_1}{\+R_2}$ in polynomial time in the size of the automata for $\+R_1$ and $\+R_2$.
 \end{proposition}
 
@@ -170,7 +170,7 @@ We can now finish the proof of \Cref{thm:reg-colourability-equiv-separability}.
     that $\tup{u,v} \not\in \+R_2$. The other case is symmetric.
     Therefore, $\tup{u,v} \not\in \+R_2$, and thus $\+S$ "separates@@rel" $\+R_1$ from $\+R_2$.
 
-    Finally, we show that $\+S$ is "recognizable". In fact, 
+    Finally, we show that $\+S$ is "recognizable@@rel". In fact, 
     \[
         \+S = \bigcup_{i=1}^k \bigl(
             L_i \times \+R_1[L_i]

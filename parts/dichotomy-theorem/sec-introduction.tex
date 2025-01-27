@@ -13,7 +13,7 @@ databases \cite{BenediktLibkinSchwentickSegoufin2003DefinableRelations}, compari
 string constraints for model checking \cite{LinBarcelo2016StringSolvingWordEquationsTransducers}. 
 The most studied such classes include "recognizable@@rel", "automatic@@rel" "aka" "synchronous@@rel", and "automatic relations", each one of the latter two strictly extending the previous one. 
 
-% \AP ""Automatic relations"" are those definable by multi-head automata, with heads possibly moving asynchronously; "automatic relations" are "automatic relations" that are accepted by multi-head automata whose heads are forced to move synchronously; and 
+% \AP ""Automatic relations"" are those definable by multi-head automata, with heads possibly moving aautomaticly; "automatic relations" are "automatic relations" that are accepted by multi-head automata whose heads are forced to move automaticly; and 
 % "recognizable relations" correspond to finite unions of products of regular languages (or, equivalently, to languages recognized via finite monoids, by Mezei's Theorem). By definition, all of these classes coincide with the 
 % class of regular languages when restricted to unary relations.
 
@@ -21,10 +21,10 @@ Prior work has focused on the ""$\REC$-definability problem"",
 which takes as input an $n$-ary "rational relation"%
 \footnote{
 	Recall that "rational relations" are those definable by multi-head automata,
-	with heads possibly moving asynchronously;
+	with heads possibly moving aautomaticly;
 	"automatic relations", "aka" "synchronous relations",
 	are those that are accepted by multi-head automata
-	whose heads are forced to move synchronously; and 
+	whose heads are forced to move automaticly; and 
 	"recognizable relations" correspond to finite unions of products of regular languages---or, equivalently, to languages recognized via finite monoids, by Mezei theorem.
 	By definition, all of these classes coincide with the 
 	class of "regular languages" when restricted to unary relations.
@@ -75,7 +75,7 @@ is in general undecidable, so in this chapter we focus on its restriction to
 	Does there exist a "recognizable relation" $\+S$ "st" $\+R \subseteq \+S$
 	and $\+R' \cap \+S = \emptyset$?
 }
-Notice that when $\+R'$ is the complement of $\+R$ this problem boils down to "$\REC$-definability" on "synchronous relations"---which is decidable. 
+Notice that when $\+R'$ is the complement of $\+R$ this problem boils down to "$\REC$-definability" on "automatic relations"---which is decidable. 
 However, "$\AUT$/$\REC$-separability" is more general than this problem,
 and to this day it is unknown whether it is decidable. 
 
@@ -88,7 +88,7 @@ These problems are the central topic in the domain of "constraint satisfaction p
 \footnote{A typical example of such a problem is to work on the "graph signature", and to fix the
 target structure to be the "$k$-clique" ($k \in \Np$): it exactly corresponds to
 the "$k$-colourability problem".}
-When the target structure is finite, the "homomorphisms problem" is known to be decidable
+When the target structure is finite, the "homomorphism problem" is known to be decidable
 in "NP". The precise complexity of the problem, however, depends on the "structure" of the target,
 and is tightly connected to the algebraic properties of the algebra associated to the
 "structure".

@@ -6,9 +6,130 @@
 %\knowledge{notion}
 %  | one-way semantic tree-width
 %
-%
+%\knowledge{notion}
+%  | signature of binary strings
 %
 %\knowledge{notion}
-%  | rational
+%  | i.e.
 %
-
+%\knowledge{notion}
+%  | Mycielski's construction
+%
+%\knowledge{notion}
+%  | synchronous relations
+%  | synchronous@rel
+%
+%\knowledge{notion}
+%  | $\REC $-definability problem
+%
+%\knowledge{notion}
+%  | rational relation
+%  | rational relations
+%
+%\knowledge{notion}
+%  | $\REC $-definability
+%
+%\knowledge{notion}
+%  | $\RAT $/$\REC $-separability problem
+%  | $\AUT $/$\REC $-separability problem
+%
+%\knowledge{notion}
+%  | $\AUT $/$\REC $-separability
+%
+%\knowledge{notion}
+%  | $k$-colourability problem
+%
+%\knowledge{notion}
+%  | finite graph
+%
+%\knowledge{notion}
+%  | Larose-Tesson's theorem
+%
+%\knowledge{notion}
+%  | $\AUT $/$\REC $-separability@problem
+%  | $\AUT $/$\kREC $-separability@problem
+%
+%\knowledge{notion}
+%  | regular homomorphism problem
+%
+%\knowledge{notion}
+%  | Dichotomy Theorem for Automatic Structures
+%
+%\knowledge{notion}
+%  | regular function
+%
+%\knowledge{notion}
+%  | presentation of an automatic graph
+%
+%\knowledge{notion}
+%  | block product
+%
+%\knowledge{notion}
+%  | finiteness@structure
+%  | finite@structure
+%
+%\knowledge{notion}
+%  | Regular Unreachability of Turing Machine Configurations
+%
+%\knowledge{notion}
+%  | finite regular colourability problem
+%
+%\knowledge{notion}
+%  | disjoint union
+%
+%\knowledge{notion}
+%  | finitely colourable
+%  | finite colourable
+%
+%\knowledge{notion}
+%  | computationally equivalent
+%
+%\knowledge{notion}
+%  | connected graphs
+%
+%\knowledge{notion}
+%  | unconnected@struct
+%  | connectivity@struct
+%
+%\knowledge{notion}
+%  | finite colourability problem
+%
+%\knowledge{notion}
+%  | finite subgraph
+%
+%\knowledge{notion}
+%  | graph isomorphisms
+%
+%\knowledge{notion}
+%  | isomorphic
+%
+%\knowledge{notion}
+%  | contain unbounded cliques
+%
+%\knowledge{notion}
+%  | has bounded cliques
+%
+%\knowledge{notion}
+%  | triangle-free graphs@dir
+%
+%\knowledge{notion}
+%  | chromatic number
+%
+%\knowledge{notion}
+%  | triangle-free@dir
+%
+%\knowledge{notion}
+%  | triangle-free@undir
+%
+%\knowledge{notion}
+%  | triangle-free graph@undir
+%  | triangle-free graphs@undir
+%
+%\knowledge{notion}
+%  | automaticity
+%
+%\knowledge{notion}
+%  | Mycielskian
+%
+%\knowledge{notion}
+%  | infinite Mycielski graph

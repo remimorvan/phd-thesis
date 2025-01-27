@@ -10,12 +10,12 @@ Distinction between "automatic presentation" of a "structure" (or "automatic str
 Given a "relational signature" $\sigma$, a \AP"automatic $\sigma$-presentation" $\+A$
 over the alphabet $\Sigma$ consists of a "regular language"
 $\domainPres{\•A} \subseteq \Sigma^*$ and for each $\+R_{(k)} \in \sigma$
-a "synchronous relation" $\relPres{\+R}{\•A} \subseteq (\Sigma^*)^k$.
+a "automatic relation" $\relPres{\+R}{\•A} \subseteq (\Sigma^*)^k$.
 
 \AP A ""automatic graph"" is a "automatic $\sigma$-presentation" when $\sigma$ is the
 "graph signature". It boils down a pair $\+G = \langle V, \+E \rangle$, where $V$
 is a "regular language" over some alphabet $\Sigma$, and $\+E$ is a
-"synchronous binary relation".
+"automatic binary relation".
 
 TODO:generalized presentation (non-injective) + effective construction to make them injective.
 -> this explains our choice. We avoid the terminology ``regular structure'' because of
@@ -115,8 +115,8 @@ by \AP$\intro*\univStructSynchronous{\Sigma}$ the "$\signatureSynchronous{\Sigma
 the "predicates" are "interpreted@@predicate" as above.
 
 \begin{proposition}
-	\label{prop:synchronous-first-order}
-	A relation over $\Sigma^*$ is "synchronous" "iff" it is definable by a "first-order formula" over \(\univStructSynchronous{\Sigma}\).
+	\label{prop:automatic-first-order}
+	A relation over $\Sigma^*$ is "automatic@@rel" "iff" it is definable by a "first-order formula" over \(\univStructSynchronous{\Sigma}\).
 \end{proposition}
 
 \subsection{Neighbourhoods}

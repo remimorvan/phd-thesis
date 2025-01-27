@@ -8,6 +8,7 @@
 
 \knowledge{notion}
  | automorphism
+ | automorphisms
 
 \knowledge{notion}
  | homomorphically equivalent
@@ -28,13 +29,17 @@
 
 \knowledge{notion}
  | homomorphism problem
+ | homomorphism problems
 
 \knowledge{notion}
  | constraint satisfaction problem
+ | constraint satisfaction problems
  | CSP
+ | CSPs
 
 \knowledge{notion}
 | input structure
+ | input@struct
 
 \knowledge{notion}
  | target structure

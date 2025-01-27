@@ -1,12 +1,17 @@
 \knowledge{notion}
  | $2$-clique
+ | $k$-clique
+ | $3$-clique
+ | cliques
 
 \knowledge{notion}
  | $2$-path
  | path
+ | $k$-path
 
 \knowledge{notion}
  | $2$-transitive tournament
+ | $k$-transitive tournament
 
 \knowledge{notion}
  | $n$-link
