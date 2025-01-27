@@ -43,7 +43,7 @@ We say that a Turing machine $\+T$ is ""well-founded"" if its "configuration gra
 \end{enumerate}
 
 We say that a Turing machine is ""linear@@TM"" if it is "well-founded", deterministic and "reversible".
-By construction, a Turing machine is "linear@@TM" "iff" (1) its "configuration graph" consists of a possibly infinite disjoint union of directed paths, which are all finite, or isomorphic to $\tup{\N, +1}$ and (2) the "initial configuration" has in-degree zero.
+By construction, a Turing machine is "linear@@TM" "iff" (1) its "configuration graph" consists of a possibly infinite disjoint union of directed paths, which are all finite, or "isomorphic" to $\tup{\N, +1}$ and (2) the "initial configuration" has in-degree zero.
 Such a configuration graph is depicted on
 \Cref{fig:reduction-wf-RTM-to-colouring-config-graph-wf-RTM}.\footnote{Note
 that it is decidable whether a "Turing machine" is "linear@@TM". In fact, condition (1) can be expressed in "first-order logic" over $\univStructSynchronous{\Sigma}$.}
@@ -215,7 +215,7 @@ to be \AP""germinal"" if it has in-degree 0.
 	a set of final states, it has a partition $\langle C_1,\hdots,C_k \rangle$ of its states.
 	Such an automaton recognizes a "regular colouring" $\Sigma^* \to \lBrack 1, k\rBrack$.
 	Given a "automatic graph" $\+G = \AutGraph{V}{\+E}$---whose edge relations is given by
-    a "automatic automaton" $\relPres{\+E}{\+G}$---and a $k$-coloured automaton $\+B$,
+    a "synchronous automaton" $\relPres{\+E}{\+G}$---and a $k$-coloured automaton $\+B$,
 	we can build, by a product construction, an automaton $\+A'$ which accepts
 	all $u \otimes v \in \convolRel{R}$ such that the colour of $u$ is distinct from
     the colour of $v$.

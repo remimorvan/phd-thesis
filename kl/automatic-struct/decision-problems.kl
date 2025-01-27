@@ -3,19 +3,21 @@
  | First-order Model Checking of Automatic Structures
  | First-order model checking of automatic structures
 
-\knowledge{notion}
+\knowledge{notion, wrap=\DPfont}
  | $k$-colourability problem
 
 \knowledge{notion, wrap=\DPfont}
  | finite regular colourability of automatic graphs
  | finite regular colourability@problem
  | Finite Regular Colourability of Automatic Graphs
+ | finite regular colourability problem
 
 \knowledge{notion, wrap=\DPfont}
  | finite colourability of automatic graphs
  | finite colourability@problem
  | Finite colourability of automatic graphs
-
+ | finite colourability problem
+ 
 \knowledge{notion, wrap=\DPfont}
  | reachable regularity problem
 
@@ -32,11 +34,12 @@
  | $\kPROD [2]$-separability problem
  | $\REC $-separability@problem
  | $\kREC $-separability@problem
-
-\knowledge{notion}
- | $\REC $-membership problem
+ | $\AUT $/$\REC $-separability@problem
+ | $\AUT $/$\kREC $-separability@problem
 
 \knowledge{notion, wrap=\DPfont}
+ | $\REC $-membership problem
+ | $\REC $-membership@problem
  | $\kREC $-membership problem
  | $\kPROD $-membership problem
 
@@ -48,9 +51,6 @@
 
 \knowledge{notion, wrap=\DPfont}
  | Connectivity in Finite Graphs
-
-\knowledge{notion}
- | regularly unconnected
 
 \knowledge{notion, wrap=\DPfont}
  | Connectivity in Automatic Graphs
@@ -64,3 +64,16 @@
 
 \knowledge{notion, wrap=\DPfont}
  | Restricted Membership for Deterministic Reversible Turing Machines
+
+\knowledge{notion, wrap=\DPfont}
+ | homomorphism problem
+ | homomorphism problems
+
+\knowledge{notion, wrap=\DPfont}
+ | regular homomorphism problem
+
+\knowledge{notion, wrap=\DPfont}
+ | constraint satisfaction problem
+ | constraint satisfaction problems
+ | CSP
+ | CSPs

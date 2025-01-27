@@ -1,3 +1,9 @@
+\knowledge{notion}
+ | Dichotomy Theorem for Automatic Structures
+
+\knowledge{notion}
+ | invariant under graph isomorphisms
+
 % ---
 % De Bruijn-Erdos
 % ---
@@ -11,25 +17,7 @@
 
 \knowledge{notion}
  | obstructing@unarytype
-
-% ---
-% Regular functions / homos
-% ---
-
-\knowledge{notion}
- | regularity@fun
- | regular@fun
-
-\knowledge{notion}
- | regular homomorphisms
- | regular homomorphism
- | regular@hom
- | Regularity@hom
- | regularity@hom
-
-\knowledge{notion}
- | invariant under graph isomorphisms
-
+ 
 % ---
 % Hyperedge consistency 
 % --- 

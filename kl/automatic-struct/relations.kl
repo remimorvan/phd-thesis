@@ -1,8 +1,14 @@
 \knowledge{notion}
+ | rational relation
+ | rational relations
+
+\knowledge{notion}
  | automatic relation
  | automatic relations
  | automatic binary relation
  | automatic@rel
+ | synchronous relation
+ | synchronous@rel
 
 \knowledge{notion}
  | recognizable relations
@@ -14,5 +20,5 @@
  | symmetric relation
 
 \knowledge{notion}
- | automatic automaton 
+ | synchronous automaton 
  | automaton@sync

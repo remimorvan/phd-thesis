@@ -1,8 +1,4 @@
 \knowledge{notion}
- | 2-colourable
- | $k$-colourable
-
-\knowledge{notion}
  | 2-colouring
  | $k$-colouring
  | colouring
@@ -11,6 +7,13 @@
  | $4$-colouring
  | $(k+1)$-colouring
  | $(k-1)$-colouring
+
+\knowledge{notion}
+ | 2-colourable
+ | $k$-colourable
+
+\knowledge{notion}
+ | finitely colourable
 
 \knowledge{notion}
  | chromatic number
@@ -50,3 +53,19 @@
 \knowledge{notion}
  | $k$-coloured automaton
  | $k$-coloured automata
+
+% ---
+% Regular functions / homomorphisms
+% ---
+
+\knowledge{notion}
+ | regular function
+ | regularity@fun
+ | regular@fun
+
+\knowledge{notion}
+ | regular homomorphisms
+ | regular homomorphism
+ | regular@hom
+ | Regularity@hom
+ | regularity@hom

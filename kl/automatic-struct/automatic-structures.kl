@@ -11,6 +11,7 @@
  | represent@structure
  | presentations of automatic $\sigma $-structures
  | presentation of an automatic $\sigma $-structure
+ | presentation of an automatic graph
 
 \knowledge{notion}
  | automatic@struct
@@ -24,4 +25,5 @@
  | automatic graph
  | automatic graphs
  | automatic@graph
+ | automaticity@graph
 
