@@ -91,9 +91,10 @@ we denote by:
 	\itemAP $\intro*\HomRegAut{\?B}$ is the class of all "automatic presentations of  $\sigma$-structures" that admit a "regular homomorphism" to $\?B$.
 \end{itemize}
 Somewhat abusively, we identify these classes with the associated decision problems---except
-for $\HomAll{\?B}$ since arbitrary "$\sigma$-structures" cannot be encoded as finite strings---:
-for finite structures, we assume the input to be given suing adjacency lists, and for automatic presentations, we assume the input to be described by an "automatic presentation".
+for $\HomAll{\?B}$ since arbitrary "$\sigma$-structures" cannot be encoded as finite strings.
+For finite structures, we assume the input to be given suing adjacency lists, and for automatic presentations, we assume the input to be described by an "automatic presentation".
 We call $\HomRegAut{\?B}$ the \AP""regular homomorphism problem"" over $\?B$.
+
 
 \subsection{Constructions on Structures}
 
@@ -101,9 +102,13 @@ Given two "structures" $\?A$ and $\?B$, we define the structure \AP$\intro*\pows
 \begin{itemize}
   \item its domain are "homomorphisms" $\?A \to \?B$,
   \item for every "predicate" $\+R$ of arity $k$, for any homomorphism $f_1,\hdots,f_k$,
-  we have $\langle f_1,\hdots,f_k\rangle \in \+R(\powstruct{\?B}{\?A})$ when for every
-  $\langle a_1,\hdots,a_k\rangle \in \+R(\?A)$
-  then $\langle f_1(a_1), \hdots, f_k(a_k) \rangle \in \+R(\?B)$.
+  we have $\langle f_1,\hdots,f_k\rangle \in \+R(\powstruct{\?B}{\?A})$ when 
+  \[
+	\text{for every }
+	\langle a_1,\hdots,a_k\rangle \in \+R(\?A)
+	\text{, we have }
+	\langle f_1(a_1), \hdots, f_k(a_k) \rangle \in \+R(\?B).
+  \]
 \end{itemize}
 
 
