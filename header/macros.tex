@@ -1,14 +1,14 @@
 \newrobustcmd{\fancyand}{{\setmainfont{Tex Gyre Pagella}\textit{\&}}}
 
 \newrobustcmd\decisionproblem[3]{
-	\begin{center}\AP
-	\fbox{%
+	\begin{center}
+	\AP\fbox{%
 	\begin{tabular}{rl}
 	\multicolumn{2}{l}{#1} \\
 	{\emph{Input}}: & \parbox[t]{.73\linewidth}{#2} \\
 	{\emph{Question}}: & \parbox[t]{.73\linewidth}{#3}
-	\end{tabular}%
-	} 
+	\end{tabular}
+	}
 	\end{center}
 }
 \newrobustcmd{\DPfont}[1]{\normalfont{\scshape #1}}
