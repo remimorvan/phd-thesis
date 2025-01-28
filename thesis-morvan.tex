@@ -58,6 +58,8 @@
 \usepackage[
   style=alphabetic,
   autocite=footnote,
+  maxalphanames=9,
+  maxbibnames=99,
   backend=biber
 ]{biblatex}
 \bibliography{bib-abbrev,bib-automatic-graphs,bib-complexity}
@@ -104,7 +106,6 @@
 % \chapter{Synthesis of Conjunctive Regular Path Queries}
 
 \chapter{Conclusion \& Open Problems}
-
 
 Extend the notion of `strong minimality` using the axioms used in the lower bound (`str-onto`): call such canonical databases / extensions `structurally minimal'.
 Prove or disprove the following result: ``a CRPQ has one-way semantic tree-width at least $k$ "iff" it has an expansion that is structurally minimal and whose core has tree-width at least $k$''. In general: what about minor-closed classes?

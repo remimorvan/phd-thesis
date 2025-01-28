@@ -3,7 +3,8 @@
 
 \subsection{Regular Homomorphisms}
 
-Given two regular languages $K$ and $L$,\footnote{Note that whether $K$ and $L$ share the same alphabet is irrelevant since we can always work on the union of their alphabet.},
+Given two regular languages $K$ and $L$,%
+\footnote{Note that whether $K$ and $L$ share the same alphabet is irrelevant since we can always work on the union of their alphabet.}
 a \AP""regular function"" from
 $K$ to $L$ is a function $f\colon K \to L$ "st" the relation
 \[
@@ -54,7 +55,7 @@ As a consequence, when $\•B$ is finite, we will write $\•A \reintro*\homregt
 to mean that $\•A \homregto \•B$.
 In particular, a \AP""regular $k$-colouring"" of a "presentation of an automatic graph"
 $\•G$ is equivalently a "regular homomorphism" from $\•G$ to $\?K_k$,
-or a "$k$-colouring" "st" for any colour, the set of words of $\domainPres{\•G}$
+or a "$k$-colouring" of $\?G$ "st" for any colour, the set of words of $\domainPres{\•G}$
 sharing this colour is a "regular language". 
 
 \begin{figure}
@@ -68,7 +69,7 @@ sharing this colour is a "regular language".
 	}
 \end{figure}
 In \Cref{fig:grid-2-reg-colouring}, we provide an example of a "regular $2$-colouring".
-The let $\+G = \tup{V,\+E}$ be the "automatic presentation" of the infinite quarter-grid,
+We let $\+G = \tup{V,\+E}$ be the "automatic presentation" of the infinite quarter-grid,
 defined over the alphabet $\{x,y\}$ by $V \defeq x^*y^*$ and
 \[
 	\+E = \set{\tup{x^p y^q, x^{p+1}y^q} \mid p,q \in \N}
