@@ -319,3 +319,18 @@ We can now prove our result.
   In all cases, $\langle u,v\rangle \in \+E_{n+1}$ which concludes the induction.
   To conclude, it suffices to notice that the condition $\+P$ is clearly "automatic@@rel".
 \end{proof}
+
+
+\subsection{Beyond Finite Duality}
+
+The notion of "duality" has been generalized in graph theory to \emph{restricted dualities}, where  
+for which the quantification over "structures" is restricted to a fixed class of finite graphs.
+For instance, Naserasr showed \cite[Theorem 11]{Naserasr2007PlanarDuality} that 
+for any finite planar undirected graph $\?G$, then $\?G$ is "triangle-free@@undir"
+"iff" $\?G$ admits a "homomorphism" to the so-called Clebsch graph.
+Letting $\?H_5$ denote the "directed graph" induced by it---meaning that if $\{u,v\}$ is an edge,
+we put an edge from $u$ to $v$ and from $v$ to $u$---it follows that
+$\HomAut{\?H_5}$ is decidable when restricted to planar graphs\footnote{Meaning that the underlying undirected graph is planar}, even though the full problem is undecidable.
+
+This opens a wide class of problems which are undecidable by the "dichotomy theorem for automatic structures", but which admit non-trivial restrictions which are decidable.
+We refer the reader to \cite{NesetrilPOM2012RestrictedDualities} for more details on restricted dualities.

@@ -330,7 +330,129 @@ singleton $\{b\}$.
 	is "finite@@structure".
 \end{proof}
 
-\subsection{Transitive Tournaments "vs" Paths}
+
+\subsection{De Bruijn–Erdős Theorem}
+
+\AP\begin{proposition}[""De Bruijn–Erdős Theorem""]
+	\!\footnote{It is straightforward to note that
+	one can replace ``every finite "substructure"'' by
+	``every finite "induced substructure"'' in the statement of the theorem.}%
+	\AP\label{prop:de-bruijn-erdos}
+	Let $\?A$ be an arbitrary "$\sigma$-structure" and $\?B$ a "finite $\sigma$-structure".
+	There is a "homomorphism" from $\?A$ to $\?B$ "iff" for every finite "substructure" $\?A'$
+	of $\?A$, there is a "homomorphism" from $\?A$ to $\?B$.
+\end{proposition}
+
+\begin{proof}
+	The left-to-right implication is direct.
+	We prove the converse by using the "Tychonoff's compactness theorem".\footnote{This is a direct adaptation from todo:addref-wiki, which proves this result in the particular case of graph colouring.}
+	So, assume that for every finite "substructure" $\?A'$ of $\?A$,
+	there is a "homomorphism" from $\?A$ to $\?B$. 
+	Consider the topological space $B^A$, consisting of all functions from $A$ to $B$,
+	together with the product topology.\footnote{We equip $B$ with the discrete topology,
+	making it compact since $B$ is finite.} By "Tychonoff's compactness theorem",
+	$B^A$ is compact. For each finite subset $X$ of $A$, let
+	$H_X$ denote the set of all $f \in B^A$ "st" $\restr{f}{X}$ is a "homomorphism"
+	from the "substructure" of $\?A$ "induced@@structure" by $X$ to $\?B$.
+	Then, each $H_X$ is closed---indeed, whether $f\in B^A$ belongs to $H_X$ only depends
+	on finitely many $f(x)$'s---, and moreover the intersection of finitely many
+	$H_X$'s, say $H_{X_1} \cap \cdots \cap H_{X_n}$, is non-empty since
+	$H_{X_1} \cap \cdots \cap H_{X_n} \supseteq H_{X_1\cup \hdots \cup X_n}$
+	and by assumption $H_{X_1\cup \hdots \cup X_n}$ is non-empty since $X_1 \cup \cdots \cup X_n$ is finite. Hence, by compactness of $B^A$ and the "finite intersection property", it follows
+	that $\bigcap_X H_X$ is non-empty, which means that there is a "homomorphism" from $\?A$ to $\?B$.
+\end{proof}
+
+\begin{corollary}
+	\!\footnote{Another important consequence of the "De Bruijn–Erdős Theorem" is that,
+	for instance, the notion of "dual" does not depend on whether we are considering finite or
+	arbitrary "$\sigma$-structures".}
+	\AP\label{coro:de-bruijn-erdos}
+	Given arbitrary $\sigma$-structures $\?B_1$ and $\?B_2$, the following are equivalent:
+	\begin{enumerate}
+		\itemAP\label{item:de-bruijn-erdos-finite} for every finite "$\sigma$-structure" $\?A$, then $\?A \homto \?B_1$
+		"iff" $\?A \homto \?B_2$;
+		\itemAP\label{item:de-bruijn-erdos-arbitrary} for every arbitrary "$\sigma$-structure" $\?A$, then $\?A \homto \?B_1$
+			"iff" $\?A \homto \?B_2$;
+		\itemAP\label{item:de-bruijn-erdos-hom} $\?B_1$ and $\?B_2$ are "homomorphically equivalent".
+	\end{enumerate}
+\end{corollary}
+\begin{proof}
+	\eqref{item:de-bruijn-erdos-arbitrary} $\Rightarrow$ \eqref{item:de-bruijn-erdos-hom}
+	and \eqref{item:de-bruijn-erdos-hom} $\Rightarrow$ \eqref{item:de-bruijn-erdos-finite}
+	are trivial.
+	For \eqref{item:de-bruijn-erdos-finite} $\Rightarrow$ \eqref{item:de-bruijn-erdos-arbitrary},
+	we assume "wlog" by contradiction that there is an arbitrary "$\sigma$-structure" $\?A$ "st" $\?A \homto \?B_1$ but $\?A \nothomto \?B_2$. Then by \Cref{prop:de-bruijn-erdos},
+	there exists a finite "substructure" $\?A_0$ of $\?A$ "st" $\?A_0 \nothomto \?B_2$.
+	But then $\?A_0 \homto \?A \homto \?B_1$, which contradicts \eqref{item:de-bruijn-erdos-finite}.
+\end{proof}
+
+
+\subsection{Obstructions and Finite Duality}
+
+Let $\?B$ and $\?D$ be "finite $\sigma$-structures".
+We say that $\?D$ is an \AP""obstruction"" of $\?B$ when "$\?D \nothomto \?B$".
+In this case, note that finding $\?D$ is a "structure"---in the sense that $\?D \homto \?A$---implies that $\?A$ cannot have a "homomorphism" to $\?B$: in this sense, the presence of
+$\?D$ in an \emph{obstruction} to the existence of a "homomorphism" to $\?B$.
+
+A \AP""dual"" of $\?B$ is any arbitrary set $\+D$ of "finite $\sigma$-structures" "st"
+for any "finite $\sigma$-structure" $\?A$:
+\[
+	\?A \homto \?B
+	\text{ "iff" }
+	\forall \?D \in \+D,\, \?D \nothomto \?A.
+\]
+Note that any "dual" must only contain "obstructions" of $\?B$.%
+\footnote{The notion of dual was implicitly introduced
+by Ne\v{s}et\v{r}il and Pultr, who proved that for \emph{undirected} graph, no
+non-trivial "finite duality" existed, in the sense that the
+only "cores" $\?B$ having a "finite dual" where the empty graph, and the graph having
+a single vertex and no edge \cite[Corollary 4.1]{NesetrilPultr1978Duality}.}
+The set of all "obstructions" of $\?B$ is a "dual" of $\?B$.
+
+\begin{example}
+	\AP\label{ex:dual-T2} Let $k\in\N$. The set
+	$\{\pathGraph{k+1}\}$ is a "dual" of 
+	"$k$-transitive tournament" $\transitiveTournament{k}$---see \Cref{fig:T2-P2}.
+	
+	Indeed, $\pathGraph{k+1} \nothomto \transitiveTournament{k}$. Dually,
+	if $\?G$ if a "finite graph" "st" $\?G \homto \transitiveTournament{k}$ then
+	letting $f$ be a "homomorphism" from $\?G$ to $\transitiveTournament{k}$,
+	we have that any edge from $u \in G$ to $v \in G$, we must have $f(u) < f(v)$,
+	and so $\pathGraph{k} \nothomto \?G$.
+\end{example}
+
+Moreover, if $\+D$ and $\+D'$ are sets of "obstructions" of $\?B$ and $\+D \subseteq \+D'$,
+then if $\+D$ is a "dual", so is $\+D'$: hence, the goal is to find \emph{small} duals.
+We say that $\?B$ has \AP""finite duality"" if is admits a finite "dual", "ie"
+consisting of finitely many "structures". For instance, $\transitiveTournament{k}$ has "finite duality".
+
+An "obstruction" $\?D$ of $\?B$ is \AP""critical""\footnote{We borrow the terminology
+from \cite{LaroseLotenTardif2007CharacterisationFOCSP}.} when for every
+"proper substructure" $\?D'$ of $\?D$, we have $\?D' \homto \?B$.
+Clearly, every "critical obstruction" must be a "core".
+
+Note first that the set of all "critical obstructions" of $\?B$ is a "dual" of $\?B$.
+Indeed, if $\?A \nothomto \?B$, then $\?A$ is an "obstruction" and so it must contain---by well-foundedness of $\N$---a "critical obstruction" $\?D$ as a "substructure".
+
+\begin{proposition}
+	\label{prop:finite-duality-iff-critical-obstructions}
+	Let $\?B$ be a "finite $\sigma$-structure". $\?B$ has "finite duality"
+	"iff" it has finitely many "critical obstructions".
+\end{proposition}
+
+\begin{proof}
+	The right-to-left implication is trivial. For the converse one,
+	let $\+D = \{D_1,\hdots,D_m\}$ be a finite "dual" of $\?B$.
+	If $\+C$ is a "critical obstruction" of $\?B$ then in particular $\?C \nothomto \?B$
+	and so there exists $i \in \lBrack 1,m\rBrack$ "st" there is a "homomorphism" $f$ 
+	from $\?D_i$ to $\?C$. Now the image of $f$ is again an "obstruction" of $\?B$,
+	and since $\?C$ is "critical", it follows that it must be $\?C$ itself. In other
+	words, $f$ is "strong onto". In particular, we obtain that $\?C$ is a "quotient" of
+	$\?D_i$. Hence, there are only finitely many "critical obstructions" of $\?B$.
+\end{proof}
+
+One of the key interest of \Cref{prop:finite-duality-iff-critical-obstructions} is
+to prove that some structures don't have "finite duality".
 
 \begin{figure}
 	\centering
@@ -351,7 +473,22 @@ singleton $\{b\}$.
 	Note that $\zigzag{n}{2}$ does not admit a "homomorphism" to the "$2$-path"---indeed, such a homomorphism should send $a'_0$, $a_0$ and $b_0$ onto $0$, $1$, and $2$, respectively, 
 	and so all $a_i$'s (resp. $b_i$'s) must be sent onto $1$ (resp. $2$), but then $b'_n$ cannot be mapped anywhere.
 
-	On the other hand, $\zigzag{n}{2}$ admits a "homomorphism" to the "$2$-transitive tournament", as witnessed by \Cref{fig:zigzag-graph-hom-T2}.
+	We claim that each $\zigzag{n}{2}$ ($n\in\N$) is a "critical obstruction" of $\pathGraph{2}$.
+	We have already seen that $\zigzag{n}{2}$ is an "obstruction" of $\pathGraph{2}$.
+	By then notice that any "proper substructure" of $\zigzag{n}{2}$ 
+	must either:
+	\begin{itemize}
+		\item remove the edge from $a'_0$ to $a_0$ or the edge from $b_n$ to $b'_n$,
+		in which case it admits a "homomorphism" to $\pathGraph{2}$, or
+		\item remove any other edge, in which case the resulting "substructure" is not "connected",
+		and both parts admit a "homomorphism" to $\pathGraph{2}$.
+	\end{itemize}
+	And hence, by \Cref{prop:finite-duality-iff-critical-obstructions}, it follows that
+	$\pathGraph{2}$ does not have "finite duality".
+
+	On the other hand, each $\zigzag{n}{2}$ with $n\in\Np$ admits a "homomorphism" to the "$2$-transitive tournament", as witnessed by \Cref{fig:zigzag-graph-hom-T2}.%
+	\footnote{However, observe that $\zigzag{0}{2} = \pathGraph{3}$ is an "obstruction" of
+	$\transitiveTournament{2}$.}
 	In fact, this "homomorphism" is far from being unique:
 	each vertex $a_1,\,a_2,\,\hdots,\,a_{n-1}$ can be sent on either $0$ or $1$
 	(the red and yellow vertices), 
@@ -370,43 +507,70 @@ singleton $\{b\}$.
 		$\zigzag{n}{k}$ be the graph obtained from $\zigzag{n}{2}$ by
 		replacing the path leading to $a_0$ by a path of length $k-1$.
 	}
+	\begin{figure}
+		\centering 
+		\begin{tikzpicture}
+			\input{tikz/dichotomy/zigzag-graph-hom-T2}
+		\end{tikzpicture}
+		\caption{\AP\label{fig:zigzag-graph-hom-T2}A "homomorphism" from the "zigzag graph" (left-hand side) to the "$2$-transitive tournament" (right-hand side).}
+	\end{figure}
 \end{example}
-\begin{figure}
-	\centering 
-	\begin{tikzpicture}
-		\input{tikz/dichotomy/zigzag-graph-hom-T2}
-	\end{tikzpicture}
-	\caption{\AP\label{fig:zigzag-graph-hom-T2}A "homomorphism" from the "zigzag graph" (left-hand side) to the "$2$-transitive tournament" (right-hand side).}
-\end{figure}
+
+While $\pathGraph{k}$ and $\transitiveTournament{k}$ are similar structures,
+one has "finite duality" and the other does not.
+Recall that by "Atserias' theorem", this implies that
+$\HomFin{\transitiveTournament{k}}$ is "first-order definable"\footnote{By the formula saying that
+there exists variables $x_0$, $\hdots$, $x_{k+1}$ "st" for all $i$ there is an edge from $x_i$ to $x_{i+1}$.} but $\HomFin{\pathGraph{k}}$ is not.%
+\footnote{This can also be proven by hand: for 
+instance we let $\tilde Z^{(n)}_2$ be defined analogously to $\zigzag{n}{2}$ except
+that we remove the edge from $a_{k}$ to $b_k$ for $k = \lceil \frac{n}{2} \rceil$. 
+Then for a well-chosen single-exponential function $f\colon \N \to \N$, for $n\in\N$,
+we have that Duplicator wins the Ehrenfeucht-Fraïssé game on $\zigzag{f(n)}{2}$ and
+$\tilde Z^{(f(n))}_2$. Since $\zigzag{f(n)}{2} \nothomto \pathGraph{2}$ but
+$\tilde Z^{(n)}_2 \homto \pathGraph{2}$, this implies that $\HomFin{\pathGraph{2}}$ is not 
+"first-order definable". See "eg" \cite[\S~3]{Kolaitis2007FiniteModelTheory} for details on
+Ehrenfeucht-Fraïssé games.}
 
 
-\subsection{Obstructions and Finite Duality}
 
-\begin{itemize}
-	\itemAP ""dual""
-	\itemAP ""obstruction""
-	\itemAP ""critical obstruction""
-	\itemAP ""diameter"" and ""height@@struct""
-\end{itemize}
+\begin{remark}[From finite to infinite structures]
+	In the property
+	\[
+		\?A \homto \?B
+		\;\text{ "iff" }\;
+		\forall \?D \in \+D,\, \?D \nothomto \?A
+	\]
+	defining a "dual", we quantified $\?A$ over "finite $\sigma$-structures". 
+	We could equally quantify over all "$\sigma$-structures" without changing the notion of "dual" by "De Bruijn-Erdős theorem".
+\end{remark}
+
 
 \subsection{Trees and Tree Duality}
 
-\begin{itemize}
-	\item ""acyclic@@struct""
-	\item ""$\sigma$-tree""
-	\item $\intro*\FederVardi{-}$
-\end{itemize}
+A "$\sigma$-structure" is \AP""acyclic@@struct"" if its "incidence graph" is acyclic.
+A \AP""$\sigma$-tree"" is a "$\sigma$-structure" that is both "connected" and "acyclic@@struct".
+Do not confuse this notion with the classical notion of "directed trees":
+every "directed tree" is a "$\sigma$-tree" for the "graph signature" $\sigma$,
+but $\zigzag{n}{2}$---see \Cref{fig:zigzag-graph}---is a "$\sigma$-tree"
+while it is not a "directed tree". 
 
-\begin{definition}
-	\AP\label{defn:tree-duality}
-	A finite "$\sigma$-structure" $\?B$ has ""tree duality"" when TODO.
-\end{definition}
+Given a ""$\sigma$-tree"" $\?T$ and a vertex $t\in T$, the ""height@@struct"" of $\?T$ when rooted
+at $t$ is the maximal "distance" between $t$ and any other vertex of $\?T$.
 
-\begin{proposition}[todo:addref]
+We say that a finite "$\sigma$-structure" $\?B$ has ""tree duality""
+if it admits a (potentially infinite) "dual" consisting only of "$\sigma$-trees".
+Somewhat surprisingly, Ne\v{s}et\v{r}il and Tardif showed that
+this notion generalizes "finite duality".
+
+\begin{proposition}[{\cite[Theorem 3.1]{NesetrilTardif2000DualityTheorems}}]
 	\AP\label{prop:finite-duality-implies-tree-duality}
 	If a finite "$\sigma$-structure" $\?B$ has ""finite duality"",
 	then it has "tree duality".
 \end{proposition}
+
+For instance, while $\pathGraph{2}$ does not have "finite duality" by \Cref{ex:dual-T2},
+it has "tree duality".
+
 
 \subsection{Class of Relations}
 
