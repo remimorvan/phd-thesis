@@ -463,8 +463,8 @@ to prove that some structures don't have "finite duality".
 	\end{tikzpicture}
 	\caption{\AP\label{fig:zigzag-graph}The "zigzag graph" $\zigzag{5}{2}$.}
 \end{figure}
-\begin{example}
-	\AP\label{ex:zigzag-defn}
+\begin{example}[{\Cref{ex:dual-T2}, continued.}]
+	\AP\label{ex:dual-P2}
 	Let $n\in\?N$.
 	We define the \AP""zigzag graph"" $\intro*\zigzag{n}{2}$ of width $n$ and length 2
 	to be "graph@@dir" whose vertices are $a_0, \hdots, a_n$, $b_0, \hdots, b_{n}$,
@@ -547,8 +547,8 @@ Ehrenfeucht-Fraïssé games.}
 
 \subsection{Trees and Tree Duality}
 
-A "$\sigma$-structure" is \AP""acyclic@@struct"" if its "incidence graph" is acyclic.
-A \AP""$\sigma$-tree"" is a "$\sigma$-structure" that is both "connected" and "acyclic@@struct".
+A "$\sigma$-structure" is \AP""strongly acyclic@@struct"" if its "incidence graph" is acyclic.
+A \AP""$\sigma$-tree"" is a "$\sigma$-structure" that is both "connected" and "strongly acyclic@@struct".
 Do not confuse this notion with the classical notion of "directed trees":
 every "directed tree" is a "$\sigma$-tree" for the "graph signature" $\sigma$,
 but $\zigzag{n}{2}$---see \Cref{fig:zigzag-graph}---is a "$\sigma$-tree"
@@ -598,17 +598,41 @@ Note that $\FederVardi{\FederVardi{\?B}}$ is always "homomorphically equivalent"
 $\FederVardi{\?B}$---see "eg" \cite[\S~9.2.2, Proposition 9.1]{NesetrilPOM2012FirstOrderCSPs}---
 and so $\FederVardi{\?B}$ \emph{always} has "tree duality", no matter if $\?B$ has this property.
 
-TODO: example for $\pathGraph{2}$ and $\clique{2}$.
+\begin{example}[{\Cref{ex:dual-P2}, continued}]
+	\label{ex:Feder-Vardi-P2}
+	Using \Cref{prop:charac-Feder-Vardi}, we can prove for instance that
+	if a "graph" $\?G$ has "tree duality", then either it is a "DAG", or $\?G$ contains
+	a self-loop.
 
-\subsection{Class of Relations}
+	Indeed, let $v_0 \to v_1 \to \cdots \to v_m$ be a "directed cycle" in $\?G$,
+	with $v_0 = v_m$. Then in $\FederVardi{\?G}$, there is an edge from
+	$\{v_0,v_1,\hdots,v_m\}$ to itself.
+	Since $\?G$ has "tree duality", it follows by \Cref{prop:charac-Feder-Vardi}
+	that $\FederVardi{\?G} \homto \?G$ and hence $\?G$ also contains a self-loop.
+	
+	Note in this case that $\?G$ is "homomorphically equivalent" to the graph consisting
+	of a single self-loop---that admit $\emptyset$ as a "dual" and hence has
+	"tree duality". In other words, what we showed can be rephrased as: any
+	non-trivial "graph" with "tree duality" is a "DAG".
 
-\begin{itemize}
-	\itemAP ""rational relation"" $\intro*\RAT$
-	\itemAP ""recognizable relation"" $\intro*\REC$
-\end{itemize}
-
-\subsection{Misc}
-
-\begin{itemize}
-	\itemAP ""finite colourability of automatic graphs""
-\end{itemize}
+	For instance, this implies that $\clique{2}$ does not have
+	"tree duality".%
+	\footnote{We will see in \Cref{sec:hyperedge-consistency-finite}
+	that whenever $\?B$ has "tree duality", then $\HomFin{\?B}$ is decidable in "P".
+	The example of $\clique{2}$ shows that this implication is not tight.}
+	
+	\begin{marginfigure}
+		\centering
+		\begin{tikzpicture}
+			\input{tikz/dichotomy/2-path-graph-Feder-Vardi}
+		\end{tikzpicture}
+		\caption{
+			\AP\label{fig:P2-Feder-Vardi}
+			The Feder-Vardi construction $\FederVardi{\pathGraph{2}}$
+			on the "$2$-path".
+		}
+	\end{marginfigure}
+	On the other hand, we saw in \Cref{ex:dual-P2} that $\pathGraph{2}$ does not have
+	"finite duality". However, it has "tree duality": indeed, see \Cref{fig:P2-Feder-Vardi}
+	and observe that $\FederVardi{\pathGraph{2}} \homto \pathGraph{2}$.
+\end{example}

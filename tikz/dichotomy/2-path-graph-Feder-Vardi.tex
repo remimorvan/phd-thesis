@@ -1,0 +1,27 @@
+% ---
+% 2-path graph
+% ---
+\node[vertex, draw=c2, fill=c2, fill opacity=.4] at (0,0) (p2-2) {};
+\node[vertex, above=of p2-2, draw=c1, fill=c1, fill opacity=.4] (p2-1) {};
+\node[vertex, above=of p2-1, draw=c0, fill=c0, fill opacity=.4] (p2-0) {};
+
+\node[vertex, inner sep=4pt, right=2.5em of $(p2-0)!0.5!(p2-1)$] (p2-01) {};
+\node[tiny vertex, draw=c0, fill=c0, fill opacity=.4, above=-7pt of p2-01] {};
+\node[tiny vertex, draw=c1, fill=c1, fill opacity=.4, below=-7pt of p2-01] {};
+
+\node[vertex, inner sep=4pt, right=2.5em of $(p2-1)!0.5!(p2-2)$] (p2-12) {};
+\node[tiny vertex, draw=c1, fill=c1, fill opacity=.4, above=-7pt of p2-12] {};
+\node[tiny vertex, draw=c2, fill=c2, fill opacity=.4, below=-7pt of p2-12] {};
+
+\node[vertex, inner sep=4pt, right=2em of p2-01] (p2-02) {};
+\node[tiny vertex, draw=c0, fill=c0, fill opacity=.4, above=-7pt of p2-02] {};
+\node[tiny vertex, draw=c2, fill=c2, fill opacity=.4, below=-7pt of p2-02] {};
+
+\node[vertex, inner sep=4pt, right=2em of p2-12] (p2-012) {};
+\node[tiny vertex, draw=c0, fill=c0, fill opacity=.4, above=-8pt of p2-012] {};
+\node[tiny vertex, draw=c1, fill=c1, fill opacity=.4, below left=-7pt of p2-012] {};
+\node[tiny vertex, draw=c2, fill=c2, fill opacity=.4, below right=-7pt of p2-012] {};
+
+\draw[edge] (p2-0) to (p2-1);
+\draw[edge] (p2-1) to (p2-2);
+\draw[edge] (p2-01) to (p2-12);

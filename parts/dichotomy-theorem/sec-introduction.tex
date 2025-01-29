@@ -13,22 +13,22 @@ databases \cite{BenediktLibkinSchwentickSegoufin2003DefinableRelations}, compari
 string constraints for model checking \cite{LinBarcelo2016StringSolvingWordEquationsTransducers}. 
 The most studied such classes include "recognizable@@rel", "automatic@@rel" "aka" "synchronous@@rel", and "automatic relations", each one of the latter two strictly extending the previous one. 
 
+Recall that \AP""rational relations"" $\intro*\RAT$
+are those definable by multi-head automata,
+with heads possibly moving automaticly;
+"automatic relations", "aka" "synchronous relations",
+are those that are accepted by multi-head automata
+whose heads are forced to move automaticly; and 
+\AP""recognizable relations"" $\intro*\REC$ correspond to finite unions of products of regular languages---or, equivalently, to languages recognized via finite monoids, by Mezei theorem.
+By definition, all of these classes coincide with the 
+class of "regular languages" when restricted to unary relations.
+
 % \AP ""Automatic relations"" are those definable by multi-head automata, with heads possibly moving aautomaticly; "automatic relations" are "automatic relations" that are accepted by multi-head automata whose heads are forced to move automaticly; and 
 % "recognizable relations" correspond to finite unions of products of regular languages (or, equivalently, to languages recognized via finite monoids, by Mezei's Theorem). By definition, all of these classes coincide with the 
 % class of regular languages when restricted to unary relations.
 
 Prior work has focused on the ""$\REC$-membership problem"", 
 which takes as input an $n$-ary "rational relation"%
-\footnote{
-	Recall that "rational relations" are those definable by multi-head automata,
-	with heads possibly moving aautomaticly;
-	"automatic relations", "aka" "synchronous relations",
-	are those that are accepted by multi-head automata
-	whose heads are forced to move automaticly; and 
-	"recognizable relations" correspond to finite unions of products of regular languages---or, equivalently, to languages recognized via finite monoids, by Mezei theorem.
-	By definition, all of these classes coincide with the 
-	class of "regular languages" when restricted to unary relations.
-}
 $\+R$ and asks whether it is equivalent to a "recognizable relation"
 $\bigcup_i L_{i,1} \times \cdots \times L_{i,n}$, where each $L_{i,j}$ is a "regular language". 
 Intuitively, the problem asks whether the different components of  
@@ -69,7 +69,7 @@ As for membership, the "$\RAT$/$\REC$-separability problem"
 is in general undecidable, so in this chapter we focus on its restriction to
 "automatic relations".
 \decisionproblem{
-	""$\AUT$/$\REC$-separability problem"".
+	""$\AUT$/$\REC$-separability problem""
 }{
 	Two "automatic relations" $\+R$ and $\+R'$.
 }{
@@ -191,7 +191,7 @@ by rephrasing the "$\AUT$/$\REC$-separability problem" in graph-theoretic terms.
 \decisionproblem{
 	""Finite Regular Colourability of Automatic Graphs""
 }{
-	A "presentation" $\•G$ of an "automatic graph" $\•G$.
+	A "presentation" $\•G$ of an "automatic graph" $\?G$.
 }{
 	Does $\•G$ admit a "regular colouring" with finitely many colours?
 }

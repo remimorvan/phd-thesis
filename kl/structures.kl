@@ -83,7 +83,7 @@
  | simple path
 
 \knowledge{notion}
- | acyclic@struct
+ | strongly acyclic@struct
 
 \knowledge{notion}
  | connected
