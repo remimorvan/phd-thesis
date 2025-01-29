@@ -390,7 +390,7 @@ singleton $\{b\}$.
 \subsection{Obstructions and Finite Duality}
 
 Let $\?B$ and $\?D$ be "finite $\sigma$-structures".
-We say that $\?D$ is an \AP""obstruction"" of $\?B$ when "$\?D \nothomto \?B$".
+We say that $\?D$ is an \AP""obstruction"" of $\?B$ when $\?D \nothomto \?B$.
 In this case, note that finding $\?D$ is a "structure"---in the sense that $\?D \homto \?A$---implies that $\?A$ cannot have a "homomorphism" to $\?B$: in this sense, the presence of
 $\?D$ in an \emph{obstruction} to the existence of a "homomorphism" to $\?B$.
 
@@ -405,7 +405,7 @@ Note that any "dual" must only contain "obstructions" of $\?B$.%
 \footnote{The notion of dual was implicitly introduced
 by Ne\v{s}et\v{r}il and Pultr, who proved that for \emph{undirected} graph, no
 non-trivial "finite duality" existed, in the sense that the
-only "cores" $\?B$ having a "finite dual" where the empty graph, and the graph having
+only "cores" $\?B$ having a finite "dual" where the empty graph, and the graph having
 a single vertex and no edge \cite[Corollary 4.1]{NesetrilPultr1978Duality}.}
 The set of all "obstructions" of $\?B$ is a "dual" of $\?B$.
 
@@ -423,10 +423,11 @@ The set of all "obstructions" of $\?B$ is a "dual" of $\?B$.
 
 Moreover, if $\+D$ and $\+D'$ are sets of "obstructions" of $\?B$ and $\+D \subseteq \+D'$,
 then if $\+D$ is a "dual", so is $\+D'$: hence, the goal is to find \emph{small} duals.
+For this reason, "duals" are also called \emph{complete sets of obstructions}.
 We say that $\?B$ has \AP""finite duality"" if is admits a finite "dual", "ie"
 consisting of finitely many "structures". For instance, $\transitiveTournament{k}$ has "finite duality".
 
-An "obstruction" $\?D$ of $\?B$ is \AP""critical""\footnote{We borrow the terminology
+An "obstruction" $\?D$ of $\?B$ is \AP""critical@@obs""\footnote{We borrow the terminology
 from \cite{LaroseLotenTardif2007CharacterisationFOCSP}.} when for every
 "proper substructure" $\?D'$ of $\?D$, we have $\?D' \homto \?B$.
 Clearly, every "critical obstruction" must be a "core".
@@ -446,8 +447,8 @@ Indeed, if $\?A \nothomto \?B$, then $\?A$ is an "obstruction" and so it must co
 	If $\+C$ is a "critical obstruction" of $\?B$ then in particular $\?C \nothomto \?B$
 	and so there exists $i \in \lBrack 1,m\rBrack$ "st" there is a "homomorphism" $f$ 
 	from $\?D_i$ to $\?C$. Now the image of $f$ is again an "obstruction" of $\?B$,
-	and since $\?C$ is "critical", it follows that it must be $\?C$ itself. In other
-	words, $f$ is "strong onto". In particular, we obtain that $\?C$ is a "quotient" of
+	and since $\?C$ is "critical@@obs", it follows that it must be $\?C$ itself. In other
+	words, $f$ is "strong onto". In particular, we obtain that $\?C$ is a "quotient@@struct" of
 	$\?D_i$. Hence, there are only finitely many "critical obstructions" of $\?B$.
 \end{proof}
 
@@ -487,7 +488,7 @@ to prove that some structures don't have "finite duality".
 	$\pathGraph{2}$ does not have "finite duality".
 
 	On the other hand, each $\zigzag{n}{2}$ with $n\in\Np$ admits a "homomorphism" to the "$2$-transitive tournament", as witnessed by \Cref{fig:zigzag-graph-hom-T2}.%
-	\footnote{However, observe that $\zigzag{0}{2} = \pathGraph{3}$ is an "obstruction" of
+	\sidenote[][-11em]{However, observe that $\zigzag{0}{2} = \pathGraph{3}$ is an "obstruction" of
 	$\transitiveTournament{2}$.}
 	In fact, this "homomorphism" is far from being unique:
 	each vertex $a_1,\,a_2,\,\hdots,\,a_{n-1}$ can be sent on either $0$ or $1$
@@ -532,7 +533,6 @@ $\tilde Z^{(n)}_2 \homto \pathGraph{2}$, this implies that $\HomFin{\pathGraph{2
 Ehrenfeucht-Fraïssé games.}
 
 
-
 \begin{remark}[From finite to infinite structures]
 	In the property
 	\[
@@ -554,8 +554,8 @@ every "directed tree" is a "$\sigma$-tree" for the "graph signature" $\sigma$,
 but $\zigzag{n}{2}$---see \Cref{fig:zigzag-graph}---is a "$\sigma$-tree"
 while it is not a "directed tree". 
 
-Given a \AP""$\sigma$-tree"" $\?T$ and a vertex $t\in T$, the ""height@@struct"" of $\?T$ when rooted
-at $t$ is the maximal "distance" between $t$ and any other vertex of $\?T$.
+Given a "$\sigma$-tree" $\?T$ and a vertex $t\in T$, the \AP""height@@struct"" of $\?T$
+when rooted at $t$ is the maximal "distance@@struct" between $t$ and any other vertex of $\?T$.
 
 We say that a finite "$\sigma$-structure" $\?B$ has \AP""tree duality""
 if it admits a (potentially infinite) "dual" consisting only of "$\sigma$-trees".
@@ -564,15 +564,41 @@ this notion generalizes "finite duality".
 
 \begin{proposition}[{\cite[Theorem 3.1]{NesetrilTardif2000DualityTheorems}}]
 	\AP\label{prop:finite-duality-implies-tree-duality}
-	If a finite "$\sigma$-structure" $\?B$ has ""finite duality"",
+	If a finite "$\sigma$-structure" $\?B$ has "finite duality",
 	then it has "tree duality".
 \end{proposition}
 
 For instance, while $\pathGraph{2}$ does not have "finite duality" by \Cref{ex:dual-T2},
 it has "tree duality".
 
-TODO: \AP$\intro*\FederVardi{-}$.
+Feder and Vardi introduced a construction to decide if a "structure" has "tree duality":
+given a "$\sigma$-structure" $\?B$, we let \AP$\intro*\FederVardi{\?B}$ be
+the $\sigma$-structure whose domain is $\psetp{B}$, and for every $\+R_{(k)} \in \sigma$,
+we have $\tup{Y_1, \hdots, Y_k} \in \+R(\FederVardi{\?B})$ precisely when 
+\[
+	\forall i \in \lBrack 1,k\rBrack,\,
+	\forall b_i \in Y_i,\,
+	\exists \tup{b_j}_{j \neq i} \in \tup{Y_j}_{j \neq i},\,
+	\tup{y_1, \hdots, y_k} \in \+R(\?B),
+\]
+for any $Y_1, \hdots, Y_k \in \psetp{B}$.\footnote{In fact $\FederVardi{-}$ can
+easily be extended to be a functor in the category of $\sigma$-structures, see
+"eg" \cite[\S~9.2.2]{NesetrilPOM2012FirstOrderCSPs}.}
+By construction, note that $b \mapsto \set{B}$ defines a "homomorphism" from
+$\?B$ to $\FederVardi{\?B}$.
 
+\begin{proposition}[{\cite[Theorem 21]{FederVardi1998ComputationalStructure}}]
+	\label{prop:charac-Feder-Vardi}
+	A "finite $\sigma$-structure" $\?B$ has "tree duality" if, and only if,
+	$\FederVardi{\?B} \homto \?B$, or equivalently if $\?B$ and $\FederVardi{\?B}$
+	are "homomorphically equivalent".
+\end{proposition}
+
+Note that $\FederVardi{\FederVardi{\?B}}$ is always "homomorphically equivalent" to
+$\FederVardi{\?B}$---see "eg" \cite[\S~9.2.2, Proposition 9.1]{NesetrilPOM2012FirstOrderCSPs}---
+and so $\FederVardi{\?B}$ \emph{always} has "tree duality", no matter if $\?B$ has this property.
+
+TODO: example for $\pathGraph{2}$ and $\clique{2}$.
 
 \subsection{Class of Relations}
 

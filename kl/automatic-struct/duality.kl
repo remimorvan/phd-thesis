@@ -4,7 +4,8 @@
 
 \knowledge{notion}
  | dual
- | complete set of obstructions
+ | duals
+ | duality
 
 \knowledge{notion}
  | obstruction
@@ -12,6 +13,8 @@
 
 \knowledge{notion}
  | critical obstruction
+ | critical obstructions
+ | critical@obs
 
 \knowledge{notion}
  | diameter

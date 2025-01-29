@@ -103,9 +103,17 @@
 
 \knowledge{notion}
  | directed tree
+ | directed trees
 
 \knowledge{notion}
  | $\sigma $-tree
+ | $\sigma $-trees
+
+\knowledge{notion}
+ | incidence graph
+
+\knowledge{notion}
+ | distance@struct
 
 % ---
 % Substructures & misc 
@@ -118,6 +126,9 @@
 \knowledge{notion}
  | induced substructure
  | induced@structure
+
+\knowledge{notion}
+ | proper substructure
 
 % ---
 % Construction on structures

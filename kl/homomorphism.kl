@@ -19,13 +19,14 @@
 \knowledge{notion}
  | core
  | $\sigma $-core
+ | cores
 
 % ---
 % Homomorphism problem
 % ---
 
 \knowledge{notion}
-| input structure
+ | input structure
  | input@struct
 
 \knowledge{notion}
@@ -39,6 +40,9 @@
 \knowledge{notion}
  | embedding
  | embeddings
+
+\knowledge{notion}
+ | strong onto
 
 \knowledge{notion}
  | isomorphism
