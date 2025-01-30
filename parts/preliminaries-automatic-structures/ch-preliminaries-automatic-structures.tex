@@ -1,174 +1,19 @@
-\chapter{%
-	\AP\label{ch:preliminaries-automatic-structures}
-	Automatic Structures and Synchronous Relations%
-}
+\chapter{Automatic Structures and Synchronous Relations}
+\label{ch:preliminaries-automatic-structures}
 
-Should either go to the introduction (general stuff of structures), or prelim of
-databases, or here.
+\begin{chapterpresentation}
+	\begin{abstract}
+		TODO.
+	\end{abstract}
+	\medskip
+	\begin{acknowledgements}
+		Parts of \Cref{sec:preliminaries-automatic-structures-relations}
+		come from \cite[\S~1]{Morvan2024Algebras}.
+	\end{acknowledgements}
+\end{chapterpresentation}
+	
+\chaptertoc
 
-\section{Automatic Structures}
-
-\begin{itemize}
-	\itemAP padding symbol $\intro*\pad$
-	\itemAP convolution of words $\intro*\convol$
-	\itemAP convolution of a relation $\intro*\convolRel{\+R}$
-	\itemAP ""automatic relation"" and $\intro*\AUT$
-	\itemAP domain and relation of a ""presentation"": $\intro*\domainPres{\+A}$ and $\intro*\relPres{\+R}{\+A}$ 
-	\itemAP ""automatic structure"" and ""automatic graph""
-\end{itemize}
-
-TODO:generalized presentation (non-injective) + effective construction to make them injective.
--> this explains our choice. We avoid the terminology ``regular structure'' because of
-``regular graph''.
-
-\section{Stuff Needed in Dichotomy Chapter}
-
-\subsection{First-Order Reduction and First-Order Model Checking}
-
-For the classical notion of \AP""first-order reductions"", see
-\cite[Definition 2.11 \& Definition 1.26]{Immerman1998DescriptiveComplexity}.
-Note that the complexity of a decision problem is traditionally measured
-as a function of the size of the binary encoding of its input.
-However, here, the notion of "first-order reductions" deals with
-decision problems defined on "relational structures":
-\begin{itemize}
-	\item any ``classical'' decision problem, "ie" language $L \subseteq \{0,1\}^*$
-		can be seen as a class of "structure" over the "signature of binary strings";
-	\item for any "relational signature" $\sigma$,
-		there is an encoding of "finite $\sigma$-structures" as "finite structures"
-		over the "signature of binary strings", "ie" as a ``classical''
-		decision problem---see "eg" \cite[\S~2.2]{Immerman1998DescriptiveComplexity}.
-\end{itemize}
-Importantly, this last encoding is a "first-order reduction", proving that these reductions
-make sense not only from a logical perspective, but also from a complexity-theoretic point of
-view.
-
-\begin{proposition}[Folklore]
-	\label{prop:FO-in-L}
-	"FOfin" $\subseteq$ "L".
-\end{proposition}
-
-\begin{proof}[Proof sketch]
-	The naive recursive algorithm, recursing over the "first-order formula",
-	works in logarithmic space: it suffices to keep one pointer to the "structure"
-	for every variable of the "formula@@FO", but since this formula is fixed, we only
-	require a constant number of pointers.
-\end{proof}
-
-Note that usually, "L"-hardness is defined using "first-order reductions".
-
-What we said above work with the implicit assumptions that all structures at hand are 
-"finite@@struct". However, part of this can be generalized to "automatic structures"---however, this comes to the cost of losing the inclusion in "L".
-
-\begin{proposition}[Folklore]
-	\AP\label{prop:first-order-reduction-preserve-automaticity}
-	The image of an "automatic structure" by a "first-order reduction" is
-	still an "automatic structure".
-\end{proposition}
-\begin{proof}
-	TODO
-\end{proof}
-
-\decisionproblem{""First-Order Model Checking of Automatic Structures""}{
-	A "first-order formula" $\phi(x_1,\hdots,x_k)$ over $\sigma$,
-	an "automatic presentation" $\•A$ of an "automatic $\sigma$-structure" $\?A$,
-	and words $u_1,\hdots,u_k \in \domainPres{\+A}$.
-}{
-	Does $\?A, u_1,\hdots, u_k \FOmodels \phi$?
-}
-
-\begin{proposition}
-	\!\footnote{See "eg" \cite[Theorem XII.1.7]{Blumensath2024MSOModelTheory}.}
-	%
-	\label{prop:first-order-model-checking-automatic-structures}
-	"First-order model checking of automatic structures" is decidable in todo.
-	Its "data complexity" is "NL"-complete.
-\end{proposition}
-
-\begin{proof}
-	TODO.
-
-	For the "NL" lower bound, reduction from NFA non-emptiness.
-\end{proof}
-
-We define \AP""FOaut"" to be the class of all problems over "automatic structures"
-which are "first-order definable". By \Cref{prop:first-order-reduction-preserve-automaticity},
-this class is closed under "first-order reductions". Moreover,
-by \Cref{prop:first-order-model-checking-automatic-structures}, we obtain an upper bound.
-
-\begin{proposition}
-	"FOaut" $\subseteq$ "NL".
-\end{proposition}
-
-
-\subsection{A Model-Theoretic Perspective}
-
-Given an alphabet $\Sigma$, we define on $\Sigma^*$:
-\begin{itemize}
-	\itemAP a predicate $\intro*\lastLetter{a}$ indicating that the last letter of a word is $a$,
-	\itemAP a binary relation $\intro*\equalLength$ indicating that two words have the same length,
-	\itemAP a binary relation $\intro*\prefix$ indicating that a word is a prefix of another.
-\end{itemize} 
-We denote by $\intro*\signatureSynchronous{\Sigma}$ the "signature" $\langle \langle\lastLetter{a}\rangle_{a \in \Sigma},\, \equalLength,\, \prefix \rangle$%
-\footnote{For the sake of simplicity, we abusively use the same notations for
-the "predicates" and their "interpretations@@predicate" in the "signature".} and
-by \AP$\intro*\univStructSynchronous{\Sigma}$ the "$\signatureSynchronous{\Sigma}$-structure" over $\Sigma^*$ where
-the "predicates" are "interpreted@@predicate" as above.
-
-\begin{proposition}
-	\label{prop:automatic-first-order}
-	A relation over $\Sigma^*$ is "automatic@@rel" "iff" it is definable by a "first-order formula" over \(\univStructSynchronous{\Sigma}\).
-\end{proposition}
-
-\subsection{Neighbourhoods}
-
-Given a "$\sigma$-structure" $\?A$ and $a \in A$, we define the \AP""neighbourhood"" of $a$
-in $\?A$
-to be the tuple of sets
-\[
-	\intro*\neighbourhood{a}{\?A}{\+R}{i} \defeq
-	% \Big\langle
-		\big\{
-			\langle a_1, \hdots, a_{i-1}, a_{i+1}, \hdots, a_k \rangle \in A^{k-1} \mid
-			\langle a_1, \hdots, a_{i-1}, a, a_{i+1}, \hdots, a_k \rangle \in \+R(\?A)
-		\big\},
-		% \;\big\vert\;
-		% \+R_{(k)} \in \sigma \text{ and } i \in \lBrack 1,k\rBrack
-	% \Big\rangle.
-\]
-when $\+R$ ranges over "predicate" of arity $k$ of $\sigma$ and $i \in \lBrack 1,k\rBrack$. 
-\marginnote{TODO: introduce notation $\+R_{(k)} \in \sigma$}
-For "graphs@@dir", the "neighbourhood" of a vertex corresponds to its set of predecessors and
-its set of successors.
-
-\begin{proposition}
-	\AP\label{prop:neighbourhood-core}
-	Given a "$\sigma$-structure" $\?B$, if $\?B$ is a "core", then
-	two elements $b_1$ and $b_2$ of $\?B$ have the same "neighbourhood" "iff" $b_1 = b_2$.
-\end{proposition}
-
-\begin{proof}
-	The right-to-left implication is trivial.
-	For the converse one, consider the "homomorphism" from $\?B$ to itself
-	which maps $b_2$ to $b_1$, and all elements of $B \smallsetminus \{b_2\}$
-	to themselves. Since we assumed that $b_1$ and $b_2$ have the same "neighbourhood",
-	this is indeed a "homomorphism", which is clearly not bijective, and
-	hence by \Cref{prop:automorphism-core}, $\?B$ is not a "core".
-\end{proof}
-
-\subsection{Undirected Paths}
-
-An \AP""undirected path"" in a "$\sigma$-structure" $\?A$ consists of a sequence
-\[\big\langle a_0,\, \bar h_0,\, a_1,\, \hdots,\, \bar h_{n-1},\, a_n\big\rangle, \text{ with } n \in \N,\]
-where $a_i \in A$ and each $\bar h_i$ is a "hyperedge" of $\?A$ "st" both
-$a_i$ and $a_{i+1}$ occur in $\bar h_i$. When such an "undirected path" exists, we say that
-there is an "undirected path" between $a_0$ and $a_n$, or equivalently
-that $a_0$ and $a_n$ are \AP""connected"".%
-\sidenote{Note that this defines an equivalence relation.}
-A \AP"connected component" of $\?A$ consists of an equivalence class under this relation.
-
-\begin{itemize}
-	\itemAP ""incidence graph"" $\intro*\IncidenceGraph{\?A}$, ""distance@@struct"" and ""diameter""
-	\itemAP ball: $\intro*\ball{\?A}{a}{m}$
-	\itemAP ""simple path""
-\end{itemize}
+\input{parts/preliminaries-automatic-structures/sec-relations}
+\input{parts/preliminaries-automatic-structures/sec-automatic-structures}
+\input{parts/preliminaries-automatic-structures/sec-logic}
