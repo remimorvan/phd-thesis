@@ -27,18 +27,24 @@
 \newrobustcmd{\smallpad}{%
 	\hspace{.05em}\rule{.3em}{.075em}\hspace{.05em}
 }
-\newcommand\vartextvisiblespace[1][.5em]{%
-	\kern.07em
-	\vrule width.12ex height.5ex
-	\vrule width#1 height.12ex
-	\vrule width.12ex height.5ex
-	\kern.07em
-}
-\knowledgenewrobustcmd{\pad}{%
-	\cmdkl{\vartextvisiblespace}
-}
-\knowledgenewrobustcmd{\SigmaPair}[1][2]{\cmdkl{\Sigma}^{#1}_{\raisebox{.25em}{\smallpad}}\mkern-5mu}
+% \newcommand\vartextvisiblespace[1][.5em]{%
+% 	\kern.07em
+% 	\vrule width.12ex height.5ex
+% 	\vrule width#1 height.12ex
+% 	\vrule width.12ex height.5ex
+% 	\kern.07em
+% }
+% \knowledgenewrobustcmd{\pad}{%
+% 	\cmdkl{\vartextvisiblespace}
+% }
+\knowledgenewrobustcmd{\pad}{\cmdkl{\smallpad}}
 \knowledgenewrobustcmd{\convol}{\mathbin{\cmdkl{\otimes}}} % convolution of two words of languages
+\newrobustcmd\pair[2]{\left(\begin{smallmatrix}%
+	#1\vphantom{b}\\%
+	#2\vphantom{b}%
+\end{smallmatrix}\right)} % pair of letters
+\knowledgenewrobustcmd{\convolAlpha}{\mathbin{\cmdkl{\otimes}}}
+\knowledgenewrobustcmd{\SigmaPair}[1][2]{\cmdkl{\Sigma^{#1}_{\raisebox{.25em}{\smallpad}}}\mkern-5mu}
 \knowledgenewrobustcmd{\convolRel}[1]{#1^{\cmdkl{\otimes}}} % convolution of a relation
 
 % ---

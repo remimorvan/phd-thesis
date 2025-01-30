@@ -62,6 +62,8 @@ we often take $\Gamma = \Sigma$. This makes little difference since we can often
 see a relation $\+R \subseteq \Gamma^* \times \Sigma^*$ as a subset of
 $(\Gamma\sqcup \Sigma)^* \times (\Gamma\sqcup \Sigma)^*$
 while preserving the notion of ``rationality'' at hand.
+Note also that most notions can be trivially extended to $k$-ary relations ($k \geq 3$):
+we simply work here with binary relations for the sake of simplicity.
 
 
 \subsection{Recognizable Relations}
@@ -72,7 +74,9 @@ if there exists a "finite monoid" $\?M$ together with a "monoid morphism"
 	f\colon \Gamma^* \times \Sigma^* \to \?M,
 \]
 as well as a subset $\Acc \subseteq M$ "st"
-$\+R = f^{-1}[\Acc]$.
+$\+R = f^{-1}[\Acc]$. We denote by \AP$\intro*\REC$ the class of "recognizable relations".%
+\footnote{todo: Again, insert some set-theoretic bullshit.}
+
 For instance the \AP""same parity relation""
 \[
 	\SameParity \defeq 
@@ -98,20 +102,28 @@ These relations admit a remarkably simple characterization.\AP
 	\]
 \end{proposition}
 
-For instance, $\SameParity =
+In other words, "recognizable relations" are exactly the finite unions of
+"Cartesian products" of "regular languages".
+For instance, \[\SameParity =
 (\Gamma\Gamma)^* \times (\Sigma\Sigma)^*
-\cup \Gamma(\Gamma\Gamma)^* \times \Sigma(\Sigma\Sigma)^*$.
-We now provide a slightly more general statement of "Mezei's theorem".
+\cup \Gamma(\Gamma\Gamma)^* \times \Sigma(\Sigma\Sigma)^*.\]
+We provide a slightly more general statement of "Mezei's theorem".
 
 \begin{proposition}
 	\label{prop:Mezei-theorem-generalization}
 	Let $\B{V}$ be a "pseudovariety of finite monoids"
 	and $\+V$ be the corresponding "pseudovariety of regular languages".
-	A relation $\+R \subseteq \Gamma^* \times \Sigma^*$ is "recognizable@@rel"
-	if, and only if, there exists $n \in \N$
-	and $K_1,\hdots,K_n \in \+V_{\Gamma}$ and $L_1,\hdots,L_n \in \+V_{\Sigma}$
-	"st" $\mathcal{R} = \bigcup_{i=1}^n K_i \times L_i$.
-	% in which case we say that $\+R$ is \AP""$\+V$-recognizable"".
+	Let $\+R \subseteq \Gamma^* \times \Sigma^*$ be a relation.
+	The following are equivalent:
+	\begin{enumerate}
+		\item there exists a "finite monoid" $\?M \in \B{V}$, a "monoid morphism"
+		$f\colon \Gamma^* \times \Sigma^* \to \?M$ and $\Acc \subseteq \?M$
+		"st" $\+R = f^{-1}[\Acc]$;
+		\item there exists $n \in \N$
+		and $K_1,\hdots,K_n \in \+V_{\Gamma}$ and $L_1,\hdots,L_n \in \+V_{\Sigma}$
+		"st" $\mathcal{R} = \bigcup_{i=1}^n K_i \times L_i$,
+	\end{enumerate}
+	in which case we say that $\+R$ is \AP""$\+V$-recognizable@@rel"".
 \end{proposition}
 
 When $\B{V}$ is the "pseudovariety@@reglang" of all "regular languages",
@@ -132,7 +144,7 @@ we get back \Cref{prop:Mezei-theorem}.
 		\times \underbrace{\{v \in \Sigma^* \mid f(\varepsilon, v) = y\}}_{\defeq \;L_y}.
 	\]
 	Since $M$ is finite, the union is finite, and moreover, each $K_x$ and $L_y$ is
-	recognized by $M$, and hence belong to $\+V$.
+	recognized by $M \in \B{V}$, and hence belong to $\+V$.
 
 	\proofcase{From products to monoids.} If $\mathcal{R} = \bigcup_{i=1}^n K_i \times L_i$ 
 		where all languages belong to $\+V$, then let $M_i,N_i \in \B{V}$
@@ -154,7 +166,13 @@ we get back \Cref{prop:Mezei-theorem}.
 		The conclusion follows from the fact that $\B{V}$ is closed under finite products.
 \end{proof}
 
-\Cref{prop:Mezei-theorem} proves that "recognizable relations" are not very expressive.
+Both the algebraic definition of "recognizable relations" and
+"Mezei's theorem" imply---informally!---that all reasonable problems on
+"recognizable relations" are decidable. For instance, from \Cref{prop:Mezei-theorem-generalization},
+we get that $\+V$ has decidable "membership" "iff" the class of "$\+V$-recognizable relations"
+has decidable "membership".
+
+On the other hand, \Cref{prop:Mezei-theorem} proves that "recognizable relations" are not very expressive.
 \begin{corollary}
 	\!\footnote{Of course, this property is far from being sufficient
 	at characterizing "reflexive relations": note that the proof
@@ -195,13 +213,53 @@ $\intro*\equalLength \defeq \{
 	\tup{u,v} \in \Gamma^*\times\Sigma^* \mid
 	|u| = |v|
 \}$.%
-\footnote{Note however that \Cref{infinite-clique-recognizable} does not apply since
+\footnote{Note however that \Cref{coro:infinite-clique-recognizable} does not apply since
 we assumed there that the input and output alphabets are equal.}
 
 
 \subsection{Automatic Relations}
 
+"Automatic relations" are a strictly larger class of relations,
+and trade some decidability properties to gain in expressiveness.
+This is precisely what makes this class interesting to us, and why we will focus
+on both "automatic relations" and "automatic structures": while being relatively
+expressive, some problems remain decidable.
 
+Given a word $u \in \Gamma^*$ and $v\in \Sigma^*$, we define
+its \AP""convolution@@word"" $u \intro*\convol v$ to be the word
+$i \mapsto \tup{u_i, v_i}$ of length $\max{(|u|,|v|)}$,
+with the convention that $u_i = \pad$ (resp. $v_i = \pad$)
+if $u_i$ (resp. $v_i$) is undefined, where $\intro*\pad$ is a new letter called
+""blank symbol"" or \reintro{padding symbol}. In other words,
+$u \convol v$ is obtained by writing $u$ and $v$ on two left-align horizontal tapes,
+adding "padding symbols" at the end of the shorter word if their length differ,
+and then reading pairs of letters from left to right.
+For this reason, the pair $\tup{a,b}$ is instead written $\pair{a}{b}$.
+We let \AP$\Gamma \intro*\convolAlpha \Sigma$ denote the alphabet
+\[\Gamma \times \Sigma \cup \Gamma \times \{\pad\} \cup \{\pad\} \times \Sigma,\]
+and we let $\intro*\SigmaPair \defeq \Sigma \convolAlpha \Sigma$.
+
+By construction, if $u \in \Gamma^*$ and $v\in \Sigma^*$, then $u\convol v \in (\Gamma\convolAlpha\Sigma)^*$.%
+\footnote{When dealing with relations of higher arity, note that $\convol$ is associative up to a trivial
+alphabet relabelling.}
+For instance
+\[
+	aba \convol baa = \pair{a}{b}\pair{b}{a}\pair{a}{a}
+	\quad\text{ and }\quad
+	abab \convol cdd = \pair{a}{c}\pair{b}{d}\pair{a}{d}\pair{b}{\pad}.
+\]
+We denote by \AP$\intro*\convolRel{\+R}$ the language
+$\{ u \convol v \mid \tup{u,v} \in \+R\} \subseteq (\Gamma\convolAlpha\Sigma)^*$.
+
+A (finite-state) \AP""synchronous automaton"" $\+A$ over input alphabet $\Gamma$ and output alphabet $\Sigma$
+is a finite-state "automaton" over $\Gamma\convolAlpha \Sigma$. We say that
+$\+A$ accepts the pair of words $\tup{u,v} \in \Gamma^* \times \Sigma^*$ if
+it accepts $u \convol v$ as a ``classical automaton''. Similarly, $\+A$ "recognizes@@sync"
+$\+R$ if it recognizes $\convolRel{\+R}$ as a "classical automaton".
+A relation is \AP""automatic@@rel"" if it is "recognized@@sync" by a finite-state "synchronous automaton".
+We denote by \AP$\intro*\AUT$ the class of "automatic relations".
+
+todo:example
 
 \subsection{Todo}
 
@@ -214,12 +272,4 @@ we assumed there that the input and output alphabets are equal.}
 	\cite[Theorem 22, p.~243]{EH2001transduction}.
 	\item cite Gaëtan's thesis (chapter 1 for finite words, chapter 8 for infinite words)
 	\item mention pebble, marble and whatnot.
-\end{itemize}
-
-
-\begin{itemize}
-	\itemAP padding symbol $\intro*\pad$
-	\itemAP convolution of words $\intro*\convol$
-	\itemAP convolution of a relation $\intro*\convolRel{\+R}$
-	\itemAP ""automatic relation"" and $\intro*\AUT$
 \end{itemize}
