@@ -84,7 +84,6 @@
 % First-order logic for automatic relations
 % ---
 \knowledgenewrobustcmd{\lastLetter}[1]{\cmdkl{\+l_{#1}}}
-\knowledgenewrobustcmd{\equalLength}{\cmdkl{\+{el}}}
 \knowledgenewrobustcmd{\prefix}{\cmdkl{\preceq_{\textrm{pref}}}}
 \knowledgenewrobustcmd{\univStructSynchronous}[1]{\cmdkl{#1^*}}
 \knowledgenewrobustcmd{\signatureSynchronous}[1]{\sigma_{#1}^{\smash{\textrm{sync}}}}
@@ -115,15 +114,22 @@
 \knowledgenewrobustcmd{\itemDTEqual}{\cmdkl{\text{\bfseries\textup{(\textsf{DT})$_\textsf{equal}$}}}}
 \knowledgenewrobustcmd{\itemDTFirstOrder}{\cmdkl{\text{\bfseries\textup{(\textsf{DT})$_\textsf{first-order}$}}}}
 
-%%%%%%
+% ---
 % Classes of relations
-%%%%%%
+% ---
 \knowledgenewrobustcmd{\RAT}{\cmdkl{\ensuremath{\textsc{Rat}}}}%
 \knowledgenewrobustcmd{\AUT}{\cmdkl{\ensuremath{\textsc{Aut}}}}%
 \knowledgenewrobustcmd{\SYNC}{\cmdkl{\ensuremath{\textsc{Sync}}}}% todo:disable
 \knowledgenewrobustcmd{\REC}{\cmdkl{\ensuremath{\textsc{Rec}}}}%
 \knowledgenewrobustcmd\kREC[1][k]{\cmdkl{\ensuremath{#1\textsc{-Rec}}}}
 \knowledgenewrobustcmd\kPROD[1][k]{\cmdkl{\ensuremath{#1\textsc{-Prod}}}}
+
+% ---
+% Example of relations
+% ---
+\knowledgenewrobustcmd\SameParity{\cmdkl{\textrm{SameParity}}}
+\knowledgenewrobustcmd{\prefixRel}{\mathrel{\cmdkl{\preceq_{\textrm{pref}}}}}
+\knowledgenewrobustcmd{\equalLength}{\cmdkl{\+{el}}}
 
 % ---
 % Separation to Colourability

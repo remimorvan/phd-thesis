@@ -1,6 +1,7 @@
 \newrobustcmd\?{\symbf}
 \newrobustcmd\+{\symcal}
 \newrobustcmd\•{\symcal}
+\newrobustcmd\B{\symbb}
 
 \newrobustcmd\card[1]{|1|}
 \newcommand{\set}[1]{\{#1\}}
@@ -16,6 +17,8 @@
 
 \newrobustcmd\N{\symbb{N}} % natural numbers
 \newrobustcmd\Np{\N_{>0}} % strictly positive nat. numbers
+\newrobustcmd\Z{\symbb{Z}}
+\newrobustcmd\ZnZ[1]{\symbb{Z}/#1\symbb{Z}}
 
 \newrobustcmd\defeq{\mathrel{\hat{=}}} % equality by definition
 \newrobustcmd\pto{\rightharpoonup} % partial function
@@ -38,6 +41,7 @@
 
 
 \newrobustcmd\Acc{\textrm{Acc}}
+\newrobustcmd\Bcc{\textrm{Bcc}}
 \knowledgenewrobustcmd\semTM[1]{\cmdkl{\lBrack}#1\cmdkl{\rBrack}} % semantics of Turing machine
 \knowledgenewrobustcmd\statesTM[1]{\cmdkl{Q^{#1}}} % states of Turing machine
 
