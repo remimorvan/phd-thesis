@@ -54,6 +54,9 @@
  | Connectivity in Finite Graphs
 
 \knowledge{notion, wrap=\DPfont}
+ | Reachability in Finite Graphs
+
+\knowledge{notion, wrap=\DPfont}
  | Connectivity in Automatic Graphs
  | Connectivity in automatic graphs
  | connectivity in automatic graphs

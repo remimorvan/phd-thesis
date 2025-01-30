@@ -46,6 +46,7 @@
 \knowledgenewrobustcmd{\convolAlpha}{\mathbin{\cmdkl{\otimes}}}
 \knowledgenewrobustcmd{\SigmaPair}[1][2]{\cmdkl{\Sigma^{#1}_{\raisebox{.25em}{\smallpad}}}\mkern-5mu}
 \knowledgenewrobustcmd{\convolRel}[1]{#1^{\cmdkl{\otimes}}} % convolution of a relation
+\knowledgenewrobustcmd\WellFormed[1][\Sigma]{\cmdkl{\textsf{WellFormed}_{#1}}} % well-formed words
 
 % ---
 % Hom problem & classes 
@@ -90,7 +91,6 @@
 % First-order logic for automatic relations
 % ---
 \knowledgenewrobustcmd{\lastLetter}[1]{\cmdkl{\+l_{#1}}}
-\knowledgenewrobustcmd{\prefix}{\cmdkl{\preceq_{\textrm{pref}}}}
 \knowledgenewrobustcmd{\univStructSynchronous}[1]{\cmdkl{#1^*}}
 \knowledgenewrobustcmd{\signatureSynchronous}[1]{\sigma_{#1}^{\smash{\textrm{sync}}}}
 
@@ -134,7 +134,8 @@
 % Example of relations
 % ---
 \knowledgenewrobustcmd\SameParity{\cmdkl{\textrm{SameParity}}}
-\knowledgenewrobustcmd{\prefixRel}{\mathrel{\cmdkl{\preceq_{\textrm{pref}}}}}
+\knowledgenewrobustcmd{\prefix}{\mathrel{\cmdkl{\preceq_{\textrm{pref}}}}}
+\knowledgenewrobustcmd{\suffix}{\mathrel{\cmdkl{\preceq_{\textrm{suff}}}}}
 \knowledgenewrobustcmd{\equalLength}{\cmdkl{\+{el}}}
 
 % ---

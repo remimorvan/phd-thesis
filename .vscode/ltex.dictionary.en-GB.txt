@@ -2,3 +2,4 @@ arity
 hyperedge
 fixpoint
 Hyperedge
+determinisation

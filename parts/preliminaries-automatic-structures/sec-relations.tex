@@ -200,11 +200,11 @@ On the other hand, \Cref{prop:Mezei-theorem} proves that "recognizable relations
 \end{proof}
 
 In particular, this corollary implies that neither the \AP""prefix relation""
-$\intro*{\prefixRel} \defeq \{
+${\intro*\prefix} \defeq \{
 	\tup{u,v} \in \Sigma^*\times\Sigma^* \mid
 	\text{$u$ is a prefix of $v$}
 \}$, the \AP""suffix relation""
-$\intro*{\prefixRel} \defeq \{
+${\intro*\suffix} \defeq \{
 	\tup{u,v} \in \Sigma^*\times\Sigma^* \mid
 	\text{$u$ is a prefix of $v$}
 \}$, nor the equality relation are "recognizable@@rel".
@@ -252,14 +252,155 @@ We denote by \AP$\intro*\convolRel{\+R}$ the language
 $\{ u \convol v \mid \tup{u,v} \in \+R\} \subseteq (\Gamma\convolAlpha\Sigma)^*$.
 
 A (finite-state) \AP""synchronous automaton"" $\+A$ over input alphabet $\Gamma$ and output alphabet $\Sigma$
-is a finite-state "automaton" over $\Gamma\convolAlpha \Sigma$. We say that
-$\+A$ accepts the pair of words $\tup{u,v} \in \Gamma^* \times \Sigma^*$ if
+is a finite-state automaton over $\Gamma\convolAlpha \Sigma$.%
+\footnote{In particular, just like for classical automata, we allow for non-determinism
+unless otherwise specified.}
+We say that $\+A$ accepts the pair of words $\tup{u,v} \in \Gamma^* \times \Sigma^*$ if
 it accepts $u \convol v$ as a ``classical automaton''. Similarly, $\+A$ "recognizes@@sync"
-$\+R$ if it recognizes $\convolRel{\+R}$ as a "classical automaton".
+$\+R$ if it $\convolRel{\+R}$ is exactly the set of
+words of the form $u \convol v$ that are accepted by $\+A$ as a "classical automaton".
 A relation is \AP""automatic@@rel"" if it is "recognized@@sync" by a finite-state "synchronous automaton".
 We denote by \AP$\intro*\AUT$ the class of "automatic relations".
 
+\begin{remark}
+	Note that some words of $(\Gamma\convolAlpha \Sigma)^*$ do \emph{not} correspond to
+	encodings of pairs of words, in the sense that they are not of the
+	form $u \convol v$ for some $u \in \Gamma^*$ and $v\in \Sigma^*$. 
+	This is for instance the case of $\pair{a}{\pad}\pair{\pad}{b}$.
+	In fact, $\convolRel{(\Gamma^*\times\Sigma^*)} =
+	\{u \convol v \mid \in u \in \Gamma^* \land v\in \Sigma^* \}$ precisely corresponds to
+	the words of $(\Gamma\convolAlpha \Sigma)^*$ "st" if some "padding symbol" is seen
+	on some tape, then all subsequent symbols on this tape must also be "padding symbols".
+	These words are called \AP""well-formed"", and the set of all "well-formed words" over
+	$\Gamma$ and $\Sigma$ is denoted by \AP$\intro*\WellFormed[\Gamma,\Sigma]$.%
+	\footnote{Of course, when the alphabets are equal, we will write
+	$\reintro*\WellFormed[\Sigma]$ instead of $\WellFormed[\Sigma,\Sigma]$.}
+\end{remark}
+
+Because of this, some automata that are not \emph{classically} equivalent
+become equivalent when seen as "synchronous automaton". For instance, 
+both "synchronous automata" of
+\Cref{fig:example-synchronous-automaton-prefix-1,fig:example-synchronous-automaton-prefix-2}
+"recognize@@sync" the "prefix relation". However, they do not recognize
+the same language when seen as classical automaton---for instance, $\pair{\pad}{a}\pair{a}{a}$
+is accepted by the automaton of \Cref{fig:example-synchronous-automaton-prefix-1}
+but not by the one of \Cref{fig:example-synchronous-automaton-prefix-2}.
+Generalizing this example, it is trivial to check that two "synchronous automata"
+have the same semantics if, and only if, they have the same
+intersection of their semantics, when seen as classical automata, with
+an automaton for $\WellFormed[\Gamma,\Sigma]$.
+
+\begin{marginfigure}
+	\centering
+	\begin{tikzpicture}[shorten >= 1pt, node distance = 1.8cm, on grid, baseline]
+		\node[state, initial left, accepting] (q0) {}; 
+		\path[->]
+			(q0) edge[loop right] node[font=\scriptsize] {$\pair{a}{a}, \pair{\pad}{a}\text{ for }a\in \Sigma$} (q0);
+	\end{tikzpicture}
+	\caption{
+		\AP\label{fig:example-synchronous-automaton-prefix-1}
+		A deterministic one-state "synchronous automaton" "recognizing@@sync"
+		the "prefix relation".
+	}
+\end{marginfigure}
+\begin{marginfigure}
+	\centering
+	\begin{tikzpicture}[shorten >= 1pt, node distance = 1.8cm, on grid, baseline]
+		\node[state, initial left, accepting] (q0) {}; 
+		\node[state, accepting, below=of q0] (q1) {}; 
+		\path[->]
+			(q0) edge[loop right] node[font=\scriptsize] {$\pair{a}{a}\text{ for }a\in \Sigma$} (q0)
+			(q0) edge node[font=\scriptsize, right] {$\pair{\pad}{a}\text{ for }a\in \Sigma$} (q1)
+			(q1) edge[loop right] node[font=\scriptsize] {$\pair{\pad}{a}\text{ for }a\in \Sigma$} (q1);
+	\end{tikzpicture}
+	\caption{
+		\AP\label{fig:example-synchronous-automaton-prefix-2}
+		A deterministic two-state "synchronous automaton" "recognizing@@sync"
+		the "prefix relation".
+	}
+\end{marginfigure}
+
+Note that, by definition of "synchronous automata", everything that can be done
+on classical automata can be done with "synchronous automata",
+including determinisation, removal of $\varepsilon$-transitions, completion, etc.
+Moreover, observe by the previous paragraph that
+the universality of a "synchronous automaton" $\+A$ amounts to 
+the universality of the disjoint union of $\+A$ with an automaton for the complement of
+$\WellFormed[\Gamma,\Sigma]$.
+A similar construction works for the inclusion problem.
+\begin{property}
+	Inclusion and universality of "synchronous automata" is "PSpace"-complete.
+\end{property}
+Similarly, the emptiness of a "synchronous automaton" $\+A$ amounts to
+the emptiness of the classical automaton obtained by intersecting $\+A$ with $\WellFormed[\Gamma,\Sigma]$.
+\begin{property}
+	\AP\label{prop:non-emptiness-problem}
+	Emptiness and non-emptiness of "synchronous automata" are "NL"-complete.
+\end{property}
+
+Similarly to \Cref{fig:example-synchronous-automaton-prefix-1,fig:example-synchronous-automaton-prefix-2},
+it is straightforward to prove that the "equal-lenth relation"
+and the equality relation are "automatic". As stated before, this class extends
+the class of "recognizable relations".
+
+\begin{proposition}
+	Every "recognizable relation" is "automatic@@rel".
+\end{proposition}
+
+\begin{proof}
+	Clearly, "automatic relations" are closed under union: it suffices to do the disjoint union
+	of their automata.
+	So, to prove this result, it suffices to show that if $K$ and $L$ are "regular languages",
+	then $K \times L$ is "automatic@@rel".
+	Let $\+A$ (resp. $\+B$) be an automaton recognizing $K$ (resp. $L$). 
+	We build a "synchronous automaton" $\+A \otimes \+B$ as follows:
+	\begin{itemize}
+		\item its states are the pairs of states of $\+A$ and of states of $\+B$,
+		\item $\tup{p,q}$ is initial if both $p$ and $q$ are initial,
+		\item $\tup{p,q}$ is accepting if both $q$ and $q$ are accepting, and
+		\item for every transition $p \transition{a} p' \in \+A$ and $q \transition{b} q' \in \+B$,
+			we put a transition
+			\[
+				\tup{p,q} \transition{\pair{a}{b}} \tup{p',q'},
+			\]
+		\item moreover, for every transition $p \transition{a} p' \in \+A$, for every $q$,
+			we put a transition 
+			\[\tup{p,q} \transition{\pair{a}{\pad}} \tup{p',q},\]
+		\item and dually, for every transition $q \transition{b} q' \in \+B$, for every $p$,
+			we put a transition 
+			\[\tup{p,q} \transition{\pair{\pad}{b}} \tup{p,q'}.\]
+	\end{itemize}
+	By construction, for any $u\in \Gamma^*$ and $v\in \Sigma^*$,
+	there is an accepting path in $\+A \otimes \+B$ labelled by $u \convol v$ 
+	"iff" $u \in K$ and $v\in L$.
+\end{proof}
+
+As often in automata theory, the pumping lemma provides a useful tool to prove
+non-regularity, or rather here non-automaticity.
+For instance, the "suffix relation" is not "automatic": otherwise,
+using the pumping lemma on $a^n \convol b^n a^n$ for some sufficiently big $n\in\N$
+would imply that $a^{n+k} \convol b^{n+k} a^n \in \convolRel{\suffix}$ for some $k\in\Np$.
+
+Another useful tool to prove "non-automaticity" is the following one.
+Given $I \subseteq \lBrack 1,k\rBrack$,
+we say that a $k$-ary "relation" $\+R \subseteq \Sigma_1^* \times \cdots \times \Sigma_k^*$ is
+""$I$-locally finite"" if for every $\tup{w_i}_{i\in I} \in \prod_{i\in I} \Sigma_i^*$,
+there are only finitely many $\tup{w_j}_{j\not\in I} \in \prod_{j \not\in I} \Sigma_j^*$
+"st" $\tup{w_1,\hdots,w_k} \in \+R$.%
+\footnote{Note that this is one of the very few statements
+that we spell out for $k$-ary relation since its generalization from binary to $k$-ary relations
+is not entirely trivial.}
+\begin{proposition}[Folklore, see "eg" {\cite[Corollary~8.3,p.~821]{Blumensath2024MSOModelTheory}}]
+	Let $\+R \subseteq \Sigma_1^* \times \cdots \times \Sigma_k^*$ be "$I$-locally finite".
+	Then there exists a constant $n\in\N$ "st" for every
+	$\tup{w_1,\hdots,w_k} \in \+R$,
+	\[
+		\max_{j \not\in I}{|w_j|} - \max_{i \in I}{|w_i|} \leq n.
+	\]
+\end{proposition}
+
 todo:example
+todo: subword relation
 
 \subsection{Todo}
 
