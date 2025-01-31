@@ -21,6 +21,15 @@ languages recognized by either:
 Moreover, all transformations between these representations are effective---although some
 models can be strictly more succinct.
 
+\begin{figure*}
+	\centering
+	\includegraphics[width=\linewidth]{fig/landscape-rationality-relations.png}
+	\caption{
+		\AP\label{fig:landscape-rationality-relations}
+		The ``landscape of rationality'' for binary relations.
+		Dashed regions are empty.
+	}
+\end{figure*}
 These equivalences explain why the terms \emph{recognizable language}---meaning implicitly
 ``recognizable by a finite-state automaton'' or ``recognizable by a finite monoid''---and
 \emph{rational language}---meaning ``described by a rational expression''---are used 
@@ -30,16 +39,6 @@ However, in more complex settings, for instance subsets of non-free monoids,%
 \footnote{Recall that a language is nothing else but a subset of a free
 (usually finitely-generated) monoid.}
 the equivalence between these classes no longer holds. \cite{Pin2021StackExchange}
-
-\begin{figure}
-	\centering
-	\includegraphics[width=\linewidth]{fig/landscape-rationality-relations.png}
-	\caption{
-		\AP\label{fig:landscape-rationality-relations}
-		The ``landscape of rationality'' for binary relations.
-		Dashed regions are empty.
-	}
-\end{figure}
 
 The landscape of rationality for $k$-ary relations of finite words ($k \geq 2$) is far more complex than for languages,\footnote{Which can be seen as unary relations of finite words.} as depicted in \Cref{fig:landscape-rationality-relations}. We will briefly present these classes,
 although this thesis will only deal with the two most restrictive ones, namely
@@ -66,6 +65,32 @@ $(\Gamma\sqcup \Sigma)^* \times (\Gamma\sqcup \Sigma)^*$
 while preserving the notion of ``rationality'' at hand.
 Note also that most notions can be trivially extended to $k$-ary relations ($k \geq 3$):
 we simply work here with binary relations for the sake of simplicity.
+
+Given two classes of finite-word relations $\+C$ and $\+D$ "st" $\+C \supseteq \+D$,
+we will often want to know if this inclusion is \emph{effective}:
+\decisionproblem{
+	""$\+D$-membership problem for $\+C$-relations""
+}{
+	A $\+C$-relation $\+R$.
+}{
+	Does $\+R \in \+D$?
+}
+This problem is also called the \reintro{$\+C$/$\+D$-membership problem}.
+
+A natural extension of this problem is the so-called separability problem,
+which has received lots of attention in todo:addref.
+\decisionproblem{
+	""$\+D$-separability problem for $\+C$-relations""
+}{
+	Two $\+C$-relations $\+R$ and $\+R'$.
+}{
+	Is there a $\+D$-relation "st" $\+R \subseteq \+S$ and $\+R' \cap \+S = \emptyset$?
+}
+In this case, we say that $\+S$ ""separates@@rel"" $\+R$ from $\+R'$.
+Note that when $\+D$ is closed under complement, $\+R$ and $\+R'$ play a symmetric role in this problem. Moreover, if $\+D$ is \emph{effectively} closed under complement,
+then "membership@@problemrel" reduces to "separability@@problem" 
+since $\+R in \+D$ if, and only if, $\+R$ and its complement are "separable@@rel" by
+a $\+D$-relation.
 
 
 \subsection{Recognizable Relations}
@@ -211,7 +236,7 @@ ${\intro*\suffix} \defeq \{
 	\text{$u$ is a prefix of $v$}
 \}$, nor the equality relation are "recognizable@@rel".
 A similar proof can show that the ""equal-length relation""
-$\intro*\equalLength \defeq \{
+${\intro*\equalLength} \defeq \{
 	\tup{u,v} \in \Gamma^*\times\Sigma^* \mid
 	|u| = |v|
 \}$.%
@@ -412,11 +437,33 @@ Note that every relation is "$\lBrack 1,k\rBrack$-locally finite".
 \end{proposition}
 
 For instance, consider the ternary relation of concatenation $\cdot$,
-defined by $\cdot(u,v,w)$ "iff" $uv = w$, where $u,v,w\in\Sigma^*$.
+consisting of all triples $\tup{u,v,w}$ "iff" $uv = w$, where $u,v,w\in\Sigma^*$.
 Then this relation is "$\{3\}$-locally finite", and so by
 \Cref{prop:bound-automatic-structures}, there exists $n\in \N$
 "st" for all $u,v \in \Sigma^*$, $|uv| \leq \max{(|u|,|v|)} + n$.
 This is trivially false, and hence, concatenation is not "automatic".
+
+Despite being somewhat expressive, "automatic relations" retain some decidability properties. 
+\begin{proposition}
+	\!\footnote{Decidability, first in "3ExpTime" and then
+	in "2ExpTime" was already known in the 1970s as a consequence
+	of todo:addref-deterministic-rational-relations.
+	An "ExpTime" upper bound was claimed in \cite[Table~1]{CartonChoffrutGrigorieff2006DecisionProblems},
+	and proved wrong in \cite[\S~4.1]{LodingSpinrath2019DecisionProblems}.
+	The "ExpTime" upper bound for binary relations was proven
+	in \cite[Corollary~22]{LodingSpinrath2019DecisionProblems}.}
+	The ""$\REC$-membership problem for automatic relations"" is "2ExpTime".
+	Moreover, it works in "ExpTime" for binary relations.
+\end{proposition}
+
+On the other hand, the associated "separation problem@@rel" remains open.
+This part of this thesis is mostly motivated by this problem.%
+\footnote{Pablo Barceló introduced me to this problem in October 2022.
+todo:blabla.}
+
+\begin{openproblem}
+	Is the ""$\REC$-separability problem for automatic relations"" decidable?
+\end{openproblem}
 
 \subsection{Todo}
 
