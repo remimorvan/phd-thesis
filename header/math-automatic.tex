@@ -133,10 +133,14 @@
 % ---
 % Example of relations
 % ---
-\knowledgenewrobustcmd\SameParity{\cmdkl{\textrm{SameParity}}}
-\knowledgenewrobustcmd{\prefix}{\mathrel{\cmdkl{\preceq_{\textrm{pref}}}}}
-\knowledgenewrobustcmd{\suffix}{\mathrel{\cmdkl{\preceq_{\textrm{suff}}}}}
-\knowledgenewrobustcmd{\equalLength}{\cmdkl{\+{el}}}
+\knowledgenewrobustcmd\sameParity{\mathrel{\cmdkl{\approx_{\textrm{mod~2}}}}}
+\knowledgenewrobustcmd{\equalLength}{\mathrel{\cmdkl{\approx_{\textrm{len}}}}}
+
+\knowledgenewrobustcmd{\prefix}{\mathrel{\cmdkl{\preccurlyeq_{\textrm{pref}}}}}
+\knowledgenewrobustcmd{\suffix}{\mathrel{\cmdkl{\preccurlyeq_{\textrm{suff}}}}}
+\knowledgenewrobustcmd{\subword}{\mathrel{\cmdkl{\preccurlyeq_{\textrm{subw}}}}}
+\knowledgenewrobustcmd{\lex}{\mathrel{\cmdkl{\preccurlyeq_{\textrm{lex}}}}}
+
 
 % ---
 % Separation to Colourability

@@ -79,14 +79,14 @@ $\+R = f^{-1}[\Acc]$. We denote by \AP$\intro*\REC$ the class of "recognizable r
 
 For instance the \AP""same parity relation""
 \[
-	\SameParity \defeq 
+	{\intro*\sameParity} \defeq 
 	\{
 		\tup{u,v} \in \Gamma^* \times \Sigma^* \mid
 		|u| = |v| \mod{2}
 	\}
 \]
 is "recognizable". Indeed, letting $f\colon  \Gamma^* \times \Sigma^* \to \ZnZ{2}$,
-then $\SameParity$ can be written as $f^{-1}[\{\bar 0\}]$.
+then $\sameParity$ can be written as $f^{-1}[\{\bar 0\}]$.
 
 These relations admit a remarkably simple characterization.\AP
 \begin{proposition}[{""Mezei's theorem"", see "eg" \cite[Corollary~II.2.20, p.~254]{Sakarovitch2009Elements}}]
@@ -104,7 +104,7 @@ These relations admit a remarkably simple characterization.\AP
 
 In other words, "recognizable relations" are exactly the finite unions of
 "Cartesian products" of "regular languages".
-For instance, \[\SameParity =
+For instance, \[{\sameParity} =
 (\Gamma\Gamma)^* \times (\Sigma\Sigma)^*
 \cup \Gamma(\Gamma\Gamma)^* \times \Sigma(\Sigma\Sigma)^*.\]
 We provide a slightly more general statement of "Mezei's theorem".
@@ -379,7 +379,11 @@ As often in automata theory, the pumping lemma provides a useful tool to prove
 non-regularity, or rather here non-automaticity.
 For instance, the "suffix relation" is not "automatic": otherwise,
 using the pumping lemma on $a^n \convol b^n a^n$ for some sufficiently big $n\in\N$
-would imply that $a^{n+k} \convol b^{n+k} a^n \in \convolRel{\suffix}$ for some $k\in\Np$.
+would imply that $a^{n+k} \convol b^{n+k} a^n \in \convolRel{(\suffix)}$ for some $k\in\Np$.
+Similarly, the \AP""subword relation"" $\intro*\subword$ is also not "automatic@@rel".%
+\footnote{Recall that this relation is defined by, for all $u, v \in \Sigma^*$,
+$u \subword v$ "iff" there exists $j_1 < j_2 < \hdots < j_{|u|}$ "st" $u_i = v_{j_{i}}$
+for all $i \in \lBrack 1, |u|\rBrack$: in other words, $u$ can be obtained from $v$ by removing letters.}
 
 Another useful tool to prove "non-automaticity" is the following one.
 Given $I \subseteq \lBrack 1,k\rBrack$,
@@ -390,17 +394,27 @@ there are only finitely many $\tup{w_j}_{j\not\in I} \in \prod_{j \not\in I} \Si
 \footnote{Note that this is one of the very few statements
 that we spell out for $k$-ary relation since its generalization from binary to $k$-ary relations
 is not entirely trivial.}
-\begin{proposition}[Folklore, see "eg" {\cite[Corollary~8.3,p.~821]{Blumensath2024MSOModelTheory}}]
+Note that every relation is "$\lBrack 1,k\rBrack$-locally finite".
+\begin{proposition}[See "eg" {\cite[Proposition~3.1]{KhoussainovNiesRubinStephan2007Automatic}}]
+	\!\footnote{\cite{KhoussainovNiesRubinStephan2007Automatic} attributes this proposition
+	to older work by Khoussainov, Nerode and Blumensath, but we failed to verify this claim.}
+	\footnote{Recall that $\max{\emptyset} = -\infty$, and so in the case
+	of $I = \lBrack 1,k\rBrack$, this statement is trivially valid.}
+	\AP\label{prop:bound-automatic-structures}
 	Let $\+R \subseteq \Sigma_1^* \times \cdots \times \Sigma_k^*$ be "$I$-locally finite".
-	Then there exists a constant $n\in\N$ "st" for every
+	If $\+R$ is "automatic", then there exists a constant $n\in\N$ "st" for every
 	$\tup{w_1,\hdots,w_k} \in \+R$,
 	\[
 		\max_{j \not\in I}{|w_j|} - \max_{i \in I}{|w_i|} \leq n.
 	\]
 \end{proposition}
 
-todo:example
-todo: subword relation
+For instance, consider the ternary relation of concatenation $\cdot$,
+defined by $\cdot(u,v,w)$ "iff" $uv = w$, where $u,v,w\in\Sigma^*$.
+Then this relation is "$\{3\}$-locally finite", and so by
+\Cref{prop:bound-automatic-structures}, there exists $n\in \N$
+"st" for all $u,v \in \Sigma^*$, $|uv| \leq \max{(|u|,|v|)} + n$.
+This is trivially false, and hence, concatenation is not "automatic".
 
 \subsection{Todo}
 
@@ -413,4 +427,6 @@ todo: subword relation
 	\cite[Theorem 22, p.~243]{EH2001transduction}.
 	\item cite Gaëtan's thesis (chapter 1 for finite words, chapter 8 for infinite words)
 	\item mention pebble, marble and whatnot.
+	\item TODO: \S~8.2 ``star-free and locally threshold testable presentations''
+		in Blumensath's thesis.
 \end{itemize}
