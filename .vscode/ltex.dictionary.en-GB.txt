@@ -2,4 +2,4 @@ arity
 hyperedge
 fixpoint
 Hyperedge
-determinisation
+injectivity
