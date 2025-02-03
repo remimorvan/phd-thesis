@@ -6,17 +6,16 @@
 The class of "regular languages" is remarkably stable, and can either be characterized as the 
 languages recognized by either:
 \begin{itemize}
-	\item deterministic or non-deterministic finite state automata,
-	see "eg" \cite[Proposition~1.2.3, p.~7]{Pin2021FiniteAutomata},
-	\item two-way finite state automata by Shepherdson-Rabin-Scott theorem
-		\cite[Theorem~2, p.~198]{Shepherdson1959ReductionTwoWay}
-		\cite[Theorem~15, p.~123]{RabinScott1959FiniteAutomata},
-	\item rational expressions by Kleene's theorem,
-		see "eg" \cite[Theorem~1.5.11, p.~34]{Pin2021FiniteAutomata},
-	\item monadic second-order logic by Trakhtenbrot-Büchi-Elgot theorem,
-		see "eg" \cite[Theorem~2.2, p.~32]{Bojanczyk2020MSO}, or
-	\item finite monoids,
-		see "eg" \cite[\S~1.4.2, p.~19]{Pin2021FiniteAutomata}.
+	\item deterministic or non-deterministic finite state automata,\\
+		\null\hspace{1.0pc}see "eg" \cite[Proposition~1.2.3, p.~7]{Pin2021FiniteAutomata};
+	\item two-way finite state automata by Shepherdson-Rabin-Scott theorem\\
+		\null\hspace{1.0pc}\cite[Theorem~2, p.~198]{Shepherdson1959ReductionTwoWay}
+		\cite[Theorem~15, p.~123]{RabinScott1959FiniteAutomata};
+	\item rational expressions by Kleene's theorem,\\
+		\null\hspace{1.0pc}see "eg" \cite[Theorem~1.5.11, p.~34]{Pin2021FiniteAutomata};
+	\item monadic second-order logic by Trakhtenbrot-Büchi-Elgot theorem,\\
+		\null\hspace{1.0pc}see "eg" \cite[Theorem~2.2, p.~32]{Bojanczyk2020MSO}; or
+	\item finite monoids, see "eg" \cite[\S~1.4.2, p.~19]{Pin2021FiniteAutomata}.
 \end{itemize}
 Moreover, all transformations between these representations are effective---although some
 models can be strictly more succinct.
@@ -67,20 +66,26 @@ On the other hand, when the terminology ``relation'' is used,
 we often take $\Gamma = \Sigma$.\footnote{For instance this is somewhat important when
 dealing with logic or defining automatic structure
 \Cref{sec:preliminaries-automatic-structures-automatic-structures,sec:preliminaries-automatic-structures-logic}.}
-Multi-tape automata are seen as machine that read
+Multitape automata are seen as machine that read
 tuples of words, and either accept or reject them: it is a decision model.
 The question of $\Gamma =^? \Sigma$ makes little difference since we can often
 see a relation $\+R \subseteq \Gamma^* \times \Sigma^*$ as a subset of
 $(\Gamma\sqcup \Sigma)^* \times (\Gamma\sqcup \Sigma)^*$
 while preserving the notion of ``rationality'' at hand.
 Moreover, we will see that some classes can be equally defined
-by using multi-tape automata or transducers todo:addref.
+by using multitape automata or transducers todo:addref.
 
-Note also that most notions defined by multi-tape automata
+Note also that most notions defined by multitape automata
 can be trivially extended to $k$-ary relations ($k \geq 3$):
 we simply work here with binary relations for the sake of simplicity---we will sometimes give more general definition for higher arity when the generalization is not trivial.
 On the other hand, transducers intrinsically recognize functions $\Gamma^* \to \pset{\Sigma^*}$,
 "ie" binary relations.
+
+When I learned about these classes, I was somewhat confused between the different models: surprisingly, the literature on transductions seems somewhat orthogonal to the one on relation.%
+\footnote{For instance \cite{Choffrut2006Survey} mentions todo, but not todo. On the other hand todo.}
+The goal of this section is to provide a non-exhaustive overview of these classes of relations/transductions, explain how they relate to one another, and give pointers to suitable references.
+We acknowledge \cite{Choffrut2006Survey}, which proved particularly useful to find the
+appropriate references for "synchronous@@rel" and "rational relations".
 
 Given two classes of finite-word relations $\+C$ and $\+D$ "st" $\+C \supseteq \+D$,
 we will often want to know if this inclusion is \emph{effective}:
@@ -509,7 +514,7 @@ independently of one another---however each head can only move from left to righ
 For the same of convenience, we assume that the automaton can move multiple heads at every step.
 This can be formalized as follows.
 
-An \AP""multi-tape automaton"" over $\Gamma,\Sigma$
+An \AP""multitape automaton"" over $\Gamma,\Sigma$
 can be syntactically defined as a classical automaton over $\Gamma \convolAlpha \Sigma$.
 We then let $\pi_1\colon (\Gamma\convolAlpha\Sigma)^* \to \Gamma^*$ and 
 $\pi_2\colon (\Gamma\convolAlpha\Sigma)^* \to \Sigma^*$ be the "monoid morphisms"
@@ -534,7 +539,7 @@ For instance:
 	\projDesync\pair{a \pad b \pad a \pad c \pad}{a a b b a a c c}
 	= \tup{abac, aabbaacc}.
 \]
-The semantics of the "multi-tape automaton"
+The semantics of the "multitape automaton"
 can be defined as the image by $\projDesync$ of its semantics when seen as a
 classical automaton.%
 \footnote[][-15em]{These automata are often simply called ``$k$-tape automata''. 
@@ -545,7 +550,7 @@ of Anca Muscholl to avoid the confusion with Zielonka's ``asynchronous automata'
 concurrency \cite[\S~4]{Zielonka1987AsynchronousAutomata}.}
 
 We say that a relation $\+R \subseteq \Gamma^* \times \Sigma^*$ is ""rational@@rel""
-if it is "recognized@@desync" by an "multi-tape automaton",
+if it is "recognized@@desync" by an "multitape automaton",
 or equivalently if it is the image by $\projDesync$ of a "regular language"
 over $\Gamma\convolAlpha\Sigma$.
 The class of all "rational relations" is denoted by $\RAT$.
@@ -553,7 +558,7 @@ The class of all "rational relations" is denoted by $\RAT$.
 % For instance, the \AP""local squaring function"",
 % consisting of all pairs $\tup{u,v} \in \Sigma^* \times \Sigma^*$
 % "st" $v = u_1 u_1 u_2 u_2 \cdots u_{|u|} u_{|u|}$ is "rational@@rel", 
-% see \Cref{fig:multi-tape-automaton-local-squaring}.
+% see \Cref{fig:multitape-automaton-local-squaring}.
 % However, it is not "automatic@@rel".
 % \begin{marginfigure}[-20em]
 % 	\centering
@@ -572,8 +577,8 @@ The class of all "rational relations" is denoted by $\RAT$.
 % 			(qb2) edge[bend right] node[font=\scriptsize, below] {$\pair{\pad}{b}$} (q0);
 % 	\end{tikzpicture}
 % 	\caption{
-% 		\AP\label{fig:multi-tape-automaton-local-squaring}
-% 		An "multi-tape automaton" for the "local squaring function"
+% 		\AP\label{fig:multitape-automaton-local-squaring}
+% 		An "multitape automaton" for the "local squaring function"
 % 		when $\Sigma = \{a,b\}$.
 % 	}
 % \end{marginfigure}
@@ -592,8 +597,8 @@ The class of all "rational relations" is denoted by $\RAT$.
 			(qb) edge[bend right] node[font=\scriptsize, right] {$\pair{\pad}{b}$} (q0);
 	\end{tikzpicture}
 	\caption{
-		\AP\label{fig:multi-tape-automaton-subword}
-		An "multi-tape automaton" for the "subword relation" $\subword$
+		\AP\label{fig:multitape-automaton-subword}
+		An "multitape automaton" for the "subword relation" $\subword$
 		when $\Sigma = \{a,b\}$.
 	}
 \end{marginfigure}
@@ -610,8 +615,8 @@ The class of all "rational relations" is denoted by $\RAT$.
 				{$\pair{a}{a}$ for $a\in \Sigma$} (q1);
 	\end{tikzpicture}
 	\caption{
-		\AP\label{fig:multi-tape-automaton-suffix}
-		An "multi-tape automaton" for the "suffix relation" $\suffix$.
+		\AP\label{fig:multitape-automaton-suffix}
+		An "multitape automaton" for the "suffix relation" $\suffix$.
 	}
 \end{marginfigure}
 
@@ -622,7 +627,7 @@ an $a$; it then reads the next letter on the first tape and iterates this proces
 
 Note that alternative definitions exist, but yield an equivalent definition of "rational relations".
 For instance, in \cite[Definition~2.1]{CartonChoffrutGrigorieff2006DecisionProblems},
-the "multi-tape automaton" are defined analogously (under the name ``$k$-tape automaton'')
+the "multitape automaton" are defined analogously (under the name ``$k$-tape automaton'')
 except that the alphabet is not $\Gamma \convolAlpha \Sigma$ but 
 $(\Gamma \times \{\pad\}) \cup (\{\pad\}\times \Sigma)$. In other words,
 their model can only move one head at a time.
@@ -631,9 +636,9 @@ by two transitions labelled by $\pair{a}{\pad}$ and $\pair{\pad}{b}$ in their mo
 
 \subsection{Deterministic Rational Relations}
 
-Note that the "automaton@@sync" of \Cref{fig:multi-tape-automaton-suffix} is deterministic
+Note that the "automaton@@sync" of \Cref{fig:multitape-automaton-suffix} is deterministic
 as a classical automaton. However, we claim that it should not be considered to be ``deterministic''
-as an "multi-tape automaton".
+as an "multitape automaton".
 For instance, assume that we are running this automaton over the pair
 $\tup{aab, ababaab}$, and that we started reading the sequence $\pair{\pad}{a}, \pair{\pad}{b}$,
 while staying in the initial state. Should we take the
@@ -641,13 +646,13 @@ $\pair{\pad}{a}$ and stay in the initial state, or take the transition $\pair{a}
 final state? In the first case, we can obtain an accepting run, but in the second case we cannot.
 In other word, assuming that $u \subword v$, we need to guess when we've reached the suffix of
 $v$ corresponding to $u$, and this is a source of non-determinism. Observe that
-the automaton of \Cref{fig:multi-tape-automaton-suffix} is deterministic as a classical automaton
+the automaton of \Cref{fig:multitape-automaton-suffix} is deterministic as a classical automaton
 because $\pair{\pad}{a}$ and $\pair{a}{a}$ are distinct letters of $\Gamma\convolAlpha\Sigma$, 
-although in the multi-tape setting, both pairs can be simultaneously admissible.
+although in the multitape setting, both pairs can be simultaneously admissible.
 In other words, the lack of injectivity of the function $\projDesync$ creates another
 source of non-determinism. This motivates an alternative definition for determinism.
 
-Hence, we say that a $k$-ary "multi-tape automaton" over $\Sigma_1,\hdots,\Sigma_k$
+Hence, we say that a $k$-ary "multitape automaton" over $\Sigma_1,\hdots,\Sigma_k$
 is ""deterministic@@desync"" if
 there exists a partition $\tup{Q_H}_{H \in \psetp{\lBrack 1,k\rBrack}}$ of its states "st":
 \begin{enumerate}
@@ -660,9 +665,11 @@ there exists a partition $\tup{Q_H}_{H \in \psetp{\lBrack 1,k\rBrack}}$ of its s
 		$a_h \in \Sigma_h$ for any $h\in H$ and $a_h = \pad$ for any $h\not\in H$.
 \end{enumerate}
 In other words, we ask for classical determinism to hold, but moreover we need to know \emph{a priori}, at each state, which set of heads we will be moving at the next step.
+For instance, the automaton of \Cref{fig:multitape-automaton-subword} is "deterministic@@multitape".
 
 \begin{claim}
-	Let $\+A$ be a $k$-ary "deterministic multi-tape automaton" over $\Sigma_1,\hdots,\Sigma_k$.
+	\label{claim:tool-deterministic-rational}
+	Let $\+A$ be a $k$-ary "deterministic multitape automaton" over $\Sigma_1,\hdots,\Sigma_k$.
 	For any $\tup{w_1,\hdots,w_k} \in \Sigma_1^* \times \cdots \Sigma_k^*$,
 	for any state $q$ of $\+A$, there exists at most
 	one word $w \in (\Sigma_1\convolAlpha\cdots\convolAlpha\Sigma_k)^*$ "st" $\projDesync(w) = \tup{w_1,\hdots,w_k}$ and there is a run of $\+A$, starting at $q$ and labelled by $w$.%
@@ -676,10 +683,12 @@ if the relation
 \[
 	\{\tup{u\triangleleft, v\triangleleft} \mid \tup{u,v} \in \+R\}
 \]
-is recognized by a "deterministic multi-tape automaton", where $\triangleleft$ is a new symbol.
-Note that if $\+R$ is recognized by a "deterministic multi-tape automaton", then so is
-this ``enhanced'' relation, but the converse property does not hold.
-The motivation behind this somewhat strange definition is that this way,
+is recognized by a "deterministic multitape automaton", where $\triangleleft$ is a new symbol.
+For instance, starting from \Cref{fig:multitape-automaton-subword}, it is easy
+to build a "deterministic multitape automaton" for
+$\{\tup{u\triangleleft, v\triangleleft} \mid u \subword v\}$,
+proving that the "subword relation" is "deterministic rational@@rel".
+The motivation behind this somewhat strange definition is that, this way,
 "deterministic rational relations" generalize "automatic relations".
 
 \begin{proposition}
@@ -702,24 +711,24 @@ The motivation behind this somewhat strange definition is that this way,
 	\caption{
 		\AP\label{fig:example-synchronous-automaton-prefix-1-detrat}
 		Construction of the proof of \Cref{prop:synchronous-implies-detrat}
-		applied to the "deterministic multi-tape automaton" built from the synchronous automaton of
+		applied to the "deterministic multitape automaton" built from the synchronous automaton of
 		\Cref{fig:example-synchronous-automaton-prefix-1} "recognizing@@sync" the "prefix relation".
 	}
 \end{marginfigure}
 \begin{proof}[Proof sketch]
 	Start from a "synchronous automaton" $\+A$:
 	"wlog" it can be assumed to be deterministic, when seen 
-	as a classical automaton. However, when seen as a "multi-tape automaton", some determinism 
+	as a classical automaton. However, when seen as a "multitape automaton", some determinism 
 	remains: for instance some state can have outgoing transitions labelled both
 	by $\pair{a}{a}$ and $\pair{\pad}{a}$.
-	To fix this, we build a "multi-tape automaton" $\+A'$ by triplicating the states:
+	To fix this, we build a "multitape automaton" $\+A'$ by triplicating the states:
 	each original state $q$ yields a state $q_H$ for $H \in \psetp{\lBrack 1,2 \rBrack}$.
 	Transitions are built using the following rules:
 	\[
 		\frac{
-			p_{\{1,2\}} \transition{\pair{a}{b}} q_{\{1,2\}} \in \+A'
-		}{
 			p \transition{\pair{a}{b}} q \in \+A
+		}{
+			p_{\{1,2\}} \transition{\pair{a}{b}} q_{\{1,2\}} \in \+A'
 			\vphantom{\Big()}
 		},
 	\]
@@ -759,34 +768,44 @@ The motivation behind this somewhat strange definition is that this way,
 	$q_{\emptyset}$ is the unique accepting state of $\+A'$, and moreover
 	$p_{\lBrack 1,k\rBrack}$ is the unique initial state of $\+A'$, where $p$ is the initial state of $\+A$. See \Cref{fig:example-synchronous-automaton-prefix-1-detrat} for an example.
 	
-	Note that by construction, $\+A'$ is a "deterministic multi-tape automaton". 
-	Using the fact that $\+A$ is "synchronous", it can be shown that
+	Note that by construction, $\+A'$ is a "deterministic multitape automaton". 
+	Using the fact that $\+A$ is "synchronous@@auto", it can be shown that
 	if $\+R$ is the relation "recognized@@sync" by $\+A$, then $\+A'$ precisely 
-	""recognizes@@multi-tape"" $\{\tup{u\triangleleft,v\triangleleft} \mid \tup{u,v} \in \+R\}$.
+	""recognizes@@multitape"" $\{\tup{u\triangleleft,v\triangleleft} \mid \tup{u,v} \in \+R\}$.
 	And hence, $\+R$ is "deterministic rational".
 \end{proof}
 
+Observe how the addition of the end-of-tape symbols is crucial for the "multitape automaton"
+of the previous proof to be "deterministic". For instance, while
+the prefix relation is "deterministic rational", it can be shown that
+$\prefix$ cannot be recognized by a "deterministic multitape automaton".
 
-
-Clearly, \Cref{fig:multi-tape-automaton-suffix} is "non-deterministic@@desync". But in fact, we prove a stronger result: the "suffix relation" $\suffix$ cannot be recognized by a
-"deterministic multi-tape automaton".
-Indeed, TODO.
-
+Clearly, \Cref{fig:multitape-automaton-suffix} is "non-deterministic@@desync". But in fact, we prove a stronger result: $\suffix$ is not "deterministic rational@@rel".
+By contradiction, assume that $\{\tup{u\triangleleft,v\triangleleft} \mid u \suffix v\}$
+is recognized by a "deterministic multitape automaton" $\+A$.
+We still denote by $\tup{Q_{\{1,2\}},\,Q_{\{1\}},\,Q_{\{2\}}}$ the partition of its states 
+witnessing that it is "deterministic@@multitape".
+Consider the input 
 
 \subsection{Todo}
 
 \begin{itemize}
-	\item todo:add polyregular functions.
 	\item history-deterministic two-way rational functions?
-	\item todo: rename ``synchronous relations'' to ``automatic relations''
 	\item todo:the intersection of
 	functional relations and two-way rational relations
 	collapses to regular functions by
 	\cite[Theorem 22, p.~243]{EH2001transduction}.
-	\item cite Gaëtan's thesis (chapter 1 for finite words, chapter 8 for infinite words)
-	\item mention pebble, marble and whatnot.
 	\item TODO: \S~8.2 ``star-free and locally threshold testable presentations''
 		in Blumensath's thesis.
 	\item cite "An Algebraic Characterization of Unary Two-Way Transducers"
 	\url{https://link.springer.com/chapter/10.1007/978-3-662-44522-8\_17}
+\end{itemize}
+
+\subsection{And Everything Else...}
+
+\begin{itemize}
+	\item ``special relations'' "aka" ``regular prefix relations'' \cite{Choffrut2006Survey}
+	\item polyregular functions
+	\item cite Gaëtan's thesis (chapter 1 for finite words, chapter 8 for infinite words)
+	\item mention pebble, marble and whatnot.
 \end{itemize}
