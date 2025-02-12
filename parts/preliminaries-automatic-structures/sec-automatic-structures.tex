@@ -1,9 +1,90 @@
 \section{Automatic Structures}
 \label{sec:preliminaries-automatic-structures-automatic-structures}
 
+todo:blabla
+
+We fix a finite "relational signature" $\sigma$.
+An \AP""automatic presentation $\+A$ of a $\sigma$-structure"" consists of:
 \begin{itemize}
-	\itemAP domain and relation of a ""presentation"": $\intro*\domainPres{\+A}$ and $\intro*\relPres{\+R}{\+A}$ 
-	\itemAP ""automatic structure"" and ""automatic graph""
+	\item an alphabet $\Sigma$,
+	\itemAP a "regular language" $\intro*\domainPres{\+A} \subseteq \Sigma^*$,
+	\itemAP for every relation $\+R_{(k)} \in \sigma$, an
+		"automatic relation" $\intro*\relPres{\+R}{\+A} \subseteq (\Sigma^*)^k$, and
+	\itemAP a binary "automatic relation" $\reintro*\relPres{=}{\+A} \subseteq
+		\Sigma^* \times \Sigma^*$. 
+\end{itemize} 
+The \AP""structure represented"" $\?A$ by ""an automatic presentation"" $\+A$ has
+$\domainPres{\+A}/{\relPres{=}{\+A}}$ as its domain, and the predicate $\+R_{(k)} \in \sigma$
+is "interpreted@@pred" in such a way that a tuple $\tup{X_1,\hdots,X_k}$ of equivalence classes
+belongs to $\+R(\?A)$ if, and only if, there exists $\tup{u_i}_{1 \leq i \leq k} \in\tup{X_i}_{1 \leq i \leq k}$ "st" $\tup{u_1,\hdots,u_k} \in \relPres{\+R}{\+A}$.
+We say that a "$\sigma$-structure" is ""automatic@@struct"" if it is
+"represented@@struct" by ""an automatic presentation"". 
+
+For instance, the infinite binary tree admits can be represented by the "automatic presentation"
+$\+B$ with $\domainPres{\+B} = \{0,1\}^*$,
+\[
+	\relPres{\+E}{\+B} =
+	\{\tup{u,u0} \mid u \in \{0,1\}^*\} \cup \{\tup{u,u1} \mid u \in \{0,1\}^*\},
+\]
+and $\relPres{=}{\+B}$ is equality.
+todo: figure.
+Presentations such as this one, where $\relPres{=}{\+B}$ is the equality relation,
+are called ""injective presentations"".
+
+\begin{example}
+	The structure $\tup{\N, +}$ is "automatic".%
+	\footnote{We see $+$ as a ternary relation, given by $\{\tup{x,y,x+y} \mid x, y \in \N^2\}$.}
+	We build an "automatic presentation" $\+N$ by using
+	a binary encoding $\domainPres{\+N} = \{0,1\}^*$. A word $w \in \{0,1\}^*$ will
+	represent the number $\sum_{i=1}^{|w|} w_i\cdot 2^{i-1}$. 
+	Naturally, it follows that $\relPres{=}{\+N}$ puts two words $u$ and $v$ in relation
+	if they are equal after removing the trailing zeroes.
+	We then need to describe $\relPres{+}{\+N}$: the idea is to simulate addition, reading words
+	from left to right, by using two states ($0$ and $1$) to remember the carry.
+	\begin{marginfigure}
+		\centering
+		\begin{tikzpicture}[shorten >= 1pt, node distance = 1.8cm, on grid, baseline]
+			\node[state, initial left, accepting] (q0) {}; 
+			\node[state, right=of q0] (q1) {}; 
+			\path[->]
+				(q0) edge[loop above] node[font=\scriptsize, above left = 0em and -1.1em] {$\triple{0}{0}{0},
+					\triple{0}{1}{1},\triple{1}{0}{1}$} (q0)
+				(q0) edge[bend left] node[font=\scriptsize, above] {$\triple{1}{1}{0}$} (q1)
+				(q1) edge[loop below] node[font=\scriptsize, below right = 0em and -1.1em] {$\triple{0}{1}{0},\triple{1}{0}{0},\triple{1}{1}{1}$} (q1)
+				(q1) edge[bend left] node[font=\scriptsize, below] {$\triple{0}{0}{1}$} (q0);
+		\end{tikzpicture}
+		\caption{
+			\AP\label{fig:automaton-presburger}
+			"Synchronous automaton" describing the addition of
+			natural numbers. For the sake of readability, transitions involving
+			the "padding symbol" are not represented: $\pad$ is treated as a zero.
+		}
+	\end{marginfigure}
+	For instance, the transition
+	$\textcolor{c0}{0}
+	\transition{\tup{\textcolor{c1}{0},\textcolor{c1}{1},\textcolor{c3}{1}}}
+	\textcolor{c2}{0}$ can be understood as
+	``when adding $\textcolor{c1}{0}$ and $\textcolor{c1}{1}$, with current carry $\textcolor{c0}{0}$, the results equals $\textcolor{c3}{1}$, with a carry of $\textcolor{c2}{0}$ for the next bit''.
+	In general, we have a transition
+	\[
+		\textcolor{c0}{p}
+		\transition{\tup{\textcolor{c1}{x},\textcolor{c1}{y},\textcolor{c3}{z}}}
+		\textcolor{c2}{q}
+		\quad\text{"iff"}\quad
+		\textcolor{c1}{x} + \textcolor{c1}{y} + \textcolor{c0}{p}
+		= \textcolor{c3}{z} + 2\textcolor{c2}{q}
+	\]
+	for all $p,q \in \{0,1\}$ and
+	$\tup{x,y,z} \in \{0,1\} \convolAlpha \{0,1\} \convolAlpha \{0,1\}$.%
+	\footnote{Of course, we identify $\pad$ with $0$.}
+	This gives the automaton of figure \Cref{fig:automaton-presburger}.
+	By construction, $\+N$ "represents@@struct" $\tup{\N, +}$.
+\end{example}
+
+Recall that, using \Cref{prop:automatic-first-order}, 
+
+\begin{itemize}
+	\itemAP ""automatic graph""
 	\item see https://www.logic.rwth-aachen.de/pub/graedel/lics2020.pdf
 	\item \cite[\S~6]{KhoussainovNerode1995AutomaticPresentations}
 	\item no infinite integral domain \cite{KhoussainovNiesRubinStephan2007Automatic}

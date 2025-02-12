@@ -35,6 +35,14 @@ view.
 
 Note that usually, "L"-hardness is defined using "first-order reductions".
 
+
+\subsection{First-Order Interpretations}
+
+todo.
+
+
+\subsection{todo:move this around.}
+
 What we said above work with the implicit assumptions that all structures at hand are 
 "finite@@struct". However, part of this can be generalized to "automatic structures"---however, this comes to the cost of losing the inclusion in "L".
 
@@ -94,6 +102,24 @@ by \AP$\intro*\univStructSynchronous{\Sigma}$ the "$\signatureSynchronous{\Sigma
 the "predicates" are "interpreted@@predicate" as above.
 
 \begin{proposition}
-	\label{prop:automatic-first-order}
-	A relation over $\Sigma^*$ is "automatic@@rel" "iff" it is definable by a "first-order formula" over \(\univStructSynchronous{\Sigma}\).
+	\AP\label{prop:automatic-first-order}
+	A relation over $\Sigma^*$ is "automatic@@rel" "iff" it is definable by a "first-order formula" over $\signatureSynchronous{\Sigma}$.
 \end{proposition}
+
+\begin{example}
+	Given an ordered alphabet $\Sigma = \{a_1,\hdots,a_n\}$ with $a_1 < \hdots < a_n$,
+	the \AP""lexicographic order"" $\intro*\lex$ defined by $u \lex v$ when there exists 
+	a prefix $w$ both of $u$ and of $v$, "st" either $w$ has the same length as $u$,
+	or the letter following $w$ in $u$ is strictly smaller than the letter following $w$ in $v$.
+	
+	Note that this can be defined by a "first-order formula" over $\signatureSynchronous{\Sigma}$
+	since saying that the letter following $w$ in $u$ is $a$ amounts to
+	guessing the smallest prefix $w'$ of $u$ that must strictly contain $w$ as a prefix,
+	and checking that $w'$ ends with letter $a$.
+	From \Cref{prop:automatic-first-order}, it follows that the "lexicographic order"
+	is an "automatic relation".
+\end{example}
+
+\subsection{Logical Characterization of Other Classes of Relations}
+
+todo.

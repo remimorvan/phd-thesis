@@ -43,6 +43,11 @@
 	#1\vphantom{b}\\%
 	#2\vphantom{b}%
 \end{smallmatrix}\right)} % pair of letters
+\newrobustcmd\triple[3]{\left(\begin{smallmatrix}%
+	#1\vphantom{b}\\%
+	#2\vphantom{b}\\%
+	#3\vphantom{b}%
+\end{smallmatrix}\right)} % pair of letters
 \knowledgenewrobustcmd{\convolAlpha}{\mathbin{\cmdkl{\otimes}}}
 \knowledgenewrobustcmd{\SigmaPair}[1][2]{\cmdkl{\Sigma^{#1}_{\raisebox{.25em}{\smallpad}}}\mkern-5mu}
 \knowledgenewrobustcmd{\convolRel}[1]{#1^{\cmdkl{\otimes}}} % convolution of a relation
