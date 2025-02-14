@@ -10,7 +10,7 @@ as a function of the size of the binary encoding of its input.
 However, here, the notion of "first-order reductions" deals with
 decision problems defined on "relational structures":
 \begin{itemize}
-	\item any ``classical'' decision problem, "ie" language $L \subseteq \{0,1\}^*$
+	\item any ``classical'' decision problem, "ie" language $L \subseteq \2^*$
 		can be seen as a class of "structure" over the "signature of binary strings";
 	\item for any "relational signature" $\sigma$,
 		there is an encoding of "finite $\sigma$-structures" as "finite structures"
@@ -103,10 +103,18 @@ the "predicates" are "interpreted@@predicate" as above.
 
 \begin{proposition}
 	\AP\label{prop:automatic-first-order}
-	A relation over $\Sigma^*$ is "automatic@@rel" "iff" it is definable by a "first-order formula" over $\signatureSynchronous{\Sigma}$.
+	If $\Sigma$ has at least two letters, then a relation over $\Sigma^*$
+	is "automatic@@rel" "iff" it is "first-order definable" in
+	$\univStructSynchronous{\Sigma}$.\footnote{When $\Sigma$ has a single letter,
+	then the right-to-left implication holds, but not the converse one.
+	For instance, it can be shown that $(aa)^*$ is not "first-order definable"
+	in $\univStructSynchronous{\{a\}}$.}
 \end{proposition}
 
+todo:proof
+
 \begin{example}
+	\AP\label{ex:lexicographic-is-automatic}
 	Given an ordered alphabet $\Sigma = \{a_1,\hdots,a_n\}$ with $a_1 < \hdots < a_n$,
 	the \AP""lexicographic order"" $\intro*\lex$ defined by $u \lex v$ when there exists 
 	a prefix $w$ both of $u$ and of $v$, "st" either $w$ has the same length as $u$,

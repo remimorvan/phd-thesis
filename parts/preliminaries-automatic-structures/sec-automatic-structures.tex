@@ -18,13 +18,16 @@ $\domainPres{\+A}/{\relPres{=}{\+A}}$ as its domain, and the predicate $\+R_{(k)
 is "interpreted@@pred" in such a way that a tuple $\tup{X_1,\hdots,X_k}$ of equivalence classes
 belongs to $\+R(\?A)$ if, and only if, there exists $\tup{u_i}_{1 \leq i \leq k} \in\tup{X_i}_{1 \leq i \leq k}$ "st" $\tup{u_1,\hdots,u_k} \in \relPres{\+R}{\+A}$.
 We say that a "$\sigma$-structure" is ""automatic@@struct"" if it is
-"represented@@struct" by ""an automatic presentation"". 
+"represented@@struct" by ""an automatic presentation"".%
+\footnote{Note that we can always assume "wlog" that $\relPres{\+R}{\+A} \subseteq
+(\domainPres{\+A})^k$ since $(\domainPres{\+A})^k$ is "automatic@@rel" by
+\Cref{prop:rec-implies-aut} and "automatic relations" are closed under intersection.}
 
 For instance, the infinite binary tree admits can be represented by the "automatic presentation"
-$\+B$ with $\domainPres{\+B} = \{0,1\}^*$,
+$\+B$ with $\domainPres{\+B} = \2^*$,
 \[
 	\relPres{\+E}{\+B} =
-	\{\tup{u,u0} \mid u \in \{0,1\}^*\} \cup \{\tup{u,u1} \mid u \in \{0,1\}^*\},
+	\{\tup{u,u0} \mid u \in \2^*\} \cup \{\tup{u,u1} \mid u \in \2^*\},
 \]
 and $\relPres{=}{\+B}$ is equality.
 todo: figure.
@@ -35,7 +38,7 @@ are called ""injective presentations"".
 	The structure $\tup{\N, +}$ is "automatic".%
 	\footnote{We see $+$ as a ternary relation, given by $\{\tup{x,y,x+y} \mid x, y \in \N^2\}$.}
 	We build an "automatic presentation" $\+N$ by using
-	a binary encoding $\domainPres{\+N} = \{0,1\}^*$. A word $w \in \{0,1\}^*$ will
+	a binary encoding $\domainPres{\+N} = \2^*$. A word $w \in \2^*$ will
 	represent the number $\sum_{i=1}^{|w|} w_i\cdot 2^{i-1}$. 
 	Naturally, it follows that $\relPres{=}{\+N}$ puts two words $u$ and $v$ in relation
 	if they are equal after removing the trailing zeroes.
@@ -74,14 +77,101 @@ are called ""injective presentations"".
 		\textcolor{c1}{x} + \textcolor{c1}{y} + \textcolor{c0}{p}
 		= \textcolor{c3}{z} + 2\textcolor{c2}{q}
 	\]
-	for all $p,q \in \{0,1\}$ and
-	$\tup{x,y,z} \in \{0,1\} \convolAlpha \{0,1\} \convolAlpha \{0,1\}$.%
+	for all $p,q \in \2$ and
+	$\tup{x,y,z} \in \2 \convolAlpha \2 \convolAlpha \2$.%
 	\footnote{Of course, we identify $\pad$ with $0$.}
 	This gives the automaton of figure \Cref{fig:automaton-presburger}.
 	By construction, $\+N$ "represents@@struct" $\tup{\N, +}$.
 \end{example}
 
-Recall that, using \Cref{prop:automatic-first-order}, 
+Recall that, using \Cref{prop:automatic-first-order}, a "relation" is "automatic@@rel" 
+if and only if they are "first-order definable" over $\signatureSynchronous{\Sigma}$.
+It means that we can alternatively see "automatic presentations" as a
+collection of first-order formulas---one for the domain, one for equality, and
+one for each predicate. In turns, this view helps us prove the following result.
+For instance, $\langle \univStructSynchronous{\Sigma}, \langle\lastLetter{a}\rangle_{a \in \Sigma},\, \equalLength,\, \prefix \rangle$ is an "automatic structure".
+
+
+\begin{proposition}
+	\label{prop:making-presentations-injective}
+	Any "automatic structures" admits an "injective presentation".
+\end{proposition}
+
+\begin{proof}
+	We prove this property using logic. Let $\+A$ be an arbitrary "automatic presentation"
+	that "represents@@struct" $\?A$. The idea to build an "injective automatic presentation" $\+A'$
+	of $\?A$ is to represent an equivalence class $\equivclass[\relPres{=}{\+A}]{u} \subseteq
+	\domainPres{\+A}$ by its "lexicographic"-minimal element.%
+	\footnote{This makes sense as the "lexicographic order" is a well-founded total order.}
+
+	Concretely, $\+A'$ has the same alphabet as $\+A$.
+	Then, we define $\domainPres{\+A'}$ as the set of lexicographic-minimal elements of
+	$\equivclass[\relPres{=}{\+A}]{u}$ ($u \in \domainPres{\+A}$),
+	which can be described by the "first-order formula"%
+	\footnote{For the sake of readability, we identify first-order formulas with the relations they define.}
+	\[
+		\domainPres{\+A'}(x) \defeq
+		\forall y.\; (\domainPres{\+A}(y) \land x \mathrel{\relPres{=}{\+A}} y) \Rightarrow 
+		x \lex y.
+	\]
+	In is indeed a "first-order formula" since $\+A$ is assumed to be "automatic@@pres",
+	and since $\lex$ is "automatic@@rel" by \Cref{ex:lexicographic-is-automatic}.
+	Equality is interpreted as proper equality,
+	and then
+	\[
+		\relPres{\+A'}{\+R}(x_1,\hdots, x_k) \defeq
+		\exists y_1.\,\hdots \exists y_k.\,
+		\Big( \bigwedge_{i=1}^k x_i \mathrel{\relPres{=}{\+A}} y_i \Big)
+		\land \relPres{\+A}{\+R}(y_1,\hdots, y_k),
+	\]
+	for any predicate $\+R_{(k)} \in \sigma$.
+	Overall, $\+A'$ is an "injective presentation" that "represents@@struct" 
+	exactly the same "structure" as $\+A$.
+\end{proof}
+
+\begin{proposition}
+	\label{prop:making-presentations-binary}
+	Any "automatic structures" admits a "presentation" with an alphabet of size 2.
+\end{proposition}
+
+\begin{proof}
+	The idea is to encode each letter of $\Sigma = \{a_1,\hdots,a_n\}$
+	over $\2$ in such a way that each letter $a_i$
+	is encoded over a word $\hat a_i \in \2^*$ "st"
+	all $\hat a_i$ have the same length---this is necessary to preserve "automaticity".
+	For instance, take $\hat a_i$ to be the binary encoding of $i$
+	over $k$ bits, for some fixed value of $k \gtrsim \log_2(n)$.
+	Then, by \Cref{prop:automatic-closure-length-multiplying-morphism},
+	the relations we obtain are still "automatic@@rel".
+\end{proof}
+
+Putting bla and bla together, we get the following result, that says that bla.
+todo: introduce notation for this structure.
+\begin{proposition}
+	\label{prop:universal-automatic-structure}
+	Let $\?A$ be a $\sigma$-structure. The following are equivalent:
+	\begin{enumerate}
+		\item $\?A$ is "automatic@@struct",
+		\item $\?A$ is an injective one-dimensional "first-order interpretation" of
+			$\univStructSynchronous{2}$,
+		\item $\?A$ is a "first-order interpretation" of 
+			$\univStructSynchronous{2}$.
+	\end{enumerate}
+\end{proposition}
+
+todo:proof
+
+Observe that $\univStructSynchronous{2}$ is the structure $\2^*$ equipped
+with $\lastLetter{0}$, $\lastLetter{1}$, $\equalLength$ and $\prefix$: it can be
+seen as the infinite binary tree, with unary relation saying if a node is a
+left or right child, and two binary relations saying if two nodes are
+at the same depth, and if one is an ancestor of the other.
+In the statement of \label{prop:universal-automatic-structure} the
+$\univStructSynchronous{2}$ can be replaced by any "automatic structure" $\?U$
+"st" there is an injective one-dimensional "first-order interpretation" of
+$\univStructSynchronous{2}$ in $\?U$. Such a structure is ``universal'', in the
+sense that it is not only automatic, but it ``contains'' all "automatic structures".
+Other examples include TODO.
 
 \begin{itemize}
 	\itemAP ""automatic graph""

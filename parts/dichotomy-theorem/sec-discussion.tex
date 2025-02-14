@@ -19,7 +19,7 @@ We briefly explain here why the techniques developed in this chapter,
 can not immediately solve this problem. 
 
 We define \AP$\intro*\omegaClique$ to be the "disjoint union" $\bigoplus_{k\in\N} \clique{2^k}$ of all finite "cliques". Note that it is "homomorphically equivalent" to $\bigoplus_{k\in\N} \clique{k}$.
-Moreover, it admits a simple "automatic presentation" \AP$\intro*\omegaCliquePres$: take the binary alphabet $\Sigma \defeq \{0,1\}$ and let%
+Moreover, it admits a simple "automatic presentation" \AP$\intro*\omegaCliquePres$: take the binary alphabet $\Sigma \defeq \2$ and let%
 \footnote{In this presentation, words of length $k$ are used to encode $\clique{2^k}$.}
 \begin{align*}
 	\domainPres{\omegaCliquePres} & \defeq \Sigma^*, \\ 
@@ -171,7 +171,7 @@ easier.
 \begin{definition}
 	Given an undirected graph $\?G = \langle V, \+E \rangle$, its \AP""Mycielskian"",
 	denoted by \AP$\intro*\Myc(\?G)$, is the undirected graph whose set of vertices is
-	$V\times\{0,1\} \dcup \{\bullet\}$, with the following edges:
+	$V\times\2 \dcup \{\bullet\}$, with the following edges:
 	\begin{itemize}
 		\item $\{\langle u, 0 \rangle,\, \langle v, 0 \rangle\}$
 			for every edge $\{ u,v \} \in \+E$,
@@ -235,7 +235,7 @@ $\?G$ into $\Myc(\?G)$.
 \begin{proof}
   \proofcase{Upper bound.}
   Let $f\colon \?G \to \lBrack 1,k \rBrack$ be a "colouring" of $\?G$ for some $k\in \N$.
-  Then mapping $\langle u, i \rangle$ to $f(u)$ for $u \in V$ and $i \in \{0,1\}$
+  Then mapping $\langle u, i \rangle$ to $f(u)$ for $u \in V$ and $i \in \2$
   and mapping $\bullet$ to colour $k+1$ defines a "$(k+1)$-colouring" of $\Myc(\?G)$.
 
   \proofcase{Lower bound.}
@@ -301,7 +301,7 @@ We can now prove our result.
       and letting $i$ be the index of the last occurrence of $\bullet$ in $u$,
       we have $v_i = 1$, and
     \item for all $j \in \lBrack i+1,n\rBrack$, $u_j = 0$
-    and $v_j \in \{0,1\}$.
+    and $v_j \in \2$.
   \end{itemize}
   Call the property above $\+P$.
   To prove it, observe first that $\+E$ contains no edge
@@ -317,7 +317,7 @@ We can now prove our result.
     1, and thus $\langle u,v \rangle \in \{\langle \bullet^{n+1}, v'1\rangle \mid v'\in V_n\}
     \subseteq \+E_{n+1}$, or 
     \item the last letter of $u$ is $0$, and the last letter of $v$ is $0$ or $1$;
-      letting $u = u'0$ and $v = v'a$ with $a \in \{0,1\}$, we have
+      letting $u = u'0$ and $v = v'a$ with $a \in \2$, we have
       that $\langle u', v'\rangle$ satisfy $\+P$, so by induction hypothesis,
       $\langle u', v'\rangle \in \+E_n$ and hence
       \[\langle u,v \rangle \in \{\langle u'0,v'0\rangle \mid \langle u',v'\rangle \in \+E_n\}

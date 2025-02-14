@@ -413,6 +413,7 @@ and the equality relation are "automatic". As stated before, this class extends
 the class of "recognizable relations".
 
 \begin{proposition}
+	\label{prop:rec-implies-aut}
 	Every "recognizable relation" is "automatic@@rel".
 \end{proposition}
 
@@ -667,11 +668,24 @@ are undecidable, including intersection non-emptiness, inclusion, equivalence, u
 \footnote{Note that all these results essentially follow
 from an encoding of Post Correspondence Problem into rational relations.}
 
-\paragraph*{Boolean Operators.}
+\paragraph*{Closure properties.}
 More or less by construction, the class is closed under union.
 However, it is not closed under intersection
 (see "eg" \cite[\S~III, Example~2.5]{Berstel1979Transductions}),
-and hence, it is also not closed complementation.\footnote{Indeed, closure under union and complementation implies closure under intersection, using De Morgan's law.}
+and hence, it is also not closed complementation.\footnote{Indeed, closure under uni
+on and complementation implies closure under intersection, using De Morgan's law.}
+
+Say that a "monoid morphism" $f\colon \Gamma^* \to \Sigma^*$ is \AP""length-multiplying""
+when $|f(a)| = |f(b)|$ for all $a, b \in \Gamma$.
+\begin{proposition}
+	\AP\label{prop:automatic-closure-length-multiplying-morphism}
+	"Automatic relations" are closed under direct images and preimages of "length-multiplying morphisms".
+\end{proposition}
+\begin{proof}
+	todo
+\end{proof}
+
+todo:co-example for general morphisms.
 
 \subsection{Deterministic Rational Relations}
 
