@@ -93,7 +93,7 @@ For instance, $\langle \univStructSynchronous{\Sigma}, \langle\lastLetter{a}\ran
 
 
 \begin{proposition}
-	\label{prop:making-presentations-injective}
+	\AP\label{prop:making-presentations-injective}
 	Any "automatic structures" admits an "injective presentation".
 \end{proposition}
 
@@ -119,10 +119,10 @@ For instance, $\langle \univStructSynchronous{\Sigma}, \langle\lastLetter{a}\ran
 	Equality is interpreted as proper equality,
 	and then
 	\[
-		\relPres{\+A'}{\+R}(x_1,\hdots, x_k) \defeq
+		\relPres{\+R}{\+A'}(x_1,\hdots, x_k) \defeq
 		\exists y_1.\,\hdots \exists y_k.\,
 		\Big( \bigwedge_{i=1}^k x_i \mathrel{\relPres{=}{\+A}} y_i \Big)
-		\land \relPres{\+A}{\+R}(y_1,\hdots, y_k),
+		\land \relPres{\+R}{\+A}(y_1,\hdots, y_k),
 	\]
 	for any predicate $\+R_{(k)} \in \sigma$.
 	Overall, $\+A'$ is an "injective presentation" that "represents@@struct" 
@@ -130,7 +130,7 @@ For instance, $\langle \univStructSynchronous{\Sigma}, \langle\lastLetter{a}\ran
 \end{proof}
 
 \begin{proposition}
-	\label{prop:making-presentations-binary}
+	\AP\label{prop:making-presentations-binary}
 	Any "automatic structures" admits a "presentation" with an alphabet of size 2.
 \end{proposition}
 
@@ -145,33 +145,65 @@ For instance, $\langle \univStructSynchronous{\Sigma}, \langle\lastLetter{a}\ran
 	the relations we obtain are still "automatic@@rel".
 \end{proof}
 
-Putting bla and bla together, we get the following result, that says that bla.
-todo: introduce notation for this structure.
+Putting \Cref{prop:making-presentations-injective,prop:making-presentations-binary}
+together, we get the following result, that says that $\univStructSynchronous{2}$ is ``universal'',
+in the sense that it is not only automatic, but it ``contains'' all "automatic structures".
 \begin{proposition}
-	\label{prop:universal-automatic-structure}
+	\AP\label{prop:universal-automatic-structure}
 	Let $\?A$ be a $\sigma$-structure. The following are equivalent:
 	\begin{enumerate}
-		\item $\?A$ is "automatic@@struct",
-		\item $\?A$ is an injective one-dimensional "first-order interpretation" of
+		\itemAP\label{item:universal-automatic-structure-auto}
+			$\?A$ is "automatic@@struct",
+		\itemAP\label{item:universal-automatic-structure-injective-FO}
+			$\?A$ is an injective one-dimensional "first-order interpretation" of
 			$\univStructSynchronous{2}$,
-		\item $\?A$ is a "first-order interpretation" of 
-			$\univStructSynchronous{2}$.
+		\itemAP\label{item:universal-automatic-structure-FO}
+			$\?A$ is a "first-order interpretation" of $\univStructSynchronous{2}$.
 	\end{enumerate}
 \end{proposition}
 
-todo:proof
-
-Observe that $\univStructSynchronous{2}$ is the structure $\2^*$ equipped
+Recall that $\univStructSynchronous{2}$ is the structure $\2^*$ equipped
 with $\lastLetter{0}$, $\lastLetter{1}$, $\equalLength$ and $\prefix$: it can be
 seen as the infinite binary tree, with unary relation saying if a node is a
 left or right child, and two binary relations saying if two nodes are
 at the same depth, and if one is an ancestor of the other.
+
+\begin{proof}
+	% \eqref{item:universal-automatic-structure-FO} $\Rightarrow$
+	% \eqref{item:universal-automatic-structure-injective-FO} and
+	% \eqref{item:universal-automatic-structure-injective-FO} $\Rightarrow$
+	% \eqref{item:universal-automatic-structure-auto} are trivial.
+	\eqref{item:universal-automatic-structure-auto} $\Rightarrow$
+	\eqref{item:universal-automatic-structure-injective-FO} follows from
+	\Cref{prop:making-presentations-injective,prop:making-presentations-binary}.
+	\eqref{item:universal-automatic-structure-injective-FO} $\Rightarrow$
+	\eqref{item:universal-automatic-structure-FO} is trivial.
+	\eqref{item:universal-automatic-structure-FO} $\Rightarrow$
+	\eqref{item:universal-automatic-structure-auto} can be proven by,
+	given a "$k$-dimensional interpretation", defining an "automatic presentation"
+	over the alphabet
+	\[
+		\underbrace{\2 \convolAlpha \cdots \convolAlpha \2}_{
+			\text{$k$ times}
+		},
+	\]
+	and changing any "first-order formula"
+	\[
+		\phi\big((x_1^1, \hdots, x_1^k), \hdots, (x_n^1, \hdots, x_n^k)\big)
+		\quad\text{into}\quad
+		\phi^*(x_1^1 \convol \cdots \convol x_1^k, \hdots, x_n^1 \convol \cdots \convol x_n^k).
+	\]
+\end{proof}
+
 In the statement of \label{prop:universal-automatic-structure} the
 $\univStructSynchronous{2}$ can be replaced by any "automatic structure" $\?U$
 "st" there is an injective one-dimensional "first-order interpretation" of
-$\univStructSynchronous{2}$ in $\?U$. Such a structure is ``universal'', in the
-sense that it is not only automatic, but it ``contains'' all "automatic structures".
-Other examples include TODO.
+$\univStructSynchronous{2}$ in $\?U$. 
+Another example of ``universal'' structure consists of the finite subsets of $\N$ equipped
+with inclusion and the preorder $\preceq$ defined by $X \preceq Y$ "iff" $X$ and $Y$ are 
+singletons, say $\{x\}$ and $\{y\}$, respectively, and $x \leq y$,
+see \cite[Theorem~XII.2.3]{Blumensath2024MSOModelTheory}.
+
 
 \begin{itemize}
 	\itemAP ""automatic graph""
