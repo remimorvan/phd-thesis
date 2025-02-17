@@ -39,7 +39,7 @@ are called ""injective presentations"".
 	\footnote{We see $+$ as a ternary relation, given by $\{\tup{x,y,x+y} \mid x, y \in \N^2\}$.}
 	We build an "automatic presentation" $\+N$ by using
 	a binary encoding $\domainPres{\+N} = \2^*$. A word $w \in \2^*$ will
-	represent the number $\sum_{i=1}^{|w|} w_i\cdot 2^{i-1}$. 
+	represent the number $\sum_{i=0}^{|w|-1} w_i\cdot 2^{i-1}$. 
 	Naturally, it follows that $\relPres{=}{\+N}$ puts two words $u$ and $v$ in relation
 	if they are equal after removing the trailing zeroes.
 	We then need to describe $\relPres{+}{\+N}$: the idea is to simulate addition, reading words
@@ -180,7 +180,7 @@ at the same depth, and if one is an ancestor of the other.
 	\eqref{item:universal-automatic-structure-FO} is trivial.
 	\eqref{item:universal-automatic-structure-FO} $\Rightarrow$
 	\eqref{item:universal-automatic-structure-auto} can be proven by,
-	given a "$k$-dimensional interpretation", defining an "automatic presentation"
+	given a "$d$-dimensional interpretation", defining an "automatic presentation"
 	over the alphabet
 	\[
 		\underbrace{\2 \convolAlpha \cdots \convolAlpha \2}_{
@@ -189,9 +189,9 @@ at the same depth, and if one is an ancestor of the other.
 	\]
 	and changing any "first-order formula"
 	\[
-		\phi\big((x_1^1, \hdots, x_1^k), \hdots, (x_n^1, \hdots, x_n^k)\big)
+		\phi\big((x_1^1, \hdots, x_1^d), \hdots, (x_n^1, \hdots, x_n^d)\big)
 		\quad\text{into}\quad
-		\phi^*(x_1^1 \convol \cdots \convol x_1^k, \hdots, x_n^1 \convol \cdots \convol x_n^k).\qedhere
+		\phi^*(x_1^1 \convol \cdots \convol x_1^d, \hdots, x_n^1 \convol \cdots \convol x_n^d).\qedhere
 	\]
 \end{proof}
 

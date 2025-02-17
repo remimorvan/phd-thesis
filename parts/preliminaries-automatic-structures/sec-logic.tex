@@ -1,6 +1,42 @@
 \section{A Logical Excursion}
 \label{sec:preliminaries-automatic-structures-logic}
 
+\subsection{First-Order Interpretation}
+
+A major construction in logic to restrict the scope of the class
+of models---thereafter called ``universe''.
+Formally, given a universe $\+U$ and a class of "queries@@sem" $\+Q$,%
+\footnote{Recall that we see "queries@@sem" here in a purely semantical way: it is nothing but a subclass of $\+U$.}
+given a subclass $\+V$ of $\+U$, we can consider the restriction
+\[
+	\restr{\+Q}{\+V} \defeq \{\phi \cap \+V \mid \phi \in \+Q\}.
+\]
+For instance, letting $\+U$ be the class of all "$\sigma$-structures" and $\+Q$ be the set of all 
+"first-order sentences" over $\sigma$, by taking $\+V$ to be the set of all \emph{finite}
+"$\sigma$-structures", then $\restr{\+Q}{\+V}$ precisely corresponds to
+the "first-order sentences" over "finite structures". For instance, the class of all
+\emph{finite} "$\sigma$-structures" belongs to $\restr{\+Q}{\+V}$ but not to
+$\+Q$ (todo:addref).
+
+However, this construction does not preserve any reasonable property on $\+Q$,
+since $\+U'$ is an arbitrary subclass of $\+U$. The idea behind "first-order interpretation"
+is precisely to circumvent this problem, by \emph{interpreting} a class of structures
+inside another one by using "first-order logic", allowing this way to preserve some properties.
+
+Let $\sigma$ and $\tau$ be "relational signatures".
+A \AP ""$d$-dimensional first-order interpretation"" consists of the following tuple of
+"first-order formulas" over $\sigma$:
+\begin{itemize}
+	\item $\delta(x^1,\hdots, x^d)$ (specifying the domain)
+	\item $\varepsilon(x^1,\hdots, x^d, y^1,\hdots, y^d)$ (specifying equality)
+	\item $\psi_{\_R}((x^1_1,\hdots,x^d_1), \hdots, (x^1_k,\hdots,x^d_k))$
+		for any predicate $\+R \in \tau$ of arity $k$.
+\end{itemize}
+todo:use same notation as for automatic 
+
+Example: cycles in path.
+Q into the infinite binary tree and conversely.
+
 \subsection{First-Order Reduction and First-Order Model Checking}
 
 For the classical notion of \AP""first-order reductions"", see
