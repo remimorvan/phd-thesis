@@ -240,11 +240,11 @@ and also to the whole logarithmic-time hierarchy
 \cite[Corollary~5.32]{Immerman1998DescriptiveComplexity}.
 
 
-\subsection{A Model-Theoretic Perspective}
+\subsection{A Model-Theoretic Perspective on Automatic Relations}
 
 Given an alphabet $\Sigma$, we define on $\Sigma^*$:
 \begin{itemize}
-	\itemAP a predicate $\intro*\lastLetter{a}$ indicating that the last letter of a word is $a$,
+	\itemAP a unary relation $\intro*\lastLetter{a}$ indicating that the last letter of a word is $a$,
 	\itemAP a binary relation $\reintro*\equalLength$ indicating that two words have the same length,
 	\itemAP a binary relation $\intro*\prefix$ indicating that a word is a prefix of another.
 \end{itemize} 
@@ -254,17 +254,63 @@ the "predicates" and their "interpretations@@predicate" in the "signature".} and
 by \AP$\intro*\univStructSynchronous{\Sigma}$ the "$\signatureSynchronous{\Sigma}$-structure" over $\Sigma^*$ where
 the "predicates" are "interpreted@@predicate" as above.
 
-\begin{proposition}
+\begin{proposition}[{\cite[Theorems~1 \& 2]{EilenbergElgotShepherdson1969TapeAutomata}}]
 	\AP\label{prop:automatic-first-order}
 	If $\Sigma$ has at least two letters, then a relation over $\Sigma^*$
 	is "automatic@@rel" "iff" it is "first-order definable" in
 	$\univStructSynchronous{\Sigma}$.\footnote{When $\Sigma$ has a single letter,
 	then the right-to-left implication holds, but not the converse one.
 	For instance, it can be shown that $(aa)^*$ is not "first-order definable"
-	in $\univStructSynchronous{\{a\}}$.}
+	in $\univStructSynchronous{\{a\}}$ \cite[\S~9]{EilenbergElgotShepherdson1969TapeAutomata}.}
 \end{proposition}
 
-todo:proof
+\begin{proof}
+	\proofcase{From logic to automata.}
+	This implication is easy: it suffices to observe first that each
+	relation $\lastLetter{a}$, $\equalLength$ and $\prefix$ is "automatic@@rel",
+	and then to use the fact that "automatic relations" are closed under
+	Boolean operations and quantification. This last point can be proven
+	using a powerset construction on the automaton.
+
+	\proofcase{From automata to logic.}
+	The converse implication is less straightforward. It was originally proven by
+	Eilenberg, Elgot and Shepherdson starting from a rational expression, making
+	the proof somewhat tedious.
+	In \cite[\S~``1969'']{Choffrut2006Survey}, Choffrut notes that
+	``mimicking the automaton yields a much
+	more intuitive proof and can be reconstructed by a good PhD student''.
+	We make here the choice of starting from monadic second-order logic:
+	while similar to Choffrut's, it has the added benefit of highlighting 
+	the connection between ``external first-order logic'' and ``internal monadic second-order logic'', see todo:addref-remark.
+	
+	We start with an example: we want to build a "first-order formula" $\phi$ over $\signatureSynchronous{\2}$ for the language $(00)^*$, in the sense
+	that for all $u\in \2^*$,
+	\[
+		\tup{\univStructSynchronous{\2}, u} \models \phi(x) \quad\text{iff}\quad u \in (00)^*.
+	\]
+	For this, it suffices to guess a word $v$ of the same length as $u$, which alternates
+	zeroes and ones, and then to check that the first letter $v$ is distinct from
+	its last letter.
+	todo:figure
+
+	Given a "monadic second-order formula" $\Phi$
+	with a unary predicate for each $\bar a \in \Sigma \convolAlpha \cdots \convolAlpha \Sigma$,
+	and a binary predicate $<$, we build a "first-order formula" $\Phi^*$
+	over $\signatureSynchronous{\Sigma}$ "st" for each $\+R \subseteq (\Sigma^*)^k$
+	\[
+		\set{
+			\tup{u_1,\hdots,u_k} \in (\Sigma^*)^k \mid 
+			\tup{\univStructSynchronous{\Sigma}, u_1, \hdots, u_k} \models \Phi(x_1,\hdots,x_k)
+		}
+		=
+		\set{
+			\tup{u_1,\hdots,u_k} \in (\Sigma^*)^k \mid 
+			u_1 \convol \cdots \convol u_k \models \Phi
+		}.
+	\]
+	todo:finish
+	todo:deal with variables
+\end{proof}
 
 \begin{example}
 	\AP\label{ex:lexicographic-is-automatic}
