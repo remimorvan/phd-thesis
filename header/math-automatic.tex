@@ -20,8 +20,11 @@
 \newrobustcmd{\nothomregto}{\mathrel{\kl[\homregto]{\centernot{\smashxrightarrow{reg hom}}}}}
 
 % ---
-% automatic presentations
+% Interpretations & Automatic presentations
 % ---
+\knowledgenewrobustcmd{\interpretation}[2]{\cmdkl{#1(#2)}}
+\knowledgenewrobustcmd{\domainInter}[1]{\cmdkl{\mathrm{dom}_{#1}}}
+\knowledgenewrobustcmd{\relInter}[2]{\cmdkl{#1_{\! #2}}}
 \knowledgenewrobustcmd{\domainPres}[1]{\cmdkl{\mathrm{dom}_{#1}}}
 \knowledgenewrobustcmd{\relPres}[2]{\cmdkl{#1_{\! #2}}}
 \newrobustcmd{\smallpad}{%

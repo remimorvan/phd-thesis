@@ -24,18 +24,158 @@ is precisely to circumvent this problem, by \emph{interpreting} a class of struc
 inside another one by using "first-order logic", allowing this way to preserve some properties.
 
 Let $\sigma$ and $\tau$ be "relational signatures".
-A \AP ""$d$-dimensional first-order interpretation"" consists of the following tuple of
+A \AP ""$d$-dimensional first-order interpretation"" $\+I$ consists of the following tuple of
 "first-order formulas" over $\sigma$:
 \begin{itemize}
-	\item $\delta(x^1,\hdots, x^d)$ (specifying the domain)
-	\item $\varepsilon(x^1,\hdots, x^d, y^1,\hdots, y^d)$ (specifying equality)
-	\item $\psi_{\_R}((x^1_1,\hdots,x^d_1), \hdots, (x^1_k,\hdots,x^d_k))$
-		for any predicate $\+R \in \tau$ of arity $k$.
+	\itemAP $\intro*\domainInter{\+I}(x^1,\hdots, x^d)$ (specifying the domain)
+	\itemAP $\intro*\relInter{=}{\+I}(\tup{x^1,\hdots, x^d}, \tup{y^1,\hdots, y^d})$ (specifying equality)
+	\itemAP $\reintro*\relInter{\+R}{\+I}(\tup{x^1_1,\hdots,x^d_1}, \hdots, \tup{x^1_k,\hdots,x^d_k})$
+		for any predicate $\+R \in \tau$ of arity $k$,
 \end{itemize}
-todo:use same notation as for automatic 
+such that $\relInter{=}{\+I}$ defines an equivalence relation on the domain of $\+I$.
 
-Example: cycles in path.
-Q into the infinite binary tree and conversely.
+Given a "$\sigma$-structure" $\?A$, the \AP""$\+I$-interpretation of $\?A$"" is the "$\tau$-structure" denoted by \AP$\intro*\interpretation{\+I}{\?A}$ defined as follows:%
+\footnote{For the same of readability, we use $\bar a$ or $\bar x$ to
+denote $d$-tuples of elements of $\?A$ and $d$-tuples of variables.}
+\begin{itemize}
+	\item its domain is the quotient of 
+		$\{\bar a \in \?A^d \mid \?A, \bar a \models \domainInter{\+I}(\bar x)\}$
+		by the equivalence relation
+		$\set{\tup{\bar a, \bar b} \mid \?A, \bar a, \bar b \models \relInter{=}{\+I}(\bar x, \bar y)}$,
+	\item for any predicate $\+R_{(k)} \in \tau$,
+		we have
+		\[
+			\+R_{(k)}(\interpretation{\+I}{\?A}) =
+			\Big\{\tup{\bar x_1, \hdots, \bar x_k} \mid
+				\exists \bar y_1.\, \hdots.\, \bar y_k.\,
+				\bigwedge_{i=1}^k \relInter{=}{\+I}(\bar x_i, \bar y_i)
+				\land \relInter{\+R}{\+I}(\bar y_1, \hdots, \bar y_k)
+			\Big\}.
+		\]
+\end{itemize}
+For instance, letting $\sigma$ and $\tau$ be the "graph signature", consider
+the "one-dimensional interpretation" $\+I$ where:
+\begin{itemize}
+	\item the domain formula keeps all vertices,
+	\item the equality formula is proper equality,
+	\item the formula for the edge predicate puts two variables $x$ and $y$ in relation
+		if either there is an edge from $x$ to $y$, or if $x$ has no successor and $y$ has no predecessor.
+\end{itemize}
+Then, the $\+I$-interpretation of a directed path is a cycle,
+see \Cref{fig:interpretation-path-into-cycle}.
+\begin{marginfigure}
+	\centering
+	\begin{tikzpicture}
+		\node[vertex, draw=c2, fill=c2, fill opacity=.4] at (0,0) (2) {};
+		\node[vertex, left=of 2, draw=c1, fill=c1, fill opacity=.4] (1) {};
+		\node[vertex, left=of 1, draw=c0, fill=c0, fill opacity=.4] (0) {};
+
+		\draw[edge] (0) to (1);
+		\draw[edge] (1) to (2);
+	\end{tikzpicture}
+	\qquad
+	\begin{tikzpicture}
+		\node[vertex, draw=c2, fill=c2, fill opacity=.4] at (0,0) (2) {};
+		\node[vertex, left=of 2, draw=c1, fill=c1, fill opacity=.4] (1) {};
+		\node[vertex, left=of 1, draw=c0, fill=c0, fill opacity=.4] (0) {};
+
+		\draw[edge] (0) to (1);
+		\draw[edge] (1) to (2);
+		\draw[edge, bend right=60] (2) to (0);
+	\end{tikzpicture}
+	\caption{
+		\AP\label{fig:interpretation-path-into-cycle}
+		A directed path (left) and its "interpretation" by $\+I$ (right),
+		that adds an edge from any vertex with no successor to any vertex with no predecessor.
+	}
+\end{marginfigure}
+
+The idea behind "first-order interpretation" is that
+"first-order formulas" about the interpretation $\interpretation{\+I}{\?A}$
+can be translated into "first-order formulas" over $\?A$.
+Formally, given a "first-order formula" $\phi(x_1,\hdots,x_k)$ over $\tau$,
+we can define a "first-order formula" $\phi^{\+I}(\bar x_1,\hdots,\bar x_k)$ over $\sigma$
+defined inductively by:
+\begin{itemize}
+	\item replacing each variable $x$ by a $d$-tuple $\bar x$,
+	\item replacing every occurrence of
+		$\+R(x_1,\hdots, x_k)$ (with $\+R_{(k)} \in \tau$)
+		by the formula $\relInter{\+R}{\+I}(\bar x_1, \hdots, \bar x_k)$,
+	\item relativizing quantification with respect to $\domainInter{\+I}$,
+		meaning that
+		\begin{align*}
+			(\exists x.\, \phi(x))^{\+I} 
+			& \defeq \exists \bar x.\, \domainInter{\+I}(\bar x) \land \phi^{\+I}(\bar x),
+			\text{ and} \\ 
+			(\forall x.\, \phi(x))^{\+I} 
+			& \defeq \forall \bar x.\, \domainInter{\+I}(\bar x) \Rightarrow \phi^{\+I}(\bar x).
+		\end{align*}
+\end{itemize} 
+\begin{proposition}
+	\AP\label{prop:first-order-interpretation}
+	For any "first-order formula" $\phi(x_1,\hdots,x_k)$ over $\tau$,
+	for any "pointed $\sigma$-structure" $\tup{\?A, \bar a_1,\hdots, \bar a_k}$, we have:
+	\[
+		\tup{\interpretation{\+I}{\?A}, \equivclass{\bar a_1}, \hdots, \equivclass{\bar a_k}}
+		\models \phi(x_1, \hdots, x_k)
+		\quad\text{"iff"}\quad
+		\tup{\?A, \bar a_1,\hdots, \bar a_k} \models \phi^{\+I}(\bar x_1,\hdots,\bar x_k).
+	\]
+\end{proposition}
+And so, in particular, if $\+C$ is a class of structures, then
+model checking (resp. satisfiability, resp. validity) over the class $\interpretation{\+I}{\+C}$
+can be reduced to satisfiability (resp. satisfiability, resp. validity) over $\+C$.
+
+\begin{marginfigure}
+	\centering
+	\begin{tikzpicture}
+		\tikzset{every node/.style={fill opacity=.4}}
+
+		\node[vertex] at (0,0) (0-0) {};
+		\foreach \j in {1,2} {
+			\pgfmathtruncatemacro{\prev}{\j - 1}
+			\pgfmathtruncatemacro{\jc}{mod(\j,2) ? 2 : 1}
+			\node[vertex, right=2em of 0-\prev] (0-\j) {};
+		}
+		\foreach \i in {1,2} {
+			\pgfmathtruncatemacro{\prev}{\i - 1}
+			\foreach \j in {0,1,2} {
+				\pgfmathtruncatemacro{\jc}{mod(\i+\j,2) ? 2 : 1}
+				\node[vertex, above=2em of \prev-\j] (\i-\j) {};
+			}
+		}
+
+		\foreach \i in {0,1,2} {
+			\foreach \j in {0,1} {
+				\draw[edge] (\i-\j) to (\i-\the\numexpr\j+1\relax);
+			}
+		}
+		\foreach \i in {0,1} {
+			\foreach \j in {0,1,2} {
+				\draw[edge] (\i-\j) to (\the\numexpr\i+1\relax-\j);
+			}
+		}
+	\end{tikzpicture}
+	\caption{
+		\AP\label{fig:interpretation-path-into-grid}
+		"Interpretation" of the directed path of
+		\Cref{fig:interpretation-path-into-cycle} by the
+		``block product interpretation''.
+	}
+\end{marginfigure}
+\begin{example}
+	The ``block product'' is a typical example of a 2-dimensional interpretation.
+	Let $\sigma$ and $\tau$ be the "graph signature".
+	We define a "two-dimensional interpretation" $\+I$ with trivial domain and equality%
+	\footnote{Meaning formally that \[\domainInter{\+I}(x^1,x^2) \defeq \top,\text{ and}\]
+	and $\relInter{=}{\+I}(\tup{x^1,x^2}, \tup{y^1,y^2})$ is
+	the formula $x^1 = y^1 \land x^2 = y^2$.}
+	and we put an edge from $\tup{x^1,x^2}$ to $\tup{y^1,y^2}$ if either
+	there is an edge from $x^1$ to $y^1$ and $x^2 = y^2$, or if
+	$x^1 = y^1$ and there is an edge from $x^2$ to $y^2$.
+	Then the interpretation of a directed path is a directed grid,
+	see \Cref{fig:interpretation-path-into-grid}.
+\end{example}
 
 \subsection{First-Order Reduction and First-Order Model Checking}
 
