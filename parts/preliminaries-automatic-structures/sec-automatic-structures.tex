@@ -205,6 +205,53 @@ singletons, say $\{x\}$ and $\{y\}$, respectively, and $x \leq y$,
 see \cite[Theorem~XII.2.3]{Blumensath2024MSOModelTheory}.
 
 
+\subsection{todo:move this around.}
+
+What we said above work with the implicit assumptions that all structures at hand are 
+"finite@@struct". However, part of this can be generalized to "automatic structures"---however, this comes to the cost of losing the inclusion in "L".
+
+\begin{proposition}[Folklore]
+	\AP\label{prop:first-order-reduction-preserve-automaticity}
+	The image of an "automatic structure" by a "first-order reduction" is
+	still an "automatic structure".
+\end{proposition}
+\begin{proof}
+	TODO
+\end{proof}
+
+\decisionproblem{""First-Order Model Checking of Automatic Structures""}{
+	A "first-order formula" $\phi(x_1,\hdots,x_k)$ over $\sigma$,
+	an "automatic presentation" $\•A$ of an "automatic $\sigma$-structure" $\?A$,
+	and words $u_1,\hdots,u_k \in \domainPres{\+A}$.
+}{
+	Does $\?A, u_1,\hdots, u_k \FOmodels \phi$?
+}
+
+\begin{proposition}
+	\!\footnote{See "eg" \cite[Theorem XII.1.7]{Blumensath2024MSOModelTheory}.}
+	%
+	\label{prop:first-order-model-checking-automatic-structures}
+	"First-order model checking of automatic structures" is decidable in todo.
+	Its "data complexity" is "NL"-complete.
+\end{proposition}
+
+\begin{proof}
+	TODO.
+
+	For the "NL" lower bound, reduction from NFA non-emptiness.
+\end{proof}
+
+We define \AP""FOaut"" to be the class of all problems over "automatic structures"
+which are "first-order definable". By \Cref{prop:first-order-reduction-preserve-automaticity},
+this class is closed under "first-order reductions". Moreover,
+by \Cref{prop:first-order-model-checking-automatic-structures}, we obtain an upper bound.
+
+\begin{proposition}
+	"FOaut" $\subseteq$ "NL".
+\end{proposition}
+
+\subsection{Todo}
+
 \begin{itemize}
 	\itemAP ""automatic graph""
 	\item see https://www.logic.rwth-aachen.de/pub/graedel/lics2020.pdf

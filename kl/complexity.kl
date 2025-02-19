@@ -2,11 +2,11 @@
 % Basic classes
 % ---
 
-\knowledge{text={AC${}^0$}, wrap=\textsf}
- | AC0
-
 \knowledge{wrap=\textsf}
  | coNLogTime
+
+\knowledge{text={AC${}^0$}, wrap=\textsf}
+ | AC0
 
 \knowledge{text={FO${}^{\textsf{fin}}$}, wrap=\textsf}
  | FOfin

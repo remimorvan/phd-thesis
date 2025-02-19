@@ -53,7 +53,7 @@ denote $d$-tuples of elements of $\?A$ and $d$-tuples of variables.}
 			\Big\}.
 		\]
 \end{itemize}
-For instance, letting $\sigma$ and $\tau$ be the "graph signature", consider
+For instance, letting $\sigma =\tau$ be the "graph signature", consider
 the "one-dimensional interpretation" $\+I$ where:
 \begin{itemize}
 	\item the domain formula keeps all vertices,
@@ -124,7 +124,11 @@ defined inductively by:
 \end{proposition}
 And so, in particular, if $\+C$ is a class of structures, then
 model checking (resp. satisfiability, resp. validity) over the class $\interpretation{\+I}{\+C}$
-can be reduced to satisfiability (resp. satisfiability, resp. validity) over $\+C$.
+can be reduced to the same problem over $\+C$.
+
+Typical examples of "one-dimensional interpretations" include
+restricting a structure to a first-order definable subset, 
+or taking the complement---that is, switching hyperedges and non-hyperedges.
 
 \begin{marginfigure}
 	\centering
@@ -160,11 +164,11 @@ can be reduced to satisfiability (resp. satisfiability, resp. validity) over $\+
 		\AP\label{fig:interpretation-path-into-grid}
 		"Interpretation" of the directed path of
 		\Cref{fig:interpretation-path-into-cycle} by the
-		``block product interpretation''.
+		``box product interpretation''.
 	}
 \end{marginfigure}
 \begin{example}
-	The ``block product'' is a typical example of a 2-dimensional interpretation.
+	We consider a 2-dimensional interpretation that we call ``box product''.
 	Let $\sigma$ and $\tau$ be the "graph signature".
 	We define a "two-dimensional interpretation" $\+I$ with trivial domain and equality%
 	\footnote{Meaning formally that \[\domainInter{\+I}(x^1,x^2) \defeq \top,\text{ and}\]
@@ -177,25 +181,44 @@ can be reduced to satisfiability (resp. satisfiability, resp. validity) over $\+
 	see \Cref{fig:interpretation-path-into-grid}.
 \end{example}
 
+An "interpretation" is said to be \AP""injective@@interpretation"" if the equality formula
+is the proper tuple-equality.
+Note that each "interpretation" $\+I$ can be transformed into
+an "injective interpretation" $\+J$ "st" 
+for any \emph{totally ordered structure} $\?A$---meaning that there is a binary predicate
+in the "signature" that is "interpreted@@pred" as a total order in $\?A$,
+then $\interpretation{\+I}{\?A}$ and $\interpretation{\+J}{\?A}$ are "isomorphic":
+for this, it suffices to encode any equivalence class in $\?A$ by its minimal element---for more
+details, see \Cref{prop:making-presentations-injective}.
+
+
 \subsection{First-Order Reduction and First-Order Model Checking}
 
-For the classical notion of \AP""first-order reductions"", see
-\cite[Definition 2.11 \& Definition 1.26]{Immerman1998DescriptiveComplexity}.
-Note that the complexity of a decision problem is traditionally measured
-as a function of the size of the binary encoding of its input.
-However, here, the notion of "first-order reductions" deals with
-decision problems defined on "relational structures":
+As we have seen, "first-order interpretations" preserves logical properties of classes
+of "structures". In this part, we show that this notion actually preserves most complexity classes.
+
+We define a \AP""first-order reductions"" to be an "injective first-order interpretation".%
+\footnote{The terminology ``"FO-interpretations"'' is usually employed in automata theory and graph theory, while ``"FO-reduction"'' is used in complexity theory---see "eg" \cite[Definition 2.11 \& Definition 1.26]{Immerman1998DescriptiveComplexity}---however there is no good reason to
+distinguish these two notions.}
+Complexity classes are defined in terms of decision problems, namely 
+language $L \subseteq \2^*$, and not as classes of "structures". 
+However, it is known that:
 \begin{itemize}
-	\item any ``classical'' decision problem, "ie" language $L \subseteq \2^*$
+	\item any language $L \subseteq \2^*$
 		can be seen as a class of "structure" over the "signature of binary strings";
 	\item for any "relational signature" $\sigma$,
-		there is an encoding of "finite $\sigma$-structures" as "finite structures"
-		over the "signature of binary strings", "ie" as a ``classical''
-		decision problem---see "eg" \cite[\S~2.2]{Immerman1998DescriptiveComplexity}.
+		there is an encoding of "finite $\sigma$-structures" as a language
+		$L \subseteq \2^*$, "ie" as a class of "structure" over the "signature of binary strings"---see "eg" \cite[\S~2.2]{Immerman1998DescriptiveComplexity}.
 \end{itemize}
-Importantly, this last encoding is a "first-order reduction", proving that these reductions
-make sense not only from a logical perspective, but also from a complexity-theoretic point of
-view.
+Importantly, this encoding of $\sigma$-structures into structures over
+the "signature of binary strings", and its inverse are both "first-order reductions".
+It follows that there is a "first-order reduction" between two classes of "structures"
+"iff" there is a "first-order reduction" between their encodings as languages.
+Overall, it implies that "first-order reductions" are proper reductions in the complexity-theoretic 
+sense. We will see that first-order logic actually lives in the lowest levels of the hierarchy of 
+complexity classes.
+
+We denote by \AP""FOfin"" the class of all problems over "finite structures" that are "first-order definable".\footnote{We can either assume the "signature" to be fixed, or to be part of the input.}
 
 \begin{proposition}[Folklore]
 	\label{prop:FO-in-L}
@@ -209,58 +232,12 @@ view.
 	require a constant number of pointers.
 \end{proof}
 
-Note that usually, "L"-hardness is defined using "first-order reductions".
-
-
-\subsection{First-Order Interpretations}
-
-todo.
-
-
-\subsection{todo:move this around.}
-
-What we said above work with the implicit assumptions that all structures at hand are 
-"finite@@struct". However, part of this can be generalized to "automatic structures"---however, this comes to the cost of losing the inclusion in "L".
-
-\begin{proposition}[Folklore]
-	\AP\label{prop:first-order-reduction-preserve-automaticity}
-	The image of an "automatic structure" by a "first-order reduction" is
-	still an "automatic structure".
-\end{proposition}
-\begin{proof}
-	TODO
-\end{proof}
-
-\decisionproblem{""First-Order Model Checking of Automatic Structures""}{
-	A "first-order formula" $\phi(x_1,\hdots,x_k)$ over $\sigma$,
-	an "automatic presentation" $\•A$ of an "automatic $\sigma$-structure" $\?A$,
-	and words $u_1,\hdots,u_k \in \domainPres{\+A}$.
-}{
-	Does $\?A, u_1,\hdots, u_k \FOmodels \phi$?
-}
-
-\begin{proposition}
-	\!\footnote{See "eg" \cite[Theorem XII.1.7]{Blumensath2024MSOModelTheory}.}
-	%
-	\label{prop:first-order-model-checking-automatic-structures}
-	"First-order model checking of automatic structures" is decidable in todo.
-	Its "data complexity" is "NL"-complete.
-\end{proposition}
-
-\begin{proof}
-	TODO.
-
-	For the "NL" lower bound, reduction from NFA non-emptiness.
-\end{proof}
-
-We define \AP""FOaut"" to be the class of all problems over "automatic structures"
-which are "first-order definable". By \Cref{prop:first-order-reduction-preserve-automaticity},
-this class is closed under "first-order reductions". Moreover,
-by \Cref{prop:first-order-model-checking-automatic-structures}, we obtain an upper bound.
-
-\begin{proposition}
-	"FOaut" $\subseteq$ "NL".
-\end{proposition}
+Moreover, "L"-hardness is usually defined using "first-order reductions".
+When the "signatures" is sufficiently expressive, namely when it is able to
+express basic arithmetic \cite[Proviso~1.14]{Immerman1998DescriptiveComplexity},
+Immerman showed that "FOfin" corresponds to the circuit-class "AC0",
+and also to the whole logarithmic-time hierarchy
+\cite[Corollary~5.32]{Immerman1998DescriptiveComplexity}.
 
 
 \subsection{A Model-Theoretic Perspective}
