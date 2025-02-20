@@ -251,8 +251,11 @@ Given an alphabet $\Sigma$, we define on $\Sigma^*$:
 We denote by $\intro*\signatureSynchronous{\Sigma}$ the "signature" $\langle \langle\lastLetter{a}\rangle_{a \in \Sigma},\, \equalLength,\, \prefix \rangle$%
 \footnote{For the sake of simplicity, we abusively use the same notations for
 the "predicates" and their "interpretations@@predicate" in the "signature".} and
-by \AP$\intro*\univStructSynchronous{\Sigma}$ the "$\signatureSynchronous{\Sigma}$-structure" over $\Sigma^*$ where
-the "predicates" are "interpreted@@predicate" as above.
+by \AP$\intro*\univStructSynchronous{\Sigma}$ the "$\signatureSynchronous{\Sigma}$-structure"
+over $\Sigma^*$ where the "predicates" are "interpreted@@predicate" as above.%
+\footnote{This model is also denoted $\symbf{S}_{\mathrm{len}}$ in \cite{BenediktLibkinSchwentickSegoufin2003DefinableRelations}. In this model $\lastLetter{a}$ is
+not a unary predicate but a function that adds an `$a$' to the end of the word: of course this
+makes no difference whatsoever since both models are "first-order interpretable" in one another.}
 
 \begin{proposition}[{\cite[Theorems~1 \& 2]{EilenbergElgotShepherdson1969TapeAutomata}}]
 	\AP\label{prop:automatic-first-order}
@@ -337,8 +340,8 @@ We want to highlight that, in the case of unary relations,
 the "first-order definable" sets of $\univStructSynchronous{\Sigma}$
 (if $\Sigma$ has at least two letters).
 This result contradicts in no way the fact that "regular languages" exactly those definable
-in monadic second-order logic, nor does it imply that monadic second-order logic
-collapses to first-order logic. Indeed, in this last characterization,
+in "monadic second-order logic", nor does it imply that "monadic second-order logic"
+collapses to "first-order logic". Indeed, in this last characterization,
 the models are finite words, and its first-class citizens%
 \footnote{By ``first-class citizens'' we mean the objects over which
 we can do first-order quantification.} are the positions in these words.
@@ -346,12 +349,27 @@ In the case of \Cref{prop:automatic-first-order}, the model is fixed (namely $\u
 In some sense, this logic is \emph{external} to finite words---the logic does not have access to the
 ``inner workings'' of the words---, while monadic second-logic is \emph{internal}.
 Overall, \Cref{prop:automatic-first-order} can be rephrased as the equivalence between
-\emph{external} first-order logic and \emph{internal} monadic second-order logic.%
+\emph{external} first-order logic and \emph{internal} "monadic second-order logic".%
 \footnote{We thank Géraud Sénizergues for suggesting this terminology to us.}
-Said otherwise, when going from FO over the structure $\univStructSynchronous{\Sigma}$ to MSO over the structure of a finite word, we gain one level of quantification "via" the logic, but we lose
-one level of quantification "via" the change of model.
+Said otherwise, when going from "FO" over the structure $\univStructSynchronous{\Sigma}$ to "MSO" 
+over the structure of a finite word, we gain one level of quantification "via" the logic,
+but we lose one level of quantification "via" the change of model.
  
 
 \subsection{Logical Characterization of Other Classes of Relations}
 
-todo.
+Benedikt, Libkin, Schwentick and Segoufin studied submodels of
+$\univStructSynchronous{\Sigma} =
+\tup{\Sigma^*, \langle\lastLetter{a}\rangle_{a \in \Sigma},\, \equalLength,\, \prefix}$ in
+\cite{BenediktLibkinSchwentickSegoufin2003DefinableRelations}.
+For instance, they show that by removing $\equalLength$, the definable sets are exactly
+the "star-free regular languages"
+(\cite[Corollary 3.7]{BenediktLibkinSchwentickSegoufin2003DefinableRelations}).
+
+Adding a binary predicate for each "regular language" $L$, "interpreted@@pred"
+as $\{\tup{u,uv} \mid u,v \in \Sigma^*, v \in L \}$, yields
+a logic called $\symbf{S}_{\mathrm{reg}}$, whose "definable relations"
+are exactly the ``regular prefix relations'', also called ``special relations''
+\cite[Corollary 3.22]{BenediktLibkinSchwentickSegoufin2003DefinableRelations}.
+This class lives between "recognizable relations" and "automatic relations",
+see \cite[\S~``1984'']{Choffrut2006Survey}.
