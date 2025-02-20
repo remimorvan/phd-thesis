@@ -278,10 +278,8 @@ the "predicates" are "interpreted@@predicate" as above.
 	the proof somewhat tedious.
 	In \cite[\S~``1969'']{Choffrut2006Survey}, Choffrut notes that
 	``mimicking the automaton yields a much
-	more intuitive proof and can be reconstructed by a good PhD student''.
-	We make here the choice of starting from monadic second-order logic:
-	while similar to Choffrut's, it has the added benefit of highlighting 
-	the connection between ``external first-order logic'' and ``internal monadic second-order logic'', see todo:addref-remark.
+	more intuitive proof and can be reconstructed by a good PhD student'':
+	we present here this proof.
 	
 	We start with an example: we want to build a "first-order formula" $\phi$ over $\signatureSynchronous{\2}$ for the language $(00)^*$, in the sense
 	that for all $u\in \2^*$,
@@ -293,23 +291,30 @@ the "predicates" are "interpreted@@predicate" as above.
 	its last letter.
 	todo:figure
 
-	Given a "monadic second-order formula" $\Phi$
-	with a unary predicate for each $\bar a \in \Sigma \convolAlpha \cdots \convolAlpha \Sigma$,
-	and a binary predicate $<$, we build a "first-order formula" $\Phi^*$
-	over $\signatureSynchronous{\Sigma}$ "st" for each $\+R \subseteq (\Sigma^*)^k$
+	Given a "synchronous automaton" $\+A$ recognizing $\+R \subseteq (\Sigma^*)^k$,
+	we want to build a "first-order formula" $\phi_{\+A}$ over $\signatureSynchronous{\Sigma}$
+	"st" for all $\tup{u_1,\hdots, u_k} \in (\Sigma^*)^k$:
 	\[
-		\set{
-			\tup{u_1,\hdots,u_k} \in (\Sigma^*)^k \mid 
-			\tup{\univStructSynchronous{\Sigma}, u_1, \hdots, u_k} \models \Phi(x_1,\hdots,x_k)
-		}
-		=
-		\set{
-			\tup{u_1,\hdots,u_k} \in (\Sigma^*)^k \mid 
-			u_1 \convol \cdots \convol u_k \models \Phi
-		}.
+		\tup{u_1,\hdots, u_k} \in \+R
+		\quad\text{iff}\quad
+		\tup{\univStructSynchronous{\Sigma}, u_1,\hdots, u_k} \models \phi_{\+A}(x_1,\hdots,x_k).
 	\]
-	todo:finish
-	todo:deal with variables
+	The formula $\phi_{\+A}$ is built as follows:
+	\begin{itemize}
+		\item for each state $q$ of $\+A$, we guess a word $v_q \in \2^*$ "st"
+			the length of $v_q$ is the maximal length of a word $u_i$ ($i \in \lBrack 1,k\rBrack$),
+			"ie" $|u_1 \convol \cdots \convol u_k|$,
+		\item we check that for each position $i$, there is exactly one state $q$
+			"st" the $i$-th letter of $(v_q)$ is 1,
+		\item this way, the tuple of words $\tup{v_q}_{q}$ represents a potential run of $\+A$
+			over $\+A$: we then check that this indeed defines an accepting run of the automaton. 
+	\end{itemize}
+	It is routine to check that all these properties can be written in "first-order logic"
+	using the predicates $\lastLetter{a}$, $\equalLength$ and $\prefix$.
+	Note in particular that this proof crucially relies on the fact that we can guess words
+	in $\2^*$, which is allowed by the assumption that $\Sigma$ has length at least 2.\footnote{Indeed, we can then assume "wlog" that $\2 \subseteq \Sigma$, and then
+	check in "first-order logic" that a word $v_q \in \Sigma^*$ actually
+	belongs to $\2^*$.}
 \end{proof}
 
 \begin{example}
@@ -326,6 +331,26 @@ the "predicates" are "interpreted@@predicate" as above.
 	From \Cref{prop:automatic-first-order}, it follows that the "lexicographic order"
 	is an "automatic relation".
 \end{example}
+
+We want to highlight that, in the case of unary relations,
+\Cref{prop:automatic-first-order} shows that "regular languages" are exactly
+the "first-order definable" sets of $\univStructSynchronous{\Sigma}$
+(if $\Sigma$ has at least two letters).
+This result contradicts in no way the fact that "regular languages" exactly those definable
+in monadic second-order logic, nor does it imply that monadic second-order logic
+collapses to first-order logic. Indeed, in this last characterization,
+the models are finite words, and its first-class citizens%
+\footnote{By ``first-class citizens'' we mean the objects over which
+we can do first-order quantification.} are the positions in these words.
+In the case of \Cref{prop:automatic-first-order}, the model is fixed (namely $\univStructSynchronous{\Sigma}$), and its first-class citizens are the finite words.
+In some sense, this logic is \emph{external} to finite words---the logic does not have access to the
+``inner workings'' of the words---, while monadic second-logic is \emph{internal}.
+Overall, \Cref{prop:automatic-first-order} can be rephrased as the equivalence between
+\emph{external} first-order logic and \emph{internal} monadic second-order logic.%
+\footnote{We thank Géraud Sénizergues for suggesting this terminology to us.}
+Said otherwise, when going from FO over the structure $\univStructSynchronous{\Sigma}$ to MSO over the structure of a finite word, we gain one level of quantification "via" the logic, but we lose
+one level of quantification "via" the change of model.
+ 
 
 \subsection{Logical Characterization of Other Classes of Relations}
 
