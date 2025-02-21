@@ -315,10 +315,26 @@ makes no difference whatsoever since both models are "first-order interpretable"
 	It is routine to check that all these properties can be written in "first-order logic"
 	using the predicates $\lastLetter{a}$, $\equalLength$ and $\prefix$.
 	Note in particular that this proof crucially relies on the fact that we can guess words
-	in $\2^*$, which is allowed by the assumption that $\Sigma$ has length at least 2.\footnote{Indeed, we can then assume "wlog" that $\2 \subseteq \Sigma$, and then
+	in $\2^*$, which is allowed by the assumption that $\Sigma$ has length at least 2.%
+	\footnote{Indeed, we can then assume "wlog" that $\2 \subseteq \Sigma$, and then
 	check in "first-order logic" that a word $v_q \in \Sigma^*$ actually
 	belongs to $\2^*$.}
+	Also, the formula $\phi_{\+A}$ is of polynomial size in the size of $\+A$.
 \end{proof}
+
+We want to highlight that \Cref{prop:automatic-first-order} can be extended for $k=0$,
+since the $0$-ary relation are the subsets of $\emptyset^* = \{\varepsilon\}$,
+and so there is exactly two 
+relations: $\{\textbullet\}$ (identified with ``true'') and $\emptyset$ (identified with ``false'').
+Both are "first-order definable", and "autoamtic@@rel": observe that "synchronous automata" over
+$\emptyset$ either return ``true'' if they have an initial state that is accepting, and otherwise they return ``false''.
+$0$-ary relations naturally arise because they correspond to Boolean queries.
+For instance, assume that $\phi(x_1,x_2,x_3)$ is a "first-order formula" over
+$\signatureSynchronous{\Sigma}$: then
+$\forall x_1.\, \exists x_2.\, \forall x_3.\, \phi(x_1,x_2,x_3)$ is a "first-order sentence"
+over $\signatureSynchronous{\Sigma}$. The proof of \Cref{prop:automatic-first-order}
+builds, from a "synchronous ($3$-ary) automaton@@synchronous automaton" for
+$\phi(x_1,x_2,x_3)$ a triple-exponential-sized "synchronous ($0$-ary) automaton@@synchronous automaton" for $\forall x_1.\, \exists x_2.\, \forall x_3.\, \phi(x_1,x_2,x_3)$.
 
 \begin{example}
 	\AP\label{ex:lexicographic-is-automatic}
@@ -359,11 +375,11 @@ but we lose one level of quantification "via" the change of model.
 \subsection{Logical Characterization of Other Classes of Relations}
 
 Benedikt, Libkin, Schwentick and Segoufin studied submodels of
-$\univStructSynchronous{\Sigma} =
-\tup{\Sigma^*, \langle\lastLetter{a}\rangle_{a \in \Sigma},\, \equalLength,\, \prefix}$ in
-\cite{BenediktLibkinSchwentickSegoufin2003DefinableRelations}.
+\[\univStructSynchronous{\Sigma} =
+\tup{\Sigma^*, \langle\lastLetter{a}\rangle_{a \in \Sigma},\, \equalLength,\, \prefix}\]
+in \cite{BenediktLibkinSchwentickSegoufin2003DefinableRelations}.
 For instance, they show that by removing $\equalLength$, the definable sets are exactly
-the "star-free regular languages"
+the star-free regular languages
 (\cite[Corollary 3.7]{BenediktLibkinSchwentickSegoufin2003DefinableRelations}).
 
 Adding a binary predicate for each "regular language" $L$, "interpreted@@pred"

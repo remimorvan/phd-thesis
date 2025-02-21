@@ -45,6 +45,10 @@
  | PSpace
  | PSPACE
 
+\knowledge{text={Tower}, wrap=\textsf}
+ | Tower
+ | TOWER
+
 \knowledge{notion}
  | computationally equivalent
 

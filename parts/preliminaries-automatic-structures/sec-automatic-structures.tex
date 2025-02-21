@@ -1,6 +1,7 @@
 \section{Automatic Structures}
 \label{sec:preliminaries-automatic-structures-automatic-structures}
 
+\subsection{Definitions}
 todo:blabla
 
 We fix a finite "relational signature" $\sigma$.
@@ -48,7 +49,7 @@ are called ""injective presentations"".
 		\centering
 		\begin{tikzpicture}[shorten >= 1pt, node distance = 1.8cm, on grid, baseline]
 			\node[state, initial left, accepting] (q0) {}; 
-			\node[state, right=of q0] (q1) {}; 
+			\node[state, right=of q0] (q1) {w}; 
 			\path[->]
 				(q0) edge[loop above] node[font=\scriptsize, above left = 0em and -1.1em] {$\triple{0}{0}{0},
 					\triple{0}{1}{1},\triple{1}{0}{1}$} (q0)
@@ -82,6 +83,8 @@ are called ""injective presentations"".
 	\footnote{Of course, we identify $\pad$ with $0$.}
 	This gives the automaton of figure \Cref{fig:automaton-presburger}.
 	By construction, $\+N$ "represents@@struct" $\tup{\N, +}$.
+
+	todo:model theory rk after model-checking
 \end{example}
 
 Recall that, using \Cref{prop:automatic-first-order}, a "relation" is "automatic@@rel" 
@@ -205,7 +208,118 @@ singletons, say $\{x\}$ and $\{y\}$, respectively, and $x \leq y$,
 see \cite[Theorem~XII.2.3]{Blumensath2024MSOModelTheory}.
 
 
-\subsection{todo:move this around.}
+\subsection{Model-Checking}
+
+One of the key interest of "automatic structures" is that, while they are infinite,
+their model checking problem remains decidable.
+
+\decisionproblem{""First-Order Model Checking of Automatic  $\sigma$-Structures""}{
+	A "first-order sentence" $\phi$ over $\sigma$ and
+	an "automatic presentation" $\•A$ of an "automatic $\sigma$-structure" $\?A$.
+}{
+	Does $\?A \FOmodels \phi$?
+}
+
+\begin{proposition}[{""Hodgson's theorem""}]
+	\!\footnote{Decidability was originally proven in \cite[Théorème~3.5]{Hodgson1983Decidabilite}.
+	The lower bound is sometimes claimed to be true in the literature, but we never found a proper, or even sketch of proof.}
+	%
+	\AP\label{prop:first-order-model-checking-automatic-structures}
+	"First-order model checking of automatic structures" is decidable,
+	and in fact is "TOWER"-complete.
+\end{proposition}
+
+\Cref{prop:first-order-interpretation,prop:automatic-first-order}
+prove this problem to be polynomial-time equivalent to its restriction
+to the structure $\univStructSynchronous{2}$.%
+\footnote{However, this does not work
+for "data complexity" since, when reducing $\?A \FOmodels^? \phi$ to
+$\univStructSynchronous{2} \FOmodels^? \phi^{\•A}$, the formula $\phi^{\•A}$ depends on $\•A$.}
+
+\begin{proof}[Proof sketch]
+	% Putting \Cref{prop:first-order-interpretation,prop:automatic-first-order},
+	% from any "first-order sentence" $\phi$ over $\sigma$ and any "automatic presentation" $\•A$,
+	% we can build a "first-order formula" $\phi^{\•A}$ over
+	% $\signatureSynchronous{\2}$ "st"
+	% \[
+	% 	\univStructSynchronous{2} \models \phi^{\•A}
+	% 	\quad\text{"iff"}\quad
+	% 	\?A \models \phi.
+	% \]
+	% The size of $\phi^{\•A}$ is polynomial in the size of "first-order formulas"
+	% for $\+A$---which are polynomial in the size of the automata for $\+A$ by \Cref{prop:automatic-first-order}---and in the size of $\phi$.
+	% Then, we use the other implication of \Cref{prop:automatic-first-order}
+	% to build a "synchronous ($0$-ary) automaton" for $\phi$. Checking whether
+	% this automaton accepts or rejects is trivial---see the paragraph
+	% after \Cref{prop:automatic-first-order}---say in logarithmic space.
+	% Note however that the size of this automaton is
+	% non-elementary---it is a tower of exponentials in the
+	% number of quantifier alternation in $\phi^{\•A}$---and so we obtain a
+	% "TOWER" algorithm.
+
+	% For the "data complexity", we now assume that $\phi$ is fixed.
+	\proofcase{"Tower" upper bound.}
+	The construction is similar to the easy implication of \Cref{prop:automatic-first-order}:
+	for any "automatic presentation" $\•A$, we build by induction on $\phi(x_1,\hdots,x_k)$ a "synchronous ($k$-ary) automaton@@synchronous automaton" $\+B^\phi$ "st"
+	for all $u_1,\hdots,u_k \in \Sigma^*$
+	\[
+		\+B^\phi \text{ accepts } u_1\convol\hdots\convol u_k
+		\quad\text{"iff"}\quad
+		\tup{\?A, u_1, \hdots, u_k} \models \phi(x_1,\hdots,x_k).
+	\]
+	In the end, we get a "synchronous ($0$-ary) automaton" $\+B^\phi$ that either accepts
+	or rejects depending on whether $\?A \models \phi$ or not.
+	Notice that each quantifier alternation implies a powerset construction, and so
+	the size of $\+B^\phi$ is a tower of exponentials in the number of quantifier alternations in $\phi$. Hence, we get a "Tower" algorithm.
+
+	\proofcase{"Tower" lower bound.}
+	See \cite[\S~3.1]{Schmitz2016ComplexityHierarchies}.
+	TODO:NOT CLEAR.
+	% We reduce from "equivalence of star-free expressions@@problem", which is
+	% "Tower"-complete by \cite[\S~3.1]{Schmitz2016ComplexityHierarchies}.
+	% This problem takes two star-free expressions (over an alphabet $\Sigma$ with at least two 
+	% letters), defined by the grammar
+	% \[
+	% 	E \defeq a \mid \varepsilon \mid \emptyset \mid E + E \mid EE \mid \neg E,
+	% \]
+	% and ask if they define the same "regular language".
+	% Given an expression $E$, we build a "first-order formula" $\phi_E(x,y)$ over $\signatureSynchronous{\2}$
+\end{proof}
+
+\begin{proposition}
+	The "data complexity" of its restriction to "existential-positive sentences" is "NL"-complete.
+\end{proposition}
+
+\begin{proof}
+	We now assume that $\phi$ is of the form
+	\[
+		\exists x_1.\,\hdots \exists x_k.\, \psi(x_1,\hdots,x_k),
+	\]
+	where $\phi$ is a "positive quantifier-free sentence",
+	the size of the automaton for $\psi$ is of the order $|\•A|^{|\psi|}$:
+	conjunctions and disjunctions only require products but no powerset construction.
+	Now instead of explicitly building an automaton for
+	$\exists x_1.\,\hdots \exists x_k.\, \psi(x_1,\hdots,x_k)$,
+	we test if the automaton for $\psi$ accepts any word.
+	The answer is ``yes'' "iff" $\?A \models \phi$.
+	Testing non-emptiness of the automaton amounts to checking if an accepting state can be
+	reached from an initial state, which is "NL".
+	Since $\phi$ is fixed, the automaton in question is of polynomial size.
+	To argue that we can effectively obtain an "NL" algorithm, it suffices to notice that
+	we do not have to explicitly build the automaton for $\psi$, but it suffices to
+	work with pointers to the automaton of $\•A$.
+
+	Lastly, the "NL" lower bound, can be proven by a reduction from NFA non-emptiness, which is
+	itself "NL"-hard by reduction from the "Finite Graph Reachability Problem".
+\end{proof}
+
+TODO:MENTION CQ. MENTION "NL" = "coNL".
+We refer the reader to \cite[\S~3]{BlumensathGradel2000AutomaticStructures} for the detailed 
+complexity of other variations of "Hodgson's theorem". For instance,
+the "data complexity" of its restriction to "existential sentences" (here negation is allowed)
+in "NP"-complete \cite[Theorem~3.7]{BlumensathGradel2000AutomaticStructures}.
+
+TODO: is it "Tower"-complete???
 
 What we said above work with the implicit assumptions that all structures at hand are 
 "finite@@struct". However, part of this can be generalized to "automatic structures"---however, this comes to the cost of losing the inclusion in "L".
@@ -216,29 +330,7 @@ What we said above work with the implicit assumptions that all structures at han
 	still an "automatic structure".
 \end{proposition}
 \begin{proof}
-	TODO
-\end{proof}
-
-\decisionproblem{""First-Order Model Checking of Automatic Structures""}{
-	A "first-order formula" $\phi(x_1,\hdots,x_k)$ over $\sigma$,
-	an "automatic presentation" $\•A$ of an "automatic $\sigma$-structure" $\?A$,
-	and words $u_1,\hdots,u_k \in \domainPres{\+A}$.
-}{
-	Does $\?A, u_1,\hdots, u_k \FOmodels \phi$?
-}
-
-\begin{proposition}
-	\!\footnote{See "eg" \cite[Theorem XII.1.7]{Blumensath2024MSOModelTheory}.}
-	%
-	\label{prop:first-order-model-checking-automatic-structures}
-	"First-order model checking of automatic structures" is decidable in todo.
-	Its "data complexity" is "NL"-complete.
-\end{proposition}
-
-\begin{proof}
-	TODO.
-
-	For the "NL" lower bound, reduction from NFA non-emptiness.
+	This follows "eg" from \Cref{prop:automatic-first-order}.
 \end{proof}
 
 We define \AP""FOaut"" to be the class of all problems over "automatic structures"
