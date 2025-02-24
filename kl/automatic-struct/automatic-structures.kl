@@ -12,18 +12,18 @@
  | presentations of automatic $\sigma $-structures
  | presentation of an automatic $\sigma $-structure
  | presentation of an automatic graph
+ | automatic presentation of a directed graph
 
 \knowledge{notion}
  | automatic@struct
+ | automaticity@struct
  | automatic structure
  | automatic structures
  | automatic $\sigma $-structure
  | automatic $\sigma $-structures
-
-\knowledge{notion}
- | automatic presentation of a directed graph
  | automatic graph
  | automatic graphs
  | automatic@graph
  | automaticity@graph
+
 

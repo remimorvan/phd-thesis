@@ -191,6 +191,13 @@ then $\interpretation{\+I}{\?A}$ and $\interpretation{\+J}{\?A}$ are "isomorphic
 for this, it suffices to encode any equivalence class in $\?A$ by its minimal element---for more
 details, see \Cref{prop:making-presentations-injective}.
 
+We say that $\?A$ is \AP""first-order interpretable"" in $\?B$ if there exists
+a "first-order interpretation" $\+I$ "st" $\interpretation{\+I}{\?A}$ is "isomorphic" to $\?B$.
+We say that two structures are \AP""first-order equivalent"" if they are "first-order interpretable" in one another. Two structures that are "isomorphic" are clearly
+"first-order equivalent". Moreover, if a $k$-ary relation $\+R$ is "first-order definable"
+in a "$\sigma$-structure" $\?A$, then $\?A$ is "first-order equivalent" to the "structure"
+$\?A$ to which we add a new $k$-ary "predicate interpreted" as $\+R$.
+For instance, $\tup{\N, +}$ and $\tup{\N, +, <, 0, 1}$ are "first-order equivalent".
 
 \subsection{First-Order Reduction and First-Order Model Checking}
 
@@ -335,6 +342,10 @@ $\forall x_1.\, \exists x_2.\, \forall x_3.\, \phi(x_1,x_2,x_3)$ is a "first-ord
 over $\signatureSynchronous{\Sigma}$. The proof of \Cref{prop:automatic-first-order}
 builds, from a "synchronous ($3$-ary) automaton@@synchronous automaton" for
 $\phi(x_1,x_2,x_3)$ a triple-exponential-sized "synchronous ($0$-ary) automaton@@synchronous automaton" for $\forall x_1.\, \exists x_2.\, \forall x_3.\, \phi(x_1,x_2,x_3)$.
+
+Moreover, the structure $\univStructSynchronous{\Sigma}$ is sometimes described by replacing
+the unary "predicate" $\lastLetter{a}$ by the function $w \mapsto w\cdot a$.
+The two models are clearly "first-order equivalent".
 
 \begin{example}
 	\AP\label{ex:lexicographic-is-automatic}

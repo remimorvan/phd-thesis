@@ -36,6 +36,7 @@ Presentations such as this one, where $\relPres{=}{\+B}$ is the equality relatio
 are called ""injective presentations"".
 
 \begin{example}
+	\AP\label{ex:presburger}
 	The structure $\tup{\N, +}$ is "automatic@@struct".%
 	\footnote{We see $+$ as a ternary relation, given by $\{\tup{x,y,x+y} \mid x, y \in \N^2\}$.}
 	We build an "automatic presentation" $\+N$ by using
@@ -49,7 +50,7 @@ are called ""injective presentations"".
 		\centering
 		\begin{tikzpicture}[shorten >= 1pt, node distance = 1.8cm, on grid, baseline]
 			\node[state, initial left, accepting] (q0) {}; 
-			\node[state, right=of q0] (q1) {w}; 
+			\node[state, right=of q0] (q1) {}; 
 			\path[->]
 				(q0) edge[loop above] node[font=\scriptsize, above left = 0em and -1.1em] {$\triple{0}{0}{0},
 					\triple{0}{1}{1},\triple{1}{0}{1}$} (q0)
@@ -226,7 +227,7 @@ their model checking problem remains decidable.
 	%
 	\AP\label{prop:first-order-model-checking-automatic-structures}
 	"First-order model checking of automatic structures" is decidable,
-	and in fact is "TOWER"-complete.
+	and in fact is "TOWER"-complete under polynomial-time reductions.
 \end{proposition}
 
 \Cref{prop:first-order-interpretation,prop:automatic-first-order}
@@ -272,21 +273,20 @@ $\univStructSynchronous{2} \FOmodels^? \phi^{\•A}$, the formula $\phi^{\•A}$
 	Notice that each quantifier alternation implies a powerset construction, and so
 	the size of $\+B^\phi$ is a tower of exponentials in the number of quantifier alternations in $\phi$. Hence, we get a "Tower" algorithm.
 
-	\proofcase{"Tower" lower bound.}
-	See \cite[\S~3.1]{Schmitz2016ComplexityHierarchies}.
-	TODO:NOT CLEAR.
-	% We reduce from "equivalence of star-free expressions@@problem", which is
-	% "Tower"-complete by \cite[\S~3.1]{Schmitz2016ComplexityHierarchies}.
-	% This problem takes two star-free expressions (over an alphabet $\Sigma$ with at least two 
-	% letters), defined by the grammar
-	% \[
-	% 	E \defeq a \mid \varepsilon \mid \emptyset \mid E + E \mid EE \mid \neg E,
-	% \]
-	% and ask if they define the same "regular language".
-	% Given an expression $E$, we build a "first-order formula" $\phi_E(x,y)$ over $\signatureSynchronous{\2}$
+	\proofcase{"Tower" lower bound.}%
+	\footnote{We often found this result to be incorrectly credited to various papers in the literature.}
+	In 1990, proved that there exists a constant $c>0$ "st" "first-order model-checking"
+	restricted to the structure $\univStructSynchronous{2}$ admits $\tower(cn)$ as
+	a lower bound on the running time of a non-deterministic "Turing machine" solving the problem
+	\cite[Example~8.3]{ComptonWardHenson1990UniformMethod}.
+	In fact, applying \cite[Theorem~6.1.(iv)]{ComptonWardHenson1990UniformMethod}
+	proves the problem to be hard under polynomial-time reductions for the class 
+	of problems which can be solved in non-deterministic time at most $\tower(n^c)$ for some $c>0$.
+	This corresponds to the class "Tower".
 \end{proof}
 
 \begin{proposition}
+	\AP\label{prop:data-complexity-model-checking}
 	The "data complexity" of its restriction to "existential-positive sentences" is "NL"-complete.
 \end{proposition}
 
@@ -313,13 +313,13 @@ $\univStructSynchronous{2} \FOmodels^? \phi^{\•A}$, the formula $\phi^{\•A}$
 	itself "NL"-hard by reduction from the "Finite Graph Reachability Problem".
 \end{proof}
 
-TODO:MENTION CQ. MENTION "NL" = "coNL".
+Recall that since "NL" is closed under complementation---see "eg" \cite[Corollary~9.23]{Immerman1998DescriptiveComplexity}---, we obtain the same complexity for
+negations of "existential-positive sentences".
+
 We refer the reader to \cite[\S~3]{BlumensathGradel2000AutomaticStructures} for the detailed 
 complexity of other variations of "Hodgson's theorem". For instance,
 the "data complexity" of its restriction to "existential sentences" (here negation is allowed)
 in "NP"-complete \cite[Theorem~3.7]{BlumensathGradel2000AutomaticStructures}.
-
-TODO: is it "Tower"-complete???
 
 What we said above work with the implicit assumptions that all structures at hand are 
 "finite@@struct". However, part of this can be generalized to "automatic structures"---however, this comes to the cost of losing the inclusion in "L".
@@ -338,16 +338,85 @@ which are "first-order definable". By \Cref{prop:first-order-reduction-preserve-
 this class is closed under "first-order reductions". Moreover,
 by \Cref{prop:first-order-model-checking-automatic-structures}, we obtain an upper bound.
 
-\begin{proposition}
-	"FOaut" $\subseteq$ "NL".
+\begin{corollary}
+	"FOaut" $\subseteq$ "Tower".
+\end{corollary}
+
+The goal of the corollary above is to highlight the difference with \Cref{prop:FO-in-L}:
+"first-order definable" problems on "automatic structures", while decidable, are not necessarily
+in "L".
+
+\begin{remark}[Presburger arithmetic]
+	\AP""Presburger arithmetic"" is the "first-order theory" (over the signature $\tup{+, 0, 1}$)
+	derived from the following axioms:
+	\begin{itemize}
+		\item $\forall x.\, 0 \neq x + 1$;
+		\item $\forall x.\,\forall y.\, x + 1 = y + 1 \Rightarrow x = y$;
+		\item $\forall x.\, x + 0 = x$;
+		\item $\forall x.\,\forall y.\,\forall z.\, x + (y + z) = (x + y) + z$;
+		\item $(\phi(0) \land (\forall x.\; \phi(x) \Rightarrow \phi(x+1))) \Rightarrow
+			(\forall x.\; \phi(x))$, where $\phi(x)$ ranges over all "first-order formulas".
+	\end{itemize}
+	Note that $\tup{\N,+,0,1}$ is a model of this theory, which is moreover complete
+	(todo:addref) and so, for a first-order sentence $\phi$, the following 
+	are equivalent:
+	\begin{itemize}
+		\item $\phi$ belongs to the theory, "ie" it is a logical consequence of the axioms above,
+		\item $\phi$ holds in all models satisfying the axioms above, and 
+		\item $\tup{\N, +, 0, 1} \models \phi$.
+	\end{itemize}
+	Since $\tup{\N, +, 0, 1}$ is "first-order equivalent" to $\tup{\N, +}$, which
+	is "automatic@@struct" by \Cref{ex:presburger},
+	it follows that we can decide "Presburger arithmetic".
+\end{remark}
+
+Of course, \Cref{prop:first-order-model-checking-automatic-structures} can be extended
+to ``$\omega$-tree automatic structures'' defined analogously to "automatic structures" by
+replacing ``languages of finite words'' by ``languages of $\omega$-trees''
+(see \cite[\S~XII]{Blumensath2024MSOModelTheory} for more details).
+In fact this property can even be extended to so-called
+``higher-order automatic structures'', see
+\cite[last remark of \S~XII.2]{Blumensath2024MSOModelTheory}.
+Note that while "automatic structures" are always countable,
+``higher-order automatic structures'' have at most the cardinality of the continuum.%
+From this it follows that there exists "structures" with a decidable "first-order model-checking" that are not "automatic@@struct", and not even ``higher-order automatic''.
+It suffices for instance to take any non-standard model of "Presburger arithmetic"
+of cardinality strictly bigger than the continuum, which must exist by
+"upward Löwenheim–Skolem theorem". The same argument works to show that ``elementary equivalence''
+does not preserve the notion of "automaticity@@struct".
+
+todo:isomorphism undecidable.
+
+\subsection{Problems on Automatic Structures}
+
+From the notion of "automaticity@@struct" two questions naturally arise:
+\begin{enumerate}
+	\item What are the \emph{structural properties} of "automatic structures"?
+		For instance, we have seen that all "automatic structures" are countable.
+		This question has been somewhat extensively studied for algebraic structures.
+	\item Given a \emph{decidable decision problem} on finite structures, is its generalization
+		to "automatic structures" still decidable?
+\end{enumerate}
+
+\paragraph*{Isomorphism.}
+TODO
+
+\paragraph*{Automatic Ordinals.}
+"Automatic ordinals" are quite simple: using "eg" Cantor's normal form, it is straightforward
+to prove that any ordinal strictly smaller than $\omega^\omega$ is "automatic@@struct".%
+\footnote{We see an ordinal as a structure with a binary relation describing its order.}
+Delhommé proved the converse property to be true.
+
+\begin{proposition}[{\cite[Corollaire~2.2]{Delhommé2004AutomaticitéOrdinaux}}]
+	\AP\label{prop:automatic-ordinals}
+	An ordinal is "automatic@@struct" "iff" it is strictly smaller than $\omega^\omega$.
 \end{proposition}
 
-\subsection{Todo}
+
 
 \begin{itemize}
-	\itemAP ""automatic graph""
 	\item see https://www.logic.rwth-aachen.de/pub/graedel/lics2020.pdf
-	\item \cite[\S~6]{KhoussainovNerode1995AutomaticPresentations}
+	\item \cite[\S~6]{KhoussainovNerode1995AutomaticPresentations} (automatic isomorphism)
 	\item no infinite integral domain \cite{KhoussainovNiesRubinStephan2007Automatic}
 	\item Olivier Finkel's papers
 \end{itemize}
