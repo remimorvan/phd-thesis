@@ -208,6 +208,13 @@ with inclusion and the preorder $\preceq$ defined by $X \preceq Y$ "iff" $X$ and
 singletons, say $\{x\}$ and $\{y\}$, respectively, and $x \leq y$,
 see \cite[Theorem~XII.2.3]{Blumensath2024MSOModelTheory}.
 
+The notion of "automatic structures" can be generalized:
+\begin{itemize}
+	\itemAP to ""$\omega$-automatic structures"" by replacing finite words with $\omega$-words;
+	\itemAP to ""tree-automatic structures"" by replacing finite words with finite trees;
+	\itemAP to ""$\omega$-tree-automatic structures"" by replacing finite words with $\omega$-trees;
+\end{itemize}
+we refer the reader to "eg" \cite[\S~XII]{Blumensath2024MSOModelTheory} for more details.
 
 \subsection{Model-Checking}
 
@@ -399,7 +406,14 @@ From the notion of "automaticity@@struct" two questions naturally arise:
 \end{enumerate}
 
 \paragraph*{Isomorphism.}
-TODO
+\decisionproblem{"Isomorphism Problem for Automatic Structures"}{
+	Two "automatic presentations" $\•A$ and $\•B$.
+}{
+	Is $\?A$ "isomorphic@@struct" to $\?B$?	
+}
+Khoussainov, Nies, Rubin \& Stephan proved that the "isomorphism for automatic structures@@problem"
+is not only undecidable, but is actually complete for the first level
+of the "analytical hierarchy" \cite[Theorem~5.9]{KhoussainovNiesRubinStephan2007Automatic}.
 
 \paragraph*{Automatic Ordinals.}
 "Automatic ordinals" are quite simple: using "eg" Cantor's normal form, it is straightforward
@@ -415,6 +429,36 @@ These results have been generalized to "tree-automatic ordinals", which
 are moreover equipped with addition, by Jain, Khoussainov, Schlicht and Stephan
 \cite{JainKhoussainovSchlichtStephan2019IsomorphismTreeAutomaticOrdinals}.
 
+\paragraph*{Automatic Groups.}
+The literature on "automatic group" is remarkably extensive.
+Their study was introduced in the late 1980s,
+by showing that they have a solvable word problem \cite[Theorem~2.1.9]{Epstein1992Word}.%
+\footnote{Actually this last result is proved on the slightly bigger class of ``regularly generated groups''.}
+Typical examples of infinite "automatic group" are the braid group
+\cite{Theorem~9.3.1}[Epstein1992Word] and the finitely-generated free groups.
+We refer the reader to \cite{Rees2022AutomaticGroups} for a recent and detailed account on
+the history of the development of the theory of "automatic groups".
+todo 
+
+
+todo: isomorphism?
+
+\paragraph*{Automatic Rings and Fields.}
+Richer algebraic structures, like rings or fields actually often fail to be captured by
+the notion of "automaticity". For instance, $\tup{\N,{+},{\cdot},0,1}$ (Peano's arithmetic)
+is not "automatic".
+This essentially follows from \Cref{prop:bound-automatic-structures}, applied to multiplication,
+together with a counting argument, see \cite[Corollary~XII.8.11]{Blumensath2024MSOModelTheory}.
+Khoussainov, Nies, Rubin \& Stephan moreover proved that no infinite field\footnote{In fact their result also holds for integral domains.} can be "automatic@@struct"
+\cite[Theorem~3.10 \& Corollary~3.11]{JainKhoussainovSchlichtStephan2019IsomorphismTreeAutomaticOrdinals}.%
+\footnote{Note that this contrasts with Tarski's result that the first-order theory
+of $\tup{\R,+,\cdot,0,1}$, and more generally of any real closed fields is 
+decidable since it admits quantifier elimination \cite[Theorem~8.4.4]{Hodges1993ModelTheory}.}
+
+
+
+
+TODO.
 \begin{itemize}
 	\item see https://www.logic.rwth-aachen.de/pub/graedel/lics2020.pdf
 	\item \cite[\S~6]{KhoussainovNerode1995AutomaticPresentations} (automatic isomorphism)
