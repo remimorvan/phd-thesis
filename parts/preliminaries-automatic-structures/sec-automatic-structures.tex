@@ -424,9 +424,26 @@ an ordinal is "automatic@@struct" "iff" it is strictly smaller than $\omega^\ome
 Using again Cantor's normal form,
 Khoussainov, Rubin \& Stephan proved that the isomorphism problem is decidable for
 "automatic ordinals" \cite[Theorem~5.3]{KhoussainovRubinStephan2005AutomaticLinearOrders}.
-These results have been generalized to "tree-automatic ordinals", which
+These results have been generalized first to "$\omega$-tree-automatic ordinals"
+by Finkel and Todor\v{c}ević \cite{FinkelTodorcevic2013AutomaticOrdinals}
+and then to "tree-automatic ordinals" which
 are moreover equipped with addition, by Jain, Khoussainov, Schlicht and Stephan
 \cite{JainKhoussainovSchlichtStephan2019IsomorphismTreeAutomaticOrdinals}.
+
+\paragraph*{Automatic Boolean Algebras.}
+Recall that a Boolean Algebra can be either seen as a partially ordered set
+following a set of axioms ensuring among other the existence of a join, a meet
+and a negation, or a set equipped these three operations, together with a minimal and maximal 
+element. Both definitions are actually "first-order equivalent" and so considering one
+or the other does not change the notion of "automaticity@@struct".
+
+The "isomorphism problem" for "automatic Boolean algebras" is decidable
+\cite[Corollary~3.5]{KhoussainovNiesRubinStephan2007Automatic} essentially
+because there are very few "automatic Boolean algebras" \cite[Theorem~3.4]{KhoussainovNiesRubinStephan2007Automatic}.
+Over, when going to "$\omega$-tree-automaticity", not only is the "isomorphism problem"
+undecidable: Finkel and Todor\v{c}ević exhibited two somewhat simple-looking
+"$\omega$-tree-automatic Boolean algebras" for which whether they were isomorphic
+is independent from "ZFC" \cite[Theorem~6.1]{FinkelTodorcevic2010Isomorphism}.
 
 \paragraph*{Automatic Groups.}
 The literature on "automatic group" is remarkably extensive.
@@ -457,15 +474,8 @@ of $\tup{\R,+,\cdot,0,1}$, and more generally of any real closed fields is
 decidable since it admits quantifier elimination \cite[Theorem~8.4.4]{Hodges1993ModelTheory}.}
 
 
-
-
-TODO.
+Also:
 \begin{itemize}
 	\item see https://www.logic.rwth-aachen.de/pub/graedel/lics2020.pdf
 	\item \cite[\S~6]{KhoussainovNerode1995AutomaticPresentations} (automatic isomorphism)
-	\item Olivier Finkel's papers
 \end{itemize}
-
-TODO:generalized presentation (non-injective) + effective construction to make them injective.
--> this explains our choice. We avoid the terminology ``regular structure'' because of
-``regular graph''.
