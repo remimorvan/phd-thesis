@@ -431,7 +431,7 @@ are moreover equipped with addition, by Jain, Khoussainov, Schlicht and Stephan
 \cite{JainKhoussainovSchlichtStephan2019IsomorphismTreeAutomaticOrdinals}.
 
 \paragraph*{Automatic Boolean Algebras.}
-Recall that a Boolean Algebra can be either seen as a partially ordered set
+Recall that a Boolean algebra can be either seen as a partially ordered set
 following a set of axioms ensuring among other the existence of a join, a meet
 and a negation, or a set equipped these three operations, together with a minimal and maximal 
 element. Both definitions are actually "first-order equivalent" and so considering one
@@ -473,6 +473,35 @@ Khoussainov, Nies, Rubin \& Stephan moreover proved that no infinite field\footn
 of $\tup{\R,+,\cdot,0,1}$, and more generally of any real closed fields is 
 decidable since it admits quantifier elimination \cite[Theorem~8.4.4]{Hodges1993ModelTheory}.}
 
+
+\subsection{Automatic Graphs}
+\Cref{ch:dichotomy-theorem} will mostly focus on "automatic graphs", in which we will study
+the question of colourability and the homomorphism problem.
+One interesting source of undecidability for "automatic graphs" comes from the following construction.
+
+\begin{example}
+	Consider a Turing machine $\+T = \tup{Q,\Gamma,\delta,q_0,\Acc}$, where $Q$ is the set of states, $\Gamma$ is tape alphabet,
+	\[
+		\delta\colon (Q \setminus \Acc) \times \Gamma_{\smallpad} \to \pset{Q \times \Gamma \times \set{\leftarrow, \downarrow, \rightarrow}}
+	\]
+	is the transition relation, $\Gamma_{\smallpad} \defeq \Gamma \dcup \set{\pad}$, and $q_0$ and $\Acc$ are the initial and set of final states, respectively.
+	%
+	We represent a "configuration@@TM" $\tup{u, q, v}$ by the word $uqv \in \Gamma^* Q \Gamma^*$:
+	in light of this, we will henceforth denote by ``configuration'' any string from the set  \AP$\intro*\configs \defeq  \Gamma^* Q \Gamma^*$.\footnote{We will often write
+	$uqv$ as the concatenation $u\cdot q \cdot v$ to emphasize
+	the separation between all three words.}
+	The \AP""configuration graph"" of $\+T$ is the infinite graph $\intro*\confGraph$ having $\configs$ as set of vertices and an edge from $\gamma$ to $\gamma'$, denoted $\gamma \rightarrow \gamma'$ if there is a one-step transition from $\gamma$ to $\gamma'$ in $\+T$. The "configuration graph" $\confGraph$ of any Turing machine $\+T$ is an effective "automatic graph".
+\end{example}
+
+As a consequence, by reduction from the halting problem of a universal Turing machine, 
+we obtain the following result.
+\begin{proposition}
+	There exists a fixed "automatic graph" $\?G$ over the alphabet $\2$ "st"
+	the problem of whether given two words $u$ and $v \in \2^*$ there is a path from
+	$u$ to $v$ in $\?G$ is undecidable.
+\end{proposition}
+
+todo: add \cite{KuskeLohrey2010AutomaticGraphs}.
 
 Also:
 \begin{itemize}
