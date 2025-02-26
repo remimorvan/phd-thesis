@@ -392,7 +392,40 @@ of cardinality strictly bigger than the continuum, which must exist by
 "upward Löwenheim–Skolem theorem". The same argument works to show that ``elementary equivalence''
 does not preserve the notion of "automaticity@@struct".
 
-todo:isomorphism undecidable.
+\paragraph*{Order-Invariant First-Order Logic}
+An \AP""order-invariant first-order formula""%
+\footnote{This is a standard notion in model theory, see "eg"
+\cite[Exercise~3.1.12]{Gradel2007FiniteModelTheory}.}
+over $\sigma$
+is any "first-order formula"\footnote{For the sake of simplicity we give all definitions
+for "sentences", but they easily be generalized to handle free varirables.} $\phi$
+over the signature $\sigma \dcup \{\leq\}$ "st" for any
+"$\sigma$-structure" $\?A$, for any \emph{total orders} $\leq_1$, $\leq_2$ over $A$,
+we have $\tup{\?A, \leq_1} \FOmodels \phi$ "iff" $\tup{\?A, \leq_2} \FOmodels \phi$.
+In this case, we say that $\?A$ models $\phi$.
+
+For instance, the formula
+\[
+	\forall x.\; \exists y.\; x \leq y
+\]
+is clearly "order-invariant@@FO": it expresses the fact that the model is infinite.
+\emph{A priori}, it is non-trivial to check if an "order-invariant first-order formula" holds in an
+"automatic $\sigma$-structure": how should this order be "interpreted@@pred"?
+By "order-invariance@@FO", any total order will do, and moreover by
+\Cref{ex:lexicographic-is-automatic}, the "lexicographic order" is always "automatic@@rel"!
+
+\begin{proposition}[{\cite[\S~3.2]{Rubin2008AutomataPresentingStructures}}]
+	\label{prop:order-invariance}
+	Model-checking of "order-invariant first-order formulas" over "automatic structures"
+	is decidable.
+\end{proposition}
+
+A restricted form of this result was originally proved by Blumensath and Grädel
+\cite[Corollary~5.4]{BlumensathGradel2004FinitePresentations} for the extension of
+"first-order logic" with the quantifier ``there are infinitely many''.
+Similarly, one can add counting quantifiers of the form ``the number of $x$'s "st" $\phi(x)$ holds
+is congruent to $k$ mod $n$'' \cite[\S~3.2]{Rubin2008AutomataPresentingStructures}
+while preserving decidability.
 
 \subsection{Problems on Automatic Structures}
 
@@ -410,8 +443,9 @@ From the notion of "automaticity@@struct" two questions naturally arise:
 }{
 	Is $\?A$ "isomorphic@@struct" to $\?B$?	
 }
-Khoussainov, Nies, Rubin \& Stephan proved that the "isomorphism for automatic structures@@problem"
-is not only undecidable, but is actually complete for the first level
+Blumensath and Grädel proved this problem
+to be undecidable \cite[Theorem~5.15]{BlumensathGradel2004FinitePresentations}.
+The problem was later shown to be complete for the first level
 of the "analytical hierarchy" \cite[Theorem~5.9]{KhoussainovNiesRubinStephan2007Automatic}.
 
 \paragraph*{Automatic Ordinals.}
