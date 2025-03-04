@@ -539,10 +539,31 @@ we obtain the following result.
 	$u$ to $v$ in $\?G$ is undecidable.
 \end{proposition}
 
-todo: add \cite{KuskeLohrey2010AutomaticGraphs}.
+Problems on automatic graphs have been mainly studied by Kuske and Lohrey, who showed that over "automatic graphs":
+\begin{description}
+	\item[highly undecidable problems:] the existence of a "Hamiltonian path"
+		is undecidable, in fact it is complete for the first level of the "analytical hierarchy"
+		\cite[Theorem~3.2]{KuskeLohrey2010AutomaticGraphs};
+		the existence of an infinite path in "directed trees" shares the same complexity
+		\cite[Theorem~3.6]{KuskeLohrey2010AutomaticGraphs};
+	\item[moderately undecidable problems:]
+		the existence of an "Eulerian path" is undecidable, and is only complete for
+		the second level of the "arithmetical hierarchy" "Pi0-2" \cite[Theorem~4.13]{KuskeLohrey2010AutomaticGraphs}.
+\end{description}
 
-Also:
-\begin{itemize}
-	\item see https://www.logic.rwth-aachen.de/pub/graedel/lics2020.pdf
-	\item \cite[\S~6]{KhoussainovNerode1995AutomaticPresentations} (automatic isomorphism)
-\end{itemize}
+Moreover, as a consequence of \Cref{prop:order-invariance}, the existence of an infinite clique,
+being an "order-invariant@@FO" property, is decidable over "automatic graphs".
+
+\begin{proposition}[{\cite[Proposition~6.5]{Kocher2014AutomatischenGraphen}}]
+	Whether an "automatic graph" is 2-colourable, or equivalently bipartite, is undecidable.
+	More precisely it is "Pi0-1"-complete.
+\end{proposition}
+
+For another survey on "automatic structures", see \cite{Gradel2020AutomaticStructures}.
+Lastly, we want to note that \emph{recursive structures} have been extensively studied
+since the late XXth century: they are defined analogously to "automatic structures",
+but "synchronous automata" are replaced Turing machines.
+Unsurprisingly, all non-trivial problems are undecidable: hence, from a computability perspective,
+the main question is to characterize the Turing degree of these problems.
+The extent of the literature on this topic is too vast to be summarized here:
+we refer the reader to the two-volume handbook \cite{ErshovGoncharovNerodeRemmelMarek1998Handbook1,ErshovGoncharovNerodeRemmelMarek1998Handbook2}.

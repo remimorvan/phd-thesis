@@ -65,6 +65,9 @@
 \knowledge{text={$\Sigma^0_2$}, wrap=\textsf}
 | Sigma0-2
 
+\knowledge{text={$\Pi^0_2$}, wrap=\textsf}
+| Pi0-2
+
 \knowledge{wrap=\textsf}
 | ZFC
 
