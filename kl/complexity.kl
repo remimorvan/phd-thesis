@@ -78,6 +78,12 @@
 | Pi0-2
 
 \knowledge{wrap=\textsf}
+ | arithmetical hierarchy
+
+\knowledge{wrap=\textsf}
+ | analytical hierarchy
+
+\knowledge{wrap=\textsf}
 | ZFC
 
 % ---

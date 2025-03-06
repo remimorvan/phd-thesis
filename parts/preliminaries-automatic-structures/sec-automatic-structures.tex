@@ -306,7 +306,7 @@ $\univStructSynchronous{2} \FOmodels^? \phi^{\•A}$, the formula $\phi^{\•A}$
 	\[
 		\exists x_1.\,\hdots \exists x_k.\, \psi(x_1,\hdots,x_k),
 	\]
-	where $\phi$ is a "positive quantifier-free sentence",
+	where $\psi$ is a "positive quantifier-free formula",
 	the size of the automaton for $\psi$ is of the order $|\•A|^{|\psi|}$:
 	conjunctions and disjunctions only require products but no powerset construction.
 	Now instead of explicitly building an automaton for
@@ -358,7 +358,7 @@ The goal of the corollary above is to highlight the difference with \Cref{prop:F
 in "L".
 
 \begin{remark}[Presburger arithmetic]
-	\AP""Presburger arithmetic"" is the "first-order theory" (over the signature $\tup{+, 0, 1}$)
+	\AP""Presburger arithmetic"" is the first-order theory (over the signature $\tup{+, 0, 1}$)
 	derived from the following axioms:
 	\begin{itemize}
 		\item $\forall x.\, 0 \neq x + 1$;
@@ -541,13 +541,13 @@ we obtain the following result.
 
 Problems on automatic graphs have been mainly studied by Kuske and Lohrey, who showed that over "automatic graphs":
 \begin{description}
-	\item[highly undecidable problems:] the existence of a "Hamiltonian path"
+	\item[highly undecidable problems:] the existence of a Hamiltonian path
 		is undecidable, in fact it is complete for the first level of the "analytical hierarchy"
 		\cite[Theorem~3.2]{KuskeLohrey2010AutomaticGraphs};
 		the existence of an infinite path in "directed trees" shares the same complexity
 		\cite[Theorem~3.6]{KuskeLohrey2010AutomaticGraphs};
 	\item[moderately undecidable problems:]
-		the existence of an "Eulerian path" is undecidable, and is only complete for
+		the existence of an Eulerian path is undecidable, and is only complete for
 		the second level of the "arithmetical hierarchy" "Pi0-2" \cite[Theorem~4.13]{KuskeLohrey2010AutomaticGraphs}.
 \end{description}
 
@@ -556,7 +556,7 @@ being an "order-invariant@@FO" property, is decidable over "automatic graphs".
 
 \begin{proposition}[{\cite[Proposition~6.5]{Kocher2014AutomatischenGraphen}}]
 	Whether an "automatic graph" is 2-colourable, or equivalently bipartite, is undecidable.
-	More precisely it is "Pi0-1"-complete.
+	More precisely it is "coRE"-complete.
 \end{proposition}
 
 For another survey on "automatic structures", see \cite{Gradel2020AutomaticStructures}.
@@ -567,3 +567,5 @@ Unsurprisingly, all non-trivial problems are undecidable: hence, from a computab
 the main question is to characterize the Turing degree of these problems.
 The extent of the literature on this topic is too vast to be summarized here:
 we refer the reader to the two-volume handbook \cite{ErshovGoncharovNerodeRemmelMarek1998Handbook1,ErshovGoncharovNerodeRemmelMarek1998Handbook2}.
+
+todo: colcombet-loding paper

@@ -20,6 +20,7 @@
 
 \knowledge{notion}
  | first-order definable
+ | definable relations
 
 % ---
 % FO interpretations & reductions 
@@ -55,6 +56,18 @@
 \knowledge{notion}
  | first-order equivalent
 
+% ---
+% Fragments
+% ---
+
+\knowledge{notion}
+ | existential sentences
+
+\knowledge{notion}
+ | existential-positive sentences
+
+\knowledge{notion}
+ | positive quantifier-free formula
 
 % ---
 % Weird FO stuff 
@@ -68,3 +81,14 @@
 
 \knowledge{url={https://en.wikipedia.org/wiki/L\%C3\%B6wenheim\%E2\%80\%93Skolem_theorem}}
  | upward Löwenheim–Skolem theorem
+
+\knowledge{notion}
+ | Presburger arithmetic
+
+% ---
+% MSO 
+% ---
+
+\knowledge{notion}
+ | monadic second-order logic
+ | MSO

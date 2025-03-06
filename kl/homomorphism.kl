@@ -50,6 +50,7 @@
 
 \knowledge{notion}
  | isomorphic
+ | isomorphic@struct
 
 \knowledge{notion}
  | automorphism
