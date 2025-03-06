@@ -36,6 +36,9 @@
  | Synchronous automaton
  | synchronous automata
 
+\knowledge{notion}
+ | Mezei theorem
+
 % ---
 % Concrete relations 
 % ---
