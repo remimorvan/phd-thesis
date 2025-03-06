@@ -28,7 +28,29 @@
  | symmetric relation
 
 \knowledge{notion}
+ | functional relations
+
+\knowledge{notion}
  | synchronous automaton 
  | automaton@sync
  | Synchronous automaton
  | synchronous automata
+
+% ---
+% Concrete relations 
+% ---
+
+\knowledge{notion}
+ | same parity relation
+
+\knowledge{notion}
+ | prefix relation
+
+\knowledge{notion}
+ | suffix relation
+
+\knowledge{notion}
+ | equal-length relation
+
+\knowledge{notion}
+ | subword relation

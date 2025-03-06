@@ -1,52 +1,9 @@
 %%%%% NEW KNOWLEDGES 
-%
-%\knowledge{notion}
-%  | functional relations
-%
-%\knowledge{notion}
-%  | $\+D$-membership problem for $\+C$-relations
-%
-%\knowledge{notion}
-%  | $\+C$/$\+D$-membership problem
-%  | $\RAT $/$\REC $-membership problem
-%
-%\knowledge{notion}
-%  | $\+D$-separability problem for $\+C$-relations
-%  | separation problem@rel
-%
-%\knowledge{notion}
-%  | membership@problemrel
-%
-%\knowledge{notion}
-%  | finite monoid
-%
-%\knowledge{notion}
-%  | monoid morphism
-%  | monoid morphisms
-%
-%\knowledge{notion}
-%  | same parity relation
-%
-%\knowledge{notion}
-%  | recognizable
+
+
 %
 %\knowledge{notion}
 %  | Mezei's theorem
-%
-%\knowledge{notion}
-%  | pseudovariety of finite monoids
-%
-%\knowledge{notion}
-%  | pseudovariety of regular languages
-%
-%\knowledge{notion}
-%  | pseudovariety@reglang
-%
-%\knowledge{notion}
-%  | syntactic monoids
-%
-%\knowledge{notion}
-%  | syntactic morphism
 %
 %\knowledge{notion}
 %  | membership
@@ -55,17 +12,6 @@
 %  | reflexive relations
 %  | reflexive relation
 %
-%\knowledge{notion}
-%  | Raysey's infinite theorem
-%
-%\knowledge{notion}
-%  | prefix relation
-%
-%\knowledge{notion}
-%  | suffix relation
-%
-%\knowledge{notion}
-%  | equal-length relation
 %
 %\knowledge{notion}
 %  | convolution@word
@@ -93,15 +39,9 @@
 %  | well-formed words
 %
 %\knowledge{notion}
-%  | equal-lenth relation
-%
-%\knowledge{notion}
 %  | automatic
 %  | non-automaticity
 %  | automaticity
-%
-%\knowledge{notion}
-%  | subword relation
 %
 %\knowledge{notion}
 %  | relation
@@ -166,9 +106,6 @@
 %
 %\knowledge{notion}
 %  | deterministic
-%
-%\knowledge{notion}
-%  | An Algebraic Characterization of Unary Two-Way Transducers
 %
 %\knowledge{notion}
 %  | queries@sem

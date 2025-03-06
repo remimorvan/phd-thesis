@@ -23,6 +23,17 @@
 \knowledge{notion, wrap=\DPfont}
  | reachable regularity problem
 
+\knowledge{notion}
+ | $\+D$-membership problem for $\+C$-relations
+ | $\+C$/$\+D$-membership problem
+ | membership@problemrel
+ | $\RAT $/$\REC $-membership problem
+ 
+\knowledge{notion}
+ | $\+D$-separability problem for $\+C$-relations
+ | separation problem@rel
+ | separability@problemrel
+
 \knowledge{notion, wrap=\DPfont}
  | $\RAT $/$\REC $-separability problem
 
