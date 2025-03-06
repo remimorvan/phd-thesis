@@ -1,6 +1,8 @@
 \knowledge{notion}
  | rational relation
  | rational relations
+ | Rational relations
+ | rational@rel
 
 \knowledge{notion}
  | automatic relation
@@ -10,11 +12,16 @@
  | synchronous relation
  | synchronous relations
  | synchronous@rel
+ | Automatic relations
 
 \knowledge{notion}
  | recognizable relations
  | recognizable@rel
  | recognizable relation
+
+\knowledge{notion}
+ | $\+V$-recognizable@rel
+ | $\+V$-recognizable relations
 
 \knowledge{notion}
  | symmetric@rel
@@ -23,3 +30,5 @@
 \knowledge{notion}
  | synchronous automaton 
  | automaton@sync
+ | Synchronous automaton
+ | synchronous automata

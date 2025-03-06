@@ -13,6 +13,9 @@
  | presentation of an automatic $\sigma $-structure
  | presentation of an automatic graph
  | automatic presentation of a directed graph
+ | automatic presentation $\+A$ of a $\sigma $-structure
+ | represented@struct
+ | represents@struct
 
 \knowledge{notion}
  | automatic@struct
@@ -25,5 +28,8 @@
  | automatic graphs
  | automatic@graph
  | automaticity@graph
+
+\knowledge{notion}
+ | $\omega $-automatic structures
 
 

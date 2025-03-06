@@ -5,11 +5,14 @@
 \knowledge{notion}
  | signature
  | signatures
- | relational signature
 
 \knowledge{notion}
  | predicate
  | predicates
+
+\knowledge{notion}
+ | relational signature
+ | relational signatures
 
 \knowledge{notion}
  | purely relational signature
@@ -33,6 +36,7 @@
  | \(\sigma \)-structures
  | relational structure
  | relational structures
+ | $\tau $-structure
 
 \knowledge{notion}
  | marked structure
@@ -45,6 +49,7 @@
  | interpreting@predicate
  | interpretation@predicate
  | interpretations@predicate
+ | predicate interpreted
 
 \knowledge{notion}
  | finite $\sigma $-structures

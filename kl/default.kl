@@ -1,0 +1,354 @@
+%%%%% NEW KNOWLEDGES 
+%
+%\knowledge{notion}
+%  | functional relations
+%
+%\knowledge{notion}
+%  | $\+D$-membership problem for $\+C$-relations
+%
+%\knowledge{notion}
+%  | $\+C$/$\+D$-membership problem
+%  | $\RAT $/$\REC $-membership problem
+%
+%\knowledge{notion}
+%  | $\+D$-separability problem for $\+C$-relations
+%  | separation problem@rel
+%
+%\knowledge{notion}
+%  | membership@problemrel
+%
+%\knowledge{notion}
+%  | finite monoid
+%
+%\knowledge{notion}
+%  | monoid morphism
+%  | monoid morphisms
+%
+%\knowledge{notion}
+%  | same parity relation
+%
+%\knowledge{notion}
+%  | recognizable
+%
+%\knowledge{notion}
+%  | Mezei's theorem
+%
+%\knowledge{notion}
+%  | pseudovariety of finite monoids
+%
+%\knowledge{notion}
+%  | pseudovariety of regular languages
+%
+%\knowledge{notion}
+%  | pseudovariety@reglang
+%
+%\knowledge{notion}
+%  | syntactic monoids
+%
+%\knowledge{notion}
+%  | syntactic morphism
+%
+%\knowledge{notion}
+%  | membership
+%
+%\knowledge{notion}
+%  | reflexive relations
+%  | reflexive relation
+%
+%\knowledge{notion}
+%  | Raysey's infinite theorem
+%
+%\knowledge{notion}
+%  | prefix relation
+%
+%\knowledge{notion}
+%  | suffix relation
+%
+%\knowledge{notion}
+%  | equal-length relation
+%
+%\knowledge{notion}
+%  | convolution@word
+%
+%\knowledge{notion}
+%  | blank symbol
+%
+%\knowledge{notion}
+%  | padding symbol
+%  | padding symbols
+%
+%\knowledge{notion}
+%  | recognizes@sync
+%  | recognized@sync
+%  | recognize@sync
+%  | recognizing@sync
+%
+%\knowledge{notion}
+%  | classical automaton
+%
+%\knowledge{notion}
+%  | well-formed
+%
+%\knowledge{notion}
+%  | well-formed words
+%
+%\knowledge{notion}
+%  | equal-lenth relation
+%
+%\knowledge{notion}
+%  | automatic
+%  | non-automaticity
+%  | automaticity
+%
+%\knowledge{notion}
+%  | subword relation
+%
+%\knowledge{notion}
+%  | relation
+%
+%\knowledge{notion}
+%  | $I$-locally finite
+%  | $\lBrack 1,k\rBrack $-locally finite
+%  | $\{3\}$-locally finite
+%
+%\knowledge{notion}
+%  | 3ExpTime
+%
+%\knowledge{notion}
+%  | 2ExpTime
+%
+%\knowledge{notion}
+%  | ExpTime
+%
+%\knowledge{notion}
+%  | $\REC $-membership problem for automatic relations
+%
+%\knowledge{notion}
+%  | $\REC $-separability problem for automatic relations
+%
+%\knowledge{notion}
+%  | multitape automaton
+%
+%\knowledge{notion}
+%  | recognized@desync
+%
+%\knowledge{notion}
+%  | automaton@desync
+%
+%\knowledge{notion}
+%  | length-multiplying
+%
+%\knowledge{notion}
+%  | length-multiplying morphisms
+%
+%\knowledge{notion}
+%  | deterministic rational relations
+%  | deterministic rational@rel
+%
+%\knowledge{notion}
+%  | deterministic@desync
+%  | non-deterministic@desync
+%
+%\knowledge{notion}
+%  | deterministic@multitape
+%
+%\knowledge{notion}
+%  | deterministic multitape automaton
+%
+%\knowledge{notion}
+%  | deterministic rational
+%
+%\knowledge{notion}
+%  | synchronous@auto
+%
+%\knowledge{notion}
+%  | recognizes@multitape
+%
+%\knowledge{notion}
+%  | deterministic
+%
+%\knowledge{notion}
+%  | An Algebraic Characterization of Unary Two-Way Transducers
+%
+%\knowledge{notion}
+%  | queries@sem
+%
+%\knowledge{notion}
+%  | first-order interpretation
+%  | first-order interpretable
+%  | first-order interpretations
+%
+%\knowledge{notion}
+%  | $d$-dimensional first-order interpretation
+%
+%\knowledge{notion}
+%  | $\+I$-interpretation of $\?A$
+%  | interpretation
+%  | Interpretation
+%
+%\knowledge{notion}
+%  | one-dimensional interpretation
+%  | one-dimensional interpretations
+%
+%\knowledge{notion}
+%  | pointed $\sigma $-structure
+%
+%\knowledge{notion}
+%  | two-dimensional interpretation
+%
+%\knowledge{notion}
+%  | injective@interpretation
+%  | injective interpretation
+%
+%\knowledge{notion}
+%  | interpreted@pred
+%
+%\knowledge{notion}
+%  | injective first-order interpretation
+%
+%\knowledge{notion}
+%  | FO-interpretations
+%
+%\knowledge{notion}
+%  | FO-reduction
+%
+%\knowledge{notion}
+%  | autoamtic@rel
+%
+%\knowledge{notion}
+%  | synchronous ($3$-ary) automaton@synchronous automaton
+%  | synchronous ($0$-ary) automaton@synchronous automaton
+%  | synchronous ($k$-ary) automaton@synchronous automaton
+%
+%\knowledge{notion}
+%  | lexicographic order
+%
+%\knowledge{notion}
+%  | monadic second-order logic
+%
+%\knowledge{notion}
+%  | FO
+%
+%\knowledge{notion}
+%  | MSO
+%
+%\knowledge{notion}
+%  | definable relations
+%
+%\knowledge{notion}
+%  | injective presentations
+%  | injective presentation
+%
+%\knowledge{notion}
+%  | injective automatic presentation
+%
+%\knowledge{notion}
+%  | lexicographic
+%
+%\knowledge{notion}
+%  | automatic@pres
+%
+%\knowledge{notion}
+%  | $d$-dimensional interpretation
+%
+%\knowledge{notion}
+%  | tree-automatic structures
+%  | $\omega $-tree-automatic structures
+%
+%\knowledge{notion}
+%  | injective@pres
+%
+%\knowledge{notion}
+%  | Hodgson's theorem
+%
+%\knowledge{notion}
+%  | synchronous ($0$-ary) automaton
+%
+%\knowledge{notion}
+%  | first-order model-checking
+%
+%\knowledge{notion}
+%  | existential-positive sentences
+%
+%\knowledge{notion}
+%  | positive quantifier-free sentence
+%
+%\knowledge{notion}
+%  | Finite Graph Reachability Problem
+%
+%\knowledge{notion}
+%  | existential sentences
+%
+%\knowledge{notion}
+%  | Presburger arithmetic
+%
+%\knowledge{notion}
+%  | first-order theory
+%
+%\knowledge{notion}
+%  | upward Löwenheim–Skolem theorem
+%
+%\knowledge{notion}
+%  | order-invariant first-order formula
+%  | order-invariant first-order formulas
+%
+%\knowledge{notion}
+%  | sentences
+%
+%\knowledge{notion}
+%  | order-invariant@FO
+%  | order-invariance@FO
+%
+%\knowledge{notion}
+%  | Isomorphism Problem for Automatic Structures
+%
+%\knowledge{notion}
+%  | isomorphic@struct
+%
+%\knowledge{notion}
+%  | analytical hierarchy
+%
+%\knowledge{notion}
+%  | Automatic ordinals
+%  | automatic ordinals
+%
+%\knowledge{notion}
+%  | $\omega $-tree-automatic ordinals
+%  | tree-automatic ordinals
+%
+%\knowledge{notion}
+%  | isomorphism problem
+%
+%\knowledge{notion}
+%  | automatic Boolean algebras
+%
+%\knowledge{notion}
+%  | $\omega $-tree-automaticity
+%
+%\knowledge{notion}
+%  | $\omega $-tree-automatic Boolean algebras
+%
+%\knowledge{notion}
+%  | automatic group
+%  | automatic groups
+%
+%\knowledge{notion}
+%  | Hamiltonian path
+%
+%\knowledge{notion}
+%  | Eulerian path
+%
+%\knowledge{notion}
+%  | arithmetical hierarchy
+%
+%\knowledge{notion}
+%  | Pi0-1
+%
+%\knowledge{notion}
+%  | graph
+%
+%\knowledge{notion}
+%  | DAG
+%
+%\knowledge{notion}
+%  | directed cycle

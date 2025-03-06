@@ -58,6 +58,7 @@
  | regular function
  | regularity@fun
  | regular@fun
+ | regular functions
 
 \knowledge{notion}
  | regular homomorphisms
