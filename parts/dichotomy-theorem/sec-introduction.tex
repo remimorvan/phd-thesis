@@ -13,13 +13,13 @@ databases \cite{BenediktLibkinSchwentickSegoufin2003DefinableRelations}, compari
 string constraints for model checking \cite{LinBarcelo2016StringSolvingWordEquationsTransducers}. 
 The most studied such classes include "recognizable@@rel", "automatic@@rel" "aka" "synchronous@@rel", and "automatic relations", each one of the latter two strictly extending the previous one. 
 
-Recall that \AP""rational relations"" $\intro*\RAT$
+Recall that \AP"rational relations" $\RAT$
 are those definable by multi-head automata,
 with heads possibly moving asynchronously;
 "automatic relations", "aka" "synchronous relations",
 are those that are accepted by multi-head automata
 whose heads are forced to move synchronously; and 
-\AP""recognizable relations"" $\intro*\REC$ correspond to finite unions of products of regular languages---or, equivalently, to languages recognized via finite monoids, by "Mezei theorem".
+\AP"recognizable relations" $\REC$ correspond to finite unions of products of regular languages---or, equivalently, to languages recognized via finite monoids, by "Mezei theorem".
 By definition, all of these classes coincide with the 
 class of "regular languages" when restricted to unary relations.
 
@@ -27,8 +27,8 @@ class of "regular languages" when restricted to unary relations.
 % "recognizable relations" correspond to finite unions of products of regular languages (or, equivalently, to languages recognized via finite monoids, by Mezei Theorem). By definition, all of these classes coincide with the 
 % class of regular languages when restricted to unary relations.
 
-Prior work has focused on the ""$\REC$-membership problem"", 
-which takes as input an $n$-ary "rational relation"%
+Prior work has focused on the "$\REC$-membership problem", 
+which takes as input an $n$-ary "rational relation"
 $\+R$ and asks whether it is equivalent to a "recognizable relation"
 $\bigcup_i L_{i,1} \times \cdots \times L_{i,n}$, where each $L_{i,j}$ is a "regular language". 
 Intuitively, the problem asks whether the different components of  
@@ -59,7 +59,7 @@ By applying techniques based on Ramsey Theorem over infinite graphs, it was show
 
 \AP On the other hand, much less is known about the ""$\RAT$/$\REC$-separability problem"", which takes two $n$-ary "rational relations" 
 $\+R,\+R' \subseteq \Sigma^* \times \Sigma^*$ and checks whether there is a "recognizable relation" 
-$S = \bigcup_i L_{i,1} \times \cdots \times L_{i,n}$ that \AP""separates@@rel"" $\+R$ from $\+R'$, meaning that $\+R \subseteq \+S$ and $\+R' \cap \+S = \emptyset$, in we case we say that $\+R$
+$S = \bigcup_i L_{i,1} \times \cdots \times L_{i,n}$ that "separates@@rel" $\+R$ from $\+R'$, meaning that $\+R \subseteq \+S$ and $\+R' \cap \+S = \emptyset$, in we case we say that $\+R$
 and $\+R'$ are \AP""separable@@rel"" by a "recognizable relation".
 In other words, this problem asks whether we can \emph{over approximate} $\+R$ with a recognizable 
 relation $\+S$ that is constrained not to intersect with $\+R'$. Separability problems of this kind abound in theoretical computer science, in particular
@@ -69,7 +69,7 @@ As for membership, the "$\RAT$/$\REC$-separability problem"
 is in general undecidable, so in this chapter we focus on its restriction to
 "automatic relations".
 \decisionproblem{
-	""$\AUT$/$\REC$-separability problem""
+	\reintro{$\AUT$/$\REC$-separability problem}
 }{
 	Two "automatic relations" $\+R$ and $\+R'$.
 }{

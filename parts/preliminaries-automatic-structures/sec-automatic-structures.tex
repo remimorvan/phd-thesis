@@ -14,7 +14,7 @@ An \AP""automatic presentation $\+A$ of a $\sigma$-structure"" consists of:
 	\itemAP a binary "automatic relation" $\reintro*\relPres{=}{\+A} \subseteq
 		\Sigma^* \times \Sigma^*$. 
 \end{itemize} 
-The \AP""structure represented"" $\?A$ by an "automatic presentation" $\+A$ has
+The \AP\reintro{structure represented} $\?A$ by an "automatic presentation" $\+A$ has
 $\domainPres{\+A}/{\relPres{=}{\+A}}$ as its domain, and the predicate $\+R_{(k)} \in \sigma$
 is "interpreted@@pred" in such a way that a tuple $\tup{X_1,\hdots,X_k}$ of equivalence classes
 belongs to $\+R(\?A)$ if, and only if, there exists $\tup{u_i}_{1 \leq i \leq k} \in\tup{X_i}_{1 \leq i \leq k}$ "st" $\tup{u_1,\hdots,u_k} \in \relPres{\+R}{\+A}$.
@@ -88,7 +88,7 @@ are called ""injective presentations"".
 	todo:model theory rk after model-checking
 \end{example}
 
-Recall that, using \Cref{prop:automatic-first-order}, a "relation" is "automatic@@rel" 
+Recall that, using \Cref{prop:automatic-first-order}, a relation is "automatic@@rel" 
 if and only if they are "first-order definable" over $\signatureSynchronous{\Sigma}$.
 It means that we can alternatively see "automatic presentations" as a
 collection of first-order formulas---one for the domain, one for equality, and
@@ -142,7 +142,7 @@ For instance, $\langle \univStructSynchronous{\Sigma}, \langle\lastLetter{a}\ran
 	The idea is to encode each letter of $\Sigma = \{a_1,\hdots,a_n\}$
 	over $\2$ in such a way that each letter $a_i$
 	is encoded over a word $\hat a_i \in \2^*$ "st"
-	all $\hat a_i$ have the same length---this is necessary to preserve "automaticity".
+	all $\hat a_i$ have the same length---this is necessary to preserve "automaticity@@struct".
 	For instance, take $\hat a_i$ to be the binary encoding of $i$
 	over $k$ bits, for some fixed value of $k \gtrsim \log_2(n)$.
 	Then, by \Cref{prop:automatic-closure-length-multiplying-morphism},
@@ -254,9 +254,9 @@ $\univStructSynchronous{2} \FOmodels^? \phi^{\•A}$, the formula $\phi^{\•A}$
 	% we can build a "first-order formula" $\phi^{\•A}$ over
 	% $\signatureSynchronous{\2}$ "st"
 	% \[
-	% 	\univStructSynchronous{2} \models \phi^{\•A}
+	% 	\univStructSynchronous{2} \FOmodels \phi^{\•A}
 	% 	\quad\text{"iff"}\quad
-	% 	\?A \models \phi.
+	% 	\?A \FOmodels \phi.
 	% \]
 	% The size of $\phi^{\•A}$ is polynomial in the size of "first-order formulas"
 	% for $\+A$---which are polynomial in the size of the automata for $\+A$ by \Cref{prop:automatic-first-order}---and in the size of $\phi$.
@@ -277,10 +277,10 @@ $\univStructSynchronous{2} \FOmodels^? \phi^{\•A}$, the formula $\phi^{\•A}$
 	\[
 		\+B^\phi \text{ accepts } u_1\convol\hdots\convol u_k
 		\quad\text{"iff"}\quad
-		\tup{\?A, u_1, \hdots, u_k} \models \phi(x_1,\hdots,x_k).
+		\tup{\?A, u_1, \hdots, u_k} \FOmodels \phi(x_1,\hdots,x_k).
 	\]
 	In the end, we get a "synchronous ($0$-ary) automaton@synchronous automaton" $\+B^\phi$ that either accepts
-	or rejects depending on whether $\?A \models \phi$ or not.
+	or rejects depending on whether $\?A \FOmodels \phi$ or not.
 	Notice that each quantifier alternation implies a powerset construction, and so
 	the size of $\+B^\phi$ is a tower of exponentials in the number of quantifier alternations in $\phi$. Hence, we get a "Tower" algorithm.
 
@@ -312,7 +312,7 @@ $\univStructSynchronous{2} \FOmodels^? \phi^{\•A}$, the formula $\phi^{\•A}$
 	Now instead of explicitly building an automaton for
 	$\exists x_1.\,\hdots \exists x_k.\, \psi(x_1,\hdots,x_k)$,
 	we test if the automaton for $\psi$ accepts any word.
-	The answer is ``yes'' "iff" $\?A \models \phi$.
+	The answer is ``yes'' "iff" $\?A \FOmodels \phi$.
 	Testing non-emptiness of the automaton amounts to checking if an accepting state can be
 	reached from an initial state, which is "NL".
 	Since $\phi$ is fixed, the automaton in question is of polynomial size.
@@ -321,7 +321,7 @@ $\univStructSynchronous{2} \FOmodels^? \phi^{\•A}$, the formula $\phi^{\•A}$
 	work with pointers to the automaton of $\•A$.
 
 	Lastly, the "NL" lower bound, can be proven by a reduction from NFA non-emptiness, which is
-	itself "NL"-hard by reduction from the "Finite Graph Reachability Problem".
+	itself "NL"-hard by reduction from the "finite graph reachability problem".
 \end{proof}
 
 Recall that since "NL" is closed under complementation---see "eg" \cite[Corollary~9.23]{Immerman1998DescriptiveComplexity}---, we obtain the same complexity for
@@ -374,7 +374,7 @@ in "L".
 	\begin{itemize}
 		\item $\phi$ belongs to the theory, "ie" it is a logical consequence of the axioms above,
 		\item $\phi$ holds in all models satisfying the axioms above, and 
-		\item $\tup{\N, +, 0, 1} \models \phi$.
+		\item $\tup{\N, +, 0, 1} \FOmodels \phi$.
 	\end{itemize}
 	Since $\tup{\N, +, 0, 1}$ is "first-order equivalent" to $\tup{\N, +}$, which
 	is "automatic@@struct" by \Cref{ex:presburger},
@@ -402,7 +402,7 @@ An \AP""order-invariant first-order formula""%
 \cite[Exercise~3.1.12]{Gradel2007FiniteModelTheory}.}
 over $\sigma$
 is any "first-order formula"\footnote{For the sake of simplicity we give all definitions
-for "sentences", but they easily be generalized to handle free varirables.} $\phi$
+for "sentences@@FO", but they easily be generalized to handle free varirables.} $\phi$
 over the signature $\sigma \dcup \{\leq\}$ "st" for any
 "$\sigma$-structure" $\?A$, for any \emph{total orders} $\leq_1$, $\leq_2$ over $A$,
 we have $\tup{\?A, \leq_1} \FOmodels \phi$ "iff" $\tup{\?A, \leq_2} \FOmodels \phi$.
@@ -442,7 +442,7 @@ From the notion of "automaticity@@struct" two questions naturally arise:
 		to "automatic structures" still decidable?
 \end{enumerate}
 
-\decisionproblem{"Isomorphism Problem for Automatic Structures"}{
+\decisionproblem{""Isomorphism Problem for Automatic Structures""}{
 	Two "automatic presentations" $\•A$ and $\•B$.
 }{
 	Is $\?A$ "isomorphic@@struct" to $\?B$?	
@@ -478,8 +478,8 @@ or the other does not change the notion of "automaticity@@struct".
 The "isomorphism problem" for "automatic Boolean algebras" is decidable
 \cite[Corollary~3.5]{KhoussainovNiesRubinStephan2007Automatic} essentially
 because there are very few "automatic Boolean algebras" \cite[Theorem~3.4]{KhoussainovNiesRubinStephan2007Automatic}.
-Over, when going to "$\omega$-tree-automaticity", not only is the "isomorphism problem"
-undecidable: Finkel and Todor\v{c}ević exhibited two somewhat simple-looking
+However, when going to "$\omega$-tree-automaticity", not only is the "isomorphism problem"
+undecidable, but Finkel and Todor\v{c}ević exhibited two somewhat simple-looking
 "$\omega$-tree-automatic Boolean algebras" for which whether they were isomorphic
 is independent from "ZFC" \cite[Theorem~6.1]{FinkelTodorcevic2010Isomorphism}.
 
@@ -489,7 +489,7 @@ Their study was introduced in the late 1980s,
 by showing that they have a solvable word problem \cite[Theorem~2.1.9]{Epstein1992Word}.%
 \footnote{Actually this last result is proved on the slightly bigger class of ``regularly generated groups''.}
 Typical examples of infinite "automatic group" are the braid group
-\cite{Theorem~9.3.1}[Epstein1992Word] and the finitely-generated free groups.
+\cite[Theorem~9.3.1]{Epstein1992Word} and the finitely-generated free groups.
 We refer the reader to \cite{Rees2022AutomaticGroups} for a recent and detailed account on
 the history of the development of the theory of "automatic groups".
 Remarkably, despite being a very active research area, the decidability of
@@ -501,8 +501,8 @@ the "isomorphism problem" remains open.
 
 \paragraph*{Automatic Rings and Fields.}
 Richer algebraic structures, like rings or fields actually often fail to be captured by
-the notion of "automaticity". For instance, $\tup{\N,{+},{\cdot},0,1}$ (Peano's arithmetic)
-is not "automatic".
+the notion of "automaticity@@struct". For instance, $\tup{\N,{+},{\cdot},0,1}$ (Peano's arithmetic)
+is not "automatic@@struct".
 This essentially follows from \Cref{prop:bound-automatic-structures}, applied to multiplication,
 together with a counting argument, see \cite[Corollary~XII.8.11]{Blumensath2024MSOModelTheory}.
 Khoussainov, Nies, Rubin \& Stephan moreover proved that no infinite field\footnote{In fact their result also holds for integral domains.} can be "automatic@@struct"

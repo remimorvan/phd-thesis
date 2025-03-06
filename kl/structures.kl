@@ -5,17 +5,15 @@
 \knowledge{notion}
  | signature
  | signatures
-
-\knowledge{notion}
- | predicate
- | predicates
-
-\knowledge{notion}
  | relational signature
  | relational signatures
 
 \knowledge{notion}
  | purely relational signature
+
+\knowledge{notion}
+ | predicate
+ | predicates
 
 \knowledge{notion}
  | graph signature
@@ -95,6 +93,12 @@
  | strongly acyclic@struct
 
 \knowledge{notion}
+ | directed cycle
+
+\knowledge{notion}
+ | DAG
+
+\knowledge{notion}
  | connected
  | connected component
  | connected components
@@ -152,3 +156,11 @@
 
 \knowledge{notion}
  | block product
+
+
+% ---
+% Queries
+% ---
+
+\knowledge{notion}
+ | queries@sem

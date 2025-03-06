@@ -8,6 +8,7 @@
 
 \knowledge{notion}
  | functional relations
+ | functional relation
 
 % ---
 % Recognizable relations
@@ -59,15 +60,15 @@
  | well-formed words
 
 \knowledge{notion}
- | recognizes@sync
- | recognized@sync
- | recognize@sync
- | recognizing@sync
+ | recognizes@syncauto
+ | recognized@syncauto
+ | recognize@syncauto
+ | recognizing@syncauto
 
 \knowledge{notion}
  | $I$-locally finite
  | $\lBrack 1,k\rBrack $-locally finite
- | $\{3\}$-locally 
+ | $\{3\}$-locally finite
  
 \knowledge{notion}
  | length-multiplying
@@ -119,3 +120,7 @@
 
 \knowledge{notion}
  | subword relation
+
+\knowledge{notion}
+ | lexicographic order
+ | lexicographic

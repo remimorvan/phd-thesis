@@ -263,7 +263,7 @@ ${\intro*\prefix} \defeq \{
 \}$, the \AP""suffix relation""
 ${\intro*\suffix} \defeq \{
 	\tup{u,v} \in \Sigma^*\times\Sigma^* \mid
-	\text{$u$ is a prefix of $v$}
+	\text{$u$ is a suffix of $v$}
 \}$, nor the equality relation are "recognizable@@rel".
 A similar proof can show that the ""equal-length relation""
 ${\intro*\equalLength} \defeq \{
@@ -325,10 +325,10 @@ is a finite-state automaton over $\Gamma\convolAlpha \Sigma$.%
 \footnote{In particular, just like for classical automata, we allow for non-determinism
 unless otherwise specified.}
 We say that $\+A$ accepts the pair of words $\tup{u,v} \in \Gamma^* \times \Sigma^*$ if
-it accepts $u \convol v$ as a ``classical automaton''. Similarly, $\+A$ "recognizes@@sync"
+it accepts $u \convol v$ as a ``classical automaton''. Similarly, $\+A$ \AP""recognizes@@syncauto""
 $\+R$ if it $\convolRel{\+R}$ is exactly the set of
-words of the form $u \convol v$ that are accepted by $\+A$ as a "classical automaton".
-A relation is \AP""automatic@@rel"" if it is "recognized@@sync" by a finite-state "synchronous automaton".
+words of the form $u \convol v$ that are accepted by $\+A$ as a classical automaton.
+A relation is \AP""automatic@@rel"" if it is "recognized@@syncauto" by a finite-state "synchronous automaton".
 We denote by \AP$\intro*\AUT$ the class of "automatic relations".
 
 \begin{remark}
@@ -350,7 +350,7 @@ Because of this, some automata that are not \emph{classically} equivalent
 become equivalent when seen as "synchronous automaton". For instance, 
 both "synchronous automata" of
 \Cref{fig:example-synchronous-automaton-prefix-1,fig:example-synchronous-automaton-prefix-2}
-"recognize@@sync" the "prefix relation". However, they do not recognize
+"recognize@@syncauto" the "prefix relation". However, they do not recognize
 the same language when seen as classical automaton---for instance, $\pair{\pad}{a}\pair{a}{a}$
 is accepted by the automaton of \Cref{fig:example-synchronous-automaton-prefix-1}
 but not by the one of \Cref{fig:example-synchronous-automaton-prefix-2}.
@@ -368,7 +368,7 @@ an automaton for $\WellFormed[\Gamma,\Sigma]$.
 	\end{tikzpicture}
 	\caption{
 		\AP\label{fig:example-synchronous-automaton-prefix-1}
-		A deterministic one-state "synchronous automaton" "recognizing@@sync"
+		A deterministic one-state "synchronous automaton" "recognizing@@syncauto"
 		the "prefix relation".
 	}
 \end{marginfigure}
@@ -384,7 +384,7 @@ an automaton for $\WellFormed[\Gamma,\Sigma]$.
 	\end{tikzpicture}
 	\caption{
 		\AP\label{fig:example-synchronous-automaton-prefix-2}
-		A deterministic two-state "synchronous automaton" "recognizing@@sync"
+		A deterministic two-state "synchronous automaton" "recognizing@@syncauto"
 		the "prefix relation".
 	}
 \end{marginfigure}
@@ -409,7 +409,7 @@ the emptiness of the classical automaton obtained by intersecting $\+A$ with $\W
 
 Similarly to \Cref{fig:example-synchronous-automaton-prefix-1,fig:example-synchronous-automaton-prefix-2},
 it is straightforward to prove that the "equal-length relation"
-and the equality relation are "automatic". As stated before, this class extends
+and the equality relation are "automatic@@struct". As stated before, this class extends
 the class of "recognizable relations".
 
 \begin{proposition}
@@ -463,7 +463,7 @@ todo: add examples lexicographic \& Gray.
 
 As often in automata theory, the pumping lemma provides a useful tool to prove
 non-regularity, or rather here non-automaticity.
-For instance, the "suffix relation" is not "automatic": otherwise,
+For instance, the "suffix relation" is not "automatic@@struct": otherwise,
 using the pumping lemma on $a^n \convol b^n a^n$ for some sufficiently big $n\in\N$
 would imply that $a^{n+k} \convol b^{n+k} a^n \in \convolRel{(\suffix)}$ for some $k\in\Np$.
 Similarly, the \AP""subword relation"" $\intro*\subword$ is also not "automatic@@rel".%
@@ -471,9 +471,9 @@ Similarly, the \AP""subword relation"" $\intro*\subword$ is also not "automatic@
 $u \subword v$ "iff" there exists $j_1 < j_2 < \hdots < j_{|u|}$ "st" $u_i = v_{j_{i}}$
 for all $i \in \lBrack 1, |u|\rBrack$: in other words, $u$ can be obtained from $v$ by removing letters.}
 
-Another useful tool to prove "non-automaticity" is the following one.
+Another useful tool to prove "non-automaticity@@struct" is the following one.
 Given $I \subseteq \lBrack 1,k\rBrack$,
-we say that a $k$-ary "relation" $\+R \subseteq \Sigma_1^* \times \cdots \times \Sigma_k^*$ is
+we say that a $k$-ary relation $\+R \subseteq \Sigma_1^* \times \cdots \times \Sigma_k^*$ is
 ""$I$-locally finite"" if for every $\tup{w_i}_{i\in I} \in \prod_{i\in I} \Sigma_i^*$,
 there are only finitely many $\tup{w_j}_{j\not\in I} \in \prod_{j \not\in I} \Sigma_j^*$
 "st" $\tup{w_1,\hdots,w_k} \in \+R$.%
@@ -488,7 +488,7 @@ Note that every $k$-ary relation is "$\lBrack 1,k\rBrack$-locally finite".
 	of $I = \lBrack 1,k\rBrack$, this statement is trivially valid.}
 	\AP\label{prop:bound-automatic-structures}
 	Let $\+R \subseteq \Sigma_1^* \times \cdots \times \Sigma_k^*$ be "$I$-locally finite".
-	If $\+R$ is "automatic", then there exists a constant $n\in\N$ "st" for every
+	If $\+R$ is "automatic@@struct", then there exists a constant $n\in\N$ "st" for every
 	$\tup{w_1,\hdots,w_k} \in \+R$,
 	\[
 		\max_{j \not\in I}{|w_j|} - \max_{i \in I}{|w_i|} \leq n.
@@ -500,7 +500,7 @@ consisting of all triples $\tup{u,v,w}$ "st" $uv = w$, where $u,v,w\in\Sigma^*$.
 Then this relation is "$\{3\}$-locally finite", and so by
 \Cref{prop:bound-automatic-structures}, there exists $n\in \N$
 "st" for all $u,v \in \Sigma^*$, $|uv| \leq \max{(|u|,|v|)} + n$.
-This is trivially false, and hence, concatenation is not "automatic".
+This is trivially false, and hence, concatenation is not "automatic@@struct".
 
 Despite being somewhat expressive, "automatic relations" retain some decidability properties. 
 \begin{proposition}[{\cite[Theorem 1]{BarceloHongLeLinNiskanen2019MonadicDecomposability}, see also \cite[Corollary 2.9]{BergstrasserGanardiLinZetzsche2022RamseyQuantifiers}}]
@@ -576,7 +576,7 @@ We say that a relation $\+R \subseteq \Gamma^* \times \Sigma^*$ is ""rational@@r
 if it is "recognized@@desync" by a "multitape automaton",
 or equivalently if it is the image by $\projDesync$ of a "regular language"
 over $\Gamma\convolAlpha\Sigma$.
-The class of all "rational relations" is denoted by $\RAT$.
+The class of all "rational relations" is denoted by \AP$\intro*\RAT$.
 
 % For instance, the \AP""local squaring function"",
 % consisting of all pairs $\tup{u,v} \in \Sigma^* \times \Sigma^*$
@@ -769,7 +769,7 @@ The motivation behind this somewhat strange definition is that, this way,
 		\AP\label{fig:example-synchronous-automaton-prefix-1-detrat}
 		Construction of the proof of \Cref{prop:synchronous-implies-detrat}
 		applied to the "deterministic multitape automaton" built from the synchronous automaton of
-		\Cref{fig:example-synchronous-automaton-prefix-1} "recognizing@@sync" the "prefix relation".
+		\Cref{fig:example-synchronous-automaton-prefix-1} "recognizing@@syncauto" the "prefix relation".
 	}
 \end{marginfigure}
 \begin{proof}[Proof sketch]
@@ -827,13 +827,13 @@ The motivation behind this somewhat strange definition is that, this way,
 	
 	Note that by construction, $\+A'$ is a "deterministic multitape automaton". 
 	Using the fact that $\+A$ is "synchronous@@auto", it can be shown that
-	if $\+R$ is the relation "recognized@@sync" by $\+A$, then $\+A'$ precisely 
+	if $\+R$ is the relation "recognized@@syncauto" by $\+A$, then $\+A'$ precisely 
 	""recognizes@@multitape"" $\{\tup{u\triangleleft,v\triangleleft} \mid \tup{u,v} \in \+R\}$.
 	And hence, $\+R$ is "deterministic rational@@rel".
 \end{proof}
 
 Observe how the addition of the end-of-tape symbols is crucial for the "multitape automaton"
-of the previous proof to be "deterministic". For instance, while
+of the previous proof to be "deterministic@@multitape". For instance, while
 the prefix relation is "deterministic rational@@rel", it can be shown that
 $\prefix$ cannot be recognized by a "deterministic multitape automaton".
 

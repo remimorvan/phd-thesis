@@ -7,6 +7,7 @@
  | automatic presentations of $\sigma $-structures
  | presentation@auto
  | presentation@automatic
+ | automatic@pres
  | structure represented
  | represent@structure
  | presentations of automatic $\sigma $-structures
@@ -16,7 +17,6 @@
  | automatic presentation $\+A$ of a $\sigma $-structure
  | represented@struct
  | represents@struct
- | automatic@pres
 
 \knowledge{notion}
  | injective@pres
@@ -40,6 +40,7 @@
  | automatic Boolean algebras
  | automatic group
  | automatic groups
+ | non-automaticity@struct
 
 \knowledge{notion}
  | Hodgson's theorem

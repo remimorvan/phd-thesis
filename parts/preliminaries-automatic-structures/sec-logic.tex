@@ -39,9 +39,9 @@ Given a "$\sigma$-structure" $\?A$, the \AP""$\+I$-interpretation of $\?A$"" is 
 denote $d$-tuples of elements of $\?A$ and $d$-tuples of variables.}
 \begin{itemize}
 	\item its domain is the quotient of 
-		$\{\bar a \in \?A^d \mid \?A, \bar a \models \domainInter{\+I}(\bar x)\}$
+		$\{\bar a \in \?A^d \mid \?A, \bar a \FOmodels \domainInter{\+I}(\bar x)\}$
 		by the equivalence relation
-		$\set{\tup{\bar a, \bar b} \mid \?A, \bar a, \bar b \models \relInter{=}{\+I}(\bar x, \bar y)}$,
+		$\set{\tup{\bar a, \bar b} \mid \?A, \bar a, \bar b \FOmodels \relInter{=}{\+I}(\bar x, \bar y)}$,
 	\item for any predicate $\+R_{(k)} \in \tau$,
 		we have
 		\[
@@ -117,9 +117,9 @@ defined inductively by:
 	for any "pointed $\sigma$-structure" $\tup{\?A, \bar a_1,\hdots, \bar a_k}$, we have:
 	\[
 		\tup{\interpretation{\+I}{\?A}, \equivclass{\bar a_1}, \hdots, \equivclass{\bar a_k}}
-		\models \phi(x_1, \hdots, x_k)
+		\FOmodels \phi(x_1, \hdots, x_k)
 		\quad\text{"iff"}\quad
-		\tup{\?A, \bar a_1,\hdots, \bar a_k} \models \phi^{\+I}(\bar x_1,\hdots,\bar x_k).
+		\tup{\?A, \bar a_1,\hdots, \bar a_k} \FOmodels \phi^{\+I}(\bar x_1,\hdots,\bar x_k).
 	\]
 \end{proposition}
 And so, in particular, if $\+C$ is a class of structures, then
@@ -253,7 +253,7 @@ Given an alphabet $\Sigma$, we define on $\Sigma^*$:
 \begin{itemize}
 	\itemAP a unary relation $\intro*\lastLetter{a}$ indicating that the last letter of a word is $a$,
 	\itemAP a binary relation $\reintro*\equalLength$ indicating that two words have the same length,
-	\itemAP a binary relation $\intro*\prefix$ indicating that a word is a prefix of another.
+	\itemAP a binary relation $\reintro*\prefix$ indicating that a word is a prefix of another.
 \end{itemize} 
 We denote by $\intro*\signatureSynchronous{\Sigma}$ the "signature" $\langle \langle\lastLetter{a}\rangle_{a \in \Sigma},\, \equalLength,\, \prefix \rangle$%
 \footnote{For the sake of simplicity, we abusively use the same notations for
@@ -294,7 +294,7 @@ makes no difference whatsoever since both models are "first-order interpretable"
 	We start with an example: we want to build a "first-order formula" $\phi$ over $\signatureSynchronous{\2}$ for the language $(00)^*$, in the sense
 	that for all $u\in \2^*$,
 	\[
-		\tup{\univStructSynchronous{\2}, u} \models \phi(x) \quad\text{iff}\quad u \in (00)^*.
+		\tup{\univStructSynchronous{\2}, u} \FOmodels \phi(x) \quad\text{iff}\quad u \in (00)^*.
 	\]
 	For this, it suffices to guess a word $v$ of the same length as $u$, which alternates
 	zeroes and ones, and then to check that the first letter $v$ is distinct from
@@ -307,7 +307,7 @@ makes no difference whatsoever since both models are "first-order interpretable"
 	\[
 		\tup{u_1,\hdots, u_k} \in \+R
 		\quad\text{iff}\quad
-		\tup{\univStructSynchronous{\Sigma}, u_1,\hdots, u_k} \models \phi_{\+A}(x_1,\hdots,x_k).
+		\tup{\univStructSynchronous{\Sigma}, u_1,\hdots, u_k} \FOmodels \phi_{\+A}(x_1,\hdots,x_k).
 	\]
 	The formula $\phi_{\+A}$ is built as follows:
 	\begin{itemize}

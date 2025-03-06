@@ -3,6 +3,7 @@
  | First-Order Model Checking of Automatic Structures
  | First-order model checking of automatic structures
  | First-Order Model Checking of Automatic $\sigma $-Structures
+ | first-order model-checking
 
 \knowledge{notion, wrap=\DPfont}
  | $k$-colourability problem
@@ -23,13 +24,13 @@
 \knowledge{notion, wrap=\DPfont}
  | reachable regularity problem
 
-\knowledge{notion}
+\knowledge{notion, wrap=\DPfont}
  | $\+D$-membership problem for $\+C$-relations
  | $\+C$/$\+D$-membership problem
  | membership@problemrel
  | $\RAT $/$\REC $-membership problem
  
-\knowledge{notion}
+\knowledge{notion, wrap=\DPfont}
  | $\+D$-separability problem for $\+C$-relations
  | separation problem@rel
  | separability@problemrel
@@ -69,6 +70,7 @@
 
 \knowledge{notion, wrap=\DPfont}
  | Reachability in Finite Graphs
+ | finite graph reachability problem
 
 \knowledge{notion, wrap=\DPfont}
  | Connectivity in Automatic Graphs
@@ -96,6 +98,9 @@
  | CSP
  | CSPs
 
-\knowledge{notion}
+\knowledge{notion, wrap=\DPfont}
  | Isomorphism Problem for Automatic Structures
  | isomorphism problem
+
+\knowledge{notion, wrap=\DPfont}
+ | membership@problang

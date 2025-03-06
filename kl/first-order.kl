@@ -1,6 +1,6 @@
 \knowledge{notion}
  | first-order logic
- | FO
+ | FO
 
 \knowledge{notion}
  | first-order formula
@@ -11,6 +11,7 @@
 \knowledge{notion}
  | first-order sentence
  | first-order sentences
+ | sentences@FO
 
 \knowledge{notion}
  | models
@@ -28,7 +29,6 @@
 
 \knowledge{notion}
  | first-order interpretation
- | first-order interpretable
  | first-order interpretations
  | $d$-dimensional first-order interpretation
  | one-dimensional interpretation
@@ -54,6 +54,9 @@
  | FO-reduction
 
 \knowledge{notion}
+ | first-order interpretable
+
+\knowledge{notion}
  | first-order equivalent
 
 % ---
@@ -62,9 +65,11 @@
 
 \knowledge{notion}
  | existential sentences
+ | existential formula
 
 \knowledge{notion}
  | existential-positive sentences
+ | existential-positive formula
 
 \knowledge{notion}
  | positive quantifier-free formula
