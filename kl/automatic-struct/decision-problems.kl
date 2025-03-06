@@ -49,12 +49,14 @@
  | $\kREC $-separability@problem
  | $\AUT $/$\REC $-separability@problem
  | $\AUT $/$\kREC $-separability@problem
+ | $\REC $-separability problem for automatic relations
 
 \knowledge{notion, wrap=\DPfont}
  | $\REC $-membership problem
  | $\REC $-membership@problem
  | $\kREC $-membership problem
  | $\kPROD $-membership problem
+ | $\REC $-membership problem for automatic relations
 
 \knowledge{notion, wrap=\DPfont}
  | regular $k$-colourability problem
@@ -93,3 +95,7 @@
  | constraint satisfaction problems
  | CSP
  | CSPs
+
+\knowledge{notion}
+ | Isomorphism Problem for Automatic Structures
+ | isomorphism problem

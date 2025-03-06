@@ -39,6 +39,9 @@
  | $\tau $-structure
 
 \knowledge{notion}
+ | pointed $\sigma $-structure
+
+\knowledge{notion}
  | marked structure
  | $\extendedSignature {\sigma }{\?B}$-structure
  | $\extendedSignature {\sigma }{\?B}$-structures
@@ -50,6 +53,7 @@
  | interpretation@predicate
  | interpretations@predicate
  | predicate interpreted
+ | interpreted@pred
 
 \knowledge{notion}
  | finite $\sigma $-structures

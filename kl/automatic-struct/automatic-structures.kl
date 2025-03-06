@@ -16,6 +16,13 @@
  | automatic presentation $\+A$ of a $\sigma $-structure
  | represented@struct
  | represents@struct
+ | automatic@pres
+
+\knowledge{notion}
+ | injective@pres
+ | injective presentations
+ | injective presentation
+ | injective automatic presentation
 
 \knowledge{notion}
  | automatic@struct
@@ -28,8 +35,32 @@
  | automatic graphs
  | automatic@graph
  | automaticity@graph
+ | Automatic ordinals
+ | automatic ordinals
+ | automatic Boolean algebras
+ | automatic group
+ | automatic groups
+
+\knowledge{notion}
+ | Hodgson's theorem
+
+% ---
+% Beyond automatic structures
+% ---
 
 \knowledge{notion}
  | $\omega $-automatic structures
 
+\knowledge{notion}
+ | tree-automatic structures
+ | tree-automatic ordinals
 
+\knowledge{notion}
+ | $\omega $-tree-automatic structures
+ | $\omega $-tree-automatic ordinals
+ | $\omega $-tree-automaticity
+ | $\omega $-tree-automatic Boolean algebras
+
+\knowledge{notion}
+ | higher-order automatic structures
+ | higher-order automatic

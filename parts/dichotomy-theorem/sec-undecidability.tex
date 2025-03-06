@@ -8,6 +8,12 @@
 	\DichotomyThmDichotomyAutomatic
 \end{mainstatement}
 
+\begin{remark}
+	TODO GEneralization to "higher-order automatic structures".
+	Deterministic rational?
+	RHS is "automatic"?
+\end{remark}
+
 \begin{marginfigure}
 	\centering
 	\begin{tikzpicture}
@@ -47,7 +53,7 @@ and \cite[Theorem 4.4]{BarceloFigueiraMorvan2023SeparatingAutomatic}, that lead 
 	Given a "finite $\sigma$-structure" $\?D$ with domain $\{d_1,\hdots,d_n\}$,
 	we build the "first-order sentence"
 	\[
-		\phi_{\?D} \defeq \exists x_1,\; \cdots \exists x_n,\;
+		\phi_{\?D} \defeq \exists x_1.\; \cdots \exists x_n.\;
 		\bigwedge_{\+R_{(k)} \in \sigma} \bigwedge_{\substack{\tup{i_1,\hdots,i_k} \in \lBrack 1,n\rBrack^k\\\text{"st" }\tup{d_{i_1},\hdots,d_{i_k}} \in \+R(\?D)}}
 		\+R(x_{i_1},\hdots,x_{i_k}).
 	\]
@@ -67,9 +73,8 @@ and \cite[Theorem 4.4]{BarceloFigueiraMorvan2023SeparatingAutomatic}, that lead 
 \end{proof}
 
 Note that \Cref{prop:dichotomy-FinDual-implies-HomDec} still holds
-when the "homomorphism problem" takes as input ``higher-order automatic
-structures'' as defined in \cite[last remark of \S~XII.3]{Blumensath2024MSOModelTheory},
-since such structures have a decidable first-order theory.
+when the "homomorphism problem" takes as input "higher-order automatic
+structures" since such structures have a decidable first-order theory.
 
 
 \paragraph*{Uniformly First-Order Definable Homomorphisms Imply Equality.}

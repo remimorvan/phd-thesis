@@ -1,8 +1,33 @@
 \knowledge{notion}
- | rational relation
- | rational relations
- | Rational relations
- | rational@rel
+ | reflexive relation
+ | reflexive relations
+
+\knowledge{notion}
+ | symmetric@rel
+ | symmetric relation
+
+\knowledge{notion}
+ | functional relations
+
+% ---
+% Recognizable relations
+% ---
+
+\knowledge{notion}
+ | recognizable relations
+ | recognizable@rel
+ | recognizable relation
+
+\knowledge{notion}
+ | $\+V$-recognizable@rel
+ | $\+V$-recognizable relations
+
+ \knowledge{notion}
+ | Mezei theorem
+
+% ---
+% Automatic relations
+% ---
 
 \knowledge{notion}
  | automatic relation
@@ -15,29 +40,66 @@
  | Automatic relations
 
 \knowledge{notion}
- | recognizable relations
- | recognizable@rel
- | recognizable relation
-
-\knowledge{notion}
- | $\+V$-recognizable@rel
- | $\+V$-recognizable relations
-
-\knowledge{notion}
- | symmetric@rel
- | symmetric relation
-
-\knowledge{notion}
- | functional relations
+ | blank symbol
+ | padding symbol
+ | padding symbols
 
 \knowledge{notion}
  | synchronous automaton 
  | automaton@sync
  | Synchronous automaton
  | synchronous automata
+ | synchronous@auto
 
 \knowledge{notion}
- | Mezei theorem
+ | convolution@word
+
+\knowledge{notion}
+ | well-formed
+ | well-formed words
+
+\knowledge{notion}
+ | recognizes@sync
+ | recognized@sync
+ | recognize@sync
+ | recognizing@sync
+
+\knowledge{notion}
+ | $I$-locally finite
+ | $\lBrack 1,k\rBrack $-locally finite
+ | $\{3\}$-locally 
+ 
+\knowledge{notion}
+ | length-multiplying
+ | length-multiplying morphisms
+
+% ---
+% Rational relations relations 
+% ---
+
+\knowledge{notion}
+ | rational relation
+ | rational relations
+ | Rational relations
+ | rational@rel
+
+\knowledge{notion}
+ | multitape automaton
+ | automaton@desync
+
+\knowledge{notion}
+ | recognized@desync
+ | recognizes@multitape
+
+\knowledge{notion}
+ | deterministic rational relations
+ | deterministic rational@rel
+
+\knowledge{notion}
+ | deterministic@desync
+ | non-deterministic@desync
+ | deterministic@multitape
+ | deterministic multitape automaton
 
 % ---
 % Concrete relations 

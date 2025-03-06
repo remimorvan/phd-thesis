@@ -333,15 +333,15 @@ We want to highlight that \Cref{prop:automatic-first-order} can be extended for 
 since the $0$-ary relation are the subsets of $\emptyset^* = \{\varepsilon\}$,
 and so there is exactly two 
 relations: $\{\textbullet\}$ (identified with ``true'') and $\emptyset$ (identified with ``false'').
-Both are "first-order definable", and "autoamtic@@rel": observe that "synchronous automata" over
+Both are "first-order definable", and "automatic@@rel": observe that "synchronous automata" over
 $\emptyset$ either return ``true'' if they have an initial state that is accepting, and otherwise they return ``false''.
 $0$-ary relations naturally arise because they correspond to Boolean queries.
 For instance, assume that $\phi(x_1,x_2,x_3)$ is a "first-order formula" over
 $\signatureSynchronous{\Sigma}$: then
 $\forall x_1.\, \exists x_2.\, \forall x_3.\, \phi(x_1,x_2,x_3)$ is a "first-order sentence"
 over $\signatureSynchronous{\Sigma}$. The proof of \Cref{prop:automatic-first-order}
-builds, from a "synchronous ($3$-ary) automaton@@synchronous automaton" for
-$\phi(x_1,x_2,x_3)$ a triple-exponential-sized "synchronous ($0$-ary) automaton@@synchronous automaton" for $\forall x_1.\, \exists x_2.\, \forall x_3.\, \phi(x_1,x_2,x_3)$.
+builds, from a "synchronous ($3$-ary) automaton@synchronous automaton" for
+$\phi(x_1,x_2,x_3)$ a triple-exponential-sized "synchronous ($0$-ary) automaton@synchronous automaton" for $\forall x_1.\, \exists x_2.\, \forall x_3.\, \phi(x_1,x_2,x_3)$.
 
 Moreover, the structure $\univStructSynchronous{\Sigma}$ is sometimes described by replacing
 the unary "predicate" $\lastLetter{a}$ by the function $w \mapsto w\cdot a$.

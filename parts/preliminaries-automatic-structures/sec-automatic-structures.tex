@@ -272,14 +272,14 @@ $\univStructSynchronous{2} \FOmodels^? \phi^{\•A}$, the formula $\phi^{\•A}$
 	% For the "data complexity", we now assume that $\phi$ is fixed.
 	\proofcase{"Tower" upper bound.}
 	The construction is similar to the easy implication of \Cref{prop:automatic-first-order}:
-	for any "automatic presentation" $\•A$, we build by induction on $\phi(x_1,\hdots,x_k)$ a "synchronous ($k$-ary) automaton@@synchronous automaton" $\+B^\phi$ "st"
+	for any "automatic presentation" $\•A$, we build by induction on $\phi(x_1,\hdots,x_k)$ a "synchronous ($k$-ary) automaton@synchronous automaton" $\+B^\phi$ "st"
 	for all $u_1,\hdots,u_k \in \Sigma^*$
 	\[
 		\+B^\phi \text{ accepts } u_1\convol\hdots\convol u_k
 		\quad\text{"iff"}\quad
 		\tup{\?A, u_1, \hdots, u_k} \models \phi(x_1,\hdots,x_k).
 	\]
-	In the end, we get a "synchronous ($0$-ary) automaton" $\+B^\phi$ that either accepts
+	In the end, we get a "synchronous ($0$-ary) automaton@synchronous automaton" $\+B^\phi$ that either accepts
 	or rejects depending on whether $\?A \models \phi$ or not.
 	Notice that each quantifier alternation implies a powerset construction, and so
 	the size of $\+B^\phi$ is a tower of exponentials in the number of quantifier alternations in $\phi$. Hence, we get a "Tower" algorithm.
@@ -386,11 +386,11 @@ to ``$\omega$-tree automatic structures'' defined analogously to "automatic stru
 replacing ``languages of finite words'' by ``languages of $\omega$-trees''
 (see \cite[\S~XII]{Blumensath2024MSOModelTheory} for more details).
 In fact this property can even be extended to so-called
-``higher-order automatic structures'', see
+\AP""higher-order automatic structures"", see
 \cite[last remark of \S~XII.2]{Blumensath2024MSOModelTheory}.
 Note that while "automatic structures" are always countable,
-``higher-order automatic structures'' have at most the cardinality of the continuum.%
-From this it follows that there exists "structures" with a decidable "first-order model-checking" that are not "automatic@@struct", and not even ``higher-order automatic''.
+"higher-order automatic structures" have at most the cardinality of the continuum.%
+From this it follows that there exists "structures" with a decidable "first-order model-checking" that are not "automatic@@struct", and not even "higher-order automatic".
 It suffices for instance to take any non-standard model of "Presburger arithmetic"
 of cardinality strictly bigger than the continuum, which must exist by
 "upward Löwenheim–Skolem theorem". The same argument works to show that ``elementary equivalence''

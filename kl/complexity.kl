@@ -45,6 +45,15 @@
  | PSpace
  | PSPACE
 
+\knowledge{wrap=\textsf}
+ | ExpTime
+
+\knowledge{wrap=\textsf}
+ | 2ExpTime
+
+\knowledge{wrap=\textsf}
+ | 3ExpTime
+
 \knowledge{text={Tower}, wrap=\textsf}
  | Tower
  | TOWER

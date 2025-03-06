@@ -226,8 +226,8 @@ we get back \Cref{prop:Mezei-theorem}.
 Both the algebraic definition of "recognizable relations" and
 "Mezei theorem" imply---informally!---that all reasonable problems on
 "recognizable relations" are decidable. For instance, from \Cref{prop:Mezei-theorem-generalization},
-we get that $\+V$ has decidable "membership" "iff" the class of "$\+V$-recognizable relations"
-has decidable "membership".
+we get that $\+V$ has decidable "membership@@problang" "iff" the class of "$\+V$-recognizable relations"
+has decidable "membership@@problang".
 
 On the other hand, \Cref{prop:Mezei-theorem} proves that "recognizable relations" are not very expressive.
 \begin{corollary}
@@ -537,7 +537,7 @@ independently of one another---however each head can only move from left to righ
 For the same of convenience, we assume that the automaton can move multiple heads at every step.
 This can be formalized as follows.
 
-An \AP""multitape automaton"" over $\Gamma,\Sigma$
+A \AP""multitape automaton"" over $\Gamma,\Sigma$
 can be syntactically defined as a classical automaton over $\Gamma \convolAlpha \Sigma$.
 We then let $\pi_1\colon (\Gamma\convolAlpha\Sigma)^* \to \Gamma^*$ and 
 $\pi_2\colon (\Gamma\convolAlpha\Sigma)^* \to \Sigma^*$ be the "monoid morphisms"
@@ -672,10 +672,10 @@ from an encoding of Post Correspondence Problem into rational relations.}
 More or less by construction, the class is closed under union.
 However, it is not closed under intersection
 (see "eg" \cite[\S~III, Example~2.5]{Berstel1979Transductions}),
-and hence, it is also not closed complementation.\footnote{Indeed, closure under uni
-on and complementation implies closure under intersection, using De Morgan's law.}
+and hence, it is also not closed complementation.\footnote{Indeed, closure under union
+and complementation implies closure under intersection, using De Morgan's law.}
 
-Say that a "monoid morphism" $f\colon \Gamma^* \to \Sigma^*$ is \AP""length-multiplying""
+We say that a "monoid morphism" $f\colon \Gamma^* \to \Sigma^*$ is \AP""length-multiplying""
 when $|f(a)| = |f(b)|$ for all $a, b \in \Gamma$.
 \begin{proposition}
 	\AP\label{prop:automatic-closure-length-multiplying-morphism}
@@ -750,7 +750,7 @@ The motivation behind this somewhat strange definition is that, this way,
 
 \begin{proposition}
 	\AP\label{prop:synchronous-implies-detrat}
-	Every "automatic relation" is "deterministic rational".
+	Every "automatic relation" is "deterministic rational@@rel".
 \end{proposition}
 
 \begin{marginfigure}
@@ -829,12 +829,12 @@ The motivation behind this somewhat strange definition is that, this way,
 	Using the fact that $\+A$ is "synchronous@@auto", it can be shown that
 	if $\+R$ is the relation "recognized@@sync" by $\+A$, then $\+A'$ precisely 
 	""recognizes@@multitape"" $\{\tup{u\triangleleft,v\triangleleft} \mid \tup{u,v} \in \+R\}$.
-	And hence, $\+R$ is "deterministic rational".
+	And hence, $\+R$ is "deterministic rational@@rel".
 \end{proof}
 
 Observe how the addition of the end-of-tape symbols is crucial for the "multitape automaton"
 of the previous proof to be "deterministic". For instance, while
-the prefix relation is "deterministic rational", it can be shown that
+the prefix relation is "deterministic rational@@rel", it can be shown that
 $\prefix$ cannot be recognized by a "deterministic multitape automaton".
 
 Clearly, \Cref{fig:multitape-automaton-suffix} is "non-deterministic@@desync". But in fact, we prove a stronger result: $\suffix$ is not "deterministic rational@@rel".
@@ -843,6 +843,9 @@ TODO.
 
 TODO: inclusion is decidable
 
+\subsection{Restricted Head Movements and Origin Semantics}
+
+todo
 
 \subsection{TODO/And Everything Else...}
 

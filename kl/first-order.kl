@@ -1,5 +1,6 @@
 \knowledge{notion}
  | first-order logic
+ | FO
 
 \knowledge{notion}
  | first-order formula
@@ -21,13 +22,49 @@
  | first-order definable
 
 % ---
-% FO reductions 
+% FO interpretations & reductions 
 % ---
+
+\knowledge{notion}
+ | first-order interpretation
+ | first-order interpretable
+ | first-order interpretations
+ | $d$-dimensional first-order interpretation
+ | one-dimensional interpretation
+ | one-dimensional interpretations
+ | two-dimensional interpretation
+ | FO-interpretations
+ | $d$-dimensional interpretation
+
+\knowledge{notion}
+ | $\+I$-interpretation of $\?A$
+ | interpretation
+ | Interpretation
+
+\knowledge{notion}
+ | injective@interpretation
+ | injective interpretation
+ | injective first-order interpretation
 
 \knowledge{notion}
  | first-order reductions
  | first-order@reduction
  | first-order reduction
+ | FO-reduction
 
 \knowledge{notion}
  | first-order equivalent
+
+
+% ---
+% Weird FO stuff 
+% ---
+
+\knowledge{notion}
+ | order-invariant first-order formula
+ | order-invariant first-order formulas
+ | order-invariant@FO
+ | order-invariance@FO
+
+\knowledge{url={https://en.wikipedia.org/wiki/L\%C3\%B6wenheim\%E2\%80\%93Skolem_theorem}}
+ | upward Löwenheim–Skolem theorem
