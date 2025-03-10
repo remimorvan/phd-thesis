@@ -908,14 +908,31 @@ Their algorithm fails to capture the general case, and the decidability of this 
 is still open for relations of arbitrary arity
 \cite[\S~9]{DescotteFigueiraPuppis2018ResynchronizingClasses}.
 
-\subsection{TODO/And Everything Else...}
+\subsection{And Everything Else}
+
+``Regular prefix relations'', also known as ``special relations'', are a subclass of "automatic relations" introduced in 1984 that admits a nice logical characterization
+\cite[\S~``1984'']{Choffrut2006Survey}.
+
+"Multitape automaton" can be extended by allowing heads to move both ways.
+The resulting model, namely \AP""two-way rational relations"" is strictly more expressive todo:addref.
+Their deterministic models---"aka" \AP""deterministic two-way rational relations""---have a decidable inclusion problem todo:addref.
+This is essentially the biggest known class of relations for which this problem
+is decidable.
+
+The "functional relations" among \AP""deterministic two-way rational relations""
+are widely known as \AP""regular functions"", and have been extensively studied in the past
+decade. They admit several characterizations TODO.
+For instance, the intersection of "functional relations" and "two-way rational relations"
+collapses to "regular functions" \cite[Theorem 22, p.~243]{EH2001transduction}.
+In other words non-determinism does not increase the expressiveness of two-way multitape automata, when restricted to "functional relations".
+
+By construction, "regular functions" all have a linear growth todo:addref.%
+\footnote{Meaning that if $\pair{u,v}$ belongs to the relation, then $|v| \leq k\cdot |u|$ for some constant $k$.}
+This model has been generalized to ``polyregular
+functions''---which have polynomial growth---by todo.
+However, whether the equivalence problem is decidable for this class is still open.
 
 \begin{itemize}
-	\item history-deterministic two-way rational functions?
-	\item todo:the intersection of
-	functional relations and two-way rational relations
-	collapses to regular functions by
-	\cite[Theorem 22, p.~243]{EH2001transduction}.
 	\item TODO: \S~8.2 ``star-free and locally threshold testable presentations''
 		in Blumensath's thesis.
 	\item cite ``An Algebraic Characterization of Unary Two-Way Transducers''
@@ -923,8 +940,6 @@ is still open for relations of arbitrary arity
 \end{itemize}
 
 \begin{itemize}
-	\item ``special relations'' "aka" ``regular prefix relations'' \cite{Choffrut2006Survey}
-	\item polyregular functions
 	\item cite Gaëtan's thesis (chapter 1 for finite words, chapter 8 for infinite words)
 	\item mention pebble, marble and whatnot.
 \end{itemize}
