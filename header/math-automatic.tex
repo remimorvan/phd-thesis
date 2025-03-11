@@ -52,7 +52,7 @@
 	#3\vphantom{b}%
 \end{smallmatrix}\right)} % pair of letters
 \knowledgenewrobustcmd{\convolAlpha}{\mathbin{\cmdkl{\otimes}}}
-\knowledgenewrobustcmd{\SigmaPair}[1][2]{\cmdkl{\Sigma^{#1}_{\raisebox{.25em}{\smallpad}}}\mkern-5mu}
+\knowledgenewrobustcmd\SigmaPair[1][\Sigma]{\cmdkl{#1^{\smash{2}}_{{\smallpad}}}}
 \knowledgenewrobustcmd{\convolRel}[1]{#1^{\cmdkl{\otimes}}} % convolution of a relation
 \knowledgenewrobustcmd\WellFormed[1][\Sigma]{\cmdkl{\textsf{WellFormed}_{#1}}} % well-formed words
 \knowledgenewrobustcmd\projWord{\cmdkl{\pi_{\textsf{word}}}} % projection of multitape word

@@ -682,10 +682,20 @@ when $|f(a)| = |f(b)|$ for all $a, b \in \Gamma$.
 	"Automatic relations" are closed under direct images and preimages of "length-multiplying morphisms".
 \end{proposition}
 \begin{proof}
-	todo
+	Any "length-multiplying morphism" $f\colon \Gamma^* \to \Sigma^*$ induces
+	a "monoid morphism" $\hat f\colon (\SigmaPair[\Gamma])^* \to (\SigmaPair)^*$ 
+	by letting $\hat f \pair{a}{b} \defeq \pair{f(a)}{f(b)}$.
+	Then for any relation, $\convolRel{(f[\+R])} = \hat f[\convolRel{\+R}]$
+	and $\convolRel{(f^{-1}[\+R])} = \hat f^{-1}[\convolRel{\+R}]$.
+	The conclusion follows from the fact that regular languages are closed under
+	direct images and preimages of "monoid morphisms".
 \end{proof}
 
-todo:co-example for general morphisms.
+This is false for arbitrary "monoid morphisms". For instance, $\set{\tup{0^n, 1^n} \mid n \in \N}$
+is "automatic@@rel", but its image by the "monoid morphism" $f\colon \2^* \to \2^*$ defined by
+$f(0) \defeq 0$ and $f(1) \defeq 11$ is $\set{\tup{0^n, 1^{2n}} \mid n\in \N}$ which is clearly not 
+"automatic@@rel". Similarly, its preimage by the same "morphism@@monoid" is
+$\set{\tup{0^{2n}, 1^{n}} \mid n \in \N}$ which is not "automatic@@rel" either, by symmetry.
 
 \subsection{Deterministic Rational Relations}
 
@@ -923,7 +933,7 @@ The "functional relations" among \AP""deterministic two-way rational relations""
 are widely known as \AP""regular functions"", and have been extensively studied in the past
 decade. They admit several characterizations TODO.
 For instance, the intersection of "functional relations" and "two-way rational relations"
-collapses to "regular functions" \cite[Theorem 22, p.~243]{EH2001transduction}.
+collapses to "regular functions" \cite[Theorem 22, p.~243]{EngelfrietHoogeboom2001transduction}.
 In other words non-determinism does not increase the expressiveness of two-way multitape automata, when restricted to "functional relations".
 
 By construction, "regular functions" all have a linear growth todo:addref.%
