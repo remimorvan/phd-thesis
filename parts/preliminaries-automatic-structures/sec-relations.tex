@@ -931,17 +931,18 @@ is decidable.
 
 The "functional relations" among \AP""deterministic two-way rational relations""
 are widely known as \AP""regular functions"", and have been extensively studied in the past
-decade. They admit several characterizations TODO.
+decade. They admit several characterizations, in the frameworks of multitape automata, transducers, logic, etc.\footnote{See \cite[4th~Paragraph]{Bojanczyk2022Transducers} for pointers.}
 For instance, the intersection of "functional relations" and "two-way rational relations"
 collapses to "regular functions" \cite[Theorem 22, p.~243]{EngelfrietHoogeboom2001transduction}.
 In other words non-determinism does not increase the expressiveness of two-way multitape automata, when restricted to "functional relations".
 
-By construction, "regular functions" all have a linear growth todo:addref.%
+By construction, "regular functions" all have a linear growth.%
 \footnote{Meaning that if $\tup{u,v}$ belongs to the relation, then $|v| \leq k\cdot |u|$
 for some constant $k$.}
 This model has been generalized to ``polyregular
-functions''---which have polynomial growth---by todo.
-However, whether the equivalence problem is decidable for this class is still open.
+functions''---which have polynomial growth---see \cite{Bojanczyk2022Transducers} for
+a recent survey. However, whether the equivalence problem is decidable for this class is still open
+\cite[\S~8]{Bojanczyk2022Transducers}.
 
 \begin{itemize}
 	\item TODO: \S~8.2 ``star-free and locally threshold testable presentations''
