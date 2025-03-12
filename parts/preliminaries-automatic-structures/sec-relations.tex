@@ -948,6 +948,13 @@ is still open for relations of arbitrary arity
 ``Regular prefix relations'', also known as ``special relations'', are a subclass of "automatic relations" introduced in 1984 that admits a nice logical characterization
 \cite[\S~``1984'']{Choffrut2006Survey}.
 
+\AP""Right-automatic relations"" can be defined analogously to "automatic relations"
+by putting padding symbol at the beginning of the words instead of at the end.
+The "prefix relation" is "automatic@@rel" but not "right-automatic@@rel", and dually
+the "suffix relation" is "right-automatic@@rel" but not "automatic@@rel".
+Hence, this class is orthogonal to the class of "automatic relations",
+and shares all its closure properties and decidability results.
+ 
 "Multitape automaton" have been extended to ``two-way multitape automata''
 by allowing heads to move both ways
 by Rabin and Scott \cite[\S~12]{RabinScott1959FiniteAutomata}.
@@ -1009,7 +1016,7 @@ undecidable: this class is simply too expressive.
 
 \subsection{Let's Not Forget About Transducers}
 
-
+TODO
 
 NOT TRUE
 The "functional relations" among \AP""deterministic two-way rational relations""
