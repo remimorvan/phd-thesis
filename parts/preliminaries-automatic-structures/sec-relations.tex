@@ -1129,7 +1129,9 @@ and studied by Carton, Exibard and Serre who
 showed that this class is not closed under complementation
 \cite[Theorem~1]{CartonExibardSerre2017TwoWayTwoTapeAutomata}.
 
-\subsection{Transducers Are Equivalent to Multitape Automata Except When They Are Not}
+\subsection{The Surprisingly Strange World of Transducers}
+
+\todo{blabla}
 
 \AP""Non-deterministic one-way transducers"",
 or \reintro{transducers} for short, are defined as finite-state automaton, but
@@ -1164,14 +1166,14 @@ recognizes the "subword relation", which is not "functional@@rel".
 And hence, "deterministic transducers" are strictly less expressive
 than "deterministic multitape automaton".
 But in fact we can prove a strictly stronger result:
-there are "function relations" that can be recognized by
+there are "functional relations" that can be recognized by
 a "deterministic rational@@rel" but that are not a
 \AP""deterministic transduction""---"ie" recognizable by a "determinic one-way transducer".
 For instance, consider the function, where $\Sigma \defeq \{a,b,c\}$,
 \begin{center}
 	\begin{tabular}{rccc}
 		$f\colon$ & $\Sigma^*$ & $\pto$ & $\Sigma^*$ \\
-		& $a\cdot b^n \cdot c$ & $\mapsto$ & $c \cdot b^n \cdot a$ \quad($n\in\N$) \\
+		& $a\cdot b^n \cdot c$ & $\mapsto$ & $c \cdot b^n \cdot a \;(n\in\N)$ \\
 		& $a\cdot b^n \cdot a$ & $\mapsto$ & $a \cdot b^n \cdot a$ \qquad``\qquad.
 	\end{tabular}
 \end{center}
@@ -1181,22 +1183,24 @@ $\pair{a}{c}$ or $\pair{a}{a}$, in which case it will know if it should expect
 to read $\pair{c}{a}$ or $\pair{a}{a}$ at the end of the word.
 On the other hand, a "deterministic one-way transducer"
 only has access to the input word, and while reading the first $a$, it has no choice
-but to non-deterministically guess if it should produce a $c$ or an $a$.%
-\footnote{This can be shown formally by using \cite[Theorem~V.4.2]{Sakarovitch2009Elements}
+but to non-deterministically guess if it should produce a `$c$' or an `$a$'.%
+\footnote{One can prove formally that this function is
+not recognizable by a "deterministic one-way transducer"
+by using \cite[Theorem~V.4.2]{Sakarovitch2009Elements}
 since $f$ is clearly not Lipschitz for the prefix distance.}
 
-The same complication happens for two-wayness: a "two-way transducer" can
+The same complication happens for two-wayness: a two-way transducer can
 move both left and right on its input tape, but not on the output,
 since the output is \emph{produced} and not read.
+We call \AP""two-way transductions"" and ""determinic two-way transductions""
+the relations recognized by two-way transducers and deterministic two-way tranducers, respecitvely.
 
-\todo{TODO}
-
-NOT TRUE
-The "functional relations" among \AP""deterministic two-way rational relations""
-are widely known as \AP""regular functions"", and have been extensively studied in the past
+""Determinic two-way transductions"" are actually widely 
+known as \AP""regular functions@@bojan"", and have been extensively studied in the past
 decade. They admit several characterizations, in the frameworks of multitape automata, transducers, logic, etc.\footnote{See \cite[4th~Paragraph]{Bojanczyk2022Transducers} for pointers.}
-For instance, the intersection of "functional relations" and "two-way rational relations"
+For instance, the intersection of "functional relations" and "two-way transductions"
 collapses to "regular functions" \cite[Theorem 22, p.~243]{EngelfrietHoogeboom2001transduction}.
+\todo{look at Figure 9 of EH01}
 In other words non-determinism does not increase the expressiveness of two-way multitape automata, when restricted to "functional relations".
 The equivalence problem was shown to be decidable by Gurari \cite[Theorem~1]{Gurari1982Equivalence}
 for "regular functions". Note that for the subclass of functional "rational relations", this result was proven one decade earlier, by Schützenberger in 1975---see "eg" \cite[Corollary~IV.1.3]{Berstel1979Transductions}.
