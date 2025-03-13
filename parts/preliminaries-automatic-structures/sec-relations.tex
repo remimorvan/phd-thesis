@@ -80,7 +80,11 @@ The aim of this section is not to be exhaustive, which would be a daunting task,
 \footnote{Sakarovitch's book \cite{Sakarovitch2009Elements}
 dedicates its second part to ``Rationality in relations'', which spans over more than two hundred pages---one can only imagine how extensive this part could have been if the book was not
 dedicated to presenting \emph{elements} of automata theory but the full theory itself!
-The book does not even mention two-way models.}
+Note in fact that the book does not even mention two-way models.
+What we call here "multitape automata" are called there ``transducers''
+and our "transducers" are called ``sequential transducers'' there.
+We made this choice of terminology because it seems more consistent with
+the literature, and we find both more natural and more intuitive.}
 but rather to present a quick overview of the most common classes of relations
 studied in the literature.
 
@@ -866,10 +870,34 @@ of the previous proof to be "deterministic@@multitape". For instance, while
 the prefix relation is "deterministic rational@@rel", it can be shown that
 $\prefix$ cannot be recognized by a "deterministic multitape automaton".
 
-Clearly, \Cref{fig:multitape-automaton-suffix} is not "deterministic@@desync". But in fact, we prove a stronger result: $\suffix$ is not "deterministic rational@@rel".
-TODO.
+Clearly, \Cref{fig:multitape-automaton-suffix} is not "deterministic@@desync".
+But in fact, we can prove a stronger result: $\suffix$ is not even "deterministic rational@@rel".%
+\footnote{This can be shown by using "eg"
+\cite[Lemma~IV.5.15]{Sakarovitch2009Elements} on the pair of words
+$\tup{a^n b \triangleleft, a^{n-1} b a^n b \triangleleft}$ ($n\in\N$).
+todo: convince myself that this is indeed true.
+Note that there is a typo in
+the statement of \cite[Lemma~IV.5.15]{Sakarovitch2009Elements} and that
+``$|(f,g)| \geq 0$'' should be replaced by ``$|(f,g)| > 0$''.}
 
-todo:intersection non-emptiness undecidable \cite[\S~12]{RabinScott1959FiniteAutomata}.
+\begin{example}[Post Correspondence Problem (PCP) {\cite[Theorem~18]{RabinScott1959FiniteAutomata}}]
+	\AP\label{ex:PCP-is-det-rat}
+	"Deterministic multitape automata" are actually quite expressive:
+	given an instance $\tup{u_1,\hdots,u_k, v_1,\hdots,v_k} \in (\Sigma^*)^{2k}$ 
+	of PCP\footnote{Recall that this undecidable problem asks if there exists $n\in\N$
+	and a sequence of (possibly-repeating)
+	indices $i_1,\hdots, i_n \in \lBrack 1,k\rBrack$ "st"
+	\[u_{i_1}\cdots u_{i_n} = v_{i_1}\cdots v_{i_n}\].},
+	we can define a relation $\+R_u$ that essentially encodes the function
+	$i \mapsto u_i$, and a relation $\+R_v$ that encodes $i \mapsto v_i$,
+	and show that their Kleene stars $(\+R_u)^*$ and $(\+R_v)^*$ are "determinic rational".
+	By construction, any element in the intersection of $(\+R_u)^*$ and $(\+R_v)^*$
+	exactly corresponds to a solution of PCP.
+	It follows that the \AP""intersection non-emptyiness problem@@drat""
+	for "determinic rational relations",
+	taking two such relations and asking if their intersection is non-empty is undecidable.
+\end{example}
+
 Surprisingly, while the "inclusion problem@@rel" for "determinic multitape automata" is undecidable
 \cite{FischerRosenberg1968Multitape}, Harju and Karhumäki proved in 1991 that their
 "equivalence problem@@rel"
@@ -1012,7 +1040,8 @@ $\+R_1$ and $\+R_2$, it is possible to describe their intersection $\+R_1 \cap \
 by a deterministic two-way multitape automaton: the idea it to first simulate the first automaton
 from left to right, then, when reaching the end markers, to go back to the beginning of the tapes,
 and then simulate the second automaton from left to right.
-Since intersection non-emptiness of "deterministic rational relations" is undecidable,
+Since the "intersection non-emptiness problem@@drat"
+of "deterministic rational relations" is undecidable (see \Cref{ex:PCP-is-det-rat}),
 it follows that non-emptiness of \AP""deterministic two-way rational relations""---"ie"
 relations recognized by deterministic two-way multitape automata---is undecidable!%
 \footnote{This elegant proof comes from \cite[\S~12]{RabinScott1959FiniteAutomata}.}
@@ -1020,7 +1049,8 @@ It follows that both the "inclusion problem@@rel" and the "equivalence problem@@
 undecidable: this class is simply too expressive.
 Generalizing the construction above for the intersection, shows that
 both "deterministic two-way rational relations" and "two-way rational relations"
-are closed under union and intersecton. todo.
+are closed under union and intersecton.
+todo: complement.
 
 \begin{figure}	
 	\centering
@@ -1151,9 +1181,9 @@ $\pair{a}{c}$ or $\pair{a}{a}$, in which case it will know if it should expect
 to read $\pair{c}{a}$ or $\pair{a}{a}$ at the end of the word.
 On the other hand, a "deterministic one-way transducer"
 only has access to the input word, and while reading the first $a$, it has no choice
-but to non-deterministically guess if it should produce a $c$ or an $a$.
-todo:formal proof?
-
+but to non-deterministically guess if it should produce a $c$ or an $a$.%
+\footnote{This can be shown formally by using \cite[Theorem~V.4.2]{Sakarovitch2009Elements}
+since $f$ is clearly not Lipschitz for the prefix distance.}
 
 The same complication happens for two-wayness: a "two-way transducer" can
 move both left and right on its input tape, but not on the output,
@@ -1173,6 +1203,7 @@ for "regular functions". Note that for the subclass of functional "rational rela
 
 \paragraph*{Polyregular functions.}
 "Regular functions@@bojan" all have a linear growth.%
+add ref Sakarovitch
 \footnote{Meaning that if $\tup{u,v}$ belongs to the relation, then $|v| \leq k\cdot |u|$
 for some constant $k$.}
 This model has been generalized to ``polyregular
@@ -1197,3 +1228,4 @@ to a unary alphabet, see "eg" \cite[Theorem~1]{ChoffrutGuillon2014UnaryTransduce
 characterization of "deterministic two-way rational relations" over a unary alphabet.
 
 todo: update figure
+todo: in ccl open question \cite[Theorem~V.4.2]{Sakarovitch2009Elements} for polyregular.
