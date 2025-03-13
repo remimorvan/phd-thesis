@@ -9,9 +9,9 @@
 \end{mainstatement}
 
 \begin{remark}
-	TODO GEneralization to "higher-order automatic structures".
-	Deterministic rational?
-	RHS is "automatic@@struct"?
+	\todo{TODO GEneralization to "higher-order automatic structures".}
+	\todo{Deterministic rational?}
+	\todo{RHS is "automatic@@struct"?}
 \end{remark}
 
 \begin{marginfigure}
@@ -142,7 +142,7 @@ of any assumption on $\?B$.
 		\FOmodels^{?} \?A,
 	\]
 	by letting $\{a_1,\hdots,a_n\} = A'$. 
-	Moreover, whether $\?A' \nothomto \?B$ is also decidable---in "coNP"---by todo:addref.
+	Moreover, whether $\?A' \nothomto \?B$ is also decidable---in "coNP"---by \todo{addref}.
 	Overall, this provides a co-semi-algorithm for $\HomAut{\?B}$: we enumerate finite
 	"$\sigma$-structure" $\?A'$, and test if (1) $\?A'$ is a "substructure" of $\?A$ and if (2)
 	$\?A' \homto \?B$. And hence $\HomAut{\?B}$ is "coRE".
@@ -174,7 +174,7 @@ to $\HomRegAut{\?B}$ is not entirely trivial and requires some work.
 	\item For $\HomFin{\?B}$, we reduce the complement of "Connectivity in automatic graphs",
 		providing a "coRE"-lowerbound.
 	\item For $\HomRegAut{\?B}$, we reduce "regular unconnectivity in automatic graphs",
-		which in turn is reduced from  TODO:update.
+		which in turn is reduced from \todo{update}.
 \end{itemize}
 
 For $n\in\N$, we define the \AP""$n$-link"" $\intro*\link{n}$ be the "$\sigma$-structure"\sidenote{From \cite[\S~2]{LaroseLotenTardif2007CharacterisationFOCSP}.} 
@@ -244,8 +244,8 @@ of $\HomAut{\?B}$ by reduction from the following problem.
 
 \begin{proof}
 	This follows from the fact that the "configuration graph" of
-	a "Turing machine" is always "automatic@@struct" by TODO:addref.
-	TOdo:Give more precisions.
+	a "Turing machine" is always "automatic@@struct" by \todo{addref}.
+	\todo{Give more precisions.}
 \end{proof}
 
 \begin{lemma}
@@ -405,7 +405,7 @@ of $\HomAut{\?B}$ by reduction from the following problem.
 
 	Putting \Cref{claim:reduction-hom-direct,claim:reduction-hom-converse} together,
 	we get that the reduction is correct.
-	Lastly, note that it is a "first-order reduction" because TODO.
+	Lastly, note that it is a "first-order reduction" because \todo{TODO}.
 \end{proof}
 
 By \Cref{prop:undecidability-connectivity}, the complement of "Connectivity in automatic graphs"
@@ -592,7 +592,7 @@ and will later settle its complexity.
 
 	Putting \Cref{claim:reduction-homreg-direct,claim:reduction-homreg-converse} together,
 	we get that the reduction is correct.
-	Lastly, note that this is a first-order reduction because TODO.
+	Lastly, note that this is a first-order reduction because \todo{TODO}.
 \end{proof}
 
 We then prove a lower bound on the complexity of "regular unconnectivity in automatic graphs".
@@ -603,7 +603,7 @@ We then prove a lower bound on the complexity of "regular unconnectivity in auto
 \end{lemma}
 
 \begin{proof}
-	BIG-TODO.
+	\todo{BIG-TODO.}
 	% We consider the following intermediate (promise) problem.
 	% \decisionproblem{""Restricted Membership for Deterministic Reversible Turing Machines""}{
 	% A "deterministic" "reversible Turing machine" $\+M$ with initial state $q_0$,
@@ -709,5 +709,5 @@ We then prove a lower bound on the complexity of "regular unconnectivity in auto
 	reduces to $\HomRegAut{\?B}$ by \Cref{prop:idempotent-core-preserves-csp-complexity}
 	since $\?B$ was assumed to be a "core".
 	Indeed, "first-order reductions" preserves "regularity@@hom", by 
-	todo:addref-automatic-iff-first-order.
+	\todo{addref-automatic-iff-first-order.}
 \end{proof}

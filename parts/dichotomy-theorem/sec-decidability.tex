@@ -15,7 +15,7 @@ which is a superclass of the "structures" with "finite duality".}
 Then, we will use the former algorithm to prove that assuming that $\?B$ has "finite duality",
 then $\HomRegAut{\?B}$ is decidable.\footnote{Interestingly, this algorithm cannot solve
 $\HomRegAut{\?B}$ when $\?B$ has only "tree duality" but not "finite duality". 
-We discuss this in more details in TODO.}
+\todo{We discuss this in more details in TODO.}}
 
 \subsection{Uniformly First-Order Definable Homomorphisms}
 \label{sec:uniformly-first-order-definable-hom}
@@ -44,8 +44,8 @@ Before proving this lemma, we show an intermediate result.
 \end{fact}
 
 \begin{proof}
-	By \Cref{prop:idempotent-core-preserves-csp-complexity} the problems are "first-order equivalent" and so
-	one is "first-order definable" "iff" the other is. TODO:fix (ref is about decision pb).
+	By \Cref{prop:idempotent-core-preserves-csp-complexity} the problems are "first-order 
+	equivalent" and so one is "first-order definable" "iff" the other is.
 \end{proof}
 
 \begin{proof}[Proof of \Cref{lemma:finite-duality-uniformly-definable-homomorphisms}]
@@ -76,8 +76,8 @@ Before proving this lemma, we show an intermediate result.
 	which concludes the proof that $F$ is a "homomorphism" from $\?A$ to $\FederVardi{\?B}$.
 
 	By "Atserias' theorem", since $\HomAll{\?B}$ is "first-order definable",
-	then $\?B$ has "finite duality", and in particular it has TODO:addref
-	"tree duality" and so by TODO:addref, there is a "homomorphism"
+	then $\?B$ has "finite duality", and in particular it has \todo{addref}
+	"tree duality" and so by \todo{addref}, there is a "homomorphism"
 	$g\colon \FederVardi{\?B} \to \?B$.
 	We will now produce "first-order formulas" to describe $g \circ F$.
 
@@ -166,7 +166,7 @@ we show that such "homomorphisms" are always "regular@@hom".
 	by substituting $\+R(x_1,\hdots,x_k)$ for $\psi_{\+R}(x_1,\hdots,x_k)$.
 
 	Then, for each $b\in B$, $\phi^*_b(x)$ is a "first-order formula" over $\signatureSynchronous{\Sigma}$,
-	and so \[\{u \in \Sigma^* \mid \langle \univStructSynchronous{\Sigma},u \rangle \FOmodels \phi^*_b(x)\}\] is "regular@@lang" by TODO:ADDREF.
+	and so \[\{u \in \Sigma^* \mid \langle \univStructSynchronous{\Sigma},u \rangle \FOmodels \phi^*_b(x)\}\] is "regular@@lang" by \todo{ADDREF}.
 	Clearly, this sets are disjoint and cover $\domainPres{\•A}$, and the function that
 	maps $u \in \domainPres{\•A}$ to the unique $b$ "st" $\langle \univStructSynchronous{\Sigma},u \rangle \FOmodels \phi^*_b(x)$ is a "homomorphism".
 	Hence, we have built a "regular homomorphism" from $\•A$ to $\?B$, which concludes the proof.
@@ -313,11 +313,12 @@ In general, the converse property does not hold. For instance, if $\sigma$ is th
 is always the map $a \mapsto B$, no matter whether there is a "homomorphism" from
 $\?A$ to $\?B$.
 
-Yet, TODO managed to identify a necessary and sufficient condition on $\?B$ for
+Yet, \todo{who} managed to identify a necessary and sufficient condition on $\?B$ for
 the "hyperedge consistency algorithm@@finite" to decide whether $\?A \in \HomFin{\?B}$.
 
-\begin{proposition}[TODO:addref]
+\begin{proposition}
 	\AP\label{prop:hyperedge-consistency-tree-duality}
+	\todo{addref}
 	If $\?B$ has "tree duality" then $\?A \homto \?B$ "iff"
 	$\HCFixpoint{\?A}{\?B}(a) \neq \emptyset$ for all $a\in A$.
 \end{proposition}
@@ -328,7 +329,7 @@ by an ordinal induction but with a finite induction.
 
 As an example, \Cref{ex:zigzag-HC-T2} witnesses that
 $\zigzag{n}{2} \homto \transitiveTournament{2}$ since $\transitiveTournament{2}$
-has "tree duality" by \Cref{prop:finite-duality-implies-tree-duality} and TODO:ADDREF.
+has "tree duality" by \Cref{prop:finite-duality-implies-tree-duality} and \todo{ADDREF}.
 
 \begin{figure}
 	\centering
@@ -377,7 +378,7 @@ has "tree duality" by \Cref{prop:finite-duality-implies-tree-duality} and TODO:A
 \begin{example}[{\Cref{ex:zigzag-HC-T2}, continued}]
 	\AP\label{ex:zigzag-HC-P2}
 	On the other hand, while $\pathGraph{2}$ does not have "finite duality", it has
-	"tree duality", by TODO:ADDREF, and so the "hyperedge consistency algorithm@@finite"
+	"tree duality", by \todo{ADDREF}, and so the "hyperedge consistency algorithm@@finite"
 	decides whether a finite "$\sigma$-structure" has a "homomorphism" to $\pathGraph{2}$.
 	We represent some steps of the algorithm in \Cref{fig:zigzag-graph-HC-P2},
 	on the "input structure" $\zigzag{5}{2}$.
@@ -402,10 +403,10 @@ has "tree duality" by \Cref{prop:finite-duality-implies-tree-duality} and TODO:A
 
 \begin{corollary}
 	If $\?B$ has "tree duality", then $\HomFin{\?B}$ can be solved in
-	polynomial time.\sidenote{TODO: Precise complexity.}
+	polynomial time.\todo{ Precise complexity.}
 \end{corollary}
 
-Finally, we will prove a proposition that we will prove useful later in TODO.
+Finally, we will prove a proposition that we will prove useful later in \todo{TODO}.
 \begin{proposition}
 	\AP\label{prop:HC-on-same-structure}
 	Let $\?B$ be a "$\sigma$-core" with "tree duality". Then
@@ -415,10 +416,10 @@ Finally, we will prove a proposition that we will prove useful later in TODO.
 	for each $b \in B$.}
 \end{proposition}
 \begin{proof}
-	TODO. Rigidity?
+	\todo{TODO. Rigidity?}
 \end{proof}
 
-todo: somewhere \AP""hyperedge consistency@@finite"" algo.
+\todo{somewhere \AP""hyperedge consistency@@finite"" algo.}
 
 \subsection{Hyperedge Consistency for Automatic Structures}
 \label{sec:hyperedge-consistency-automatic}
@@ -472,7 +473,7 @@ instead of $\?A$.
 	$\chi_b$ appear both positively and negatively in $\widehat \phi_Y$, going from
 	the $\phi$'s to the $\widehat \phi's$ increases the "quantifier alternation" of the
 	"formulas@@FO" by one. And so the "formulas@@FO" we build to describe $\HCOperator^{\,n}(\topLatticeGuessFunctions{B})$ are of "quantifier alternation" $n$.
-	TODO:CONCLUDE SOMEWHERE THAT CONSTRUCTION IS NOT ELEMENTARY.}
+	\todo{CONCLUDE SOMEWHERE THAT CONSTRUCTION IS NOT ELEMENTARY.}}
 	\begin{align*}
 		\chi_b(x) \defeq\; &
 			\bigwedge_{\+R_{(k)} \in \sigma} \bigwedge_{i\in \lBrack 1,k\rBrack}\;
@@ -692,7 +693,7 @@ on $\zigzag{n}{5}$ in only $2$ steps.
 	\end{claim}
 	We prove by induction on $\?T$ that if there are no "homomorphism" from $\?T$ to $\?B$
 	that can map $t$ to $b$, then $b \not\in \HCOperator^{\,m}_{\?T,\?B}(\topLatticeGuessFunctions{B})(t)$ where $m$ is the "height@@struct" of $\?T$ rooted at $t$.
-	TODO.
+	\todo{gap}
 	Then by \Cref{prop:hyperedge-consistency-antimonotonicity}, 
 	$\HCOperator^{\,m}_{\?A,\?B}(\topLatticeGuessFunctions{B})(a) \subseteq
 	\HCOperator^{\,m}_{\?T,\?B}(\topLatticeGuessFunctions{B})(t)$ and so
@@ -747,7 +748,7 @@ on $\zigzag{n}{5}$ in only $2$ steps.
 	The goal of this construction
 	is that, when running the "hyperedge consistency algorithm@@finite" on $\?C$,
 	vertex $b$ will be removed as a potential image for $a$ since $b \not\in \HCFixpoint{\?A}{\?B}(a)$, but because of the copy of $\?B$ included in $\?C$, any "homomorphism" from $\?C$ to $\?B$ must map $a$ to $b$.
-	\marginnote{TODO:add figure ($\?B$ is $\transitiveTournament{2}$, $\?A$ is 2-path.)}
+	\todo{add figure ($\?B$ is $\transitiveTournament{2}$, $\?A$ is 2-path.)}
 	% \begin{claim}
 	% 	\AP\label{claim:hyperedge-consistency-uniform-convergence-idempotent-core}
 	% 	$\HCFixpoint{\?C}{\?B}(a) = \emptyset$.
@@ -767,7 +768,7 @@ on $\zigzag{n}{5}$ in only $2$ steps.
 
 	Indeed, if there was a "homomorphism" from $\?C$ to $\?B$, say $f$, then
 	$\restr{f}{\?B}$ would be a "homomorphism" from $\?B$ to $\?B$.
-	Since $\?B$ has "finite duality", it is "rigid" by TODO:ADDREF, and
+	Since $\?B$ has "finite duality", it is "rigid" by \todo{ADDREF}, and
 	so in particular $f(b) = b$.
 	Hence, we would get that $\restr{f}{A}$ is a "homomorphism" from $\?A$ to $\?B$
 	which sends $a$ to $b$, and so by \Cref{prop:existence-homomorphism-implies-lowerbound-HC}
@@ -776,7 +777,8 @@ on $\zigzag{n}{5}$ in only $2$ steps.
 	So, since $\?C \nothomto \?B$, there exists a "critical obstruction" $\?T$ of $\?B$
 	"st" there is a "homomorphism" $f$ from $\?T$ to $\?C$. 
 	We claim that $a=b$ must be in the image of $f$. Indeed, since $a=b$ is the only vertex
-	of $\?A$ that is adjacent to $\?B$ in $\?C$, and since $\?T$ is "connected" by TODO:ADDREF,
+	of $\?A$ that is adjacent to $\?B$ in $\?C$, and since $\?T$ is "connected" by
+	\todo{ADDREF},
 	we would otherwise get that either $\?T \homto \?B$---contradicting that $\?T$ is a "critical obstruction" of $\?B$---or that $\?T \homto \?A$---contradicting that $\?A \homto \?B$.
 	
 	And so, there exists $t \in T$ "st" $f(t) = a = b$.
@@ -809,7 +811,7 @@ on $\zigzag{n}{5}$ in only $2$ steps.
 	in $\IncidenceGraph{\?U_{\?A}}$, and assume that $t_i \neq t_j$ for all pairs
 	$(i,j) \in \lBrack 0,n\rBrack^2 \smallsetminus \{(0,n),\, (n,0)\}$.
 	We want to show that $t_0 \neq t_n$.
-	BIG-TODO.
+	\todo{BIG-TODO.}
 
 	\begin{claim}
 		\AP\label{claim:hyperedge-consistency-uniform-convergence-tree}
@@ -837,7 +839,7 @@ on $\zigzag{n}{5}$ in only $2$ steps.
 	\eqref{item:hc-uniform-finite-structures}, which concludes the proof of \Cref{lem:hyperedge-consistency-uniform-convergence}.
 \end{proof}
 
-todo: \AP""hyperedge consistency algorithm for automatic structures""
+\todo{ \AP""hyperedge consistency algorithm for automatic structures""}
 
 % \begin{claim}
 % 	If $\?A \nothomto \?B$, then there
