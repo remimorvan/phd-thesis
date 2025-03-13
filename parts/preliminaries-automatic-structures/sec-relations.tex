@@ -72,15 +72,15 @@ of relations defined by these two families of models is often unclear.%
 version of \Cref{fig:landscape-rationality-relations} in \cite{Morvan2025Algebras}.
 Despite multiple reviews, the mistake was never spotted by anyone. TODO: IS IT?}
 For instance, we will see in todo:addref see that "deterministic two-way multitape automata"
-and "deterministic two-way transducers" enjoy very different properties.
+and "deterministic two-way transducers" are semantically different: the distinction
+between \emph{multitape automata} and \emph{transducers} is hence of capital importance.
 
-Hence, the goal of this section is to provide an overview of these classes of relations/transductions, explain how they relate to one another, and give pointers to suitable references.
-We acknowledge \cite{Choffrut2006Survey}, which proved particularly useful to find the
-appropriate references. Of course, the aim of this section is not to be exhaustive,
-which would be a daunting task,%
+Thus, the goal of this section is to provide an overview of these classes of relations/transductions, explain how they relate to one another, and give pointers to suitable references.
+The aim of this section is not to be exhaustive, which would be a daunting task,%
 \footnote{Sakarovitch's book \cite{Sakarovitch2009Elements}
 dedicates its second part to ``Rationality in relations'', which spans over more than two hundred pages---one can only imagine how extensive this part could have been if the book was not
-dedicated to presenting \emph{elements} of automata theory but the full theory itself!}
+dedicated to presenting \emph{elements} of automata theory but the full theory itself!
+The book does not even mention two-way models.}
 but rather to present a quick overview of the most common classes of relations
 studied in the literature.
 
@@ -690,6 +690,7 @@ However, it is not closed under intersection
 (see "eg" \cite[\S~III, Example~2.5]{Berstel1979Transductions}),
 and hence, it is also not closed complementation.\footnote{Indeed, closure under union
 and complementation implies closure under intersection, using De Morgan's law.}
+It is also closed under concatenation, Kleene closure and reversal \cite[Table~1]{FischerRosenberg1968Multitape}.
 
 We say that a "monoid morphism" $f\colon \Gamma^* \to \Sigma^*$ is \AP""length-multiplying""
 when $|f(a)| = |f(b)|$ for all $a, b \in \Gamma$.
@@ -876,6 +877,9 @@ is decidable \cite[Theorem~3.11]{HarjuKarhumaki1991Equivalence}.%
 \footnote{Back then, this was one of the most prominent open question in the field: recall that 
 this model was introduced more than thirty years before by Rabin
 and Scott \cite{RabinScott1959FiniteAutomata}.}
+While the class is closed under complementation, it is in fact neither closed under union,
+intersection, concatenation, Kleene closure nor reversal
+\cite[Table~1]{FischerRosenberg1968Multitape}.
 
 \subsection{Restricted Head Movements}
 
@@ -984,7 +988,8 @@ We do not provide a formal definition but only an example in
 	\end{tikzpicture}
 	\caption{
 		\AP\label{fig:example-two-way-multitape-automaton}
-		A ``two-way multitape automaton'' for the relation $\set{\tup{u, u\cdot u^r} \mid u\in\Sigma^*}$ where $u^r$ denotes the reverse of $u$.
+		A ``two-way multitape automaton'' for the relation
+		\[\set{\tup{u, u\cdot u^r} \mid u\in\Sigma^*}\] where $u^r$ denotes the reverse of $u$.
 		Arrows in the transitions of the machine represent how the heads should move: for instance,
 		$\pair{\leftarrow}{\downarrow}$ means that the first head should move left and the second one should stay in place.
 	}
@@ -995,10 +1000,11 @@ of "rational relations". In fact, this model is closed under Boolean operations,
 and so since "rational relations" are not, it follows that
 "two-way rational relations" are strictly more expressive than
 them \cite[\S~12]{RabinScott1959FiniteAutomata}.
+TODO: \url{https://arxiv.org/pdf/1205.0178} says that the model is not closed under complementation…
 Of course, since "equivalence" is already undecidable on "rational relations", it is also
 undecidable of this class.
 
-It also makes sense to look at their models: informally, in a given state, we
+It also makes sense to look at their determinic models: informally, in a given state, we
 should not only know on which tapes we will read "non-blank symbols",
 but also what head movements we will operate.
 This model is in fact remarkably expressive: given two "deterministic rational expressions"
@@ -1008,13 +1014,150 @@ from left to right, then, when reaching the end markers, to go back to the begin
 and then simulate the second automaton from left to right.
 Since intersection non-emptiness of "deterministic rational relations" is undecidable,
 it follows that non-emptiness of \AP""deterministic two-way rational relations""---"ie"
-relations recognized by deterministic two-way multitape automata"---is undecidable!%
+relations recognized by deterministic two-way multitape automata---is undecidable!%
 \footnote{This elegant proof comes from \cite[\S~12]{RabinScott1959FiniteAutomata}.}
 It follows that both the "inclusion problem@@rel" and the "equivalence problem@@rel" are
 undecidable: this class is simply too expressive.
+Generalizing the construction above for the intersection, shows that
+both "deterministic two-way rational relations" and "two-way rational relations"
+are closed under union and intersecton. todo.
+
+\begin{figure}	
+	\centering
+	\begin{tikzpicture}
+		\tikzset{
+			every node/.style = {
+				text width=3.5cm,
+				align=center,
+				node distance = 1.75em and -.8em,% vertical and horizontal
+				outer sep=.35em,
+				font=\small
+			}
+		}
+		\node at (0,0) (rec)
+			{\textsc{~\\"recognizable@@rel"}\\
+			\textsf{\footnotesize
+			\textcolor{cGreen}{bool}\esp
+			\textcolor{cGreen}{incl}\esp
+			\textcolor{cGreen}{equiv}}};
+		\node[above left=of rec] (aut)
+			{\textsc{~\\"automatic@@rel"}\\
+			\textsf{\footnotesize
+			\textcolor{cGreen}{bool}\esp
+			\textcolor{cGreen}{incl}\esp
+			\textcolor{cGreen}{equiv}}};
+		\node[above right=of rec] (raut)
+			{\textsc{~\\"right-automatic@@rel"}\\
+			\textsf{\footnotesize
+			\textcolor{cGreen}{bool}\esp
+			\textcolor{cGreen}{incl}\esp
+			\textcolor{cGreen}{equiv}}};
+		\node[above right=of aut] (drat)
+			{\textsc{"deterministic\\rational@@rel"}\\
+			\textsf{\footnotesize
+			\textcolor{cRed}{$\neg$bool}\esp
+			\textcolor{cRed}{$\neg$incl}\esp
+			\textcolor{cGreen}{equiv}}};
+		\node[above left=of drat] (rat)
+			{\textsc{~\\"rational@@rel"}\\
+			\textsf{\footnotesize
+			\textcolor{cRed}{$\neg$bool}\esp
+			\textcolor{cRed}{$\neg$incl}\esp
+			\textcolor{cRed}{$\neg$equiv}}};
+		\node[above right=of drat] (d2rat)
+			{\textsc{"deterministic two-way rational@@rel"}\\
+			\textsf{\footnotesize
+			\textcolor{cBlue}{bool??}\esp
+			\textcolor{cRed}{$\neg$incl}\esp
+			\textcolor{cRed}{$\neg$equiv}}};
+		\node[above right=of rat] (2rat)
+			{\textsc{"two-way\\rational@@rel"}\\
+			\textsf{\footnotesize
+			\textcolor{cBlue}{$\neg$bool??}\esp
+			\textcolor{cRed}{$\neg$incl}\esp
+			\textcolor{cRed}{$\neg$equiv}}};
+		\path[->]
+			(rec) edge (aut) edge (raut)
+			(aut) edge (drat)
+			(raut) edge (drat)
+			(drat) edge (rat) edge (d2rat)
+			(rat) edge (2rat)
+			(d2rat) edge (2rat);
+	\end{tikzpicture}	
+	\caption{
+		\AP\label{fig:hierarchy-rational-relations}
+		The hierarchy of "rational relations". Arrows denote \emph{strict} inclusions
+		between classes of relations.
+		Predicates \textsf{bool}, \textsf{incl} and \textsf{equiv} indicate
+		whether the class is closed under Boolean operators, has decidable
+		"inclusion problem@@rel" and "equivalence problem@@rel", respectively.
+	}
+\end{figure}
+
+Alternating two-way two-tape automata have been introduced
+and studied by Carton, Exibard and Serre who
+showed that this class is not closed under complementation
+\cite[Theorem~1]{CartonExibardSerre2017TwoWayTwoTapeAutomata}.
+
+\subsection{Transducers Are Equivalent to Multitape Automata Except When They Are Not}
+
+\AP""Non-deterministic one-way transducers"",
+or \reintro{transducers} for short, are defined as finite-state automaton, but
+their transition relation is a subset of
+\[
+	\underbrace{Q}_{\text{source state}}
+	\times \underbrace{\Gamma \cup \{\varepsilon\}}_{\text{input alphabet}}
+	\times \underbrace{\Sigma^*}_{\text{output word}}
+	\times \underbrace{Q.\!}_{\text{target state}}
+\]
+We will also assume that the input word has markers at its extremities.
+This model is quite clearly equivalent to the one of "multitape automata".
+
+However, because we think of "transducers" and "multitape automata" differently,
+the notion of "deterministic transducer" differs from the one of
+"deterministic multitape automata": recall that the latter model has access to both the input
+and output, and so we say that it is deterministic when its behaviour it uniquely guided
+by both the input and the output. However, we say that a "transducer" is
+\AP""deterministic@@transducer"" when its transition relation can actually be described
+by a partial function
+\[
+	\underbrace{Q}_{\text{source state}}
+	\times \underbrace{\Gamma}_{\text{input alphabet}}
+	\pto
+	\underbrace{Q}_{\text{target state}}
+	\times \underbrace{{\Sigma^*}.\!}_{\text{output word}}
+\]
+Hence, by construction, a "deterministic transducers" recognizes a partial function
+from $\Gamma^*$ to $\Sigma^*$.
+Note however that the "deterministic multitape automaton" of \Cref{fig:multitape-automaton-subword}
+recognizes the "subword relation", which is not "functional@@rel".
+And hence, "deterministic transducers" are strictly less expressive
+than "deterministic multitape automaton".
+But in fact we can prove a strictly stronger result:
+there are "function relations" that can be recognized by
+a "deterministic rational@@rel" but that are not a
+\AP""deterministic transduction""---"ie" recognizable by a "determinic one-way transducer".
+For instance, consider the function, where $\Sigma \defeq \{a,b,c\}$,
+\begin{center}
+	\begin{tabular}{rccc}
+		$f\colon$ & $\Sigma^*$ & $\pto$ & $\Sigma^*$ \\
+		& $a\cdot b^n \cdot c$ & $\mapsto$ & $c \cdot b^n \cdot a$ \quad($n\in\N$) \\
+		& $a\cdot b^n \cdot a$ & $\mapsto$ & $a \cdot b^n \cdot a$ \qquad``\qquad.
+	\end{tabular}
+\end{center}
+In fact, this relation is even "automatic"! A "synchronous automaton"
+can simply use two states to remember if the first pair it reads is
+$\pair{a}{c}$ or $\pair{a}{a}$, in which case it will know if it should expect
+to read $\pair{c}{a}$ or $\pair{a}{a}$ at the end of the word.
+On the other hand, a "deterministic one-way transducer"
+only has access to the input word, and while reading the first $a$, it has no choice
+but to non-deterministically guess if it should produce a $c$ or an $a$.
+todo:formal proof?
 
 
-\subsection{Let's Not Forget About Transducers}
+The same complication happens for two-wayness: a "two-way transducer" can
+move both left and right on its input tape, but not on the output,
+since the output is \emph{produced} and not read.
 
 TODO
 
@@ -1028,16 +1171,27 @@ In other words non-determinism does not increase the expressiveness of two-way m
 The equivalence problem was shown to be decidable by Gurari \cite[Theorem~1]{Gurari1982Equivalence}
 for "regular functions". Note that for the subclass of functional "rational relations", this result was proven one decade earlier, by Schützenberger in 1975---see "eg" \cite[Corollary~IV.1.3]{Berstel1979Transductions}.
 
-"Regular functions" all have a linear growth.%
+\paragraph*{Polyregular functions.}
+"Regular functions@@bojan" all have a linear growth.%
 \footnote{Meaning that if $\tup{u,v}$ belongs to the relation, then $|v| \leq k\cdot |u|$
 for some constant $k$.}
 This model has been generalized to ``polyregular
 functions''---which have polynomial growth---see \cite{Bojanczyk2022Transducers} for
-a recent survey. However, whether the equivalence problem is decidable for this class is still open
+a recent survey: one way of defining this class of functions is by allowing transducers
+to put and move a bounded number of \emph{pebbles} on the input word.
+A typical example of polyregular function that is not "regular@@bojan"
+is the squaring function, which takes a word $u$ and maps it to
+the concatenation $u^{|u|}$ of $u$ as many times as they are letter in the word.
+Since this function has quadratic growth, it cannot be "regular@@bojan", but
+it can easily be recognized by a deterministic two-way transducer with a single pebble,
+that puts a pebble on the first position, outputs the input word, moves
+the pebble one position to the right, and iterate this process until the pebble reaches
+the end of the word.
+However, the decidability of the equivalence problem for this class remains widely open
 \cite[\S~8]{Bojanczyk2022Transducers}.
 
 We refer the reader to Douéneau's Ph.D. thesis \cite[\S~1]{Douéneau2023PhD} for variations on
-"regular functions" and related membership problems.
+"transducers" models and related "membership problems".
 Lastly, let us note that most classes of relations usually become quite ``simple'' when restricted 
 to a unary alphabet, see "eg" \cite[Theorem~1]{ChoffrutGuillon2014UnaryTransducers} for a simple
 characterization of "deterministic two-way rational relations" over a unary alphabet.
