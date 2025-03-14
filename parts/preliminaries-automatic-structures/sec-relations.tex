@@ -694,7 +694,7 @@ However, it is not closed under intersection
 (see "eg" \cite[\S~III, Example~2.5]{Berstel1979Transductions}),
 and hence, it is also not closed complementation.\footnote{Indeed, closure under union
 and complementation implies closure under intersection, using De Morgan's law.}
-It is also closed under concatenation, Kleene closure and reversal \cite[Table~1]{FischerRosenberg1968Multitape}.
+It is also closed under concatenation, Kleene closure and reversal \cite[\S~3, Table~I]{FischerRosenberg1968Multitape}.
 
 We say that a "monoid morphism" $f\colon \Gamma^* \to \Sigma^*$ is \AP""length-multiplying""
 when $|f(a)| = |f(b)|$ for all $a, b \in \Gamma$.
@@ -905,8 +905,8 @@ is decidable \cite[Theorem~3.11]{HarjuKarhumaki1991Equivalence}.%
 \footnote{Back then, this was one of the most prominent open question in the field: recall that 
 this model was introduced more than thirty years before by Rabin
 and Scott \cite{RabinScott1959FiniteAutomata}.}
-While the class is closed under complementation, it is in fact neither closed under union,
-intersection, concatenation, Kleene closure nor reversal
+While the class is closed under complementation, it is in fact neither closed under union,intersection \cite[Theorem~17]{RabinScott1959FiniteAutomata},
+concatenation, Kleene closure nor reversal
 \cite[Table~1]{FischerRosenberg1968Multitape}.
 
 \subsection{Restricted Head Movements}
@@ -1024,11 +1024,12 @@ We do not provide a formal definition but only an example in
 \end{marginfigure}
 
 The resulting model, namely \AP""two-way rational relations"" contains the class
-of "rational relations". In fact, this model is closed under Boolean operations,
-and so since "rational relations" are not, it follows that
+of "rational relations". In fact, this model is closed under union and intersection:
+since "rational relations" are not closed under intersection, it follows that
 "two-way rational relations" are strictly more expressive than
 them \cite[\S~12]{RabinScott1959FiniteAutomata}.
-\todo{ \url{https://arxiv.org/pdf/1205.0178} says that the model is not closed under complementation…}
+
+\todo{\url{https://arxiv.org/pdf/1205.0178} says that the model is not closed under complementation…}
 Of course, since "equivalence" is already undecidable on "rational relations", it is also
 undecidable of this class.
 
@@ -1043,14 +1044,39 @@ and then simulate the second automaton from left to right.
 Since the "intersection non-emptiness problem@@drat"
 of "deterministic rational relations" is undecidable (see \Cref{ex:PCP-is-det-rat}),
 it follows that non-emptiness of \AP""deterministic two-way rational relations""---"ie"
-relations recognized by deterministic two-way multitape automata---is undecidable!%
-\footnote{This elegant proof comes from \cite[\S~12]{RabinScott1959FiniteAutomata}.}
+relations recognized by deterministic two-way multitape automata---is undecidable
+\cite[Theorem~19]{RabinScott1959FiniteAutomata}.
 It follows that both the "inclusion problem@@rel" and the "equivalence problem@@rel" are
 undecidable: this class is simply too expressive.
+
 Generalizing the construction above for the intersection, shows that
 both "deterministic two-way rational relations" and "two-way rational relations"
-are closed under union and intersecton.
-\todo{ complement.}
+are closed under union and intersection.%
+\footnote{The closure under union of "deterministic two-way rational relations"
+is slightly less immediate, see \cite[Lemma~4]{CartonExibardSerre2017TwoWayTwoTapeAutomata}
+for more details.}
+In fact, "deterministic two-way rational relations" (resp. "two-way rational relations")
+exactly correspond to the closure of "deterministic (one-way) rational relations"
+(resp. "(one-way) rational relations") under union and intersection,
+see "eg" \cite[Theorem~4.1, p.~136]{Chan1980ReversalBoundedComputations}
+and \cite[Theorem~4.2, p.~137]{Chan1980ReversalBoundedComputations}.
+
+"Deterministic two-way rational relations" are closed under complement%
+\footnote{This can be proven like for classical deterministic automata, by simply complementing
+the set of accepting states. This construction also works
+for "deterministic one-way rational relations" \cite[Theorem~17]{RabinScott1959FiniteAutomata}.
+However in the case of two-way automaton,
+we need to first assure that the automaton does not reject by looping
+forever: as mentioned in \cite[Lemma~4]{CartonExibardSerre2017TwoWayTwoTapeAutomata}
+this can be dealt with using Sipser's trick \cite[Theorem~1]{Sipser1980HaltingSpaceBoundedComputations}.}
+"Two-way rational relations" are not closed under complement,
+see "eg" \cite[Theorem~4.6, p.~148]{Chan1980ReversalBoundedComputations}.
+\footnote{In fact \cite[Theorem~4.6, p.~148]{Chan1980ReversalBoundedComputations}
+proves that there is a relation $\+R$ that is a "rational relation"
+but not "deterministic two-way rational@@rel". Its complement }
+They are "rational relations" that are not "deterministic two-way rational@@rel"
+\cite[Theorem~4.6, p.~148]{Chan1980ReversalBoundedComputations}.
+Neither model are closed under composition \cite[Theorem~5]{CartonExibardSerre2017TwoWayTwoTapeAutomata}.
 
 \begin{figure}	
 	\centering
@@ -1097,7 +1123,7 @@ are closed under union and intersecton.
 		\node[above right=of drat] (d2rat)
 			{\textsc{"deterministic two-way rational@@rel"}\\
 			\textsf{\footnotesize
-			\textcolor{cBlue}{bool??}\esp
+			\textcolor{cGreen}{bool}\esp
 			\textcolor{cRed}{$\neg$incl}\esp
 			\textcolor{cRed}{$\neg$equiv}}};
 		\node[above right=of rat] (2rat)
@@ -1225,8 +1251,15 @@ the end of the word.
 However, the decidability of the equivalence problem for this class remains widely open
 \cite[\S~8]{Bojanczyk2022Transducers}.
 
-We refer the reader to Douéneau's Ph.D. thesis \cite[\S~1]{Douéneau2023PhD} for variations on
-"transducers" models and related "membership problems".
+We refer the reader to
+Gauwin's habilitation \cite{Gauwin2020Transductions}: in particular,
+we refer the reader to the splendid \cite[Figure~2.1, p.~16]{Gauwin2020Transductions}%
+\footnote{Note however that arrows are reversed compared to
+\Cref{fig:hierarchy-rational-relations}.}
+for a clickable taxonomy of word-to-word transducers, and references towards
+decidability of their "membership problem".
+See also Douéneau's Ph.D. thesis \cite[\S~1]{Douéneau2023PhD} for variations on
+"transducers" models.
 Lastly, let us note that most classes of relations usually become quite ``simple'' when restricted 
 to a unary alphabet, see "eg" \cite[Theorem~1]{ChoffrutGuillon2014UnaryTransducers} for a simple
 characterization of "deterministic two-way rational relations" over a unary alphabet.
