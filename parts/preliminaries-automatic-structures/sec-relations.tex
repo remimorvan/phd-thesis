@@ -100,7 +100,6 @@ When the terminology ``relation'' is used,
 we often take $\Gamma = \Sigma$.\footnote{For instance this is somewhat important when
 dealing with logic or defining automatic structure
 \Cref{sec:preliminaries-automatic-structures-automatic-structures,sec:preliminaries-automatic-structures-logic}.}
-
 Note also that most notions defined by multitape automata
 can be trivially extended to $k$-ary relations ($k \geq 3$):
 we simply work here with binary relations for the sake of simplicity.
@@ -1029,7 +1028,6 @@ since "rational relations" are not closed under intersection, it follows that
 "two-way rational relations" are strictly more expressive than
 them \cite[\S~12]{RabinScott1959FiniteAutomata}.
 
-\todo{\url{https://arxiv.org/pdf/1205.0178} says that the model is not closed under complementation…}
 Of course, since "equivalence" is already undecidable on "rational relations", it is also
 undecidable of this class.
 
@@ -1055,11 +1053,6 @@ are closed under union and intersection.%
 \footnote{The closure under union of "deterministic two-way rational relations"
 is slightly less immediate, see \cite[Lemma~4]{CartonExibardSerre2017TwoWayTwoTapeAutomata}
 for more details.}
-In fact, "deterministic two-way rational relations" (resp. "two-way rational relations")
-exactly correspond to the closure of "deterministic (one-way) rational relations"
-(resp. "(one-way) rational relations") under union and intersection,
-see "eg" \cite[Theorem~4.1, p.~136]{Chan1980ReversalBoundedComputations}
-and \cite[Theorem~4.2, p.~137]{Chan1980ReversalBoundedComputations}.
 
 "Deterministic two-way rational relations" are closed under complement%
 \footnote{This can be proven like for classical deterministic automata, by simply complementing
@@ -1069,13 +1062,8 @@ However in the case of two-way automaton,
 we need to first assure that the automaton does not reject by looping
 forever: as mentioned in \cite[Lemma~4]{CartonExibardSerre2017TwoWayTwoTapeAutomata}
 this can be dealt with using Sipser's trick \cite[Theorem~1]{Sipser1980HaltingSpaceBoundedComputations}.}
-"Two-way rational relations" are not closed under complement,
-see "eg" \cite[Theorem~4.6, p.~148]{Chan1980ReversalBoundedComputations}.
-\footnote{In fact \cite[Theorem~4.6, p.~148]{Chan1980ReversalBoundedComputations}
-proves that there is a relation $\+R$ that is a "rational relation"
-but not "deterministic two-way rational@@rel". Its complement }
-They are "rational relations" that are not "deterministic two-way rational@@rel"
-\cite[Theorem~4.6, p.~148]{Chan1980ReversalBoundedComputations}.
+\todo{Are "two-way rational relations" closed under complement? I think not but
+cannot find a reference.}
 Neither model are closed under composition \cite[Theorem~5]{CartonExibardSerre2017TwoWayTwoTapeAutomata}.
 
 \begin{figure}	
@@ -1096,37 +1084,37 @@ Neither model are closed under composition \cite[Theorem~5]{CartonExibardSerre20
 			\textcolor{cGreen}{bool}\esp
 			\textcolor{cGreen}{incl}\esp
 			\textcolor{cGreen}{equiv}}};
-		\node[above left=of rec] (aut)
+		\node at (-3, 2) (aut)
 			{\textsc{~\\"automatic@@rel"}\\
 			\textsf{\footnotesize
 			\textcolor{cGreen}{bool}\esp
 			\textcolor{cGreen}{incl}\esp
 			\textcolor{cGreen}{equiv}}};
-		\node[above right=of rec] (raut)
+		\node at (3, 2) (raut)
 			{\textsc{~\\"right-automatic@@rel"}\\
 			\textsf{\footnotesize
 			\textcolor{cGreen}{bool}\esp
 			\textcolor{cGreen}{incl}\esp
 			\textcolor{cGreen}{equiv}}};
-		\node[above right=of aut] (drat)
+		\node at (0,4) (drat)
 			{\textsc{"deterministic\\rational@@rel"}\\
 			\textsf{\footnotesize
 			\textcolor{cRed}{$\neg$bool}\esp
 			\textcolor{cRed}{$\neg$incl}\esp
 			\textcolor{cGreen}{equiv}}};
-		\node[above left=of drat] (rat)
+		\node at (-3, 6) (rat)
 			{\textsc{~\\"rational@@rel"}\\
 			\textsf{\footnotesize
 			\textcolor{cRed}{$\neg$bool}\esp
 			\textcolor{cRed}{$\neg$incl}\esp
 			\textcolor{cRed}{$\neg$equiv}}};
-		\node[above right=of drat] (d2rat)
+		\node at (3, 6) (d2rat)
 			{\textsc{"deterministic two-way rational@@rel"}\\
 			\textsf{\footnotesize
 			\textcolor{cGreen}{bool}\esp
 			\textcolor{cRed}{$\neg$incl}\esp
 			\textcolor{cRed}{$\neg$equiv}}};
-		\node[above right=of rat] (2rat)
+		\node at (0,8) (2rat)
 			{\textsc{"two-way\\rational@@rel"}\\
 			\textsf{\footnotesize
 			\textcolor{cBlue}{$\neg$bool??}\esp
@@ -1147,9 +1135,14 @@ Neither model are closed under composition \cite[Theorem~5]{CartonExibardSerre20
 		Predicates \textsf{bool}, \textsf{incl} and \textsf{equiv} indicate
 		whether the class is closed under Boolean operators, has decidable
 		"inclusion problem@@rel" and "equivalence problem@@rel", respectively.
+		\todo{bool for "two-way rational@@rel".}
 	}
 \end{figure}
 
+Two-way multitape automata where the two-wayness is restricted to
+moving all heads simultaneously back to the beginning of the words 
+are known as ``rewing automaton'', and were introduced by Rosenberg in 1965,
+see "eg" \cite[\S~4]{Chan1980ReversalBoundedComputations}.
 Alternating two-way two-tape automata have been introduced
 and studied by Carton, Exibard and Serre who
 showed that this class is not closed under complementation
@@ -1200,7 +1193,7 @@ For instance, consider the function, where $\Sigma \defeq \{a,b,c\}$,
 	\begin{tabular}{rccc}
 		$f\colon$ & $\Sigma^*$ & $\pto$ & $\Sigma^*$ \\
 		& $a\cdot b^n \cdot c$ & $\mapsto$ & $c \cdot b^n \cdot a \;(n\in\N)$ \\
-		& $a\cdot b^n \cdot a$ & $\mapsto$ & $a \cdot b^n \cdot a$ \qquad``\qquad.
+		& $a\cdot b^n \cdot a$ & $\mapsto$ & $a \cdot b^n \cdot a$ \qquad``\quad.
 	\end{tabular}
 \end{center}
 In fact, this relation is even "automatic"! A "synchronous automaton"
@@ -1224,12 +1217,105 @@ the relations recognized by two-way transducers and deterministic two-way trandu
 ""Determinic two-way transductions"" are actually widely 
 known as \AP""regular functions@@bojan"", and have been extensively studied in the past
 decade. They admit several characterizations, in the frameworks of multitape automata, transducers, logic, etc.\footnote{See \cite[4th~Paragraph]{Bojanczyk2022Transducers} for pointers.}
-For instance, the intersection of "functional relations" and "two-way transductions"
+
+Remarkably, the intersection of "functional relations" and "two-way transductions"
 collapses to "regular functions" \cite[Theorem 22, p.~243]{EngelfrietHoogeboom2001transduction}.
-\todo{look at Figure 9 of EH01}
 In other words non-determinism does not increase the expressiveness of two-way multitape automata, when restricted to "functional relations".
-The equivalence problem was shown to be decidable by Gurari \cite[Theorem~1]{Gurari1982Equivalence}
+As a consequence, the hierarchy of "functional relations" is surprisingly more
+linearly ordered than expected, as depicted in \todo{addref}.
+
+\begin{figure}	
+	\centering
+	\begin{tikzpicture}[scale=0.85]
+		\tikzset{
+			every node/.style = {
+				text width=5cm,
+				align=center,
+				node distance = 1.75em and -.8em,% vertical and horizontal
+				outer sep=.35em,
+				font=\small
+			}
+		}
+		\node at (0,0) (frec)
+			{\textsc{"fun\al"\\"recognizable rel°"}\\
+			\textsf{\footnotesize
+			\textcolor{cGreen}{incl}\esp
+			\textcolor{cGreen}{equiv}}};
+		\node at (-4.5, 3) (faut)
+			{\textsc{"fun\al"\\"automatic rel°"}\\
+			\textsf{\footnotesize
+			\textcolor{cGreen}{incl}\esp
+			\textcolor{cGreen}{equiv}}};
+		\node at (0, 3) (fraut)
+			{\textsc{"fun\al" "right-@right-automatic@@rel"\\"automatic rel°@right-automatic@@rel"}\\
+			\textsf{\footnotesize
+			\textcolor{cGreen}{incl}\esp
+			\textcolor{cGreen}{equiv}}};
+		\node at (4.5, 3) (dtrans)
+			{\textsc{"determinstic\\transductions"}\\
+			\textsf{\footnotesize
+			\textcolor{cGreen}{incl}\esp
+			\textcolor{cGreen}{equiv}}};
+		\node at (0,6) (drat)
+			{\textsc{"fun\al" "det\ic\\rational rel°"}\\
+			\textsf{\footnotesize
+			\textcolor{cGreen}{incl}\esp
+			\textcolor{cGreen}{equiv}}};
+		\node at (0, 9) (ftrans)
+			{\textsc{"fun\al" "transductions"}\\
+			\textsf{\footnotesize
+			\textcolor{cGreen}{incl}\esp
+			\textcolor{cGreen}{equiv}}};
+		\node at (0,12) (regfun)
+			{\textsc{"regular functions@@bojan"\\
+			= "fun\al" "two-way trans°"\\
+			= "det\ic~two-way trans°"}\\
+			\textsf{\footnotesize
+			\textcolor{cGreen}{incl}\esp
+			\textcolor{cGreen}{equiv}}};
+		\node at (-3,15) (fd2rat)
+			{\textsc{"fun\al" "det\ic~two-way\\rational rel°"}\\
+			\textsf{\footnotesize
+			\textcolor{cRed}{$\neg$incl}\esp
+			\textcolor{cRed}{$\neg$equiv}}};
+		\node at (-3,18) (f2rat)
+			{\textsc{"fun\al" "two-way\\rational rel°"}\\
+			\textsf{\footnotesize
+			\textcolor{cRed}{$\neg$incl}\esp
+			\textcolor{cRed}{$\neg$equiv}}};
+		\node at (3,15) (polyreg)
+			{\textsc{``polyregular\\functions''}\\
+			\textsf{\footnotesize
+			\textcolor{cBlue}{incl??}\esp
+			\textcolor{cBlue}{equiv??}}};
+		\path[->]
+			(frec) edge (faut) edge (fraut) edge (dtrans)
+			(faut) edge (drat)
+			(fraut) edge (drat)
+			(dtrans) edge (drat)
+			(drat) edge (ftrans)
+			(ftrans) edge (regfun)
+			(regfun) edge (fd2rat) edge (polyreg)
+			(fd2rat) edge (f2rat);
+	\end{tikzpicture}
+	\hrule
+	\caption{
+		\AP\label{fig:hierarchy-functional-relations}
+		The hierarchy of "functional relations". Arrows denote \emph{strict} inclusions
+		between classes of relations.
+		Predicates \textsf{incl} and \textsf{equiv} indicate
+		whether the class has decidable
+		"inclusion problem@@rel" and "equivalence problem@@rel", respectively.
+	}
+\end{figure}
+
+The "equivalence problem@@rel" of "regular functions"
+was shown to be decidable by Gurari \cite[Theorem~1]{Gurari1982Equivalence}
 for "regular functions". Note that for the subclass of functional "rational relations", this result was proven one decade earlier, by Schützenberger in 1975---see "eg" \cite[Corollary~IV.1.3]{Berstel1979Transductions}.
+
+\todo{Mention that if class is effectively closed under union, then inclusion reduces
+to functionality.}
+\todo{Add closure under composition for the different hierarchies.}
 
 \paragraph*{Polyregular functions.}
 "Regular functions@@bojan" all have a linear growth.%
