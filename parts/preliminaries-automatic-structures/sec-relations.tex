@@ -1222,11 +1222,12 @@ Remarkably, the intersection of "functional relations" and "two-way transduction
 collapses to "regular functions" \cite[Theorem 22, p.~243]{EngelfrietHoogeboom2001transduction}.
 In other words non-determinism does not increase the expressiveness of two-way multitape automata, when restricted to "functional relations".
 As a consequence, the hierarchy of "functional relations" is surprisingly more
-linearly ordered than expected, as depicted in \todo{addref}.
+linearly ordered than expected, as depicted in \Cref{fig:hierarchy-functional-relations}.
 
 \begin{figure}	
 	\centering
-	\begin{tikzpicture}[scale=0.85]
+	\hspace{-1.2cm}
+	\begin{tikzpicture}[scale=0.9]
 		\tikzset{
 			every node/.style = {
 				text width=5cm,
@@ -1284,7 +1285,7 @@ linearly ordered than expected, as depicted in \todo{addref}.
 			\textcolor{cRed}{$\neg$incl}\esp
 			\textcolor{cRed}{$\neg$equiv}}};
 		\node at (3,15) (polyreg)
-			{\textsc{``polyregular\\functions''}\\
+			{\textsc{``"polyregular\\functions@@bojan"''}\\
 			\textsf{\footnotesize
 			\textcolor{cBlue}{incl??}\esp
 			\textcolor{cBlue}{equiv??}}};
@@ -1322,11 +1323,11 @@ to functionality.}
 add ref Sakarovitch
 \footnote{Meaning that if $\tup{u,v}$ belongs to the relation, then $|v| \leq k\cdot |u|$
 for some constant $k$.}
-This model has been generalized to ``polyregular
-functions''---which have polynomial growth---see \cite{Bojanczyk2022Transducers} for
+This model has been generalized to \AP""polyregular
+functions@@bojan""---which have polynomial growth---see \cite{Bojanczyk2022Transducers} for
 a recent survey: one way of defining this class of functions is by allowing transducers
 to put and move a bounded number of \emph{pebbles} on the input word.
-A typical example of polyregular function that is not "regular@@bojan"
+A typical example of "polyregular function" that is not "regular@@bojan"
 is the squaring function, which takes a word $u$ and maps it to
 the concatenation $u^{|u|}$ of $u$ as many times as they are letter in the word.
 Since this function has quadratic growth, it cannot be "regular@@bojan", but
@@ -1338,8 +1339,8 @@ However, the decidability of the equivalence problem for this class remains wide
 \cite[\S~8]{Bojanczyk2022Transducers}.
 
 We refer the reader to
-Gauwin's habilitation \cite{Gauwin2020Transductions}: in particular,
-we refer the reader to the splendid \cite[Figure~2.1, p.~16]{Gauwin2020Transductions}%
+Gauwin's habilitation \cite{Gauwin2020Transductions}, and in particular
+to the splendid \cite[Figure~2.1, p.~16]{Gauwin2020Transductions}%
 \footnote{Note however that arrows are reversed compared to
 \Cref{fig:hierarchy-rational-relations}.}
 for a clickable taxonomy of word-to-word transducers, and references towards
@@ -1351,4 +1352,3 @@ to a unary alphabet, see "eg" \cite[Theorem~1]{ChoffrutGuillon2014UnaryTransduce
 characterization of "deterministic two-way rational relations" over a unary alphabet.
 
 \todo{ update figure}
-\todo{ in ccl open question \cite[Theorem~V.4.2]{Sakarovitch2009Elements} for polyregular.}
