@@ -9,6 +9,8 @@
 \knowledge{notion}
  | functional relations
  | functional relation
+ | functional@rel
+ | Functional@rel
 
 % ---
 % Recognizable relations
@@ -44,6 +46,7 @@
  | blank symbol
  | padding symbol
  | padding symbols
+ | non-blank symbols
 
 \knowledge{notion}
  | synchronous automaton 
@@ -73,6 +76,7 @@
 \knowledge{notion}
  | length-multiplying
  | length-multiplying morphisms
+ | length-multiplying morphism
 
 % ---
 % Rational relations relations 
@@ -87,6 +91,8 @@
 \knowledge{notion}
  | multitape automaton
  | automaton@desync
+ | $T$-multitape automaton
+ | Multitape automaton
 
 \knowledge{notion}
  | recognized@desync

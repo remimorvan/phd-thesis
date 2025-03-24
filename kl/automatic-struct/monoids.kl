@@ -4,6 +4,7 @@
 \knowledge{notion}
  | monoid morphism
  | monoid morphisms
+ | morphism@monoid
 
 \knowledge{notion}
  | pseudovariety of finite monoids
