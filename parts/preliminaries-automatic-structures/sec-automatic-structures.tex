@@ -52,37 +52,45 @@ $\+B$ with $\domainPres{\+B} = \2^*$,
 	\{\tup{u,u0} \mid u \in \2^*\} \cup \{\tup{u,u1} \mid u \in \2^*\},
 \]
 and $\relPres{=}{\+B}$ is equality.
-\begin{figure}
+\begin{marginfigure}
 	\centering
 	\begin{tikzpicture}
 		\node[vertex] at (0,0) (eps) {};
-		\node[below left=of eps] (a) {};
-		\node[below right=of eps] (b) {};
-		\node[below left=of a] (aa) {};
-		\node[below right=of a] (ab) {};
-		\node[below left=of b] (ba) {};
-		\node[below right=of b] (bb) {};
+		\node[vertex, below left=1em and 1.875em of eps] (a) {};
+		\node[vertex, below right=1em and 1.875em of eps] (b) {};
+		\node[vertex, below left=1em and .75em of a] (aa) {};
+		\node[vertex, below right=1em and .75em of a] (ab) {};
+		\node[vertex, below left=1em and .75em of b] (ba) {};
+		\node[vertex, below right=1em and .75em of b] (bb) {};
+		\foreach \n in {aa,ab,ba,bb} {
+			\node[below left=1em and .375em of \n] (\n a) {};
+			\node[below right=1em and .375em of \n] (\n b) {};
+		}
 
-		\draw[edge] (eps) to (a)
-			(eps) to (b)
-			(a) to (aa)
-			(a) to (ab)
-			(b) to (ba)
-			(b) to (bb);
+		\draw[edge] (eps) to (a);
+		\draw[edge] (eps) to (b);
+		\draw[edge] (a) to (aa);
+		\draw[edge] (a) to (ab);
+		\draw[edge] (b) to (ba);
+		\draw[edge] (b) to (bb);
+		\foreach \n in {aa,ab,ba,bb} {
+			\draw[edge] (\n) to (\n a);
+			\draw[edge] (\n) to (\n b);
+		}
 
-		\node[below right=-.25em of eps, font=\tiny, color=cDarkGrey] {$\varepsilon$};
-		\node[below right=-.25em of a, font=\tiny, color=cDarkGrey] {$a$};
-		\node[below right=-.25em of b, font=\tiny, color=cDarkGrey] {$b$};
-		\node[below right=-.25em of aa, font=\tiny, color=cDarkGrey] {$aa$};
-		\node[below right=-.25em of ab, font=\tiny, color=cDarkGrey] {$ab$};
-		\node[below right=-.25em of ba, font=\tiny, color=cDarkGrey] {$ba$};
-		\node[below right=-.25em of bb, font=\tiny, color=cDarkGrey] {$bb$};
+		\node[right=-.25em of eps, font=\tiny, color=cDarkGrey] {$\varepsilon$};
+		\node[right=-.25em of a, font=\tiny, color=cDarkGrey] {$a$};
+		\node[right=-.25em of b, font=\tiny, color=cDarkGrey] {$b$};
+		\node[right=-.25em of aa, font=\tiny, color=cDarkGrey] {$aa$};
+		\node[right=-.25em of ab, font=\tiny, color=cDarkGrey] {$ab$};
+		\node[right=-.25em of ba, font=\tiny, color=cDarkGrey] {$ba$};
+		\node[right=-.25em of bb, font=\tiny, color=cDarkGrey] {$bb$};
 	\end{tikzpicture}
 	\caption{
 		\AP\label{fig:infinite-binary-tree}
 		An "automatic presentation" of the infinite binary tree.
 	}
-\end{figure}
+\end{marginfigure}
 Presentations such as this one, where $\relPres{=}{\+B}$ is the equality relation,
 are called ""injective presentations"".
 
@@ -627,16 +635,16 @@ we obtain the following result.
 \end{proposition}
 
 Problems on automatic graphs have been mainly studied by Kuske and Lohrey, who showed that over "automatic graphs":
-\begin{description}
-	\item[highly undecidable problems:] the existence of a Hamiltonian path
+\begin{itemize}
+	\item \emph{highly undecidable problems:} the existence of a Hamiltonian path
 		is undecidable, in fact it is complete for the first level of the "analytical hierarchy"
 		\cite[Theorem~3.2]{KuskeLohrey2010AutomaticGraphs};
 		the existence of an infinite path in "directed trees" shares the same complexity
 		\cite[Theorem~3.6]{KuskeLohrey2010AutomaticGraphs};
-	\item[moderately undecidable problems:]
+	\item \emph{moderately undecidable problems:}
 		the existence of an Eulerian path is undecidable, and is only complete for
 		the second level of the "arithmetical hierarchy" "Pi0-2" \cite[Theorem~4.13]{KuskeLohrey2010AutomaticGraphs}.
-\end{description}
+\end{itemize}
 
 Moreover, as a consequence of \Cref{prop:order-invariance}, the existence of an infinite clique,
 being an "order-invariant@@FO" property, is decidable over "automatic graphs".
