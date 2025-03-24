@@ -52,7 +52,37 @@ $\+B$ with $\domainPres{\+B} = \2^*$,
 	\{\tup{u,u0} \mid u \in \2^*\} \cup \{\tup{u,u1} \mid u \in \2^*\},
 \]
 and $\relPres{=}{\+B}$ is equality.
-\todo{ figure.}
+\begin{figure}
+	\centering
+	\begin{tikzpicture}
+		\node[vertex] at (0,0) (eps) {};
+		\node[below left=of eps] (a) {};
+		\node[below right=of eps] (b) {};
+		\node[below left=of a] (aa) {};
+		\node[below right=of a] (ab) {};
+		\node[below left=of b] (ba) {};
+		\node[below right=of b] (bb) {};
+
+		\draw[edge] (eps) to (a)
+			(eps) to (b)
+			(a) to (aa)
+			(a) to (ab)
+			(b) to (ba)
+			(b) to (bb);
+
+		\node[below right=-.25em of eps, font=\tiny, color=cDarkGrey] {$\varepsilon$};
+		\node[below right=-.25em of a, font=\tiny, color=cDarkGrey] {$a$};
+		\node[below right=-.25em of b, font=\tiny, color=cDarkGrey] {$b$};
+		\node[below right=-.25em of aa, font=\tiny, color=cDarkGrey] {$aa$};
+		\node[below right=-.25em of ab, font=\tiny, color=cDarkGrey] {$ab$};
+		\node[below right=-.25em of ba, font=\tiny, color=cDarkGrey] {$ba$};
+		\node[below right=-.25em of bb, font=\tiny, color=cDarkGrey] {$bb$};
+	\end{tikzpicture}
+	\caption{
+		\AP\label{fig:infinite-binary-tree}
+		An "automatic presentation" of the infinite binary tree.
+	}
+\end{figure}
 Presentations such as this one, where $\relPres{=}{\+B}$ is the equality relation,
 are called ""injective presentations"".
 
@@ -463,7 +493,7 @@ they show that:
 \begin{itemize}
 	\item $\tup{\N, \textrm{succ}}$ has a decidable "weak monadic second-order logic",
 		where $\textrm{succ}$ denotes the successor relation,%
-		\foonote{This is \emph{the} classical result of automatic theory and the motivation
+		\footnote{This is \emph{the} classical result of automatic theory and the motivation
 		for studying automata, see \todo{addref-prelims}.}
 	\item if a "structure" $\?U$ has a decidable "weak monadic second-order theory",
 		then for any "structure" $\?A$ that admits a

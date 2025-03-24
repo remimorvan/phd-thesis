@@ -124,7 +124,7 @@ we will often want to know if this inclusion is \emph{effective}:
 This problem is also called the \reintro{$\+C$/$\+D$-membership problem}.
 
 A natural extension of this problem is the so-called separability problem,
-which has received lots of attention in \todo{addref}.
+which has received lots of attention.
 \decisionproblem{
 	""$\+D$-separability problem for $\+C$-relations""
 }{
@@ -155,7 +155,9 @@ if there exists a "finite monoid" $\?M$ together with a "monoid morphism"
 \]
 as well as a subset $\Acc \subseteq M$ "st"
 $\+R = f^{-1}[\Acc]$. We denote by \AP$\intro*\REC$ the class of "recognizable relations".%
-\footnote{\todo{ Again, insert some set-theoretic bullshit.}}
+\footnote{To avoid preposterous set-theoretic paradoxes, 
+we use the classical shenanigan of defining this as a function which maps
+any alphabet $\Sigma$ to the set of "recognizable relations" over $\Sigma$.}
 
 For instance the \AP""same parity relation""
 \[
@@ -539,8 +541,8 @@ Despite being somewhat expressive, "automatic relations" retain some decidabilit
 
 On the other hand, the associated "separation problem@@rel" remains open.
 This part of this thesis is mostly motivated by this problem.%
-\footnote{Pablo Barceló introduced me to this problem in October 2022.
-\todo{blabla.}}
+\footnote{Pablo Barceló introduced me to this problem in October 2022,
+but apparently this problem has been open for many years.}
 
 \begin{openproblem}
 	Is the ""$\REC$-separability problem for automatic relations"" decidable?
@@ -877,7 +879,6 @@ But in fact, we can prove a stronger result: $\suffix$ is not even "deterministi
 \footnote{This can be shown by using "eg"
 \cite[Lemma~IV.5.15]{Sakarovitch2009Elements} on the pair of words
 $\tup{a^n b \triangleleft, a^{n-1} b a^n b \triangleleft}$ ($n\in\N$).
-\todo{ convince myself that this is indeed true.}
 Note that there is a typo in
 the statement of \cite[Lemma~IV.5.15]{Sakarovitch2009Elements} and that
 ``$|(f,g)| \geq 0$'' should be replaced by ``$|(f,g)| > 0$''.}
