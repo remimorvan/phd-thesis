@@ -32,8 +32,8 @@ An \AP""automatic presentation $\+A$ of a $\sigma$-structure"" consists of:
 	\itemAP a "regular language" $\intro*\domainPres{\+A} \subseteq \Sigma^*$,
 	\itemAP for every relation $\+R_{(k)} \in \sigma$, an
 		"automatic relation" $\intro*\relPres{\+R}{\+A} \subseteq (\Sigma^*)^k$, and
-	\itemAP a binary "automatic relation" $\reintro*\relPres{=}{\+A} \subseteq
-		\Sigma^* \times \Sigma^*$. 
+	\itemAP an "automatic relation" $\reintro*\relPres{=}{\+A} \subseteq
+		\Sigma^* \times \Sigma^*$ that must be an equivalence relation. 
 \end{itemize} 
 The \AP\reintro{structure represented} $\?A$ by an "automatic presentation" $\+A$ has
 $\domainPres{\+A}/{\relPres{=}{\+A}}$ as its domain, and the predicate $\+R_{(k)} \in \sigma$
@@ -391,7 +391,7 @@ in "L".
 			(\forall x.\; \phi(x))$, where $\phi(x)$ ranges over all "first-order formulas".
 	\end{itemize}
 	Note that $\tup{\N,+,0,1}$ is a model of this theory, which is moreover complete
-	(\todo{addref}) and so, for a first-order sentence $\phi$, the following 
+	(see \cite{Stansifer1984Presburger}) and so, for a first-order sentence $\phi$, the following 
 	are equivalent:
 	\begin{itemize}
 		\item $\phi$ belongs to the theory, "ie" it is a logical consequence of the axioms above,
@@ -415,7 +415,10 @@ Note that while "automatic structures" are always countable,
 From this it follows that there exists "structures" with a decidable "first-order model-checking" that are not "automatic@@struct", and not even "higher-order automatic".
 It suffices for instance to take any non-standard model of "Presburger arithmetic"
 of cardinality strictly bigger than the continuum, which must exist by
-"upward Löwenheim–Skolem theorem". The same argument works to show that ``elementary equivalence''
+"upward Löwenheim–Skolem theorem".%
+\footnote{These models form a supclass of the non-standard models of Peano's arithmetic,
+see \cite[Ex.~2, p.~36 \& \S~11.4]{Hodges1993ModelTheory}.}
+The same argument works to show that ``elementary equivalence''
 does not preserve the notion of "automaticity@@struct".
 
 \paragraph*{Order-Invariant First-Order Logic}
