@@ -42,6 +42,7 @@
  | automatic group
  | automatic groups
  | non-automaticity@struct
+ | automatic semigroups
 
 \knowledge{notion}
  | Hodgson's theorem

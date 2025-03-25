@@ -893,15 +893,15 @@ the statement of \cite[Lemma~IV.5.15]{Sakarovitch2009Elements} and that
 	\[u_{i_1}\cdots u_{i_n} = v_{i_1}\cdots v_{i_n}\].},
 	we can define a relation $\+R_u$ that essentially encodes the function
 	$i \mapsto u_i$, and a relation $\+R_v$ that encodes $i \mapsto v_i$,
-	and show that their Kleene stars $(\+R_u)^*$ and $(\+R_v)^*$ are "determinic rational".
+	and show that their Kleene stars $(\+R_u)^*$ and $(\+R_v)^*$ are "deterministic rational@@rel".
 	By construction, any element in the intersection of $(\+R_u)^*$ and $(\+R_v)^*$
 	exactly corresponds to a solution of PCP.
-	It follows that the \AP""intersection non-emptyiness problem@@drat""
-	for "determinic rational relations",
+	It follows that the \AP""intersection non-emptiness problem@@drat""
+	for "deterministic rational relations",
 	taking two such relations and asking if their intersection is non-empty is undecidable.
 \end{example}
 
-Surprisingly, while the "inclusion problem@@rel" for "determinic multitape automata" is undecidable
+Surprisingly, while the "inclusion problem@@rel" for "deterministic multitape automata" is undecidable
 \cite{FischerRosenberg1968Multitape}, Harju and Karhumäki proved in 1991 that their
 "equivalence problem@@rel"
 is decidable \cite[Theorem~3.11]{HarjuKarhumaki1991Equivalence}.%
@@ -948,9 +948,9 @@ a tuple $\tup{u_1,\hdots,u_k} \in \Sigma_1^* \times \cdots \times \Sigma_k^*$ is
 if there exists $w \in (\Sigma_1 \convolAlpha \cdots \convolAlpha \Sigma_k)^*$
 "st" $\projWord(w) = \tup{u_1,\hdots,u_k}$ and $\projTape(w) \in T$.
 
-Binary "synchronous automata" exactly correspond to "$T_{\textrm{sync}}$-multiple automaton" when
+Binary "synchronous automata" exactly correspond to "$T_{\textrm{sync}}$-multitape automaton" when
 $T_{\textrm{sync}} \defeq \{1,2\}^* \cdot (\{1\}^* + \{2\}^*)$. Similarly, it can be shown
-that for $T_{\textrm{rec}} \defeq \{1\}^* \cdot \{2\}^*$, then "$T_{\textrm{rec}}$-multiple automaton" exactly recognize "recognizable relation"
+that for $T_{\textrm{rec}} \defeq \{1\}^* \cdot \{2\}^*$, then "$T_{\textrm{rec}}$-multitape automaton" exactly recognize "recognizable relation"
 \cite[Proposition~1]{FigueiraLibkin2015SynchronizingRelations}.
 Both $\psetp{\lBrack 1,k\rBrack}^*$- and
 "$\{\{i\} \mid i \in \lBrack 1,k\rBrack\}^*$-multitape automata"
@@ -1033,13 +1033,13 @@ since "rational relations" are not closed under intersection, it follows that
 "two-way rational relations" are strictly more expressive than
 them \cite[\S~12]{RabinScott1959FiniteAutomata}.
 
-Of course, since "equivalence" is already undecidable on "rational relations", it is also
+Of course, since "equivalence@@pbrel" is already undecidable on "rational relations", it is also
 undecidable of this class.
 
-It also makes sense to look at their determinic models: informally, in a given state, we
+It also makes sense to look at their deterministic models: informally, in a given state, we
 should not only know on which tapes we will read "non-blank symbols",
 but also what head movements we will operate.
-This model is in fact remarkably expressive: given two "deterministic rational expressions"
+This model is in fact remarkably expressive: given two "deterministic rational relations"
 $\+R_1$ and $\+R_2$, it is possible to describe their intersection $\+R_1 \cap \+R_2$
 by a deterministic two-way multitape automaton: the idea it to first simulate the first automaton
 from left to right, then, when reaching the end markers, to go back to the beginning of the tapes,
@@ -1200,7 +1200,7 @@ than "deterministic multitape automaton".
 But in fact we can prove a strictly stronger result:
 there are "functional relations" that can be recognized by
 a "deterministic rational@@rel" but that are not a
-\AP""deterministic transduction""---"ie" recognizable by a "determinic one-way transducer".
+\AP""deterministic transduction""---"ie" recognizable by a "deterministic one-way transducer".
 For instance, consider the function, where $\Sigma \defeq \{a,b,c\}$,
 \begin{center}
 	\begin{tabular}{rccc}
@@ -1209,7 +1209,7 @@ For instance, consider the function, where $\Sigma \defeq \{a,b,c\}$,
 		& $a\cdot b^n \cdot a$ & $\mapsto$ & $a \cdot b^n \cdot a$ \qquad``\quad.
 	\end{tabular}
 \end{center}
-In fact, this relation is even "automatic"! A "synchronous automaton"
+In fact, this relation is even "automatic@@rel"! A "synchronous automaton"
 can simply use two states to remember if the first pair it reads is
 $\pair{a}{c}$ or $\pair{a}{a}$, in which case it will know if it should expect
 to read $\pair{c}{a}$ or $\pair{a}{a}$ at the end of the word.
@@ -1224,10 +1224,10 @@ since $f$ is clearly not Lipschitz for the prefix distance.}
 The same complication happens for two-wayness: a two-way transducer can
 move both left and right on its input tape, but not on the output,
 since the output is \emph{produced} and not read.
-We call \AP""two-way transductions"" and ""determinic two-way transductions""
+We call \AP""two-way transductions"" and ""deterministic two-way transductions""
 the relations recognized by two-way transducers and deterministic two-way tranducers, respecitvely.
 
-""Determinic two-way transductions"" are actually widely 
+""Deterministic two-way transductions"" are actually widely 
 known as \AP""regular functions@@bojan"", and have been extensively studied in the past
 decade. They admit several characterizations, in the frameworks of multitape automata, transducers, logic, etc.\footnote{See \cite[4th~Paragraph]{Bojanczyk2022Transducers} for pointers.}
 
@@ -1237,7 +1237,7 @@ In other words non-determinism does not increase the expressiveness of two-way m
 As a consequence, the hierarchy of "functional relations" is surprisingly more
 linearly ordered than expected, as depicted in \Cref{fig:hierarchy-functional-relations}.
 
-Note however that the "equivalence problem" remains undecidable for (non-functional)
+Note however that the "equivalence problem@@rel" remains undecidable for (non-functional)
 "two-way transductions" because the class includes all "rational relations".
 However, the problem becomes decidable---and even "PSpace"---when one wants to
 check ``origin equivalence'', which is a restricted form of equivalence:
@@ -1269,7 +1269,7 @@ $\projTape$ introduced earlier for "multitape automata".}
 			\textcolor{cGreen}{incl}\esp
 			\textcolor{cGreen}{equiv}}};
 		\node at (0, 3) (fraut)
-			{\textsc{"fun\al" "right-@right-automatic@@rel"\\"automatic rel°@right-automatic@@rel"}\\
+			{\textsc{"fun\al" "right-@right-automatic@rel"\\"automatic rel°@right-automatic@rel"}\\
 			\textsf{\footnotesize
 			\textcolor{cGreen}{incl}\esp
 			\textcolor{cGreen}{equiv}}};
@@ -1345,7 +1345,7 @@ This model has been generalized to \AP""polyregular
 functions@@bojan""---which have polynomial growth---see \cite{Bojanczyk2022Transducers} for
 a recent survey: one way of defining this class of functions is by allowing transducers
 to put and move a bounded number of \emph{pebbles} on the input word.
-A typical example of "polyregular function" that is not "regular@@bojan"
+A typical example of "polyregular function@@bojan" that is not "regular@@bojan"
 is the squaring function, which takes a word $u$ and maps it to
 the concatenation $u^{|u|}$ of $u$ as many times as they are letter in the word.
 Since this function has quadratic growth, it cannot be "regular@@bojan", but
@@ -1361,8 +1361,8 @@ Note that some classes are defined semantically and admit no machine-characteriz
 for instance, ``functional two-way rational relations'' are the intersection
 of "functional relations" with  "two-way rational relations".
 Given a "two-way rational relation", it is undecidable whether the relation it
-"recognizes" is "functional@@rel".%
-\footnote{This can be proven by reduction from the inclusion of "functional two-way rational relation" since a function $f$ is included in another function $g$
+recognizes is "functional@@rel".%
+\footnote{This can be proven by reduction from the inclusion of "functional@@rel" "two-way rational relation" since a function $f$ is included in another function $g$
 "iff" $f\cup g$ is "functional@@rel". This reduction works for any class that
 is effectively closed under union.}
 We refer the reader to
@@ -1371,7 +1371,7 @@ to the splendid \cite[Figure~2.1, p.~16]{Gauwin2020Transductions}%
 \footnote{Note however that arrows are reversed compared to
 \Cref{fig:hierarchy-rational-relations}.}
 for a clickable taxonomy of word-to-word transducers, and references towards
-decidability of their "membership problem".
+decidability of their membership problem.
 See also Douéneau's Ph.D. thesis \cite[\S~1]{Douéneau2023PhD} for variations on
 "transducers" models.
 Lastly, let us note that most classes of relations usually become quite ``simple'' when restricted 

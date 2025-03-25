@@ -59,6 +59,16 @@
  | $\kPROD $-membership problem
  | $\REC $-membership problem for automatic relations
 
+\knowledge{notion}
+ | inclusion problem@rel
+
+\knowledge{notion}
+ | equivalence problem@rel
+ | equivalence@pbrel
+
+\knowledge{notion}
+ | intersection non-emptiness problem@drat
+
 \knowledge{notion, wrap=\DPfont}
  | regular $k$-colourability problem
  | regular $2$-colourability problem

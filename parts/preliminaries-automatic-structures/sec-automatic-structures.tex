@@ -440,7 +440,7 @@ in "L".
 \end{remark}
 
 Of course, \Cref{prop:first-order-model-checking-automatic-structures} can be extended
-to "$\omega$-tree automatic structures".
+to "$\omega$-tree-automatic structures".
 In fact this property can even be extended to so-called
 \AP""higher-order automatic structures"", see
 \cite[last remark of \S~XII.2]{Blumensath2024MSOModelTheory}.
@@ -455,7 +455,7 @@ see \cite[Ex.~2, p.~36 \& \S~11.4]{Hodges1993ModelTheory}.}
 The same argument works to show that ``elementary equivalence''
 does not preserve the notion of "automaticity@@struct".
 
-\paragraph*{Order-Invariant First-Order Logic}
+\paragraph*{Order-Invariant First-Order Logic.}
 An \AP""order-invariant first-order formula""%
 \footnote{This is a standard notion in model theory, see "eg"
 \cite[Exercise~3.1.12]{Gradel2007FiniteModelTheory}.}
@@ -492,25 +492,27 @@ while preserving decidability.
 
 \paragraph*{Interpretations.}
 One way of rephrasing---and proving---"Hodgson's theorem" would be to first observe
-that $\univStructSynchronous{2}$ has decidability "first-order theory",
+that $\univStructSynchronous{2}$ has decidability first-order theory,
 and then than this property is preserved under "first-order interpretations".
 The result would follow since all "automatic structures" are "first-order interpretations"
 of $\univStructSynchronous{2}$ by \label{prop:universal-automatic-structure}.
 Colcombet and Löding proposed in \cite{ColcombetLoding2007WMSO} an alternative vision:
 they show that:
 \begin{itemize}
-	\item $\tup{\N, \textrm{succ}}$ has a decidable "weak monadic second-order logic",
+	\item $\tup{\N, \textrm{succ}}$ has a decidable weak monadic second-order logic,
 		where $\textrm{succ}$ denotes the successor relation,%
 		\footnote{This is \emph{the} classical result of automatic theory and the motivation
-		for studying automata, see \todo{addref-prelims}.}
-	\item if a "structure" $\?U$ has a decidable "weak monadic second-order theory",
+		for studying $\omega$-automata. Recall that weak monadic second-order 
+		logic consists of "monadic second-order logic" where monadic quantifiers are
+		restricted to finite sets.}
+	\item if a "structure" $\?U$ has a decidable weak monadic second-order theory,
 		then for any "structure" $\?A$ that admits a
 		``weak monadic second-order interpretation''%
 		\footnote{This is the equivalent
-		of "FO-interpretation" for "weak monadic second-order logic". In particular,
+		of "FO-interpretation" for weak monadic second-order logic. In particular,
 		finite subsets elements of the domain of $\?U$ are interpreted as elements of
 		the new structure. See \cite[\S~2.3]{ColcombetLoding2007WMSO} for a formal definition.}
-		have a decidable "first-order theory"
+		have a decidable first-order theory
 		\cite[Corollary~2.5]{ColcombetLoding2007WMSO};
 	\item "automatic structures" are exactly the "structures" that can be obtained from
 		$\tup{\N, \textrm{succ}}$ using WMSO-interpretations

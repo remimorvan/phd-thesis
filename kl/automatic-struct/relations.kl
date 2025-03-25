@@ -11,6 +11,7 @@
  | functional relation
  | functional@rel
  | Functional@rel
+ | fun\al 
 
 % ---
 % Recognizable relations
@@ -20,6 +21,7 @@
  | recognizable relations
  | recognizable@rel
  | recognizable relation
+ | recognizable rel°
 
 \knowledge{notion}
  | $\+V$-recognizable@rel
@@ -41,6 +43,7 @@
  | synchronous relations
  | synchronous@rel
  | Automatic relations
+ | automatic rel°
 
 \knowledge{notion}
  | blank symbol
@@ -93,6 +96,7 @@
  | automaton@desync
  | $T$-multitape automaton
  | Multitape automaton
+ | multitape automata
 
 \knowledge{notion}
  | recognized@desync
@@ -101,12 +105,95 @@
 \knowledge{notion}
  | deterministic rational relations
  | deterministic rational@rel
+ | deterministic one-way rational relations
+ | deterministic\\rational@rel
+ | det\ic \\rational rel°
 
 \knowledge{notion}
  | deterministic@desync
  | non-deterministic@desync
  | deterministic@multitape
  | deterministic multitape automaton
+ | Deterministic multitape automata
+ | deterministic multitape automata
+
+% ---
+% Other models (automata)
+% ---
+
+\knowledge{notion}
+ | two-way rational relations
+ | two-way rational@rel
+ | two-way rational relation
+ | two-way\\rational@rel
+ | two-way\\rational rel°
+
+\knowledge{notion}
+ | deterministic two-way multitape automata
+
+\knowledge{notion}
+ | deterministic two-way rational relations
+ | Deterministic two-way rational relations
+ | deterministic two-way rational@rel
+ | det\ic ~two-way\\rational rel°
+
+\knowledge{notion}
+ | $\{\{i\} \mid i \in \lBrack 1,k\rBrack \}^*$-multitape automata
+ | $T$-multitape automata
+ | $T_{\textrm {sync}}$-multitape automaton
+ | $T_{\textrm {rec}}$-multitape automaton
+
+\knowledge{notion}
+ | $T$-controlled relation
+ | $T$-controlled relations
+ | $T_1$-controlled relations
+ | $T_2$-controlled relations
+
+\knowledge{notion}
+ | Right-automatic relations
+ | right-automatic@rel
+
+% ---
+% Other models (transducers)
+% ---
+
+\knowledge{notion}
+ | transducers
+ | transducer
+ | non-deterministic one-way transducers
+
+\knowledge{notion}
+ | deterministic one-way transducer
+ | deterministic transducer
+ | deterministic@transducer
+ | deterministic transducers
+
+\knowledge{notion}
+ | deterministic two-way transducers
+
+\knowledge{notion}
+ | deterministic transduction
+ | determinstic\\transductions
+
+ \knowledge{notion}
+ | transductions
+
+\knowledge{notion}
+ | regular functions@bojan
+ | Regular functions@bojan
+ | det\ic ~two-way trans°
+ | regular@bojan
+ | deterministic two-way transductions
+ | Deterministic two-way transductions
+
+\knowledge{notion}
+ | two-way transductions
+ | two-way trans°
+
+\knowledge{notion}
+ | polyregular\\functions@bojan
+ | polyregular functions@bojan
+ | polyregular function@bojan
 
 % ---
 % Concrete relations 
