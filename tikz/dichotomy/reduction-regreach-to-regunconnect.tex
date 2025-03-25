@@ -1,0 +1,39 @@
+% First line
+\node[vertex, draw=c0, fill=c0, fill opacity=.4] (a0) at (0,0) {};
+\foreach \i in {0,...,2} {
+	\pgfmathtruncatemacro{\next}{\i + 1}
+	\node[vertex, right = of a\i, draw=c0, fill=c0, fill opacity=.4] (a\next) {};
+	\draw[edge] (a\i) to (a\next);
+}
+
+% Second line
+\node[vertex, below = of a0, draw=c1, fill=c1, fill opacity=.4] (b0) {};
+\foreach \i in {0,...,3} {
+	\pgfmathtruncatemacro{\next}{\i + 1}
+	\node[vertex, right = of b\i, draw=c1, fill=c1, fill opacity=.4] (b\next) {};
+	\draw[edge] (b\i) to (b\next);
+}
+\node[draw=none, fill=none, right = 0cm of b4] (binf) {$\cdots$};
+
+% Third line
+\node[vertex, below = of b0, draw=c1, fill=c1, fill opacity=.4] (c0) {};
+\foreach \i in {0,1} {
+	\pgfmathtruncatemacro{\next}{\i + 1}
+	\node[vertex, right = of c\i, draw=c1, fill=c1, fill opacity=.4] (c\next) {};
+	\draw[edge] (c\i) to (c\next);
+}
+
+\node[vertex, below = of c0, draw=c1, fill=c1, fill opacity=.4] (star) {};
+
+\draw[edge, <->] (b0) to (c0);
+\draw[edge, <->] (c0) to (star);
+\draw[edge, <->, bend right=45] (b0) to (star);
+
+\node[above=0em of a0] {$s$};
+\node[below=0em of star] {$t$};
+
+
+% Labels
+% \node[draw=none, fill=none, font=\small] [below = 1em of c0] {$\GermC{\+T}{cYellow}$};
+% \node[draw=none, fill=none, font=\small, align=center] [above = 1em of $(a1)!0.5!(a2)$]
+% 	{$\ReachC{\+T}{cGreen}$};

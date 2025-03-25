@@ -3,6 +3,7 @@
  | $k$-clique
  | $3$-clique
  | cliques
+ | clique
 
 \knowledge{notion}
  | $2$-path

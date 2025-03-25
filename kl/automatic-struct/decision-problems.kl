@@ -22,7 +22,7 @@
  | finite colourability problem
  
 \knowledge{notion, wrap=\DPfont}
- | reachable regularity problem
+ | regular reachability problem
 
 \knowledge{notion, wrap=\DPfont}
  | $\+D$-membership problem for $\+C$-relations

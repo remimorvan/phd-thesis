@@ -42,26 +42,27 @@ We say that a Turing machine $\+T$ is ""well-founded"" if its "configuration gra
 \end{enumerate}
 
 We say that a Turing machine is ""linear@@TM"" if it is "well-founded", deterministic and "reversible".
-By construction, a Turing machine is "linear@@TM" "iff" (1) its "configuration graph" consists of a possibly infinite disjoint union of directed paths, which are all finite, or "isomorphic" to $\tup{\N, +1}$ and (2) the "initial configuration" has in-degree zero.
+By construction, a Turing machine is "linear@@TM" "iff" (1) its "configuration graph" consists of a possibly infinite disjoint union of directed paths, which are all finite, or "isomorphic" to $\tup{\N, \textrm{succ}}$ and (2) the "initial configuration" has in-degree zero.
 Such a configuration graph is depicted on
 \Cref{fig:reduction-wf-RTM-to-colouring-config-graph-wf-RTM}.\footnote{Note
 that it is decidable whether a "Turing machine" is "linear@@TM". In fact, condition (1) can be expressed in "first-order logic" over $\univStructSynchronous{\Sigma}$.}
 
-\AP The ""reachable regularity problem"" is the problem of, given a "Turing machine" $\+T$, to decide whether its set of "reachable configurations" \AP$\intro*\Reach{\+T}$ is a "regular language". To show that is it undecidable, we exhibit a reduction from the halting problem on deterministic "reversible" Turing machines.
+\AP The ""regular reachability problem"" is the problem of, given a "Turing machine" $\+T$, to decide whether its set of "reachable configurations" \AP$\intro*\Reach{\+T}$ is a "regular language". To show that is it undecidable, we exhibit a reduction from the halting problem on deterministic "reversible" Turing machines.
 
 \begin{proposition}[{\cite[Theorem 1]{Lecerf1963MachinesReversibles}}]
     \AP\label{prop:halting-problem-detrevTM}
-    The \DPfont{halting problem} on deterministic "reversible" Turing machines is undecidable.
+    The \DPfont{halting problem} on deterministic "reversible" Turing machines is "RE"-complete.
 \end{proposition}
 
 \begin{lemma}
-    \AP\label{lem:reachable-regularity}
-    The "reachable regularity problem" is undecidable, even if restricted
+    \AP\label{lem:regular-reachability}
+    The "regular reachability problem" is "RE"-complete, even if restricted
     to "linear Turing machines".
 \end{lemma}
 
 \begin{proof}[Proof sketch]
-    We reduce the \DPfont{halting problem} on deterministic "reversible" Turing machines,
+    The upper bound is trivial. For the converse one,
+    we reduce the \DPfont{halting problem} on deterministic "reversible" Turing machines,
     in such a way that the "reachable configurations" whose
     state $q$ coincide with the state of the original machine are
     of the form $u \cdot q \cdot v \triangleright^n \triangleleft^n$ where $u \cdot q \cdot v$ is a configuration of the 
@@ -71,19 +72,19 @@ that it is decidable whether a "Turing machine" is "linear@@TM". In fact, condit
     \[ 
         u \cdot q\cdot v \triangleright^{n} \triangleleft^{m} \to^* u' \cdot q' \cdot v' \triangleright^{n+1} \triangleleft^{m+1}.
     \]
-    The construction is illustrated in \Cref{fig:reachable-regularity}.
+    The construction is illustrated in \Cref{fig:regular-reachability}.
 	\begin{figure}[htb]
 		\centering
         \begin{tikzpicture}
-		    \input{tikz/dichotomy/reachable-regularity}
+		    \input{tikz/dichotomy/regular-reachability}
         \end{tikzpicture}
 		\caption{
-			\AP\label{fig:reachable-regularity}
+			\AP\label{fig:regular-reachability}
 			Encoding of a single transition of the form
 			``when reading a blank in state $\color{cBlue} p$, write a
 			$1$, go in state $\color{cBlue} q$ and move right''
 			of the machine $\+T$ in the machine $\+T'$
-			in the proof of \Cref{lem:reachable-regularity}.
+			in the proof of \Cref{lem:regular-reachability}.
 			Red unlabelled states represent states of $\+T'$
 			that are not originally present in $\+T$.
 		}
@@ -100,7 +101,7 @@ that it is decidable whether a "Turing machine" is "linear@@TM". In fact, condit
 
 \begin{proof}[Some proof details]
     Letting $\+T$ denote the instance of the \DPfont{halting problem}, which runs on the empty word,
-    we denote by $\+T'$ the instance of the "reachable regularity problem" to which it
+    we denote by $\+T'$ the instance of the "regular reachability problem" to which it
     is reduced.
 
     $\+T'$ is defined as follows: every time there is a transition
@@ -109,7 +110,7 @@ that it is decidable whether a "Turing machine" is "linear@@TM". In fact, condit
 	and then we rewrite $\triangleright^n \triangleleft^m$ into $\triangleright^{n+1}\triangleleft^{m+1}$.
 	When $\+T$ writes on a blank symbol that was actually an `$\triangleright$' in $\+T'$,
 	we must also add an extra $\triangleright$ (to account for the one that was overwritten):
-	this case is depicted in \Cref{fig:reachable-regularity}.
+	this case is depicted in \Cref{fig:regular-reachability}.
 	Moreover, when $\+T$ deletes a symbol at the end of the tape,
 	we must shift the $\triangleright^n \triangleleft^m$ suffix. This can be done by replacing the blank
 	with an `$\triangleright$', the last `$\triangleright$' with a `$\triangleleft$', and deleting the last `$\triangleleft$'.
@@ -132,7 +133,7 @@ that it is decidable whether a "Turing machine" is "linear@@TM". In fact, condit
 
 
 \paragraph*{Undecidability of the regular $k$-colourability Problem.}
-We can now show undecidability for the "regular $k$-colourability problem" by reduction from the "reachable regularity problem" restricted to "linear Turing machines".
+We can now show undecidability for the "regular $k$-colourability problem" by reduction from the "regular reachability problem" restricted to "linear Turing machines".
 
 \begin{marginfigure}
     \centering
@@ -149,8 +150,8 @@ to be \AP""germinal"" if it has in-degree 0.%
 
 \begin{proof}%
 	\proofcase{Lower bound.}
-    By reduction from the "reachable regularity problem" for "linear Turing machines"
-    (\Cref{lem:reachable-regularity}). We first show it for $k=2$.
+    By reduction from the "regular reachability problem" for "linear Turing machines"
+    (\Cref{lem:regular-reachability}). We first show it for $k=2$.
 
     \AP Given a "linear Turing machine" $\+T$,
     observe that the set $\intro*\Germ{\+T}$ of all "germinal configurations" of $\confGraph$.
@@ -177,7 +178,7 @@ to be \AP""germinal"" if it has in-degree 0.%
         \end{tikzpicture}
         \caption{
             \AP\label{fig:reduction-wf-RTM-to-colouring-config-graph-wf-RTM}
-            Configuration graph of a "linear Turing machine".
+            "Configuration graph" of a "linear Turing machine".
         }
     \end{marginfigure}%
     \begin{marginfigure}%

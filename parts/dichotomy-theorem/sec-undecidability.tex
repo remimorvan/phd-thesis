@@ -101,7 +101,7 @@ structures" since such structures have a decidable first-order theory.
 	It follows that if $\?A \homto \?B$, then the function
 	mapping $u \in \Sigma^*$ to the unique $b \in B$ "st" $\Sigma^*, u \FOmodels \tilde\phi_b(x)$
 	defines a "regular homomorphism" from $\+A$ to $\?B$---the regularity follows from
-	todo:addref-first-order-iff-automatic.
+	\Cref{prop:automatic-first-order}.
 	And hence $\HomAut{\?B} \subseteq \HomRegAut{\?B}$. The conclusion follows since
 	the other implication is trivial.
 \end{proof}
@@ -602,91 +602,51 @@ We then prove a lower bound on the complexity of "regular unconnectivity in auto
 	"Regular unconnectivity in automatic graphs" is "RE"-hard.
 \end{lemma}
 
+\begin{marginfigure}%
+	\centering
+	\begin{tikzpicture}
+		\input{tikz/dichotomy/conf-graph-wf-RTM}
+	\end{tikzpicture}
+	\caption{
+		\AP\label{fig:reduction-regreach-to-regunconnect-lhs}
+		"Configuration graph" of a "linear Turing machine".
+		(Replica of \Cref{fig:reduction-wf-RTM-to-colouring-config-graph-wf-RTM}.)
+	}
+\end{marginfigure}%
+\begin{marginfigure}%
+	\centering
+	\begin{tikzpicture}
+		\input{tikz/dichotomy/reduction-regreach-to-regunconnect}
+	\end{tikzpicture}
+	\caption{
+		\AP\label{fig:reduction-regreach-to-regunconnect-rhs}
+		The instance of "regular unconnectivity in automatic graphs"
+		to which the "Turing machine" of \Cref{fig:reduction-regreach-to-regunconnect-lhs}
+		is reduced. Colours indicate the different "connected components".
+	}
+\end{marginfigure}%
+
 \begin{proof}
-	\todo{BIG-TODO.}
-	% We consider the following intermediate (promise) problem.
-	% \decisionproblem{""Restricted Membership for Deterministic Reversible Turing Machines""}{
-	% A "deterministic" "reversible Turing machine" $\+M$ with initial state $q_0$,
-	% words $u_\top,u_\bot \in \Sigma^*$
-	% "st"
-	% \begin{enumerate}
-	% 	\item $u_\bot \not\in \semTM{\+M}$,
-	% 	\item $q_0\cdot u_\top$ does not have a predecessor in the
-	% 		"configuration graph" of $\+M$, and
-	% 	\item all "configurations" except those "connected" to $q_0\cdot u_\top$ or $q_0\cdot u_\bot$ belong to the same "connected component" of the "configuration graph" of $\+M$.
-	% \end{enumerate}
-	% }{
-	% Does $u_\top \in \semTM{\+M}$?
-	% }
-	% We will prove that:
-	% \begin{enumerate}
-	% 	\item there is a reduction from "Restricted Membership for Deterministic Reversible Turing Machines" to "Regular Unconnectivity in automatic graphs", and 
-	% 	\item the former problem is "RE"-hard.
-	% \end{enumerate}
+	We reduce the "regular reachability problem" on "linear Turing machines",
+	which is "RE"-hard by \Cref{lem:regular-reachability},
+	to "regular unconnectivity in automatic graphs".
 
-	% \proofcase{Reduction from "Restricted Membership for Deterministic Reversible Turing Machines" to "Regular Unconnectivity in automatic graphs".}
-	% We map an instance
-	% $\langle \+M,\, u_\bot,\, u_\top \rangle$ to $\langle \+M',\, q_0\cdot u_\top,\, q_0\cdot 
-	% u_\bot \rangle$ where $\+M'$ is defined in such a way that for any "configuration transition"
-	% $\gamma \to \gamma'$ in $\+M$, for any $n\in\N$, then there is a sequence of transitions from
-	% $\gamma \triangleright^n \triangleleft^n$ to $\gamma' \triangleright^{n+1} \triangleleft^{n+1}$ 
-	% in $\+M'$, where $\triangleright$ and $\triangleleft$ are new symbols.\footnote{This can be 
-	% implemented by marking the current position, then using new states going to the right end of 
-	% the tape, replacing the first $\triangleleft$ (or, if it doesn't exist a blank symbol) with a $\triangleright$, and adding the correct number of $\triangleleft$ symbols at the very end, and then moving back the head to the marked position.}
-	% Moreover, if $\gamma$ is a final "configuration" of $\+M$ and whose state is rejecting,
-	% then we add a sequence of transitions from 
-	% $\gamma \triangleright^n \triangleleft^n$ to $\gamma \triangleright^{n+1} \triangleleft^{n+1}$ 
-	% in $\+M'$.
-	% Note that both operations can be done in such a way that all intermediate configurations
-	% from $\gamma \triangleright^n \triangleleft^n$ to $\gamma' \triangleright^{n+1} \triangleleft^{n+1}$ are not in state of $\statesTM{\+M}$.
-	% \begin{claim}
-	% 	\label{claim:reduction-transitions-graphs}
-	% 	For any transitions $\gamma$ and $\gamma'$ of $\+M$, the following are equivalent:
-	% 	\begin{enumerate}
-	% 		\item there exists $n \in \N$ "st" $n$ and is a path from $\gamma \triangleright^n \triangleleft^n$ to $\gamma' \triangleright^{n+1} \triangleleft^{n+1}$ in
-	% 		the "configuration graph" of $\+M'$,
-	% 		\item $\gamma \to \gamma'$ in the "configuration graph" of $\+M$.
-	% 	\end{enumerate} 
-	% \end{claim}
+	Given a "linear Turing machine" $\+T$ with
+	configuration graph $\confGraph = \tup{V, \+E}$,
+	we reduce it to the "automatic graph" $\+G = \tup{V', \+E'}$ where:
+	$V' \defeq V \dcup \{\textbullet\}$ and
+	$\+E'$ is the union of $\+E$ with the "clique" that
+	puts in relation all vertices that are either of the form $\textbullet$
+	or that are "germinal" but not the "initial configuration".
+	We then pick $s$ to be the "initial configuration", and $t$ to be $\textbullet$.
 
-	% Note that by construction, for any $u \in \Sigma^*$---where $\Sigma$ denotes the alphabet of $\+M$---, $q_0\cdot u$ is a configuration of $\+M'$. The path leaving from it in the "configuration graph" of $\+M'$ is finite "iff" $u \in \semTM{\+M}$ since
-	% our reductions maps (1) infinite paths to infinite paths, (2) finite paths ending on a rejecting state to infinite paths and (3) finite paths ending on an accepting state
-	% to a finite path.
-	% It follows that, by "irregularity@@lang" of $\{\triangleright^n \triangleleft^n \mid n\in \N\}$,
-	% that the connected component of $q_0 \cdot u_\bot$ is "irregular@@lang".
-	% Moreover, $q_0\cdot u_\top$ does not have any predecessor in the "configuration graph" of $\+M'$ since it didn't have any predecessor in the one of $\+M$. Hence, the "connected component" of $q_0 \cdot u_\top$ in the "configuration graph" of $\+M'$ is either:
-	% \begin{itemize}
-	% 	\item finite, and hence "regular@@lang", if $u_\top \in \semTM{\+M}$,
-	% 	\item "irregular@@lang" otherwise.
-	% \end{itemize}
-
-	% So, if $u_\top \in \semTM{\+M}$, it means that $q_0\cdot u_\top$
-	% and $q_0\cdot u_\bot$ are "regularly unconnected" by the connected component of $u_\top$:
-	% Indeed $q_0\cdot u_\top$ does not belong to the connected component of $q_0\cdot u_\bot$
-	% since we assumed that $u_\bot \not\in \semTM{\+M}$.
-	% We claim that the converse property holds.
-
-	% \begin{claim}
-	% 	If $q_0\cdot u_\top$ and $q_0\cdot u_\bot$ are "regularly unconnected" in the "configuration graph" of $\+M'$, then $u_\top \in \semTM{\+M}$.
-	% \end{claim}
-	
-	% Indeed, let $L' \subseteq \Gamma^*$ be a "regular language" "st" $q_0\cdot u_\top \in L'$ $q_0\cdot u_\bot \not\in L'$, "st" $L'$ is a union of "connected components" of the "configuration graph" of $\+M$.\footnote{Here, $\Gamma$ denotes the alphabet used in the "automatic presentation" of the "configuration graph" of $\+M'$. Namely, $\Gamma = \Sigma \dcup \statesTM{\+M} \dcup (\statesTM{\+M'} \smallsetminus \statesTM{\+M})$.} 
-	% Then let \[L
-	% 	\defeq \rightquotient{(L' \cap \Sigma^* \statesTM{\+M} \Sigma^*)}{(\triangleright^* \triangleleft^*)}.
-	% \]
-	% In other words, $L$ is obtained by only keeping configurations of $L'$ whose state is
-	% a state of $\+M$, and removing $\triangleright$ and $\triangleleft$ symbols at their end.  
-	% $L'$ is "regular@@lang" as an "intersection" and "right quotient" of regular languages.
-	% Moreover, by \Cref{claim:reduction-transitions-graphs}, $L$ is a union of
-	% "connected components" of the "configuration graph" of $\+M$.
-	% Since $q_0\cdot u_\top \in L$ and $q_0\cdot u_\bot \not\in L$, and since we assumed that
-	% the "configuration graph" of $\+M$ has at most three "connected components",
-	% it follows that either:
-	% \begin{itemize}
-	% 	\item $L$ is the "connected component" of $q_0\cdot u_\top$,
-	% 	\item $L$ is the complement of the "connected component" of $q_0\cdot u_\bot$.
-	% \end{itemize}
-	% TODO: PB: in this last case we could have $L' = q_0\cdot u_\bot\cdot \triangleright^* \triangleleft^*$.
+	By construction, $\+G$ is "automatic@@struct" and has exactly two connected components:
+	$\Reach{\+T}$ (containing $s$) and its complement (containing $t$).
+	Hence, the only union of "connected components" of $\+G$ that contains $s$
+	but not $t$ is $\Reach{\+T}$.
+	And hence, $\+T$ is a positive instance of the "regular reachability problem"
+	if, and only if, $\Reach{\+T}$ is "regular@@lang", "ie" $\tup{\+G,s,t}$
+	is a positive instance of "regular unconnectivity in automatic graphs".
 \end{proof}
 
 
@@ -709,5 +669,5 @@ We then prove a lower bound on the complexity of "regular unconnectivity in auto
 	reduces to $\HomRegAut{\?B}$ by \Cref{prop:idempotent-core-preserves-csp-complexity}
 	since $\?B$ was assumed to be a "core".
 	Indeed, "first-order reductions" preserves "regularity@@hom", by 
-	\todo{addref-automatic-iff-first-order.}
+	\Cref{prop:automatic-first-order}.
 \end{proof}
