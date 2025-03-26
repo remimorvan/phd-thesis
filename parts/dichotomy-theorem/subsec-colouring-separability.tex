@@ -3,19 +3,22 @@
 We start by showing that the "$\REC$-separability problem" is equivalent,
 under polynomial time reductions, to the "regular colourability problem". To make our statement precise, we need some terminology.
 
-\AP Let $\intro*\kREC$ be the class of languages expressed by unions of products of $k$ regular languages which form a partition, that is (in the binary case), relations of the form $(L_{i_1} \times L_{j_1}) \cup \dotsb \cup (L_{i_\ell} \times L_{j_\ell})$, with $i_1,j_1,\dotsc,i_\ell, j_\ell \in \lBrack 1,k \rBrack$, for some regular partition\footnote{By ``regular partition'',
+\AP Let $\intro*\kREC$ be the class of languages expressed by unions of products of $k$ regular languages which form a partition: in the binary case, this corresponds to
+relations of the form $(L_{i_1} \times L_{j_1}) \cup \dotsb \cup (L_{i_\ell} \times L_{j_\ell})$, with $i_1,j_1,\dotsc,i_\ell, j_\ell \in \lBrack 1,k \rBrack$, for some regular partition%
+\footnote{By ``regular partition'',
 we mean that $L_1, \dotsc, L_{k}$ is a partition of $\Sigma^*$, and that moreover
 each $L_i$ is a "regular language".} $L_1, \dotsc, L_{k}$ of $\Sigma^*$ and $\ell \in \N$.
-
 Note that $\REC = \bigcup_k \kREC$.
-For instance, $(aa)^* \times (aaa)^*$ belongs to $\kREC[4]$ but not to $\kREC[3]$
-since, for any $k\in \N$, we have that $(aa)^* \times (aaa)^* \in \kREC[k]$ "iff"
-there exists a regular partition of $a^*$ into $k$ languages "st" both
-$(aa)^*$ and $(aaa)^*$ can be expressed as the union of some of these languages.\footnote{To get the
-upper bound $k=4$, consider the partition $\tup{L_6, L_3, L_2, L_\bot}$ where $L_6 = (a^6)^*$,
-$L_3 = (a^3)^* \smallsetminus L_6$, $L_2 = (a^2)^* \smallsetminus L_6$ and $L_\bot = a^* \smallsetminus (L_2 \cup L_3 \cup L_6)$.}
 
-\AP Let us denote by $\intro*\Id$ the identity relation (on any implicit alphabet). Observe that $\Id$ is "automatic@@rel" but not "recognizable@@rel".
+\begin{example}
+    For instance, $(aa)^* \times (aaa)^*$ belongs to $\kREC[4]$ but not to $\kREC[3]$
+    since, for any $k\in \N$, we have that $(aa)^* \times (aaa)^* \in \kREC[k]$ "iff"
+    there exists a regular partition of $a^*$ into $k$ languages "st" both
+    $(aa)^*$ and $(aaa)^*$ can be expressed as the union of some of these languages.
+    To get the
+    upper bound $k=4$, consider the partition $\tup{L_6, L_3, L_2, L_\bot}$ where $L_6 = (a^6)^*$,
+    $L_3 = (a^3)^* \smallsetminus L_6$, $L_2 = (a^2)^* \smallsetminus L_6$ and $L_\bot = a^* \smallsetminus (L_2 \cup L_3 \cup L_6)$.
+\end{example}
 
 \regcolourabilityequivseparability%
    
