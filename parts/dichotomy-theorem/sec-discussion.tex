@@ -16,7 +16,7 @@ or equivalently by \Cref{thm:reg-colourability-equiv-separability}, the "finite 
 \end{conjecture}
 
 We briefly explain here why the techniques developed in this chapter,
-can not immediately solve this problem. 
+cannot immediately solve this problem. 
 
 We define \AP$\intro*\omegaClique$ to be the "disjoint union" $\bigoplus_{k\in\N} \clique{2^k}$ of all finite "cliques". Note that it is "homomorphically equivalent" to $\bigoplus_{k\in\N} \clique{k}$.
 Moreover, it admits a simple "automatic presentation" \AP$\intro*\omegaCliquePres$: take the binary alphabet $\Sigma \defeq \2$ and let%
@@ -27,7 +27,7 @@ Moreover, it admits a simple "automatic presentation" \AP$\intro*\omegaCliquePre
 	u \neq v\}.
 \end{align*}
 
-While there is some "graph@@dir" $\+G$ does not admit a "homomorphism" to $\omegaClique$, then it is not "finitely colourable", the converse implication does not hold---"eg" $\omegaClique$ itself is not "finitely colourable". However, the equivalence holds for a substantially large class of graphs.
+Of course, if some "graph@@dir" $\+G$ is "finitely colourable", then it has a "homomorphism" to $\omegaClique$, but the converse implication does not hold---"eg" $\omegaClique$ itself is not "finitely colourable". However, the equivalence holds for a large class of graphs.
 
 \begin{property}
 	\AP\label{prop:finite-regular-colourability-as-homreg-pb}
@@ -36,7 +36,9 @@ While there is some "graph@@dir" $\+G$ does not admit a "homomorphism" to $\omeg
 \end{property}
 
 \begin{proof}
-	A "homomorphism" must send pairs of "connected" vertices to pairs of "connected" vertices.
+	A "homomorphism" must send pairs of "connected" vertices to pairs of "connected" vertices,
+	and hence a "homomorphism" from $\?G$ to $\omegaClique$ actually yields a "homomorphism"
+	from $\?G$ to some $\clique{2^n}$ for some $n$, and hence a finite "colouring" of $\?G$.
 \end{proof}
 
 \begin{proposition}
@@ -52,7 +54,7 @@ While there is some "graph@@dir" $\+G$ does not admit a "homomorphism" to $\omeg
 	Clearly, the original structure is "finitely regularly colourable" "iff" the new one is---one direction is trivial, for the other one it suffices to assign to $*$ a new colour.
 \end{proof}
 
-Putting \Cref{prop:finite-regular-colourability-as-homreg-pb,prop:finite-colourability-of-connected-graphs} together, we obtain the following corollary.
+Putting \Cref{prop:finite-regular-colourability-as-homreg-pb} and \Cref{prop:finite-colourability-of-connected-graphs} together, we obtain the following corollary.
 \begin{corollary}
 	The "finite regular colourability problem" and the restriction
 	of $\HomRegAut{\omegaCliquePres}$ to "connected graphs" are "computationally equivalent".
@@ -85,7 +87,30 @@ finite, but more importantly it is not a "core".%
 \footnote{Indeed, $\bigoplus_{k\in\N} \clique{k}$ is "homomorphically equivalent" to
 $\bigoplus_{k\in I} \clique{k}$ for any infinite subset $I$ of $\N$.}
 
-Similarly, we do not know whether "finite colourability problem" is undecidable.
+\subsection{Invariance under Graph Isomorphisms}
+
+Note that given an "automatic presentation" $\•A$ of some "$\sigma$-structure" $\?A$,
+the property of whether $\•A \homregto \?B$, where $\?B$ is a "finite $\sigma$-structure",
+does not depend only on the "structure" $\?A$, but on its "presentation" $\•A$---see \Cref{ex:tree-not-2-reg-colourable} for an example; it is trivial to come up with a "presentation" of the
+same "graph@@dir" that admits a "regular $2$-colouring".
+
+On the other hand, the implication
+\itemDTFinDual\ $\Rightarrow$ \itemDTEqual\ proves that if $\?B$ has "finite duality",
+then the property of whether $\•A \homregto \?B$ is invariant under "graph isomorphisms",
+in the sense that for any "presentations" $\•A_1$ and $\•A_2$ of the "structures"
+$\?A_1$ and $\?A_2$, respectively, if $\?A_1$ and $\?A_2$ are "isomorphic", then
+$\•A_1 \homregto \?B$ "iff" $\•A_2 \homregto \?B$.
+We do not know whether the converse implication holds.
+
+\begin{conjecture}
+	\AP\label{conj:invariance-under-graph-isomorphisms}
+	For any "finite $\sigma$-structure" $\?B$, $\HomRegAut{\?B}$ is invariant
+	under "graph isomorphisms" "iff" $\?B$ has "finite duality".
+\end{conjecture}
+
+\subsection{Obstacles to Finite Colourability}
+
+We also do not know whether "finite colourability problem" is undecidable.
 \decisionproblem{
 	""Finite Colourability of Automatic Graphs""
 }{
@@ -101,47 +126,30 @@ Similarly, we do not know whether "finite colourability problem" is undecidable.
 	"Finite colourability of automatic graphs" is "Sigma0-2"-complete.
 \end{conjecture}
 
-
-\subsection{Invariance under Graph Isomorphisms}
-
-Note that given an "automatic presentation" $\•A$ of some "$\sigma$-structure" $\?A$,
-the property of whether $\•A \homregto \?B$, where $\?B$ is a "finite $\sigma$-structure",
-does not depend only on the "structure" $\?A$, but on its "presentation" $\•A$---see \Cref{ex:tree-not-2-reg-colourable} for an example; it is trivial to come up with a "presentation" of the
-same "graph@@dir" that admits a "regular $2$-colouring".
-
-On the other hand, the implication
-\itemDTFinDual\ $\Rightarrow$ \itemDTEqual\ prove that if $\?B$ has "finite duality",
-then the property of whether $\•A \homregto \?B$ is invariant under "graph isomorphisms",
-in the sense that for any "presentations" $\•A_1$ and $\•A_2$ of the "structures"
-$\?A_1$ and $\?A_2$, respectively, if $\?A_1$ and $\?A_2$ are "isomorphic", then
-$\•A_1 \homregto \?B$ "iff" $\•A_2 \homregto \?B$.
-We do not know whether the converse implication holds.
-
-\begin{conjecture}
-	\AP\label{conj:invariance-under-graph-isomorphisms}
-	For any "finite $\sigma$-structure" $\?B$, $\HomRegAut{\?B}$ is invariant
-	under "graph isomorphisms" "iff" $\?B$ has "finite duality".
-\end{conjecture}
-
-\subsection{Obstacles to Finite Colourability}
-
 Given that we do not know whether "finite colourability of automatic graphs"
 is decidable, a natural question would be find algorithm to identify sufficient conditions
-for a "graph@@dir" not to be "finitely colourable". A typical example of such a condition
-is to \AP""contain unbounded cliques""---meaning that $\clique{k} \homto \?A$ for all $k\in\N$.
+for a "graph@@dir" not to be "finitely colourable".
+The first natural idea is to ask the graph to contain an infinite "tournament",
+and actually this property is decidable by \Cref{prop:order-invariance}
+since it can be expressed by the "order-invariant first-order formula"
+\[\forall x.\;\exists y.\; x < y \land (\+E(x,y) \lor \+E(y,x)).\]
+
+A typical example of such a condition
+is to \AP""contain unbounded tournaments""---meaning that $\clique{k} \homto \?A$ for all $k\in\N$.
 
 \begin{conjecture}
 	\!\footnote{This conjecture corresponds to \cite[Conjecture 7.3]{BarceloFigueiraMorvan2023SeparatingAutomatic}.}
 	\AP\label{conj:unbounded-cliques}
-    The problem of whether an "automatic graph" "has bounded cliques" is decidable.
+    The problem of whether an "automatic graph" "has bounded tournaments" is decidable.
 \end{conjecture}
 
 In \cite[Conjecture 7.2]{BarceloFigueiraMorvan2023SeparatingAutomatic}, we conjectured
 that there was some "automatic graphs" that were not "finitely colourable",
-but did not "contain unbounded cliques".
+but did not "contain unbounded tournaments".
 We pointed out that for arbitrary "graphs@@dir", the property was clearly true 
 since there are \AP""triangle-free graphs@@dir""%
-\footnote{Meaning that $\clique{3} \nothomto \?G$.}
+\footnote{Meaning that its underlying undirected graph is \AP""triangle-free@@undir"",
+which means that there are no three vertices that are pairwise adjacent.}
 $\?G$ that are not finitely colourable \cite{UngarDescartes1954ChromaticGraphs}.
 However, we believe(d) that the infinite graph built using Ungar-Descartes' technique
 is not "automatic@@struct".
@@ -154,9 +162,7 @@ triangle-free graphs with arbitrary large "chromatic number".
 \end{proposition}
 
 "Mycielski's construction" is an operator $\Myc$ on undirected graphs,
-introduced in \cite{Mycielski55Coloriage}, with the property that if $\?G$ is \AP""triangle-free@@undir""%
-\footnote{Unsurprisingly, for undirected graphs, ``"triangle-free@@undir"'' means that there are no
-three vertices that are pairwise adjacent.},
+introduced in \cite{Mycielski55Coloriage}, with the property that if $\?G$ is "triangle-free@@undir"
 then so is $\Myc(\?G)$, and moreover
 the "chromatic number" of $\Myc(\?G)$ is exactly one more than the "chromatic number" of $G$.
 Iterating this operator on a "triangle-free graph@@undir" shows that there exists
@@ -246,8 +252,8 @@ $\?G$ into $\Myc(\?G)$.
   and $g'(\bullet) \defeq g(\bullet)$.
   Since the adjacency of $\langle u,0 \rangle$ is included in the
   one of $\langle u,1 \rangle$, it follows that $g'$ is still a "$k$-colouring"
-  of $\Myc(\?G)$. But then $\bullet$ is adjacent to all vertices of the form $\langle u, 1\rangle$
-  where $u\in \?G$, so $\{g'\langle u, 1\rangle \mid u \in \?G\}$ can only contain at most $k-1$ colours.
+  of $\Myc(\?G)$. Since $\bullet$ is adjacent to all vertices of the form $\langle u, 1\rangle$
+  where $u\in \?G$, then $\{g'\langle u, 1\rangle \mid u \in \?G\}$ can only contain at most $k-1$ colours.
   By construction of $g'$, $g'\langle u, 1\rangle = g'\langle u, 0\rangle$.
   And hence $u \mapsto g' \langle u,0 \rangle$ defines a "$(k-1)$-colouring" of $\?G$.
 \end{proof}
@@ -261,10 +267,10 @@ We can now prove our result.
   is $\bigdcup_{n\in\N} \Myc^n(\?0)$, in such a way that the vertices of $\Myc^n(\?0)$
   will be encoded by words of length $n$.
 
-  We are going to define by induction
-  disjoint subsets $(V_i)_{i\in\N}$ of $\Sigma^*$
-  and $(\+E_i)_{i\in\N}$ of $V_i \times V_i$ such that
-  $(V_i, \+E_i)$ is a directed version of $\Myc^n(\?0)$.
+  We define
+  disjoint subsets $\tup{V_i}_{i\in\N}$ of $\Sigma^*$
+  and $(\+E_i)_{i\in\N}$ of $V_i \times V_i$, by induction on $i\in\N$,
+  such that $(V_i, \+E_i)$ is a directed version of $\Myc^i(\?0)$.
 
   Define $V_0 \defeq \{\varepsilon\}$ and $\+E_0 \defeq \emptyset$.
   Then for $n \in \N$, let
@@ -330,14 +336,15 @@ We can now prove our result.
 
 \subsection{Beyond Finite Duality}
 
-The notion of "duality" has been generalized in graph theory to \emph{restricted dualities}, where  
-for which the quantification over "structures" is restricted to a fixed class of finite graphs.
+The notion of "duality" has been generalized in graph theory to \emph{restricted dualities},  
+in which the quantification over "structures" is restricted to a fixed class of finite graphs.
 For instance, Naserasr showed \cite[Theorem 11]{Naserasr2007PlanarDuality} that 
 for any finite planar undirected graph $\?G$, then $\?G$ is "triangle-free@@undir"
 "iff" $\?G$ admits a "homomorphism" to the so-called Clebsch graph.
 Letting $\?H_5$ denote the "directed graph" induced by it---meaning that if $\{u,v\}$ is an edge,
 we put an edge from $u$ to $v$ and from $v$ to $u$---it follows that
-$\HomAut{\?H_5}$ is decidable when restricted to planar graphs\footnote{Meaning that the underlying undirected graph is planar}, even though the full problem is undecidable.
+$\HomAut{\?H_5}$ is decidable when restricted to planar graphs,
+even though the full problem is undecidable.
 
 This opens a wide class of problems that are undecidable by the "dichotomy theorem for automatic structures", but that admit non-trivial restrictions which are decidable.
 We refer the reader to \cite{NesetrilPOM2012RestrictedDualities} for more details on restricted dualities.

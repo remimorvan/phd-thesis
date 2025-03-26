@@ -38,8 +38,8 @@
  | infinite Mycielski graph
 
 \knowledge{notion}
- | contain unbounded cliques
- | has bounded cliques
+ | contain unbounded tournaments
+ | has bounded tournaments
 
 \knowledge{notion}
  | triangle-free graphs@dir
