@@ -1,6 +1,14 @@
 \section{Undecidability of the Homomorphism Problems}
 \label{sec:dichotomy-undecidability}
 
+Recall that \Cref{thm:k-reg-col-undec} show that the "regular $k$-colourability problem"
+is undecidable for all "automatic graphs". This problem can be rephrased in terms
+of "homomorphisms", and naturally leads us to conjecture that
+for most "target structure" $\?B$, the problem of given an "automatic presentation" $\+A$,
+to decide if there is a "regular homomorphism" from $\+A$ to $\?B$ is undecidable.
+This is formalized in \Cref{thm:dichotomy-theorem-automatic-structures},
+and we devote the rest of this chapter to proving it.
+
 \subsection{Overview \& Easy Implications of the Dichotomy Theorem}
 \label{sec:dichotomy-overview}
 
@@ -32,11 +40,11 @@ which we prove by contraposition in \Cref{sec:undecidability-hom,sec:undecidabil
 On the other hand, the implications $\itemDTFirstOrder \Rightarrow \itemDTEqual$,
 $\itemDTEqual \Rightarrow \itemDTHomRegDec$ and $\itemDTEqual \Rightarrow \itemDTHomDec$ are straightforward: we prove them in this section. 
 Before showing these implications, we start by proving $\itemDTFinDual \Rightarrow \itemDTHomDec$.\footnote{While it is redundant with the implications of \Cref{fig:dichotomy-overview}, 
-we prove this implication for two reasons: not only is it straightforward, it is also
+we prove this implication since not only is it straightforward, but it is also
 the implication which, together with the fact that both $\HomAut{\clique{2}}$
 and $\HomRegAut{\clique{2}}$ are undecidable by
 \cite[Proposition 6.5]{Kocher2014AutomatischenGraphen}
-and \cite[Theorem 4.4]{BarceloFigueiraMorvan2023SeparatingAutomatic}, that lead us to conjecture
+and \Cref{thm:k-reg-col-undec}, that lead us to conjecture
 \Cref{thm:dichotomy-theorem-automatic-structures}.}
 
 \paragraph*{Decidability of the Homomorphism Problem.}
@@ -89,12 +97,12 @@ structures" since such structures have a decidable first-order theory.
 \end{proposition}
 
 \begin{proof}
-	By assumption,there exists "first-order formulas"
+	By assumption, there exist "first-order formulas"
 	$\langle \phi_b(x) \rangle_{b\in B}$ over $\sigma$ "st" for any
 	arbitrary "$\sigma$-structure" $\?A$, for any $a\in A$,
 	there is at most one $b \in B$ "st" $\langle \?A, a \rangle \FOmodels \phi_b(x)$, and moreover $\?A \homto \?B$
 	"iff" for each $a\in A$, there is exactly one $b(a) \in B$ "st" $\langle \?A, a \rangle \FOmodels \phi_{b(a)}(x)$, and $a \mapsto b(a)$ is a "homomorphism".
-	Now, when the right-hand side holds, given an "automatic structure" $\+A$,
+	Now, when the right-hand side holds, given an "automatic presentation" $\+A$,
 	for each $b\in \?B$, we let $\tilde\phi_b(x)$ be the "first-order formula" over $\signatureSynchronous{\Sigma}$ obtained from $\phi_b(x)$
 	by substituting $\+R(x_1,\dotsc,x_k)$ for the "first-order formula"
 	over $\signatureSynchronous{\Sigma}$ describing $\+R_{(k)}$ in $\+A$.
@@ -131,15 +139,16 @@ of any assumption on $\?B$.
 	we have $\?A \nothomto \?B$ "iff" there exists a finite "substructure" $\?A'$ of $\?A$
 	"st" $\?A' \nothomto \?B$.
 	Given a "finite $\sigma$-structure" $\?A'$ and an "automatic $\sigma$-structure",
-	it is decidable whether $\?A'$ is a "substructure" of $\?A$: indeed, it suffices
+	it is decidable to test whether $\?A'$ is a "substructure" of $\?A$: indeed, it suffices
 	to check, using \Cref{prop:first-order-model-checking-automatic-structures} if
 	\[
+		\?A
+		\FOmodels^{?}
 		\Bigl(
-			\exists x_1,\; \cdots \exists x_n,\;
+			\exists x_1.\; \cdots \exists x_n.\;
 			\bigwedge_{\+R_{(k)} \in \sigma} \bigwedge_{\substack{\tup{i_1,\dotsc,i_k} \in \lBrack 1,n\rBrack^k\\\text{"st" }\tup{a_{i_1},\dotsc,a_{i_k}} \in \+R(\?A')}}
 			\+R(x_{i_1},\dotsc,x_{i_k})
-		\Bigr)
-		\FOmodels^{?} \?A,
+		\Bigr),
 	\]
 	by letting $\{a_1,\dotsc,a_n\} = A'$. 
 	Moreover, whether $\?A' \nothomto \?B$ is also decidable---in "coNP"---by \todo{addref}.
@@ -148,8 +157,8 @@ of any assumption on $\?B$.
 	$\?A' \homto \?B$. And hence $\HomAut{\?B}$ is "coRE".
 
 	\proofcase{$\HomRegAut{\?B}$ is "RE".} This is an easy generalization of
-	\Cref{thm:k-reg-col-undec}: instead of having "$k$-coloured automaton", we define
-	``$\?B$-automaton'', that admit a partition $\langle C_{b} \rangle_{b \in B}$.
+	\Cref{thm:k-reg-col-undec}: instead of having "$k$-coloured automaton", we define the notion of
+	``$\?B$-automata'': the notion of accepting state is replaced by a partitition $\langle C_{b} \rangle_{b \in B}$ of the states.
 	The semantics of such an automaton is a partial function $f\colon \Sigma^* \to B$. 
 	Given an "automatic structure" $\+A$, we can then effectively test if $f$ is defined on $\domainPres{\+A}$, and if $f$ defines a "homomorphism" from $\?A$ to $\?B$---see
 	the proof of \Cref{thm:k-reg-col-undec}. If so, $\+A \homregto \?B$. Dually, any "regular homomorphism" $\+A \homregto \?B$ can be described by such a $\?B$-automaton.
@@ -174,7 +183,7 @@ to $\HomRegAut{\?B}$ is not entirely trivial and requires some work.
 	\item For $\HomFin{\?B}$, we reduce the complement of "Connectivity in automatic graphs",
 		providing a "coRE"-lowerbound.
 	\item For $\HomRegAut{\?B}$, we reduce "regular unconnectivity in automatic graphs",
-		which in turn is reduced from \todo{update}.
+		which in turn is reduced from the "regular reachability problem".
 \end{itemize}
 
 For $n\in\N$, we define the \AP""$n$-link"" $\intro*\link{n}$ be the "$\sigma$-structure"\sidenote{From \cite[\S~2]{LaroseLotenTardif2007CharacterisationFOCSP}.} 
@@ -231,26 +240,29 @@ Equipped with the previous proposition, we can now show the undecidability
 of $\HomAut{\?B}$ by reduction from the following problem.
 
 \decisionproblem{""Connectivity in Automatic Graphs""}{
-	A "automatic presentation of a directed graph" $\•G$,
+	An "automatic presentation" $\•G$ of a "directed graph",
 	and two elements $s,t \in \Sigma^*$.
 }{
 	Are $\•G(s)$ and $\•G(t)$ "connected" in $\?G$?
 }
 \begin{property}
 	\AP\label{prop:undecidability-connectivity}
-	For any "signature" $\sigma$ containing at least one "predicate" of
-	arity at least 2, "Connectivity in automatic graphs" is "RE"-complete.
+	"Connectivity in automatic graphs" is "RE"-complete.
 \end{property}
 
 \begin{proof}
 	This follows from the fact that the "configuration graph" of
-	a "Turing machine" is always "automatic@@struct" by \todo{addref}.
-	\todo{Give more precisions.}
+	a "Turing machine" is always "automatic@@struct" by \Cref{ex:turing-machine-are-automatic}.
+	Indeed, a "Turing machine" halts on the empty word "iff" there is, in its
+	"configuration graph", a path from the "initial configuration"
+	to $\textbullet$, where $\textbullet$ is a newly added node,
+	"st" we add an edge from any accepting "configuration@@TM" to $\textbullet$. 
 \end{proof}
 
 \begin{lemma}
 	\AP\label{lem:reduction-hom}
-	Assume that $\sigma$ contains at least one "predicate" of arity at least 2.
+	Assume that $\sigma$ contains at least one "predicate" of arity at least 2,
+	and let $\?B$ be a "finite $\sigma$-structure".
 	If $\?B$ does not have "finite duality", then there is a "first-order reduction" 
 	from the complement of "connectivity in automatic graphs" to $\HomAut{\marked{\?B}}$.
 \end{lemma}
@@ -306,23 +318,25 @@ of $\HomAut{\?B}$ by reduction from the following problem.
 	the assumption that $\sigma$ contains at least one "predicate" of arity at least 2.}
 
 	We then consider the "automatic $\sigma$-structure" $\?A\prodstruct \iterstruct{\?B}{2}$,%
-	\footnote{See \Cref{sec:construction-automatic-presentations} to have an explicit construction 
-	of an "automatic presentation" for this structure.}
 	and extend it to a
 	"$\extendedSignature{\sigma}{\?B}$-structure" \AP\(\intro*\ConstrUndecHom{(\?A\prodstruct \iterstruct{\?B}{2})}\)
 	in which for each $b_0 \in B$,
 	we "interpret@@predicate" the unary "predicate" $\unarypred{b_0}$ as
 	\[
-		\big\{\;
-			\langle a,\, b,\, b'\rangle \;\big\vert\;
-			a = \•A(s) \text{ and } b = b_0 \text{, or }
-			a = \•A(t) \text{ and } b' = b_0
-		\;\big\}.
+		\big\{
+			\langle \•A(s),\, b_0,\, b\rangle \;\big\vert\; b \in B
+			\big\}
+		\cup
+		\big\{
+			\langle \•A(t),\, b,\, b_0\rangle \;\big\vert\; b \in B
+		\big\}
 	\]
 	To construct an "automatic presentation" for this structure, see \Cref{sec:construction-automatic-presentations}.
 	\begin{claim}
 		\AP\label{claim:reduction-hom-direct}
-		If $\ConstrUndecHom{(\?A\prodstruct \iterstruct{\?B}{2})} \homto \marked{\?B}$,
+		If there is a "homomorphism" from
+		$\ConstrUndecHom{(\?A\prodstruct \iterstruct{\?B}{2})}$
+		to $\marked{\?B}$,
 		then $\•G(s)$ and $\•G(t)$ are not "connected" in $\?G$.
 	\end{claim}
 	Let $f\colon \ConstrUndecHom{(\?A\prodstruct \iterstruct{\?B}{2})} \homto \marked{\?B}$
@@ -330,20 +344,23 @@ of $\HomAut{\?B}$ by reduction from the following problem.
 	"$\extendedSignature{\sigma}{\?B}$-structures".}
 	It induces a "homomorphism"
 	\[
-		\overbar f\colon \?A\prodstruct \iterstruct{\?B}{2} \homto \?B
+		\overbar f\colon \?A\prodstruct \iterstruct{\?B}{2} \to \?B
 	\]
 	between "$\sigma$-structures", and by currying (\Cref{prop:currying-hom}),
 	$\overbar f$ can be seen as a "homomorphism"
 	\[
-		F\colon \?A \homto \powstruct{\?B}{(\iterstruct{\?B}{2})}.
+		F\colon \?A \to \powstruct{\?B}{(\iterstruct{\?B}{2})}.
 	\]
 	Note moreover that because $\overbar f$ comes from a "homomorphism" between
-	$\extendedSignature{\sigma}{\?B}$ then we must have  
+	"$\extendedSignature{\sigma}{\?B}$-structures" then we must have  
 	$f(\•A(s),\, b,\, b') = b$
 	and $f(\•A(t),\, b,\, b') = b'$ for all $b,b' \in B$.
 	This implies that $F(\•A(s)) = \projHom{1}$ and $F(\•A(t)) = \projHom{2}$.
 	
-	We now assume by contradiction that there is some $n \in \N$
+	We now assume by contradiction that
+	$\+G(s)$ and $\+G(t)$ are "connected", and hence by
+	\Cref{claim:reduction-hom-from-graph-to-link}
+	there is some $n \in \N$
 	"st" there is a "homomorphism" $g\colon \link{n} \to \?A$
 	with $g(0) = \•A(s)$ and $g(n) = \•A(t)$.
 	Then by composition, we obtain a "homomorphism"
@@ -385,9 +402,13 @@ of $\HomAut{\?B}$ by reduction from the following problem.
 	or (2) $\{a_1,\, \dotsc,\, a_k\} = {a,a'}$ for some $a \neq a' \in A$
 	and there is an edge from $a$ to $a'$ or from $a'$ to $a$ in $\?G$.
 	In both cases, it follows that $\•A(s)$ and $a_i$ are "linked"
-	"iff" $\•A(s)$ and $a_j$ for all $i,j\in \lBrack 1,k\rBrack$.
-	Hence, either $f(a_i,\, b_i,\, b'_i) = b_i$ for all $i\in \lBrack 1,k\rBrack$,
-	or $f(a_i,\, b_i,\, b'_i) = b'_i$ for all $i\in \lBrack 1,k\rBrack$.
+	"iff" $\•A(s)$ and $a_j$ are "linked", for all $i,j\in \lBrack 1,k\rBrack$.
+	Hence, either:
+	\begin{itemize}
+		\item $f(a_i,\, b_i,\, b'_i) = b_i$ for all $i\in \lBrack 1,k\rBrack$
+			(if all $a_i$'s are "connected" to $\+A(s)$), or
+		\item $f(a_i,\, b_i,\, b'_i) = b'_i$ for all $i\in \lBrack 1,k\rBrack$ (otherwise).
+	\end{itemize}
 	In both cases, we get that
 	\[
 		\Big\langle
@@ -400,7 +421,9 @@ of $\HomAut{\?B}$ by reduction from the following problem.
 	\]
 	We also need to show that this map preserves the new unary "predicates" of
 	$\extendedSignature{\sigma}{\?B}$: this follows from---and is in fact equivalent to---the
-	fact that $\•A(s)$ and $\•A(t)$ are not "linked" by \Cref{claim:reduction-hom-from-graph-to-link}.
+	fact that $\•A(s)$ and $\•A(t)$ are not "linked" by \Cref{claim:reduction-hom-from-graph-to-link}:
+	indeed, the "currying" of $f$ behaves like $\projHom{1}$ on the "connected component"
+	of $\+A(s)$ and like $\projHom{2}$ on its complement.
 	Overall, this proves that $\ConstrUndecHom{(\?A\prodstruct \iterstruct{\?B}{2})} \homto \marked{\?B}$.
 
 	Putting \Cref{claim:reduction-hom-direct,claim:reduction-hom-converse} together,
@@ -410,7 +433,7 @@ of $\HomAut{\?B}$ by reduction from the following problem.
 
 By \Cref{prop:undecidability-connectivity}, the complement of "Connectivity in automatic graphs"
 is "coRE"-complete, and assuming that $\sigma$ contains at least one "predicate" of arity 2,
-it reduces by \Cref{lem:reduction-hom} to any problem $\HomAut{\marked{\?B}}$ when $\?B$ has "finite duality". In turns, by \Cref{prop:idempotent-core-preserves-csp-complexity}, it reduces to
+it reduces by \Cref{lem:reduction-hom} to any problem $\HomAut{\marked{\?B}}$ when $\?B$ has "finite duality". In turn, by \Cref{prop:idempotent-core-preserves-csp-complexity}, it reduces to
 $\HomAut{\?B}$, which is thus "coRE"-hard. It remains to deal with "signatures" consisting of only
 unary "predicates".\sidenote{It is not clear to us whether this case was properly handled in
 \cite{LaroseLotenTardif2007CharacterisationFOCSP}.}
@@ -454,7 +477,7 @@ unary "predicates".\sidenote{It is not clear to us whether this case was properl
 	is included in the "unary type" of $b$. This is clearly a (partial) "homomorphism",
 	and so since $\?A \nothomto \?B$, it follows that it must be partial,
 	"ie" that some element $a \in \?A$ "st" $\unaryType{a}{\?A} \not\subseteq
-	\unaryType{b}{\?B}$ for any $b \in B$. It follows that $\unaryType{a}{\?A}$
+	\unaryType{b}{\?B}$ for every $b \in B$. It follows that $\unaryType{a}{\?A}$
 	is "obstructing@@unarytype". Since $\structOfUnaryType{\unaryType{a}{\?A}} \homto \?A$
 	"via" $* \mapsto a$, the conclusion follows.
 
@@ -473,7 +496,7 @@ unary "predicates".\sidenote{It is not clear to us whether this case was properl
 	\!\sidenote[][-15em]{In the case of Larose and Tesson, they study the problem
 	$\HomFin{-}$, and prove in \cite[Theorem 3.2]{LaroseTesson2009UniversalAlgebraCSP}
 	that there is a "first-order reduction" from "Connectivity in Finite Graphs" to
-	$\HomFin{\marked{\?B}}$ assuming that $\?B$ does not have finite duality.
+	$\HomFin{\marked{\?B}}$ for any $\?B$ that does not have "finite duality".
 	Moreover, "Connectivity in Finite Graphs" is "L"-hard under "first-order reductions" since
 	Etessami \cite[Theorem 3.2]{Etessami1997CountingLogSpace} proved that the problem
 	of given a directed path and two vertices $s$, $t$ to decide if there is a path from
@@ -530,7 +553,7 @@ and will later settle its complexity.
 		structure $\?A$, by reflexivity of ``being "connected"'' in $\•G$.}%
 		\AP\label{claim:reduction-homreg-from-graph-to-link}
 		$\•G(s)$ and $\•G(t)$ are "regularly unconnected" "iff"
-		there is no $L \subseteq \Sigma^*$ "st" $\•A(s)\in L$ and $t \not\in L$,
+		there is a "regular language" $L \subseteq \Sigma^*$ "st" $\•A(s)\in L$ and $t \not\in L$,
 		and $L$ is a union of equivalences classes of $\domainPres{\•A}$
 		under ``being "linked"''.
 	\end{claim}
@@ -549,7 +572,7 @@ and will later settle its complexity.
 	By currying---see \Cref{coro:homreg-currying}---of the underlying "homomorphism"
 	between "\(\sigma\)-structures", we obtain a "regular homomorphism"
 	\[
-		F\colon \•A \homto \powstruct{\?B}{(\iterstruct{\?B}{2})}.
+		F\colon \•A \to \powstruct{\?B}{(\iterstruct{\?B}{2})}.
 	\]
 	Moreover, using the "predicates" \(\unarypred{b}\), \(b \in B\),
 	we get that $F(\•A(s)) = \projHom{1}$ and $F(\•A(s)) = \projHom{2}$.
