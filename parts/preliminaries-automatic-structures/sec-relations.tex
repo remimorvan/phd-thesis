@@ -541,12 +541,25 @@ Despite being somewhat expressive, "automatic relations" retain some decidabilit
 
 On the other hand, the associated "separation problem@@rel" remains open.
 This part of this thesis is mostly motivated by this problem.%
-\footnote{Pablo Barceló introduced me to this problem in October 2022,
-but apparently this problem has been open for many years.}
-
 \begin{openproblem}
 	Is the ""$\REC$-separability problem for automatic relations"" decidable?
 \end{openproblem}
+Pablo Barceló introduced me to this problem in October 2022,
+but apparently this problem has been open for many years.
+This problem goes back at least to 2006, when Choffrut and Grigorieff
+solved a special subcase: the
+While the general problem is not explicitly mentioned in their paper,
+the question is rather obvious given their contribution---and formulation of the result:
+they show that given two "rational relations" of $\Sigma^*\times \N^m$, whether
+they are "separable@@rel" by a "recognizable relation" is decidable
+\cite[Theorem~1]{ChoffrutGrigorieff2006SeparabilityRationalRelations}.
+Note that relations $\+R \subseteq \Sigma^*\times \N^m$ are in natural bijection
+with the relations $\+R' \subseteq \Sigma^*\times \Gamma^*$ where $\Gamma$ is an alphabet
+with $m$ letters, satisfying the property that for each $u \in \Sigma^*$ and $v \in \Gamma^*$,
+for any permutation $v'$ of the letters of $v$, we have $\tup{u,v} \in \+R'$
+"iff" $\tup{u,v} \in \+R'$. 
+
+
 
 We will see more properties of "automatic relations"---or rather of "automatic structures"---in
 \Cref{sec:preliminaries-automatic-structures-automatic-structures,sec:preliminaries-automatic-structures-logic}.
