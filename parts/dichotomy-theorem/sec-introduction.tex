@@ -4,19 +4,20 @@
 
 \subsection{Classes of Relations}
 
-Classes of relations on words\footnote{In this context, ``relations on words''
+The study of classes of relations on words\footnote{In this context, ``relations on words''
 are often called ``transductions''.} have always been a central topic in language theory
 \cite{ElgotMezi1965RelationsGeneralizedAutomata,Nivat1968TransductionChomsky,Berstel1979Transductions,FrougnySakarovitch1993SynchronizedRationalRelations,Choffrut2006Survey}. 
-More recently, their study has been motivated by database theory and verification,
-where they are used to build expressive languages. For instance, classes of relations of this kind are relevant for querying strings over relational 
+More recently, their study has also been motivated by database theory and verification,
+where they are used to build expressive languages. For instance,
+suitable classes of word relations where shown to be relevant for querying strings over relational 
 databases \cite{BenediktLibkinSchwentickSegoufin2003DefinableRelations}, comparing paths in graph databases \cite{BarceloLibkinLinWood2012ExpressiveLanguages}, or defining  
 string constraints for model checking \cite{LinBarcelo2016StringSolvingWordEquationsTransducers}. 
-The most studied such classes include "recognizable@@rel", "automatic@@rel" "aka" "synchronous@@rel", and "automatic relations", each one of the latter two strictly extending the previous one. 
+The most studied such classes include "recognizable@@rel", "automatic@@rel" "aka" "synchronous@@rel", and "rational relations", each one of the latter two strictly extending the previous one. 
 
 Recall that \AP"rational relations" $\RAT$
 are those definable by multi-head automata,
 with heads possibly moving asynchronously;
-"automatic relations", "aka" "synchronous relations",
+"automatic relations"
 are those that are accepted by multi-head automata
 whose heads are forced to move synchronously; and 
 \AP"recognizable relations" $\REC$ correspond to finite unions of products of regular languages---or, equivalently, to languages recognized via finite monoids, by "Mezei theorem".
@@ -38,9 +39,10 @@ is relevant since relations enjoying this property are often amenable to some an
 "eg", abstract interpretations in program verification, variable elimination in constraint logic 
 programming, and query processing over constraint databases---see \cite[Introduction]{BarceloHongLeLinNiskanen2019MonadicDecomposability} for a more thorough discussion on this topic.
 
-In general, "$\REC$-membership@@problem" of "rational relations" is undecidable, but it becomes decidable 
-for two important subclasses: 
-deterministic "rational relations" and "automatic relations". 
+In general, "$\REC$-membership@@problem" of "rational relations" is undecidable
+\cite[\S~III, Theorem~8.4]{Berstel1979Transductions},
+but it becomes decidable  for the subclass of 
+"deterministic rational relations", which extends the class of "automatic relations".
 For deterministic "rational relations",  "$\REC$-membership@@problem" has been shown to be decidable in 
 double-exponential time for binary relations
 by Valiant \cite{Valiant1975RegularityDeterministicPushdown}---improving Stearns's
@@ -57,16 +59,20 @@ By applying techniques based on Ramsey Theorem over infinite graphs, it was show
 "PSpace"-complete when relations are specified by non-deterministic automata
 \cite[Theorem 1]{BarceloHongLeLinNiskanen2019MonadicDecomposability} \cite[Corollary 2.9]{BergstrasserGanardiLinZetzsche2022RamseyQuantifiers}.
 
-\AP On the other hand, much less is known about the ""$\RAT$/$\REC$-separability problem"", which takes two $n$-ary "rational relations" 
+\AP A natural generalization of this question is the
+""$\RAT$/$\REC$-separability problem"", which takes two $n$-ary "rational relations" 
 $\+R,\+R' \subseteq \Sigma^* \times \Sigma^*$ and checks whether there is a "recognizable relation" 
-$S = \bigcup_i L_{i,1} \times \cdots \times L_{i,n}$ that "separates@@rel" $\+R$ from $\+R'$, meaning that $\+R \subseteq \+S$ and $\+R' \cap \+S = \emptyset$, in we case we say that $\+R$
+$S = \bigcup_i L_{i,1} \times \cdots \times L_{i,n}$ that "separates@@rel" $\+R$ from $\+R'$, meaning that $\+R \subseteq \+S$ and $\+R' \cap \+S = \emptyset$, in which case we say that $\+R$
 and $\+R'$ are \AP""separable@@rel"" by a "recognizable relation".
-In other words, this problem asks whether we can \emph{over approximate} $\+R$ with a recognizable 
+In other words, this problem asks whether we can \emph{overapproximate} $\+R$ with a recognizable 
 relation $\+S$ that is constrained not to intersect with $\+R'$. Separability problems of this kind abound in theoretical computer science, in particular
 in formal language theory where they have gained a lot of attention over the last few years---see "eg" \cite{PlaceZeitoun2016SeparatingRegularLanguages,Kopczynski2016InvisiblePushdownLanguages,CzerwinskiMartensRooijenZeitounZetzsche2017DecidableSeparabilityPiecewiseTestable,ClementeCzerwinskiLasotaPaperman2017RegularSeparabilityParikhAutomata}. 
 
 As for membership, the "$\RAT$/$\REC$-separability problem"
-is in general undecidable, so in this chapter we focus on its restriction to
+is in general undecidable,%
+\footnote{\todo{Actually this not entirely trivial since $\RAT$ is not closed under
+complement.}}
+so in this chapter we focus on its restriction to
 "automatic relations".
 \decisionproblem{
 	\reintro{$\AUT$/$\REC$-separability problem}
@@ -94,17 +100,18 @@ in "NP". The precise complexity of the problem, however, depends on the "structu
 and is tightly connected to the algebraic properties of the algebra associated to the
 "structure".
 
-A central question in the domain, stated by Feder and Vardi,
-and known as the ``dichotomy conjecture'', states that any "CSP" whose "target structure" is 
+A central result in the domain, originally conjectured by Feder and Vardi,
+and known as the ``dichotomy theorem'' (formerly ``dichotomy conjecture''),
+states that any "CSP" whose "target structure" is 
 finite is either in "P" or "NP"-complete
 \cite[\S~2, ``Dichotomy question'']{FederVardi1998ComputationalStructure},%
 \footnote{In other words, there is no "NP"-intermediate 
 problem amongst these problems.} and the characterization of "structures" for which the problem
-was tractable is precisely formulated in algebraic terms.%
-\footnote{Tractable structures are those whose algebra admits a
+was in "P" is precisely formulated in algebraic terms.%
+\footnote{Structures that admit a "CSP" problem in "P" are exactly those whose algebra admits a
 ``weak near-unanimity operation''---see "eg" \cite[\S~1, p.~3]{Zhuk2020CSPDichotomy}.}
 This conjecture extended a result of Schaefer, who proved two decades earlier
-that "CSPs" over the Boolean domain\footnote{Meaning that the "target structure" can have only two elements---but recall that $\sigma$ can be arbitrary complex.} was either "P" or "NP"-complete.
+that "CSPs" over the Boolean domain\footnote{Meaning that the "target structure" can have only two elements---but recall that the "signature" $\sigma$ can be arbitrary complex.} was either "P" or "NP"-complete.
 Twenty-four years later, this conjecture was proven independently by
 Bulatov \cite[Theorem 1]{Bulatov2017DichotomyCSPs}
 and Zhuk \cite[Theorem 1.4]{Zhuk2020CSPDichotomy}.
@@ -137,7 +144,7 @@ complete for one class among "NP", "P", "modL", "NL" or "L" under "AC0"-reductio
 For non-Boolean CSPs, the landscape becomes even more complex.
 For instance, given $k\in\N$, we define the \AP""$k$-transitive tournament"", denoted
 by \AP$\intro*\transitiveTournament{k}$ and illustrated on \Cref{fig:T2-P2},
-to be the "directed graph" with vertices $0$, $1$, $\hdots$, $k$,
+to be the "directed graph" with vertices $0$, $1$, $\dotsc$, $k$,
 and with an edge from $i$ to $j$ "iff" $i < j$.
 Similarly, the \AP""$k$-path"" \AP$\intro*\pathGraph{k}$ has $\lBrack 0,k\rBrack$ as
 its set of vertices, with an edge from $i$ to $j$ "iff" $j = i + 1$---see \Cref{fig:T2-P2}.
@@ -175,6 +182,8 @@ Moreover, Larose and Tesson proved a dichotomy theorem for "CSPs" with small com
 	then $\HomFin{\?B}$ is "L"-hard under "first-order reductions".
 \end{proposition}
 
+Observe that this last proposition only allow for "finite structures" on the
+"input side@@struct" of the problem.
 This chapter will generalize some results---including the latter---on the "homomorphism problem"
 from "finite structures" to "automatic structures". The study of "CSPs" beyond finite set
 is far from a new topic, and has been the subject of many works in the past decade:
@@ -200,7 +209,7 @@ A "regular colouring" with finitely many colours (resp. a "regular $k$-colouring
 is a partition of the vertices of $\•G$ into finitely many (resp. $k$) regular languages
 "st" adjacent vertices cannot belong to the same set.
 Similarly, the \AP""regular $k$-colourability problem"" asks instead if
-$\•G$ admit a "regular $k$-colouring", in which case we say that $\•G$ is
+$\•G$ admits a "regular $k$-colouring", in which case we say that $\•G$ is
 \AP""regularly $k$-colourable"".
 
 \begin{restatable*}{theorem}{regcolourabilityequivseparability}
@@ -261,10 +270,10 @@ and "regular homomorphism problem" for "automatic structures" in \Cref{sec:dicho
 		\itemAP[\introinrestatable\itemDTFinDual.] $\?B$ has "finite duality";
 		\itemAP[\introinrestatable\itemDTHomDec.] $\HomAut{\?B}$ is decidable;
 		\itemAP[\introinrestatable\itemDTHomRegDec.] $\HomRegAut{\?B}$ is decidable;
-		\itemAP[\introinrestatable\itemDTEqual.] $\HomAut{\?B} = \HomRegAut{\?B}$ "ie" for any "automatic presentation" $\•A$ of a 
+		\itemAP[\introinrestatable\itemDTEqual.] $\HomAut{\?B} = \HomRegAut{\?B}$, "ie" for any "automatic presentation" $\•A$ of a 
 		"$\sigma$-structure" $\?A$, there is a "homomorphism" from $\?A$ to $\?B$ "iff" 
 		there is a "regular homomorphism" from $\•A$ to $\?B$;
-		\itemAP[\introinrestatable\itemDTFirstOrder.] $\HomAll{\?B}$ has "uniformly first-order definable homomorphisms".
+		\itemAP[\introinrestatable\itemDTFirstOrder.] $\HomAll{\?B}$ has "uniformly first-order definable homomorphisms".\footnote{The notion of "uniformly first-order definable homomorphisms" is defined in \Cref{sec:uniformly-first-order-definable-hom}.}
 	\end{description}
 	Moreover, when $\HomAut{\?B}$ and $\HomRegAut{\?B}$ are undecidable, they are "coRE"-complete
 	and "RE"-complete, respectively. When they are decidable, they are "NL".

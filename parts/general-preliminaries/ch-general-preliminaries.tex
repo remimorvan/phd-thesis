@@ -5,6 +5,7 @@
 \begin{itemize}
 	\itemAP powerset: $\intro*\pset{X}$ and $\intro*\psetp{X}$.
 	\itemAP function restriction: $\intro*\restr{f}{X}$.
+	\itemAP bracket notation for image/preimage $f[X], f^{-1}[X]$ and $f^{-1}[y]$ (even if $f$ is not bijective)
 	\itemAP ""symmetric@@rel"", ""reflexive relation"", ""functional relation""
 \end{itemize}
 
@@ -46,7 +47,7 @@
 	\itemAP ""signature"" and ""predicate""
 	\itemAP ""purely relational signature"", ""graph signature"", ""signature of binary strings""
 	\itemAP ""$\sigma$-structure"", ""pointed $\sigma $-structure""
-	\itemAP ""interpretation@@predicate"" of a "predicate", ""hyperedge""
+	\itemAP ""interpretation@@predicate"" of a "predicate", ""$\+R$-tuple"" and \reintro{hyperedge}
 	\itemAP ""finite $\sigma$-structure"", ""locally finite structure""
 	\itemAP ""substructure"", ""induced substructure"", ""proper substructure""
 	\itemAP ""queries@@sem""
@@ -102,9 +103,9 @@ of $a$ in $\?A$ to be the tuple of sets%
 	\reintro*\adjacency{a}{\?A}{\+R}{i} & \defeq
 	% \Big\langle
 		\big\{
-			\langle a_1, \hdots, a_{i-1}, a_{i+1}, \hdots, a_k \rangle \in A^{k-1}
+			\langle a_1, \dotsc, a_{i-1}, a_{i+1}, \dotsc, a_k \rangle \in A^{k-1}
 			\\ & \hphantom{\defeq \big\{ }\mid
-			\langle a_1, \hdots, a_{i-1}, a, a_{i+1}, \hdots, a_k \rangle \in \+R(\?A)
+			\langle a_1, \dotsc, a_{i-1}, a, a_{i+1}, \dotsc, a_k \rangle \in \+R(\?A)
 		\big\},
 		% \;\big\vert\;
 		% \+R_{(k)} \in \sigma \text{ and } i \in \lBrack 1,k\rBrack
@@ -133,7 +134,7 @@ its set of successors.
 \subsection{Undirected Paths}
 
 An \AP""undirected path"" in a "$\sigma$-structure" $\?A$ consists of a sequence
-\[\big\langle a_0,\, \bar h_0,\, a_1,\, \hdots,\, \bar h_{n-1},\, a_n\big\rangle, \text{ with } n \in \N,\]
+\[\big\langle a_0,\, \bar h_0,\, a_1,\, \dotsc,\, \bar h_{n-1},\, a_n\big\rangle, \text{ with } n \in \N,\]
 where $a_i \in A$ and each $\bar h_i$ is a "hyperedge" of $\?A$ "st" both
 $a_i$ and $a_{i+1}$ occur in $\bar h_i$. When such an "undirected path" exists, we say that
 there is an "undirected path" between $a_0$ and $a_n$, or equivalently

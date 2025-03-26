@@ -170,7 +170,7 @@ It turns out that equivalence classes of $\autequiv$ define the coarsest partiti
     Hence, $\+R \subseteq \+R'$.
 
     \proofcase{Right-to-left.}
-    If $\+R$ is a union of products of sets from the partition $C_1 \dcup \hdots \dcup C_k = \Sigma^*$, then every two elements of each $C_i$ are $\autequiv$-related, and thus $\autequiv$ has index at most $k$.
+    If $\+R$ is a union of products of sets from the partition $C_1 \dcup \dotsc \dcup C_k = \Sigma^*$, then every two elements of each $C_i$ are $\autequiv$-related, and thus $\autequiv$ has index at most $k$.
 \end{proof}
 
 We can then conclude that the membership problem for $\kREC$ is decidable. 
@@ -188,19 +188,19 @@ We can then conclude that the membership problem for $\kREC$ is decidable.
 The relation $\autequiv$ can also be used to characterize which automatic relations are definable in the class $\kPROD$.
 
 \begin{proposition}
-    An "automatic relation" $\+R$ is in $\kPROD$ if, and only if, $\+R=(A_1 \times B_1) \cup \hdots \cup (A_k \times B_k)$ where each $A_i$ and $B_i$ is a union of equivalence classes of $\autequiv$.
+    An "automatic relation" $\+R$ is in $\kPROD$ if, and only if, $\+R=(A_1 \times B_1) \cup \dotsc \cup (A_k \times B_k)$ where each $A_i$ and $B_i$ is a union of equivalence classes of $\autequiv$.
 \end{proposition}
 \begin{proof}
     The right-to-left implication is trivial. For the converse implication,
     assume that $\+R$ is in $\kPROD$, say
     \[
-        \+R=(A_1 \times B_1) \cup \hdots \cup (A_k \times B_k)
+        \+R=(A_1 \times B_1) \cup \dotsc \cup (A_k \times B_k)
     \]
-    for some arbitrary "regular languages" $A_1,\hdots,A_k$ and $B_1,\hdots,B_k$.
+    for some arbitrary "regular languages" $A_1,\dotsc,A_k$ and $B_1,\dotsc,B_k$.
     By definition of $\autequiv$, we also have
     \[
         \+R=(\equivclass{A_1}{\autequiv} \times \equivclass{B_1}{\autequiv})
-        \cup \hdots \cup (\equivclass{A_k}{\autequiv} \times \equivclass{B_k}{\autequiv}).\qedhere
+        \cup \dotsc \cup (\equivclass{A_k}{\autequiv} \times \equivclass{B_k}{\autequiv}).\qedhere
     \]
 \end{proof}
 
@@ -211,5 +211,5 @@ Again, this characterization allows us to show that membership in the class $\kP
 \end{corollary}
 
 \begin{proof}
-    By brute force testing whether the "automatic relation" $\+R$ is equivalent to $(A_1 \times B_1) \cup \hdots \cup (A_k \times B_k)$ for every possible $A_i,B_i$ which is a union of equivalence classes of $\autequiv$.
+    By brute force testing whether the "automatic relation" $\+R$ is equivalent to $(A_1 \times B_1) \cup \dotsc \cup (A_k \times B_k)$ for every possible $A_i,B_i$ which is a union of equivalence classes of $\autequiv$.
 \end{proof}

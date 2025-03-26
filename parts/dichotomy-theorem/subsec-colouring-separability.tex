@@ -3,7 +3,7 @@
 We start by showing that the "$\REC$-separability problem" is equivalent,
 under polynomial time reductions, to the "regular colourability problem". To make our statement precise, we need some terminology.
 
-\AP Let $\intro*\kREC$ be the class of languages expressed by unions of products of $k$ regular languages which form a partition, that is (in the binary case), relations of the form $(L_{i_1} \times L_{j_1}) \cup \dotsb \cup (L_{i_\ell} \times L_{j_\ell})$, with $i_1,j_1,\hdots,i_\ell, j_\ell \in \lBrack 1,k \rBrack$, for some regular partition\footnote{By ``regular partition'',
+\AP Let $\intro*\kREC$ be the class of languages expressed by unions of products of $k$ regular languages which form a partition, that is (in the binary case), relations of the form $(L_{i_1} \times L_{j_1}) \cup \dotsb \cup (L_{i_\ell} \times L_{j_\ell})$, with $i_1,j_1,\dotsc,i_\ell, j_\ell \in \lBrack 1,k \rBrack$, for some regular partition\footnote{By ``regular partition'',
 we mean that $L_1, \dotsc, L_{k}$ is a partition of $\Sigma^*$, and that moreover
 each $L_i$ is a "regular language".} $L_1, \dotsc, L_{k}$ of $\Sigma^*$ and $\ell \in \N$.
 
@@ -136,9 +136,9 @@ We can now finish the proof of \Cref{thm:reg-colourability-equiv-separability}.
     \proofcase{Left-to-right implication.} 
     Assume that there exists $\+S$ in $\kREC$ that "separates@@rel" $\+R_1$ from $\+R_2$.
     Then $\+S$ can be written as $(L_{i_1}\times L_{j_1}) \cup \cdots \cup (L_{i_\ell}\times L_{j_\ell})$, 
-    where $(L_1,\hdots,L_k)$ is a partition of $\Sigma^*$ in $k$ "regular languages".
+    where $(L_1,\dotsc,L_k)$ is a partition of $\Sigma^*$ in $k$ "regular languages".
     We define the colour of a word $u \in \Sigma^*$ as the unique $i \in \lBrack 1,k \rBrack$
-    "st" $u \in L_i$. In other words, the "colouring" is simply $\tup{L_1,\hdots,L_k}$. 
+    "st" $u \in L_i$. In other words, the "colouring" is simply $\tup{L_1,\dotsc,L_k}$. 
 
     This is indeed a proper "colouring": if $u$ and $u'$ have the same colour,
     we claim that $\tup{u,u'} \not\in \incompGraph{\+R_1}{\+R_2}$, "ie" that
@@ -148,12 +148,12 @@ We can now finish the proof of \Cref{thm:reg-colourability-equiv-separability}.
     $\tup{u',v} \in L_{i_m}\times L_{j_m}\subseteq \+S$.
     But $\+S$ "separates@@rel" $\+R_1$ from $\+R_2$, and therefore $\tup{u',v} \not\in \+R_2$.
     This tells us that \compL\ holds. The other conditions hold by symmetry.
-    We conclude that $\tup{L_1,\hdots,L_k}$ defines
+    We conclude that $\tup{L_1,\dotsc,L_k}$ defines
     a proper "$k$-colouring" of $\incompGraph{\+R_1}{\+R_2}$, that is "regular@regular colouring" since the $L_i$'s are "regular languages" by definition.
 
     \proofcase{Right-to-left implication.}
     Assume that $\incompGraph{\+R_1}{\+R_2}$ is "finitely regularly colourable", say by
-    $\tup{L_1,\hdots,L_k}$. Then let $\+S$ be the union of all $\+S_i$'s ($i \in \lBrack 1,k\rBrack$) where
+    $\tup{L_1,\dotsc,L_k}$. Then let $\+S$ be the union of all $\+S_i$'s ($i \in \lBrack 1,k\rBrack$) where
     \begin{align*}
         \+S_i \defeq\; & \{\tup{u,v} \mid u \in L_i \text{ and } \tup{u',v} \in \+R_1 \text{ for some } u' \in L_i \}\\
         & \cup \{\tup{u,v} \mid v \in L_i \text{ and } \tup{u,v'} \in \+R_1 \text{ for some } v' \in L_i \}.  
@@ -164,7 +164,7 @@ We can now finish the proof of \Cref{thm:reg-colourability-equiv-separability}.
     (1) $u\in L_i$ and $\tup{u',v} \in \+R_1$ for some $u' \in L_i$, or
     (2) $v\in L_i$ and $\tup{u,v'} \in \+R_2$
     for some $v' \in L_i$. In case (1), $u$ and $u'$
-    have the same colour, and since $\tup{L_1,\hdots,L_k}$ is a "colouring"
+    have the same colour, and since $\tup{L_1,\dotsc,L_k}$ is a "colouring"
     of $\incompGraph{\+R_1}{\+R_2}$, $u$ must be "compatible" with $u'$.
     The assumption $\tup{u',v} \in \+R_1$ together with \compLpr\ then yields
     that $\tup{u,v} \not\in \+R_2$. The other case is symmetric.

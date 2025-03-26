@@ -37,8 +37,8 @@ An \AP""automatic presentation $\+A$ of a $\sigma$-structure"" consists of:
 \end{itemize} 
 The \AP\reintro{structure represented} $\?A$ by an "automatic presentation" $\+A$ has
 $\domainPres{\+A}/{\relPres{=}{\+A}}$ as its domain, and the predicate $\+R_{(k)} \in \sigma$
-is "interpreted@@pred" in such a way that a tuple $\tup{X_1,\hdots,X_k}$ of equivalence classes
-belongs to $\+R(\?A)$ if, and only if, there exists $\tup{u_i}_{1 \leq i \leq k} \in\tup{X_i}_{1 \leq i \leq k}$ "st" $\tup{u_1,\hdots,u_k} \in \relPres{\+R}{\+A}$.
+is "interpreted@@pred" in such a way that a tuple $\tup{X_1,\dotsc,X_k}$ of equivalence classes
+belongs to $\+R(\?A)$ if, and only if, there exists $\tup{u_i}_{1 \leq i \leq k} \in\tup{X_i}_{1 \leq i \leq k}$ "st" $\tup{u_1,\dotsc,u_k} \in \relPres{\+R}{\+A}$.
 We say that a "$\sigma$-structure" is ""automatic@@struct"" if it is
 "represented@@struct" by an "automatic presentation".%
 \footnote{Note that we can always assume "wlog" that $\relPres{\+R}{\+A} \subseteq
@@ -79,12 +79,12 @@ and $\relPres{=}{\+B}$ is equality.
 		}
 
 		\node[right=-.25em of eps, font=\tiny, color=cDarkGrey] {$\varepsilon$};
-		\node[right=-.25em of a, font=\tiny, color=cDarkGrey] {$a$};
-		\node[right=-.25em of b, font=\tiny, color=cDarkGrey] {$b$};
-		\node[right=-.25em of aa, font=\tiny, color=cDarkGrey] {$aa$};
-		\node[right=-.25em of ab, font=\tiny, color=cDarkGrey] {$ab$};
-		\node[right=-.25em of ba, font=\tiny, color=cDarkGrey] {$ba$};
-		\node[right=-.25em of bb, font=\tiny, color=cDarkGrey] {$bb$};
+		\node[right=-.25em of a, font=\tiny, color=cDarkGrey] {$0$};
+		\node[right=-.25em of b, font=\tiny, color=cDarkGrey] {$1$};
+		\node[right=-.25em of aa, font=\tiny, color=cDarkGrey] {$00$};
+		\node[right=-.25em of ab, font=\tiny, color=cDarkGrey] {$01$};
+		\node[right=-.25em of ba, font=\tiny, color=cDarkGrey] {$10$};
+		\node[right=-.25em of bb, font=\tiny, color=cDarkGrey] {$11$};
 	\end{tikzpicture}
 	\caption{
 		\AP\label{fig:infinite-binary-tree}
@@ -180,10 +180,10 @@ For instance, $\langle \univStructSynchronous{\Sigma}, \langle\lastLetter{a}\ran
 	Equality is interpreted as proper equality,
 	and then
 	\[
-		\relPres{\+R}{\+A'}(x_1,\hdots, x_k) \defeq
-		\exists y_1.\,\hdots \exists y_k.\,
+		\relPres{\+R}{\+A'}(x_1,\dotsc, x_k) \defeq
+		\exists y_1.\,\dotsc \exists y_k.\,
 		\Big( \bigwedge_{i=1}^k x_i \mathrel{\relPres{=}{\+A}} y_i \Big)
-		\land \relPres{\+R}{\+A}(y_1,\hdots, y_k),
+		\land \relPres{\+R}{\+A}(y_1,\dotsc, y_k),
 	\]
 	for any predicate $\+R_{(k)} \in \sigma$.
 	Overall, $\+A'$ is an "injective presentation" that "represents@@struct" 
@@ -196,7 +196,7 @@ For instance, $\langle \univStructSynchronous{\Sigma}, \langle\lastLetter{a}\ran
 \end{proposition}
 
 \begin{proof}
-	The idea is to encode each letter of $\Sigma = \{a_1,\hdots,a_n\}$
+	The idea is to encode each letter of $\Sigma = \{a_1,\dotsc,a_n\}$
 	over $\2$ in such a way that each letter $a_i$
 	is encoded over a word $\hat a_i \in \2^*$ "st"
 	all $\hat a_i$ have the same length---this is necessary to preserve "automaticity@@struct".
@@ -250,9 +250,9 @@ at the same depth, and if one is an ancestor of the other.
 	\]
 	and changing any "first-order formula"
 	\[
-		\phi\big((x_1^1, \hdots, x_1^d), \hdots, (x_n^1, \hdots, x_n^d)\big)
+		\phi\big((x_1^1, \dotsc, x_1^d), \dotsc, (x_n^1, \dotsc, x_n^d)\big)
 		\quad\text{into}\quad
-		\phi^*(x_1^1 \convol \cdots \convol x_1^d, \hdots, x_n^1 \convol \cdots \convol x_n^d).\qedhere
+		\phi^*(x_1^1 \convol \cdots \convol x_1^d, \dotsc, x_n^1 \convol \cdots \convol x_n^d).\qedhere
 	\]
 \end{proof}
 
@@ -330,12 +330,12 @@ $\univStructSynchronous{2} \FOmodels^? \phi^{\•A}$, the formula $\phi^{\•A}$
 	% For the "data complexity", we now assume that $\phi$ is fixed.
 	\proofcase{"Tower" upper bound.}
 	The construction is similar to the easy implication of \Cref{prop:automatic-first-order}:
-	for any "automatic presentation" $\•A$, we build by induction on $\phi(x_1,\hdots,x_k)$ a "synchronous ($k$-ary) automaton@synchronous automaton" $\+B^\phi$ "st"
-	for all $u_1,\hdots,u_k \in \Sigma^*$
+	for any "automatic presentation" $\•A$, we build by induction on $\phi(x_1,\dotsc,x_k)$ a "synchronous ($k$-ary) automaton@synchronous automaton" $\+B^\phi$ "st"
+	for all $u_1,\dotsc,u_k \in \Sigma^*$
 	\[
-		\+B^\phi \text{ accepts } u_1\convol\hdots\convol u_k
+		\+B^\phi \text{ accepts } u_1\convol\dotsc\convol u_k
 		\quad\text{"iff"}\quad
-		\tup{\?A, u_1, \hdots, u_k} \FOmodels \phi(x_1,\hdots,x_k).
+		\tup{\?A, u_1, \dotsc, u_k} \FOmodels \phi(x_1,\dotsc,x_k).
 	\]
 	In the end, we get a "synchronous ($0$-ary) automaton@synchronous automaton" $\+B^\phi$ that either accepts
 	or rejects depending on whether $\?A \FOmodels \phi$ or not.
@@ -362,13 +362,13 @@ $\univStructSynchronous{2} \FOmodels^? \phi^{\•A}$, the formula $\phi^{\•A}$
 \begin{proof}
 	We now assume that $\phi$ is of the form
 	\[
-		\exists x_1.\,\hdots \exists x_k.\, \psi(x_1,\hdots,x_k),
+		\exists x_1.\,\dotsc \exists x_k.\, \psi(x_1,\dotsc,x_k),
 	\]
 	where $\psi$ is a "positive quantifier-free formula",
 	the size of the automaton for $\psi$ is of the order $|\•A|^{|\psi|}$:
 	conjunctions and disjunctions only require products but no powerset construction.
 	Now instead of explicitly building an automaton for
-	$\exists x_1.\,\hdots \exists x_k.\, \psi(x_1,\hdots,x_k)$,
+	$\exists x_1.\,\dotsc \exists x_k.\, \psi(x_1,\dotsc,x_k)$,
 	we test if the automaton for $\psi$ accepts any word.
 	The answer is ``yes'' "iff" $\?A \FOmodels \phi$.
 	Testing non-emptiness of the automaton amounts to checking if an accepting state can be
@@ -390,7 +390,7 @@ complexity of other variations of "Hodgson's theorem". For instance,
 the "data complexity" of its restriction to "existential sentences" (here negation is allowed)
 in "NP"-complete \cite[Theorem~3.7]{BlumensathGradel2000AutomaticStructures}.
 
-What we said above work with the implicit assumptions that all structures at hand are 
+What we said above works with the implicit assumptions that all structures at hand are 
 "finite@@struct". However, part of this can be generalized to "automatic structures"---however, this comes to the cost of losing the inclusion in "L".
 
 \begin{proposition}[Folklore]

@@ -213,7 +213,7 @@ to be \AP""germinal"" if it has in-degree 0.%
     To prove the statement for any $k>2$, we define $\tup{V,\+E_k}$ as the result of adding a $(k-2)$-clique to $\tup{V,\+E}$ and adding an edge from every vertex of the clique to every vertex incident to an edge of $\+E$. This forces the clique to use $k-2$ colours that cannot be used in the remaining part of the graph and the proof is then analogous.
 
 	\proofcase{Upper-bound.} We show that the problem is "RE". Let us define a \AP""$k$-coloured automaton"" like a regular (complete) DFA, except that instead of having
-	a set of final states, it has a partition $\langle C_1,\hdots,C_k \rangle$ of its states.
+	a set of final states, it has a partition $\langle C_1,\dotsc,C_k \rangle$ of its states.
 	Such an automaton recognizes a "regular colouring" $\Sigma^* \to \lBrack 1, k\rBrack$.
 	Given an "automatic graph" $\+G = \tup{V,\+E}$---whose edge relations is given by
     a "synchronous automaton" $\relPres{\+E}{\+G}$---and a $k$-coloured automaton $\+B$,

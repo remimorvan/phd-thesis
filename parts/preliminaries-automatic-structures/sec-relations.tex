@@ -202,7 +202,7 @@ We provide a slightly more general statement of "Mezei theorem".
 		$f\colon \Gamma^* \times \Sigma^* \to \?M$ and $\Acc \subseteq \?M$
 		"st" $\+R = f^{-1}[\Acc]$;
 		\item there exists $n \in \N$
-		and $K_1,\hdots,K_n \in \+V_{\Gamma}$ and $L_1,\hdots,L_n \in \+V_{\Sigma}$
+		and $K_1,\dotsc,K_n \in \+V_{\Gamma}$ and $L_1,\dotsc,L_n \in \+V_{\Sigma}$
 		"st" $\mathcal{R} = \bigcup_{i=1}^n K_i \times L_i$,
 	\end{enumerate}
 	in which case we say that $\+R$ is \AP""$\+V$-recognizable@@rel"".
@@ -490,7 +490,7 @@ using the pumping lemma on $a^n \convol b^n a^n$ for some sufficiently big $n\in
 would imply that $a^{n+k} \convol b^{n+k} a^n \in \convolRel{(\suffix)}$ for some $k\in\Np$.
 Similarly, the \AP""subword relation"" $\intro*\subword$ is also not "automatic@@rel".%
 \footnote{Recall that this relation is defined by, for all $u, v \in \Sigma^*$,
-$u \subword v$ "iff" there exists $j_1 < j_2 < \hdots < j_{|u|}$ "st" $u_i = v_{j_{i}}$
+$u \subword v$ "iff" there exists $j_1 < j_2 < \dotsc < j_{|u|}$ "st" $u_i = v_{j_{i}}$
 for all $i \in \lBrack 1, |u|\rBrack$: in other words, $u$ can be obtained from $v$ by removing letters.}
 
 Another useful tool to prove "non-automaticity@@struct" is the following one.
@@ -498,7 +498,7 @@ Given $I \subseteq \lBrack 1,k\rBrack$,
 we say that a $k$-ary relation $\+R \subseteq \Sigma_1^* \times \cdots \times \Sigma_k^*$ is
 ""$I$-locally finite"" if for every $\tup{w_i}_{i\in I} \in \prod_{i\in I} \Sigma_i^*$,
 there are only finitely many $\tup{w_j}_{j\not\in I} \in \prod_{j \not\in I} \Sigma_j^*$
-"st" $\tup{w_1,\hdots,w_k} \in \+R$.%
+"st" $\tup{w_1,\dotsc,w_k} \in \+R$.%
 \footnote{Note that this is one of the very few statements
 that we spell out for $k$-ary relation since its generalization from binary to $k$-ary relations
 is not entirely trivial.}
@@ -512,7 +512,7 @@ Note that every $k$-ary relation is "$\lBrack 1,k\rBrack$-locally finite".
 	\AP\label{prop:bound-automatic-structures}
 	Let $\+R \subseteq \Sigma_1^* \times \cdots \times \Sigma_k^*$ be "$I$-locally finite".
 	If $\+R$ is "automatic@@struct", then there exists a constant $n\in\N$ "st" for every
-	$\tup{w_1,\hdots,w_k} \in \+R$,
+	$\tup{w_1,\dotsc,w_k} \in \+R$,
 	\[
 		\max_{j \not\in I}{|w_j|} - \max_{i \in I}{|w_i|} \leq n.
 	\]
@@ -565,6 +565,7 @@ We will see more properties of "automatic relations"---or rather of "automatic s
 \Cref{sec:preliminaries-automatic-structures-automatic-structures,sec:preliminaries-automatic-structures-logic}.
 
 \subsection{Rational Relations}
+\label{sec:prelim-rational-relations}
 
 "Rational relations" are perhaps the most natural class of finite-word relations:
 they are defined similarly to "automatic relations", except that
@@ -759,7 +760,7 @@ although in the multitape setting, both pairs can be simultaneously admissible.
 In other words, the lack of injectivity of the function $\projWord$ creates another
 source of non-determinism. This motivates an alternative definition for determinism.
 
-Hence, we say that a $k$-ary "multitape automaton" over $\Sigma_1,\hdots,\Sigma_k$
+Hence, we say that a $k$-ary "multitape automaton" over $\Sigma_1,\dotsc,\Sigma_k$
 is ""deterministic@@desync"" if
 there exists a partition $\tup{Q_H}_{H \in \psetp{\lBrack 1,k\rBrack}}$ of its states "st":
 \begin{enumerate}
@@ -776,13 +777,13 @@ For instance, the automaton of \Cref{fig:multitape-automaton-subword} is "determ
 
 \begin{claim}
 	\label{claim:tool-deterministic-rational}
-	Let $\+A$ be a $k$-ary "deterministic multitape automaton" over $\Sigma_1,\hdots,\Sigma_k$.
-	For any $\tup{w_1,\hdots,w_k} \in \Sigma_1^* \times \cdots \Sigma_k^*$,
+	Let $\+A$ be a $k$-ary "deterministic multitape automaton" over $\Sigma_1,\dotsc,\Sigma_k$.
+	For any $\tup{w_1,\dotsc,w_k} \in \Sigma_1^* \times \cdots \Sigma_k^*$,
 	for any state $q$ of $\+A$, there exists at most
-	one word $w \in (\Sigma_1\convolAlpha\cdots\convolAlpha\Sigma_k)^*$ "st" $\projWord(w) = \tup{w_1,\hdots,w_k}$ and there is a run of $\+A$, starting at $q$ and labelled by $w$.%
+	one word $w \in (\Sigma_1\convolAlpha\cdots\convolAlpha\Sigma_k)^*$ "st" $\projWord(w) = \tup{w_1,\dotsc,w_k}$ and there is a run of $\+A$, starting at $q$ and labelled by $w$.%
 	\footnote{On the other hand, observe that classical determinism only ensures
 	at most one run for each $w \in (\Sigma_1\convolAlpha\cdots\convolAlpha\Sigma_k)^*$,
-	and not for each $\tup{w_1,\hdots,w_k} \in \Sigma_1^* \times \cdots \Sigma_k^*$.}
+	and not for each $\tup{w_1,\dotsc,w_k} \in \Sigma_1^* \times \cdots \Sigma_k^*$.}
 \end{claim}
 
 We say that a relation $\+R \subseteq \Gamma^* \times \Sigma^*$ is ""deterministic rational@@rel""
@@ -899,10 +900,10 @@ the statement of \cite[Lemma~IV.5.15]{Sakarovitch2009Elements} and that
 \begin{example}[Post Correspondence Problem (PCP) {\cite[Theorem~18]{RabinScott1959FiniteAutomata}}]
 	\AP\label{ex:PCP-is-det-rat}
 	"Deterministic multitape automata" are actually quite expressive:
-	given an instance $\tup{u_1,\hdots,u_k, v_1,\hdots,v_k} \in (\Sigma^*)^{2k}$ 
+	given an instance $\tup{u_1,\dotsc,u_k, v_1,\dotsc,v_k} \in (\Sigma^*)^{2k}$ 
 	of PCP\footnote{Recall that this undecidable problem asks if there exists $n\in\N$
 	and a sequence of (possibly-repeating)
-	indices $i_1,\hdots, i_n \in \lBrack 1,k\rBrack$ "st"
+	indices $i_1,\dotsc, i_n \in \lBrack 1,k\rBrack$ "st"
 	\[u_{i_1}\cdots u_{i_n} = v_{i_1}\cdots v_{i_n}\].},
 	we can define a relation $\+R_u$ that essentially encodes the function
 	$i \mapsto u_i$, and a relation $\+R_v$ that encodes $i \mapsto v_i$,
@@ -955,11 +956,11 @@ head movements have to be done to obtain a word of $(\Sigma_1 \convolAlpha \cdot
 ``origin information'' for transducers \cite{Bojanczyk2014TransducersOriginInformation}.}
 
 Given a "regular language" $T$ over the alphabet $\psetp{\lBrack 1,k\rBrack}$,
-a \AP""$T$-multitape automaton"" is a "multitape automaton" over $\Sigma_1,\hdots,\Sigma_k$
+a \AP""$T$-multitape automaton"" is a "multitape automaton" over $\Sigma_1,\dotsc,\Sigma_k$
 whose semantics is restricted in the following way:
-a tuple $\tup{u_1,\hdots,u_k} \in \Sigma_1^* \times \cdots \times \Sigma_k^*$ is accepted
+a tuple $\tup{u_1,\dotsc,u_k} \in \Sigma_1^* \times \cdots \times \Sigma_k^*$ is accepted
 if there exists $w \in (\Sigma_1 \convolAlpha \cdots \convolAlpha \Sigma_k)^*$
-"st" $\projWord(w) = \tup{u_1,\hdots,u_k}$ and $\projTape(w) \in T$.
+"st" $\projWord(w) = \tup{u_1,\dotsc,u_k}$ and $\projTape(w) \in T$.
 
 Binary "synchronous automata" exactly correspond to "$T_{\textrm{sync}}$-multitape automaton" when
 $T_{\textrm{sync}} \defeq \{1,2\}^* \cdot (\{1\}^* + \{2\}^*)$. Similarly, it can be shown

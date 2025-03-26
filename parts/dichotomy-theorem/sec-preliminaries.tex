@@ -57,8 +57,14 @@ $\•A$ to $\•B$.
 	is a "first-order formula"---since $L$ is finite---describing $f$.
 \end{proof}
 
-As a consequence, when $\•B$ is finite, we will write $\•A \reintro*\homregto \?B$ 
-to mean that $\•A \homregto \•B$.
+As a consequence, when $\?B$ is finite, the existence of a "regular homomorphism" to $\?B$
+is independent of its "presentation@@auto", and we will hence write $\•A \reintro*\homregto \?B$ 
+to mean that $\•A \homregto \•B$.%
+\footnote{Unsurprisingly, this property cannot be extended to all "automatic structures":
+for instance letting $\+A$ be the "automatic presentation" $\tup{0^*, \set{\tup{0^n,0^{n+1} \mid n \in \N}}}$ of $\tup{\N, \textrm{succ}}$,
+and letting $\+A'$ be the "automatic presentation"
+$\tup{(00)^*, \set{\tup{0^{2n},0^{2n+2} \mid n \in \N}}}$ of the same "structure",
+it can be shown that $\+A \homregto \+A$ but $\+A \nothomregto \+A'$.}
 In particular, a \AP""regular $k$-colouring"" of a "presentation of an automatic graph"
 $\•G$ is equivalently a "regular homomorphism" from $\•G$ to $\?K_k$,
 or a "$k$-colouring" of $\?G$ "st" for any colour, the set of words of $\domainPres{\•G}$
@@ -74,8 +80,8 @@ sharing this colour is a "regular language".
 		A "regular $2$-colouring" of an "automatic presentation" of the infinite quarter-grid.
 	}
 \end{figure}
-In \Cref{fig:grid-2-reg-colouring}, we provide an example of a "regular $2$-colouring".
-We let $\+G = \tup{V,\+E}$ be the "automatic presentation" of the infinite quarter-grid,
+In \Cref{fig:grid-2-reg-colouring}, we provide an example of a "regular $2$-colouring":
+we let $\+G = \tup{V,\+E}$ be the "automatic presentation" of the infinite quarter-grid,
 defined over the alphabet $\{x,y\}$ by $V \defeq x^*y^*$ and
 \[
 	\+E = \set{\tup{x^p y^q, x^{p+1}y^q} \mid p,q \in \N}
@@ -98,7 +104,8 @@ we denote by:
 \end{itemize}
 Somewhat abusively, we identify these classes with the associated decision problems---except
 for $\HomAll{\?B}$ since arbitrary "$\sigma$-structures" cannot be encoded as finite strings.
-For finite structures, we assume the input to be given suing adjacency lists, and for automatic presentations, we assume the input to be described by an "automatic presentation".
+For finite structures, we assume the input to be given using adjacency lists, and for "automatic 
+structures", we assume the input to be described by an "automatic presentation".
 We call $\HomRegAut{\?B}$ the \AP""regular homomorphism problem"" over $\?B$.
 
 
@@ -107,13 +114,13 @@ We call $\HomRegAut{\?B}$ the \AP""regular homomorphism problem"" over $\?B$.
 Given two "structures" $\?A$ and $\?B$, we define the structure \AP$\intro*\powstruct{\?B}{\?A}$ as follows:
 \begin{itemize}
   \item its domain are "homomorphisms" $\?A \to \?B$,
-  \item for every "predicate" $\+R$ of arity $k$, for any homomorphism $f_1,\hdots,f_k$,
-  we have $\langle f_1,\hdots,f_k\rangle \in \+R(\powstruct{\?B}{\?A})$ when 
+  \item for every "predicate" $\+R$ of arity $k$, for any homomorphism $f_1,\dotsc,f_k$,
+  we have $\langle f_1,\dotsc,f_k\rangle \in \+R(\powstruct{\?B}{\?A})$ when 
   \[
 	\text{for every }
-	\langle a_1,\hdots,a_k\rangle \in \+R(\?A)
+	\langle a_1,\dotsc,a_k\rangle \in \+R(\?A)
 	\text{, we have }
-	\langle f_1(a_1), \hdots, f_k(a_k) \rangle \in \+R(\?B).
+	\langle f_1(a_1), \dotsc, f_k(a_k) \rangle \in \+R(\?B).
   \]
 \end{itemize}
 
@@ -129,23 +136,23 @@ Given two "structures" $\?A$ and $\?B$, we define the structure \AP$\intro*\pows
 \end{proposition}
 
 \begin{proof}
-Let $\+R$ be a predicate of arity $k$, and let
-$\langle a_1,\hdots,a_k \rangle \in \+R(\?A)$.
-We want to show that $\langle F(a_1),\hdots,F(a_k) \rangle \in \+R(\powstruct{\?C}{\?B})$:
-for any $\langle b_1,\hdots,b_k \rangle \in \+R(\?B)$, we have
-\[\langle F(a_1)(b_1), \hdots, F(a_k)(b_k)\rangle = \langle f(a_1,b_1),\hdots,f(a_k,b_k) \rangle \in \+R(\?C)\] since $f$ is a "homomorphism" from $\?A\prodstruct \?B$ to $\?C$.
+Let $\+R$ be a "predicate" of arity $k$, and let
+$\langle a_1,\dotsc,a_k \rangle \in \+R(\?A)$.
+We want to show that $\langle F(a_1),\dotsc,F(a_k) \rangle \in \+R(\powstruct{\?C}{\?B})$:
+for any $\langle b_1,\dotsc,b_k \rangle \in \+R(\?B)$, we have
+\[\langle F(a_1)(b_1), \dotsc, F(a_k)(b_k)\rangle = \langle f(a_1,b_1),\dotsc,f(a_k,b_k) \rangle \in \+R(\?C)\] since $f$ is a "homomorphism" from $\?A\prodstruct \?B$ to $\?C$.
 Hence, $F$ is indeed a "homomorphism" from $\?A$ to $\powstruct{\?C}{\?B}$.
 
 Dually, if $F$ is a "homomorphism" from $\?A$ to $\powstruct{\?C}{\?B}$,
 we define $f\colon \?A\prodstruct \?B \to \?C$ by $\langle a,b \rangle \mapsto F(a)(b)$,
 and claim that $f$ is a "homomorphism". Indeed, if $\+R$ be a predicate of arity $k$,
-for any $\langle a_1, \hdots, a_k \rangle \in \+R(\?A)$
-and $\langle b_1, \hdots, b_k \rangle \in \+R(\?B)$,
-we have $\langle f(a_1,b_1), \hdots, f(a_k,b_k) \rangle
-= \langle F(a_1)(b_1), \hdots, F(a_k)(b_k) \rangle$.
-Since $\langle F(a_1), \hdots, F(a_k) \rangle \in \+R(\powstruct{\?C}{\?B})$
-and $\langle b_1, \hdots,b_k \rangle \in \+R(\?B)$ 
-it follows that $\langle F(a_1)(b_1), \hdots, F(a_k)(b_k) \rangle \in \+R(\?C)$.
+for any $\langle a_1, \dotsc, a_k \rangle \in \+R(\?A)$
+and $\langle b_1, \dotsc, b_k \rangle \in \+R(\?B)$,
+we have $\langle f(a_1,b_1), \dotsc, f(a_k,b_k) \rangle
+= \langle F(a_1)(b_1), \dotsc, F(a_k)(b_k) \rangle$.
+Since $\langle F(a_1), \dotsc, F(a_k) \rangle \in \+R(\powstruct{\?C}{\?B})$
+and $\langle b_1, \dotsc,b_k \rangle \in \+R(\?B)$ 
+it follows that $\langle F(a_1)(b_1), \dotsc, F(a_k)(b_k) \rangle \in \+R(\?C)$.
 Therefore, $f$ is a "homomorphism" from $\?A \prodstruct \?B$ to $\?C$.
 
 It is then routine to check that the maps $f \mapsto F$ and $F \mapsto f$ defined
@@ -158,21 +165,21 @@ in the two previous paragraphs are mutually inverse bijections.
 Let $\•A$ and $\•B$ be "automatic presentations" of some "$\sigma$-structures"
 $\?A$ and $\?B$, over alphabets $\Sigma$ and $\Gamma$, respectively.
 We define \AP$\•A \intro*\prodpres \•B$ to be the "presentation@@auto"
-over the alphabet $(\Sigma \times \Gamma) \dcup \Sigma \times \{\pad\} \dcup \{\pad\} \times 
-\Gamma$  "st":
+over the alphabet $(\Sigma \times \Gamma) \dcup (\Sigma \times \{\pad\}) \dcup (\{\pad\} \times 
+\Gamma)$  "st":
 \begin{align*}
 	\domainPres{\•A\prodpres \•B} & \defeq \{u\convol v \mid u \in \domainPres{\•A} \land v \in \domainPres{\•B}\}\\
 	\relPres{\+R}{\•A\prodpres \•B} & \defeq
-		\{\tup{u_1\convol v_1,\, \hdots,\, u_k\convol v_k} \mid
-		\tup{u_1,\, \hdots,\, u_k} \in \relPres{\+R}{\•A} \land
-		\tup{v_1,\, \hdots,\, v_k} \in \relPres{\+R}{\•B}
+		\{\tup{u_1\convol v_1,\, \dotsc,\, u_k\convol v_k} \mid
+		\tup{u_1,\, \dotsc,\, u_k} \in \relPres{\+R}{\•A} \land
+		\tup{v_1,\, \dotsc,\, v_k} \in \relPres{\+R}{\•B}
 	\}
 \end{align*}
 for each "predicate" $\+R$ of arity $k$ in $\sigma$.
 It is an "automatic presentation" of $\?A \prodstruct \?B$.
-Indeed, given a "first-order formula" $\phi(x_1,\hdots,x_k)$
+Indeed, given a "first-order formula" $\phi(x_1,\dotsc,x_k)$
 over $\signatureSynchronous{\Sigma}$, describing $\relPres{\+R}{\•A}$,
-and a "first-order formula" $\psi(x_1,\hdots,x_k)$
+and a "first-order formula" $\psi(x_1,\dotsc,x_k)$
 over $\signatureSynchronous{\Sigma}$, describing $\relPres{\+R}{\•B}$,
 we let $\phi^*$ (resp. $\psi^*$) be the "formula@@FO" obtained from $\phi$ (resp. $\psi$)
 by substituting $\lastLetter{a}(x)$ for $\bigvee_{b \in \Gamma \dcup \{\pad\}} \lastLetter{\tup{a,b}}(x)$ (resp. $\bigvee_{b \in \Sigma \dcup \{\pad\}} \lastLetter{\tup{b,a}}(x)$).
@@ -180,7 +187,7 @@ Then $\phi^* \land \psi^*$ is a "first-order formula", over the product alphabet
 that describes $\relPres{\+R}{\•A\prodpres \•B}$. The same construction
 works for $\domainPres{\•A\prodpres \•B}$.
 This shows that if $\?A$ and $\?B$ are "automatic $\sigma$-structures",
-then so is $\?A \times \?B$.\footnote{Note that the "block product", that is defined similarly to the "Cartesian product" except that we ask one tuple to be in the relation, and the other to be in the equality relation---"ie" $\tup{u_1,\, \hdots,\, u_k} \in \relPres{\+R}{\•A}$ and
+then so is $\?A \times \?B$.\footnote{Note that the "block product", that is defined similarly to the "Cartesian product" except that we ask one tuple to be in the relation, and the other to be in the equality relation---"ie" $\tup{u_1,\, \dotsc,\, u_k} \in \relPres{\+R}{\•A}$ and
 $v_1 = \cdots = v_k$, or its symmetric version---is also "automatic@@struct", using the same construction.
 For instance, the infinite quarter-grid of \Cref{fig:grid-2-reg-colouring}
 can also be constructed as the "block product" of $\tup{\N,+1}$ with itself.}
@@ -256,9 +263,10 @@ singleton $\{b\}$.
 	\AP\label{prop:idempotent-core-preserves-csp-complexity}
 	If $\?B$ is a finite "core", then the problems $\HomAll{\marked{\?B}}$ and 
 	$\HomAll{\?B}$ are "first-order equivalent".
-	Moreover, this equivalence preserves "finiteness@@structure".%
-	\footnote{And hence, by restricting this equivalence, we obtain that
-	$\HomFin{\marked{\?B}}$ and $\HomFin{\?B}$ are "first-order equivalent".}
+	Moreover, this equivalence preserves "finiteness@@structure",
+	in the sense that "finite structures" are mapped to "finite structures".  
+	Hence, by restricting this equivalence, we also obtain that
+	$\HomFin{\marked{\?B}}$ and $\HomFin{\?B}$ are "first-order equivalent".
 \end{proposition}
 
 \begin{proof}[Proof of \Cref{prop:idempotent-core-preserves-csp-complexity}]
@@ -271,18 +279,19 @@ singleton $\{b\}$.
 	of the reduction. It is, by definition, "first-order@@reduction".
 
 	\proofcase{Reduction from $\,\HomAll{\marked{\?B}}$ to $\,\HomAll{\?B}$.}
-	We first define the reduction $\Phi$ and show its correctness, we will show later that it
-	is a "first-order reduction". We reduce a "$\extendedSignature{\sigma}{\?B}$-structure" $\?A$ to the "$\sigma$-structure"
+	We first define the reduction $\Phi$ and show its correctness; the fact that it
+	is a "first-order reduction" is straightforward.
+	We reduce a "$\extendedSignature{\sigma}{\?B}$-structure" $\?A$ to the "$\sigma$-structure"
 	$\Phi(\?A)$ defined as follows:
 	\begin{itemize}
 		\item its underlying universe is the disjoint union $A \dcup B$,
 		\item given a "predicate" $\+R$ of arity $k$, its "hyperedges" are:
 		\begin{itemize}
-		\item all $\+R$-"hyperedges" of $\?A$,
-		\item all $\+R$-"hyperedges" of $\?B$, and
-		\item all $\+R$-"hyperedges" $\tup{b_1,\hdots,b_{i-1}, a_i, b_{i+1},\hdots,b_k}$
+		\item all "$\+R$-tuple" of $\?A$,
+		\item all "$\+R$-tuple" of $\?B$, and
+		\item all "$\+R$-tuple" $\tup{b_1,\dotsc,b_{i-1}, a_i, b_{i+1},\dotsc,b_k}$
 			"st" there exists $b_i$ for which the $\+R$-"hyperedge"
-			$\tup{b_1,\hdots,b_{i-1}, b_i, b_{i+1},\hdots,b_k}$
+			$\tup{b_1,\dotsc,b_{i-1}, b_i, b_{i+1},\dotsc,b_k}$
 			is in $\+R(\?B)$, and $a_i$ belongs to the "interpretation@@predicate" of 
 			$\unarypred{b_i}$ in $\?A$.
 		\end{itemize}
@@ -302,26 +311,26 @@ singleton $\{b\}$.
 		\item if it is a "hyperedge" of $\?B$, then its image by $f'$ is itself, and is hence
 			a "hyperedge" of $\?B$;
 		\item otherwise, it must be of the form 
-			\[\tup{b_1,\hdots,b_{i-1}, a_i, b_{i+1},\hdots,b_k}\]
+			\[\tup{b_1,\dotsc,b_{i-1}, a_i, b_{i+1},\dotsc,b_k}\]
 			"st" there exists $b_i$ for which
-			$\tup{b_1,\hdots,b_{i-1}, b_i, b_{i+1},\hdots,b_k} \in \+R(\?B)$
+			$\tup{b_1,\dotsc,b_{i-1}, b_i, b_{i+1},\dotsc,b_k} \in \+R(\?B)$
 			and $a_i \in \unarypred{b_i}(\?A)$:
 			in this case, its image by $f'$ is 
-			\[f'(\tup{b_1,\hdots,b_{i-1}, a_i, b_{i+1},\hdots,b_k})
-			= \tup{b_1,\hdots,b_{i-1}, b_i, b_{i+1},\hdots,b_k} \in \+R(\?B)\]
+			\[f'(\tup{b_1,\dotsc,b_{i-1}, a_i, b_{i+1},\dotsc,b_k})
+			= \tup{b_1,\dotsc,b_{i-1}, b_i, b_{i+1},\dotsc,b_k} \in \+R(\?B)\]
 			since $f'(b) = b$ for all $b\in B$ and $f'(a_i) = f(a_i) = b_i$ since
 			$a_i \in \unarypred{b_i}(\?A)$ and $f$ is a "homomorphism" from
 			$\?A$ to $\marked{\?B}$.
 	\end{itemize}
 	And hence, $\Phi(\?A) \homto \?B$.
 
-	Dually, let $g\colon \Phi(\?A) \to \?B$ be a "homomorphism".
+	Conversely, now let $g\colon \Phi(\?A) \to \?B$ be a "homomorphism".
 	Its restriction to $\?B$, namely $\restr{g}{B}$ is a "homomorphism" from $\?B$
 	to itself, and since $\?B$ is a "core", it must be an "automorphism" over $\?B$
 	by \Cref{prop:automorphism-core}.
 	We then define a map $g' \colon A \to B$ by sending
 	$a$ to $(\restr{g}{B})^{-1}\circ g(a)$, and claim that it is a "homomorphism"
-	from $\?A$ to $\marked{\?B}$. As a matter of fact, it clearly preserves $\+R$-"hyperedges"
+	from $\?A$ to $\marked{\?B}$. As a matter of fact, it clearly preserves "$\+R$-tuple"
 	for any $\+R$ in $\sigma$, since $g$ and $(\restr{g}{B})^{-1}$ are "homomorphisms".
 	We must then show that it preserves all unary "predicates" $\unarypred{b}$, with $b\in B$:
 	let $a \in A$ "st" $\unarypred{b}$ holds, "ie" $a \in \unarypred{b}(\?A)$.
@@ -331,18 +340,20 @@ singleton $\{b\}$.
 	By definition of $g'$, this rewrites as $g'(a) = b$, "ie" $g'(a) = \unarypred{b}(\marked{\?B})$.
 	Therefore, we have built a "homomorphism" from $\?A$ to $\marked{\?B}$.
 
-	Overall, this proves that $\Phi$ is correct. It is straightforward to notice that
-	it is a "first-order reduction" and that it preserves "finiteness@@structure" since $\?B$
+	Overall, this proves that $\Phi$ is correct.
+	It is trivially a "first-order reduction" and moreover,
+	it preserves "finiteness@@structure" since $\?B$
 	is "finite@@structure".
 \end{proof}
 
 
 \subsection{De Bruijn–Erdős Theorem}
 
-\AP\begin{proposition}[""De Bruijn–Erdős Theorem""]
+\begin{proposition}[""De Bruijn–Erdős Theorem""]
 	\!\footnote{It is straightforward to note that
 	one can replace ``every finite "substructure"'' by
-	``every finite "induced substructure"'' in the statement of the theorem.}%
+	``every finite "induced substructure"'' in the statement of the theorem.
+	The original theorem is about graph colouring, but the generalization is straightforward.}%
 	\AP\label{prop:de-bruijn-erdos}
 	Let $\?A$ be an arbitrary "$\sigma$-structure" and $\?B$ a "finite $\sigma$-structure".
 	There is a "homomorphism" from $\?A$ to $\?B$ "iff" for every finite "substructure" $\?A'$
@@ -351,8 +362,7 @@ singleton $\{b\}$.
 
 \begin{proof}
 	The left-to-right implication is direct.
-	We prove the converse by using the "Tychonoff's compactness theorem".\footnote{This is a direct adaptation from \cite[\S~``Proof'']{Wikipedia2024DeBruijnErdos}, 
-	which proves this result in the particular case of graph colouring.}
+	We prove the converse by using the "Tychonoff's compactness theorem".\footnote{This is a direct adaptation from \cite[\S~``Proof'']{Wikipedia2024DeBruijnErdos}.}
 	So, assume that for every finite "substructure" $\?A'$ of $\?A$,
 	there is a "homomorphism" from $\?A$ to $\?B$. 
 	Consider the topological space $B^A$, consisting of all functions from $A$ to $B$,
@@ -364,8 +374,8 @@ singleton $\{b\}$.
 	Then, each $H_X$ is closed---indeed, whether $f\in B^A$ belongs to $H_X$ only depends
 	on finitely many $f(x)$'s---, and moreover the intersection of finitely many
 	$H_X$'s, say $H_{X_1} \cap \cdots \cap H_{X_n}$, is non-empty since
-	$H_{X_1} \cap \cdots \cap H_{X_n} \supseteq H_{X_1\cup \hdots \cup X_n}$
-	and by assumption $H_{X_1\cup \hdots \cup X_n}$ is non-empty since $X_1 \cup \cdots \cup X_n$ is finite. Hence, by compactness of $B^A$ and the "finite intersection property", it follows
+	$H_{X_1} \cap \cdots \cap H_{X_n} \supseteq H_{X_1\cup \dotsc \cup X_n}$
+	and by assumption $H_{X_1\cup \dotsc \cup X_n}$ is non-empty since $X_1 \cup \cdots \cup X_n$ is finite. Hence, by compactness of $B^A$ and the "finite intersection property", it follows
 	that $\bigcap_X H_X$ is non-empty, which means that there is a "homomorphism" from $\?A$ to $\?B$.
 \end{proof}
 
@@ -376,9 +386,9 @@ singleton $\{b\}$.
 	\AP\label{coro:de-bruijn-erdos}
 	Given arbitrary $\sigma$-structures $\?B_1$ and $\?B_2$, the following are equivalent:
 	\begin{enumerate}
-		\itemAP\label{item:de-bruijn-erdos-finite} for every finite "$\sigma$-structure" $\?A$, then $\?A \homto \?B_1$
+		\itemAP\label{item:de-bruijn-erdos-finite} for every finite "$\sigma$-structure" $\?A$, we have $\?A \homto \?B_1$
 		"iff" $\?A \homto \?B_2$;
-		\itemAP\label{item:de-bruijn-erdos-arbitrary} for every arbitrary "$\sigma$-structure" $\?A$, then $\?A \homto \?B_1$
+		\itemAP\label{item:de-bruijn-erdos-arbitrary} for every arbitrary "$\sigma$-structure" $\?A$, we have $\?A \homto \?B_1$
 			"iff" $\?A \homto \?B_2$;
 		\itemAP\label{item:de-bruijn-erdos-hom} $\?B_1$ and $\?B_2$ are "homomorphically equivalent".
 	\end{enumerate}
@@ -398,7 +408,7 @@ singleton $\{b\}$.
 
 Let $\?B$ and $\?D$ be "finite $\sigma$-structures".
 We say that $\?D$ is an \AP""obstruction"" of $\?B$ when $\?D \nothomto \?B$.
-In this case, note that finding $\?D$ is a "structure"---in the sense that $\?D \homto \?A$---implies that $\?A$ cannot have a "homomorphism" to $\?B$: in this sense, the presence of
+In this case, note that finding $\?D$ inside $\?A$---in the sense that $\?D \homto \?A$---implies that $\?A$ cannot have a "homomorphism" to $\?B$: in this sense, the presence of
 $\?D$ in an \emph{obstruction} to the existence of a "homomorphism" to $\?B$.
 
 A \AP""dual"" of $\?B$ is any arbitrary set $\+D$ of "finite $\sigma$-structures" "st"
@@ -450,8 +460,8 @@ Indeed, if $\?A \nothomto \?B$, then $\?A$ is an "obstruction" and so it must co
 
 \begin{proof}
 	The right-to-left implication is trivial. For the converse one,
-	let $\+D = \{D_1,\hdots,D_m\}$ be a finite "dual" of $\?B$.
-	If $\+C$ is a "critical obstruction" of $\?B$ then in particular $\?C \nothomto \?B$
+	let $\+D = \{D_1,\dotsc,D_m\}$ be a finite "dual" of $\?B$.
+	If $\?C$ is a "critical obstruction" of $\?B$ then in particular $\?C \nothomto \?B$
 	and so there exists $i \in \lBrack 1,m\rBrack$ "st" there is a "homomorphism" $f$ 
 	from $\?D_i$ to $\?C$. Now the image of $f$ is again an "obstruction" of $\?B$,
 	and since $\?C$ is "critical@@obs", it follows that it must be $\?C$ itself. In other
@@ -474,7 +484,7 @@ to prove that some structures don't have "finite duality".
 	\AP\label{ex:dual-P2}
 	Let $n\in\?N$.
 	We define the \AP""zigzag graph"" $\intro*\zigzag{n}{2}$ of width $n$ and length 2
-	to be "graph@@dir" whose vertices are $a_0, \hdots, a_n$, $b_0, \hdots, b_{n}$,
+	to be "graph@@dir" whose vertices are $a_0, \dotsc, a_n$, $b_0, \dotsc, b_{n}$,
 	$a'_0$ and $b'_n$, with edges from $a_i$ to $b_{i-1}$ and to $b_{i}$ (for $i \in \lBrack 0,n\rBrack$, whenever the nodes exist), and with an edge from $a'_0$ to $a_0$ and from $b_n$
 	to $b'_n$. See \Cref{fig:zigzag-graph} for an illustration.
 	
@@ -483,8 +493,8 @@ to prove that some structures don't have "finite duality".
 
 	We claim that each $\zigzag{n}{2}$ ($n\in\N$) is a "critical obstruction" of $\pathGraph{2}$.
 	We have already seen that $\zigzag{n}{2}$ is an "obstruction" of $\pathGraph{2}$.
-	By then notice that any "proper substructure" of $\zigzag{n}{2}$ 
-	must either:
+	But then notice that to obtain a "proper substructure" of $\zigzag{n}{2}$,
+	we must either:
 	\begin{itemize}
 		\item remove the edge from $a'_0$ to $a_0$ or the edge from $b_n$ to $b'_n$,
 		in which case it admits a "homomorphism" to $\pathGraph{2}$, or
@@ -498,9 +508,9 @@ to prove that some structures don't have "finite duality".
 	\sidenote[][-11em]{However, observe that $\zigzag{0}{2} = \pathGraph{3}$ is an "obstruction" of
 	$\transitiveTournament{2}$.}
 	In fact, this "homomorphism" is far from being unique:
-	each vertex $a_1,\,a_2,\,\hdots,\,a_{n-1}$ can be sent on either $0$ or $1$
+	each vertex $a_1,\,a_2,\,\dotsc,\,a_{n-1}$ can be sent on either $0$ or $1$
 	(the red and yellow vertices), 
-	and similarly, each vertex $b_1,\,b_2,\,\hdots,\,b_{n-1}$ can be sent on either $1$ or $2$
+	and similarly, each vertex $b_1,\,b_2,\,\dotsc,\,b_{n-1}$ can be sent on either $1$ or $2$
 	(the yellow and blue vertices).%
 	\sidenote[][-11em]{
 		Note that it is straightforward to extend the fact that
@@ -528,7 +538,7 @@ While $\pathGraph{k}$ and $\transitiveTournament{k}$ are similar structures,
 one has "finite duality" and the other does not.
 Recall that by "Atserias' theorem", this implies that
 $\HomFin{\transitiveTournament{k}}$ is "first-order definable"\footnote{By the formula saying that
-there exists variables $x_0$, $\hdots$, $x_{k+1}$ "st" for all $i$ there is an edge from $x_i$ to $x_{i+1}$.} but $\HomFin{\pathGraph{k}}$ is not.%
+there are no variables $x_0$, $\dotsc$, $x_{k+1}$ "st" for all $i$ there is an edge from $x_i$ to $x_{i+1}$.} but $\HomFin{\pathGraph{k}}$ is not.%
 \footnote{This can also be proven by hand: for 
 instance we let $\tilde Z^{(n)}_2$ be defined analogously to $\zigzag{n}{2}$ except
 that we remove the edge from $a_{k}$ to $b_k$ for $k = \lceil \frac{n}{2} \rceil$. 
@@ -569,35 +579,51 @@ if it admits a (potentially infinite) "dual" consisting only of "$\sigma$-trees"
 Somewhat surprisingly, Ne\v{s}et\v{r}il and Tardif showed that
 this notion generalizes "finite duality".
 
-\begin{proposition}[{\cite[Theorem 3.1]{NesetrilTardif2000DualityTheorems}}]
+\begin{proposition}[{\cite[Theorem~3.1]{NesetrilTardif2000DualityTheorems}}]
+	\!\footnote{The statement of \cite[Theorem~3.1]{NesetrilTardif2000DualityTheorems}
+	is somewhat cryptic: the relationship with "duals" is given by
+	\cite[Lemma~2.5]{NesetrilTardif2000DualityTheorems}.
+	We refer the reader to Foniok's Ph.D. for statements that use a terminology closer to ours:
+	\cite[Theorem~2.1.12]{2007FoniokPhD} shows that if $\{\?A\}$ is a "dual" of $\?B$,
+	then $\?A$ is "homomorphically equivalent" to a tree, "ie" if a "structure" has
+	``singleton duality'', then it has "tree duality".
+	The generalization to "finite duality" then follows from
+	\cite[Theorem~2.4.4]{2007FoniokPhD}.}
 	\AP\label{prop:finite-duality-implies-tree-duality}
 	If a finite "$\sigma$-structure" $\?B$ has "finite duality",
 	then it has "tree duality".
 \end{proposition}
 
-For instance, while $\pathGraph{2}$ does not have "finite duality" by \Cref{ex:dual-T2},
+The converse does not hold:
+for instance, while $\pathGraph{2}$ does not have "finite duality" by \Cref{ex:dual-T2},
 it has "tree duality".
 
-Feder and Vardi introduced a construction to decide if a "structure" has "tree duality":
+Feder and Vardi introduced a construction to decide if a "finite structure" has "tree duality":
 given a "$\sigma$-structure" $\?B$, we let \AP$\intro*\FederVardi{\?B}$ be
 the $\sigma$-structure whose domain is $\psetp{B}$, and for every $\+R_{(k)} \in \sigma$,
-we have $\tup{Y_1, \hdots, Y_k} \in \+R(\FederVardi{\?B})$ precisely when 
-\[
-	\forall i \in \lBrack 1,k\rBrack,\,
-	\forall b_i \in Y_i,\,
-	\exists \tup{b_j}_{j \neq i} \in \tup{Y_j}_{j \neq i},\,
-	\tup{y_1, \hdots, y_k} \in \+R(\?B),
-\]
-for any $Y_1, \hdots, Y_k \in \psetp{B}$.\footnote{In fact $\FederVardi{-}$ can
+we have $\tup{Y_1, \dotsc, Y_k} \in \+R(\FederVardi{\?B})$ 
+(with $Y_1, \dotsc, Y_k \in \psetp{B}$) precisely when 
+for every $i\in \lBrack 1,k\rBrack$, 
+for every $b_i \in Y_i$,
+there exists $b_j \in Y_j$ for every $j \neq i$ "st" 
+$\tup{y_1, \dotsc, y_k} \in \+R(\?B)$.%
+\footnote{In fact $\FederVardi{-}$ can
 easily be extended to be a functor in the category of $\sigma$-structures, see
 "eg" \cite[\S~9.2.2]{NesetrilPOM2012FirstOrderCSPs}.}
+In the case of "graphs@@dir", the nodes of $\FederVardi{\?H}$ are non-empty
+subsets of vertices of $\?H$, and there is an edge from $X$ to $Y$ when:
+\begin{itemize}
+	\item for every $x \in X$, there exists $y\in Y$ "st" $\tup{x,y}$ is an edge of $\?H$, and
+	\item for every $y\in Y$, there exists $x\in X$ "st" $\tup{x,y}$ is an edge of $\?H$.
+\end{itemize}
+
 By construction, note that $b \mapsto \set{B}$ defines a "homomorphism" from
 $\?B$ to $\FederVardi{\?B}$.
 
 \begin{proposition}[{\cite[Theorem 21]{FederVardi1998ComputationalStructure}}]
 	\label{prop:charac-Feder-Vardi}
 	A "finite $\sigma$-structure" $\?B$ has "tree duality" if, and only if,
-	$\FederVardi{\?B} \homto \?B$, or equivalently if $\?B$ and $\FederVardi{\?B}$
+	$\FederVardi{\?B} \homto \?B$, or, equivalently, if $\?B$ and $\FederVardi{\?B}$
 	are "homomorphically equivalent".
 \end{proposition}
 
@@ -613,15 +639,14 @@ and so $\FederVardi{\?B}$ \emph{always} has "tree duality", no matter if $\?B$ h
 
 	Indeed, let $v_0 \to v_1 \to \cdots \to v_m$ be a "directed cycle" in $\?G$,
 	with $v_0 = v_m$. Then in $\FederVardi{\?G}$, there is an edge from
-	$\{v_0,v_1,\hdots,v_m\}$ to itself.
+	$\{v_0,v_1,\dotsc,v_m\}$ to itself.
 	Since $\?G$ has "tree duality", it follows by \Cref{prop:charac-Feder-Vardi}
 	that $\FederVardi{\?G} \homto \?G$ and hence $\?G$ also contains a self-loop.
 	
-	Note in this case that $\?G$ is "homomorphically equivalent" to the graph consisting
-	of a single self-loop---that admit $\emptyset$ as a "dual" and hence has
+	Note in the case that $\?G$ is "homomorphically equivalent" to the graph consisting
+	of a single self-loop---that admits $\emptyset$ as a "dual" and hence has
 	"tree duality". In other words, what we showed can be rephrased as: any
 	non-trivial "graph@@dir" with "tree duality" is a "DAG".
-
 	For instance, this implies that $\clique{2}$ does not have
 	"tree duality".%
 	\footnote{We will see in \Cref{sec:hyperedge-consistency-finite}

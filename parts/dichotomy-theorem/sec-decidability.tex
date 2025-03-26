@@ -53,7 +53,7 @@ Before proving this lemma, we show an intermediate result.
 	"uniformly first-order definable homomorphisms", say by $\langle \phi_b(x) \rangle_{b\in B}$.
 	Then the conjunctions of the properties 
 	``every $x$ must satisfy exactly one $\phi_b(x)$ ($b\in \?B$)'',
-	and ``for every "predicate" $\+R$ of arity $k$, for any $\langle x_1,\, \hdots,\, x_k \rangle$ in $\+R$, there exists $\langle b_1,\, \hdots,\, b_k \rangle \in \+R(\?B)$ "st"
+	and ``for every "predicate" $\+R$ of arity $k$, for any $\langle x_1,\, \dotsc,\, x_k \rangle$ in $\+R$, there exists $\langle b_1,\, \dotsc,\, b_k \rangle \in \+R(\?B)$ "st"
 	each $x_i$ satisfies $b_i$ ($i \in \lBrack 1,k \rBrack$)'' is a "first-order sentence"
 	describing all "$\sigma$-structures" of $\HomAll{\?B}$.
 
@@ -69,10 +69,10 @@ Before proving this lemma, we show an intermediate result.
 	Indeed, since $\?A\homto\?B$, for each $a\in A$ the set
 	$F(a)$ is non-empty subset of $B$---and hence an element of the domain of $\FederVardi{\?B}$.
 	We then prove that it is a "homomorphism": let $\+R$ be a "predicate" of arity $l$,
-	and let $\langle a_1,\,\hdots,\,a_l \rangle \in \+R(\?A)$. Then for each $i \in \lBrack 1,l\rBrack$, for every $b_i \in F(a_i)$, there exists a "homomorphism" $f$ from $\?A$ to $\?B$
+	and let $\langle a_1,\,\dotsc,\,a_l \rangle \in \+R(\?A)$. Then for each $i \in \lBrack 1,l\rBrack$, for every $b_i \in F(a_i)$, there exists a "homomorphism" $f$ from $\?A$ to $\?B$
 	that sends $a_i$ to $b_i$. Then $f(a_j) \in F(a_j)$ for every $j\in \lBrack 1,l\rBrack$
-	and moreover $\langle f(a_1),\,\hdots,\, f(a_l) \rangle \in \+R(\?B)$.
-	Hence, $\langle F(a_1),\,\hdots,\,F(a_l) \rangle \in \+R(\FederVardi{\?B})$,
+	and moreover $\langle f(a_1),\,\dotsc,\, f(a_l) \rangle \in \+R(\?B)$.
+	Hence, $\langle F(a_1),\,\dotsc,\,F(a_l) \rangle \in \+R(\FederVardi{\?B})$,
 	which concludes the proof that $F$ is a "homomorphism" from $\?A$ to $\FederVardi{\?B}$.
 
 	By "Atserias' theorem", since $\HomAll{\?B}$ is "first-order definable",
@@ -84,7 +84,7 @@ Before proving this lemma, we show an intermediate result.
 	If $\HomAll{\?B}$ is "first-order definable", then so is
 	$\HomAll{\marked{\?B}}$ by \Cref{fact:marking-preserves-finite-duality}.
 	So, let $\phi$ be a "first-order formula" over $\extendedSignature{\sigma}{\?B}$
-	that describes $\HomAll{\marked{\?B}}$. We let $B = \{b_1,\hdots,b_k\}$.
+	that describes $\HomAll{\marked{\?B}}$. We let $B = \{b_1,\dotsc,b_k\}$.
 	We define a "first-order formula" $\phi^*_i(x_i)$ over $\sigma$,
 	by substituting each occurrence of $\unarypred{b_i}(y)$ in $\phi$ for $y = x_i$,
 	and $\unarypred{b_j}(y)$ ($j \neq i$) for $\bot$.
@@ -160,10 +160,10 @@ we show that such "homomorphisms" are always "regular@@hom".
 	
 	Since $\•A$ is an "automatic presentation" over $\Sigma$,
 	for each "predicate" $\+R$ of arity $k$
-	of $\sigma$, there exists a "first-order formula" $\psi_{\+R}(x_1,\hdots,x_k)$ over 
+	of $\sigma$, there exists a "first-order formula" $\psi_{\+R}(x_1,\dotsc,x_k)$ over 
 	$\signatureSynchronous{\Sigma}$ describing each relation $\+R$.
 	We then define $\phi^*_b(x)$ as the formulas obtained from $\phi_b(x)$
-	by substituting $\+R(x_1,\hdots,x_k)$ for $\psi_{\+R}(x_1,\hdots,x_k)$.
+	by substituting $\+R(x_1,\dotsc,x_k)$ for $\psi_{\+R}(x_1,\dotsc,x_k)$.
 
 	Then, for each $b\in B$, $\phi^*_b(x)$ is a "first-order formula" over $\signatureSynchronous{\Sigma}$,
 	and so \[\{u \in \Sigma^* \mid \langle \univStructSynchronous{\Sigma},u \rangle \FOmodels \phi^*_b(x)\}\] is "regular@@lang" by \todo{ADDREF}.
@@ -182,9 +182,9 @@ In turn, since $\HomAut{\?B}$ is "coRE" and $\HomRegAut{\?B}$ is "RE", this impl
 that $\HomRegAut{\?B}$ is decidable.
 In fact, using the formulas $\phi^*_b(x)$, we can build a "first-order formula"
 saying ``every $x$ satisfies exactly one $\phi^*_b(x)$, and moreover
-if $\langle x_1,\hdots,x_k\rangle$ is an "$\+R$-hyperedge" then
-$\langle b_1,\hdots,b_k \rangle$ is an $\+R$-hyperedge, where $b_i$ is the unique element of $B$
-"st" $\phi_{b_i}(x_i)$ holds''. Each property ``$\langle x_1,\hdots,x_k\rangle$ is an "$\+R$-hyperedge"'' can be expressed using a "first-order formula" expressing the relations
+if $\langle x_1,\dotsc,x_k\rangle$ is an "$\+R$-tuple" then
+$\langle b_1,\dotsc,b_k \rangle$ is an $\+R$-tuple, where $b_i$ is the unique element of $B$
+"st" $\phi_{b_i}(x_i)$ holds''. Each property ``$\langle x_1,\dotsc,x_k\rangle$ is an "$\+R$-tuple"'' can be expressed using a "first-order formula" expressing the relations
 of the "automatic presentation" given as input.
 
 \begin{corollary}[of "Atserias' theorem" and \Cref{lemma:finite-duality-uniformly-definable-homomorphisms}]
@@ -271,9 +271,9 @@ We then define an operator on this space, which corresponds to one step of the "
 \end{center}
 where for each $a \in A$, \AP$\intro*\HCOperator_{\!\?A,\?B}(F)(a)$ is the set of $b \in F(a)$ "st"
 for every $\+R_{(k)} \in \sigma$, for every $i \in \lBrack 1,k\rBrack$,
-if $\langle a_1,\, \hdots,\, a_{k-1} \rangle \in \adjacency{a}{\?A}{\+R}{i}$,
-then there exists $b_1 \in F(a_1)$, $\hdots$, $b_{k-1} \in F(a_{k-1})$ "st" 
-$\langle b_1,\, \hdots,\, b_{k-1} \rangle \in \adjacency{b}{\?B}{\+R}{i}$.\footnote{%
+if $\langle a_1,\, \dotsc,\, a_{k-1} \rangle \in \adjacency{a}{\?A}{\+R}{i}$,
+then there exists $b_1 \in F(a_1)$, $\dotsc$, $b_{k-1} \in F(a_{k-1})$ "st" 
+$\langle b_1,\, \dotsc,\, b_{k-1} \rangle \in \adjacency{b}{\?B}{\+R}{i}$.\footnote{%
 We write $\HCOperator$ for $\HCOperator_{\!\?A,\?B}$ when there is no ambiguity on
 the "structures" involved.}
 
@@ -451,7 +451,7 @@ instead of $\?A$.
 	"st" $F^{-1}[Y] = \semFO{\phi_Y(x)}{\univStructSynchronous{\Sigma}}$.
 	Also, since $\•A$ is an "automatic presentation", for any $\+R \in \sigma$ of arity $k$,
 	there exists by \Cref{prop:automatic-first-order} a "first-order formula" $\psi_{\+R}(x_1,\ldots,x_k)$ over \(\signatureSynchronous{\Sigma}\) "st"
-	$\relPres{\+R}{\•A} = \semFO{\psi_{\+R}(x_1,\hdots,x_k)}{\univStructSynchronous{\Sigma}}$.
+	$\relPres{\+R}{\•A} = \semFO{\psi_{\+R}(x_1,\dotsc,x_k)}{\univStructSynchronous{\Sigma}}$.
 	Similarly, $\domainPres{\•A} = \semFO{\psi_{\textrm{dom}}(x)}{\univStructSynchronous{\Sigma}}$
 	for some "formula@@FO" $\psi_{\textrm{dom}}(x)$.
 
@@ -460,9 +460,9 @@ instead of $\?A$.
 	using both the formulas above, and the definition of $\HCOperator$.
 	Indeed, recall that an element $u \in \domainPres{\•A}$ should be sent via $\HCOperator(F)$ 
 	onto $Y\in \pset{B}$ if $Y$ is exactly the set of elements $b \in B$ "st" for every $\+R_{(k)} \in \sigma$, for every $i \in \lBrack 1,k\rBrack$, if
-	$\langle a_1,\, \hdots,\, a_{k-1} \rangle \in \adjacency{a}{\?A}{\+R}{i}$,
-	then there exists $b_1 \in F(a_1)$, $\hdots$, $b_{k-1} \in F(a_{k-1})$ "st" 
-	$\langle b_1,\, \hdots,\, b_{k-1} \rangle \in \adjacency{b}{\?B}{\+R}{i}$.
+	$\langle a_1,\, \dotsc,\, a_{k-1} \rangle \in \adjacency{a}{\?A}{\+R}{i}$,
+	then there exists $b_1 \in F(a_1)$, $\dotsc$, $b_{k-1} \in F(a_{k-1})$ "st" 
+	$\langle b_1,\, \dotsc,\, b_{k-1} \rangle \in \adjacency{b}{\?B}{\+R}{i}$.
 	Symbolically the set of such $u$'s can be written as
 	$\semFO{\widehat \phi_Y(x)}{\univStructSynchronous{\Sigma}}$, where
 	\[
@@ -477,10 +477,10 @@ instead of $\?A$.
 	\begin{align*}
 		\chi_b(x) \defeq\; &
 			\bigwedge_{\+R_{(k)} \in \sigma} \bigwedge_{i\in \lBrack 1,k\rBrack}\;
-			\forall x_1.\, \hdots\, \forall x_{i-1}.\, \forall x_{i+1}.\, \hdots \, \forall x_{k}.\,\\
-			& \hspace{2em}\psi_{\+R}(x_1,\hdots, x_{i-1}, x, x_{i+1}, \hdots, x_k)
+			\forall x_1.\, \dotsc\, \forall x_{i-1}.\, \forall x_{i+1}.\, \dotsc \, \forall x_{k}.\,\\
+			& \hspace{2em}\psi_{\+R}(x_1,\dotsc, x_{i-1}, x, x_{i+1}, \dotsc, x_k)
 			\\ 
-			& \hspace{2em} \Rightarrow \Big(\bigvee_{\substack{\langle b_1,\hdots,b_{i-1},b_{i+1},\hdots b_k\rangle \in \adjacency{b}{\?B}{\+R}{i}}}\;
+			& \hspace{2em} \Rightarrow \Big(\bigvee_{\substack{\langle b_1,\dotsc,b_{i-1},b_{i+1},\dotsc b_k\rangle \in \adjacency{b}{\?B}{\+R}{i}}}\;
 			\bigwedge_{i \in \lBrack 1,k\rBrack \smallsetminus \{i\}}
 			\underbrace{%
 				\bigvee_{\substack{Y' \in \pset{B}\\ b_i\in Y'}} \phi_{Y'}(x_i)
@@ -523,20 +523,20 @@ In order to prove this proposition, we rely on the following property.
 	Let $a \in A'$, and let $b \in \HCOperator(F)(h(a))$.
 	Then for every $\+R_{(k)} \in \sigma$,
 	for every $i \in \lBrack 1,k\rBrack$,
-	if $\langle a_1,\, \hdots,\, a_{k-1} \rangle \in \adjacency{h(a)}{\?A}{\+R}{i}$,
-	then there exists $b_1 \in F(a_1)$, $\hdots$, $b_{k-1} \in F(a_{k-1})$ "st" 
-	$\langle b_1,\, \hdots,\, b_{k-1} \rangle \in \adjacency{b}{\?B}{\+R}{i}$.
+	if $\langle a_1,\, \dotsc,\, a_{k-1} \rangle \in \adjacency{h(a)}{\?A}{\+R}{i}$,
+	then there exists $b_1 \in F(a_1)$, $\dotsc$, $b_{k-1} \in F(a_{k-1})$ "st" 
+	$\langle b_1,\, \dotsc,\, b_{k-1} \rangle \in \adjacency{b}{\?B}{\+R}{i}$.
 	Then let $\+R_{(k)} \in \sigma$ and $i \in \lBrack 1,k\rBrack$.
-	Let $\langle a_1,\, \hdots,\, a_{k-1} \rangle \in \adjacency{a}{\?A'}{\+R}{i}$.
-	Then $\langle h(a_1),\, \hdots,\, h(a_{k-1}) \rangle \in \adjacency{h(a)}{\?A}{\+R}{i}$
+	Let $\langle a_1,\, \dotsc,\, a_{k-1} \rangle \in \adjacency{a}{\?A'}{\+R}{i}$.
+	Then $\langle h(a_1),\, \dotsc,\, h(a_{k-1}) \rangle \in \adjacency{h(a)}{\?A}{\+R}{i}$
 	since $h$ is a "homomorphism". And so there exists
-	$b_1 \in F(h(a_1))$, $\hdots$, $b_{k-1} \in F(h(a_{k-1}))$ "st" 
-	$\langle b_1,\, \hdots,\, b_{k-1} \rangle \in \adjacency{b}{\?B}{\+R}{i}$.
+	$b_1 \in F(h(a_1))$, $\dotsc$, $b_{k-1} \in F(h(a_{k-1}))$ "st" 
+	$\langle b_1,\, \dotsc,\, b_{k-1} \rangle \in \adjacency{b}{\?B}{\+R}{i}$.
 	Using the inclusions $F(h(a_i)) \subseteq F'(a_i)$ (for $a_i \in A'$), it follows that
 	for every $\+R_{(k)} \in \sigma$, for every $i \in \lBrack 1,k\rBrack$,
-	if $\langle a_1,\, \hdots,\, a_{k-1} \rangle \in \adjacency{a}{\?A'}{\+R}{i}$, then
-	there exists $b_1 \in F'(a_1)$, $\hdots$, $b_{k-1} \in F'(a_{k-1})$
-	"st" $\langle b_1,\, \hdots,\, b_{k-1} \rangle \in \adjacency{b}{\?B}{\+R}{i}$.
+	if $\langle a_1,\, \dotsc,\, a_{k-1} \rangle \in \adjacency{a}{\?A'}{\+R}{i}$, then
+	there exists $b_1 \in F'(a_1)$, $\dotsc$, $b_{k-1} \in F'(a_{k-1})$
+	"st" $\langle b_1,\, \dotsc,\, b_{k-1} \rangle \in \adjacency{b}{\?B}{\+R}{i}$.
 	And hence $b \in \HCOperator(F')(a)$, which concludes the proof.
 \end{proof}
 
@@ -614,12 +614,12 @@ on $\zigzag{n}{5}$ in only $2$ steps.
 	We give a proof sketch of this claim. Note that by definition,
 	$\HCOperator_{\?A,\?B}(F)(a)$ only depends on the values of $F(a')$ where $a'$ is at distance 1.
 	More precisely, it only depends on whether for any "predicate" $\+R$ of arity $k$,
-	for any $i\in\lBrack 1,k\rBrack$, for any $Y_1,\hdots,Y_{k-1} \subseteq B$, whether there
-	are elements $\langle a_1,\,\hdots,\,a_{k-1}\rangle \in \adjacency{a}{\?A}{\+R}{i}$
+	for any $i\in\lBrack 1,k\rBrack$, for any $Y_1,\dotsc,Y_{k-1} \subseteq B$, whether there
+	are elements $\langle a_1,\,\dotsc,\,a_{k-1}\rangle \in \adjacency{a}{\?A}{\+R}{i}$
 	"st"  
-	$\langle F(a_1),\,\hdots,\,F(a_{k-1}) \rangle = \langle Y_1,\,\hdots,\,Y_{k-1} \rangle$.
+	$\langle F(a_1),\,\dotsc,\,F(a_{k-1}) \rangle = \langle Y_1,\,\dotsc,\,Y_{k-1} \rangle$.
 	Since $B$ is finite, there are finitely many such tuples, and for each of them it suffices
-	to keep (for distance $m=1$) only one tuple $\langle a_1,\,\hdots,\,a_{k-1}\rangle \in \adjacency{a}{\?A}{\+R}{i}$. By induction on $m$, we
+	to keep (for distance $m=1$) only one tuple $\langle a_1,\,\dotsc,\,a_{k-1}\rangle \in \adjacency{a}{\?A}{\+R}{i}$. By induction on $m$, we
 	obtain a finite "substructure" $\?A_{a,m}$ of $\ball{\?A}{a}{m}$ as in
 	\Cref{claim:hyperedge-consistency-ball}.
 
@@ -794,7 +794,7 @@ on $\zigzag{n}{5}$ in only $2$ steps.
 	every "path"\footnote{$t_i$ denotes an element of $\?T$ and $\bar h_i$ denotes a "hyperedge" of $\?T$. By definition of $\IncidenceGraph{\?T}$, $t_i \in \bar h_i$ and
 	$t_{i+1} \in \bar h_i$.}
 	\[
-		t_0,\, \bar h_0,\, t_1,\, \bar h_1,\, \hdots,\, t_{n-1},\, \bar h_{n-1},\, t_n
+		t_0,\, \bar h_0,\, t_1,\, \bar h_1,\, \dotsc,\, t_{n-1},\, \bar h_{n-1},\, t_n
 	\]
 	in $\IncidenceGraph{\?T}$, if the "path" it induces in $\?U$ is "simple@@path",
 	if $f(t_0) \in A$ and $f(t_n) \in A$,
@@ -802,11 +802,11 @@ on $\zigzag{n}{5}$ in only $2$ steps.
 	By contradiction, we assume that $f(t_i) \not\in A$ for some $i \in \lBrack 0,n \rBrack$.
 	Since the only vertex that is adjacent to both $\?A$ and $\?B$ in $\?C$ is $a=b$,
 	we get that $f(t_j) = a = b$ for some $j < i$ and $f(t_{j'}) = a = b$ for some $j' > i$.
-	And hence, the "path" $f(t_0), \hdots, f(t_n)$ is not "simple@@path", which is a contradiction.
+	And hence, the "path" $f(t_0), \dotsc, f(t_n)$ is not "simple@@path", which is a contradiction.
 
 	We then show that $\?U_{\?A}$ is "strongly acyclic@@struct". We consider a "path"
 	\[
-		t_0,\, \bar h_0,\, t_1,\, \bar h_1,\, \hdots,\, t_{n-1},\, \bar h_{n-1},\, t_n
+		t_0,\, \bar h_0,\, t_1,\, \bar h_1,\, \dotsc,\, t_{n-1},\, \bar h_{n-1},\, t_n
 	\]
 	in $\IncidenceGraph{\?U_{\?A}}$, and assume that $t_i \neq t_j$ for all pairs
 	$(i,j) \in \lBrack 0,n\rBrack^2 \smallsetminus \{(0,n),\, (n,0)\}$.
@@ -846,7 +846,7 @@ on $\zigzag{n}{5}$ in only $2$ steps.
 % 	exists $a\in A$ "st" $\HCOperator^{\,n}(\topLatticeGuessFunctions{B})(a) = \emptyset$. 
 % \end{claim}
 
-% Indeed, let $\?D_1, \hdots, \?D_p$ be a finite set of "obstructions" for $\?B$.
+% Indeed, let $\?D_1, \dotsc, \?D_p$ be a finite set of "obstructions" for $\?B$.
 % For each $i\in\lBrack 1,p\rBrack$, since $\?D_i \nothomto \?B$, there exists
 % $n_i\in\N$ "st" $\HCOperator^{n_i}(\topLatticeGuessFunctions{B})(d_i) = \emptyset$ for some $d_i\in D_i$. We let $n \defeq \max_{i\in\lBrack 1,p\rBrack} n_i$.
 

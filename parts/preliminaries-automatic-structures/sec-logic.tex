@@ -27,9 +27,9 @@ Let $\sigma$ and $\tau$ be "relational signatures".
 A \AP ""$d$-dimensional first-order interpretation"" $\+I$ consists of the following tuple of
 "first-order formulas" over $\sigma$:
 \begin{itemize}
-	\itemAP $\intro*\domainInter{\+I}(x^1,\hdots, x^d)$ (specifying the domain)
-	\itemAP $\intro*\relInter{=}{\+I}(\tup{x^1,\hdots, x^d}, \tup{y^1,\hdots, y^d})$ (specifying equality)
-	\itemAP $\reintro*\relInter{\+R}{\+I}(\tup{x^1_1,\hdots,x^d_1}, \hdots, \tup{x^1_k,\hdots,x^d_k})$
+	\itemAP $\intro*\domainInter{\+I}(x^1,\dotsc, x^d)$ (specifying the domain)
+	\itemAP $\intro*\relInter{=}{\+I}(\tup{x^1,\dotsc, x^d}, \tup{y^1,\dotsc, y^d})$ (specifying equality)
+	\itemAP $\reintro*\relInter{\+R}{\+I}(\tup{x^1_1,\dotsc,x^d_1}, \dotsc, \tup{x^1_k,\dotsc,x^d_k})$
 		for any predicate $\+R \in \tau$ of arity $k$,
 \end{itemize}
 such that $\relInter{=}{\+I}$ defines an equivalence relation on the domain of $\+I$.
@@ -46,10 +46,10 @@ denote $d$-tuples of elements of $\?A$ and $d$-tuples of variables.}
 		we have
 		\[
 			\+R_{(k)}(\interpretation{\+I}{\?A}) =
-			\Big\{\tup{\bar x_1, \hdots, \bar x_k} \mid
-				\exists \bar y_1.\, \hdots.\, \bar y_k.\,
+			\Big\{\tup{\bar x_1, \dotsc, \bar x_k} \mid
+				\exists \bar y_1.\, \dotsc.\, \bar y_k.\,
 				\bigwedge_{i=1}^k \relInter{=}{\+I}(\bar x_i, \bar y_i)
-				\land \relInter{\+R}{\+I}(\bar y_1, \hdots, \bar y_k)
+				\land \relInter{\+R}{\+I}(\bar y_1, \dotsc, \bar y_k)
 			\Big\}.
 		\]
 \end{itemize}
@@ -93,14 +93,14 @@ see \Cref{fig:interpretation-path-into-cycle}.
 The idea behind "first-order interpretation" is that
 "first-order formulas" about the interpretation $\interpretation{\+I}{\?A}$
 can be translated into "first-order formulas" over $\?A$.
-Formally, given a "first-order formula" $\phi(x_1,\hdots,x_k)$ over $\tau$,
-we can define a "first-order formula" $\phi^{\+I}(\bar x_1,\hdots,\bar x_k)$ over $\sigma$
+Formally, given a "first-order formula" $\phi(x_1,\dotsc,x_k)$ over $\tau$,
+we can define a "first-order formula" $\phi^{\+I}(\bar x_1,\dotsc,\bar x_k)$ over $\sigma$
 defined inductively by:
 \begin{itemize}
 	\item replacing each variable $x$ by a $d$-tuple $\bar x$,
 	\item replacing every occurrence of
-		$\+R(x_1,\hdots, x_k)$ (with $\+R_{(k)} \in \tau$)
-		by the formula $\relInter{\+R}{\+I}(\bar x_1, \hdots, \bar x_k)$,
+		$\+R(x_1,\dotsc, x_k)$ (with $\+R_{(k)} \in \tau$)
+		by the formula $\relInter{\+R}{\+I}(\bar x_1, \dotsc, \bar x_k)$,
 	\item relativizing quantification with respect to $\domainInter{\+I}$,
 		meaning that
 		\begin{align*}
@@ -113,13 +113,13 @@ defined inductively by:
 \end{itemize} 
 \begin{proposition}
 	\AP\label{prop:first-order-interpretation}
-	For any "first-order formula" $\phi(x_1,\hdots,x_k)$ over $\tau$,
-	for any "pointed $\sigma$-structure" $\tup{\?A, \bar a_1,\hdots, \bar a_k}$, we have:
+	For any "first-order formula" $\phi(x_1,\dotsc,x_k)$ over $\tau$,
+	for any "pointed $\sigma$-structure" $\tup{\?A, \bar a_1,\dotsc, \bar a_k}$, we have:
 	\[
-		\tup{\interpretation{\+I}{\?A}, \equivclass{\bar a_1}, \hdots, \equivclass{\bar a_k}}
-		\FOmodels \phi(x_1, \hdots, x_k)
+		\tup{\interpretation{\+I}{\?A}, \equivclass{\bar a_1}, \dotsc, \equivclass{\bar a_k}}
+		\FOmodels \phi(x_1, \dotsc, x_k)
 		\quad\text{"iff"}\quad
-		\tup{\?A, \bar a_1,\hdots, \bar a_k} \FOmodels \phi^{\+I}(\bar x_1,\hdots,\bar x_k).
+		\tup{\?A, \bar a_1,\dotsc, \bar a_k} \FOmodels \phi^{\+I}(\bar x_1,\dotsc,\bar x_k).
 	\]
 \end{proposition}
 And so, in particular, if $\+C$ is a class of structures, then
@@ -302,11 +302,11 @@ makes no difference whatsoever since both models are "first-order interpretable"
 
 	Given a "synchronous automaton" $\+A$ recognizing $\+R \subseteq (\Sigma^*)^k$,
 	we want to build a "first-order formula" $\phi_{\+A}$ over $\signatureSynchronous{\Sigma}$
-	"st" for all $\tup{u_1,\hdots, u_k} \in (\Sigma^*)^k$:
+	"st" for all $\tup{u_1,\dotsc, u_k} \in (\Sigma^*)^k$:
 	\[
-		\tup{u_1,\hdots, u_k} \in \+R
+		\tup{u_1,\dotsc, u_k} \in \+R
 		\quad\text{iff}\quad
-		\tup{\univStructSynchronous{\Sigma}, u_1,\hdots, u_k} \FOmodels \phi_{\+A}(x_1,\hdots,x_k).
+		\tup{\univStructSynchronous{\Sigma}, u_1,\dotsc, u_k} \FOmodels \phi_{\+A}(x_1,\dotsc,x_k).
 	\]
 	The formula $\phi_{\+A}$ is built as follows:
 	\begin{itemize}
@@ -348,7 +348,7 @@ The two models are clearly "first-order equivalent".
 
 \begin{example}
 	\AP\label{ex:lexicographic-is-automatic}
-	Given an ordered alphabet $\Sigma = \{a_1,\hdots,a_n\}$ with $a_1 < \hdots < a_n$,
+	Given an ordered alphabet $\Sigma = \{a_1,\dotsc,a_n\}$ with $a_1 < \dotsc < a_n$,
 	the \AP""lexicographic order"" $\intro*\lex$ defined by $u \lex v$ when there exists 
 	a prefix $w$ both of $u$ and of $v$, "st" either $w$ has the same length as $u$,
 	or the letter following $w$ in $u$ is strictly smaller than the letter following $w$ in $v$.
