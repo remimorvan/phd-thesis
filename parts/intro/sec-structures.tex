@@ -1,0 +1,234 @@
+\section{The Two Sides of the Homomorphism Problem}
+
+This thesis is devoted to studying variations of the "homomorphism problem".
+This problem takes two "finite (directed) graphs", consisting of a finite set of vertices $V$
+together with a set of "edges" $\+E \subseteq V \times V$, and asks if there is a "homomorphism" 
+between them, which consists of a function between vertices that preserves
+the "edges", in the sense that any edge must be mapped to another edge,
+see \Cref{fig:example-graph-homomorphism}.
+
+\begin{figure}
+	\centering
+	\begin{tikzpicture}
+		\foreach \i in {0,1,...,5}{
+			\node[vertex] (\i) at (\i*360/6: 1.2cm) {};
+		}
+
+		\draw[edge] (1) to (0);
+		\draw[edge] (2) to (1);
+		\draw[edge] (3) to (2);
+		\draw[edge] (3) to (4);
+		\draw[edge] (5) to (4);
+		\draw[edge] (5) to (0);
+
+		\node[vertex] at (4.33,.66) (a) {};
+		\node[vertex] at (5.66,.66) (b) {};
+		\node[vertex] at (5.66,-.66) (c) {};
+		\node[vertex] at (4.33,-.66) (d) {};
+		\node[vertex] at (6.8,0) (e) {};
+
+		\draw[edge] (d) to (a);
+		\draw[edge] (a) to (b);
+		\draw[edge] (b) to (c);
+		\draw[edge] (d) to (c);
+		\draw[edge] (b) to (e);
+		\draw[edge] (e) to (c);
+
+		\draw[edge, draw=cBlue, dotted, out=-20, in=160] (3) to (d);
+		\draw[edge, draw=cBlue, dotted, out=-25, in=170] (2) to (a);
+		\draw[edge, draw=cBlue, dotted, out=5, in=130] (1) to (b);
+		\draw[edge, draw=cBlue, dotted, out=10, in=145] (0) to (c);
+		\draw[edge, draw=cBlue, dotted, out=-20, in=195] (5) to (d);
+		\draw[edge, draw=cBlue, dotted, out=-30, in=210] (4) to (c);
+	\end{tikzpicture}
+	\caption{
+		\AP\label{fig:example-graph-homomorphism}
+		Two graphs (in black), and a homomorphism (blue dotted arrows) from the
+		graph on the left-hand side to one right one.
+	}
+\end{figure}
+
+To enrich the structure---but more importantly to add a splash of colour to this thesis---,
+we will in fact consider more complex structures: 
+we allow for multiple edge relations, or even relations of higher arity linking the vertices.
+Which kind of relations (and how many of which kind) is allowed is known as the "signature" of
+the "structure". 
+These richer structures are known as "relational structures"---see
+\Cref{fig:example-structure-homomorphism}---, and
+"homomorphisms" between "relational structures" are asked to preserve \emph{all} relations.
+
+\begin{marginfigure}
+	\centering
+	\begin{tikzpicture}[scale=.9]
+		\node (d0) at (-.6,.6) {};
+		\node (d1) at (-.8,0) {};
+		\node (d2) at (-.4,-1.2) {};
+		\node (d3) at (-1.5,0) {};
+		\node (d4) at (-0.3,1.3) {};
+
+		\draw[use Hobby shortcut, closed=true, draw=c2, fill=c2, fill opacity=.4] 
+			(d0) .. (d1) .. (d2) .. (d3) .. (d4) ;
+
+		\node (c0) at (-.2,1) {};
+		\node (c1) at (-0.5,1.5) {};
+		\node (c2) at (-1,2.4) {};
+		\node (c3) at (-2.7,2.2) {};
+		\node (c4) at (-2.2,1.5) {};
+		\node (c5) at (-1.2,1.5) {};
+		\node (c6) at (-.6,.6) {};
+
+		\draw[use Hobby shortcut, closed=true, draw=c1, fill=c1, fill opacity=.4] 
+			(c0) .. (c1) .. (c2) .. (c3) .. (c4) .. (c5) .. (c6);
+
+		\node (e0) at (1.5,0) {};
+		\node (e1) at (1,.3) {};
+		\node (e2) at (.95,-.3) {};
+	
+		\draw[use Hobby shortcut, closed=true, draw=c0, fill=c0, fill opacity=.4] 
+			(e0) .. (e1) .. (e2) ;
+
+		% grid
+		% \foreach \x in {-4,-3,...,4} {
+		% 	\draw[-,draw=cLightGrey] (\x, -4) to (\x, 4);
+		% 	\draw[-,draw=cLightGrey] (-4, \x) to (4, \x);
+		% }
+		% \draw[-,draw=cGrey] (0, -4) to (0, 4);
+		% \draw[-,draw=cGrey] (-4, 0) to (4, 0);
+
+		\foreach \i in {0,1,...,5} {
+			\node[vertex] (\i) at (\i*360/6: 1.2cm) {};
+		}
+		\foreach \i in {7,8,9,10} {
+			\node[vertex] (\i) at ($(\i*360/6: 1.2cm)+(-1.8,1.04)$) {};
+		}
+
+		\draw[edge, bend left] (1) to (0);
+		\draw[edge, double, bend right] (1) to (0);
+		\draw[edge, <->] (2) to (1);
+		\draw[edge, double] (3) to (2);
+		\draw[edge] (3) to (4);
+		\draw[edge, double] (5) to (4);
+		\draw[edge, double] (5) to (0);
+		\draw[edge, double] (2) to (7);
+		\draw[edge, bend left] (7) to (8);
+		\draw[edge, double, bend left] (8) to (7);
+		\draw[edge] (8) to (9);
+		\draw[edge, double] (10) to (9);
+		\draw[edge, bend left] (10) to (3);
+		\draw[edge, double, <->, bend left] (3) to (10);
+		\draw[edge, loop, out=-90, in=0, looseness=8] (5) to (5);
+	\end{tikzpicture}
+	\caption{
+		\AP\label{fig:example-structure-homomorphism}
+		A "relational structure" with two kinds of binary relations (represented by
+		simple and double arrows) and three kinds of unary relations (represented by
+		red, yellow and blue potatoes).
+	}
+\end{marginfigure}
+
+More than a mere decision problem---which obviously lives in "NP"---,
+the "homomorphism problem" should rather be seen as a \emph{framework} or
+\emph{language} to formalize many common problems in computer science.
+
+\begin{marginfigure}
+	\centering
+	\begin{tikzpicture}
+		\node[vertex] (0) at (0,0) {};
+		\node[vertex, right=of 0] (1) {};
+		\node[vertex, right=of 1] (2) {};
+		\node[vertex, right=of 2] (3) {};
+
+		\draw[edge] (0) to node[above] {$a$} (1);
+		\draw[edge] (1) to node[above] {$b$} (2);
+		\draw[edge] (2) to node[above] {$a$} (3);
+
+		\draw[edge] ($(0)+(-.4,0)$) to (0);
+		\node[vertex, inner sep=3pt] (3b) at (3) {};
+
+		\node[vertex, below=5em of 1] (q0) {};
+		\node[vertex, right=of q0] (q1) {};
+		
+		\draw[edge] ($(q0)+(-.4,0)$) to (q0);
+		\node[vertex, inner sep=3pt] (q1b) at (q1) {};
+
+		\draw[edge, loop, out=-60, in=-120, looseness=8] (q0) to node[below] {$a,b$} (q0);
+		\draw[edge] (q0) to node[above] {$a$} (q1);
+		\draw[edge, loop, out=-60, in=-120, looseness=8] (q1) to node[below] {$a,b$} (q1);
+		
+		\draw[edge, draw=cBlue, dotted, out=-60, in=130] (0) to (q0);
+		\draw[edge, draw=cBlue, dotted, out=-100, in=100] (1) to (q0);
+		\draw[edge, draw=cBlue, dotted, out=-90, in=80] (2) to (q0);
+		\draw[edge, draw=cBlue, dotted, out=-90, in=90] (3) to (q1);
+	\end{tikzpicture}
+	\caption{
+		\AP\label{fig:example-automaton-as-rel}
+		Automata acceptance as a "homomorphism problem":
+		"relational structure" representing the finite word $aba$ (above),
+		"structure" representing the minimal automaton of $(a+b)^* a (a+b)^*$
+		(below) and a "homomorphism" from the former to the latter (blue dotted arrows).
+		Vertices with a double circle (resp. incoming dangling arrow) represent
+		final (resp. initial) states.
+	}
+\end{marginfigure}
+
+\begin{example}[Non-deterministic automata]
+	A (non-deterministic) automaton $\?A$ can be seen as a "relational structure",
+	whose nodes are its states, on the "signature" with two unary predicates (one for
+	describing initial states, one for final states), and one binary predicate
+	for each letter of the alphabet $\Sigma$.
+	Any finite word $u\in \Sigma^*$ can in turn by seen as a "relational structure"
+	$\?W_u$ with $\lBrack 0,|u|\rBrack$ as its domain,
+	where $0$ is initial, $|u|$ is final, and
+	for each $i \in \lBrack 1,|u|\rBrack$, there is an edge from $i-1$ to $i$
+	whose type is given by the $i$-th letter of $u$.
+	Then, there is a "homomorphism" from $\?W_u$ to $\?A$ if, and only if, 
+	the automaton $\?A$ accepts $u$. See \Cref{fig:example-automaton-as-rel}.
+\end{example}
+
+\begin{example}[Graph colouring]
+	\label{ex:graph-colouring-as-hom}
+	Let $k\in\Np$. We let the \AP""$k$-clique"", denoted by $\intro*\clique{k}$,
+	to be the "graph" whose vertices are $\lBrack 1,k\rBrack$,
+	and with an edge from $i$ to $j$ (with $i,j \in \lBrack 1,k\rBrack$)
+	"iff" $i\neq j$.
+	A finite "graph" $\?G$ is \AP""$k$-colourable""---"ie"
+	we can map every vertex of $\?G$ to an element of $\lBrack 1,k\rBrack$
+	"st" no two adjacent vertices are sent on the same colour/number---if,
+	and only if, there is a "homomorphism" from $\?G$ to $\clique{k}$.
+	\todo{figure}
+\end{example}
+
+\begin{example}[Database evaluation]
+	\todo{todo}
+\end{example}
+
+\begin{example}[Sudoku grids]
+	We represent an empty sudoku grid as the "relational structure"
+	whose domain is $\lBrack 1,9\rBrack \times \lBrack 1,9\rBrack$---corresponding to coordinates in the grid---with
+	three kinds of binary "predicates": $\+R$, $\+C$ and $\+S$,
+	that describe when two coordinates are on the same row, column or 3x3-square, respectively.
+	For non-empty grids, we add nine unary "predicates" $P_k$ ($k \in \lBrack 1,9\rBrack$),
+	and if coordinate $\tup{i,j}$ if prefilled with number $k$, then predicate $P_k$ must
+	hold on the element $\tup{i,j}$.
+	Given a prefilled grid $G$, we denote by $\?S_G$ the associated "relational structure".
+	
+	We then define the target structure $\?T$ to have $\lBrack 1,9\rBrack$ as its domain:
+	with the binary relations $\+R$, $\+C$ and $\+S$ which all three consist of
+	all tuples $\tup{\tup{i,j},\tup{i',j'}}$ "st" $\tup{i,j} \neq \tup{i',j'}$.
+	Moreover, each unary relation $P_k$ ($k \in \lBrack 1,9\rBrack$) is defined
+	to hold only on $\{i\}$.
+	Then, a prefilled grid $G$ can be completed if, and only if,
+	$\?S_G$ has a "homomorphism" to $\?T$.%
+	\footnote{In fact, for this example we could use only one binary predicate instead of three.
+	Note that this encoding is actually quite close
+	to graph colouring (\Cref{ex:graph-colouring-as-hom}) with an extra trick
+	to force some values. This trick---formally called "marked structure"---will
+	actually prove crucial in \Cref{ch:dichotomy-theorem}.}
+\end{example}
+
+\begin{example}[SAT solving]
+	\todo{todo}
+\end{example}
+
+\todo{homomorphism (not only existence of a homomorphism) have some meaning}
+\todo{existential constraint vs universal constraint}
