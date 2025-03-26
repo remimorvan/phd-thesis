@@ -110,9 +110,9 @@
 | regularly unconnected
 
 \knowledge{notion}
- | neighbourhood
- | neighbourhoods
- | neighbours
+ | adjacency
+ | adjacencies
+ | adjacent elements
 
 \knowledge{notion}
  | directed tree

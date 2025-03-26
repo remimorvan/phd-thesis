@@ -271,9 +271,9 @@ We then define an operator on this space, which corresponds to one step of the "
 \end{center}
 where for each $a \in A$, \AP$\intro*\HCOperator_{\!\?A,\?B}(F)(a)$ is the set of $b \in F(a)$ "st"
 for every $\+R_{(k)} \in \sigma$, for every $i \in \lBrack 1,k\rBrack$,
-if $\langle a_1,\, \hdots,\, a_{k-1} \rangle \in \neighbourhood{a}{\?A}{\+R}{i}$,
+if $\langle a_1,\, \hdots,\, a_{k-1} \rangle \in \adjacency{a}{\?A}{\+R}{i}$,
 then there exists $b_1 \in F(a_1)$, $\hdots$, $b_{k-1} \in F(a_{k-1})$ "st" 
-$\langle b_1,\, \hdots,\, b_{k-1} \rangle \in \neighbourhood{b}{\?B}{\+R}{i}$.\footnote{%
+$\langle b_1,\, \hdots,\, b_{k-1} \rangle \in \adjacency{b}{\?B}{\+R}{i}$.\footnote{%
 We write $\HCOperator$ for $\HCOperator_{\!\?A,\?B}$ when there is no ambiguity on
 the "structures" involved.}
 
@@ -460,9 +460,9 @@ instead of $\?A$.
 	using both the formulas above, and the definition of $\HCOperator$.
 	Indeed, recall that an element $u \in \domainPres{\•A}$ should be sent via $\HCOperator(F)$ 
 	onto $Y\in \pset{B}$ if $Y$ is exactly the set of elements $b \in B$ "st" for every $\+R_{(k)} \in \sigma$, for every $i \in \lBrack 1,k\rBrack$, if
-	$\langle a_1,\, \hdots,\, a_{k-1} \rangle \in \neighbourhood{a}{\?A}{\+R}{i}$,
+	$\langle a_1,\, \hdots,\, a_{k-1} \rangle \in \adjacency{a}{\?A}{\+R}{i}$,
 	then there exists $b_1 \in F(a_1)$, $\hdots$, $b_{k-1} \in F(a_{k-1})$ "st" 
-	$\langle b_1,\, \hdots,\, b_{k-1} \rangle \in \neighbourhood{b}{\?B}{\+R}{i}$.
+	$\langle b_1,\, \hdots,\, b_{k-1} \rangle \in \adjacency{b}{\?B}{\+R}{i}$.
 	Symbolically the set of such $u$'s can be written as
 	$\semFO{\widehat \phi_Y(x)}{\univStructSynchronous{\Sigma}}$, where
 	\[
@@ -480,7 +480,7 @@ instead of $\?A$.
 			\forall x_1.\, \hdots\, \forall x_{i-1}.\, \forall x_{i+1}.\, \hdots \, \forall x_{k}.\,\\
 			& \hspace{2em}\psi_{\+R}(x_1,\hdots, x_{i-1}, x, x_{i+1}, \hdots, x_k)
 			\\ 
-			& \hspace{2em} \Rightarrow \Big(\bigvee_{\substack{\langle b_1,\hdots,b_{i-1},b_{i+1},\hdots b_k\rangle \in \neighbourhood{b}{\?B}{\+R}{i}}}\;
+			& \hspace{2em} \Rightarrow \Big(\bigvee_{\substack{\langle b_1,\hdots,b_{i-1},b_{i+1},\hdots b_k\rangle \in \adjacency{b}{\?B}{\+R}{i}}}\;
 			\bigwedge_{i \in \lBrack 1,k\rBrack \smallsetminus \{i\}}
 			\underbrace{%
 				\bigvee_{\substack{Y' \in \pset{B}\\ b_i\in Y'}} \phi_{Y'}(x_i)
@@ -523,20 +523,20 @@ In order to prove this proposition, we rely on the following property.
 	Let $a \in A'$, and let $b \in \HCOperator(F)(h(a))$.
 	Then for every $\+R_{(k)} \in \sigma$,
 	for every $i \in \lBrack 1,k\rBrack$,
-	if $\langle a_1,\, \hdots,\, a_{k-1} \rangle \in \neighbourhood{h(a)}{\?A}{\+R}{i}$,
+	if $\langle a_1,\, \hdots,\, a_{k-1} \rangle \in \adjacency{h(a)}{\?A}{\+R}{i}$,
 	then there exists $b_1 \in F(a_1)$, $\hdots$, $b_{k-1} \in F(a_{k-1})$ "st" 
-	$\langle b_1,\, \hdots,\, b_{k-1} \rangle \in \neighbourhood{b}{\?B}{\+R}{i}$.
+	$\langle b_1,\, \hdots,\, b_{k-1} \rangle \in \adjacency{b}{\?B}{\+R}{i}$.
 	Then let $\+R_{(k)} \in \sigma$ and $i \in \lBrack 1,k\rBrack$.
-	Let $\langle a_1,\, \hdots,\, a_{k-1} \rangle \in \neighbourhood{a}{\?A'}{\+R}{i}$.
-	Then $\langle h(a_1),\, \hdots,\, h(a_{k-1}) \rangle \in \neighbourhood{h(a)}{\?A}{\+R}{i}$
+	Let $\langle a_1,\, \hdots,\, a_{k-1} \rangle \in \adjacency{a}{\?A'}{\+R}{i}$.
+	Then $\langle h(a_1),\, \hdots,\, h(a_{k-1}) \rangle \in \adjacency{h(a)}{\?A}{\+R}{i}$
 	since $h$ is a "homomorphism". And so there exists
 	$b_1 \in F(h(a_1))$, $\hdots$, $b_{k-1} \in F(h(a_{k-1}))$ "st" 
-	$\langle b_1,\, \hdots,\, b_{k-1} \rangle \in \neighbourhood{b}{\?B}{\+R}{i}$.
+	$\langle b_1,\, \hdots,\, b_{k-1} \rangle \in \adjacency{b}{\?B}{\+R}{i}$.
 	Using the inclusions $F(h(a_i)) \subseteq F'(a_i)$ (for $a_i \in A'$), it follows that
 	for every $\+R_{(k)} \in \sigma$, for every $i \in \lBrack 1,k\rBrack$,
-	if $\langle a_1,\, \hdots,\, a_{k-1} \rangle \in \neighbourhood{a}{\?A'}{\+R}{i}$, then
+	if $\langle a_1,\, \hdots,\, a_{k-1} \rangle \in \adjacency{a}{\?A'}{\+R}{i}$, then
 	there exists $b_1 \in F'(a_1)$, $\hdots$, $b_{k-1} \in F'(a_{k-1})$
-	"st" $\langle b_1,\, \hdots,\, b_{k-1} \rangle \in \neighbourhood{b}{\?B}{\+R}{i}$.
+	"st" $\langle b_1,\, \hdots,\, b_{k-1} \rangle \in \adjacency{b}{\?B}{\+R}{i}$.
 	And hence $b \in \HCOperator(F')(a)$, which concludes the proof.
 \end{proof}
 
@@ -615,11 +615,11 @@ on $\zigzag{n}{5}$ in only $2$ steps.
 	$\HCOperator_{\?A,\?B}(F)(a)$ only depends on the values of $F(a')$ where $a'$ is at distance 1.
 	More precisely, it only depends on whether for any "predicate" $\+R$ of arity $k$,
 	for any $i\in\lBrack 1,k\rBrack$, for any $Y_1,\hdots,Y_{k-1} \subseteq B$, whether there
-	are elements $\langle a_1,\,\hdots,\,a_{k-1}\rangle \in \neighbourhood{a}{\?A}{\+R}{i}$
+	are elements $\langle a_1,\,\hdots,\,a_{k-1}\rangle \in \adjacency{a}{\?A}{\+R}{i}$
 	"st"  
 	$\langle F(a_1),\,\hdots,\,F(a_{k-1}) \rangle = \langle Y_1,\,\hdots,\,Y_{k-1} \rangle$.
 	Since $B$ is finite, there are finitely many such tuples, and for each of them it suffices
-	to keep (for distance $m=1$) only one tuple $\langle a_1,\,\hdots,\,a_{k-1}\rangle \in \neighbourhood{a}{\?A}{\+R}{i}$. By induction on $m$, we
+	to keep (for distance $m=1$) only one tuple $\langle a_1,\,\hdots,\,a_{k-1}\rangle \in \adjacency{a}{\?A}{\+R}{i}$. By induction on $m$, we
 	obtain a finite "substructure" $\?A_{a,m}$ of $\ball{\?A}{a}{m}$ as in
 	\Cref{claim:hyperedge-consistency-ball}.
 
@@ -739,10 +739,10 @@ on $\zigzag{n}{5}$ in only $2$ steps.
 	in which we identify $a$ and $b$.
 	Note that for any $a' \in A$, we have:
 	\[
-		\neighbourhood{a'}{\?C}{\+R}{i} =
+		\adjacency{a'}{\?C}{\+R}{i} =
 		\begin{cases*}
-			\neighbourhood{a'}{\?A}{\+R}{i} & \text{ if $a' \neq a$,}\\
-			\neighbourhood{a}{\?A}{\+R}{i} \cup \neighbourhood{b}{\?B}{\+R}{i}  & \text{ if $a' = a = b$.}
+			\adjacency{a'}{\?A}{\+R}{i} & \text{ if $a' \neq a$,}\\
+			\adjacency{a}{\?A}{\+R}{i} \cup \adjacency{b}{\?B}{\+R}{i}  & \text{ if $a' = a = b$.}
 		\end{cases*}	
 	\]
 	The goal of this construction

@@ -287,8 +287,8 @@ singleton $\{b\}$.
 			$\unarypred{b_i}$ in $\?A$.
 		\end{itemize}
 	\end{itemize}
-	Note that by construction, the "neighbourhood" of $a \in A$ in $\Phi(\?A)$ is
-	the union of its "neighbourhood" in $\?A$, and the union of the "neighbourhoods" of
+	Note that by construction, the "adjacency" of $a \in A$ in $\Phi(\?A)$ is
+	the union of its "adjacency" in $\?A$, and the union of the "adjacencies" of
 	$b$ in $\?B$ for all $b$ "st" $a \in \unarypred{b}(\?A)$.
 
 	We show that $\?A \in \HomAll{\marked{\?B}}$ "iff" $\Phi(\?A) \in \HomAll{\?B}$.
@@ -325,9 +325,9 @@ singleton $\{b\}$.
 	for any $\+R$ in $\sigma$, since $g$ and $(\restr{g}{B})^{-1}$ are "homomorphisms".
 	We must then show that it preserves all unary "predicates" $\unarypred{b}$, with $b\in B$:
 	let $a \in A$ "st" $\unarypred{b}$ holds, "ie" $a \in \unarypred{b}(\?A)$.
-	Now, by construction of $\Phi(\?A)$, the "neighbourhood" of $g(a)$ in $\?B$
-	and the "neighbourhood" of $g(b)$ in $\?B$ are equal.
-	Since $\?B$ is a "core", it follows by \Cref{prop:neighbourhood-core} that $g(a) = g(b)$.
+	Now, by construction of $\Phi(\?A)$, the "adjacency" of $g(a)$ in $\?B$
+	and the "adjacency" of $g(b)$ in $\?B$ are equal.
+	Since $\?B$ is a "core", it follows by \Cref{prop:adjacency-core} that $g(a) = g(b)$.
 	By definition of $g'$, this rewrites as $g'(a) = b$, "ie" $g'(a) = \unarypred{b}(\marked{\?B})$.
 	Therefore, we have built a "homomorphism" from $\?A$ to $\marked{\?B}$.
 

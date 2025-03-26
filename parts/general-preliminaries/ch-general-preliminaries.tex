@@ -91,13 +91,14 @@ A \AP""core"" is blabla, we denote by \AP$\intro*\core{\?B}$ the "core" of $\?B$
 	\itemAP ""rigid""
 \end{itemize}
 
-\subsection{Neighbourhoods}
+\subsection{Adjacencies}
 
-Given a "$\sigma$-structure" $\?A$ and $a \in A$, we define the \AP""neighbourhood"" of $a$
-in $\?A$
-to be the tuple of sets
+Given a "$\sigma$-structure" $\?A$ and $a \in A$, we define the \AP""adjacency""%
+\footnote{We do not use the terminology \emph{neighbourhood} since it usually refers
+to a set of elements, namely the set of elements occurring in the "adjacency".}
+of $a$ in $\?A$ to be the tuple of sets
 \[
-	\intro*\neighbourhood{a}{\?A}{\+R}{i} \defeq
+	\intro*\adjacency{a}{\?A}{\+R}{i} \defeq
 	% \Big\langle
 		\big\{
 			\langle a_1, \hdots, a_{i-1}, a_{i+1}, \hdots, a_k \rangle \in A^{k-1} \mid
@@ -109,20 +110,20 @@ to be the tuple of sets
 \]
 when $\+R$ ranges over "predicate" of arity $k$ of $\sigma$ and $i \in \lBrack 1,k\rBrack$. 
 \todo{ introduce notation $\+R_{(k)} \in \sigma$}
-For "graphs@@dir", the "neighbourhood" of a vertex corresponds to its set of predecessors and
+For "graphs@@dir", the "adjacency" of a vertex corresponds to its set of predecessors and
 its set of successors.
 
 \begin{proposition}
-	\AP\label{prop:neighbourhood-core}
+	\AP\label{prop:adjacency-core}
 	Given a "$\sigma$-structure" $\?B$, if $\?B$ is a "core", then
-	two elements $b_1$ and $b_2$ of $\?B$ have the same "neighbourhood" "iff" $b_1 = b_2$.
+	two elements $b_1$ and $b_2$ of $\?B$ have the same "adjacency" "iff" $b_1 = b_2$.
 \end{proposition}
 
 \begin{proof}
 	The right-to-left implication is trivial.
 	For the converse one, consider the "homomorphism" from $\?B$ to itself
 	which maps $b_2$ to $b_1$, and all elements of $B \smallsetminus \{b_2\}$
-	to themselves. Since we assumed that $b_1$ and $b_2$ have the same "neighbourhood",
+	to themselves. Since we assumed that $b_1$ and $b_2$ have the same "adjacency",
 	this is indeed a "homomorphism", which is clearly not bijective, and
 	hence by \Cref{prop:automorphism-core}, $\?B$ is not a "core".
 \end{proof}
