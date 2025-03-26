@@ -2,9 +2,12 @@
 \label{sec:dichotomy-decidability}
 
 In this section, we show that if $\?B$ has "finite duality", then $\HomRegAut{\?B}$ is decidable.
-We provide two alternative proofs. In \Cref{sec:uniformly-first-order-definable-hom} we provide
-a logic-based proof that if $\?B$ has "finite duality", then $\HomRegAut{\?B} = \HomAut{\?B}$,
-and that $\HomRegAut{\?B}$ is decidable.
+We provide two alternative proofs: a logic-based one, and a graph-based one.
+In \Cref{sec:uniformly-first-order-definable-hom} we provide
+a logic-based proof that if $\?B$ has "finite duality", then $\HomRegAut{\?B} = \HomAut{\?B}$.
+In turns, not only does this implies by \Cref{prop:dichotomy-Equal-implies-HomDec}
+that $\HomRegAut{\?B}$ is decidable, but actually that the problem is in "NL",
+by \Cref{prop:dichotomy-FinDual-implies-HomDec}.
 Independently, in \Cref{sec:hyperedge-consistency-finite,sec:hyperedge-consistency-automatic},
 we introduce the "hyperedge consistency algorithm for automatic structures",
 which is a variation of the classical "hyperedge consistency algorithm for finite structures".
@@ -14,32 +17,35 @@ see later that the algorithm is correct for "$\sigma$-structures" with so-called
 which is a superclass of the "structures" with "finite duality".}
 Then, we will use the former algorithm to prove that assuming that $\?B$ has "finite duality",
 then $\HomRegAut{\?B}$ is decidable.\footnote{Interestingly, this algorithm cannot solve
-$\HomRegAut{\?B}$ when $\?B$ has only "tree duality" but not "finite duality". 
-\todo{We discuss this in more details in TODO.}}
+$\HomRegAut{\?B}$ when $\?B$ has "tree duality" but not "finite duality". 
+\todo{We discuss this in more details in \todo{TODO}.}}
 
 \subsection{Uniformly First-Order Definable Homomorphisms}
 \label{sec:uniformly-first-order-definable-hom}
 
 We say that $\HomFin{\?B}$ (resp. $\HomAll{\?B}$)
-have \AP""uniformly first-order definable homomorphisms"" if there exists "first-order formulas"
+has \AP""uniformly first-order definable homomorphisms"" if there exists "first-order formulas"
 $\langle \phi_b(x) \rangle_{b\in B}$ over $\sigma$ "st" for any finite
 (resp. arbitrary) "$\sigma$-structure" $\?A$, for any $a\in A$,
-there is at most one $b \in B$ "st" $\langle \?A, a \rangle \FOmodels \phi_b(x)$, and moreover $\?A \homto \?B$
-"iff" for each $a\in A$, there is exactly one $b(a) \in B$ "st" $\langle \?A, a \rangle \FOmodels \phi_{b(a)}(x)$, and $a \mapsto b(a)$ is a "homomorphism".
+there is at most one $b \in B$, denoted by $b(a)$
+"st" $\langle \?A, a \rangle \FOmodels \phi_b(x)$, and moreover if $\?A \homto \?B$
+then $a \mapsto b(a)$ is a "homomorphism" from $\?A$ to $\?B$.
 
 \begin{lemma}
 	\AP\label{lemma:finite-duality-uniformly-definable-homomorphisms}
 	Let $\?B$ be a finite structure. Then $\HomAll{\?B}$ is "first-order definable" "iff"
 	$\HomAll{\?B}$ has "uniformly first-order definable homomorphisms".\footnote{The same 
 	equivalence holds if one replaces $\HomAll{\?B}$ with $\HomFin{\?B}$.
-	In both cases, these conditions are equivalent, by "Atserias' theorem", to asking that $\?B$
-	has "finite duality".}
+	In both cases, these conditions are equivalent, by "Atserias' theorem", to asking whether $\?B$
+	has "finite duality".
+	This corresponds to the implication $\itemDTFinDual \Rightarrow \itemDTFirstOrder$
+	of \Cref{thm:dichotomy-theorem-automatic-structures} and its converse implication.}
 \end{lemma}
 
 Before proving this lemma, we show an intermediate result.
 \begin{fact}
 	\AP\label{fact:marking-preserves-finite-duality}
-	If $\?B$ is a finite "core", then is $\HomAll{\?B}$ is "first-order definable"
+	If $\?B$ is a finite "core", then $\HomAll{\?B}$ is "first-order definable"
 	"iff" $\HomAll{\marked{\?B}}$ is "first-order definable".
 \end{fact}
 
@@ -58,9 +64,9 @@ Before proving this lemma, we show an intermediate result.
 	describing all "$\sigma$-structures" of $\HomAll{\?B}$.
 
 	\proofcase{Direct implication.} 
-	Let $\?B$ such that $\HomAll{\?B}$ is "first-order definable".
+	Let $\?B$ be such that $\HomAll{\?B}$ is "first-order definable".
 	Given an arbitrary "$\sigma$-structure" $\?A$, we define a function $F\colon A \to \pset{B}$
-	by mapping each $a$ to the set of $b$'s ($b \in \?B$) "st"
+	by mapping each $a$ to the set of $b$'s ($b \in B$) "st"
 	there is a "homomorphism" from $\?A$ to $\?B$ that maps $a$ to $b$.
 	\begin{claim}
 		\label{claim:finite-duality-uniformly-definable-homomorphisms-homomorphism}
@@ -99,9 +105,9 @@ Before proving this lemma, we show an intermediate result.
 		$\?A_{a,i} \FOmodels \phi$
 		"iff" $\langle \?A, a \rangle \FOmodels \phi^*_i(x_i)$.
 	\end{claim}
-	We prove it by induction on formulas $\phi(\bar x)$
-	that $\langle\?A_{a,i}, \bar a \rangle \FOmodels \phi$
-		"iff" $\langle \?A, \bar a, a \rangle \FOmodels \phi^*_i(x_i)$.
+	We prove it by induction on "formulas@@FO" $\psi(\bar x)$
+	that $\langle\?A_{a,i}, \bar a \rangle \FOmodels \psi$
+		"iff" $\langle \?A, \bar a, a \rangle \FOmodels \psi^*_i(x_i)$.
 	The base case $\unarypred{b_i}(y)$ is trivial since
 	$\langle \?A_{a,i}, a' \rangle \FOmodels \unarypred{b_i}(y)$ "iff"
 	$a' = a$ "ie" $\langle \?A, a', a \rangle \FOmodels y = x_i$.
@@ -112,17 +118,18 @@ Before proving this lemma, we show an intermediate result.
 
 	\begin{claim}
 		\AP\label{claim:finite-duality-uniformly-definable-homomorphisms-formulas}
-		There exists first-order formulas $\langle \chi_Y(x)\rangle_{Y\in \pset{B}}$,
-		that do not depend on $\?A$, "st" for every arbitrary "$\sigma$-structure" $\?A$,
-		for every $a\in A$, then $\langle \?A,a \rangle \FOmodels \chi_Y(x)$ "iff"
+		There exist "first-order formulas" $\langle \chi_Y(x)\rangle_{Y\in \pset{B}}$,
+		that do not depend on $\?A$, "st" for every arbitrary "$\sigma$-structure" $\?A$
+		and for every $a\in A$, we have $\langle \?A,a \rangle \FOmodels \chi_Y(x)$ "iff"
 		$F(a) = Y$.
 	\end{claim}
 	Indeed, given $a\in A$ and $i \in \lBrack 1,k\rBrack$, there is a "homomorphism" from $\?A$
 	to $\?B$ that sends $a$ to $b_i$ "iff" $\?A_{a,i} \FOmodels \phi$, and so by \Cref{claim:finite-duality-uniformly-definable-homomorphisms-new-formulas}, this is equivalent to
 	$\langle \?A,a\rangle \FOmodels \phi^*_i(x_i)$. Hence, each $\chi_Y(x)$ can be defined as
 	a Boolean combination of the $\phi^*_i(x_i)$'s, after renaming $x_i$ to $x$.\footnote{In 
-	particular, note that $\exists x.\psi_\emptyset(x)$ is a "first-order formula"
-	that defines $\HomAll{\?B}$.}
+	particular, note that $\forall x. \neg \chi_\emptyset(x)$ is a "first-order formula"
+	that defines $\HomAll{\?B}$ since for any "$\sigma$-structure", $\?A \homto \?B$
+	"iff" $F(a) \neq \emptyset$ for all $a \in A$.}
 
 	We can now prove that
 	$\HomAll{\?B}$ has "uniformly first-order definable homomorphisms".
@@ -132,20 +139,22 @@ Before proving this lemma, we show an intermediate result.
 	there is a unique $Y \in \pset{B}$ (and so at most one $Y \in \psetp{B}$) "st"
 	$\langle \?A, a \rangle \FOmodels \chi_Y(x)$ by
 	\Cref{claim:finite-duality-uniformly-definable-homomorphisms-formulas}.
-	Moreover, if $\?A \homto \?B$, then for each $a$ there is a unique $b(a) \in B$
+	Furthermore, if $\?A \homto \?B$, then for each $a$ there is a unique $b(a) \in B$
 	"st" $\langle \?A, a \rangle \FOmodels \psi_{b(a)}(x)$, and moreover $a \mapsto b(a)$
 	is a "homomorphism" by 
-	\Cref{claim:finite-duality-uniformly-definable-homomorphisms-homomorphism}, and
-	moreover $\?A \homto \?B$
-	"iff" for each $a\in A$, there is exactly one $b(a) \in B$ "st" $\langle \?A, a \rangle \FOmodels \phi_{b(a)}(x)$, and $a \mapsto b(a)$ is a "homomorphism"
-	by \Cref{claim:finite-duality-uniformly-definable-homomorphisms-homomorphism}
-	since it equals $g \circ F$. And hence $\HomAll{\?B}$
+	\Cref{claim:finite-duality-uniformly-definable-homomorphisms-homomorphism}.
+	In turns, using \Cref{claim:finite-duality-uniformly-definable-homomorphisms-homomorphism},
+	we get that for each $a\in A$, there is exactly one $b(a) \in B$ "st" $\langle \?A, a \rangle \FOmodels \phi_{b(a)}(x)$, and that if
+	$\?A \homto \?B$, then $a \mapsto b(a)$ is a "homomorphism"---that is equal to
+	$g \circ F$. And hence, $\HomAll{\?B}$
 	has "uniformly first-order definable homomorphisms".
 \end{proof}
 
 "Uniformly first-order definable homomorphisms" are actually a very strong restriction:
 we show that such "homomorphisms" are always "regular@@hom".
 \begin{proposition}
+	\!\footnote{This corresponds to the implication $\itemDTFirstOrder \Rightarrow \itemDTEqual$
+	of \Cref{thm:dichotomy-theorem-automatic-structures}.}
 	\AP\label{prop:uniformly-first-order-implies-regular}
 	Let $\?B$ be a finite "$\sigma$-structure".
 	If $\HomAll{\?B}$ has "uniformly first-order definable homomorphisms",
@@ -166,8 +175,8 @@ we show that such "homomorphisms" are always "regular@@hom".
 	by substituting $\+R(x_1,\dotsc,x_k)$ for $\psi_{\+R}(x_1,\dotsc,x_k)$.
 
 	Then, for each $b\in B$, $\phi^*_b(x)$ is a "first-order formula" over $\signatureSynchronous{\Sigma}$,
-	and so \[\{u \in \Sigma^* \mid \langle \univStructSynchronous{\Sigma},u \rangle \FOmodels \phi^*_b(x)\}\] is "regular@@lang" by \todo{ADDREF}.
-	Clearly, this sets are disjoint and cover $\domainPres{\•A}$, and the function that
+	and so \[\{u \in \Sigma^* \mid \langle \univStructSynchronous{\Sigma},u \rangle \FOmodels \phi^*_b(x)\}\] is "regular@@lang" by \Cref{prop:automatic-first-order}.
+	Clearly, these sets are disjoint and cover $\domainPres{\•A}$, and the function that
 	maps $u \in \domainPres{\•A}$ to the unique $b$ "st" $\langle \univStructSynchronous{\Sigma},u \rangle \FOmodels \phi^*_b(x)$ is a "homomorphism".
 	Hence, we have built a "regular homomorphism" from $\•A$ to $\?B$, which concludes the proof.
 \end{proof}
@@ -178,7 +187,8 @@ we show that such "homomorphisms" are always "regular@@hom".
 	then $\HomRegAut{\?B} = \HomAut{\?B}$.
 \end{corollary}
 
-In turn, since $\HomAut{\?B}$ is "coRE" and $\HomRegAut{\?B}$ is "RE", this implies
+In turn, since $\HomAut{\?B}$ is "coRE" and $\HomRegAut{\?B}$ is "RE"
+(\Cref{prop:dichotomy-general-upper-bounds}), this implies
 that $\HomRegAut{\?B}$ is decidable.
 In fact, using the formulas $\phi^*_b(x)$, we can build a "first-order formula"
 saying ``every $x$ satisfies exactly one $\phi^*_b(x)$, and moreover

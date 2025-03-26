@@ -38,7 +38,8 @@ $\itemDTHomDec \Rightarrow \itemDTFinDual$ and $\itemDTHomRegDec \Rightarrow \it
 which we prove by contraposition in \Cref{sec:undecidability-hom,sec:undecidability-homreg}.
 
 On the other hand, the implications $\itemDTFirstOrder \Rightarrow \itemDTEqual$,
-$\itemDTEqual \Rightarrow \itemDTHomRegDec$ and $\itemDTEqual \Rightarrow \itemDTHomDec$ are straightforward: we prove them in this section. 
+$\itemDTEqual \Rightarrow \itemDTHomRegDec$ and $\itemDTEqual \Rightarrow \itemDTHomDec$ are straightforward: we prove the first one in \Cref{sec:dichotomy-decidability},
+and the last two in this section. 
 Before showing these implications, we start by proving $\itemDTFinDual \Rightarrow \itemDTHomDec$.\footnote{While it is redundant with the implications of \Cref{fig:dichotomy-overview}, 
 we prove this implication since not only is it straightforward, but it is also
 the implication which, together with the fact that both $\HomAut{\clique{2}}$
@@ -84,42 +85,12 @@ Note that \Cref{prop:dichotomy-FinDual-implies-HomDec} still holds
 when the "homomorphism problem" takes as input "higher-order automatic
 structures" since such structures have a decidable first-order theory.
 
-
-\paragraph*{Uniformly First-Order Definable Homomorphisms Imply Equality.}
-
-\begin{proposition}
-	\!\footnote{This corresponds to the implication $\itemDTFirstOrder \Rightarrow \itemDTEqual$
-	of \Cref{thm:dichotomy-theorem-automatic-structures}.}
-	\AP\label{prop:dichotomy-FirstOrder-implies-Equal}.
-	Let $\?B$ be a "finite $\sigma$-structure".
-	If $\HomAll{\?B}$ has "uniformly first-order definable homomorphisms", then
-	$\HomAut{\?B} = \HomRegAut{\?B}$.
-\end{proposition}
-
-\begin{proof}
-	By assumption, there exist "first-order formulas"
-	$\langle \phi_b(x) \rangle_{b\in B}$ over $\sigma$ "st" for any
-	arbitrary "$\sigma$-structure" $\?A$, for any $a\in A$,
-	there is at most one $b \in B$ "st" $\langle \?A, a \rangle \FOmodels \phi_b(x)$, and moreover $\?A \homto \?B$
-	"iff" for each $a\in A$, there is exactly one $b(a) \in B$ "st" $\langle \?A, a \rangle \FOmodels \phi_{b(a)}(x)$, and $a \mapsto b(a)$ is a "homomorphism".
-	Now, when the right-hand side holds, given an "automatic presentation" $\+A$,
-	for each $b\in \?B$, we let $\tilde\phi_b(x)$ be the "first-order formula" over $\signatureSynchronous{\Sigma}$ obtained from $\phi_b(x)$
-	by substituting $\+R(x_1,\dotsc,x_k)$ for the "first-order formula"
-	over $\signatureSynchronous{\Sigma}$ describing $\+R_{(k)}$ in $\+A$.
-	It follows that if $\?A \homto \?B$, then the function
-	mapping $u \in \Sigma^*$ to the unique $b \in B$ "st" $\Sigma^*, u \FOmodels \tilde\phi_b(x)$
-	defines a "regular homomorphism" from $\+A$ to $\?B$---the regularity follows from
-	\Cref{prop:automatic-first-order}.
-	And hence $\HomAut{\?B} \subseteq \HomRegAut{\?B}$. The conclusion follows since
-	the other implication is trivial.
-\end{proof}
-
 \paragraph*{Equality of the Homomorphism Problems Imply their Decidability.}
 
 \begin{proposition}
 	\!\footnote{This corresponds to the implication $\itemDTEqual \Rightarrow \itemDTHomDec$
 	of \Cref{thm:dichotomy-theorem-automatic-structures}.}
-	\AP\label{prop:dichotomy-Equal-implies-HomDec}.
+	\AP\label{prop:dichotomy-Equal-implies-HomDec}
 	Let $\?B$ be a "finite $\sigma$-structure".
 	If $\HomAut{\?B} = \HomRegAut{\?B}$ then $\HomAut{\?B}$ and $\HomRegAut{\?B}$
 	are decidable.
