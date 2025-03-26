@@ -29,7 +29,19 @@ $\langle \phi_b(x) \rangle_{b\in B}$ over $\sigma$ "st" for any finite
 (resp. arbitrary) "$\sigma$-structure" $\?A$, for any $a\in A$,
 there is at most one $b \in B$, denoted by $b(a)$
 "st" $\langle \?A, a \rangle \FOmodels \phi_b(x)$, and moreover if $\?A \homto \?B$
-then $a \mapsto b(a)$ is a "homomorphism" from $\?A$ to $\?B$.
+then $a \mapsto b(a)$ is a "homomorphism" from $\?A$ to $\?B$.%
+\footnote{The adverb ``uniformly'' in ``"uniformly first-order definable homomorphisms"''
+refers to the fact that the formulas do not depend on the "input structure".}
+
+\begin{example}[{\Cref{ex:zigzag-defn}, continued}]
+	\AP\label{ex:zigzag-FO}
+	For instance, $\HomAll{\transitiveTournament{2}}$ has "uniformly first-order definable homomorphisms", by letting $\phi_0(x)$ be the set of vertices with no
+	predecessors, $\phi_2(x)$ be the set of vertices with no successor (but at least one predecessor), and $\phi_1(x)$ be the set of vertices that satisfy neither $\phi_0$ not $\phi_2$.
+
+	On the other hand, looking at the "zigzag graph" of \Cref{ex:zigzag-defn} and \Cref{fig:zigzag-graph}
+	for long enough will convince the reader that no such strategy can work
+	for $\pathGraph{2}$.
+\end{example}
 
 \begin{lemma}
 	\AP\label{lemma:finite-duality-uniformly-definable-homomorphisms}
@@ -211,16 +223,38 @@ In particular, this implies the decidability of $\HomRegAut{\?B}$.
 \label{sec:hyperedge-consistency-finite}
 
 Given a "homomorphism" $f\colon \?G \to \?H$ between "graphs@@dir",
-note that if $g\in G$ has at least one successor in $\?G$, then must have $f(g)$ in $\?H$.
+note that if $g\in G$ has at least one successor in $\?G$, then $f(g)$ must also have one
+successor in $\?H$.
 As a consequence, such an $g$ cannot be mapped by any "homomorphism" to a vertex of $\?H$ with no
 successor. The idea behind "hyperedge consistency@@finite" is precisely to identify for each
 $g\in G$ the set $\textrm{Im}_g$ of all elements of $\?H$ to which it can be mapped: initially this set is $H$,
 and we try to find some ``obstructions''. These obstructions take the following form:
 if $g \in G$ has a successor (resp. predecessor) $g' \in G$, then any vertex of $\textrm{Im}_g$
-must have a successor (resp. predecessor) in $\?H$ that lives in $\textrm{Im}_{g'}$.
+must have a successor (resp. predecessor) in $\?H$ that lives in $\textrm{Im}_{g'}$---see 
+\Cref{fig:informal-HC-algo}.
+\begin{marginfigure}
+	\centering
+	\begin{tikzpicture}
+		\node at (0,0) (g) {$g$};
+		\node[right= 5em of g] (g2) {$g'$};
+		\draw[edge] (g) to node[midway, above] {$\?G$-edge} (g2);
+		\node[below= 2em of g] (Img) {$\textrm{Im}_g$};
+		\node[below= 2em of g2] (Img2) {$\textrm{Im}_{g'}$};
+		\draw[edge] (g) to (Img);
+		\draw[edge] (g2) to (Img2);
+		\node[below= -.25em of Img] (in) {\rotatebox{90}{$\in$}};
+		\node[below= -.25em of Img2] (in2) {\rotatebox{90}{$\in$}};
+		\node[below= -.25em of in] (h) {$\forall h$};
+		\node[below= -.25em of in2] (h2) {$\exists h'$};
+		\draw[edge] (h) to node[midway, below] {$\?H$-edge} (h2);
+	\end{tikzpicture}
+	\caption{
+		\AP\label{fig:informal-HC-algo}
+		Diagrammatic representation of the "hyperedge consistency@@finite" algorithm.
+	}
+\end{marginfigure}
 
-
-\begin{example}[{\Cref{ex:zigzag-defn}, continued}]
+\begin{example}[{\Cref{ex:zigzag-FO}, continued}]
 	\AP\label{ex:zigzag-HC-T2}
 	We depict in \Cref{fig:zigzag-graph-HC-T2} the first steps of the "hyperedge consistency algorithm@@finite"---that we will define formally after this example---, when the "target structure"
 	if $\transitiveTournament{2}$ and the "input structure" is $\zigzag{n}{2}$.
@@ -319,7 +353,7 @@ and iterating $\HCOperator$.}
 \end{corollary}
 
 In general, the converse property does not hold. For instance, if $\sigma$ is the
-"graph signature" and $\?B$ is the "$2$-clique", then $\HCFixpoint{\?A}{\?B}$
+"graph signature" and $\?B$ is the "$2$-clique"---or more generally any "clique"---, then $\HCFixpoint{\?A}{\?B}$
 is always the map $a \mapsto B$, no matter whether there is a "homomorphism" from
 $\?A$ to $\?B$.
 
