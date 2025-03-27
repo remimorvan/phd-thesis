@@ -57,7 +57,7 @@ These richer structures are known as "relational structures"---see
 \Cref{fig:example-structure-homomorphism}---, and
 "homomorphisms" between "relational structures" are asked to preserve \emph{all} relations.
 
-\begin{marginfigure}
+\begin{figure}
 	\centering
 	\begin{tikzpicture}[scale=.9]
 		\node (d0) at (-.6,.6) {};
@@ -124,7 +124,7 @@ These richer structures are known as "relational structures"---see
 		simple and double arrows) and three kinds of unary relations (represented by
 		red, yellow and blue potatoes).
 	}
-\end{marginfigure}
+\end{figure}
 
 More than a mere decision problem---which obviously lives in "NP"---,
 the "homomorphism problem" should rather be seen as a \emph{framework} or
@@ -185,23 +185,81 @@ the "homomorphism problem" should rather be seen as a \emph{framework} or
 	the automaton $\?A$ accepts $u$. See \Cref{fig:example-automaton-as-rel}.
 \end{example}
 
+\begin{marginfigure}
+	\centering
+	\begin{tikzpicture}
+		\input{tikz/dichotomy/3-clique}
+	\end{tikzpicture}
+	\caption{
+		\AP\label{fig:intro-3-clique}
+		The "$3$-clique" $\clique{3}$.
+	}
+\end{marginfigure}
 \begin{example}[Graph colouring]
 	\label{ex:graph-colouring-as-hom}
 	Let $k\in\Np$. We let the \AP""$k$-clique"", denoted by $\intro*\clique{k}$,
 	to be the "graph" whose vertices are $\lBrack 1,k\rBrack$,
 	and with an edge from $i$ to $j$ (with $i,j \in \lBrack 1,k\rBrack$)
-	"iff" $i\neq j$.
+	"iff" $i\neq j$, see \Cref{fig:intro-3-clique}.
 	A finite "graph" $\?G$ is \AP""$k$-colourable""---"ie"
 	we can map every vertex of $\?G$ to an element of $\lBrack 1,k\rBrack$
 	"st" no two adjacent vertices are sent on the same colour/number---if,
 	and only if, there is a "homomorphism" from $\?G$ to $\clique{k}$.
-	\todo{figure}
 \end{example}
 
+% \begin{figure}
+	% \begin{tabular}{cccc}
+	% 	\multicolumn{4}{c}{\textsc{Movies}} \toprule
+	% 	Id & Title & Length (min) & Director \\ \midrule
+	% 	197 & Eyes Wide Shut & 159 & Stanley Kubrick \\ 
+	% 	205 & J'ai tué ma mère & 96 & Xavier Dolan \\
+	% 	304 & Amadeus & 161 & Miloš Forman \\
+	% 	321 & 120 Battements par minute & 143 & Robin Campillo \\ \bottomrule
+	% \end{tabular}
+	% \begin{tabular}{cc}
+	% 	\multicolumn{2}{c}{\textsc{Rooms}} \toprule
+	% 	Id & Capacity  \\ \midrule
+	% 	1 & 
+	% 	4 &  \\ \bottomrule
+	% \end{tabular}
+% 	\caption{A "relational databases" of a cinema consisting of two tables.}
+% \end{figure}
 \begin{example}[Database evaluation]
-	\todo{todo}
+	A "relational database" such as the one depicted on\\
+	\begin{tabular}{cccc}
+		\multicolumn{4}{c}{\textsc{Movies}} \\ \toprule
+		Id & Title & Length (min) & Director \\ \midrule
+		197 & Eyes Wide Shut & 159 & Stanley Kubrick \\ 
+		205 & J'ai tué ma mère & 96 & Xavier Dolan \\
+		304 & Amadeus & 161 & Miloš Forman \\
+		321 & 120 Battements par minute & 143 & Robin Campillo \\ \bottomrule
+	\end{tabular}
 \end{example}
 
+\begin{marginfigure}
+	\centering
+	\begin{tikzpicture}[scale=1.2]
+		\draw[step=.3333] (0, 0) grid (3, 3);
+		\draw[very thick, step=1] (0, 0) grid (3, 3);
+
+		\setcounter{row}{1}
+		\setrow { }{2}{ }  {5}{ }{1}  { }{9}{ }
+		\setrow {8}{ }{ }  {2}{ }{3}  { }{ }{6}
+		\setrow { }{3}{ }  { }{6}{ }  { }{7}{ }
+
+		\setrow { }{ }{1}  { }{ }{ }  {6}{ }{ }
+		\setrow {5}{4}{ }  { }{ }{ }  { }{1}{9}
+		\setrow { }{ }{2}  { }{ }{ }  {7}{ }{ }
+
+		\setrow { }{9}{ }  { }{3}{ }  { }{8}{ }
+		\setrow {2}{ }{ }  {8}{ }{4}  { }{ }{7}
+		\setrow { }{1}{ }  {9}{ }{7}  { }{6}{ }
+	\end{tikzpicture}
+	\caption{
+		\AP\label{fig:intro-sudoku}
+		A prefilled sudoku grid.
+	}
+\end{marginfigure}
 \begin{example}[Sudoku grids]
 	We represent an empty sudoku grid as the "relational structure"
 	whose domain is $\lBrack 1,9\rBrack \times \lBrack 1,9\rBrack$---corresponding to coordinates in the grid---with

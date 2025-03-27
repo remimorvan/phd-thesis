@@ -50,3 +50,22 @@
 	\node[tiny vertex, below=.1em of #1-0, draw=c1, fill=c1, fill opacity=#5] (#1-1) {};
 	\node[tiny vertex, below=.1em of #1-1, draw=c2, fill=c2, fill opacity=#6] (#1-2) {};
 }
+
+% ---
+% Sudoku
+% https://tex.stackexchange.com/a/43234/206008
+% ---
+
+\newcounter{row}
+\newcounter{col}
+
+\newcommand\setrow[9]{
+  \setcounter{col}{1}
+  \foreach \n in {#1, #2, #3, #4, #5, #6, #7, #8, #9} {
+    \edef\x{.3333*\value{col} - .3333*0.5}
+    \edef\y{.3333*9.5 - .3333*\value{row}}
+    \node[anchor=center,font=\tiny] at (\x, \y) {\n};
+    \stepcounter{col}
+  }
+  \stepcounter{row}
+}
