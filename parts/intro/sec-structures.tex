@@ -1,8 +1,8 @@
 \section{The Two Sides of the Homomorphism Problem}
 
 This thesis is devoted to studying variations of the "homomorphism problem".
-This problem takes two "finite (directed) graphs", consisting of a finite set of vertices $V$
-together with a set of "edges" $\+E \subseteq V \times V$, and asks if there is a "homomorphism" 
+This problem takes two "finite (directed) graphs", consisting of a finite set of vertices (also called \emph{domain}) $V$ together with a set of
+"edges" $\+E \subseteq V \times V$, and asks if there is a "homomorphism" 
 between them, which consists of a function between vertices that preserves
 the "edges", in the sense that any edge must be mapped to another edge,
 see \Cref{fig:example-graph-homomorphism}.
@@ -56,6 +56,7 @@ the "structure".
 These richer structures are known as "relational structures"---see
 \Cref{fig:example-structure-homomorphism}---, and
 "homomorphisms" between "relational structures" are asked to preserve \emph{all} relations.
+\todo{def decision pb, signature fixed + "input structure" and "target structure"}.
 
 \begin{figure}
 	\centering
@@ -199,10 +200,10 @@ the "homomorphism problem" should rather be seen as a \emph{framework} or
 \begin{example}[Graph colouring]
 	\AP\label{ex:graph-colouring-as-hom}
 	Let $k\in\Np$. We let the \AP""$k$-clique"", denoted by $\intro*\clique{k}$,
-	to be the "graph" whose vertices are $\lBrack 1,k\rBrack$,
+	to be the "graph@@dir" whose vertices are $\lBrack 1,k\rBrack$,
 	and with an edge from $i$ to $j$ (with $i,j \in \lBrack 1,k\rBrack$)
 	"iff" $i\neq j$, see \Cref{fig:intro-3-clique}.
-	A finite "graph" $\?G$ is \AP""$k$-colourable""---"ie"
+	A finite "graph@@dir" $\?G$ is \AP""$k$-colourable""---"ie"
 	we can map every vertex of $\?G$ to an element of $\lBrack 1,k\rBrack$
 	"st" no two adjacent vertices are sent on the same colour/number---if,
 	and only if, there is a "homomorphism" from $\?G$ to $\clique{k}$.
@@ -259,28 +260,29 @@ in natural bijection with the set of solutions:
 \begin{marginfigure}
 	\centering
 	\begin{tikzpicture}
-		\node (a0) at (-.2,5.2) {};
-		\node (a1) at (-.3,3.5) {};
-		\node (a2) at (-.2,1.8) {};
-		\node (a3) at (.2,1.8) {};
-		\node (a4) at (.3,3.5) {};
-		\node (a5) at (.2,5.2) {};
+		\node (a0) at (-.1,5.2) {};
+		\node (a1) at (-.4,3.5) {};
+		\node (a2) at (-.1,1.8) {};
+		\node (a3) at (.1,1.8) {};
+		\node (a4) at (.4,3.5) {};
+		\node (a5) at (.1,5.2) {};
 
-		\node (b0) at (-.2,5.2) {.};
-		\node (b1) at (-.8,3.8) {.};
-		\node (b2) at (-.3,1.8) {.};
-		\node (b3) at (-.3,1) {.};
-		\node (b4) at (-.2,-.2) {.};
-		\node (b5) at (.2,-.2) {.};
-		\node (b6) at (.3,1) {.};
-		\node (b7) at (.3,2.2) {.};
-		\node (b8) at (-.4,4.2) {.};
-		\node (b9) at (.2,5.2) {.};
+		\node (b0) at (-.2,5.2) {};
+		\node (b1) at (-.8,3.1) {};
+		\node (b2) at (-.5,1.5) {};
+		\node (b3) at (-.4,.6) {};
+		\node (b4) at (-.2,-.2) {};
+		\node (b5) at (.2,-.2) {};
+		\node (b6) at (.4,1) {};
+		\node (b7) at (.2,1.4) {};
+		\node (b8) at (-.5,2.6) {};
+		\node (b9) at (-.4,3.8) {};
+		\node (b10) at (.2,5.2) {};
 	
+		\draw[use Hobby shortcut, closed=true, draw=c2, fill=c2, fill opacity=.4] 
+			(b0) .. (b1) .. (b2) .. (b3) .. (b4) .. (b5) .. (b6) .. (b7) .. (b8) .. (b9) .. (b10);
 		\draw[use Hobby shortcut, closed=true, draw=c1, fill=c1, fill opacity=.4] 
 			(a0) .. (a1) .. (a2) .. (a3) .. (a4) .. (a5);
-		\draw[use Hobby shortcut, closed=true, draw=c2, fill=c2, fill opacity=.4] 
-			(b0) .. (b1) .. (b2) .. (b3) .. (b4) .. (b5) .. (b6) .. (b7) .. (b8) .. (b9);
 		
 		\node[vertex] at (0,5) (5) {};
 		\node[vertex] at (0,4) (4) {};
@@ -305,6 +307,7 @@ in natural bijection with the set of solutions:
 	}
 \end{marginfigure}
 \begin{example}[SQL queries]
+	\AP\label{ex:sql-as-hom}
 	A "relational database", such as the one depicted on
 	\Cref{fig:example-db-as-rel}, can easily be seen as a "relational structure"
 	whose domain is the set of elements occurring somewhere in a table,
@@ -357,6 +360,7 @@ in natural bijection with the set of solutions:
 	}
 \end{marginfigure}
 \begin{example}[Sudoku grids]
+	\AP\label{ex:sudoku-as-hom}
 	We represent an empty sudoku grid as the "relational structure"
 	whose domain is $\lBrack 1,9\rBrack \times \lBrack 1,9\rBrack$---corresponding to coordinates in the grid---with
 	three kinds of binary "predicates": $\+R$, $\+C$ and $\+S$,
@@ -384,14 +388,79 @@ in natural bijection with the set of solutions:
 \end{example}
 
 \begin{example}[SAT solving]
+	\AP\label{ex:sat-as-hom}
 	We consider a 3-SAT instance, namely a finite conjunction of
 	disjunctions of three litterals, say
 	\[
-		\bigwedge_{i=1}^n \ell_{i,1} \lor \ell_{i,2} \lor \ell_{i,3},
+		\phi \defeq \bigwedge_{i=1}^n \ell_{i,1} \lor \ell_{i,2} \lor \ell_{i,3},
 	\]
 	where each $\ell_{i,j}$ is either a variable, or the negation of a variable.
-
+	We assume "wlog" that in each clause, positive variables appear before negative ones%
+	\footnote{Meaning "eg" that $x \lor \neg y \lor z$ is not allowed, contrary to
+	$x \lor z \lor \neg y$.}
+	We let $\?B$ be the structure whose domain has two elements $\{0,1\}$,
+	equipped with four ternary relations $\+R_0, \+R_1, \+R_2$ and $\+R_3$, defined by:
+	\begin{align*}
+		\+R_0 & \defeq \set{0,1}^3 \smallsetminus \set{\tup{0,0,0}}, &
+		\+R_1 & \defeq \set{0,1}^3 \smallsetminus \set{\tup{1,0,0}}, \\
+		\+R_2 & \defeq \set{0,1}^3 \smallsetminus \set{\tup{1,1,0}}, \text{ and} &
+		\+R_3 & \defeq \set{0,1}^3 \smallsetminus \set{\tup{1,1,1}}.
+	\end{align*}
+	We then encode $\phi$ into the "relational structure" $\?F_\phi$
+	whose domain is the set of variables of $\phi$,
+	and for every $i \in \lBrack 1,n \rBrack$,
+	$\+R_j$ ($j\in\lBrack 0,3\rBrack$) consists of all triplets of variables $\tup{x,y,z}$
+	"st" there is a clause of $\phi$ containing exactly the variables $x$, $y$ and $z$ (with multiplicity), and exactly $j$ of these variables occur negatively.
+	For instance, $\tup{x, y, \neg x} \in \+R_1$, and $\tup{\neg x, \neg y, \neg z} \in \+R_3$.
+	A function $f$ from the domain of $\?F_\phi$ to the domain of $\?B$ amounts to picking
+	a Boolean valuation of the variables occurring in $\phi$.
+	Observe that by definition of the relations $\+R_j$'s,
+	given a clause $\psi$ containing variables $x,y,z$, 
+	$f$ is a "homomorphism" from $\?F_\psi$ to $\?B$ "iff"
+	$f$, seen as a valuation, satisfies $\psi$.\footnote{For instance,
+	if all variables are positive, then all valuations except the one putting
+	all variables to false satisfy the formula. This is why $\+R_0$ is defined
+	on $\?B$ as $\set{0,1}^3\smallsetminus \set{\tup{0,0,0}}$.}
+	By taking conjunction, the conclusion follows: "homomorphisms" from
+	$\?F_\phi$ to $\?B$ exactly correspond to valuations satisfying $\phi$.
+	In particular, there is a "homomorphism" from $\?F_\phi$ to $\?B$ "iff"
+	$\phi$ is satisfiable.%
+	\footnote{Note that this example can be easily generalized to $k$-SAT for any $k\in\Np$.
+	However, the "signature" depends on $k$.}
 \end{example}
 
-\todo{homomorphism (not only existence of a homomorphism) have some meaning}
+\begin{table}
+	\centering
+	\begin{tabular}{cccc}
+		\toprule 
+		& data & query & homomorphism problem \\ \midrule 
+		Ex~\ref{ex:auto-as-rel} & automata & is $u$ accepted? & $\textsf{query} \homto^? \textsf{data}$ \\
+		Ex~\ref{ex:graph-colouring-as-hom} & graph & is $k$-"colourable"?& $\textsf{data} \homto^? \textsf{query}$ \\
+		Ex~\ref{ex:sql-as-hom} & database & SQL query & $\textsf{query} \homto^? \textsf{data}$ \\
+		Ex~\ref{ex:sudoku-as-hom} & grid & is solvable? & $\textsf{data} \homto^? \textsf{query}$ \\
+		Ex~\ref{ex:sat-as-hom} & formula & is satisfiable? & $\textsf{data} \homto^? \textsf{query}$ \\ \bottomrule
+	\end{tabular}
+	\caption{\AP\label{tab:examples-encodings-in-hom}
+		Summary of the encodings of some
+		natural model-checking problem into "homomorphism problems".
+		The last column indicates whether the structure encoding the data
+		(resp. the query) is on the left-hand side ("ie" acts as the "input structure")
+		or the right-hand hand (the "target structure")
+		of the homomorphism problem.
+	}
+\end{table}
+All problems of the type above can actually be seen as model-checking problem:
+part of the input represents some \emph{data} (or model) and part of it represents a
+\emph{query} (or logical question/specification).
+However, as depicted in \Cref{tab:examples-encodings-in-hom}, 
+the encodings of these problems into "homomorphism problems" can either be of two types:
+\begin{itemize}
+	\item the \emph{query} is encoded in the "input structure",
+		and the \emph{data} in the "target structure": we denote
+		this family of problems by `$\textsf{query} \homto^? \textsf{data}$`;
+	\item in the other cases, the \emph{data} is encoded in the "input structure"
+		and the \emph{query} is the "target structure": we denote
+		these problems by `$\textsf{data} \homto^? \textsf{query}$`.
+\end{itemize}
+
 \todo{existential constraint vs universal constraint}
