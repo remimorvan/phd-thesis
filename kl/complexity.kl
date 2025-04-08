@@ -5,6 +5,9 @@
 \knowledge{wrap=\textsf}
  | coNLogTime
 
+\knowledge{text={uniform-AC${}^0$}, wrap=\textsf}
+ | uniform-AC0
+
 \knowledge{text={AC${}^0$}, wrap=\textsf}
  | AC0
 
@@ -54,6 +57,10 @@
 \knowledge{wrap=\textsf}
  | 3ExpTime
 
+\knowledge{text={ExpSpace}, wrap=\textsf}
+| EXPSPACE
+| ExpSpace
+
 \knowledge{text={Tower}, wrap=\textsf}
  | Tower
  | TOWER
@@ -98,9 +105,11 @@
 | FPT
 | fixed-parameter tractable
 
-\knowledge{text={ExpSpace}, wrap=\textsf}
-| EXPSPACE
-| ExpSpace
+\knowledge{wrap=\textsf}
+| XP
+
+\knowledge{text={W[1]}, wrap=\textsf}
+| W1
 
 
 % ---

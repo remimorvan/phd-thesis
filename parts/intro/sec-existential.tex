@@ -1,7 +1,189 @@
+\section{Existentialism is a Database Theory}
+% Existentialism is a Humanism
+% - Jean-Paul Sartre
 
+We think of problems of the form $\textsf{query} \homto^? \textsf{data}$
+as existential problems: for instance, if $\?G$ is the "graph@@dir" with
+two nodes $u$ and $v$ and a single edge from $u$ to $v$,
+then asking if there is a "homomorphism" from $\?G$ to a graph $\?H$ amounts
+to asking if there exists at least one edge in $\?G$.
 
+As we would expect for any existential problem, they are monotonic:
+if a solution exists, and we add more data, then a solution still exists.
+More formally, for any "structure" $\?A$, $\?B$ and $\?B'$, if $\?B$ is a "substructure"
+of $\?B'$ and $\?A \homto \?B$,
+then $\?A \homto \?B'$.
 
+The example of SQL queries (\Cref{ex:sql-as-hom}) is actually more than a mere example:
+every "homomorphism problem" $\?A \homto \?B$ can be seen as a SQL query evaluation problem
+where $\?A$ encodes a "query@@sem" in the \textsf{SELECT-WHERE-FROM}
+fragment of SQL and $\?B$ is a relational database.
+This fragment can also be characterized as the fragment
+of "first-order logic" where universal quantification, union and negation are not allowed.
+For instance, the SQL query of \Cref{ex:sql-as-hom} can be expressed by the formula
+\begin{align*}
+	\phi(\textsf{title}, \textsf{time}) \defeq\; 
+	& \exists \textsf{movie\_id}.\, 
+	\exists \textsf{length}.\, 
+	\exists \textsf{director}.\,
+	\exists \textsf{room\_id}.\, \\
+	& \hphantom{\land~} \textsc{Movies}(\textsf{movie\_id}, \textsf{title}, \textsf{length}, \textsf{director}) \\
+	& \land
+	\textsc{Projections}(\textsf{movie\_id}, \textsf{room\_id}, \textsf{time}).
+\end{align*} 
+\begin{marginfigure}
+	\centering
+	\begin{tikzpicture}
+		\node (a0) at (-.1,5.2) {};
+		\node (a1) at (-.4,3.5) {};
+		\node (a2) at (-.1,1.8) {};
+		\node (a3) at (.1,1.8) {};
+		\node (a4) at (.4,3.5) {};
+		\node (a5) at (.1,5.2) {};
 
+		\node (b0) at (-.2,5.2) {};
+		\node (b1) at (-.8,3.1) {};
+		\node (b2) at (-.5,1.5) {};
+		\node (b3) at (-.4,.6) {};
+		\node (b4) at (-.2,-.2) {};
+		\node (b5) at (.2,-.2) {};
+		\node (b6) at (.4,1) {};
+		\node (b7) at (.2,1.4) {};
+		\node (b8) at (-.5,2.6) {};
+		\node (b9) at (-.4,3.8) {};
+		\node (b10) at (.2,5.2) {};
+	
+		\draw[use Hobby shortcut, closed=true, draw=c2, fill=c2, fill opacity=.4] 
+			(b0) .. (b1) .. (b2) .. (b3) .. (b4) .. (b5) .. (b6) .. (b7) .. (b8) .. (b9) .. (b10);
+		\draw[use Hobby shortcut, closed=true, draw=c1, fill=c1, fill opacity=.4] 
+			(a0) .. (a1) .. (a2) .. (a3) .. (a4) .. (a5);
+		
+		\node[vertex] at (0,5) (5) {};
+		\node[vertex] at (0,4) (4) {};
+		\node[vertex] at (0,3) (3) {};
+		\node[vertex] at (0,2) (2) {};
+		\node[vertex] at (0,1) (1) {};
+		\node[vertex] at (0,0) (0) {};
+		\node[font=\tiny, right=2em of 5] {\textsf{movie\_id}};
+		\node[font=\tiny, right=2em of 4] {\textsf{title}};
+		\node[font=\tiny, right=2em of 3] {\textsf{length}};
+		\node[font=\tiny, right=2em of 2] {\textsf{director}};
+		\node[font=\tiny, right=2em of 1] {\textsf{room\_id}};
+		\node[font=\tiny, right=2em of 0] {\textsf{time}};
 
+		\node[below= of 0] {output: \textsf{title}, \textsf{time}};
+	\end{tikzpicture}
+	\caption{
+		\AP\label{fig:SQL-as-CQ}
+		A "conjunctive query".
+	}
+\end{marginfigure}
+Yet another characterization of these queries is as "conjunctive queries": such a "query@CQ"
+consists of a "relational structure" together with a tuple of vertices, called ``"output@@var"''---this tuple
+plays the same role as the \textsf{SELECT} statement in SQL.
+For instance, the previous query can be expressed as the "conjunctive query"
+of \Cref{fig:SQL-as-CQ}. The semantics of such a "query@CQ"
+$\gamma = \tup{\?G, \bar x}$ is defined as follows:
+given a relational database, seen as a "relational structure" $\?D$,
+it returns every possible tuple $\bar d$ of elements of $\?D$ such that
+there exists a "homomorphism" from $\?G$ to $\?D$ that sends $\bar x$ to $\bar d$.
+Overall, these characterizations shows this fragment to be quite robust.
 
+Overall, these problems boils down to
+"homomorphism problems" of the form $\textsf{query} \homto^? \textsf{data}$.
+Assuming that the "query@@sem" if fixed,
+the naive algorithm to solve the "homomorphism problem"---consisting in enumerating
+every possible function from $A$ to $B$ and checking whether some of them
+define a "homomorphism"---works in polynomial time, as there are only $|B|^{|A|}$ such functions.
+In fact, it is straightforward to devise an algorithm in "uniform-AC0"---actually, the depth
+of the circuit does not even depend on $\?A$: there is roughly one layer simulating the
+existential quantifiers, and another one simulating the conjunctions.
 
+While $|B|^{|A|}$ is indeed polynomial when $\?A$ is fixed,
+recall that $\?B$ represents a database: despite what complexity theorists want us to believe,
+when dealing with 2.9 TB data, there is very little difference between
+`polynomial-time (of degree 7)' and `woops, my computer needs to do more operations to solve
+this problem than there are atoms in the observable universe'.
+This leads to two natural questions:
+\begin{itemize}
+	\item optimizing the size of the exponent, "ie"
+		replacing the "query@@sem" with a semantically equivalent one of smaller size,
+	\item studying the parametrized complexity of the evaluating SQL queries, when parametrized by
+		the size of the query: this provides a finer complexity notion than
+		the classical "NP"/"AC0" approach; our previous remark shows the result to be
+		slicewise polynomial ("XP"), which is not as well-behaved in practice than
+		the "fixed-parameter tractable" ("FPT") problems.
+\end{itemize}
+
+\paragraph*{Query minimization.}
+Both problems are in fact well-understood.
+This problem of optimizing the \textsf{SELECT-WHERE-FROM} fragment of
+SQL is well-understood, precisely by using the framework of "conjunctive queries"
+and "relational structures".
+This problem amounts to, given a "finite $\sigma$-structure" $\?A$,
+deciding if there exists a strictly smaller "$\sigma$-structure" $\?A'$ "st",
+for any "finite $\sigma$-structure" $\?B$, then
+\[
+	\?A \homto \?B
+	\quad\text{"iff"}\quad
+	\?A' \homto \?B.
+\]
+The property above is in fact equivalent to
+\begin{equation}
+	\?A \homto \?A'
+	\quad\text{and}\quad
+	\?A' \homto \?A
+	\label{eq:intro-hom-equivalence}
+\end{equation}
+and is hence decidable.
+The optimization procedure then goes as follows:
+starting from $\?A$, we check for every possible vertex $a \in \?A$
+if $\?A \smallsetminus \{a\}$ is equivalent to $\?A$ in the sense of
+\Cref{eq:intro-hom-equivalence}. If some $a$ satisfy the property, we
+let $\?A \smallsetminus \{a\}$ be our new query and start the process again.
+Otherwise, we get a minimal "query@@CQ", called "core" of $\?A$.
+This "core" is unique---which is not obvious since we defined it with
+a greedy procedure---and is, by construction, a "substructure" of $\?A$.
+In particular, it implies that the "core" does not only minimize the number of
+vertices of $\?A$---while being "semantically equivalent"---, but also any
+parameter that is closed under taking "substructures", such as "eg" the "tree-width".
+Therefore, this notion of "core", together with seeing
+\textsf{SELECT-WHERE-FROM} queries as "relational structures"/"conjunctive queries"
+provides a remarkably robust tool for solving most optimization problem on these "queries@@CQ".
+
+\paragraph*{FPT algorithms.}
+The problem of whether a "graph" contains a "$k$-clique" easily reduces to a
+"homomorphism problem" where the "input structure" is fixed---and equal to "$k$-clique".
+It follows that the "homomorphism problem", parametrized in the
+size of the "input structure" is "W1"-hard. Assuming that "W1" $\neq$ "FPT",%
+\footnote{This is the parametrized counterpart of "P" $\neq$ "NP".}
+it follows that there cannot be an "FPT" algorithm for evaluating "conjunctive queries".
+This started a quest towards finding classes of "conjunctive queries" with an "FPT" evaluation.
+
+\begin{marginfigure}
+	\centering
+	\begin{tikzpicture}
+		\node[vertex] at (0,0) (eps) {};
+		\node[vertex, below left=1.6em and 2em of eps] (a) {};
+		\node[vertex, below right=1.6em and 2em of eps] (b) {};
+		\node[vertex, below left=1.6em and 1.5em of a] (aa) {};
+		\node[vertex, below=1.44em of a] (ab) {};
+		\node[vertex, below right=1.6em and 1.5em of a] (ac) {};
+		\node[vertex, below=1.44em of b] (ba) {};
+
+		\draw[edge] (eps) to node[above left] {$a$} (a);
+		\draw[edge] (eps) to node[above right] {$b$} (b);
+		\draw[edge] (a) to node[above left] {$a$} (aa);
+		\draw[edge] (a) to node[left] {$b$} (ab);
+		\draw[edge] (a) to node[above right] {$c$} (ac);
+		\draw[edge] (b) to node[right] {$a$} (ba);
+	\end{tikzpicture}
+	\caption{
+		\AP\label{fig:SQL-as-CQ}
+		A tree-shaped "conjunctive query" over a "signature"
+		with three binary relations denoted by $a$, $b$ and $c$.
+	}
+\end{marginfigure}
+First, one can notice that if said query is tree-shaped,
+such as the "conjunctive query" of \Cref{fig:SQL-as-CQ}, then the naive
+bottom-up evaluation algorithm works in time todo.
