@@ -151,6 +151,12 @@ Therefore, this notion of "core", together with seeing
 \textsf{SELECT-WHERE-FROM} queries as "relational structures"/"conjunctive queries"
 provides a remarkably robust tool for solving most optimization problem on these "queries@@CQ".
 
+\begin{known}
+	"Conjunctive queries" can be minimized by computing their "core".
+	This process minimizes the number of vertices, but also many other
+	parameters, such as "path-width", "tree-width", etc.
+\end{known}
+
 \paragraph*{FPT algorithms.}
 The problem of whether a "graph" contains a "$k$-clique" easily reduces to a
 "homomorphism problem" where the "input structure" is fixed---and equal to "$k$-clique".
@@ -186,4 +192,51 @@ This started a quest towards finding classes of "conjunctive queries" with an "F
 \end{marginfigure}
 First, one can notice that if said query is tree-shaped,
 such as the "conjunctive query" of \Cref{fig:SQL-as-CQ}, then the naive
-bottom-up evaluation algorithm works in time todo.
+bottom-up evaluation algorithm works in time that is polynomial both
+in the size of the query and in the size of the database.
+Now, assume that $\gamma$ is a "conjunctive query" that is not necessarily
+not tree-shaped, but that is equivalent to a tree-shaped "query@@CQ".
+This is equivalent to saying that the "core" of $\gamma$ is "tree-shaped".
+Hence, to evaluate $\gamma$, one can instead:
+\begin{itemize}
+	\item first compute its "core",
+	\item then evaluate this "core" on the database.
+\end{itemize}
+The interest of this approach is that, while databases are ever-changing,
+queries are often handwritten and somewhat short. Spending some ever to optimize
+them is hence beneficial, since it might lead to performance gain
+for \emph{every} evaluation of the query: this is why studying the
+complexity of the evaluation problem parametrized by the size of
+the query is relevant.
+Formally, the previous procedure yields an algorithm that works in time
+\[
+	\+O(f(|\text{query}|) \cdot \text{poly}(|\text{core}|, |\text{database}|)).
+\]
+This means that evaluating "conjunctive queries" that are semantically equivalent to
+tree-shaped "queries@CQ" is "FPT".
+
+In fact, for this reasoning to work, the notion of ``tree-shaped'' need not
+be as restrictive as what is shown in \Cref{fig:SQL-as-CQ}: for instance,
+edges could be reverse. More generally, if the "query@@CQ" has "tree-width"%
+\footnote{Tree-width is a graph-parameter that measure how far a graph is from a tree.
+The notion can be extended to "relational structures".}
+at most $k$, then we still get a polynomial-time evaluation algorithm---where the order
+of the polynomial depends on $k$. In turns, it means that for every $k\in\Np$,
+evaluating "conjunctive queries" that are semantically equivalent to
+a "queries@CQ" of "tree-width" at most $k$ is "FPT".\footnote{In fact,
+they can even be evaluated in polynomial time, but the argument is less straightforward.
+todo:addref.}
+
+Remarkably, Grohe showed the converse property to be true: a class of "conjunctive queries"
+satisfying mild closure properties has "FPT" evaluation "iff"
+it has bounded ``"semantic tree-width"''---meaning that there exists $k\in\Np$ "st"
+every "query@CQ" in the class is "semantically equivalent" to a "query@CQ" 
+of "tree-width" at most $k$.%
+\footnote{The same equivalent holds for polynomial-time evaluation.}
+
+\begin{known}
+	"Conjunctive queries" of bounded semantic tree-width are exactly
+	the classes of "conjunctive queries" with tractable evaluation.
+\end{known}
+
+Overall, the theory of \emph{conjunctive queries} is hence well-understood.
