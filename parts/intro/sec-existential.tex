@@ -284,7 +284,7 @@ To face this issue, "graph databases", also known as "knowledge graph" have
 been introduced. To illustrate this point, we consider
 "Wikidata", which is a knowledge graph containing more than one hundred million
 vertices, whose data is used amongst others on Wikipedia. 
-We would like to obtain all works published before 1990 and whose
+We would like to obtain all literary works published before 1990 and whose
 French title contains the string ``exist''.
 This can be done using the SPARQL query language, which is roughtly the equivalent
 of SQL for knowledge bases: the query is represented in \Cref{fig:sparql,fig:sparql-explained}.
@@ -293,7 +293,7 @@ of SQL for knowledge bases: the query is represented in \Cref{fig:sparql,fig:spa
 	\caption{
 		\label{fig:sparql}
 		A SPARQL query.\\
-	\href{https://query.wikidata.org/\#SELECT\%20\%3FworkLabel\%20\%3FauthorLabel\%0AWHERE\%0A\%7B\%0A\%20\%20\%3Fwork\%09wdt\%3AP31\%2Fwdt\%3AP279\%2a\%20wd\%3AQ133449656\%3B\%0A\%20\%20\%09\%09rdfs\%3Alabel\%20\%3FworkLabel\%3B\%0A\%20\%20\%09\%09wdt\%3AP577\%20\%3Fdate\%3B\%0A\%20\%20\%20\%20\%20\%20\%20\%20wdt\%3AP50\%20\%3Fauthor.\%0A\%20\%20\%3Fauthor\%20rdfs\%3Alabel\%20\%3FauthorLabel.\%0A\%20\%20FILTER\%28LANG\%28\%3FworkLabel\%29\%20\%3D\%20\%22fr\%22\%20\%26\%26\%20LANG\%28\%3FauthorLabel\%29\%20\%3D\%20\%22fr\%22\%29.\%0A\%20\%20FILTER\%28CONTAINS\%28\%3FworkLabel\%2C\%20\%22exist\%22\%29\%29.\%0A\%20\%20FILTER\%28YEAR\%28\%3Fdate\%29\%20\%3C\%3D\%201990\%29.\%0A\%7D\%0ALIMIT\%207}{[\raisebox{-.4ex}{\HandRight} Execute the query.]}
+	\href{https://query.wikidata.org/\#SELECT\%20DISTINCT\%20\%3Fwork\%20\%3FworkLabel\%20\%3FauthorLabel\%0AWHERE\%0A\%7B\%0A\%20\%20\%3Fwork\%09wdt\%3AP31\%2Fwdt\%3AP279\%2a\%20wd\%3AQ7725634\%3B\%0A\%20\%20\%20\%20\%20\%20\%20\%20rdfs\%3Alabel\%20\%3FworkLabel\%3B\%0A\%20\%20\%09\%09wdt\%3AP577\%20\%3Fdate\%3B\%0A\%20\%20\%20\%20\%20\%20\%20\%20wdt\%3AP50\%20\%3Fauthor.\%0A\%20\%20\%3Fauthor\%20rdfs\%3Alabel\%20\%3FauthorLabel.\%0A\%20\%20FILTER\%28LANG\%28\%3FworkLabel\%29\%20\%3D\%20\%22fr\%22\%20\%26\%26\%20LANG\%28\%3FauthorLabel\%29\%20\%3D\%20\%22fr\%22\%29.\%0A\%20\%20FILTER\%28CONTAINS\%28\%3FworkLabel\%2C\%20\%22exist\%22\%29\%29.\%0A\%20\%20FILTER\%28YEAR\%28\%3Fdate\%29\%20\%3C\%3D\%201990\%29.\%0A\%7D\%0ALIMIT\%207}{[\raisebox{-.4ex}{\HandRight} Execute the query.]}
 	}
 \end{figure}
 \begin{figure}
@@ -308,7 +308,7 @@ The central notion in knowledge graphs and SPARQL is the notion of triplets:
 going from \textsf{x} to \textsf{y}.
 Then \lstinline[language=SQL]{x R y; S z.} is an abbreviation for
 \lstinline[language=SQL]{x R y. x S z.}
-Hence, the central part (ll. 4--6) of the SPARQL query of \Cref{fig:sparql,fig:sparql-explained}
+Hence, the central part (ll. 4--8) of the SPARQL query of \Cref{fig:sparql,fig:sparql-explained}
 should be understood as follows:
 we are looking for variables \textsf{?work}, \textsf{?typeOfWork},
 \textsf{?workLabel} and \textsf{?date} "st":
@@ -327,7 +327,79 @@ with the \lstinline[language=SQL]{wdt : P31 / wdt : P279 *}:
 this expression does not refer to a single edge of the knowledge graph,
 but rather to a regular expression formed from these edges.
 These regular expressions are precisely what allows for easy graph traversal!
+An example of a match of this expression is provided
+in red in \Cref{fig:example-wikidata}.
+The output of the query of \Cref{fig:sparql,fig:sparql-explained}
+is provided in \Cref{tab:output-sparql}.
 
+\begin{figure}
+	\centering
+	\begin{tikzpicture}
+		\node[vertex] at (0,-.5) (stats) {};
+		\node[vertex] at (-1.5,-1.5) (FF) {};
+		\node[vertex] at (0,-2.1) (1892) {};
+		\node[vertex] at (1.5,-1.5) (French) {};
+		\node[vertex] at (0,1) (bioDic) {};
+		\node[vertex] at (-1.5,2) (bio) {};
+		\node[vertex] at (0,2) (dico) {};
+		\node[vertex] at (1.5,2) (cata) {};
+		\node[vertex] at (.5,3) (kl) {};
+		\node[vertex] at (-.5,3) (ref) {};
+		\node[vertex] at (-1.5,3) (bioW) {};
+		\node[vertex] at (-1.5,4) (nonFic) {};
+		\node[vertex] at (1.5,3) (lit) {};
+
+		\draw[edge] (stats) to node[fill=white, midway, font=\tiny] {author} (FF);
+		\draw[edge] (stats) to node[fill=white, midway, font=\tiny] {date} (1892);
+		\draw[edge] (stats) to node[fill=white, midway, font=\tiny] {language} (French);
+		\draw[edge, draw=c0] (stats) to node[fill=white, midway, font=\tiny, text=c0] {instance of} (bioDic);
+
+		\draw[edge, bend left, dotted] (bioDic) to (bio);
+		\draw[edge, bend right, dotted] (bioDic) to (cata);
+		\draw[edge, dotted, draw=c0] (bioDic) to (dico);
+
+		\draw[edge, dotted] (bio) to (bioW);
+		\draw[edge, dotted] (bioW) to (nonFic);
+		\draw[edge, dotted] (cata) to (ref);
+		\draw[edge, dotted] (cata) to (kl);
+		\draw[edge, dotted] (dico) to (kl);
+		\draw[edge, dotted] (dico) to (ref);
+		\draw[edge, dotted, draw=c0] (dico) to (lit);
+
+		\node[right=1em of stats, font=\tiny, color=cDarkGrey, text width=3.5cm]
+			{"Statistique des gens de lettres et des savants existant en France@@wd"};
+		\node[below left=-.25em of FF, font=\tiny, color=cDarkGrey, text width=2cm, align=right]
+			{"François-Fortuné Guyot de Fère@@wd"};
+		\node[below=-.25em of 1892, font=\tiny, color=cDarkGrey]
+			{1892};
+		\node[below right=-.25em of French, font=\tiny, color=cDarkGrey]
+			{"French@@wd"};
+		\node[below left=-.5em and 1em of bioDic, font=\tiny, color=cDarkGrey, text width=1.5cm, align=right]
+			{"biographical dictionary@@wd"};
+		\node[left=-.25em of bio, font=\tiny, color=cDarkGrey]
+			{"biography@@wd"};
+		\node[below right=-.25em and -.25em of dico, font=\tiny, color=cDarkGrey]
+			{"dictionary@@wd"};
+		\node[right=-.25em of cata, font=\tiny, color=cDarkGrey]
+			{"catalogue@@wd"};
+		\node[above=.25em of kl, font=\tiny, color=cDarkGrey, text width=2cm, align=center]
+			{"knowledge organization system@@wd"};
+		\node[above=-.25em of ref, font=\tiny, color=cDarkGrey]
+			{"reference work@@wd"};
+		\node[left=-.25em of bioW, font=\tiny, color=cDarkGrey]
+			{"biographical work@@wd"};
+		\node[left=-.25em of nonFic, font=\tiny, color=cDarkGrey]
+			{"non-fiction work@@wd"};
+		\node[right=-.25em of lit, font=\tiny, color=cDarkGrey]
+			{"literary work@@wd"};
+	\end{tikzpicture}
+	\caption{
+		\AP\label{fig:example-wikidata}
+		Part of the "Wikidata" knowledge graph.
+		Dotted arrows represent the relation `subclass of'.
+		The red path matches the expression \lstinline[language=SQL]{wdt : P31 / wdt : P279 *}.
+	}
+\end{figure}
 \begin{table}
 	\centering
 	{
@@ -339,10 +411,10 @@ These regular expressions are precisely what allows for easy graph traversal!
 				& \multirow{2}{*}{François-Fortuné Guyot de Fère}\\
 			et des savants existant en France
 				& \\
-			L'existentialisme est un humanisme
-				& Jean-Paul Sartre\\
 			Le Chevalier inexistant
 				& Italo Calvino\\
+			L'existentialisme est un humanisme
+				& Jean-Paul Sartre\\
 			Ennui existentiel
 				& Anton Tchekhov\\
 			Les Ennuis de l'existence
@@ -353,5 +425,7 @@ These regular expressions are precisely what allows for easy graph traversal!
 				& David Zindell \\ \bottomrule
 		\end{tabular}
 	}
-	\caption{Output of the SPARQL query of \Cref{fig:sparql,fig:sparql-explained}.}
+	\caption{
+		\AP\label{tab:output-sparql}
+		Output of the SPARQL query of \Cref{fig:sparql,fig:sparql-explained}.}
 \end{table}

@@ -1,9 +1,9 @@
 SELECT ?workLabel ?authorLabel
 WHERE
 {
-  ?work	wdt:P31/wdt:P279* wd:Q133449656;
+  ?work	wdt:P31/wdt:P279* wd:Q7725634;
         rdfs:label ?workLabel;
-  		  wdt:P577 ?date;
+        wdt:P577 ?date;
         wdt:P50 ?author.
   ?author rdfs:label ?authorLabel.
   FILTER(LANG(?workLabel) = "fr" && LANG(?authorLabel) = "fr").
