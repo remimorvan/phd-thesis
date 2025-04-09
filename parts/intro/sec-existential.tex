@@ -185,13 +185,13 @@ This started a quest towards finding classes of "conjunctive queries" with an "F
 		\draw[edge] (b) to node[right] {$a$} (ba);
 	\end{tikzpicture}
 	\caption{
-		\AP\label{fig:SQL-as-CQ}
+		\AP\label{fig:intro-tree-shaped-CQ}
 		A tree-shaped "conjunctive query" over a "signature"
 		with three binary relations denoted by $a$, $b$ and $c$.
 	}
 \end{marginfigure}
 First, one can notice that if said query is tree-shaped,
-such as the "conjunctive query" of \Cref{fig:SQL-as-CQ}, then the naive
+such as the "conjunctive query" of \Cref{fig:intro-tree-shaped-CQ}, then the naive
 bottom-up evaluation algorithm works in time that is polynomial both
 in the size of the query and in the size of the database.
 Now, assume that $\gamma$ is a "conjunctive query" that is not necessarily
@@ -227,7 +227,8 @@ a "queries@CQ" of "tree-width" at most $k$ is "FPT".\footnote{In fact,
 they can even be evaluated in polynomial time, but the argument is less straightforward.
 todo:addref.}
 
-Remarkably, Grohe showed the converse property to be true: a class of "conjunctive queries"
+Remarkably, this is \emph{exactly} the limit of tractability for these "queries@CQ":
+a class of "conjunctive queries"
 satisfying mild closure properties has "FPT" evaluation "iff"
 it has bounded ``"semantic tree-width"''---meaning that there exists $k\in\Np$ "st"
 every "query@CQ" in the class is "semantically equivalent" to a "query@CQ" 
@@ -239,4 +240,118 @@ of "tree-width" at most $k$.%
 	the classes of "conjunctive queries" with tractable evaluation.
 \end{known}
 
+\begin{marginfigure}
+	\centering
+	\begin{tikzpicture}
+		\node[vertex] at (0,2) (2) {};
+		\node[vertex] at (0,1) (1) {};
+		\node[vertex] at (0,0) (0) {};
+
+		\draw[edge] (0) to (1);
+		\draw[edge] (1) to (2);
+
+		\node[font=\tiny, right=0em of 2] {\textsf{person}};
+		\node[font=\tiny, right=0em of 1] {\textsf{child}};
+		\node[font=\tiny, right=0em of 0] {\textsf{grand\_child}};
+
+		\node[below= of 0] {output: \textsf{person}, \textsf{grand\_child}};
+	\end{tikzpicture}
+	\caption{
+		\AP\label{fig:CQ-grandchild}
+		A "conjunctive query" outputting all pairs of people with their grandchildren.
+	}
+\end{marginfigure}
 Overall, the theory of \emph{conjunctive queries} is hence well-understood.
+Even when considering other features from SQL, such as aggregate functions---\textsf{COUNT}, \textsf{SUM}, etc.---, the query language of "conjunctive queries" faces a big limitation:
+it is \emph{intrinsically local}.
+Consider two "structures" $\?A$ and $\?B$, and two elements $a$ and $a'$ of $A$.
+For any homomorphism $f$ from $\?A$ to $\?B$, the "distance@@struct" from $f(a)$ to $f(a')$
+in $\?B$ is at most the distance from $a$ to $a'$ in $\?A$.\footnote{This follows from
+the definition of a "homomorphism", by using a trivial induction on the "distance@@struct".}
+Now assume that $\?B$ is a "graph", whose vertices are humans,
+and whose edges represent the `is a child of' relation.
+For any $k\in\N$, it is easy to build a "conjunctive query" $\tup{\?A_k, \tup{a, a'}}$
+outputting all pairs $\tup{b,b'}$ "st" $b'$ is a depth-$k$ descendant of $b$---see
+\Cref{fig:CQ-grandchild} for $k=2$.
+However, since "homomorphisms" contract "distances@@struct", there is no
+"conjunctive query" $\tup{\?A_*, \tup{a, a'}}$ outputting all pairs $\tup{b,b'}$
+"st" $b'$ is descendant, at \emph{any} depth, of $b$.
+In other words, "conjunctive queries" are not closed under transitive closures.
+
+More generally, human-centered data does not usually go well with
+relational databases, as they are not designed to allow graph traversal.
+To face this issue, "graph databases", also known as "knowledge graph" have
+been introduced. To illustrate this point, we consider
+"Wikidata", which is a knowledge graph containing more than one hundred million
+vertices, whose data is used amongst others on Wikipedia. 
+We would like to obtain all works published before 1990 and whose
+French title contains the string ``exist''.
+This can be done using the SPARQL query language, which is roughtly the equivalent
+of SQL for knowledge bases: the query is represented in \Cref{fig:sparql,fig:sparql-explained}.
+\begin{figure}
+\lstinputlisting[language=SQL, morekeywords={rdfs,wd,wdt,FILTER,LANG,CONTAINS}]{fig/intro/exist.rq}
+	\caption{
+		\label{fig:sparql}
+		A SPARQL query.\\
+	\href{https://query.wikidata.org/\#SELECT\%20\%3FworkLabel\%20\%3FauthorLabel\%0AWHERE\%0A\%7B\%0A\%20\%20\%3Fwork\%09wdt\%3AP31\%2Fwdt\%3AP279\%2a\%20wd\%3AQ133449656\%3B\%0A\%20\%20\%09\%09rdfs\%3Alabel\%20\%3FworkLabel\%3B\%0A\%20\%20\%09\%09wdt\%3AP577\%20\%3Fdate\%3B\%0A\%20\%20\%20\%20\%20\%20\%20\%20wdt\%3AP50\%20\%3Fauthor.\%0A\%20\%20\%3Fauthor\%20rdfs\%3Alabel\%20\%3FauthorLabel.\%0A\%20\%20FILTER\%28LANG\%28\%3FworkLabel\%29\%20\%3D\%20\%22fr\%22\%20\%26\%26\%20LANG\%28\%3FauthorLabel\%29\%20\%3D\%20\%22fr\%22\%29.\%0A\%20\%20FILTER\%28CONTAINS\%28\%3FworkLabel\%2C\%20\%22exist\%22\%29\%29.\%0A\%20\%20FILTER\%28YEAR\%28\%3Fdate\%29\%20\%3C\%3D\%201990\%29.\%0A\%7D\%0ALIMIT\%207}{[\raisebox{-.4ex}{\HandRight} Execute the query.]}
+	}
+\end{figure}
+\begin{figure}
+	\lstinputlisting[language=SQL, morekeywords={rdfs,wd,wdt,FILTER,LANG,CONTAINS}]{fig/intro/exist-bis.rq}
+	\caption{
+		\label{fig:sparql-explained}
+		Human-friendly translation of the SPARQL query of \Cref{fig:sparql}.
+	}
+\end{figure}
+The central notion in knowledge graphs and SPARQL is the notion of triplets:
+\lstinline[language=SQL]{x R y.} refers to an edge of the \textsf{R}-relation
+going from \textsf{x} to \textsf{y}.
+Then \lstinline[language=SQL]{x R y; S z.} is an abbreviation for
+\lstinline[language=SQL]{x R y. x S z.}
+Hence, the central part (ll. 4--6) of the SPARQL query of \Cref{fig:sparql,fig:sparql-explained}
+should be understood as follows:
+we are looking for variables \textsf{?work}, \textsf{?typeOfWork},
+\textsf{?workLabel} and \textsf{?date} "st":
+\begin{itemize}
+	\item there is a path from \textsf{?work} to \textsf{?typeOfWork}
+		obtained by taking an edge `is instance of', and then an arbitrary number
+		of edges of type `is subclass of',
+	\item \textsf{?typeOfWork} should exactly correspond to the vertex called `type of work',
+	\item \textsf{?work} has label \textsf{?workLabel}, 
+	\item \textsf{?work} was published on \textsf{?date},
+	\item \textsf{?work} was authored by \textsf{?author}, and
+	\item \textsf{?author} has label \textsf{?authorLabel}.
+\end{itemize}
+They key feature of graph databases query languages is illustrated
+with the \lstinline[language=SQL]{wdt : P31 / wdt : P279 *}:
+this expression does not refer to a single edge of the knowledge graph,
+but rather to a regular expression formed from these edges.
+These regular expressions are precisely what allows for easy graph traversal!
+
+\begin{table}
+	\centering
+	{
+		\footnotesize%
+		\begin{tabular}{ll}
+			\toprule
+			workLabel & authorLabel \\ \midrule 
+			Statistique des gens de lettres 
+				& \multirow{2}{*}{François-Fortuné Guyot de Fère}\\
+			et des savants existant en France
+				& \\
+			L'existentialisme est un humanisme
+				& Jean-Paul Sartre\\
+			Le Chevalier inexistant
+				& Italo Calvino\\
+			Ennui existentiel
+				& Anton Tchekhov\\
+			Les Ennuis de l'existence
+				& Anton Tchekhov\\
+			La tentation d'exister
+				& Emil Cioran\\
+			Inexistence
+				& David Zindell \\ \bottomrule
+		\end{tabular}
+	}
+	\caption{Output of the SPARQL query of \Cref{fig:sparql,fig:sparql-explained}.}
+\end{table}

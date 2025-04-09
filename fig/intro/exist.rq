@@ -1,0 +1,13 @@
+SELECT ?workLabel ?authorLabel
+WHERE
+{
+  ?work	wdt:P31/wdt:P279* wd:Q133449656;
+        rdfs:label ?workLabel;
+  		  wdt:P577 ?date;
+        wdt:P50 ?author.
+  ?author rdfs:label ?authorLabel.
+  FILTER(LANG(?workLabel) = "fr" && LANG(?authorLabel) = "fr").
+  FILTER(CONTAINS(?workLabel, "exist")).
+  FILTER(YEAR(?date) <= 1990).
+}
+LIMIT 7

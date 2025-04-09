@@ -1,0 +1,13 @@
+SELECT ?workLabel ?authorLabel
+WHERE
+{
+  ?work	'is instance of'/'is sublcass of'* 'type of work';
+        'has label' ?workLabel;
+  		  'was published on' ?date;
+        'was authored by' ?author.
+  ?author 'has label' ?authorLabel.
+  FILTER(LANG(?workLabel) = "fr" && LANG(?authorLabel) = "fr").
+  FILTER(CONTAINS(?workLabel, "exist")).
+  FILTER(YEAR(?date) <= 1990).
+}
+LIMIT 7
