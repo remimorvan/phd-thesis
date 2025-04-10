@@ -532,3 +532,152 @@ decide if it is equivalent to a finite union of
 	as a union of strictly smaller "queries@@CRPQ" is decidable,
 	and minimization is effective.
 \end{contribution}
+
+Both algorithms are essentially brute-force, and the main technical difficulty
+lies in proving that finitely many candidates to test, which is not
+trivial because we do not ask for any bound on the size of the "regular languages".%
+\footnote{Again, the motivation lies from the fact that the complexity of evaluating
+a "conjunctive regular path queries" mostly depends on how many "atoms"/edges it has,
+and not so much on how complex these languages are.}
+The idea behind the two algorithms are in fact surprisingly different:
+\begin{itemize}
+	\item in the first case---when union is not allowed---, we prove that
+		if a "query@CRPQ" is equivalent to another one with few
+		"atoms" (but potentially big languages), then it must be
+		equivalent to a "query@CRPQ" with few "atoms" \emph{and} small languages.
+		This property is proved by understanding the subtle interactions between
+		languages and the graph structure;
+	\item in the second case---when union is allowed---, we build a canonical
+		finite union of "queries@CRPQ", corresponding to the
+		"maximal under approximation" by a finite union of small "queries@CRPQ": 
+		it is the \emph{best} under approximation---in the sense that
+		it logically entails the "query@CRPQ"---and so, if the original
+		"query@CRPQ" is equivalent to a finite union of small ones, then
+		it must be equivalent to this "maximal under approximation".
+		The difficulty there lies in proving the existence of "maximal under approximation",
+		or rather that it can be expressed by a \emph{finite} union.
+		This construction can essentially be seen as a
+		smart brute-forcing, obtained by agglomerating all possible smaller "queries@CRPQ".
+\end{itemize}
+
+One reason we resolve to using brute-force algorithm is that it is
+remarkably hard to understand when a "query@CRPQ" cannot be minimized.
+The case of "conjunctive queries" is much simpler: if the "core" 
+of the "query@CQ" has $k$ edges (resp. "tree-width" $k$),
+then any "conjunctive query" "semantically equivalent" to it must use at least $k$ edges
+(resp. have "tree-width" at least $k$).
+Another of our contributions is to identify a sufficient condition%
+\footnote{However, contrary to the "core", this condition is not necessary.}
+on a "query@CRPQ" so that \emph{any} "query" "semantically equivalent" to it
+must contain a ``complex pattern''. This theorem is enjoyably quite generic,
+as the notion of ``complex pattern'' is formalized as a ``"minor-closed" class
+of graphs''---examples include the class of all graphs with at most $k$ "atoms",
+or the class of all graphs of "tree-width" at most $k$.
+
+\begin{contribution}
+	We introduce the "semantical structure theorem", that provides
+	a way to prove lower bounds on the number
+	of "atoms", or "tree-width", or any minor-closed property,
+	that is necessary to express a "query@@sem".
+\end{contribution}
+
+This tool proves useful to prove minimality of specific examples---"ie"
+for proofs---, and to prove complexity lower bounds for our problem.
+However, this it only provides a sufficient condition, that is often not
+necessary, it fails to provide a \emph{simple} algorithm to test minimality---hence our
+brute-force algorithms.
+
+Then, in \Cref{ch:semantic-tree-width-CRPQ}, we turn to the question
+of "tree-width". Similarly to "conjunctive queries", finite unions of
+"conjunctive regular path queries"
+of bounded "tree-width" can be evaluated in polynomial time.
+It begs the question of deciding when a "query@CRPQ" is actually equivalent
+to such an object.
+
+\begin{known}
+	Barceló, Romero and Vardi devised an algorithm to test
+	if a "conjunctive regular path queries" is equivalent to
+	a finite union of ``acyclic''---meaning of "tree-width" 1---"queries@CRPQ".
+\end{known}
+
+Unfortunately, the general question for "tree-width" $k$ is left open at the end
+of their paper as the authors did not know how to extend their technique to this
+more general setting. We extend their result, relying again on the notion
+of "maximal under-approximation":%
+\footnote{The paper of Barceló, Romero and Vardi
+also relies on "maximal under-approximations", and this notion already existed
+for "conjunctive queries".}
+we prove that, given a "conjunctive regular path query" and
+$k\in\Np$ the existence and computability of its "maximal under-approximation"
+by finite unions of "queries@CRPQ" of "tree-width" at most $k$.
+
+\begin{contribution}
+	Given $k\in \Np$ and a "conjunctive regular path queries",
+	we can decide if the latter is "semantically equivalent"
+	to a finite union of "queries@CRPQ" of "tree-width"
+	(resp. "path-width") at most $k$.
+\end{contribution}
+
+The proof of existence of this "maximal under-approximation" is
+actually quite hard---at least much harder than in the case minimizing
+the number of "atoms"---as it needs to deal with two kind of information:
+the structure of the query, "ie" its underlying graph, and its languages.
+The proof precisely massages the query to, at the same time,
+preserve information about the "tree decomposition"---serving as a
+witness of the small "tree-width" of the "query@CRPQ"---and about the
+semantics of the "query@CRPQ".
+
+Amusingly, we originally thought that our proof was not able to
+capture the case $k=1$ that was already handled, and that the constructions
+of Barceló, Romero and Vardi and ours were orthogonal.
+When written the journal version of this paper---that was originally
+published at ICDT '23---, we wanted to extend the results to "path-width",%
+\footnote{The main motivation behind this is that the evaluation of "queries@CRPQ"
+of bounded "path-width" is not only polynomial but even "NL"!}
+but part of our construction broke. Introducing the technical tool
+to fix it\footnote{See the notions of "contractions" and "contracted path-width".}
+actually leads to a unified solution, that handles both
+the case of "tree-width" $k$ (including $k=1$) and "path-width".%
+\footnote{Lastly, note that the order of presentation of these results
+does not follow the timeline of their discovery: our work on "semantic tree-width"
+was done in 2022--23 and published at ICDT '23, while the one on minimization
+was done in 2024--25 and published at PODS '25.}
+
+Lastly, all these algorithms relies on testing the equivalence
+of "conjunctive regular path queries", which is "ExpSpace".
+It leads to resource-hungry algorithms,%
+\footnote{Although it has to be noted that it is worth running exponential
+algorithm on smallish "queries@CRPQ" in order to optimize
+its evaluation on huge databases!}
+which leads to a natural quest for identifying subclasses
+of "queries@CRPQ" that admit more efficient algorithms.
+
+"Conjunctive regular path queries" over "simple regular expression",
+where the "regular languages" allowed are restricted to be concatenations of
+edge-labels and reflexive-transitive closure ("aka" Kleene star) of
+edge-labels, were already known to have a more efficient
+algorithm for testing "semantical equivalence".
+
+\begin{contribution}
+	We prove that the problem of minimizing the number of "atoms" (resp. "tree-width")
+	of "conjunctive regular path queries" over "simple regular expression"
+	lies in the polynomial hierarchy.
+\end{contribution}
+
+A consequence of our work on "tree-width" is that,
+given a "conjunctive regular path query" that is promised to be equivalent
+to a "query@CPRQ" of "tree-width" $k$, we can first compute said
+equivalent query of small "tree-width" by using our algorithm,
+and then evaluate it on any database. This proves that the evaluation
+problem for "conjunctive regular path queries" of bounded "semantic tree-width"
+is "FPT" when parametrized by the size of the "query@sem".%
+\footnote{This result was in fact already known---but proven differently, with
+an incomparable complexity (better preprocessing but worst polynomial exponent)---by
+\todo{addref}.}
+Whether the converse hold remains a mystery: many attempts
+have been tried to extend Grohe's proof for "conjunctive queries" to this setting,
+but all failed, precisely because of the difficulty posed
+by the intertwining of the graph structure and the automata.
+We conclude this part of the thesis by a discussion of this problem,
+as well as whimsical ideas related to "conjunctive regular path queries"
+in \Cref{ch:conclu-database}.
