@@ -3,3 +3,4 @@ hyperedge
 fixpoint
 Hyperedge
 injectivity
+semantical

@@ -61,7 +61,7 @@
 }
 
 % ---
-% Smash left/right arrow (used for "hom")
+% Smash left/right arrow (used for "hom"/"atom")
 % ---
 \newrobustcmd\smashxrightarrow[1]{%
   	\raisebox{-.04em}{$%
@@ -109,6 +109,14 @@
 \newenvironment{known}{%
 \medskip
 \begin{tcolorbox}[colback=cBlue!20!white, colframe=cBlue]
+}{%
+	\end{tcolorbox}
+	\medskip
+}
+
+\newenvironment{contribution}{%
+\medskip
+\begin{tcolorbox}[colback=cGreen!20!white, colframe=cGreen]
 }{%
 	\end{tcolorbox}
 	\medskip

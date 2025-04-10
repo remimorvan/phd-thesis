@@ -177,12 +177,12 @@ This started a quest towards finding classes of "conjunctive queries" with an "F
 		\node[vertex, below right=1.6em and 1.5em of a] (ac) {};
 		\node[vertex, below=1.44em of b] (ba) {};
 
-		\draw[edge] (eps) to node[above left] {$a$} (a);
-		\draw[edge] (eps) to node[above right] {$b$} (b);
-		\draw[edge] (a) to node[above left] {$a$} (aa);
-		\draw[edge] (a) to node[left] {$b$} (ab);
-		\draw[edge] (a) to node[above right] {$c$} (ac);
-		\draw[edge] (b) to node[right] {$a$} (ba);
+		\draw[edge] (eps) to node[above left] {$\+R$} (a);
+		\draw[edge] (eps) to node[above right] {$\+S$} (b);
+		\draw[edge] (a) to node[above left] {$\+R$} (aa);
+		\draw[edge] (a) to node[left] {$\+S$} (ab);
+		\draw[edge] (a) to node[above right] {$\+T$} (ac);
+		\draw[edge] (b) to node[right] {$\+R$} (ba);
 	\end{tikzpicture}
 	\caption{
 		\AP\label{fig:intro-tree-shaped-CQ}
@@ -281,7 +281,10 @@ In other words, "conjunctive queries" are not closed under transitive closures.
 More generally, human-centered data does not usually go well with
 relational databases, as they are not designed to allow graph traversal.
 To face this issue, "graph databases", also known as "knowledge graph" have
-been introduced. To illustrate this point, we consider
+been introduced: they can essentially be modelled
+as "relational structures" whose relations are all binary, "ie"
+as edge-labelled graphs---see "eg" \Cref{fig:example-wikidata}.
+To illustrate this point, we consider
 "Wikidata", which is a knowledge graph containing more than one hundred million
 vertices, whose data is used amongst others on Wikipedia. 
 We would like to obtain all literary works published before 1990 and whose
@@ -297,7 +300,7 @@ of SQL for knowledge bases: the query is represented in \Cref{fig:sparql,fig:spa
 	}
 \end{figure}
 \begin{figure}
-	\lstinputlisting[language=SQL, morekeywords={rdfs,wd,wdt,FILTER,LANG,CONTAINS}]{fig/intro/exist-bis.rq}
+	\lstinputlisting[language=SQL, morekeywords={rdfs,wd,wdt,FILTER,LANG,CONTAINS}]{fig/intro/exist-bis.txt}
 	\caption{
 		\label{fig:sparql-explained}
 		Human-friendly translation of the SPARQL query of \Cref{fig:sparql}.
@@ -308,10 +311,10 @@ The central notion in knowledge graphs and SPARQL is the notion of triplets:
 going from \textsf{x} to \textsf{y}.
 Then \lstinline[language=SQL]{x R y; S z.} is an abbreviation for
 \lstinline[language=SQL]{x R y. x S z.}
-Hence, the central part (ll. 4--8) of the SPARQL query of \Cref{fig:sparql,fig:sparql-explained}
+Hence, the central part (ll.~4--8) of the SPARQL query of \Cref{fig:sparql,fig:sparql-explained}
 should be understood as follows:
-we are looking for variables \textsf{?work}, \textsf{?typeOfWork},
-\textsf{?workLabel} and \textsf{?date} "st":
+we are looking for variables \textsf{?work}, \textsf{?typeOfWork} (implicit),
+\textsf{?workLabel}, \textsf{?date} and \textsf{?authorLabel} "st":
 \begin{itemize}
 	\item there is a path from \textsf{?work} to \textsf{?typeOfWork}
 		obtained by taking an edge `is instance of', and then an arbitrary number
@@ -398,6 +401,8 @@ is provided in \Cref{tab:output-sparql}.
 		Part of the "Wikidata" knowledge graph.
 		Dotted arrows represent the relation `subclass of'.
 		The red path matches the expression \lstinline[language=SQL]{wdt : P31 / wdt : P279 *}.
+		For readability, labels are written next to the vertices
+		rather than as separate vertices linked with a `has label' relation.
 	}
 \end{figure}
 \begin{table}
@@ -429,3 +434,101 @@ is provided in \Cref{tab:output-sparql}.
 		\AP\label{tab:output-sparql}
 		Output of the SPARQL query of \Cref{fig:sparql,fig:sparql-explained}.}
 \end{table}
+
+We formalize the core features of SPARQL as "conjunctive regular path queries":
+they consist of "conjunctive queries", except that their atoms are no
+longer of the form $x \atom{\+R} y$ (for some binary relation $\+R \in \sigma$),
+but can be more generally of the form
+\[
+	x \atom{L} y
+	\quad\text{ for some "regular language" $L$ over $\sigma$}.
+\]
+For instance, ll.~1--8 of the SPARQL query of \Cref{fig:sparql,fig:sparql-explained}
+can be modelled by the "conjunctive regular path query" of \Cref{fig:intro-SPARQL-as-CRPQ}:
+notice the regular expression in red.
+\begin{marginfigure}
+	\centering
+	\begin{tikzpicture}
+		\node[vertex] at (0,0) (work) {};
+		\node[vertex, above=3em of work] (litWork) {};
+		\node[vertex, below left=2.2em and 2.7em of work] (workLabel) {};
+		\node[vertex, below=2.9em of work] (date) {};
+		\node[vertex, below right=2.2em and 2.7em of work] (author) {};
+		\node[vertex, below=2.5em of author] (authorLabel) {};
+
+		\draw[edge] (work) to node[fill=white, font=\tiny, text=c0] {instance $\cdot$ subclass${}^*$} (litWork);
+		\draw[edge] (work) to node[fill=white, font=\tiny] {label} (workLabel);
+		\draw[edge] (work) to node[fill=white, font=\tiny] {date} (date);
+		\draw[edge] (work) to node[fill=white, font=\tiny] {author} (author);
+		\draw[edge] (author) to node[fill=white, font=\tiny] {label} (authorLabel);
+
+		\node[right=-.25em of work, font=\tiny, color=cDarkGrey]
+			{work};
+		\node[right=-.25em of litWork, font=\tiny, color=cDarkGrey]
+			{typeOfWork};
+		\node[left=-.25em of workLabel, font=\tiny, color=cDarkGrey]
+			{workLabel};
+		\node[below=-.25em of date, font=\tiny, color=cDarkGrey]
+			{date};
+		\node[right=-.25em of author, font=\tiny, color=cDarkGrey]
+			{author};
+		\node[right=-.25em of authorLabel, font=\tiny, color=cDarkGrey]
+			{authorLabel};
+
+		\node[below=4.5em of date] {output: \textsf{workLabel}, \textsf{authorLabel}};
+	\end{tikzpicture}
+	\caption{
+		\AP\label{fig:intro-SPARQL-as-CRPQ}
+		A "conjunctive regular path query" 
+		modelling the core part of \Cref{fig:sparql,fig:sparql-explained}.
+	}
+\end{marginfigure}
+
+\begin{known}
+	"Graph databases"/knowledge graphs store information as edge-labelled graphs.
+	To allow for graph traversal, we extend "conjunctive queries"
+	to "conjunctive regular path queries" by adding regular expressions.
+\end{known}
+
+While "conjunctive regular path queries" share some of the enjoyable properties
+of "conjunctive queries"---for instance the decidability of "semantical equivalence",
+in contrast to "eg" "first-order logic"---its semantics is more complex:
+graph-like phenomenon ("homomorphisms") intertwines with "regular languages".
+Not only does this lead to a complexity blow-up---"semantical equivalence" is "NP"-complete
+for "conjunctive queries" but "ExpSpace"-complete for "conjunctive regular path queries"---,
+it also breaks the nice theory of "cores".
+
+As a consequence, the optimizing "conjunctive regular path queries" poses
+a significant challenge to untwist graph properties from automata-theoretic ones.
+This first part of this thesis is dedicated to this problem.
+After exposing the basic theory of "conjunctive regular path queries"
+in \Cref{ch:prelim-graph-databases}, we study
+the "minimization problem@@CRPQ" in \Cref{ch:minimization-CRPQ}:
+given such a "query@CRPQ" and $k\in\Np$, we can decide if it is equivalent to a "query@CRPQ"
+of size at most $k$, and if so we can produce it.
+
+\begin{contribution}
+	Whether a "conjunctive regular path query" can be minimized is decidable,
+	and minimization is effective.
+\end{contribution}
+
+We notice that, somewhat unexpectedly, there are some "conjunctive regular path queries"
+that are minimal in the sense above, but that are equivalent to a \emph{finite union}---in the 
+semantical sense---of strictly smaller "conjunctive regular path queries".%
+\footnote{This contrasts with the case of "conjunctive queries",
+where the notion of "core" and the order-theoretic properties
+of "relational structures" precisely prevents this phenomenon from appearing.
+In other words, this phenomenon precisely emerges by interlacing
+the graph structure and the automata of the "query@@CRPQ".}
+We argue that measuring a union of such "queries@@CRPQ" by the maximal size
+of a query in the union is a sensitive thing to do---because the complexity
+of evaluating such a union depends mostly on this parameter---, and prove
+that given a "conjunctive regular path queries" and $k\in\N$, we can
+decide if it is equivalent to a finite union of
+"queries@CRPQ" which are all of size at most $k$.
+
+\begin{contribution}
+	Whether a "conjunctive regular path query" can be minimized
+	as a union of strictly smaller "queries@@CRPQ" is decidable,
+	and minimization is effective.
+\end{contribution}
