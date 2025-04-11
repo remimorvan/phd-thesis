@@ -83,5 +83,32 @@ who proved that such problems are either in "P" or "NP"-complete when the domain
 has two elements.%
 \footnote{While this might seem restrictive, notice that no assumption is made on the "signature".
 Moreover, the example of SAT-solving (\Cref{ex:sat-as-hom}) precisely uses a "structure" of this kind.}
+A decade later, Hell and Ne\v{s}et\v{r}il \cite{HellNesetril1990ComplexityColoring}
+proved a similar result for undirected graph.
+Moreover, in both cases, these dichotomies are effective: given a structure, we can decide if
+its "homomorphism problem" is in "P" or is "NP"-complete.
+These results, together with the importance of \emph{constraint satisfaction} in computer science
+lead Feder and Vardi at the end of the 1990s
+to state their infamous \emph{dichotomy conjecture}: ``for any "relational structure" $\?B$,
+the "homomorphism problem" with "target structure" $\?B$ is either "P"
+or "NP"-complete'' \cite{FederVardi1998ComputationalStructure}.
+Despite receiving lots of attention, the conjecture remained wide open for two decades, until
+Bulatov \cite{Bulatov2017DichotomyCSPs} and Zhuk \cite{Zhuk2020CSPDichotomy} independently
+showed the conjecture to be true.
+
+However not all problems in "P" are complete for this class: some are even simpler and are complete
+for "NL" or "L", or even "FOfin"---the class of "first-order definable" "finite structures".
+One result that will be of major importance in this thesis is a dichotomy
+theorem by Larose and Tesson separating "structures" in "FOfin" from those that are "L"-hard
+\cite{LaroseTesson2009UniversalAlgebraCSP}.
+
+\begin{known}
+	The field of constraint satisfaction problems classifies "target structures"
+	depending on the complexity of their "homomorphism problem".
+\end{known}
+
+The second part of this thesis is dedicated to pushing these results to their limit.
+These structures are usually always assumed to be "finite@@struct".
+
 \todo{undirected graph}
 \todo{fin duality}
