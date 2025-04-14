@@ -8,6 +8,7 @@
 	\caption{Looking glass room, by John Tenniel.}
 \end{marginfigure}
 
+\paragraph*{Constraint Satisfaction Problems.}
 Going to the other side, encodings of model-checking problems
 as "homomorphism problems" of the form $\textsf{data} \homto^? \textsf{query}$
 can be thought of as ``universal problems'':%
@@ -108,7 +109,107 @@ theorem by Larose and Tesson separating "structures" in "FOfin" from those that 
 \end{known}
 
 The second part of this thesis is dedicated to pushing these results to their limit.
-These structures are usually always assumed to be "finite@@struct".
+These structures are usually always assumed to be "finite@@struct": we want to generalize them
+to finitely-presentable\footnote{This assumption is needed for the notion
+of computability to make sense.} infinite "structures".
 
-\todo{undirected graph}
-\todo{fin duality}
+\paragraph*{Automatic structures.}
+The end of the XIXth century saw the quest of finding solid foundations
+for mathematics. Somewhat surprisingly, this task was much more challenging that expected,
+as witnessed by Frege's infamous \emph{Grundgesetze der Arithmetik},
+published between 1893 and 1903, presenting an inconsistent set theory due to Russell's paradox.
+\todo{finish}
+
+"Automatic structures" are essentially a subclass of "structures" on which the dreams of
+the mathematical community holds: given such a "structure" and a "first-order sentence",
+we can decide whether it holds on this "structure". These structures can be infinite,
+but can be described by finite-state automata, which makes decidability possible.
+
+\begin{known}
+	The first-order theory of every "automatic structure" is decidable.
+\end{known}
+
+The foremost example of "automatic structure" is "Presburger's arithmetic",%
+\footnote{See \Cref{ex:presburger}.}
+namely the natural number equipped with addition $\tup{\N, +}$.
+Sadly, due to "Gödel's incompleteness theorems", there is no single "structure"---let alone an "automatic one@automatic structure"---$\?U$ "st" the sentences of "Zermelo–Fraenkel set theory"
+are exactly those true on $\?U$. In fact, Peano's arithmetic, namely natural number with
+addition and multiplication $\tup{\N,+,\cdot}$ is not "automatic@@struct".
+
+As a consequence, mathematicians still exist---for better and for worse---as no algorithm
+can decide if a given theorem is valid or not.
+While "automatic structures" cannot express ``mathematical universes'' serving as
+foundations for a universal mathematical theory, they are surprisingly adequate to
+express infinite "structures" arising from models of computability.
+For instance, the runs of a finite-state automaton is "automatic"---its nodes
+are finite runs of the automaton, and there is a `$a$'-transition from
+$\rho$ to $\rho'$ when $\rho' = \rho \transition{a} q'$ for some state $q'$---
+since the unfolding of any finite graph is "automatic".
+More generally, the "configuration graph" of any "Turing machine" is "automatic"!%
+\footnote{See \Cref{ex:turing-machine-are-automatic}.}
+
+Hence, we naturally study the "homomorphism problem" when the "input structure"
+is allowed to be any "automatic structure". Surprisingly, very little was known about this problem:
+the only known result by Köcher states that whether an "automatic graph" is "2-colourable" is undecidable \cite{Kocher2014AutomatischenGraphen}.
+This lead us to conjecture that actually most "homomorphism problems" on "automatic structures"
+should be undecidable, since $\clique{2}$ is actually somewhat ``simple''.
+
+While the "homomorphism problem" seems quite natural at first glance, a "homomorphism" $f$
+from an "automatic structure" $\?A$ to a "finite one@finite structure" $\?B$ does not live
+in the same world as $\?A$ and $\?B$, in the sense that it might not be finitely-presentable---its domain is infinite and so, \emph{a priori} require infinite information to be described.
+We introduce the notion of "regular homomorphisms", that corresponds to "homomorphisms" that
+are finitely-presentable in the same fashion as "automatic structures", and show that
+this notion differs from the notion of "homomorphism".%
+\footnote{See \Cref{fig:tree-not-2reg-colour,ex:tree-not-2-reg-colourable}.}
+
+\begin{marginfigure}
+	\centering
+	\begin{tikzpicture}
+		\input{tikz/intro/3-transitive-tournament}
+	\end{tikzpicture}
+	\caption{
+		\AP\label{fig:3-transitive-tournament}
+		The "$3$-transitive tournament" $\transitiveTournament{3}$.
+	}
+\end{marginfigure}
+Our first contribution is to show that whether a graph admits a "$2$-regular colouring" is undecidable---see \Cref{thm:k-reg-col-undec}. We then notice that a particular type of
+"homomorphism problem" is decidable: for instance, if the "target structure"
+is a "transitive tournament". This is best understood on an example: consider the "$3$-transitive 
+tournament" depicted in \Cref{fig:3-transitive-tournament}.
+A "homomorphism" $f$ from a graph $\?G$ to $\transitiveTournament{3}$ amounts to a function
+from the set of vertices of $\?G$ to $\lBrack 0,3\rBrack$ "st"
+for any vertices $u$ and $v$, if there is an edge from $u$ to $v$, then
+$f(u) \leq f(v)$. It is clear that the existence of such a mapping is in fact equivalent 
+to asking that there is no path of length $4$ in $\?G$.
+In turn, this property can be expressed by a "first-order formula", and is hence decidable
+on "automatic graphs".
+More generally, this property can be extended to any "target structure" $\?B$ with the property
+that the class of (finite or infinite) "structures" $\?A$ that admit a "homomorphism" to $\?B$
+is "first-order definable".
+Luckily for us, this class has been well-studied, and is known as the class of "structures"
+with "finite duality". In particular, let us cite the result of Larose and Tesson
+who proved that any "homomorphism problem" whose "target structure" does not have "finite duality"
+must be "L"-hard \cite{LaroseTesson2009UniversalAlgebraCSP}.
+
+Given the undecidability of the "homomorphism problem" on "automatic structures" 
+when the "target structure" is a "clique" but its decidability when it is a "transitive tournament",
+we naturally conjecture that "finite duality" represents the frontier of decidability for "automatic structures". In \Cref{ch:dichotomy-theorem}, we manage to prove this result, and extend it to "regular homomorphisms".
+
+\begin{contribution}
+	We provide a ``dichotomy theorem'' for "homomorphism problems" on "automatic structures":
+	for any "finite@@struct" "target structure" $\?B$, the problem
+	is either in "NL" or is undecidable. The same holds for "regular homomorphisms".
+	Moreover, in both cases, the problem is decidable precisely when $\?B$ has "finite duality".
+\end{contribution}
+
+Since the "configuration graph" of any "Turing machine" is an "automatic graph",
+it follows that this dichotomy theorem\footnote{See \Cref{thm:dichotomy-theorem-automatic-structures} for a formal statement.} can be understood
+as a variation on "Rice's theorem", that states that any non-trivial
+semantical property of a Turing machine is undecidable.
+Our dichotomy theorem hence implies the following result.
+
+\begin{contribution}
+	Any non-trivial---"ie" "non-first-order definable---property on the "configuration graph"
+	of a "Turing machine" is undecidable, provided that this property can be expressed
+	as a "homomorphism problem".
+\end{contribution}

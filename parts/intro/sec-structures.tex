@@ -206,6 +206,16 @@ the "homomorphism problem" should rather be seen as a \emph{framework} or
 		The "$3$-clique" $\clique{3}$.
 	}
 \end{marginfigure}
+\begin{marginfigure}
+	\centering
+	\begin{tikzpicture}
+		\input{tikz/dichotomy/ex-3-colouring}
+	\end{tikzpicture}
+	\caption{
+		\AP\label{fig:dichotomy-ex-3-clique}
+		A "$3$-colouring" of some beetle-shaped "graph@@dir".
+	}
+\end{marginfigure}
 \begin{example}[Graph colouring]
 	\AP\label{ex:graph-colouring-as-hom}
 	Let $k\in\Np$. We let the \AP""$k$-clique"", denoted by $\intro*\clique{k}$,
@@ -214,7 +224,8 @@ the "homomorphism problem" should rather be seen as a \emph{framework} or
 	"iff" $i\neq j$, see \Cref{fig:intro-3-clique}.
 	A finite "graph@@dir" $\?G$ is \AP""$k$-colourable""---"ie"
 	we can map every vertex of $\?G$ to an element of $\lBrack 1,k\rBrack$
-	"st" no two adjacent vertices are sent on the same colour/number---if,
+	"st" no two adjacent vertices are sent on the same colour/number,
+	see "eg" \Cref{fig:dichotomy-ex-3-clique}---if,
 	and only if, there is a "homomorphism" from $\?G$ to $\clique{k}$.
 \end{example}
 
