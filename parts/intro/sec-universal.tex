@@ -199,7 +199,7 @@ we naturally conjecture that "finite duality" represents the frontier of decidab
 	We provide a ``dichotomy theorem'' for "homomorphism problems" on "automatic structures":
 	for any "finite@@struct" "target structure" $\?B$, the problem
 	is either in "NL" or is undecidable. The same holds for "regular homomorphisms".
-	Moreover, in both cases, the problem is decidable precisely when $\?B$ has "finite duality".
+	Moreover, in both cases, these two problems are decidable precisely when $\?B$ has "finite duality".
 \end{contribution}
 
 Since the "configuration graph" of any "Turing machine" is an "automatic graph",
@@ -209,7 +209,17 @@ semantical property of a Turing machine is undecidable.
 Our dichotomy theorem hence implies the following result.
 
 \begin{contribution}
-	Any non-trivial---"ie" "non-first-order definable---property on the "configuration graph"
+	Any non-trivial---"ie" "non-first-order definable"---property on the "configuration graph"
 	of a "Turing machine" is undecidable, provided that this property can be expressed
 	as a "homomorphism problem".
 \end{contribution}
+
+One of our motivation for studying this problem was actually originating
+in the "$AUT$/$REC$-separability problem", which takes as input two "automatic relations"---namely are binary relations over finite words described by "synchronous automata"---and asks if they can be
+"separated@@rel" by a "recognizable relation", "ie" a finite union $\bigcup_i K_i \times L_i$
+of Cartesian products of "regular languages". 
+We prove this problem to be equivalent to the one taking an "automatic graph" and asks
+if it has a finite "regular colouring", which amounts to asking
+if there exists some $k\in\Np$ for which the graph admits a "regular homomorphism" to
+$\clique{k}$. We still don't know whether this problem is decidable, 
+even if the result of \Cref{ch:dichotomy-theorem} hint at its undecidability.
