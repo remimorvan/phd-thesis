@@ -979,8 +979,10 @@ if there exists $w \in (\Sigma_1 \convolAlpha \cdots \convolAlpha \Sigma_k)^*$
 "st" $\projWord(w) = \tup{u_1,\dotsc,u_k}$ and $\projTape(w) \in T$.
 
 Binary "synchronous automata" exactly correspond to "$T_{\textrm{sync}}$-multitape automaton" when
-$T_{\textrm{sync}} \defeq \{1,2\}^* \cdot (\{1\}^* + \{2\}^*)$: we start by moving both
-heads synchronously, and then only of them---and we stick to the choice we made.
+$T_{\textrm{sync}} \defeq \{1,2\}^* \cdot (\{1\}^* + \{2\}^*)$:%
+\footnote{In the expression above $\{1,2\}$ denotes a single letter!}
+we start by moving both heads synchronously, and then only of
+them---and we stick to the choice we made.
 Similarly, it can be shown
 that for $T_{\textrm{rec}} \defeq \{1\}^* \cdot \{2\}^*$, then "$T_{\textrm{rec}}$-multitape automaton" exactly recognize "recognizable relation"
 \cite[Proposition~1]{FigueiraLibkin2015SynchronizingRelations}.
@@ -1272,8 +1274,8 @@ the relations recognized by two-way transducers and deterministic two-way trandu
 known as \AP""regular functions@@bojan"", and have been extensively studied in the past
 decade. They admit several characterizations, in the frameworks of multitape automata, transducers, logic, etc.\footnote{See \cite[4th~Paragraph]{Bojanczyk2022Transducers} for pointers.}
 
-Remarkably, the intersection of "functional relations" and "two-way transductions"
-collapses to "regular functions" \cite[Theorem 22, p.~243]{EngelfrietHoogeboom2001transduction}.
+Remarkably, the intersection of the classes of "functional relations" and of "two-way transductions"
+collapses exactly to the class of all "regular functions" \cite[Theorem 22, p.~243]{EngelfrietHoogeboom2001transduction}.
 In other words non-determinism does not increase the expressiveness of two-way multitape automata, when restricted to "functional relations".
 As a consequence, the hierarchy of "functional relations" is surprisingly more
 linearly ordered than expected, as depicted in \Cref{fig:hierarchy-functional-relations}.
