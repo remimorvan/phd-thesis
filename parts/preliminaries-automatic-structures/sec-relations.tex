@@ -11,7 +11,9 @@ languages recognized by either:
 	\item two-way finite state automata by Shepherdson-Rabin-Scott theorem\\
 		\null\hspace{1.0pc}\cite[Theorem~2, p.~198]{Shepherdson1959ReductionTwoWay}
 		\cite[Theorem~15, p.~123]{RabinScott1959FiniteAutomata};
-	\item rational expressions by Kleene's theorem,\\
+	\item rational expressions\footnote{Usually called ``regular expressions'' by
+		non-French speakers, however we use the terminology ``rational'' for its unambiguity.}
+		by Kleene's theorem,\\
 		\null\hspace{1.0pc}see "eg" \cite[Theorem~1.5.11, p.~34]{Pin2021FiniteAutomata};
 	\item monadic second-order logic by Trakhtenbrot-Büchi-Elgot theorem,\\
 		\null\hspace{1.0pc}see "eg" \cite[Theorem~2.2, p.~32]{Bojanczyk2020MSO}; or
@@ -28,6 +30,9 @@ models are strictly more succinct than others.
 		The ``landscape of rationality'' for binary relations.
 		See also \Cref{fig:hierarchy-rational-relations,fig:hierarchy-functional-relations}.
 		\todo{make it clicakble}
+		\todo{Diego:same parity -> same parity length}
+		\todo{Diego:add equal length}
+		\todo{Diego:Sync -> Aut}
 	}
 \end{figure*}
 These equivalences explain why the terms \emph{recognizable language}---meaning implicitly
@@ -44,13 +49,10 @@ The landscape of rationality for $k$-ary relations of finite words ($k \geq 2$) 
 although this thesis will mostly deal with the two most restrictive ones, namely
 "recognizable@@rel" and "automatic relations".%
 \footnote{It should be noted that the names
-of these classes were often coined independently of one another.
-For instance, "automatic relations" are named this way because they correspond to
-the relations recognized by some model of automata...
-not unlike most of the classes in \Cref{fig:landscape-rationality-relations}.
-They are also sometimes named ``regular relations'', which have nothing to do
-with "regular functions" and do \emph{not} correspond to the intersection of "regular functions"
-with "functional relations", as one would reasonably expect.}
+of these classes were often coined independently of one another
+and the terminology should be handled with care: for instance,
+``regular relations'' do \emph{not} correspond to the intersection of "regular functions@@bojan"
+with "functional relations".}
 
 We fix two alphabets $\Gamma$ and $\Sigma$. In the rest of this section, we focus
 on relations $\+R \subseteq \Gamma^* \times \Sigma^*$. We will sometimes provide definitions
@@ -60,13 +62,13 @@ for relations of higher arity when the generalization is not trivial.
 Beyond introducing the classes of "recognizable@@rel" and "automatic relations", the goal of
 this section is also to clarify the literature. When dealing with relations, there are essentially 
 two families of machines for recognizing a relation $\+R \subseteq \Gamma^* \times \Sigma^*$:
-\begin{description}
-	\item[multitape automata:] this model reads a pair of words $\tup{u,v} \in \Gamma^* \times \Sigma^*$ and decides if it belongs to $\+R$;
-	\item[transducers:] this model reads a word $u \in \Gamma^*$ and produces a word (or no word, or multiple words) $v\in \Sigma^*$, in which case we say that $\tup{u,v} \in \+R$.  
-\end{description}
+\begin{itemize}
+	\item \emph{multitape automata:} this model reads a pair of words $\tup{u,v} \in \Gamma^* \times \Sigma^*$ and decides if it belongs to $\+R$;
+	\item \emph{transducers:} this model reads a word $u \in \Gamma^*$ and produces a word (or no word, or multiple words) $v\in \Sigma^*$, in which case we say that $\tup{u,v} \in \+R$.  
+\end{itemize}
 The latter model is inherently passive while the former is more active: the output is produced,
 or \emph{transduced}, from the input. However, these two families are far from being incomparable:
-when non-determinism is allowed and the model is expressive enough, a transducer can always guess the output and simulate a multitape automata. Despite this fact, the works on "multitape automata" and "transducers" rarely reference each other, and the relationship between classes
+when non-determinism is allowed and the model is expressive enough, a transducer can always guess the output and simulate a "multitape automata". Despite this fact, the works on "multitape automata" and "transducers" rarely reference each other, and the relationship between classes
 of relations defined by these two families of models is often unclear.%
 \footnote{To witness this claim, I want to emphasize that I unwillingly included an erroneous 
 version of \Cref{fig:landscape-rationality-relations} in \cite{Morvan2025Algebras}:
@@ -95,7 +97,7 @@ studied in the literature.
 Often, in the literature, when the terminology ``transduction'' is used,
 these relations are thought as functions from $\Gamma^*$ to $\pset{\Sigma^*}$.
 These functions are equivalent\footnote{Meaning formally that these categories are isomorphic.}
-to relations, "ie" subsets of $\Gamma^* \times \Sigma^*$.
+to relations, "ie" subsets of~$\Gamma^* \times \Sigma^*$.
 For deterministic transducers, the output is a singleton, and hence its semantics can be seen
 as a \emph{partial function}---or equivalently as a "functional relation"---from $\Gamma^*$ to $\Sigma^*$.
 
@@ -131,7 +133,7 @@ which has received a lot of attention.
 }{
 	Two $\+C$-relations $\+R$ and $\+R'$.
 }{
-	Is there a $\+D$-relation "st" $\+R \subseteq \+S$ and $\+R' \cap \+S = \emptyset$?
+	Is there a $\+D$-relation $\+S$ "st" $\+R \subseteq \+S$ and $\+R' \cap \+S = \emptyset$?
 }
 In this case, we say that $\+S$ ""separates@@rel"" $\+R$ from $\+R'$.
 Note that when $\+D$ is closed under complement, $\+R$ and $\+R'$ play a symmetric role in this problem. Moreover, if $\+D$ is \emph{effectively} closed under complement,
@@ -158,7 +160,7 @@ as well as a subset $\Acc \subseteq M$ "st"
 $\+R = f^{-1}[\Acc]$. We denote by \AP$\intro*\REC$ the class of "recognizable relations".%
 \footnote{To avoid preposterous set-theoretic paradoxes, 
 we use the classical shenanigan of defining this as a function which maps
-any alphabet $\Sigma$ to the set of "recognizable relations" over $\Sigma$.}
+any pair of alphabets $\Gamma$ and $\Sigma$ to the set of "recognizable relations" over $\Gamma$ and $\Sigma$.}
 
 For instance the \AP""same parity relation""
 \[
@@ -168,9 +170,9 @@ For instance the \AP""same parity relation""
 		|u| = |v| \mod{2}
 	\}
 \]
-is "recognizable@@rel". Indeed, letting $f\colon  \Gamma^* \times \Sigma^* \to \ZnZ{2}$,
+is "recognizable@@rel". Indeed, letting $f\colon  \Gamma^* \times \Sigma^* \to \ZnZ{2}$
+be defined by $f(u,v) \defeq |u| - |v| \mod{2}$,
 then $\sameParity$ can be written as $f^{-1}[\{\bar 0\}]$.
-
 These relations admit a remarkably simple characterization.\AP
 \begin{proposition}[{""Mezei theorem"".}]
 	\!\footnote{See "eg" \cite[Corollary~II.2.20, p.~254]{Sakarovitch2009Elements}.
@@ -205,7 +207,8 @@ We provide a slightly more general statement of "Mezei theorem".
 		"st" $\+R = f^{-1}[\Acc]$;
 		\item there exists $n \in \N$
 		and $K_1,\dotsc,K_n \in \+V_{\Gamma}$ and $L_1,\dotsc,L_n \in \+V_{\Sigma}$
-		"st" $\mathcal{R} = \bigcup_{i=1}^n K_i \times L_i$,
+		"st" $\mathcal{R} = \bigcup_{i=1}^n K_i \times L_i$,%
+		\footnote{$\+V_{\Gamma}$ refers to all languages of $\+V$ over the alphabet $\Gamma$.}
 	\end{enumerate}
 	in which case we say that $\+R$ is \AP""$\+V$-recognizable@@rel"".
 \end{proposition}
@@ -251,7 +254,7 @@ we get back \Cref{prop:Mezei-theorem}.
 \end{proof}
 
 Both the algebraic definition of "recognizable relations" and
-"Mezei theorem" imply---informally!---that all reasonable problems on
+"Mezei theorem" imply, informally, that all reasonable problems on
 "recognizable relations" are decidable. For instance, from \Cref{prop:Mezei-theorem-generalization},
 we get that $\+V$ has decidable "membership@@problang" "iff" the class of "$\+V$-recognizable relations"
 has decidable "membership@@problang".
@@ -261,10 +264,6 @@ On the other hand, \Cref{prop:Mezei-theorem} proves that "recognizable relations
 	\!\footnote{Of course, this property is far from being sufficient
 	at characterizing "reflexive relations": note that the proof
 	does not even use the "regularity@@lang" of the languages at hand...}%
-	\footnote{Another way of proving this result would be
-	to apply "Ramsey's infinite theorem" to $f\colon \Sigma^* \times \Sigma^* \to \?M$.
-	Again, we do not use the fact that $f$ is a "monoid morphism", but simply
-	that it is a finite-domain function.}
 	\AP\label{coro:infinite-clique-recognizable}
 	Let $\+R \subseteq \Sigma^* \times \Sigma^*$ be a "reflexive@@rel" "recognizable relation".
 	Then $\+R$ contains an infinite clique, "ie"
@@ -280,7 +279,11 @@ On the other hand, \Cref{prop:Mezei-theorem} proves that "recognizable relations
 	$L$ by $f$ is infinite. Then pick $u,v \in L$. Since $\+R$ is reflexive, then
 	$\tup{u,u} \in \+R$ and so, since $f(u) = f(v)$, we
 	have $u \in K_i$ "iff" $v \in K_i$ and
-	$u \in L_i$ "iff" $v \in L_i$ for all $i$, and so $\tup{u,v} \in \+R$.
+	$u \in L_i$ "iff" $v \in L_i$ for all $i$, and so $\tup{u,v} \in \+R$.%
+	\footnote{Another way of proving this result would be
+	to apply "Ramsey's infinite theorem" to $f\colon \Sigma^* \times \Sigma^* \to \?M$.
+	Again, we do not use the fact that $f$ is a "monoid morphism", but simply
+	that it is a finite-domain function.}
 \end{proof}
 
 In particular, this corollary implies that neither the \AP""prefix relation""
@@ -291,12 +294,11 @@ ${\intro*\prefix} \defeq \{
 ${\intro*\suffix} \defeq \{
 	\tup{u,v} \in \Sigma^*\times\Sigma^* \mid
 	\text{$u$ is a suffix of $v$}
-\}$, nor the equality relation are "recognizable@@rel".
-A similar proof can show that the ""equal-length relation""
+\}$, the equality relation, nor the ""equal-length relation""
 ${\intro*\equalLength} \defeq \{
 	\tup{u,v} \in \Gamma^*\times\Sigma^* \mid
 	|u| = |v|
-\}$.%
+\}$ are "recognizable@@rel".%
 \footnote{Note however that \Cref{coro:infinite-clique-recognizable} does not apply since
 we assumed there that the input and output alphabets are equal.}
 
@@ -346,6 +348,19 @@ For instance
 We denote by \AP$\intro*\convolRel{\+R}$ the language
 $\{ u \convol v \mid \tup{u,v} \in \+R\} \subseteq (\Gamma\convolAlpha\Sigma)^*$.
 
+\begin{marginfigure}
+	\centering
+	\begin{tikzpicture}[shorten >= 1pt, node distance = 1.8cm, on grid, baseline]
+		\node[state, initial left, accepting] (q0) {}; 
+		\path[->]
+			(q0) edge[loop right] node[font=\scriptsize] {$\pair{a}{a}, \pair{\pad}{a}\text{ for }a\in \Sigma$} (q0);
+	\end{tikzpicture}
+	\caption{
+		\AP\label{fig:example-synchronous-automaton-prefix-1}
+		A deterministic one-state "synchronous automaton" "recognizing@@syncauto"
+		the "prefix relation".
+	}
+\end{marginfigure}
 A (finite-state) \AP""synchronous automaton"" $\+A$ over input alphabet $\Gamma$ and output alphabet $\Sigma$
 is a finite-state automaton over $\Gamma\convolAlpha \Sigma$.%
 \footnote{In particular, just like for classical automata, we allow for non-determinism
@@ -354,8 +369,14 @@ We say that $\+A$ accepts the pair of words $\tup{u,v} \in \Gamma^* \times \Sigm
 it accepts $u \convol v$ as a ``classical automaton''. Similarly, $\+A$ \AP""recognizes@@syncauto""
 $\+R$ if it $\convolRel{\+R}$ is exactly the set of
 words of the form $u \convol v$ that are accepted by $\+A$ as a classical automaton.
-A relation is \AP""automatic@@rel"" if it is "recognized@@syncauto" by a finite-state "synchronous automaton".
-We denote by \AP$\intro*\AUT$ the class of "automatic relations".
+\Cref{fig:example-synchronous-automaton-prefix-1} depicts
+a "synchronous automaton" for the "prefix relation". Note that $\pair{\pad}{a}\pair{a}{a}$
+corresponds to a run of the automaton from an initial state to an accepting one.
+However, since $\pair{\pad}{a}\pair{a}{a}$ cannot be written as
+$u \convol v$, then this run plays no role whatsoever in the semantics of this
+"synchronous automaton".
+
+We say that a relation is \AP""automatic@@rel"" if it is "recognized@@syncauto" by a finite-state "synchronous automaton", and we denote by \AP$\intro*\AUT$ the class of "automatic relations".
 
 \begin{remark}
 	Note that some words of $(\Gamma\convolAlpha \Sigma)^*$ do \emph{not} correspond to
@@ -372,32 +393,17 @@ We denote by \AP$\intro*\AUT$ the class of "automatic relations".
 	$\reintro*\WellFormed[\Sigma]$ instead of $\WellFormed[\Sigma,\Sigma]$.}
 \end{remark}
 
-Because of this, some automata that are not \emph{classically} equivalent
+Because of this last remark, some automata that are not \emph{classically} equivalent
 become equivalent when seen as "synchronous automaton". For instance, 
 both "synchronous automata" of
 \Cref{fig:example-synchronous-automaton-prefix-1,fig:example-synchronous-automaton-prefix-2}
 "recognize@@syncauto" the "prefix relation". However, they do not recognize
-the same language when seen as classical automaton---for instance, $\pair{\pad}{a}\pair{a}{a}$
-is accepted by the automaton of \Cref{fig:example-synchronous-automaton-prefix-1}
-but not by the one of \Cref{fig:example-synchronous-automaton-prefix-2}.
+the same language when seen as classical automaton.
 Generalizing this example, it is trivial to check that two "synchronous automata"
 have the same semantics if, and only if, they have the same
 intersection of their semantics, when seen as classical automata, with
 an automaton for $\WellFormed[\Gamma,\Sigma]$.
 
-\begin{marginfigure}
-	\centering
-	\begin{tikzpicture}[shorten >= 1pt, node distance = 1.8cm, on grid, baseline]
-		\node[state, initial left, accepting] (q0) {}; 
-		\path[->]
-			(q0) edge[loop right] node[font=\scriptsize] {$\pair{a}{a}, \pair{\pad}{a}\text{ for }a\in \Sigma$} (q0);
-	\end{tikzpicture}
-	\caption{
-		\AP\label{fig:example-synchronous-automaton-prefix-1}
-		A deterministic one-state "synchronous automaton" "recognizing@@syncauto"
-		the "prefix relation".
-	}
-\end{marginfigure}
 \begin{marginfigure}
 	\centering
 	\begin{tikzpicture}[shorten >= 1pt, node distance = 1.8cm, on grid, baseline]
@@ -433,11 +439,9 @@ the emptiness of the classical automaton obtained by intersecting $\+A$ with $\W
 	Emptiness and non-emptiness of "synchronous automata" are "NL"-complete.
 \end{property}
 
-Similarly to \Cref{fig:example-synchronous-automaton-prefix-1,fig:example-synchronous-automaton-prefix-2},
-it is straightforward to prove that the "equal-length relation"
+It is straightforward to prove that the "equal-length relation"
 and the equality relation, "aka" the identity relation, denoted
-by \AP$\intro*\Id$, are "automatic@@rel", but not "recognizable@@rel".
-As stated before, this class extends the class of "recognizable relations".
+by \AP$\intro*\Id$, are "automatic@@rel", but, as already mentioned, not "recognizable@@rel".
 
 \begin{proposition}
 	\label{prop:rec-implies-aut}
@@ -505,12 +509,12 @@ there are only finitely many $\tup{w_j}_{j\not\in I} \in \prod_{j \not\in I} \Si
 \footnote{Note that this is one of the very few statements
 that we spell out for $k$-ary relation since its generalization from binary to $k$-ary relations
 is not entirely trivial.}
-Note that every $k$-ary relation is "$\lBrack 1,k\rBrack$-locally finite".
+Note that every $k$-ary relation is trivially "$\lBrack 1,k\rBrack$-locally finite".
 \begin{proposition}[See "eg" {\cite[Proposition~3.1]{KhoussainovNiesRubinStephan2007Automatic}}]
 	\label{prop:non-synchronous}
 	\!\footnote{\cite{KhoussainovNiesRubinStephan2007Automatic} attributes this proposition
 	to older work by Khoussainov, Nerode and Blumensath, but we failed to verify this claim.}%
-	\footnote{Recall that $\max{\emptyset} = -\infty$, and so in the case
+	\footnote{By convention $\max{\emptyset} = -\infty$, and so in the case
 	of $I = \lBrack 1,k\rBrack$, this statement is trivially valid.}
 	\AP\label{prop:bound-automatic-structures}
 	Let $\+R \subseteq \Sigma_1^* \times \cdots \times \Sigma_k^*$ be "$I$-locally finite".
@@ -547,9 +551,8 @@ This part of this thesis is mostly motivated by this problem.%
 \begin{openproblem}
 	Is the ""$\REC$-separability problem for automatic relations"" decidable?
 \end{openproblem}
-Pablo Barceló introduced me to this problem in October 2022,
-which has been open for many years.
-It goes back at least to 2006, when Choffrut and Grigorieff
+
+This problem goes back at least to 2006, when Choffrut and Grigorieff
 solved a special subcase of commutative relations.
 While the general problem is not explicitly mentioned in their paper,
 the question is rather obvious given their contribution the and formulation of the result:
@@ -560,9 +563,32 @@ Note that relations $\+R \subseteq \Sigma^*\times \N^m$ are in natural bijection
 with the relations $\+R' \subseteq \Sigma^*\times \Gamma^*$ where $\Gamma$ is an alphabet
 with $m$ letters, satisfying the property that for each $u \in \Sigma^*$ and $v \in \Gamma^*$,
 for any permutation $v'$ of the letters of $v$, we have $\tup{u,v} \in \+R'$
-"iff" $\tup{u,v} \in \+R'$. 
+"iff" $\tup{u,v'} \in \+R'$. 
 
+\paragraph*{Closure under morphisms.}
+We say that a "monoid morphism" $f\colon \Gamma^* \to \Sigma^*$ is \AP""length-multiplying""
+when $|f(a)| = |f(b)|$ for all $a, b \in \Gamma$.
+\begin{proposition}
+	\AP\label{prop:automatic-closure-length-multiplying-morphism}
+	"Automatic relations" are closed under direct images and preimages of "length-multiplying 
+	morphisms".\footnote{For the notion of ``direct image'' and ``preimage'' to make sense, we need
+	the input and output alphabets to be equal.}
+\end{proposition}
+\begin{proof}
+	Any "length-multiplying morphism" $f\colon \Gamma^* \to \Sigma^*$ induces
+	a "monoid morphism" $\hat f\colon (\SigmaPair[\Gamma])^* \to (\SigmaPair)^*$ 
+	by letting $\hat f \pair{a}{b} \defeq \pair{f(a)}{f(b)}$.
+	Then for any relation, $\convolRel{(f[\+R])} = \hat f[\convolRel{\+R}]$
+	and $\convolRel{(f^{-1}[\+R])} = \hat f^{-1}[\convolRel{\+R}]$.
+	The conclusion follows from the fact that regular languages are closed under
+	direct images and preimages of "monoid morphisms".
+\end{proof}
 
+This is false for arbitrary "monoid morphisms". For instance, $\set{\tup{0^n, 1^n} \mid n \in \N}$
+is "automatic@@rel", but its image by the "monoid morphism" $f\colon \2^* \to \2^*$ defined by
+$f(0) \defeq 0$ and $f(1) \defeq 11$ is $\set{\tup{0^n, 1^{2n}} \mid n\in \N}$ which is clearly not 
+"automatic@@rel". Similarly, its preimage by the same "morphism@@monoid" is
+$\set{\tup{0^{2n}, 1^{n}} \mid n \in \N}$ which is not "automatic@@rel" either, by symmetry.
 
 We will see more properties of "automatic relations"---or rather of "automatic structures"---in
 \Cref{sec:preliminaries-automatic-structures-automatic-structures,sec:preliminaries-automatic-structures-logic}.
@@ -578,7 +604,8 @@ For the sake of convenience, we assume that the automaton can move multiple head
 This can be formalized as follows.
 
 A \AP""multitape automaton"" over $\Gamma,\Sigma$
-can be syntactically defined as a classical automaton over $\Gamma \convolAlpha \Sigma$.
+can be syntactically defined as a classical automaton over $\Gamma \convolAlpha \Sigma$.%
+\footnote{They share the syntax as "synchronous automata", however be reassured: their semantics will differ!}
 We then let $\pi_1\colon (\Gamma\convolAlpha\Sigma)^* \to \Gamma^*$ and 
 $\pi_2\colon (\Gamma\convolAlpha\Sigma)^* \to \Sigma^*$ be the "monoid morphisms"
 defined by
@@ -646,6 +673,23 @@ The class of all "rational relations" is denoted by \AP$\intro*\RAT$.
 % 		when $\Sigma = \{a,b\}$.
 % 	}
 % \end{marginfigure}
+\begin{marginfigure}
+	\centering
+	\begin{tikzpicture}[shorten >= 1pt, node distance = 1.8cm, on grid, baseline]
+		\node[state, initial left, accepting] (q0) {}; 
+		\node[state, accepting, right=7em of q0] (q1) {}; 
+		\path[->]
+			(q0) edge[loop above] node[font=\scriptsize, above]
+				{$\pair{\pad}{a}$ for $a\in \Sigma$} (q0)
+			(q0) edge node[font=\scriptsize, below] {$\pair{a}{a}$ for $a\in \Sigma$} (q1)
+			(q1) edge[loop above] node[font=\scriptsize, above]
+				{$\pair{a}{a}$ for $a\in \Sigma$} (q1);
+	\end{tikzpicture}
+	\caption{
+		\AP\label{fig:multitape-automaton-suffix}
+		A "multitape automaton" for the "suffix relation" $\suffix$.
+	}
+\end{marginfigure}
 \begin{marginfigure}[-10em]
 	\centering
 	\begin{tikzpicture}[shorten >= 1pt, node distance = 1.8cm, on grid, baseline]
@@ -666,37 +710,23 @@ The class of all "rational relations" is denoted by \AP$\intro*\RAT$.
 		when $\Sigma = \{a,b\}$.
 	}
 \end{marginfigure}
-\begin{marginfigure}
-	\centering
-	\begin{tikzpicture}[shorten >= 1pt, node distance = 1.8cm, on grid, baseline]
-		\node[state, initial left, accepting] (q0) {}; 
-		\node[state, accepting, right=7em of q0] (q1) {}; 
-		\path[->]
-			(q0) edge[loop above] node[font=\scriptsize, above]
-				{$\pair{\pad}{a}$ for $a\in \Sigma$} (q0)
-			(q0) edge node[font=\scriptsize, below] {$\pair{a}{a}$ for $a\in \Sigma$} (q1)
-			(q1) edge[loop above] node[font=\scriptsize, above]
-				{$\pair{a}{a}$ for $a\in \Sigma$} (q1);
-	\end{tikzpicture}
-	\caption{
-		\AP\label{fig:multitape-automaton-suffix}
-		A "multitape automaton" for the "suffix relation" $\suffix$.
-	}
-\end{marginfigure}
 
+For instance, the "suffix relation" is "rational@@rel":
+see \Cref{fig:multitape-automaton-suffix}.
 Similarly, the "subword relation" $\subword$ is "rational@@rel": the idea behind
-the "automaton@@desync" recognizing is that, when reading an $a$ on the first tape,
+the "automaton@@desync" recognizing it is that, when reading an $a$ on the first tape,
 it will only move its second head right, until it reads
-an $a$; it then reads the next letter on the first tape and iterates this process. 
+an $a$; it then reads the next letter on the first tape and iterates this process,
+see \Cref{fig:multitape-automaton-subword}. 
 
-Note that alternative definitions exist, but yield an equivalent definition of "rational relations".
+Alternative definitions exist, but yield an equivalent definition of "rational relations".
 For instance, in \cite[Definition~2.1]{CartonChoffrutGrigorieff2006DecisionProblems},
 the "multitape automaton" are defined analogously (under the name ``$k$-tape automaton'')
 except that the alphabet is not $\Gamma \convolAlpha \Sigma$ but 
 $(\Gamma \times \{\pad\}) \cup (\{\pad\}\times \Sigma)$. In other words,
 their model can only move one head at a time.
 Of course, this makes little difference: we can simulate an $\pair{a}{b}$-transition in our model
-by two transitions labelled by $\pair{a}{\pad}$ and $\pair{\pad}{b}$ in their model, to the cost of adding a new state.
+by two transitions labelled by $\pair{a}{\pad}$ and $\pair{\pad}{b}$ in their model, at the cost of adding a new state.
 Moreover, "rational relations" can be equally characterized as the rational subsets of $\Gamma^*\times\Sigma^*$.%
 \footnote{Meaning the smallest collection of subsets of $\Gamma^*\times\Sigma^*$ containing the empty set, all singletons, closed under union, concatenation and Kleene star,
 see "eg" \cite[\S~III.2, Definition]{Berstel1979Transductions}.}
@@ -706,7 +736,7 @@ While emptiness and finiteness of "rational relations" are
 decidable---see "eg" \cite[\S~III, Proposition~8.2]{Berstel1979Transductions}---
 unfortunately "rational relations" are maybe too expressive: most other decision problems on them 
 are undecidable, including intersection non-emptiness, inclusion, equivalence, universality, co-finiteness and the "$\RAT$/$\REC$-membership problem", see \cite[\S~III, Theorem~8.4]{Berstel1979Transductions}.%
-\footnote{Note that all these results essentially follow
+\footnote{All these results essentially follow
 from an encoding of Post Correspondence Problem into rational relations.}
 
 \paragraph*{Closure properties.}
@@ -715,37 +745,15 @@ However, it is not closed under intersection
 (see "eg" \cite[\S~III, Example~2.5]{Berstel1979Transductions}),
 and hence, it is also not closed complementation.\footnote{Indeed, closure under union
 and complementation implies closure under intersection, using De Morgan's law.}
-It is also closed under concatenation, Kleene closure and reversal \cite[\S~3, Table~I]{FischerRosenberg1968Multitape}.
-
-We say that a "monoid morphism" $f\colon \Gamma^* \to \Sigma^*$ is \AP""length-multiplying""
-when $|f(a)| = |f(b)|$ for all $a, b \in \Gamma$.
-\begin{proposition}
-	\AP\label{prop:automatic-closure-length-multiplying-morphism}
-	"Automatic relations" are closed under direct images and preimages of "length-multiplying 
-	morphisms".\footnote{For the notion of ``direct image'' and ``preimage'' to make sense, we need
-	the input and output alphabets to be equal.}
-\end{proposition}
-\begin{proof}
-	Any "length-multiplying morphism" $f\colon \Gamma^* \to \Sigma^*$ induces
-	a "monoid morphism" $\hat f\colon (\SigmaPair[\Gamma])^* \to (\SigmaPair)^*$ 
-	by letting $\hat f \pair{a}{b} \defeq \pair{f(a)}{f(b)}$.
-	Then for any relation, $\convolRel{(f[\+R])} = \hat f[\convolRel{\+R}]$
-	and $\convolRel{(f^{-1}[\+R])} = \hat f^{-1}[\convolRel{\+R}]$.
-	The conclusion follows from the fact that regular languages are closed under
-	direct images and preimages of "monoid morphisms".
-\end{proof}
-
-This is false for arbitrary "monoid morphisms". For instance, $\set{\tup{0^n, 1^n} \mid n \in \N}$
-is "automatic@@rel", but its image by the "monoid morphism" $f\colon \2^* \to \2^*$ defined by
-$f(0) \defeq 0$ and $f(1) \defeq 11$ is $\set{\tup{0^n, 1^{2n}} \mid n\in \N}$ which is clearly not 
-"automatic@@rel". Similarly, its preimage by the same "morphism@@monoid" is
-$\set{\tup{0^{2n}, 1^{n}} \mid n \in \N}$ which is not "automatic@@rel" either, by symmetry.
+We will see later that this has some interesting consequences, such as the undecidability
+of the "intersection non-emptiness problem" (\Cref{ex:PCP-is-det-rat}).
+The class is also closed under concatenation, Kleene closure and reversal \cite[\S~3, Table~I]{FischerRosenberg1968Multitape}.
 
 \subsection{Deterministic Rational Relations}
 
 Because of the undecidability results above, a subclass of "rational relations" was introduced:
 "deterministic rational relations". We will see that, while still strictly extending the class of
-"automatic relations", their equivalence problem is decidable.
+"automatic relations", its equivalence problem is decidable.
 
 Note that the "automaton@@sync" of \Cref{fig:multitape-automaton-suffix} is deterministic
 as a classical automaton. However, we claim that it should not be considered to be ``deterministic''
@@ -764,26 +772,30 @@ In other words, the lack of injectivity of the function $\projWord$ creates anot
 source of non-determinism. This motivates an alternative definition for determinism.
 
 Hence, we say that a $k$-ary "multitape automaton" over $\Sigma_1,\dotsc,\Sigma_k$
-is ""deterministic@@desync"" if
-there exists a partition $\tup{Q_H}_{H \in \psetp{\lBrack 1,k\rBrack}}$ of its states "st":
+is ""deterministic@@desync"" when:
 \begin{enumerate}
 	\item it has a unique initial state,
 	\item for any state $q$, for any $\bar a \in \Sigma_1\convolAlpha\cdots\convolAlpha\Sigma_k$,
-		there is at most one out-going transition from $q$ labelled by $\bar a$, and
-	\item for any $H\in\psetp{\lBrack 1,k\rBrack}$, for any $q \in Q_H$,
-		every out-going transition from $q$ can only be labelled by elements of
+		there is at most one outgoing transition from $q$ labelled by $\bar a$, and
+	\item there exists a partition $\tup{Q_H}_{H \in \psetp{\lBrack 1,k\rBrack}}$ of its states 	
+		"st" for every $H\in\psetp{\lBrack 1,k\rBrack}$, for every $q \in Q_H$,
+		every outgoing transition from $q$ can only be labelled by elements of
 		the form $\bar a \in \Sigma_1\convolAlpha\cdots\convolAlpha\Sigma_k$, with
-		$a_h \in \Sigma_h$ for any $h\in H$ and $a_h = \pad$ for any $h\not\in H$.
+		$a_h \in \Sigma_h$ for every $h\in H$ and $a_h = \pad$ for every $h\not\in H$.
 \end{enumerate}
 In other words, we ask for classical determinism to hold, but moreover we need to know \emph{a priori}, at each state, which set of heads we will be moving at the next step.
-For instance, the automaton of \Cref{fig:multitape-automaton-subword} is "deterministic@@multitape".
+For instance, the automaton of \Cref{fig:multitape-automaton-subword} is "deterministic@@multitape",
+but the automaton of \Cref{fig:multitape-automaton-suffix} is not: its
+initial state has outgoing transitions from both $\Sigma \times \Sigma$ and
+from $\{\pad\}\times\Sigma$.
 
 \begin{claim}
 	\label{claim:tool-deterministic-rational}
 	Let $\+A$ be a $k$-ary "deterministic multitape automaton" over $\Sigma_1,\dotsc,\Sigma_k$.
 	For any $\tup{w_1,\dotsc,w_k} \in \Sigma_1^* \times \cdots \Sigma_k^*$,
 	for any state $q$ of $\+A$, there exists at most
-	one word $w \in (\Sigma_1\convolAlpha\cdots\convolAlpha\Sigma_k)^*$ "st" $\projWord(w) = \tup{w_1,\dotsc,w_k}$ and there is a run of $\+A$, starting at $q$ and labelled by $w$.%
+	one run of $\+A$ starting at $q$ labelled by a word 
+	$w \in (\Sigma_1\convolAlpha\cdots\convolAlpha\Sigma_k)^*$ "st" $\projWord(w) = \tup{w_1,\dotsc,w_k}$.%
 	\footnote{On the other hand, observe that classical determinism only ensures
 	at most one run for each $w \in (\Sigma_1\convolAlpha\cdots\convolAlpha\Sigma_k)^*$,
 	and not for each $\tup{w_1,\dotsc,w_k} \in \Sigma_1^* \times \cdots \Sigma_k^*$.}
@@ -879,7 +891,7 @@ The motivation behind this somewhat strange definition is that, this way,
 	$q_{\emptyset}$ is the unique accepting state of $\+A'$, and moreover
 	$p_{\lBrack 1,k\rBrack}$ is the unique initial state of $\+A'$, where $p$ is the initial state of $\+A$. See \Cref{fig:example-synchronous-automaton-prefix-1-detrat} for an example.
 	
-	Note that by construction, $\+A'$ is a "deterministic multitape automaton". 
+	By construction, $\+A'$ is a "deterministic multitape automaton". 
 	Using the fact that $\+A$ is "synchronous@@auto", it can be shown that
 	if $\+R$ is the relation "recognized@@syncauto" by $\+A$, then $\+A'$ precisely 
 	"recognizes@@multitape" $\{\tup{u\triangleleft,v\triangleleft} \mid \tup{u,v} \in \+R\}$.
@@ -896,7 +908,7 @@ But in fact, we can prove a stronger result: $\suffix$ is not even "deterministi
 \footnote{This can be shown by using "eg"
 \cite[Lemma~IV.5.15]{Sakarovitch2009Elements} on the pair of words
 $\tup{a^n b \triangleleft, a^{n-1} b a^n b \triangleleft}$ ($n\in\N$).
-Note that there is a typo in
+We remark that there is a typo in
 the statement of \cite[Lemma~IV.5.15]{Sakarovitch2009Elements} and that
 ``$|(f,g)| \geq 0$'' should be replaced by ``$|(f,g)| > 0$''.}
 
@@ -922,7 +934,7 @@ Surprisingly, while the "inclusion problem@@rel" for "deterministic multitape au
 \cite{FischerRosenberg1968Multitape}, Harju and Karhumäki proved in 1991 that their
 "equivalence problem@@rel"
 is decidable \cite[Theorem~3.11]{HarjuKarhumaki1991Equivalence}.%
-\footnote{Back then, this was one of the most prominent open question in the field: recall that 
+\footnote{Back then, this was one of the most prominent open questions in the field: recall that 
 this model was introduced more than thirty years before by Rabin
 and Scott \cite{RabinScott1959FiniteAutomata}.}
 While the class is closed under complementation, it is in fact neither closed under union,
@@ -937,7 +949,7 @@ a restriction on the head movements: at each step, all heads must move.
 This motivates the following generalization, introduced by Figueira and Libkin in
 \cite{FigueiraLibkin2015SynchronizingRelations}.
 
-Given a word $w \in (\Sigma_1 \convolAlpha \cdots \Sigma_k)^*$,
+Given a word $w \in (\Sigma_1 \convolAlpha \cdots \convolAlpha \Sigma_k)^*$,
 we define \AP$\intro*\projTape(w) \in \psetp{\lBrack 1,k\rBrack}^*$ to be the word
 whose $i$-th letter is the set of tape indices on which $w_i$ is distinct from $\pad$. 
 For instance,
@@ -967,12 +979,16 @@ if there exists $w \in (\Sigma_1 \convolAlpha \cdots \convolAlpha \Sigma_k)^*$
 "st" $\projWord(w) = \tup{u_1,\dotsc,u_k}$ and $\projTape(w) \in T$.
 
 Binary "synchronous automata" exactly correspond to "$T_{\textrm{sync}}$-multitape automaton" when
-$T_{\textrm{sync}} \defeq \{1,2\}^* \cdot (\{1\}^* + \{2\}^*)$. Similarly, it can be shown
+$T_{\textrm{sync}} \defeq \{1,2\}^* \cdot (\{1\}^* + \{2\}^*)$: we start by moving both
+heads synchronously, and then only of them---and we stick to the choice we made.
+Similarly, it can be shown
 that for $T_{\textrm{rec}} \defeq \{1\}^* \cdot \{2\}^*$, then "$T_{\textrm{rec}}$-multitape automaton" exactly recognize "recognizable relation"
 \cite[Proposition~1]{FigueiraLibkin2015SynchronizingRelations}.
 Both $\psetp{\lBrack 1,k\rBrack}^*$- and
 "$\{\{i\} \mid i \in \lBrack 1,k\rBrack\}^*$-multitape automata"
-exactly recognize all "rational relations".%
+exactly recognize all "rational relations"---corresponding to the models
+where we allow any set of heads to move at a given time,
+or where we only want a single head to move at each time, respectively.%
 
 A \AP""$T$-controlled relation"" is any relation that can be recognized by
 a "$T$-multitape automata".%
@@ -988,13 +1004,20 @@ of $T$ "st" all "$T$-controlled relations" are "recognizable@@rel" (resp. "autom
 and this characterization is actually effective
 \cite[Corollary~3]{FigueiraLibkin2015SynchronizingRelations}.
 Descotte, Figueira and Puppis showed
-that given $T_1$ and $T_2$, it is decidable
+that given "regular languages" $T_1$ and $T_2$, it is decidable
 if "$T_1$-controlled relations" exactly correspond to "$T_2$-controlled relations"
 for binary relations ("ie" assuming $k=2$)
 \cite[Main Theorem]{DescotteFigueiraPuppis2018ResynchronizingClasses}.
 Their algorithm fails to capture the general case, and the decidability of this problem
 is still open for relations of arbitrary arity
 \cite[\S~9]{DescotteFigueiraPuppis2018ResynchronizingClasses}.
+Similarly, Descotte, Figueira and Figueira showed that given a "regular language"
+$T$, it is decidable whether the class of "$T$-controlled relations"
+is closed under intersection, complement, concatenation, Kleene star 
+and projection
+\cite[Theorem, p.~2]{DescotteFigueiraFigueira2019ClosurePropertiesSynchronizedRelations}
+but the problem remains open for relation of higher arity
+\cite[\S~6]{DescotteFigueiraFigueira2019ClosurePropertiesSynchronizedRelations}.
 
 
 \subsection{And All Other Multitape Automata}
@@ -1164,7 +1187,7 @@ Neither model are closed under composition \cite[Theorem~5]{CartonExibardSerre20
 
 Two-way multitape automata where the two-wayness is restricted to
 moving all heads simultaneously back to the beginning of the words 
-are known as ``rewing automaton'', and were introduced by Rosenberg in 1965,
+are known as ``rewind automaton'', and were introduced by Rosenberg in 1965,
 see "eg" \cite[\S~4]{Chan1980ReversalBoundedComputations}.
 Alternating two-way two-tape automata have been introduced
 and studied by Carton, Exibard and Serre who
@@ -1349,10 +1372,11 @@ $\projTape$ introduced earlier for "multitape automata".}
 		"inclusion problem@@rel" and "equivalence problem@@rel", respectively.
 	}
 \end{figure}
+\todo{Diego:  don't see the point of shortening the names as in FUN-AL, etc. You have plenty of space! (true)}
 
 The "equivalence problem@@rel" of "regular functions"
-was shown to be decidable by Gurari \cite[Theorem~1]{Gurari1982Equivalence}
-for "regular functions". Note that for the subclass of functional "rational relations", this result was proven one decade earlier, by Schützenberger in 1975---see "eg" \cite[Corollary~IV.1.3]{Berstel1979Transductions}.
+was shown to be decidable by Gurari \cite[Theorem~1]{Gurari1982Equivalence}.
+Note that for the subclass of functional "rational relations", this result was proven one decade earlier, by Schützenberger in 1975---see "eg" \cite[Corollary~IV.1.3]{Berstel1979Transductions}.
 
 \paragraph*{Polyregular functions.}
 "Regular functions@@bojan" all have a linear growth.%
@@ -1376,12 +1400,12 @@ However, the decidability of the equivalence problem for this class remains wide
 
 We represent the hierarchy in \Cref{fig:hierarchy-functional-relations}.
 Note that some classes are defined semantically and admit no machine characterization:
-for instance, ``functional two-way rational relations'' are the intersection
+for instance, the class of ``two-way rational relations'' is the intersection
 of "functional relations" with  "two-way rational relations".
 Given a "two-way rational relation", it is undecidable whether the relation it
 recognizes is "functional@@rel".%
 \footnote{This can be proven by reduction from the inclusion of "functional@@rel" "two-way rational relation" since a function $f$ is included in another function $g$
-"iff" $f\cup g$ is "functional@@rel". This reduction works for any class that
+"iff" $f\cup g$ is "functional@@rel" and the domain of $f$ is included in the domain of $g$. This reduction works for any class that
 is effectively closed under union.}
 We refer the reader to
 Gauwin's habilitation \cite{Gauwin2020Transductions}, and in particular
