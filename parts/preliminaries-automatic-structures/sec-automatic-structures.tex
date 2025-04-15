@@ -16,13 +16,15 @@ the notion went largely unnoticed. The notion was rediscovered for groups
 in the late 1980s \cite{Epstein1992Word}. 
 Independently, Shapiro in 1992 \cite{Shapiro1992AutomaticStructures},
 Khoussainov and Nerode in 1995 \cite{KhoussainovNerode1995AutomaticPresentations}
-and Pélecq in his Ph.D. thesis from 1997 reintroduced the notion of "automatic structures"%
+and Pélecq in his Ph.D. thesis from 1997
+\cite[\S~3.1.3, p.~91]{Pelecq1997Isomorphismes}
+reintroduced the notion of "automatic structures".%
 \footnote{What we call "automatic structures"
 correspond to ``synchronous automatic structures'' and ``structures automatiques synchrones'' in Shapiro's paper and Pélecq's thesis, respectively.
 Pélecq gives credit for the definition to his advisor Géraud Sénizergues.
 All three work by Shapiro, Khoussainov \& Nerode and Pélecq
 claim to generalize the notion of "automatic groups" from \cite{Epstein1992Word}.}
-\cite[\S~3.1.3, p.~91]{Pelecq1997Isomorphismes}.
+
 
 
 We fix a finite "relational signature" $\sigma$.
@@ -47,8 +49,9 @@ We say that a "$\sigma$-structure" is \AP""automatic@@struct"" if it is
 \footnote{Note that we can always assume "wlog" that $\relPres{\+R}{\+A} \subseteq
 (\domainPres{\+A})^k$ since $(\domainPres{\+A})^k$ is "automatic@@rel" by
 \Cref{prop:rec-implies-aut} and "automatic relations" are closed under intersection.}
+For instance, $\langle \univStructSynchronous{\Sigma}, \langle\lastLetter{a}\rangle_{a \in \Sigma},\, \equalLength,\, \prefix \rangle$ is an "automatic structure".
 
-For instance, the infinite binary tree can be represented by the "automatic presentation"
+Furthermore, the infinite binary tree can be represented by the "automatic presentation"
 $\+B$ with $\domainPres{\+B} = \2^*$,
 \[
 	\relPres{\+E}{\+B} =
@@ -149,16 +152,15 @@ are called ""injective presentations"".
 \end{example}
 
 Recall that, using \Cref{prop:automatic-first-order}, a relation is "automatic@@rel" 
-if and only if they are "first-order definable" over $\signatureSynchronous{\Sigma}$.
+if and only if it is "first-order definable" over $\signatureSynchronous{\Sigma}$.
 It means that we can alternatively see "automatic presentations" as a
 collection of first-order formulas---one for the domain, one for equality, and
 one for each predicate. In turns, this view helps us prove the following result.
-For instance, $\langle \univStructSynchronous{\Sigma}, \langle\lastLetter{a}\rangle_{a \in \Sigma},\, \equalLength,\, \prefix \rangle$ is an "automatic structure".
 
 
 \begin{proposition}
 	\AP\label{prop:making-presentations-injective}
-	Any "automatic structures" admits an "injective presentation".
+	Every "automatic structure" admits an "injective presentation".
 \end{proposition}
 
 \begin{proof}
@@ -202,7 +204,7 @@ For instance, $\langle \univStructSynchronous{\Sigma}, \langle\lastLetter{a}\ran
 	The idea is to encode each letter of $\Sigma = \{a_1,\dotsc,a_n\}$
 	over $\2$ in such a way that each letter $a_i$
 	is encoded over a word $\hat a_i \in \2^*$ "st"
-	all $\hat a_i$ have the same length---this is necessary to preserve "automaticity@@struct".
+	all $\hat a_i$'s have the same length---this is necessary to preserve "automaticity@@struct".
 	For instance, take $\hat a_i$ to be the binary encoding of $i$
 	over $k$ bits, for some fixed value of $k \gtrsim \log_2(n)$.
 	Then, by \Cref{prop:automatic-closure-length-multiplying-morphism},
@@ -347,11 +349,12 @@ $\univStructSynchronous{2} \FOmodels^? \phi^{\•A}$, the formula $\phi^{\•A}$
 
 	\proofcase{"Tower" lower bound.}%
 	\footnote{We often found this result to be incorrectly credited to various papers in the literature.}
-	In 1990, proved that there exists a constant $c>0$ "st" "first-order model-checking"
+	In 1990, Compton and Henson
+	proved that there exists a constant $c>0$ "st" "first-order model-checking"
 	restricted to the structure $\univStructSynchronous{2}$ admits $\tower(cn)$ as
 	a lower bound on the running time of a non-deterministic "Turing machine" solving the problem
-	\cite[Example~8.3]{ComptonWardHenson1990UniformMethod}.
-	In fact, applying \cite[Theorem~6.1.(iv)]{ComptonWardHenson1990UniformMethod}
+	\cite[Example~8.3]{ComptonHenson1990UniformMethod}.
+	In fact, applying \cite[Theorem~6.1.(iv)]{ComptonHenson1990UniformMethod}
 	proves the problem to be hard under polynomial-time reductions for the class 
 	of problems which can be solved in non-deterministic time at most $\tower(n^c)$ for some $c>0$.
 	This corresponds to the class "Tower".
@@ -359,7 +362,9 @@ $\univStructSynchronous{2} \FOmodels^? \phi^{\•A}$, the formula $\phi^{\•A}$
 
 \begin{proposition}
 	\AP\label{prop:data-complexity-model-checking}
-	The "data complexity" of its restriction to "existential-positive sentences" is "NL"-complete.
+	The "data complexity" of the restriction
+	of "first-order model checking of automatic structures"
+	to "existential-positive sentences" is "NL"-complete.
 \end{proposition}
 
 \begin{proof}
@@ -381,7 +386,7 @@ $\univStructSynchronous{2} \FOmodels^? \phi^{\•A}$, the formula $\phi^{\•A}$
 	we do not have to explicitly build the automaton for $\psi$, but it suffices to
 	work with pointers to the automaton of $\•A$.
 
-	Lastly, the "NL" lower bound, can be proven by a reduction from NFA non-emptiness, which is
+	Lastly, the "NL" lower bound can be proven by a reduction from NFA non-emptiness, which is
 	itself "NL"-hard by reduction from the "finite graph reachability problem".
 \end{proof}
 
@@ -392,9 +397,6 @@ We refer the reader to \cite[\S~3]{BlumensathGradel2000AutomaticStructures} for 
 complexity of other variations of "Hodgson's theorem". For instance,
 the "data complexity" of its restriction to "existential sentences" (here negation is allowed)
 in "NP"-complete \cite[Theorem~3.7]{BlumensathGradel2000AutomaticStructures}.
-
-What we said above works with the implicit assumptions that all structures at hand are 
-"finite@@struct". However, part of this can be generalized to "automatic structures"---however, this comes to the cost of losing the inclusion in "L".
 
 \begin{proposition}[Folklore]
 	\AP\label{prop:first-order-reduction-preserve-automaticity}
@@ -411,6 +413,7 @@ this class is closed under "first-order reductions". Moreover,
 by \Cref{prop:first-order-model-checking-automatic-structures}, we obtain an upper bound.
 
 \begin{corollary}
+	\!\footnote{Recall on the other hand that "FOfin" $\subseteq$ "L" (\Cref{prop:FO-in-L}).}
 	"FOaut" $\subseteq$ "Tower".
 \end{corollary}
 
@@ -442,13 +445,14 @@ in "L".
 	it follows that we can decide "Presburger arithmetic".
 \end{remark}
 
-Of course, \Cref{prop:first-order-model-checking-automatic-structures} can be extended
+The decidability result of
+\Cref{prop:first-order-model-checking-automatic-structures} can be extended
 to "$\omega$-tree-automatic structures".
-In fact this property can even be extended to so-called
+In fact it can even be extended to so-called
 \AP""higher-order automatic structures"", see
 \cite[last remark of \S~XII.2]{Blumensath2024MSOModelTheory}.
 Note that while "automatic structures" are always countable,
-"higher-order automatic structures" have at most the cardinality of the continuum.%
+"higher-order automatic structures" have at most the cardinality of the continuum.
 From this it follows that there exists "structures" with a decidable "first-order model-checking" that are not "automatic@@struct", and not even "higher-order automatic".
 It suffices for instance to take any non-standard model of "Presburger arithmetic"
 of cardinality strictly bigger than the continuum, which must exist by
@@ -498,9 +502,9 @@ One way of rephrasing---and proving---"Hodgson's theorem" would be to first obse
 that $\univStructSynchronous{2}$ has decidability first-order theory,
 and then than this property is preserved under "first-order interpretations".
 The result would follow since all "automatic structures" are "first-order interpretations"
-of $\univStructSynchronous{2}$ by \label{prop:universal-automatic-structure}.
-Colcombet and Löding proposed in \cite{ColcombetLoding2007WMSO} an alternative vision:
-they show that:
+of $\univStructSynchronous{2}$ by \Cref{prop:universal-automatic-structure}.
+Colcombet and Löding proposed in \cite{ColcombetLoding2007WMSO} an alternative vision
+by showing that:
 \begin{itemize}
 	\item $\tup{\N, \textrm{succ}}$ has a decidable weak monadic second-order logic,
 		where $\textrm{succ}$ denotes the successor relation,%
@@ -515,7 +519,7 @@ they show that:
 		of "FO-interpretation" for weak monadic second-order logic. In particular,
 		finite subsets elements of the domain of $\?U$ are interpreted as elements of
 		the new structure. See \cite[\S~2.3]{ColcombetLoding2007WMSO} for a formal definition.}
-		have a decidable first-order theory
+		has a decidable first-order theory
 		\cite[Corollary~2.5]{ColcombetLoding2007WMSO};
 	\item "automatic structures" are exactly the "structures" that can be obtained from
 		$\tup{\N, \textrm{succ}}$ using WMSO-interpretations
@@ -643,13 +647,13 @@ we obtain the following result.
 Problems on automatic graphs have been mainly studied by Kuske and Lohrey, who showed that over "automatic graphs":
 \begin{itemize}
 	\item \emph{highly undecidable problems:} the existence of a Hamiltonian path
-		is undecidable, in fact it is complete for the first level of the "analytical hierarchy"
+		is undecidable, in fact it is complete for the first level of the "\emph{analytical} hierarchy"
 		\cite[Theorem~3.2]{KuskeLohrey2010AutomaticGraphs};
 		the existence of an infinite path in "directed trees" shares the same complexity
 		\cite[Theorem~3.6]{KuskeLohrey2010AutomaticGraphs};
 	\item \emph{moderately undecidable problems:}
 		the existence of an Eulerian path is undecidable, and is only complete for
-		the second level of the "arithmetical hierarchy" "Pi0-2" \cite[Theorem~4.13]{KuskeLohrey2010AutomaticGraphs}.
+		the second level of the "\emph{arithmetical} hierarchy" "Pi0-2" \cite[Theorem~4.13]{KuskeLohrey2010AutomaticGraphs}.
 \end{itemize}
 
 Moreover, as a consequence of \Cref{prop:order-invariance}, the existence of an infinite clique,
@@ -663,7 +667,7 @@ being an "order-invariant@@FO" property, is decidable over "automatic graphs".
 For another survey on "automatic structures", see \cite{Gradel2020AutomaticStructures}.
 Lastly, we want to note that \emph{recursive structures} have been extensively studied
 since the late XXth century: they are defined analogously to "automatic structures",
-but "synchronous automata" are replaced Turing machines.
+but "synchronous automata" are replaced by Turing machines.
 Unsurprisingly, all non-trivial problems are undecidable: hence, from a computability perspective,
 the main question is to characterize the Turing degree of these problems.
 The extent of the literature on this topic is too vast to be summarized here:

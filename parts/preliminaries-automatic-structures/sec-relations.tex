@@ -3,7 +3,7 @@
 
 \subsection{Regularity is Key}
 
-The class of "regular languages" is remarkably stable, and can either be characterized as the 
+The class of "regular languages" is remarkably stable, and can be characterized as the 
 languages recognized by either:
 \begin{itemize}
 	\item deterministic or non-deterministic finite state automata,\\
@@ -18,7 +18,7 @@ languages recognized by either:
 	\item finite monoids, see "eg" \cite[\S~1.4.2, p.~19]{Pin2021FiniteAutomata}.
 \end{itemize}
 Moreover, all transformations between these representations are effective---although some
-models can be strictly more succinct.
+models are strictly more succinct than others.
 
 \begin{figure*}
 	\centering
@@ -65,14 +65,14 @@ two families of machines for recognizing a relation $\+R \subseteq \Gamma^* \tim
 	\item[transducers:] this model reads a word $u \in \Gamma^*$ and produces a word (or no word, or multiple words) $v\in \Sigma^*$, in which case we say that $\tup{u,v} \in \+R$.  
 \end{description}
 The latter model is inherently passive while the former is more active: the output is produced,
-or \emph{tranduced}, from the input. However, these two families are far from being incomparable:
-when non-determinism is allowed and the model is expressive enough, a transducer can always guess the output and simulate a multitape automata. Despite this fact, the literature on "multitape automata" and "transducers" mostly never reference each other, and the relationship between classes
+or \emph{transduced}, from the input. However, these two families are far from being incomparable:
+when non-determinism is allowed and the model is expressive enough, a transducer can always guess the output and simulate a multitape automata. Despite this fact, the works on "multitape automata" and "transducers" rarely reference each other, and the relationship between classes
 of relations defined by these two families of models is often unclear.%
-\footnote{To witness this claim, I want to emphasize that I (unwillingly) included an erroneous 
-version of \Cref{fig:landscape-rationality-relations} in \cite{Morvan2025Algebras}.
-Despite multiple reviews, the mistakes---the "suffix relation" was misplace and, more
+\footnote{To witness this claim, I want to emphasize that I unwillingly included an erroneous 
+version of \Cref{fig:landscape-rationality-relations} in \cite{Morvan2025Algebras}:
+the "suffix relation" was misplaced and, more
 importantly, the "regular functions@@bojan" were claimed to correspond to
-the intersection of "rational relations" with "deterministic two-way rational relations"---were never spotted by anyone.}
+the intersection of "rational relations" with "deterministic two-way rational relations".}
 For instance, we will see in \Cref{sec:prelim-transductions}
 that "deterministic two-way multitape automata"
 and "deterministic two-way transducers" are semantically different: the distinction
@@ -100,9 +100,10 @@ For deterministic transducers, the output is a singleton, and hence its semantic
 as a \emph{partial function}---or equivalently as a "functional relation"---from $\Gamma^*$ to $\Sigma^*$.
 
 When the terminology ``relation'' is used,
-we often take $\Gamma = \Sigma$.\footnote{For instance this is somewhat important when
-dealing with logic or defining automatic structure
-\Cref{sec:preliminaries-automatic-structures-automatic-structures,sec:preliminaries-automatic-structures-logic}.}
+we often take $\Gamma = \Sigma$.%
+\footnote{For instance this is somewhat important when
+dealing with logic or defining "automatic structures"
+in \Cref{sec:preliminaries-automatic-structures-automatic-structures,sec:preliminaries-automatic-structures-logic}.}
 Note also that most notions defined by multitape automata
 can be trivially extended to $k$-ary relations ($k \geq 3$):
 we simply work here with binary relations for the sake of simplicity.
@@ -124,7 +125,7 @@ we will often want to know if this inclusion is \emph{effective}:
 This problem is also called the \reintro{$\+C$/$\+D$-membership problem}.
 
 A natural extension of this problem is the so-called separability problem,
-which has received lots of attention.
+which has received a lot of attention.
 \decisionproblem{
 	""$\+D$-separability problem for $\+C$-relations""
 }{
@@ -171,11 +172,12 @@ is "recognizable@@rel". Indeed, letting $f\colon  \Gamma^* \times \Sigma^* \to \
 then $\sameParity$ can be written as $f^{-1}[\{\bar 0\}]$.
 
 These relations admit a remarkably simple characterization.\AP
-\begin{proposition}[{""Mezei theorem"", see "eg" \cite[Corollary~II.2.20, p.~254]{Sakarovitch2009Elements}}]
-	\!\footnote{\cite[\S~2, ``Notes \& references'']{Sakarovitch2009Elements} mentions
+\begin{proposition}[{""Mezei theorem"".}]
+	\!\footnote{See "eg" \cite[Corollary~II.2.20, p.~254]{Sakarovitch2009Elements}.
+	\cite[\S~2, ``Notes \& references'']{Sakarovitch2009Elements} mentions
 	that this proposition is ``unanimously ascribed to G. Mezei (unpublished)''.}
 	\label{prop:Mezei-theorem}
-	A relation $\+R$ is "recognizable@@rel" "iff" there exists $n\in\N$,
+	A relation $\+R$ is "recognizable@@rel" "iff" there exist $n\in\N$,
 	"regular languages" $\tup{K_i}_{i\in \lBrack 1,n\rBrack}$ over $\Gamma$
 	and "regular languages" $\tup{L_i}_{i\in \lBrack 1,n\rBrack}$ over $\Sigma$
 	"st"
@@ -259,12 +261,12 @@ On the other hand, \Cref{prop:Mezei-theorem} proves that "recognizable relations
 	\!\footnote{Of course, this property is far from being sufficient
 	at characterizing "reflexive relations": note that the proof
 	does not even use the "regularity@@lang" of the languages at hand...}%
-	\footnote{Of course, another way of proving this result would be
+	\footnote{Another way of proving this result would be
 	to apply "Ramsey's infinite theorem" to $f\colon \Sigma^* \times \Sigma^* \to \?M$.
 	Again, we do not use the fact that $f$ is a "monoid morphism", but simply
 	that it is a finite-domain function.}
 	\AP\label{coro:infinite-clique-recognizable}
-	Let $\+R \subseteq \Sigma^* \times \Sigma^*$ be a "reflexive relation".
+	Let $\+R \subseteq \Sigma^* \times \Sigma^*$ be a "reflexive@@rel" "recognizable relation".
 	Then $\+R$ contains an infinite clique, "ie"
 	there exists an infinite language $L \subseteq \Sigma^*$ "st"
 	$\tup{u,v} \in \+R$ for all $u,v \in L$.
@@ -324,7 +326,7 @@ $i \mapsto \tup{u_i, v_i}$ of length $\max{(|u|,|v|)}$,
 with the convention that $u_i = \pad$ (resp. $v_i = \pad$)
 if $u_i$ (resp. $v_i$) is undefined, where $\intro*\pad$ is a new letter called
 ""blank symbol"" or \reintro{padding symbol}. In other words,
-$u \convol v$ is obtained by writing $u$ and $v$ on two left-align horizontal tapes,
+$u \convol v$ is obtained by writing $u$ and $v$ on two left-aligned horizontal tapes,
 adding "padding symbols" at the end of the shorter word if their length differ,
 and then reading pairs of letters from left to right.
 For this reason, the pair $\tup{a,b}$ is instead written $\pair{a}{b}$.
@@ -366,7 +368,7 @@ We denote by \AP$\intro*\AUT$ the class of "automatic relations".
 	on some tape, then all subsequent symbols on this tape must also be "padding symbols".
 	These words are called \AP""well-formed"", and the set of all "well-formed words" over
 	$\Gamma$ and $\Sigma$ is denoted by \AP$\intro*\WellFormed[\Gamma,\Sigma]$.%
-	\footnote{Of course, when the alphabets are equal, we will write
+	\footnote{When the alphabets are equal, we will write
 	$\reintro*\WellFormed[\Sigma]$ instead of $\WellFormed[\Sigma,\Sigma]$.}
 \end{remark}
 
@@ -546,11 +548,11 @@ This part of this thesis is mostly motivated by this problem.%
 	Is the ""$\REC$-separability problem for automatic relations"" decidable?
 \end{openproblem}
 Pablo Barceló introduced me to this problem in October 2022,
-but apparently this problem has been open for many years.
-This problem goes back at least to 2006, when Choffrut and Grigorieff
-solved a special subcase: the
+which has been open for many years.
+It goes back at least to 2006, when Choffrut and Grigorieff
+solved a special subcase of commutative relations.
 While the general problem is not explicitly mentioned in their paper,
-the question is rather obvious given their contribution---and formulation of the result:
+the question is rather obvious given their contribution the and formulation of the result:
 they show that given two "rational relations" of $\Sigma^*\times \N^m$, whether
 they are "separable@@rel" by a "recognizable relation" is decidable
 \cite[Theorem~1]{ChoffrutGrigorieff2006SeparabilityRationalRelations}.
@@ -570,9 +572,9 @@ We will see more properties of "automatic relations"---or rather of "automatic s
 
 "Rational relations" are perhaps the most natural class of finite-word relations:
 they are defined similarly to "automatic relations", except that
-the automaton used to defined have one head per tape, and can move each head
+the automaton used to defined them has one head per tape, and can move each head
 independently of one another---however each head can only move from left to right.
-For the same of convenience, we assume that the automaton can move multiple heads at every step.
+For the sake of convenience, we assume that the automaton can move multiple heads at every step.
 This can be formalized as follows.
 
 A \AP""multitape automaton"" over $\Gamma,\Sigma$
@@ -683,8 +685,8 @@ The class of all "rational relations" is denoted by \AP$\intro*\RAT$.
 \end{marginfigure}
 
 Similarly, the "subword relation" $\subword$ is "rational@@rel": the idea behind
-the "automaton@@desync" recognizing it that, when reading an $a$ on the first tape,
-the "automaton@@desync" will only move its second head write, until it reads
+the "automaton@@desync" recognizing is that, when reading an $a$ on the first tape,
+it will only move its second head right, until it reads
 an $a$; it then reads the next letter on the first tape and iterates this process. 
 
 Note that alternative definitions exist, but yield an equivalent definition of "rational relations".
@@ -913,7 +915,7 @@ the statement of \cite[Lemma~IV.5.15]{Sakarovitch2009Elements} and that
 	exactly corresponds to a solution of PCP.
 	It follows that the \AP""intersection non-emptiness problem@@drat""
 	for "deterministic rational relations",
-	taking two such relations and asking if their intersection is non-empty is undecidable.
+	taking two such relations and asking if their intersection is non-empty, is undecidable.
 \end{example}
 
 Surprisingly, while the "inclusion problem@@rel" for "deterministic multitape automata" is undecidable
@@ -1050,14 +1052,14 @@ since "rational relations" are not closed under intersection, it follows that
 them \cite[\S~12]{RabinScott1959FiniteAutomata}.
 
 Of course, since "equivalence@@pbrel" is already undecidable on "rational relations", it is also
-undecidable of this class.
+undecidable for this class.
 
 It also makes sense to look at their deterministic models: informally, in a given state, we
 should not only know on which tapes we will read "non-blank symbols",
 but also what head movements we will operate.
 This model is in fact remarkably expressive: given two "deterministic rational relations"
 $\+R_1$ and $\+R_2$, it is possible to describe their intersection $\+R_1 \cap \+R_2$
-by a deterministic two-way multitape automaton: the idea it to first simulate the first automaton
+by a deterministic two-way multitape automaton: the idea is to first simulate the first automaton
 from left to right, then, when reaching the end markers, to go back to the beginning of the tapes,
 and then simulate the second automaton from left to right.
 Since the "intersection non-emptiness problem@@drat"
@@ -1179,13 +1181,13 @@ Transducers differ in that they have access to $u$ and
 can potentially produce, from $u$, the word $v$.
 
 Formally, \AP""non-deterministic one-way transducers"",
-or \reintro{transducers} for short, are defined as finite-state automaton, but
+or \reintro{transducers} for short, are defined as "multitape automata", but
 their transition relation is a subset of
 \[
-	\underbrace{Q}_{\text{source state}}
-	\times \underbrace{\Gamma \cup \{\varepsilon\}}_{\text{input alphabet}}
-	\times \underbrace{\Sigma^*}_{\text{output word}}
-	\times \underbrace{Q.\!}_{\text{target state}}
+	\underbrace{\;\;Q\;\;}_{\text{source state\vphantom{l}}}
+	\times \underbrace{\Gamma \cup \{\varepsilon\}\vphantom{Q}}_{\text{input alphabet\vphantom{l}}}
+	\times \underbrace{\;\Sigma^*\vphantom{Q}\;}_{\text{output word\vphantom{l}}}
+	\times \underbrace{\;\;Q.\;\!\;}_{\text{target state\vphantom{l}}}
 \]
 We will also assume that the input word has markers at its extremities.
 This model is quite clearly equivalent to the one of "multitape automata".%
@@ -1201,13 +1203,13 @@ by both the input and the output. However, we say that a "transducer" is
 \AP""deterministic@@transducer"" when its transition relation can actually be described
 by a partial function
 \[
-	\underbrace{Q}_{\text{source state}}
-	\times \underbrace{\Gamma}_{\text{input alphabet}}
+	\underbrace{\;\;Q\;\;}_{\text{source state\vphantom{l}}}
+	\times \underbrace{\;\Gamma\vphantom{Q}\;}_{\text{input alphabet\vphantom{l}}}
 	\pto
-	\underbrace{Q}_{\text{target state}}
-	\times \underbrace{{\Sigma^*}.\!}_{\text{output word}}
+	\underbrace{\;\;Q\;\;}_{\text{target state\vphantom{l}}}
+	\times \underbrace{\;{\Sigma^*}\vphantom{Q}.\!\;}_{\text{output word\vphantom{l}}}
 \]
-Hence, by construction, a "deterministic transducers" recognizes a partial function
+Hence, by construction, a "deterministic transducer" recognizes a partial function
 from $\Gamma^*$ to $\Sigma^*$.
 Note however that the "deterministic multitape automaton" of \Cref{fig:multitape-automaton-subword}
 recognizes the "subword relation", which is not "functional@@rel".
@@ -1354,7 +1356,7 @@ for "regular functions". Note that for the subclass of functional "rational rela
 
 \paragraph*{Polyregular functions.}
 "Regular functions@@bojan" all have a linear growth.%
-add ref Sakarovitch
+\todo{add ref Sakarovitch}
 \footnote{Meaning that if $\tup{u,v}$ belongs to the relation, then $|v| \leq k\cdot |u|$
 for some constant $k$.}
 This model has been generalized to \AP""polyregular
@@ -1363,7 +1365,7 @@ a recent survey: one way of defining this class of functions is by allowing tran
 to put and move a bounded number of \emph{pebbles} on the input word.
 A typical example of "polyregular function@@bojan" that is not "regular@@bojan"
 is the squaring function, which takes a word $u$ and maps it to
-the concatenation $u^{|u|}$ of $u$ as many times as they are letter in the word.
+the concatenation $u^{|u|}$ of $u$ as many times as there are letter in the word.
 Since this function has quadratic growth, it cannot be "regular@@bojan", but
 it can easily be recognized by a deterministic two-way transducer with a single pebble,
 that puts a pebble on the first position, outputs the input word, moves
@@ -1373,7 +1375,7 @@ However, the decidability of the equivalence problem for this class remains wide
 \cite[\S~8]{Bojanczyk2022Transducers}.
 
 We represent the hierarchy in \Cref{fig:hierarchy-functional-relations}.
-Note that some classes are defined semantically and admit no machine-characterization:
+Note that some classes are defined semantically and admit no machine characterization:
 for instance, ``functional two-way rational relations'' are the intersection
 of "functional relations" with  "two-way rational relations".
 Given a "two-way rational relation", it is undecidable whether the relation it

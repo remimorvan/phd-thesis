@@ -3,7 +3,7 @@
 
 \subsection{First-Order Interpretation}
 
-A major construction in logic to restrict the scope of the class
+A major construction in logic is to restrict the scope of the class
 of models---thereafter called ``universe''.
 Formally, given a universe $\+U$ and a class of "queries@@sem" $\+Q$,%
 \footnote{Recall that we see "queries@@sem" here in a purely semantical way: it is nothing but a subclass of $\+U$.}
@@ -19,7 +19,7 @@ the "first-order sentences" over "finite structures". For instance, the class of
 $\+Q$.
 
 However, this construction does not preserve any reasonable property on $\+Q$,
-since $\+U'$ is an arbitrary subclass of $\+U$. The idea behind "first-order interpretation"
+since $\+V$ is an arbitrary subclass of $\+U$. The idea behind "first-order interpretation"
 is precisely to circumvent this problem, by \emph{interpreting} a class of structures
 inside another one by using "first-order logic", allowing this way to preserve some properties.
 
@@ -35,7 +35,7 @@ A \AP ""$d$-dimensional first-order interpretation"" $\+I$ consists of the follo
 such that $\relInter{=}{\+I}$ defines an equivalence relation on the domain of $\+I$.
 
 Given a "$\sigma$-structure" $\?A$, the \AP""$\+I$-interpretation of $\?A$"" is the "$\tau$-structure" denoted by \AP$\intro*\interpretation{\+I}{\?A}$ defined as follows:%
-\footnote{For the same of readability, we use $\bar a$ or $\bar x$ to
+\footnote{For the sake of readability, we use $\bar a$ or $\bar x$ to
 denote $d$-tuples of elements of $\?A$ and $d$-tuples of variables.}
 \begin{itemize}
 	\item its domain is the quotient of 
@@ -128,7 +128,7 @@ can be reduced to the same problem over $\+C$.
 
 Typical examples of "one-dimensional interpretations" include
 restricting a structure to a first-order definable subset, 
-or taking the complement---that is, switching hyperedges and non-hyperedges.
+or taking the complement---that is, swapping "hyperedges" and "non-hyperedges".
 
 \begin{marginfigure}
 	\centering
@@ -201,7 +201,7 @@ For instance, $\tup{\N, +}$ and $\tup{\N, +, <, 0, 1}$ are "first-order equivale
 
 \subsection{First-Order Reduction and First-Order Model Checking}
 
-As we have seen, "first-order interpretations" preserves logical properties of classes
+As we have seen, "first-order interpretations" preserve logical properties of classes
 of "structures". In this part, we show that this notion actually preserves most complexity classes.
 
 We define a \AP""first-order reductions"" to be an "injective first-order interpretation".%
@@ -321,7 +321,7 @@ makes no difference whatsoever since both models are "first-order interpretable"
 	It is routine to check that all these properties can be written in "first-order logic"
 	using the predicates $\lastLetter{a}$, $\equalLength$ and $\prefix$.
 	Note in particular that this proof crucially relies on the fact that we can guess words
-	in $\2^*$, which is allowed by the assumption that $\Sigma$ has length at least 2.%
+	in $\2^*$, which is allowed by the assumption that $\Sigma$ has size at least 2.%
 	\footnote{Indeed, we can then assume "wlog" that $\2 \subseteq \Sigma$, and then
 	check in "first-order logic" that a word $v_q \in \Sigma^*$ actually
 	belongs to $\2^*$.}
@@ -339,7 +339,7 @@ For instance, assume that $\phi(x_1,x_2,x_3)$ is a "first-order formula" over
 $\signatureSynchronous{\Sigma}$: then
 $\forall x_1.\, \exists x_2.\, \forall x_3.\, \phi(x_1,x_2,x_3)$ is a "first-order sentence"
 over $\signatureSynchronous{\Sigma}$. The proof of \Cref{prop:automatic-first-order}
-builds, from a "synchronous ($3$-ary) automaton@synchronous automaton" for
+builds from a "synchronous ($3$-ary) automaton@synchronous automaton" for
 $\phi(x_1,x_2,x_3)$ a triple-exponential-sized "synchronous ($0$-ary) automaton@synchronous automaton" for $\forall x_1.\, \exists x_2.\, \forall x_3.\, \phi(x_1,x_2,x_3)$.
 
 Moreover, the structure $\univStructSynchronous{\Sigma}$ is sometimes described by replacing
@@ -373,7 +373,8 @@ the models are finite words, and its first-class citizens%
 we can do first-order quantification.} are the positions in these words.
 In the case of \Cref{prop:automatic-first-order}, the model is fixed (namely $\univStructSynchronous{\Sigma}$), and its first-class citizens are the finite words.
 In some sense, this logic is \emph{external} to finite words---the logic does not have access to the
-``inner workings'' of the words---, while monadic second-logic is \emph{internal}.
+``inner workings'' of the words---, while monadic second-logic is \emph{internal}
+as traditionally used.
 Overall, \Cref{prop:automatic-first-order} can be rephrased as the equivalence between
 \emph{external} first-order logic and \emph{internal} "monadic second-order logic".%
 \footnote{We thank Géraud Sénizergues for suggesting this terminology to us.}
