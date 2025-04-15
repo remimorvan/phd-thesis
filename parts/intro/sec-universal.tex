@@ -254,5 +254,50 @@ assumptions.
 	rather than only languages of finite words.
 \end{contribution}
 
-Furthermore, we show that this algebraic theory is relevant.
-\todo{finish}
+Furthermore, we show that this algebraic theory is relevant, in the following sense.
+The idea behind "synchronous automaton" is to encode a pair of a binary relation as
+a finite word. This encoding is injective---as one would expect of an encoding---but not
+surjective: not all finite words corresponds to encodings of pairs.
+Hence, the semantics of a "synchronous automaton" can be precisely seen
+as the semantics of a classical automaton, together with the promise that it will be only
+fed inputs that corresponds to valid encodings. In other words,
+the behaviour of such an automaton on words that do not correspond to a valid encoding
+plays no role whatsoever in its semantics.
+
+This approach is ubiquitous in mathematics, and especially in logics:
+for instance, first-order logic over "finite structures" is precisely
+defined as first-order logic over all "structures", restricted to "finite structures"!
+While being quite natural, this construction fails to preserve most properties of the logics:
+first-order logic over all "structures" admits a complete proof system,
+but does not when restricted to "finite structures". The model-checking problem
+is "coRE"-complete over "all structures", but goes to
+"RE"-complete---an incomparable complexity class---for "finite structures".
+
+\begin{contribution}
+	We prove that, for any class of "regular languages" satisfying mild closure
+	properties, assuming we can decide if a language belongs to this class,
+	then we can decide if an "automatic relation" can be written as the restriction
+	of a "regular language" in this class with the set of all valid encodings
+	of pairs of words.
+\end{contribution}
+
+Let us point out that actually, to arrive at this result the notion
+of "synchronous algebras" is somewhat intricate. While a more naive definition
+exists and makes sense, we show that such a result cannot be proven using this
+simpler notion.
+
+While this algebraic theory would provide an interesting framework to
+show the decidability of the "$\AUT$/$\REC$-separability problem",
+the class of "recognizable relations", while having some of the desirable
+closure properties we want, also lacks some other.
+Unfortunately, it implies that proving the decidability of
+the "$\AUT$/$\REC$-separability problem" "via" this framework would
+be highly non-trivial.
+
+\begin{openproblemintro}
+	Can we decide, given two "automatic relations", if they are "separable@@rel"
+	by a "recognizable relation"?
+\end{openproblemintro}
+
+We conclude the second part of this thesis in \Cref{ch:conclu-automatic}
+by a discussion on related open problems.

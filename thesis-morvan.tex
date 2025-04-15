@@ -71,6 +71,7 @@
 \frontmatter
 \include{parts/titlepage}
 \include{parts/copyright}
+\include{parts/preface}
 \include{parts/contents}
 
 \mainmatter
@@ -94,6 +95,7 @@
 	\item \todo{we assume that the reader is not rotating around a black-hole (affref)
 	or able to travel at relativistic speeds (https://www.scottaaronson.com/democritus/lec19.html).}
 	\item \todo{Add chapter number in outline (Diego)}
+	\item \todo{Add Contents to outline.}
 	\item \todo{replace all $\hdots$ (hdots) with $\dotsc$ (dotsc)}
 	\item \todo{knowledgify the $\lBrack, r\rBrack$}
 	\item \todo{What about having $\?B$ as part of the input? (for dichotomy theorem)}
@@ -111,6 +113,7 @@
 \include{parts/general-preliminaries/ch-general-preliminaries}
 
 \part{Querying Graph Databases}
+\label{part:databases}
 
 \include{parts/preliminaries-graph-databases/ch-preliminaries-graph-databases}
 \include{parts/minimization-CRPQ/ch-minimization-CRPQ}
@@ -118,35 +121,12 @@
 \include{parts/conclu-databases/ch-conclu-databases}
 
 \part[The Frontier of Decidability in Automatic Structures]{The Frontier of Decidability\\in Automatic Structures}
+\label{part:automatic}
 
 \include{parts/preliminaries-automatic-structures/ch-preliminaries-automatic-structures}
 \include{parts/dichotomy-theorem/ch-dichotomy-theorem}
 \include{parts/algebra/ch-algebra}
-
-\lipsum[1]
-\begin{itemize}
-	\item one
-	\item two
-	\item three
-	\item spaghetti
-\end{itemize}
-\lipsum[1]
-
-\begin{theorem}
-	\lipsum[1]
-\end{theorem}
-
-\lipsum[1]
-
-\begin{proof}
-	\lipsum[1]
-\end{proof}
-
-\lipsum[1]
-
-\lipsum[2]
-
-\chapter{Conclusion \fancyand~Open Problems}
+\include{parts/conclu-automatic/ch-conclu-automatic}
 
 \backmatter
 % \begin{fullwidth}
