@@ -35,7 +35,13 @@ An \AP""automatic presentation $\+A$ of a $\sigma$-structure"" consists of:
 	\itemAP for every relation $\+R_{(k)} \in \sigma$, an
 		"automatic relation" $\intro*\relPres{\+R}{\+A} \subseteq (\Sigma^*)^k$, and
 	\itemAP an "automatic relation" $\reintro*\relPres{=}{\+A} \subseteq
-		\Sigma^* \times \Sigma^*$ that must be an equivalence relation. 
+		\Sigma^* \times \Sigma^*$ that must be an equivalence relation.%
+	\footnote{Some readers already familiar with the notion of "automatic structures"
+		might be somewhat surprised by the inclusion of this equality relation:
+		we will soon see (\Cref{prop:making-presentations-injective})
+		that in this specific setting, we do not need it.
+		This is not true in general, see \Cref{footnote:omega-not-injective}.
+	}
 \end{itemize} 
 The \AP\reintro{structure represented} $\?A$ by an "automatic presentation" $\+A$ has
 $\domainPres{\+A}/{\relPres{=}{\+A}}$ as its domain, and the predicate $\+R_{(k)} \in \sigma$
@@ -57,7 +63,7 @@ $\+B$ with $\domainPres{\+B} = \2^*$,
 	\relPres{\+E}{\+B} =
 	\{\tup{u,u0} \mid u \in \2^*\} \cup \{\tup{u,u1} \mid u \in \2^*\},
 \]
-and $\relPres{=}{\+B}$ is equality.
+and $\relPres{=}{\+B}$ is equality, see \Cref{fig:infinite-binary-tree}.
 \begin{marginfigure}
 	\centering
 	\begin{tikzpicture}
@@ -103,10 +109,11 @@ are called ""injective presentations"".
 \begin{example}
 	\AP\label{ex:presburger}
 	The structure $\tup{\N, +}$ is "automatic@@struct".%
-	\footnote{We see $+$ as a ternary relation, given by $\{\tup{x,y,x+y} \mid x, y \in \N^2\}$.}
+	\footnote{We see $+$ as a ternary relation, given by $\{\tup{x,y,x+y} \mid x, y \in \N\}$.}
 	We build an "automatic presentation" $\+N$ by using
 	a binary encoding $\domainPres{\+N} = \2^*$. A word $w \in \2^*$ will
-	represent the number $\sum_{i=0}^{|w|-1} w_i\cdot 2^{i-1}$. 
+	represent the number $\sum_{i=0}^{|w|-1} w_i\cdot 2^{i-1}$---notice that 
+	we write numbers with their least significant bit first. 
 	Naturally, it follows that $\relPres{=}{\+N}$ puts two words $u$ and $v$ in relation
 	if they are equal after removing the trailing zeroes.
 	We then need to describe $\relPres{+}{\+N}$: the idea is to simulate addition, reading words
@@ -153,12 +160,16 @@ are called ""injective presentations"".
 
 Recall that, using \Cref{prop:automatic-first-order}, a relation is "automatic@@rel" 
 if and only if it is "first-order definable" over $\signatureSynchronous{\Sigma}$.
-It means that we can alternatively see "automatic presentations" as a
+This means that we can alternatively see "automatic presentations" as a
 collection of first-order formulas---one for the domain, one for equality, and
-one for each predicate. In turns, this view helps us prove the following result.
+one for each predicate. In turn, this view helps us prove the following result.
 
 
 \begin{proposition}
+	\!\footnote{\AP\label{footnote:omega-not-injective}%
+	This proposition is not true on the more general class
+	of "$\omega$-automatic structures"
+	\cite[Theorem~6.6]{HjorthKhoussainovMontalbánNiesAutomaticStructures}.}
 	\AP\label{prop:making-presentations-injective}
 	Every "automatic structure" admits an "injective presentation".
 \end{proposition}
@@ -167,21 +178,17 @@ one for each predicate. In turns, this view helps us prove the following result.
 	We prove this property using logic. Let $\+A$ be an arbitrary "automatic presentation"
 	that "represents@@struct" $\?A$. The idea to build an "injective automatic presentation" $\+A'$
 	of $\?A$ is to represent an equivalence class $\equivclass[\relPres{=}{\+A}]{u} \subseteq
-	\domainPres{\+A}$ by its "lexicographic"-minimal element.%
-	\footnote{This makes sense as the "lexicographic order" is a well-founded total order.}
+	\domainPres{\+A}$ by its "length-lexicographic"-minimal element.%
+	\footnote{The \AP""length-lexicographic order"" is defined
+	by first comparing the length of the word, and in case they have the same length,
+	using the "lexicographic order" to compare them. This order is a well-founded total order.}
 
 	Concretely, $\+A'$ has the same alphabet as $\+A$.
-	Then, we define $\domainPres{\+A'}$ as the set of lexicographic-minimal elements of
-	$\equivclass[\relPres{=}{\+A}]{u}$ ($u \in \domainPres{\+A}$),
-	which can be described by the "first-order formula"%
-	\footnote{For the sake of readability, we identify first-order formulas with the relations they define.}
-	\[
-		\domainPres{\+A'}(x) \defeq
-		\forall y.\; (\domainPres{\+A}(y) \land x \mathrel{\relPres{=}{\+A}} y) \Rightarrow 
-		x \lex y.
-	\]
-	In is indeed a "first-order formula" since $\+A$ is assumed to be "automatic@@pres",
-	and since $\lex$ is "automatic@@rel" by \Cref{ex:lexicographic-is-automatic}.
+	Then, we define $\domainPres{\+A'}$ as the set of minimal elements
+	under the "length-lexicographic order" of
+	$\equivclass[\relPres{=}{\+A}]{u}$ ($u \in \domainPres{\+A}$).
+	This can be described by a "first-order formula" since $\+A$ is assumed to be "automatic@@pres",
+	and since $\lex$ (and hence the "length-lexicographic order") is "automatic@@rel" by \Cref{ex:lexicographic-is-automatic}.
 	Equality is interpreted as proper equality,
 	and then
 	\[
@@ -203,9 +210,9 @@ one for each predicate. In turns, this view helps us prove the following result.
 \begin{proof}
 	The idea is to encode each letter of $\Sigma = \{a_1,\dotsc,a_n\}$
 	over $\2$ in such a way that each letter $a_i$
-	is encoded over a word $\hat a_i \in \2^*$ "st"
-	all $\hat a_i$'s have the same length---this is necessary to preserve "automaticity@@struct".
-	For instance, take $\hat a_i$ to be the binary encoding of $i$
+	is encoded over a word $\widehat a_i \in \2^*$ "st"
+	all $\widehat a_i$'s have the same length---this is necessary to preserve "automaticity@@struct".
+	For instance, take $\widehat a_i$ to be the binary encoding of $i$
 	over $k$ bits, for some fixed value of $k \gtrsim \log_2(n)$.
 	Then, by \Cref{prop:automatic-closure-length-multiplying-morphism},
 	the relations we obtain are still "automatic@@rel".
@@ -221,7 +228,7 @@ in the sense that it is not only automatic, but it ``contains'' all "automatic s
 		\itemAP\label{item:universal-automatic-structure-auto}
 			$\?A$ is "automatic@@struct",
 		\itemAP\label{item:universal-automatic-structure-injective-FO}
-			$\?A$ is an injective one-dimensional "first-order interpretation" of
+			$\?A$ is an "injective@@pres" one-dimensional "first-order interpretation" of
 			$\univStructSynchronous{2}$,
 		\itemAP\label{item:universal-automatic-structure-FO}
 			$\?A$ is a "first-order interpretation" of $\univStructSynchronous{2}$.
@@ -244,24 +251,24 @@ at the same depth, and if one is an ancestor of the other.
 	\Cref{prop:making-presentations-injective,prop:making-presentations-binary}.
 	\eqref{item:universal-automatic-structure-injective-FO} $\Rightarrow$
 	\eqref{item:universal-automatic-structure-FO} is trivial.
-	\eqref{item:universal-automatic-structure-FO} $\Rightarrow$
-	\eqref{item:universal-automatic-structure-auto} can be proven by,
-	given a "$d$-dimensional interpretation", defining an "automatic presentation"
-	over the alphabet
+	To prove \eqref{item:universal-automatic-structure-FO} $\Rightarrow$
+	\eqref{item:universal-automatic-structure-auto}, consider a "$d$-dimensional interpretation".
+	An element of the domain of this interpretation is a set of $d$-tuples of words of $\2^*$.
+	The idea is to encode a $d$-tuple of words of $\2^*$
+	as a word over the alphabet
 	\[
 		\underbrace{\2 \convolAlpha \cdots \convolAlpha \2}_{
-			\text{$k$ times}
-		},
+			\text{$d$ times}
+		}:
 	\]
-	and changing any "first-order formula"
-	\[
-		\phi\big((x_1^1, \dotsc, x_1^d), \dotsc, (x_n^1, \dotsc, x_n^d)\big)
-		\quad\text{into}\quad
-		\phi^*(x_1^1 \convol \cdots \convol x_1^d, \dotsc, x_n^1 \convol \cdots \convol x_n^d).\qedhere
-	\]
+	this is simply done by transforming the tuple $\tup{u^1, \dotsc, u^d}$
+	into $u^1 \convol \dotsc \convol u^d$.
+	Formulas for equality and relations can be derived easily.
+	We obtain an "automatic presentation" over the alphabet
+	$\2 \convolAlpha \cdots \convolAlpha \2$.
 \end{proof}
 
-In the statement of \label{prop:universal-automatic-structure} the
+In the statement of \Cref{prop:universal-automatic-structure},
 $\univStructSynchronous{2}$ can be replaced by any "automatic structure" $\?U$
 "st" there is an injective one-dimensional "first-order interpretation" of
 $\univStructSynchronous{2}$ in $\?U$. 
@@ -272,11 +279,12 @@ see \cite[Theorem~XII.2.3]{Blumensath2024MSOModelTheory}.
 
 The notion of "automatic structures" can be generalized:
 \begin{itemize}
-	\itemAP to ""$\omega$-automatic structures"" by replacing finite words with $\omega$-words;
-	\itemAP to ""tree-automatic structures"" by replacing finite words with finite trees;
-	\itemAP to ""$\omega$-tree-automatic structures"" by replacing finite words with $\omega$-trees;
+	\itemAP to ""$\omega$-automatic structures"" by replacing finite words with $\omega$-words,
+	\itemAP to ""tree-automatic structures"" by replacing finite words with finite trees,
+	\itemAP to ""$\omega$-tree-automatic structures"" by replacing finite words with $\omega$-trees,
 \end{itemize}
-we refer the reader to "eg" \cite[\S~XII]{Blumensath2024MSOModelTheory} for more details.
+together with suitable notions of automata for these objects.
+We refer the reader to "eg" \cite[\S~XII]{Blumensath2024MSOModelTheory} for more details.
 
 \hypothesis{In light of \Cref{prop:making-presentations-injective},
 we will always assume, unless specified otherwise, the "automatic presentations"
@@ -342,25 +350,26 @@ $\univStructSynchronous{2} \FOmodels^? \phi^{\•A}$, the formula $\phi^{\•A}$
 		\quad\text{"iff"}\quad
 		\tup{\?A, u_1, \dotsc, u_k} \FOmodels \phi(x_1,\dotsc,x_k).
 	\]
-	In the end, we get a "synchronous ($0$-ary) automaton@synchronous automaton" $\+B^\phi$ that either accepts
-	or rejects depending on whether $\?A \FOmodels \phi$ or not.
-	Notice that each quantifier alternation implies a powerset construction, and so
-	the size of $\+B^\phi$ is a tower of exponentials in the number of quantifier alternations in $\phi$. Hence, we get a "Tower" algorithm.
+	In the end, we get a "synchronous ($0$-ary) automaton@synchronous automaton" $\+B^\phi$ that 
+	accepts "iff" $\?A \FOmodels \phi$.
+	Notice that each quantifier alternation and negation implies to complement an automaton,
+	"ie" to do a powerset construction, and so
+	the size of $\+B^\phi$ is a tower of exponentials in the number of quantifier alternations and nested negations in $\phi$. Hence, we get a "Tower" algorithm.
 
 	\proofcase{"Tower" lower bound.}%
 	\footnote{We often found this result to be incorrectly credited to various papers in the literature.}
 	In 1990, Compton and Henson
 	proved that there exists a constant $c>0$ "st" "first-order model-checking"
-	restricted to the structure $\univStructSynchronous{2}$ admits $\tower(cn)$ as
+	restricted to the structure $\univStructSynchronous{2}$ admits $n \mapsto \tower(cn)$ as
 	a lower bound on the running time of a non-deterministic "Turing machine" solving the problem
 	\cite[Example~8.3]{ComptonHenson1990UniformMethod}.
 	In fact, applying \cite[Theorem~6.1.(iv)]{ComptonHenson1990UniformMethod}
-	proves the problem to be hard under polynomial-time reductions for the class 
+	shows the problem to be hard under polynomial-time reductions for the class 
 	of problems which can be solved in non-deterministic time at most $\tower(n^c)$ for some $c>0$.
-	This corresponds to the class "Tower".
+	This corresponds to the class "Tower", and hence the problem is "Tower"-hard.
 \end{proof}
 
-\begin{proposition}
+\begin{proposition}[Folklore]
 	\AP\label{prop:data-complexity-model-checking}
 	The "data complexity" of the restriction
 	of "first-order model checking of automatic structures"
@@ -368,7 +377,8 @@ $\univStructSynchronous{2} \FOmodels^? \phi^{\•A}$, the formula $\phi^{\•A}$
 \end{proposition}
 
 \begin{proof}
-	We now assume that $\phi$ is of the form
+	Let again $\•A$ be an "automatic presentation" and $\phi$ be a "first-order formula",
+	but we now assume that $\phi$ is of the form
 	\[
 		\exists x_1.\,\dotsc \exists x_k.\, \psi(x_1,\dotsc,x_k),
 	\]
@@ -384,7 +394,8 @@ $\univStructSynchronous{2} \FOmodels^? \phi^{\•A}$, the formula $\phi^{\•A}$
 	Since $\phi$ is fixed, the automaton in question is of polynomial size.
 	To argue that we can effectively obtain an "NL" algorithm, it suffices to notice that
 	we do not have to explicitly build the automaton for $\psi$, but it suffices to
-	work with pointers to the automaton of $\•A$.
+	work with pointers to the automata for $\•A$.
+	The number of pointers required only depends on $\psi$.
 
 	Lastly, the "NL" lower bound can be proven by a reduction from NFA non-emptiness, which is
 	itself "NL"-hard by reduction from the "finite graph reachability problem".
@@ -396,7 +407,7 @@ negations of "existential-positive sentences".
 We refer the reader to \cite[\S~3]{BlumensathGradel2000AutomaticStructures} for the detailed 
 complexity of other variations of "Hodgson's theorem". For instance,
 the "data complexity" of its restriction to "existential sentences" (here negation is allowed)
-in "NP"-complete \cite[Theorem~3.7]{BlumensathGradel2000AutomaticStructures}.
+is "NP"-complete \cite[Theorem~3.7]{BlumensathGradel2000AutomaticStructures}.
 
 \begin{proposition}[Folklore]
 	\AP\label{prop:first-order-reduction-preserve-automaticity}
@@ -453,7 +464,7 @@ In fact it can even be extended to so-called
 \cite[last remark of \S~XII.2]{Blumensath2024MSOModelTheory}.
 Note that while "automatic structures" are always countable,
 "higher-order automatic structures" have at most the cardinality of the continuum.
-From this it follows that there exists "structures" with a decidable "first-order model-checking" that are not "automatic@@struct", and not even "higher-order automatic".
+From this it follows that there exist "structures" with a decidable "first-order model-checking" that are not "automatic@@struct", and not even "higher-order automatic".
 It suffices for instance to take any non-standard model of "Presburger arithmetic"
 of cardinality strictly bigger than the continuum, which must exist by
 "upward Löwenheim–Skolem theorem".%
@@ -473,20 +484,29 @@ over the signature $\sigma \dcup \{\leq\}$ "st" for any
 "$\sigma$-structure" $\?A$, for any \emph{total orders} $\leq_1$, $\leq_2$ over $A$,
 we have $\tup{\?A, \leq_1} \FOmodels \phi$ "iff" $\tup{\?A, \leq_2} \FOmodels \phi$.
 In this case, we say that $\?A$ models $\phi$.
+Similarly, we define \AP""$\omega$-order-invariant first-order formulas""
+\cite[\S~3.2]{Rubin2008AutomataPresentingStructures}
+by restricting the total orders to have order-type $\omega$---"ie" to be
+isomorphic to $\tup{\N, \leq}$---or $|A|$ when $|A|$ is finite.
 
 For instance, the formula
 \[
-	\forall x.\; \exists y.\; x \leq y
+	\forall x.\; \exists y.\; x \leq y \land x \neq y
 \]
-is clearly "order-invariant@@FO": it expresses the fact that the model is infinite.
-\emph{A priori}, it is non-trivial to check if an "order-invariant first-order formula" holds in an
+is "$\omega$-order-invariant@@FO": it expresses the fact that the model is infinite.
+However, it is not "order-invariant@@FO".%
+\footnote{Indeed, $\tup{\N, \leq}$ satisfies the formula but not $\tup{\N, \geq}$.}
+\emph{A priori}, it is non-trivial to check if an "order-invariant first-order formula"
+(resp. "$\omega$-order-invariant first-order formula") holds in an
 "automatic $\sigma$-structure": how should this order be "interpreted@@pred"?
 By "order-invariance@@FO", any total order will do, and moreover by
-\Cref{ex:lexicographic-is-automatic}, the "lexicographic order" is always "automatic@@rel"!
+\Cref{ex:lexicographic-is-automatic}, the "length-lexicographic order" is always "automatic@@rel",
+and has the required order-type!
 
 \begin{proposition}[{\cite[\S~3.2]{Rubin2008AutomataPresentingStructures}}]
 	\label{prop:order-invariance}
-	Model-checking of "order-invariant first-order formulas" over "automatic structures"
+	Model-checking of "order-invariant first-order formulas"
+	(resp. "$\omega$-order-invariant first-order formulas") over "automatic structures"
 	is decidable.
 \end{proposition}
 
@@ -496,6 +516,14 @@ A restricted form of this result was originally proved by Blumensath and Grädel
 Similarly, one can add counting quantifiers of the form ``the number of $x$'s "st" $\phi(x)$ holds
 is congruent to $k$ mod $n$'' \cite[\S~3.2]{Rubin2008AutomataPresentingStructures}
 while preserving decidability.
+
+Note however that it is undecidable whether a "first-order formula" is
+"order-invariant" or "$\omega$-order-invariant", be it on "finite structures"
+or on all "structures". This follows from the undecidability of "first-order logic",
+see "eg" \cite[Exercise~3.1.12]{Gradel2007FiniteModelTheory}.%
+\footnote{Hence, \Cref{prop:order-invariance} should be understood as a promise problem:
+we can decide the problem if we are given the promise that the input is
+"order-invariant" (resp. "$\omega$-order-invariant").}
 
 \paragraph*{Interpretations.}
 One way of rephrasing---and proving---"Hodgson's theorem" would be to first observe
@@ -508,18 +536,18 @@ by showing that:
 \begin{itemize}
 	\item $\tup{\N, \textrm{succ}}$ has a decidable weak monadic second-order logic,
 		where $\textrm{succ}$ denotes the successor relation,%
-		\footnote{This is \emph{the} classical result of automatic theory and the motivation
+		\footnote{This is \emph{the} classical result of automata theory and the motivation
 		for studying $\omega$-automata. Recall that weak monadic second-order 
 		logic consists of "monadic second-order logic" where monadic quantifiers are
 		restricted to finite sets.}
 	\item if a "structure" $\?U$ has a decidable weak monadic second-order theory,
-		then for any "structure" $\?A$ that admits a
+		then any "structure" $\?A$ that admits a
 		``weak monadic second-order interpretation''%
 		\footnote{This is the equivalent
 		of "FO-interpretation" for weak monadic second-order logic. In particular,
 		finite subsets elements of the domain of $\?U$ are interpreted as elements of
 		the new structure. See \cite[\S~2.3]{ColcombetLoding2007WMSO} for a formal definition.}
-		has a decidable first-order theory
+		from $\?U$ has a decidable first-order theory
 		\cite[Corollary~2.5]{ColcombetLoding2007WMSO};
 	\item "automatic structures" are exactly the "structures" that can be obtained from
 		$\tup{\N, \textrm{succ}}$ using WMSO-interpretations
@@ -580,7 +608,7 @@ undecidable, but Finkel and Todor\v{c}ević exhibited two somewhat simple-lookin
 is independent from "ZFC" \cite[Theorem~6.1]{FinkelTodorcevic2010Isomorphism}.
 
 \paragraph*{Automatic Groups.}
-The literature on "automatic group" is remarkably extensive.
+The literature on "automatic groups" is remarkably extensive.
 Their study was introduced in the late 1980s,
 by showing that they have a solvable word problem \cite[Theorem~2.1.9]{Epstein1992Word}.%
 \footnote{Actually this last result is proved on the slightly bigger class of ``regularly generated groups''.}
@@ -644,20 +672,28 @@ we obtain the following result.
 	$u$ to $v$ in $\?G$ is undecidable.
 \end{proposition}
 
-Problems on automatic graphs have been mainly studied by Kuske and Lohrey, who showed that over "automatic graphs":
+Problems on automatic graphs have been mainly studied by Kuske and Lohrey, who studied the following problems over "automatic graphs".
 \begin{itemize}
-	\item \emph{highly undecidable problems:} the existence of a Hamiltonian path
+	\item \emph{Highly undecidable problems:} the existence of a Hamiltonian path
 		is undecidable, in fact it is complete for the first level of the "\emph{analytical} hierarchy"
 		\cite[Theorem~3.2]{KuskeLohrey2010AutomaticGraphs};
 		the existence of an infinite path in "directed trees" shares the same complexity
 		\cite[Theorem~3.6]{KuskeLohrey2010AutomaticGraphs};
-	\item \emph{moderately undecidable problems:}
-		the existence of an Eulerian path is undecidable, and is only complete for
+		and so does the "isomorphism problem" \cite[Theorem~5.9]{KhoussainovNiesRubinStephan2007Automatic}.
+	\item \emph{Moderately undecidable problems:}
+		the existence of an Eulerian path is undecidable, but is only complete for
 		the second level of the "\emph{arithmetical} hierarchy" "Pi0-2" \cite[Theorem~4.13]{KuskeLohrey2010AutomaticGraphs}.
 \end{itemize}
 
-Moreover, as a consequence of \Cref{prop:order-invariance}, the existence of an infinite clique,
-being an "order-invariant@@FO" property, is decidable over "automatic graphs".
+However, as a consequence of \Cref{prop:order-invariance}, the 
+fact that the graph contains infinitely many edges---or isolated vertices, or any "first-order
+definable" property---, is decidable over "automatic graphs" 
+as it can be expressed by an "$\omega$-order-invariant@@FO" property.
+
+Some slightly more involved arguments, involving ``Ramsey quantifiers'',
+can show that whether the graph contains an infinite "clique" (or "tournament")
+is decidable \cite[Corollary~5.5]{KuskeLohrey2010AutomaticGraphs}, 
+see also \cite[Theorem~3.20]{Rubin2008AutomataPresentingStructures}.
 
 \begin{proposition}[{\cite[Proposition~6.5]{Kocher2014AutomatischenGraphen}}]
 	Whether an "automatic graph" is 2-colourable, or equivalently bipartite, is undecidable.

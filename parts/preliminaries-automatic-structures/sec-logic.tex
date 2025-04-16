@@ -29,8 +29,8 @@ A \AP ""$d$-dimensional first-order interpretation"" $\+I$ consists of the follo
 \begin{itemize}
 	\itemAP $\intro*\domainInter{\+I}(x^1,\dotsc, x^d)$ (specifying the domain)
 	\itemAP $\intro*\relInter{=}{\+I}(\tup{x^1,\dotsc, x^d}, \tup{y^1,\dotsc, y^d})$ (specifying equality)
-	\itemAP $\reintro*\relInter{\+R}{\+I}(\tup{x^1_1,\dotsc,x^d_1}, \dotsc, \tup{x^1_k,\dotsc,x^d_k})$
-		for any predicate $\+R \in \tau$ of arity $k$,
+	\itemAP $\reintro*\relInter{\+R}{\+I}(\tup{x^1_1,\dotsc,x^d_1}, \dotsc,
+		\tup{x^1_k,\dotsc,x^d_k})$ for any predicate $\+R \in \tau$ of arity $k$,
 \end{itemize}
 such that $\relInter{=}{\+I}$ defines an equivalence relation on the domain of $\+I$.
 
@@ -47,8 +47,8 @@ denote $d$-tuples of elements of $\?A$ and $d$-tuples of variables, respectively
 		\[
 			\+R_{(k)}(\interpretation{\+I}{\?A}) =
 			\Big\{\tup{\bar x_1, \dotsc, \bar x_k} \mid
-				\exists \bar y_1.\, \dotsc.\, \bar y_k.\,
-				\bigwedge_{i=1}^k \relInter{=}{\+I}(\bar x_i, \bar y_i)
+				\exists \bar y_1.\, \dotsc.\, \exists \bar y_k.\,
+				\bigwedge_{i=1}^k \bar x_i \mathrel{\relInter{=}{\+I}} \bar y_i
 				\land \relInter{\+R}{\+I}(\bar y_1, \dotsc, \bar y_k)
 			\Big\}.
 		\]
@@ -100,7 +100,10 @@ defined inductively by:
 	\item replacing each variable $x$ by a $d$-tuple $\bar x$,
 	\item replacing every occurrence of
 		$\+R(x_1,\dotsc, x_k)$ (with $\+R_{(k)} \in \tau$)
-		by the formula $\relInter{\+R}{\+I}(\bar x_1, \dotsc, \bar x_k)$,
+		by the formula
+		\[\exists \bar x'_1.\, \dotsc \exists \bar x'_k.\, 
+		\Big( \bigwedge_{i=1}^k \bar x_i \mathrel{\relInter{=}{\+I}} \bar x'_i \Big)
+		\land \relInter{\+R}{\+I}(\bar x'_1, \dotsc, \bar x'_k),\]
 	\item relativizing quantification with respect to $\domainInter{\+I}$,
 		meaning that
 		\begin{align*}
@@ -202,23 +205,24 @@ For instance, $\tup{\N, +}$ and $\tup{\N, +, <, 0, 1}$ are "first-order equivale
 \subsection{First-Order Reduction and First-Order Model Checking}
 
 As we have seen, "first-order interpretations" preserve logical properties of classes
-of "structures". In this part, we show that this notion actually preserves most complexity classes.
+of "structures". In this part, we show that most complexity classes
+are closed under this construction.
 
 We define a \AP""first-order reductions"" to be an "injective first-order interpretation".%
 \footnote{The terminology ``"FO-interpretations"'' is usually employed in automata theory and graph theory, while ``"FO-reduction"'' is used in complexity theory---see "eg" \cite[Definition 2.11 \& Definition 1.26]{Immerman1998DescriptiveComplexity}---however there is no good reason to
 distinguish these two notions.}
 Complexity classes are defined in terms of decision problems, namely 
-language $L \subseteq \2^*$, and not as classes of "structures". 
+languages $L \subseteq \2^*$, rather than as classes of "structures". 
 However, it is known that:
 \begin{itemize}
 	\item any language $L \subseteq \2^*$
-		can be seen as a class of "structure" over the "signature of binary strings";
+		can be seen as a class of "structures" over the "signature of binary strings";
 	\item for any "relational signature" $\sigma$,
 		there is an encoding of "finite $\sigma$-structures" as a language
 		$L \subseteq \2^*$, "ie" as a class of "structure" over the "signature of binary strings"---see "eg" \cite[\S~2.2]{Immerman1998DescriptiveComplexity}.
 \end{itemize}
-Importantly, this encoding of $\sigma$-structures into structures over
-the "signature of binary strings", and its inverse are both "first-order reductions".
+Importantly, these encodings between "$\sigma$-structures" and structures over
+the "signature of binary strings" are both "first-order reductions".
 It follows that there is a "first-order reduction" between two classes of "structures"
 "iff" there is a "first-order reduction" between their encodings as languages.
 Overall, it implies that "first-order reductions" are proper reductions in the complexity-theoretic 
@@ -240,7 +244,7 @@ We denote by \AP""FOfin"" the class of all problems over "finite structures" tha
 \end{proof}
 
 Moreover, "L"-hardness is usually defined using "first-order reductions".
-When the "signatures" is sufficiently expressive, namely when it is able to
+When the "signature" is sufficiently expressive, namely when it is able to
 express basic arithmetic \cite[Proviso~1.14]{Immerman1998DescriptiveComplexity},
 Immerman showed that "FOfin" corresponds to the circuit-class "AC0",
 and also to the whole logarithmic-time hierarchy
@@ -262,7 +266,7 @@ by \AP$\intro*\univStructSynchronous{\Sigma}$ the "$\signatureSynchronous{\Sigma
 over $\Sigma^*$ where the "predicates" are "interpreted@@predicate" as above.%
 \footnote{This model is also denoted $\symbf{S}_{\mathrm{len}}$ in \cite{BenediktLibkinSchwentickSegoufin2003DefinableRelations}. In this model $\lastLetter{a}$ is
 not a unary predicate but a function that adds an `$a$' to the end of the word: of course this
-makes no difference whatsoever since both models are "first-order interpretable" in one another.}
+makes no difference whatsoever since both models are "first-order equivalent".}
 
 \begin{proposition}[{\cite[Theorems~1 \& 2]{EilenbergElgotShepherdson1969TapeAutomata}}]
 	\AP\label{prop:automatic-first-order}
@@ -329,7 +333,7 @@ makes no difference whatsoever since both models are "first-order interpretable"
 \end{proof}
 
 We want to highlight that \Cref{prop:automatic-first-order} can be extended for $k=0$,
-since the $0$-ary relation are the subsets of $\emptyset^* = \{\varepsilon\}$,
+since the $0$-ary relations are the subsets of $\emptyset^* = \{\varepsilon\}$,
 and so there is exactly two 
 relations: $\{\textbullet\}$ (identified with ``true'') and $\emptyset$ (identified with ``false'').
 Both are "first-order definable", and "automatic@@rel": observe that "synchronous automata" over
@@ -341,15 +345,23 @@ $\forall x_1.\, \exists x_2.\, \forall x_3.\, \phi(x_1,x_2,x_3)$ is a "first-ord
 over $\signatureSynchronous{\Sigma}$. The proof of \Cref{prop:automatic-first-order}
 builds from a "synchronous ($3$-ary) automaton@synchronous automaton" for
 $\phi(x_1,x_2,x_3)$ a triple-exponential-sized "synchronous ($0$-ary) automaton@synchronous automaton" for $\forall x_1.\, \exists x_2.\, \forall x_3.\, \phi(x_1,x_2,x_3)$.
+% Moreover, the structure $\univStructSynchronous{\Sigma}$ is sometimes described by replacing
+% the unary "predicate" $\lastLetter{a}$ by the function $w \mapsto w\cdot a$.
+% The two models are clearly "first-order equivalent".
 
-Moreover, the structure $\univStructSynchronous{\Sigma}$ is sometimes described by replacing
-the unary "predicate" $\lastLetter{a}$ by the function $w \mapsto w\cdot a$.
-The two models are clearly "first-order equivalent".
+Let us point out that the formula built from the automaton is of the form
+$\exists^* \forall^* \exists^*$ followed by a quantifier-free formula.
+It shows that "first-order logic" over $\univStructSynchronous{\Sigma}$
+collapses to the $\Sigma^3$ level. Figueira, Ramanathan and Weil
+proved that this hierarchy does not collapse to a lower level 
+\cite[Theorem~3]{FigueiraRamanathanWeil2019QuantifierAlternation},
+and provide effective characterization of these lower levels
+\cite[Theorem~9]{FigueiraRamanathanWeil2019QuantifierAlternation}.
 
 \begin{example}
 	\AP\label{ex:lexicographic-is-automatic}
 	Given an ordered alphabet $\Sigma = \{a_1,\dotsc,a_n\}$ with $a_1 < \dotsc < a_n$,
-	the \AP""lexicographic order"" $\intro*\lex$ defined by $u \lex v$ when there exists 
+	we define the \AP""lexicographic order"" by $u \intro*\lex v$ "iff" when there is 
 	a prefix $w$ both of $u$ and of $v$, "st" either $w$ has the same length as $u$,
 	or the letter following $w$ in $u$ is strictly smaller than the letter following $w$ in $v$.
 	
@@ -391,7 +403,7 @@ Benedikt, Libkin, Schwentick and Segoufin studied submodels of
 in \cite{BenediktLibkinSchwentickSegoufin2003DefinableRelations}.
 For instance, they show that by removing $\equalLength$, the definable sets are exactly
 the star-free regular languages
-(\cite[Corollary 3.7]{BenediktLibkinSchwentickSegoufin2003DefinableRelations}).
+\cite[Corollary 3.7]{BenediktLibkinSchwentickSegoufin2003DefinableRelations}.
 
 Adding a binary predicate for each "regular language" $L$, "interpreted@@pred"
 as $\{\tup{u,uv} \mid u,v \in \Sigma^*, v \in L \}$, yields
