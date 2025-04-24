@@ -1,5 +1,5 @@
 \section{Preliminaries}
-\label{sec:preliminaries}
+\AP\label{sec:preliminaries}
 
 \subsection{Automata \& Relations}
 
@@ -28,7 +28,7 @@ an accepting run of the automaton. We say that a relation is \AP""synchronous"" 
 by such a machine.
 
 \begin{remark}
-	\label{rk:semantic}
+	\AP\label{rk:semantic}
 	Crucially, in the semantics of "synchronous automata" we \emph{never}
 	try to feed them inputs where the padding symbols are not consistent: for instance, while
 	\[
@@ -44,7 +44,7 @@ We can then reformulate the definition of the semantics of a "synchronous automa
 to make the connection with "$\+V$-relations"---see the next subsection---explicit.
 
 \begin{fact}
-	\label{fact:synchronous-is-regular}
+	\AP\label{fact:synchronous-is-regular}
 	Given a "synchronous automaton", its semantics as a "synchronous automaton"
 	can be written as the intersection of its semantics as a classical automaton over $\SigmaPair$
 	with $\WellFormed$.
@@ -90,7 +90,7 @@ for why classes of regular languages are defined in such a way.}
 		}
 	\end{center}
 	\caption{
-		\label{fig:min-auto}
+		\AP\label{fig:min-auto}
 		Minimal (deterministic complete) ``classical'' automaton for 
 		the binary relation
 		of pairs $(u,v)$ such that the number of $a$'s in $u_1\hdots u_k$
@@ -114,7 +114,7 @@ The converse implication holds under some strong assumption on $\+V$ (\Cref{fact
 but is not true in general (\Cref{ex:group-languages}).
 
 \begin{fact}
-	\label{fact:a-triviality-on-trivial-relations}
+	\AP\label{fact:a-triviality-on-trivial-relations}
 	If $\+V$ is a class of languages closed under intersection and that contains $\WellFormed$, then
 	a relation $\+R$ is a "$\+V$-relation" if, and only if, it belongs to $\+V$ when seen
 	as a language over $\SigmaPair$.
@@ -126,7 +126,7 @@ So, in the remaining of the paper, we will focus on classes $\+V$ which do not s
 the assumptions of \Cref{fact:a-triviality-on-trivial-relations}, such as group languages.
 
 \begin{example}[Group relations]
-	\label{ex:group-languages}
+	\AP\label{ex:group-languages}
 	If $\+V$ is the class
 	of group languages, namely languages recognized by permutation automata\footnote{A permutation 
 	automaton is a finite-state deterministic complete automaton whose transition functions are all 
@@ -138,7 +138,7 @@ the assumptions of \Cref{fact:a-triviality-on-trivial-relations}, such as group 
 \end{example}
 
 \begin{fact}
-	\label{fact:separability}
+	\AP\label{fact:separability}
 	Given a relation $\+R$ and a class $\+V$ of languages, the following are equivalent:
 	\begin{enumerate}
 		\item $\+R$ is a "$\+V$-relation";
@@ -162,7 +162,7 @@ separation problem for group languages is considered to be one of the major resu
 it follows from Ash's infamous type II theorem \cite[Theorem 2.1, p.~129]{ash_inevitable_1991}, see \cite[Theorem 1.1, p.~3]{henckell_ashs_1991} for a presentation of the result in terms of pointlike sets, see also \cite[\S III, Theorem 8, p.~5]{place_group_2023} for an elegant automata-theoretic reformulation.
 
 % \begin{example}[Nilpotent relations]
-% 	\label{ex:nilpotent}
+% 	\AP\label{ex:nilpotent}
 % 	Say that a finite semigroup $S$ is \AP""nilpotent"" if it contains a unique "idempotent" element 
 % 	$e$, and this "idempotent" is a zero---"ie" $ex = e = xe$ for all $x\in S$. Equationally, "nilpotent 
 % 	semigroups", whose class is denoted by \AP$\intro*\NilS$,

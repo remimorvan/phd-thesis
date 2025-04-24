@@ -1,10 +1,10 @@
 \section{The Lifting Theorem \& Pseudovarieties}
-\label{sec:lifting-theorem}
+\AP\label{sec:lifting-theorem}
 
 \subsection{Elementary Formulation}
 
 \begin{example}[Group relations: {\Cref{ex:algebra-Zpq} cont'd}]
-	\label{ex:charac-group-relation-monoids}
+	\AP\label{ex:charac-group-relation-monoids}
 	We want to decide when the relation
 	\begin{align*}
 		\+R^{I,J} \defeq \big\{
@@ -53,7 +53,7 @@ See the proof in \Cref{apdx-proof:thm:lifting-theorem-monoids}.
 	Unsurprisingly, "synchronous algebras" are indeed necessary, as 
 	there are relations $\+R$ such that:
 	\begin{equation}
-		\label{eq:naive-characterization} \tag{\adforn{12}}
+		\AP\label{eq:naive-characterization} \tag{\adforn{12}}
 		\proj{\+R} \cap (\Sigma\times \Sigma)^* \in \+V_{\Sigma\times \Sigma}, \quad
 		\proj{\+R} \cap (\Sigma\times \pad)^* \in \+V_{\Sigma\times \pad}\quad\text{and}\quad
 		\proj{\+R} \cap (\pad\times \Sigma)^* \in \+V_{\pad\times \Sigma},
@@ -75,14 +75,14 @@ See the proof in \Cref{apdx-proof:thm:lifting-theorem-monoids}.
 
 Also, note that the existence the "Lifting Theorem" follows from the careful
 definition of "synchronous algebras": more naive definitions of these algebras
-simply cannot characterize "$\+V$-relations", see \Cref{apdx:counterexample}.
+simply cannot characterize "$\+V$-relations", see \Cref{sec:counterexample}.
 
 From \Cref{thm:lifting-theorem-monoids}
 and the implicit fact that all our constructions are effective,
 we obtain a decidability (meta-)result for
 "$\+V$-relations".
 \begin{corollary}
-	\label{coro:decidability}
+	\AP\label{coro:decidability}
 	The class of "$\+V$-relations" has decidable membership if, and only if, $\+V$ has decidable membership.
 \end{corollary}
 
@@ -91,8 +91,74 @@ For instance, a "relation" is a "group relation" if, and only if, all
 groups. 
 % Beyond "group relations", the "lifting theorem" captures "e.g." the case of "commutative relations".
 
+\subsection{Synchronous Algebras Require a Dependency Relation}
+\AP\label{sec:counterexample}
+
+In this part, we introduce the notion of "synchronous algebra" with no dependency relation, 
+called "naive synchronous algebra". This notion is more natural---or naive---than
+\Cref{def:synchronous-algebra}, and share some of its enjoyable properties, such as the existence of syntactic algebras. Yet, we show that these algebras cannot characterize some
+natural classes of synchronous relation. More precisely, we show that there
+is a "$\ast$-pseudovariety of regular languages" $\+V$ and two synchronous relations
+$\+R_0$ and $\+R_1$, such that:
+\begin{itemize}
+	\item $\+R_0$ is a $\+V$-relation,
+	\item $\+R_1$ is not a $\+V$-relation,
+	\item $\+R_0$ and $\+R_1$ have the same syntactic "naive synchronous algebra".
+\end{itemize}
+
+\begin{definition}[Naive synchronous algebra]
+	Let $\intro*\typesEps \defeq \types \cup \{1\}$. We extend the notion of "compatibility" so 
+	that every $\sigma \in \typesEps$ is "compatible" with $1$ and
+	$1$ is "compatible" with $\sigma$.
+	A \AP""naive synchronous algebra"" $\?A$ consists of a "$\typesEps$-typed sets",
+	together with a partial binary operator $\cdot$ such that:
+	\begin{itemize}
+		\item $\cdot$ is defined exactly on "compatible" elements and is associative, and
+		\item there is a unique element of type $1$, denoted by $1$, and it satisfies
+			$\type{x}{\sigma} \cdot 1 = \type{x}{\sigma} = 1 \cdot \type{x}{\sigma}$
+			for all $\type{x}{\sigma} \in \?A$.
+	\end{itemize}
+\end{definition}
+
+The set of all "synchronous words" is naturally a "naive synchronous algebra" under concatenation.
+Moreover, any "synchronous relation" admits a syntactic "naive synchronous algebra"---this can be shown in the same fashion as \Cref{lem:syntactic-morphism-theorem}.
+
+\begin{example}[Group relations: \Cref{ex:charac-group-relation-monoids} cont'd]
+	Consider the relations
+	\begin{align*}
+		\+R_0 \defeq \big\{
+			(u,v) \;\big\vert\; & |u| > |v| \text{ and } (|u| - |v| \bmod{p}) = 0
+		\big\} \\
+		\+R_1 \defeq \big\{
+			(u,v) \;\big\vert\; & |u| > |v| \text{ and } (|u| - |v| \bmod{p}) = 1
+		\big\}.
+	\end{align*}
+	Then by \Cref{ex:charac-group-relation-monoids}, $\+R_0$ is not a "group relation" but
+	$\+R_1$ is.
+	Yet, we claim that both relations have the same syntactic "naive synchronous algebra" $\?A$, described as follows:
+	\begin{itemize}
+		\item it has a unit, denoted by $0$, of type $1$,
+		\item $\?A_{\LL}$, $\?A_{\BL}$ and $\?A_{\LL\to\BL}$ are all reduced to a single element,
+			denoted by $\type{0}{\LL}$, $\type{0}{\BL}$ and $\type{0}{\LL\to\BL}$,
+		\item $\?A_{\LL\to\LB}$ and $\?A_{\LB}$ contain the elements $\Z/p\Z$,
+		\item $\cdot$ is defined as the addition over $\Z/p\Z$, by identifying
+			$\type{0}{1}$, $\type{0}{\LL}$, $\type{0}{\LL\to\BL}$ and $\type{0}{\BL}$
+			with the zero of $\Z/p\Z$.
+	\end{itemize}
+	Then $\+R_0$ and $\+R_1$ are the preimages of $\{\type{0}{\LL\to\LB}, \type{0}{\LB}\}$
+	and $\{\type{1}{\LL\to\LB}, \type{1}{\LB}\}$, respectively, by the natural morphism onto $\?A$.
+	And hence $\+R_0$ and $\+R_1$ are recognized by $\?A$. It is easy to show that it is in fact the syntactic "naive synchronous algebra" of these relations: by surjectivity of the morphism 
+	above, it suffices to show that no two elements of $\?A$ can be identified and still recognize 
+	the same relation.
+\end{example}
+
+And so, from this example is follows that ``being a $\+V$-relations'' cannot be characterized
+by the syntactic "naive synchronous algebra" of the relation, which shows how crucial the "dependency relation" of \Cref{def:synchronous-algebra} is in order to get \Cref{thm:lifting-theorem-monoids}.
+
+The same result can be used to prove that ``naive positive synchronous algebras''---defined analogously to "naive synchronous algebra" except that there is no "type" 1 and no unit, and hence no empty word in the free algebra---are also unable to capture the property of ``being a $\+V$-relations''.
+
 \subsection{Pseudovarieties of Synchronous Relations}
-\label{sec:varieties}
+\AP\label{sec:varieties}
 
 We introduce the notion of "pseudovariety of synchronous algebras" 
 and "$\ast$-pseudovariety of synchronous relations". We show an "Eilenberg correspondence@@sync" between these two notions. We then reformulate the "Lifting Theorem"
@@ -146,7 +212,7 @@ To recover a more traditional definition (of the form ``closure under Boolean op
 turns out that the answer is quite surprising and less trivial than what one would expect.
 
 \begin{definition}[Residuals]
-	\label{def:residuals}
+	\AP\label{def:residuals}
 	Let $\?A$ be a "synchronous algebra", $\type{x}{\sigma} \in \?A$,
 	and $C \subseteq \?A$ be a "closed subset".
 	The \emph{left residual} and \emph{right residual} of $C$ by $\type{x}{\sigma}$ are defined by
@@ -202,7 +268,7 @@ be well-defined, one needs $\tau$ to be $\LL$, "ie" $y$ encodes a pair of
 two words $(u,v)$ of the same length. But then $(ua, va) \not\in \+S$.
 
 \begin{restatable}{lemma}{lemmaCharacterizationPseudovar}
-	\label{lemma:characterization-pseudovarieties-syncrel}
+	\AP\label{lemma:characterization-pseudovarieties-syncrel}
 	A class $\+V\colon \Sigma \mapsto \+V_\Sigma$ is a "$\ast$-pseudovariety of synchronous relations" if, and only if, it is closed under "Boolean combinations", "residuals" and
 	"inverse morphisms".
 \end{restatable}
@@ -226,7 +292,7 @@ that "divide@@sync" a finite product of "algebras@@sync" of $C$.\footnote{Note t
 
 \AP\phantomintro(sync){Eilenberg correspondence theorem}\vspace{-1em}
 \begin{restatable}[\reintro{An Eilenberg theorem for synchronous relations}]{lemma}{thmeilenberg}
-	\label{lem:eilenberg-sy}
+	\AP\label{lem:eilenberg-sy}
 	The correspondences $\B{V} \corrAR \+V$ and $\+V \corrRA \B{V}$ define
 	mutually inverse bijections between "pseudovarieties of
 	synchronous algebras" and "$\ast$-pseudovarieties of synchronous relations".
@@ -269,7 +335,7 @@ between "pseudovarieties of synchronous algebras" and
 "$\ast$-pseudovarieties of synchronous relations".
 
 \begin{theorem}[\reintro{Lifting Theorem: Pseudovariety Formulation}]
-	\label{thm:lifting-theorem-monoids-pseudovarieties}
+	\AP\label{thm:lifting-theorem-monoids-pseudovarieties}
 	If, in the "Eilenberg correspondence@@lang"
 	between "pseudovarieties of mon\-oids" and "$\ast$-pseudovarieties of regular languages"
 	we have~$\+V \corr \B{V}$,

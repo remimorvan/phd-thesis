@@ -1,5 +1,5 @@
 \section{Synchronous Algebras}
-\label{sec:synchronous-algebras}
+\AP\label{sec:synchronous-algebras}
 
 In this section, we introduce and study the ``elementary'' properties of "synchronous algebras".
 
@@ -31,7 +31,7 @@ this would represent a sequence of transitions $\pair{a}{a}, \pair{a}{a}, \pair{
 the promise that the next transition would have a padding symbol on its second tape. But then, 
 one has to formalize the idea that the two elements $\pair{aaa}{aaa}$ of type $\LL$ and $\LL\to\LB$
 represent the same underlying pair of words of $\Sigma^*\times\Sigma^*$: this idea will be captured by what we call a "dependency relation". A more natural solution would be to simply introduce a
-new type for the empty word (or to forbid it), but we show in \Cref{apdx:counterexample} that
+new type for the empty word (or to forbid it), but we show in \Cref{sec:counterexample} that
 the resulting notion of algebras cannot capture the property of being a "$\+V$-relation".
 
 % \paragraph{Synchronous words.}
@@ -93,7 +93,7 @@ To make the notations less heavy, we will often think of
 all operators/constructions should preserve this "type".
 
 \begin{definition}
-	\label{def:dependency}
+	\AP\label{def:dependency}
 	A \AP""dependency relation"" over a "typed set" $\?X$ consists of
 	a reflexive and symmetric relation $\intro*\dep$ over
 	\AP$\intro*\disunion \?X \defeq \bigcup_{\tau \in \types} X_\tau \times \{\tau\}$,
@@ -115,7 +115,7 @@ all operators/constructions should preserve this "type".
 		\includegraphics[width=\linewidth]{fig/algebra/free_algebras.png}
 	\end{center}
 	\caption{
-		\label{fig:free_algebras}
+		\AP\label{fig:free_algebras}
 		Representation of the "dependent set" $\Sync\Sigma$ of "synchronous words".
 		Coloured edges represent the "dependency relation", and self-loops are not drawn. 
 	} 
@@ -182,7 +182,7 @@ This implies that the notion of "compatibility" of types can be unambiguously
 lifted to finite lists of "types" $\tau_1,\hdots,\tau_n$.
 
 \begin{definition}
-	\label{def:synchronous-algebra}
+	\AP\label{def:synchronous-algebra}
 	A \AP""synchronous algebra"" $\langle \?A, \cdot, \dep \rangle$ consists of a "dependent set" $\langle \?A, \dep \rangle$ together
 	with a partial binary operation $\cdot$ on $\?A$, called \AP""product"" such that:
 	\begin{itemize}
@@ -222,7 +222,7 @@ concatenation. Its "underlying monoids" are $(\Sigma\times\Sigma)^*$,
 $(\Sigma\times\{\pad\})^*$ and $(\{\pad\}\times\Sigma)^*$.
 
 \begin{fact}
-	\label{fact:closed-subset-units}
+	\AP\label{fact:closed-subset-units}
 	Any "closed subset" of $\?A$ either contains all units, or none of them.
 \end{fact}
 
@@ -288,7 +288,7 @@ where:
 The algebra simply duplicates $M$ as many times as needed and identifies
 two elements together when they originated from the same element of $M$.
 \begin{fact}
-	\label{fact:induced-morphism}
+	\AP\label{fact:induced-morphism}
 	If $\phi$ recognizes $\+R$ for some "relation" $\+R \subseteq \Sigma^* \times \Sigma^*$ seen as a language over $\SigmaPair$, then $\inducedmor{\phi}$ "recognizes@@sync" $\+R$.
 \end{fact}
 
@@ -315,7 +315,7 @@ and $\consol{\phi}$ sends a word $u \in (\SigmaPair)^*$ to%
 \vspace{-1.25em}
 Note that this operation disregards the "dependency relation" of $\?A$.
 \begin{fact}
-	\label{fact:consolidation}
+	\AP\label{fact:consolidation}
 	If $\phi$ "recognizes@@sync" some "relation" $\proj{\+R}$,
 	then $\consol{\phi}$ recognizes $\+R$, when seen as
 	a language over $\SigmaPair$.
@@ -323,7 +323,7 @@ Note that this operation disregards the "dependency relation" of $\?A$.
 
 The following result follows from \Cref{fact:induced-morphism,fact:consolidation,fact:synchronous-is-regular}.
 \begin{proposition}
-	\label{prop:synchronous-iff-finite}
+	\AP\label{prop:synchronous-iff-finite}
 	A "relation" is "synchronous" if and only if it is "recognized@@sync"
 	by a finite "synchronous algebra".
 \end{proposition}
@@ -370,7 +370,7 @@ Let us continue with a slightly less trivial example of "algebra@synchronous alg
 % 	\todo{Small figure of a word and evaluation of some subwords over it.}
 % \end{example}
 \begin{example}[Group relations: {\Cref{ex:group-languages}, cont'd.}]
-	\label{ex:algebra-Zpq}
+	\AP\label{ex:algebra-Zpq}
 	Fix $p,q \in \N_{>0}$. Let $\?Z_{p,q}$ denote the algebra whose "underlying monoids" are:
 	\begin{itemize}
 		\item the trivial monoid $(0,+)$ for "type" $\LL$,
@@ -421,12 +421,12 @@ Let us continue with a slightly less trivial example of "algebra@synchronous alg
 
 
 \subsection{Syntactic Morphisms \& Algebras}
-\label{sec:syntactic-morphism}
+\AP\label{sec:syntactic-morphism}
 
 \AP\phantomintro{\SyntSAM}\phantomintro{\SyntSA}\phantomintro{syntactic synchronous algebra morphism}\phantomintro{syntactic synchronous algebra}\phantomintro(sync){Syntactic morphism theorem}
 \vspace{-2em}
 \begin{restatable}[\reintro(sync){Syntactic morphism theorem}]{lemma}{syntacticmorphismtheorem}
-	\label{lem:syntactic-morphism-theorem}
+	\AP\label{lem:syntactic-morphism-theorem}
 	For each relation $\+R$, there exists a surjective "synchronous algebra morphism"
 	\[\reintro*\SyntSAM{\+R}\colon \Sync{\Sigma} \surj \reintro*\SyntSA{\+R}\]
 	that "recognizes@@sync" $\+R$ and is such that for any other
@@ -527,7 +527,7 @@ The existence of the "syntactic morphism@@sync" then follows from
 the next proposition, proven in \Cref{apdx-proof:lem:syntactic-morphism-theorem}.
 
 \begin{restatable}{proposition}{propquotientbysyntacticcongruenceissyntacticalgebra}
-	\label{prop:quotient-by-syntactic-congruence-is-syntactic-algebra}
+	\AP\label{prop:quotient-by-syntactic-congruence-is-syntactic-algebra}
 	Let $\phi\colon \Sync\Sigma \surj \?A$ be a surjective "synchronous algebra morphism"
 	that "recognizes@@sync" $\+R$, say $\proj{\+R} = \phi^{-1}[\Acc]$
 	for some "closed subset" $\Acc \subseteq \?A$, then 
@@ -546,7 +546,7 @@ the next proposition, proven in \Cref{apdx-proof:lem:syntactic-morphism-theorem}
 \end{restatable}
 
 \begin{corollary}
-	\label{coro:syntactic-congruence-is-syntactic-dependency}
+	\AP\label{coro:syntactic-congruence-is-syntactic-dependency}
 	In the "syntactic synchronous algebra" $\SyntSA{\+R}$, the "syntactic
 	congruence" $\congr{\Acc}$ and the "dependency relation" $\dep$
 	coincide. 
@@ -579,7 +579,7 @@ is not an equivalence relation.
 % \end{proposition}
 
 % \subsection{Operations on Synchronous Algebras}
-% \label{sec:operations}
+% \AP\label{sec:operations}
 
 \paragraph*{Boolean operations}
 \AP Given two "synchronous algebras" $\?A$ and $\?B$, define their \emph{Cartesian product}

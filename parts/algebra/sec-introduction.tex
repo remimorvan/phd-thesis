@@ -1,34 +1,7 @@
 \section{Introduction}
-\label{sec:intro}
+\AP\label{sec:intro}
 
-\subsection{Background}
-
-% The class of regular languages is remarkably stable, and can either be characterized as the 
-% languages recognized by either
-% (a) deterministic or non-deterministic finite state automata \cite[Proposition 1.2.3, p.~7]{pin_handbook_2021},
-% (b) two-way finite state automata by Shepherdson-Rabin-Scott Ttheorem
-% \cite[Theorem 2, p.~198]{shepherdson_reduction_1959} \cite[Theorem 15, p.~123]{rabin_finite_1959},
-% (c) rational expressions by Kleene's theorem \cite[Theorem 1.5.11, p.~34]{pin_handbook_2021},
-% (d) monadic second-order logic by Trakhtenbrot-Büchi-Elgot theorem \cite[Theorem 2.2, p.~32]{bojanczyk_languages_2020}, or
-% (e) finite monoids \cite[\S 1.4.2, p.~19]{pin_handbook_2021},
-% and moreover, all transformations are effective.
-
-% \diego{softer intro?}
-The landscape of rationality for $k$-ary relations of finite words ($k \geq 2$) is far more complex than for languages---recall that languages can be seen as unary relations of finite words---as depicted in \Cref{fig:landscape-rationality} on page~\pageref{fig:landscape-rationality}. Perhaps the most natural class is that of \AP""rational relations"", defined as relations accepted by non-deterministic two-tape automata---an input $(u,v)$ is described by writing $u$ on the first tape and $v$ and the second tape---that can move its two heads independently, from left to right---see \cite[\S 2.1]{carton_decision_2006} for a formal definition. For instance, the suffix relation is "rational".
-
-
-Our paper focuses on "synchronous relations", "aka" "automatic relations" or "regular relations", defined as the "rational relations" that can be recognized by
-"synchronous automata",
-a subclass of the machines described above obtained by keeping a single head that
-moves synchronously from left to right, reading one pair of letters after the other; we add
-padding symbols $\pad$ at the end of the shorter word---see
-\Cref{fig:ex-sync-auto}.
-While the suffix relation is not "synchronous", typical examples include the prefix relation,
-the same-length relation, etc.
-"Synchronous relations" play a central role in the
-definitions of automatic structures---introduced by Hodgson \cite{hodgson_theories_1976,hodgson_direct_1982,hodgson_decidabilite_1983} and rediscovered by Khoussainov \& Nerode \cite{goos_automatic_1995}, see \cite[\S XI, pp.~627--762]{blumensath_monadic_2023}.
-They also have been studied in the context of graph databases \cite[Definition 3.1, p.7 \& Theorem 6.3, p.~13]{barcelo_expressive_2012}, see \cite[\S 8, p.~17]{figueira_foundations_2021} for more context \& results on \emph{extended} conjunctive regular path queries.
-% ---in short, they are algebraic models, or more generally first-order models, which can be described by "synchronous automata": while these structures can be infinite, many problems remain decidable on them \todo{addref blumensath bis}.
+\subsection{Motivation}
 
 \begin{figure}[htb]
 	\begin{center}
@@ -55,7 +28,7 @@ They also have been studied in the context of graph databases \cite[Definition 3
 		\end{tikzpicture}
 	\end{center}
 	\caption{
-		\label{fig:ex-sync-auto}
+		\AP\label{fig:ex-sync-auto}
 		Encoding a pair of words of $\Sigma^* \times \Sigma^*$ into an element of
 		$(\SigmaPair)^*$ where $\SigmaPair \defeq (\Sigma \times \Sigma) \,\cup\,
 		(\Sigma \times \{\pad\}) \,\cup\,
@@ -67,35 +40,6 @@ They also have been studied in the context of graph databases \cite[Definition 3
 		$\textrm{Pad}$ denotes the set of transitions $\{\pair{a}{\pad}, \pair{b}{\pad}, \pair{\pad}{a}, \pair{\pad}{b}\}$.
 	} 
 \end{figure}
-
-\begin{remark}
-	All our results are described for binary relations, but can be extended to
-	$k$-ary synchronous relations, see \Cref{sec:discussion}.
-\end{remark}
-
-"Synchronous relations" stand at the frontier between expressiveness and undecidability: for instance, Carton, Choffrut and Grigorieff showed that it is decidable whether an "automatic relation" is ""recognizable"" \cite[Proposition 3.9, p.~265]{carton_decision_2006}, meaning that
-it can be written as a finite union of Cartesian products of regular languages.\footnote{For 
-instance, the relation ``having the same length modulo $2$'' is "recognizable", since it can be 
-written as $(aa)^*\times (aa)^* \cup
-a(aa)^*\times a(aa)^*$.}\footnote{The problem was latter shown to be "NL"-complete and
-"PSpace"-complete depending on whether the input automaton is deterministic or not
-in \cite[Theorem 1, p.~3]{barcelo_monadic_2019}.}
-"Synchronous relations" are effectively closed under Boolean operations---see "eg" \cite[Lemma XI.1.3, p.~627]{blumensath_monadic_2023},
-and moreover, inclusion (and subsequent problems: universality, emptiness, equivalence…) is decidable for them,
-by reduction to classical automata,
-contrary to the equivalence problem over "rational relations"
-which is undecidable \cite[Theorem 8.4, p.~81]{berstel_transductions_1979}.
-
-However, some seemingly easy problems are undecidable: Köcher showed that
-it is undecidable if the (infinite) graph defined by a "synchronous relation" is
-2-colourable---\cite[Proposition 6.5, p.~43]{kocher_analyse_2014}, and Barceló, Figueira and Morvan showed that undecidability also
-holds for regular 2-colourability \cite[Theorem 4.4, p.~8]{barcelo_separating_2023}.
-On the other hand, one can decide
-if said graph contains an infinite clique, see \cite[Corollary 5.5, p.~32]{kuske_natural_2010}:
-this is a consequence of \cite[Theorem 3.20, p.~185]{Rubin_2008}. 
-
-\subsection{Motivation}
-
 Any "synchronous relation" can be seen as a regular language over the alphabet
 $\SigmaPair \defeq (\Sigma \times \Sigma) \,\cup\,
 (\Sigma \times \{\pad\}) \,\cup\, (\{\pad\} \times \Sigma)$ of pairs. On the other hand any regular language $L$ over $\SigmaPair$
@@ -111,7 +55,7 @@ with "well-formed words".
 		\includegraphics[width=.4\linewidth]{fig/algebra/projection.png}
 	\end{center}
 	\caption{
-		\label{fig:projection}
+		\AP\label{fig:projection}
 		Drawing in $(\SigmaPair)^*$ of a "$\+V$-relation" $\+R$ and $\negrel\+R \defeq \{(u,v) \in \Sigma^*\times \Sigma^* \mid (u,v) \not\in \+R\}$, where $\+R$ is defined as $L \cap \WellFormed$ with $L \in \+V$.
 	} 
 \end{figure}
@@ -127,12 +71,12 @@ alternatively described as those recognized by a deterministic complete synchron
 transitions functions are permutations of states.
 
 \begin{question}
-	\label{quest:V-relations}
+	\AP\label{quest:V-relations}
 	Given a class $\+V$ of languages, can we characterize and decide the class of "$\+V$-relations"?
 \end{question}
 
-As we will see in \Cref{ex:group-languages}, for a "relation" to be $\+V_{\SigmaPair}$
-is not necessary for it to be a "$\+V$-relation".
+As we will see in \Cref{ex:group-languages}, being in $\+V_{\SigmaPair}$, as a language,
+is a sufficient but not necessary condition for a relation to be a "$\+V$-relation".
 
 \subsection{Contributions}
 
@@ -155,7 +99,7 @@ Our "synchronous algebras" differ from monoids in two points:
 Importantly, some variations are possible on the definition of "synchronous algebras":
 in particular, one could get rid of the notion of "dependency relation" and 
 \Cref{lem:syntactic-morphism-theorem,lem:eilenberg-sy} would still hold.
-However, we show in \Cref{apdx:counterexample} that these
+However, we show in \Cref{sec:counterexample} that these
 simplified synchronous algebras cannot characterize the property of being a "$\+V$-relation".
 Therefore, the notion of "dependency" seems necessary to tackle \Cref{quest:V-relations}.
 Moreover, we show that these algebras arise from a monad, but to our knowledge none of the 
@@ -165,7 +109,7 @@ see \Cref{apdx:monads} for more details.
 We show that assuming that $\+V$ is a "$*$-pseudovariety of regular languages"---in short, a class of regular languages with desirable closure properties---, then the algebraic characterization of $\+V$ can be easily lifted to characterize "$\+V$-relations".
 
 \begin{restatable*}[\reintro{Lifting theorem: Elementary Formulation}]{theorem}{liftingtheoremmonoids}
-	\label{thm:lifting-theorem-monoids}
+	\AP\label{thm:lifting-theorem-monoids}
 	Given a "relation" $\+R$ and a "$\ast$-pseudovariety of regular languages" $\+V$
 	"corresponding@@EilenbergSg" to a "pseudovariety of monoids" $\B{V}$,
 	the following are equivalent:
@@ -188,6 +132,11 @@ While the proof structures of \Cref{lem:syntactic-morphism-theorem,lem:eilenberg
 the "dependency relation" has to be taken into account quite carefully, leading for instance
 to a surprising definition of "residuals", see \Cref{def:residuals}.
 
+\begin{remark}
+	All our results are described for binary relations, but can be extended to
+	$k$-ary synchronous relations, see \Cref{sec:discussion}.
+\end{remark}
+
 \paragraph*{Organization.} After giving preliminary results in \Cref{sec:preliminaries}, we introduce
 the "synchronous algebras" in \Cref{sec:synchronous-algebras} and show the existence of
 "syntactic algebras@@sync". We then proceed to prove the "lifting theorem@@monoids" for 
@@ -202,7 +151,7 @@ a short discussion in \Cref{sec:discussion}.
 	\centering
 	\includegraphics[width=\linewidth]{fig/algebra/landscape.png}
 	\caption{
-		\label{fig:landscape-rationality} The landscape of rationality for binary relations.
+		\AP\label{fig:landscape-rationality} The landscape of rationality for binary relations.
 		Dashed regions are empty: the intersection of
 		functional relations and two-way rational relations
 		collapses to regular functions by
