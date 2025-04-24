@@ -175,3 +175,202 @@
 \knowledgenewrobustcmd{\confGraph}[1][\+T]{\cmdkl{{\+{C\mkern-1.5mu on\!f}}_{\!#1}}}
 
 \knowledgenewrobustcmd{\autequiv}[1][\+R]{\cmdkl{\sim_{\!#1}}}
+
+
+% =---=
+% Algebras for Automatic Relations
+% =---=
+
+% ---
+% Categories
+% ---
+\newrobustcmd\cat[1]{\mathsf{#1}}
+\knowledgenewrobustcmd\Set[1][\+S]{\cmdkl{\cat{Set}^{\smash{#1}}}}
+\knowledgenewrobustcmd\Pos[1][\+S]{\cmdkl{\cat{Pos}^{\smash{#1}}}}
+\knowledgenewrobustcmd\Dep[1][\+S]{\cmdkl{\cat{Dep}^{\smash{#1}}}}
+
+% ---
+% Types
+% ---
+\usepackage{xfrac}
+\renewrobustcmd\ll{\kl[\ll]{\text{\sfrac{\footnotesize\textsc{l}\,}{\,\footnotesize\textsc{l}}}}\hspace{.1em}}
+\knowledge{\ll}{notion}
+\knowledgenewrobustcmd\lb{\cmdkl{\text{\sfrac{\footnotesize\textsc{l}\,}{\,\footnotesize\textsc{b}}}}\hspace{.1em}}
+\knowledgenewrobustcmd\bl{\cmdkl{\text{\sfrac{\footnotesize\textsc{b}\,}{\,\footnotesize\textsc{l}}}}\hspace{.1em}}
+
+% ---
+% Types & co
+% ---
+\knowledgenewrobustcmd\proj[1]{\cmdkl{\underline{#1}}} % Projection of relation
+\knowledgenewrobustcmd\projP[1]{\cmdkl{\underline{#1}}}
+
+\knowledgenewrobustcmd\typeW[2]{#1_{\cmdkl{#2}}}
+\knowledgenewrobustcmd\types{\cmdkl{\mathcal{T}}\!}
+\knowledgenewrobustcmd\typesEps{\cmdkl{\mathcal{T}_{1}}\!}
+\knowledgenewrobustcmd\concattype{\cmdkl{\cdot}}
+\knowledgenewrobustcmd\type[3][]{#2^{#1}_{\cmdkl{#3}}}
+
+\knowledgenewrobustcmd\dep[1][]{%
+	\mathrel{\cmdkl{\asymp#1}}%
+}
+
+\knowledgenewrobustcmd\negrel{\cmdkl{\neg}}
+
+% ---
+% Free & Syntactic algebras
+% ---
+\knowledgenewrobustcmd\Sync[2][2]{\cmdkl{\?S_{#1}#2}}
+\knowledgenewrobustcmd\SyncP[2][2]{\cmdkl{\?S^+_{#1}#2}}
+\knowledgenewrobustcmd\consol[1]{\cmdkl{#1^{\smash{0}}}}
+
+\knowledgenewrobustcmd\projtype{\cmdkl{\pi_{\smash{\textsf{type}}}}}
+\knowledgenewrobustcmd\projval{\cmdkl{\pi_{\smash{\textsf{val}}}}}
+\knowledgenewrobustcmd\typemap{\cmdkl{\mathrm{type}}}
+
+\knowledgenewrobustcmd\inducedmor[1]{\cmdkl{\smash{\tilde{#1}}}}
+\knowledgenewrobustcmd\inducedalg[1]{\cmdkl{\?A_{#1}}}
+% Same but for semigroups
+\knowledgenewrobustcmd\inducedmorSg[1]{\cmdkl{\smash{\tilde{#1}}}}
+\knowledgenewrobustcmd\inducedalgSg[1]{\cmdkl{\?A_{#1}}}
+
+\knowledgenewrobustcmd\SyntSA[1]{\cmdkl{\?A_{\smash{#1}}}}
+\knowledgenewrobustcmd\SyntSAM[2][]{\cmdkl{\eta_{\smash{#2}}^{#1}\!}}
+\knowledgenewrobustcmd\SyntSAP[1]{\cmdkl{\?A_{\smash{#1}}}}
+\knowledgenewrobustcmd\SyntSAMP[2][]{\cmdkl{\eta_{\smash{#2}}^{#1}\!}}
+\newrobustcmd\consolSyntSAP[1]{\kl[\SyntSAP]{\?A_{#1}^{\kl[\consol]{\,\smash{0}}}}}
+\newrobustcmd\consolSyntSAMP[1]{\kl[\SyntSAMP]{\eta_{#1}^{\kl[\consol]{\,\smash{0}}}}}
+\knowledgenewrobustcmd\sgpSyntSAMP[1]{\cmdkl{\eta_{#1}^{\smash{\textsf{sgp}}}}}
+
+\knowledgenewrobustcmd\quotient[2]{\cmdkl{{#1}/{#2}}}
+\knowledgenewrobustcmd\residual[2][]{#2^{\cmdkl{-1}}_{\kl[\type]{#1}}}
+
+\newcommand{\asympbar}{\mathrel{\raisebox{-.1em}{\scalebox{.6}{\ensuremath{\setstackgap{S}{0pt}%
+	\stackMath\mathrel{\stackon{\frown}{\stackon{\raisebox{.135em}{\rule{.6em}{.08em}}}{\smile}}}}}}}}
+
+\knowledgenewrobustcmd\congr[1]{%
+	\mathrel{\cmdkl{\asympbar_{#1}}}%
+}
+
+\knowledgenewrobustcmd\compos{%
+	\mathbin{\cmdkl{\circ}}%
+}
+
+\newrobustcmd{\coslicesurj}{\!\!\text{\rotatebox[origin=c]{60}{$\relbar\!\joinrel\!\twoheadrightarrow$}}\!}
+\newrobustcmd{\coslice}{\!/}
+
+% ---
+% Varieties
+% ---
+\knowledgenewrobustcmd\projL[1]{\cmdkl{#1^{\textrm{sync}}}}
+\knowledgenewrobustcmd\projA[1]{\cmdkl{#1^{\textrm{sync}}}}
+
+\knowledgenewrobustcmd\corrAR{%
+	\mathop{\cmdkl{\to}}%
+}
+\knowledgenewrobustcmd\corrRA{%
+	\mathop{\cmdkl{\to}}%
+}
+\knowledgenewrobustcmd\corr{%
+	\mathop{\cmdkl{\leftrightarrow}}%
+}
+
+\knowledgenewrobustcmd\Nil{\cmdkl{\+{(\mkern-1mu c\mkern-1mu o\mkern-2mu )\mkern-1mu F\mkern-2mu i\mkern-1mu n}}}
+\knowledgenewrobustcmd\NilS{\cmdkl{\B{N}\textrm{il}}}
+\knowledgenewrobustcmd\LocTriv{\cmdkl{\+{L\mkern-1mu I}}}
+\knowledgenewrobustcmd\LocTrivS{\cmdkl{\B{LI}}}
+
+% -----
+% Profinite words
+% -----
+
+\knowledgenewrobustcmd\idem{\cmdkl{\omega}}
+\knowledgenewrobustcmd\dist{%
+	\mathop{\cmdkl{\textbf{d}}}%
+}
+\knowledgenewrobustcmd\rist{%
+	\mathop{\cmdkl{\textbf{r}}}%
+}
+\knowledgenewrobustcmd\typing{%
+	\mathop{\cmdkl{\textbf{t}}}%
+}
+
+\knowledgenewrobustcmd\profSy[1]{\cmdkl{\smash{\widehat{#1}}}}
+\knowledgenewrobustcmd\profSg[1]{\cmdkl{\smash{\widehat{#1}}}}
+
+\knowledgenewrobustcmd\profeq{%
+	\mathrel{\cmdkl{=}}%
+}
+\knowledgenewrobustcmd\profimp{%
+	\mathrel{\cmdkl{\to}}%
+}
+\knowledgenewrobustcmd\profequiv{%
+	\mathrel{\cmdkl{\leftrightarrow}}%
+}
+\knowledgenewrobustcmd\profdep{%
+	\mathrel{\cmdkl{\asymp}}%
+}
+
+\knowledgenewrobustcmd\semprofdep[1]{\cmdkl{\lBrack} #1 \cmdkl{\rBrack}}
+
+% Induced dependencies
+
+\knowledgenewrobustcmd\substitWord[2][\typing]{\cmdkl{#2^{#1}}}
+\knowledgenewrobustcmd\substitProf[2][\typing]{\cmdkl{#2^{#1}}}
+\knowledgenewrobustcmd\inducedProfdep[1]{\cmdkl{#1^{\smash{\textsf{sync}}}}}
+
+\knowledgenewrobustcmd\EqVar[1]{\cmdkl{\+E_{\smash{#1}}}}
+
+% Free pro-V algebras
+\knowledgenewrobustcmd\distvar[1][\B{V}]{%
+	\mathop{\cmdkl{\textbf{d}}_{#1}}%
+}
+\knowledgenewrobustcmd\ristvar[1][\B{V}]{%
+	\mathop{\cmdkl{\textbf{r}}_{#1}}%
+}
+\knowledgenewrobustcmd\simvar[1][\B{V}]{\mathrel{\cmdkl{\asympbar_{#1}}}}
+\knowledgenewrobustcmd\freepro[2][\B{V}]{\cmdkl{\smash{\widehat{\mathbf{F}}}_{#1}#2}}
+\knowledgenewrobustcmd\freeproproj[1][\B{V}]{\cmdkl{\pi_{#1}}}
+
+\newrobustcmd\Pl[1][\B{V}]{%
+	\mathop{%
+		\withkl{\kl[\Pl]}{%
+			\cmdkl{\mathcal{P\mkern-1mu l}_{\mkern-2mu #1}}
+		}%
+	}%
+}
+\knowledge{\Pl}{notion}
+
+\newrobustcmd\Cl[2][\B{V}]{%
+	\mathop{%
+		\withkl{\kl[\Cl]}{%
+			\cmdkl{\mathcal{C\mkern-1mu l}_{\mkern-2mu #1}^{\smash{#2}}}
+		}%
+	}%
+}
+\knowledge{\Cl}{notion}
+
+
+% ---
+% Monads 
+% ---
+
+\knowledgenewrobustcmd\MonadSync[1][2]{\cmdkl{\B{S}_{#1}}}
+\knowledgenewrobustcmd\MonadSyncP[1][2]{\cmdkl{\B{S}^+_{#1}}}
+
+\newrobustcmd\PictureTypedSet[5]{
+	\begin{center}
+		\begin{tikzpicture}
+			\node[draw, circle] (ll) at (0, 0)  {$\ll$};
+			\node[draw, circle] (lb) [above right= .7cm and 1.4cm of ll] {$\lb$};
+			\node[draw, circle] (bl) [below right= .7cm and 1.4cm of ll] {$\bl$};
+			
+			\draw (ll) edge[->, loop left] node[left] {$#1$} (ll);
+			\draw (ll) edge[->, dashed] node[midway, fill=white, opacity=.8] {$#2$} (lb);
+			\draw (lb) edge[->, loop right] node[right] {$#3$} (lb);
+			\draw (ll) edge[->, dashed] node[midway, fill=white, opacity=.8] {$#4$} (bl);
+			\draw (bl) edge[->, loop right] node[right] {$#5$} (bl);
+		\end{tikzpicture}
+	\end{center}
+}
+
+\newrobustcmd{\sat}{\mathrel{\kl[\sat]{\vDash}}}

@@ -1,0 +1,280 @@
+\section{The Lifting Theorem \& Pseudovarieties}
+\label{sec:lifting-theorem}
+
+\subsection{Elementary Formulation}
+
+\begin{example}[Group relations: {\Cref{ex:algebra-Zpq} cont'd}]
+	\label{ex:charac-group-relation-monoids}
+	We want to decide when the relation
+	\begin{align*}
+		\+R^{I,J} \defeq \big\{
+			(u,v) \;\big\vert\; & |u| > |v| \text{ and } (|u| - |v| \bmod{p}) \in I, \text{ or} \\
+			& |u| < |v| \text{ and } (|v| - |u| \bmod{q}) \in J.
+		\hphantom{\text{ or}}\big\}	
+	\end{align*}
+	from \Cref{ex:algebra-Zpq} is a \AP"group relation".
+	By definition this happens if and only if there exists a finite group $G$,
+	together with a monoid morphism $\phi\colon (\SigmaPair)^* \to G$ and a subset
+	$\Acc \subseteq G$ "st" $\forall u \in \WellFormed$, $u\in \+R^{I,J}$ "iff" $\phi(u) \in \Acc$.
+	We claim:
+	\begin{equation}
+		\+R^{I,J} \text{ is a "group relation"}\quad\text{"iff"}\quad
+		\big(
+			\bar 0 \not\in I \text{ and } \bar 0 \not\in J
+		\big).
+		\tag{{\Large\adforn{10}}}
+	\end{equation}
+
+	The right-to-left implication was shown in \Cref{ex:algebra-Zpq}.
+	We prove the implication from left to right:
+	let $n$ be the order of $G$ so that $x^n = 1$ for all $x\in G$. In particular, we have:
+	$\phi\bigl(\pair{a}{\pad}^{pqn}\bigr) = 1 = \phi\bigl(\pair{a}{a}^{pqn}\bigr)$.
+	Since $\phi\bigl(\pair{a}{a}^{pqn}\bigr) \not\in \+R^{I,J}$, it follows that 
+	$\pair{a}{\pad}^{pqn} \not\in \+R^{I,J}$
+	"ie" $\bar 0 \not\in I$. Also, $\bar 0 \not\in J$ by symmetry, which concludes the proof.
+\end{example}
+
+\AP\phantomintro{Lifting Theorem}
+Even more generally, we can decide if a "relation" $\+R$ is a "group relation"
+by simply looking at the "syntactic synchronous algebra" of $\+R$.
+
+\liftingtheoremmonoids
+
+See the proof in "the full version".
+
+\begin{remark}
+	In light of \Cref{thm:lifting-theorem-monoids},
+	one can wonder whether the notion of "synchronous algebra" is necessary to
+	characterize "$\+V$-relations", or if it is enough to look at the languages corresponding to
+	the "underlying monoids".
+	Said otherwise, is the membership of $\+R$ in the class of "$\+V$-relations" uniquely
+	determined by the regular languages $\+R \cap (\Sigma\times\Sigma)^*$,
+	$\+R \cap (\Sigma\times\{\pad\})^*$ and $\+R \cap (\{\pad\}\times\Sigma)^*$?
+	Unsurprisingly, "synchronous algebras" are indeed necessary, as 
+	there are relations $\+R$ such that:
+	\begin{equation}
+		\label{eq:naive-characterization} \tag{\adforn{12}}
+		\proj{\+R} \cap (\Sigma\times \Sigma)^* \in \+V_{\Sigma\times \Sigma}, \quad
+		\proj{\+R} \cap (\Sigma\times \pad)^* \in \+V_{\Sigma\times \pad}\quad\text{and}\quad
+		\proj{\+R} \cap (\pad\times \Sigma)^* \in \+V_{\pad\times \Sigma},
+	\end{equation}
+	but $\+R$ is \emph{not} a "$\+V$-relation". This can happen even if
+	$\+V$ is the "$\ast$-pseudovariety@@reglang" of all regular languages: for instance for the
+	"relation"
+	\[
+		\+R \defeq \{(u,v) \mid |u| > |v| > 0 \text{ and } |u| - |v| \text{ is prime}\}.
+	\]
+	Notice that there is a subtle but crucially important difference between
+	\eqref{eq:naive-characterization} and the second item of the "Lifting Theorem":
+	while the "underlying monoids" of a "synchronous algebra" $\?A$ "recognizing@@sync" $\+R$
+	only accept words of the form $(\Sigma\times \Sigma)^*$, $(\Sigma\times \pad)^*$
+	or $(\pad\times \Sigma)^*$, elements of $(\Sigma\times \Sigma)^+(\Sigma\times \pad)^+$
+	or $(\Sigma\times \Sigma)^+(\pad\times \Sigma)^+$ influence the "underlying monoids" of $\?A$
+	via the axioms of "synchronous algebras".
+\end{remark}
+
+Also, note that the existence the "Lifting Theorem" follows from the careful
+definition of "synchronous algebras": more naive definitions of these algebras
+simply cannot characterize "$\+V$-relations", see "the full version".
+
+From \Cref{thm:lifting-theorem-monoids}
+and the implicit fact that all our constructions are effective,
+we obtain a decidability (meta-)result for
+"$\+V$-relations".
+\begin{corollary}
+	\label{coro:decidability}
+	The class of "$\+V$-relations" has decidable membership if, and only if, $\+V$ has decidable membership.
+\end{corollary}
+
+For instance, a "relation" is a "group relation" if, and only if, all
+"underlying monoids" of its "syntactic synchronous algebra" are
+groups. 
+% Beyond "group relations", the "lifting theorem" captures "e.g." the case of "commutative relations".
+
+\subsection{Pseudovarieties of Synchronous Relations}
+\label{sec:varieties}
+
+We introduce the notion of "pseudovariety of synchronous algebras" 
+and "$\ast$-pseudovariety of synchronous relations". We show an "Eilenberg correspondence@@sync" between these two notions. We then reformulate the "Lifting Theorem"
+to show that any "Eilenberg correspondence@@lang" between monoids and regular languages
+lifts to an "Eilenberg correspondence@@sync" between "synchronous algebras" and "synchronous relations".
+
+Say that a "synchronous algebra" $\?A$ is a \AP""quotient@@sync"" of $\?B$
+when there exists a surjective "synchronous algebra morphism" from $\?B$ to $\?A$.
+A ""subalgebra@@sync"" of $\?B$ is any "closed subset" of $\?B$ closed under "product"
+and containing the units.
+We then say that "synchronous algebra" $\?A$ \AP""divides@@sync"" $\?B$
+when $\?A$ is a "quotient@@sync" of a "subalgebra@@sync" of $\?B$.
+
+Observe that $\Sync\Sigma$ admits the following property:
+elements of type $\ll\to\lb$ and $\ll\to\bl$ are generated by the "underlying monoids".
+Since "syntactic synchronous algebras" are homomorphic images of $\Sync\Sigma$, they also
+satisfy this property. In general, we say that a "synchronous algebra" $\?A$ is \AP""locally 
+generated@@sync"" if every element of type $\ll\to\lb$ (resp.~$\ll\to\bl$)
+can be written as the product of an element of type $\ll$ with an element of type $\lb$ (resp.~$\bl$).
+
+A \AP""pseudovariety of synchronous algebras"" is any class $\B{V}$
+of "locally generated@@sync" finite "synchronous algebras" closed under
+\begin{itemize}
+	\item \emph{finite product:} if $\?A, \?B \in \B{V}$ then $\?A \times \?B \in \B{V}$,
+	\item \emph{division:} if some finite "locally generated" algebra $\?A$ "divides@@sync" $\?B$ for some $\?B \in \B{V}$, then $\?A \in \B{V}$.
+\end{itemize}
+
+Because of \Cref{lem:syntactic-morphism-theorem}, a "synchronous relation" is "recognized@@sync"
+by a finite synchronous algebra of a "pseudovariety@@syncalg" $\B{V}$ "iff"
+its "syntactic synchronous algebra" belongs to $\B{V}$.
+
+A \AP""$\ast$-pseudovariety of synchronous relations"" is a function $\+V \colon \Sigma \mapsto \+V_\Sigma$
+such that for any finite alphabet $\Sigma$, $\+V_\Sigma$ is a set of "synchronous relations" over 
+$\Sigma$ such that $\+V$ is closed under
+\begin{itemize}
+	\itemAP ""Boolean combinations""\emph{:} if $\+R, \+S \in \+V_{\Sigma}$, then
+		$\negrel\+R$, $\+R \cup \+S$ and $\+R \cap \+S$ belong to $\+V_{\Sigma}$ too,
+	% \item \emph{Partial quotients:} if $\+R \in \+V_{\Sigma}$, then
+	% 	$\pair{a}{b}^{-1}\+R$,
+	% 	$\+R\pair{a}{\pad}^{-1}$
+	% 	and $\+R\pair{\pad}{a}^{-1}$ all belong to $\+V_\Sigma$, where $a,b \in \Sigma$,
+	\itemAP ""Syntactic derivatives""\emph{:} if $\+R \in \+V_{\Sigma}$, then any "relation"
+	"recognized@@sync" by the "syntactic synchronous algebra morphism" of $\+R$ also belongs
+	to $\+V_{\Sigma}$.
+	\itemAP ""Inverse morphisms""\emph{:} if $\phi\colon \Sync\Gamma \to \Sync\Sigma$ is
+		a "synchronous algebra morphism" and $\+R \in \+V_{\Sigma}$ then
+		$\phi^{-1}[\+R] \in \+V_{\Gamma}$. 
+\end{itemize}
+
+To recover a more traditional definition (of the form ``closure under Boolean operations, residuals\footnote{Also called ``quotient'' "eg" in \cite[\S III.1.3, p.~39]{pin_mathematical_2022}, or ``polynomial derivative'' in \cite[\S 4, p.~19]{bojanczyk_recognisable_2015}.} and inverse morphisms''), we need to properly define what are the residuals of a "relation". It 
+turns out that the answer is quite surprising and less trivial than what one would expect.
+
+\begin{definition}[Residuals]
+	\label{def:residuals}
+	Let $\?A$ be a "synchronous algebra", $\type{x}{\sigma} \in \?A$,
+	and $C \subseteq \?A$ be a "closed subset".
+	The \emph{left residual} and \emph{right residual} of $C$ by $\type{x}{\sigma}$ are defined by
+	$\phantomintro{\residual}$
+	\begin{align*}
+		\reintro*\residual[\sigma]{x} C & \defeq
+		\bigl\{
+			\type{y}{\tau} \in \?A \mid
+				\exists \type{y'}{\tau'} \congr{C} \type{y}{\tau},\;
+				\type{x}{\sigma} \type{y'}{\tau'} \in C
+		\bigr\}, \text{ and} \\
+		C\reintro*\residual[\sigma]{x} & \defeq
+		\bigl\{
+			\type{y}{\tau} \in \?A \mid
+				\exists \type{y'}{\tau'} \congr{C} \type{y}{\tau},\;
+				\type{y'}{\tau'}\type{x}{\sigma} \in C
+		\bigr\},
+	\end{align*}
+	respectively. We refer indiscriminately to both these notions as \AP""residuals"".
+	We extend these notions to sets, by letting
+	$\residual{X}{}C \defeq \bigcup_{x\in X}\residual{x}{}C$
+	and $C\residual{X}{} \defeq \bigcup_{x\in X} C\residual{x}{}$.
+\end{definition}
+
+For the sake of readability, we will sometimes drop the "type" of elements when dealing
+with "residuals".
+It is routine to check that "residuals" are always "closed subsets" (since $\congr{C}$ is coarser than the "dependency relation"), or that $(\residual{x} C)\residual{y} =
+\residual{x} (C\residual{y})$.
+Equivalently, $C\residual[\sigma]{x}$ can be defined as the smallest "closed subset"
+containing the ``naive residual''
+$\bigl\{
+	\type{y}{\tau} \in \?A \mid
+		\type{y}{\tau}\type{x}{\sigma} \in C
+\bigr\}$.
+This latter set is always contained in $C\residual[\sigma]{x}$ (by reflexivity of $\congr{C}$),
+and moreover, if it is empty, then so is $C\residual[\sigma]{x}$.
+
+As an example, consider the relation $\+R$ from "the full version".
+Then the ``naive right residual'' of $\proj{\+R}$ by $\type{\pair{a}{\pad}}{\lb}$
+consists of $\type{\varepsilon}{\ll}$ and all elements of type $\lb$ and $\ll\to\lb$.
+But it does not contain any element of type $\bl$ or $\ll\to\bl$ because such elements cannot be concatenated with $\type{\pair{a}{\pad}}{\lb}$ on the right.
+Yet, the "residual" 
+$\proj{\+R} \residual[\lb]{\pair{a}{\pad}}$ contains all elements of type $\bl$ (and also $\ll\to\bl$): for instance, $\type{\pair{\pad}{a}}{\bl} \in
+\proj{\+R} \residual[\lb]{\pair{a}{\pad}}$ since $\type{\pair{\pad}{a}}{\bl} \congr{\+R} \type{\pair{a}{\pad}}{\lb}$
+and $\type{\pair{a}{\pad}}{\lb} \type{\pair{a}{\pad}}{\lb} \in \+R$.
+
+On the other hand, in the "algebra@@sync" $\Sync{a}$ consider the relation
+$\+S = (aa)^*\times a(aa)^*$.
+Then $\proj{\+S}\residual[\ll]{\pair{a}{a}}$ is empty since its 
+``naive residual'' $\{\type{y}{\tau} \in \Sync{a} \mid \type{y}{\tau}\cdot\pair{a}{a} \in \+S\}$
+is empty. Indeed, for $\type{y}{\tau}\cdot\type{\pair{a}{a}}{\ll}$ to
+be well-defined, one needs $\tau$ to be $\ll$, "ie" $y$ encodes a pair of
+two words $(u,v)$ of the same length. But then $(ua, va) \not\in \+S$.
+
+\begin{restatable}{lemma}{lemmaCharacterizationPseudovar}
+	\label{lemma:characterization-pseudovarieties-syncrel}
+	A class $\+V\colon \Sigma \mapsto \+V_\Sigma$ is a "$\ast$-pseudovariety of synchronous relations" if, and only if, it is closed under "Boolean combinations", "residuals" and
+	"inverse morphisms".
+\end{restatable}
+See the proof in "the full version".
+
+Let \AP$\B{V} \intro*\corrAR \+V$ denote the map (called \emph{correspondence}) that takes a 
+"pseudovariety of synchronous algebras" and maps it to
+\[\+V\colon \Sigma \mapsto \{\+R \subseteq \Sigma^*\times \Sigma^* \mid \SyntSA{\+R} \in \B{V}\}.\]
+
+Dually, let \AP$\+V \intro*\corrRA \B{V}$ denote the \emph{correspondence} that takes
+a "$\ast$-pseudo\-variety of synchronous relations" $\+V$
+and maps it to the "pseudovariety of synchronous algebras" "generated@@var" by
+all $\SyntSA{\+R}$ for some $\+R \in \+V_{\Sigma}$.
+Here, the ""pseudovariety generated"" by a class $C$
+of finite "locally generated" "synchronous algebras"
+is the smallest "pseudovariety@@syncalg" containing
+all finite "locally generated" "algebras@@sync" of $C$,
+or equivalently,\footnote{The proof is straightforward,
+see "eg" \cite[Proposition XI.1.1, p.~190]{pin_mathematical_2022} for a proof in the context of semigroups.} the class of all finite "locally generated" "synchronous algebras" 
+that "divide@@sync" a finite product of "algebras@@sync" of $C$.\footnote{Note that ``being "locally generated"'' is not preserved by taking "subalgebras", but this is not an issue: we restrict the construction to (finite) "locally generated" "algebras@@sync".}
+
+\AP\phantomintro(sync){Eilenberg correspondence theorem}\vspace{-1em}
+\begin{restatable}[\reintro{An Eilenberg theorem for synchronous relations}]{lemma}{thmeilenberg}
+	\label{lem:eilenberg-sy}
+	The correspondences $\B{V} \corrAR \+V$ and $\+V \corrRA \B{V}$ define
+	mutually inverse bijections between "pseudovarieties of
+	synchronous algebras" and "$\ast$-pseudovarieties of synchronous relations".
+\end{restatable}
+See the proof in "the full version".
+
+As consequence of \Cref{lem:eilenberg-sy}, if
+$\+V$ is a "$\ast$-pseudovariety of synchronous relations"
+and $\B{V}$ is a "pseudovariety of synchronous algebras",
+we write \AP$\+V \intro*\corr \B{V}$
+to mean that either $\+V \corrRA \B{V}$ or, equivalently, $\B{V} \corrAR \+V$.
+This relation is called an \AP""Eilenberg-Schützenberger correspondence@@sync"".
+
+\begin{proposition}
+	If~~$\B{V}$ is a "pseudovariety of monoids", then \AP$\phantomintro{\projA}$
+	\begin{align*}
+		\reintro*\projA{\B{V}} & \defeq
+		\{\?A \text{ "locally generated@@sync" finite "synchronous algebra"} \\
+		& \qquad\qquad \text{ "st" all "underlying monoids" of $\?A$ are in $\B{V}$}\}
+	\end{align*}
+	is a "pseudovariety of synchronous algebras". Similarly,
+	if~~$\+V$ is an "$\ast$-pseudovariety of regular languages", then
+	the class of "$\+V$-relations", namely
+	\[
+		\intro*\projL{\+V} \colon
+		\Sigma \mapsto \{\+R \subseteq \Sigma^* \times \Sigma^* \mid \exists L \in \+V_{\SigmaPair},\, \proj{\+R} = L \cap \WellFormed \},
+	\]
+	is a "$\ast$-pseudovariety of synchronous relations".
+\end{proposition}
+
+\begin{proof}
+	The first point is straightforward. The second one follows from it and \Cref{lem:eilenberg-sy,thm:lifting-theorem-monoids}.
+\end{proof}
+
+\AP\phantomintro{Lifting Theorem: Pseudovariety Formulation}
+Finally, \Cref{thm:lifting-theorem-monoids} can be elegantly rephrased
+by saying that correspondences between "pseudovarieties of monoids"
+and "$\ast$-pseudovarieties of regular languages" lift to correspondences
+between "pseudovarieties of synchronous algebras" and
+"$\ast$-pseudovarieties of synchronous relations".
+
+\begin{theorem}[\reintro{Lifting Theorem: Pseudovariety Formulation}]
+	\label{thm:lifting-theorem-monoids-pseudovarieties}
+	If, in the "Eilenberg correspondence@@lang"
+	between "pseudovarieties of mon\-oids" and "$\ast$-pseudovarieties of regular languages"
+	we have~$\+V \corr \B{V}$,
+	then in the "Eilenberg correspondence@@sync"
+	between the "pseudovariety of synchronous algebras" $\projA{\B{V}}$ and
+	the "$\ast$-pseudovariety of synchronous relations" $\projL{\+V}$,
+	we have~$\projL{\+V} \corr \projA{\B{V}}$.
+\end{theorem}

@@ -1,0 +1,138 @@
+\section{Preliminaries}
+\label{sec:preliminaries}
+
+\subsection{Automata \& Relations}
+
+We assume familiarity with basic algebraic language theory over finite words, see \cite[\S 1, 2, 4, pp.~3--66 \& pp.~107--156]{bojanczyk_languages_2020} for a succinct and monad-driven approach, or \cite[\S I--XIV, pp.~3--247]{pin_mathematical_2022} for a more detailed presentation of the domain.
+We also refer to \cite{SW21varieties} for a presentation on pseudovarieties.\footnote{``Pseudovarieties of \emph{foo}'' and ``varieties of finite \emph{foo}''---where \emph{foo} is "eg" ``groups''
+or ``semigroups''---are used interchangeably in the literature.}
+More precise pointers are given in "the full version".
+
+A \AP""relation"" is a subset of $\Sigma^*\times\Sigma^*$,
+where $\Sigma$ is an alphabet---"ie" a non-empty finite set.
+We define its \AP""complement@@rel"" \AP$\intro*\negrel \+R$ as the "relation" $\{(u,v) \in \Sigma^*\times \Sigma^* \mid (u,v) \not\in \+R\}$.
+Letting
+$\intro*\SigmaPair \defeq
+(\Sigma \times \Sigma) \,\cup\,
+(\Sigma \times \{\pad\}) \,\cup\,
+(\{\pad\} \times \Sigma)$, a ""synchronous automaton"" is a finite-state machine with initial states, final states, and
+non-deterministic transitions labelled by elements of $\SigmaPair$.
+We denote by \AP$\intro*\WellFormed$ the set of \AP""well-formed"" words over $\SigmaPair$ where the padding symbols are placed consistently, namely: if some padding symbol occurs on a tape/component, then the following symbols of this tape/component must all be padding symbols.
+From this constraint, and since $\pair{\pad}{\pad} \not\in \SigmaPair$,
+there can never be padding symbols on both tapes.
+
+Note that elements of $\WellFormed$ are in natural bijection with $\Sigma^*\times\Sigma^*$---see
+\Cref{fig:ex-sync-auto}.
+The relation recognized by a "synchronous automaton" is the set of pairs $(u,v) \in \Sigma^*\times\Sigma^*$ such that their corresponding element in $\WellFormed$ is the label of
+an accepting run of the automaton. We say that a relation is \AP""synchronous"" if it is recognized 
+by such a machine.
+
+\begin{remark}
+	\label{rk:semantic}
+	Crucially, in the semantics of "synchronous automata" we \emph{never}
+	try to feed them inputs where the padding symbols are not consistent: for instance, while
+	\[
+		\pair{aab}{b\pad a},
+		\text{ or }
+		\pair{aba\pad}{a\pad\pad b}	
+	\]
+	are sequences in $(\SigmaPair)^*$, the behaviour of a "synchronous automaton"
+	on such sequences is completely disregarded to define the relation it recognizes. 
+\end{remark}
+
+We can then reformulate the definition of the semantics of a "synchronous automaton",
+to make the connection with "$\+V$-relations"---see the next subsection---explicit.
+
+\begin{fact}
+	\label{fact:synchronous-is-regular}
+	Given a "synchronous automaton", its semantics as a "synchronous automaton"
+	can be written as the intersection of its semantics as a classical automaton over $\SigmaPair$
+	with $\WellFormed$.
+\end{fact}
+
+In particular a relation $\+R$ is "synchronous" if, and only if, it is a regular language when seen as a subset of $(\SigmaPair)^*$.
+% However, note that building a deterministic complete
+% automaton over $\SigmaPair$ from a deterministic complete "synchronous automaton" over $\Sigma$ 
+% does not preserve many properties of the form ``the automaton belongs to some well-behaved class $\+V$ of automata'', as we will show in \Cref{ex:group-languages}.
+
+\subsection{Induced Relations}
+
+Given a class $\+V$ of regular languages,
+the class of \AP""$\+V$-relations"" over $\Sigma$ consists of all "relations"
+of the form $L \cap \WellFormed$ for some $L \in \+V_{\SigmaPair}$---see \Cref{fig:projection}.\footnote{The notation $L \in \+V_{\SigmaPair}$ means that $L$ is a language over
+the alphabet $\SigmaPair$. See \cite[introduction of \S{}XIII.1]{pin_mathematical_2022}
+for why classes of regular languages are defined in such a way.}
+
+For instance, if $\+V$ is the class of all regular languages, then by
+\Cref{fact:synchronous-is-regular}, "$\+V$-relations" are exactly the "regular relations", "aka" "synchronous relations"!
+However, because of
+\Cref{rk:semantic}, the minimal automaton for a relation, seen as a language over $\SigmaPair$,
+can be significantly more complex than a deterministic complete "synchronous automaton" recognizing it, see \Cref{fig:min-auto} in page~\pageref{fig:min-auto}---while the size blow-up is only polynomial, it breaks many of the structural properties of the automaton, such as the property of being a permutation automaton.
+
+Note that if $\+R$ belongs to $\+V$ when $\+R$ is seen as a language over $\SigmaPair$,
+then $\+R$ is a "$\+V$-relation".
+The converse implication holds under some strong assumption on $\+V$ (\Cref{fact:a-triviality-on-trivial-relations}),
+but is not true in general (\Cref{ex:group-languages}).
+
+\begin{fact}
+	\label{fact:a-triviality-on-trivial-relations}
+	If $\+V$ is a class of languages closed under intersection and that contains $\WellFormed$, then
+	a relation $\+R$ is a "$\+V$-relation" if, and only if, it belongs to $\+V$ when seen
+	as a language over $\SigmaPair$.
+\end{fact}
+
+Classes of languages $\+V$ satisfying the previous assumption ("eg" first-order definable languages, piecewise-testable languages, etc.) are easy to capture when
+it comes to "$\+V$-relations" since this class reduces to $\+V$-languages.
+So, in the remaining of the paper, we will focus on classes $\+V$ which do not satisfy
+the assumptions of \Cref{fact:a-triviality-on-trivial-relations}, such as group languages.
+
+\begin{example}[Group relations]
+	\label{ex:group-languages}
+	If $\+V$ is the class
+	of group languages, namely languages recognized by permutation automata\footnote{A permutation 
+	automaton is a finite-state deterministic complete automaton whose transition functions are all 
+	permutations of states.} or equivalently by a finite group, then we call
+	"$\+V$-relations" \AP``""group relations""''. They can be characterized 
+	as relations recognized by permutation "synchronous automata". For instance, the relation
+	of \Cref{fig:ex-sync-auto} is a "group relation" as witnessed by the permutation synchronous automaton of \Cref{fig:ex-sync-auto}. Note however that it is not a group language, when seen as a language over $\SigmaPair$, since its minimal automaton over $\SigmaPair$ is not
+	a permutation automaton, see \Cref{fig:min-auto} on \cpageref{fig:min-auto}.
+\end{example}
+
+\begin{fact}
+	\label{fact:separability}
+	Given a relation $\+R$ and a class $\+V$ of languages, the following are equivalent:
+	\begin{enumerate}
+		\item $\+R$ is a "$\+V$-relation";
+		\item $\+R$ and $\negrel \+R$ are $\+V$-separable as languages over $\SigmaPair$,
+		"ie" there is a language in $\+V$ which contains $\+R$ and does not intersect $\negrel \+R$.
+	\end{enumerate}
+\end{fact}
+
+\begin{proof}
+	By definition, see \Cref{fig:projection}, on page \pageref{fig:projection}.
+\end{proof}
+
+And so, if the $\+V$-separability problem is decidable, then the class of "$\+V$-relations"
+is decidable. However, there are pseudovarieties $\+V$ with decidable membership but 
+undecidable separability problem \cite[Corollary 1.6, p.~478]{rhode_pointlike_2011}.\footnote{The paper cited only claims undecidability of pointlikes, but it was noted in \cite[\S 1, pp.~1--2]{gool_pointlike_2019} that undecidability of the 2-pointlikes also holds, which is a problem 
+equivalent to separability by \cite[Proposition 3.4, p.~6]{almeida_algorithmic_1999}.}
+Moreover, some of these classes do not contain $\WellFormed$ \cite[Corollary 1.7, p.~478]{rhode_pointlike_2011}. But beyond 
+this, even when a separation algorithm exists, it can be conceptually much harder than its
+membership counterpart: for instance, deciding membership for group languages is trivial---it boils down to checking if a monoid is a group---, yet the decidability of the 
+separation problem for group languages is considered to be one of the major results in semigroup theory:
+it follows from Ash's infamous type II theorem \cite[Theorem 2.1, p.~129]{ash_inevitable_1991}, see \cite[Theorem 1.1, p.~3]{henckell_ashs_1991} for a presentation of the result in terms of pointlike sets, see also \cite[\S III, Theorem 8, p.~5]{place_group_2023} for an elegant automata-theoretic reformulation.
+
+% \begin{example}[Nilpotent relations]
+% 	\label{ex:nilpotent}
+% 	Say that a finite semigroup $S$ is \AP""nilpotent"" if it contains a unique "idempotent" element 
+% 	$e$, and this "idempotent" is a zero---"ie" $ex = e = xe$ for all $x\in S$. Equationally, "nilpotent 
+% 	semigroups", whose class is denoted by \AP$\intro*\NilS$,
+% 	are defined by the "profinite equalities" $x^{\idem} y = x^{\idem}$ and
+% 	$y x^{\idem} = x^{\idem}$. It is well known \cite[Proposition XI.4.14, p.~196 \& Proposition XIV.1.18, p.~238]{pin_mathematical_2022} that $\NilS$ corresponds
+% 	to the "$+$-pseudovariety@@lang" \AP$\intro*\Nil$ of regular languages which are either finite 
+% 	or cofinite. It is routine to check that "$\Nil$-relations" consists of "relations"
+% 	$\+R$ which are finite, or such that $\negrel \+R$ is finite. On the other hand,
+% 	note that if $\negrel \+R$ is finite, then $\+R$ is not cofinite as a subset of $(\SigmaPair)^+$,
+% 	but only as a subset of $\WellFormed$. In particular, in this case, the syntactic semigroup of
+% 	$\+R$, seen as a subset of $(\SigmaPair)^+$ will not be "nilpotent".
+% \end{example}
