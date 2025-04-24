@@ -623,13 +623,19 @@ on $\zigzag{n}{5}$ in only $2$ steps.
 		\itemAP\label{item:hc-uniform-finite-duality}%
 			$\?B$ has finite duality;
 		\itemAP\label{item:hc-uniform-finite-structures}%
-			there exists $n\in\N$ "st" for every \emph{finite} "$\sigma$-structure" $\?A$, $\HCOperator^{\,n}_{\!\?A,\?B}(\topLatticeGuessFunctions{B}) = \HCFixpoint{\?A}{\?B}$
-			when $\?A \homto \?B$, and
-			$\HCOperator^{\,n}_{\!\?A,\?B}(\topLatticeGuessFunctions{B})(a) = \emptyset$ for some $a\in A$ when $\?A \nothomto \?B$;
+			there exists $n\in\N$ "st" for every \emph{finite} "$\sigma$-structure" $\?A$:
+			\begin{itemize}
+				\item $\HCOperator^{\,n}_{\!\?A,\?B}(\topLatticeGuessFunctions{B})
+					= \HCFixpoint{\?A}{\?B}$ when $\?A \homto \?B$, and
+				\item $\HCOperator^{\,n}_{\!\?A,\?B}(\topLatticeGuessFunctions{B})(a) = \emptyset$ for some $a\in A$ when $\?A \nothomto \?B$;
+			\end{itemize}
 		\itemAP\label{item:hc-uniform-arbitrary-structures}%
-			there exists $n\in\N$ "st" for every \emph{arbitrary} "$\sigma$-structure" $\?A$, $\HCOperator^{\,n}_{\!\?A,\?B}(\topLatticeGuessFunctions{B}) = \HCFixpoint{\?A}{\?B}$
-			when $\?A \homto \?B$, and
-			$\HCOperator^{\,n}_{\!\?A,\?B}(\topLatticeGuessFunctions{B})(a) = \emptyset$ for some $a\in A$ when $\?A \nothomto \?B$;
+			there exists $n\in\N$ "st" for every \emph{arbitrary} "$\sigma$-structure" $\?A$:
+			\begin{itemize}
+				\item $\HCOperator^{\,n}_{\!\?A,\?B}(\topLatticeGuessFunctions{B})
+					= \HCFixpoint{\?A}{\?B}$ when $\?A \homto \?B$, and
+				\item $\HCOperator^{\,n}_{\!\?A,\?B}(\topLatticeGuessFunctions{B})(a) = \emptyset$ for some $a\in A$ when $\?A \nothomto \?B$;
+			\end{itemize}
 	\end{enumerate}
 \end{lemma}
 
@@ -741,9 +747,8 @@ on $\zigzag{n}{5}$ in only $2$ steps.
 		can map $t$ to $b$. Then, letting $m$ denote the "height@@struct" of $\?T$ when rooted
 		at $t$, we have $b \not\in \HCOperator^{\,m}_{\?A,\?B}(\topLatticeGuessFunctions{B})(a)$.
 	\end{claim}
-	We prove by induction on $\?T$ that if there are no "homomorphism" from $\?T$ to $\?B$
+	We can prove by induction on $\?T$ that if there are no "homomorphism" from $\?T$ to $\?B$
 	that can map $t$ to $b$, then $b \not\in \HCOperator^{\,m}_{\?T,\?B}(\topLatticeGuessFunctions{B})(t)$ where $m$ is the "height@@struct" of $\?T$ rooted at $t$.
-	\todo{gap}
 	Then by \Cref{prop:hyperedge-consistency-antimonotonicity}, 
 	$\HCOperator^{\,m}_{\?A,\?B}(\topLatticeGuessFunctions{B})(a) \subseteq
 	\HCOperator^{\,m}_{\?T,\?B}(\topLatticeGuessFunctions{B})(t)$ and so

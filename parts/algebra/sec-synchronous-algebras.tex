@@ -12,24 +12,24 @@ not all words can be concatenated together: for instance, $\pair{a}{\pad}$
 cannot be followed by $\pair{a}{b}$.
 Formally, given two words $u, v \in \WellFormed$, to decide if $uv \in \WellFormed$
 it is necessary and sufficient to know if the last pair of $u$ and first pair of $v$
-consists of a pair of proper letters (denoted by \AP$\intro*\ll$), a pair of a proper letter and a blank/padding symbol (\AP$\intro*\lb$) or a pair of a blank/padding symbol and a proper letter (\AP$\intro*\bl$). This information is called the \AP""letter-type"" of an element of $\SigmaPair$.
+consists of a pair of proper letters (denoted by \AP$\intro*\LL$), a pair of a proper letter and a blank/padding symbol (\AP$\intro*\LB$) or a pair of a blank/padding symbol and a proper letter (\AP$\intro*\BL$). This information is called the \AP""letter-type"" of an element of $\SigmaPair$.
 
 We then define the \AP""type"" of a word of $(\SigmaPair)^+$ as the pair $(\alpha, \beta)$,
 usually written $\alpha \to \beta$, of the "letter-types" of its first and last letters.
 It is then routine to check that the possible types of "well-formed words" are
 \[
 	\intro*\types \defeq \big\{
-		\ll\to\ll,\; \ll\to\lb,\; \lb\to\lb,\; \ll\to\bl,\; \bl\to\bl
+		\LL\to\LL,\; \LL\to\LB,\; \LB\to\LB,\; \LL\to\BL,\; \BL\to\BL
 	\big\}.
 \]
 For the sake of readability, we will write $\alpha$ instead of $\alpha \to \alpha$
-for $\alpha \in \{\ll, \lb, \bl\}$.
+for $\alpha \in \{\LL, \LB, \BL\}$.
 
 One non-trivial point lies in the following innocuous question: what is the "type" of the empty word? Any "type" of $\types$ sounds like an acceptable answer. But then
-it would be natural to say that the concatenation of $\pair{aaa}{aaa}$ of "type" $\ll$ with the empty word of "type" $\ll\to\lb$ should be $\pair{aaa}{aaa}$ of "type" $\ll\to\lb$. Automata-wise,
+it would be natural to say that the concatenation of $\pair{aaa}{aaa}$ of "type" $\LL$ with the empty word of "type" $\LL\to\LB$ should be $\pair{aaa}{aaa}$ of "type" $\LL\to\LB$. Automata-wise,
 this would represent a sequence of transitions $\pair{a}{a}, \pair{a}{a}, \pair{a}{a}$ together with
 the promise that the next transition would have a padding symbol on its second tape. But then, 
-one has to formalize the idea that the two elements $\pair{aaa}{aaa}$ of type $\ll$ and $\ll\to\lb$
+one has to formalize the idea that the two elements $\pair{aaa}{aaa}$ of type $\LL$ and $\LL\to\LB$
 represent the same underlying pair of words of $\Sigma^*\times\Sigma^*$: this idea will be captured by what we call a "dependency relation". A more natural solution would be to simply introduce a
 new type for the empty word (or to forbid it), but we show in "the full version" that
 the resulting notion of algebras cannot capture the property of being a "$\+V$-relation".
@@ -44,8 +44,8 @@ the resulting notion of algebras cannot capture the property of being a "$\+V$-r
 % are "well-formed", but neither are $\pair{a\pad b}{b a \pad}$ nor $\pair{a\pad b}{a a a}$.
 
 % The \AP ""letter-type"" of a letter in $\SigmaPair$ is defined to be
-% $\ll$ if the letter is of the form $\pair{a}{b}$, $\lb$ if it of the form $\pair{a}{\pad}$,
-% and $\bl$ if it is of the form $\pair{\pad}{a}$, where $a,b \in \Sigma$---note that $l$ stands
+% $\LL$ if the letter is of the form $\pair{a}{b}$, $\LB$ if it of the form $\pair{a}{\pad}$,
+% and $\BL$ if it is of the form $\pair{\pad}{a}$, where $a,b \in \Sigma$---note that $l$ stands
 % for ``letter'' and $b$ for ``blank''.
 % The \AP ""type"" of a "well-formed" word $u \in (\SigmaPair)^+$ consists of the pair
 % $(\alpha,\beta)$, denoted $\alpha\to\beta$, of the "letter-types" of its first letter and its last letter.
@@ -55,29 +55,29 @@ the resulting notion of algebras cannot capture the property of being a "$\+V$-r
 
 
 % Observe that if $\typeW{u}{\alpha \to \beta}$ and $\typeW{v}{\beta'\to\gamma}$ are "well-formed", 
-% then $uv$ is "well-formed" if, and only if, $\beta = \beta'$, or [$\beta = \ll$ and
-% $\beta' \in \{\lb, \bl\}$], in which case $uv$ has "type" $\alpha\to\gamma$, and we say
+% then $uv$ is "well-formed" if, and only if, $\beta = \beta'$, or [$\beta = \LL$ and
+% $\beta' \in \{\LB, \BL\}$], in which case $uv$ has "type" $\alpha\to\gamma$, and we say
 % that the types $\alpha\to\beta$ and $\beta'\to\gamma$ are \AP ""compatible"".
 % For instance:
 % \[
-% 	% \typeW{\pair{aba}{bbb}}{\ll}\cdot
-% 	% \typeW{\pair{aab}{a\pad\pad}}{\ll\to\lb} =
-% 	% \typeW{\pair{abaaab}{bbba\pad\pad}}{\ll\to\lb}.
+% 	% \typeW{\pair{aba}{bbb}}{\LL}\cdot
+% 	% \typeW{\pair{aab}{a\pad\pad}}{\LL\to\LB} =
+% 	% \typeW{\pair{abaaab}{bbba\pad\pad}}{\LL\to\LB}.
 % 	% \quad\text{and}\quad
-% 	\typeW{\pair{ab}{bb}}{\ll}\cdot
-% 	\typeW{\pair{a}{\pad}}{\lb} = 
-% 	\typeW{\pair{aba}{bb\pad}}{\ll\to\lb}.
+% 	\typeW{\pair{ab}{bb}}{\LL}\cdot
+% 	\typeW{\pair{a}{\pad}}{\LB} = 
+% 	\typeW{\pair{aba}{bb\pad}}{\LL\to\LB}.
 % \]
 
 % \paragraph*{Empty Word.} Note that for now we talked about non-empty words. The empty word is
 % quite different from them since it can potentially have any type. Indeed, it makes
 % both sense to declare for instance that
 % \[
-% 	\typeW{\varepsilon}{\ll}\cdot
-% 	\typeW{\pair{aba}{bbb}}{\ll}\cdot
-% 	\typeW{\varepsilon}{\ll\to\lb}\cdot 
-% 	\typeW{\pair{ab}{\pad\pad}}{\lb} =
-% 	\typeW{\pair{abaab}{bbb\pad\pad}}{\ll\to\lb}.
+% 	\typeW{\varepsilon}{\LL}\cdot
+% 	\typeW{\pair{aba}{bbb}}{\LL}\cdot
+% 	\typeW{\varepsilon}{\LL\to\LB}\cdot 
+% 	\typeW{\pair{ab}{\pad\pad}}{\LB} =
+% 	\typeW{\pair{abaab}{bbb\pad\pad}}{\LL\to\LB}.
 % \]
 % If one allow all possible "types" for $\varepsilon$, one needs to have
 % a way to say that the elements they represent are ``equivalent'' in some sense.
@@ -116,22 +116,22 @@ all operators/constructions should preserve this "type".
 	\vspace{-1.25em}
 	\begin{multicols}{2}
 	\begin{itemize}
-		\item $(\Sync{\Sigma})_{\ll} \defeq (\Sigma\times \Sigma)^*$,
-		\item $(\Sync{\Sigma})_{\ll\to\lb} \defeq (\Sigma\times \Sigma)^*(\Sigma\times \pad)^*$,
-		\item $(\Sync{\Sigma})_{\lb} \defeq (\Sigma\times \pad)^*$,
+		\item $(\Sync{\Sigma})_{\LL} \defeq (\Sigma\times \Sigma)^*$,
+		\item $(\Sync{\Sigma})_{\LL\to\LB} \defeq (\Sigma\times \Sigma)^*(\Sigma\times \pad)^*$,
+		\item $(\Sync{\Sigma})_{\LB} \defeq (\Sigma\times \pad)^*$,
 		\columnbreak
 		\vfill
-		\item $(\Sync{\Sigma})_{\ll\to\bl} \defeq (\Sigma\times \Sigma)^*(\pad\times \Sigma)^*$,
-		\item $(\Sync{\Sigma})_{\bl} \defeq (\pad\times \Sigma)^*$.
+		\item $(\Sync{\Sigma})_{\LL\to\BL} \defeq (\Sigma\times \Sigma)^*(\pad\times \Sigma)^*$,
+		\item $(\Sync{\Sigma})_{\BL} \defeq (\pad\times \Sigma)^*$.
 	\end{itemize}
 	\end{multicols}
 	\vspace{-1em}
 	Moreover, $\dep$ is the reflexive and symmetric closure of the relation that
-	identifies $\type{u}{\ll}$ with $\type{u}{\ll\to\beta}$ for all
-	$u \in (\Sigma\times\Sigma^*)$ and $\beta \in \{\lb,\bl\}$, 
-	and $\type{u}{\ll\to\lb}$ with $\type{u}{\lb}$
+	identifies $\type{u}{\LL}$ with $\type{u}{\LL\to\beta}$ for all
+	$u \in (\Sigma\times\Sigma^*)$ and $\beta \in \{\LB,\BL\}$, 
+	and $\type{u}{\LL\to\LB}$ with $\type{u}{\LB}$
 	for $u \in (\Sigma\times\pad)^*$,
-	and $\type{u}{\ll\to\bl}$ with $\type{u}{\bl}$
+	and $\type{u}{\LL\to\BL}$ with $\type{u}{\BL}$
 	for $u \in (\pad\times\Sigma)^*$.
 	This structure is depicted in \Cref{fig:free_algebras}.
 \end{example}
@@ -162,9 +162,9 @@ We say that two types $\sigma, \tau \in \types$ are \AP""compatible""
 when there exists non-empty words $u,v \in \WellFormed$ of "type" $\sigma$
 and $\tau$, respectively, such that $uv$ is "well-formed".
 Said otherwise, $\alpha \to \beta$ is "compatible" with $\beta' \to \gamma$
-if either $\beta = \beta'$ or $\beta = \ll$---indeed, for this last case
-note that "eg" the concatenation of $\pair{aaa}{aaa}$ of type $\ll$ with
-$\pair{\pad\pad}{aa}$ of type $\bl$ is "well-formed".
+if either $\beta = \beta'$ or $\beta = \LL$---indeed, for this last case
+note that "eg" the concatenation of $\pair{aaa}{aaa}$ of type $\LL$ with
+$\pair{\pad\pad}{aa}$ of type $\BL$ is "well-formed".
 Lastly, if $\alpha\to \beta$ is "compatible with" $\beta'\to\gamma$,
 we define their product as \AP $(\alpha\to\beta)\intro*\concattype(\beta'\to\gamma) \defeq \alpha \to \gamma$.
 Note that this partial operation is associative, in the following sense: for $\rho,\sigma,\tau \in \types$, $(\rho\concattype\sigma) \concattype \tau$ is well-defined if and only if
@@ -196,17 +196,17 @@ lifted to finite lists of "types" $\tau_1,\hdots,\tau_n$.
 			if $\tau$ and $\sigma$ are "compatible",
 			and $\type{x}{\sigma} \cdot \type{1}{\tau} \dep \type{x}{\sigma}$
 			if $\sigma$ and $\tau$ are "compatible",
-			and moreover, $\type{1}{\ll\to\beta} = \type{1}{\ll}\cdot \type{1}{\beta}$
-			for $\beta \in \{\lb,\bl\}$.
+			and moreover, $\type{1}{\LL\to\beta} = \type{1}{\LL}\cdot \type{1}{\beta}$
+			for $\beta \in \{\LB,\BL\}$.
 	\end{itemize}
 \end{definition}
 
-Note in particular that for any type $\tau \in \{\ll,\lb,\bl\}$,
+Note in particular that for any type $\tau \in \{\LL,\LB,\BL\}$,
 then $\type{1}{\tau} \cdot \type{x}{\tau} \dep \type{x}{\tau}$
 but since $\type{1}{\tau} \cdot \type{x}{\tau}$ has "type" $\tau$ and $\dep$ is a
 "dependency relation", then $\type{1}{\tau} \cdot \type{x}{\tau} = \type{x}{\tau}$.
 This implies in particular that restricting $\langle \?A, \cdot \rangle$
-to a type $\ll$, $\lb$ or $\bl$ yields a monoid.
+to a type $\LL$, $\LB$ or $\BL$ yields a monoid.
 These are called the three \AP""underlying monoids"" of $\?A$.
 The canonical example of "synchronous algebras" is "synchronous words" $\Sync\Sigma$ under 
 concatenation. Its "underlying monoids" are $(\Sigma\times\Sigma)^*$,
@@ -218,22 +218,22 @@ $(\Sigma\times\{\pad\})^*$ and $(\{\pad\}\times\Sigma)^*$.
 \end{fact}
 
 \begin{proof}
-	From $\type{1}{\ll \to \lb} = \type{1}{\ll}\cdot \type{1}{\lb}$ we have
-	$\type{1}{\ll} \dep \type{1}{\ll \to \lb}$
-	and $\type{1}{\ll \to \lb} \dep \type{1}{\lb}$.
-	By symmetry between $\lb$ and $\bl$, we also have
-	$\type{1}{\ll} \dep \type{1}{\ll\to\bl}$ and $\type{1}{\ll\to\bl} \dep \type{1}{\bl}$.
+	From $\type{1}{\LL \to \LB} = \type{1}{\LL}\cdot \type{1}{\LB}$ we have
+	$\type{1}{\LL} \dep \type{1}{\LL \to \LB}$
+	and $\type{1}{\LL \to \LB} \dep \type{1}{\LB}$.
+	By symmetry between $\LB$ and $\BL$, we also have
+	$\type{1}{\LL} \dep \type{1}{\LL\to\BL}$ and $\type{1}{\LL\to\BL} \dep \type{1}{\BL}$.
 	Hence, if a "closed subset" of $\?A$ contains at least one unit, then it must contain them all.
 \end{proof}
 
 Note that the "product" induces a monoid left (resp.~right) action of the
-"underlying monoid" $\?A_{\ll}$ (resp.~$\?A_{\lb}$) on the set $\?A_{\ll\to\lb}$.
-Moreover, $\type{x}{\ll} \mapsto \type{x}{\ll} \cdot \type{1}{\lb}$
-identifies any element of "type" $\ll$ with an element of "type" $\ll\to\lb$.
+"underlying monoid" $\?A_{\LL}$ (resp.~$\?A_{\LB}$) on the set $\?A_{\LL\to\LB}$.
+Moreover, $\type{x}{\LL} \mapsto \type{x}{\LL} \cdot \type{1}{\LB}$
+identifies any element of "type" $\LL$ with an element of "type" $\LL\to\LB$.
 Over $\Sync{\Sigma}$, these identifications are injective, but it need not be the
 case in general. Note also that in general,
-$\type{x}{\ll} \cdot \type{1}{\ll\to\lb} = \type{x}{\ll} \cdot \type{1}{\ll}
-\cdot \type{1}{\lb} = \type{x}{\ll} \cdot \type{1}{\lb}$.
+$\type{x}{\LL} \cdot \type{1}{\LL\to\LB} = \type{x}{\LL} \cdot \type{1}{\LL}
+\cdot \type{1}{\LB} = \type{x}{\LL} \cdot \type{1}{\LB}$.
 
 \begin{remark}
 	There exists a monad over the category of "dependent sets" whose
@@ -272,9 +272,9 @@ where:
 	and $\dep$ is $\{(\type{x}{\sigma}, \type{x}{\tau}) \mid x \in M, \sigma, \tau \in \types\}$,
 	\item for all $\type{x}{\sigma}, \type{y}{\tau} \in \inducedalg{M}$
 	with "compatible type", $\type{x}{\sigma} \cdot \type{y}{\tau} \defeq \type{(x\cdot y)}{\sigma\concattype\tau}$,
-	\item $\inducedmor{\phi}\pair{a}{b} \defeq \type{\bigl(\phi\pair{a}{b}\bigr)}{\ll}$,
-		$\inducedmor{\phi}\pair{a}{\pad} \defeq \type{\bigl(\phi\pair{a}{\pad}\bigr)}{\lb}$,
-		and $\inducedmor{\phi}\pair{\pad}{a} \defeq \type{\bigl(\phi\pair{\pad}{a}\bigr)}{\bl}$.
+	\item $\inducedmor{\phi}\pair{a}{b} \defeq \type{\bigl(\phi\pair{a}{b}\bigr)}{\LL}$,
+		$\inducedmor{\phi}\pair{a}{\pad} \defeq \type{\bigl(\phi\pair{a}{\pad}\bigr)}{\LB}$,
+		and $\inducedmor{\phi}\pair{\pad}{a} \defeq \type{\bigl(\phi\pair{\pad}{a}\bigr)}{\BL}$.
 \end{itemize}
 The algebra simply duplicates $M$ as many times as needed and identifies
 two elements together when they originated from the same element of $M$.
@@ -296,11 +296,11 @@ and $\consol{\phi}$ sends a word $u \in (\SigmaPair)^*$ to%
 \begin{multicols}{2}%
 	\begin{itemize}%
 		\item $0$ if $u$ is not "well-formed",
-		\item $\phi(\type{u}{\ll})$ if $u \in (\Sigma\times \Sigma)^*$,
-		\item $\phi(\type{u}{\lb})$ if $u \in (\Sigma\times \pad)^+$,
-		\item $\phi(\type{u}{\bl})$ if $u \in (\pad\times \Sigma)^+$,
-		\item $\phi(\type{u}{\ll\to\lb})$ if $u \in (\Sigma\times \Sigma)^+(\Sigma\times \pad)^+$,
-		\item $\phi(\type{u}{\ll\to\bl})$ if $u \in (\Sigma\times \Sigma)^+(\pad\times \Sigma)^+$.
+		\item $\phi(\type{u}{\LL})$ if $u \in (\Sigma\times \Sigma)^*$,
+		\item $\phi(\type{u}{\LB})$ if $u \in (\Sigma\times \pad)^+$,
+		\item $\phi(\type{u}{\BL})$ if $u \in (\pad\times \Sigma)^+$,
+		\item $\phi(\type{u}{\LL\to\LB})$ if $u \in (\Sigma\times \Sigma)^+(\Sigma\times \pad)^+$,
+		\item $\phi(\type{u}{\LL\to\BL})$ if $u \in (\Sigma\times \Sigma)^+(\pad\times \Sigma)^+$.
 	\end{itemize}
 \end{multicols}
 \vspace{-1.25em}
@@ -324,11 +324,11 @@ Let us continue with a slightly less trivial example of "algebra@synchronous alg
 % \begin{example}
 % 	Given $p,q,r \in \Np$, let $\?Z_{p,q,r}$ be the "synchronous algebra" defined by:
 % 	\begin{itemize}
-% 		\item its "underlying monoids" of "type" $\ll$,
-% 			$\lb$ and $\bl$ are
+% 		\item its "underlying monoids" of "type" $\LL$,
+% 			$\LB$ and $\BL$ are
 % 			$\Z/p\Z$, $\Z/q\Z$ and $\Z/r\Z$ under addition, respectively.
-% 		\item $(\?Z_{p,q,r})_{\ll\to\lb} = \Z/p\Z \times \Z/q\Z$ and \\
-% 			$(\?Z_{p,q,r})_{\ll\to\bl} = \Z/p\Z \times \Z/r\Z$,
+% 		\item $(\?Z_{p,q,r})_{\LL\to\LB} = \Z/p\Z \times \Z/q\Z$ and \\
+% 			$(\?Z_{p,q,r})_{\LL\to\BL} = \Z/p\Z \times \Z/r\Z$,
 % 			with natural addition
 % 		\item the units are the zeroes,
 % 		\item $\dep$ identifies $\bar x \in \Z/p\Z$ with
@@ -354,9 +354,9 @@ Let us continue with a slightly less trivial example of "algebra@synchronous alg
 % 	\end{align*}
 % 	via the "morphism@@sync" defined by 
 % 	\[
-% 		\phi\pair{a}{a} \defeq \type{1}{\ll},\quad
-% 		\phi\pair{a}{\pad} \defeq \type{1}{\lb},\quad\text{and}\quad
-% 		\phi\pair{\pad}{a} \defeq \type{3}{\lb}.
+% 		\phi\pair{a}{a} \defeq \type{1}{\LL},\quad
+% 		\phi\pair{a}{\pad} \defeq \type{1}{\LB},\quad\text{and}\quad
+% 		\phi\pair{\pad}{a} \defeq \type{3}{\LB}.
 % 	\]
 % 	\todo{Small figure of a word and evaluation of some subwords over it.}
 % \end{example}
@@ -364,13 +364,13 @@ Let us continue with a slightly less trivial example of "algebra@synchronous alg
 	\label{ex:algebra-Zpq}
 	Fix $p,q \in \N_{>0}$. Let $\?Z_{p,q}$ denote the algebra whose "underlying monoids" are:
 	\begin{itemize}
-		\item the trivial monoid $(0,+)$ for "type" $\ll$,
-		\item the cyclic monoid $(\Z/p\Z,+)$ for "type" $\lb$,
-		\item the cyclic monoid $(\Z/q\Z,+)$ for "type" $\bl$.
+		\item the trivial monoid $(0,+)$ for "type" $\LL$,
+		\item the cyclic monoid $(\Z/p\Z,+)$ for "type" $\LB$,
+		\item the cyclic monoid $(\Z/q\Z,+)$ for "type" $\BL$.
 	\end{itemize}
-	Moreover, the sets $Z_{\ll\to\lb}$ and $Z_{\ll\to\bl}$ are defined
+	Moreover, the sets $Z_{\LL\to\LB}$ and $Z_{\LL\to\BL}$ are defined
 	as $\Z/p\Z$ and $\Z/q\Z$, respectively.
-	The product is addition---we identify $\type{0}{\ll}$ with the zero of $\Z/p\Z$ and
+	The product is addition---we identify $\type{0}{\LL}$ with the zero of $\Z/p\Z$ and
 	of $\Z/q\Z$. We denote by $\bar k$ the equivalence class of $k\in \Z$ in
 	$\Z/n\Z$ when $n$ is clear from context.
 	The "dependency relation" identifies (1) all units together and (2) $\type{x}{\sigma}$ with $\type{1}{\tau} \cdot \type{x}{\sigma}$ and $\type{x}{\sigma} \cdot \type{1}{\tau}$ when the "types" are "compatible".
@@ -378,11 +378,11 @@ Let us continue with a slightly less trivial example of "algebra@synchronous alg
 	Let $\phi\colon \Sync\Sigma \to \?Z_{p,q}$ be the "synchronous algebra morphism"
 	defined by
 	\[
-		\phi \pair{a}{b} \defeq  \type{\bar 0}{\ll}, 
+		\phi \pair{a}{b} \defeq  \type{\bar 0}{\LL}, 
 		\quad
-		\phi \pair{a}{\pad} \defeq \type{\bar 1}{\lb},
+		\phi \pair{a}{\pad} \defeq \type{\bar 1}{\LB},
 		\quad
-		\phi \pair{\pad}{a} \defeq \type{\bar 1}{\bl}
+		\phi \pair{\pad}{a} \defeq \type{\bar 1}{\BL}
 		\quad\text{and}\quad
 		\phi(\type{\varepsilon}{\tau}) \defeq \type{\bar 0}{\tau}
 		\text{ for $\tau \in \types$}.
@@ -397,7 +397,7 @@ Let us continue with a slightly less trivial example of "algebra@synchronous alg
 	where $I \subseteq \Z/p\Z$ and $J \subseteq \Z/q\Z$ are such that $\bar 0 \not\in I$
 	and $\bar 0 \not\in J$. This last condition is necessary because the accepting set
 	has to be a "closed subset" of $\?Z_{p,q}$: if $\bar 0$ was in $I$, then we would need
-	$\bar 0 \in J$, but also to add $\type{\bar 0}{\ll}$ to the accepting set: this would "recognize@@sync"
+	$\bar 0 \in J$, but also to add $\type{\bar 0}{\LL}$ to the accepting set: this would "recognize@@sync"
 	\begin{align*}
 		\big\{
 			(u,v) \;\big\vert\; & |u| > |v| \text{ and } (|u| - |v| \bmod{p}) \in I, \text{ or} \\

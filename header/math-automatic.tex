@@ -193,10 +193,9 @@
 % Types
 % ---
 \usepackage{xfrac}
-\renewrobustcmd\ll{\kl[\ll]{\text{\sfrac{\footnotesize\textsc{l}\,}{\,\footnotesize\textsc{l}}}}\hspace{.1em}}
-\knowledge{\ll}{notion}
-\knowledgenewrobustcmd\lb{\cmdkl{\text{\sfrac{\footnotesize\textsc{l}\,}{\,\footnotesize\textsc{b}}}}\hspace{.1em}}
-\knowledgenewrobustcmd\bl{\cmdkl{\text{\sfrac{\footnotesize\textsc{b}\,}{\,\footnotesize\textsc{l}}}}\hspace{.1em}}
+\knowledgenewrobustcmd\LL{\cmdkl{\text{\sfrac{\footnotesize\textsc{l}\,}{\,\footnotesize\textsc{l}}}}\hspace{.1em}}
+\knowledgenewrobustcmd\LB{\cmdkl{\text{\sfrac{\footnotesize\textsc{l}\,}{\,\footnotesize\textsc{b}}}}\hspace{.1em}}
+\knowledgenewrobustcmd\BL{\cmdkl{\text{\sfrac{\footnotesize\textsc{b}\,}{\,\footnotesize\textsc{l}}}}\hspace{.1em}}
 
 % ---
 % Types & co
@@ -209,6 +208,10 @@
 \knowledgenewrobustcmd\typesEps{\cmdkl{\mathcal{T}_{1}}\!}
 \knowledgenewrobustcmd\concattype{\cmdkl{\cdot}}
 \knowledgenewrobustcmd\type[3][]{#2^{#1}_{\cmdkl{#3}}}
+
+\knowledgenewrobustcmd\disunion{%
+	\mathop{\cmdkl{\text{\raisebox{-2pt}{\LARGE$\uplus$}}}}%
+}
 
 \knowledgenewrobustcmd\dep[1][]{%
 	\mathrel{\cmdkl{\asymp#1}}%
@@ -360,9 +363,9 @@
 \newrobustcmd\PictureTypedSet[5]{
 	\begin{center}
 		\begin{tikzpicture}
-			\node[draw, circle] (ll) at (0, 0)  {$\ll$};
-			\node[draw, circle] (lb) [above right= .7cm and 1.4cm of ll] {$\lb$};
-			\node[draw, circle] (bl) [below right= .7cm and 1.4cm of ll] {$\bl$};
+			\node[draw, circle] (ll) at (0, 0)  {$\LL$};
+			\node[draw, circle] (lb) [above right= .7cm and 1.4cm of ll] {$\LB$};
+			\node[draw, circle] (bl) [below right= .7cm and 1.4cm of ll] {$\BL$};
 			
 			\draw (ll) edge[->, loop left] node[left] {$#1$} (ll);
 			\draw (ll) edge[->, dashed] node[midway, fill=white, opacity=.8] {$#2$} (lb);
