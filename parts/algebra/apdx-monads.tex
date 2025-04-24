@@ -1,0 +1,44 @@
+\section{Monads Everywhere!}
+\label{apdx:monads}
+
+We denote by \AP$\intro*\Set[\+S]$ and $\intro*\Pos[\+S]$ the categories of $\+S$-typed sets
+and $\+S$-partially ordered sets---note that in this model,
+each type is equipped with its own order and
+that elements of different types cannot be compared.
+Similarly, let \AP$\intro*\Dep[\+S]$ be the category of $\+S$-"dependent sets".
+
+We claim that "synchronous algebras" correspond to "Eilenberg-Moore algebras" of some monad over the category $\Dep[\types]$. For the sake of readability, we represent the underlying
+"typed set" of a 
+$\types$-"dependent set"
+\[\?X = \langle X_{\LL},\, X_{\LL\to\LB},\, X_{\LB},\, X_{\LL\to\BL},\, X_{\BL} \rangle\]
+as follows:
+\PictureTypedSet{X_{\LL}}{X_{\LL\to\LB}}{X_{\LB}}{X_{\LL\to\BL}}{X_{\BL}.}
+
+We define the \emph{synchronous monad}
+\AP$\intro*\MonadSync$ over $\Dep[\types]$ as the functor which maps 
+\PictureTypedSet{A}{B}{C}{D}{E}
+equipped with a dependency relation $\dep$ to the "dependent set"
+\PictureTypedSet{A^*}{A^*BC^* \cup A^*C^*}{C^*}{A^*DE^* \cup A^*E^*}{E^*,}
+and two words are "dependent" if their domain are isomorphic
+and their letters are pairwise dependent.
+The unit and free multiplication are defined naturally.
+
+Note in particular that all five empty words are "mutually dependent",
+and that "synchronous words" $\Sync\Sigma$ correspond to applying
+$\MonadSync$ to
+\PictureTypedSet{\Sigma\times\Sigma}{\emptyset}{\Sigma\times\{\pad\}}{\emptyset}{\{\pad\}\times\Sigma,}
+equipped with equality.
+Moreover, "synchronous algebras" exactly correspond to $\MonadSync$-algebras.
+
+% Similarly, "positive synchronous algebras" correspond to the algebras
+% for the monad of positive "synchronous words" $\intro*\MonadSyncP$
+% over the category $\Dep[\types]$ defined analogously to $\MonadSync$,
+% but where each $-^*$ is replaced by a $-^+$.
+
+A systemic approach to algebraic language theory was proposed by Bojańczyk using the formalism of monads \cite{bojanczyk_recognisable_2015}, for monads over finitely typed sets $\Set$.
+Urbat, Adámek, Chen \& Milius then extended these results to capture monads over varieties of typed (ordered) algebras \cite{urbat_eilenberg_2017}.
+Lastly, Blumensath extended those results to monads over the category of typed posets $\Pos$
+when the set $\+S$ of types is infinite \cite{blumensath_algebraic_2021}. 
+
+Observe that the category of "dependent sets" is not captured by any of the results above since
+the "dependency relation" can compare elements of different types, contrary to typed posets \& co. 

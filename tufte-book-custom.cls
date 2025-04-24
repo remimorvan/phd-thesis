@@ -2,7 +2,7 @@
 
 \input{tufte-book.cls}
 
-\linespread{1.05} % Slightly more space
+\linespread{1.07} % Slightly more space
 \setlength\marginparpush{1.2em} % More vertical space between sidenotes.
 
 % ---

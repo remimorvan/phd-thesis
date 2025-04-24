@@ -15,6 +15,21 @@
 \usepackage{stackengine}
 \usepackage{etoolbox} % \renewrobustcmd
 
+\usepackage{appendix,chngcntr} % appendix after each chapter
+% see https://tex.stackexchange.com/questions/120716/appendix-after-each-chapter
+% Start of subappendices environment
+\AtBeginEnvironment{subappendices}{%
+\section*{Appendices}
+% \addcontentsline{toc}{chapter}{Appendices}
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+}
+% End of subappendices environment
+\AtEndEnvironment{subappendices}{%
+\counterwithout{figure}{section}
+\counterwithout{table}{section}
+}
+
 \usepackage{listings}
 \lstdefinestyle{mystyle}{
     backgroundcolor=\color{cLightGrey!30!white},   
