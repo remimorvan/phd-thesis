@@ -40,7 +40,117 @@ by simply looking at the "syntactic synchronous algebra" of $\+R$.
 
 \liftingtheoremmonoids
 
-See the proof in \Cref{apdx-proof:thm:lifting-theorem-monoids}.
+\begin{proof}
+	\proofcase{(1) $\Rightarrow$ (2).} Since $\+R$ is a "$\+V$-relation", there exists
+	$\+L \in \+V_{\SigmaPair}$ such that $\proj{\+R} = \+L \cap \WellFormed$.
+	Hence, there exists a morphism of monoids $\phi\colon (\SigmaPair)^* \to M$ such 
+	that $M \in \B{V}$ and $\+L = \phi^{-1}[\Acc]$ for some $\Acc \subseteq M$.
+	It follows that $\proj{\+R} = \+L \cap \WellFormed[\Sigma]$ rewrites as
+	``for all $u \in \WellFormed$, $\phi(u) \in \Acc$ "iff" $u \in \proj{\+R}$''.
+	Letting $\inducedalg{M}$ be the "synchronous algebra induced by the monoid" $M$, define
+	$\psi\colon \Sync\Sigma \to \inducedalg{M}$ by $\psi(\type{u}{\sigma}) \defeq
+	\type{(\phi(u))}{\sigma}$ for $\type{u}{\sigma} \in \Sync\Sigma$.
+	Let $\Acc' \defeq \{\type{x}{\sigma} \mid x \in \Acc \land \sigma \in \types\}$.
+	We claim that $\psi^{-1}[\Acc'] = \proj{\+R}$. Indeed, for $\type{u}{\sigma} \in \Sync\Sigma$,
+	$\type{u}{\sigma} \in \proj{\+R}$ "iff" $u \in \+L$,
+	"ie" $\phi(u) \in \Acc$,
+	that is $\psi(\type{u}{\sigma}) = \type{(\phi(u))}{\sigma} \in \Acc'$.
+	Notice then that all "underlying monoids" of $\inducedalg{M}$ are $M$,
+	and hence they belong to $\B{V}$.
+
+	\proofcase{(2) $\Rightarrow$ (3).} By \Cref{lem:syntactic-morphism-theorem}, 
+	the "syntactic synchronous algebra" of $\+R$ "divides@@sync"
+	any "algebra@@sync" $\?B$ "recognizing@@sync" $\+R$.
+	In particular, its "underlying monoids" "divide@@monoid" the "underlying monoids" of $\?B$. The conclusion follows since $\B{V}$ is closed under "division@@monoid". 
+	
+	\proofcase{(3) $\Rightarrow$ (1).} Denote by $M_{\LL}, M_{\LB}$ and $M_{\BL}$ the 
+	"underlying monoids" of $\SyntSA{\+R}$. Let $\Acc \subseteq \SyntSA{\+R}$ be the accepting set 
+	such that $\proj{\+R} = \SyntSAM[-1]{\+R}[\Acc]$.
+	Define $M \defeq M_{\LL} \times M_{\LB} \times M_{\BL}$, and
+	\begin{center}
+		\begin{tabular}{rccc}
+			$\phi\colon$
+			& $(\SigmaPair)^*$
+			& $\to$
+			& $M$\\
+			& $\pair{a}{b}$
+			& $\mapsto$
+			& $\langle \SyntSAM{\+R}\type{\pair{a}{b}}{\LL},\, \type{1}{\LB},\, \type{1}{\BL} \rangle$ \\
+			& $\pair{a}{\pad}$
+			& $\mapsto$
+			& $\langle \type{1}{\LL},\, \SyntSAM{\+R}\type{\pair{a}{\pad}}{\LB},\, \type{1}{\BL} \rangle$ \\
+			& $\pair{\pad}{a}$
+			& $\mapsto$
+			& $\langle \type{1}{\LL},\, \type{1}{\LB},\, \SyntSAM{\+R}\type{\pair{\pad}{a}}{\BL} \rangle$
+		\end{tabular}		
+	\end{center}
+	and finally, let
+	\begin{align*}
+		\Acc'
+		& \cup \bigl\{
+			\langle\type{1}{\LL},\, \type{1}{\LB},\, \type{z}{\BL}\rangle
+			\mid \type{z}{\BL} \in \Acc
+		\bigr\} \\
+		& \cup \bigl\{
+			\langle\type{x}{\LL},\, \type{y}{\LB},\, \type{1}{\BL}\rangle
+			\mid \type{x}{\LL}\cdot \type{y}{\LB} \in \Acc
+		\bigr\} \\
+		& \cup \bigl\{
+			\langle\type{x}{\LL},\, \type{1}{\LB},\, \type{z}{\BL}\rangle
+			\mid \type{x}{\LL}\cdot\type{z}{\BL} \in \Acc
+		\bigr\}.
+	\end{align*}
+	We first claim that
+	\begin{align}
+		\text{
+			For every $\type{u}{\LL\to\LB} \in \Sync\Sigma$,
+		} & \notag \\
+		& 
+		\hspace{-2cm}\text{
+			$\phi(u)$ is of the form $\langle a,\, b,\, 1 \rangle$
+			and moreover,
+		}
+		\label{eq:relationship-monoid-with-synchronous-algebra}
+		\tag{\adforn{75}}\\
+		& \hspace{-2cm} \text{
+			$\SyntSAM{\+R}(\type{u}{\LL\to\LB}) = a \cdot b$,
+		}\notag
+	\end{align}
+	which can trivially be proven by induction on $u$. Analogous results
+	hold for words of different "type".
+	We then prove that for each $\type{u}{\sigma} \in \Sync\Sigma$,
+	\begin{equation}
+		\SyntSAM{\+R}(\type{u}{\sigma}) \in \Acc
+		\quad\text{"iff"}\quad
+		\phi(u) \in \Acc'.
+		\label{eq:accepting-set-is-preserved}
+		\tag{\adforn{28}}
+	\end{equation}
+	The direct implication is straightforward, using
+	\Cref{eq:relationship-monoid-with-synchronous-algebra}.
+	The converse implication is more tricky: assume "eg" that $\sigma = \LL\to\LB$,
+	say $\type{t}{\sigma} = \type{u}{\LL}\type{v}{\LB}$.
+	If $\phi(t) \in \Acc'$, using \Cref{eq:relationship-monoid-with-synchronous-algebra} then it implies either that
+	\begin{enumerate}
+		\item $\SyntSAM{\+R}(\type{u}{\LL}) = \type{1}{\LL}$ and $\SyntSAM{\+R}(\type{v}{\LB}) = \type{1}{\LL}$, and $\type{1}{\BL} \in \Acc$, or
+		\item $\SyntSAM{\+R}(\type{u}{\LL})\cdot \SyntSAM{\+R}(\type{v}{\LB}) \in \Acc$, or even
+		\item $\SyntSAM{\+R}(\type{v}{\LB}) = \type{1}{\LB}$ and
+			$\SyntSAM{\+R}(\type{u}{\LL})\cdot \type{1}{\BL} \in \Acc$.
+	\end{enumerate}
+	Clearly, $(2)$ implies the desired conclusion, namely that $\SyntSAM{\+R}(\type{t}{\sigma}) = \SyntSAM{\+R}(\type{u}{\LL})\SyntSAM{\+R}(\type{v}{\LB}) \in \Acc$.
+	In all other cases, we will make heavy use of the "dependency relation".
+	For case $(1)$, we have that $\SyntSAM{\+R}(\type{t}{\sigma}) = \type{1}{\LL\to\LB}$.
+	From $\type{1}{\BL} \in \Acc$, \Cref{fact:closed-subset-units} yields $\type{1}{\LL} \cdot \type{1}{\LB} = \type{1}{\LL\to\LB} \in \Acc$, since $\Acc$ is "closed".
+	Lastly, in case $(3)$, $\SyntSAM{\+R}(\type{u}{\LL}) \dep
+	\SyntSAM{\+R}(\type{u}{\LL})\cdot \type{1}{\BL} \in \Acc$ so
+	$\SyntSAM{\+R}(\type{u}{\LL}) \in \Acc$ and hence
+	$\SyntSAM{\+R}(\type{t}{\LL\to\LB}) = \SyntSAM{\+R}(\type{u}{\LL}) \cdot \type{1}{\LB}
+	\dep \SyntSAM{\+R}(\type{u}{\LL}) \in \Acc$ which yields
+	$\SyntSAM{\+R}(\type{t}{\LL\to\LB}) \in \Acc$. This concludes the proof
+	of \eqref{eq:accepting-set-is-preserved} for "type" $\sigma = \LL\to\LB$.
+	Other "types" are handled similarly, and hence
+	$\proj{\+R} = \phi^{-1}[\Acc']\cap\WellFormed$.
+\end{proof}
 
 \begin{remark}
 	In light of \Cref{thm:lifting-theorem-monoids},
@@ -272,7 +382,130 @@ two words $(u,v)$ of the same length. But then $(ua, va) \not\in \+S$.
 	A class $\+V\colon \Sigma \mapsto \+V_\Sigma$ is a "$\ast$-pseudovariety of synchronous relations" if, and only if, it is closed under "Boolean combinations", "residuals" and
 	"inverse morphisms".
 \end{restatable}
-See the proof in \Cref{apdx-proof:lemma:characterization-pseudovarieties-syncrel}.
+
+\begin{proof}
+	We first need two propositions.
+
+	\begin{claim}
+		\label{claim:inverse-morphism-preserve-congruence}
+		Let $\phi\colon \?A \surj \?B$ be a surjective "morphism@@sync",
+		and $\Acc$ be a "closed subset" of $\?B$. Let $a, a' \in \?A$.
+		Then
+		\[
+			a \congr{\phi^{-1}[\Acc]} a'
+			\quad\text{"iff"}\quad
+			\phi(a) \congr{\Acc} \phi(a').
+		\]
+	\end{claim}
+	
+	\proofcase{Direct implication.}
+	Pick any $b_\ell, b_r \in \?B$ such that both
+	$b_\ell \phi(a) b_r$ and
+	$b_\ell \phi(a') b_r$
+	are well-defined. By surjectivity of $\phi$, there exists
+	$a_\ell, a_r \in \?A$
+	such that $\phi(a_\ell) = b_\ell$
+	and $\phi(a_r) = b_r$.
+	Then both $a_\ell a a_r$
+	and $a_\ell a' a_r$ are well-defined since they have the same "type"
+	as $b_\ell \phi(a) b_r$ and $b_\ell \phi(a') b_r$, respectively.
+	From $a \congr{\phi^{-1}[\Acc]} a'$,
+	it follows that $a_\ell a a_r$ belongs to $\phi^{-1}[\Acc]$ "iff" $a_\ell a' a_r$ does.
+	And hence
+	\[
+		b_\ell \phi(a) b_r \in \Acc 
+			\quad\text{"iff"}\quad
+		b_\ell \phi(a') b_r \in \Acc.
+	\]
+
+	\proofcase{Converse implication.}
+	Dually, pick any $a_\ell, a_r \in \?A$ such that both
+	$a_\ell a a_r$ and $a_\ell a' a_r$ are well-defined.
+	Then $\phi(a_\ell) \phi(a) \phi(a_r)$ and $\phi(a_\ell) \phi(a') \phi(a_r)$
+	are also well-defined since they have the same "type" as their preimage,
+	and $\phi(a) \congr{\Acc} \phi(a')$ implies that the element $\phi(a_\ell) \phi(a) \phi(a_r)$ belongs
+	to $\Acc$ "iff" $\phi(a_\ell) \phi(a') \phi(a_r)$ does. It follows
+	that $a_\ell a a_r \in \phi^{-1}[\Acc]$ "iff" $a_\ell a' a_r \in \phi^{-1}[\Acc]$.
+	This concludes the proof of \Cref{claim:inverse-morphism-preserve-congruence}.
+	
+	
+	\begin{claim}[Inverse images of surjective "morphisms@@sync" preserve "residuals"]
+		\label{claim:inverse-morphism-preserve-residuals}
+		Let $\phi\colon \?A \surj \?B$ be a surjective "morphism@@sync", and $\Acc \subseteq \?B$
+		be a "closed subset". Let $u \in \?A$. Then
+		\[\residual{u}\phi^{-1}[\Acc] = \phi^{-1}[\residual{\phi(u)}\Acc].\]
+	\end{claim}
+	
+	\proofcase{Left-to-right inclusion.}
+	Let $a\in \residual{u}\phi^{-1}[\Acc]$.
+	Then there exists $a' \in \?A$ such that $a \congr{\phi^{-1}[\Acc]} a'$
+	and $ua' \in \phi^{-1}[\Acc]$.
+	By \Cref{prop:inverse-morphism-preserve-congruence}
+	$a \congr{\phi^{-1}[\Acc]} a'$ implies $\phi(a) \congr{\Acc} \phi(a')$,
+	and $ua' \in \phi^{-1}[\Acc]$ yields $\phi(u)\phi(a') \in \Acc$.
+	Overall, this shows that $a \in \phi^{-1}[\residual{\phi(u)}\Acc]$.
+
+	\proofcase{Right-to-left inclusion.}
+	Let $a \in \phi^{-1}[\residual{\phi(u)}\Acc]$. Then
+	$\phi(a) \in \residual{\phi(u)}\Acc$, so there
+	exists $b' \in \?B$ such that $\phi(a) \congr{\Acc} b'$
+	and $\phi(u)b' \in \Acc$. By surjectivity of $\phi$ and
+	\Cref{prop:inverse-morphism-preserve-congruence}, there exists $a' \in \?A$ 
+	such that $\phi(a') = b'$ and $a \congr{\phi^{-1}[\Acc]} a'$.
+
+	Being done with the proof of \Cref{claim:inverse-morphism-preserve-residuals},
+	we now proceed to prove \Cref{lemma:characterization-pseudovarieties-syncrel}.
+	\proofcase{Direct implication.} By \Cref{prop:inverse-morphism-preserve-residuals},
+	the "residual" of any "relation" "recognized@@sync" by some "morphism@@sync"
+	$\phi$ is also "recognized@@sync" by $\phi$. Hence, being closed under
+	"syntactic derivatives" implies being closed under "residuals".
+
+	\proofcase{Converse implication.} Consider some relation $\+R$.
+	We will show that any relation "recognized@@sync" by $\SyntSAM{\+R}$
+	can be expressed as a "Boolean combination" of "residuals" of $\+R$.\footnote{This result can be 
+	put in perspective with \cite[Lemma XIII.4.11, p.~229]{pin_mathematical_2022} which proves a similar result in the context of monoids.}
+	Let $\Acc$ be the "closed subset" of $\SyntSA{\+R}$ such that
+	$\proj{\+R} = \SyntSAM{\+R}^{-1}[\Acc]$. Pick $x \in \SyntSA{\+R}$.
+	Let $\Lambda \defeq \{s, t \in \SyntSA{\+R} \mid \exists x'\in\SyntSA{\+R},\; x' \dep x \text{ and } sx't \in \Acc\}$.
+	We claim that
+	\begin{equation}
+		\equivclass{x}{\dep_{\SyntSA{\+R}}} =
+		\left(
+			\bigcap_{(s,t) \in \Lambda} \residual{s} \Acc\,\residual{t}
+		\right)
+		\smallsetminus
+		\left(
+			\bigcup_{(s, t) \not\in \Lambda} \residual{s} \Acc\,\residual{t}
+		\right).
+		\label{eq:boolean-combination-of-residuals}
+		\tag{\adforn{41}}
+	\end{equation}
+	To prove the inclusion from left-to-right, first
+	notice that $x \in \residual{s} \Acc\,\residual{t}$ for all $(s, t) \in \Lambda$.
+	Then, assume by contradiction that there exists $(s, t) \not\in \Lambda$ "st"
+	$x \in \residual{s} \Acc\,\residual{t}$. Then there would exist $x' \congr{\Acc} x$ such that
+	such that $sx't \in \Acc$. But since $\SyntSAM{\+R}$ is the "syntactic synchronous algebra"
+	of $\+R$, $\congr{\Acc}$ is precisely the relation $\dep$ by \Cref{coro:syntactic-congruence-is-syntactic-dependency}. Contradiction.
+	Hence, $x$ belongs to the right-hand side (RHS). But then, this latter set is
+	a Boolean combination of "residuals" of a "closed subset", so it is also
+	"closed", and hence $\equivclass{x}{\dep_{\SyntSA{\+R}}}$ is included in the RHS.
+
+	Dually, any element $y$ of the RHS satisfies that for all $s, t \in \SyntSA{\+R}$,
+	$x \in \residual{s} \Acc\,\residual{t}$ "iff" $y \in \residual{s} \Acc\,\residual{t}$.
+	We claim that $x \congr{\Acc} y$. Pick $s, t \in \?B$ and assume that
+	both $sxt$ and $syt$ are well-defined. If $sxt \in \Acc$ then $x \in \residual{s} \Acc\,\residual{t}$ so $y \in \residual{s} \Acc\,\residual{t}$ and hence, there
+	exists $y' \dep_{\SyntSA{\+R}} y$ "st" $sy't \in \Acc$. But $syt$ is also well-defined
+	and $y \dep_{\SyntSA{\+R}} y'$ so $syt \in \Acc$. By symmetry, we have shown that
+	$sxt \in \Acc$ "iff" $syt \in \Acc$, and hence $x \congr{\Acc} y$.
+	Using again the fact that $\SyntSA{\+R}$ is the "syntactic algebra@@sync" of $\+R$, it 
+	follows that $x \dep_{\SyntSA{\+R}} y$. This concludes the proof of
+	\eqref{eq:boolean-combination-of-residuals}. By taking the union, it
+	follows that any "closed subset" of $\SyntSA{\+R}$ is a Boolean combination
+	of "residuals" of $\Acc$. Applying \Cref{prop:inverse-morphism-preserve-residuals}
+	then yields that any "relation" "recognized@@sync" by $\phi$ is a Boolean combination of 
+	"residuals" of $\+R$. Hence, any class closed under "Boolean combinations" and
+	"residuals" is also closed under "syntactic derivatives".
+\end{proof}
 
 Let \AP$\B{V} \intro*\corrAR \+V$ denote the map (called \emph{correspondence}) that takes a 
 "pseudovariety of synchronous algebras" and maps it to
@@ -297,7 +530,132 @@ that "divide@@sync" a finite product of "algebras@@sync" of $C$.\footnote{Note t
 	mutually inverse bijections between "pseudovarieties of
 	synchronous algebras" and "$\ast$-pseudovarieties of synchronous relations".
 \end{restatable}
-See the proof in \Cref{apdx-proof:lem:eilenberg-sy}.
+
+\begin{proof}
+	We very roughly follow the proof schema of \cite[\S XIII.4, pp.~226--229]{pin_mathematical_2022}---which is
+	a proof of Eilenberg's theorem in the context of monoids.
+
+	\proofcase{The correspondence $\B{V} \corrAR \+V$ produces varieties.}
+	First we have to show that if $\B{V}$ is a "pseudovariety
+	of synchronous algebras" and $\B{V} \corrAR \+V$, then $\+V$ is a
+	"$\ast$-pseudovarieties of synchronous relations".
+	Since $\B{V}$ is closed under finite products, $\+V$ is closed under Boolean operations.
+
+	\emph{"Syntactic derivatives":} Then let $\+R \in \+V_\Sigma$, and let $\+S$ be any other "relation"
+	"recognized@@sync" by $\SyntSA{\+R}$. This implies that $\SyntSA{\+S}$
+	"divides@@sync" $\SyntSA{\+R}$, and so $\SyntSA{\+S} \in \B{V}$, from which
+	we have $\SyntSA{\+S} \in \+V_\Sigma$.
+
+	\emph{"Inverse morphisms":} Lastly, if $\+R \in \+V_\Sigma$, say $\proj{\+R} = \SyntSAM[-1]{\+R}[\Acc]$,
+	if $\psi\colon \Sync\Gamma \to \Sync\Sigma$ is a "synchronous algebra morphism",
+	then $\psi^{-1}[\+R] = (\SyntSAM{\+R} \circ \psi)^{-1}[\Acc]$, so
+	$\psi^{-1}[\+R]$ is "recognized@@sync" by $\SyntSA{\+R}$, that is
+	$\SyntSA{\psi^{-1}[\+R]}$ "divides@@sync" $\SyntSA{\+R}$. Since $\SyntSA{\+R} \in \B{V}$
+	and $\B{V}$ is closed by "division@@sync", it follows that $\SyntSA{\psi^{-1}[\+R]} \in \B{V}$
+	and hence $\psi^{-1}[\+R] \in \+V_{\Gamma}$. 
+	This concludes the proof that $\+V$ is a "$\ast$-pseudovariety of synchronous relations".
+
+	\proofcase{Inverse bijections: part 1.} Assume that $\B{V} \corrAR \+V$ and $\+V \corrRA \B{W}$.
+	Then
+	\[\+V\colon \Sigma \mapsto \{\+R \subseteq \Sigma^*\times \Sigma^* \mid \SyntSA{\+R} \in \B{V}\},\]
+	and so $\B{W}$ is the "pseudovariety@@syncalg" generated by all "syntactic synchronous algebras" that 
+	belong to $\B{V}$.
+	It follows that $\B{W} \subseteq \B{V}$.
+	To prove that $\B{V} \subseteq \B{W}$, let $\?A \in \B{V}$.
+	Let $\Sigma_{\?A}$ be an alphabet big enough so that
+	there are injections from $\?A_{\LL}$ to $\Sigma_{\?A}\times \Sigma_{\?A}$,
+	and from $\?A_{\LB}$ and $\?A_{\BL}$ to $\Sigma_{\?A} \times \pad$ and $\pad \times \Sigma_{\?A}$,
+	respectively. Since $\?A$ is "locally generated@@sync",
+	this allows us to define a surjective "synchronous algebra morphism"
+	$\phi\colon \Sync{\Sigma_{\?A}} \surj \?A$.
+	We then claim that $\?A$ "divides@@sync"
+	$\?B \defeq \prod_{\type{x}{\tau} \in \?A} \?B_{\type{x}{\tau}}$
+	where $\?B_{\type{x}{\tau}}$ is the "syntactic synchronous algebra"
+	of $\phi^{-1}[\type{x}{\tau}]$.
+	Indeed, let $\psi_{\type{x}{\tau}} \colon \Sync{\Sigma_{\?A}} \surj \?B_{\type{x}{\tau}}$
+	be the "syntactic synchronous algebra morphism" of $\phi^{-1}[\type{x}{\tau}]$, say
+	$\phi^{-1}[\type{x}{\tau}] = \psi_{\type{x}{\tau}}^{-1}[\Acc_{\type{x}{\tau}}]$.
+	Then consider
+	\[\begin{tabular}{rccc}
+		$\Psi\colon$ & $\Sync{\Sigma_{\?A}}$ & $\to$ & $\?B$ \\
+		& $\type{u}{\sigma}$ & $\mapsto$ &
+			$\langle \psi_{\type{x}{\tau}}(\type{u}{\sigma}) \rangle_{\type{x}{\tau} \in \?A}$,
+	\end{tabular}\]
+	and let $\?B_0$ be its image. Observe that for each $\type{u}{\sigma} \in \Sync{\Sigma_{\?A}}$,
+	$\psi_{\type{x}{\tau}}(\type{u}{\sigma}) \in \Acc_{\type{x}{\tau}}$ "iff"
+	$\type{u}{\sigma} \in \phi^{-1}[\type{x}{\tau}]$ "ie" $\phi(\type{u}{\sigma}) = \type{x}{\tau}$---note by the way that it implies $\sigma = \tau$.
+	This implies that for any $\type{(\langle y_{\type{x}{\tau}} \rangle_{\type{x}{\tau} \in \?A})}{\sigma} \in \?B_0$, there exists a unique $\type{x}{\tau}$ "st"
+	$y_{\type{x}{\tau}} \in \Acc_{\type{x}{\tau}}$. This defines a map
+	$\chi\colon \?B_0 \to \?A$. Since moreover it makes the following diagram commute
+	
+	\begin{center}\begin{tikzcd}
+		\Sync{\Sigma_{\?A}} \ar[r, twoheadrightarrow, "\Psi"]
+			\ar[dr, twoheadrightarrow, "\phi" swap]
+		& \?B_0 \dar["\chi"] \\
+		& \?A
+	\end{tikzcd}\end{center}
+	it follows that $\chi$ is in fact a surjective "synchronous algebra morphism".\footnote{See "eg" \cite[Lemma 3.2, p.~10]{bojanczyk_recognisable_2015} for a proof in a similar (but different) context.} Hence, $\?A$ is a "quotient@@sync" of $\?B_0$, which is a "subalgebra@@sync" of
+	$\?B$, which in turns in a product of "algebras@@sync" from $\B{W}$, and so $\?A \in \B{W}$.
+	It concludes the proof that $\B{V} = \B{W}$.
+
+	\proofcase{Inverse bijections: part 2.} Assume now that $\+V \corrRA \B{V}$
+	and $\B{V} \corrAR \+W$. Then for each $\Sigma$, for each $\+R \in \+V_{\Sigma}$,
+	$\SyntSA{\+R} \in \B{V}$ so $\+R \in \+W_{\Sigma}$, and hence $\+V \subseteq \+W$.
+
+	We then want to show the converse inclusion, namely $\+W \subseteq \+V$. Let $\+R \in \+W_{\Sigma}$ for some $\Sigma$, "ie" $\SyntSA{\+R} \in \B{V}$.
+	Hence there exists $\Gamma$ and "relations" $\+S_1 \in \+V_{\Gamma_1}, \hdots \+S_k \in \+V_{\Gamma_k}$
+	such that $\SyntSA{\+R}$ "divides@@sync"
+	$\?B \defeq \SyntSA{\+S_1} \times \cdots \times \SyntSA{\+S_k}$,
+	"ie" there is a "subalgebra@@sync" $\?C \subseteq \?B$ which is a "quotient@@sync" of $\?B$.
+	Then $\?C$ also "recognizes@@sync" $\+R$, say $\+R = \phi^{-1}[\Acc]$ for some
+	"morphism@@sync" $\phi\colon \Sync\Sigma \surj \?C$ and $\Acc \subseteq \?C$.
+	Let $\iota\colon \?C \to \?B$ be the canonical embedding,
+	$\pi_i\colon \?B \surj \SyntSA{\+S_i}$ be the canonical projection,
+	and $\phi_i \defeq \pi_i \circ \iota \circ \phi\colon \Sync\Sigma \to \SyntSA{\+S_i}$
+	for $i \in \lBrack 1, k\rBrack$. Then notice that since $\SyntSAM{\+S_i}\colon \Sync{\Gamma_i} \surj \SyntSA{\+S_i}$ is surjective, then there exists $\psi_i \colon \Sync\Sigma \to \Sync{\Gamma_i}$ such that $\SyntSAM{\+S_i} \circ \psi_i = \phi_i$. Indeed, it suffices
+	to send $\pair{a}{b}$ (resp.~$\pair{a}{\pad}$, resp.~$\pair{\pad}{a}$)
+	on any element $\type{u}{\LL} \in \Sync{\Gamma_i}$ (resp.~$\type{u}{\LB}$,
+	resp.~$\type{u}{\BL}$) such that $\SyntSAM{\+S_i}(\type{u}{\LL}) = \phi\pair{a}{b}$
+	(resp.~$\SyntSAM{\+S_i}(\type{u}{\LB}) = \phi\pair{a}{\pad}$,
+	resp.~$\SyntSAM{\+S_i}(\type{u}{\BL}) = \phi\pair{\pad}{a}$). Overall, the following diagram
+	commutes
+	\begin{center}
+	\begin{tikzcd}
+		\Sync\Sigma
+			\ar[rr, "\psi_i"]
+			\dar["\phi" swap]
+			\ar[ddrr, "\phi_i"]
+		&[-2em]
+		& \Sync{\Gamma_i}
+			\ar[dd, "\SyntSAM{\+S_i}"] \\
+		\?C
+			\ar[dr, "\iota" swap]
+		&
+		& \\[-1.5em]
+		& \?B
+			\ar[r, "\pi_i" swap]
+		& \SyntSA{\+S_i}.
+	\end{tikzcd}
+	\end{center}
+	Our goal is to show that $\+R \in \+V_{\Sigma}$. Observe that:
+	\[
+		\proj{\+R} =
+		\phi^{-1}[\Acc] = \cup_{x \in \Acc} \phi^{-1}[x]
+	\]
+	but then $\Acc \subseteq \?B$, so $x$ is a tuple $\langle x_1, \hdots, x_n \rangle$
+	(all elements having the same type), and by definition:
+	\[
+		\phi^{-1}[x] = \bigcap_{i=1}^n \phi^{-1}[\iota^{-1}[\pi_i^{-1}[x_i]]]
+		= \bigcap_{i=1}^n \phi_i^{-1}[x_i].
+	\]
+	But then $\phi_i^{-1}[x_i] = \psi_i^{-1}[\SyntSAM{\+S_i}^{-1}[x_i]]$.
+	Since $\+V$ is closed under "syntactic derivatives" and $\+S_i \in \+V_{\Gamma_i}$
+	we have $\SyntSAM{\+S_i}^{-1}[x_i] \in \+V_{\Gamma_i}$, and then since $\+V$ is closed under
+	"Inverse morphisms" and $\psi_i\colon \Sync\Sigma \to \Sync{\Gamma_i}$ is a "morphism@@sync" between free algebras,
+	$\psi_i^{-1}[\SyntSAM{\+S_i}^{-1}[x_i]] \in \+V_{\Sigma}$.
+	Thus $\proj{\+R}$ is a "Boolean combination" of elements of $\+V_{\Sigma}$, and hence
+	it also belongs to $\+V_{\Sigma}$. This concludes the proof of $\+W \subseteq \+V$.
+\end{proof}
 
 As consequence of \Cref{lem:eilenberg-sy}, if
 $\+V$ is a "$\ast$-pseudovariety of synchronous relations"
