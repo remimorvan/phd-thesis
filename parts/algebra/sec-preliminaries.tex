@@ -6,7 +6,7 @@
 We assume familiarity with basic algebraic language theory over finite words, see \cite[\S 1, 2, 4, pp.~3--66 \& pp.~107--156]{bojanczyk_languages_2020} for a succinct and monad-driven approach, or \cite[\S I--XIV, pp.~3--247]{pin_mathematical_2022} for a more detailed presentation of the domain.
 We also refer to \cite{SW21varieties} for a presentation on pseudovarieties.\footnote{``Pseudovarieties of \emph{foo}'' and ``varieties of finite \emph{foo}''---where \emph{foo} is "eg" ``groups''
 or ``semigroups''---are used interchangeably in the literature.}
-More precise pointers are given in "the full version".
+More precise pointers are given in \Cref{apdx:pointers-pin}.
 
 A \AP""relation"" is a subset of $\Sigma^*\times\Sigma^*$,
 where $\Sigma$ is an alphabet---"ie" a non-empty finite set.
@@ -63,6 +63,45 @@ of the form $L \cap \WellFormed$ for some $L \in \+V_{\SigmaPair}$---see \Cref{f
 the alphabet $\SigmaPair$. See \cite[introduction of \S{}XIII.1]{pin_mathematical_2022}
 for why classes of regular languages are defined in such a way.}
 
+\begin{figure}[tbp]
+	\begin{center}
+		\scalebox{1}{
+		\begin{tikzpicture}[shorten >= 1pt, node distance = 2cm, on grid, baseline]
+			\AP\small
+			\node[state, initial left, accepting] (q0) {}; 
+			\node[state] (q1) [right =of q0] {};
+			\node[state, accepting] (q0') [below left = 1.5cm and 1cm of q0] {};
+			\node[state, accepting] (q0'') [below right = 1.5cm and 1cm of q0] {};
+			\node[state] (qbot) [below right = 1.5cm and 1cm of q0''] {};
+			\path[->]
+				(q0) edge[loop above] node[font=\scriptsize] {$\pair{a}{a}, \pair{b}{b}$} (q0) 
+				(q0) edge[bend left=20] node[above=0pt, font=\scriptsize] {$\pair{a}{b},\pair{b}{a}$} (q1)
+				(q1) edge[bend left=20] node[above=0pt, font=\scriptsize] {$\pair{a}{b},\pair{b}{a}$} (q0)
+				(q1) edge[loop above] node[font=\scriptsize] {$\pair{a}{a}, \pair{b}{b}$} (q1)
+				(q0) edge node[left] {$\pair{a}{\pad}, \pair{b}{\pad}$} (q0')
+				(q0) edge node[right] {$\pair{\pad}{a}, \pair{\pad}{b}$} (q0'')
+				(q0') edge[loop left] node[left] {$\pair{a}{\pad}, \pair{b}{\pad}$} (q0')
+				(q0'') edge[loop right] node[right] {$\pair{\pad}{a}, \pair{\pad}{b}$} (q0'')
+				(q0') edge[bend right=20] node[left] {$*$} (qbot)
+				(q0'') edge node[right] {$*$} (qbot)
+				(q1) edge[bend left=90] node[right] {$*$} (qbot)
+				(qbot) edge[loop below] node[below] {$*$} (qbot);
+		\end{tikzpicture}
+		}
+	\end{center}
+	\caption{
+		\label{fig:min-auto}
+		Minimal (deterministic complete) ``classical'' automaton for 
+		the binary relation
+		of pairs $(u,v)$ such that the number of $a$'s in $u_1\hdots u_k$
+		and in $v_1\hdots v_k$ are the same mod $2$, where $k = \min(|u|, |v|)$,
+		seen as a language over $\SigmaPair$.
+		Said otherwise, this is automaton rejects exactly all words in $(\SigmaPair)^*$ which (1)
+		are not the valid encoding of a pair of words and (2) are the encoding of a pair
+		which does not satisfy the property above.
+		Each label $*$ is defined so that the automaton is deterministic and complete.
+	} 
+\end{figure}
 For instance, if $\+V$ is the class of all regular languages, then by
 \Cref{fact:synchronous-is-regular}, "$\+V$-relations" are exactly the "regular relations", "aka" "synchronous relations"!
 However, because of

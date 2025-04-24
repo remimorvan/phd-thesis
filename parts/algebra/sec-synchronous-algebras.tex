@@ -3,7 +3,7 @@
 
 In this section, we introduce and study the ``elementary'' properties of "synchronous algebras".
 
-\subsection{Types \& dependent Sets}
+\subsection{Types \& Dependent Sets}
 
 \paragraph*{Motivation.} The axiomatization of a semigroup reflects the algebraic structure of
 finite words: these objects can be concatenated, in an associative way---reflecting the linearity of 
@@ -31,7 +31,7 @@ this would represent a sequence of transitions $\pair{a}{a}, \pair{a}{a}, \pair{
 the promise that the next transition would have a padding symbol on its second tape. But then, 
 one has to formalize the idea that the two elements $\pair{aaa}{aaa}$ of type $\LL$ and $\LL\to\LB$
 represent the same underlying pair of words of $\Sigma^*\times\Sigma^*$: this idea will be captured by what we call a "dependency relation". A more natural solution would be to simply introduce a
-new type for the empty word (or to forbid it), but we show in "the full version" that
+new type for the empty word (or to forbid it), but we show in \Cref{apdx:counterexample} that
 the resulting notion of algebras cannot capture the property of being a "$\+V$-relation".
 
 % \paragraph{Synchronous words.}
@@ -101,7 +101,7 @@ all operators/constructions should preserve this "type".
 	if $\type{x}{\sigma} \dep \type{y}{\sigma}$,
 	then $\type{x}{\sigma} = \type{y}{\tau}$.
 
-	Crucially, we do not ask for "this relation@dependency" to be transitive---in some examples the "dependency relation" will be an equivalence relation, but not always (see "the full version"), and
+	Crucially, we do not ask for "this relation@dependency" to be transitive---in some examples the "dependency relation" will be an equivalence relation, but not always (\Cref{ex:last_letter_is_a_if_big_diff}), and
 	this non-transitivity is actually an important feature, motivated amongst other by the
 	"syntactic congruence" and \Cref{coro:syntactic-congruence-is-syntactic-dependency}.
 
@@ -110,7 +110,16 @@ all operators/constructions should preserve this "type".
 	$x, x' \in \?X$, if $x \dep x'$ then $x \in C \iff x' \in C$.\footnote{In other
 	words, $C$ is a union of equivalence classes of the transitive closure of $\dep$.}
 \end{definition}
-
+\begin{figure}[htb]
+	\begin{center}
+		\includegraphics[width=\linewidth]{fig/algebra/free_algebras.png}
+	\end{center}
+	\caption{
+		\label{fig:free_algebras}
+		Representation of the "dependent set" $\Sync\Sigma$ of "synchronous words".
+		Coloured edges represent the "dependency relation", and self-loops are not drawn. 
+	} 
+\end{figure}
 \begin{example}
 	Given a finite alphabet $\Sigma$, let $\intro*\Sync{\Sigma}$ be\footnote{The index refers to the arity of the relations we are considering: here we focus on binary relations, but all constructions can be generalized to higher arities.} the "dependent set" of ""synchronous words"" defined by:
 	\vspace{-1.25em}
@@ -238,7 +247,7 @@ $\type{x}{\LL} \cdot \type{1}{\LL\to\LB} = \type{x}{\LL} \cdot \type{1}{\LL}
 \begin{remark}
 	There exists a monad over the category of "dependent sets" whose
 	"Eilenberg-Moore algebras" exactly correspond to
-	"synchronous algebras", see "the full version".
+	"synchronous algebras", see \Cref{apdx:monads}.
 \end{remark}
 
 \AP""Morphisms of synchronous algebras"" are defined naturally as
@@ -446,7 +455,7 @@ Let us continue with a slightly less trivial example of "algebra@synchronous alg
 	is finite.
 \end{corollary}
 
-The proof of \Cref{lem:syntactic-morphism-theorem}---see "the full version"---relies,
+The proof of \Cref{lem:syntactic-morphism-theorem}---see \Cref{apdx-proof:lem:syntactic-morphism-theorem}---relies,
 as in the case of monoids, on the notion of congruence.
 
 Given a "synchronous algebra" $\langle \?A, \dep, \cdot \rangle$,
@@ -466,14 +475,14 @@ of $\?A$ by a "congruence@@sync" $\asympbar$ is defined as follows:
 	\item its underlying "typed set" consists of the
 		equivalence classes of $\?A$ under the equivalence relation
 		$\{(\type{x}{\sigma}, \type{y}{\sigma}) \mid \type{x}{\sigma} \asympbar \type{y}{\sigma}\}$,
-		such a class being abusively denoted by \AP$\intro*\equivclass[\asympbar]{x}$,
+		such a class being abusively denoted by \AP$\intro*\equivclass{x}{\asympbar}$,
 	\item its "product" is the "product" induced by $\?A$, in the sense
-		that $\equivclass[\asympbar]{x}\cdot \equivclass[\asympbar]{y} \defeq \equivclass[\asympbar]{xy}$, and
+		that $\equivclass{x}{\asympbar}\cdot \equivclass{y}{\asympbar} \defeq \equivclass{xy}{\asympbar}$, and
 	\item its "dependency relation" is the relation induced by $\asympbar$,
-		"ie" $\equivclass[\asympbar]{x}\dep \equivclass[\asympbar]{y}$ whenever $x \asympbar y$,
+		"ie" $\equivclass{x}{\asympbar}\dep \equivclass{y}{\asympbar}$ whenever $x \asympbar y$,
 	\item its units are defined as the equivalence classes of the units of $\?A$.
 \end{itemize}
-Moreover, $x \mapsto \equivclass[\asympbar]{x}$ defines a surjective
+Moreover, $x \mapsto \equivclass{x}{\asympbar}$ defines a surjective
 "morphism of synchronous algebras" from $\?A$ to $\quotient{\?A}{\asympbar}$.
 
 Given a "synchronous algebra" $\langle \?A, \dep, \cdot \rangle$
@@ -515,7 +524,7 @@ the notation and write $\congr{\+R}$ to denote
 the "syntactic congruence" $\congr{\proj{\+R}}$ of $\proj{\+R}$
 in $\Sync\Sigma$.
 The existence of the "syntactic morphism@@sync" then follows from
-the next proposition, proven in "the full version".
+the next proposition, proven in \Cref{apdx-proof:lem:syntactic-morphism-theorem}.
 
 \begin{restatable}{proposition}{propquotientbysyntacticcongruenceissyntacticalgebra}
 	\label{prop:quotient-by-syntactic-congruence-is-syntactic-algebra}
@@ -530,7 +539,7 @@ the next proposition, proven in "the full version".
 			& $\quotient{\?A}{\congr{\Acc}}$\\
 			& $u$
 			& $\mapsto$
-			& $\equivclass[\congr{\Acc}]{\phi(u)}$
+			& $\equivclass{\phi(u)}{\congr{\Acc}}$
 		\end{tabular}		
 	\end{center}
 	is the "syntactic morphism@@sync" of $\+R$.
@@ -546,20 +555,20 @@ the next proposition, proven in "the full version".
 \begin{proof}
 	By \Cref{prop:quotient-by-syntactic-congruence-is-syntactic-algebra}
 	applied to the "syntactic morphism@@sync",
-	$x \mapsto \equivclass[\congr{\Acc}]{x}$
+	$x \mapsto \equivclass{x}{\congr{\Acc}}$
 	is an isomorphism from $\SyntSA{\+R}$ to $\quotient{\SyntSA{\+R}}{\congr{\Acc}}$.
-	Hence, $\equivclass[\congr{\Acc}]{x} \dep \equivclass[\congr{\Acc}]{y}$
+	Hence, $\equivclass{x}{\congr{\Acc}} \dep \equivclass{y}{\congr{\Acc}}$
 	in $\quotient{\SyntSA{\+R}}{\congr{\Acc}}$
 	"iff" $x \dep y$ in $\SyntSA{\+R}$, for all $x,y \in \SyntSA{\+R}$.
 	But then, the "dependency relation" $\dep$ of
 	$\quotient{\SyntSA{\+R}}{\congr{\Acc}}$ is, by definition,
-	such that $\equivclass[\congr{\Acc}]{x} \dep \equivclass[\congr{\Acc}]{y}$
+	such that $\equivclass{x}{\congr{\Acc}} \dep \equivclass{y}{\congr{\Acc}}$
 	"iff" $x \congr{\Acc} y$.
 	Putting both equivalences together, we get that
 	$x \congr{\Acc} y$ "iff" $x \dep y$ for all $x,y \in \SyntSA{\+R}$.
 \end{proof}
 
-We provide in "the full version"
+We provide in \Cref{ex:last_letter_is_a_if_big_diff}
 a simple example of "syntactic synchronous algebra" whose "dependency relation"
 is not an equivalence relation.  
 

@@ -155,12 +155,12 @@ Our "synchronous algebras" differ from monoids in two points:
 Importantly, some variations are possible on the definition of "synchronous algebras":
 in particular, one could get rid of the notion of "dependency relation" and 
 \Cref{lem:syntactic-morphism-theorem,lem:eilenberg-sy} would still hold.
-However, we show in "the full version" that these
+However, we show in \Cref{apdx:counterexample} that these
 simplified synchronous algebras cannot characterize the property of being a "$\+V$-relation".
 Therefore, the notion of "dependency" seems necessary to tackle \Cref{quest:V-relations}.
 Moreover, we show that these algebras arise from a monad, but to our knowledge none of the 
 meta-theorems developing algebraic language theories over monads apply to it,
-see "the full version" for more details.
+see \Cref{apdx:monads} for more details.
 
 We show that assuming that $\+V$ is a "$*$-pseudovariety of regular languages"---in short, a class of regular languages with desirable closure properties---, then the algebraic characterization of $\+V$ can be easily lifted to characterize "$\+V$-relations".
 
@@ -198,26 +198,43 @@ a short discussion in \Cref{sec:discussion}.
 
 \subsection{Related Work}
 
-The algebraic framework has been extended far beyond languages of finite words: let us cite amongst other Reutenauer's ``algèbre associative syntactique'' for weighted languages
-	\cite[Théorème I.2.1, p.~451]{reutenauer_series_1980} and their associated Eilenberg theorem \cite[Théorème III.1.1, p.~469]{reutenauer_series_1980};
-	for languages of $\omega$-words, Wilke's algebras and $\omega$-semigroups,
-	see \cite[\S II, pp.~75--131 \& \S VI, pp.~265--306]{perrin_infinite_2004};
-	% \item for languages over countable ordinals, Bedon defined ``$\omega_1$-semi\-groupes syntaxiques'' \cite[\S3, pp.~49--109]{bedon_langages_1998} and their Eilenberg theorem
-	% \cite[Theorem 22, p.~62]{bedon_eilenberg_1998};
-	% \item for languages over countable scattered orderings, see Rispal's ``$\Diamond$-semigroupe syntaxique'' \cite[\S 4.4, pp.~82--86]{rispal_automates_2004} and their Eilenberg theorem
-	% \cite[Theorem 6, p.~144]{bedon_schutzenberger_2005};
-	more generally, for languages over countable linear orderings, see Carton, Colcombet \& Puppis' ``$\circledast$-monoids'' and ``$\circledast$-algebras''
-	\cite[\S 3, p.~7]{carton_algebraic_2018}.
-A systemic approach has been recently developed using monads, see "the full version".
-Non-linear structures are also suited to such an approach, see "eg" Bojańczyk \& Walukiewicz's 
-forest algebras \cite[\S 1.3, p.~4]{bojanczyk_forest_2008} \cite[\S 5, p.~159]{bojanczyk_languages_2020}, or Engelfriet's hyperedge replacement algebras for graph languages
-\cite[\S 2.3, p.~100]{courcelle_graph_2012} \cite[\S 6.2, p.~194]{bojanczyk_recognisable_2015}.
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=\linewidth]{fig/algebra/landscape.png}
+	\caption{
+		\label{fig:landscape-rationality} The landscape of rationality for binary relations.
+		Dashed regions are empty: the intersection of
+		functional relations and two-way rational relations
+		collapses to regular functions by
+		\cite[Theorem 22, p.~243]{EH2001transduction}.
+	}
+\end{figure}
+The algebraic framework has been extended far beyond languages of finite words: let us cite amongst other:
+\begin{itemize}
+	\item Reutenauer's ``algèbre associative syntactique'' for weighted languages
+		\cite[Théorème I.2.1, p.~451]{reutenauer_series_1980} and their associated Eilenberg theorem \cite[Théorème III.1.1, p.~469]{reutenauer_series_1980};
+	\item for languages of $\omega$-words, Wilke's algebras and $\omega$-semigroups,
+		see \cite[\S II, pp.~75--131 \& \S VI, pp.~265--306]{perrin_infinite_2004};
+	\item for languages over countable ordinals, Bedon defined ``$\omega_1$-semi\-groupes syntaxiques'' \cite[\S3, pp.~49--109]{bedon_langages_1998} and their Eilenberg theorem
+		\cite[Theorem 22, p.~62]{bedon_eilenberg_1998};
+	\item for languages over countable scattered orderings, see Rispal's ``$\Diamond$-semigroupe syntaxique'' \cite[\S 4.4, pp.~82--86]{rispal_automates_2004} and their Eilenberg theorem
+		\cite[Theorem 6, p.~144]{bedon_schutzenberger_2005};
+	\item more generally, for languages over countable linear orderings, see Carton, Colcombet \& Puppis' ``$\circledast$-monoids'' and ``$\circledast$-algebras''
+		\cite[\S 3, p.~7]{carton_algebraic_2018};
+	\item Bojańczyk \& Walukiewicz's 
+		forest algebras \cite[\S 1.3, p.~4]{bojanczyk_forest_2008} \cite[\S 5, p.~159]{bojanczyk_languages_2020}
+		dealing with tree languages;
+	\item Engelfriet's hyperedge replacement algebras for graph languages
+		\cite[\S 2.3, p.~100]{courcelle_graph_2012} \cite[\S 6.2, p.~194]{bojanczyk_recognisable_2015}.
+\end{itemize}
+
+A systemic approach has been recently developed using monads, see \Cref{apdx:monads}.
 For relations over words ("aka" transductions), "recognizable 
 relations" are exactly the ones recognized by monoid morphisms $\Sigma^* \times \Sigma^* \to M$ 
 where $M$ is finite. This can be trivially generalized to show 
 that a relation $\+R$ is a finite union of Cartesian products of languages in $\+V$ if, and only 
 if, it is recognized by a monoid from $\B{V}$, the pseudovariety of monoids corresponding to
-$\+V$, see "the full version".
+$\+V$, see \Cref{apdx:relations-recognizable}.
 In 2023, Bojańczyk \& Nguy\smash{\~{\^e}}n 
 managed to develop an algebraic structure called ``transducer semigroups'' for ``regular functions'' \cite[Theorem 3.2, p.~6]{bojanczyk_algebraic_2023}, an 
 orthogonal class of relations to ours---see \Cref{fig:landscape-rationality}.
@@ -228,6 +245,7 @@ $\+V$ has decidable membership, then ``$\+V$-rational transductions'' also have 
 ``Rational transductions'' correspond in \Cref{fig:landscape-rationality} to the intersection of functional relations with rational relations: this class
 is orthogonal to "synchronous relations",
 but is included in the class of ``regular functions''.
+\todo{DO THEY??}
 % To achieve this, they associate
 % to every rational relation a finite set of minimal bimachines \cite[Lemma 4.9, p.~26]{filiot_logical_2019},
 % and show that a relation is a $\+V$-rational relation if, and only if, one of these bimachines
