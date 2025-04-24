@@ -455,7 +455,7 @@ Let us continue with a slightly less trivial example of "algebra@synchronous alg
 	is finite.
 \end{corollary}
 
-The proof of \Cref{lem:syntactic-morphism-theorem}---see \Cref{apdx-proof:lem:syntactic-morphism-theorem}---relies,
+The proof of \Cref{lem:syntactic-morphism-theorem} relies,
 as in the case of monoids, on the notion of congruence.
 
 Given a "synchronous algebra" $\langle \?A, \dep, \cdot \rangle$,
@@ -524,7 +524,7 @@ the notation and write $\congr{\+R}$ to denote
 the "syntactic congruence" $\congr{\proj{\+R}}$ of $\proj{\+R}$
 in $\Sync\Sigma$.
 The existence of the "syntactic morphism@@sync" then follows from
-the next proposition, proven in \Cref{apdx-proof:lem:syntactic-morphism-theorem}.
+the next proposition.
 
 \begin{restatable}{proposition}{propquotientbysyntacticcongruenceissyntacticalgebra}
 	\AP\label{prop:quotient-by-syntactic-congruence-is-syntactic-algebra}
@@ -544,6 +544,104 @@ the next proposition, proven in \Cref{apdx-proof:lem:syntactic-morphism-theorem}
 	\end{center}
 	is the "syntactic morphism@@sync" of $\+R$.
 \end{restatable}
+
+\begin{proof}
+	We claim that $\quotient{\phi}{\congr{\Acc}}$
+	is \emph{a}, and hence \emph{the},
+	"syntactic synchronous algebra morphism" of $\+R$.
+	First, if $\phi(u) \congr{\Acc} \phi(v)$ 
+	then in particular $\phi(u) \in \Acc$ "iff" $\phi(v) \in \Acc$.
+	It follows that the preimage of
+	$\Acc' \defeq \equivclass{\Acc}{\congr{\Acc}}$ by $\quotient{\phi}{\congr{\Acc}}$
+	is indeed $\proj{\+R}$. Moreover $\Acc'$ is a "closed subset" of
+	$\quotient{\?A}{\congr{\Acc}}$ since $\Acc$ is a "closed subset" of $\?A$.
+	Hence, $\quotient{\phi}{\congr{\Acc}}$ is a surjective "morphism@@sync"
+	which "recognizes@@sync" $\+R$.
+
+	Then, given another surjective "morphism@@sync" $\psi\colon \Sync\Sigma \surj \?B$
+	which "recognizes@@sync" $\+R$, say $\proj{\+R} = \psi^{-1}[\Bcc]$, then for
+	each $\type{b}{\sigma} \in \?B$, there exists $\type{u}{\sigma} \in \Sync\Sigma$ such that
+	$\psi(\type{u}{\sigma}) = \type{b}{\sigma}$. This defines a map
+	$\chi\colon \?B \to \quotient{\?A}{\congr{\Acc}}$ which
+	sends $\type{b}{\sigma}$ to $\quotient{\phi}{\congr{\Acc}}(\type{u}{\sigma})$.
+
+	We claim that $\quotient{\phi}{\congr{\Acc}} = \chi \circ \psi$,
+	meaning that the following diagram commutes
+	\begin{center}
+		\begin{tikzcd}[ampersand replacement=\&]
+			\& \?A \arrow{d}{\quotient{-}{\congr{\Acc}}} \\
+			\Sync{\Sigma} 
+				\arrow[twoheadrightarrow, swap]{ur}{\phi}
+				\arrow[twoheadrightarrow]{r}{\quotient{\phi}{\congr{\Acc}}}
+				\arrow[twoheadrightarrow, swap]{dr}{\psi}
+			\& \SyntSA{\+R} \\
+			\& \?B. \arrow[swap]{u}{\chi} \\
+		\end{tikzcd}
+	\end{center}
+	Indeed, for
+	$\type{u}{\sigma} \in \Sync\Sigma$, $\chi(\psi(\type{u}{\sigma}))$ equals
+	$\quotient{\phi}{\congr{\Acc}}(\type{v}{\sigma})$ for some $\type{v}{\sigma} \in \Sync\Sigma$ 
+	such that $\psi(\type{v}{\sigma}) = \psi(\type{u}{\sigma})$.
+	This in turns implies that $\type{u}{\sigma} \congr{\+R} \type{v}{\sigma}$ since
+	for all $x, y \in \Sync\Sigma$, if $xuy$ and $xvy$ are well-defined, 
+	then so are $\psi(x)\psi(u)\psi(v)$ and $\psi(x)\psi(v)\psi(y)$,
+	and both elements are equal, so one belongs to $\Bcc$ "iff" the other does.
+	It follows that $xuy \in \+R$ "iff" $xvy \in \+R$, and hence
+	$\type{u}{\sigma} \congr{\+R} \type{v}{\sigma}$.
+	By surjectivity of $\phi$, it follows that
+	$\phi(\type{u}{\sigma}) \congr{\Acc} \phi(\type{v}{\sigma})$,
+	"ie" $\quotient{\phi}{\congr{\Acc}}(\type{u}{\sigma}) = \quotient{\phi}{\congr{\Acc}}(\type{v}{\sigma})$.
+	And hence $\chi(\psi(u)) = \quotient{\phi}{\congr{\Acc}}(\type{u}{\sigma})$.
+
+	We now show that $\chi$ is a "morphism@@sync".
+	From $\quotient{\phi}{\congr{\Acc}} = \chi \circ \psi$ it follows that
+	the map $\chi$ preserves the "product"\footnote{See "eg" \cite[Lemma 3.2, p.~10]{bojanczyk_recognisable_2015}.} and is surjective.
+	Lastly, we claim that it preserves the "dependency relation". Indeed,
+	by surjectivity of $\psi$, it boils down to proving that
+	for all $\type{u}{\sigma}, \type{v}{\tau} \in \Sync\Sigma$, if $\psi(u) \dep \psi(v)$ then
+	$\chi(\psi(u)) \dep \chi(\psi(v))$, namely $\quotient{\phi}{\congr{\Acc}}(\type{u}{\sigma}) \dep
+	\quotient{\phi}{\congr{\Acc}}(\type{v}{\tau})$, which
+	rewrites as $\phi(\type{u}{\sigma}) \congr{\Acc} \phi(\type{v}{\tau})$.
+	So pick $x, y$ such that both $xuy$ and $xvy$ are well-defined. Then
+	$\psi(x)\psi(u)\psi(y)$ and $\psi(u)\psi(v)\psi(y)$ have the same "type"
+	as $xuy$ and $xvy$, respectively, so they are well-defined,
+	but since $\psi(u) \dep \psi(v)$, then $\psi(x)\psi(u)\psi(y) \dep \psi(x)\psi(u)\psi(y)$
+	and since $\Bcc$ is a "closed subset", one of these elements belongs in
+	it "iff" the other ones does too, from which it follows
+	that $xuv \in \+R$ "iff" $xvy \in \+R$ "ie" $\type{u}{\sigma} \congr{\+R} \type{v}{\tau}$
+	and hence $\phi(\type{u}{\sigma}) \congr{\Acc} \phi(\type{v}{\tau})$.
+	Overall, this proves that $\chi$ is a surjective "synchronous algebra morphism",
+	and concludes our proof.
+\end{proof}
+
+\begin{proof}[Proof of \Cref{lem:syntactic-morphism-theorem}.]
+	\proofcase{Uniqueness.} Consider two potential "syntactic morphisms@@sync",
+	say $\eta_1\colon \Sync\Sigma \surj \?A_1$ and $\eta_2\colon \Sync\Sigma \surj \?A_2$.
+	Then by the universal property of $\eta_1$ (resp.~$\eta_2$), there exists
+	$\psi_1\colon \?A_2 \surj \?A_1$ and $\psi_2\colon \?A_1 \surj \?A_2$ such that
+	$\eta_1 = \psi_1 \circ \eta_2$ and $\eta_2 = \psi_2 \circ \eta_1$. Overall, it implies that
+	the following digram commutes
+	\begin{center}
+		\begin{tikzcd}
+			& \?A_1 \\
+			\Sync\Sigma
+				\ar[ur, "\eta_1", twoheadrightarrow]
+				\ar[r, "\eta_2" description, twoheadrightarrow]
+				\ar[dr, "\eta_1" swap, twoheadrightarrow]
+			& \?A_2 \ar[u, "\psi_1" swap, twoheadrightarrow] \\
+			& \?A_1, \ar[u, "\psi_2" swap, twoheadrightarrow]
+		\end{tikzcd}
+	\end{center}
+	and so $\psi_1\circ \psi_2 \circ \eta_1 = \eta_1$. Since $\eta_1$
+	is surjective, and hence right-cancellative, $\psi_1\circ \psi_2 = \id_{\?A_1}$.
+	Symmetrically, $\psi_2 \circ \psi_1 = \id_{\?A_2}$, showing that
+	$\psi_1$ and $\psi_2$ are mutually inverse "isomorphisms" of "synchronous algebras".
+
+	\proofcase{Existence.} It follows from \Cref{prop:quotient-by-syntactic-congruence-is-syntactic-algebra}---which we will prove
+	just afterwards---applied to the identity morphism $\id{}\colon \Sync\Sigma \surj \Sync\Sigma$,
+	which "recognizes@@sync" $\+R$ since $\proj{\+R} = \id^{-1}[\proj{\+R}]$ and $\proj{\+R}$
+	is "closed".
+\end{proof}
 
 \begin{corollary}
 	\AP\label{coro:syntactic-congruence-is-syntactic-dependency}
@@ -568,9 +666,106 @@ the next proposition, proven in \Cref{apdx-proof:lem:syntactic-morphism-theorem}
 	$x \congr{\Acc} y$ "iff" $x \dep y$ for all $x,y \in \SyntSA{\+R}$.
 \end{proof}
 
-We provide in \Cref{ex:last_letter_is_a_if_big_diff}
-a simple example of "syntactic synchronous algebra" whose "dependency relation"
-is not an equivalence relation.  
+We now provide a simple example of
+"syntactic synchronous algebra" whose "dependency relation" is not an equivalence relation.  
+\begin{example}
+	\label{ex:last_letter_is_a_if_big_diff}
+	We now provide an example of "syntactic synchronous algebra" whose "dependency relation"
+	is not an equivalence relation.
+	Consider the relation
+	\[
+		\+R = \pair{\Sigma}{\Sigma}^*\bigl[
+			\pair{\Sigma}{\pad} + \pair{\Sigma}{\pad}^+ \pair{a}{\pad}
+			+ \pair{\pad}{\Sigma} + \pair{\pad}{\Sigma}^+ \pair{\pad}{a}
+		\bigr],
+	\]
+	where $\Sigma = \{a,b\}$.
+	In other words, a pair $(u,v)$ belongs to $\+R$ if either:
+	the length difference between $u$ and $v$ is one, or 
+	it is at least two and the longer words ends with an `$a$'.
+	We are going to compute the "syntactic congruence" $\congr{\+R}$ of $\proj{\+R}$ in $\Sync\Sigma$.
+
+	\begin{figure}[htbp]
+		\begin{center}
+			\includegraphics[width=.6\linewidth]{fig/algebra/example_syntactic_algebra.png}
+		\end{center}
+		\caption{
+			\label{fig:example_syntactic_algebra}
+			The three "underlying monoids" of the "syntactic synchronous algebra" of the relation
+			$\+R$ of \Cref{ex:last_letter_is_a_if_big_diff}, together with its "dependency relation". The two equivalence classes of its transitive closure are drawn in red and blue.
+		} 
+	\end{figure}
+
+	Recall that the restriction of $\congr{\+R}$ to a single "type" is
+	an equivalence relation. For $\LL$, there is a single equivalence class,
+	denoted by/identified with $\type{\varepsilon}{\LL}$.
+	For "type" $\LB$, we claim that for any $u \in \Sigma^*$:
+	\begin{multicols}{2}
+	\begin{itemize}
+		\item $\type{\pair{u}{\pad}}{\LB} \congr{\+R} \type{\pair{a}{\pad}}{\LB}$ "iff" $u \in \Sigma^* a$;
+		\item $\type{\pair{u}{\pad}}{\LB} \congr{\+R} \type{\pair{b}{\pad}}{\LB}$ "iff" $u = b$;
+		\item $\type{\varepsilon}{\LB}$ is alone in its equivalence class;
+		\columnbreak
+		\item all elements of the form $\type{\pair{u}{\pad}}{\LB}$ where $u$ is a word of length at least 2 whose last letter is a `$b$' are pairwise equivalent, and the class is identified with $\type{\pair{bb}{\pad}}{\LB}$.
+	\end{itemize}
+	\end{multicols}
+	Since $\+R$ is invariant under $(u,v) \mapsto (v,u)$, the situation is symmetric for "type" $\BL$. Moreover, $\+R$ is invariant under adding/removing prefixes of type $\LL$,
+	so "types" $\LL \to \LB$ and $\LL\to\BL$ also have four elements each.
+
+	In the end, we obtain the "synchronous algebra" drawn in \Cref{fig:example_syntactic_algebra} (elements of "type" $\LL\to\LB$ and $\LL\to\BL$ are omitted for the sake of simplicity).
+	Note that the "dependency relation" is not transitive:
+	for instance $\type{\pair{a}{\pad}}{\LB} \congr{\+R} \type{\pair{\pad}{b}}{\BL}$
+	and $\type{\pair{\pad}{b}}{\BL} \congr{\+R} \type{\pair{b}{\pad}}{\LB}$
+	but $\type{\pair{a}{\pad}}{\LB} \notcongr{\+R} \type{\pair{b}{\pad}}{\LB}$.
+
+Given two elements of distinct "type", we want to determine
+when they are "dependent". For the sake of simplicity,
+we will focus on types $\LL, \LB$ and $\BL$.
+
+\proofcase{Types $\LL$ and $\LB$.}
+Since "dependent" elements must either both belong to $\+R$ or both to $\negrel\+R$,
+we have $\type{\varepsilon}{\LL} \notcongr{\+R} \type{\pair{a}{\pad}}{\LB}$
+and $\type{\varepsilon}{\LL} \notcongr{\+R} \type{\pair{b}{\pad}}{\LB}$.
+Because $\proj{\+R}$ is a "closed subset",
+then $\type{\varepsilon}{\LL} \congr{\+R} \type{\varepsilon}{\LB}$.
+Moreover, $\type{\varepsilon}{\LL} \notcongr{\+R} \type{\pair{bb}{\pad}}{\LB}$ since
+$\type{\varepsilon}{\LL} \type{\pair{b}{\pad}}{\LB} \in \+R$
+but $\type{\pair{bb}{\pad}}{\LB} \type{\pair{b}{\pad}}{\LB} \not\in \+R$.
+
+\proofcase{Types $\LB$ and $\BL$.} Again, using the fact that "dependent" elements must either both belong to $\+R$ or both to $\negrel\+R$, we have
+\begin{align*}
+	\type{\pair{a}{\pad}}{\LB} & \notcongr{\+R} \type{\varepsilon}{\BL},
+	& \type{\pair{a}{\pad}}{\LB} & \notcongr{\+R} \type{\pair{\pad\pad}{bb}}{\BL},
+	& \type{\pair{b}{\pad}}{\LB} & \notcongr{\+R} \type{\varepsilon}{\BL},
+	& \type{\pair{b}{\pad}}{\LB} & \notcongr{\+R} \type{\pair{\pad\pad}{bb}}{\BL},\\
+	\type{\varepsilon}{\LB} & \notcongr{\+R} \type{\pair{\pad}{a}}{\BL},
+	& \type{\varepsilon}{\LB} & \notcongr{\+R} \type{\pair{\pad}{b}}{\BL},
+	& \type{\pair{bb}{\pad\pad}}{\LB} & \notcongr{\+R} \type{\pair{\pad}{a}}{\BL},
+	& \type{\pair{bb}{\pad\pad}}{\LB} & \notcongr{\+R} \type{\pair{\pad}{b}}{\BL}.
+\end{align*}
+We claim that $\type{\pair{a}{\pad}}{\LB} \congr{\+R} \type{\pair{\pad}{a}}{\BL}$. Note that there is no,
+$\type{y}{\tau}$ be such that
+$\type{\pair{a}{\pad}}{\LB}\type{y}{\tau}$
+and $\type{\pair{\pad}{a}}{\BL}\type{y}{\tau}$ are "well-formed".
+So, let $\type{x}{\sigma}$ be such that $\type{x}{\sigma}\type{\pair{a}{\pad}}{\LB}$
+and $\type{x}{\sigma}\type{\pair{\pad}{a}}{\BL}$ are "well-formed":
+$\sigma$ must be of type $\LL$, but then $\+R$ is invariant under removing prefixes of type $\LL$, and so $\type{x}{\sigma}\type{\pair{a}{\pad}}{\LB} \in \+R$ and 
+$\type{x}{\sigma}\type{\pair{\pad}{a}}{\BL} \in \+R$. And hence,  $\type{\pair{a}{\pad}}{\LB} \congr{\+R} \type{\pair{\pad}{a}}{\BL}$. Similarly,
+\[
+	\type{\pair{a}{\pad}}{\LB} \congr{\+R} \type{\pair{\pad}{b}}{\BL},\quad 
+	\type{\pair{b}{\pad}}{\LB} \congr{\+R} \type{\pair{\pad}{a}}{\BL}\quad\text{and}\quad
+	\type{\pair{b}{\pad}}{\LB} \congr{\+R} \type{\pair{\pad}{b}}{\BL}.\quad 
+\]
+The dual argument (using now the fact that both sides do \emph{not} belong to $\+R$) shows that
+\[
+	\type{\varepsilon}{\LB} \congr{\+R} \type{\varepsilon}{\BL},\quad
+	\type{\varepsilon}{\LB} \congr{\+R} \type{\pair{\pad\pad}{bb}}{\BL},\quad
+	\type{\pair{bb}{\pad\pad}}{\LB} \congr{\+R} \type{\varepsilon}{\BL}\quad\text{and}\quad
+	\type{\pair{bb}{\pad\pad}}{\LB} \congr{\+R} \type{\pair{\pad\pad}{bb}}{\BL}.
+\]
+
+The case of types $\LL$ and $\LB$ follows by symmetry.
+\end{example}
 
 % Moreover, this canonical algebraic representation of $\+R$ is computable.
 % \begin{proposition}
