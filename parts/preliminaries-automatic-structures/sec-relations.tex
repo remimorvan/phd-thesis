@@ -549,9 +549,10 @@ Despite being somewhat expressive, "automatic relations" retain some decidabilit
 
 On the other hand, the associated "separation problem@@rel" remains open.
 This part of this thesis is mostly motivated by this problem.%
-\begin{openproblem}
+\begin{restatable}{openproblem}{openProblemAutRecSeparability}
+	\label{opb:AUT-REC-separability}
 	Is the ""$\REC$-separability problem for automatic relations"" decidable?
-\end{openproblem}
+\end{restatable}
 
 This problem goes back at least to 2006, when Choffrut and Grigorieff
 solved a special subcase of commutative relations.
@@ -734,7 +735,7 @@ see "eg" \cite[\S~III.2, Definition]{Berstel1979Transductions}.}
 
 \paragraph*{Undecidability.}
 While emptiness and finiteness of "rational relations" are
-decidable---see "eg" \cite[\S~III, Proposition~8.2]{Berstel1979Transductions}---
+decidable---see "eg" \cite[\S~III, Proposition~8.2]{Berstel1979Transductions}---%
 unfortunately "rational relations" are maybe too expressive: most other decision problems on them 
 are undecidable, including intersection non-emptiness, inclusion, equivalence, universality, co-finiteness and the "$\RAT$/$\REC$-membership problem", see \cite[\S~III, Theorem~8.4]{Berstel1979Transductions}.%
 \footnote{All these results essentially follow
@@ -808,6 +809,8 @@ if the relation
 	\{\tup{u\triangleleft, v\triangleleft} \mid \tup{u,v} \in \+R\}
 \]
 is recognized by a "deterministic multitape automaton", where $\triangleleft$ is a new symbol.
+We denote by \AP$\intro*\DRAT$ the class of all "deterministic rational relations".
+
 For instance, starting from \Cref{fig:multitape-automaton-subword}, it is easy
 to build a "deterministic multitape automaton" for
 $\{\tup{u\triangleleft, v\triangleleft} \mid u \subword v\}$,
@@ -938,12 +941,16 @@ is decidable \cite[Theorem~3.11]{HarjuKarhumaki1991Equivalence}.%
 \footnote{Back then, this was one of the most prominent open questions in the field: recall that 
 this model was introduced more than thirty years before by Rabin
 and Scott \cite{RabinScott1959FiniteAutomata}.}
+
+\todo{"$\RAT$-membership" decidable.}
+
 While the class is closed under complementation, it is in fact neither closed under union,
 intersection \cite[Theorem~17]{RabinScott1959FiniteAutomata},
 concatenation, Kleene closure nor reversal
 \cite[Table~1]{FischerRosenberg1968Multitape}.
 
 \subsection{Restricted Head Movements}
+\label{sec:preliminaries-automatic-structures-relations-restricted-head-movements}
 
 Observe that "synchronous automata" can be seen as "multitape automata" with
 a restriction on the head movements: at each step, all heads must move.

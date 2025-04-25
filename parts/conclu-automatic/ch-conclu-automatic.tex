@@ -1,2 +1,94 @@
 \chapter{Conclusion \fancyand~Open Problems}
 \label{ch:conclu-automatic}
+
+\section{Separating Automatic Relations by Recognizable Ones}
+
+The problem introduced in \Cref{ch:preliminaries-automatic-structures}
+remains open.
+
+\openProblemAutRecSeparability*
+
+In \Cref{ch:dichotomy-theorem}, we proved this problem to be equivalent
+to "finite regular colourability of automatic graphs" (\Cref{thm:reg-colourability-equiv-separability}),
+and showed that when the number of colours is fixed, the problem is undecidable
+(\Cref{thm:k-reg-col-undec}).
+In fact, we showed that most problems of this form are undecidable
+(\Cref{thm:dichotomy-theorem-automatic-structures}).
+However, as explained in \Cref{sec:dichotomy-discussion}, some gaps remain to be able to use
+our techniques to prove the undecidability of the "$\AUT$/$\REC$-separability problem".
+
+On the other hand, we introduced in \Cref{ch:algebra} an algebraic approach for
+"automatic relations", hoping to prove the decidability of this problem.
+Unfortunately, alas, using this theory to tackle \Cref{opb:AUT-REC-separability}
+seems non-trivial. The main obstacle being that, while
+"recognizable relations" have some desirable closure properties,
+they do not form a "pseudovariety of automatic relations"
+\todo{addref-discuss-algebra}.%
+\footnote{Explain why we couldn't know this \emph{a priori}.}
+
+Overall, \Cref{opb:AUT-REC-separability} remains open.
+Should this problem be decidable, the question of
+the decidability of its generalization to larger class of relations would be
+a natural next step.
+
+\begin{openproblem}
+	Are the "$\DRAT$/$\REC$-separability@@pb" and
+	"$\RAT$/$\REC$-separability problems" decidable?
+\end{openproblem}
+
+In \cite[\S~1]{BarceloFigueiraMorvan2023SeparatingAutomatic},
+we incorrectly stated that ``As for definability\footnote{Definability is the same
+as the "membership problem".}, the "$\REC$-separability problem" for "rational relations" is in general undecidable'', which is false---or at least we do not know it to be true.
+
+Indeed, as mentioned in \Cref{ch:preliminaries-automatic-structures},
+the "$\RAT$/$\REC$-membership problem" is undecidable, by
+\cite[\S~III, Theorem~8.4]{Berstel1979Transductions}.
+Moreover, in general, "membership problems" reduced to "separability problems":
+a relation $\+R$ belongs to a class $\+V$ if, and only if, $\+R$ and $\negrel \+R$
+are "$\+V$-separable@@rel". However, for this argument to work, the larger class of relation
+needs to be effectively closed under complement.
+This is not the case of "rational relations", see \Cref{sec:prelim-rational-relations}.
+
+For "deterministic rational relations", while they are effectively
+closed under complementation, the "$\DRAT$/$\REC$-membership problem"
+is decidable---see \Cref{sec:dichotomy-introduction-relations}!
+
+\section{Colouring Problems on Automatic Graphs}
+
+Let us quickly recall some of the conjectures that have been discussed in \Cref{sec:dichotomy-discussion}.
+The first one is about finding an equivalent characterization in the "dichotomy theorem
+for automatic structures" (\Cref{thm:dichotomy-theorem-automatic-structures}).
+
+\conjInvarianceGraphIsomorphisms*
+
+In other words, this problem could be rephrased as follows: ``is a problem
+of the form $\HomRegAut{\?B}$ decidable if, and only if, its output
+only depends on the "structure represented" by the "automatic presentation",
+and not on the "presentation@@auto" itself?''
+
+Going back to out original question,
+while we do not know if "finite regular colourability of automatic graphs"
+is decidable, it is natural to study variations of this problem, as well as
+sufficient or necessary conditions to ensure colourability or non-colourability.
+Unfortunately, these problems are also non-trivial.
+
+\conjFiniteColourabilityUndecidable*
+
+\conjUnboundedCliques*
+
+\section{An Algebraic Approach Beyond Automatic Relations}
+
+The algebraic theory developed in \Cref{ch:algebra} can be generalized,
+by replacing the constraint of ``being "well-formed"'' with an arbitrary
+"regular language" $\Omega$.
+While there is no hope to get a version of the
+"lifting theorem" (\Cref{thm:lifting-theorem-monoids}) for every $\Omega$---see \todo{addref-rk-conclu-algebra}, I believe it could hold for some languages $\Omega$,
+namely those that are "fully-preordered@@lang",
+in the sense that there exists a preorder $\preccurlyeq$ on the alphabet $\Sigma$
+"st" $\Omega = \{u_1 \dotsc u_n \in \Sigma^* \mid u_1 \preccurlyeq \dotsc \preccurlyeq u_n\}$.
+See \todo{addref-conclu-algebra} for more details.
+
+Interestingly, we believe this question to be related to Figueira \& Libkin's
+"$T$-controlled relations", presented in
+\Cref{sec:preliminaries-automatic-structures-relations-restricted-head-movements}.
+\todo{explain-more}

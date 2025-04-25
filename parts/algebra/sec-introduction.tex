@@ -85,14 +85,14 @@ For this we first need to develop an algebraic theory of "synchronous relations"
 which enables us to prove the lifting theorem. In short, the "lifting theorem" states that algebraic characterizations of classes of word languages can be lifted in a canonical way to algebraic characterizations of classes of word relations.
 
 The algebraic approach usually provides more than decidability: it attaches
-canonical algebras to languages/relations ("eg" monoids for languages of finite words), and often simple ways to characterize complex properties ("eg" first-order definability, see "eg" \cite[Theorem 2.6, p.~40]{bojanczyk_languages_2020}).
+canonical algebras to languages/relations ("eg" monoids for languages of finite words), and often simple ways to characterize complex properties ("eg" first-order definability, see "eg" \cite[Theorem 2.6, p.~40]{Bojanczyk2020LanguagesMSO}).
 Our "synchronous algebras" differ from monoids in two points:
 \begin{itemize}
-	\item they are typed---a quite common feature in algebraic language theory, shared "eg" by $\omega$-semigroups \cite[\S 4.1, p.~91]{perrin_infinite_2004};
+	\item they are typed---a quite common feature in algebraic language theory, shared "eg" by $\omega$-semigroups \cite[\S 4.1, p.~91]{Perrin2004InfiniteWords};
 	% or Bojańczyk \& Walukiewicz's forest algebras \cite[\S 1.3, p.~4]{bojanczyk_forest_2008}; and
 	\item they are equipped with a "dependency relation", which expresses constraints between 
 	elements of different types---to our knowledge, this feature is entirely novel.\footnote{Note that algebras equipped with binary relations have been studied before, "eg" Pin's ordered 
-	$\omega$-semigroups---see \cite[\S 2.4, p.~7]{pin_positive_1998}---but the constraints (here the 
+	$\omega$-semigroups---see \cite[\S 2.4, p.~7]{Pin1998PositiveVarieties}---but the constraints (here the 
 	orderings) are always defined between elements of the \emph{same type}.}
 \end{itemize}
 
@@ -128,7 +128,7 @@ each relation $\+R$ admits a unique canonical and minimal algebra $\SyntSA{\+R}$
 "iff" the relation is "synchronous",
 and then, we exhibit a correspondence between classes of finite algebras and classes of
 synchronous relations (\Cref{lem:eilenberg-sy})---we assume suitable closure properties; these classes are called ``pseudovarieties''.
-While the proof structures of \Cref{lem:syntactic-morphism-theorem,lem:eilenberg-sy} follow the classic proofs, see "eg" \cite{pin_mathematical_2022},
+While the proof structures of \Cref{lem:syntactic-morphism-theorem,lem:eilenberg-sy} follow the classic proofs, see "eg" \cite{Pin2022MathematicalFoundations},
 the "dependency relation" has to be taken into account quite carefully, leading for instance
 to a surprising definition of "residuals", see \Cref{def:residuals}.
 
@@ -155,15 +155,15 @@ a short discussion in \Cref{sec:discussion}.
 		Dashed regions are empty: the intersection of
 		functional relations and two-way rational relations
 		collapses to regular functions by
-		\cite[Theorem 22, p.~243]{EH2001transduction}.
+		\cite[Theorem 22, p.~243]{EngelfrietHoogeboom2001MSOTransductions}.
 	}
 \end{figure}
 The algebraic framework has been extended far beyond languages of finite words: let us cite amongst other:
 \begin{itemize}
 	\item Reutenauer's ``algèbre associative syntactique'' for weighted languages
-		\cite[Théorème I.2.1, p.~451]{reutenauer_series_1980} and their associated Eilenberg theorem \cite[Théorème III.1.1, p.~469]{reutenauer_series_1980};
+		\cite[Théorème I.2.1, p.~451]{Reutenauer1980SeriesFormelles} and their associated Eilenberg theorem \cite[Théorème III.1.1, p.~469]{Reutenauer1980SeriesFormelles};
 	\item for languages of $\omega$-words, Wilke's algebras and $\omega$-semigroups,
-		see \cite[\S II, pp.~75--131 \& \S VI, pp.~265--306]{perrin_infinite_2004};
+		see \cite[\S II, pp.~75--131 \& \S VI, pp.~265--306]{Perrin2004InfiniteWords};
 	\item for languages over countable ordinals, Bedon defined ``$\omega_1$-semi\-groupes syntaxiques'' \cite[\S3, pp.~49--109]{bedon_langages_1998} and their Eilenberg theorem
 		\cite[Theorem 22, p.~62]{bedon_eilenberg_1998};
 	\item for languages over countable scattered orderings, see Rispal's ``$\Diamond$-semigroupe syntaxique'' \cite[\S 4.4, pp.~82--86]{rispal_automates_2004} and their Eilenberg theorem
@@ -171,7 +171,7 @@ The algebraic framework has been extended far beyond languages of finite words: 
 	\item more generally, for languages over countable linear orderings, see Carton, Colcombet \& Puppis' ``$\circledast$-monoids'' and ``$\circledast$-algebras''
 		\cite[\S 3, p.~7]{carton_algebraic_2018};
 	\item Bojańczyk \& Walukiewicz's 
-		forest algebras \cite[\S 1.3, p.~4]{bojanczyk_forest_2008} \cite[\S 5, p.~159]{bojanczyk_languages_2020}
+		forest algebras \cite[\S 1.3, p.~4]{bojanczyk_forest_2008} \cite[\S 5, p.~159]{Bojanczyk2020LanguagesMSO}
 		dealing with tree languages;
 	\item Engelfriet's hyperedge replacement algebras for graph languages
 		\cite[\S 2.3, p.~100]{courcelle_graph_2012} \cite[\S 6.2, p.~194]{bojanczyk_recognisable_2015}.
