@@ -1021,6 +1021,12 @@ for binary relations ("ie" assuming $k=2$)
 Their algorithm fails to capture the general case, and the decidability of this problem
 is still open for relations of arbitrary arity
 \cite[\S~9]{DescotteFigueiraPuppis2018ResynchronizingClasses}.
+\begin{restatable}{openproblem}{opbControlledRelations}
+	\label{opb:controlled-relations}
+	Given $k\in\Np$, given "regular languages" $T_1$ and $T_2$ over $\lBrack 1,k\rBrack$,
+	can we decide if "$T_1$-controlled relations" exactly correspond to
+	"$T_2$-controlled relations"?
+\end{restatable}
 Similarly, Descotte, Figueira and Figueira showed that given a "regular language"
 $T$, it is decidable whether the class of "$T$-controlled relations"
 is closed under intersection, complement, concatenation, Kleene star 

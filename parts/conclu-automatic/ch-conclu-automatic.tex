@@ -19,6 +19,7 @@ our techniques to prove the undecidability of the "$\AUT$/$\REC$-separability pr
 
 On the other hand, we introduced in \Cref{ch:algebra} an algebraic approach for
 "automatic relations", hoping to prove the decidability of this problem.
+\todo{self-citation!}
 Unfortunately, alas, using this theory to tackle \Cref{opb:AUT-REC-separability}
 seems non-trivial. The main obstacle being that, while
 "recognizable relations" have some desirable closure properties,
@@ -80,7 +81,10 @@ Unfortunately, these problems are also non-trivial.
 
 The algebraic theory developed in \Cref{ch:algebra} can be generalized,
 by replacing the constraint of ``being "well-formed"'' with an arbitrary
-"regular language" $\Omega$.
+"regular language" $\Omega$. This would result in the notion
+of \AP""$\Omega$-path algebras""---with "$\WellFormed$-path algebras" corresponding
+to our "synchronous algebras".
+
 While there is no hope to get a version of the
 "lifting theorem" (\Cref{thm:lifting-theorem-monoids}) for every $\Omega$---see \todo{addref-rk-conclu-algebra}, I believe it could hold for some languages $\Omega$,
 namely those that are "fully-preordered@@lang",
@@ -91,4 +95,50 @@ See \todo{addref-conclu-algebra} for more details.
 Interestingly, we believe this question to be related to Figueira \& Libkin's
 "$T$-controlled relations", presented in
 \Cref{sec:preliminaries-automatic-structures-relations-restricted-head-movements}.
+We believe that each language $T$, specifying the head movements that are allowed,
+gives rise to a language $\Omega_T$, such that relations recognized
+by finite "$\Omega_T$-path algebras" exactly correspond to 
+the "$T$-controlled relations".
+\opbControlledRelations
+We think that, one way of tackling this problem would be study properties of
+the category of "$\Omega_T$-path algebras".
+
+\begin{conjecture}
+	\label{conj:controlled-relations-category-equivalence}
+	There is a way of defining $T \mapsto \Omega_T$ "st"
+	"$T_1$-controlled relations" exactly correspond to "$T_2$-controlled relations"
+	if, and only if, the category of "$\Omega_{T_1}$-path algebras"
+	is equivalent to the category of "$\Omega_{T_2}$-path algebras".
+\end{conjecture}
+
+Hopefully, the latter condition could maybe be massaged to get decidability.
+
+
+\section{Theorem Projection via Monad Adjunction}
+
+In fact, the conjecture of \Cref{conj:controlled-relations-category-equivalence}
+is part of a larger idea we have.
+In algebraic language theory, monads play an essential role---see \Cref{apdx:monads}.
+Informally, a monad describes a universe.
+For instance, the monad
+\[
+	\Sigma \mapsto \Sigma^*
+\]
+describes the universe of finite words, and gives rise to the notion of
+"monoids". Similarly, weighted words over a field $\mathbb{K}$ can be described by
+\[
+	\Sigma \mapsto \mathbb{K}[\Sigma^*],
+\]
+where $\mathbb{K}X$ denotes the free vector space over set $X$.
+Again, this monad gives rise to Reutenauer's ``algèbres associatives''
+\cite{Reutenauer1980SeriesFormelles}, "aka" ``($\mathbb{K}$-)weighted monoids'',
+which is essentially an algebraic structure that is both a monoid and a
+$\mathbb{K}$-vector space.
+Our "synchronous algebras" are no exception---see \Cref{apdx:monads}---,
+and we refer the reader to \cite[\S~4]{Bojanczyk2020MSO} for more examples.
+
+\todo{blabla}
+
+
 \todo{explain-more}
+\todo{$T$ and $\Omega$ play the same role.}
