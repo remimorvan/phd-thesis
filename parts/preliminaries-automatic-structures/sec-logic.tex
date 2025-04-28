@@ -373,27 +373,29 @@ and provide effective characterization of these lower levels
 	is an "automatic relation".
 \end{example}
 
-We want to highlight that, in the case of unary relations,
-\Cref{prop:automatic-first-order} shows that "regular languages" are exactly
-the "first-order definable" sets of $\univStructSynchronous{\Sigma}$
-(if $\Sigma$ has at least two letters).
-This result contradicts in no way the fact that "regular languages" exactly those definable
-in "monadic second-order logic", nor does it imply that "monadic second-order logic"
-collapses to "first-order logic". Indeed, in this last characterization,
-the models are finite words, and its first-class citizens%
-\footnote{By ``first-class citizens'' we mean the objects over which
-we can do first-order quantification.} are the positions in these words.
-In the case of \Cref{prop:automatic-first-order}, the model is fixed (namely $\univStructSynchronous{\Sigma}$), and its first-class citizens are the finite words.
-In some sense, this logic is \emph{external} to finite words---the logic does not have access to the
-``inner workings'' of the words---, while monadic second-logic is \emph{internal}
-as traditionally used.
-Overall, \Cref{prop:automatic-first-order} can be rephrased as the equivalence between
-\emph{external} first-order logic and \emph{internal} "monadic second-order logic".%
-\footnote{We thank Géraud Sénizergues for suggesting this terminology to us.}
-Said otherwise, when going from "FO" over the structure $\univStructSynchronous{\Sigma}$ to "MSO" 
-over the structure of a finite word, we gain one level of quantification "via" the logic,
-but we lose one level of quantification "via" the change of model.
- 
+\begin{remark}
+	\AP\label{rk:internal-vs-external-logic}
+	We want to highlight that, in the case of unary relations,
+	\Cref{prop:automatic-first-order} shows that "regular languages" are exactly
+	the "first-order definable" sets of $\univStructSynchronous{\Sigma}$
+	(if $\Sigma$ has at least two letters).
+	This result contradicts in no way the fact that "regular languages" exactly those definable
+	in "monadic second-order logic", nor does it imply that "monadic second-order logic"
+	collapses to "first-order logic". Indeed, in this last characterization,
+	the models are finite words, and its first-class citizens%
+	\footnote{By ``first-class citizens'' we mean the objects over which
+	we can do first-order quantification.} are the positions in these words.
+	In the case of \Cref{prop:automatic-first-order}, the model is fixed (namely $\univStructSynchronous{\Sigma}$), and its first-class citizens are the finite words.
+	In some sense, this logic is \emph{external} to finite words---the logic does not have access to the
+	``inner workings'' of the words---, while monadic second-logic is \emph{internal}
+	as traditionally used.
+	Overall, \Cref{prop:automatic-first-order} can be rephrased as the equivalence between
+	\emph{external} first-order logic and \emph{internal} "monadic second-order logic".%
+	\footnote{We thank Géraud Sénizergues for suggesting this terminology to us.}
+	Said otherwise, when going from "FO" over the structure $\univStructSynchronous{\Sigma}$ to "MSO" 
+	over the structure of a finite word, we gain one level of quantification "via" the logic,
+	but we lose one level of quantification "via" the change of model.
+\end{remark}
 
 \subsection{Logical Characterization of Other Classes of Relations}
 

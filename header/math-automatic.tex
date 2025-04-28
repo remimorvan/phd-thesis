@@ -381,3 +381,38 @@
 }
 
 \newrobustcmd{\sat}{\mathrel{\kl[\sat]{\vDash}}}
+
+% ---
+% Monad adjunctions
+% ---
+
+\knowledgenewrobustcmd\Monad[1][T]{\cmdkl{\mathbf{#1}}}
+\knowledgenewrobustcmd\monad[1][T]{\cmdkl{#1}}
+\knowledgenewrobustcmd{\unit}[1][]{\cmdkl{\textnormal{\textrm{unit}}_{#1}}}
+\knowledgenewrobustcmd{\mult}[1][]{\cmdkl{\textnormal{\textrm{mult}}_{#1}}}
+
+\knowledgenewrobustcmd\MF[2]{\cmdkl{{#1}_{#2}}} % Monad functor
+\knowledgenewrobustcmd\MFunit{\cmdkl{\textsc{(mf)}$_{\textrm{unit}}$}} % Monad functor axiom
+\knowledgenewrobustcmd\MFmult{\cmdkl{\textsc{(mf)}$_{\textrm{mult}}$}}
+
+\knowledgenewrobustcmd\MonadPlus{\cmdkl{\mathbf{K}^{\boldsymbol{+}}}}
+\knowledgenewrobustcmd\omegafin{\cmdkl{\mathfrak{fin}\text{-}\omega}}
+\knowledgenewrobustcmd\MonadWilke{\cmdkl{\mathbf{W}}}
+\newrobustcmd\projMon{%
+	\mathop{%
+		\withkl{\kl[\projMon]}{%
+			\cmdkl{\mathrm{proj}}
+		}%
+	}%
+}
+\knowledge{\projMon}{notion}
+\newrobustcmd\zero{%
+	\mathop{%
+		\withkl{\kl[\proj]}{%
+			\cmdkl{\mathrm{zero}}
+		}%
+	}%
+}
+\knowledge{\zero}{notion}
+\knowledgenewrobustcmd\MFproj{\cmdkl{\MF{\Phi}{\proj}}}
+\knowledgenewrobustcmd\MFzero{\cmdkl{\MF{\Psi}{\zero}}}

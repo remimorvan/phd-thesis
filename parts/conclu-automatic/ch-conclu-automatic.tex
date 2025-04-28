@@ -131,13 +131,118 @@ describes the universe of finite words, and gives rise to the notion of
 \]
 where $\mathbb{K}X$ denotes the free vector space over set $X$.
 Again, this monad gives rise to Reutenauer's ``algèbres associatives''
-\cite{Reutenauer1980SeriesFormelles}, "aka" ``($\mathbb{K}$-)weighted monoids'',
+\cite{Reutenauer1980SeriesFormelles}, "aka" ``$\mathbb{K}$-weighted monoids'',
 which is essentially an algebraic structure that is both a monoid and a
 $\mathbb{K}$-vector space.
 Our "synchronous algebras" are no exception---see \Cref{apdx:monads}---,
 and we refer the reader to \cite[\S~4]{Bojanczyk2020MSO} for more examples.
 
-\todo{blabla}
+For well-behaved monads, ``languages'' recognized by their finite algebras
+coincide with "monadic second-order"-definable languages.%
+\footnote{We refer here to \emph{external} logics in the sense of
+\Cref{rk:internal-vs-external-logic}.}
+This gives rise to a natural set of questions, consisting
+in finding algebraic characterizations
+of fragments of "monadic second-order logic".
+The perhaps most celebrated example is that of
+the Schützenberger-McNaughton-Papert theorem
+proves that "first-order"-definable languages of finite words
+are exactly those recognized by aperiodic monoids \todo{addref}.
+The statement was extended to $\omega$-words by \todo{},
+to countable ordinal words by \todo{}, and to countable scatter words by
+\todo{}.
+In the latter case, asking only for aperiodicity is not enough:
+the algebra should also be ``gap-insensitive''.%
+\footnote{In the more general case of words over countable orderings,
+Colcombet and Sreejith also provides a characterization for "first-order"
+definable languages, although it is more complex \todo{addref}.}
+This can be explained as follows: by going from the simpler setting
+of finite words (or countable ordinal words) to countable scattered words,
+there are new phenomena that appear and that "first-order logic" is 
+not able to describe.
+
+However, intuitively, going in the other direction should be easy!
+Given an algebraic characterization of first-order logic over a ``richer'' monad
+("eg" countable scatter words), it should be easy to reprove the
+Schützenberger-McNaughton-Papert theorem over finite words, using the
+``rich'' algebraic characterization as a black box.
+
+Surprisingly, while it is easy to ``project'' the algebraic characterization
+of first-order logic over $\omega$-words to get its counterpart for finite words,
+the task becomes less straightforward---but still possible---when projecting from
+countable ordinal words or countable scattered words to finite ones.
+In both cases, the proof relies on two ingredients:
+\begin{itemize}
+	\item a function, encoding a language of finite words into
+		a language in the richer setting;
+	\item a function, projecting a language in the richer setting
+		to a language of finite words.
+\end{itemize}
+Moreover, both functions should preserve the properties that we are studying---either
+being "first-order" definable, or satisfying the algebraic characterization.
+\todo{figure}
+
+In the case of $\omega$-words, finding these functions is easy: for instance, 
+the projection simply consists in restricting a language of words of
+length at most $\omega$ to the finite words.
+On the other hand, the projection from countable scattered words
+to finite ones cannot simply do this, since finite words are not
+"first-order" definable amongst countable scattered ones.
+Hence, the projection in question needs to be tailor-made to 
+preserve first-order logic.\footnote{This construction is an unpublished joint
+work with Thomas Colcombet.}
+
+In fact, the projection of $\omega$-words to finite words does not only preserve
+the property of being "first-order" definable, but more generally any
+"pseudovariety@@reglang"! In this sense, words of length at most $\omega$
+form a \emph{conservative extension} of finite words, while
+countable scattered words do not: this is why we can find a single construction
+to project algebraic characterizations%
+\footnote{By ``algebraic characterization'' we formally mean an "Eilenberg correspondence".}
+from $\omega$-words to finite ones, but not from countable scattered words to finite ones.
+
+This begs the question: how can we formalize this idea of a monad being
+a \emph{conservative extension} of another one?
+In light of \todo{addref-fig} propose to look at the notion of "monad adjunction".
+Before introducing it, we need a preliminary definition.
+
+Let $\Monad[S] = (S,\unit,\mult)$ be a "$\cat{C}$-monad"
+and $\Monad[T] = (T,\unit,\mult)$ be a "$\cat{D}$-monad".%
+\footnote{Following Street, we use the same notation for the unit and multiplication in $\Monad[S]$ and $\Monad[T]$.}
+We assume $\cat C$ and $\cat D$ to be both categories of typed sets.
+A \AP""monad functor"",%
+\footnote{The notion was introduced by Street \cite[\S 1]{Street1972Monads}
+in the slightly more general context of 2-categories.
+We found this reference thanks to \cite{Rezk2012Functors}. "Monad functors" are also known as
+``lax maps of monads''.}
+from $\Monad[S]$ to $\Monad[T]$ is a pair $(\Phi, F)$, where:
+\begin{itemize}
+\item $F\colon \cat{C} \to \cat{D}$ is a functor,
+\item $\Phi\colon TF \Rightarrow FS$ is a natural transformation,
+\end{itemize}
+such that, for every object $X \in \cat{C}$, the following diagrams commute:
+\begin{center}
+	\intro*\MFunit\textup{:}
+	\begin{tikzcd}
+		FX \ar[d,"\unit_{FX}" swap] \ar[dr, "F\unit_{X}"] & \\
+		TFX \ar[r,"\phi_{X}" swap] & FSX.\\
+	\end{tikzcd}\\
+\; and \;
+	\intro*\MFmult\textup{:}
+	\begin{tikzcd}[row sep=small, column sep=1em]
+		& & TFSX \ar[rr, "\phi_{SX}"] & &  FSSX \ar[drr, "F\mult_X", bend left=0] \\
+		TTFX \ar[urr, "T\phi_X", bend left=0] \ar[drrr, "\mult_{FX}" swap, bend right=0] & &
+			& & & & FSX. \\
+		& & & TFX \ar[urrr, "\phi_X" swap, bend right=0]
+	\end{tikzcd}
+\end{center}
+Such a pair is denoted by $\intro*\MF{\Phi}{F}\colon \Monad[S] \Rightarrow \Monad[T]$.
+
+\todo{examples}
+
+\begin{definition}
+	
+\end{definition}
 
 
 \todo{explain-more}
