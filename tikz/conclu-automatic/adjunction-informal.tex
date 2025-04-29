@@ -1,5 +1,5 @@
-\node at (0,0) (base) {\small``base monad''};
-\node[right=3em of base] (rich) {\small``richer monad''};
+\node[font=\footnotesize] at (0,0) (base) {``base monad''};
+\node[right=3em of base, font=\footnotesize] (rich) {``richer monad''};
 
-\draw[edge] (base) to[bend left=30] node[midway, above] {\small encoding} (rich);
-\draw[edge] (rich) to[bend left=30] node[midway, below] {\small projection} (base);
+\draw[edge] (base) to[bend left=30] node[midway, above, font=\footnotesize] {encoding} (rich);
+\draw[edge] (rich) to[bend left=30] node[midway, below, font=\footnotesize] {projection} (base);

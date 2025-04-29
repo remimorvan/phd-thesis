@@ -1,6 +1,20 @@
 \chapter{Conclusion \fancyand~Open Problems}
 \label{ch:conclu-automatic}
 
+\begin{chapterpresentation}
+	\begin{abstract}
+		This part concludes \Cref{part:automatic} of this thesis.
+		We recall some open problems mentioned in previous chapter,
+		and highlight a new research direction relating the
+		structural properties of a language-theoretic framework
+		with its expressiveness.
+	\end{abstract}
+	% \medskip
+	% \begin{acknowledgements}
+	% \end{acknowledgements}
+	\chaptertoc
+\end{chapterpresentation}
+
 \section{Separating Automatic Relations by Recognizable Ones}
 
 The problem introduced in \Cref{ch:preliminaries-automatic-structures}
@@ -19,8 +33,11 @@ our techniques to prove the undecidability of the "$\AUT$/$\REC$-separability pr
 
 On the other hand, we introduced in \Cref{ch:algebra} an algebraic approach for
 "automatic relations", hoping to prove the decidability of this problem.
-\todo{self-citation!}
-Unfortunately, alas, using this theory to tackle \Cref{opb:AUT-REC-separability}
+Algebraic language theory is a powerful tool to prove the decidability of separation
+over finite words \cite{PlaceZeitoun2016SeparatingRegularLanguages},
+but also in more complex settings such as countable ordinal words \cite{ColcombetGoolMorvan2022FOSeparation}.
+
+Alas, using the theory we developped to tackle \Cref{opb:AUT-REC-separability}
 seems non-trivial. The main obstacle being that, while
 "recognizable relations" have some desirable closure properties,
 they do not form a "pseudovariety of automatic relations"
@@ -86,11 +103,8 @@ of \AP""$\Omega$-path algebras""---with "$\WellFormed$-path algebras" correspond
 to our "synchronous algebras".
 
 While there is no hope to get a version of the
-"lifting theorem" (\Cref{thm:lifting-theorem-monoids}) for every $\Omega$---see \todo{addref-rk-conclu-algebra}, I believe it could hold for some languages $\Omega$,
-namely those that are "fully-preordered@@lang",
-in the sense that there exists a preorder $\preccurlyeq$ on the alphabet $\Sigma$
-"st" $\Omega = \{u_1 \dotsc u_n \in \Sigma^* \mid u_1 \preccurlyeq \dotsc \preccurlyeq u_n\}$.
-See \todo{addref-conclu-algebra} for more details.
+"lifting theorem" (\Cref{thm:lifting-theorem-monoids}) for every $\Omega$---see \Cref{rk:no-algo-lifting}, we believe it holds for "fully-preordered languages".
+See \Cref{sec:algebra-discussion} for more details.
 
 Interestingly, we believe this question to be related to Figueira \& Libkin's
 "$T$-controlled relations", presented in
@@ -103,13 +117,7 @@ the "$T$-controlled relations".
 We think that, one way of tackling this problem would be study properties of
 the category of "$\Omega_T$-path algebras".
 
-\begin{conjecture}
-	\label{conj:controlled-relations-category-equivalence}
-	There is a way of defining $T \mapsto \Omega_T$ "st"
-	"$T_1$-controlled relations" exactly correspond to "$T_2$-controlled relations"
-	if, and only if, the category of "$\Omega_{T_1}$-path algebras"
-	is equivalent to the category of "$\Omega_{T_2}$-path algebras".
-\end{conjecture}
+\conjAdjunctionControlledRelations*
 
 Hopefully, the latter condition could maybe be massaged to get decidability.
 
@@ -117,7 +125,8 @@ Hopefully, the latter condition could maybe be massaged to get decidability.
 \section{Theorem Projection via Monad Adjunction}
 
 In fact, the conjecture of \Cref{conj:controlled-relations-category-equivalence}
-is part of a larger idea we have.
+is part of a larger idea we have, about relating the expressiveness of
+universe---formalized by a monad---and its categorical properties. 
 In algebraic language theory, monads play an essential role---see \Cref{apdx:monads}.
 Informally, a monad describes a universe.
 For instance, the monad
@@ -147,15 +156,16 @@ of fragments of "monadic second-order logic".
 The perhaps most celebrated example is that of
 the Schützenberger-McNaughton-Papert theorem
 proves that "first-order"-definable languages of finite words
-are exactly those recognized by aperiodic monoids \todo{addref}.
-The statement was extended to $\omega$-words by \todo{},
-to countable ordinal words by \todo{}, and to countable scatter words by
-\todo{}.
+are exactly those recognized by aperiodic monoids
+\cite{Schutzenberger1965FiniteMonoidsAperiodic,McNaughtonPapert1971CounterFreeAutomata}.
+The statement was extended to $\omega$-words \cite{Perrin1984Recent},
+to countable ordinal words \cite{Bedon2001Logic},
+and to countable scatter words \cite{BesCarton2011AlgebraicFO}.
 In the latter case, asking only for aperiodicity is not enough:
 the algebra should also be ``gap-insensitive''.%
 \footnote{In the more general case of words over countable orderings,
 Colcombet and Sreejith also provides a characterization for "first-order"
-definable languages, although it is more complex \todo{addref}.}
+definable languages, although it is more complex \cite{ColcombetSreejith2015Limited}.}
 This can be explained as follows: by going from the simpler setting
 of finite words (or countable ordinal words) to countable scattered words,
 there are new phenomena that appear and that "first-order logic" is 
@@ -396,7 +406,6 @@ surjection sends for instance the theorem
 syntactic Wilke's algebra is aperiodic'' onto the theorem
 ``a "regular language" is first-order definable "iff" its
 syntactic semigroup is aperiodic''!
-
 We believe that the "lifting theorem" (\Cref{thm:lifting-theorem-monoids-pseudovarieties})
-of the previous chapter would be a consequence of
+of the previous chapter could be a consequence of
 \Cref{conj:projecting-algebraic-characterizations}.
