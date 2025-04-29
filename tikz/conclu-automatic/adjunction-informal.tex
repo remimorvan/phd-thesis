@@ -1,0 +1,5 @@
+\node at (0,0) (base) {\small``base monad''};
+\node[right=3em of base] (rich) {\small``richer monad''};
+
+\draw[edge] (base) to[bend left=30] node[midway, above] {\small encoding} (rich);
+\draw[edge] (rich) to[bend left=30] node[midway, below] {\small projection} (base);

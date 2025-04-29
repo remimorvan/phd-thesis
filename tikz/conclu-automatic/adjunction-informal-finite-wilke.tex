@@ -1,0 +1,5 @@
+\node at (0,0) (base) {$\MonadPlus$};
+\node[right=3em of base] (rich) {$\MonadWilke$};
+
+\draw[edge] (base) to[bend left=30] node[midway, above] {$\MFzero$} (rich);
+\draw[edge] (rich) to[bend left=30] node[midway, below] {$\MFproj$} (base);

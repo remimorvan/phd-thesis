@@ -167,6 +167,16 @@ Given an algebraic characterization of first-order logic over a ``richer'' monad
 Schützenberger-McNaughton-Papert theorem over finite words, using the
 ``rich'' algebraic characterization as a black box.
 
+\begin{marginfigure}
+	\centering
+	\begin{tikzpicture}
+		\input{tikz/conclu-automatic/adjunction-informal}
+	\end{tikzpicture}
+	\caption{
+		\AP\label{fig:adjunction-informal}
+		Tools to project algebraic characterizations from one universe to another.
+	}
+\end{marginfigure}
 Surprisingly, while it is easy to ``project'' the algebraic characterization
 of first-order logic over $\omega$-words to get its counterpart for finite words,
 the task becomes less straightforward---but still possible---when projecting from
@@ -176,11 +186,11 @@ In both cases, the proof relies on two ingredients:
 	\item a function, encoding a language of finite words into
 		a language in the richer setting;
 	\item a function, projecting a language in the richer setting
-		to a language of finite words.
+		to a language of finite words,
 \end{itemize}
+see \Cref{fig:adjunction-informal}.
 Moreover, both functions should preserve the properties that we are studying---either
 being "first-order" definable, or satisfying the algebraic characterization.
-\todo{figure}
 
 In the case of $\omega$-words, finding these functions is easy: for instance, 
 the projection simply consists in restricting a language of words of
@@ -203,13 +213,14 @@ from $\omega$-words to finite ones, but not from countable scattered words to fi
 
 This begs the question: how can we formalize this idea of a monad being
 a \emph{conservative extension} of another one?
-In light of \todo{addref-fig} propose to look at the notion of "monad adjunction".
+In light of \Cref{fig:adjunction-informal} propose to look at the notion of "monad adjunction".
 Before introducing it, we need a preliminary definition.
 
 Let $\Monad[S] = (S,\unit,\mult)$ be a "$\cat{C}$-monad"
 and $\Monad[T] = (T,\unit,\mult)$ be a "$\cat{D}$-monad".%
 \footnote{Following Street, we use the same notation for the unit and multiplication in $\Monad[S]$ and $\Monad[T]$.}
 We assume $\cat C$ and $\cat D$ to be both categories of typed sets.
+
 A \AP""monad functor"",%
 \footnote{The notion was introduced by Street \cite[\S 1]{Street1972Monads}
 in the slightly more general context of 2-categories.
@@ -220,30 +231,172 @@ from $\Monad[S]$ to $\Monad[T]$ is a pair $(\Phi, F)$, where:
 \item $F\colon \cat{C} \to \cat{D}$ is a functor,
 \item $\Phi\colon TF \Rightarrow FS$ is a natural transformation,
 \end{itemize}
-such that, for every object $X \in \cat{C}$, the following diagrams commute:
+such that, for every object $X \in \cat{C}$, the following diagrams commute:\\
 \begin{center}
-	\intro*\MFunit\textup{:}
+	\intro*\textup{\MFunit:}
 	\begin{tikzcd}
 		FX \ar[d,"\unit_{FX}" swap] \ar[dr, "F\unit_{X}"] & \\
-		TFX \ar[r,"\phi_{X}" swap] & FSX.\\
-	\end{tikzcd}\\
-\; and \;
-	\intro*\MFmult\textup{:}
-	\begin{tikzcd}[row sep=small, column sep=1em]
+		TFX \ar[r,"\phi_{X}" swap] & FSX,\\
+	\end{tikzcd}
+	\quad\intro*\textup{\MFmult:}
+	\begin{tikzcd}[row sep=large, column sep=-.2em]
 		& & TFSX \ar[rr, "\phi_{SX}"] & &  FSSX \ar[drr, "F\mult_X", bend left=0] \\
 		TTFX \ar[urr, "T\phi_X", bend left=0] \ar[drrr, "\mult_{FX}" swap, bend right=0] & &
-			& & & & FSX. \\
+			& & & & FSX. \\[-.5em]
 		& & & TFX \ar[urrr, "\phi_X" swap, bend right=0]
 	\end{tikzcd}
 \end{center}
-Such a pair is denoted by $\intro*\MF{\Phi}{F}\colon \Monad[S] \Rightarrow \Monad[T]$.
 
-\todo{examples}
+Such a pair is denoted by $\intro*\MF{\Phi}{F}\colon \Monad[S] \Rightarrow \Monad[T]$.%
+\footnote{Note that, somewhat surprisingly, one element of a monad functor
+from $\Monad[S]$ to $\Monad[T]$ goes is covariant---namely the functor
+$F\colon \cat{C} \to \cat{D}$---while the other one is contravariant---namely
+the natural transformation $\Phi\colon TF \Rightarrow FS$. The next example will
+illustrate why this definition makes sense.}
+% \begin{marginfigure}
+% 	\centering
+% 	\intro*\textup{\MFunit:}
+% 	\begin{tikzcd}
+% 		FX \ar[d,"\unit_{FX}" swap] \ar[dr, "F\unit_{X}"] & \\
+% 		TFX \ar[r,"\phi_{X}" swap] & FSX.\\
+% 	\end{tikzcd}\\
+% 	\intro*\textup{\MFmult:}
+% 	\begin{tikzcd}[row sep=large, column sep=0em]
+% 		& & TFSX \ar[rr, "\phi_{SX}"] & &  FSSX \ar[drr, "F\mult_X", bend left=0] \\
+% 		TTFX \ar[urr, "T\phi_X", bend left=0] \ar[drrr, "\mult_{FX}" swap, bend right=0] & &
+% 			& & & & FSX. \\
+% 		& & & TFX \ar[urrr, "\phi_X" swap, bend right=0]
+% 	\end{tikzcd}
+% 	\caption{
+% 		\AP\label{fig:axioms-monad-functor}
+% 		Axioms of a "monad functor".}
+% \end{marginfigure}
 
-\begin{definition}
-	
-\end{definition}
+\begin{marginfigure}
+	\centering
+	\begin{tikzpicture}
+		\input{tikz/conclu-automatic/adjunction-informal-finite-wilke}
+	\end{tikzpicture}
+	\caption{
+		\AP\label{fig:adjunction-informal-finite-wilke}
+		"Monads functors" between "Kleene's monad" and "Wilke's monad".
+	}
+\end{marginfigure}
+\begin{example}[Finite words and $\omega$-words]
+	Let $\intro*\MonadPlus$ be ""Kleene's monad"" over the category $\Set[]$
+	of non-empty finite words,
+	defined by $X \mapsto X^+$. Moreover, let $\intro*\MonadWilke$ be ""Wilke's monad"",
+	defined over the category of "2-typed sets" $\Set[+,\omega]$, by
+	$\tup{F,I} \mapsto \tup{F^+, F^+I \cup F^{\omegafin}}$, where $F^{\omegafin}$
+	denotes the set of ultimately-periodic words of length $\omega$ over $F$.
 
+	We start by defining a "monad functor" from $\MonadWilke$
+	to $\MonadPlus$: it represents the natural surjection
+	from words of length at most $\omega$ to non-empty finite words.
+	Let $\intro*\projMon\colon \Set[+,\omega] \to \Set$ be the functor that only keeps the first component, defined by $\tup{F,I} \mapsto F$, and $\Phi$ be the natural transformation
+	$\MonadPlus\projMon \Rightarrow \projMon\MonadWilke$, defined for $\tup{F,I} \in \Set[+,\omega]$
+	by letting
+	\[
+		\begin{tikzcd}[column sep=small]
+			\phi_{F,I}\colon
+			\underbrace{\MonadPlus\projMon \tup{F,I}}_{= F^+} \rar &
+			\underbrace{\projMon\MonadWilke \tup{F,I}}_{= F^+}
+		\end{tikzcd}
+	\]
+	be the identity. Then $\intro*\MFproj$ is a "monad functor" from
+	"Wilke's monad" to "Kleene's monad".
 
-\todo{explain-more}
-\todo{$T$ and $\Omega$ play the same role.}
+	Dually, we then define a "monad functor" from $\MonadPlus$
+	to $\MonadWilke$ that corresponds to the
+	natural embedding of non-empty finite words into words of length at most $\omega$.
+	We let \AP$\intro*\zero\colon \Set[] \to \Set[+,\omega]$ be the functor that transforms a
+	set $X$ into a pair $\tup{X,\set{\bullet}}$, and $\Psi$ be the natural transformation
+	$\MonadWilke\zero \Rightarrow \zero\MonadPlus$, defined for $X \in \Set[]$ by letting
+	\[
+		\begin{tikzcd}[column sep=small]
+			\psi_{X}\colon
+			\underbrace{\MonadWilke\zero X\vphantom{\MonadPlus}}%
+				_{=\tup{X^+, X^+\set{\bullet} \cup X^{\omegafin}}} \rar &
+			\underbrace{\zero\MonadPlus X}%
+				_{=\tup{X^+, \set{\bullet}}}
+		\end{tikzcd}
+	\]
+	send $u \in X^+$ to itself, and $u \in X^+\set{\bullet} \,\cup\, X^{\omegafin}$ to $\bullet \in \set{\bullet}$. Then $\intro*\MFzero$ is a "monad functor" from
+	"Kleene's monad" to "Wilke's monad", see \Cref{fig:adjunction-informal-finite-wilke}.
+\end{example}
+
+Unsurprisingly, "monad functors" can be composed. Moreover, 
+it can be shown that any "monad functor" from $\Monad[S]$ to $\Monad[T]$ induces
+a "functor" from the category of $\Monad[S]$-algebras to $\Monad[T]$-algebras.
+For instance, $\MFproj\colon \MonadWilke \Rightarrow \MonadPlus$ induces
+the functor from Wilke's algebras to semigroups that sends $\tup{S^+,S^\omega}$
+to $S^+$.
+Dually, $\MFzero\colon \MonadPlus \Rightarrow \MonadWilke$ induces the functor
+from semigroups to Wilke's algebras that sends $S$ to $\tup{S, \set{\bullet}}$.
+
+I conjecture that we can naturally define a notion of ``monad (functor) adjunction'',
+which generalizes the notion of ``functor adjunctions'',
+in such a way that a monad adjunction between $\Monad[S]$ and $\Monad[T]$
+induces an adjunction between $\Monad[S]$-algebras and $\Monad[T]$-algebras.
+A typical example of such a monad adjunction would be
+\Cref{fig:adjunction-informal-finite-wilke}.
+
+\begin{marginfigure}
+	\centering
+	\begin{tikzpicture}
+		\input{tikz/conclu-automatic/adjunction-formal-finite-wilke}
+	\end{tikzpicture}
+	\caption{
+		\AP\label{fig:adjunction-formal-finite-wilke}
+		An adjunction between the category of
+		$\MonadWilke$-algebras and the category of $\MonadPlus$-algebras.
+	}
+\end{marginfigure}
+``Monad (functor) adjunctions'' are high-order objects, and so for the sake
+of simplicity, we will work with the adjunction they induce between the categories
+algebras. We go back to the example of \Cref{fig:adjunction-informal-finite-wilke}:
+we represent in \Cref{fig:adjunction-formal-finite-wilke} the two functors induced
+between their Eilenberg-Moore categories.
+It is indeed an adjunction, with $\tup{L^+, L^\omega} \mapsto L^+$ acting as the left
+adjoint and $R \mapsto \tup{R,\set{\bullet}}$ as the right adjoint, and there
+are \emph{natural} bijections
+\[
+	\textrm{hom}_{\cat{Sgp}}(L^+, R)
+	\cong \textrm{hom}_{\cat{Wilke}}(\tup{L^+,L^\omega}, \tup{R,\bullet}).
+\]
+
+We believe that this adjunction are precisely what allows us to automatically project
+any algebraic characterization of $\omega$-regular languages to an algebraic
+characterization of "regular languages"---for a good reason: 
+the two maps $\tup{L^+, L^\omega} \mapsto L^+$ and $R \mapsto \tup{R,\set{\bullet}}$
+are the key ingredient of the proof!
+
+Interestingly, sending a semigroup $S$ to the ordinal semigroup
+$S \dcup \{\textbullet\}$, defined by letting any infinite product
+be equal to the zero element $\textbullet$ also defines a functor
+from the category of semigroups to the category of ordinal semigroups.
+Dually, the canonical surjection sending an ordinal semigroup to
+its underlying semigroup is a functor from
+the category of ordinal semigroups to the category of semigroups.
+However, they do not form an adjunction!
+We actually believe that there are no adjunction between these categories.
+
+These observations lead us to the last conjecture of this thesis.
+\begin{conjecture}[Projecting algebraic characterization]
+	\AP\label{conj:projecting-algebraic-characterizations}
+	Let $\Monad[S]$ and $\Monad[T]$ be two monads.
+	Any monad adjunction between them induces
+	a function from "Eilenberg correspondences" over $\Monad[T]$
+	to "Eilenberg correspondences" over $\Monad[S]$.
+\end{conjecture}
+
+In the case of finite words and $\omega$-words, this
+surjection sends for instance the theorem
+``an $\omega$-regular language is first-order definable "iff" its
+syntactic Wilke's algebra is aperiodic'' onto the theorem
+``a "regular language" is first-order definable "iff" its
+syntactic semigroup is aperiodic''!
+
+We believe that the "lifting theorem" (\Cref{thm:lifting-theorem-monoids-pseudovarieties})
+of the previous chapter would be a consequence of
+\Cref{conj:projecting-algebraic-characterizations}.
