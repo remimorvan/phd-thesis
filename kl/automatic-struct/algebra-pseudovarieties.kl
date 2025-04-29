@@ -1,0 +1,124 @@
+% -----
+% Classical pseudovarities
+% -----
+
+\knowledge{notion}
+ | $\ast $-pseudovariety of regular languages
+ | $\ast $-pseudovarieties of regular languages
+ | $\ast $-pseudovariety@reglang
+ | $*$-pseudovarieties@reglang
+ | $*$-pseudovariety of regular languages
+
+\knowledge{notion}
+ | $+$-pseudovarieties of regular languages
+ | $+$-pseudovarieties@reglang
+ | $+$-pseudovariety of regular languages
+ | $+$-pseudovariety@lang
+ | $+$-pseudovariety@reglang
+ | $+$-pseudovarieties@lang
+
+\knowledge{notion}
+ | pseudovariety of monoids
+ | pseudovarieties of monoids
+ | pseudovarieties of mon\-oids
+
+\knowledge{notion}
+ | pseudovarieties of semigroups
+ | pseudovariety of semigroups
+ | pseudovarieties@semigroup
+ | pseudovarieties@sg
+ | pseudovariety@sgp
+ | pseudovarieties@sgp
+
+\knowledge{notion}
+ | Eilenberg correspondence@lang
+ | corresponding@EilenbergLang
+ | Eilenberg-Schützenberger correspondence@Sg
+ | corresponding@EilenbergSg
+
+\knowledge{notion}
+ | satisfied@profeq
+ | satisfiability@profeq
+
+\knowledge{notion}
+ | defining@profeq
+ | defined@profeq
+
+% -----
+% Operations relatied to pseudovarieties
+% -----
+
+\knowledge{notion}
+ | Boolean combinations
+ | Boolean combination
+
+\knowledge{notion}
+ | Syntactic derivatives
+ | syntactic derivatives
+
+\knowledge{notion}
+ | Inverse morphisms
+ | inverse morphisms
+
+% \knowledge{notion}
+%  | left residual
+
+% \knowledge{notion}
+%  | right residual
+
+\knowledge{notion}
+ | residuals
+ | residual
+
+% -----
+% Pseudovarieties of synchronous stuff
+% -----
+
+\knowledge{notion}
+ | pseudovariety of synchronous algebras
+ | pseudovarieties of synchronous algebras
+ | pseudovariety@syncalg
+
+\knowledge{notion}
+ | $\ast $-pseudovariety of synchronous relations
+ | $\ast $-pseudovarieties of synchronous relations
+ | $\ast $-pseudo\-variety of synchronous relations
+ | $*$-pseudovariety of synchronous relations
+ | pseudovariety@syncrel
+ | $\ast $-pseudovariety@sync
+ | $*$-pseudovariety@sync
+ | $*$-pseudovarieties of synchronous relations
+
+\knowledge{notion}
+ | generated@var
+ | pseudovariety generated
+
+\knowledge{notion}
+ | Eilenberg correspondence@sync
+ | corresponding@EilenbergSy
+ | corresponds@EilenbergSy
+ | correspond@EilenbergSy
+ | Eilenberg-Schützenberger correspondence@sync
+
+% -----
+% Pseudovarieties of positive synchronous stuff
+% -----
+
+\knowledge{notion}
+ | pseudovarieties of positive synchronous algebras
+ | Pseudovarieties of positive synchronous algebras
+ | pseudovariety of positive synchronous algebras
+ | pseudovariety@syncP
+
+\knowledge{notion}
+ | $+$-pseudovariety of synchronous relations
+ | $+$-pseudovarieties of synchronous relations
+ | $+$-pseudovariety@sync
+
+% -----
+% Not closed under complement
+% -----
+
+\knowledge{notion}
+ | $+$-stream of relations
+ | streams

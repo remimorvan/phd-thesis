@@ -1,0 +1,150 @@
+% -----
+% Monoids
+% -----
+
+\knowledge{notion}
+ | divide@monoid
+ | division@monoid
+ | monoid division
+
+% -----
+% Classical algebras
+% -----
+
+\knowledge{notion}
+ | synchronous algebras
+ | synchronous algebra
+ | algebra@sync
+ | algebras@sync
+
+\knowledge{notion}
+ | product
+
+\knowledge{notion}
+ | underlying monoids
+ | underlying monoid
+
+\knowledge{notion}
+ | recognize@sync
+ | recognizes@sync
+ | recognized@sync
+ | recognizing@sync
+ | recognizability@sync
+
+% \knowledge{notion}
+%  | free synchronous algebra
+
+\knowledge{notion}
+ | synchronous algebra morphisms
+ | synchronous algebra morphism
+ | Morphisms of synchronous algebras
+ | morphism of synchronous algebras
+ | morphism@sync
+ | morphisms@sync
+ | morphisms of synchronous algebras
+
+\knowledge{notion}
+ | isomorphisms@sync
+ | isomorphisms of synchronous algebras
+
+\knowledge{notion}
+ | syntactic synchronous algebra
+ | syntactic synchronous algebras
+ | syntactic algebra@sync
+ | syntactic algebras@sync
+
+\knowledge{notion}
+ | syntactic synchronous algebra morphism
+ | syntactic morphism@sync
+ | syntactic synchronous morphism
+ | syntactic morphisms@sync
+
+\knowledge{notion}
+ | congruence@sync
+ | Congruences@sync
+
+\knowledge{notion}
+ | quotient@sync
+
+\knowledge{notion}
+ | subalgebra@sync
+ | subalgebras
+
+\knowledge{notion}
+ | divides@sync
+ | division@sync
+ | divide@sync
+
+\knowledge{notion}
+ | locally generated@sync
+ | locally generated
+ | locally generated algebras
+
+\knowledge{notion}
+ | quotient structure
+ | quotient structures
+ | quotient structures@sync
+
+\knowledge{notion}
+ | syntactic congruence
+ | syntactic congruences
+ | syntactic congruences@sync
+
+\knowledge{notion}
+ | induces@sync
+ | synchronous algebra induced by the monoid
+
+\knowledge{notion}
+ | consolidation
+
+% -----
+% Positive algebras
+% -----
+
+\knowledge{notion}
+ | positive synchronous algebras
+ | positive synchronous algebra
+ | positive algebras@sync
+ | positive algebra@sync
+ | algebra@syncP
+ | algebras@syncP
+
+\knowledge{notion}
+ | underlying semigroups
+ | underlying semigroup
+
+\knowledge{notion}
+ | syntactic positive synchronous algebra
+ | syntactic positive synchronous algebras
+ | syntactic positive algebra@sync
+
+\knowledge{notion}
+ | morphism of positive synchronous algebras
+ | Morphisms of positive synchronous algebras
+ | positive synchronous algebras morphisms
+ | positive synchronous algebra morphism
+ | morphisms of positive synchronous algebras
+ | morphism@syncP
+ | synchronous positive morphism
+ | positive synchronous algebra morphisms
+ | morphisms@syncP
+
+\knowledge{notion}
+ | syntactic morphism@syncP
+ | syntactic positive synchronous algebra morphism
+
+\knowledge{notion}
+ | induces@syncP
+ | positive synchronous algebra induced
+
+% \knowledge{notion}
+%  | Congruences@syncP
+
+% \knowledge{notion}
+%  | quotient structures@syncP
+
+% \knowledge{notion}
+%  | syntactic congruences@syncP
+
+\knowledge{notion}
+ | naive synchronous algebra

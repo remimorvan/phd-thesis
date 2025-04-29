@@ -1,0 +1,51 @@
+\knowledge{notion}
+  | locally trivial languages
+
+% -----
+% My cute theorems 
+% -----
+
+\knowledge{notion}
+ | Lifting Theorem
+ | lifting theorem
+ | Lifting Theorem: Elementary Formulation
+ | Lifting theorem: Elementary Formulation
+ | lifting theorem for monoids
+ | lifting theorem@monoids
+
+\knowledge{notion}
+ | lifting theorem@semigroups
+ | Lifting Theorem for Semigroups
+
+\knowledge{notion}
+ | Lifting Theorem: Pseudovariety Formulation
+ | lifting theorem@monoidspseudovar
+
+\knowledge{notion}
+ | syntactic morphism theorem@sync
+ | Syntactic morphism theorem@sync
+
+\knowledge{notion}
+ | Eilenberg correspondence theorem@sync
+ | An Eilenberg theorem for synchronous relations
+
+\knowledge{notion}
+ | Reiterman-style characterization of pseudovarieties@sync
+ | A Reiterman theorem for positive synchronous algebras@sync
+
+% -----
+% External ref to ncatlab
+% -----
+
+\knowledge{url={https://ncatlab.org/nlab/show/algebra+over+a+monad}}
+ | Eilenberg-Moore algebras
+
+\knowledge{url={https://ncatlab.org/nlab/show/isomorphism}}
+ | isomorphism
+ | isomorphisms
+
+\knowledge{url={https://ncatlab.org/nlab/show/under+category}}
+ | coslice category
+
+\knowledge{url={https://ncatlab.org/nlab/show/cartesian+product}}
+ | Cartesian product@cat

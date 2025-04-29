@@ -1,0 +1,98 @@
+% -----
+% Profinite stuff
+% -----
+
+\knowledge{notion}
+ | profinite dependencies
+ | profinite dependency
+
+\knowledge{notion}
+ | profinite equalities
+ | profinite equality
+
+\knowledge{notion}
+ | profinite implication
+
+ \knowledge{notion}
+ | profinite equivalences
+ | profinite equivalence
+
+\knowledge{notion}
+ | Cauchy sequences
+ | Cauchy sequence
+ | Cauchy
+
+\knowledge{notion}
+ | Profinite words
+ | profinite word
+ | profinite words
+
+\knowledge{notion}
+ | satisfies@profdep
+ | satisfy@profdep
+ | satisfying@profdep
+ | satisfied@profdep
+ | profinite dependencies satisfied
+
+\knowledge{notion}
+ | defined@profdep
+ | defines@profdep
+
+\knowledge{notion}
+ | typing
+ | typings
+
+\knowledge{notion}
+ | consistent@typing
+ | typings consistent
+ | typing consistent
+ | well-typed
+
+\knowledge{notion}
+ | profinite dependencies induced by a profinite equation
+ | profinite dependencies induced by
+ | profinite dependencies induced
+ | induced@profdep
+ | induced profinite dependencies
+ | profinite dependencies induced by a profinite equality
+
+% -----
+% Pointlike sets
+% -----
+
+% \knowledge{notion}
+%  | pointlike sets
+%  | $\B {V}$-pointlike sets
+%  | $\B {V}$-pointlike set
+%  | pointlikes
+%  | pointlike
+
+% \knowledge{notion}
+%  | Henckell for $\+E$
+%  | Henckell for $\+F$
+%  | Henckell for $\EqVar {\B {V}}$
+
+% \knowledge{notion}
+%  | Henckell
+%  | Henckell pseudovarieties
+%  | Henckell pseudovariety
+
+% \knowledge{notion}
+%  | $\+E$-closure
+
+\knowledge{notion}
+ | free pro-$\B {V}$ positive synchronous algebra
+
+% Weird equations 
+
+\knowledge{notion}
+ | explicit profinite equivalence
+ | explicit profinite equivalences
+
+\knowledge{notion}
+ | satisfies@profequiv
+ | satisfied@profequiv
+ | satisfy@profequiv
+
+\knowledge{notion}
+ | satisfies@explprofequiv

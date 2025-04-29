@@ -1,2 +1,8 @@
 \knowledge{url={https://creativecommons.org/licenses/by/4.0/deed.en}}
  | CC BY 4.0
+
+\knowledge{url=https://ctan.org/pkg/knowledge, typewriter}
+ | knowledge
+
+\knowledge{url=https://github.com/remimorvan/knowledge-clustering/, typewriter}
+ | knowledge-clustering
