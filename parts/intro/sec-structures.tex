@@ -49,16 +49,16 @@ see \Cref{fig:example-graph-homomorphism}.
 \end{figure}
 
 To enrich the structure---but more importantly to add a splash of colour to this thesis---,
-we will in fact consider more complex structures: 
+we will consider more complex structures: 
 we allow for multiple edge relations, or even relations of higher arity linking the vertices.
 Which kind of relations (and how many of which kind) is allowed is known as the "signature" $\sigma$ of the "structure". 
-These richer structures are known as "-structures" or "relational structures"---see
+These richer structures are known as "$\sigma$-structures" or "relational structures"---see
 \Cref{fig:example-structure-homomorphism}---, and
 "homomorphisms" between "$\sigma$-structures" are asked to preserve \emph{all} relations
 in the "signature" $\sigma$.
 
 \decisionproblem{The ""Homomorphism Problem"" over $\sigma$}{
-	Two finite $\sigma$-structures $\?A$ and $\?B$
+	Two finite $\sigma$-structures $\?A$ and $\?B$.
 }{
 	Is there a "homomorphism" from $\?A$ to $\?B$?
 }
@@ -138,7 +138,7 @@ the existence of a "homomorphism" from $\?A$ to $\?B$.
 
 More than a mere decision problem---which obviously lives in "NP"---,
 the "homomorphism problem" should rather be seen as a \emph{framework} or
-\emph{language} to formalize many common problems in computer science.
+\emph{language} to formalize many problems arising in computer science.
 
 \begin{marginfigure}
 	\centering
@@ -231,13 +231,13 @@ the "homomorphism problem" should rather be seen as a \emph{framework} or
 
 Note that in both \Cref{ex:auto-as-rel,ex:graph-colouring-as-hom},
 not only does the existence of a "homomorphism" is equivalent to the existence
-of a solution to the problem, but in fact the set of "homomorphism" is in fact
+of a solution to the problem, but in fact the set of "homomorphisms" is in fact
 in natural bijection with the set of solutions:
 \begin{itemize}
 	\item in \Cref{ex:auto-as-rel}, "homomorphisms" from $\?W_u$ to $\?A$
 		exactly correspond to accepting runs of the automaton over $u$;
 	\item in \Cref{ex:graph-colouring-as-hom}, "homomorphisms" from $\?G$ to $\clique{k}$
-		exactly correspond to $k$-colouring of $\?G$.
+		exactly correspond to $k$-colourings of $\?G$.
 \end{itemize}
 
 \begin{figure}
@@ -471,7 +471,7 @@ in natural bijection with the set of solutions:
 		The last column indicates whether the structure encoding the data
 		(resp. the query) is on the left-hand side ("ie" acts as the "input structure")
 		or the right-hand hand (the "target structure")
-		of the homomorphism problem.
+		of the "homomorphism problem".
 	}
 \end{table}
 
@@ -497,9 +497,7 @@ and we often study problems where
 the query is fixed---for instance the 3-colourability problem.
 Accordingly, not only do these two sides of the "homomorphism problem" split this thesis
 in two parts: both sides form independent research domains, known as \emph{database theory}
-and \emph{constraint satisfaction problems}, which is related logic programming...%
-\footnote{... and to `artificial intelligence', as many finite model theorists
-like to point out in grant applications.}
+and \emph{constraint satisfaction problems}.
 % Formally, we define:
 % \begin{itemize}
 % 	\itemAP the ""combined complexity"" of a model-checking problem to be the complexity of
