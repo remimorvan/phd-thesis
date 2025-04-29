@@ -35,7 +35,7 @@
  | relational structure
  | relational structures
  | $\tau $-structure
-%  | -structures
+%  | all structures
 
 \knowledge{notion}
  | pointed $\sigma $-structure
@@ -70,6 +70,7 @@
  | hyperedges
  | $\+R$-tuple
  | $\+R$-tuples
+ | non-hyperedges
 
 \knowledge{notion}
  | locally finite@struct
@@ -129,7 +130,7 @@
 
 \knowledge{notion}
  | distance@struct
-%  | distances@struct
+ | distances@struct
 
 % ---
 % Substructures & misc 
@@ -138,7 +139,7 @@
 \knowledge{notion}
  | substructure
  | finite subgraph
-%  | substructures
+ | substructures
 
 \knowledge{notion}
  | induced substructure

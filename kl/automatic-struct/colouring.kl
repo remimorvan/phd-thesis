@@ -42,9 +42,11 @@
 \knowledge{notion}
  | separates@rel
  | separator@rel
+ | separated@rel
  
 \knowledge{notion}
  | separable@rel
+ | $\+V$-separable@rel
 
 \knowledge{notion}
  | $k$-coloured automaton

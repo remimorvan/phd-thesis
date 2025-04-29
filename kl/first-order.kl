@@ -22,6 +22,7 @@
 \knowledge{notion}
  | first-order definable
  | definable relations
+ | non-first-order definable
 
 % ---
 % FO interpretations & reductions 
@@ -84,6 +85,11 @@
  | order-invariant first-order formulas
  | order-invariant@FO
  | order-invariance@FO
+
+\knowledge{notion}
+ | $\omega $-order-invariant first-order formulas
+ | $\omega $-order-invariant@FO
+ | $\omega $-order-invariant first-order formula
 
 \knowledge{url={https://en.wikipedia.org/wiki/L\%C3\%B6wenheim\%E2\%80\%93Skolem_theorem}}
  | upward Löwenheim–Skolem theorem

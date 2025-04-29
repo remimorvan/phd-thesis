@@ -86,9 +86,11 @@
 
 \knowledge{wrap=\textsf}
  | arithmetical hierarchy
+ | \emph {arithmetical} hierarchy
 
 \knowledge{wrap=\textsf}
  | analytical hierarchy
+ | \emph {analytical} hierarchy
 
 \knowledge{wrap=\textsf}
 | ZFC

@@ -29,6 +29,7 @@
  | $\+C$/$\+D$-membership problem
  | membership@problemrel
  | $\RAT $/$\REC $-membership problem
+ | $\DRAT $/$\REC $-membership problem
  
 \knowledge{notion, wrap=\DPfont}
  | $\+D$-separability problem for $\+C$-relations
@@ -37,6 +38,7 @@
 
 \knowledge{notion, wrap=\DPfont}
  | $\RAT $/$\REC $-separability problem
+ | $\RAT $/$\REC $-separability problems
 
 \knowledge{notion, wrap=\DPfont}
  | $\AUT $/$\REC $-separability problem
@@ -51,13 +53,16 @@
  | $\AUT $/$\REC $-separability@problem
  | $\AUT $/$\kREC $-separability@problem
  | $\REC $-separability problem for automatic relations
+%  | separability problems
 
 \knowledge{notion, wrap=\DPfont}
  | $\REC $-membership problem
  | $\REC $-membership@problem
  | $\kREC $-membership problem
  | $\kPROD $-membership problem
- | $\REC $-membership problem for automatic relations
+ | $\REC $-membershipmembership problems problem for automatic relations
+ | membership problem
+ | membership problems
 
 \knowledge{notion}
  | inclusion problem@rel
