@@ -225,22 +225,22 @@ tree-shaped "queries@CQ" is "FPT".
 
 In fact, for this reasoning to work, the notion of ``tree-shaped'' need not
 be as restrictive as what is shown in \Cref{fig:SQL-as-CQ}: for instance,
-edges could be reverse. More generally, if the "query@@CQ" has "tree-width"%
+edges could be reversed. More generally, if the "query@@CQ" has "tree-width"%
 \footnote{Tree-width is a graph-parameter that measure how far a graph is from a tree.
 The notion can be extended to "relational structures".}
 at most $k$, then we still get a polynomial-time evaluation algorithm---where the order
 of the polynomial depends on $k$. In turns, it means that for every $k\in\Np$,
 evaluating "conjunctive queries" that are semantically equivalent to
 a "queries@CQ" of "tree-width" at most $k$ is "FPT".\footnote{In fact,
-they can even be evaluated in polynomial time, but the argument is less straightforward.
-todo:addref.}
+they can even be evaluated in polynomial time, but the argument is less straightforward
+\cite{ChekuriRajaraman2000TreeWidthPolytime}.}
 
 Remarkably, this is \emph{exactly} the limit of tractability for these "queries@CQ":
-a class of "conjunctive queries"
+Grohe showed that a class of "conjunctive queries"
 satisfying mild closure properties has "FPT" evaluation "iff"
 it has bounded ``"semantic tree-width"''---meaning that there exists $k\in\Np$ "st"
 every "query@CQ" in the class is "semantically equivalent" to a "query@CQ" 
-of "tree-width" at most $k$.%
+of "tree-width" at most $k$ \cite{Grohe2007ComplexityHomomorphism}.%
 \footnote{The same equivalent holds for polynomial-time evaluation.}
 
 \begin{known}
@@ -604,7 +604,8 @@ It begs the question of deciding when a "query@CRPQ" is actually equivalent
 to such an object.
 
 \begin{known}
-	Barceló, Romero and Vardi devised an algorithm to test
+	Barceló, Romero and Vardi \cite{BarceloRomeroVardi2016SemanticAcyclicity}
+	devised an algorithm to test
 	if a "conjunctive regular path queries" is equivalent to
 	a finite union of ``acyclic''---meaning of "tree-width" 1---"queries@CRPQ".
 \end{known}
@@ -682,7 +683,7 @@ problem for "conjunctive regular path queries" of bounded "semantic tree-width"
 is "FPT" when parametrized by the size of the "query@sem".%
 \footnote{This result was in fact already known---but proven differently, with
 an incomparable complexity (better preprocessing but worst polynomial exponent)---by
-\todo{addref}.}
+Romero, Barceló and Vardi \cite{RomeroBarceloVardi2017Homomorphism}.}
 
 Whether the converse hold remains a mystery: many attempts
 have been tried to extend Grohe's proof for "conjunctive queries" to this setting,
