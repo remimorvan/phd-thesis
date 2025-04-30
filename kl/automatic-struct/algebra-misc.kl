@@ -12,6 +12,7 @@
  | Lifting theorem: Elementary Formulation
  | lifting theorem for monoids
  | lifting theorem@monoids
+%  | Lifting theorem
 
 \knowledge{notion}
  | lifting theorem@semigroups

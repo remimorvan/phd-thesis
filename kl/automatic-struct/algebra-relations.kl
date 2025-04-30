@@ -1,36 +1,8 @@
 \knowledge{notion}
- | well-formed word
- | non-well-formed word
- | well-formed words
- | well-formed
-
-\knowledge{notion}
- | relation
- | relations
-
-\knowledge{notion}
  | complement@rel
 
 \knowledge{notion}
  | synchronous words
-
-\knowledge{notion}
- | synchronous automaton
- | synchronous automata
-
-\knowledge{notion}
- | rational relations
- | rational
-
-\knowledge{notion}
- | synchronous relation
- | synchronous relations
- | synchronous
- | automatic relations
- | Automatic relations
- | automatic relation
- | regular relations
- | Synchronous relations
 
 \knowledge{notion}
  | $\+V$-relation
@@ -38,6 +10,8 @@
  | $\LocTriv $-relation
  | $\LocTriv $-relations
  | $\+V$-(synchronous) relations
+%  | relation
+%  | relations
 
 \knowledge{notion}
  | group relation
@@ -46,11 +20,6 @@
 \knowledge{notion}
  | commutative relations
  | commutative relation
-
-\knowledge{notion}
- | recognizable
- | recognizable relations
- | recognizable relation
 
 \knowledge{notion}
  | nilpotent relations

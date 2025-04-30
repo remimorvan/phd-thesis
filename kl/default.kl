@@ -4,12 +4,6 @@
 %  | knowledge package
 %
 %\knowledge{notion}
-%  | knowledge
-%
-%\knowledge{notion}
-%  | knowledge-clustering
-%
-%\knowledge{notion}
 %  | finite (directed) graphs
 %
 %\knowledge{notion}
@@ -144,16 +138,7 @@
 %  | monoids
 %
 %\knowledge{notion}
-%  | synchronous algebras
-%  | synchronous algebra
-%  | algebra@sync
-%  | algebras@sync
-%
-%\knowledge{notion}
-%  | syntactic synchronous algebra
-%  | syntactic synchronous algebras
-%  | syntactic algebras@sync
-%  | syntactic algebra@sync
+%  | $\REC $-membership problem for automatic relations
 %
 %\knowledge{notion}
 %  | intersection non-emptiness problem
@@ -172,267 +157,26 @@
 %  | $\omega $-order-invariant
 %
 %\knowledge{notion}
-%  | tournament
-%
-%\knowledge{notion}
 %  | input side@struct
 %
 %\knowledge{notion}
 %  | currying
 %
 %\knowledge{notion}
-%  | $\+V$-relation
-%  | $\+V$-relations
-%  | relation
-%  | relations
+%  | tournament
 %
 %\knowledge{notion}
 %  | e.g.
 %
 %\knowledge{notion}
-%  | lifting theorem
-%  | Lifting Theorem
-%  | Lifting theorem
-%
-%\knowledge{notion}
-%  | dependency relation
-%
-%\knowledge{notion}
-%  | dependency
-%  | dependent
-%
-%\knowledge{notion}
-%  | Lifting theorem: Elementary Formulation
-%
-%\knowledge{notion}
-%  | corresponding@EilenbergSg
-%
-%\knowledge{notion}
-%  | pseudovariety of monoids
-%  | pseudovarieties of monoids
-%  | pseudovarieties of mon\-oids
-%
-%\knowledge{notion}
-%  | recognized@sync
-%  | recognizes@sync
-%  | recognize@sync
-%  | recognizing@sync
-%
-%\knowledge{notion}
-%  | underlying monoids
-%  | underlying monoid
-%
-%\knowledge{notion}
 %  | synchronous
-%
-%\knowledge{notion}
-%  | residuals
-%  | residual
-%
-%\knowledge{notion}
-%  | lifting theorem@monoids
-%  | lifting theorem for monoids
-%
-%\knowledge{notion}
-%  | $*$-pseudovarieties of synchronous relations
-%  | $\ast $-pseudovariety of synchronous relations
-%  | $\ast $-pseudo\-variety of synchronous relations
-%  | $\ast $-pseudovarieties of synchronous relations
-%
-%\knowledge{notion}
-%  | lifting theorem@monoidspseudovar
-%
-%\knowledge{notion}
-%  | complement@rel
 %
 %\knowledge{notion}
 %  | regular relations
 %
 %\knowledge{notion}
-%  | group relations
-%  | group relation
-%
-%\knowledge{notion}
-%  | letter-type
-%  | letter-types
-%
-%\knowledge{notion}
-%  | type
-%  | types
-%
-%\knowledge{notion}
-%  | $\types $-typed set
-%  | typed set
-%  | typed sets
-%  | $\typesEps $-typed sets
-%
-%\knowledge{notion}
-%  | map between typed sets
-%  | maps of typed sets
-%
-%\knowledge{notion}
-%  | syntactic congruence
-%
-%\knowledge{notion}
-%  | dependent set
-%  | dependent sets
-%
-%\knowledge{notion}
-%  | closed subset
-%  | closed subsets
-%
-%\knowledge{notion}
-%  | synchronous words
-%
-%\knowledge{notion}
-%  | product
-%
-%\knowledge{notion}
-%  | Eilenberg-Moore algebras
-%
-%\knowledge{notion}
-%  | Morphisms of synchronous algebras
-%  | synchronous algebra morphisms
-%  | synchronous algebra morphism
-%  | morphism of synchronous algebras
-%
-%\knowledge{notion}
-%  | morphism@sync
-%  | morphisms@sync
-%
-%\knowledge{notion}
-%  | recognizability@sync
-%
-%\knowledge{notion}
-%  | induces@sync
-%
-%\knowledge{notion}
-%  | compatible type
-%
-%\knowledge{notion}
-%  | consolidation
-%
-%\knowledge{notion}
-%  | syntactic synchronous algebra morphism
-%
-%\knowledge{notion}
-%  | Syntactic morphism theorem@sync
-%
-%\knowledge{notion}
-%  | congruence@sync
-%
-%\knowledge{notion}
-%  | locally transitive
-%
-%\knowledge{notion}
-%  | syntactic morphism@sync
-%  | syntactic morphisms@sync
-%
-%\knowledge{notion}
-%  | closed
-%
-%\knowledge{notion}
-%  | synchronous algebra induced by the monoid
-%
-%\knowledge{notion}
-%  | divides@sync
-%  | divide@sync
-%
-%\knowledge{notion}
-%  | divide@monoid
-%
-%\knowledge{notion}
-%  | division@monoid
-%  | monoid division
-%
-%\knowledge{notion}
-%  | naive synchronous algebra
-%
-%\knowledge{notion}
-%  | pseudovariety of synchronous algebras
-%  | pseudovarieties of synchronous algebras
-%
-%\knowledge{notion}
-%  | Eilenberg correspondence@sync
-%
-%\knowledge{notion}
-%  | Eilenberg correspondence@lang
-%
-%\knowledge{notion}
-%  | quotient@sync
-%
-%\knowledge{notion}
-%  | subalgebra@sync
-%
-%\knowledge{notion}
-%  | locally generated@sync
-%
-%\knowledge{notion}
-%  | locally generated
-%
-%\knowledge{notion}
-%  | pseudovariety@syncalg
-%
-%\knowledge{notion}
-%  | Boolean combinations
-%  | Boolean combination
-%
-%\knowledge{notion}
-%  | Syntactic derivatives
-%  | syntactic derivatives
-%
-%\knowledge{notion}
-%  | Inverse morphisms
-%  | inverse morphisms
-%
-%\knowledge{notion}
-%  | generated@var
-%
-%\knowledge{notion}
-%  | pseudovariety generated
-%
-%\knowledge{notion}
-%  | subalgebras
-%
-%\knowledge{notion}
-%  | Eilenberg correspondence theorem@sync
-%
-%\knowledge{notion}
-%  | An Eilenberg theorem for synchronous relations
-%
-%\knowledge{notion}
-%  | division@sync
-%
-%\knowledge{notion}
-%  | Eilenberg-Schützenberger correspondence@sync
-%
-%\knowledge{notion}
-%  | Lifting Theorem: Pseudovariety Formulation
-%
-%\knowledge{notion}
 %  | fully-preordered@lang
 %  | fully-preordered languages
-%
-%\knowledge{notion}
-%  | mutually dependent
-%
-%\knowledge{notion}
-%  | idempotent
-%
-%\knowledge{notion}
-%  | pseudovarieties of semigroups
-%
-%\knowledge{notion}
-%  | profinite equality
-%
-%\knowledge{notion}
-%  | profinite implication
-%
-%\knowledge{notion}
-%  | satisfiability@profeq
-%
-%\knowledge{notion}
-%  | defining@profeq
 %
 %\knowledge{notion}
 %  | pseudovariety of automatic relations

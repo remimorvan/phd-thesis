@@ -8,16 +8,15 @@ be read independently from one another.
 
 The introduction (\Cref{ch:intro}) is targeted at anyone with
 a reasonable understanding of theoretical computer science---corresponding roughly
-to a master's level. This chapter is not technical and introduces as few definitions
+to a Master’s degree in theoretical computer science. This chapter is not technical and introduces as few definitions
 as possible. Its goal is to provide an overview of the foundational results of the
-field, the questions we studied in this thesis, our contributions, as well
-as the most important open questions that remain to be solved.
+field, the questions we studied in this thesis, our contributions,
+and the key open questions that remain unsolved.
 \textbf{If you should only read one chapter of this thesis, let it be \Cref{ch:intro}!}
 
 The next chapter presents the general preliminaries (\Cref{ch:general-preliminaries}):
-it serves no other purpose but to make all notions unambiguous. We advise
-the reader to quickly skim over it, and to go back to this chapter only when
-needed.
+it serves no other purpose but to make all notions unambiguous.
+We suggest that readers skim it initially and return to it as needed.
 
 This thesis is then divided in two independent parts:
 the first one focuses on database theory (\Cref{part:databases}),
@@ -27,8 +26,8 @@ Each part starts with a quick survey of the domain
 followed by two chapters presenting our main contributions in this domain
 (\Cref{ch:minimization-CRPQ,ch:semantic-tree-width-CRPQ} for database theory,
 and \Cref{ch:dichotomy-theorem,ch:algebra} for automatic structures).
-Finally, each part is concluded by a discussion (\Cref{ch:conclu-database,ch:conclu-automatic}),
-mostly about open problems, but also on techniques that we used to attempt (and failed) to solve these problems.
+Each part concludes with a discussion (\Cref{ch:conclu-database,ch:conclu-automatic}) that highlights open problems and reflects on the techniques we explored, including those that proved unsuccessful.
+See \Cref{fig:chapter-dependency-graph} or the dependency graph of these chapters.
 
 A succinct global table of content is presented in \Cref{sec:contents},
 and each chapter is preceded by a more detailed one.
@@ -45,13 +44,26 @@ and each chapter is preceded by a more detailed one.
 		\node[below left=1.5cm and 1cm of 7] (8) {\ref{ch:dichotomy-theorem}};
 		\node[below right=1.5cm and 1cm of 7] (9) {\ref{ch:algebra}};
 		\node[below left=1.5cm and 1cm of 9] (10) {\ref{ch:conclu-automatic}};
+		\draw[edge] (1) to (3);
+		\draw[edge] (1) to (7);
+		\draw[edge] (2) to (3);
+		\draw[edge] (2) to (7);
+		\draw[edge] (3) to (4);
+		\draw[edge] (3) to (5);
+		\draw[edge] (4) to (6);
+		\draw[edge] (5) to (6);
+		\draw[edge] (7) to (8);
+		\draw[edge] (7) to (9);
+		\draw[edge] (8) to (10);
+		\draw[edge] (9) to (10);
 	\end{tikzpicture}
+	\caption{\AP\label{fig:chapter-dependency-graph}
+		Dependency graph of the chapters of this thesis.}
 \end{marginfigure}
-\todo{Chapter dependence graph in margin.}
 
 \section*{Knowledge \& Knowledge-Clustering}
 This thesis was written using Thomas Colcombet's "knowledge package", allowing
-one to click on a notion (be it textual of symbolic) to go to its definition:
+one to click on a notion (be it textual or symbolic) to go to its definition:
 for instance try clicking on "automatic structure", or on
 $\semFO{\phi}{\univStructSynchronous{\Sigma}}$!
 Most pdf viewers allow you to go back to where you previously were
@@ -61,7 +73,8 @@ by using Cmd+left in Acrobat Reader or Skim on Mac OS.}
 An index is also given at the end of this thesis (\todo{addref}).
 
 The extensive use of "knowledge" was permitted by "knowledge-clustering",
-a command-line tool I developed to help facilitate the use of "knowledge":
+a command-line tool I developed to help streamline and scale the use
+of the knowledge package in large LaTeX documents:
 I would like to thank all the people that provided me with suggestions,
 feature requests or bug reports, with a special thought for Thomas Colcombet, Aliaume Lopez
 and Antonio Casares.%
@@ -83,8 +96,9 @@ unreasonably long documents!}
 \end{marginfigure}
 Many results of this thesis assume the undecidability of the halting problem:
 we hence assume that the reader lives in the familiar spacetime \cite{Hogarth1994NonTuring}.
-Should the reader be in rotation around a black hole, we kindly suggest
-to them to calmly close this thesis and focus on addressing this situation.
+Should the reader be in rotation around a black hole, we kindly suggest that
+they momentarily set aside this thesis and focus on resolving the more pressing
+astrophysical situation.
 
 \section*{Acknowledgements}
 
