@@ -1,6 +1,7 @@
 \section{Existentialism is a Database Theory}
 % Existentialism is a Humanism
 % - Jean-Paul Sartre
+\label{sec:intro-existential}
 
 \begin{marginfigure}
 	\centering
@@ -8,8 +9,8 @@
 	\caption{Looking glass room, by John Tenniel.}
 \end{marginfigure}
 
-We think of problems of the form $\textsf{query} \homto^? \textsf{data}$
-as existential problems: for instance, if $\?G$ is the "graph@@dir" with
+We now turn to the $\textsf{query} \homto^? \textsf{data}$ side of the homomorphism problem. This perspective captures classical database evaluation and highlights how such queries naturally express existential, monotonic properties.
+For instance, if $\?G$ is the "graph@@dir" with
 two nodes $u$ and $v$ and a single edge from $u$ to $v$,
 then asking if there is a "homomorphism" from $\?G$ to a graph $\?H$ amounts
 to asking if there exists at least one edge in $\?G$.
@@ -95,7 +96,7 @@ it returns every possible tuple $\bar d$ of elements of $\?D$ such that
 there exists a "homomorphism" from $\?G$ to $\?D$ that sends $\bar x$ to $\bar d$.
 Overall, these characterizations shows this fragment to be quite robust.
 
-Overall, these problems boils down to
+Overall, these problems boil down to
 "homomorphism problems" of the form $\textsf{query} \homto^? \textsf{data}$.
 Assuming that the "query@@sem" if fixed,
 the naive algorithm to solve the "homomorphism problem"---consisting in enumerating
@@ -105,17 +106,19 @@ In fact, it is straightforward to devise an algorithm in "uniform-AC0"---actuall
 of the circuit does not even depend on $\?A$: there is roughly one layer simulating the
 existential quantifiers, and another one simulating the conjunctions.
 
+We now turn to the complexity of evaluating these "queries@CQ".
 While $|B|^{|A|}$ is indeed polynomial when $\?A$ is fixed,
-recall that $\?B$ represents a database: despite what complexity theorists want us to believe,
-when dealing with 2.9 TB data, there is very little difference between
-`polynomial-time (of degree 7)' and `woops, my computer needs to do more operations to solve
-this problem than there are atoms in the observable universe'.
+recall that $\?B$ represents a database:
+even though complexity theory pretend that polynomial-time is tractable,
+a polynomial-time algorithm of degree seven,
+run over a 2.9 TB database, will execute more instructions
+than there are atoms in the observable universe.
 This leads to two natural questions:
 \begin{itemize}
 	\item optimizing the size of the exponent, "ie"
 		replacing the "query@@sem" with a semantically equivalent one of smaller size,
 	\item studying the parametrized complexity of the evaluating SQL queries, when parametrized by
-		the size of the query: this provides a finer complexity notion than
+		the size of the query. This provides a finer complexity notion than
 		the classical "NP"/"AC0" approach; our previous remark shows the result to be
 		slicewise polynomial ("XP"), which is not as well-behaved in practice than
 		the "fixed-parameter tractable" ("FPT") problems.
@@ -209,8 +212,7 @@ Hence, to evaluate $\gamma$, one can instead:
 	\item then evaluate this "core" on the database.
 \end{itemize}
 The interest of this approach is that, while databases are ever-changing,
-queries are often handwritten and somewhat short. Spending some ever to optimize
-them is hence beneficial, since it might lead to performance gain
+queries are often handwritten and somewhat short. Spending effort optimising them can be beneficial, since it might lead to performance gain
 for \emph{every} evaluation of the query: this is why studying the
 complexity of the evaluation problem parametrized by the size of
 the query is relevant.
@@ -575,8 +577,9 @@ then any "conjunctive query" "semantically equivalent" to it must use at least $
 Another of our contributions is to identify a sufficient condition%
 \footnote{However, contrary to the "core", this condition is not necessary.}
 on a "query@CRPQ" so that \emph{any} "query" "semantically equivalent" to it
-must contain a ``complex pattern''. This theorem is enjoyably quite generic,
-as the notion of ``complex pattern'' is formalized as a ``"minor-closed" class
+must contain a ``complex pattern''. The strength of this theorem lies in its
+general applicability, as the notion of ``complex pattern''
+is formalized as a ``"minor-closed" class
 of graphs''---examples include the class of all graphs with at most $k$ "atoms",
 or the class of all graphs of "tree-width" at most $k$.
 
@@ -693,3 +696,5 @@ in \Cref{ch:conclu-database}.
 	Characterize the "classes of CRPQ" with "FPT" evaluation
 	when parametrized in the size of the "query@CRPQ".
 \end{openproblemintro}
+
+To summarize, the $\textsf{query} \homto^? \textsf{data}$ formulation of the "homomorphism problem" provides a robust foundation for classical database theory. The first part of this thesis extends this framework to a richer context: graph databases and queries extended with regular path predicates.

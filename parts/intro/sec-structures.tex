@@ -1,11 +1,35 @@
 \section{The Two Sides of the Homomorphism Problem}
 
-This thesis is devoted to studying variations of the "homomorphism problem".
-This problem takes two "finite (directed) graphs", consisting of a finite set of vertices (also called \emph{domain}) $V$ together with a set of
-"edges" $\+E \subseteq V \times V$, and asks if there is a "homomorphism" 
-between them, which consists of a function between vertices that preserves
-the "edges", in the sense that any edge must be mapped to another edge,
-see \Cref{fig:example-graph-homomorphism}.
+This thesis is devoted to studying variations of the "homomorphism problem",
+a central concept in theoretical computer science.
+Homomorphisms capture the idea of maps preserving relational information between mathematical structures.
+They arise naturally across a variety of domains: in logic, as the mechanism behind positive-existential quantification; in database theory, as the semantics of conjunctive query evaluation; and in constraint satisfaction, as the formalization of whether a structure
+satisfies a given set of rules. This thesis approaches the "homomorphism problem" as a unifying framework, by emphasizing its complementary role in data querying and constraint solving.
+
+To introduce this problem, we present a wide range of examples---from
+query evaluation to SAT solving---that call all be encoded as
+"homomorphism problems".
+Interestingly, they reveal a dichotomy on how problems are encoded as "homomorphism problems":
+in some, the query appears on the left-hand side of the "homomorphism", 
+while on others it appears on the right.
+The first type of encoding correspond to what we call \emph{existential problems},
+and are rooted in the field of \emph{database theory}:
+we introduce this domain in \Cref{sec:intro-existential}.
+On the other hand, the dual encoding deals with \emph{universal problems}
+studied by the domain of \emph{constraint satisfaction}.
+It is the focus of \Cref{sec:intro-universal}.
+This dual perspective on the "homomorphism problem" guides the structure of
+this thesis, which is separated into two independent parts.
+
+\paragraph*{Homomorphisms.}
+The simplest mathematical structure is perhaps that of a (directed) finite graph:
+it consists of a finite set of vertices (also called \emph{domain}),
+together with a set of "edges" $\+E \subseteq V \times V$.
+A "homomorphism" between two graphs is then a
+function $f$ between vertices that preserves
+the "edges", in the sense that if $\tup{u,v}$ is an edge, then
+$\tup{f(u),f(v)}$ must also be an edge. We depict
+an example of graph "homomorphism" in \Cref{fig:example-graph-homomorphism}.
 
 \begin{figure}
 	\centering
@@ -43,29 +67,10 @@ see \Cref{fig:example-graph-homomorphism}.
 	\end{tikzpicture}
 	\caption{
 		\AP\label{fig:example-graph-homomorphism}
-		Two graphs (in black), and a homomorphism (blue dotted arrows) from the
-		graph on the left-hand side to one right one.
+		Two graphs (in black) and a homomorphism (blue dotted arrows) from the
+		graph on the left-hand side to the right one.
 	}
 \end{figure}
-
-To enrich the structure---but more importantly to add a splash of colour to this thesis---,
-we will consider more complex structures: 
-we allow for multiple edge relations, or even relations of higher arity linking the vertices.
-Which kind of relations (and how many of which kind) is allowed is known as the "signature" $\sigma$ of the "structure". 
-These richer structures are known as "$\sigma$-structures" or "relational structures"---see
-\Cref{fig:example-structure-homomorphism}---, and
-"homomorphisms" between "$\sigma$-structures" are asked to preserve \emph{all} relations
-in the "signature" $\sigma$.
-
-\decisionproblem{The ""Homomorphism Problem"" over $\sigma$}{
-	Two finite $\sigma$-structures $\?A$ and $\?B$.
-}{
-	Is there a "homomorphism" from $\?A$ to $\?B$?
-}
-
-In the problem above, we refer to $\?A$ as the \AP""input structure""
-and to $\?B$ as the ""target structure"". We denote by \AP$\?A \intro*\homto \?B$
-the existence of a "homomorphism" from $\?A$ to $\?B$.
 
 \begin{figure}
 	\centering
@@ -135,9 +140,27 @@ the existence of a "homomorphism" from $\?A$ to $\?B$.
 		red, yellow and blue potatoes).
 	}
 \end{figure}
+To enrich the structure---but also, perhaps more enjoyably,
+to add a splash of colour to this thesis---we will consider more complex structures: 
+we allow for multiple edge relations, or even relations of higher arity linking the vertices.
+The types and arities of relations allowed in a structure are specified by its "signature" $\sigma$.
+These richer structures are known as "$\sigma$-structures" or "relational structures"---see
+\Cref{fig:example-structure-homomorphism}---, and
+"homomorphisms" between "$\sigma$-structures" are asked to preserve \emph{all} relations
+in the "signature" $\sigma$.
 
-More than a mere decision problem---which obviously lives in "NP"---,
-the "homomorphism problem" should rather be seen as a \emph{framework} or
+\decisionproblem{The ""Homomorphism Problem"" over $\sigma$}{
+	Two finite $\sigma$-structures $\?A$ and $\?B$.
+}{
+	Is there a "homomorphism" from $\?A$ to $\?B$?
+}
+
+In the problem above, we refer to $\?A$ as the \AP""input structure""
+and to $\?B$ as the ""target structure"". We denote by \AP$\?A \intro*\homto \?B$
+the existence of a "homomorphism" from $\?A$ to $\?B$.
+
+More than a mere decision problem---which is easily seen to lie in "NP"---,
+the "homomorphism problem" should rather be understood as a \emph{framework} or
 \emph{language} to formalize many problems arising in computer science.
 
 \begin{marginfigure}
@@ -187,7 +210,7 @@ the "homomorphism problem" should rather be seen as a \emph{framework} or
 	whose nodes are its states, on the "signature" with two unary predicates (one for
 	describing initial states, one for final states), and one binary predicate
 	for each letter of the alphabet $\Sigma$.
-	Any finite word $u\in \Sigma^*$ can in turn by seen as a "relational structure"
+	Any finite word $u\in \Sigma^*$ can in turn be seen as a "relational structure"
 	$\?W_u$ with $\lBrack 0,|u|\rBrack$ as its domain,
 	where $0$ is initial, $|u|$ is final, and
 	for each $i \in \lBrack 1,|u|\rBrack$, there is an edge from $i-1$ to $i$
@@ -195,6 +218,9 @@ the "homomorphism problem" should rather be seen as a \emph{framework} or
 	Then, there is a "homomorphism" from $\?W_u$ to $\?A$ if, and only if, 
 	the automaton $\?A$ accepts $u$. See \Cref{fig:example-automaton-as-rel}.
 \end{example}
+
+As we will see in the rest of this section,
+depending on the context, either the query or the data may play the role of the input structure in the homomorphism problem. This distinction is fundamental and forms the basis for the two-part division of this thesis.
 
 \begin{marginfigure}
 	\centering
@@ -222,17 +248,18 @@ the "homomorphism problem" should rather be seen as a \emph{framework} or
 	to be the "graph@@dir" whose vertices are $\lBrack 1,k\rBrack$,
 	and with an edge from $i$ to $j$ (with $i,j \in \lBrack 1,k\rBrack$)
 	"iff" $i\neq j$, see \Cref{fig:intro-3-clique}.
-	A finite "graph@@dir" $\?G$ is \AP""$k$-colourable""---"ie"
+	Recall that a finite "graph@@dir" $\?G$ is \AP""$k$-colourable""---"ie"
 	we can map every vertex of $\?G$ to an element of $\lBrack 1,k\rBrack$
-	"st" no two adjacent vertices are sent on the same colour/number,
-	see "eg" \Cref{fig:dichotomy-ex-3-clique}---if,
-	and only if, there is a "homomorphism" from $\?G$ to $\clique{k}$.
+	"st" no two adjacent vertices are sent on the same colour/number.
+	In other words, a $k$-colouring corresponds precisely to a "homomorphism" from $\?G$
+	to $\clique{k}$, where colours correspond to the vertices of the clique,
+	see "eg" \Cref{fig:dichotomy-ex-3-clique}.
+	Hence, a graph is "$k$-colourable" if, and only if,
+	there is a "homomorphism" from $\?G$ to $\clique{k}$.
 \end{example}
 
 Note that in both \Cref{ex:auto-as-rel,ex:graph-colouring-as-hom},
-not only does the existence of a "homomorphism" is equivalent to the existence
-of a solution to the problem, but in fact the set of "homomorphisms" is in fact
-in natural bijection with the set of solutions:
+not only is the existence of a homomorphism equivalent to the existence of a solution, but the set of homomorphisms naturally corresponds to the set of solutions:
 \begin{itemize}
 	\item in \Cref{ex:auto-as-rel}, "homomorphisms" from $\?W_u$ to $\?A$
 		exactly correspond to accepting runs of the automaton over $u$;
@@ -332,7 +359,7 @@ in natural bijection with the set of solutions:
 	\Cref{fig:example-db-as-rel}, can easily be seen as a "relational structure"
 	whose domain is the set of elements occurring somewhere in a table,
 	with one relation for each table.
-	In fact, the only difference between "relational databases" and "relational structures"
+	The main difference between "relational databases" and "relational structures"
 	precisely lies in the fact that in the case of the former, the domain is implicit,
 	while for the latter it is explicit.%
 	\footnote{While this difference alters the theory, the difference is mostly negligible
@@ -354,6 +381,9 @@ in natural bijection with the set of solutions:
 	such that there is a "homomorphism" from $\?Q_\gamma$ to the relational database, seen as
 	a "relational structure", is exactly the output set of the SQL query on the database.
 \end{example}
+
+We now turn to more involved encodings, namely Sudoku grids and SAT solving,
+to illustrate the expressive flexibility of the homomorphism framework.
 
 \begin{marginfigure}
 	\centering%
@@ -386,7 +416,7 @@ in natural bijection with the set of solutions:
 	three kinds of binary "predicates": $\+R$, $\+C$ and $\+S$,
 	that describe when two coordinates are on the same row, column or 3*3-square, respectively.
 	For non-empty grids, we add nine unary "predicates" $P_k$ ($k \in \lBrack 1,9\rBrack$),
-	and if coordinate $\tup{i,j}$ if prefilled with number $k$, then predicate $P_k$ must
+	and if coordinate $\tup{i,j}$ is prefilled with number $k$, then predicate $P_k$ must
 	hold on the element $\tup{i,j}$.
 	Given a prefilled grid $G$, we denote by $\?S_G$ the associated "relational structure".
 	
@@ -419,7 +449,7 @@ in natural bijection with the set of solutions:
 	\footnote{Meaning "eg" that $x \lor \neg y \lor z$ is not allowed, contrary to
 	$x \lor z \lor \neg y$.}
 	We let $\?B$ be the structure whose domain has two elements $\{0,1\}$,
-	equipped with four ternary relations $\+R_0, \+R_1, \+R_2$ and $\+R_3$, defined by:
+	equipped with four ternary relations $+R_0$ through $+R_3$, where $+R_j$ encodes clauses with exactly $j$ negated literals. They are formally defined as
 	\begin{align*}
 		\+R_0 & \defeq \set{0,1}^3 \smallsetminus \set{\tup{0,0,0}}, &
 		\+R_1 & \defeq \set{0,1}^3 \smallsetminus \set{\tup{1,0,0}}, \\
@@ -430,11 +460,11 @@ in natural bijection with the set of solutions:
 	whose domain is the set of variables of $\phi$,
 	and for every $i \in \lBrack 1,n \rBrack$,
 	$\+R_j$ ($j\in\lBrack 0,3\rBrack$) consists of all triplets of variables $\tup{x,y,z}$
-	"st" there is a clause of $\phi$ containing exactly the variables $x$, $y$ and $z$ (with multiplicity), and exactly $j$ of these variables occur negatively.
+	"st" there is a clause of $\phi$ containing variables $x$, $y$ and $z$ (with multiplicity), and exactly $j$ of these variables occur negatively.
 	For instance, $\tup{x, y, \neg x} \in \+R_1$, and $\tup{\neg x, \neg y, \neg z} \in \+R_3$.
 	A function $f$ from the domain of $\?F_\phi$ to the domain of $\?B$ amounts to picking
 	a Boolean valuation of the variables occurring in $\phi$.
-	Observe that by definition of the relations $\+R_j$'s,
+	Observe that, by definition of the relations $\+R_j$,
 	given a clause $\psi$ containing variables $x,y,z$, 
 	$f$ is a "homomorphism" from $\?F_\psi$ to $\?B$ "iff"
 	$f$, seen as a valuation, satisfies $\psi$.\footnote{For instance,
@@ -495,9 +525,7 @@ data is usually much larger than query,%
 the data represented 2.9 terabytes, while the queries were a few lines long. \cite{Neo4jPanama}}
 and we often study problems where
 the query is fixed---for instance the 3-colourability problem.
-Accordingly, not only do these two sides of the "homomorphism problem" split this thesis
-in two parts: both sides form independent research domains, known as \emph{database theory}
-and \emph{constraint satisfaction problems}.
+Accordingly, this fundamental asymmetry between data and query roles not only motivates the structure of this thesis in two independent parts, but also underlies distinct research domains, known as \emph{database theory} and \emph{constraint satisfaction problems}.
 % Formally, we define:
 % \begin{itemize}
 % 	\itemAP the ""combined complexity"" of a model-checking problem to be the complexity of

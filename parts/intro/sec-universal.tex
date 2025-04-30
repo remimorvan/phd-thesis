@@ -1,6 +1,9 @@
 \section{Everyone Who Wants to Do Constraint Satisfaction Always Ends in Universal Problems}
 % Everyone who wants to do good to the human race always ends in universal bullying.
 % - Aldous Huxley
+\label{sec:intro-universal}
+
+This second part explores the complexity of the "homomorphism problem" when the data is fixed and the query varies, focusing on "constraint satisfaction problems" and "automatic structures".
 
 \begin{marginfigure}
 	\centering
@@ -11,10 +14,9 @@
 \paragraph*{Constraint Satisfaction Problems.}
 Going to the other side, encodings of model-checking problems
 as "homomorphism problems" of the form $\textsf{data} \homto^? \textsf{query}$
-can be thought of as ``universal problems'':%
-\footnote{Here ``universal'' does not
-refer to some form of completeness, but simply to universal quantification.}
-notice "eg" that they are anti-monotonic with respect to the data:
+can be thought of as ``universal problems''---here ``universal'' does not
+refer to some form of completeness, but simply to universal quantification.
+Notice "eg" that they are anti-monotonic with respect to the data:
 for all "structures" $\?A$, $\?A'$ and $\?B$, if $\?A \homto \?B$ and $\?A'$ is a substructure
 of $\?A$ then $\?A' \homto \?B$.
 Moreover, while problems of the form $\textsf{query} \homto^? \textsf{data}$
@@ -24,7 +26,7 @@ For instance, "3-colourability" is a global property of a graph and cannot by gl
 solutions. In particular, this implies that fixing the query does not necessarily result in
 a drop in the complexity: for instance SAT-solving and "3-colourability" are already "NP"-complete.
 
-However not all of these problems are hard: $2$-colourability is not only polynomial-time,
+However not all of these problems are hard. For example, $2$-colourability is not only polynomial-time,
 but can be solved using a greedy algorithm. This begs the question of understanding what
 makes a "relational structure" hard for the "homomorphism problem".
 This question is not only motivated by theory: constraint logic programming has emerged in the 1980s
@@ -64,9 +66,10 @@ an example of a Clingo program for solving Sudoku grids:
 		and hence \lstinline|:- A, B| reads as `if $A$ and $B$, then false'.}
 \end{itemize}
 To solve a specific grid using the program of \Cref{fig:ex-sudoku-asp},
-it suffices to add declarations of the form \lstinline|sudoku(4,1,5).| to say that entry
-at position $(4,1)$ has value 5.%
-\footnote{\lstinline|A.| is a shorthand for \lstinline|A :-.|.}
+it suffices to add declarations of the form \lstinline|sudoku(4,1,5).|,
+where \lstinline|A.| is a shorthand for \lstinline|A :-.|.
+This specifies that the cell at position $(4,1)$ has value 5.
+
 
 Contrary to more classical programming languages, this paradigm does not explain \emph{how} things
 should be computed, but \emph{what constraints} the memory/solution should satisfy.
@@ -81,9 +84,7 @@ structures $\?B$ "wrt" to the complexity of the "homomorphism problem" when the
 "target structure" is $\?B$. One of the earliest and most impactful result
 of the domain as found by Schaefer \cite{Schaefer1978ComplexitySatisfiability},
 who proved that such problems are either in "P" or "NP"-complete when the domain of $\?B$
-has two elements.%
-\footnote{While this might seem restrictive, notice that no assumption is made on the "signature".
-Moreover, the example of SAT-solving (\Cref{ex:sat-as-hom}) precisely uses a "structure" of this kind.}
+has two elements---this already captures the example of SAT-solving (\Cref{ex:sat-as-hom}) from earlier.
 A decade later, Hell and Ne\v{s}et\v{r}il \cite{HellNesetril1990ComplexityColoring}
 proved a similar result for undirected graph.
 Moreover, in both cases, these dichotomies are effective: given a structure, we can decide if
@@ -159,8 +160,8 @@ from an "automatic structure" $\?A$ to a "finite one@finite structure" $\?B$ doe
 in the same world as $\?A$ and $\?B$, in the sense that it might not be finitely-presentable---its domain is infinite and so, \emph{a priori} require infinite information to be described.
 We introduce the notion of "regular homomorphisms", that corresponds to "homomorphisms" that
 are finitely-presentable in the same fashion as "automatic structures", and show that
-this notion differs from the notion of "homomorphism".%
-\footnote{See \Cref{fig:tree-not-2reg-colour,ex:tree-not-2-reg-colourable}.}
+this notion differs from the notion of "homomorphism",
+see \Cref{fig:tree-not-2reg-colour,ex:tree-not-2-reg-colourable}.
 
 \begin{marginfigure}
 	\centering
@@ -191,9 +192,10 @@ with "finite duality". In particular, let us cite the result of Larose and Tesso
 who proved that any "homomorphism problem" whose "target structure" does not have "finite duality"
 must be "L"-hard \cite{LaroseTesson2009UniversalAlgebraCSP}.
 
-Given the undecidability of the "homomorphism problem" on "automatic structures" 
-when the "target structure" is a "clique" but its decidability when it is a "transitive tournament",
-we naturally conjecture that "finite duality" represents the frontier of decidability for "automatic structures". In \Cref{ch:dichotomy-theorem}, we manage to prove this result, and extend it to "regular homomorphisms".
+The "homomorphism problem" on "automatic structures" 
+is undecidable when the "target structure" is a "clique".
+Yet it becomes decidable when the target is a transitive tournament.
+This contrast leads to conjecture that "finite duality" represents the frontier of decidability for "automatic structures". In \Cref{ch:dichotomy-theorem}, we manage to prove this result, and extend it to "regular homomorphisms".
 
 \begin{contribution}
 	We provide a ``dichotomy theorem'' for "homomorphism problems" on "automatic structures":
@@ -255,8 +257,8 @@ assumptions.
 \end{contribution}
 
 Furthermore, we show that this algebraic theory is relevant, in the following sense.
-The idea behind "synchronous automaton" is to encode a pair of a binary relation as
-a finite word. This encoding is injective---as one would expect of an encoding---but not
+A "synchronous automaton" encodes a pair (from a binary relation) as
+a finite word. This encoding is injective, but not
 surjective: not all finite words corresponds to encodings of pairs.
 Hence, the semantics of a "synchronous automaton" can be precisely seen
 as the semantics of a classical automaton, together with the promise that it will be only
@@ -286,10 +288,10 @@ of "synchronous algebras" is somewhat intricate. While a more naive definition
 exists and makes sense, we show that such a result cannot be proven using this
 simpler notion.
 
-While this algebraic theory would provide an interesting framework to
-show the decidability of the "$\AUT$/$\REC$-separability problem",
-the class of "recognizable relations", while having some of the desirable
-closure properties we want, also lacks some other.
+This algebraic theory could provide an interesting framework to
+study the "$\AUT$/$\REC$-separability problem".
+However, the class of "recognizable relations" has some desirable
+closure properties we need, but lacks others.
 Unfortunately, it implies that proving the decidability of
 the "$\AUT$/$\REC$-separability problem" "via" this framework would
 be highly non-trivial.
@@ -299,5 +301,13 @@ be highly non-trivial.
 	by a "recognizable relation"?
 \end{openproblemintro}
 
-We conclude the second part of this thesis in \Cref{ch:conclu-automatic}
-by a discussion on related open problems.
+In summary, this thesis explores two fundamental perspectives on "homomorphism problems":
+the first extends the theory of "conjunctive queries" in database theory by adding regular-path
+predicates, to capture natural query languages for human-centered graph-shaped data.
+It focuses on the problem of query minimization, both in terms of
+its total number of atoms, or its tree-width, which is a relevant parameter to
+capture the complexity of its evaluation.
+The second part focuses on the complexity of problems related to constraint satisfaction
+over automatic structures. We show that most \emph{structural} problems, probing the shape of the 
+infinite object at hand, are undecidable. In contrast, \emph{language-theoretic} 
+problems, dealing with how these infinite structures are represented, remain decidable.
