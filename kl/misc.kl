@@ -3,6 +3,19 @@
 
 \knowledge{url=https://ctan.org/pkg/knowledge, typewriter}
  | knowledge
+ | knowledge package
 
 \knowledge{url=https://github.com/remimorvan/knowledge-clustering/, typewriter}
  | knowledge-clustering
+
+\knowledge{url=https://www.wikidata.org/}
+ | Wikidata
+
+\knowledge{url={https://en.wikipedia.org/wiki/G\%C3\%B6del\%27s\_incompleteness\_theorems}}
+ Gödel's incompleteness theorems
+
+\knowledge{url={https://en.wikipedia.org/wiki/Zermelo\%E2\%80\%93Fraenkel\_set\_theory}}
+ | Zermelo–Fraenkel set theory
+
+\knowledge{url={https://en.wikipedia.org/wiki/Rice\%27s\_theorem}}
+ | Rice's theorem

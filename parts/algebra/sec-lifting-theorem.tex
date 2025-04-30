@@ -35,7 +35,7 @@
 \end{example}
 
 \AP\phantomintro{Lifting Theorem}
-Even more generally, we can decide if a "relation" $\+R$ is a "group relation"
+Even more generally, we can decide if a relation $\+R$ is a "group relation"
 by simply looking at the "syntactic synchronous algebra" of $\+R$.
 
 \liftingtheoremmonoids
@@ -170,7 +170,7 @@ by simply looking at the "syntactic synchronous algebra" of $\+R$.
 	\end{equation}
 	but $\+R$ is \emph{not} a "$\+V$-relation". This can happen even if
 	$\+V$ is the "$\ast$-pseudovariety@@reglang" of all regular languages: for instance for the
-	"relation"
+	relation
 	\[
 		\+R \defeq \{(u,v) \mid |u| > |v| > 0 \text{ and } |u| - |v| \text{ is prime}\}.
 	\]
@@ -196,10 +196,10 @@ we obtain a decidability (meta-)result for
 	The class of "$\+V$-relations" has decidable membership if, and only if, $\+V$ has decidable membership.
 \end{corollary}
 
-For instance, a "relation" is a "group relation" if, and only if, all
+For instance, a relation is a "group relation" if, and only if, all
 "underlying monoids" of its "syntactic synchronous algebra" are
 groups. 
-% Beyond "group relations", the "lifting theorem" captures "e.g." the case of "commutative relations".
+% Beyond "group relations", the "lifting theorem" captures "eg" the case of "commutative relations".
 
 \subsection{Synchronous Algebras Require a Dependency Relation}
 \label{sec:counterexample}
@@ -310,7 +310,7 @@ $\Sigma$ such that $\+V$ is closed under
 	% 	$\pair{a}{b}^{-1}\+R$,
 	% 	$\+R\pair{a}{\pad}^{-1}$
 	% 	and $\+R\pair{\pad}{a}^{-1}$ all belong to $\+V_\Sigma$, where $a,b \in \Sigma$,
-	\itemAP ""Syntactic derivatives""\emph{:} if $\+R \in \+V_{\Sigma}$, then any "relation"
+	\itemAP ""Syntactic derivatives""\emph{:} if $\+R \in \+V_{\Sigma}$, then any relation
 	"recognized@@sync" by the "syntactic synchronous algebra morphism" of $\+R$ also belongs
 	to $\+V_{\Sigma}$.
 	\itemAP ""Inverse morphisms""\emph{:} if $\phi\colon \Sync\Gamma \to \Sync\Sigma$ is
@@ -318,7 +318,7 @@ $\Sigma$ such that $\+V$ is closed under
 		$\phi^{-1}[\+R] \in \+V_{\Gamma}$. 
 \end{itemize}
 
-To recover a more traditional definition (of the form ``closure under Boolean operations, residuals\footnote{Also called ``quotient'' "eg" in \cite[\S III.1.3, p.~39]{Pin2022MathematicalFoundations}, or ``polynomial derivative'' in \cite[\S 4, p.~19]{Bojanczyk2015Recognisable}.} and inverse morphisms''), we need to properly define what are the residuals of a "relation". It 
+To recover a more traditional definition (of the form ``closure under Boolean operations, residuals\footnote{Also called ``quotient'' "eg" in \cite[\S III.1.3, p.~39]{Pin2022MathematicalFoundations}, or ``polynomial derivative'' in \cite[\S 4, p.~19]{Bojanczyk2015Recognisable}.} and inverse morphisms''), we need to properly define what are the residuals of a relation. It 
 turns out that the answer is quite surprising and less trivial than what one would expect.
 
 \begin{definition}[Residuals]
@@ -456,7 +456,7 @@ two words $(u,v)$ of the same length. But then $(ua, va) \not\in \+S$.
 	Being done with the proof of \Cref{claim:inverse-morphism-preserve-residuals},
 	we now proceed to prove \Cref{lemma:characterization-pseudovarieties-syncrel}.
 	\proofcase{Direct implication.} By \Cref{prop:inverse-morphism-preserve-residuals},
-	the "residual" of any "relation" "recognized@@sync" by some "morphism@@sync"
+	the "residual" of any relation "recognized@@sync" by some "morphism@@sync"
 	$\phi$ is also "recognized@@sync" by $\phi$. Hence, being closed under
 	"syntactic derivatives" implies being closed under "residuals".
 
@@ -502,7 +502,7 @@ two words $(u,v)$ of the same length. But then $(ua, va) \not\in \+S$.
 	\eqref{eq:boolean-combination-of-residuals}. By taking the union, it
 	follows that any "closed subset" of $\SyntSA{\+R}$ is a Boolean combination
 	of "residuals" of $\Acc$. Applying \Cref{prop:inverse-morphism-preserve-residuals}
-	then yields that any "relation" "recognized@@sync" by $\phi$ is a Boolean combination of 
+	then yields that any relation "recognized@@sync" by $\phi$ is a Boolean combination of 
 	"residuals" of $\+R$. Hence, any class closed under "Boolean combinations" and
 	"residuals" is also closed under "syntactic derivatives".
 \end{proof}
@@ -541,7 +541,7 @@ that "divide@@sync" a finite product of "algebras@@sync" of $C$.\footnote{Note t
 	"$\ast$-pseudovarieties of synchronous relations".
 	Since $\B{V}$ is closed under finite products, $\+V$ is closed under Boolean operations.
 
-	\emph{"Syntactic derivatives":} Then let $\+R \in \+V_\Sigma$, and let $\+S$ be any other "relation"
+	\emph{"Syntactic derivatives":} Then let $\+R \in \+V_\Sigma$, and let $\+S$ be any other relation
 	"recognized@@sync" by $\SyntSA{\+R}$. This implies that $\SyntSA{\+S}$
 	"divides@@sync" $\SyntSA{\+R}$, and so $\SyntSA{\+S} \in \B{V}$, from which
 	we have $\SyntSA{\+S} \in \+V_\Sigma$.
@@ -603,7 +603,7 @@ that "divide@@sync" a finite product of "algebras@@sync" of $C$.\footnote{Note t
 	$\SyntSA{\+R} \in \B{V}$ so $\+R \in \+W_{\Sigma}$, and hence $\+V \subseteq \+W$.
 
 	We then want to show the converse inclusion, namely $\+W \subseteq \+V$. Let $\+R \in \+W_{\Sigma}$ for some $\Sigma$, "ie" $\SyntSA{\+R} \in \B{V}$.
-	Hence there exists $\Gamma$ and "relations" $\+S_1 \in \+V_{\Gamma_1}, \hdots \+S_k \in \+V_{\Gamma_k}$
+	Hence there exists $\Gamma$ and relations $\+S_1 \in \+V_{\Gamma_1}, \hdots \+S_k \in \+V_{\Gamma_k}$
 	such that $\SyntSA{\+R}$ "divides@@sync"
 	$\?B \defeq \SyntSA{\+S_1} \times \cdots \times \SyntSA{\+S_k}$,
 	"ie" there is a "subalgebra@@sync" $\?C \subseteq \?B$ which is a "quotient@@sync" of $\?B$.

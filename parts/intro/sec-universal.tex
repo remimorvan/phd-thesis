@@ -142,11 +142,11 @@ can decide if a given theorem is valid or not.
 While "automatic structures" cannot express ``mathematical universes'' serving as
 foundations for a universal mathematical theory, they are surprisingly adequate to
 express infinite "structures" arising from models of computability.
-For instance, the runs of a finite-state automaton is "automatic"---its nodes
+For instance, the runs of a finite-state automaton is "automatic@@struct"---its nodes
 are finite runs of the automaton, and there is a `$a$'-transition from
 $\rho$ to $\rho'$ when $\rho' = \rho \transition{a} q'$ for some state $q'$---
-since the unfolding of any finite graph is "automatic".
-More generally, the "configuration graph" of any "Turing machine" is "automatic"!%
+since the unfolding of any finite graph is "automatic@@struct".
+More generally, the "configuration graph" of any "Turing machine" is "automatic@@struct"!%
 \footnote{See \Cref{ex:turing-machine-are-automatic}.}
 
 Hence, we naturally study the "homomorphism problem" when the "input structure"
@@ -272,7 +272,7 @@ defined as first-order logic over all "structures", restricted to "finite struct
 While being quite natural, this construction fails to preserve most properties of the logics:
 first-order logic over all "structures" admits a complete proof system,
 but does not when restricted to "finite structures". The model-checking problem
-is "coRE"-complete over "all structures", but goes to
+is "coRE"-complete over all "structures", but goes to
 "RE"-complete---an incomparable complexity class---for "finite structures".
 
 \begin{contribution}

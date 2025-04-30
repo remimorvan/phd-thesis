@@ -507,15 +507,15 @@ to illustrate the expressive flexibility of the homomorphism framework.
 
 All five problems we presented can actually be seen as model-checking problem:
 part of the input represents some \emph{data}---or \emph{model}---and part of it represents a
-\emph{"query@sem"}---or \emph{logical question/specification}.
+\emph{"query@@sem"}---or \emph{logical question/specification}.
 However, as depicted in \Cref{tab:examples-encodings-in-hom}, 
 the encodings of these problems into "homomorphism problems" can either be of two types:
 \begin{itemize}
-	\item the \emph{"query@sem"} is encoded in the "input structure",
+	\item the \emph{"query@@sem"} is encoded in the "input structure",
 		and the \emph{data} in the "target structure": we denote
 		this family of problems by `$\textsf{query} \homto^? \textsf{data}$';
 	\item in the other cases, the \emph{data} is encoded in the "input structure"
-		and the \emph{"query@sem"} is the "target structure": we denote
+		and the \emph{"query@@sem"} is the "target structure": we denote
 		these problems by `$\textsf{data} \homto^? \textsf{query}$'.
 \end{itemize}
 
@@ -529,10 +529,10 @@ Accordingly, this fundamental asymmetry between data and query roles not only mo
 % Formally, we define:
 % \begin{itemize}
 % 	\itemAP the ""combined complexity"" of a model-checking problem to be the complexity of
-% 		the problem when both the "query@sem" and the model are part of the input of the decision 
+% 		the problem when both the "query@@sem" and the model are part of the input of the decision 
 % 		problem;
 % 	\itemAP the ""data complexity"" is the complexity of the same problem when the
-% 		"query@sem" is fixed: as there are multiple such problems---one for each "query@sem"---, we
+% 		"query@@sem" is fixed: as there are multiple such problems---one for each "query@@sem"---, we
 % 		say that the "data complexity" is $\+C$-complete, for some complexity class $\+C$, when
 % 		every such problem is in $\+C$, and when at least one problem is $\+C$-hard.%
 % 		\footnote{Of course the dual notion of ``query complexity'', also called ``expression complexity'' exists.}

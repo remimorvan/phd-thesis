@@ -10,8 +10,6 @@
  | $\LocTriv $-relation
  | $\LocTriv $-relations
  | $\+V$-(synchronous) relations
-%  | relation
-%  | relations
 
 \knowledge{notion}
  | group relation

@@ -30,6 +30,7 @@
  | membership@problemrel
  | $\RAT $/$\REC $-membership problem
  | $\DRAT $/$\REC $-membership problem
+ | $\REC $-membership problem for automatic relations
  
 \knowledge{notion, wrap=\DPfont}
  | $\+D$-separability problem for $\+C$-relations
@@ -53,7 +54,7 @@
  | $\AUT $/$\REC $-separability@problem
  | $\AUT $/$\kREC $-separability@problem
  | $\REC $-separability problem for automatic relations
-%  | separability problems
+ | separability problems
 
 \knowledge{notion, wrap=\DPfont}
  | $\REC $-membership problem
@@ -73,6 +74,7 @@
 
 \knowledge{notion}
  | intersection non-emptiness problem@drat
+ | intersection non-emptiness problem
 
 \knowledge{notion, wrap=\DPfont}
  | regular $k$-colourability problem

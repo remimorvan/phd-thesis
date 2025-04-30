@@ -1,9 +1,6 @@
 %%%%% NEW KNOWLEDGES 
 %
 %\knowledge{notion}
-%  | knowledge package
-%
-%\knowledge{notion}
 %  | finite (directed) graphs
 %
 %\knowledge{notion}
@@ -56,9 +53,6 @@
 %
 %\knowledge{notion}
 %  | knowledge graph
-%
-%\knowledge{notion}
-%  | Wikidata
 %
 %\knowledge{notion}
 %  | conjunctive regular path queries
@@ -116,35 +110,8 @@
 %  | 3-colourability
 %
 %\knowledge{notion}
-%  | Gödel's incompleteness theorems
-%
-%\knowledge{notion}
-%  | Zermelo–Fraenkel set theory
-%
-%\knowledge{notion}
-%  | automatic
-%
-%\knowledge{notion}
-%  | Rice's theorem
-%
-%\knowledge{notion}
-%  | if and only
-%
-%\knowledge{notion}
-%  | language
-%
-%\knowledge{notion}
 %  | monoid
 %  | monoids
-%
-%\knowledge{notion}
-%  | $\REC $-membership problem for automatic relations
-%
-%\knowledge{notion}
-%  | intersection non-emptiness problem
-%
-%\knowledge{notion}
-%  | $\RAT $-membership
 %
 %\knowledge{notion}
 %  | length-lexicographic
@@ -164,9 +131,6 @@
 %
 %\knowledge{notion}
 %  | tournament
-%
-%\knowledge{notion}
-%  | e.g.
 %
 %\knowledge{notion}
 %  | synchronous

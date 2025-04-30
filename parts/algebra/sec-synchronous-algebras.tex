@@ -149,13 +149,13 @@ all operators/constructions should preserve this "type".
 % having a copy of $X$ for every "type", and moreover, $\type{x}{\sigma} \dep \type{x}{\tau}$
 % for all $x \in X$ and all "types" $\sigma, \tau$.
 
-Given a "relation" $\+R \subseteq \Sigma^* \times \Sigma^*$, we denote by
+Given a relation $\+R \subseteq \Sigma^* \times \Sigma^*$, we denote by
 $\AP\intro*\proj{\+R} = \{\type{(u,v)}{\tau} \mid \type{(u,v)}{\tau} \in \Sync{\Sigma} \text{ and } (u,v) \in \+R\}$
 the "closed subset" of $\Sync{\Sigma}$ induced by $\+R$.
 
 \begin{fact}
 	The map $\+R \mapsto \proj{\+R}$ is a bijection between
-	"relations" and "closed subsets" of $\Sync{\Sigma}$.
+	relations and "closed subsets" of $\Sync{\Sigma}$.
 \end{fact}
 
 \begin{proof}
@@ -289,7 +289,7 @@ The algebra simply duplicates $M$ as many times as needed and identifies
 two elements together when they originated from the same element of $M$.
 \begin{fact}
 	\AP\label{fact:induced-morphism}
-	If $\phi$ recognizes $\+R$ for some "relation" $\+R \subseteq \Sigma^* \times \Sigma^*$ seen as a language over $\SigmaPair$, then $\inducedmor{\phi}$ "recognizes@@sync" $\+R$.
+	If $\phi$ recognizes $\+R$ for some relation $\+R \subseteq \Sigma^* \times \Sigma^*$ seen as a language over $\SigmaPair$, then $\inducedmor{\phi}$ "recognizes@@sync" $\+R$.
 \end{fact}
 
 \paragraph*{Consolidation of a synchronous algebra}
@@ -316,7 +316,7 @@ and $\consol{\phi}$ sends a word $u \in (\SigmaPair)^*$ to%
 Note that this operation disregards the "dependency relation" of $\?A$.
 \begin{fact}
 	\AP\label{fact:consolidation}
-	If $\phi$ "recognizes@@sync" some "relation" $\proj{\+R}$,
+	If $\phi$ "recognizes@@sync" some relation $\proj{\+R}$,
 	then $\consol{\phi}$ recognizes $\+R$, when seen as
 	a language over $\SigmaPair$.
 \end{fact}
@@ -324,7 +324,7 @@ Note that this operation disregards the "dependency relation" of $\?A$.
 The following result follows from \Cref{fact:induced-morphism,fact:consolidation,fact:synchronous-is-regular}.
 \begin{proposition}
 	\AP\label{prop:synchronous-iff-finite}
-	A "relation" is "synchronous" if and only if it is "recognized@@sync"
+	A relation is "synchronous" if and only if it is "recognized@@sync"
 	by a finite "synchronous algebra".
 \end{proposition}
 
@@ -396,7 +396,7 @@ Let us continue with a slightly less trivial example of "algebra@synchronous alg
 		\phi(\type{\varepsilon}{\tau}) \defeq \type{\bar 0}{\tau}
 		\text{ for $\tau \in \types$}.
 	\]
-	This "morphism@@sync" recognizes any "relation" of the form 
+	This "morphism@@sync" recognizes any relation of the form 
 	\begin{align*}
 		\+R^{I,J} \defeq \big\{
 			(u,v) \;\big\vert\; & |u| > |v| \text{ and } (|u| - |v| \bmod{p}) \in I, \text{ or} \\
@@ -412,7 +412,7 @@ Let us continue with a slightly less trivial example of "algebra@synchronous alg
 			(u,v) \;\big\vert\; & |u| > |v| \text{ and } (|u| - |v| \bmod{p}) \in I, \text{ or} \\
 			& |u| < |v| \text{ and } (|v| - |u| \bmod{q}) \in J, \text{ or } |u| = |v| \big\}.
 	\end{align*}
-	Note also that all "relations" $\+R^{I,J}$ with $\bar 0 \not\in I$
+	Note also that all relations $\+R^{I,J}$ with $\bar 0 \not\in I$
 	and $\bar 0 \not\in J$ are "group relations": letting $G$ be the group $\Z/p\Z \times \Z/q\Z$,
 	$\+R$ can be written as $\WellFormed\cap \psi^{-1}[I \times \{0\} \cup \{0\} \times J]$ where $\psi \colon (\SigmaPair)^* \to G$ is the monoid morphism defined by $\psi\pair{a}{b} \defeq 
 	(\bar 0, \bar 0)$, $\psi\pair{a}{\pad} \defeq (\bar 1, \bar 0)$ and $\psi\pair{\pad}{a} \defeq
@@ -451,7 +451,7 @@ Let us continue with a slightly less trivial example of "algebra@synchronous alg
 \end{restatable}
 
 \begin{corollary}[of \Cref{prop:synchronous-iff-finite,lem:syntactic-morphism-theorem}]
-	A "relation" is "synchronous" if and only if its "syntactic synchronous algebra"
+	A relation is "synchronous" if and only if its "syntactic synchronous algebra"
 	is finite.
 \end{corollary}
 
@@ -519,7 +519,7 @@ $x \type{b}{\tau} y \in C$. The other two conditions are proven in the same fash
 Note however that while the relation is "locally transitive", it is not
 transitive in general.
 
-When $\+R \subseteq \Sigma^* \times\Sigma^*$ is a "relation", we abuse
+When $\+R \subseteq \Sigma^* \times\Sigma^*$ is a relation, we abuse
 the notation and write $\congr{\+R}$ to denote
 the "syntactic congruence" $\congr{\proj{\+R}}$ of $\proj{\+R}$
 in $\Sync\Sigma$.

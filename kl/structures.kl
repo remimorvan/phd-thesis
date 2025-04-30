@@ -35,7 +35,6 @@
  | relational structure
  | relational structures
  | $\tau $-structure
-%  | all structures
 
 \knowledge{notion}
  | pointed $\sigma $-structure
@@ -169,4 +168,4 @@
 
 \knowledge{notion}
  | queries@sem
- | query@sem
+ | query@@sem
