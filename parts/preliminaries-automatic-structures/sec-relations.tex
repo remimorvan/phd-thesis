@@ -37,15 +37,61 @@ models are strictly more succinct than others.
 
 \begin{figure*}
 	\centering
-	\includegraphics[width=\linewidth]{fig/landscape-rationality-relations.png}
+	\begin{tikzpicture}
+		\tikzset{
+			ex/.style={
+				font={\small\sffamily},
+			},
+			class/.style={
+				align=center,
+				font={\footnotesize\scshape\sffamily},
+			}
+		}
+
+		\node at (0,0) {\includegraphics[width=.9\linewidth]{fig/prelim-automatic/landscape-rationality-relations.png}};
+		% \draw[step=0.2,cGrey,thin] (-8,-5) grid (8,6);
+		% \draw[step=1,black,thin] (-8,-5) grid (8,6);
+		% \draw[black, thick] (-8, 0) to (8,0);
+		% \draw[black, thick] (0,-5) to (0,6);
+
+		\node[ex, left] at (-5,-3.55)
+			{\kl[same parity length relation]{\textcolor{cRed!80!black}{same parity length relation}}};
+		\node[ex, left] at (-5.5,-2.65)
+			{\kl[\equalLength]{\textcolor{cRed!80!black}{equal length relation}}};
+		\node[ex, left] at (-5.8,-2.05)
+			{\kl[prefix relation]{\textcolor{cRed!80!black}{prefix relation}}};
+		\node[ex, right] at (4.5,-1.1)
+			{\kl[identity relation]{\textcolor{cPurple!80!black}{identity function}}};
+		\node[ex, right, align=left, text width=3.5cm] at (4.7,1.1)
+			{\textcolor{cPurple!80!black}{`greatest suffix in $L$'\\[-.2em] function}};
+		\node[ex, right] at (4.2,1.9)
+			{\textcolor{cPurple!80!black}{palindrome function}};
+		\node[ex, left] at (-6,-0.8)
+			{\kl[subword relation]{\textcolor{cYellow!80!black}{subword relation}}};
+		\node[ex, left] at (-5.8,0.8)
+			{\kl[suffix relation]{\textcolor{cYellow!80!black}{suffix relation}}};
+
+		\node[class, text width=1.8cm] at (-0.8,-2.8)
+			{\kl[recognizable relations]{\textcolor{cRed!80!black}{Recognizable relations}}};
+		\node[class, text width=1.8cm] at (-1.85,-1.4)
+			{\kl[automatic relations]{\textcolor{cRed!80!black}{Automatic relations}}};
+		\node[class, text width=2.1cm] at (-2.5,-.12)
+			{\kl[deterministic rational relations]{\textcolor{cYellow!80!black}{Det\ic\ rational relations}}};
+		\node[class, text width=1.5cm] at (-4.1,1.3)
+			{\kl[rational relations]{\textcolor{cYellow!80!black}{Rational relations}}};
+		\node[class, text width=2.1cm] at (2.2,.4)
+			{\kl[deterministic two-way rational relations]{\textcolor{cYellow!80!black}{Det\ic\ two-way rational relations}}};
+		\node[class, text width=2.1cm] at (2.2,3)
+			{\kl[two-way rational relations]{\textcolor{cYellow!80!black}{Two-way rational relations}}};
+		\node[class, text width=1.8cm] at (-2.2,5.2)
+			{\kl[functional relations]{\textcolor{Boyzone!80!black}{Functional relations}}};
+		\node[class, text width=1.5cm] at (-.3,.4)
+			{\kl[regular functions](bojan){\textcolor{cPurple!80!black}{Regular functions}}};
+	\end{tikzpicture}
 	\caption{
 		\AP\label{fig:landscape-rationality-relations}
-		The ``landscape of rationality'' for binary relations.
+		Clickable landscape of rationality for binary relations.
 		See also \Cref{fig:hierarchy-rational-relations,fig:hierarchy-functional-relations}.
-		\todo{make it clicakble}
-		\todo{Diego:same parity -> same parity length}
-		\todo{Diego:add equal length}
-		\todo{Diego:Sync -> Aut}
 	}
 \end{figure*}
 These equivalences explain why the terms \emph{recognizable language}---meaning implicitly

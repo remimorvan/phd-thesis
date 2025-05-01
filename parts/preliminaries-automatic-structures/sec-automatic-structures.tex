@@ -277,18 +277,35 @@ with inclusion and the preorder $\preceq$ defined by $X \preceq Y$ "iff" $X$ and
 singletons, say $\{x\}$ and $\{y\}$, respectively, and $x \leq y$,
 see \cite[Theorem~XII.2.3]{Blumensath2024MSOModelTheory}.
 
-The notion of "automatic structures" can be generalized:
+\begin{remark}
+	In light of \Cref{fig:hierarchy-rational-relations}, "automatic relations"
+	and "right-automatic relations" emerge as the two maximal classes of relations
+	that admit both closure under Boolean operations and the decidability of
+	its ``basic'' decision problems.
+	While these two classes are orthogonal, it should be noted that
+	``right-automatic structures'' and "automatic structures" are equally expressive:
+	this can be shown by renaming any word $u_1\dotsc u_n$ to its reversal $u_n \dotsc u_1$.
+	Hence, "automatic structures" are maximal in this sense: substituting ``automatic relations''
+	for a notion of rationality of \Cref{sec:preliminaries-automatic-structures-relations}
+	either gives a less expressive class ("recognizable relations"),
+	an equally expressive class ("right-automatic relations"),
+	or a class that is too expressive leading, both to a lack of closure properties
+	and undecidability (all other cases).
+\end{remark}
+
+However, it should be noted that the notion of "automatic structures" can be generalized
+by substituting finite words for more complex models. It leads to the notions of
 \begin{itemize}
-	\itemAP to ""$\omega$-automatic structures"" by replacing finite words with $\omega$-words,
-	\itemAP to ""tree-automatic structures"" by replacing finite words with finite trees,
-	\itemAP to ""$\omega$-tree-automatic structures"" by replacing finite words with $\omega$-trees,
+	\itemAP ""$\omega$-automatic structures"" by taking $\omega$-words,
+	\itemAP ""tree-automatic structures"" by taking finite trees,
+	\itemAP ""$\omega$-tree-automatic structures"" by taking $\omega$-trees,
 \end{itemize}
 together with suitable notions of automata for these objects.
 We refer the reader to "eg" \cite[\S~XII]{Blumensath2024MSOModelTheory} for more details.
 
 \hypothesis{In light of \Cref{prop:making-presentations-injective},
-we will always assume, unless specified otherwise, the "automatic presentations"
-to be "injective@@pres".}
+we will always assume the "automatic presentations"
+to be "injective@@pres", unless specified otherwise.}
 
 \subsection{Model-Checking}
 
