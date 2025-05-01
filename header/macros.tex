@@ -32,32 +32,43 @@
 	\null\vfill
 	\begin{fullwidth}
 	\begin{center}
-	\begin{minipage}{.75\linewidth}
 }{%
-	\end{minipage}
 	\end{center}
 	\end{fullwidth}
 	\vfill\null
 	\clearpage
 }
-\newenvironment{abstract}{\begin{center}\large\textsc{Abstract}\end{center}}{}
-\newenvironment{acknowledgements}{\begin{center}\large\textsc{Acknowledgements}\end{center}}{}
+\newenvironment{abstract}{
+	\begin{minipage}{.75\linewidth} \begin{center}\large\textsc{Abstract}\end{center}
+}{
+	\end{minipage}
+}
 
+\newenvironment{acknowledgements}{
+	\begin{minipage}{.75\linewidth} \begin{center}\large\textsc{Acknowledgements}\end{center}
+}{
+	\end{minipage}
+}
+
+\newrobustcmd{\clearpagepresentation}{
+	\vfill\null\clearpage
+}
 \newrobustcmd{\chaptertoc}{
-  \thispagestyle{plain}
-  \begin{fullwidth}
-	\setlength{\parskip}{0em}
-	\null\vfill
-    \startcontents
-    \begin{center}
-      \large\textsc{Contents}
-    \end{center}
-    \bigskip
+	\startcontents
+	\begin{center}
+		\large\textsc{Contents}
+	\end{center}
+	\bigskip
+	\begin{center}
+	\begin{minipage}{.4\linewidth}
 	\printcontents{p}{1}{\setcounter{tocdepth}{2}}
-	\vfill
-  \end{fullwidth}
-  \vfill\null
-  \clearpage
+	\end{minipage}
+	\end{center}
+}
+\newrobustcmd{\chaptertocstandalone}{
+	\thispagestyle{plain}
+	\null\vfill
+	\chaptertoc
 }
 
 % ---

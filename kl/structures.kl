@@ -64,7 +64,8 @@
  | finite@structure
  | finite relational structure
 
-\knowledge{notion}
+\knowledge{notion} 
+ | edge
  | hyperedge
  | hyperedges
  | $\+R$-tuple

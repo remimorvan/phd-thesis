@@ -175,6 +175,7 @@
 \knowledge{notion}
  | deterministic transduction
  | determinstic\\transductions
+ | one-way deterministic transductions
 
  \knowledge{notion}
  | transductions

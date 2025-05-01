@@ -2,42 +2,44 @@
 \label{ch:dichotomy-theorem}
 
 \begin{chapterpresentation}
-\begin{abstract}
-	We study the separation problem of "automatic relations", "aka" "synchronous relations",
-	by "recognizable relations"---namely finite unions of "Cartesian products" of "regular languages".
-	We prove it to be computationally equivalent to the "finite regular colourability of automatic graphs", that takes an "automatic presentation" of a "graph@@dir" as input, and asks whether
-	it admits a "regular colouring"---meaning that for each colour, the set of words representing the elements having this colour is a "regular language"---with finitely many colours.
+	\begin{abstract}
+		We study the separation problem of "automatic relations", "aka" "synchronous relations",
+		by "recognizable relations"---namely finite unions of "Cartesian products" of "regular languages".
+		We prove it to be computationally equivalent to the "finite regular colourability of automatic graphs", that takes an "automatic presentation" of a "graph@@dir" as input, and asks whether
+		it admits a "regular colouring"---meaning that for each colour, the set of words representing the elements having this colour is a "regular language"---with finitely many colours.
 
-	While the decidability of this problem remains open, we first show that,
-	if the number of colours is fixed to be any natural number $k \geq 2$, then
-	this problem is undecidable. This implies the undecidability of the separation problem
-	of "automatic relations" by "recognizable relations" where the number of unions allowed is bounded.
+		While the decidability of this problem remains open, we first show that,
+		if the number of colours is fixed to be any natural number $k \geq 2$, then
+		this problem is undecidable. This implies the undecidability of the separation problem
+		of "automatic relations" by "recognizable relations" where the number of unions allowed is bounded.
 
-	We then generalize this result, and prove a dichotomy theorem for automatic structures:
-	for any "finite relational structure" $\?B$, the problem of whether an "automatic structure"
-	admits a "homomorphism" to $\?B$ is either decidable in "NL", or is undecidable.
-	We extend these results to "regular homomorphisms", for which we require the "homomorphisms"
-	to be "regular@@hom", in the sense that every preimage of any element of the "target structure" $\?B$ must be a "regular language". In both cases, "structures" for which the problem is 
-	decidable exactly correspond to those with ``"finite duality"''. 
-	% 
-	% Using this dichotomy theorem, we then prove that the original problem, 
-	% namely the separation problem of "automatic relations"
-	% by "recognizable relations" is undecidable.
-\end{abstract}
-\medskip
-\begin{acknowledgements}
-	\Cref{sec:dichotomy-colouring} corresponds to \cite[\S\S~3--6]{BarceloFigueiraMorvan2023SeparatingAutomatic}, which has been published at MFCS '23,
-	and is a joint work with Pablo Barceló and Diego Figueira.
-	Parts of \Cref{sec:dichotomy-introduction} also come from \cite{BarceloFigueiraMorvan2023SeparatingAutomatic}.
-	
-	Part of the dichotomy theorem, corresponding to \Cref{sec:dichotomy-overview,sec:undecidability-hom,sec:hyperedge-consistency-finite,sec:hyperedge-consistency-automatic}, was proven by Antoine Cuvelier during an internship I supervised in summer 2024.
-	
-	We thank Joanna Fijalkow for helpful discussions on "constraint satisfaction problems",
-	and Edgar Baucher for pointing us to "Mycielski's construction".
-\end{acknowledgements}
+		We then generalize this result, and prove a dichotomy theorem for automatic structures:
+		for any "finite relational structure" $\?B$, the problem of whether an "automatic structure"
+		admits a "homomorphism" to $\?B$ is either decidable in "NL", or is undecidable.
+		We extend these results to "regular homomorphisms", for which we require the "homomorphisms"
+		to be "regular@@hom", in the sense that every preimage of any element of the "target structure" $\?B$ must be a "regular language". In both cases, "structures" for which the problem is 
+		decidable exactly correspond to those with ``"finite duality"''. 
+		% 
+		% Using this dichotomy theorem, we then prove that the original problem, 
+		% namely the separation problem of "automatic relations"
+		% by "recognizable relations" is undecidable.
+	\end{abstract}
+	\par\bigskip\bigskip
+	\begin{acknowledgements}
+		\Cref{sec:dichotomy-colouring} corresponds to \cite[\S\S~3--6]{BarceloFigueiraMorvan2023SeparatingAutomatic}, which has been published at MFCS '23,
+		and is a joint work with Pablo Barceló and Diego Figueira.
+		Parts of \Cref{sec:dichotomy-introduction} also come from \cite{BarceloFigueiraMorvan2023SeparatingAutomatic}.
+		
+		Part of the dichotomy theorem, corresponding to \Cref{sec:dichotomy-overview,sec:undecidability-hom,sec:hyperedge-consistency-finite} and parts of \Cref{sec:hyperedge-consistency-automatic}, was proven by Antoine Cuvelier during an internship I supervised in summer 2024.
+		
+		We thank Joanna Fijalkow for helpful discussions on "constraint satisfaction problems",
+		and Edgar Baucher for pointing us to "Mycielski's construction".
+	\end{acknowledgements}
+	\clearpagepresentation
+	\chaptertocstandalone
 \end{chapterpresentation}
 
-\chaptertoc
+
 
 % \lipsum[1]
 % \citemain[Test]{Atserias2008DigraphColoring}

@@ -9,6 +9,8 @@
 	\caption{Looking glass room, by John Tenniel.}
 \end{marginfigure}
 
+\subsection{Conjunctive Queries}
+
 We now turn to the $\textsf{query} \homto^? \textsf{data}$ side of the homomorphism problem. This perspective captures classical database evaluation and highlights how such queries naturally express existential, monotonic properties.
 For instance, if $\?G$ is the "graph@@dir" with
 two nodes $u$ and $v$ and a single edge from $u$ to $v$,
@@ -96,7 +98,7 @@ it returns every possible tuple $\bar d$ of elements of $\?D$ such that
 there exists a "homomorphism" from $\?G$ to $\?D$ that sends $\bar x$ to $\bar d$.
 Overall, these characterizations shows this fragment to be quite robust.
 
-Overall, these problems boil down to
+Hence, these problems boil down to
 "homomorphism problems" of the form $\textsf{query} \homto^? \textsf{data}$.
 Assuming that the "query@@sem" if fixed,
 the naive algorithm to solve the "homomorphism problem"---consisting in enumerating
@@ -167,7 +169,7 @@ provides a remarkably robust tool for solving most optimization problem on these
 \end{known}
 
 \paragraph*{FPT algorithms.}
-The problem of whether a "graph" contains a "$k$-clique" easily reduces to a
+The problem of whether a "graph@@undir" contains a "$k$-clique" easily reduces to a
 "homomorphism problem" where the "input structure" is fixed---and equal to "$k$-clique".
 It follows that the "homomorphism problem", parametrized in the
 size of the "input structure" is "W1"-hard. Assuming that "W1" $\neq$ "FPT",%
@@ -248,6 +250,9 @@ of "tree-width" at most $k$ \cite{Grohe2007ComplexityHomomorphism}.%
 	the classes of "conjunctive queries" with tractable evaluation.
 \end{known}
 
+
+\subsection{Beyond Conjunctive Queries: Adding Regular Path Predicates for Human-Centered Data}
+
 \begin{marginfigure}
 	\centering
 	\begin{tikzpicture}
@@ -276,7 +281,7 @@ Consider two "structures" $\?A$ and $\?B$, and two elements $a$ and $a'$ of $A$.
 For any homomorphism $f$ from $\?A$ to $\?B$, the "distance@@struct" from $f(a)$ to $f(a')$
 in $\?B$ is at most the distance from $a$ to $a'$ in $\?A$.\footnote{This follows from
 the definition of a "homomorphism", by using a trivial induction on the "distance@@struct".}
-Now assume that $\?B$ is a "graph", whose vertices are humans,
+Now assume that $\?B$ is a "graph@@dir", whose vertices are humans,
 and whose edges represent the `is a child of' relation.
 For any $k\in\N$, it is easy to build a "conjunctive query" $\tup{\?A_k, \tup{a, a'}}$
 outputting all pairs $\tup{b,b'}$ "st" $b'$ is a depth-$k$ descendant of $b$---see
@@ -498,7 +503,10 @@ notice the regular expression in red.
 	to "conjunctive regular path queries" by adding regular expressions.
 \end{known}
 
-While "conjunctive regular path queries" share some of the enjoyable properties
+
+\subsection{Minimization and Structure of Conjunctive Regular Path Queries}
+
+While "conjunctive regular path queries" share some enjoyable properties
 of "conjunctive queries"---for instance the decidability of "semantical equivalence",
 in contrast to "eg" "first-order logic"---its semantics is more complex:
 graph-like phenomenon ("homomorphisms") intertwines with "regular languages".

@@ -3,6 +3,8 @@
 % - Aldous Huxley
 \label{sec:intro-universal}
 
+\subsection{Constraint Satisfaction Problems}
+
 This second part explores the complexity of the "homomorphism problem" when the data is fixed and the query varies, focusing on "constraint satisfaction problems" and "automatic structures".
 
 \begin{marginfigure}
@@ -109,12 +111,13 @@ theorem by Larose and Tesson separating "structures" in "FOfin" from those that 
 	depending on the complexity of their "homomorphism problem".
 \end{known}
 
+\subsection{Homomorphisms Between Automatic Structures}
+
 The second part of this thesis is dedicated to pushing these results to their limit.
 These structures are usually always assumed to be "finite@@struct": we want to generalize them
 to finitely-presentable\footnote{This assumption is needed for the notion
 of computability to make sense.} infinite "structures".
 
-\paragraph*{Automatic structures.}
 The end of the XIXth century saw the quest of finding solid foundations
 for mathematics. Somewhat surprisingly, this task was much more challenging that expected,
 as witnessed by Frege's infamous \emph{Grundgesetze der Arithmetik},
@@ -225,6 +228,8 @@ if it has a finite "regular colouring", which amounts to asking
 if there exists some $k\in\Np$ for which the graph admits a "regular homomorphism" to
 $\clique{k}$. We still don't know whether this problem is decidable, 
 even if the result of \Cref{ch:dichotomy-theorem} hint at its undecidability.
+
+\subsection{Language-Theoretic Properties of Presentations of Automatic Structures}
 
 When dealing with "regular languages",
 separability problems are quite common: a remarkably efficient tool
