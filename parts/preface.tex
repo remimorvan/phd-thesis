@@ -74,20 +74,29 @@ one to click on a notion (be it textual or symbolic) to go to its definition:
 for instance try clicking on "automatic structure", or on
 $\semFO{\phi}{\univStructSynchronous{\Sigma}}$!
 Most pdf viewers allow you to go back to where you previously were
-in document before clicking.%
-\footnote{For instance
-by using Cmd+left in Acrobat Reader or Skim on Mac OS.}
-An index is also given at the end of this thesis.
+in document before clicking.
 
 The extensive use of "knowledge" was permitted by "knowledge-clustering",
 a command-line tool I developed to help streamline and scale the use
 of the knowledge package in large LaTeX documents:
 I would like to thank all the people that provided me with suggestions,
 feature requests or bug reports, with a special thought for Thomas Colcombet, Aliaume Lopez
-and Antonio Casares.%
-\footnote{Antonio was the first person to write his thesis
+and Antonio Casares: Antonio was the first person to write his thesis
 with "knowledge-clustering": thanks to him, the tool can handle
-unreasonably long documents!}
+unreasonably long documents!
+
+\section*{Proofs}
+
+Despite this work being rooted in logic,
+we tried to emphasize the intuition behind proofs.
+For this reason, they are not proven in any formal system but written, as it is
+tradition, in natural language. For the sake of readability, elementary
+proofs---which are often the result of elementary set manipulation or applying
+the previous propositions---are sometimes omitted by a nonchalant
+``it immediately follows that''.
+Naturally, we reserve this logical blasphemy to
+statements that are not harder to prove than $1+1 = 2$,
+see \cite[$\ast$ 54.43]{WhiteheadRussell1910PM1}--\cite[$\ast$ 110.643]{WhiteheadRussell1912PM2}.
 
 \section*{On Black Holes}
 
@@ -95,6 +104,7 @@ unreasonably long documents!}
 	\centering
 	\includegraphics[width=\linewidth]{fig/intro/black-hole.png}
 	\caption{
+		\AP\label{fig:preface-black-hole}
 		Computer scientists tend to do badly around black holes.
 		\href{https://commons.wikimedia.org/wiki/File:Black_Hole_Full.png}{Illustration}
 		by \href{https://commons.wikimedia.org/wiki/User:852278-MCS}{852278-MCS},
@@ -103,9 +113,9 @@ unreasonably long documents!}
 \end{marginfigure}
 Many results of this thesis assume the undecidability of the halting problem:
 we hence assume that the reader lives in the familiar spacetime \cite{Hogarth1994NonTuring}.
-Should the reader be in rotation around a black hole, we kindly suggest that
+Should the reader be in a "Malament–Hogarth spacetime", we kindly suggest that
 they momentarily set aside this thesis and focus on resolving the more pressing
-astrophysical situation.
+astrophysical situation, see \Cref{fig:preface-black-hole}.
 
 \section*{Acknowledgements}
 
