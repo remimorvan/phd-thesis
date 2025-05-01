@@ -7,6 +7,7 @@
 
 \knowledge{notion, wrap=\DPfont}
  | $k$-colourability problem
+ | $3$-colourability
 
 \knowledge{notion, wrap=\DPfont}
  | finite regular colourability of automatic graphs
@@ -36,14 +37,11 @@
  | $\+D$-separability problem for $\+C$-relations
  | separation problem@rel
  | separability@problemrel
+ | $\DRAT $/$\REC $-separability@pb
 
 \knowledge{notion, wrap=\DPfont}
  | $\RAT $/$\REC $-separability problem
  | $\RAT $/$\REC $-separability problems
-
-\knowledge{notion, wrap=\DPfont}
- | $\AUT $/$\REC $-separability problem
- | $\REC $-separability problem
  | $\kPROD[1]$-separability problem
  | $\kREC $-separability problem
  | $\kREC [1]$-separability problem
@@ -53,8 +51,12 @@
  | $\kREC $-separability@problem
  | $\AUT $/$\REC $-separability@problem
  | $\AUT $/$\kREC $-separability@problem
- | $\REC $-separability problem for automatic relations
  | separability problems
+
+\knowledge{notion, wrap=\DPfont}
+ | $\AUT $/$\REC $-separability problem
+ | $\REC $-separability problem
+ | $\REC $-separability problem for automatic relations
 
 \knowledge{notion, wrap=\DPfont}
  | $\REC $-membership problem

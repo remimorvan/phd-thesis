@@ -31,7 +31,7 @@
  | pseudovarieties@sgp
 
 \knowledge{notion}
- | Eilenberg correspondence@lang
+ | Eilenberg-Schützenberger correspondence@lang
  | corresponding@EilenbergLang
  | Eilenberg-Schützenberger correspondence@Sg
  | corresponding@EilenbergSg
@@ -88,17 +88,17 @@
  | $\ast $-pseudovariety@sync
  | $*$-pseudovariety@sync
  | $*$-pseudovarieties of synchronous relations
+ | pseudovariety of automatic relations
 
 \knowledge{notion}
  | generated@var
  | pseudovariety generated
 
 \knowledge{notion}
- | Eilenberg correspondence@sync
+ | Eilenberg-Schützenberger correspondence@sync
  | corresponding@EilenbergSy
  | corresponds@EilenbergSy
  | correspond@EilenbergSy
- | Eilenberg-Schützenberger correspondence@sync
 
 % -----
 % Pseudovarieties of positive synchronous stuff

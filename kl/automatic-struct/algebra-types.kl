@@ -18,6 +18,7 @@
  | typed
  | typed sets
  | $\typesEps $-typed sets
+ | 2-typed sets
 
 \knowledge{notion}
  | map between typed sets

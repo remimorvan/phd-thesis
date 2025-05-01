@@ -1,6 +1,7 @@
 \knowledge{notion}
  | first-order logic
  | FO
+ | first-order
 
 \knowledge{notion}
  | first-order formula
@@ -104,3 +105,4 @@
 \knowledge{notion}
  | monadic second-order logic
  | MSO
+ | | monadic second-order

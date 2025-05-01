@@ -5,16 +5,6 @@
 \subsection{Classes of Relations}
 \label{sec:dichotomy-introduction-relations}
 
-The study of classes of relations on words\footnote{In this context, ``relations on words''
-are often called ``transductions''.} have always been a central topic in language theory
-\cite{ElgotMezi1965RelationsGeneralizedAutomata,Nivat1968TransductionChomsky,Berstel1979Transductions,FrougnySakarovitch1993SynchronizedRationalRelations,Choffrut2006Survey}. 
-More recently, their study has also been motivated by database theory and verification,
-where they are used to build expressive languages. For instance,
-suitable classes of word relations where shown to be relevant for querying strings over relational 
-databases \cite{BenediktLibkinSchwentickSegoufin2003DefinableRelations}, comparing paths in graph databases \cite{BarceloLibkinLinWood2012ExpressiveLanguages}---see also \cite[\S 8, p.~17]{Figueira2021FoundationsGraphPathQueryLanguages}
-for more context \& results on \emph{extended} conjunctive regular path queries---, or defining string constraints for model checking \cite{LinBarcelo2016StringSolvingWordEquationsTransducers}. 
-The most studied such classes include "recognizable@@rel", "automatic@@rel" "aka" "synchronous@@rel", and "rational relations", each one of the latter two strictly extending the previous one. 
-
 Recall that \AP"rational relations" $\RAT$
 are those definable by multi-head automata,
 with heads possibly moving asynchronously;
@@ -40,16 +30,12 @@ is relevant since relations enjoying this property are often amenable to some an
 "eg", abstract interpretations in program verification, variable elimination in constraint logic 
 programming, and query processing over constraint databases---see \cite[Introduction]{BarceloHongLeLinNiskanen2019MonadicDecomposability} for a more thorough discussion on this topic.
 
+\todo{rewrite with \Cref{sec:prelim-automatic-drat} in mind}
+
 In general, "$\REC$-membership@@problem" of "rational relations" is undecidable
 \cite[\S~III, Theorem~8.4]{Berstel1979Transductions},
 but it becomes decidable  for the subclass of 
 "deterministic rational relations", which extends the class of "automatic relations".
-For deterministic "rational relations",  "$\REC$-membership@@problem" has been shown to be decidable in 
-double-exponential time for binary relations
-by Valiant \cite{Valiant1975RegularityDeterministicPushdown}---improving Stearns's
-triple-exponential bound \cite{Stearns1967RegularityPushdown}.
-The decidability result was later extended to relations of arbitrary arity by Carton, Choffrut and 
-Grigorieff \cite[Theorem 3.7]{CartonChoffrutGrigorieff2006DecisionProblems}.
 For "automatic relations", the decidability of "$\REC$-membership@@problem"
 can be obtained by a  simple reduction to the problem of checking whether a finite automaton 
 recognizes an infinite language \cite{LodingSpinrath2019DecisionProblems}---which is decidable via 

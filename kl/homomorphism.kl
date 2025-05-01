@@ -28,6 +28,7 @@
 \knowledge{notion}
  | input structure
  | input@struct
+ | input side@struct
 
 \knowledge{notion}
  | target structure

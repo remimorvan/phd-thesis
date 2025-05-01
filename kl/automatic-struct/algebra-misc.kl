@@ -27,12 +27,47 @@
  | Syntactic morphism theorem@sync
 
 \knowledge{notion}
- | Eilenberg correspondence theorem@sync
+ | Eilenberg-Schützenberger correspondence theorem@sync
  | An Eilenberg theorem for synchronous relations
 
 \knowledge{notion}
  | Reiterman-style characterization of pseudovarieties@sync
  | A Reiterman theorem for positive synchronous algebras@sync
+
+
+% ---
+% Path Algebras
+% ---
+
+\knowledge{notion}
+| fully-preordered@lang
+| fully-preordered languages
+
+\knowledge{notion}
+| $\Omega $-path algebras
+| $\WellFormed $-path algebras
+| $\Omega _T$-path algebras
+
+
+% ---
+% Monads
+% ---
+
+\knowledge{notion}
+ | monad functor
+ | Monad functors
+ | Monads functors
+ | monad functors
+
+\knowledge{notion}
+ | Kleene's monad
+
+\knowledge{notion}
+ | Wilke's monad
+
+\knowledge{notion}
+ | monad adjunction
+
 
 % -----
 % External ref to ncatlab

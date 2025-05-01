@@ -12,7 +12,7 @@
  | functional relation
  | functional@rel
  | Functional@rel
- | fun\al 
+ | functional@@rel 
 
 % ---
 % Recognizable relations
@@ -22,7 +22,6 @@
  | recognizable relations
  | recognizable@rel
  | recognizable relation
- | recognizable rel°
 
 \knowledge{notion}
  | $\+V$-recognizable@rel
@@ -44,7 +43,7 @@
  | synchronous relations
  | synchronous@rel
  | Automatic relations
- | automatic rel°
+ | automatic relations
 
 \knowledge{notion}
  | blank symbol
@@ -98,6 +97,7 @@
  | $T$-multitape automaton
  | Multitape automaton
  | multitape automata
+ | Multitape automata
 
 \knowledge{notion}
  | recognized@desync
@@ -108,7 +108,7 @@
  | deterministic rational@rel
  | deterministic one-way rational relations
  | deterministic\\rational@rel
- | det\ic \\rational rel°
+ | deterministic\\rational relations
 
 \knowledge{notion}
  | deterministic@desync
@@ -127,7 +127,7 @@
  | two-way rational@rel
  | two-way rational relation
  | two-way\\rational@rel
- | two-way\\rational rel°
+ | two-way\\rational relations
 
 \knowledge{notion}
  | deterministic two-way multitape automata
@@ -136,7 +136,7 @@
  | deterministic two-way rational relations
  | Deterministic two-way rational relations
  | deterministic two-way rational@rel
- | det\ic ~two-way\\rational rel°
+ | deterministic\\two-way rational\\ relations
 
 \knowledge{notion}
  | $\{\{i\} \mid i \in \lBrack 1,k\rBrack \}^*$-multitape automata
@@ -182,14 +182,12 @@
 \knowledge{notion}
  | regular functions@bojan
  | Regular functions@bojan
- | det\ic ~two-way trans°
  | regular@bojan
  | deterministic two-way transductions
  | Deterministic two-way transductions
 
 \knowledge{notion}
  | two-way transductions
- | two-way trans°
 
 \knowledge{notion}
  | polyregular\\functions@bojan
@@ -218,3 +216,7 @@
 \knowledge{notion}
  | lexicographic order
  | lexicographic
+
+\knowledge{notion}
+ | length-lexicographic
+ | length-lexicographic order

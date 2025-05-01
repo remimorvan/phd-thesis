@@ -8,7 +8,7 @@ We also refer to \cite{StraubingWeil2021Varieties} for a presentation on pseudov
 or ``semigroups''---are used interchangeably in the literature.}
 More precise pointers are given in \Cref{apdx:pointers-pin}.
 
-A \AP"relation" is a subset of $\Sigma^*\times\Sigma^*$,
+A relation is a subset of $\Sigma^*\times\Sigma^*$,
 where $\Sigma$ is an alphabet---"ie" a non-empty finite set.
 We define its \AP""complement@@rel"" \AP$\intro*\negrel \+R$ as the relation $\{(u,v) \in \Sigma^*\times \Sigma^* \mid (u,v) \not\in \+R\}$.
 Letting
@@ -24,7 +24,7 @@ there can never be padding symbols on both tapes.
 Note that elements of $\WellFormed$ are in natural bijection with $\Sigma^*\times\Sigma^*$---see
 \Cref{fig:ex-sync-auto}.
 The relation recognized by a "synchronous automaton" is the set of pairs $(u,v) \in \Sigma^*\times\Sigma^*$ such that their corresponding element in $\WellFormed$ is the label of
-an accepting run of the automaton. We say that a relation is \AP""synchronous"" if it is recognized 
+an accepting run of the automaton. Recall that we say that a relation is \AP"automatic@@rel" if it is recognized 
 by such a machine.
 
 \begin{remark}
@@ -50,7 +50,7 @@ to make the connection with "$\+V$-relations"---see the next subsection---explic
 	with $\WellFormed$.
 \end{fact}
 
-In particular a relation $\+R$ is "synchronous" if, and only if, it is a regular language when seen as a subset of $(\SigmaPair)^*$.
+In particular a relation $\+R$ is "automatic@@rel" if, and only if, it is a regular language when seen as a subset of $(\SigmaPair)^*$.
 % However, note that building a deterministic complete
 % automaton over $\SigmaPair$ from a deterministic complete "synchronous automaton" over $\Sigma$ 
 % does not preserve many properties of the form ``the automaton belongs to some well-behaved class $\+V$ of automata'', as we will show in \Cref{ex:group-languages}.
@@ -103,7 +103,7 @@ for why classes of regular languages are defined in such a way.}
 	} 
 \end{figure}
 For instance, if $\+V$ is the class of all regular languages, then by
-\Cref{fact:synchronous-is-regular}, "$\+V$-relations" are exactly the "regular relations", "aka" "synchronous relations"!
+\Cref{fact:synchronous-is-regular}, "$\+V$-relations" are exactly the "automatic relations"!
 However, because of
 \Cref{rk:semantic}, the minimal automaton for a relation, seen as a language over $\SigmaPair$,
 can be significantly more complex than a deterministic complete "synchronous automaton" recognizing it, see \Cref{fig:min-auto} in page~\pageref{fig:min-auto}---while the size blow-up is only polynomial, it breaks many of the structural properties of the automaton, such as the property of being a permutation automaton.

@@ -1,17 +1,11 @@
 %%%%% NEW KNOWLEDGES 
 %
 %\knowledge{notion}
-%  | finite (directed) graphs
-%
-%\knowledge{notion}
 %  | edges
 %
 %\knowledge{notion}
 %  | relational database
 %  | relational databases
-%
-%\knowledge{notion}
-%  | sem
 %
 %\knowledge{notion}
 %  | conjunctive query
@@ -76,9 +70,6 @@
 %  | maximal under approximation
 %
 %\knowledge{notion}
-%  | query
-%
-%\knowledge{notion}
 %  | minor-closed
 %
 %\knowledge{notion}
@@ -107,83 +98,5 @@
 %  | classes of CRPQ
 %
 %\knowledge{notion}
-%  | 3-colourability
-%
-%\knowledge{notion}
 %  | monoid
 %  | monoids
-%
-%\knowledge{notion}
-%  | length-lexicographic
-%
-%\knowledge{notion}
-%  | length-lexicographic order
-%
-%\knowledge{notion}
-%  | order-invariant
-%  | $\omega $-order-invariant
-%
-%\knowledge{notion}
-%  | input side@struct
-%
-%\knowledge{notion}
-%  | currying
-%
-%\knowledge{notion}
-%  | tournament
-%
-%\knowledge{notion}
-%  | synchronous
-%
-%\knowledge{notion}
-%  | regular relations
-%
-%\knowledge{notion}
-%  | fully-preordered@lang
-%  | fully-preordered languages
-%
-%\knowledge{notion}
-%  | pseudovariety of automatic relations
-%
-%\knowledge{notion}
-%  | $\DRAT $/$\REC $-separability@pb
-%
-%\knowledge{notion}
-%  | $\Omega $-path algebras
-%  | $\WellFormed $-path algebras
-%  | $\Omega _T$-path algebras
-%
-%\knowledge{notion}
-%  | monadic second-order
-%
-%\knowledge{notion}
-%  | first-order
-%
-%\knowledge{notion}
-%  | Eilenberg correspondence
-%  | Eilenberg correspondences
-%
-%\knowledge{notion}
-%  | monad adjunction
-%
-%\knowledge{notion}
-%  | $\cat {C}$-monad
-%  | $\cat {D}$-monad
-%
-%\knowledge{notion}
-%  | monad functor
-%  | Monad functors
-%  | Monads functors
-%  | monad functors
-%
-%\knowledge{notion}
-%  | Kleene's monad
-%
-%\knowledge{notion}
-%  | Wilke's monad
-%
-%\knowledge{notion}
-%  | 2-typed sets
-%
-%\knowledge{notion}
-%  | functor

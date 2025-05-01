@@ -69,7 +69,7 @@ This is not the case of "rational relations", see \Cref{sec:prelim-rational-rela
 
 For "deterministic rational relations", while they are effectively
 closed under complementation, the "$\DRAT$/$\REC$-membership problem"
-is decidable---see \Cref{sec:dichotomy-introduction-relations}!
+is decidable---see \Cref{sec:prelim-automatic-dret}!
 
 \section{Colouring Problems on Automatic Graphs}
 
@@ -218,7 +218,7 @@ the property of being "first-order" definable, but more generally any
 form a \emph{conservative extension} of finite words, while
 countable scattered words do not: this is why we can find a single construction
 to project algebraic characterizations%
-\footnote{By ``algebraic characterization'' we formally mean an "Eilenberg correspondence".}
+\footnote{By ``algebraic characterization'' we formally mean an "Eilenberg-Schützenberger correspondence".}
 from $\omega$-words to finite ones, but not from countable scattered words to finite ones.
 
 This begs the question: how can we formalize this idea of a monad being
@@ -226,8 +226,8 @@ a \emph{conservative extension} of another one?
 In light of \Cref{fig:adjunction-informal} propose to look at the notion of "monad adjunction".
 Before introducing it, we need a preliminary definition.
 
-Let $\Monad[S] = (S,\unit,\mult)$ be a "$\cat{C}$-monad"
-and $\Monad[T] = (T,\unit,\mult)$ be a "$\cat{D}$-monad".%
+Let $\Monad[S] = (S,\unit,\mult)$ be a $\cat{C}$-monad
+and $\Monad[T] = (T,\unit,\mult)$ be a $\cat{D}$-monad.%
 \footnote{Following Street, we use the same notation for the unit and multiplication in $\Monad[S]$ and $\Monad[T]$.}
 We assume $\cat C$ and $\cat D$ to be both categories of typed sets.
 
@@ -337,7 +337,7 @@ illustrate why this definition makes sense.}
 
 Unsurprisingly, "monad functors" can be composed. Moreover, 
 it can be shown that any "monad functor" from $\Monad[S]$ to $\Monad[T]$ induces
-a "functor" from the category of $\Monad[S]$-algebras to $\Monad[T]$-algebras.
+a functor from the category of $\Monad[S]$-algebras to $\Monad[T]$-algebras.
 For instance, $\MFproj\colon \MonadWilke \Rightarrow \MonadPlus$ induces
 the functor from Wilke's algebras to semigroups that sends $\tup{S^+,S^\omega}$
 to $S^+$.
@@ -396,8 +396,8 @@ These observations lead us to the last conjecture of this thesis.
 	\AP\label{conj:projecting-algebraic-characterizations}
 	Let $\Monad[S]$ and $\Monad[T]$ be two monads.
 	Any monad adjunction between them induces
-	a ``natural function'' from "Eilenberg correspondences" over $\Monad[T]$
-	to "Eilenberg correspondences" over $\Monad[S]$.
+	a ``natural function'' from "Eilenberg-Schützenberger correspondences" over $\Monad[T]$
+	to "Eilenberg-Schützenberger correspondences" over $\Monad[S]$.
 \end{conjecture}
 
 In the case of finite words and $\omega$-words, this

@@ -4,6 +4,18 @@
 \subsection{Regularity is Key}
 \label{sec:preliminaries-automatic-structures-relations-landscape}
 
+The study of classes of relations on words have always been a central topic in language theory
+\cite{ElgotMezi1965RelationsGeneralizedAutomata,Nivat1968TransductionChomsky,Berstel1979Transductions,FrougnySakarovitch1993SynchronizedRationalRelations,Choffrut2006Survey}. 
+More recently, their study has also been motivated by database theory and verification,
+where they are used to build expressive languages. For instance,
+suitable classes of word relations where shown to be relevant for querying strings over relational 
+databases \cite{BenediktLibkinSchwentickSegoufin2003DefinableRelations}, comparing paths in graph databases \cite{BarceloLibkinLinWood2012ExpressiveLanguages}---see also \cite[\S 8, p.~17]{Figueira2021FoundationsGraphPathQueryLanguages}
+for more context \& results on \emph{extended} conjunctive regular path queries---, or defining string constraints for model checking \cite{LinBarcelo2016StringSolvingWordEquationsTransducers}. 
+% The most studied such classes include "recognizable@@rel", "automatic@@rel" "aka" "synchronous@@rel", and "rational relations", each one of the latter two strictly extending the previous one. 
+We start by showing that, while the notion of "regular language" is canonical and admits 
+numerous characterizations, these definitions are no longer equivalent when dealing
+with finite word relations, leading to a \emph{hierarchy} of notions of \emph{rationality}.
+
 The class of "regular languages" is remarkably stable, and can be characterized as the 
 languages recognized by either:
 \begin{itemize}
@@ -44,7 +56,7 @@ we will use the generic term "regular language".
 However, in more complex settings, for instance subsets of non-free monoids,%
 \footnote{Recall that a language is nothing else but a subset of a free
 (usually finitely-generated) monoid.}
-the equivalence between these classes no longer holds. \cite{Pin2021StackExchange}
+the equivalence between these classes no longer holds \cite{Pin2021StackExchange}.
 
 The landscape of rationality for $k$-ary relations of finite words ($k \geq 2$) is far more complex than for languages,\footnote{Which can be seen as unary relations of finite words.} as depicted in \Cref{fig:landscape-rationality-relations}. We will briefly present these classes,
 although this thesis will mostly deal with the two most restrictive ones, namely
@@ -675,7 +687,7 @@ The class of all "rational relations" is denoted by \AP$\intro*\RAT$.
 % 		when $\Sigma = \{a,b\}$.
 % 	}
 % \end{marginfigure}
-\begin{marginfigure}
+\begin{figure}
 	\centering
 	\begin{tikzpicture}[shorten >= 1pt, node distance = 1.8cm, on grid, baseline]
 		\node[state, initial left, accepting] (q0) {}; 
@@ -687,13 +699,7 @@ The class of all "rational relations" is denoted by \AP$\intro*\RAT$.
 			(q1) edge[loop above] node[font=\scriptsize, above]
 				{$\pair{a}{a}$ for $a\in \Sigma$} (q1);
 	\end{tikzpicture}
-	\caption{
-		\AP\label{fig:multitape-automaton-suffix}
-		A "multitape automaton" for the "suffix relation" $\suffix$.
-	}
-\end{marginfigure}
-\begin{marginfigure}[-10em]
-	\centering
+	\hspace{2em}
 	\begin{tikzpicture}[shorten >= 1pt, node distance = 1.8cm, on grid, baseline]
 		\node[state, initial left, accepting] (q0) {$*$}; 
 		\node[state, above right=5em of q0] (qa) {$q_a$}; 
@@ -707,19 +713,20 @@ The class of all "rational relations" is denoted by \AP$\intro*\RAT$.
 			(qb) edge[bend right] node[font=\scriptsize, right] {$\pair{\pad}{b}$} (q0);
 	\end{tikzpicture}
 	\caption{
-		\AP\label{fig:multitape-automaton-subword}
-		A "multitape automaton" for the "subword relation" $\subword$
-		when $\Sigma = \{a,b\}$.
+		\AP\label{fig:multitape-automaton-suffix-subword}
+		"Multitape automata" for the "suffix relation" $\suffix$ (left-hand side)
+		and for the "subword relation" $\subword$
+		when $\Sigma = \{a,b\}$ (right-hand side).
 	}
-\end{marginfigure}
+\end{figure}
 
 For instance, the "suffix relation" is "rational@@rel":
-see \Cref{fig:multitape-automaton-suffix}.
+see \Cref{fig:multitape-automaton-suffix-subword}.
 Similarly, the "subword relation" $\subword$ is "rational@@rel": the idea behind
 the "automaton@@desync" recognizing it is that, when reading an $a$ on the first tape,
 it will only move its second head right, until it reads
 an $a$; it then reads the next letter on the first tape and iterates this process,
-see \Cref{fig:multitape-automaton-subword}. 
+see \Cref{fig:multitape-automaton-suffix-subword}. 
 
 Alternative definitions exist, but yield an equivalent definition of "rational relations".
 For instance, in \cite[Definition~2.1]{CartonChoffrutGrigorieff2006DecisionProblems},
@@ -752,12 +759,13 @@ of the "intersection non-emptiness problem" (\Cref{ex:PCP-is-det-rat}).
 The class is also closed under concatenation, Kleene closure and reversal \cite[\S~3, Table~I]{FischerRosenberg1968Multitape}.
 
 \subsection{Deterministic Rational Relations}
+\label{sec:prelim-automatic-drat}
 
 Because of the undecidability results above, a subclass of "rational relations" was introduced:
 "deterministic rational relations". We will see that, while still strictly extending the class of
 "automatic relations", its equivalence problem is decidable.
 
-Note that the "automaton@@sync" of \Cref{fig:multitape-automaton-suffix} is deterministic
+Note that the "automaton@@sync" of \Cref{fig:multitape-automaton-suffix-subword} is deterministic
 as a classical automaton. However, we claim that it should not be considered to be ``deterministic''
 as a "multitape automaton".
 For instance, assume that we are running this automaton over the pair
@@ -767,7 +775,7 @@ $\pair{\pad}{a}$ and stay in the initial state, or take the transition $\pair{a}
 final state? In the first case, we can obtain an accepting run, but in the second case we cannot.
 In other word, assuming that $u \subword v$, we need to guess when we've reached the suffix of
 $v$ corresponding to $u$, and this is a source of non-determinism. Observe that
-the automaton of \Cref{fig:multitape-automaton-suffix} is deterministic as a classical automaton
+the automaton for $\suffix$ of \Cref{fig:multitape-automaton-suffix-subword} is deterministic as a classical automaton
 because $\pair{\pad}{a}$ and $\pair{a}{a}$ are distinct letters of $\Gamma\convolAlpha\Sigma$, 
 although in the multitape setting, both pairs can be simultaneously admissible.
 In other words, the lack of injectivity of the function $\projWord$ creates another
@@ -786,8 +794,9 @@ is ""deterministic@@desync"" when:
 		$a_h \in \Sigma_h$ for every $h\in H$ and $a_h = \pad$ for every $h\not\in H$.
 \end{enumerate}
 In other words, we ask for classical determinism to hold, but moreover we need to know \emph{a priori}, at each state, which set of heads we will be moving at the next step.
-For instance, the automaton of \Cref{fig:multitape-automaton-subword} is "deterministic@@multitape",
-but the automaton of \Cref{fig:multitape-automaton-suffix} is not: its
+For instance, in \Cref{fig:multitape-automaton-suffix-subword},
+the "automaton@@sync" for $\subword$ is "deterministic@@multitape",
+but the "automaton@@sync" for $\suffix$ is not: its
 initial state has outgoing transitions from both $\Sigma \times \Sigma$ and
 from $\{\pad\}\times\Sigma$.
 
@@ -811,7 +820,7 @@ if the relation
 is recognized by a "deterministic multitape automaton", where $\triangleleft$ is a new symbol.
 We denote by \AP$\intro*\DRAT$ the class of all "deterministic rational relations".
 
-For instance, starting from \Cref{fig:multitape-automaton-subword}, it is easy
+For instance, starting from \Cref{fig:multitape-automaton-suffix-subword}, it is easy
 to build a "deterministic multitape automaton" for
 $\{\tup{u\triangleleft, v\triangleleft} \mid u \subword v\}$,
 proving that the "subword relation" is "deterministic rational@@rel".
@@ -907,7 +916,7 @@ of the previous proof to be "deterministic@@multitape". For instance, while
 the prefix relation is "deterministic rational@@rel", it can be shown that
 $\prefix$ cannot be recognized by a "deterministic multitape automaton".
 
-Clearly, \Cref{fig:multitape-automaton-suffix} is not "deterministic@@desync".
+Clearly, the "automaton@@sync" for $\suffix$ of \Cref{fig:multitape-automaton-suffix-subword} is not "deterministic@@desync".
 But in fact, we can prove a stronger result: $\suffix$ is not even "deterministic rational@@rel".%
 \footnote{This can be shown by using "eg"
 \cite[Lemma~IV.5.15]{Sakarovitch2009Elements} on the pair of words
@@ -915,15 +924,17 @@ $\tup{a^n b \triangleleft, a^{n-1} b a^n b \triangleleft}$ ($n\in\N$).
 We remark that there is a typo in
 the statement of \cite[Lemma~IV.5.15]{Sakarovitch2009Elements} and that
 ``$|(f,g)| \geq 0$'' should be replaced by ``$|(f,g)| > 0$''.}
+However, the next example shows that "deterministic rational relations" are still quite expressive,
+leading to some undecidability results.
 
 \begin{example}[Post Correspondence Problem (PCP) {\cite[Theorem~18]{RabinScott1959FiniteAutomata}}]
 	\AP\label{ex:PCP-is-det-rat}
 	"Deterministic multitape automata" are actually quite expressive:
 	given an instance $\tup{u_1,\dotsc,u_k, v_1,\dotsc,v_k} \in (\Sigma^*)^{2k}$ 
 	of PCP\footnote{Recall that this undecidable problem asks if there exists $n\in\N$
-	and a sequence of (possibly-repeating)
+	and a sequence of (possibly repeating)
 	indices $i_1,\dotsc, i_n \in \lBrack 1,k\rBrack$ "st"
-	\[u_{i_1}\cdots u_{i_n} = v_{i_1}\cdots v_{i_n}\].},
+	\[u_{i_1}\cdots u_{i_n} = v_{i_1}\cdots v_{i_n}.\]},
 	we can define a relation $\+R_u$ that essentially encodes the function
 	$i \mapsto u_i$, and a relation $\+R_v$ that encodes $i \mapsto v_i$,
 	and show that their Kleene stars $(\+R_u)^*$ and $(\+R_v)^*$ are "deterministic rational@@rel".
@@ -942,12 +953,17 @@ is decidable \cite[Theorem~3.11]{HarjuKarhumaki1991Equivalence}.%
 this model was introduced more than thirty years before by Rabin
 and Scott \cite{RabinScott1959FiniteAutomata}.}
 
-\todo{"$\RAT$-membership" decidable.}
-
 While the class is closed under complementation, it is in fact neither closed under union,
 intersection \cite[Theorem~17]{RabinScott1959FiniteAutomata},
 concatenation, Kleene closure nor reversal
 \cite[Table~1]{FischerRosenberg1968Multitape}.
+
+Lastly, the "$\DRAT$/$\REC$-membership problem" is decidable.
+There is a double-exponential time algorithm for binary relations
+given by Valiant \cite{Valiant1975RegularityDeterministicPushdown}---improving Stearns's
+triple-exponential bound \cite{Stearns1967RegularityPushdown}.
+The decidability result was later extended to relations of arbitrary arity by Carton, Choffrut and 
+Grigorieff \cite[Theorem 3.7]{CartonChoffrutGrigorieff2006DecisionProblems}.
 
 \subsection{Restricted Head Movements}
 \label{sec:preliminaries-automatic-structures-relations-restricted-head-movements}
@@ -1120,12 +1136,13 @@ for more details.}
 \footnote{This can be proven like for classical deterministic automata, by simply complementing
 the set of accepting states. This construction also works
 for "deterministic one-way rational relations" \cite[Theorem~17]{RabinScott1959FiniteAutomata}.
-However in the case of two-way automaton,
+However, in the case of two-way automaton,
 we need to first assure that the automaton does not reject by looping
 forever: as mentioned in \cite[Lemma~4]{CartonExibardSerre2017TwoWayTwoTapeAutomata}
 this can be dealt with using Sipser's trick \cite[Theorem~1]{Sipser1980HaltingSpaceBoundedComputations}.}
-\todo{Are "two-way rational relations" closed under complement? I think not but
-cannot find a reference.}
+We believe "two-way rational relations" are not be closed under complement,
+and that the proof is similar to "rational relations"; nonetheless, we could not find
+any formal reference to back this claim.
 Neither model are closed under composition \cite[Theorem~5]{CartonExibardSerre2017TwoWayTwoTapeAutomata}.
 
 \begin{figure}	
@@ -1179,7 +1196,7 @@ Neither model are closed under composition \cite[Theorem~5]{CartonExibardSerre20
 		\node at (0,8) (2rat)
 			{\textsc{"two-way\\rational@@rel"}\\
 			\textsf{\footnotesize
-			\textcolor{cBlue}{$\neg$bool??}\esp
+			% \textcolor{cBlue}{$\neg$bool??}\esp
 			\textcolor{cRed}{$\neg$incl}\esp
 			\textcolor{cRed}{$\neg$equiv}}};
 		\path[->]
@@ -1197,7 +1214,6 @@ Neither model are closed under composition \cite[Theorem~5]{CartonExibardSerre20
 		Predicates \textsf{bool}, \textsf{incl} and \textsf{equiv} indicate
 		whether the class is closed under Boolean operators, has decidable
 		"inclusion problem@@rel" and "equivalence problem@@rel", respectively.
-		\todo{bool for "two-way rational@@rel"?}
 	}
 \end{figure}
 
@@ -1250,7 +1266,7 @@ by a partial function
 \]
 Hence, by construction, a "deterministic transducer" recognizes a partial function
 from $\Gamma^*$ to $\Sigma^*$.
-Note however that the "deterministic multitape automaton" of \Cref{fig:multitape-automaton-subword}
+Note however that the "deterministic multitape automaton" of \Cref{fig:multitape-automaton-suffix-subword}
 recognizes the "subword relation", which is not "functional@@rel".
 And hence, "deterministic transducers" are strictly less expressive
 than "deterministic multitape automaton".
@@ -1262,7 +1278,7 @@ For instance, consider the function, where $\Sigma \defeq \{a,b,c\}$,
 \begin{center}
 	\begin{tabular}{rccc}
 		$f\colon$ & $\Sigma^*$ & $\pto$ & $\Sigma^*$ \\
-		& $a\cdot b^n \cdot c$ & $\mapsto$ & $c \cdot b^n \cdot a \;(n\in\N)$ \\
+		& $a\cdot b^n \cdot c$ & $\mapsto$ & $c \cdot b^n \cdot a \quad(n\in\N)$ \\
 		& $a\cdot b^n \cdot a$ & $\mapsto$ & $a \cdot b^n \cdot a$ \qquad``\quad.
 	\end{tabular}
 \end{center}
@@ -1316,17 +1332,17 @@ $\projTape$ introduced earlier for "multitape automata".}
 			}
 		}
 		\node at (0,0) (frec)
-			{\textsc{"fun\al"\\"recognizable rel°"}\\
+			{\textsc{"functional@@rel"\\"recognizable relations"}\\
 			\textsf{\footnotesize
 			\textcolor{cGreen}{incl}\esp
 			\textcolor{cGreen}{equiv}}};
 		\node[text width=3cm] at (-4.5, 3) (faut)
-			{\textsc{"fun\al"\\"automatic rel°"}\\
+			{\textsc{"functional@@rel"\\"automatic relations"}\\
 			\textsf{\footnotesize
 			\textcolor{cGreen}{incl}\esp
 			\textcolor{cGreen}{equiv}}};
 		\node at (0, 3) (fraut)
-			{\textsc{"fun\al" "right-@right-automatic@rel"\\"automatic rel°@right-automatic@rel"}\\
+			{\textsc{"functional@@rel" "right-@right-automatic@rel"\\"automatic relations@right-automatic@rel"}\\
 			\textsf{\footnotesize
 			\textcolor{cGreen}{incl}\esp
 			\textcolor{cGreen}{equiv}}};
@@ -1336,37 +1352,37 @@ $\projTape$ introduced earlier for "multitape automata".}
 			\textcolor{cGreen}{incl}\esp
 			\textcolor{cGreen}{equiv}}};
 		\node at (0,6) (drat)
-			{\textsc{"fun\al" "det\ic\\rational rel°"}\\
+			{\textsc{"functional@@rel" "deterministic\\rational relations"}\\
 			\textsf{\footnotesize
 			\textcolor{cGreen}{incl}\esp
 			\textcolor{cGreen}{equiv}}};
 		\node at (0, 9) (ftrans)
-			{\textsc{"fun\al" "transductions"}\\
+			{\textsc{"functional@@rel" "transductions"}\\
 			\textsf{\footnotesize
 			\textcolor{cGreen}{incl}\esp
 			\textcolor{cGreen}{equiv}}};
-		\node at (0,12) (regfun)
+		\node at (0,13) (regfun)
 			{\textsc{"regular functions@@bojan"\\
-			= "fun\al" "two-way trans°"\\
-			= "det\ic~two-way trans°"}\\
+			= "functional@@rel" "two-way transductions"\\
+			= "deterministic two-way transductions"}\\
 			\textsf{\footnotesize
 			\textcolor{cGreen}{incl}\esp
 			\textcolor{cGreen}{equiv}}};
-		\node at (-3,15) (fd2rat)
-			{\textsc{"fun\al" "det\ic~two-way\\rational rel°"}\\
+		\node at (-3,17) (fd2rat)
+			{\textsc{"functional@@rel" "deterministic\\two-way rational\\ relations"}\\
 			\textsf{\footnotesize
 			\textcolor{cRed}{$\neg$incl}\esp
 			\textcolor{cRed}{$\neg$equiv}}};
-		\node at (-3,18) (f2rat)
-			{\textsc{"fun\al" "two-way\\rational rel°"}\\
+		\node at (-3,20) (f2rat)
+			{\textsc{"functional@@rel" "two-way\\rational relations"}\\
 			\textsf{\footnotesize
 			\textcolor{cRed}{$\neg$incl}\esp
 			\textcolor{cRed}{$\neg$equiv}}};
-		\node at (3,15) (polyreg)
+		\node at (3,17) (polyreg)
 			{\textsc{``"polyregular\\functions@@bojan"''}\\
 			\textsf{\footnotesize
-			\textcolor{cBlue}{incl??}\esp
-			\textcolor{cBlue}{equiv??}}};
+			\textcolor{cBlue}{¿incl?}\esp
+			\textcolor{cBlue}{¿equiv?}}};
 		\path[->]
 			(frec) edge (faut) edge (fraut) edge (dtrans)
 			(faut) edge (drat)
@@ -1388,24 +1404,24 @@ $\projTape$ introduced earlier for "multitape automata".}
 		"inclusion problem@@rel" and "equivalence problem@@rel", respectively.
 	}
 \end{figure}
-\todo{Diego:  don't see the point of shortening the names as in FUN-AL, etc. You have plenty of space! (true)}
 
 The "equivalence problem@@rel" of "regular functions"
 was shown to be decidable by Gurari \cite[Theorem~1]{Gurari1982Equivalence}.
 Note that for the subclass of functional "rational relations", this result was proven one decade earlier, by Schützenberger in 1975---see "eg" \cite[Corollary~IV.1.3]{Berstel1979Transductions}.
 
 \paragraph*{Polyregular functions.}
-"Regular functions@@bojan" all have a linear growth.%
-\todo{add ref Sakarovitch}
-\footnote{Meaning that if $\tup{u,v}$ belongs to the relation, then $|v| \leq k\cdot |u|$
-for some constant $k$.}
+"Regular functions@@bojan" all have a linear growth, in the sense that
+if $\tup{u,v}$ belongs to the relation, then $|v| \leq k\cdot |u|$
+for some constant $k$.%
+\footnote{In the case of "one-way deterministic transductions", this follows from
+\cite[Theorem~V.4.2]{Sakarovitch2009Elements}.}
 This model has been generalized to \AP""polyregular
 functions@@bojan""---which have polynomial growth---see \cite{Bojanczyk2022Transducers} for
 a recent survey: one way of defining this class of functions is by allowing transducers
 to put and move a bounded number of \emph{pebbles} on the input word.
 A typical example of "polyregular function@@bojan" that is not "regular@@bojan"
 is the squaring function, which takes a word $u$ and maps it to
-the concatenation $u^{|u|}$ of $u$ as many times as there are letter in the word.
+the concatenation $u^{|u|}$ of $u$ as many times as there are letters in the word.
 Since this function has quadratic growth, it cannot be "regular@@bojan", but
 it can easily be recognized by a deterministic two-way transducer with a single pebble,
 that puts a pebble on the first position, outputs the input word, moves
