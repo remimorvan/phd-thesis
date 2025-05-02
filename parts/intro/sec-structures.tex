@@ -6,10 +6,8 @@ Homomorphisms capture the idea of maps preserving relational information between
 They arise naturally across a variety of domains: in logic, as the mechanism behind positive-existential quantification; in database theory, as the semantics of conjunctive query evaluation; and in constraint satisfaction, as the formalization of whether a structure
 satisfies a given set of rules. This thesis approaches the "homomorphism problem" as a unifying framework, by emphasizing its complementary role in data querying and constraint solving.
 
-To introduce this problem, we present a wide range of examples---from
-query evaluation to SAT solving---that can all be encoded as
-"homomorphism problems".
-Interestingly, they reveal a dichotomy on how problems are encoded as "homomorphism problems":
+To introduce this problem, we present a range of examples---automata acceptance, SQL query evaluation and Sudoku solving; we also present 3-colourability and SAT-solving in the next sections---that can all be encoded as "homomorphism problems".
+Interestingly, they reveal a dichotomy on how problems are encoded:
 in some, the query appears on the left-hand side of the "homomorphism", 
 while on others it appears on the right.
 The first type of encoding correspond to what we call \emph{existential problems},
@@ -19,7 +17,7 @@ On the other hand, the dual encoding deals with \emph{universal problems}
 studied by the domain of \emph{constraint satisfaction}.
 It is the focus of \Cref{sec:intro-universal}.
 This dual perspective on the "homomorphism problem" guides the structure of
-this thesis, which is separated into two independent parts.
+this thesis, and forms the basis for the two-part division of this thesis.
 
 \paragraph*{Homomorphisms.}
 The simplest mathematical structure is perhaps that of a (directed) finite graph:
@@ -156,7 +154,7 @@ in the "signature" $\sigma$.
 }
 
 In the problem above, we refer to $\?A$ as the \AP""input structure""
-and to $\?B$ as the ""target structure"". We denote by \AP$\?A \intro*\homto \?B$
+and to $\?B$ as the ""target structure"", and we denote by \AP$\?A \intro*\homto \?B$
 the existence of a "homomorphism" from $\?A$ to $\?B$.
 
 More than a mere decision problem---which is easily seen to lie in "NP"---,
@@ -170,28 +168,28 @@ the "homomorphism problem" should rather be understood as a \emph{framework} or
 		\node[vertex, right=of 0] (1) {};
 		\node[vertex, right=of 1] (2) {};
 		\node[vertex, right=of 2] (3) {};
+		\node[vertex, inner sep=3.5pt] (3b) at (3) {};
 
 		\draw[edge] (0) to node[above] {$a$} (1);
 		\draw[edge] (1) to node[above] {$b$} (2);
-		\draw[edge] (2) to node[above] {$a$} (3);
+		\draw[edge] (2) to node[above] {$a$} (3b);
 
 		\draw[edge] ($(0)+(-.4,0)$) to (0);
-		\node[vertex, inner sep=4pt] (3b) at (3) {};
 
 		\node[vertex, below=5em of 1] (q0) {};
 		\node[vertex, right=of q0] (q1) {};
+		\node[vertex, inner sep=3.5pt] (q1b) at (q1) {};
 		
 		\draw[edge] ($(q0)+(-.4,0)$) to (q0);
-		\node[vertex, inner sep=4pt] (q1b) at (q1) {};
 
 		\draw[edge, loop, out=-60, in=-120, looseness=8] (q0) to node[below] {$a,b$} (q0);
-		\draw[edge] (q0) to node[above] {$a$} (q1);
-		\draw[edge, loop, out=-60, in=-120, looseness=8] (q1) to node[below] {$a,b$} (q1);
+		\draw[edge] (q0) to node[above] {$a$} (q1b);
+		\draw[edge, loop, out=-60, in=-120, looseness=8] (q1b) to node[below] {$a,b$} (q1b);
 		
 		\draw[edge, draw=cBlue, dotted, out=-60, in=130] (0) to (q0);
 		\draw[edge, draw=cBlue, dotted, out=-100, in=100] (1) to (q0);
 		\draw[edge, draw=cBlue, dotted, out=-90, in=80] (2) to (q0);
-		\draw[edge, draw=cBlue, dotted, out=-90, in=90] (3) to (q1);
+		\draw[edge, draw=cBlue, dotted, out=-90, in=90] (3b) to (q1b);
 	\end{tikzpicture}
 	\caption{
 		\AP\label{fig:example-automaton-as-rel}
@@ -221,53 +219,10 @@ the "homomorphism problem" should rather be understood as a \emph{framework} or
 	the automaton $\?A$ accepts $u$.
 \end{example}
 
-As we will see in the rest of this section,
-depending on the context, either the query or the data may play the role of the input structure in the homomorphism problem. This distinction is fundamental and forms the basis for the two-part division of this thesis.
-
-\begin{marginfigure}[-13em]
-	\centering
-	\begin{tikzpicture}
-		\input{tikz/dichotomy/3-clique}
-	\end{tikzpicture}
-	\caption{
-		\AP\label{fig:intro-3-clique}
-		The "$3$-clique" $\clique{3}$.
-	}
-\end{marginfigure}
-\begin{marginfigure}
-	\centering
-	\begin{tikzpicture}
-		\input{tikz/dichotomy/ex-3-colouring}
-	\end{tikzpicture}
-	\caption{
-		\AP\label{fig:dichotomy-ex-3-clique}
-		A "$3$-colouring" of some beetle-shaped "graph@@dir".
-	}
-\end{marginfigure}
-\begin{example}[Graph colouring]
-	\AP\label{ex:graph-colouring-as-hom}
-	Let $k\in\Np$. We let the \AP""$k$-clique"", denoted by $\intro*\clique{k}$,
-	to be the "graph@@dir" whose vertices are $\lBrack 1,k\rBrack$,
-	and with an edge from $i$ to $j$ (with $i,j \in \lBrack 1,k\rBrack$)
-	"iff" $i\neq j$, see \Cref{fig:intro-3-clique}.
-	Recall that a finite "graph@@dir" $\?G$ is \AP""$k$-colourable""---"ie"
-	we can map every vertex of $\?G$ to an element of $\lBrack 1,k\rBrack$
-	"st" no two adjacent vertices are sent on the same colour/number.
-	In other words, a $k$-colouring corresponds precisely to a "homomorphism" from $\?G$
-	to $\clique{k}$, where colours correspond to the vertices of the clique,
-	see "eg" \Cref{fig:dichotomy-ex-3-clique}.
-	Hence, a graph is "$k$-colourable" if, and only if,
-	there is a "homomorphism" from $\?G$ to $\clique{k}$.
-\end{example}
-
-Note that in both \Cref{ex:auto-as-rel,ex:graph-colouring-as-hom},
-not only is the existence of a homomorphism equivalent to the existence of a solution, but the set of homomorphisms naturally corresponds to the set of solutions:
-\begin{itemize}
-	\item in \Cref{ex:auto-as-rel}, "homomorphisms" from $\?W_u$ to $\?A$
-		exactly correspond to accepting runs of the automaton over $u$;
-	\item in \Cref{ex:graph-colouring-as-hom}, "homomorphisms" from $\?G$ to $\clique{k}$
-		exactly correspond to $k$-colourings of $\?G$.
-\end{itemize}
+Note that in both \Cref{ex:auto-as-rel},
+not only is the existence of a homomorphism equivalent to the existence of a solution, but the set 
+of homomorphisms naturally corresponds to the set of solutions: "homomorphisms" from $\?W_u$
+to $\?A$ exactly correspond to accepting runs of the automaton over $u$.
 
 \begin{figure}
 	\centering%
@@ -385,10 +340,11 @@ not only is the existence of a homomorphism equivalent to the existence of a sol
 	is exactly the output set of the SQL query on the database.
 \end{example}
 
-We now turn to more involved encodings, namely Sudoku grids and SAT solving,
-to illustrate the flexibility of the homomorphism framework.
+We now provide a last example: Sudoku grids. While it is also encoded
+as a "homomorphism problem", we will see in fact that this encoding
+is of a different nature than the encodings of \Cref{ex:auto-as-rel,ex:sql-as-hom}.
 
-\begin{marginfigure}[-5em]
+\begin{marginfigure}
 	\centering%
 	\begin{tikzpicture}[scale=1.3]
 		\draw[step=.3333] (0, 0) grid (3, 3);
@@ -409,7 +365,7 @@ to illustrate the flexibility of the homomorphism framework.
 	\end{tikzpicture}
 	\caption{
 		\AP\label{fig:intro-sudoku}
-		A prefilled sudoku grid.
+		A prefilled Sudoku grid.
 	}
 \end{marginfigure}
 \begin{example}[Sudoku grids]
@@ -440,77 +396,14 @@ to illustrate the flexibility of the homomorphism framework.
 	to force some values. This trick---formally called "marked structure"---will
 	actually prove crucial in \Cref{ch:dichotomy-theorem}.}
 	More precisely, "homomorphisms" $f\colon \?S_G \to \?T$ exactly correspond to
-	complete Soduku grid that extend $G$, with $f(\tup{i,j})$ giving
+	complete Sudoku grid that extend $G$, with $f(\tup{i,j})$ giving
 	the number contained in cell $\tup{i,j}$.
-\end{example}
-
-\begin{example}[SAT solving]
-	\AP\label{ex:sat-as-hom}
-	We consider a 3-SAT instance, namely a finite conjunction of
-	disjunctions of three literals, say
-	\[
-		\phi \defeq \bigwedge_{i=1}^n \ell_{i,1} \lor \ell_{i,2} \lor \ell_{i,3},
-	\]
-	where each $\ell_{i,j}$ is either a variable, or the negation of a variable.
-	We assume "wlog" that in each clause, positive variables appear before negative ones%
-	\footnote{Meaning "eg" that $x \lor \neg y \lor z$ is not allowed, contrary to
-	$x \lor z \lor \neg y$.}
-	We let $\?B$ be the structure whose domain has two elements $\{0,1\}$,
-	equipped with four ternary relations $\+R_0$ through $\+R_3$, where $\+R_j$ encodes clauses with exactly $j$ negated literals. They are formally defined as
-	\begin{align*}
-		\+R_0 & \defeq \set{0,1}^3 \smallsetminus \set{\tup{0,0,0}}, &
-		\+R_1 & \defeq \set{0,1}^3 \smallsetminus \set{\tup{1,0,0}}, \\
-		\+R_2 & \defeq \set{0,1}^3 \smallsetminus \set{\tup{1,1,0}}, \text{ and} &
-		\+R_3 & \defeq \set{0,1}^3 \smallsetminus \set{\tup{1,1,1}}.
-	\end{align*}
-	We then encode $\phi$ into the "relational structure" $\?F_\phi$
-	whose domain is the set of variables of $\phi$,
-	and for every $i \in \lBrack 1,n \rBrack$,
-	$\+R_j$ ($j\in\lBrack 0,3\rBrack$) consists of all triplets of variables $\tup{x,y,z}$
-	"st" there is a clause of $\phi$ containing variables $x$, $y$ and $z$ (with multiplicity), and exactly $j$ of these variables occur negatively.
-	For instance, $\tup{x, y, \neg x} \in \+R_1$, and $\tup{\neg x, \neg y, \neg z} \in \+R_3$.
-	A function $f$ from the domain of $\?F_\phi$ to the domain of $\?B$ amounts to picking
-	a Boolean valuation of the variables occurring in $\phi$.
-	Observe that, by definition of the relations $\+R_j$,
-	given a clause $\psi$ containing variables $x,y,z$, 
-	$f$ is a "homomorphism" from $\?F_\psi$ to $\?B$ "iff"
-	$f$, seen as a valuation, satisfies $\psi$.\footnote{For instance,
-	if all variables are positive, then all valuations except the one putting
-	all variables to false satisfy the formula. This is why $\+R_0$ is defined
-	on $\?B$ as $\set{0,1}^3\smallsetminus \set{\tup{0,0,0}}$.}
-	By taking conjunction, the conclusion follows: "homomorphisms" from
-	$\?F_\phi$ to $\?B$ exactly correspond to valuations satisfying $\phi$.
-	In particular, there is a "homomorphism" from $\?F_\phi$ to $\?B$ "iff"
-	$\phi$ is satisfiable.%
-	\footnote{Note that this example can be easily generalized to $k$-SAT for any $k\in\Np$.
-	However, the "signature" depends on $k$.}
 \end{example}
 
 \begin{known}
 	The "homomorphism problem" is a natural framework in which we can express many
-	logical questions, ranging from database evaluation to SAT solving.
+	logical questions, ranging from database evaluation to Sudoku solving.
 \end{known}
-
-\begin{table}
-	\centering
-	\begin{tabular}{cccc}
-		\toprule 
-		& data & query & hom problem \\ \midrule 
-		Ex~\ref{ex:auto-as-rel} & automata & is $u$ accepted? & $\textsf{query} \homto^? \textsf{data}$ \\
-		Ex~\ref{ex:graph-colouring-as-hom} & graph & is "$k$-colourable"?& $\textsf{data} \homto^? \textsf{query}$ \\
-		Ex~\ref{ex:sql-as-hom} & database & SQL query & $\textsf{query} \homto^? \textsf{data}$ \\
-		Ex~\ref{ex:sudoku-as-hom} & Sudoku grid & is solvable? & $\textsf{data} \homto^? \textsf{query}$ \\
-		Ex~\ref{ex:sat-as-hom} & formula & is satisfiable? & $\textsf{data} \homto^? \textsf{query}$ \\ \bottomrule
-	\end{tabular}
-	\caption{\AP\label{tab:examples-encodings-in-hom}
-		Summary of the encodings of some
-		natural model-checking problem into "homomorphism problems".
-		The last column indicates whether the structure encoding the data
-		(resp. the query) is on the left-hand side ("ie" acts as the "input structure")
-		or the right-hand hand (the "target structure")
-		of the "homomorphism problem".
-	}
-\end{table}
 
 All five problems we presented can actually be seen as model-checking problem:
 part of the input represents some \emph{data}---or \emph{model}---and part of it represents a
@@ -525,14 +418,42 @@ the encodings of these problems into "homomorphism problems" can either be of tw
 		and the \emph{"query@@sem"} is the "target structure": we denote
 		these problems by `$\textsf{data} \homto^? \textsf{query}$'.
 \end{itemize}
+\begin{table}[h]
+	\centering
+	\begin{tabular}{cccc}
+		\toprule 
+		& data & query & hom problem \\ \midrule 
+		Ex~\ref{ex:auto-as-rel} & automata & is $u$ accepted? & $\textsf{query} \homto^? \textsf{data}$ \\
+		Ex~\ref{ex:sql-as-hom} & database & SQL query & $\textsf{query} \homto^? \textsf{data}$ \\
+		Ex~\ref{ex:sudoku-as-hom} & Sudoku grid & is solvable? & $\textsf{data} \homto^? \textsf{query}$ \\
+		Ex~\ref{ex:graph-colouring-as-hom} & graph &
+		is "$k$-colourable"? & $\textsf{data} \homto^? \textsf{query}$ \\
+		Ex~\ref{ex:sat-as-hom} & SAT formula &
+		is satisfiable? & $\textsf{data} \homto^? \textsf{query}$ \\ \bottomrule
+	\end{tabular}
+	\caption{\AP\label{tab:examples-encodings-in-hom}
+		Summary of the encodings of some
+		natural model-checking problem into "homomorphism problems".
+		The last column indicates whether the structure encoding the data
+		(resp. the query) is on the left-hand side ("ie" acts as the "input structure")
+		or the right-hand hand (the "target structure")
+		of the "homomorphism problem".
+		The last two examples will be described in \Cref{sec:intro-universal}.
+	}
+\end{table}
 
 The two situations are far from symmetric: in model-checking, the size of the
 data is usually much larger than query,%
 \footnote{For instance, when analysing the documents in the \emph{Panama Papers} scandal,
-the data represented 2.9 terabytes, while the queries were a few lines long. \cite{Neo4jPanama}}
-and we often study problems where
-the query is fixed---for instance the "$3$-colourability" problem.
-Accordingly, this fundamental asymmetry between data and query roles not only motivates the structure of this thesis in two independent parts, but also underlies distinct research domains, known as \emph{database theory} and \emph{constraint satisfaction problems}.
+the data represented 2.9 TB, while the queries were a few lines long. \cite{Neo4jPanama}}
+and hence, we often study problems where the query is fixed.
+Accordingly, not only does this fundamental asymmetry between data and query roles motivates the structure of this thesis in two independent parts: it also underlies distinct research domains.
+
+\begin{known}
+	Encodings of model-checking problems as "homomorphism problems" are dual by nature,
+	leading to two schools that developed different techniques to tackle them:
+	\emph{database theory} and \emph{constraint satisfaction problems}.
+\end{known}
 % Formally, we define:
 % \begin{itemize}
 % 	\itemAP the ""combined complexity"" of a model-checking problem to be the complexity of
