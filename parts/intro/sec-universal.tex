@@ -25,7 +25,7 @@ Moreover, while problems of the form $\textsf{query} \homto^? \textsf{data}$
 can be solved locally---whether a vertex of the data is part of a solution (a "homomorphism") only 
 depends on its "neighbourhood"---, problems of type $\textsf{data} \homto^? \textsf{query}$ cannot.
 
-\begin{marginfigure}[-13em]
+\begin{marginfigure}[-18em]
 	\centering
 	\begin{tikzpicture}
 		\input{tikz/dichotomy/3-clique}
@@ -35,7 +35,7 @@ depends on its "neighbourhood"---, problems of type $\textsf{data} \homto^? \tex
 		The "$3$-clique" $\clique{3}$.
 	}
 \end{marginfigure}
-\begin{marginfigure}
+\begin{marginfigure}[-6em]
 	\centering
 	\begin{tikzpicture}
 		\input{tikz/dichotomy/ex-3-colouring}
@@ -437,9 +437,15 @@ Hence, the semantics of a "synchronous automaton" can be precisely seen
 as the semantics of a classical automaton, together with the promise that it will be only
 fed inputs that corresponds to valid encodings. In other words,
 the behaviour of such an automaton on words that do not correspond to a valid encoding
-plays no role whatsoever in its semantics.
+plays no role whatsoever in its semantics, see \Cref{fig:intro-projection}.
 
-\todo{figure}
+\begin{marginfigure}
+	\centering
+	\includegraphics[width=\linewidth]{fig/intro/projection.png}
+	\caption{\AP\label{fig:intro-projection}
+		Semantics of a "synchronous automaton".
+	}
+\end{marginfigure}
 This approach is ubiquitous in mathematics, and especially in logics:
 for instance, first-order logic over "finite structures" is precisely
 defined as first-order logic over all "structures", restricted to "finite structures"!

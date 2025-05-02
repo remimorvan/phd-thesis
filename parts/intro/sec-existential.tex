@@ -137,6 +137,50 @@ This leads to two natural questions:
 		the "fixed-parameter tractable" ("FPT") problems.
 \end{itemize}
 
+\begin{figure}
+	\centering
+	\begin{tikzpicture}
+		\node[vertex, draw=c1, fill=c1, fill opacity=.4] at (0,1) (a) {};
+		\node[vertex, draw=c0, fill=c0, fill opacity=.4] at (1.414,1) (b) {};
+		\node[vertex, draw=c2, fill=c2, fill opacity=.4] at (2.828,1) (c) {};
+		\node[vertex, draw=c1, fill=c1, fill opacity=.4] at (4.242,1) (d) {};
+		\node[vertex, draw=c2, fill=c2, fill opacity=.4] at (0.707,0) (e) {};
+		\node[vertex, draw=c1, fill=c1, fill opacity=.4] at (2.121,0) (f) {};
+		\node[vertex, draw=c3, fill=c3, fill opacity=.4] at (3.536,0) (g) {};
+		\node[vertex, draw=c0, fill=c0, fill opacity=.4] at (4.950,0) (h) {};
+
+		\draw[edge] (a) to (b);
+		\draw[edge] (b) to (e);
+		\draw[edge] (f) to (b);
+		\draw[edge] (b) to (c);
+		\draw[edge] (f) to (c);
+		\draw[edge] (g) to (f);
+		\draw[edge] (c) to (g);
+		\draw[edge] (d) to (c);
+		\draw[edge] (g) to (d);
+		\draw[edge] (d) to (h);
+
+		\begin{scope}[xshift=5.5cm]
+			\node[vertex, draw=c0, fill=c0, fill opacity=.4] at (1.414,1) (b2) {};
+			\node[vertex, draw=c2, fill=c2, fill opacity=.4] at (2.828,1) (c2) {};
+			\node[vertex, draw=c1, fill=c1, fill opacity=.4] at (2.121,0) (f2) {};
+			\node[vertex, draw=c3, fill=c3, fill opacity=.4] at (3.536,0) (g2) {};
+
+			\draw[edge] (f2) to (b2);
+			\draw[edge] (b2) to (c2);
+			\draw[edge] (f2) to (c2);
+			\draw[edge] (g2) to (f2);
+			\draw[edge] (c2) to (g2);
+		\end{scope}
+	\end{tikzpicture}
+	\caption{
+		\AP\label{fig:intro-core}
+		On the left-hand side a "graph@@dir", and its "core" on the right.
+		The colours are not part of the "structure", but
+		are used to describe a "homomorphism" from the original
+		structure to its "core".
+	}
+\end{figure}
 \paragraph*{Query minimization.}
 This problem of optimizing the \textsf{SELECT-WHERE-FROM} fragment of
 SQL is well-understood, precisely by using the framework of "conjunctive queries"
@@ -164,8 +208,8 @@ if $\?A \smallsetminus \{a\}$ is equivalent to $\?A$ in the sense of
 let $\?A \smallsetminus \{a\}$ be our new query and start the process again.
 Otherwise, we get a minimal "query@@CQ", called "core" of $\?A$.
 This "core" is unique---which is not obvious since we defined it with
-a greedy procedure---and is, by construction, a "substructure" of $\?A$.
-\todo{example core}
+a greedy procedure---and is, by construction, a "substructure" of $\?A$,
+see \Cref{fig:intro-core}.
 In particular, it implies that the "core" does not only minimize the number of
 vertices of $\?A$ while being "semantically equivalent": it also minimizes any
 parameter that is closed under taking "substructures", such as "eg" the "tree-width".
@@ -221,7 +265,8 @@ not tree-shaped, but that is equivalent to a tree-shaped "query@@CQ".
 This is equivalent to saying that the "core" of $\gamma$ is "tree-shaped".
 Hence, to evaluate $\gamma$, one can instead:
 \begin{itemize}
-	\item first compute its "core",
+	\item first compute its "core",%
+	\footnote{To quote K-Maro: ``Donne-moi ton coeur, baby, ton core, baby...''}
 	\item then evaluate this "core" on the database.
 \end{itemize}
 The interest of this approach is that, while databases are ever-changing,
@@ -313,7 +358,7 @@ To illustrate this point, we consider
 "Wikidata", which is a knowledge graph containing more than one hundred million
 vertices, whose data is used amongst others on Wikipedia. 
 
-\begin{figure*}
+\begin{figure}
 	\lstinputlisting[language=SQL, morekeywords={rdfs,wd,wdt,FILTER,LANG,CONTAINS}]{fig/intro/exist.rq}
 	\lstinputlisting[language=SQL, morekeywords={rdfs,wd,wdt,FILTER,LANG,CONTAINS}]{fig/intro/exist-bis.txt}
 	\caption{
@@ -321,7 +366,7 @@ vertices, whose data is used amongst others on Wikipedia.
 		A SPARQL query (above), together with a human-friendly translation (below).\\
 	\href{https://query.wikidata.org/\#SELECT\%20DISTINCT\%20\%3Fwork\%20\%3FworkLabel\%20\%3FauthorLabel\%0AWHERE\%0A\%7B\%0A\%20\%20\%3Fwork\%09wdt\%3AP31\%2Fwdt\%3AP279\%2a\%20wd\%3AQ7725634\%3B\%0A\%20\%20\%20\%20\%20\%20\%20\%20rdfs\%3Alabel\%20\%3FworkLabel\%3B\%0A\%20\%20\%09\%09wdt\%3AP577\%20\%3Fdate\%3B\%0A\%20\%20\%20\%20\%20\%20\%20\%20wdt\%3AP50\%20\%3Fauthor.\%0A\%20\%20\%3Fauthor\%20rdfs\%3Alabel\%20\%3FauthorLabel.\%0A\%20\%20FILTER\%28LANG\%28\%3FworkLabel\%29\%20\%3D\%20\%22fr\%22\%20\%26\%26\%20LANG\%28\%3FauthorLabel\%29\%20\%3D\%20\%22fr\%22\%29.\%0A\%20\%20FILTER\%28CONTAINS\%28\%3FworkLabel\%2C\%20\%22exist\%22\%29\%29.\%0A\%20\%20FILTER\%28YEAR\%28\%3Fdate\%29\%20\%3C\%3D\%201990\%29.\%0A\%7D\%0ALIMIT\%207}{[\raisebox{-.4ex}{\HandRight} Execute the query.]}
 	}
-\end{figure*}
+\end{figure}
 We would like to obtain all literary works published before 1990 and whose
 French title contains the string ``exist''.
 This can be done using the SPARQL query language, which is roughly the equivalent
@@ -694,7 +739,7 @@ equivalent query of small "tree-width" by using our algorithm,
 and then evaluate it on any database. This proves that the evaluation
 problem for "conjunctive regular path queries" of bounded "semantic tree-width"
 is "FPT" when parametrized by the size of the "query@@sem".%
-\footnote[-6em]{This result was in fact already known---but proven differently, with
+\footnote{This result was in fact already known---but proven differently, with
 an incomparable complexity (better preprocessing but worst polynomial exponent)---by
 Romero, Barceló and Vardi \cite{RomeroBarceloVardi2017Homomorphism}.}
 
