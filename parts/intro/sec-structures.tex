@@ -16,8 +16,8 @@ we introduce this domain in \Cref{sec:intro-existential}.
 On the other hand, the dual encoding deals with \emph{universal problems}
 studied by the domain of \emph{constraint satisfaction}.
 It is the focus of \Cref{sec:intro-universal}.
-This dual perspective on the "homomorphism problem" guides the structure of
-this thesis, and forms the basis for the two-part division of this thesis.
+This dual perspective on the "homomorphism problem"
+forms the basis for the two-part division of this thesis.
 
 \paragraph*{Homomorphisms.}
 The simplest mathematical structure is perhaps that of a (directed) finite graph:
@@ -261,7 +261,7 @@ to $\?A$ exactly correspond to accepting runs of the automaton over $u$.
 		stored by a cinema.
 	}
 \end{figure}
-\begin{marginfigure}
+\begin{marginfigure}[-5em]
 	\centering
 	\begin{tikzpicture}
 		\node (a0) at (-.1,5.2) {};
@@ -315,10 +315,10 @@ to $\?A$ exactly correspond to accepting runs of the automaton over $u$.
 	A "relational database", such as the one depicted on
 	\Cref{fig:example-db-as-rel}, can easily be seen as a "relational structure"
 	whose domain is the set of elements occurring somewhere in a table,
-	with one relation for each table.
+	with one relation for each table.%
 	\footnote{In fact the only difference between "relational databases" and "relational structures"
 	precisely lies in the fact that in the case of the former, the domain is implicit,
-	while for the latter it is explicit.%
+	while for the latter it is explicit.
 	While this difference alters the theory, the difference is mostly negligible
 	for the "query@@sem" languages we will study, see \Cref{ch:prelim-graph-databases}.}
 
@@ -334,17 +334,16 @@ to $\?A$ exactly correspond to accepting runs of the automaton over $u$.
 	and the relation $\textsc{Rooms}$ is empty, as depicted in \Cref{fig:example-sql-as-rel}.
 
 	Then, the set of pairs $\tup{x, y}$
-	such that there is a "homomorphism" from $\?Q_\gamma$ to the relational database, seen as
-	a "relational structure", sending
-	$\textsf{title}$ to $x$ and $\textsf{time}$ to $y$
+	such that there is a "homomorphism" from $\?Q_\gamma$ to the relational database,
+	sending $\textsf{title}$ to $x$ and $\textsf{time}$ to $y$
 	is exactly the output set of the SQL query on the database.
 \end{example}
 
 We now provide a last example: Sudoku grids. While it is also encoded
-as a "homomorphism problem", we will see in fact that this encoding
-is of a different nature than the encodings of \Cref{ex:auto-as-rel,ex:sql-as-hom}.
+as a "homomorphism problem", we will see in fact it
+is of a different nature than the reductions of \Cref{ex:auto-as-rel,ex:sql-as-hom}.
 
-\begin{marginfigure}
+\begin{marginfigure}[2em]
 	\centering%
 	\begin{tikzpicture}[scale=1.3]
 		\draw[step=.3333] (0, 0) grid (3, 3);
@@ -405,7 +404,7 @@ is of a different nature than the encodings of \Cref{ex:auto-as-rel,ex:sql-as-ho
 	logical questions, ranging from database evaluation to Sudoku solving.
 \end{known}
 
-All five problems we presented can actually be seen as model-checking problem:
+All three problems we presented can actually be seen as instances of model-checking:
 part of the input represents some \emph{data}---or \emph{model}---and part of it represents a
 \emph{"query@@sem"}---or \emph{logical question/specification}.
 However, as depicted in \Cref{tab:examples-encodings-in-hom}, 

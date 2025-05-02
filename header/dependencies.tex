@@ -35,15 +35,15 @@
     backgroundcolor=\color{cLightGrey!30!white},   
     % commentstyle=\color{codegreen},
     keywordstyle=\color{maincolor},
-    % numberstyle=\numberstyle,
+    numberstyle=\sffamily\color{cGrey}\footnotesize,
     stringstyle=\color{cBlue},
     basicstyle=\footnotesize\sffamily,
     % breakatwhitespace=false,
-    % breaklines=true,
+    breaklines=true,
     % captionpos=b,
     keepspaces=true,
-    % numbers=left,
-    % numbersep=10pt,
+    numbers=left,
+    numbersep=10pt,
     showspaces=false,
     showstringspaces=false,
     showtabs=false,
@@ -65,3 +65,4 @@
 \usepackage{simplewick} % \contraction for Bourbaki's logic https://tex.stackexchange.com/questions/649665/how-can-i-link-symbols-over-a-mathematical-expression-in-latex
 \usepackage{frege} % Frege
 \usepackage{csquotes}
+\renewcommand*{\mkcitation}[1]{\newline\null\hfill---~#1}
