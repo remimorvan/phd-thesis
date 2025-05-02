@@ -165,6 +165,7 @@ let $\?A \smallsetminus \{a\}$ be our new query and start the process again.
 Otherwise, we get a minimal "query@@CQ", called "core" of $\?A$.
 This "core" is unique---which is not obvious since we defined it with
 a greedy procedure---and is, by construction, a "substructure" of $\?A$.
+\todo{example core}
 In particular, it implies that the "core" does not only minimize the number of
 vertices of $\?A$ while being "semantically equivalent": it also minimizes any
 parameter that is closed under taking "substructures", such as "eg" the "tree-width".
@@ -312,31 +313,25 @@ To illustrate this point, we consider
 "Wikidata", which is a knowledge graph containing more than one hundred million
 vertices, whose data is used amongst others on Wikipedia. 
 
-\begin{figure}
-\lstinputlisting[language=SQL, morekeywords={rdfs,wd,wdt,FILTER,LANG,CONTAINS}]{fig/intro/exist.rq}
-	\caption{
-		\label{fig:sparql}
-		A SPARQL query.\\
-	\href{https://query.wikidata.org/\#SELECT\%20DISTINCT\%20\%3Fwork\%20\%3FworkLabel\%20\%3FauthorLabel\%0AWHERE\%0A\%7B\%0A\%20\%20\%3Fwork\%09wdt\%3AP31\%2Fwdt\%3AP279\%2a\%20wd\%3AQ7725634\%3B\%0A\%20\%20\%20\%20\%20\%20\%20\%20rdfs\%3Alabel\%20\%3FworkLabel\%3B\%0A\%20\%20\%09\%09wdt\%3AP577\%20\%3Fdate\%3B\%0A\%20\%20\%20\%20\%20\%20\%20\%20wdt\%3AP50\%20\%3Fauthor.\%0A\%20\%20\%3Fauthor\%20rdfs\%3Alabel\%20\%3FauthorLabel.\%0A\%20\%20FILTER\%28LANG\%28\%3FworkLabel\%29\%20\%3D\%20\%22fr\%22\%20\%26\%26\%20LANG\%28\%3FauthorLabel\%29\%20\%3D\%20\%22fr\%22\%29.\%0A\%20\%20FILTER\%28CONTAINS\%28\%3FworkLabel\%2C\%20\%22exist\%22\%29\%29.\%0A\%20\%20FILTER\%28YEAR\%28\%3Fdate\%29\%20\%3C\%3D\%201990\%29.\%0A\%7D\%0ALIMIT\%207}{[\raisebox{-.4ex}{\HandRight} Execute the query.]}
-	}
-\end{figure}
-\begin{figure}
+\begin{figure*}
+	\lstinputlisting[language=SQL, morekeywords={rdfs,wd,wdt,FILTER,LANG,CONTAINS}]{fig/intro/exist.rq}
 	\lstinputlisting[language=SQL, morekeywords={rdfs,wd,wdt,FILTER,LANG,CONTAINS}]{fig/intro/exist-bis.txt}
 	\caption{
-		\label{fig:sparql-explained}
-		Human-friendly translation of the SPARQL query of \Cref{fig:sparql}.
+		\label{fig:sparql}
+		A SPARQL query (above), together with a human-friendly translation (below).\\
+	\href{https://query.wikidata.org/\#SELECT\%20DISTINCT\%20\%3Fwork\%20\%3FworkLabel\%20\%3FauthorLabel\%0AWHERE\%0A\%7B\%0A\%20\%20\%3Fwork\%09wdt\%3AP31\%2Fwdt\%3AP279\%2a\%20wd\%3AQ7725634\%3B\%0A\%20\%20\%20\%20\%20\%20\%20\%20rdfs\%3Alabel\%20\%3FworkLabel\%3B\%0A\%20\%20\%09\%09wdt\%3AP577\%20\%3Fdate\%3B\%0A\%20\%20\%20\%20\%20\%20\%20\%20wdt\%3AP50\%20\%3Fauthor.\%0A\%20\%20\%3Fauthor\%20rdfs\%3Alabel\%20\%3FauthorLabel.\%0A\%20\%20FILTER\%28LANG\%28\%3FworkLabel\%29\%20\%3D\%20\%22fr\%22\%20\%26\%26\%20LANG\%28\%3FauthorLabel\%29\%20\%3D\%20\%22fr\%22\%29.\%0A\%20\%20FILTER\%28CONTAINS\%28\%3FworkLabel\%2C\%20\%22exist\%22\%29\%29.\%0A\%20\%20FILTER\%28YEAR\%28\%3Fdate\%29\%20\%3C\%3D\%201990\%29.\%0A\%7D\%0ALIMIT\%207}{[\raisebox{-.4ex}{\HandRight} Execute the query.]}
 	}
-\end{figure}
+\end{figure*}
 We would like to obtain all literary works published before 1990 and whose
 French title contains the string ``exist''.
 This can be done using the SPARQL query language, which is roughly the equivalent
-of SQL for knowledge bases: the query is represented in \Cref{fig:sparql,fig:sparql-explained}.
+of SQL for knowledge bases: the query is represented in \Cref{fig:sparql}.
 The central notion in knowledge graphs and SPARQL is the notion of triplets:
 \lstinline[language=SQL]{x R y.} refers to an edge of the \textsf{R}-relation
 going from \textsf{x} to \textsf{y}.
 Then \lstinline[language=SQL]{x R y; S z.} is an abbreviation for
 the conjunction \lstinline[language=SQL]{x R y. x S z.}
-Hence, the central part (ll.~4--8) of the SPARQL query of \Cref{fig:sparql,fig:sparql-explained}
+Hence, the central part (ll.~4--8) of the SPARQL query of \Cref{fig:sparql}
 should be understood as follows:
 we are looking for variables \textsf{?work}, \textsf{?typeOfWork} (implicit),
 \textsf{?workLabel}, \textsf{?date} and \textsf{?authorLabel} "st":
@@ -356,7 +351,7 @@ but rather to a regular expression formed from these edges.
 These regular expressions are in fact precisely what allows for easy graph traversal!
 An example of a match of this expression is provided
 in red in \Cref{fig:example-wikidata}.
-The output of the query of \Cref{fig:sparql,fig:sparql-explained}
+The output of the query of \Cref{fig:sparql}
 is provided in \Cref{tab:output-sparql}.
 
 \begin{figure}
@@ -456,7 +451,7 @@ is provided in \Cref{tab:output-sparql}.
 	}
 	\caption{
 		\AP\label{tab:output-sparql}
-		Output of the SPARQL query of \Cref{fig:sparql,fig:sparql-explained}.}
+		Output of the SPARQL query of \Cref{fig:sparql}.}
 \end{table}
 
 We formalize the core features of SPARQL as "conjunctive regular path queries":
@@ -467,7 +462,7 @@ but can be more generally of the form
 	x \atom{L} y
 	\quad\text{ for some "regular language" $L$ over $\sigma$}.
 \]
-For instance, ll.~1--8 of the SPARQL query of \Cref{fig:sparql,fig:sparql-explained}
+For instance, ll.~1--8 of the SPARQL query of \Cref{fig:sparql}
 can be modelled by the "conjunctive regular path query" of \Cref{fig:intro-SPARQL-as-CRPQ}:
 notice the regular expression in red.
 \begin{marginfigure}
@@ -504,7 +499,7 @@ notice the regular expression in red.
 	\caption{
 		\AP\label{fig:intro-SPARQL-as-CRPQ}
 		A "conjunctive regular path query" 
-		modelling the core part of \Cref{fig:sparql,fig:sparql-explained}.
+		modelling the core part of \Cref{fig:sparql}.
 	}
 \end{marginfigure}
 

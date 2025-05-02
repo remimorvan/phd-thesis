@@ -7,7 +7,7 @@
 
 This second part explores the complexity of the "homomorphism problem" when the data is fixed and the query varies, focusing on "constraint satisfaction problems" and "automatic structures".
 
-\begin{marginfigure}
+\begin{marginfigure}[-15em]
 	\centering
 	\includegraphics[width=\linewidth]{fig/intro/aliceroom2.jpg}
 	\caption{Looking glass room, by John Tenniel.}
@@ -23,7 +23,7 @@ for all "structures" $\?A$, $\?A'$ and $\?B$, if $\?A \homto \?B$ and $\?A'$ is 
 of $\?A$ then $\?A' \homto \?B$.
 Moreover, while problems of the form $\textsf{query} \homto^? \textsf{data}$
 can be solved locally---whether a vertex of the data is part of a solution (a "homomorphism") only 
-depends on its neighbourhood---, problems $\textsf{data} \homto^? \textsf{query}$ cannot.
+depends on its "neighbourhood"---, problems of type $\textsf{data} \homto^? \textsf{query}$ cannot.
 
 \begin{marginfigure}[-13em]
 	\centering
@@ -61,8 +61,9 @@ depends on its neighbourhood---, problems $\textsf{data} \homto^? \textsf{query}
 	there is a "homomorphism" from $\?G$ to $\clique{k}$.
 \end{example}
 
-For instance, "$3$-colourability" is a global property of a graph and cannot by gluing local 
-solutions. In particular, this implies that fixing the query does not necessarily result in
+For instance, "$3$-colourability" is a global property of a graph and cannot be solved
+by gluing local solutions. In particular, this implies that fixing the query
+does not necessarily result in
 a drop in the complexity: "$3$-colourability" is already "NP"-complete!
 The next example shows that, even when the "target structure" is fixed, the "homomorphism problem"
 provides a flexible framework to encode problems.
@@ -114,7 +115,7 @@ but can be solved using a greedy algorithm. This begs the question of understand
 makes a "relational structure" hard for the "homomorphism problem" when it is used
 as the "target structure".
 This question is not only motivated by theory: constraint logic programming has emerged in the 1980s
-with Prolog II and III; today programming languages such as answer-set programming provide an 
+with Prolog II and III; and modern programming languages such as answer-set programming provide an 
 efficient was of doing constraint solving.
 
 \begin{figure}
@@ -138,11 +139,11 @@ The right-hand side is parsed conjunctively while the left-hand side is parsed d
 \Cref{fig:ex-sudoku-asp} provides
 an example of a Clingo program for solving Sudoku grids:
 \begin{itemize}
-	\item it starts by declaring three types of variables: absissa $x$, ordinates $y$ and entries $x$ (representing a value in the grid), as well as their range;
+	\item it starts by declaring three types of variables: absissa $x$, ordinates $y$ and values $n$ (representing a value in the grid), as well as their range;
 	\item it introduces a \textsf{sudoku} ternary relation, where $\textsf{sudoku}(x,y,n)$
 		represents the fact that entry $(x,y)$ of the grid has value $n$,
 		and it says that there should be exactly one value per entry;
-	\item it introduces a \textsf{subgrid} relation, saying when too entries
+	\item it introduces a \textsf{subgrid} relation, saying when two entries
 		belong to the same 3$\ast$3-square;
 	\item finally, it says that any two values on the same column, row or subgrid
 		must be different.%
@@ -165,7 +166,7 @@ of distinct colours.
 The field of \emph{constraint satisfaction problems} precisely aims at classifying the
 structures $\?B$ "wrt" to the complexity of the "homomorphism problem" when the
 "target structure" is $\?B$. One of the earliest and most impactful result
-of the domain as found by Schaefer \cite{Schaefer1978ComplexitySatisfiability},
+of the domain was found by Schaefer \cite{Schaefer1978ComplexitySatisfiability},
 who proved that such problems are either in "P" or "NP"-complete when the domain of $\?B$
 has two elements---this already captures the example of SAT-solving (\Cref{ex:sat-as-hom}) from earlier.
 A decade later, Hell and Ne\v{s}et\v{r}il \cite{HellNesetril1990ComplexityColoring}
@@ -174,7 +175,7 @@ Moreover, in both cases, these dichotomies are effective: given a structure, we 
 its "homomorphism problem" is in "P" or is "NP"-complete.
 These results, together with the importance of \emph{constraint satisfaction} in computer science
 lead Feder and Vardi at the end of the 1990s
-to state their infamous \emph{dichotomy conjecture}: ``for any "relational structure" $\?B$,
+to state their infamous \emph{dichotomy conjecture}: ``for any "finite structure" $\?B$,
 the "homomorphism problem" with "target structure" $\?B$ is either "P"
 or "NP"-complete'' \cite{FederVardi1998ComputationalStructure}.
 Despite receiving lots of attention, the conjecture remained wide open for two decades, until
@@ -182,7 +183,7 @@ Bulatov \cite{Bulatov2017DichotomyCSPs} and Zhuk \cite{Zhuk2020CSPDichotomy} ind
 showed the conjecture to be true.
 
 However not all problems in "P" are complete for this class: some are even simpler and are complete
-for "NL" or "L", or even "FOfin"---the class of "first-order definable" "finite structures".
+for "NL" or "L", or even "FOfin"---i.e. it is a "first-order definable" class of "finite structures".
 One result that will be of major importance in this thesis is a dichotomy
 theorem by Larose and Tesson separating "structures" in "FOfin" from those that are "L"-hard
 \cite{LaroseTesson2009UniversalAlgebraCSP}.
@@ -204,7 +205,7 @@ in the `mathematical world'!
 Von Neumann would have said ``It's all over''%
 \footnote{This quote is claimed to be historically accurate by
 \cite{2009Logicomix}, however this claim seems undocumented \cite{Mancosu2011Logicomix}.}
-after hearing Gödel expose his infamous "incompleteness theorem" (1930):
+after hearing Gödel expose his infamous "incompleteness theorem" in 1930:
 any \emph{effective} (recursively enumerable)
 consistent theory that is expressive enough to express the arithmetic
 is incomplete---"ie" it contains statements that are neither valid (true in all models),
@@ -225,7 +226,7 @@ in fact, it shatters the Platonistic idea of an unequivocal \& universal mathema
 at the very least of one that can be captured by axioms.
 
 Ironically, what makes "Gödel's incompleteness theorem" a proper
-abomination  for computer scientists is probably Gödel's own theorem, that he proved only one year before in his
+abomination  for computer scientists is probably Gödel's own theorem, that he proved only a year before, in his
 Ph.D. dissertation, known as "Gödel's completeness theorem": 
 first-order logic admits a complete proof system. Or, said differently,
 what is valid---that is, true on every model satisfying the axioms---is exactly what
@@ -239,12 +240,12 @@ $\neg \phi$ is valid.%
 Are there cardinals strictly between $\aleph_0$ and the continuum?
 Start Turing's nifty device---invented in 1936---, go get lunch, and before you are finished,
 you would get an answer! In this strange world, automatic theorem proving would be a reality,
-and this thesis would probably look very different…
+and this thesis would probably look very different.
 
 Sadly for the Gödel of 1929, the Gödel of 1930 came, and so… ``It's all over''!
-Hence, mathematicians still do mathematics. Since then, theories---such has
+Since then, theories---such has
 "Zermelo–Fraenkel set theory plus the axiom of choice"---have been developed, and while not being complete, they 
-manage to capture most of the parts of mathematics we are interested about.%
+manage to capture most of the parts of mathematics we are interested in.%
 \footnote{For the sake of sanity, we assume
 throughout this introduction that the pronoun `we' excludes set theorists.}
 \begin{marginfigure}
@@ -286,12 +287,19 @@ In 1929, Presburger proved that a natural set of axioms for doing
 arithmetic with only addition is also both complete and decidable---the formulas
 that are valid in this theory exactly correspond to the sentences that are true on $\tup{\N,+}$.
 Around the same time, Tarski formalized Euclide's geometry as a first-order theory, and proved
-that is was complete, and hence decidable, see \cite{TarskiGivant1999Geometry}.
+that is was complete and decidable, see \cite{TarskiGivant1999Geometry}.
 
-Hence, logic is not completely useless at capturing infinite complex structures.
-"Automatic structures" are essentially a subclass of "structures" on which the dream of
-the mathematical community holds: given such a "structure" and a "first-order sentence",
-we can decide whether it holds on this "structure"! These structures can be infinite,
+Hence, logic is not completely useless at capturing complex infinite structures.
+Generalizing the idea behind the decidability of Presburger's arithmetic,
+mathematicians and computer scientists kept 
+rediscovering the notion of "automatic structures" during the second half
+of the XXth century.%
+\footnote{It should be noted that while the most common way of proving
+the decidability of Presburger's arithmetic today is by using
+automata, this is not Presburger's original proof, who relies on quantifier elimination.}
+These "structures" make the dream of
+the mathematical community true: given an "automatic structure" and a "first-order sentence",
+we can decide whether it holds on this "structure". These structures can be infinite,
 but are, by definition, describable by finite-state automata---which is what
 makes decidability possible.
 
@@ -299,9 +307,8 @@ makes decidability possible.
 	The first-order theory of every "automatic structure" is decidable.
 \end{known}
 
-The foremost example of "automatic structure" is "Presburger arithmetic",%
+Unsurprisingly, the foremost example of "automatic structure" is $\tup{\N, +}$.%
 \footnote{See \Cref{ex:presburger}.}
-namely the natural number equipped with addition $\tup{\N, +}$.
 On the other hand, it should be noted that Peano's arithmetic, namely natural number with
 addition and multiplication $\tup{\N,+,\cdot}$ is not "automatic@@struct",
 as it is already undecidable.
@@ -310,10 +317,10 @@ foundations for a universal mathematical theory, they are surprisingly adequate 
 express infinite "structures" arising from computational models.
 For instance, the graph of runs of a finite-state automaton is "automatic@@struct",
 since the unfolding of any finite graph is "automatic@@struct".
-More generally, the "configuration graph" of any "Turing machine" is "automatic@@struct"!%
+Even more generally, the "configuration graph" of any "Turing machine" is "automatic@@struct"...%
 \footnote{See \Cref{ex:turing-machine-are-automatic}.}
 
-Hence, we naturally study the "homomorphism problem" when the "input structure"
+Hence, in \Cref{ch:dichotomy-theorem}, we naturally study the "homomorphism problem" when the "input structure"
 is allowed to be any "automatic structure". Surprisingly, very little was known about this problem:
 the only known result by Köcher states that whether an "automatic graph" is "2-colourable" is undecidable \cite{Kocher2014AutomatischenGraphen}.
 This lead us to conjecture that actually most "homomorphism problems" on "automatic structures"
@@ -337,14 +344,14 @@ see \Cref{fig:tree-not-2reg-colour,ex:tree-not-2-reg-colourable}.
 		The "$3$-transitive tournament" $\transitiveTournament{3}$.
 	}
 \end{marginfigure}
-Our first contribution is to show that whether a graph admits a "regular $2$-colouring" is undecidable---see \Cref{thm:k-reg-col-undec}. We then notice that a particular type of
+Our first contribution is to show that whether a graph admits a "regular $2$-colouring" is undecidable. We then notice that a particular type of
 "homomorphism problem" is decidable: for instance, if the "target structure"
 is a "transitive tournament". This is best understood on an example: consider the "$3$-transitive 
 tournament" depicted in \Cref{fig:3-transitive-tournament}.
 A "homomorphism" $f$ from a graph $\?G$ to $\transitiveTournament{3}$ amounts to a function
 from the set of vertices of $\?G$ to $\lBrack 0,3\rBrack$ "st"
 for any vertices $u$ and $v$, if there is an edge from $u$ to $v$, then
-$f(u) \leq f(v)$. It is clear that the existence of such a mapping is in fact equivalent 
+$f(u) < f(v)$. It is clear that the existence of such a mapping is in fact equivalent 
 to asking that there is no path of length $4$ in $\?G$.
 In turn, this property can be expressed by a "first-order formula", and is hence decidable
 on "automatic graphs".
@@ -352,18 +359,18 @@ More generally, this property can be extended to any "target structure" $\?B$ wi
 that the class of (finite or infinite) "structures" $\?A$ that admit a "homomorphism" to $\?B$
 is "first-order definable".
 Luckily for us, this class has been well-studied, and is known as the class of "structures"
-with "finite duality". In particular, let us cite the result of Larose and Tesson
+with "finite duality" \cite{Atserias2008DigraphColoring}. In particular, let us cite the result of Larose and Tesson
 who proved that any "homomorphism problem" whose "target structure" does not have "finite duality"
 must be "L"-hard \cite{LaroseTesson2009UniversalAlgebraCSP}.
 
 The "homomorphism problem" on "automatic structures" 
 is undecidable when the "target structure" is a "clique".
-Yet it becomes decidable when the target is a transitive tournament.
+Yet, it becomes decidable when the target is a transitive tournament.
 This contrast leads to conjecture that "finite duality" represents the frontier of decidability for "automatic structures". In \Cref{ch:dichotomy-theorem}, we manage to prove this result, and extend it to "regular homomorphisms".
 
 \begin{contribution}
-	We provide a ``dichotomy theorem'' for "homomorphism problems" on "automatic structures":
-	for any "finite@@struct" "target structure" $\?B$, the problem
+	We provide a dichotomy theorem for "automatic structures":
+	for any "finite structure" $\?B$, the "homomorphism problems" with "target structure" $\?B$
 	is either in "NL" or is undecidable. The same holds for "regular homomorphisms".
 	Moreover, in both cases, these two problems are decidable precisely when $\?B$ has "finite duality".
 \end{contribution}
@@ -432,6 +439,7 @@ fed inputs that corresponds to valid encodings. In other words,
 the behaviour of such an automaton on words that do not correspond to a valid encoding
 plays no role whatsoever in its semantics.
 
+\todo{figure}
 This approach is ubiquitous in mathematics, and especially in logics:
 for instance, first-order logic over "finite structures" is precisely
 defined as first-order logic over all "structures", restricted to "finite structures"!
@@ -456,9 +464,9 @@ simpler notion.
 
 This algebraic theory could provide an interesting framework to
 study the "$\AUT$/$\REC$-separability problem".
-However, the class of "recognizable relations" has some desirable
-closure properties we need, but lacks others.
-Unfortunately, it implies that proving the decidability of
+While the class of "recognizable relations" has some desirable
+closure properties we need, it lacks others:
+unfortunately, it implies that proving the decidability of
 the "$\AUT$/$\REC$-separability problem" "via" this framework would
 be highly non-trivial.
 
@@ -468,7 +476,7 @@ be highly non-trivial.
 \end{openproblemintro}
 
 In summary, this thesis explores two fundamental perspectives on "homomorphism problems":
-the first extends the theory of "conjunctive queries" in database theory by adding regular-path
+the first extends the theory of "conjunctive queries" in database theory by adding regular path
 predicates, to capture natural query languages for human-centered graph-shaped data.
 It focuses on the problem of query minimization, both in terms of
 its total number of atoms, or its tree-width, which is a relevant parameter to
