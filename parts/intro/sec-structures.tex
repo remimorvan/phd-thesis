@@ -7,7 +7,7 @@ They arise naturally across a variety of domains: in logic, as the mechanism beh
 satisfies a given set of rules. This thesis approaches the "homomorphism problem" as a unifying framework, by emphasizing its complementary role in data querying and constraint solving.
 
 To introduce this problem, we present a wide range of examples---from
-query evaluation to SAT solving---that call all be encoded as
+query evaluation to SAT solving---that can all be encoded as
 "homomorphism problems".
 Interestingly, they reveal a dichotomy on how problems are encoded as "homomorphism problems":
 in some, the query appears on the left-hand side of the "homomorphism", 
@@ -28,7 +28,7 @@ together with a set of "edges" $\+E \subseteq V \times V$.
 A "homomorphism" between two graphs is then a
 function $f$ between vertices that preserves
 the "edges", in the sense that if $\tup{u,v}$ is an edge, then
-$\tup{f(u),f(v)}$ must also be an edge. We depict
+$\tup{f(u),f(v)}$ must also be an edge: we depict
 an example of graph "homomorphism" in \Cref{fig:example-graph-homomorphism}.
 
 \begin{figure}
@@ -176,13 +176,13 @@ the "homomorphism problem" should rather be understood as a \emph{framework} or
 		\draw[edge] (2) to node[above] {$a$} (3);
 
 		\draw[edge] ($(0)+(-.4,0)$) to (0);
-		\node[vertex, inner sep=3pt] (3b) at (3) {};
+		\node[vertex, inner sep=4pt] (3b) at (3) {};
 
 		\node[vertex, below=5em of 1] (q0) {};
 		\node[vertex, right=of q0] (q1) {};
 		
 		\draw[edge] ($(q0)+(-.4,0)$) to (q0);
-		\node[vertex, inner sep=3pt] (q1b) at (q1) {};
+		\node[vertex, inner sep=4pt] (q1b) at (q1) {};
 
 		\draw[edge, loop, out=-60, in=-120, looseness=8] (q0) to node[below] {$a,b$} (q0);
 		\draw[edge] (q0) to node[above] {$a$} (q1);
@@ -196,7 +196,7 @@ the "homomorphism problem" should rather be understood as a \emph{framework} or
 	\caption{
 		\AP\label{fig:example-automaton-as-rel}
 		Automata acceptance as a "homomorphism problem":
-		"relational structure" representing the finite word $aba$ (above),
+		"structure" representing the finite word $aba$ (above),
 		"structure" representing the minimal automaton of $(a+b)^* a (a+b)^*$
 		(below) and a "homomorphism" from the former to the latter (blue dotted arrows).
 		Vertices with a double circle (resp. incoming dangling arrow) represent
@@ -206,23 +206,25 @@ the "homomorphism problem" should rather be understood as a \emph{framework} or
 
 \begin{example}[Non-deterministic automata]
 	\AP\label{ex:auto-as-rel}
-	A (non-deterministic) automaton $\?A$ can be seen as a "relational structure",
-	whose nodes are its states, on the "signature" with two unary predicates (one for
+	A non-deterministic automaton $\?A$ can be seen as a "relational structure"
+	on the "signature" with two unary predicates (one for
 	describing initial states, one for final states), and one binary predicate
-	for each letter of the alphabet $\Sigma$.
+	for each letter of the alphabet $\Sigma$ describing the transitions.
+	As expected, its vertices are its states, 
+	and each predicate is naturally interpreted.
 	Any finite word $u\in \Sigma^*$ can in turn be seen as a "relational structure"
 	$\?W_u$ with $\lBrack 0,|u|\rBrack$ as its domain,
 	where $0$ is initial, $|u|$ is final, and
 	for each $i \in \lBrack 1,|u|\rBrack$, there is an edge from $i-1$ to $i$
-	whose type is given by the $i$-th letter of $u$.
+	whose type is given by the $i$-th letter of $u$, see \Cref{fig:example-automaton-as-rel}..
 	Then, there is a "homomorphism" from $\?W_u$ to $\?A$ if, and only if, 
-	the automaton $\?A$ accepts $u$. See \Cref{fig:example-automaton-as-rel}.
+	the automaton $\?A$ accepts $u$.
 \end{example}
 
 As we will see in the rest of this section,
 depending on the context, either the query or the data may play the role of the input structure in the homomorphism problem. This distinction is fundamental and forms the basis for the two-part division of this thesis.
 
-\begin{marginfigure}
+\begin{marginfigure}[-13em]
 	\centering
 	\begin{tikzpicture}
 		\input{tikz/dichotomy/3-clique}
@@ -359,33 +361,34 @@ not only is the existence of a homomorphism equivalent to the existence of a sol
 	\Cref{fig:example-db-as-rel}, can easily be seen as a "relational structure"
 	whose domain is the set of elements occurring somewhere in a table,
 	with one relation for each table.
-	The main difference between "relational databases" and "relational structures"
+	\footnote{In fact the only difference between "relational databases" and "relational structures"
 	precisely lies in the fact that in the case of the former, the domain is implicit,
 	while for the latter it is explicit.%
-	\footnote{While this difference alters the theory, the difference is mostly negligible
+	While this difference alters the theory, the difference is mostly negligible
 	for the "query@@sem" languages we will study, see \Cref{ch:prelim-graph-databases}.}
 
 	Consider the following SQL query, which outputs all pairs
 	of movie titles together with their projection time.
 	\lstinputlisting[language=SQL, deletekeywords={TIME,Time,time}]{fig/intro/cinema.sql}
 
-	This query $\gamma$ can in fact be seen itself as a "relational structure" $\?Q_\gamma$	over
-	the same "signature" as the "relational database".
-	Its domain has six elements, corresponding to the attributes of
+	This query $\gamma$ can in fact be seen itself as a "relational structure" $\?Q_\gamma$:
+	its domain has six elements, corresponding to the attributes of
 	the \textsc{Movies} and \textsc{Projections} table, merged on the attribute
 	$\textsf{Projections.movie\_id} = \textsf{Movies.id}$.
 	Both relations $\textsc{Movies}$ and $\textsc{Projections}$ consist of a single tuple,
-	and the relation $\textsc{Rooms}$ is empty, see \Cref{fig:example-sql-as-rel}.
+	and the relation $\textsc{Rooms}$ is empty, as depicted in \Cref{fig:example-sql-as-rel}.
 
-	Then, the set of pairs $\tup{\textsf{title}, \textsf{time}}$
+	Then, the set of pairs $\tup{x, y}$
 	such that there is a "homomorphism" from $\?Q_\gamma$ to the relational database, seen as
-	a "relational structure", is exactly the output set of the SQL query on the database.
+	a "relational structure", sending
+	$\textsf{title}$ to $x$ and $\textsf{time}$ to $y$
+	is exactly the output set of the SQL query on the database.
 \end{example}
 
 We now turn to more involved encodings, namely Sudoku grids and SAT solving,
-to illustrate the expressive flexibility of the homomorphism framework.
+to illustrate the flexibility of the homomorphism framework.
 
-\begin{marginfigure}
+\begin{marginfigure}[-5em]
 	\centering%
 	\begin{tikzpicture}[scale=1.3]
 		\draw[step=.3333] (0, 0) grid (3, 3);
@@ -414,17 +417,21 @@ to illustrate the expressive flexibility of the homomorphism framework.
 	We represent an empty sudoku grid as the "relational structure"
 	whose domain is $\lBrack 1,9\rBrack \times \lBrack 1,9\rBrack$---corresponding to coordinates in the grid---with
 	three kinds of binary "predicates": $\+R$, $\+C$ and $\+S$,
-	that describe when two coordinates are on the same row, column or 3*3-square, respectively.
-	For non-empty grids, we add nine unary "predicates" $P_k$ ($k \in \lBrack 1,9\rBrack$),
+	that describe when two coordinates are on the same row, column or 3$\ast$3-square, respectively.
+	To deal with prefilled grids, we add nine unary "predicates" $P_k$ ($k \in \lBrack 1,9\rBrack$),
 	and if coordinate $\tup{i,j}$ is prefilled with number $k$, then predicate $P_k$ must
 	hold on the element $\tup{i,j}$.
 	Given a prefilled grid $G$, we denote by $\?S_G$ the associated "relational structure".
 	
-	We then define the target structure $\?T$ to have $\lBrack 1,9\rBrack$ as its domain:
-	with the binary relations $\+R$, $\+C$ and $\+S$ which all three consist of
-	all tuples $\tup{\tup{i,j},\tup{i',j'}}$ "st" $\tup{i,j} \neq \tup{i',j'}$.
+	We then define the target structure $\?T$ to have $\lBrack 1,9\rBrack$ as its domain,
+	with each vertex representing a possible value filling a cell.
+	The binary relations $\+R$, $\+C$ and $\+S$ all three consist of
+	all pairs $\tup{x,y}$ "st" $x \neq y$. This translates the fact that,
+	if two cells are on the same row, column, or 3$\ast$3 grid, then they must
+	have different values.
 	Moreover, each unary relation $P_k$ ($k \in \lBrack 1,9\rBrack$) is defined
 	to hold only on $\{i\}$.
+
 	Then, a prefilled grid $G$ can be completed if, and only if,
 	$\?S_G$ has a "homomorphism" to $\?T$.%
 	\footnote{In fact, for this example we could use only one binary predicate instead of three.
@@ -432,15 +439,15 @@ to illustrate the expressive flexibility of the homomorphism framework.
 	to graph colouring (\Cref{ex:graph-colouring-as-hom}) with an extra trick
 	to force some values. This trick---formally called "marked structure"---will
 	actually prove crucial in \Cref{ch:dichotomy-theorem}.}
-	In fact, "homomorphisms" $h\colon \?S_G \to \?T$ exactly correspond to
-	complete Soduku grid that extend $G$, with $h(\tup{i,j})$ giving
+	More precisely, "homomorphisms" $f\colon \?S_G \to \?T$ exactly correspond to
+	complete Soduku grid that extend $G$, with $f(\tup{i,j})$ giving
 	the number contained in cell $\tup{i,j}$.
 \end{example}
 
 \begin{example}[SAT solving]
 	\AP\label{ex:sat-as-hom}
 	We consider a 3-SAT instance, namely a finite conjunction of
-	disjunctions of three litterals, say
+	disjunctions of three literals, say
 	\[
 		\phi \defeq \bigwedge_{i=1}^n \ell_{i,1} \lor \ell_{i,2} \lor \ell_{i,3},
 	\]
@@ -449,7 +456,7 @@ to illustrate the expressive flexibility of the homomorphism framework.
 	\footnote{Meaning "eg" that $x \lor \neg y \lor z$ is not allowed, contrary to
 	$x \lor z \lor \neg y$.}
 	We let $\?B$ be the structure whose domain has two elements $\{0,1\}$,
-	equipped with four ternary relations $+R_0$ through $+R_3$, where $+R_j$ encodes clauses with exactly $j$ negated literals. They are formally defined as
+	equipped with four ternary relations $\+R_0$ through $\+R_3$, where $\+R_j$ encodes clauses with exactly $j$ negated literals. They are formally defined as
 	\begin{align*}
 		\+R_0 & \defeq \set{0,1}^3 \smallsetminus \set{\tup{0,0,0}}, &
 		\+R_1 & \defeq \set{0,1}^3 \smallsetminus \set{\tup{1,0,0}}, \\
