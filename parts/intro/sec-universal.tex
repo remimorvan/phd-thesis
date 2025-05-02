@@ -114,8 +114,11 @@ theorem by Larose and Tesson separating "structures" in "FOfin" from those that 
 \subsection{Automatic Structures: The Dream Is Not Over Yet}
 
 The second part of this thesis is dedicated to pushing these results to their limit.
-These structures are usually always assumed to be "finite@@struct": we want to generalize them
-to finitely-presentable infinite "structures".
+These structures handled by the "homomorphism problem", like most
+problems in computer science, are usually assumed to be "finite@@struct".
+Why not generalize them to infinite "structures"? It would be of course
+very pleasant to have an algorithm saying if a statement is true
+in the `mathematical world'!
 
 Von Neumann would have said ``It's all over''%
 \footnote{This quote is claimed to be historically accurate by
@@ -124,7 +127,7 @@ after hearing Gödel expose his infamous "incompleteness theorem" (1930):
 any \emph{effective} (recursively enumerable)
 consistent theory that is expressive enough to express the arithmetic
 is incomplete---"ie" it contains statements that are neither valid (true in all models),
-or unsatisfiable (false is all models).
+nor unsatisfiable (false is all models).
 In other words, there is no reasonable set of axioms
 to capture all mathematics: some statements must necessarily fall outside
 the scope of the theory.
@@ -136,12 +139,12 @@ if it is true in this model. Dually, if you are given a theory for which
 there exists a model with this property (a statement is valid in the theory "iff" it
 is true in the model), then the theory is complete.
 In essence, not only does Gödel's puts a dent in Hilbert's dream
-(``Wir müssen wissen. Wir werden wissen.'') of building solid foundations for mathematics,
-it shatters the Platonistic idea of an unequivocal \& universal mathematical world, or 
+(``Wir müssen wissen. Wir werden wissen.'') of building solid foundations for mathematics:
+in fact, it shatters the Platonistic idea of an unequivocal \& universal mathematical world, or 
 at the very least of one that can be captured by axioms.
 
 Ironically, what makes "Gödel's incompleteness theorem" a proper
-abomination---at least for computer scientists---is probably Gödel's own theorem, that he proved only one year before in his
+abomination  for computer scientists is probably Gödel's own theorem, that he proved only one year before in his
 Ph.D. dissertation, known as "Gödel's completeness theorem": 
 first-order logic admits a complete proof system. Or, said differently,
 what is valid---that is, true on every model satisfying the axioms---is exactly what
@@ -154,17 +157,15 @@ $\neg \phi$ is valid.%
 \footnote{Formally: any recursively enumerable complete first-order theory is decidable.}
 Are there cardinals strictly between $\aleph_0$ and the continuum?
 Start Turing's nifty device---invented in 1936---, go get lunch, and before you are finished,
-you would get an answer! In this strange world, this thesis would probably look very different,
-as mathematicians might have had to find a new occupation.%
-\footnote{For instance, like Cantor, proving that Jesus is the son of Joseph of Arimathea.}
+you would get an answer! In this strange world, automatic theorem proving would be a reality,
+and this thesis would probably look very different…
 
 Sadly for the Gödel of 1929, the Gödel of 1930 came, and so… ``It's all over''!
-Hence, mathematicians still do mathematics. Since then theories---such has
+Hence, mathematicians still do mathematics. Since then, theories---such has
 "Zermelo–Fraenkel set theory + choice"---have been developed, and while not being complete, they 
 manage to capture most of the parts of mathematics we are interested about.%
 \footnote{For the sake of sanity, we assume
 throughout this introduction that the pronoun `we' excludes set theorists.}
-How to deal with this harsh situation?
 \begin{marginfigure}
 	\centering
 	\[
@@ -173,7 +174,7 @@ How to deal with this harsh situation?
 	\tau {\vee} {\neg} {\in} \square A' {\in} \square A''
 	\]
 	\caption{\AP\label{fig:intro-bourbaki}
-	The "first-order sentence" $\exists x.\, x \not\in A' \lor x \in A''$
+	The "first-order sentence" $\exists x.\, (x \not\in A') \lor (x \in A'')$
 	as written by Bourbaki in \cite[\S~1]{Bourbaki2006Logique}.
 	}
 \end{marginfigure}
@@ -183,29 +184,31 @@ How to deal with this harsh situation?
 		\Fanqn{x}\Fconditional{\Fcontent x \in A''}{\Fcontent x \in A'}
 	\]
 	\caption{\AP\label{fig:intro-frege}
-		The "first-order sentence" $\exists x.\, x \not\in A' \lor x \in A''$
+		The "first-order sentence" of \Cref{fig:intro-bourbaki}
 		written using Frege's notations (1879).
 	}
 \end{marginfigure}
-For mathematicians, denial is perhaps the most common option:
+Yet, after half a century of efforts to build solid foundations,
+the incompleteness of this consolation prize is actually frustrating,
+and mathematicians still often resort to denial.
 \begin{displayquote}[Jean Dieudonné {\cite{Dieudonne1970Bourbaki}}]
 	On foundations we believe in the reality of mathematics, but of course when philosophers attack us with their paradoxes we rush to hide behind formalism and say: ``Mathematics is just a combination of meaningless symbols,'' and then we bring out Chapters 1 and 2 on set theory. Finally we are left in peace to go back to our mathematics and do it as we have always done, with the feeling each mathematician has that he is working with something real.
 	This sensation is probably an illusion, but is very convenient. That is Bourbaki's attitude towards foundations.	
 \end{displayquote}
 For the reader intrigued by what could possibly frighten philosophers in Bourbaki's first volume,
-we refer them to the formula of \Cref{fig:intro-bourbaki}---which is already a huge improvement on
-\Cref{fig:intro-frege}!
+we refer them to the formula of \Cref{fig:intro-bourbaki}---interestingly, this is not the most 
+frightening way to write formulas, see \Cref{fig:intro-frege}!
 
 However, all hope is not lost: while the Platonistic mathematical world might
 not be understood, some of it restrictions might be axiomatized.
 In 1926, Tarski formalized Euclide's geometry as a first-order theory, and proved
 that is was complete, and hence decidable \todo{addref}.
 Then, three years later, Presburger proved that a natural set of axioms for doing
-arithmetic with only addition is also both complete and decidable: the formulas
+arithmetic with only addition is also both complete and decidable---the formulas
 that are valid in this theory exactly correspond to the sentences that are true on $\tup{\N,+}$.
 
 Hence, logic is not completely useless at capturing infinite complex structures.
-"Automatic structures" are essentially a subclass of "structures" on which the dreams of
+"Automatic structures" are essentially a subclass of "structures" on which the dream of
 the mathematical community holds: given such a "structure" and a "first-order sentence",
 we can decide whether it holds on this "structure"! These structures can be infinite,
 but are, by definition, describable by finite-state automata---which is what
@@ -223,7 +226,7 @@ addition and multiplication $\tup{\N,+,\cdot}$ is not "automatic@@struct",
 as it is already undecidable.
 While "automatic structures" cannot express ``mathematical universes'' serving as
 foundations for a universal mathematical theory, they are surprisingly adequate to
-express infinite "structures" arising from models of computability.
+express infinite "structures" arising from computational models.
 For instance, the runs of a finite-state automaton is "automatic@@struct"---its nodes
 are finite runs of the automaton, and there is a `$a$'-transition from
 $\rho$ to $\rho'$ when $\rho' = \rho \transition{a} q'$ for some state $q'$---
