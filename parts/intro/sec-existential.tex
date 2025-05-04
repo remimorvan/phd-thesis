@@ -253,7 +253,7 @@ Hence, a quest emerged to find classes of "conjunctive queries" with an "FPT" ev
 	\caption{
 		\AP\label{fig:intro-tree-shaped-CQ}
 		A tree-shaped "conjunctive query" over a "signature"
-		with three binary relations denoted by $a$, $b$ and $c$.
+		with three binary relations denoted by $a$, $b$ and~$c$.
 	}
 \end{marginfigure}
 First, one can notice that if said query is tree-shaped,
@@ -300,7 +300,7 @@ of the query "iff"
 it has bounded ``"semantic tree-width"''---meaning that there exists $k\in\Np$ "st"
 every "query@CQ" in the class is "semantically equivalent" to a "query@CQ" 
 of "tree-width" at most $k$ \cite{Grohe2007ComplexityHomomorphism}.%
-\footnote{The same equivalent holds for polynomial-time evaluation.}
+\footnote{The same equivalence holds for polynomial-time evaluation.}
 
 \begin{known}
 	"Conjunctive queries" of bounded semantic tree-width are exactly
@@ -331,8 +331,8 @@ of "tree-width" at most $k$ \cite{Grohe2007ComplexityHomomorphism}.%
 		A "conjunctive query" outputting all pairs of people with their grandchildren.
 	}
 \end{marginfigure}
-Overall, the theory of \emph{conjunctive queries} is hence well-understood.
-Even when considering other features from SQL, such as aggregate functions---\textsf{COUNT}, \textsf{SUM}, etc.---, the query language of "conjunctive queries" faces a big limitation:
+Overall, the previous result prove that the theory of \emph{conjunctive queries} is well-understood.
+However, even when considering other features from SQL, such as aggregate functions---\textsf{COUNT}, \textsf{SUM}, etc.---, the query language of "conjunctive queries" faces a big limitation:
 it is \emph{intrinsically local}.
 Consider two "structures" $\?A$ and $\?B$, and two elements $a$ and $a'$ of $A$.
 For any homomorphism $f$ from $\?A$ to $\?B$, the "distance@@struct" from $f(a)$ to $f(a')$
@@ -350,12 +350,12 @@ In other words, "conjunctive queries" are not closed under transitive closures.
 
 More generally, human-centered data does not usually go well with
 relational databases, as they are not designed to allow graph traversal.
-To face this issue, "graph databases", also known as "knowledge graph" have
+To face this issue, "graph databases", also known as knowledge graphs have
 been introduced: they can essentially be modelled
 as "relational structures" whose relations are all binary: in other
 words, they correspond to edge-labelled graphs, see \Cref{fig:example-wikidata}.
 To illustrate this point, we consider
-"Wikidata", which is a knowledge graph containing more than one hundred million
+"Wikidata", which is a "graph database" containing more than one hundred million
 vertices, whose data is used amongst others on Wikipedia. 
 
 \begin{figure}
@@ -389,7 +389,7 @@ we are looking for variables \textsf{?work}, \textsf{?typeOfWork} (implicit),
 	\item \textsf{?work} was published on \textsf{?date}, and
 	\item \textsf{?work} was authored by \textsf{?author}.
 \end{itemize}
-They key feature of graph databases query languages is illustrated
+They key feature of query languages for "graph databases" is illustrated
 by the \lstinline[language=SQL]{wdt : P31 / wdt : P279 *} instruction:
 this expression does not refer to a single edge of the knowledge graph,
 but rather to a regular expression formed from these edges.
@@ -462,7 +462,7 @@ is provided in \Cref{tab:output-sparql}.
 	\end{tikzpicture}
 	\caption{
 		\AP\label{fig:example-wikidata}
-		Part of the "Wikidata" knowledge graph.
+		Part of the "Wikidata" graph database.
 		Dotted arrows represent the relation `subclass of'.
 		The red path matches the expression \lstinline[language=SQL]{wdt : P31 / wdt : P279 *}.
 		For readability, labels are written next to the vertices
@@ -601,10 +601,10 @@ decide if it is equivalent to a finite union of
 \end{contribution}
 
 Both algorithms are essentially brute-force, and the main technical difficulty
-lies in proving that finitely many candidates to test, which is not
+lies in proving that there are finitely many candidates to test, which is not
 trivial because we do not ask for any bound on the size of the "regular languages".%
-\footnote{Again, the motivation lies from the fact that the complexity of evaluating
-a "conjunctive regular path queries" mostly depends on how many "atoms"/edges it has,
+\footnote{Again, this is motivated by the complexity of evaluating
+a "conjunctive regular path queries", which mostly depends on how many "atoms"/edges it has,
 and not so much on how complex these languages are.}
 The idea behind the two algorithms are in fact surprisingly different:
 \begin{itemize}
@@ -616,12 +616,12 @@ The idea behind the two algorithms are in fact surprisingly different:
 		languages and the graph structure;
 	\item in the second case---when union is allowed---, we build a canonical
 		finite union of "queries@CRPQ", corresponding to the
-		"maximal under approximation" by a finite union of small "queries@CRPQ": 
-		it is the \emph{best} under approximation---in the sense that
+		"maximal under-approximation" by a finite union of small "queries@CRPQ": 
+		it is the \emph{best} under-approximation---in the sense that
 		it logically entails the "query@CRPQ"---and so, if the original
 		"query@CRPQ" is equivalent to a finite union of small ones, then
-		it must be equivalent to this "maximal under approximation".
-		The difficulty there lies in proving the existence of "maximal under approximation",
+		it must be equivalent to this "maximal under-approximation".
+		The difficulty there lies in proving the existence of "maximal under-approximation",
 		or rather that it can be expressed by a \emph{finite} union.
 		This construction can essentially be seen as a
 		smart brute-forcing, obtained by agglomerating all possible smaller "queries@CRPQ".
@@ -648,7 +648,7 @@ or the class of all graphs of "tree-width" at most $k$.
 	that is necessary to express a "query@@sem".
 \end{contribution}
 
-This tool proves useful to prove minimality of specific examples---"ie"
+This tool proves useful to show minimality of specific examples---"ie"
 for proofs---, and to prove complexity lower bounds for our problem.
 However, this it only provides a sufficient condition, that is often not
 necessary, it fails to provide a \emph{simple} algorithm to test minimality---hence our
@@ -668,7 +668,7 @@ to such an object.
 	a finite union of ``acyclic''---meaning of "tree-width" 1---"queries@CRPQ".
 \end{known}
 
-Unfortunately, the general question for "tree-width" $k$ is left open at the end
+The general question for "tree-width" $k$ is left open at the end
 of their paper as the authors did not know how to extend their technique to this
 more general setting. We extend their result, relying again on the notion
 of "maximal under-approximation":%
@@ -698,7 +698,7 @@ semantics of the "query@CRPQ".
 Amusingly, we originally thought that our proof was not able to
 capture the case $k=1$ that was already handled, and that the constructions
 of Barceló, Romero and Vardi and ours were orthogonal.
-While writting the journal version of this paper---that was originally
+While writing the journal version of this paper---that was originally
 published at ICDT '23---, we wanted to extend the results to "path-width",%
 \footnote{The main motivation behind this is that the evaluation of "queries@CRPQ"
 of bounded "path-width" is not only polynomial but even "NL"!}

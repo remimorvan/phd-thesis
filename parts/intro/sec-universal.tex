@@ -51,7 +51,7 @@ depends on its "neighbourhood"---, problems of type $\textsf{data} \homto^? \tex
 	to be the "graph@@dir" whose vertices are $\lBrack 1,k\rBrack$,
 	and with an edge from $i$ to $j$ (with $i,j \in \lBrack 1,k\rBrack$)
 	"iff" $i\neq j$, see \Cref{fig:intro-3-clique}.
-	Recall that a finite "graph@@dir" $\?G$ is \AP""$k$-colourable""---"ie"
+	We say that a finite "graph@@dir" $\?G$ is \AP""$k$-colourable"" when
 	we can map every vertex of $\?G$ to an element of $\lBrack 1,k\rBrack$
 	"st" no two adjacent vertices are sent on the same colour/number.
 	In other words, a $k$-colouring corresponds precisely to a "homomorphism" from $\?G$
@@ -76,7 +76,8 @@ provides a flexible framework to encode problems.
 		\phi \defeq \bigwedge_{i=1}^n \ell_{i,1} \lor \ell_{i,2} \lor \ell_{i,3},
 	\]
 	where each $\ell_{i,j}$ is either a variable, or the negation of a variable.
-	We assume "wlog" that in each clause, positive variables appear before negative ones%
+	We assume "wlog" that in each clause, positive variables appear before negative ones:
+	this of course can be achieved by a simple syntactical rewriting of each clause.%
 	\footnote{Meaning "eg" that $x \lor \neg y \lor z$ is not allowed, contrary to
 	$x \lor z \lor \neg y$.}
 	We let $\?B$ be the structure whose domain has two elements $\{0,1\}$,
@@ -84,7 +85,7 @@ provides a flexible framework to encode problems.
 	\begin{align*}
 		\+R_0 & \defeq \set{0,1}^3 \smallsetminus \set{\tup{0,0,0}}, &
 		\+R_1 & \defeq \set{0,1}^3 \smallsetminus \set{\tup{1,0,0}}, \\
-		\+R_2 & \defeq \set{0,1}^3 \smallsetminus \set{\tup{1,1,0}}, \text{ and} &
+		\+R_2 & \defeq \set{0,1}^3 \smallsetminus \set{\tup{1,1,0}} \qquad\text{ and} &
 		\+R_3 & \defeq \set{0,1}^3 \smallsetminus \set{\tup{1,1,1}}.
 	\end{align*}
 	We then encode $\phi$ into the "relational structure" $\?F_\phi$
@@ -180,7 +181,9 @@ the "homomorphism problem" with "target structure" $\?B$ is either "P"
 or "NP"-complete'' \cite{FederVardi1998ComputationalStructure}.
 Despite receiving lots of attention, the conjecture remained wide open for two decades, until
 Bulatov \cite{Bulatov2017DichotomyCSPs} and Zhuk \cite{Zhuk2020CSPDichotomy} independently
-showed the conjecture to be true.
+showed the conjecture to be true.%
+\footnote{Both papers have in fact been first published in 2017 in the same conference:
+\cite{Zhuk2020CSPDichotomy} refers to Zhuk's later journal version.}
 
 However not all problems in "P" are complete for this class: some are even simpler and are complete
 for "NL" or "L", or even "FOfin"---i.e. it is a "first-order definable" class of "finite structures".
@@ -200,7 +203,7 @@ These structures handled by the "homomorphism problem", like most
 problems in computer science, are usually assumed to be "finite@@struct".
 Why not generalize them to infinite "structures"? It would be of course
 very pleasant to have an algorithm saying if a statement is true
-in the `mathematical world'!
+in the `mathematical world'! \todo{improve this}
 
 Von Neumann would have said ``It's all over''%
 \footnote{This quote is claimed to be historically accurate by
@@ -214,7 +217,7 @@ In other words, there is no reasonable set of axioms
 to capture all mathematics: some statements must necessarily fall outside
 the scope of the theory.
 
-Incompleteness is perhaps best understood as follows:
+Completeness is perhaps best understood as follows:
 if a theory (a set of axioms) is consistent---"ie" it has at least one model---and complete, 
 then pick any of its model. A statement is then valid in the theory if and only
 if it is true in this model. Dually, if you are given a theory for which
@@ -238,8 +241,7 @@ procedure would always stop, and either conclude that $\phi$ is valid, or that
 $\neg \phi$ is valid.%
 \footnote{Formally: any recursively enumerable complete first-order theory is decidable.}
 Are there cardinals strictly between $\aleph_0$ and the continuum?
-Start Turing's nifty device---invented in 1936---, go get lunch, and before you are finished,
-you would get an answer! In this strange world, automatic theorem proving would be a reality,
+Start Turing's nifty device---invented in 1936---, and you would (eventually) get an answer! In this strange world, automatic theorem proving would be a reality,
 and this thesis would probably look very different.
 
 Sadly for the Gödel of 1929, the Gödel of 1930 came, and so… ``It's all over''!
@@ -281,7 +283,7 @@ For the reader intrigued by what could possibly frighten philosophers in Bourbak
 we refer them to the formula of \Cref{fig:intro-bourbaki}---interestingly, this is not the most 
 frightening way to write formulas, see \Cref{fig:intro-frege}!
 
-However, all hope is not lost: while the Platonistic mathematical world might
+However, not all hope is lost: while the Platonistic mathematical world might
 not be understood, some of it restrictions might be axiomatized.
 In 1929, Presburger proved that a natural set of axioms for doing
 arithmetic with only addition is also both complete and decidable---the formulas
@@ -289,6 +291,7 @@ that are valid in this theory exactly correspond to the sentences that are true 
 Around the same time, Tarski formalized Euclide's geometry as a first-order theory, and proved
 that is was complete and decidable, see \cite{TarskiGivant1999Geometry}.
 
+\todo{smoother transition}
 Hence, logic is not completely useless at capturing complex infinite structures.
 Generalizing the idea behind the decidability of Presburger's arithmetic,
 mathematicians and computer scientists kept 
@@ -323,14 +326,14 @@ Even more generally, the "configuration graph" of any "Turing machine" is "autom
 Hence, in \Cref{ch:dichotomy-theorem}, we naturally study the "homomorphism problem" when the "input structure"
 is allowed to be any "automatic structure". Surprisingly, very little was known about this problem:
 the only known result by Köcher states that whether an "automatic graph" is "2-colourable" is undecidable \cite{Kocher2014AutomatischenGraphen}.
-This lead us to conjecture that actually most "homomorphism problems" on "automatic structures"
+This led us to conjecture that actually most "homomorphism problems" on "automatic structures"
 should be undecidable, since $\clique{2}$ is actually somewhat ``simple''.
 
 While the "homomorphism problem" seems quite natural at first glance, a "homomorphism" $f$
 from an "automatic structure" $\?A$ to a "finite one@finite structure" $\?B$ does not live
-in the same world as $\?A$ and $\?B$, in the sense that it might not be finitely-presentable---its domain is infinite and so, \emph{a priori} require infinite information to be described.
+in the same world as $\?A$ and $\?B$, in the sense that it might not be finitely presentable---its domain is infinite and so, \emph{a priori} require infinite information to be described.
 We introduce the notion of "regular homomorphisms", that corresponds to "homomorphisms" that
-are finitely-presentable in the same fashion as "automatic structures", and show that
+are finitely presentable in the same fashion as "automatic structures", and show that
 this notion differs from the notion of "homomorphism",
 see \Cref{fig:tree-not-2reg-colour,ex:tree-not-2-reg-colourable}.
 
@@ -395,7 +398,7 @@ We prove this problem to be equivalent to the one taking an "automatic graph" an
 if it has a finite "regular colouring", which amounts to asking
 if there exists some $k\in\Np$ for which the graph admits a "regular homomorphism" to
 $\clique{k}$. We still don't know whether this problem is decidable, 
-even if the result of \Cref{ch:dichotomy-theorem} hint at its undecidability.
+even if the results of \Cref{ch:dichotomy-theorem} hint at its undecidability.
 
 \subsection{Language-Theoretic Properties of Presentations of Automatic Structures}
 
@@ -417,7 +420,10 @@ bijection between classes of finite "monoids" and classes of
 In \Cref{ch:algebra}, motivated by the "$\AUT$/$\REC$-separability problem",
 we introduce an algebraic theory for "automatic relations": these algebras are called
 "synchronous algebras".
-We prove that each finite-word relation admits a "syntactic synchronous algebra",
+We prove that each finite-word relation%
+\footnote{A finite-word relation is simply a subset
+$\+R \subseteq \Sigma^* \times \Sigma^*$ for some finite alphabet $\Sigma$.}
+admits a "syntactic synchronous algebra",
 and that this algebra is finite if, and only if, the relation is "automatic@@rel".
 
 We then prove that classes formed of "these algebras@synchronous algebras" 

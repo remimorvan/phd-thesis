@@ -9,7 +9,7 @@ satisfies a given set of rules. This thesis approaches the "homomorphism problem
 To introduce this problem, we present a range of examples---automata acceptance, SQL query evaluation and Sudoku solving; we also present 3-colourability and SAT-solving in the next sections---that can all be encoded as "homomorphism problems".
 Interestingly, they reveal a dichotomy on how problems are encoded:
 in some, the query appears on the left-hand side of the "homomorphism", 
-while on others it appears on the right.
+while on others it appears on the right-hand side.
 The first type of encoding correspond to what we call \emph{existential problems},
 and are rooted in the field of \emph{database theory}:
 we introduce this domain in \Cref{sec:intro-existential}.
@@ -75,12 +75,19 @@ an example of graph "homomorphism" in \Cref{fig:example-graph-homomorphism}.
 	\begin{tikzpicture}[scale=.9]
 		\node (d0) at (-.6,.6) {};
 		\node (d1) at (-.8,0) {};
-		\node (d2) at (-.4,-1.2) {};
-		\node (d3) at (-1.5,0) {};
-		\node (d4) at (-0.3,1.3) {};
+		\node (d2) at (-1.15,-.3) {};
+		\node (d3) at (-1.4,.4) {};
+		\node (d4) at (-0.4,1.3) {};
 
 		\draw[use Hobby shortcut, closed=true, draw=c2, fill=c2, fill opacity=.4] 
 			(d0) .. (d1) .. (d2) .. (d3) .. (d4) ;
+
+		\node (f0) at (0.97,-1) {};
+		\node (f1) at (0.51,-.7) {};
+		\node (f2) at (.42,-1.3) {};
+	
+		\draw[use Hobby shortcut, closed=true, draw=c2, fill=c2, fill opacity=.4] 
+			(f0) .. (f1) .. (f2) ;
 
 		\node (c0) at (-.2,1) {};
 		\node (c1) at (-0.5,1.5) {};
@@ -316,7 +323,7 @@ to $\?A$ exactly correspond to accepting runs of the automaton over $u$.
 	\Cref{fig:example-db-as-rel}, can easily be seen as a "relational structure"
 	whose domain is the set of elements occurring somewhere in a table,
 	with one relation for each table.%
-	\footnote{~\\In fact the only difference between "relational databases" and "relational structures"
+	\footnote{~In fact the only difference between "relational databases" and "relational structures"
 	precisely lies in the fact that in the case of the former, the domain is implicit,
 	while for the latter it is explicit.
 	While this difference alters the theory, the difference is mostly negligible
@@ -443,7 +450,7 @@ the encodings of these problems into "homomorphism problems" can either be of tw
 
 The two situations are far from symmetric: in model-checking, the size of the
 data is usually much larger than query,%
-\footnote[5em]{For instance, when analysing the documents in the \emph{Panama Papers} scandal,
+\sidenote[3em]{For instance, when analysing the documents in the \emph{Panama Papers} scandal,
 the data represented 2.9 TB, while the queries were a few lines long. \cite{Neo4jPanama}}
 and hence, we often study problems where the query is fixed.
 Accordingly, not only does this fundamental asymmetry between data and query roles motivates the structure of this thesis in two independent parts: it also underlies distinct research domains.
