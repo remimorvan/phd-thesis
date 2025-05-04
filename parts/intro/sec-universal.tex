@@ -292,7 +292,6 @@ that are valid in this theory exactly correspond to the sentences that are true 
 Around the same time, Tarski formalized Euclide's geometry as a first-order theory, and proved
 that is was complete and decidable, see \cite{TarskiGivant1999Geometry}.
 
-\todo{smoother transition}
 Hence, logic is not completely useless at capturing complex infinite structures!
 Interestingly, generalizing the idea behind the decidability of Presburger's arithmetic,
 mathematicians and computer scientists kept 
@@ -380,6 +379,14 @@ This contrast leads to conjecture that "finite duality" represents the frontier 
 	Moreover, in both cases, these two problems are decidable precisely when $\?B$ has "finite duality".
 \end{contribution}
 
+Part of the proof, namely the `undecidability' part, are proven
+by generalizing Larose and Tesson's reduction, although proving that the
+`base problem' of the reduction is undecidable is non-trivial.
+For proving the decidability of "regular homomorphisms" when $\?B$ has finite duality,
+we provide two alternative proofs: a logical-one---which is quite abstract but somewhat short---and
+a graph-theoretical one---the algorithm is much more concrete, but the proof of correctness is 
+quite long. This last proof actually provides new hindsights on an existing algorithm from the literature, called "hyperedge consistency algorithm@@finite".
+
 Since the "configuration graph" of any "Turing machine" is an "automatic graph",
 it follows that this dichotomy theorem\footnote{See \Cref{thm:dichotomy-theorem-automatic-structures} for a formal statement.} can be understood
 as a variation on "Rice's theorem", that states that any non-trivial
@@ -405,9 +412,16 @@ even if the results of \Cref{ch:dichotomy-theorem} hint at its undecidability.
 \subsection{Language-Theoretic Properties of Presentations of Automatic Structures}
 
 When dealing with "regular languages",
-separability problems are quite common: a remarkably efficient tool
-to prove them decidable is algebraic language theory.
-This theory associates to every language a canonical algebra, called "syntactic monoid",
+separability problems are quite common:
+given a class $\+C$ of "regular languages", understanding
+when two "regular languages" can be separated by a language from $\+C$
+usually requires a much deeper understanding of the class $\+C$ than
+solving the membership problem for $\+C$. In some sense, solving
+this latter problem only requires a qualitative understanding of $\+C$,
+while the separability problem requires quantitative knowledge on the class. 
+A remarkably efficient tool
+to prove them decidable is algebraic language theory:
+this theory associates to every language a canonical algebra, called "syntactic monoid",
 with the property that it is finite if, and only if, the language is "regular@@lang".
 Moreover, the language-theoretic and logical properties of the language can be
 translated to algebraic properties of this "monoid": more formally, there is a natural
@@ -457,17 +471,20 @@ plays no role whatsoever in its semantics, see \Cref{fig:intro-projection}.
 This approach is ubiquitous in mathematics, and especially in logics:
 for instance, first-order logic over "finite structures" is precisely
 defined as first-order logic over all "structures", restricted to "finite structures"!
-While being quite natural, this construction fails to preserve most properties of the logics:
-first-order logic over all "structures" admits a complete proof system,
+While being natural and ubiquitous, this construction fails to preserve most properties of the logics:
+for instance, first-order logic over all "structures" admits a complete proof system,
 but does not when restricted to "finite structures". The model-checking problem
 is "coRE"-complete over all "structures", but goes to
 "RE"-complete---an incomparable complexity class---for "finite structures".
+Proving a meta-theorem on such a restriction that explains how some property
+behaves in the restricted universe simply by knowing how it behaves on
+the larger universe is hence somewhat unexpected but very welcomed!
 
 \begin{contribution}
 	We prove that, for any class of "regular languages" satisfying mild closure
 	properties, assuming we can decide if a language belongs to this class,
 	then we can decide if an "automatic relation" can be written as the restriction
-	of a "regular language" in this class with the set of all valid encodings
+	of a "regular language" in this class to the set of all valid encodings
 	of pairs of words.
 \end{contribution}
 
@@ -498,4 +515,5 @@ capture the complexity of its evaluation.
 The second part focuses on the complexity of problems related to constraint satisfaction
 over automatic structures. We show that most \emph{structural} problems, probing the shape of the 
 infinite object at hand, are undecidable. In contrast, \emph{language-theoretic} 
-problems, dealing with how these infinite structures are represented, remain decidable.
+problems, dealing with how these infinite structures are represented---or rather how easy it
+is to represent them---, remain decidable.
