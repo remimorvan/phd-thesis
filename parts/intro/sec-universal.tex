@@ -199,11 +199,12 @@ theorem by Larose and Tesson separating "structures" in "FOfin" from those that 
 \subsection{Automatic Structures: The Dream Is Not Over Yet}
 
 The second part of this thesis is dedicated to pushing these results to their limit.
-These structures handled by the "homomorphism problem", like most
+The "structures" handled by the "homomorphism problem", like most
 problems in computer science, are usually assumed to be "finite@@struct".
-Why not generalize them to infinite "structures"? It would be of course
-very pleasant to have an algorithm saying if a statement is true
-in the `mathematical world'! \todo{improve this}
+We discuss in this section the generalization of the problem to
+infinite structures. This motivated by two facts: not only infinite structures
+naturally arise as from computational models---the runs of a machine
+usually form an infinite "structure"---, they can also model `mathematical universes'.
 
 Von Neumann would have said ``It's all over''%
 \footnote{This quote is claimed to be historically accurate by
@@ -292,16 +293,17 @@ Around the same time, Tarski formalized Euclide's geometry as a first-order theo
 that is was complete and decidable, see \cite{TarskiGivant1999Geometry}.
 
 \todo{smoother transition}
-Hence, logic is not completely useless at capturing complex infinite structures.
-Generalizing the idea behind the decidability of Presburger's arithmetic,
+Hence, logic is not completely useless at capturing complex infinite structures!
+Interestingly, generalizing the idea behind the decidability of Presburger's arithmetic,
 mathematicians and computer scientists kept 
 rediscovering the notion of "automatic structures" during the second half
 of the XXth century.%
 \footnote{It should be noted that while the most common way of proving
 the decidability of Presburger's arithmetic today is by using
 automata, this is not Presburger's original proof, who relies on quantifier elimination.}
-These "structures" make the dream of
-the mathematical community true: given an "automatic structure" and a "first-order sentence",
+This notion captures the idea on why $\tup{\N,+}$ can be simply axiomatized:
+in this sense "automatic structures" salvage the shards of mathematicians' shattered dreams.
+Given an "automatic structure" and a "first-order sentence",
 we can decide whether it holds on this "structure". These structures can be infinite,
 but are, by definition, describable by finite-state automata---which is what
 makes decidability possible.
