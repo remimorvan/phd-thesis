@@ -8,6 +8,7 @@
 \knowledge{notion, wrap=\DPfont}
  | $k$-colourability problem
  | $3$-colourability
+ | $3$-colourability problem
 
 \knowledge{notion, wrap=\DPfont}
  | finite regular colourability of automatic graphs

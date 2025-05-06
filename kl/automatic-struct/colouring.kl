@@ -10,6 +10,7 @@
 \knowledge{notion}
  | 2-colourable
  | $k$-colourable
+ | $3$-colourable
 
 \knowledge{notion}
  | finitely colourable
@@ -31,7 +32,7 @@
  | regular $k$-colourability
 
 \knowledge{notion}
- | compatible@reconizable
+ | compatible@recognizable
  | incompatible@recognizable
 
 \knowledge{notion}
