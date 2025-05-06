@@ -1,96 +1,209 @@
-\chapter{General Preliminaries}
+\chapter{Prelogomena}
 \label{ch:general-preliminaries}
 
-\chaptertoc
+\begin{chapterpresentation}
+	\begin{abstract}
+		We introduce the basic definitions and notations used throughout this thesis.
+		Rather than reading it linearly, we recommand to skim it
+		to get an idea of what it contains, and to only go back to this chapter
+		only when needed, using the numerous internal hyperlinks.
+	\end{abstract}
+		
+	\par\bigskip\bigskip
+	\chaptertoc
+\end{chapterpresentation}
 
-\section{General math stuff}
+\paragraph*{Notations.}
+We try to use notations that syntactically reflect their type:
+for instance, given a set $X$, we use Roman lowercases ($x,y,z,\dotsc$)
+to denote elements of $X$, Roman uppercase for its subsets ($A, B, C, \dotsc$),
+and cursive letters ($\+X, \dotsc$) for sets of subsets of $X$.
+Functions are denoted by $f, g, h$, etc. and relations by
+uppercase cursive letters ($\+R, \+S, \dotsc$).
 
+Machines (Turing machines, automata, etc.) are also denoted
+with uppercase cursive letters ($\+T$, $\+A$, $\dotsc$).
+On the other hand, Greek letters are used to either denote queries ($\gamma, \delta, \dotsc$)
+or formulas ($\phi, \chi, \psi, \dotsc$). When possible, we try to
+use the letter to recall the semantics of the object: for instance in
+\Cref{ch:semantic-tree-width-CRPQ}, $\gamma$ will be used to denote a base query,
+$\alpha$ for one of its "\textbf{a}pproximation@approximation",
+$\rho$ for a "\textbf{r}efinements@refinement" and
+$\chi$ for an "e\textbf{x}pansion@expansion".
+We reserve boldface letters for `complex objects' ("eg"
+a "relational structure" $\?A$ or a monad $\?S$), and Blackboard bold
+for canonical objects ("eg" the natural numbers $\N$).
+
+We will use $\mathbb{A}, \mathbb{B}, \dotsc$ to denote
+alphabets in \Cref{part:databases} and $\Sigma, \Gamma, \dotsc$
+to denote them in \Cref{part:automatic}.
+\footnote{``Pobody's Nerfect''...}
+Lastly, decision problems are typesetted in small caps
+("eg" "finite regular colourability"), 
+complexity classes and categories in sans-serif ("coNP", "ExpSpace", $\Set[]$,
+$\Pos[]$).
+
+
+\section{Set and Functions}
+
+We denote by $\N$, $\Np$ and $\Z$ the sets of natural numbers---that naturally contains zero--, the
+of strictly positive natural numbers, and of integers, respectively.
+For any $n\in\Np$, $\ZnZ{k}$ denotes the set of integers modulo $k$,
+and for any $i,j \in \Z$, $\intro*\intInt{i,j}$ is the set of integers from $i$ to $j$,
+bounds included.
+
+The powerset---"ie" the set of all subsets---of set $X$
+is denoted by $\intro*\pset{X}$, and $\intro*\psetp{X}$ is defined analogously
+except that subsets are required to be non-empty.
+
+While a function $f$ from set $X$ to set $Y$ is denoted by $f\colon X \to Y$,
+we reserve $\intro*\pto$ and $\intro*\surj$ for partial functions and surjections, respectively.
+The restriction of function $f$ to a subset $A$ of its domain is denoted by
+$\intro*\restr{f}{A}$, and the identity function $x \mapsto x$ over set $X$
+is denoted by $\intro*\id[X]$.
+Given a function $f\colon X \to Y$ and a subset $A \subseteq X$,
+we denote by $f[A]$ the direct image of $A$ by $f$.%
+\footnote{In the literature, $f[A]$ is often abusively denoted by $f(A)$, although
+this gives rise to an ambiguity between function application and direct images,
+when there exists an element $A \in X$ "st" $A \subseteq X$: this happens for instance
+when dealing with von Neumann's ordinals.}
+Similarly, given a subset $B \subseteq Y$, $f^{-1}[B]$ denotes
+the inverse image of $B$ by $f$, and when $B$ is a singleton $\{b\}$,
+we will write $f^{-1}[b]$ instead.%
+
+A binary relation $\+R$ over sets $X$ and $Y$---"ie" a subset $\+R \subseteq X \times Y$---
+is said to be "functional@@rel" when for every $x$, there exists at most one $y$
+"st" $\tup{x,y} \in \+R$.
+When moreover $X = Y$, we say that it is:
 \begin{itemize}
-	\itemAP $\N,\Np,\Z$ $\intro*\intInt{i,j}$, $\ZnZ{k}$
-	\itemAP $\intro*\equivclass[b]{a}$
-	\itemAP $\intro*\pto$, $\intro*\surj$
-	\itemAP powerset: $\intro*\pset{X}$ and $\intro*\psetp{X}$.
-	\itemAP function restriction: $\intro*\restr{f}{X}$.
-	\itemAP $\intro*\id[X]$
-	\itemAP bracket notation for image/preimage $f[X], f^{-1}[X]$ and $f^{-1}[y]$ (even if $f$ is not bijective)
-	\itemAP ""symmetric@@rel"", ""reflexive relation"", ""functional relation""
+	\itemAP ""reflexive@@rel"" when $\tup{x,x} \in \+R$ for all $x \in X$;
+	\itemAP ""symmetric@@rel"" when $\tup{x,y} \in \+R$ "iff" $\tup{y,x} \in \+R$
+		for all $x,y \in X$;
+	\itemAP transitive when $\tup{x,y} \in \+R$ and $\tup{y,z} \in \+R$
+		imply $\tup{x,z} \in \+R$
+		for all $x,y,z \in X$.
+\end{itemize}
+An equivalence relation over $X$ is any binary relation satisfying the three previous axioms.
+Given an equivalence class $\sim$ over a set $X$ and an element $x \in X$,
+we denote by $\intro*\equivclass[\sim]{x}$ the equivalence class of $x$ under $\sim$.
+
+\section{Relational Structures}
+
+\subsection{Basic Notions on Structures}
+
+"Relational structures" generalize the concept of "graphs@@dir"
+by allowing to have (1) multiple kinds of relations and
+(2) relations of higher arity. This data is made explicit in
+the "signature"---also called \emph{vocabulary}.
+We start by defining a \AP""purely relational signature"", which consists
+in a set of elements, called ""predicates"",%
+\footnote{We do \emph{not} assume this set to be finite.}
+together with for each
+of these elements a strictly positive natural number, called \emph{arity}.
+We denote by $\+R_{(k)} \in \sigma$ the fact that "predicate" $\+R$, of arity
+$k$, is part of "signature" $\sigma$.
+Then, a ""relational signature"", or ""signature"" for short, consists of a "purely relational 
+signature" together with a set of constant symbols.%
+\footnote{Usually the notion of "signature" also allows for function symbols beyond
+the degenerate case of constants. However all the "signatures" considered in the thesis
+will be "relational@@signature", justifying the abuse of terminology.}
+
+Then, given a "signature" $\sigma$, a ""$\sigma$-structure"" $\?A$
+consists of:
+\begin{itemize}
+	\item a set $A$, called \emph{domain},
+	\item for each "predicate" $\+R_{(k)} \in \sigma$, a $k$-ary relation
+		$\+R(\?A) \subseteq A^k$, and
+	\item for each constant $c \in \sigma$, an element $c(\?A) \in A$.
+\end{itemize}
+We call $\+R_{(k)}$ (resp. $c(\?A)$) the \AP""interpretation@@predicate""
+of "predicate" $\+R_{(k)}$ (resp. constant $c$) in $\?A$.
+By analogy with graphs, elements of the domain are sometimes referred to as
+\emph{vertices}.
+
+The \AP""graph signature"" is a "purely relational signature"
+consisting of a single binary predicate, either written $\+E$ in prefix notation
+or $\atom{}$ in infix notation.
+Then, the "$\sigma$-structures" over "this signature@graph signature"
+exactly consists of \AP""directed graphs"".
+
+An element of $\+R_{(k)}(\?A)$ is called an \AP""$\+R$-tuple""
+of "structure" $\?A$. We also use the terminology \emph{edge} in place
+of tuple for binary predicates.
+An \reintro{hyperedge} of $\?A$ will designate any of its $\+R$-tuples,
+indifferently of the "predicate" $\+R$.
+
+A "$\sigma$-structure" $\?A$ is said to be \AP""finite@@struct"" when its
+both its domain and its set of "hyperedges" are finite.
+In particular, note that this last condition amounts to asking
+that (1) for every "predicate" $\+R_{(k)} \in \sigma$, the relation $\+R_{(k)}(\?A)$ is finite,
+and (2) there exists only finitely many "predicates" $\+R_{(k)} \in \sigma$
+"st" $\+R_{(k)}(\?A)$ is non-empty.
+
+A "substructure" of a "$\sigma$-structure" $\?A$ is another
+"$\sigma$-structure" $\?A'$ "st":
+\begin{itemize}
+	\item the domain $A'$ of $\?A'$ is a subset of $A$,
+	\item each ""interpretation@@predicate"" of a "predicate" in $\?A'$ 
+		is a subset of its "interpretation@@predicate" in $\?A$, and
+	\item every constant of $\?A$ belongs to $A'$, and the interpretation
+		of the constants in both structures coincide. 
+\end{itemize}
+A "proper substructure" is a "substructure" for which
+at least one of the inclusions in the first two points above
+is strict: in other words, such a "substructure" should
+miss at least one element, or one "hyperedge".
+
+Given a subset $X$ of the domain $A$ of a "$\sigma$-structure" $\?A$,
+the \emph{substructure of $\?A$ induced by $X$} is:
+\begin{itemize}
+	\item undefined if not all constants of $\?A$ belong to $X$,
+	\item otherwise, it is obtained from $\?A$ by restricting
+		its domain to $X$, and by intersection its $k$-ary relations
+		with $X^k$.
 \end{itemize}
 
-\section{Automata}
+The roles played by constants and "predicates" are obviously not symmetric.
+For this reason we will often rather deal with "pointed structures".
+Formally, given a "purely relational signature" $\sigma$,
+a "pointed $\sigma$-structures" consists of a "$\sigma$-structure"
+together with a \emph{tuple} of elements of its domain.
+Note that "pointed $\sigma$-structures" with tuples of size $k\in \N$ are in natural
+bijection with the set of "$\sigma'$-structures", where $\sigma'$
+is obtained from $\sigma$ by adding a set of $k$ constants.
 
-\begin{itemize}
-	\itemAP ""regular language"", $\intro*\2$
-	\itemAP $\intro*\transition{a}$
-\end{itemize}
+\subsection{Constructions on Structures}
 
-\section{Monoids}
+The \AP""disjoint union"" of two "structures" over a
+"purely relational signature" 
+is obtained by taking the disjoint union of their domain and of
+their "predicate interpretations".
 
-\begin{itemize}
-	\itemAP ""finite monoid"", ""monoid morphism""
-	\itemAP ""syntactic monoids"", ""syntactic morphism""
-	\itemAP ""pseudovariety of finite monoids"", ""pseudovariety of regular languages""
-	\itemAP ""membership@@problang""
-\end{itemize}
-
-\section{Logic}
-
-\begin{itemize}
-	\itemAP ""first-order logic""
-	\itemAP ""first-order formula"", ""first-order sentence""
-	\itemAP ""models"", $\intro*\FOmodels$ and $\intro*\semFO{-}{-}$
-	\itemAP ""quantifier alternation""
-	\itemAP ""first-order definable""
-	\itemAP ""existential formula"", ""existential-positive formula"",
-		""positive quantifier-free formula""
-	\itemAP ""monadic second-order logic""
-\end{itemize}
-
-\section{Structures and homomorphisms}
-
-\begin{itemize}
-	\itemAP ""disjoint union""
-	\itemAP ""Cartesian product"" and iter: $\intro*\prodstruct$ and $\intro*\iterstruct{-}{-}$
-	\itemAP ""block product""
-	\itemAP ""signature"" and ""predicate""
-	\itemAP ""purely relational signature"", ""graph signature"", ""signature of binary strings""
-	\itemAP ""$\sigma$-structure"", ""pointed $\sigma $-structure""
-	\itemAP ""homomorphism""
-	\itemAP ""interpretation@@predicate"" of a "predicate", ""$\+R$-tuple"" and \reintro{hyperedge}
-	\itemAP ""finite $\sigma$-structure"", ""locally finite structure""
-	\itemAP ""substructure"", ""induced substructure"", ""proper substructure""
-	\itemAP ""queries@@sem""
-\end{itemize}
-
-Graphs:
-\begin{itemize}
-	\itemAP ""graphs@@dir""
-	\itemAP ""directed tree"", ""directed cycle"", ""DAG""
-	\itemAP ""finitely colourable"", ""chromatic number""
-\end{itemize}
-
-
-Homomorphisms:
-\begin{itemize}
-	\itemAP ""homomorphically equivalent""
-	\itemAP kernel congruence $\intro*\ker{-}$, ""quotient structure"", ""congruence induced""
-	\itemAP projection: $\intro*\projHom{i}$
-	\itemAP ""isomorphism"", ""isomorphic"", ""automorphism""
-	\itemAP ""embedding"", ""strong onto""
-\end{itemize}
-
-\subsection{Cores (should maybe go to intro ?).}
-
-A \AP""core"" is blabla, we denote by \AP$\intro*\core{\?B}$ the "core" of $\?B$.
-
-\begin{proposition}
-	\AP\label{prop:automorphism-core}
-	Given a "$\sigma$-structure" $\?B$, $\?B$ is a "core" "iff" all "homomorphisms"
-	from $\?B$ to itself are "automorphisms".
-\end{proposition}
-
-\begin{itemize}
-	\itemAP ""rigid""
-\end{itemize}
+We now let $\sigma$ to be any "signature".
+Given two "$\sigma$-structures" $\?A$ and $\?B$, their
+""Cartesian product"" \AP$\?A \intro*\prodstruct \?B$
+is defined by taking the Cartesian product of their domain, of
+their "predicate interpretations" and of their interpretations of constants. 
+Their ""block product"" has the same domain and constants,
+but now the "interpretation@@predicate" of "predicate" $\+R_{(k)}$
+in the "block product" consists of all tuples
+\[
+	\set{
+		\tup{\tup{a_1,b_1}, \dotsc, \tup{a_k,b_k}}
+		\mid
+		(\tup{a_1, \dotsc, a_k} \in \+R(\?A)
+		\land b_1 = \dotsc = b_k )
+		\lor
+		(a_1 = \dotsc = a_k
+		\land \tup{b_1, \dotsc, b_k} \in \+R(\?B) ).
+	}
+\]
+The $k$-fold iteration of $\?A$ is denoted by
+$\intro*\iterstruct{\?A}{k}$ and is defined as
+\[
+\underbrace{\?A \times \dotsc \times \?A}_{k \text{ times}}.
+\]
+\todo{example fig}
 
 \subsection{Adjacencies}
 
@@ -112,24 +225,8 @@ of $a$ in $\?A$ to be the tuple of sets%
 	% \Big\rangle.
 \end{align*}
 when $\+R$ ranges over "predicate" of arity $k$ of $\sigma$ and $i \in \intInt{1,k}$. 
-\todo{ introduce notation $\+R_{(k)} \in \sigma$}
 For "graphs@@dir", the "adjacency" of a vertex corresponds to its set of predecessors and
 its set of successors.
-
-\begin{proposition}
-	\AP\label{prop:adjacency-core}
-	Given a "$\sigma$-structure" $\?B$, if $\?B$ is a "core", then
-	two elements $b_1$ and $b_2$ of $\?B$ have the same "adjacency" "iff" $b_1 = b_2$.
-\end{proposition}
-
-\begin{proof}
-	The right-to-left implication is trivial.
-	For the converse one, consider the "homomorphism" from $\?B$ to itself
-	which maps $b_2$ to $b_1$, and all elements of $B \smallsetminus \{b_2\}$
-	to themselves. Since we assumed that $b_1$ and $b_2$ have the same "adjacency",
-	this is indeed a "homomorphism", which is clearly not bijective, and
-	hence by \Cref{prop:automorphism-core}, $\?B$ is not a "core".
-\end{proof}
 
 \subsection{Undirected Paths}
 
@@ -142,25 +239,138 @@ that $a_0$ and $a_n$ are \AP""connected"".%
 \sidenote{Note that this defines an equivalence relation.}
 A \AP"connected component" of $\?A$ consists of an equivalence class under this relation.
 
+An ""undirected graph"" consists of a domain, together with
+a set of (unordered) pairs of elements of the domain.
+The ""incidence graph"" $\intro*\IncidenceGraph{\?A}$ of a "$\sigma$-structure",
+for some "signature" $\sigma$, is the following "undirected graph":
 \begin{itemize}
-	\itemAP ""incidence graph"" $\intro*\IncidenceGraph{\?A}$, ""distance@@struct"" and ""diameter""
-	\itemAP ball: $\intro*\ball{\?A}{a}{m}$
+	\item its domain is the disjoint union of the domain of $\?A$
+		and the "hyperedges" of $\?A$;
+	\item there is an edge between two vertices "iff" one of them
+		is a vertex $a$ of $\?A$, and the other is an hyperedge
+		$\bar h$ of $\?A$, with the property that $a \in \bar h$.
+\end{itemize}
+
+\begin{itemize}
+	\itemAP  ""distance@@struct"" and ""diameter""
+	\itemAP ball: $\intro*\ball{\?A}{a}{m}$ and ""locally finite structure""
 	\itemAP ""simple path""
 \end{itemize}
 
-\section{Complexity}
+\subsection{Strings and Graphs}
 
-\begin{itemize}
-	\itemAP ""Turing machine""
-	\itemAP ""configuration@@TM""
-	\itemAP ""initial configuration""
-	\itemAP ""reachable configuration""
-\end{itemize}
+The ""signature of binary strings"" has a binary "predicate" $\preceq$
+as well as two unary predicates $0$ and $1$.
+A binary string $b_0 \cdots b_{n-1}$ of length $n$
+can be seen as a "structure" over the "signature of binary strings"
+by taking $\intInt{0,n-1}$ as its domain, "interpreting@@predicate"
+$\preceq$ naturally, and interpreting $0$ (resp. $1$) as the set of
+of $i \in \intInt{0,n-1}$ "st" $b_i = 0$ (resp. $b_i = 1$).
 
-\begin{itemize}
-	\itemAP ""Connectivity in Finite Graphs""
-	\itemAP ""Reachability in Finite Graphs""
-	\itemAP ""computationally equivalent""
-	\itemAP ""data complexity""
-	\item \cite{Schmitz2016ComplexityHierarchies} for "Tower" $\intro*\tower$
-\end{itemize}
+A \AP""directed cycle"" in a "graph@@dir" consists
+of a non-empty directed path from a vertex to itself.
+A ""directed acyclic graph"", or \reintro{DAG} for short,
+is any "graph@@dir" "st" that contains no "directed cycle".
+
+A ""directed tree"" is a non-empty "graph@@dir" "st" there exists 
+a vertex $r$ with the property that for every vertex $v$,
+there exists exactly one directed path from $r$ to $v$.
+\todo{figures}
+
+The ""chromatic number"" of a "graph@@dir" is the least cardinal $k$
+"st" it is "$k$-colourable". We say that a "graph@@dir"
+is \AP""finitely colourable"" when its "chromatic number" is finite.
+
+% \subsection{Homomorphisms}
+
+% \begin{itemize}
+% 	\itemAP ""homomorphism""
+% 	\itemAP ""homomorphically equivalent""
+% 	\itemAP kernel congruence $\intro*\ker{-}$, ""quotient structure"", ""congruence induced""
+% 	\itemAP projection: $\intro*\projHom{i}$
+% 	\itemAP ""isomorphism"", ""isomorphic"", ""automorphism""
+% 	\itemAP ""embedding"", ""strong onto""
+% \end{itemize}
+
+% \subsection{Cores}
+
+% A \AP""core"" is blabla, we denote by \AP$\intro*\core{\?B}$ the "core" of $\?B$.
+
+% \begin{proposition}
+% 	\AP\label{prop:automorphism-core}
+% 	Given a "$\sigma$-structure" $\?B$, $\?B$ is a "core" "iff" all "homomorphisms"
+% 	from $\?B$ to itself are "automorphisms".
+% \end{proposition}
+
+% \begin{itemize}
+% 	\itemAP ""rigid""
+% \end{itemize}
+
+% \begin{proposition}
+% 	\AP\label{prop:adjacency-core}
+% 	Given a "$\sigma$-structure" $\?B$, if $\?B$ is a "core", then
+% 	two elements $b_1$ and $b_2$ of $\?B$ have the same "adjacency" "iff" $b_1 = b_2$.
+% \end{proposition}
+
+% \begin{proof}
+% 	The right-to-left implication is trivial.
+% 	For the converse one, consider the "homomorphism" from $\?B$ to itself
+% 	which maps $b_2$ to $b_1$, and all elements of $B \smallsetminus \{b_2\}$
+% 	to themselves. Since we assumed that $b_1$ and $b_2$ have the same "adjacency",
+% 	this is indeed a "homomorphism", which is clearly not bijective, and
+% 	hence by \Cref{prop:automorphism-core}, $\?B$ is not a "core".
+% \end{proof}
+
+% \section{Logic Related Notions}
+
+% \subsection{First-Order Logic and Beyond}
+
+% ""queries@@sem""
+
+% We assume that we are given a countable infinite set of variables.
+
+
+% \begin{itemize}
+% 	\itemAP ""first-order logic""
+% 	\itemAP ""first-order formula"", ""first-order sentence""
+% 	\itemAP ""models"", $\intro*\FOmodels$ and $\intro*\semFO{-}{-}$
+% 	\itemAP ""quantifier alternation""
+% 	\itemAP ""first-order definable""
+% 	\itemAP ""existential formula"", ""existential-positive formula"",
+% 		""positive quantifier-free formula""
+% 	\itemAP ""monadic second-order logic""
+% \end{itemize}
+
+% \subsection{Automata Theory}
+
+% \begin{itemize}
+% 	\itemAP $^*$ (knowledgify)
+% 	\itemAP ""regular language"", $\intro*\2$
+% 	\itemAP $\intro*\transition{a}$
+% \end{itemize}
+
+% \subsection{Monoids}
+
+% \begin{itemize}
+% 	\itemAP ""finite monoid"", ""monoid morphism""
+% 	\itemAP ""syntactic monoids"", ""syntactic morphism""
+% 	\itemAP ""pseudovariety of finite monoids"", ""pseudovariety of regular languages""
+% 	\itemAP ""membership@@problang""
+% \end{itemize}
+
+% \section{Complexity}
+
+% \begin{itemize}
+% 	\itemAP ""Turing machine""
+% 	\itemAP ""configuration@@TM""
+% 	\itemAP ""initial configuration""
+% 	\itemAP ""reachable configuration""
+% \end{itemize}
+
+% \begin{itemize}
+% 	\itemAP ""Connectivity in Finite Graphs""
+% 	\itemAP ""Reachability in Finite Graphs""
+% 	\itemAP ""computationally equivalent""
+% 	\itemAP ""data complexity""
+% 	\item \cite{Schmitz2016ComplexityHierarchies} for "Tower" $\intro*\tower$
+% \end{itemize}
