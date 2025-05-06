@@ -463,7 +463,7 @@ Indeed, if $\?A \nothomto \?B$, then $\?A$ is an "obstruction" and so it must co
 	The right-to-left implication is trivial. For the converse one,
 	let $\+D = \{D_1,\dotsc,D_m\}$ be a finite "dual" of $\?B$.
 	If $\?C$ is a "critical obstruction" of $\?B$ then in particular $\?C \nothomto \?B$
-	and so there exists $i \in \lBrack 1,m\rBrack$ "st" there is a "homomorphism" $f$ 
+	and so there exists $i \in \intInt{1,m}$ "st" there is a "homomorphism" $f$ 
 	from $\?D_i$ to $\?C$. Now the image of $f$ is again an "obstruction" of $\?B$,
 	and since $\?C$ is "critical@@obs", it follows that it must be $\?C$ itself. In other
 	words, $f$ is "strong onto". In particular, we obtain that $\?C$ is a "quotient@@struct" of
@@ -486,7 +486,7 @@ to prove that some structures don't have "finite duality".
 	Let $n\in\?N$.
 	We define the \AP""zigzag graph"" $\intro*\zigzag{n}{2}$ of width $n$ and length 2
 	to be "graph@@dir" whose vertices are $a_0, \dotsc, a_n$, $b_0, \dotsc, b_{n}$,
-	$a'_0$ and $b'_n$, with edges from $a_i$ to $b_{i-1}$ and to $b_{i}$ (for $i \in \lBrack 0,n\rBrack$, whenever the nodes exist), and with an edge from $a'_0$ to $a_0$ and from $b_n$
+	$a'_0$ and $b'_n$, with edges from $a_i$ to $b_{i-1}$ and to $b_{i}$ (for $i \in \intInt{0,n}$, whenever the nodes exist), and with an edge from $a'_0$ to $a_0$ and from $b_n$
 	to $b'_n$. See \Cref{fig:zigzag-graph} for an illustration.
 	
 	Note that $\zigzag{n}{2}$ does not admit a "homomorphism" to the "$2$-path"---indeed, such a homomorphism should send $a'_0$, $a_0$ and $b_0$ onto $0$, $1$, and $2$, respectively, 
@@ -604,7 +604,7 @@ given a "$\sigma$-structure" $\?B$, we let \AP$\intro*\FederVardi{\?B}$ be
 the $\sigma$-structure whose domain is $\psetp{B}$, and for every $\+R_{(k)} \in \sigma$,
 we have $\tup{Y_1, \dotsc, Y_k} \in \+R(\FederVardi{\?B})$ 
 (with $Y_1, \dotsc, Y_k \in \psetp{B}$) precisely when 
-for every $i\in \lBrack 1,k\rBrack$, 
+for every $i\in \intInt{1,k}$, 
 for every $b_i \in Y_i$,
 there exists $b_j \in Y_j$ for every $j \neq i$ "st" 
 $\tup{y_1, \dotsc, y_k} \in \+R(\?B)$.%

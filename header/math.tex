@@ -18,14 +18,15 @@
 \newrobustcmd\N{\symbb{N}} % natural numbers
 \newrobustcmd\Np{\N_{>0}} % strictly positive nat. numbers
 \newrobustcmd\Z{\symbb{Z}}
+\knowledgenewrobustcmd\intInt[1]{\cmdkl{\lBrack} #1 \cmdkl{\rBrack}} % real numbers
 \newrobustcmd\ZnZ[1]{\symbb{Z}/#1\symbb{Z}}
-\newrobustcmd\R{\symbb{R}} % natural numbers
+\newrobustcmd\R{\symbb{R}} % real numbers
 \knowledgenewrobustcmd\2{\cmdkl{\symbb{2}}} % binary alphabet 
 
 \newrobustcmd\defeq{\mathrel{\hat{=}}} % equality by definition
-\newrobustcmd\pto{\rightharpoonup} % partial function
-\newrobustcmd\surj{\twoheadrightarrow} % surjection
-\knowledgenewrobustcmd{\equivclass}[2][]{[#2]^{#1}} % equivalence class
+\knowledgenewrobustcmd\pto{\cmdkl{\rightharpoonup}} % partial function
+\knowledgenewrobustcmd\surj{\cmdkl{\twoheadrightarrow}} % surjection
+\knowledgenewrobustcmd{\equivclass}[2][]{\cmdkl{[}#2\cmdkl{]^{#1}}} % equivalence class
 
 \knowledgenewrobustcmd\restr[2]{{% function restriction
   #1 \cmdkl{\raisebox{-.1em}{\(\vert\)}{}_{#2}}

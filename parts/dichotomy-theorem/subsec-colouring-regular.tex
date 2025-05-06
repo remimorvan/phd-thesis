@@ -214,7 +214,7 @@ to be \AP""germinal"" if it has in-degree 0.%
 
 	\proofcase{Upper-bound.} We show that the problem is "RE". Let us define a \AP""$k$-coloured automaton"" like a regular (complete) DFA, except that instead of having
 	a set of final states, it has a partition $\langle C_1,\dotsc,C_k \rangle$ of its states.
-	Such an automaton recognizes a "regular colouring" $\Sigma^* \to \lBrack 1, k\rBrack$.
+	Such an automaton recognizes a "regular colouring" $\Sigma^* \to \intInt{1,k}$.
 	Given an "automatic graph" $\+G = \tup{V,\+E}$---whose edge relations is given by
     a "synchronous automaton" $\relPres{\+E}{\+G}$---and a $k$-coloured automaton $\+B$,
 	we can build, by a product construction, an automaton $\+A'$ which accepts

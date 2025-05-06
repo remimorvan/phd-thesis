@@ -113,7 +113,7 @@ Further, this implies undecidability for every larger $k$.
         \AP\label{fig:2prod-to-kprod}
         Construction in the proof of \Cref{prop:kprod-undecidable} for $k = 5$. $\+S$ is depicted as the union of two grey rectangles since $\+S \in \kPROD[2]$.
         The relation $\+R'_1$ is obtained from $\+R_1$ (blue shape) by adding all blue edges,
-        namely $a_i \to b_i$ for $i \in \lBrack 1, k-2\rBrack$. The relation $\+R'_2$ is obtained from $\+R_2$ (red shape) by adding
+        namely $a_i \to b_i$ for $i \in \intInt{1,k-2}$. The relation $\+R'_2$ is obtained from $\+R_2$ (red shape) by adding
         all red edges, namely every other non-self-loop edge involving a vertex $a_i$ or $b_i$.
         Finally, $\+S'$ ($\+S$ plus three grey rectangles) is obtained from $S$ by adding
         each $\{a_i\} \times \{b_i\}$.
@@ -126,13 +126,13 @@ Further, this implies undecidability for every larger $k$.
 
     Let $\+R'_1 \defeq \+R_1 \dcup \set{\tup{a_i,b_i} : 1 \leq i \leq k-2}$ and 
     \begin{align*}
-    \+R'_2 =  \+R_2 \dcup~&\set{\tup{a_i,v} \mid v \in \Sigma^*,\; i \in \lBrack 1,k-2\rBrack} \\
-    \dcup~&\set{\tup{u,b_i} \mid u \in \Sigma^*,\; i \in \lBrack 1,k-2\rBrack}\\
-    \dcup~&\set{\tup{a_i,b_j} \mid i,j \in \lBrack 1,k-2\rBrack \text{ and } i \neq j}\\
-    \dcup~&\set{\tup{b_i,a_j} \mid i,j \in \lBrack 1,k-2\rBrack}
+    \+R'_2 =  \+R_2 \dcup~&\set{\tup{a_i,v} \mid v \in \Sigma^*,\; i \in \intInt{1,k-2}} \\
+    \dcup~&\set{\tup{u,b_i} \mid u \in \Sigma^*,\; i \in \intInt{1,k-2}}\\
+    \dcup~&\set{\tup{a_i,b_j} \mid i,j \in \intInt{1,k-2} \text{ and } i \neq j}\\
+    \dcup~&\set{\tup{b_i,a_j} \mid i,j \in \intInt{1,k-2}}
     \end{align*}
     
-    If $\+R_1$ and $\+R_2$ have a $\kPROD[2]$ "separator@@rel" $\+S$, then $\+S \dcup \set{\tup{a_i,b_i} \mid i \in \lBrack 1,k-2\rBrack}$ is a $\kPROD$ "separator@@rel" of $\+R'_1$ and $\+R'_2$.
+    If $\+R_1$ and $\+R_2$ have a $\kPROD[2]$ "separator@@rel" $\+S$, then $\+S \dcup \set{\tup{a_i,b_i} \mid i \in \intInt{1,k-2}}$ is a $\kPROD$ "separator@@rel" of $\+R'_1$ and $\+R'_2$.
     
 
     Conversely, if $\+S' = (A_1 \times B_1) \cup \dotsb \cup (A_k \times B_k)$ is a $\kPROD$ "separator@@rel" of $\+R'_1$ and $\+R'_2$, then for every $i$ there must be some $j_i$ such that $A_{j_i} \times B_{j_i}$ contains $(a_i,b_i)$. From $\+S' \cap \+R'_2 = \emptyset$, we get:
@@ -164,7 +164,7 @@ It turns out that equivalence classes of $\autequiv$ define the coarsest partiti
 \end{lemma}
 \begin{proof}
     \proofcase{Left-to-right.}
-    Assume that $\autequiv$ has the equivalence classes $C_1, \cdots, C_k$. Consider the set $P \subseteq \lBrack 1,k\rBrack^2$ of all pairs $\tup{i,j}$ such that there are $u_i \in C_i$ and $u_j \in C_j$ with $\tup{u_i,u_j} \in \+R$. Define the $\kREC$ relation $\+R' = \bigcup_{(i,j) \in P} C_i \times C_j$. We claim that $\+R=\+R'$. 
+    Assume that $\autequiv$ has the equivalence classes $C_1, \cdots, C_k$. Consider the set $P \subseteq \intInt{1,k}^2$ of all pairs $\tup{i,j}$ such that there are $u_i \in C_i$ and $u_j \in C_j$ with $\tup{u_i,u_j} \in \+R$. Define the $\kREC$ relation $\+R' = \bigcup_{(i,j) \in P} C_i \times C_j$. We claim that $\+R=\+R'$. 
     In fact, by definition of $\autequiv$, note that if there are $u_i \in C_i$ and $u_j \in C_j$ with $\tup{u_i,u_j} \in \+R$, then $C_i \times C_j \subseteq \+R$. Hence, $\+R' \subseteq \+R$.
     On the other hand, for every pair $\tup{u,v} \in \+R$ there exists $\tup{i,j} \in P$ such that $u \in C_i$, $v \in C_j$ implying $\tup{u,v} \in \+R'$.
     Hence, $\+R \subseteq \+R'$.

@@ -240,14 +240,14 @@ $\?G$ into $\Myc(\?G)$.
 
 \begin{proof}
   \proofcase{Upper bound.}
-  Let $f\colon \?G \to \lBrack 1,k \rBrack$ be a "colouring" of $\?G$ for some $k\in \N$.
+  Let $f\colon \?G \to \intInt{1,k}$ be a "colouring" of $\?G$ for some $k\in \N$.
   Then mapping $\langle u, i \rangle$ to $f(u)$ for $u \in V$ and $i \in \2$
   and mapping $\bullet$ to colour $k+1$ defines a "$(k+1)$-colouring" of $\Myc(\?G)$.
 
   \proofcase{Lower bound.}
-  Let $k \in \Np$ and let $g\colon \Myc(\?G) \to \lBrack 1,k\rBrack$ be a
+  Let $k \in \Np$ and let $g\colon \Myc(\?G) \to \intInt{1,k}$ be a
   $k$-colouring of $\Myc(\?G)$.
-  Let $g'\colon \Myc(\?G) \to \lBrack 1,k\rBrack$
+  Let $g'\colon \Myc(\?G) \to \intInt{1,k}$
   be defined by $g'\langle u,i\rangle \defeq g\langle u,1 \rangle$,
   and $g'(\bullet) \defeq g(\bullet)$.
   Since the adjacency of $\langle u,0 \rangle$ is included in the
@@ -306,7 +306,7 @@ We can now prove our result.
     \item $u$ contains at least one $\bullet$
       and letting $i$ be the index of the last occurrence of $\bullet$ in $u$,
       we have $v_i = 1$, and
-    \item for all $j \in \lBrack i+1,n\rBrack$, $u_j = 0$
+    \item for all $j \in \intInt{i+1,n}$, $u_j = 0$
     and $v_j \in \2$.
   \end{itemize}
   Call the property above $\+P$.

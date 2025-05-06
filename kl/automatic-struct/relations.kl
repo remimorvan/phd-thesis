@@ -73,7 +73,7 @@
 
 \knowledge{notion}
  | $I$-locally finite
- | $\lBrack 1,k\rBrack $-locally finite
+ | $\intInt{1,k}$-locally finite
  | $\{3\}$-locally finite
  
 \knowledge{notion}
@@ -142,7 +142,7 @@
  | $T$-multitape automaton
  | $T_{\textrm {sync}}$-multitape automaton
  | $T_{\textrm {rec}}$-multitape automaton
- | $\{\{i\} \mid i \in \lBrack 1,k\rBrack \}^*$-multitape automata
+ | $\{\{i\} \mid i \in \intInt{1,k} \}^*$-multitape automata
 
 \knowledge{notion}
  | $T$-controlled relation

@@ -48,12 +48,12 @@ depends on its "adjacency"---, problems of type $\textsf{data} \homto^? \textsf{
 \begin{example}[Graph colouring]
 	\AP\label{ex:graph-colouring-as-hom}
 	Let $k\in\Np$. We let the \AP""$k$-clique"", denoted by $\intro*\clique{k}$,
-	to be the "graph@@dir" whose vertices are $\lBrack 1,k\rBrack$,
-	and with an edge from $i$ to $j$ (with $i,j \in \lBrack 1,k\rBrack$)
+	to be the "graph@@dir" whose vertices are $\intInt{1,k}$,
+	and with an edge from $i$ to $j$ (with $i,j \in \intInt{1,k}$)
 	"iff" $i\neq j$, see \Cref{fig:intro-3-clique}.
 	The classical graph-theoretical notion of \AP""$k$-colouring""
 	of a "graph@@dir" $\?G$ consists of
-	a map from vertices of $\?G$ to $\lBrack 1,k\rBrack$
+	a map from vertices of $\?G$ to $\intInt{1,k}$
 	"st" no two adjacent vertices are sent on the same colour/number.
 	We then say that a "graph@@dir" is \AP""$k$-colourable"" when
 	it admits at least one "$k$-colouring".
@@ -93,8 +93,8 @@ provides a flexible framework to encode problems.
 	\end{align*}
 	We then encode $\phi$ into the "relational structure" $\?F_\phi$
 	whose domain is the set of variables of $\phi$,
-	and for every $i \in \lBrack 1,n \rBrack$,
-	$\+R_j$ ($j\in\lBrack 0,3\rBrack$) consists of all triplets of variables $\tup{x,y,z}$
+	and for every $i \in \intInt{1,n}$,
+	$\+R_j$ ($j\in\intInt{0,3}$) consists of all triplets of variables $\tup{x,y,z}$
 	"st" there is a clause of $\phi$ containing variables $x$, $y$ and $z$ (with multiplicity), and exactly $j$ of these variables occur negatively.
 	For instance, $\tup{x, y, \neg x} \in \+R_1$, and $\tup{\neg x, \neg y, \neg z} \in \+R_3$.
 	A function $f$ from the domain of $\?F_\phi$ to the domain of $\?B$ amounts to picking
@@ -356,7 +356,7 @@ Our first contribution is to show that whether a graph admits a "regular $2$-col
 is a "transitive tournament". This is best understood on an example: consider the "$3$-transitive 
 tournament" depicted in \Cref{fig:3-transitive-tournament}.
 A "homomorphism" $f$ from a graph $\?G$ to $\transitiveTournament{3}$ amounts to a function
-from the set of vertices of $\?G$ to $\lBrack 0,3\rBrack$ "st"
+from the set of vertices of $\?G$ to $\intInt{0,3}$ "st"
 for any vertices $u$ and $v$, if there is an edge from $u$ to $v$, then
 $f(u) < f(v)$. It is clear that the existence of such a mapping is in fact equivalent 
 to asking that there is no path of length $4$ in $\?G$.

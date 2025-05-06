@@ -63,7 +63,7 @@ and \Cref{thm:k-reg-col-undec}, that lead us to conjecture
 	we build the "first-order sentence"
 	\[
 		\phi_{\?D} \defeq \exists x_1.\; \cdots \exists x_n.\;
-		\bigwedge_{\+R_{(k)} \in \sigma} \bigwedge_{\substack{\tup{i_1,\dotsc,i_k} \in \lBrack 1,n\rBrack^k\\\text{"st" }\tup{d_{i_1},\dotsc,d_{i_k}} \in \+R(\?D)}}
+		\bigwedge_{\+R_{(k)} \in \sigma} \bigwedge_{\substack{\tup{i_1,\dotsc,i_k} \in \intInt{1,n}^k\\\text{"st" }\tup{d_{i_1},\dotsc,d_{i_k}} \in \+R(\?D)}}
 		\+R(x_{i_1},\dotsc,x_{i_k}).
 	\]
 	By construction, for any arbitrary "$\sigma$-structure" $\?A$, we have $\?A \FOmodels \phi_{\?D}$
@@ -117,7 +117,7 @@ of any assumption on $\?B$.
 		\FOmodels^{?}
 		\Bigl(
 			\exists x_1.\; \cdots \exists x_n.\;
-			\bigwedge_{\+R_{(k)} \in \sigma} \bigwedge_{\substack{\tup{i_1,\dotsc,i_k} \in \lBrack 1,n\rBrack^k\\\text{"st" }\tup{a_{i_1},\dotsc,a_{i_k}} \in \+R(\?A')}}
+			\bigwedge_{\+R_{(k)} \in \sigma} \bigwedge_{\substack{\tup{i_1,\dotsc,i_k} \in \intInt{1,n}^k\\\text{"st" }\tup{a_{i_1},\dotsc,a_{i_k}} \in \+R(\?A')}}
 			\+R(x_{i_1},\dotsc,x_{i_k})
 		\Bigr),
 	\]
@@ -158,9 +158,9 @@ to $\HomRegAut{\?B}$ is not entirely trivial and requires some work.
 \end{itemize}
 
 For $n\in\N$, we define the \AP""$n$-link"" $\intro*\link{n}$ be the "$\sigma$-structure"\sidenote{From \cite[\S~2]{LaroseLotenTardif2007CharacterisationFOCSP}.} 
-whose domain is $\lBrack 0,n\rBrack$, and every "predicate" $\+R$
+whose domain is $\intInt{0,n}$, and every "predicate" $\+R$
 of arity $k$, is interpreted as the set of tuples $\langle a_1,\, \dotsc,\, a_k \rangle$
-"st" $|a_i-a_j| \leq 1$ for all $i,j \in \lBrack 0,n \rBrack$. See \Cref{fig:n-link}.
+"st" $|a_i-a_j| \leq 1$ for all $i,j \in \intInt{0,n}$. See \Cref{fig:n-link}.
 \begin{marginfigure}
 	\centering
 	\begin{tikzpicture}
@@ -373,12 +373,12 @@ of $\HomAut{\?B}$ by reduction from the following problem.
 	or (2) $\{a_1,\, \dotsc,\, a_k\} = {a,a'}$ for some $a \neq a' \in A$
 	and there is an edge from $a$ to $a'$ or from $a'$ to $a$ in $\?G$.
 	In both cases, it follows that $\•A(s)$ and $a_i$ are "linked"
-	"iff" $\•A(s)$ and $a_j$ are "linked", for all $i,j\in \lBrack 1,k\rBrack$.
+	"iff" $\•A(s)$ and $a_j$ are "linked", for all $i,j\in \intInt{1,k}$.
 	Hence, either:
 	\begin{itemize}
-		\item $f(a_i,\, b_i,\, b'_i) = b_i$ for all $i\in \lBrack 1,k\rBrack$
+		\item $f(a_i,\, b_i,\, b'_i) = b_i$ for all $i\in \intInt{1,k}$
 			(if all $a_i$'s are "connected" to $\+A(s)$), or
-		\item $f(a_i,\, b_i,\, b'_i) = b'_i$ for all $i\in \lBrack 1,k\rBrack$ (otherwise).
+		\item $f(a_i,\, b_i,\, b'_i) = b'_i$ for all $i\in \intInt{1,k}$ (otherwise).
 	\end{itemize}
 	In both cases, we get that
 	\[

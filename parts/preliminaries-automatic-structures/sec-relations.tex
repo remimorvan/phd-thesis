@@ -234,7 +234,7 @@ For instance the \AP""same parity relation""
 \]
 is "recognizable@@rel". Indeed, letting $f\colon  \Gamma^* \times \Sigma^* \to \ZnZ{2}$
 be defined by $f(u,v) \defeq |u| - |v| \mod{2}$,
-then $\sameParity$ can be written as $f^{-1}[\{\bar 0\}]$.
+then $\sameParity$ can be written as $f^{-1}[0]$.
 These relations admit a remarkably simple characterization.\AP
 \begin{proposition}[{""Mezei theorem"".}]
 	\!\footnote{See "eg" \cite[Corollary~II.2.20, p.~254]{Sakarovitch2009Elements}.
@@ -242,8 +242,8 @@ These relations admit a remarkably simple characterization.\AP
 	that this proposition is ``unanimously ascribed to G. Mezei (unpublished)''.}
 	\label{prop:Mezei-theorem}
 	A relation $\+R$ is "recognizable@@rel" "iff" there exist $n\in\N$,
-	"regular languages" $\tup{K_i}_{i\in \lBrack 1,n\rBrack}$ over $\Gamma$
-	and "regular languages" $\tup{L_i}_{i\in \lBrack 1,n\rBrack}$ over $\Sigma$
+	"regular languages" $\tup{K_i}_{i\in \intInt{1,n}}$ over $\Gamma$
+	and "regular languages" $\tup{L_i}_{i\in \intInt{1,n}}$ over $\Sigma$
 	"st"
 	\[
 		\+R = \bigcup_{i=1}^n K_i \times L_i.
@@ -560,10 +560,10 @@ would imply that $a^{n+k} \convol b^{n+k} a^n \in \convolRel{(\suffix)}$ for som
 Similarly, the \AP""subword relation"" $\intro*\subword$ is also not "automatic@@rel".%
 \footnote{Recall that this relation is defined by, for all $u, v \in \Sigma^*$,
 $u \subword v$ "iff" there exists $j_1 < j_2 < \dotsc < j_{|u|}$ "st" $u_i = v_{j_{i}}$
-for all $i \in \lBrack 1, |u|\rBrack$: in other words, $u$ can be obtained from $v$ by removing letters.}
+for all $i \in \intInt{1, |u|}$: in other words, $u$ can be obtained from $v$ by removing letters.}
 
 Another useful tool to prove "non-automaticity@@struct" is the following one.
-Given $I \subseteq \lBrack 1,k\rBrack$,
+Given $I \subseteq \intInt{1,k}$,
 we say that a $k$-ary relation $\+R \subseteq \Sigma_1^* \times \cdots \times \Sigma_k^*$ is
 ""$I$-locally finite"" if for every $\tup{w_i}_{i\in I} \in \prod_{i\in I} \Sigma_i^*$,
 there are only finitely many $\tup{w_j}_{j\not\in I} \in \prod_{j \not\in I} \Sigma_j^*$
@@ -571,13 +571,13 @@ there are only finitely many $\tup{w_j}_{j\not\in I} \in \prod_{j \not\in I} \Si
 \footnote{Note that this is one of the very few statements
 that we spell out for $k$-ary relation since its generalization from binary to $k$-ary relations
 is not entirely trivial.}
-Note that every $k$-ary relation is trivially "$\lBrack 1,k\rBrack$-locally finite".
+Note that every $k$-ary relation is trivially "$\intInt{1,k}$-locally finite".
 \begin{proposition}[See "eg" {\cite[Proposition~3.1]{KhoussainovNiesRubinStephan2007Automatic}}]
 	\label{prop:non-synchronous}
 	\!\footnote{\cite{KhoussainovNiesRubinStephan2007Automatic} attributes this proposition
 	to older work by Khoussainov, Nerode and Blumensath, but we failed to verify this claim.}%
 	\footnote{By convention $\max{\emptyset} = -\infty$, and so in the case
-	of $I = \lBrack 1,k\rBrack$, this statement is trivially valid.}
+	of $I = \intInt{1,k}$, this statement is trivially valid.}
 	\AP\label{prop:bound-automatic-structures}
 	Let $\+R \subseteq \Sigma_1^* \times \cdots \times \Sigma_k^*$ be "$I$-locally finite".
 	If $\+R$ is "automatic@@struct", then there exists a constant $n\in\N$ "st" for every
@@ -836,8 +836,8 @@ is ""deterministic@@desync"" when:
 	\item it has a unique initial state,
 	\item for any state $q$, for any $\bar a \in \Sigma_1\convolAlpha\cdots\convolAlpha\Sigma_k$,
 		there is at most one outgoing transition from $q$ labelled by $\bar a$, and
-	\item there exists a partition $\tup{Q_H}_{H \in \psetp{\lBrack 1,k\rBrack}}$ of its states 	
-		"st" for every $H\in\psetp{\lBrack 1,k\rBrack}$, for every $q \in Q_H$,
+	\item there exists a partition $\tup{Q_H}_{H \in \psetp{\intInt{1,k}}}$ of its states 	
+		"st" for every $H\in\psetp{\intInt{1,k}}$, for every $q \in Q_H$,
 		every outgoing transition from $q$ can only be labelled by elements of
 		the form $\bar a \in \Sigma_1\convolAlpha\cdots\convolAlpha\Sigma_k$, with
 		$a_h \in \Sigma_h$ for every $h\in H$ and $a_h = \pad$ for every $h\not\in H$.
@@ -907,7 +907,7 @@ The motivation behind this somewhat strange definition is that, this way,
 	remains: for instance some state can have outgoing transitions labelled both
 	by $\pair{a}{a}$ and $\pair{\pad}{a}$.
 	To fix this, we build a "multitape automaton" $\+A'$ by triplicating the states:
-	each original state $q$ yields a state $q_H$ for $H \in \psetp{\lBrack 1,2 \rBrack}$.
+	each original state $q$ yields a state $q_H$ for $H \in \psetp{\intInt{1,2}}$.
 	Transitions are built using the following rules:
 	\[
 		\frac{
@@ -947,11 +947,11 @@ The motivation behind this somewhat strange definition is that, this way,
 		}.\\
 	\end{align*}
 	We also add to $\+A'$ a single new state $q_{\emptyset}$, and for every accepting state $p$ of
-	$\+A$, we add a transition from $p_H$ ($H \in \psetp{\lBrack 1,k\rBrack}$) to $q_{\emptyset}$
+	$\+A$, we add a transition from $p_H$ ($H \in \psetp{\intInt{1,k}}$) to $q_{\emptyset}$
 	labelled by the unique tuple having $\triangleleft$ at every index $h \in H$,
 	and $\pad$ at every other index.
 	$q_{\emptyset}$ is the unique accepting state of $\+A'$, and moreover
-	$p_{\lBrack 1,k\rBrack}$ is the unique initial state of $\+A'$, where $p$ is the initial state of $\+A$. See \Cref{fig:example-synchronous-automaton-prefix-1-detrat} for an example.
+	$p_{\intInt{1,k}}$ is the unique initial state of $\+A'$, where $p$ is the initial state of $\+A$. See \Cref{fig:example-synchronous-automaton-prefix-1-detrat} for an example.
 	
 	By construction, $\+A'$ is a "deterministic multitape automaton". 
 	Using the fact that $\+A$ is "synchronous@@auto", it can be shown that
@@ -982,7 +982,7 @@ leading to some undecidability results.
 	given an instance $\tup{u_1,\dotsc,u_k, v_1,\dotsc,v_k} \in (\Sigma^*)^{2k}$ 
 	of PCP\footnote{Recall that this undecidable problem asks if there exists $n\in\N$
 	and a sequence of (possibly repeating)
-	indices $i_1,\dotsc, i_n \in \lBrack 1,k\rBrack$ "st"
+	indices $i_1,\dotsc, i_n \in \intInt{1,k}$ "st"
 	\[u_{i_1}\cdots u_{i_n} = v_{i_1}\cdots v_{i_n}.\]},
 	we can define a relation $\+R_u$ that essentially encodes the function
 	$i \mapsto u_i$, and a relation $\+R_v$ that encodes $i \mapsto v_i$,
@@ -1023,7 +1023,7 @@ This motivates the following generalization, introduced by Figueira and Libkin i
 \cite{FigueiraLibkin2015SynchronizingRelations}.
 
 Given a word $w \in (\Sigma_1 \convolAlpha \cdots \convolAlpha \Sigma_k)^*$,
-we define \AP$\intro*\projTape(w) \in \psetp{\lBrack 1,k\rBrack}^*$ to be the word
+we define \AP$\intro*\projTape(w) \in \psetp{\intInt{1,k}}^*$ to be the word
 whose $i$-th letter is the set of tape indices on which $w_i$ is distinct from $\pad$. 
 For instance,
 \[
@@ -1034,7 +1034,7 @@ Note that neither $\projTape$ nor $\projWord$ are injective, but putting both in
 \[
 	\begin{tabular}{ccc}
 		$(\Sigma_1 \convolAlpha \cdots \convolAlpha \Sigma_k)^*$ & $\to$
-			& $(\Sigma_1^* \times \cdots \times \Sigma_k)^* \times \psetp{\lBrack 1,k\rBrack}^*$\\
+			& $(\Sigma_1^* \times \cdots \times \Sigma_k)^* \times \psetp{\intInt{1,k}}^*$\\
 		$w$ & $\mapsto$ & $\tup{\projWord(w), \projTape(w)}$
 	\end{tabular}
 \]
@@ -1044,7 +1044,7 @@ head movements have to be done to obtain a word of $(\Sigma_1 \convolAlpha \cdot
 \footnote{The information $\projTape$ is not unlike what is called
 ``origin information'' for transducers \cite{Bojanczyk2014TransducersOriginInformation}.}
 
-Given a "regular language" $T$ over the alphabet $\psetp{\lBrack 1,k\rBrack}$,
+Given a "regular language" $T$ over the alphabet $\psetp{\intInt{1,k}}$,
 a \AP""$T$-multitape automaton"" is a "multitape automaton" over $\Sigma_1,\dotsc,\Sigma_k$
 whose semantics is restricted in the following way:
 a tuple $\tup{u_1,\dotsc,u_k} \in \Sigma_1^* \times \cdots \times \Sigma_k^*$ is accepted
@@ -1059,8 +1059,8 @@ them---and we stick to the choice we made.
 Similarly, it can be shown
 that for $T_{\textrm{rec}} \defeq \{1\}^* \cdot \{2\}^*$, then "$T_{\textrm{rec}}$-multitape automaton" exactly recognize "recognizable relation"
 \cite[Proposition~1]{FigueiraLibkin2015SynchronizingRelations}.
-Both $\psetp{\lBrack 1,k\rBrack}^*$- and
-"$\{\{i\} \mid i \in \lBrack 1,k\rBrack\}^*$-multitape automata"
+Both $\psetp{\intInt{1,k}}^*$- and
+"$\{\{i\} \mid i \in \intInt{1,k}\}^*$-multitape automata"
 exactly recognize all "rational relations"---corresponding to the models
 where we allow any set of heads to move at a given time,
 or where we only want a single head to move at each time, respectively.%
@@ -1069,7 +1069,7 @@ A \AP""$T$-controlled relation"" is any relation that can be recognized by
 a "$T$-multitape automata".%
 \footnote{This notion was introduced in \cite[\S~3]{FigueiraLibkin2015SynchronizingRelations}.
 In fact, the authors only allow one head to move at each step, "ie" $T$ is a regular language
-over $\lBrack 1,k\rBrack$ and not over $\psetp{\lBrack 1,k\rBrack}$ as defined here. However both
+over $\intInt{1,k}$ and not over $\psetp{\intInt{1,k}}$ as defined here. However both
 models are clearly equivalent: up to duplicating the states of the automaton, we can simulate
 the movement of multiple heads by moving one head at a time.}
 The central question around this notion is to characterize the
@@ -1088,7 +1088,7 @@ is still open for relations of arbitrary arity
 \cite[\S~9]{DescotteFigueiraPuppis2018ResynchronizingClasses}.
 \begin{restatable}{openproblem}{opbControlledRelations}
 	\label{opb:controlled-relations}
-	Given $k\in\Np$, given "regular languages" $T_1$ and $T_2$ over $\lBrack 1,k\rBrack$,
+	Given $k\in\Np$, given "regular languages" $T_1$ and $T_2$ over $\intInt{1,k}$,
 	can we decide if "$T_1$-controlled relations" exactly correspond to
 	"$T_2$-controlled relations"?
 \end{restatable}

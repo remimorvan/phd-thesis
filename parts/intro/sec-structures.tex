@@ -218,9 +218,9 @@ the "homomorphism problem" should rather be understood as a \emph{framework} or
 	As expected, its vertices are its states, 
 	and each predicate is naturally interpreted.
 	Any finite word $u\in \Sigma^*$ can in turn be seen as a "relational structure"
-	$\?W_u$ with $\lBrack 0,|u|\rBrack$ as its domain,
+	$\?W_u$ with $\intInt{0,|u|}$ as its domain,
 	where $0$ is initial, $|u|$ is final, and
-	for each $i \in \lBrack 1,|u|\rBrack$, there is an edge from $i-1$ to $i$
+	for each $i \in \intInt{1,|u|}$, there is an edge from $i-1$ to $i$
 	whose type is given by the $i$-th letter of $u$, see \Cref{fig:example-automaton-as-rel}..
 	Then, there is a "homomorphism" from $\?W_u$ to $\?A$ if, and only if, 
 	the automaton $\?A$ accepts $u$.
@@ -377,21 +377,21 @@ is of a different nature than the reductions of \Cref{ex:auto-as-rel,ex:sql-as-h
 \begin{example}[Sudoku grids]
 	\AP\label{ex:sudoku-as-hom}
 	We represent an empty sudoku grid as the "relational structure"
-	whose domain is $\lBrack 1,9\rBrack \times \lBrack 1,9\rBrack$---corresponding to coordinates in the grid---with
+	whose domain is $\intInt{1,9} \times \intInt{1,9}$---corresponding to coordinates in the grid---with
 	three kinds of binary "predicates": $\+R$, $\+C$ and $\+S$,
 	that describe when two coordinates are on the same row, column or 3$\ast$3-square, respectively.
-	To deal with prefilled grids, we add nine unary "predicates" $P_k$ ($k \in \lBrack 1,9\rBrack$),
+	To deal with prefilled grids, we add nine unary "predicates" $P_k$ ($k \in \intInt{1,9}$),
 	and if coordinate $\tup{i,j}$ is prefilled with number $k$, then predicate $P_k$ must
 	hold on the element $\tup{i,j}$.
 	Given a prefilled grid $G$, we denote by $\?S_G$ the associated "relational structure".
 	
-	We then define the target structure $\?T$ to have $\lBrack 1,9\rBrack$ as its domain,
+	We then define the target structure $\?T$ to have $\intInt{1,9}$ as its domain,
 	with each vertex representing a possible value filling a cell.
 	The binary relations $\+R$, $\+C$ and $\+S$ all three consist of
 	all pairs $\tup{x,y}$ "st" $x \neq y$. This translates the fact that,
 	if two cells are on the same row, column, or 3$\ast$3 grid, then they must
 	have different values.
-	Moreover, each unary relation $P_k$ ($k \in \lBrack 1,9\rBrack$) is defined
+	Moreover, each unary relation $P_k$ ($k \in \intInt{1,9}$) is defined
 	to hold only on $\{i\}$.
 
 	Then, a prefilled grid $G$ can be completed if, and only if,

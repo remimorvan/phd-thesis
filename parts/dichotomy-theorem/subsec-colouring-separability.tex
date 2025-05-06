@@ -4,7 +4,7 @@ We start by showing that the "$\REC$-separability problem" is equivalent,
 under polynomial time reductions, to the "regular colourability problem". To make our statement precise, we need some terminology.
 
 \AP Let $\intro*\kREC$ be the class of languages expressed by unions of products of $k$ regular languages which form a partition: in the binary case, this corresponds to
-relations of the form $(L_{i_1} \times L_{j_1}) \cup \dotsb \cup (L_{i_\ell} \times L_{j_\ell})$, with $i_1,j_1,\dotsc,i_\ell, j_\ell \in \lBrack 1,k \rBrack$, for some regular partition%
+relations of the form $(L_{i_1} \times L_{j_1}) \cup \dotsb \cup (L_{i_\ell} \times L_{j_\ell})$, with $i_1,j_1,\dotsc,i_\ell, j_\ell \in \intInt{1,k}$, for some regular partition%
 \footnote{By ``regular partition'',
 we mean that $L_1, \dotsc, L_{k}$ is a partition of $\Sigma^*$, and that moreover
 each $L_i$ is a "regular language".} $L_1, \dotsc, L_{k}$ of $\Sigma^*$ and $\ell \in \N$.
@@ -61,7 +61,7 @@ Note that $\incompGraph{\+R}{\Id}$ is exactly the graph $\tup{\Sigma^*,\+R}$.
         \+R_2 = \{\tup{u, ua} \mid u \in \Sigma^*\} \cup \{\tup{u, ub} \mid u \in \Sigma^*\},
     \]
     that we depict in \Cref{fig:equal-length-plusone-relation}.
-    Then, $u$ is "incompatible@@reconizable" with $u'$ if $|u| = |u'|+1$ (this is given by \compL~or \compR),
+    Then, $u$ is "incompatible@@recognizable" with $u'$ if $|u| = |u'|+1$ (this is given by \compL~or \compR),
     or if $|u'| = |u|+1$ (this is given by \compLpr~or \compRpr).
     This gives rise to the "incompatibility graph" of
     \Cref{fig:equal-length-plusone-incompatibility}.
@@ -140,13 +140,13 @@ We can now finish the proof of \Cref{thm:reg-colourability-equiv-separability}.
     Assume that there exists $\+S$ in $\kREC$ that "separates@@rel" $\+R_1$ from $\+R_2$.
     Then $\+S$ can be written as $(L_{i_1}\times L_{j_1}) \cup \cdots \cup (L_{i_\ell}\times L_{j_\ell})$, 
     where $(L_1,\dotsc,L_k)$ is a partition of $\Sigma^*$ in $k$ "regular languages".
-    We define the colour of a word $u \in \Sigma^*$ as the unique $i \in \lBrack 1,k \rBrack$
+    We define the colour of a word $u \in \Sigma^*$ as the unique $i \in \intInt{1,k}$
     "st" $u \in L_i$. In other words, the "colouring" is simply $\tup{L_1,\dotsc,L_k}$. 
 
     This is indeed a proper "colouring": if $u$ and $u'$ have the same colour,
     we claim that $\tup{u,u'} \not\in \incompGraph{\+R_1}{\+R_2}$, "ie" that
     $u$ is "compatible@@recognizable" with $u'$. Indeed, take any $v \in \Sigma^*$: if $\tup{u,v} \in \+R_1$,
-    then $\tup{u,v} \in \+S$, so $\tup{u,v} \in L_{i_m}\times L_{j_m}$ for some $m \in \lBrack 1,\ell\rBrack$. But since $u$ has the same colour 
+    then $\tup{u,v} \in \+S$, so $\tup{u,v} \in L_{i_m}\times L_{j_m}$ for some $m \in \intInt{1,\ell}$. But since $u$ has the same colour 
     as $u'$, the fact that $u \in L_{i_m}$ implies $u' \in L_{i_m}$, and hence 
     $\tup{u',v} \in L_{i_m}\times L_{j_m}\subseteq \+S$.
     But $\+S$ "separates@@rel" $\+R_1$ from $\+R_2$, and therefore $\tup{u',v} \not\in \+R_2$.
@@ -156,14 +156,14 @@ We can now finish the proof of \Cref{thm:reg-colourability-equiv-separability}.
 
     \proofcase{Right-to-left implication.}
     Assume that $\incompGraph{\+R_1}{\+R_2}$ is "finitely regularly colourable", say by
-    $\tup{L_1,\dotsc,L_k}$. Then let $\+S$ be the union of all $\+S_i$'s ($i \in \lBrack 1,k\rBrack$) where
+    $\tup{L_1,\dotsc,L_k}$. Then let $\+S$ be the union of all $\+S_i$'s ($i \in \intInt{1,k}$) where
     \begin{align*}
         \+S_i \defeq\; & \{\tup{u,v} \mid u \in L_i \text{ and } \tup{u',v} \in \+R_1 \text{ for some } u' \in L_i \}\\
         & \cup \{\tup{u,v} \mid v \in L_i \text{ and } \tup{u,v'} \in \+R_1 \text{ for some } v' \in L_i \}.  
     \end{align*}
     Since $\bigcup_i L_i = \Sigma^*$, we get $\+R_1 \subseteq \+S$.
     Moreover, we claim that $\+R_2 \cap \+S = \emptyset$. Indeed, if $\tup{u,v} \in \+S$,
-    then $\tup{u,v} \in \+S_i$ for some $i \in \lBrack 1,k\rBrack$. It either means that
+    then $\tup{u,v} \in \+S_i$ for some $i \in \intInt{1,k}$. It either means that
     (1) $u\in L_i$ and $\tup{u',v} \in \+R_1$ for some $u' \in L_i$, or
     (2) $v\in L_i$ and $\tup{u,v'} \in \+R_2$
     for some $v' \in L_i$. In case (1), $u$ and $u'$
