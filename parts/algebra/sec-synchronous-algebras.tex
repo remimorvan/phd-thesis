@@ -57,7 +57,7 @@ the resulting notion of algebras cannot capture the property of being a "$\+V$-r
 % Observe that if $\typeW{u}{\alpha \to \beta}$ and $\typeW{v}{\beta'\to\gamma}$ are "well-formed", 
 % then $uv$ is "well-formed" if, and only if, $\beta = \beta'$, or [$\beta = \LL$ and
 % $\beta' \in \{\LB, \BL\}$], in which case $uv$ has "type" $\alpha\to\gamma$, and we say
-% that the types $\alpha\to\beta$ and $\beta'\to\gamma$ are \AP ""compatible"".
+% that the types $\alpha\to\beta$ and $\beta'\to\gamma$ are \AP ""compatible@@type"".
 % For instance:
 % \[
 % 	% \typeW{\pair{aba}{bbb}}{\LL}\cdot
@@ -167,18 +167,18 @@ the "closed subset" of $\Sync{\Sigma}$ induced by $\+R$.
 \subsection{Synchronous Algebras}
 
 One key property of "types" is that some of them can be concatenated to produce other types.
-We say that two types $\sigma, \tau \in \types$ are \AP""compatible""
+We say that two types $\sigma, \tau \in \types$ are \AP""compatible@@type""
 when there exists non-empty words $u,v \in \WellFormed$ of "type" $\sigma$
 and $\tau$, respectively, such that $uv$ is "well-formed".
-Said otherwise, $\alpha \to \beta$ is "compatible" with $\beta' \to \gamma$
+Said otherwise, $\alpha \to \beta$ is "compatible@@type" with $\beta' \to \gamma$
 if either $\beta = \beta'$ or $\beta = \LL$---indeed, for this last case
 note that "eg" the concatenation of $\pair{aaa}{aaa}$ of type $\LL$ with
 $\pair{\pad\pad}{aa}$ of type $\BL$ is "well-formed".
-Lastly, if $\alpha\to \beta$ is "compatible with" $\beta'\to\gamma$,
+Lastly, if $\alpha\to \beta$ is "compatible@@type" with $\beta'\to\gamma$,
 we define their product as \AP $(\alpha\to\beta)\intro*\concattype(\beta'\to\gamma) \defeq \alpha \to \gamma$.
 Note that this partial operation is associative, in the following sense: for $\rho,\sigma,\tau \in \types$, $(\rho\concattype\sigma) \concattype \tau$ is well-defined if and only if
 $\rho\concattype(\sigma\concattype \tau)$ is well-defined, in which case both "types" are equal.
-This implies that the notion of "compatibility" of types can be unambiguously
+This implies that the notion of "compatibility@@type" of types can be unambiguously
 lifted to finite lists of "types" $\tau_1,\hdots,\tau_n$.
 
 \begin{definition}
@@ -188,23 +188,23 @@ lifted to finite lists of "types" $\tau_1,\hdots,\tau_n$.
 	\begin{itemize}
 		\item for $\type{x}{\sigma}, \type{y}{\tau} \in \?A$,
 			$\type{x}{\sigma} \cdot \type{y}{\tau}$ is defined "iff" $\sigma$ and $\tau$
-			are "compatible",
-		\item \emph{associativity:} for all $\type{x}{\rho}, \type{y}{\sigma}, \type{z}{\tau} \in \?A$, if $\rho, \sigma, \tau$ are "compatible":
+			are "compatible@@type",
+		\item \emph{associativity:} for all $\type{x}{\rho}, \type{y}{\sigma}, \type{z}{\tau} \in \?A$, if $\rho, \sigma, \tau$ are "compatible@@type":
 		\[
 			(\type{x}{\rho} \cdot \type{y}{\sigma}) \cdot \type{z}{\tau} 
 			= \type{x}{\rho} \cdot (\type{y}{\sigma} \cdot \type{z}{\tau}),
 		\]
 		\item \emph{``monotonicity'':} for all $\type{x}{\sigma}, \type{x'}{\sigma'}, \type{y}{\tau} \in \?A$, if $\type{x}{\sigma} \dep \type{x'}{\sigma'}$ and
-		both $\sigma,\tau$ and $\sigma', \tau$ are "compatible", then
+		both $\sigma,\tau$ and $\sigma', \tau$ are "compatible@@type", then
 		$\type{x}{\sigma}\cdot \type{y}{\tau} \dep \type{x'}{\sigma'}\cdot \type{y}{\tau}$,
-		and dually if $\tau,\sigma$ and $\tau, \sigma'$ are "compatible", then 
+		and dually if $\tau,\sigma$ and $\tau, \sigma'$ are "compatible@@type", then 
 		$\type{y}{\tau}\cdot \type{x}{\sigma} \dep \type{y}{\tau}\cdot \type{x'}{\sigma'}$,
 		\item \emph{units:} for each type $\tau$ there is an element $\type{1}{\tau} \in \?A$ 
 			such that for any $\type{x}{\sigma} \in \?A$, then
 			$\type{1}{\tau} \cdot \type{x}{\sigma} \dep \type{x}{\sigma}$
-			if $\tau$ and $\sigma$ are "compatible",
+			if $\tau$ and $\sigma$ are "compatible@@type",
 			and $\type{x}{\sigma} \cdot \type{1}{\tau} \dep \type{x}{\sigma}$
-			if $\sigma$ and $\tau$ are "compatible",
+			if $\sigma$ and $\tau$ are "compatible@@type",
 			and moreover, $\type{1}{\LL\to\beta} = \type{1}{\LL}\cdot \type{1}{\beta}$
 			for $\beta \in \{\LB,\BL\}$.
 	\end{itemize}
@@ -382,7 +382,7 @@ Let us continue with a slightly less trivial example of "algebra@synchronous alg
 	The product is addition---we identify $\type{0}{\LL}$ with the zero of $\Z/p\Z$ and
 	of $\Z/q\Z$. We denote by $\bar k$ the equivalence class of $k\in \Z$ in
 	$\Z/n\Z$ when $n$ is clear from context.
-	The "dependency relation" identifies (1) all units together and (2) $\type{x}{\sigma}$ with $\type{1}{\tau} \cdot \type{x}{\sigma}$ and $\type{x}{\sigma} \cdot \type{1}{\tau}$ when the "types" are "compatible".
+	The "dependency relation" identifies (1) all units together and (2) $\type{x}{\sigma}$ with $\type{1}{\tau} \cdot \type{x}{\sigma}$ and $\type{x}{\sigma} \cdot \type{1}{\tau}$ when the "types" are "compatible@@type".
 	
 	Let $\phi\colon \Sync\Sigma \to \?Z_{p,q}$ be the "synchronous algebra morphism"
 	defined by
@@ -469,7 +469,7 @@ $\type{y}{\tau} \asympbar \type{y'}{\tau}$,
 then $\type{x'}{\sigma} \asympbar \type{y'}{\tau}$.\footnote{In particular, it implies that
 $\asympbar$ is transitive when restricted to elements of the same type.}
 
-The \AP""quotient structure"" $\intro*\quotient{\?A}{\asympbar}$
+The \AP""quotient structure@@sync"" $\intro*\quotient{\?A}{\asympbar}$
 of $\?A$ by a "congruence@@sync" $\asympbar$ is defined as follows:
 \begin{itemize}
 	\item its underlying "typed set" consists of the

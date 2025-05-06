@@ -246,13 +246,13 @@ such that, for every object $X \in \cat{C}$, the following diagrams commute:\\
 \begin{center}
 	\intro*\textup{\MFunit:}
 	\begin{tikzcd}
-		FX \ar[d,"\unit_{FX}" swap] \ar[dr, "F\unit_{X}"] & \\
+		FX \ar[d,"{\unit[FX]}" swap] \ar[dr, "{F\unit[X]}"] & \\
 		TFX \ar[r,"\phi_{X}" swap] & FSX,\\
 	\end{tikzcd}
 	\quad\intro*\textup{\MFmult:}
 	\begin{tikzcd}[row sep=large, column sep=-.2em]
-		& & TFSX \ar[rr, "\phi_{SX}"] & &  FSSX \ar[drr, "F\mult_X", bend left=0] \\
-		TTFX \ar[urr, "T\phi_X", bend left=0] \ar[drrr, "\mult_{FX}" swap, bend right=0] & &
+		& & TFSX \ar[rr, "\phi_{SX}"] & &  FSSX \ar[drr, "{F\mult[X]}", bend left=0] \\
+		TTFX \ar[urr, "T\phi_X", bend left=0] \ar[drrr, "{\mult[FX]}" swap, bend right=0] & &
 			& & & & FSX. \\[-.5em]
 		& & & TFX \ar[urrr, "\phi_X" swap, bend right=0]
 	\end{tikzcd}
@@ -298,7 +298,7 @@ illustrate why this definition makes sense.}
 	of non-empty finite words,
 	defined by $X \mapsto X^+$. Moreover, let $\intro*\MonadWilke$ be ""Wilke's monad"",
 	defined over the category of "2-typed sets" $\Set[+,\omega]$, by
-	$\tup{F,I} \mapsto \tup{F^+, F^+I \cup F^{\omegafin}}$, where $F^{\omegafin}$
+	$\tup{F,I} \mapsto \tup{F^+, F^+I \cup F^{\omegafin}}$, where \AP$F^{\intro*\omegafin}$
 	denotes the set of ultimately-periodic words of length $\omega$ over $F$.
 
 	We start by defining a "monad functor" from $\MonadWilke$
@@ -347,9 +347,9 @@ from semigroups to Wilke's algebras that sends $S$ to $\tup{S, \set{\bullet}}$.
 
 I conjecture that we can naturally define a notion of ``monad (functor) adjunction'',
 which generalizes the notion of ``functor adjunctions'',
-in such a way that a monad adjunction between $\Monad[S]$ and $\Monad[T]$
+in such a way that a \AP""monad adjunction"" between $\Monad[S]$ and $\Monad[T]$
 induces an adjunction between $\Monad[S]$-algebras and $\Monad[T]$-algebras.
-A typical example of such a monad adjunction would be
+A typical example of such a "monad adjunction" would be
 \Cref{fig:adjunction-informal-finite-wilke}.
 
 \begin{marginfigure}

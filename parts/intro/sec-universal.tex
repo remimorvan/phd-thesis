@@ -23,7 +23,7 @@ for all "structures" $\?A$, $\?A'$ and $\?B$, if $\?A \homto \?B$ and $\?A'$ is 
 of $\?A$ then $\?A' \homto \?B$.
 Moreover, while problems of the form $\textsf{query} \homto^? \textsf{data}$
 can be solved locally---whether a vertex of the data is part of a solution (a "homomorphism") only 
-depends on its "neighbourhood"---, problems of type $\textsf{data} \homto^? \textsf{query}$ cannot.
+depends on its "adjacency"---, problems of type $\textsf{data} \homto^? \textsf{query}$ cannot.
 
 \begin{marginfigure}[-18em]
 	\centering
@@ -51,10 +51,13 @@ depends on its "neighbourhood"---, problems of type $\textsf{data} \homto^? \tex
 	to be the "graph@@dir" whose vertices are $\lBrack 1,k\rBrack$,
 	and with an edge from $i$ to $j$ (with $i,j \in \lBrack 1,k\rBrack$)
 	"iff" $i\neq j$, see \Cref{fig:intro-3-clique}.
-	We say that a finite "graph@@dir" $\?G$ is \AP""$k$-colourable"" when
-	we can map every vertex of $\?G$ to an element of $\lBrack 1,k\rBrack$
+	The classical graph-theoretical notion of \AP""$k$-colouring""
+	of a "graph@@dir" $\?G$ consists of
+	a map from vertices of $\?G$ to $\lBrack 1,k\rBrack$
 	"st" no two adjacent vertices are sent on the same colour/number.
-	In other words, a $k$-colouring corresponds precisely to a "homomorphism" from $\?G$
+	We then say that a "graph@@dir" is \AP""$k$-colourable"" when
+	it admits at least one "$k$-colouring".
+	In other words, a "$k$-colouring" corresponds precisely to a "homomorphism" from $\?G$
 	to $\clique{k}$, where colours correspond to the vertices of the clique,
 	see "eg" \Cref{fig:dichotomy-ex-3-clique}.
 	Hence, a graph is "$k$-colourable" if, and only if,
@@ -64,7 +67,7 @@ depends on its "neighbourhood"---, problems of type $\textsf{data} \homto^? \tex
 For instance, "$3$-colourability" is a global property of a graph and cannot be solved
 by gluing local solutions. In particular, this implies that fixing the query
 does not necessarily result in
-a drop in the complexity: "$3$-colourability" is already "NP"-complete!
+a drop in the complexity: the \AP ""$3$-colourability problem""---which takes as input a finite "graph@@dir" and asks whether it is "$3$-colourable"---is already "NP"-complete!
 The next example shows that, even when the "target structure" is fixed, the "homomorphism problem"
 provides a flexible framework to encode problems.
 
@@ -164,7 +167,7 @@ adjacent vertices must be mapped to distinct colours: this constraint is
 reflected in $\clique{3}$ by the fact that the edges of $\clique{3}$ are exactly the pairs
 of distinct colours.
 
-The field of \emph{constraint satisfaction problems} precisely aims at classifying the
+The field of \AP""constraint satisfaction problems"" precisely aims at classifying the
 structures $\?B$ "wrt" to the complexity of the "homomorphism problem" when the
 "target structure" is $\?B$. One of the earliest and most impactful result
 of the domain was found by Schaefer \cite{Schaefer1978ComplexitySatisfiability},

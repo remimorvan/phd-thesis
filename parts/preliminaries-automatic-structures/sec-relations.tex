@@ -135,8 +135,8 @@ the "suffix relation" was misplaced and, more
 importantly, the "regular functions@@bojan" were claimed to correspond to
 the intersection of "rational relations" with "deterministic two-way rational relations".}
 For instance, we will see in \Cref{sec:prelim-transductions}
-that "deterministic two-way multitape automata"
-and "deterministic two-way transducers" are semantically different: the distinction
+that "deterministic two-way rational relations"
+and "deterministic two-way transductions" actually differ: the distinction
 between \emph{multitape automata} and \emph{transducers} is hence of capital importance.
 
 Thus, the goal of this section is to provide an overview of these classes of relations/transductions, explain how they relate to one another, and give pointers to suitable references.
@@ -184,6 +184,9 @@ we will often want to know if this inclusion is \emph{effective}:
 	Does $\+R \in \+D$?
 }
 This problem is also called the \reintro{$\+C$/$\+D$-membership problem}.
+Since \Cref{part:automatic} will mostly focus on "automatic relations",
+we use the terminology \AP""$\+D$-membership problem"" to refer 
+to the problem above when $\+C$ is the class of "automatic relations".
 
 A natural extension of this problem is the so-called separability problem,
 which has received a lot of attention.
@@ -499,7 +502,7 @@ the emptiness of the classical automaton obtained by intersecting $\+A$ with $\W
 \end{property}
 
 It is straightforward to prove that the "equal-length relation"
-and the equality relation, "aka" the identity relation, denoted
+and the equality relation, "aka" the \AP""identity relation"", denoted
 by \AP$\intro*\Id$, are "automatic@@rel", but, as already mentioned, not "recognizable@@rel".
 
 \begin{proposition}
@@ -602,14 +605,14 @@ Despite being somewhat expressive, "automatic relations" retain some decidabilit
 	actually working in "2ExpTime", and improved 
 	the bound to "ExpTime" for binary relations
 	in \cite[Corollary~22]{LodingSpinrath2019DecisionProblems}.}
-	The ""$\REC$-membership problem for automatic relations"" is "PSpace"-complete.
+	The "$\REC$-membership problem for automatic relations" is "PSpace"-complete.
 \end{proposition}
 
 On the other hand, the associated "separation problem@@rel" remains open.
 This part of this thesis is mostly motivated by this problem.%
 \begin{restatable}{openproblem}{openProblemAutRecSeparability}
 	\label{opb:AUT-REC-separability}
-	Is the ""$\REC$-separability problem for automatic relations"" decidable?
+	Is the "$\REC$-separability problem for automatic relations" decidable?
 \end{restatable}
 
 This problem goes back at least to 2006, when Choffrut and Grigorieff
@@ -1158,6 +1161,7 @@ undecidable for this class.
 It also makes sense to look at their deterministic models: informally, in a given state, we
 should not only know on which tapes we will read "non-blank symbols",
 but also what head movements we will operate.
+This gives rise to the notion of \AP""deterministic two-way multitape automata"".
 This model is in fact remarkably expressive: given two "deterministic rational relations"
 $\+R_1$ and $\+R_2$, it is possible to describe their intersection $\+R_1 \cap \+R_2$
 by a deterministic two-way multitape automaton: the idea is to first simulate the first automaton
@@ -1291,7 +1295,8 @@ their transition relation is a subset of
 	\times \underbrace{\;\;Q.\;\!\;}_{\text{target state\vphantom{l}}}
 \]
 We will also assume that the input word has markers at its extremities.
-This model is quite clearly equivalent to the one of "multitape automata".%
+This model is quite clearly equivalent to the one of "multitape automata",
+and so ""transductions"" actually correspond to "rational relations".%
 \footnote{This is to ensure this equivalence that we allow
 a "transducer" to produce an output on $\varepsilon$.
 This feature is usually not allowed is most definitions of transducers.}
@@ -1346,8 +1351,8 @@ since the output is \emph{produced} and not read.
 We call \AP""two-way transductions"" and ""deterministic two-way transductions""
 the relations recognized by two-way transducers and deterministic two-way tranducers, respecitvely.
 
-""Deterministic two-way transductions"" are actually widely 
-known as \AP""regular functions@@bojan"", and have been extensively studied in the past
+"Deterministic two-way transductions" are actually widely 
+known as \reintro{regular functions@@bojan}, and have been extensively studied in the past
 decade. They admit several characterizations, in the frameworks of multitape automata, transducers, logic, etc.\footnote{See \cite[4th~Paragraph]{Bojanczyk2022Transducers} for pointers.}
 
 Remarkably, the intersection of the classes of "functional relations" and of "two-way transductions"

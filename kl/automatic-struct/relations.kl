@@ -94,7 +94,6 @@
 \knowledge{notion}
  | multitape automaton
  | automaton@desync
- | $T$-multitape automaton
  | Multitape automaton
  | multitape automata
  | Multitape automata
@@ -139,10 +138,11 @@
  | deterministic\\two-way rational\\ relations
 
 \knowledge{notion}
- | $\{\{i\} \mid i \in \lBrack 1,k\rBrack \}^*$-multitape automata
  | $T$-multitape automata
+ | $T$-multitape automaton
  | $T_{\textrm {sync}}$-multitape automaton
  | $T_{\textrm {rec}}$-multitape automaton
+ | $\{\{i\} \mid i \in \lBrack 1,k\rBrack \}^*$-multitape automata
 
 \knowledge{notion}
  | $T$-controlled relation
@@ -153,6 +153,7 @@
 \knowledge{notion}
  | Right-automatic relations
  | right-automatic@rel
+ | right-automatic relations
 
 % ---
 % Other models (transducers)
@@ -168,9 +169,6 @@
  | deterministic transducer
  | deterministic@transducer
  | deterministic transducers
-
-\knowledge{notion}
- | deterministic two-way transducers
 
 \knowledge{notion}
  | deterministic transduction
@@ -200,7 +198,13 @@
 % ---
 
 \knowledge{notion}
+ | identity relation
+ | identity function 
+ | equality relation
+
+\knowledge{notion}
  | same parity relation
+ | same parity length relation
 
 \knowledge{notion}
  | prefix relation

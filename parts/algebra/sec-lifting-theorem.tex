@@ -22,7 +22,6 @@
 		\big(
 			\bar 0 \not\in I \text{ and } \bar 0 \not\in J
 		\big).
-		\tag{{\Large\adforn{10}}}
 	\end{equation}
 
 	The right-to-left implication was shown in \Cref{ex:algebra-Zpq}.
@@ -111,7 +110,7 @@ by simply looking at the "syntactic synchronous algebra" of $\+R$.
 			and moreover,
 		}
 		\label{eq:relationship-monoid-with-synchronous-algebra}
-		\tag{\adforn{75}}\\
+		\\
 		& \hspace{-2cm} \text{
 			$\SyntSAM{\+R}(\type{u}{\LL\to\LB}) = a \cdot b$,
 		}\notag
@@ -124,7 +123,6 @@ by simply looking at the "syntactic synchronous algebra" of $\+R$.
 		\quad\text{"iff"}\quad
 		\phi(u) \in \Acc'.
 		\label{eq:accepting-set-is-preserved}
-		\tag{\adforn{28}}
 	\end{equation}
 	The direct implication is straightforward, using
 	\Cref{eq:relationship-monoid-with-synchronous-algebra}.
@@ -163,7 +161,7 @@ by simply looking at the "syntactic synchronous algebra" of $\+R$.
 	Unsurprisingly, "synchronous algebras" are indeed necessary, as 
 	there are relations $\+R$ such that:
 	\begin{equation}
-		\AP\label{eq:naive-characterization} \tag{\adforn{12}}
+		\AP\label{eq:naive-characterization}
 		\proj{\+R} \cap (\Sigma\times \Sigma)^* \in \+V_{\Sigma\times \Sigma}, \quad
 		\proj{\+R} \cap (\Sigma\times \pad)^* \in \+V_{\Sigma\times \pad}\quad\text{and}\quad
 		\proj{\+R} \cap (\pad\times \Sigma)^* \in \+V_{\pad\times \Sigma},
@@ -217,13 +215,13 @@ $\+R_0$ and $\+R_1$, such that:
 \end{itemize}
 
 \begin{definition}[Naive synchronous algebra]
-	Let $\intro*\typesEps \defeq \types \cup \{1\}$. We extend the notion of "compatibility" so 
-	that every $\sigma \in \typesEps$ is "compatible" with $1$ and
-	$1$ is "compatible" with $\sigma$.
+	Let $\intro*\typesEps \defeq \types \cup \{1\}$. We extend the notion of "compatibility@@type" so 
+	that every $\sigma \in \typesEps$ is "compatible@@type" with $1$ and
+	$1$ is "compatible@@type" with $\sigma$.
 	A \AP""naive synchronous algebra"" $\?A$ consists of a "$\typesEps$-typed sets",
 	together with a partial binary operator $\cdot$ such that:
 	\begin{itemize}
-		\item $\cdot$ is defined exactly on "compatible" elements and is associative, and
+		\item $\cdot$ is defined exactly on "compatible@@type" elements and is associative, and
 		\item there is a unique element of type $1$, denoted by $1$, and it satisfies
 			$\type{x}{\sigma} \cdot 1 = \type{x}{\sigma} = 1 \cdot \type{x}{\sigma}$
 			for all $\type{x}{\sigma} \in \?A$.
@@ -275,7 +273,7 @@ and "$\ast$-pseudovariety of synchronous relations". We show an "Eilenberg-Schü
 to show that any "Eilenberg-Schützenberger correspondence@@lang" between monoids and regular languages
 lifts to an "Eilenberg-Schützenberger correspondence@@sync" between "synchronous algebras" and "synchronous relations".
 
-Say that a "synchronous algebra" $\?A$ is a \AP""quotient@@sync"" of $\?B$
+Recall that a "synchronous algebra" $\?A$ is a "quotient@@sync" of $\?B$
 when there exists a surjective "synchronous algebra morphism" from $\?B$ to $\?A$.
 A ""subalgebra@@sync"" of $\?B$ is any "closed subset" of $\?B$ closed under "product"
 and containing the units.
@@ -478,7 +476,6 @@ two words $(u,v)$ of the same length. But then $(ua, va) \not\in \+S$.
 			\bigcup_{(s, t) \not\in \Lambda} \residual{s} \Acc\,\residual{t}
 		\right).
 		\label{eq:boolean-combination-of-residuals}
-		\tag{\adforn{41}}
 	\end{equation}
 	To prove the inclusion from left-to-right, first
 	notice that $x \in \residual{s} \Acc\,\residual{t}$ for all $(s, t) \in \Lambda$.

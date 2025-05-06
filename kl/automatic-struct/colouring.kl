@@ -31,8 +31,8 @@
  | regular $k$-colourability
 
 \knowledge{notion}
- | compatible
- | incompatible
+ | compatible@reconizable
+ | incompatible@recognizable
 
 \knowledge{notion}
  | incompatibility graph

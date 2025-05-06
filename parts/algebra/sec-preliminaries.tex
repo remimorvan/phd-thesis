@@ -8,16 +8,16 @@ We also refer to \cite{StraubingWeil2021Varieties} for a presentation on pseudov
 or ``semigroups''---are used interchangeably in the literature.}
 More precise pointers are given in \Cref{apdx:pointers-pin}.
 
-A relation is a subset of $\Sigma^*\times\Sigma^*$,
+Recall that relation is a subset of $\Sigma^*\times\Sigma^*$,
 where $\Sigma$ is an alphabet---"ie" a non-empty finite set.
 We define its \AP""complement@@rel"" \AP$\intro*\negrel \+R$ as the relation $\{(u,v) \in \Sigma^*\times \Sigma^* \mid (u,v) \not\in \+R\}$.
 Letting
-$\intro*\SigmaPair \defeq
+$\SigmaPair \defeq
 (\Sigma \times \Sigma) \,\cup\,
 (\Sigma \times \{\pad\}) \,\cup\,
-(\{\pad\} \times \Sigma)$, a ""synchronous automaton"" is a finite-state machine with initial states, final states, and
+(\{\pad\} \times \Sigma)$, a "synchronous automaton" is a finite-state machine with initial states, final states, and
 non-deterministic transitions labelled by elements of $\SigmaPair$.
-We denote by \AP$\intro*\WellFormed$ the set of \AP""well-formed"" words over $\SigmaPair$ where the padding symbols are placed consistently, namely: if some padding symbol occurs on a tape/component, then the following symbols of this tape/component must all be padding symbols.
+As mentioned in \Cref{ch:preliminaries-automatic-structures}, we denote by $\WellFormed$ the set of "well-formed" words over $\SigmaPair$ where the padding symbols are placed consistently, namely: if some padding symbol occurs on a tape/component, then the following symbols of this tape/component must all be padding symbols.
 From this constraint, and since $\pair{\pad}{\pad} \not\in \SigmaPair$,
 there can never be padding symbols on both tapes.
 

@@ -71,6 +71,7 @@
  | $\+R$-tuple
  | $\+R$-tuples
  | non-hyperedges
+ | edges
 
 \knowledge{notion}
  | locally finite@struct

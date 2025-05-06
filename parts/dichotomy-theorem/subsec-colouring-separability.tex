@@ -37,7 +37,7 @@ Note that $\REC = \bigcup_k \kREC$.
 
 \AP For the first reduction, let us introduce some terminology.
 Given two relations $\+R_1$, $\+R_2$ over $\Sigma^*$, say that
-$u \in \Sigma^*$ is ""compatible"" with
+$u \in \Sigma^*$ is ""compatible@@recognizable"" with
 $u' \in \Sigma^*$ when for all words $v \in \Sigma^*$:
 \begin{center}
     \intro*\compL: $\tup{u,v} \in \+R_1 \Rightarrow \tup{u',v} \not\in \+R_2$%
@@ -50,7 +50,7 @@ $u' \in \Sigma^*$ when for all words $v \in \Sigma^*$:
 \AP
 Define the ""incompatibility graph"" $\intro*\incompGraph{\+R_1}{\+R_2}$
 as the graph whose vertices are all words of $\Sigma^*$,
-and with an edge from $u$ to $v$ whenever $u$ is not "compatible" with $v$.
+and with an edge from $u$ to $v$ whenever $u$ is not "compatible@@recognizable" with $v$.
 Note that $\incompGraph{\+R}{\Id}$ is exactly the graph $\tup{\Sigma^*,\+R}$.
 
 \begin{example}%
@@ -61,7 +61,7 @@ Note that $\incompGraph{\+R}{\Id}$ is exactly the graph $\tup{\Sigma^*,\+R}$.
         \+R_2 = \{\tup{u, ua} \mid u \in \Sigma^*\} \cup \{\tup{u, ub} \mid u \in \Sigma^*\},
     \]
     that we depict in \Cref{fig:equal-length-plusone-relation}.
-    Then, $u$ is "incompatible" with $u'$ if $|u| = |u'|+1$ (this is given by \compL~or \compR),
+    Then, $u$ is "incompatible@@reconizable" with $u'$ if $|u| = |u'|+1$ (this is given by \compL~or \compR),
     or if $|u'| = |u|+1$ (this is given by \compLpr~or \compRpr).
     This gives rise to the "incompatibility graph" of
     \Cref{fig:equal-length-plusone-incompatibility}.
@@ -145,7 +145,7 @@ We can now finish the proof of \Cref{thm:reg-colourability-equiv-separability}.
 
     This is indeed a proper "colouring": if $u$ and $u'$ have the same colour,
     we claim that $\tup{u,u'} \not\in \incompGraph{\+R_1}{\+R_2}$, "ie" that
-    $u$ is "compatible" with $u'$. Indeed, take any $v \in \Sigma^*$: if $\tup{u,v} \in \+R_1$,
+    $u$ is "compatible@@recognizable" with $u'$. Indeed, take any $v \in \Sigma^*$: if $\tup{u,v} \in \+R_1$,
     then $\tup{u,v} \in \+S$, so $\tup{u,v} \in L_{i_m}\times L_{j_m}$ for some $m \in \lBrack 1,\ell\rBrack$. But since $u$ has the same colour 
     as $u'$, the fact that $u \in L_{i_m}$ implies $u' \in L_{i_m}$, and hence 
     $\tup{u',v} \in L_{i_m}\times L_{j_m}\subseteq \+S$.
@@ -168,7 +168,7 @@ We can now finish the proof of \Cref{thm:reg-colourability-equiv-separability}.
     (2) $v\in L_i$ and $\tup{u,v'} \in \+R_2$
     for some $v' \in L_i$. In case (1), $u$ and $u'$
     have the same colour, and since $\tup{L_1,\dotsc,L_k}$ is a "colouring"
-    of $\incompGraph{\+R_1}{\+R_2}$, $u$ must be "compatible" with $u'$.
+    of $\incompGraph{\+R_1}{\+R_2}$, $u$ must be "compatible@@recognizable" with $u'$.
     The assumption $\tup{u',v} \in \+R_1$ together with \compLpr\ then yields
     that $\tup{u,v} \not\in \+R_2$. The other case is symmetric.
     Therefore, $\tup{u,v} \not\in \+R_2$, and thus $\+S$ "separates@@rel" $\+R_1$ from $\+R_2$.

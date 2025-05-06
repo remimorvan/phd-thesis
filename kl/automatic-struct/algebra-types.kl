@@ -7,10 +7,9 @@
  | type
 
 \knowledge{notion}
- | compatible
- | compatibility
+ | compatible@type
+ | compatibility@type
  | compatible type
- | compatible with
 
 \knowledge{notion}
  | $\types $-typed set

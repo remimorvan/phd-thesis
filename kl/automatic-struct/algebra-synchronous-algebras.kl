@@ -64,9 +64,6 @@
  | Congruences@sync
 
 \knowledge{notion}
- | quotient@sync
-
-\knowledge{notion}
  | subalgebra@sync
  | subalgebras
 
@@ -81,9 +78,9 @@
  | locally generated algebras
 
 \knowledge{notion}
- | quotient structure
- | quotient structures
+ | quotient structure@sync
  | quotient structures@sync
+ | quotient@sync
 
 \knowledge{notion}
  | syntactic congruence

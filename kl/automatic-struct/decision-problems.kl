@@ -24,14 +24,6 @@
  
 \knowledge{notion, wrap=\DPfont}
  | regular reachability problem
-
-\knowledge{notion, wrap=\DPfont}
- | $\+D$-membership problem for $\+C$-relations
- | $\+C$/$\+D$-membership problem
- | membership@problemrel
- | $\RAT $/$\REC $-membership problem
- | $\DRAT $/$\REC $-membership problem
- | $\REC $-membership problem for automatic relations
  
 \knowledge{notion, wrap=\DPfont}
  | $\+D$-separability problem for $\+C$-relations
@@ -60,11 +52,21 @@
  | $\REC $-separability problem for automatic relations
 
 \knowledge{notion, wrap=\DPfont}
+ | $\+D$-membership problem for $\+C$-relations
+ | $\+C$/$\+D$-membership problem
+ | membership@problemrel
+ | $\RAT $/$\REC $-membership problem
+ | $\DRAT $/$\REC $-membership problem
+ | $\REC $-membership problem for automatic relations
+
+\knowledge{notion, wrap=\DPfont}
+ | $\+D$-membership problem
  | $\REC $-membership problem
  | $\REC $-membership@problem
  | $\kREC $-membership problem
  | $\kPROD $-membership problem
- | $\REC $-membershipmembership problems problem for automatic relations
+ | $\REC $-membership
+ | membership problems for automatic relations
  | membership problem
  | membership problems
 
@@ -112,12 +114,6 @@
 
 \knowledge{notion, wrap=\DPfont}
  | regular homomorphism problem
-
-\knowledge{notion, wrap=\DPfont}
- | constraint satisfaction problem
- | constraint satisfaction problems
- | CSP
- | CSPs
 
 \knowledge{notion, wrap=\DPfont}
  | Isomorphism Problem for Automatic Structures

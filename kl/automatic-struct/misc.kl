@@ -5,6 +5,12 @@
 \knowledge{notion}
  | invariant under graph isomorphisms
 
+\knowledge{notion}
+ | constraint satisfaction problem
+ | constraint satisfaction problems
+ | CSP
+ | CSPs
+
 % ---
 % De Bruijn-Erdos
 % ---
