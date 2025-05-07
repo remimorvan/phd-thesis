@@ -8,6 +8,8 @@
  | $\ast $-pseudovariety@reglang
  | $*$-pseudovarieties@reglang
  | $*$-pseudovariety of regular languages
+ | pseudovariety of regular languages
+ | pseudovariety@reglang
 
 \knowledge{notion}
  | $+$-pseudovarieties of regular languages

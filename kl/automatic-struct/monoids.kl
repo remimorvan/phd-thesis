@@ -9,13 +9,6 @@
  | morphism@monoid
 
 \knowledge{notion}
- | pseudovariety of finite monoids
-
-\knowledge{notion}
- | pseudovariety of regular languages
- | pseudovariety@reglang
-
-\knowledge{notion}
  | syntactic monoids
  | syntactic monoid
 
