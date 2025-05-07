@@ -601,12 +601,12 @@ and quotients!%
 \footnote{Defined analogously to "quotient structures".}
 
 On the other hand, a ""$\ast$-pseudovariety of regular languages""
-consists of a function $\+V\colon \Sigma \mapsto \+V_{\Sigma}$ from alphabets to languages over this alphabet, called \emph{stream}, with the following property:
+consists of \emph{stream}, "ie" a function $\+V\colon \Sigma \mapsto \+V_{\Sigma}$ from alphabets to languages over this alphabet, with the following properties:
 \begin{itemize}
 	\item it is closed under Boolean operators;
 	\item it is closed under preimages by "monoid morphisms", in the sense that
 		for every monoid morphism $\phi\colon \Gamma^* \to \Sigma^*$, for any $L \in \+V_{\Sigma}$,
-		then $\phi^{—1}[L] \ni \+V_{\Gamma}$;
+		then $\phi^{—1}[L] \in \+V_{\Gamma}$, and
 	\item it is closed under residuals, in the sense that for any $L \in \+V_{\Sigma}$,
 		for any $u\in\Sigma^*$, then
 		\[
@@ -617,7 +617,7 @@ consists of a function $\+V\colon \Sigma \mapsto \+V_{\Sigma}$ from alphabets to
 		both belong to $\+V_{\Sigma}$.
 \end{itemize}
 
-todo: move apdx here
+\todo{move apdx here}
 
 \begin{itemize}
 	\itemAP ""membership@@problang""
