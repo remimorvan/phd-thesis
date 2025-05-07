@@ -312,12 +312,20 @@ to be "injective@@pres", unless specified otherwise.}
 One of the key interest of "automatic structures" is that, while they are infinite,
 their model checking problem remains decidable.
 
-\decisionproblem{""First-Order Model Checking of Automatic  $\sigma$-Structures""}{
+\decisionproblem{""First-Order Model Checking of Automatic $\sigma$-Structures""}{
 	A "first-order sentence" $\phi$ over $\sigma$ and
 	an "automatic presentation" $\•A$ of an "automatic $\sigma$-structure" $\?A$.
 }{
 	Does $\?A \FOmodels \phi$?
 }
+
+The \AP""data complexity"" of this problem refers to the complexity
+of the problem for a fixed $\phi$. More precisely,
+we say that it is $\+C$-complete for a class $\+C$ when:
+\begin{itemize}
+	\item for every $\phi$, the problem over fixed $\phi$ is in $\+C$, and
+	\item there is at least one $\phi$ for which it is $\+C$-hard.
+\end{itemize}
 
 \begin{proposition}[{""Hodgson's theorem""}]
 	\!\footnote{Decidability was originally proven in \cite[Théorème~3.5]{Hodgson1983Decidabilite}.

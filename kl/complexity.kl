@@ -2,66 +2,70 @@
 % Basic classes
 % ---
 
-\knowledge{wrap=\textsf}
+\knowledge{notion, wrap=\textsf}
  | coNLogTime
 
-\knowledge{text={uniform-AC${}^0$}, wrap=\textsf}
+\knowledge{notion, text={uniform-AC${}^0$}, wrap=\textsf}
  | uniform-AC0
 
-\knowledge{text={AC${}^0$}, wrap=\textsf}
+\knowledge{notion, text={AC${}^0$}, wrap=\textsf}
  | AC0
 
 \knowledge{notion, text={FO${}^{\textsf{fin}}$}, wrap=\textsf}
  | FOfin
 
-\knowledge{wrap=\textsf}
+\knowledge{notion, wrap=\textsf}
  | L
 
 \knowledge{notion, text={FO${}^{\textsf{aut}}$}, wrap=\textsf}
  | FOaut
 
-\knowledge{wrap=\textsf}
+\knowledge{notion, wrap=\textsf}
  | NL
 
-\knowledge{text={$\oplus$L}, wrap=\textsf}
+\knowledge{notion, text={$\oplus$L}, wrap=\textsf}
  | modL
 
-\knowledge{wrap=\textsf}
+\knowledge{notion, wrap=\textsf}
  | coNL
 
-\knowledge{text={P}, wrap=\textsf}
+\knowledge{notion, wrap=\textsf}
  | P
 
-\knowledge{text={NP}, wrap=\textsf}
+\knowledge{notion, text={NP}, wrap=\textsf}
  | NP
 
-\knowledge{text={coNP}, wrap=\textsf}
+\knowledge{notion, text={coNP}, wrap=\textsf}
  | coNP
 
-\knowledge{text={\ensuremath{\Sigma^p_2}}, wrap=\textsf}
+\knowledge{notion, text={\ensuremath{\Sigma^p_2}}, wrap=\textsf}
  | SigmaP2
 
-\knowledge{text={\ensuremath{\Pi^p_2}}, wrap=\textsf}
+\knowledge{notion, text={\ensuremath{\Pi^p_2}}, wrap=\textsf}
  | PiP2
 
-\knowledge{text={PSpace}, wrap=\textsf}
+\knowledge{notion, text={PSpace}, wrap=\textsf}
  | PSpace
  | PSPACE
 
-\knowledge{wrap=\textsf}
+\knowledge{notion, wrap=\textsf}
  | ExpTime
 
-\knowledge{wrap=\textsf}
+\knowledge{notion, wrap=\textsf}
  | 2ExpTime
 
-\knowledge{wrap=\textsf}
+\knowledge{notion, wrap=\textsf}
  | 3ExpTime
 
-\knowledge{text={ExpSpace}, wrap=\textsf}
+\knowledge{notion, text={ExpSpace}, wrap=\textsf}
 | EXPSPACE
 | ExpSpace
 
-\knowledge{text={Tower}, wrap=\textsf}
+\knowledge{notion, text={2ExpSpace}, wrap=\textsf}
+| 2EXPSPACE
+| 2ExpSpace
+
+\knowledge{notion, text={Tower}, wrap=\textsf}
  | Tower
  | TOWER
 
@@ -72,28 +76,25 @@
 % Undecidable classes :(
 % ---
 
-\knowledge{wrap=\textsf}
+\knowledge{notion, wrap=\textsf}
 | RE
 
-\knowledge{wrap=\textsf}
+\knowledge{notion, wrap=\textsf}
 | coRE
 
-\knowledge{text={$\Sigma^0_2$}, wrap=\textsf}
+\knowledge{notion, text={$\Sigma^0_2$}, wrap=\textsf}
 | Sigma0-2
 
-\knowledge{text={$\Pi^0_2$}, wrap=\textsf}
+\knowledge{notion, text={$\Pi^0_2$}, wrap=\textsf}
 | Pi0-2
 
-\knowledge{wrap=\textsf}
+\knowledge{notion, wrap=\textsf}
  | arithmetical hierarchy
  | \emph {arithmetical} hierarchy
 
-\knowledge{wrap=\textsf}
+\knowledge{notion, wrap=\textsf}
  | analytical hierarchy
  | \emph {analytical} hierarchy
-
-\knowledge{wrap=\textsf}
-| ZFC
 
 % ---
 % Parametrized classes
@@ -107,10 +108,10 @@
 | FPT
 | fixed-parameter tractable
 
-\knowledge{wrap=\textsf}
+\knowledge{notion, wrap=\textsf}
 | XP
 
-\knowledge{text={W[1]}, wrap=\textsf}
+\knowledge{notion, text={W[1]}, wrap=\textsf}
 | W1
 
 

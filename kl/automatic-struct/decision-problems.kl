@@ -122,3 +122,4 @@
 
 \knowledge{notion, wrap=\DPfont}
  | membership@problang
+ | $\+V$-membership problem@lang

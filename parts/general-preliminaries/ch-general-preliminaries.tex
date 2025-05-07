@@ -566,15 +566,14 @@ the \AP""signature of binary strings"".
 We refer the reader to Pin's seminal lecture notes \cite{Pin2022MathematicalFoundations}
 for an introduction to algebraic language theory.
 
-A \AP""monoid"" $\?M = \tup{M,{\cdot},1}$ is a set $M$ together with an associative binary operator $\cdot$ called \emph{product}, and an element $1 \in M$, called \emph{unit}, "st" $x\cdot 1 = x = 1 \cdot x$ for all $x\in M$.
+A \AP""monoid"" $\?M = \tup{M,{\cdot},1}$ is a set $M$ together with an associative binary operator $\cdot$ called \emph{product}, and an element $1 \in M$, called \emph{unit}, "st" $x\cdot 1 = x = 1 \cdot x$ for all $x\in M$. An \AP""idempotent"" is any element $x\in M$ "st" $x = x^2$.
 A \AP""monoid morphism"" is a function between monoids that preserve the product and unit.
+
 "Monoids"---or rather "monoid morphisms"---can be used to recognize languages as $\Sigma^*$
 is itself a monoid under concatenation---actually, it is \emph{the free monoid} over $\Sigma$.
 A language $L$ is "regular@@lang" if, and only if, there exists a "finite monoid" $\?M$,
 and subset $\Acc \subseteq M$ (called \emph{accepting elements}), and a "monoid morphism"
 $\phi\colon \Sigma^* \to M$ "st" $L = \phi^{-1}[\Acc]$.
-An \AP""idempotent"" is any element $x\in M$ "st" $x = x^2$.
-
 Another way of thinking of the pair $\tup{\phi, M}$ is as follows:
 a deterministic complete semiautomaton can be described as a set $Q$ together
 with a monoid right action of $\Sigma^*$ over $Q$. On the other hand,
@@ -597,9 +596,8 @@ are used interchangeably in the literature.}
 consists in a set of "finite monoids" closed under finite Cartesian products,
 taking subalgebras,%
 \footnote{Defined analogously to "substructures".}
-and quotients!%
+and quotients.%
 \footnote{Defined analogously to "quotient structures".}
-
 On the other hand, a ""$\ast$-pseudovariety of regular languages""
 consists of \emph{stream}, "ie" a function $\+V\colon \Sigma \mapsto \+V_{\Sigma}$ from alphabets to languages over this alphabet, with the following properties:
 \begin{itemize}
@@ -616,26 +614,63 @@ consists of \emph{stream}, "ie" a function $\+V\colon \Sigma \mapsto \+V_{\Sigma
 		\]
 		both belong to $\+V_{\Sigma}$.
 \end{itemize}
+A seminal result by Eilenberg shows that, mapping a "pseudovariety of monoids" $\symbb{V}$
+to the stream associating to $\Sigma$ the set of languages over $\Sigma$ that are recognized
+by a "monoid" from $\symbb{V}$ yields a "$*$-pseudovariety of regular languages",
+and moreover, this operation is a bijection!
+This result generalizes Schützenberger's infamous theorem, showing that
+star-free languages are exactly those recognized by aperiodic monoids:
+for this reason, this bijection is called the \AP""Eilenberg-Schützenberger correspondence@@lang"".%
+\footnote{See \cite[Theorem XIII.4.10, p.~228]{Pin2022MathematicalFoundations} for more details.}
+
+Lastly, given a stream of regular languages $\+V$, the \AP""$\+V$-membership problem@@lang""
+takes as input an alphabet $\Sigma$ and a "regular language" $L \subseteq \Sigma^*$,
+and asks if $L \in \+V_{\Sigma}$. When $\+V$ is a "pseudovariety of regular languages",
+a powerful technique to solve this problem is to prove that the membership problem
+of the "corresponding@@EilenbergLang" "pseudovariety of monoids" is decidable.
 
 \todo{move apdx here}
 
-\begin{itemize}
-	\itemAP ""membership@@problang""
-\end{itemize}
+\section{Computability and Complexity}
 
-\section{Complexity}
+\subsection{Turing Machines}
+
+We assume that the reader is familiar with Turing machines,
+see "eg" \cite[\S~1]{AroraBarak2009ComputationalComplexity}..
+\todo{poitner}
+Unless stated otherwise, a \AP""Turing machine"" is assumed to have a single tape,
+which is bounded on the left but infinite on the right.
+The ""configuration@@TM"" of a "Turing machine" consists of
+the content of the tape at a given point, the position of the machine's head,
+at well as its current state. It can be summarized by
+a triple $\tup{u, q, v}$, where $q$ denotes the current state,
+$u$ the word written strictly on the left of the head,
+and $v$ is the word written to the right of the head (head included).
+The \AP""initial configuration"" of a "Turing machine" $\+M$ refers to the "configuration@@TM" 
+$\tup{\varepsilon, q_0, \varepsilon}$ where $q_0$ is the initial state of $\+M$.
+A "configuration@@TM" is \AP""reachable@@configuration"" whenever
+it can be obtained from the "initial configurations" by applying a finite sequence
+of transitions of the machine.
+
+\subsection{Elements of Complexity Theory}
+
+We assume familiarity with basic complexity classes, see "eg"
+\cite[\S\!\S~2--5]{AroraBarak2009ComputationalComplexity}.
+We say that two decision problems are \AP""computationally equivalent""
+when there are many-one reductions between them.
+In the following hierarchy, we
+describe the different complexity classes that appear in this document:
+those appearing in bold play a `crucial role' in this thesis and are briefly defined
+in this document; the other ones---they are often only mentioned when talking about
+the literature---point to the "Complexity Zoo".
+We also mention a few decisions problems studied in this thesis---they will be introduced
+as needed.
+
+\todo{figure}
+
 
 \begin{itemize}
-	\itemAP ""Turing machine""
-	\itemAP ""configuration@@TM""
-	\itemAP ""initial configuration""
-	\itemAP ""reachable configuration""
-\end{itemize}
-
-\begin{itemize}
-	\itemAP ""Connectivity in Finite Graphs""
-	\itemAP ""Reachability in Finite Graphs""
-	\itemAP ""computationally equivalent""
-	\itemAP ""data complexity""
-	\item \cite{Schmitz2016ComplexityHierarchies} for "Tower" $\intro*\tower$
+	\itemAP \todo{""Connectivity in Finite Graphs""}
+	\itemAP \todo{""Reachability in Finite Graphs""}
+	\itemAP \todo{\cite{Schmitz2016ComplexityHierarchies} for "Tower" $\intro*\tower$}
 \end{itemize}
