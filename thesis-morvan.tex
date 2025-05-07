@@ -70,9 +70,25 @@
   autocite=footnote,
   maxalphanames=9,
   maxbibnames=99,
-  backend=biber
+  backend=biber,
 ]{biblatex}
 \bibliography{bib-abbrev,bib-global,bib-automatic-graphs,bib-databases,bib-complexity}
+\setlength{\biblabelsep}{2\labelsep}
+% https://tex.stackexchange.com/questions/298988/controlling-indentation-with-biblatex-alphabetic-style
+\defbibenvironment{bibliography}
+  {\list
+     {\printtext[labelalphawidth]{%
+        \printfield{prefixnumber}%
+        \printfield{labelalpha}%
+        \printfield{extraalpha}}}
+     {\setlength{\labelsep}{\biblabelsep}%
+      \setlength{\leftmargin}{\labelsep}%
+      \setlength{\itemsep}{\bibitemsep}%
+      \setlength{\parsep}{\bibparsep}}%
+      \renewcommand*{\makelabel}[1]{\textcolor{maincolor}{\textbf{##1\hss}}}}
+  {\endlist}
+  {\item}
+\renewcommand*{\intitlepunct}{\space} % remove colon after "In" for @incollection
 
 \begin{document}
 
@@ -120,6 +136,7 @@
 	\item \todo{explain the congruence in intro of ch-algebra (this is where the properties of the dependency relation comes from)}
 	\item \todo{Increase distance between footnote and figure caption}
 	\item \todo{maximal under-approximation: des fois avec hyphen, des fois sans}
+	\item \todo{header in biblio}
 \end{itemize}
 
 At the end:
@@ -127,6 +144,7 @@ At the end:
 	\item check APs 
 	\item remove tags (\textsf{\\tag})
 	\item mathbb -> symbb
+	\item in bib: change inbook to incollection if no bookauthor entry
 \end{itemize}
 
 \include{parts/intro/ch-intro}
@@ -150,17 +168,18 @@ At the end:
 \include{parts/conclu-automatic/ch-conclu-automatic}
 
 \backmatter
-% \begin{fullwidth}
-% 	\chapter*{Bibliography}
-% 	\addcontentsline{toc}{chapter}{Bibliography}
-% 	\setlength{\columnsep}{8mm}
-% 	\begin{multicols}{2}
-% 		\printbibliography[heading=none]
-% 	\end{multicols}
-% \end{fullwidth}
-\chapter*{Bibliography}
-\addcontentsline{toc}{chapter}{Bibliography}
-\printbibliography[heading=none]
+\begin{fullwidth}
+	\chapter*{Bibliography}
+	\chaptermark{Bibliography}
+	\renewcommand\thechapter{}
+	\addcontentsline{toc}{chapter}{Bibliography}
+	\setlength{\columnsep}{8mm}
+	\begin{multicols}{2}
+		\printbibliography[heading=none]
+	\end{multicols}
+\end{fullwidth}
+% \chapter*{Bibliography}
+% \addcontentsline{toc}{chapter}{Bibliography}
+% \printbibliography[heading=none]
 
 \end{document}
-

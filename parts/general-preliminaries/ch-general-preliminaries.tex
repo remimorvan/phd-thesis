@@ -38,7 +38,7 @@ for canonical objects ("eg" the natural numbers $\N$) or "pseudovarieties@pseudo
 We will use $\symbb{A}, \symbb{B}, \dotsc$ to denote
 alphabets in \Cref{part:databases} and $\Sigma, \Gamma, \dotsc$
 to denote them in \Cref{part:automatic}.%
-\footnote{``Pobody's Nerfect''!}
+\footnote{Pobody's nerfect…}
 Lastly, decision problems are typesetted in small caps
 ("eg" "finite regular colourability@@pb"), 
 complexity classes and categories in sans-serif ("coNP", "ExpSpace", $\Set[]$,
@@ -77,12 +77,12 @@ is said to be "functional@@rel" when for every $x$, there exists at most one $y$
 "st" $\tup{x,y} \in \+R$.
 When moreover $X = Y$, we say that it is:
 \begin{itemize}
-	\itemAP ""reflexive@@rel"" when $\tup{x,x} \in \+R$ for all $x \in X$;
+	\itemAP ""reflexive@@rel"" when $\tup{x,x} \in \+R$ for all $x$;
 	\itemAP ""symmetric@@rel"" when $\tup{x,y} \in \+R$ "iff" $\tup{y,x} \in \+R$
-		for all $x,y \in X$;
+		for all $x,y$;
 	\itemAP transitive when $\tup{x,y} \in \+R$ and $\tup{y,z} \in \+R$
 		imply $\tup{x,z} \in \+R$
-		for all $x,y,z \in X$.
+		for all $x,y,z$.
 \end{itemize}
 An equivalence relation over $X$ is any binary relation satisfying the three previous axioms.
 Given an equivalence class $\sim$ over a set $X$ and an element $x \in X$,
@@ -394,7 +394,7 @@ is sent on itself.
 	By symmetry, $\restr{f_1}{B_2}\colon \?B_2 \homto \?B_1$ is also a surjective "homomorphism".
 	By composition, we obtain surjective "homomorphism" from $\?B_1$ to itself and from $\?B_2$ to itself. By finiteness, these surjective "homomorphisms" must actually be "automorphisms".
 	Hence, it follows that $\restr{f_2}{B_1}$ and $\restr{f_1}{B_2}$ are "isomorphisms",
-	and hence $\?B_1$ is "isomorphic" to $\?B_2$.
+	and hence $\?B_1$ is "isomorphic" to~$\?B_2$.
 \end{proof}
 
 This unique minimal retraction of $\?A$ is called \AP""core"" of $\?A$ and
@@ -484,15 +484,14 @@ a trivial induction on the formula, by interpreting:
 \begin{itemize}
 	\item the free variable $x_i$ as $a_i$,
 	\item the "predicates" $\+R$ as the relation $\+R(\?A)$,
-	\item $\neg$, $\lor$, $\land$, $\exists$ and $\forall$ are interpreted as the Boolean operators of negation, disjunction and conjunction, and as the existential and universal quantifiers, respectively.
+	\item $\neg$, $\lor$, $\land$, $\exists$ and $\forall$ as the Boolean operators of negation, disjunction and conjunction, and as the existential and universal quantifiers, respectively.
 \end{itemize}
-
-Given a "$\sigma$-structure" $\?A$, we denote by \AP$\intro*\semFO{\phi(\bar x)}{\?A}$
+Given a "$\sigma$-structure" $\?A$, we then denote by \AP$\intro*\semFO{\phi(\bar x)}{\?A}$
 the set of tuples $\bar a$ "st" $\tup{\?A, \bar a} \FOmodels \phi(\bar x)$.
 
 We now define the classes $\Pi_n$ and $\Sigma_n$ ($n\in\N$) of "first-order formulas"
 as least fixpoints, with the property that $\Sigma_0 \subseteq \Sigma_1 \subseteq \dotsc$ and dually for $\Pi_n$.
-We let $\Sigma_0$ and $\Pi_0$ be the sets of quantifier-free formulas.
+We let $\Sigma_0 = \Pi_0$ be the set of quantifier-free formulas.
 Then for all $n\in\N$, we consider the following rules:
 \[
 	\frac{
@@ -521,7 +520,7 @@ Then, the \AP""quantifier alternation rank"" of a formula $\phi(\bar x)$
 is the least $n\in\N$ "st" $\phi(\bar x)$ belongs to either
 $\Sigma_n$ or $\Pi_n$.
 Formulas from $\Sigma_1$ are called ""existential formulas"",
-those that do not contain the negation nor universal quantification are called \AP""existential positive formulas"" and lastly, those that do not contain negation nor any type of quantification
+those that neither contain negations nor universal quantifications are called \AP""existential positive formulas"" and lastly, those that neither contain negations any quantifier
 are called ""positive quantifier-free formulas"".
 
 A "relation" over a "$\sigma$-structure" $\?A$ is said to be
@@ -532,8 +531,10 @@ when there exists a "first-order sentence" $\phi$ "st" the class of "structures"
 "st" $\?A \FOmodels \phi$ is precisely the class itself.
 
 \AP""First-order logic"" simply consists of the syntax of "first-order formulas" together
-with their semantics. Lastly, \AP""monadic second-order logic"" is obtained from "first-order logic"
-by also allowing quantifications over subsets of the structure.
+with their semantics. Lastly, \AP""monadic second-order logic""
+(resp. ""second-order logic"") is obtained from "first-order logic"
+by also allowing quantifications over subsets of the structure
+(resp. relations of arbitrary arity over the structure).
 
 \subsection{Automata Theory}
 
@@ -658,19 +659,69 @@ We assume familiarity with basic complexity classes, see "eg"
 \cite[\S\!\S~2--5]{AroraBarak2009ComputationalComplexity}.
 We say that two decision problems are \AP""computationally equivalent""
 when there are many-one reductions between them.
-In the following hierarchy, we
-describe the different complexity classes that appear in this document:
-those appearing in bold play a `crucial role' in this thesis and are briefly defined
-in this document; the other ones---they are often only mentioned when talking about
-the literature---point to the "Complexity Zoo".
-We also mention a few decisions problems studied in this thesis---they will be introduced
-as needed.
 
+% REPLACE NEXT PARAGRAPH WITH: WHEN FIGURE WILL BE DONE.
+% In the following hierarchy, we
+% describe the different complexity classes that appear in this document:
+% those appearing in bold play a `crucial role' in this thesis and are briefly defined
+% in this document; the other ones---they are often only mentioned when talking about
+% the literature---point to the "Complexity Zoo".
+% We also mention a few decisions problems studied in this thesis---they will be introduced
+% as needed.
 \todo{figure}
 
-
+\paragraph*{Complexity Classes.}
+Here are the most important classes that appear in this document---the other ones
+will all point to their respective entry in the "Complexity Zoo":
 \begin{itemize}
-	\itemAP \todo{""Connectivity in Finite Graphs""}
-	\itemAP \todo{""Reachability in Finite Graphs""}
-	\itemAP \todo{\cite{Schmitz2016ComplexityHierarchies} for "Tower" $\intro*\tower$}
+	\item "FOfin" refers to "first-order definable classes", see \Cref{sec:prelim-auto-FO} for the definition;
+	\itemAP ""L"" and ""NL"" refer to probles solvage in deterministic and non-deterministic logarithmic 
+	space; for hardness we usually consider "first-order reductions";
+	\itemAP ""P"" (resp. "PSpace") refers to problems solvable in deterministic polynomial time
+	(resp. polyomial space); hardness is usually considered under logarithmic-space reductions;
+	\itemAP ""NP"" and ""coNP"" refers to the first level of the polynomial-time hierarchy
+		\cite[\S~2]{AroraBarak2009ComputationalComplexity},
+		and "SigmaP2", "PiP2" to its second level,
+		see "eg" \cite[\S~5]{AroraBarak2009ComputationalComplexity};
+		hardness is usually considered under logarithmic-space reductions;
+	\itemAP ""$k$-ExpTime"" and ""$k$-ExpSpace"" are the
+		problems solvable in time and space
+		\[n \mapsto \underbrace{2^{2^{{\,\rotatebox{90}{\tiny$\ddots$}\,}^{2^{\textrm{poly}(n)}}}}}_{k \text{ times}},\]
+		respectively; hardness is considered under polynomial-time reductions;
+	\itemAP ""Tower"" is the class of problems that can be solved in time
+		$n\mapsto \tower(f(n))$ for some elementary function $f$,%
+		\footnote{Recall that an function is said to be elementary when it
+		is bounded by a tower of exponentials of fixed height.}
+		where $\tower(n) \defeq t(n,n)$ and $t$ is the function
+		define recursively by $t(p,q) \defeq 2^{t(p-1,q)}$ and $t(0,q) \defeq q$:
+		in other words, it is a tower of exponentials whose height is given by the input;
+		hardness is defined under elementary reductions,
+		see \cite{Schmitz2016ComplexityHierarchies} for more details on this class.
 \end{itemize}
+
+\paragraph*{Computability Classes.}
+We now turn to undecidable classes: all hardness result are considered up to
+many-one reductions, "ie" instance-preserving computable functions.
+We denote by \AP""RE"" and ""coRE"" the class of recursively enumerable
+and co-recursively enumerable problems, respectively. 
+The next levels $\Sigma^0_n$ and $\Pi^0_n$ of the \AP""arithmetical hierarchy"" can be defined 
+as the classes of sets that are "definable@@first-order" by a "first-order formula"
+from the fragments $\Sigma_n$ and $\Pi_n$, respectively, in the structure $\tup{\N,+,\cdot}$.
+It can be shown that $\Sigma^0_0 = \Pi^0_0$ corresponds to the class of all decidable problems,
+and $\Sigma^0_1 =$ "RE" and $\Pi^0_1$ = "coRE". The only other levels that will be of interest
+to us will be \AP""Sigma0-2"" and ""Pi0-2"".
+The ""analytical hierarchy"" is defined analogously, by replacing "first-order logic" with
+"second-order logic".
+
+
+\paragraph*{Decision Problems.}
+\AP""Connectivity in Finite Graphs"" is the decision problems
+that takes as input a "graph@@dir" and two vertices $s$ and $t$,
+and asks if they are "connected".
+\AP ""Reachability in Finite Graphs"" is defined analogously,
+but asks rather if there is a directed path from $s$ to $t$.
+Surprisingly, despite their resemblance, these two problems have a distinct complexity:
+"Reachability in finite graphs" is "NL"-complete, see "eg"
+\cite[Theorem~4.18]{AroraBarak2009ComputationalComplexity}, while "Connectivity in finite graphs"
+is only "L"-complete by Reingold's theorem, see "eg"
+\cite[Theorem~4.18]{AroraBarak2009ComputationalComplexity}.

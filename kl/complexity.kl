@@ -22,12 +22,10 @@
 
 \knowledge{notion, wrap=\textsf}
  | NL
+ | coNL
 
 \knowledge{notion, text={$\oplus$L}, wrap=\textsf}
  | modL
-
-\knowledge{notion, wrap=\textsf}
- | coNL
 
 \knowledge{notion, wrap=\textsf}
  | P
