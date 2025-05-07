@@ -244,18 +244,30 @@ a set of (unordered) pairs of elements of the domain.
 The ""incidence graph"" $\intro*\IncidenceGraph{\?A}$ of a "$\sigma$-structure",
 for some "signature" $\sigma$, is the following "undirected graph":
 \begin{itemize}
-	\item its domain is the disjoint union of the domain of $\?A$
+	\item its domain is the disjoint union of $A$
 		and the "hyperedges" of $\?A$;
 	\item there is an edge between two vertices "iff" one of them
 		is a vertex $a$ of $\?A$, and the other is an hyperedge
 		$\bar h$ of $\?A$, with the property that $a \in \bar h$.
 \end{itemize}
 
-\begin{itemize}
-	\itemAP  ""distance@@struct"" and ""diameter""
-	\itemAP ball: $\intro*\ball{\?A}{a}{m}$ and ""locally finite structure""
-	\itemAP ""simple path""
-\end{itemize}
+The \AP""distance@@struct"" between two vertices of a "$\sigma$-structure"
+is defined as half of their distance in the "incidence graph".%
+\footnote{By construction the "incidence graph" is bipartite and hence
+the distance between two vertices of the "structure" is even.}
+The \AP""diameter"" of a "structure" is the maximum over $u$
+of the minimum over $v$ of the "distance@@struct" between vertices $u$ and $v$.
+
+The ball centred at vertex $a\in A$ and of radium $m\in\N$ of
+a "$\sigma$-structure" $\?A$ is the "substructure" of $\?A$ induced by
+all vertices at distance at most $m$.
+A "structure" is said to be \AP""locally finite@@structure""
+when every ball of finite radius is "finite@@struct".
+
+A \AP""simple path"" in a "$\sigma$-structure" is a
+simple path in its "incidence graph"---in other words, 
+such a path should alternate between vertices and hyperedges,
+and visit each of them at most once.
 
 \subsection{Strings and Graphs}
 
@@ -281,26 +293,65 @@ The ""chromatic number"" of a "graph@@dir" is the least cardinal $k$
 "st" it is "$k$-colourable". We say that a "graph@@dir"
 is \AP""finitely colourable"" when its "chromatic number" is finite.
 
-% \subsection{Homomorphisms}
 
-% \begin{itemize}
-% 	\itemAP ""homomorphism""
-% 	\itemAP ""homomorphically equivalent""
-% 	\itemAP kernel congruence $\intro*\ker{-}$, ""quotient structure"", ""congruence induced""
-% 	\itemAP projection: $\intro*\projHom{i}$
-% 	\itemAP ""isomorphism"", ""isomorphic"", ""automorphism""
-% 	\itemAP ""embedding"", ""strong onto""
-% \end{itemize}
+\subsection{Homomorphisms}
 
-% \subsection{Cores}
+A \AP""homomorphism"" from a "$\sigma$-structure" $\?A$ to
+to a "$\sigma$-structure" $\?B$ consists of a function $f$ from $A$ to $B$,
+"st" for every $\+R_{(k)} \in \sigma$, for every $\tup{a_1,\dotsc,a_k} \in \+R(\?A)$,
+we have $\tup{f(a_1), \dotsc, f(a_k)} \in \+R(\?B)$. Moreover, for every
+constant $c \in \sigma$, we must have $f(c(\?A)) = c(\?B)$.
 
-% A \AP""core"" is blabla, we denote by \AP$\intro*\core{\?B}$ the "core" of $\?B$.
+An \AP""embedding"" is an injective "homomorphism",
+whereas a \AP""strong onto homomorphism"" is a "homomorphism" that is both
+surjective on the domain and on the "hyperedges". 
 
-% \begin{proposition}
-% 	\AP\label{prop:automorphism-core}
-% 	Given a "$\sigma$-structure" $\?B$, $\?B$ is a "core" "iff" all "homomorphisms"
-% 	from $\?B$ to itself are "automorphisms".
-% \end{proposition}
+An \AP""isomorphism"" from $\?A$ to $\?B$ is a "homomorphism" $f\colon \?A \to \?B$
+"st" there exists another homomorphism $g\colon \?B \to \?A$ with the property
+that $g \circ f = \id[A]$ and $f \circ g = \id[B]$. Equivalently,
+it is "strong onto homomorphism" that is also an "embedding".
+Two structures are \AP""isomorphic"" if there is an "isomorphism" between them,
+and an ""automorphism"" is an "isomorphism" from a "structure" to itself.
+
+Given "structures" $\?A_1, \dotsc, \?A_k$ sharing the same "signature",
+the $i$-th projection from the Cartesian product $\?A_1 \prodstruct \dotsc \prodstruct \?A_k$
+to $\?A_i$, defined by $\tup{a_1,\dotsc,a_k} \mapsto a_i$ ($i \in \intInt{1,k}$),
+is a "homomorphism", and is denoted by \AP$\intro*\projHom{i}$.
+
+Given a "$\sigma$-structure" $\?A$, a \AP""congruence@@struct"" on $\?A$
+is an equivalence class $\sim$ of $A$ "st" for every
+$\+R_{(k)} \in \sigma$, for every $\tup{a_1,\dotsc,a_k} \in \+R(\?A)$,
+for any tuple $\tup{a'_1,\dotsc,a'_k} \in A^k$ "st" $a_i \sim a'_i$ for each $i\in \intInt{1,k}$,
+then $\tup{a'_1,\dotsc,a'_k} \in \+R(\?A)$.
+The \AP""quotient structure"" defined by a "congruence@@struct" $\sim$
+on a "structure" $\?A$ has the equivalence classes of $\sim$ as its domain,
+and natural "interpretation@@predicates" of the "predicates" and constants.
+
+Given a "homomorphism" $f\colon \?A \to \?B$,
+the \AP""congruence induced"" by $f$, and denoted by $\intro*\ker{f}$
+is defined by $a \ker{f} a'$ "iff" $f(a) = f(a')$ for all $a, a' \in A$.
+It is routine to check that it is indeed a "congruence@@struct" on $\?A$.
+
+We will often implicitly use Noether's first isomorphism theorem:
+the "substructure" of $\?B$ "induced@@substructure" by the image $f[A]$
+of $A$ is "isomorphic" to the "quotient@@struct" of $\?A$ by $\ker{f}$.
+
+\subsection{Cores}
+
+Two "$\sigma$-structures" $\?A$ and $\?B$ are ""homomorphically equivalent""
+if $\?A \homto \?B$ and $\?B \homto \?A$.
+A \AP""core"" $\?C$ is any "$\sigma$-structure" such that any "homomorphism"
+from $\?C$ to itself must be an "automorphism".
+Each "$\sigma$-structure" $\?A$ is "homomorphically equivalent" to a unique "core",
+called \reintro{core} of $\?A$, and denoted by \AP$\intro*\core{\?B}$.
+
+Another helpful way of seeing "cores" is \emph{via} the notion of retraction:
+a "retraction" of $\?A$ is a "substructure" $\?A'$ of $\?A$ together with
+a "homomorphism" from $\?A$ to $\?A'$ with the property that any vertex of $A'$
+is sent on itself.
+\todo{figure}
+Then, the "core" of "structure" corresponds to its unique minimal contraction.
+\todo{add refs}
 
 % \begin{itemize}
 % 	\itemAP ""rigid""
@@ -318,7 +369,7 @@ is \AP""finitely colourable"" when its "chromatic number" is finite.
 % 	which maps $b_2$ to $b_1$, and all elements of $B \smallsetminus \{b_2\}$
 % 	to themselves. Since we assumed that $b_1$ and $b_2$ have the same "adjacency",
 % 	this is indeed a "homomorphism", which is clearly not bijective, and
-% 	hence by \Cref{prop:automorphism-core}, $\?B$ is not a "core".
+% 	$\?B$ is not a "core".
 % \end{proof}
 
 % \section{Logic Related Notions}
