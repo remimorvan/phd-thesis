@@ -187,21 +187,16 @@ their "predicate interpretations" and of their interpretations of constants.
 Their ""block product"" has the same domain and constants,
 but now the "interpretation@@predicate" of "predicate" $\+R_{(k)}$
 in the "block product" consists of all tuples
-\[
-	\set{
-		\tup{\tup{a_1,b_1}, \dotsc, \tup{a_k,b_k}}
-		\mid
-		(\tup{a_1, \dotsc, a_k} \in \+R(\?A)
-		\land b_1 = \dotsc = b_k )
-		\lor
-		(a_1 = \dotsc = a_k
-		\land \tup{b_1, \dotsc, b_k} \in \+R(\?B) ).
-	}
-\]
+\[\tup{\tup{a_1,b_1}, \dotsc, \tup{a_k,b_k}}\] 
+"st" either $\tup{a_1, \dotsc, a_k} \in \+R(\?A)
+\land b_1 = \dotsc = b_k$ or 
+$a_1 = \dotsc = a_k
+\land \tup{b_1, \dotsc, b_k} \in \+R(\?B)$.
+
 The $k$-fold iteration of $\?A$ is denoted by
 $\intro*\iterstruct{\?A}{k}$ and is defined as
 \[
-\underbrace{\?A \times \dotsc \times \?A}_{k \text{ times}}.
+	\underbrace{\?A \times \dotsc \times \?A}_{k \text{ times}}.
 \]
 \todo{example fig}
 
@@ -340,88 +335,173 @@ of $A$ is "isomorphic" to the "quotient@@struct" of $\?A$ by $\ker{f}$.
 
 Two "$\sigma$-structures" $\?A$ and $\?B$ are ""homomorphically equivalent""
 if $\?A \homto \?B$ and $\?B \homto \?A$.
-A \AP""core"" $\?C$ is any "$\sigma$-structure" such that any "homomorphism"
-from $\?C$ to itself must be an "automorphism".
-Each "$\sigma$-structure" $\?A$ is "homomorphically equivalent" to a unique "core",
-called \reintro{core} of $\?A$, and denoted by \AP$\intro*\core{\?B}$.
 
-Another helpful way of seeing "cores" is \emph{via} the notion of retraction:
-a "retraction" of $\?A$ is a "substructure" $\?A'$ of $\?A$ together with
+A retraction of $\?A$ is a "substructure" $\?A'$ of $\?A$ together with
 a "homomorphism" from $\?A$ to $\?A'$ with the property that any vertex of $A'$
 is sent on itself.
-\todo{figure}
-Then, the "core" of "structure" corresponds to its unique minimal contraction.
-\todo{add refs}
+\begin{proposition}
+	Any "finite $\sigma$-structure" $\?A$ admits a unique minimal retraction---by minimal
+	we mean minimal in the number of vertices, and uniqueness is considered up to "isomorphism".
+\end{proposition}
 
-% \begin{itemize}
-% 	\itemAP ""rigid""
-% \end{itemize}
+\begin{figure}
+	\centering
+	\begin{tikzpicture}
+		\node[vertex, draw=c1, fill=c1, fill opacity=.4] at (0,1) (a) {};
+		\node[vertex, draw=c0, fill=c0, fill opacity=.4] at (1.414,1) (b) {};
+		\node[vertex, draw=c2, fill=c2, fill opacity=.4] at (2.828,1) (c) {};
+		\node[vertex, draw=c1, fill=c1, fill opacity=.4] at (4.242,1) (d) {};
+		\node[vertex, draw=c2, fill=c2, fill opacity=.4] at (0.707,0) (e) {};
+		\node[vertex, draw=c1, fill=c1, fill opacity=.4] at (2.121,0) (f) {};
+		\node[vertex, draw=c3, fill=c3, fill opacity=.4] at (3.536,0) (g) {};
+		\node[vertex, draw=c0, fill=c0, fill opacity=.4] at (4.950,0) (h) {};
 
-% \begin{proposition}
-% 	\AP\label{prop:adjacency-core}
-% 	Given a "$\sigma$-structure" $\?B$, if $\?B$ is a "core", then
-% 	two elements $b_1$ and $b_2$ of $\?B$ have the same "adjacency" "iff" $b_1 = b_2$.
-% \end{proposition}
+		\draw[edge] (a) to (b);
+		\draw[edge] (b) to (e);
+		\draw[edge] (f) to (b);
+		\draw[edge] (b) to (c);
+		\draw[edge] (f) to (c);
+		\draw[edge] (g) to (f);
+		\draw[edge] (c) to (g);
+		\draw[edge] (d) to (c);
+		\draw[edge] (g) to (d);
+		\draw[edge] (d) to (h);
 
-% \begin{proof}
-% 	The right-to-left implication is trivial.
-% 	For the converse one, consider the "homomorphism" from $\?B$ to itself
-% 	which maps $b_2$ to $b_1$, and all elements of $B \smallsetminus \{b_2\}$
-% 	to themselves. Since we assumed that $b_1$ and $b_2$ have the same "adjacency",
-% 	this is indeed a "homomorphism", which is clearly not bijective, and
-% 	$\?B$ is not a "core".
-% \end{proof}
+		\begin{scope}[xshift=5.5cm]
+			\node[vertex, draw=c0, fill=c0, fill opacity=.4] at (1.414,1) (b2) {};
+			\node[vertex, draw=c2, fill=c2, fill opacity=.4] at (2.828,1) (c2) {};
+			\node[vertex, draw=c1, fill=c1, fill opacity=.4] at (2.121,0) (f2) {};
+			\node[vertex, draw=c3, fill=c3, fill opacity=.4] at (3.536,0) (g2) {};
 
-% \section{Logic Related Notions}
+			\draw[edge] (f2) to (b2);
+			\draw[edge] (b2) to (c2);
+			\draw[edge] (f2) to (c2);
+			\draw[edge] (g2) to (f2);
+			\draw[edge] (c2) to (g2);
+		\end{scope}
+	\end{tikzpicture}
+	\caption{
+		\AP\label{fig:prelim-core}
+		On the left-hand side a "graph@@dir", and its "core" on the right.
+		The colours are not part of the "structure", but
+		are used to describe the retraction of the original
+		structure onto its "core".
+		(Replica of \Cref{fig:intro-core}.)
+	}
+\end{figure}
+\begin{proof}
+	The existence is trivial.
+	For the uniqueness, consider two retractions $f_1\colon \?A \homto \?B_1$
+	and $f_2\colon \?A \homto \?B_2$. We want to prove that $\?B_1$ and $\?B_2$ are
+	"isomorphic".
 
-% \subsection{First-Order Logic and Beyond}
+	Since $\?B_1$ is a "substructure" of $\?A$, consider
+	$\restr{f_2}{B_1}\colon \?B_1 \homto \?B_2$. By minimality of $\?B_2$, this "homomorphism"
+	must be surjective.
+	By symmetry, $\restr{f_1}{B_2}\colon \?B_2 \homto \?B_1$ is also a surjective "homomorphism".
+	By composition, we obtain surjective "homomorphism" from $\?B_1$ to itself and from $\?B_2$ to itself. By finiteness, these surjective "homomorphisms" must actually be "automorphisms".
+	Hence, it follows that $\restr{f_2}{B_1}$ and $\restr{f_1}{B_2}$ are "isomorphisms",
+	and hence $\?B_1$ is "isomorphic" to $\?B_2$.
+\end{proof}
 
-% ""queries@@sem""
+This unique minimal retraction of $\?A$ is called \AP""core"" of $\?A$ and
+is denoted by \AP$\intro*\core{\?B}$.
+By construction, the "core" of $\?A$ is a "substructure" of $\?A$ to which it is "homomorphically equivalent", see \Cref{fig:prelim-core}.
+In general, a \reintro{core} is any "$\sigma$-structure" such that is the "core" of
+some "structure"---or equivalently of itself.
 
-% We assume that we are given a countable infinite set of variables.
+\begin{proposition}
+	A "finite $\sigma$-structure" $\?C$ is a "core" if, and only if, every
+	homomorphism from $\?C$ to itself is an "automorphism".
+\end{proposition}
+
+\begin{proof}
+	Letting $f\colon \?C \to \?C$ be a "homomorphism",
+	Then $f[\?C]$ must be "isomorphic" to $\?C$, otherwise we would obtain
+	a strictly smaller retraction. Hence, $f$ is a "strong onto homomorphism"
+	from $\?C$ to itself, and hence is an "automorphism".
+\end{proof}
+
+\begin{proposition}
+	Two "finite structures" are "homomorphically equivalent" if,
+	and only if, their "core" are "isomorphic".
+\end{proposition}
+
+\begin{proof}
+	The right-to-left implication is trivial.
+	For the converse one, denote the two "structures" by $\?A_1$ and $\?A_2$,
+	and suppose that $\?A_1$ is "homomorphically equivalent" to $\?A_2$.
+	Using the "homomorphical equivalence" of $\?A_1$ and $\?A_2$,
+	we get retractions of $\?A_2$ onto $\core{\?A_1}$ and of $\?A_1$ onto $\core{\?A_2}$.
+	It follows that we have surjective "homomorphisms" from $\core{\?A_1}$ to $\core{\?A_2}$
+	and conversely. Hence, $\core{\?A_1}$ and $\core{\?A_2}$ are "isomorphic".
+\end{proof}
+
+\begin{proposition}
+	\AP\label{prop:adjacency-core}
+	Given a "$\sigma$-structure" $\?B$, if $\?B$ is a "core", then
+	two elements $b_1$ and $b_2$ of $\?B$ have the same "adjacency" "iff" $b_1 = b_2$.
+\end{proposition}
+
+\begin{proof}
+	The right-to-left implication is trivial.
+	For the converse one, consider the "homomorphism" from $\?B$ to itself
+	which maps $b_2$ to $b_1$, and all elements of $B \smallsetminus \{b_2\}$
+	to themselves. Since we assumed that $b_1$ and $b_2$ have the same "adjacency",
+	this is indeed a "homomorphism", which is clearly not bijective, and
+	$\?B$ is not a "core".
+\end{proof}
+
+\section{Logic Related Notions}
+
+\subsection{First-Order Logic and Beyond}
+
+""queries@@sem""
+
+We assume that we are given a countable infinite set of variables.
 
 
-% \begin{itemize}
-% 	\itemAP ""first-order logic""
-% 	\itemAP ""first-order formula"", ""first-order sentence""
-% 	\itemAP ""models"", $\intro*\FOmodels$ and $\intro*\semFO{-}{-}$
-% 	\itemAP ""quantifier alternation""
-% 	\itemAP ""first-order definable""
-% 	\itemAP ""existential formula"", ""existential-positive formula"",
-% 		""positive quantifier-free formula""
-% 	\itemAP ""monadic second-order logic""
-% \end{itemize}
+\begin{itemize}
+	\itemAP ""first-order logic""
+	\itemAP ""first-order formula"", ""first-order sentence""
+	\itemAP ""models"", $\intro*\FOmodels$ and $\intro*\semFO{-}{-}$
+	\itemAP ""quantifier alternation""
+	\itemAP ""first-order definable""
+	\itemAP ""existential formula"", ""existential-positive formula"",
+		""positive quantifier-free formula""
+	\itemAP ""monadic second-order logic""
+\end{itemize}
 
-% \subsection{Automata Theory}
+\subsection{Automata Theory}
 
-% \begin{itemize}
-% 	\itemAP $^*$ (knowledgify)
-% 	\itemAP ""regular language"", $\intro*\2$
-% 	\itemAP $\intro*\transition{a}$
-% \end{itemize}
+\begin{itemize}
+	\itemAP $^*$ (knowledgify)
+	\itemAP ""regular language"", $\intro*\2$
+	\itemAP $\intro*\transition{a}$
+\end{itemize}
 
-% \subsection{Monoids}
+\subsection{Monoids}
 
-% \begin{itemize}
-% 	\itemAP ""finite monoid"", ""monoid morphism""
-% 	\itemAP ""syntactic monoids"", ""syntactic morphism""
-% 	\itemAP ""pseudovariety of finite monoids"", ""pseudovariety of regular languages""
-% 	\itemAP ""membership@@problang""
-% \end{itemize}
+\begin{itemize}
+	\itemAP ""finite monoid"", ""monoid morphism""
+	\itemAP ""syntactic monoids"", ""syntactic morphism""
+	\itemAP ""pseudovariety of finite monoids"", ""pseudovariety of regular languages""
+	\itemAP ""membership@@problang""
+\end{itemize}
 
-% \section{Complexity}
+\section{Complexity}
 
-% \begin{itemize}
-% 	\itemAP ""Turing machine""
-% 	\itemAP ""configuration@@TM""
-% 	\itemAP ""initial configuration""
-% 	\itemAP ""reachable configuration""
-% \end{itemize}
+\begin{itemize}
+	\itemAP ""Turing machine""
+	\itemAP ""configuration@@TM""
+	\itemAP ""initial configuration""
+	\itemAP ""reachable configuration""
+\end{itemize}
 
-% \begin{itemize}
-% 	\itemAP ""Connectivity in Finite Graphs""
-% 	\itemAP ""Reachability in Finite Graphs""
-% 	\itemAP ""computationally equivalent""
-% 	\itemAP ""data complexity""
-% 	\item \cite{Schmitz2016ComplexityHierarchies} for "Tower" $\intro*\tower$
-% \end{itemize}
+\begin{itemize}
+	\itemAP ""Connectivity in Finite Graphs""
+	\itemAP ""Reachability in Finite Graphs""
+	\itemAP ""computationally equivalent""
+	\itemAP ""data complexity""
+	\item \cite{Schmitz2016ComplexityHierarchies} for "Tower" $\intro*\tower$
+\end{itemize}

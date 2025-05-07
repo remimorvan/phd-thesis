@@ -5,3 +5,5 @@ Hyperedge
 injectivity
 semantical
 human-centered
+hyperedges
+homomorphical
