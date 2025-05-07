@@ -411,15 +411,21 @@ In general, a \reintro{core} is any "$\sigma$-structure" such that is the "core"
 some "structure"---or equivalently of itself.
 
 \begin{proposition}
+	\AP\label{prop:core-iff-hom-are-auto}
 	A "finite $\sigma$-structure" $\?C$ is a "core" if, and only if, every
 	homomorphism from $\?C$ to itself is an "automorphism".
 \end{proposition}
 
 \begin{proof}
-	Letting $f\colon \?C \to \?C$ be a "homomorphism",
+	For the left-to-right implication,
+	we let $f\colon \?C \to \?C$ be a "homomorphism".
 	Then $f[\?C]$ must be "isomorphic" to $\?C$, otherwise we would obtain
 	a strictly smaller retraction. Hence, $f$ is a "strong onto homomorphism"
 	from $\?C$ to itself, and hence is an "automorphism".
+	
+	Conversely, assuming that any "homomorphism" from $\?C$ to itself is an "automorphism"
+	we get in particular that any retraction must be an "automorphism", and
+	hence that $\?C$ is "isomorphic" to $\core{\?C}$.
 \end{proof}
 
 \begin{proposition}
