@@ -8,23 +8,23 @@
 \knowledge{url=https://github.com/remimorvan/knowledge-clustering/, typewriter}
  | knowledge-clustering
 
-\knowledge{url=https://www.wikidata.org/}
+\knowledge{url=https://www.wikidata.org/, index={Wikidata}}
  | Wikidata
 
-\knowledge{url={https://en.wikipedia.org/wiki/G\%C3\%B6del\%27s\_incompleteness\_theorems}}
+\knowledge{url={https://en.wikipedia.org/wiki/G\%C3\%B6del\%27s\_incompleteness\_theorems}, index={Godel@Gödel!incompleteness theorem}}
  | Gödel's incompleteness theorems
  | Gödel's incompleteness theorem
  | incompleteness theorem
 
- \knowledge{url={https://en.wikipedia.org/wiki/G\%C3\%B6del\%27s\_completeness\_theorem}}
+ \knowledge{url={https://en.wikipedia.org/wiki/G\%C3\%B6del\%27s\_completeness\_theorem}, index={Godel@Gödel!completeness theorem}}
  | Gödel's completeness theorem
 
-\knowledge{url={https://en.wikipedia.org/wiki/Zermelo\%E2\%80\%93Fraenkel\_set\_theory}}
+\knowledge{url={https://en.wikipedia.org/wiki/Zermelo\%E2\%80\%93Fraenkel\_set\_theory}, index={Zermelo–Fraenkel set theory}}
  | Zermelo–Fraenkel set theory
  | Zermelo–Fraenkel set theory plus the axiom of choice
 
-\knowledge{url={https://en.wikipedia.org/wiki/Rice\%27s\_theorem}}
+\knowledge{url={https://en.wikipedia.org/wiki/Rice\%27s\_theorem}, index={Rice's theorem}}
  | Rice's theorem
 
-\knowledge{url={https://en.wikipedia.org/wiki/Malament\%E2\%80\%93Hogarth\_spacetime}}
+\knowledge{url={https://en.wikipedia.org/wiki/Malament\%E2\%80\%93Hogarth\_spacetime}, index={Malament–Hogarth spacetime}}
  | Malament–Hogarth spacetime

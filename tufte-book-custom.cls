@@ -269,3 +269,42 @@
 % \newrobustcmd{\citesideref}[1]{%
 % 	\smallskip\par\noindent\simplecite{#1}
 % }
+
+% ---
+% Change index
+% ---
+
+\renewenvironment{theindex}{%
+  \ifthenelse{\equal{\@tufte@class}{book}}%
+    {
+		\chapter*{\indexname}%
+		\chaptermark{\indexname}%
+		\markboth{\indexname}{\indexname}%
+		\addcontentsline{toc}{chapter}{\indexname}
+	}%
+    {\section*{\indexname}}%
+  \begin{fullwidth}%
+  \small%
+  \parskip0pt%
+  \parindent0pt%
+  \let\item\@idxitem%
+  \setlength{\columnsep}{8mm}
+  \begin{multicols}{3}%
+}{%
+  \end{multicols}%
+  \end{fullwidth}%
+}
+
+% Add a bookmark for ToC
+% \addtocontents{toc}{\protect{\pdfbookmark[0]{\contentsname}{toc}}}
+
+%  Bookmark everything + numbered
+\RequirePackage[
+  open,
+  openlevel=2,
+  atend,
+  numbered
+]{bookmark}
+
+% Section number
+\setcounter{secnumdepth}{3}

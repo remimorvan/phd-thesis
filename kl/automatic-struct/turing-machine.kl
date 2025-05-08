@@ -1,32 +1,32 @@
-\knowledge{notion}
+\knowledge{notion, index={Turing machine}}
  | Turing machine
 
-\knowledge{notion}
+\knowledge{notion, index={configuration graph}}
  | configuration graph
  | Configuration graph
 
-\knowledge{notion}
+\knowledge{notion, index={configuration!initial}}
  | initial configuration
 
-\knowledge{notion}
+\knowledge{notion, index={configuration!reachable}}
  | reachable configuration
  | reachable configurations
 
-\knowledge{notion}
+\knowledge{notion, index={Turing machine!reversible}}
  | reversible
 
-\knowledge{notion}
+\knowledge{notion, index={Turing machine!well-founded}}
  | well-founded
 
-\knowledge{notion}
+\knowledge{notion, index={Turing machine!linear}}
  | linear@TM
  | linear Turing machine
  | linear Turing machines
 
-\knowledge{notion}
+\knowledge{notion, index={germinal element}}
  | germinal
  | germinal elements
  | germinal configurations
 
-\knowledge{notion}
+\knowledge{notion, index={configuration}}
  | configuration@TM

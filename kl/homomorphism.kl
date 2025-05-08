@@ -2,21 +2,21 @@
 % Homomorphism
 % ---
 
-\knowledge{notion}
+\knowledge{notion, index={homomorphism}}
  | homomorphism
  | homomorphisms
 
-\knowledge{notion}
+\knowledge{notion, index={homomorphically equivalent}}
  | homomorphically equivalent
 
-\knowledge{notion}
+\knowledge{notion, index={congruence!induced by a homomorphism}}
  | congruence induced
 
-\knowledge{notion}
+\knowledge{notion, index={quotient structure}}
  | quotient@struct
  | quotient structure
 
-\knowledge{notion}
+\knowledge{notion, index={core}}
  | core
  | $\sigma $-core
  | cores
@@ -25,12 +25,12 @@
 % Homomorphism problem
 % ---
 
-\knowledge{notion}
+\knowledge{notion, index={structure!input}}
  | input structure
  | input@struct
  | input side@struct
 
-\knowledge{notion}
+\knowledge{notion, index={structure!target}}
  | target structure
  | target structures
 
@@ -39,22 +39,22 @@
 % Embeddings & Isomorphisms
 % ---
 
-\knowledge{notion}
+\knowledge{notion, index={embedding}}
  | embedding
  | embeddings
 
-\knowledge{notion}
+\knowledge{notion, index={strong onto}}
  | strong onto
 
-\knowledge{notion}
+\knowledge{notion, index={isomorphism}}
  | isomorphism
  | graph isomorphisms
  | isomorphisms
 
-\knowledge{notion}
+\knowledge{notion, index={isomorphic}}
  | isomorphic
  | isomorphic@struct
 
-\knowledge{notion}
+\knowledge{notion, index={automorphism}}
  | automorphism
  | automorphisms

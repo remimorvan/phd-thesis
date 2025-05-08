@@ -1,26 +1,27 @@
-\knowledge{notion}
+\knowledge{notion, index={first-order!logic}}
  | first-order logic
  | FO
  | first-order
 
-\knowledge{notion}
+\knowledge{notion, index={first-order!formula}}
  | first-order formula
  | first-order formulas
  | formula@FO
  | formulas@FO
 
-\knowledge{notion}
+\knowledge{notion, index={first-order!sentence}}
  | first-order sentence
  | first-order sentences
  | sentences@FO
 
-\knowledge{notion}
+\knowledge{notion, index={model}}
  | models
 
-\knowledge{notion}
+\knowledge{notion, index={quantifier alternation}}
  | quantifier alternation
+ | quantifier alternation rank
 
-\knowledge{notion}
+\knowledge{notion, index={first-order!definable}}
  | first-order definable
  | definable relations
  | non-first-order definable
@@ -29,7 +30,7 @@
 % FO interpretations & reductions 
 % ---
 
-\knowledge{notion}
+\knowledge{notion, index={first-order!interpretation}}
  | first-order interpretation
  | first-order interpretations
  | $d$-dimensional first-order interpretation
@@ -40,69 +41,72 @@
  | $d$-dimensional interpretation
  | FO-interpretation
 
-\knowledge{notion}
+\knowledge{notion, index={interpretation (of a structure)}}
  | $\+I$-interpretation of $\?A$
  | interpretation
  | Interpretation
 
-\knowledge{notion}
+\knowledge{notion, index={first-order!injective interpretation}}
  | injective@interpretation
  | injective interpretation
  | injective first-order interpretation
 
-\knowledge{notion}
+\knowledge{notion, index={first-order!reduction}}
  | first-order reductions
  | first-order@reduction
  | first-order reduction
  | FO-reduction
 
-\knowledge{notion}
+\knowledge{notion, index={first-order!interpretable}}
  | first-order interpretable
 
-\knowledge{notion}
+\knowledge{notion, index={first-order!equivalent}}
  | first-order equivalent
 
 % ---
 % Fragments
 % ---
 
-\knowledge{notion}
+\knowledge{notion, index={formula!existential}}
  | existential sentences
  | existential formula
 
-\knowledge{notion}
+\knowledge{notion, index={formula!existential-positive}}
  | existential-positive sentences
  | existential-positive formula
 
-\knowledge{notion}
+\knowledge{notion, index={formula!positive quantifier-free}}
  | positive quantifier-free formula
 
 % ---
 % Weird FO stuff 
 % ---
 
-\knowledge{notion}
+\knowledge{notion, index={formula!order-invariant}}
  | order-invariant first-order formula
  | order-invariant first-order formulas
  | order-invariant@FO
  | order-invariance@FO
 
-\knowledge{notion}
+\knowledge{notion, index={formula!$\omega $-order-invariant}}
  | $\omega $-order-invariant first-order formulas
  | $\omega $-order-invariant@FO
  | $\omega $-order-invariant first-order formula
 
-\knowledge{url={https://en.wikipedia.org/wiki/L\%C3\%B6wenheim\%E2\%80\%93Skolem_theorem}}
+\knowledge{url={https://en.wikipedia.org/wiki/L\%C3\%B6wenheim\%E2\%80\%93Skolem_theorem}, index={Lowenheim–Skolem theorem@Löwenheim–Skolem theorem}}
  | upward Löwenheim–Skolem theorem
 
-\knowledge{notion}
+\knowledge{notion, index={Presburger arithmetic}}
  | Presburger arithmetic
 
 % ---
 % MSO 
 % ---
 
-\knowledge{notion}
+\knowledge{notion, index={monadic second-order logic}}
  | monadic second-order logic
  | MSO
  | monadic second-order
+
+\knowledge{notion, index={second-order logic}}
+ | second-order logic

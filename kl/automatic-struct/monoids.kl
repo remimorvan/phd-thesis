@@ -1,16 +1,16 @@
-\knowledge{notion}
+\knowledge{notion, index={monoid}}
  | finite monoid
  | monoid
  | monoids
 
-\knowledge{notion}
+\knowledge{notion, index={monoid!morphism}}
  | monoid morphism
  | monoid morphisms
  | morphism@monoid
 
-\knowledge{notion}
+\knowledge{notion, index={monoid!syntactic}}
  | syntactic monoids
  | syntactic monoid
 
-\knowledge{notion}
+\knowledge{notion, index={morphism!syntactic}}
  | syntactic morphism

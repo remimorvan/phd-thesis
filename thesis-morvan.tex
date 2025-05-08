@@ -1,3 +1,4 @@
+\input{header/index-preprocess.tex}
 % Compile with LuaLaTeX
 \RequirePackage{luatex85}
 \documentclass[a4paper,sfsidenotes,twoside,justified,nobib]{tufte-book-custom}
@@ -8,8 +9,6 @@
 \title[Homomorphism Problems]{Homomorphism Problems\\in Graph Databases\\ and Automatic Structures}
 \author{Rémi Morvan}
 
-
-\setcounter{secnumdepth}{3}
 
 % Dependencies
 \input{header/colour-palette}
@@ -55,42 +54,22 @@
 \input{kl/automatic-struct/algebra-misc.kl}
 
 % Biblio 
-
-% Biblio
-% \usepackage[
-% 	style=alphabetic,
-% 	citetracker=true,	
-% 	citereset=chapter,
-% 	backend=biber
-% ]{biblatex}
-% \addbibresource{bib-automatic-graphs}
-% \addbibresource{bib-complexity}
 \usepackage[
   style=alphabetic,
   autocite=footnote,
   maxalphanames=9,
   maxbibnames=99,
   backend=biber,
+  backref=true
 ]{biblatex}
 \bibliography{bib-abbrev,bib-global,bib-automatic-graphs,bib-databases,bib-complexity}
-\setlength{\biblabelsep}{2\labelsep}
-% https://tex.stackexchange.com/questions/298988/controlling-indentation-with-biblatex-alphabetic-style
-\defbibenvironment{bibliography}
-  {\list
-     {\printtext[labelalphawidth]{%
-        \printfield{prefixnumber}%
-        \printfield{labelalpha}%
-        \printfield{extraalpha}}}
-     {\setlength{\labelsep}{\biblabelsep}%
-      \setlength{\leftmargin}{\labelsep}%
-      \setlength{\itemsep}{\bibitemsep}%
-      \setlength{\parsep}{\bibparsep}}%
-      \renewcommand*{\makelabel}[1]{\textcolor{maincolor}{\textbf{##1\hss}}}}
-  {\endlist}
-  {\item}
-\renewcommand*{\intitlepunct}{\space} % remove colon after "In" for @incollection
+\input{header/bib-config.tex}
+
+\makeindex
 
 \begin{document}
+
+\input{kl/extra-index.tex}
 
 \frontmatter
 \include{parts/titlepage}
@@ -137,6 +116,7 @@
 	\item \todo{Increase distance between footnote and figure caption}
 	\item \todo{maximal under-approximation: des fois avec hyphen, des fois sans}
 	\item \todo{header in biblio}
+	\item \todo{Index unnumbered}
 \end{itemize}
 
 At the end:
@@ -145,6 +125,7 @@ At the end:
 	\item remove tags (\textsf{\\tag})
 	\item mathbb -> symbb
 	\item in bib: change inbook to incollection if no bookauthor entry
+	\item check DOIs (no http), URL, consulted version, etc.
 \end{itemize}
 
 \include{parts/intro/ch-intro}
@@ -167,19 +148,17 @@ At the end:
 \include{parts/algebra/ch-algebra}
 \include{parts/conclu-automatic/ch-conclu-automatic}
 
-\backmatter
 \begin{fullwidth}
 	\chapter*{Bibliography}
 	\chaptermark{Bibliography}
-	\renewcommand\thechapter{}
+	\markboth{Bibliography}{Bibliography}
 	\addcontentsline{toc}{chapter}{Bibliography}
 	\setlength{\columnsep}{8mm}
 	\begin{multicols}{2}
 		\printbibliography[heading=none]
 	\end{multicols}
 \end{fullwidth}
-% \chapter*{Bibliography}
-% \addcontentsline{toc}{chapter}{Bibliography}
-% \printbibliography[heading=none]
+
+\printindex
 
 \end{document}

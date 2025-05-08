@@ -1,13 +1,13 @@
-\knowledge{notion}
+\knowledge{notion, index={relation!reflexive}}
  | reflexive relation
  | reflexive relations
  | reflexive@rel
 
-\knowledge{notion}
+\knowledge{notion, index={relation!symmetric}}
  | symmetric@rel
  | symmetric relation
 
-\knowledge{notion}
+\knowledge{notion, index={relation!functional}}
  | functional relations
  | functional relation
  | functional@rel
@@ -18,23 +18,23 @@
 % Recognizable relations
 % ---
 
-\knowledge{notion}
+\knowledge{notion, index={relation!recognizable}}
  | recognizable relations
  | recognizable@rel
  | recognizable relation
 
-\knowledge{notion}
+\knowledge{notion, index={relation!$\+V$-recognizable}}
  | $\+V$-recognizable@rel
  | $\+V$-recognizable relations
 
- \knowledge{notion}
+ \knowledge{notion, index={Mezei theorem}}
  | Mezei theorem
 
 % ---
 % Automatic relations
 % ---
 
-\knowledge{notion}
+\knowledge{notion, index={relation!automatic}}
  | automatic relation
  | automatic relations
  | automatic binary relation
@@ -45,38 +45,38 @@
  | Automatic relations
  | automatic relations
 
-\knowledge{notion}
+\knowledge{notion, index={padding symbol}}
  | blank symbol
  | padding symbol
  | padding symbols
  | non-blank symbols
 
-\knowledge{notion}
+\knowledge{notion, index={automaton!synchronous}}
  | synchronous automaton 
  | automaton@sync
  | Synchronous automaton
  | synchronous automata
  | synchronous@auto
 
-\knowledge{notion}
+\knowledge{notion, index={convolution!of words}}
  | convolution@word
 
-\knowledge{notion}
+\knowledge{notion, index={well-formed words}}
  | well-formed
  | well-formed words
 
-\knowledge{notion}
+\knowledge{notion, index={relation!recognized by synchronous automaton}}
  | recognizes@syncauto
  | recognized@syncauto
  | recognize@syncauto
  | recognizing@syncauto
 
-\knowledge{notion}
+\knowledge{notion, index={relation!locally finite}}
  | $I$-locally finite
  | $\intInt{1,k}$-locally finite
  | $\{3\}$-locally finite
  
-\knowledge{notion}
+\knowledge{notion, index={morphisms!length-multiplying}}
  | length-multiplying
  | length-multiplying morphisms
  | length-multiplying morphism
@@ -85,31 +85,31 @@
 % Rational relations relations 
 % ---
 
-\knowledge{notion}
+\knowledge{notion, index={relation!rational}}
  | rational relation
  | rational relations
  | Rational relations
  | rational@rel
 
-\knowledge{notion}
+\knowledge{notion, index={automaton!multitape}}
  | multitape automaton
  | automaton@desync
  | Multitape automaton
  | multitape automata
  | Multitape automata
 
-\knowledge{notion}
+\knowledge{notion, index={relation!recognized by a multitape automaton}}
  | recognized@desync
  | recognizes@multitape
 
-\knowledge{notion}
+\knowledge{notion, index={relation!deterministic rational}}
  | deterministic rational relations
  | deterministic rational@rel
  | deterministic one-way rational relations
  | deterministic\\rational@rel
  | deterministic\\rational relations
 
-\knowledge{notion}
+\knowledge{notion, index={automaton!deterministic multitape}}
  | deterministic@desync
  | non-deterministic@desync
  | deterministic@multitape
@@ -121,36 +121,36 @@
 % Other models (automata)
 % ---
 
-\knowledge{notion}
+\knowledge{notion, index={relation!two-way rational}}
  | two-way rational relations
  | two-way rational@rel
  | two-way rational relation
  | two-way\\rational@rel
  | two-way\\rational relations
 
-\knowledge{notion}
+\knowledge{notion, index={automaton!deterministic two-way multitape}}
  | deterministic two-way multitape automata
 
-\knowledge{notion}
+\knowledge{notion, index={relation!deterministic two-way rational}}
  | deterministic two-way rational relations
  | Deterministic two-way rational relations
  | deterministic two-way rational@rel
  | deterministic\\two-way rational\\ relations
 
-\knowledge{notion}
+\knowledge{notion, index={automaton!$T$-multitape}}
  | $T$-multitape automata
  | $T$-multitape automaton
  | $T_{\textrm {sync}}$-multitape automaton
  | $T_{\textrm {rec}}$-multitape automaton
  | $\{\{i\} \mid i \in \intInt{1,k} \}^*$-multitape automata
 
-\knowledge{notion}
+\knowledge{notion, index={relation!$T$-controlled}}
  | $T$-controlled relation
  | $T$-controlled relations
  | $T_1$-controlled relations
  | $T_2$-controlled relations
 
-\knowledge{notion}
+\knowledge{notion, index={relation!right-automatic}}
  | Right-automatic relations
  | right-automatic@rel
  | right-automatic relations
@@ -159,36 +159,36 @@
 % Other models (transducers)
 % ---
 
-\knowledge{notion}
+\knowledge{notion, index={transducer}}
  | transducers
  | transducer
  | non-deterministic one-way transducers
 
-\knowledge{notion}
+\knowledge{notion, index={transducer!deterministic}}
  | deterministic one-way transducer
  | deterministic transducer
  | deterministic@transducer
  | deterministic transducers
 
-\knowledge{notion}
+\knowledge{notion, index={transduction!deterministic}}
  | deterministic transduction
  | determinstic\\transductions
  | one-way deterministic transductions
 
- \knowledge{notion}
+ \knowledge{notion, index={transduction}}
  | transductions
 
-\knowledge{notion}
+\knowledge{notion, index={regular function (transductions)}}
  | regular functions@bojan
  | Regular functions@bojan
  | regular@bojan
  | deterministic two-way transductions
  | Deterministic two-way transductions
 
-\knowledge{notion}
+\knowledge{notion, index={transduction!two-way}}
  | two-way transductions
 
-\knowledge{notion}
+\knowledge{notion, index={polyregular function (transduction)}}
  | polyregular\\functions@bojan
  | polyregular functions@bojan
  | polyregular function@bojan
@@ -197,31 +197,31 @@
 % Concrete relations 
 % ---
 
-\knowledge{notion}
+\knowledge{notion, index={relation!identity}}
  | identity relation
  | identity function 
  | equality relation
 
-\knowledge{notion}
+\knowledge{notion, index={relation!same parity length}}
  | same parity relation
  | same parity length relation
 
-\knowledge{notion}
+\knowledge{notion, index={relation!prefix}}
  | prefix relation
 
-\knowledge{notion}
+\knowledge{notion, index={relation!suffix}}
  | suffix relation
 
-\knowledge{notion}
+\knowledge{notion, index={relation!equal-length}}
  | equal-length relation
 
-\knowledge{notion}
+\knowledge{notion, index={relation!subword}}
  | subword relation
 
-\knowledge{notion}
+\knowledge{notion, index={order!lexicographic}}
  | lexicographic order
  | lexicographic
 
-\knowledge{notion}
+\knowledge{notion, index={order!length-lexicographic}}
  | length-lexicographic
  | length-lexicographic order

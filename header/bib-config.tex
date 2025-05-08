@@ -1,0 +1,63 @@
+\setlength{\biblabelsep}{2\labelsep}
+% https://tex.stackexchange.com/questions/298988/controlling-indentation-with-biblatex-alphabetic-style
+\defbibenvironment{bibliography}
+  {\list
+     {\printtext[labelalphawidth]{%
+        \printfield{prefixnumber}%
+        \printfield{labelalpha}%
+        \printfield{extraalpha}}}
+     {\setlength{\labelsep}{\biblabelsep}%
+      \setlength{\leftmargin}{\labelsep}%
+      \setlength{\itemsep}{\bibitemsep}%
+      \setlength{\parsep}{\bibparsep}}%
+      \renewcommand*{\makelabel}[1]{\textcolor{maincolor}{\textbf{##1\hss}}}}
+  {\endlist}
+  {\item}
+\renewcommand*{\intitlepunct}{\space} % remove colon after "In" for @incollection
+% New line before doi
+% https://tex.stackexchange.com/questions/29802/biblatex-and-new-line-for-doi-url-and-eprint
+\newbibmacro*{bbx:parunit}{%
+  \ifbibliography
+    {\setunit{\bibpagerefpunct}\newblock
+     \usebibmacro{pageref}%
+     \clearlist{pageref}%
+     \setunit{\adddot\par\nobreak}}
+    {}}
+
+\renewbibmacro*{doi+eprint+url}{%
+  \usebibmacro{bbx:parunit}% Added
+  \iftoggle{bbx:doi}
+    {\printfield{doi}}
+    {}%
+  \iftoggle{bbx:eprint}
+    {\usebibmacro{eprint}}
+    {}%
+  \iftoggle{bbx:url}
+    {\usebibmacro{url+urldate}}
+    {}}
+\renewbibmacro*{eprint}{%
+	\usebibmacro{bbx:parunit}% Added
+	\iffieldundef{eprinttype}
+		{\printfield{eprint}}
+		{\printfield[eprint:\strfield{eprinttype}]{eprint}}}
+
+\renewbibmacro*{url+urldate}{%
+	\usebibmacro{bbx:parunit}% Added
+	\printfield{url}%
+	\printfield{urldate}%
+	% \iffieldundef{urlyear}
+	% 	{}
+	% 	{\setunit*{\addspace}%
+	% 	\printtext[urldate]{\printurldate}}
+	}
+% Backref
+% https://tex.stackexchange.com/questions/606503/how-to-modify-backref-format-in-biblatex
+\DefineBibliographyStrings{english}{
+	 backrefpage={Cited on p.},
+	 backrefpages={Cited on pp.}
+}
+\renewcommand*{\finentrypunct}{}
+\usepackage{xpatch}
+\DeclareFieldFormat{backrefparens}{\addperiod\newline\scshape #1}
+% \DeclareFieldFormat{backrefparens}{\addperiod\raisebox{4pt}{\scriptsize{#1}}}
+% \xpatchbibmacro{pageref}{parens}{backrefparens}{}{}

@@ -1,53 +1,53 @@
-\knowledge{notion}
+\knowledge{notion, index={clique}}
  | $2$-clique
  | $k$-clique
  | $3$-clique
  | cliques
  | clique
 
-\knowledge{notion}
+\knowledge{notion, index={path!graph}}
  | $2$-path
  | path
  | $k$-path
 
-\knowledge{notion}
+\knowledge{notion, index={transitive tournament}}
  | $2$-transitive tournament
  | $k$-transitive tournament
  | $3$-transitive tournament
  | transitive tournament
 
-\knowledge{notion}
+\knowledge{notion, index={link}}
  | $n$-link
  | $1$-link
 
-\knowledge{notion}
+\knowledge{notion, index={linked}}
  | $n$-linked
  | linked
  | $1$-linked
 
-\knowledge{notion}
+\knowledge{notion, index={zigzag graph}}
  | zigzag graph
 
 % ---
 % Mycielski
 % ---
 
-\knowledge{notion}
+\knowledge{notion, index={Mycielski!construction}}
  | Mycielski's construction
  | Mycielskian
 
-\knowledge{notion}
+\knowledge{notion, index={Mycielski!infinite graph}}
  | infinite Mycielski graph
 
-\knowledge{notion}
+\knowledge{notion, index={transitive tournament!to contain (un)bounded}}
  | contain unbounded tournaments
  | has bounded tournaments
 
-\knowledge{notion}
+\knowledge{notion, index={graph!triangle-free}}
  | triangle-free graphs@dir
  | triangle-free@dir
 
-\knowledge{notion}
+\knowledge{notion, index={graph!triangle-free (undirected notion)}}
  | triangle-free@undir
  | triangle-free graph@undir
  | triangle-free graphs@undir

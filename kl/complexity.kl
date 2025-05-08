@@ -48,19 +48,11 @@
 
 \knowledge{notion, wrap=\textsf}
  | ExpTime
-
-\knowledge{notion, wrap=\textsf}
  | 2ExpTime
-
-\knowledge{notion, wrap=\textsf}
  | 3ExpTime
 
-\knowledge{notion, text={ExpSpace}, wrap=\textsf}
-| EXPSPACE
+\knowledge{notion, wrap=\textsf}
 | ExpSpace
-
-\knowledge{notion, text={2ExpSpace}, wrap=\textsf}
-| 2EXPSPACE
 | 2ExpSpace
 
 \knowledge{notion, text={Tower}, wrap=\textsf}

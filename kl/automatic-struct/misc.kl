@@ -1,11 +1,11 @@
-\knowledge{notion}
+\knowledge{notion, index={dichotomy theorem for automatic structures}}
  | Dichotomy Theorem for Automatic Structures
  | dichotomy theorem for automatic structures
 
-\knowledge{notion}
+\knowledge{notion, index={invariant under graph isomorphisms}}
  | invariant under graph isomorphisms
 
-\knowledge{notion}
+\knowledge{notion, index={constraint satisfaction problem}}
  | constraint satisfaction problem
  | constraint satisfaction problems
  | CSP
@@ -15,14 +15,14 @@
 % De Bruijn-Erdos
 % ---
 
-\knowledge{notion}
+\knowledge{notion, index={de Bruijn–Erdos theorem@de Bruijn–Erdős theorem}}
  | De Bruijn–Erdős Theorem
  | De Bruijn-Erdős theorem
 
-\knowledge{notion}
+\knowledge{notion, index={unary type}}
  | unary type
 
-\knowledge{notion}
+\knowledge{notion, index={obstruction!for a unary type}}
  | obstructing@unarytype
  
 % ---

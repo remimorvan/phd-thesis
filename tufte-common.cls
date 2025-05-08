@@ -347,7 +347,7 @@
     {\RequirePackage[unicode,hyperfootnotes=false]{hyperref}}
   \hypersetup{%
     pdfborder = {0 0 0},
-    bookmarksdepth = section,
+    bookmarksdepth = subsection,
     citecolor = DarkGreen,
     linkcolor = DarkBlue,
     urlcolor = DarkGreen,

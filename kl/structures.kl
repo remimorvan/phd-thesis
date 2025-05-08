@@ -2,30 +2,30 @@
 % Signatures
 % ---
 
-\knowledge{notion}
+\knowledge{notion, index={signature}}
  | signature
  | signatures
  | relational signature
  | relational signatures
 
-\knowledge{notion}
+\knowledge{notion, index={signature!purely relational signature}}
  | purely relational signature
 
-\knowledge{notion}
+\knowledge{notion, index={predicate}}
  | predicate
  | predicates
 
-\knowledge{notion}
+\knowledge{notion, index={signature!graph signature}}
  | graph signature
 
-\knowledge{notion}
+\knowledge{notion, index={signature!of binary strings}}
  | signature of binary strings
 
 % ---
 % Structures
 % ---
 
-\knowledge{notion}
+\knowledge{notion, index={structure}}
  | $\sigma $-structures
  | $\sigma $-structure
  | $\signatureSynchronous {\Sigma }$-structure
@@ -36,15 +36,15 @@
  | relational structures
  | $\tau $-structure
 
-\knowledge{notion}
+\knowledge{notion, index={structure!pointed}}
  | pointed $\sigma $-structure
 
-\knowledge{notion}
+\knowledge{notion, index={structure!marked}}
  | marked structure
  | $\extendedSignature {\sigma }{\?B}$-structure
  | $\extendedSignature {\sigma }{\?B}$-structures
 
-\knowledge{notion}
+\knowledge{notion, index={predicate!interpretation of a}}
  | interpret@predicate
  | interpreted@predicate
  | interpreting@predicate
@@ -53,7 +53,7 @@
  | predicate interpreted
  | interpreted@pred
 
-\knowledge{notion}
+\knowledge{notion, index={structure!finite}}
  | finite $\sigma $-structures
  | finite $\sigma $-structure
  | finite structure
@@ -73,7 +73,7 @@
  | non-hyperedges
  | edges
 
-\knowledge{notion}
+\knowledge{notion, index={structure!locally finite}}
  | locally finite@struct
  | locally finite structure
 
@@ -81,28 +81,29 @@
 % Graph-ish
 % ---
 
-\knowledge{notion}
+\knowledge{notion, index={graph}}
  | graphs@dir
  | graph@dir
  | directed graph
 
-\knowledge{notion}
+\knowledge{notion, index={path!undirected}}
  | undirected path
 
-\knowledge{notion}
+\knowledge{notion, index={path!simple}}
  | simple@path
  | simple path
 
-\knowledge{notion}
+\knowledge{notion, index={strongly acyclic}}
  | strongly acyclic@struct
 
-\knowledge{notion}
+\knowledge{notion, index={directed cycle}}
  | directed cycle
 
-\knowledge{notion}
+\knowledge{notion, index={directed acyclic graph}}
  | DAG
+ | directed acyclic graph
 
-\knowledge{notion}
+\knowledge{notion, index={connectivity}}
  | connected
  | connected component
  | connected components
@@ -110,26 +111,26 @@
  | unconnected@struct
  | connectivity@struct
 
-\knowledge{notion}
+\knowledge{notion, index={connectivity!regularly unconnectivity}}
 | regularly unconnected
 
-\knowledge{notion}
+\knowledge{notion, index={adjacency}}
  | adjacency
  | adjacencies
  | adjacent elements
 
-\knowledge{notion}
+\knowledge{notion, index={tree!directed}}
  | directed tree
  | directed trees
 
-\knowledge{notion}
+\knowledge{notion, index={tree!$\sigma$-tree}}
  | $\sigma $-tree
  | $\sigma $-trees
 
-\knowledge{notion}
+\knowledge{notion, index={graph!incidence graph}}
  | incidence graph
 
-\knowledge{notion}
+\knowledge{notion, index={distance}}
  | distance@struct
  | distances@struct
 
@@ -137,30 +138,30 @@
 % Substructures & misc 
 % ---
 
-\knowledge{notion}
+\knowledge{notion, index={substructure}}
  | substructure
  | finite subgraph
  | substructures
 
-\knowledge{notion}
+\knowledge{notion, index={substructure!induced}}
  | induced substructure
  | induced@structure
 
-\knowledge{notion}
+\knowledge{notion, index={substructure!proper}}
  | proper substructure
 
 % ---
 % Construction on structures
 % ---
 
-\knowledge{notion}
+\knowledge{notion, index={disjoint union}}
  | disjoint union
 
-\knowledge{notion}
+\knowledge{notion, index={Cartesian product}}
  | Cartesian product
  | Cartesian products
 
-\knowledge{notion}
+\knowledge{notion, index={block product}}
  | block product
 
 
@@ -168,6 +169,6 @@
 % Queries
 % ---
 
-\knowledge{notion}
+\knowledge{notion, index={query}}
  | queries@sem
  | query@sem
