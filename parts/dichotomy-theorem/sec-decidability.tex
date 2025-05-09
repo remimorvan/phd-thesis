@@ -17,8 +17,7 @@ see later that the algorithm is correct for "$\sigma$-structures" with so-called
 which is a superclass of the "structures" with "finite duality".}
 Then, we will use the former algorithm to prove that assuming that $\?B$ has "finite duality",
 then $\HomRegAut{\?B}$ is decidable.\footnote{Interestingly, this algorithm cannot solve
-$\HomRegAut{\?B}$ when $\?B$ has "tree duality" but not "finite duality". 
-\todo{We discuss this in more details in TODO.}}
+$\HomRegAut{\?B}$ when $\?B$ has "tree duality" but not "finite duality".}
 
 \subsection{Uniformly First-Order Definable Homomorphisms}
 \label{sec:uniformly-first-order-definable-hom}
@@ -94,8 +93,9 @@ Before proving this lemma, we show an intermediate result.
 	which concludes the proof that $F$ is a "homomorphism" from $\?A$ to $\FederVardi{\?B}$.
 
 	By "Atserias' theorem", since $\HomAll{\?B}$ is "first-order definable",
-	then $\?B$ has "finite duality", and in particular it has \todo{addref}
-	"tree duality" and so by \todo{addref}, there is a "homomorphism"
+	then $\?B$ has "finite duality", and in particular it has
+	"tree duality" (by \Cref{prop:finite-duality-implies-tree-duality}) and so by
+	\Cref{prop:charac-Feder-Vardi}, there exists a "homomorphism"
 	$g\colon \FederVardi{\?B} \to \?B$.
 	We will now produce "first-order formulas" to describe $g \circ F$.
 
@@ -357,12 +357,11 @@ In general, the converse property does not hold. For instance, if $\sigma$ is th
 is always the map $a \mapsto B$, no matter whether there is a "homomorphism" from
 $\?A$ to $\?B$.
 
-Yet, \todo{who} managed to identify a necessary and sufficient condition on $\?B$ for
+Yet, Larose, Loten and Tardif managed to identify a necessary and sufficient condition on $\?B$ for
 the "hyperedge consistency algorithm@@finite" to decide whether $\?A \in \HomFin{\?B}$.
 
-\begin{proposition}
+\begin{proposition}[{\cite[Theorem~3.3]{LaroseLotenTardif2007CharacterisationFOCSP}}]
 	\AP\label{prop:hyperedge-consistency-tree-duality}
-	\todo{addref}
 	If $\?B$ has "tree duality" then $\?A \homto \?B$ "iff"
 	$\HCFixpoint{\?A}{\?B}(a) \neq \emptyset$ for all $a\in A$.
 \end{proposition}
@@ -373,7 +372,7 @@ by an ordinal induction but with a finite induction.
 
 As an example, \Cref{ex:zigzag-HC-T2} witnesses that
 $\zigzag{n}{2} \homto \transitiveTournament{2}$ since $\transitiveTournament{2}$
-has "tree duality" by \Cref{prop:finite-duality-implies-tree-duality} and \todo{ADDREF}.
+has "tree duality" by \Cref{prop:finite-duality-implies-tree-duality}.
 
 \begin{figure}
 	\centering
@@ -421,8 +420,8 @@ has "tree duality" by \Cref{prop:finite-duality-implies-tree-duality} and \todo{
 \end{marginfigure}
 \begin{example}[{\Cref{ex:zigzag-HC-T2}, continued}]
 	\AP\label{ex:zigzag-HC-P2}
-	On the other hand, while $\pathGraph{2}$ does not have "finite duality", it has
-	"tree duality", by \todo{ADDREF}, and so the "hyperedge consistency algorithm@@finite"
+	While $\pathGraph{2}$ does not have "finite duality" (\Cref{prop:2-path-infinite-duality}), it has
+	"tree duality" (\Cref{prop:2-path-tree-duality}), and so the "hyperedge consistency algorithm@@finite"
 	decides whether a finite "$\sigma$-structure" has a "homomorphism" to $\pathGraph{2}$.
 	We represent some steps of the algorithm in \Cref{fig:zigzag-graph-HC-P2},
 	on the "input structure" $\zigzag{5}{2}$.
@@ -447,21 +446,21 @@ has "tree duality" by \Cref{prop:finite-duality-implies-tree-duality} and \todo{
 
 \begin{corollary}
 	If $\?B$ has "tree duality", then $\HomFin{\?B}$ can be solved in
-	polynomial time.\todo{ Precise complexity.}
+	polynomial time.
 \end{corollary}
 
-Finally, we will prove a proposition that we will prove useful later in \todo{TODO}.
-\begin{proposition}
-	\AP\label{prop:HC-on-same-structure}
-	Let $\?B$ be a "$\sigma$-core" with "tree duality". Then
-	$\HCFixpoint{\?B}{\?B}(b) = \{b\}$ for each $b\in B$.\footnote{Note that
-	this is false if $\?B$ does not have "tree duality". For instance,
-	if $\?B$ is the "$2$-clique", then $\HCFixpoint{\?B}{\?B}(b) = B$
-	for each $b \in B$.}
-\end{proposition}
-\begin{proof}
-	\todo{TODO. Rigidity?}
-\end{proof}
+% Finally, we will prove a proposition that we will prove useful later in \todo{TODO}.
+% \begin{proposition}
+% 	\AP\label{prop:HC-on-same-structure}
+% 	Let $\?B$ be a "$\sigma$-core" with "tree duality". Then
+% 	$\HCFixpoint{\?B}{\?B}(b) = \{b\}$ for each $b\in B$.\footnote{Note that
+% 	this is false if $\?B$ does not have "tree duality". For instance,
+% 	if $\?B$ is the "$2$-clique", then $\HCFixpoint{\?B}{\?B}(b) = B$
+% 	for each $b \in B$.}
+% \end{proposition}
+% \begin{proof}
+% 	\todo{TODO. Rigidity?}
+% \end{proof}
 
 \todo{somewhere \AP""hyperedge consistency@@finite"" algo.}
 
@@ -662,14 +661,12 @@ on $\zigzag{n}{5}$ in only $2$ steps.
 		\[\HCOperator^{\,m}_{\?A,\?B}(F)(a) = \HCOperator^{\,m}_{\?A_{a,m},\?B}(F)(a).\]
 	\end{claim}
 	We give a proof sketch of this claim. Note that by definition,
-	$\HCOperator_{\?A,\?B}(F)(a)$ only depends on the values of $F(a')$ where $a'$ is at distance 1.
-	More precisely, it only depends on, for any "predicate" $\+R$ of arity $k$,
-	for any $i\in\intInt{1,k}$, for any $Y_1,\dotsc,Y_{k-1} \subseteq B$, whether there
-	are elements $\langle a_1,\,\dotsc,\,a_{k-1}\rangle \in \adjacency{a}{\?A}{\+R}{i}$
-	"st"  
-	$\langle F(a_1),\,\dotsc,\,F(a_{k-1}) \rangle = \langle Y_1,\,\dotsc,\,Y_{k-1} \rangle$.
-	\todo{Diego says ``I'm not sure what you want to say here. Why the Yi's? There's something missing?'' about the previous sentence. Clarify this.}
-	Since $B$ is finite, there are finitely many such tuples, and for each of them it suffices
+	$\HCOperator_{\?A,\?B}(F)(a)$ only depends on the values of $F(a')$ where $a'$ is at "distance@@struct" 1.
+	More precisely, it only depends on the values
+	$\langle F(a_1),\,\dotsc,\,F(a_{k-1}) \rangle$, where $\+R$ is any "predicate" of arity $k$,
+	$i\in\intInt{1,k}$ and $\langle a_1,\,\dotsc,\,a_{k-1}\rangle \in \adjacency{a}{\?A}{\+R}{i}$.
+	Since $B$ is finite, there are finitely many tuples
+	of the form $\langle F(a_1),\,\dotsc,\,F(a_{k-1}) \rangle$, and so for each of them it suffices
 	to keep (for distance $m=1$) only one tuple $\langle a_1,\,\dotsc,\,a_{k-1}\rangle \in \adjacency{a}{\?A}{\+R}{i}$. By induction on $m$, we
 	obtain a finite "substructure" $\?A_{a,m}$ of $\ball{\?A}{a}{m}$ as in
 	\Cref{claim:hyperedge-consistency-ball}.
@@ -790,6 +787,17 @@ on $\zigzag{n}{5}$ in only $2$ steps.
 		then $b \not\in \HCOperator^{\,n(\?B)}_{\?A,\?B}(\topLatticeGuessFunctions{B})(a)$.
 	\end{claim}
 
+	\begin{marginfigure}
+		\centering
+		\begin{tikzpicture}
+			\input{tikz/dichotomy/proof-of-hyperedge-consistency-uniform-convergence-hom}
+		\end{tikzpicture}
+		\caption{
+			\AP\label{fig:proof-of-hyperedge-consistency-uniform-convergence-hom}
+			Construction of $\?C$ as in the proof of \Cref{claim:hyperedge-consistency-uniform-convergence-hom} when $\?A$
+			is the "$2$-path" and $\?B$ is the "$2$-transitive tournament".
+		}
+	\end{marginfigure}
 	To prove this claim, we use a construction that is similar to \Cref{prop:idempotent-core-preserves-csp-complexity}.
 	Fix $a\in A$ and $b\in B$ "st" $b \not\in \HCFixpoint{\?A}{\?B}(a)$.
 	Let $\?C$ be defined by first taking the disjoint union of $\?A$ and $\?B$,
@@ -804,8 +812,8 @@ on $\zigzag{n}{5}$ in only $2$ steps.
 	\]
 	The goal of this construction
 	is that, when running the "hyperedge consistency algorithm@@finite" on $\?C$,
-	vertex $b$ will be removed as a potential image for $a$ since $b \not\in \HCFixpoint{\?A}{\?B}(a)$, but because of the copy of $\?B$ included in $\?C$, any "homomorphism" from $\?C$ to $\?B$ must map $a$ to $b$.
-	\todo{add figure ($\?B$ is $\transitiveTournament{2}$, $\?A$ is 2-path.)}
+	vertex $b$ will be removed as a potential image for $a$ since $b \not\in \HCFixpoint{\?A}{\?B}(a)$, but because of the copy of $\?B$ included in $\?C$, any "homomorphism" from $\?C$ to $\?B$ must map $a$ to $b$. See \Cref{fig:proof-of-hyperedge-consistency-uniform-convergence-hom}
+	for an example.
 	% \begin{claim}
 	% 	\AP\label{claim:hyperedge-consistency-uniform-convergence-idempotent-core}
 	% 	$\HCFixpoint{\?C}{\?B}(a) = \emptyset$.
@@ -833,8 +841,8 @@ on $\zigzag{n}{5}$ in only $2$ steps.
 	So, since $\?C \nothomto \?B$, there exists a "critical obstruction" $\?T$ of $\?B$
 	"st" there is a "homomorphism" $f$ from $\?T$ to $\?C$. 
 	We claim that $a=b$ must be in the image of $f$. Indeed, since $a=b$ is the only vertex
-	of $\?A$ that is adjacent to $\?B$ in $\?C$, and since $\?T$ is "connected" by
-	\todo{ADDREF},
+	of $\?A$ that is adjacent to $\?B$ in $\?C$, and since $\?T$ is "connected" as a
+	"critical obstruction",
 	we would otherwise get that either $\?T \homto \?B$---contradicting that $\?T$ is a "critical obstruction" of $\?B$---or that $\?T \homto \?A$---contradicting that $\?A \homto \?B$.
 	
 	And so, there exists $t \in T$ "st" $f(t) = a = b$.

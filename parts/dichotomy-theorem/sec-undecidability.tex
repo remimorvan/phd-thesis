@@ -16,11 +16,20 @@ and we devote the rest of this chapter to proving it.
 	\DichotomyThmDichotomyAutomatic
 \end{mainstatement}
 
-\begin{remark}
-	\todo{TODO GEneralization to "higher-order automatic structures".}
-	\todo{Deterministic rational?}
-	\todo{RHS is "automatic@@struct"?}
+\begin{remark}[Beyond automatic relations]
+	In the statement of \Cref{thm:dichotomy-theorem-automatic-structures},
+	"automatic structures" can be replaced by
+	"$\omega$-tree automatic structures", or even
+	"higher-order automatic structures"
+	and the statement of the theorem would remain true.
+	The undecidability results obviously remain true when defined on a larger class.
+	Moreover, to prove decidability, notice that the key lemma of \Cref{sec:uniformly-first-order-definable-hom},
+	namely \Cref{lemma:finite-duality-uniformly-definable-homomorphisms},
+	actually deals with $\HomAll{\?B}$ and not $\HomAut{\?B}$.
+	The decidability follows from the fact that the "first-order theory" of any
+	"higher-order automatic structure" is decidable.
 \end{remark}
+
 
 \begin{marginfigure}
 	\centering
@@ -122,7 +131,7 @@ of any assumption on $\?B$.
 		\Bigr),
 	\]
 	by letting $\{a_1,\dotsc,a_n\} = A'$. 
-	Moreover, whether $\?A' \nothomto \?B$ is also decidable---in "coNP"---by \todo{addref}.
+	Moreover, whether $\?A' \nothomto^? \?B$ is also decidable in "coNP".
 	Overall, this provides a co-semi-algorithm for $\HomAut{\?B}$: we enumerate finite
 	"$\sigma$-structure" $\?A'$, and test if (1) $\?A'$ is a "substructure" of $\?A$ and if (2)
 	$\?A' \homto \?B$. And hence $\HomAut{\?B}$ is "coRE".
@@ -288,7 +297,7 @@ of $\HomAut{\?B}$ by reduction from the following problem.
 	is the only part of the proof of \Cref{lem:reduction-hom} that requires
 	the assumption that $\sigma$ contains at least one "predicate" of arity at least 2.}
 
-	We then consider the "automatic $\sigma$-structure" $\?A\prodstruct \iterstruct{\?B}{2}$,%
+	We then consider the "automatic $\sigma$-structure" $\?A\prodstruct \iterstruct{\?B}{2}$,
 	and extend it to a
 	"$\extendedSignature{\sigma}{\?B}$-structure" \AP\(\intro*\ConstrUndecHom{(\?A\prodstruct \iterstruct{\?B}{2})}\)
 	in which for each $b_0 \in B$,
@@ -399,7 +408,14 @@ of $\HomAut{\?B}$ by reduction from the following problem.
 
 	Putting \Cref{claim:reduction-hom-direct,claim:reduction-hom-converse} together,
 	we get that the reduction is correct.
-	Lastly, note that it is a "first-order reduction" because \todo{TODO}.
+	Lastly, note that it is a "first-order reduction":
+	clearly, one can go from $\?G$ to $\?A$ via a (one-dimensional) "first-order reduction",
+	and then from $\?A$ to $\?A\prodstruct \iterstruct{\?B}{2}$
+	via a (multi-dimensional) "first-order reduction" since $\?B$ is finite,
+	and lastly 
+	$\ConstrUndecHom{(\?A\prodstruct \iterstruct{\?B}{2})}$ can be obtained
+	by a "first-order reduction" from the latter "structure" since
+	"first-order logic" can test equality with a fixed element.
 \end{proof}
 
 By \Cref{prop:undecidability-connectivity}, the complement of "Connectivity in automatic graphs"
@@ -586,7 +602,8 @@ and will later settle its complexity.
 
 	Putting \Cref{claim:reduction-homreg-direct,claim:reduction-homreg-converse} together,
 	we get that the reduction is correct.
-	Lastly, note that this is a first-order reduction because \todo{TODO}.
+	Lastly, note that this is a first-order reduction for the same reason
+	as \Cref{lem:reduction-hom}.
 \end{proof}
 
 We then prove a lower bound on the complexity of "regular unconnectivity in automatic graphs".

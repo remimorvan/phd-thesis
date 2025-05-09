@@ -27,21 +27,21 @@ Turing machines with certain restrictions, which we call ``well-founded''.
 
 \AP We say that a Turing machine $\+T$ is ""reversible"", if every node of $\confGraph$ has in-degree at most 1, in other words if the machine is co-deterministic.%
 \footnote{
-    Note that the proof of undecidability of the isomorphism problem for automatic structures 
-    \cite[\S~5]{KhoussainovNiesRubinStephan2007Automatic} \todo{addref prelim}
+    The proof of undecidability of the isomorphism problem for automatic structures 
+    \cite[\S~5]{KhoussainovNiesRubinStephan2007Automatic}
     also relies on the use of "reversible" Turing machines.
 }%
 \footnote{
     For more details and pointers on "reversible" Turing machines,
     see \cite[Chapter 5]{Morita2017Reversible}.
 }
-We say that a Turing machine $\+T$ is ""well-founded"" if its "configuration graph" is such that:
+We say that a "Turing machine" $\+T$ is ""well-founded"" if its "configuration graph" is such that:
 \begin{enumerate}
     \item the "initial configuration" has in-degree zero, and
     \item there are no infinite backward paths $\gamma_0 \leftarrow \gamma_1 \leftarrow \cdots$ in $\confGraph$. 
 \end{enumerate}
 
-We say that a Turing machine is ""linear@@TM"" if it is "well-founded", deterministic and "reversible".
+We say that a "Turing machine" is \AP""linear@@TM"" if it is "well-founded", deterministic and "reversible".
 By construction, a Turing machine is "linear@@TM" "iff" (1) its "configuration graph" consists of a possibly infinite disjoint union of directed paths, which are all finite, or "isomorphic" to $\tup{\N, \textrm{succ}}$ and (2) the "initial configuration" has in-degree zero.
 Such a configuration graph is depicted on
 \Cref{fig:reduction-wf-RTM-to-colouring-config-graph-wf-RTM}.\footnote{Note
@@ -104,7 +104,7 @@ that it is decidable whether a "Turing machine" is "linear@@TM". In fact, condit
     we denote by $\+T'$ the instance of the "regular reachability problem" to which it
     is reduced.
 
-    $\+T'$ is defined as follows: every time there is a transition
+    The "Turing machine" $\+T'$ is defined as follows: every time there is a transition
     $u\cdot p \cdot v \to u' \cdot q \cdot v'$ in $\+T$,
 	we simulate this transition in $T'$: to achieve this, `$\triangleright$' and `$\triangleleft$'s should be treated as blank symbols,
 	and then we rewrite $\triangleright^n \triangleleft^m$ into $\triangleright^{n+1}\triangleleft^{m+1}$.
