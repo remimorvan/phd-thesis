@@ -110,7 +110,7 @@ all operators/constructions should preserve this "type".
 	$x, x' \in \?X$, if $x \dep x'$ then $x \in C \iff x' \in C$.\footnote{In other
 	words, $C$ is a union of equivalence classes of the transitive closure of $\dep$.}
 \end{definition}
-\begin{figure}[htb]
+\begin{figure*}[htb]
 	\begin{center}
 		\includegraphics[width=\linewidth]{fig/algebra/free_algebras.png}
 	\end{center}
@@ -119,9 +119,9 @@ all operators/constructions should preserve this "type".
 		Representation of the "dependent set" $\Sync\Sigma$ of "synchronous words".
 		Coloured edges represent the "dependency relation", and self-loops are not drawn. 
 	} 
-\end{figure}
+\end{figure*}
 \begin{example}
-	Given a finite alphabet $\Sigma$, let $\intro*\Sync{\Sigma}$ be\footnote{The index refers to the arity of the relations we are considering: here we focus on binary relations, but all constructions can be generalized to higher arities.} the "dependent set" of ""synchronous words"" defined by:
+	Given a finite alphabet $\Sigma$, let $\intro*\Sync{\Sigma}$ be the "dependent set" of ""synchronous words"" defined by:
 	\vspace{-1.25em}
 	\begin{multicols}{2}
 	\begin{itemize}
@@ -142,7 +142,8 @@ all operators/constructions should preserve this "type".
 	for $u \in (\Sigma\times\pad)^*$,
 	and $\type{u}{\LL\to\BL}$ with $\type{u}{\BL}$
 	for $u \in (\pad\times\Sigma)^*$.
-	This structure is depicted in \Cref{fig:free_algebras}.
+	This structure is depicted in \Cref{fig:free_algebras}.%
+	\footnote{The index refers to the arity of the relations we are considering: here we focus on binary relations, but all constructions can be generalized to higher arities.}
 \end{example}
 
 % Given a set $X$, the \AP""dependent set induced by a set"" $X$ is defined as
@@ -150,12 +151,12 @@ all operators/constructions should preserve this "type".
 % for all $x \in X$ and all "types" $\sigma, \tau$.
 
 Given a relation $\+R \subseteq \Sigma^* \times \Sigma^*$, we denote by
-$\AP\intro*\proj{\+R} = \{\type{(u,v)}{\tau} \mid \type{(u,v)}{\tau} \in \Sync{\Sigma} \text{ and } (u,v) \in \+R\}$
+$\AP\intro*\proj{\+R} \defeq \{\type{(u,v)}{\tau} \mid \type{(u,v)}{\tau} \in \Sync{\Sigma} \text{ and } (u,v) \in \+R\}$
 the "closed subset" of $\Sync{\Sigma}$ induced by $\+R$.
 
 \begin{fact}
 	The map $\+R \mapsto \proj{\+R}$ is a bijection between
-	relations and "closed subsets" of $\Sync{\Sigma}$.
+	binary relations over $\Sigma^*$ and "closed subsets" of $\Sync{\Sigma}$.
 \end{fact}
 
 \begin{proof}

@@ -96,13 +96,35 @@ Our "synchronous algebras" differ from monoids in two points:
 	$\omega$-semigroups---see \cite[\S 2.4, p.~7]{Pin1998PositiveVarieties}---but the constraints (here the 
 	orderings) are always defined between elements of the \emph{same type}.}
 \end{itemize}
+To understand how this "dependency relation" appears, we find that
+looking at the "syntactic congruence@@sync" helps:
+recall that the syntactic congruence of a language $L \subseteq \Sigma^*$
+is defined by
+\[
+	u \sim_{L} v \quad\text{"iff"}\quad
+	\forall x,y\in \Sigma^*.\, xuy \in L \Leftrightarrow xvy \in L.
+\]
+This relation is, by definition, an "equivalence relation".
+We claim that the same definition cannot hold to capture the essence of
+"automatic relations", for the simple reason that it might be that
+$u$, $v$, $x$ and $y$ are all well-formed, and that
+$xuy$ is "well-formed" but $xvy$ is not. In this case, 
+asking for the property $xuy \in \+R \Leftrightarrow xvy \in \+R$ 
+to hold does not make sense since the object $xvy$ simply does not exist
+in our universe. To tackle this problem, we need to relativize this
+property with the assumption that both $xuy$ and $xvy$ are "well-formed".
+Doing so yields a notion of "syntactic congruence" that
+makes sense---see \Cref{sec:syntactic-morphism} for the formal definition---,
+however because of this relativization, it is no longer an "equivalence relation":
+the non-trivial structure of this relation is precisely captured by the notion
+of "dependency relation"!
 
 Importantly, some variations are possible on the definition of "synchronous algebras":
 in particular, one could get rid of the notion of "dependency relation" and 
 \Cref{lem:syntactic-morphism-theorem,lem:eilenberg-sy} would still hold.
-However, we show in \Cref{sec:counterexample} that these
-simplified synchronous algebras cannot characterize the property of being a "$\+V$-relation".
-Therefore, the notion of "dependency" seems necessary to tackle \Cref{quest:V-relations}.
+\textbf{However, we show in \Cref{sec:counterexample} that these
+simplified synchronous algebras cannot characterize the property of being a "$\symbf{\+V}$-relation".
+Therefore, the notion of "dependency" seems necessary to tackle \Cref{quest:V-relations}.}
 Moreover, we show that these algebras arise from a monad, but to our knowledge none of the 
 meta-theorems developing algebraic language theories over monads apply to it,
 see \Cref{apdx:monads} for more details.
@@ -135,7 +157,7 @@ to a surprising definition of "residuals", see \Cref{def:residuals}.
 
 \begin{remark}
 	All our results are described for binary relations, but can be extended to
-	$k$-ary automatic relations, see \Cref{sec:discussion}.
+	$k$-ary automatic relations.
 \end{remark}
 
 \paragraph*{Organization.} After giving preliminary results in \Cref{sec:preliminaries}, we introduce
@@ -144,22 +166,11 @@ the "synchronous algebras" in \Cref{sec:synchronous-algebras} and show the exist
 "$*$-pseudovarieties@@reglang" in \Cref{sec:lifting-theorem}, and after introducing "$*$-pseudovarieties of automatic relations", we provide a more algebraic reformulation of the "lifting 
 theorem@@monoidspseudovar" (\Cref{thm:lifting-theorem-monoids-pseudovarieties}).
 We conclude the paper with
-a short discussion in \Cref{sec:discussion}.
+a short discussion in \Cref{sec:algebra-discussion}.
 
 \subsection{Related Work}
 \label{sec:algebra-related-work}
 
-\begin{figure}[htb]
-	\centering
-	\includegraphics[width=\linewidth]{fig/algebra/landscape.png}
-	\caption{
-		\AP\label{fig:landscape-rationality} The landscape of rationality for binary relations.
-		Dashed regions are empty: the intersection of
-		functional relations and two-way rational relations
-		collapses to regular functions by
-		\cite[Theorem 22, p.~243]{EngelfrietHoogeboom2001MSOTransductions}.
-	}
-\end{figure}
 The algebraic framework has been extended far beyond languages of finite words: let us cite amongst other:
 \begin{itemize}
 	\item Reutenauer's ``algèbre associative syntactique'' for weighted languages
@@ -190,13 +201,20 @@ In 2023, Bojańczyk \& Nguy\smash{\~{\^e}}n
 managed to develop an algebraic structure called ``transducer semigroups'' for ``regular functions'' \cite[Theorem 3.2, p.~6]{Bojanczyk2023Algebraic}, an 
 orthogonal class of relations to ours---see \Cref{fig:landscape-rationality}.
 
-The counterpart of "$\+V$-relations" for rational relations---that we call here $\+V$-rational relations---was studied by Filiot, Gauwin \& Lhote \cite{Filiot2019Logical}: they show that if
-$\+V$ has decidable membership, then ``$\+V$-rational transductions'' also have decidable membership
-\cite[Theorem 4.10, p.~26]{Filiot2019Logical}.
-``Rational transductions'' correspond in \Cref{fig:landscape-rationality} to the intersection of functional relations with rational relations: this class
-is orthogonal to "automatic relations",
-but is included in the class of ``regular functions''.
-\todo{DO THEY??}
+The counterpart of "$\+V$-relations" for "deterministic transductions"
+---that we call here \emph{deterministic $\+V$-transductions}---was studied by Filiot, Gauwin \& Lhote \cite{Filiot2019Logical}: they show that if
+$\+V$ has decidable membership, then ``\emph{deterministic $\+V$-transductions}''
+also have decidable membership \cite[Theorem 2.1]{Filiot2019Logical}---which is
+proven via the use of a minimal object (a "deterministic transducer").
+They extend their result to "functional transductions"
+by showing the decidability of membership for \emph{functional $\+V$-transductions},
+under the same assumption \cite[Theorem 4.10, p.~26]{Filiot2019Logical};
+however this proof does not rely on a canonical construction but rather
+on a finite set of minimal object.
+These results are orthogonal to our "lifting theorem": 
+"deterministic transductions" and "functional transductions"
+are both orthogonal to the class of "automatic relations", see
+\Cref{sec:preliminaries-automatic-structures-relations}.
 % To achieve this, they associate
 % to every rational relation a finite set of minimal bimachines \cite[Lemma 4.9, p.~26]{Filiot2019Logical},
 % and show that a relation is a $\+V$-rational relation if, and only if, one of these bimachines
