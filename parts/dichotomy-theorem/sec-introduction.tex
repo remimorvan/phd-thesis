@@ -5,15 +5,17 @@
 \subsection{Classes of Relations}
 \label{sec:dichotomy-introduction-relations}
 
-Recall that \AP"rational relations" $\RAT$
-are those definable by multi-head automata,
-with heads possibly moving asynchronously;
-"automatic relations"
-are those that are accepted by multi-head automata
-whose heads are forced to move synchronously; and 
-\AP"recognizable relations" $\REC$ correspond to finite unions of products of regular languages---or, equivalently, to languages recognized via finite monoids, by "Mezei theorem".
-By definition, all of these classes coincide with the 
-class of "regular languages" when restricted to unary relations.
+The complex landscape of rationality for finite-word relations 
+described in \Cref{sec:preliminaries-automatic-structures-relations}
+yields a natural question of \emph{effectivity}: given a relation in some class,
+can we decide if it belongs to a fixed subclass? 
+% Recall that \AP"rational relations" $\RAT$ are those definable by "multitape automata",
+% with heads possibly moving asynchronously;
+% "automatic relations"
+% are those that are accepted by "synchronous relations"; and 
+% \AP"recognizable relations" $\REC$ correspond to finite unions of products of regular languages---or, equivalently, to languages recognized via finite monoids, by "Mezei theorem".
+% By definition, all of these classes coincide with the 
+% class of "regular languages" when restricted to unary relations.
 
 % \AP ""Automatic relations"" are those definable by multi-head automata, with heads possibly moving aautomaticly; "automatic relations" are "automatic relations" that are accepted by multi-head automata whose heads are forced to move automaticly; and 
 % "recognizable relations" correspond to finite unions of products of regular languages (or, equivalently, to languages recognized via finite monoids, by Mezei Theorem). By definition, all of these classes coincide with the 
@@ -30,9 +32,7 @@ is relevant since relations enjoying this property are often amenable to some an
 "eg", abstract interpretations in program verification, variable elimination in constraint logic 
 programming, and query processing over constraint databases---see \cite[Introduction]{BarceloHongLeLinNiskanen2019MonadicDecomposability} for a more thorough discussion on this topic.
 
-\todo{rewrite with \Cref{sec:prelim-automatic-drat} in mind}
-
-In general, "$\REC$-membership@@problem" of "rational relations" is undecidable
+As mentioned in \Cref{sec:prelim-automatic-drat}, in general, "$\REC$-membership@@problem" of "rational relations" is undecidable
 \cite[\S~III, Theorem~8.4]{Berstel1979Transductions},
 but it becomes decidable  for the subclass of 
 "deterministic rational relations", which extends the class of "automatic relations".
@@ -265,9 +265,33 @@ and "regular homomorphism problem" for "automatic structures" in \Cref{sec:dicho
 \end{restatable*}
 
 The easy implications of this theorem are proven in \Cref{sec:dichotomy-overview},
-the undecidability results in the rest of \Cref{sec:dichotomy-undecidability},
-and we conclude with decidability results in \Cref{sec:dichotomy-decidability}.
-\todo{give more details?}
+and the undecidability results---one for "homomorphisms", and another one for "regular homomorphisms" in the rest of \Cref{sec:dichotomy-undecidability}:
+both reductions for undecidability generalize Larose and Tesson's proof.
+In the case of "regular homomorphisms", the full sequence of reductions
+to prove undecidability goes as follows:
+\begin{itemize}
+	\item from the "halting problem" on "deterministic" "reversible Turing machines"
+		to the "regular reachability problem" for "linear Turing machines";
+	\item which is reduced in turn to "regular unconnectivity in automatic graphs";
+	\item and lastly, this latter problem is reduced
+		to $\HomRegAut{\?B}$ when $\?B$ does not have "finite duality"---this
+		reduction is the adaptation of Larose and Tesson's proof.
+\end{itemize}
+To our knowledge, none of these problems---except the "halting problem"---have been studied before.
+Decidability results are given in \Cref{sec:dichotomy-decidability}:
+in fact, the decidability of $\HomAut{\?B}$ when $\?B$ has "finite duality"
+is trivial, so this section is dedicated to the problem $\HomRegAut{\?B}$.
+In \Cref{sec:uniformly-first-order-definable-hom} we give a succinct
+logic-based proof of the decidability of $\HomAut{\?B}$, however the proof is
+somewhat \emph{abstract}. In \Cref{sec:hyperedge-consistency-finite,sec:hyperedge-consistency-automatic} we give a more visual solution,
+known as "hyperegde consistency algorithm@@automatic". It generalizes
+the eponymous algorithm for "finite structures", that captures
+the "homomorphism problem" when the "target structure" has "tree duality"---which is
+a supclass of "finite duality".
+However, the proof of correctness of our algorithm is non-trivial
+and relies on providing a fine understanding of the behaviour of the algorithm
+for "finite structures" in the special case of "target structures"
+that have "finite duality".
 We conclude in \Cref{sec:dichotomy-discussion}, by discussing on
 conjectures and related problems.
 

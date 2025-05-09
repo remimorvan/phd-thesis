@@ -236,6 +236,25 @@ As a consequence of \Cref{prop:homreg-prod-finite}, we write
 
 \subsection{Idempotent Core}
 
+\begin{figure}
+	\centering
+	\begin{tikzpicture}
+		\input{tikz/dichotomy/reduction-idempotent-core-lhs}
+	\end{tikzpicture}
+	\hspace{1cm}
+	\begin{tikzpicture}
+		\input{tikz/dichotomy/reduction-idempotent-core-rhs}
+	\end{tikzpicture}
+	\caption{\AP\label{fig:dichotomy-idempotent-core}
+	Reduction from $\,\HomAll{\marked{\?B}}$ to $\,\HomAll{\?B}$ when $\?B$ 
+	is the "$2$-transitive tournament":
+	we depict on the left-hand side, the "$\extendedSignature{\sigma}{\?B}$-structure"
+	$\?A \not\in \HomAll{\marked{\transitiveTournament{2}}}$,
+	and on the right-hand side, the "$\sigma$-structure" $\Phi(\?A)
+	\not\in \HomAll{\transitiveTournament{2}}$ to which it is reduced.
+	The "interpretation@@predicate" of unary predicates in $\?A$
+	are described using colours.}
+\end{figure}
 \todo{figure}
 We fix a "purely relational signature" $\sigma$.
 Given a "$\sigma$-structure" $\?B$,
@@ -283,7 +302,7 @@ singleton $\{b\}$.
 	We first define the reduction $\Phi$ and show its correctness; the fact that it
 	is a "first-order reduction" is straightforward.
 	We reduce a "$\extendedSignature{\sigma}{\?B}$-structure" $\?A$ to the "$\sigma$-structure"
-	$\Phi(\?A)$ defined as follows:
+	$\Phi(\?A)$ illustrated on \Cref{fig:dichotomy-idempotent-core} and defined as follows:
 	\begin{itemize}
 		\item its underlying universe is the disjoint union $A \dcup B$,
 		\item given a "predicate" $\+R$ of arity $k$, its "hyperedges" are:
@@ -541,12 +560,12 @@ Recall that by "Atserias' theorem", this implies that
 $\HomFin{\transitiveTournament{k}}$ is "first-order definable"\footnote{By the formula saying that
 there are no variables $x_0$, $\dotsc$, $x_{k+1}$ "st" for all $i$ there is an edge from $x_i$ to $x_{i+1}$.} but $\HomFin{\pathGraph{k}}$ is not.%
 \footnote{This can also be proven by hand: for 
-instance we let $\tilde Z^{(n)}_2$ be defined analogously to $\zigzag{n}{2}$ except
+instance we let $\tilde{\?Z}^{(n)}_2$ be defined analogously to $\zigzag{n}{2}$ except
 that we remove the edge from $a_{k}$ to $b_k$ for $k = \lceil \frac{n}{2} \rceil$. 
 Then for a well-chosen single-exponential function $f\colon \N \to \N$, for $n\in\N$,
 we have that Duplicator wins the Ehrenfeucht-Fraïssé game on $\zigzag{f(n)}{2}$ and
-$\tilde Z^{(f(n))}_2$. Since $\zigzag{f(n)}{2} \nothomto \pathGraph{2}$ but
-$\tilde Z^{(n)}_2 \homto \pathGraph{2}$, this implies that $\HomFin{\pathGraph{2}}$ is not 
+$\tilde{\?Z}^{(f(n))}_2$. Since $\zigzag{f(n)}{2} \nothomto \pathGraph{2}$ but
+$\tilde{\?Z}^{(n)}_2 \homto \pathGraph{2}$, this implies that $\HomFin{\pathGraph{2}}$ is not 
 "first-order definable". See "eg" \cite[\S~3]{Kolaitis2007FiniteModelTheory} for details on
 Ehrenfeucht-Fraïssé games.}
 
@@ -562,7 +581,13 @@ Ehrenfeucht-Fraïssé games.}
 	We could equally quantify over all "$\sigma$-structures" without changing the notion of "dual" by "De Bruijn-Erdős theorem".
 \end{remark}
 
-\todo{\AP""rigid""}
+We say that a "$\sigma$-structure" is \AP""rigid"" if its only "automorphism"
+is the "identity".
+\begin{proposition}[{Corollary of \cite[Lemma~4.1]{LaroseLotenTardif2007CharacterisationFOCSP}
+	and \Cref{prop:finite-duality-implies-tree-duality}}]
+	\label{prop:finite-duality-implies-rigid}
+	If a finite "core" has "finite duality", then it is "rigid".
+\end{proposition}
 
 \subsection{Trees and Tree Duality}
 

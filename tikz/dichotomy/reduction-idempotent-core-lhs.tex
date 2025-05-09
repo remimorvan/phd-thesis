@@ -1,0 +1,17 @@
+\node[vertex, draw=c0, fill=c0, fill opacity=.4] (9) at (0,0) {};
+\node[vertex, below right=of 9] (10) {};
+\node[vertex, above right=of 10, draw=c1, fill=c1, fill opacity=.4] (11) {};
+\node[vertex, below right=of 11] (12) {};
+\node[vertex, below right=of 12] (13) {};
+
+% ---
+% Transitions
+% ---
+\foreach \i in {9,11,12} {
+	\pgfmathtruncatemacro{\next}{\i + 1}
+	\draw[edge] (\i) to (\next);
+};
+\foreach \i in {10} {
+	\pgfmathtruncatemacro{\next}{\i + 1}
+	\draw[edge] (\next) to (\i);
+}
