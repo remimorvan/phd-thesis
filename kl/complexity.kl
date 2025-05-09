@@ -50,10 +50,12 @@
  | ExpTime
  | 2ExpTime
  | 3ExpTime
+ | $k$-ExpTime
 
 \knowledge{notion, wrap=\textsf}
 | ExpSpace
 | 2ExpSpace
+ | $k$-ExpSpace
 
 \knowledge{notion, text={Tower}, wrap=\textsf}
  | Tower

@@ -1,4 +1,4 @@
-\knowledge{notion}
+\knowledge{notion, index={$k$-colouring}}
  | colouring
  | $2$-colouring
  | $3$-colouring
@@ -7,49 +7,49 @@
  | $(k+1)$-colouring
  | $(k-1)$-colouring
 
-\knowledge{notion}
+\knowledge{notion, index={$k$-colourable}}
  | 2-colourable
  | $k$-colourable
  | $3$-colourable
 
-\knowledge{notion}
+\knowledge{notion, index={colourable!finitely}}
  | finitely colourable
 
-\knowledge{notion}
+\knowledge{notion, index={chromatic number}}
  | chromatic number
 
-\knowledge{notion}
+\knowledge{notion, index={colouring!regular}}
  | regular colouring
  | regular@colouring
  | regular colourings
  | regular $2$-colouring
  | regular $k$-colouring
 
-\knowledge{notion}
+\knowledge{notion, index={colourable!regularly}}
  | regularly $k$-colourable
  | regularly $2$-colourable
  | finitely regularly colourable
  | regular $k$-colourability
 
-\knowledge{notion}
+\knowledge{notion, index={compatible!(for words)}}
  | compatible@recognizable
  | incompatible@recognizable
 
-\knowledge{notion}
+\knowledge{notion, index={incompatibility graph}}
  | incompatibility graph
  | incompatibility relation
  | Incompatibility graph
 
-\knowledge{notion}
+\knowledge{notion, index={separator}}
  | separates@rel
  | separator@rel
  | separated@rel
  
-\knowledge{notion}
+\knowledge{notion, index={$\+V$-separable}}
  | separable@rel
  | $\+V$-separable@rel
 
-\knowledge{notion}
+\knowledge{notion, index={automaton|$k$-coloured}}
  | $k$-coloured automaton
  | $k$-coloured automata
 
@@ -57,13 +57,13 @@
 % Regular functions / homomorphisms
 % ---
 
-\knowledge{notion}
+\knowledge{notion, index={regular function (automatic)}}
  | regular function
  | regularity@fun
  | regular@fun
  | regular functions
 
-\knowledge{notion}
+\knowledge{notion, index={regular homomorphism}}
  | regular homomorphisms
  | regular homomorphism
  | regular@hom

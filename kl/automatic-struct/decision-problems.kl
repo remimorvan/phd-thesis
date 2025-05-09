@@ -1,58 +1,59 @@
-\knowledge{notion, wrap=\DPfont}
+\knowledge{notion, wrap=\DPfont, index={first-order model checking of automatic structures}}
  | first-order model checking of automatic structures
  | First-Order Model Checking of Automatic Structures
  | First-order model checking of automatic structures
  | First-Order Model Checking of Automatic $\sigma $-Structures
  | first-order model-checking
 
-\knowledge{notion, wrap=\DPfont}
+\knowledge{notion, wrap=\DPfont, index={$k$-colourability problem}}
  | $k$-colourability problem
  | $3$-colourability
  | $3$-colourability problem
 
-\knowledge{notion, wrap=\DPfont}
+\knowledge{notion, wrap=\DPfont, index={finite regular colourability of automatic graphs}}
  | finite regular colourability of automatic graphs
  | finite regular colourability@problem
  | Finite Regular Colourability of Automatic Graphs
  | finite regular colourability problem
+ | finite regular colourability@pb
 
-\knowledge{notion, wrap=\DPfont}
+\knowledge{notion, wrap=\DPfont, index={finite colourability of automatic graphs}}
  | finite colourability of automatic graphs
  | Finite Colourability of Automatic Graphs
  | finite colourability@problem
  | Finite colourability of automatic graphs
  | finite colourability problem
  
-\knowledge{notion, wrap=\DPfont}
+\knowledge{notion, wrap=\DPfont, index={regular reachability problem}}
  | regular reachability problem
  
-\knowledge{notion, wrap=\DPfont}
+\knowledge{notion, wrap=\DPfont, index={$\+D$-separability problem for $\+C$-relations}}
  | $\+D$-separability problem for $\+C$-relations
  | separation problem@rel
  | separability@problemrel
  | $\DRAT $/$\REC $-separability@pb
-
-\knowledge{notion, wrap=\DPfont}
  | $\RAT $/$\REC $-separability problem
  | $\RAT $/$\REC $-separability problems
  | $\RAT $/$\REC $-sepa\-ra\-bility problems
+
+\knowledge{notion, wrap=\DPfont, index={$\+D$-separability problem (for automatic relations)}}
  | $\kPROD[1]$-separability problem
  | $\kREC $-separability problem
  | $\kREC [1]$-separability problem
  | $\kPROD $-separability problem
  | $\kPROD [2]$-separability problem
- | $\REC $-separability@problem
  | $\kREC $-separability@problem
- | $\AUT $/$\REC $-separability@problem
  | $\AUT $/$\kREC $-separability@problem
  | separability problems
 
-\knowledge{notion, wrap=\DPfont}
+\knowledge{notion, wrap=\DPfont, index={$\AUT $/$\REC $-separability problem}}
  | $\AUT $/$\REC $-separability problem
+ | $\REC $-separability@problem
+ | $\AUT $/$\REC $-separability@problem
  | $\REC $-separability problem
  | $\REC $-separability problem for automatic relations
 
-\knowledge{notion, wrap=\DPfont}
+\knowledge{notion, wrap=\DPfont, index={$\+D$-membership problem for $\+C$-relations}}
  | $\+D$-membership problem for $\+C$-relations
  | $\+C$/$\+D$-membership problem
  | membership@problemrel
@@ -60,7 +61,7 @@
  | $\DRAT $/$\REC $-membership problem
  | $\REC $-membership problem for automatic relations
 
-\knowledge{notion, wrap=\DPfont}
+\knowledge{notion, wrap=\DPfont, index={$\+D$-membership problem (for automatic relations)}}
  | $\+D$-membership problem
  | $\REC $-membership problem
  | $\REC $-membership@problem
@@ -71,55 +72,54 @@
  | membership problem
  | membership problems
 
-\knowledge{notion}
+\knowledge{notion, index={inclusion problem}}
  | inclusion problem@rel
 
-\knowledge{notion}
+\knowledge{notion, index={equivalence problem}}
  | equivalence problem@rel
  | equivalence@pbrel
 
-\knowledge{notion}
+\knowledge{notion, index={intersection non-emptiness problem}}
  | intersection non-emptiness problem@drat
  | intersection non-emptiness problem
 
-\knowledge{notion, wrap=\DPfont}
+\knowledge{notion, wrap=\DPfont, index={regular $k$-colourability problem}}
  | regular $k$-colourability problem
  | regular $2$-colourability problem
  | regular $k$-colourability@problem
  | regular colourability problem
 
-\knowledge{notion, wrap=\DPfont}
+\knowledge{notion, wrap=\DPfont, index={connectivity in finite graphs}}
  | Connectivity in Finite Graphs
+ | Connectivity in finite graphs
 
-\knowledge{notion, wrap=\DPfont}
+\knowledge{notion, wrap=\DPfont, index={reachability $k$-colourability problem}}
  | Reachability in Finite Graphs
  | finite graph reachability problem
+ | Reachability in finite graphs
 
-\knowledge{notion, wrap=\DPfont}
+\knowledge{notion, wrap=\DPfont, index={connectivity in automatic graphs}}
  | Connectivity in Automatic Graphs
  | Connectivity in automatic graphs
  | connectivity in automatic graphs
 
-\knowledge{notion, wrap=\DPfont}
+\knowledge{notion, wrap=\DPfont, index={regular unconnectivity in automatic graphs}}
  | regular unconnectivity in automatic graphs
  | Regular unconnectivity in automatic graphs
  | Regular Unconnectivity in Automatic Graphs
 
-\knowledge{notion, wrap=\DPfont}
- | Restricted Membership for Deterministic Reversible Turing Machines
-
-\knowledge{notion, wrap=\DPfont}
+\knowledge{notion, wrap=\DPfont, index={homomorphism problem}}
  | homomorphism problem
  | homomorphism problems
  | Homomorphism Problem
 
-\knowledge{notion, wrap=\DPfont}
+\knowledge{notion, wrap=\DPfont, index={regular homomorphism problem}}
  | regular homomorphism problem
 
-\knowledge{notion, wrap=\DPfont}
+\knowledge{notion, wrap=\DPfont, index={isomorphism problem for automatic structures}}
  | Isomorphism Problem for Automatic Structures
  | isomorphism problem
 
-\knowledge{notion, wrap=\DPfont}
+\knowledge{notion, wrap=\DPfont, index={$\+V$-membership problem}}
  | membership@problang
  | $\+V$-membership problem@lang

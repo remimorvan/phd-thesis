@@ -7,10 +7,12 @@
 
 \knowledge{notion, index={configuration!initial}}
  | initial configuration
+ | initial configurations
 
 \knowledge{notion, index={configuration!reachable}}
  | reachable configuration
  | reachable configurations
+ | reachable@configuration
 
 \knowledge{notion, index={Turing machine!reversible}}
  | reversible

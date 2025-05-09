@@ -2,6 +2,8 @@
  | finite monoid
  | monoid
  | monoids
+ | Monoids
+ | finite monoids
 
 \knowledge{notion, index={monoid!morphism}}
  | monoid morphism
@@ -14,3 +16,4 @@
 
 \knowledge{notion, index={morphism!syntactic}}
  | syntactic morphism
+ | syntactic morphisms

@@ -8,6 +8,10 @@
 
 \knowledge{notion, index={homomorphically equivalent}}
  | homomorphically equivalent
+ | homomorphical equivalence
+
+\knowledge{notion, index={congruence!of a relational structure}}
+ | congruence@struct
 
 \knowledge{notion, index={congruence!induced by a homomorphism}}
  | congruence induced
@@ -15,6 +19,7 @@
 \knowledge{notion, index={quotient structure}}
  | quotient@struct
  | quotient structure
+ | quotient structures
 
 \knowledge{notion, index={core}}
  | core
@@ -43,8 +48,9 @@
  | embedding
  | embeddings
 
-\knowledge{notion, index={strong onto}}
+\knowledge{notion, index={homomorphism!strong onto}}
  | strong onto
+ | strong onto homomorphism
 
 \knowledge{notion, index={isomorphism}}
  | isomorphism

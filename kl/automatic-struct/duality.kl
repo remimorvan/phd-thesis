@@ -2,48 +2,48 @@
 % Dual & Obstructions 
 % ---
 
-\knowledge{notion}
+\knowledge{notion, index={dual}}
  | dual
  | duals
  | duality
 
-\knowledge{notion}
+\knowledge{notion, index={obstruction!for a structure}}
  | obstruction
  | obstructions
 
-\knowledge{notion}
+\knowledge{notion, index={obstruction!critical}}
  | critical obstruction
  | critical obstructions
  | critical@obs
 
-\knowledge{notion}
+\knowledge{notion, index={diameter}}
  | diameter
 
-\knowledge{notion}
+\knowledge{notion, index={height}}
  | height@struct
 
 % ---
 % Finite / Tree duality
 % ---
 
-\knowledge{notion}
+\knowledge{notion, index={finite duality}}
  | finite duality
 
-\knowledge{notion}
+\knowledge{notion, index={Atserias' theorem}}
  | Atserias' theorem
 
-\knowledge{notion}
+\knowledge{notion, index={Larose-Tesson theorem}}
  | Larose-Tesson theorem
 
-\knowledge{notion}
+\knowledge{notion, index={tree duality}}
  | tree duality
 
 % ---
 % Misc 
 % ---
 
-\knowledge{notion}
+\knowledge{notion, index={core!idempotent}}
  | idempotent core
 
-\knowledge{notion}
+\knowledge{notion, index={structure!rigid}}
  | rigid

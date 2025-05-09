@@ -2,6 +2,7 @@
  | first-order logic
  | FO
  | first-order
+ | First-order logic
 
 \knowledge{notion, index={first-order!formula}}
  | first-order formula
@@ -25,6 +26,8 @@
  | first-order definable
  | definable relations
  | non-first-order definable
+ | definable@first-order
+ | first-order definable classes
 
 % ---
 % FO interpretations & reductions 
@@ -70,13 +73,17 @@
 \knowledge{notion, index={formula!existential}}
  | existential sentences
  | existential formula
+%  | existential formulas
 
 \knowledge{notion, index={formula!existential-positive}}
  | existential-positive sentences
  | existential-positive formula
+ | existential-positive formulas
+
 
 \knowledge{notion, index={formula!positive quantifier-free}}
  | positive quantifier-free formula
+%  | positive quantifier-free formulas
 
 % ---
 % Weird FO stuff 

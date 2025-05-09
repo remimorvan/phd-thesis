@@ -29,15 +29,15 @@
 % Hyperedge consistency 
 % --- 
 
-\knowledge{notion}
+\knowledge{notion, index={hyperedge consistency!for finite structures}}
  | hyperedge consistency@finite
  | hyperedge consistency algorithm@finite
  | hyperedge consistency algorithm for finite structures
 
-\knowledge{notion}
+\knowledge{notion, index={hyperedge consistency!for automatic structures}}
  | hyperedge consistency algorithm for automatic structures
 
-\knowledge{notion}
+\knowledge{notion, index={uniformly first-order definable homomorphisms}}
  | uniformly first-order definable homomorphisms
  | Uniformly first-order definable homomorphisms
 
