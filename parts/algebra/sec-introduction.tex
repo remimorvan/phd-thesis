@@ -102,12 +102,12 @@ recall that the syntactic congruence of a language $L \subseteq \Sigma^*$
 is defined by
 \[
 	u \sim_{L} v \quad\text{"iff"}\quad
-	\forall x,y\in \Sigma^*.\, xuy \in L \Leftrightarrow xvy \in L.
+	\forall x,y\in \Sigma^*,\; xuy \in L \Leftrightarrow xvy \in L.
 \]
 This relation is, by definition, an "equivalence relation".
-We claim that the same definition cannot hold to capture the essence of
+We claim that the same definition cannot capture the essence of
 "automatic relations", for the simple reason that it might be that
-$u$, $v$, $x$ and $y$ are all well-formed, and that
+$u$, $v$, $x$ and $y$ are all "well-formed", and that
 $xuy$ is "well-formed" but $xvy$ is not. In this case, 
 asking for the property $xuy \in \+R \Leftrightarrow xvy \in \+R$ 
 to hold does not make sense since the object $xvy$ simply does not exist
@@ -119,10 +119,9 @@ however because of this relativization, it is no longer an "equivalence relation
 the non-trivial structure of this relation is precisely captured by the notion
 of "dependency relation"!
 
-Importantly, some variations are possible on the definition of "synchronous algebras":
-in particular, one could get rid of the notion of "dependency relation" and 
-\Cref{lem:syntactic-morphism-theorem,lem:eilenberg-sy} would still hold.
-\textbf{However, we show in \Cref{sec:counterexample} that these
+\textbf{Importantly, some variations are possible on the definition of "synchronous algebras":
+in particular, one could get rid of the notion of "dependency relation".
+However, we show in \Cref{sec:counterexample} that these
 simplified synchronous algebras cannot characterize the property of being a "$\symbf{\+V}$-relation".
 Therefore, the notion of "dependency" seems necessary to tackle \Cref{quest:V-relations}.}
 Moreover, we show that these algebras arise from a monad, but to our knowledge none of the 
