@@ -40,10 +40,11 @@
 		$\textrm{Pad}$ denotes the set of transitions $\{\pair{a}{\pad}, \pair{b}{\pad}, \pair{\pad}{a}, \pair{\pad}{b}\}$.
 	} 
 \end{figure}
-Any "synchronous relation" can be seen as a regular language over the alphabet
+As mentioned in \Cref{sec:preliminaries-automatic-structures-relations},
+"automatic relation" can be seen as a regular language over the alphabet
 $\SigmaPair \defeq (\Sigma \times \Sigma) \,\cup\,
 (\Sigma \times \{\pad\}) \,\cup\, (\{\pad\} \times \Sigma)$ of pairs. On the other hand any regular language $L$ over $\SigmaPair$
-produces a "synchronous relation" when intersected with the language of all
+produces a "automatic relation" when intersected with the language of all
 "well-formed words"---namely words where the padding symbols are consistently placed;
 see \Cref{sec:preliminaries} for precise definitions. In fact, the semantics
 of "synchronous automata" such as the one in \Cref{fig:ex-sync-auto} is precisely defined this way:
@@ -81,7 +82,7 @@ is a sufficient but not necessary condition for a relation to be a "$\+V$-relati
 \subsection{Contributions}
 
 We answer positively to this question.
-For this we first need to develop an algebraic theory of "synchronous relations",
+For this we first need to develop an algebraic theory of "automatic relations",
 which enables us to prove the lifting theorem. In short, the "lifting theorem" states that algebraic characterizations of classes of word languages can be lifted in a canonical way to algebraic characterizations of classes of word relations.
 
 The algebraic approach usually provides more than decidability: it attaches
@@ -127,20 +128,20 @@ First, we show the existence of "syntactic algebras@@sync" (\Cref{lem:syntactic-
 each relation $\+R$ admits a unique canonical and minimal algebra $\SyntSA{\+R}$, which is finite 
 "iff" the relation is "automatic@@rel",
 and then, we exhibit a correspondence between classes of finite algebras and classes of
-synchronous relations (\Cref{lem:eilenberg-sy})---we assume suitable closure properties; these classes are called ``pseudovarieties''.
+automatic relations (\Cref{lem:eilenberg-sy})---we assume suitable closure properties; these classes are called ``pseudovarieties''.
 While the proof structures of \Cref{lem:syntactic-morphism-theorem,lem:eilenberg-sy} follow the classic proofs, see "eg" \cite{Pin2022MathematicalFoundations},
 the "dependency relation" has to be taken into account quite carefully, leading for instance
 to a surprising definition of "residuals", see \Cref{def:residuals}.
 
 \begin{remark}
 	All our results are described for binary relations, but can be extended to
-	$k$-ary synchronous relations, see \Cref{sec:discussion}.
+	$k$-ary automatic relations, see \Cref{sec:discussion}.
 \end{remark}
 
 \paragraph*{Organization.} After giving preliminary results in \Cref{sec:preliminaries}, we introduce
 the "synchronous algebras" in \Cref{sec:synchronous-algebras} and show the existence of
 "syntactic algebras@@sync". We then proceed to prove the "lifting theorem@@monoids" for 
-"$*$-pseudovarieties@@reglang" in \Cref{sec:lifting-theorem}, and after introducing "$*$-pseudovarieties of synchronous relations", we provide a more algebraic reformulation of the "lifting 
+"$*$-pseudovarieties@@reglang" in \Cref{sec:lifting-theorem}, and after introducing "$*$-pseudovarieties of automatic relations", we provide a more algebraic reformulation of the "lifting 
 theorem@@monoidspseudovar" (\Cref{thm:lifting-theorem-monoids-pseudovarieties}).
 We conclude the paper with
 a short discussion in \Cref{sec:discussion}.
@@ -193,12 +194,12 @@ The counterpart of "$\+V$-relations" for rational relations---that we call here 
 $\+V$ has decidable membership, then ``$\+V$-rational transductions'' also have decidable membership
 \cite[Theorem 4.10, p.~26]{Filiot2019Logical}.
 ``Rational transductions'' correspond in \Cref{fig:landscape-rationality} to the intersection of functional relations with rational relations: this class
-is orthogonal to "synchronous relations",
+is orthogonal to "automatic relations",
 but is included in the class of ``regular functions''.
 \todo{DO THEY??}
 % To achieve this, they associate
 % to every rational relation a finite set of minimal bimachines \cite[Lemma 4.9, p.~26]{Filiot2019Logical},
 % and show that a relation is a $\+V$-rational relation if, and only if, one of these bimachines
-% belongs to $\+V$.\footnote{To be compared to our "synchronous relations", which admit a unique minimal algebra.}
+% belongs to $\+V$.\footnote{To be compared to our "automatic relations", which admit a unique minimal algebra.}
 A different problem---focussing more on the semantics of the transduction---, called ``$\+V$-continuity'' was studied by Cadilhac, Carton \& Paperman \cite[Theorem 1.3, p.~3]{Cadilhac2020Continuity}, although it has to be noted that their results only concern
 a finite number of pseudovarieties.

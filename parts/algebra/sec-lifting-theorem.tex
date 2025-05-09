@@ -205,8 +205,8 @@ groups.
 In this part, we introduce the notion of "synchronous algebra" with no dependency relation, 
 called "naive synchronous algebra". This notion is more natural---or naive---than
 \Cref{def:synchronous-algebra}, and share some of its enjoyable properties, such as the existence of syntactic algebras. Yet, we show that these algebras cannot characterize some
-natural classes of synchronous relation. More precisely, we show that there
-is a "$\ast$-pseudovariety of regular languages" $\+V$ and two synchronous relations
+natural classes of automatic relation. More precisely, we show that there
+is a "$\ast$-pseudovariety of regular languages" $\+V$ and two automatic relations
 $\+R_0$ and $\+R_1$, such that:
 \begin{itemize}
 	\item $\+R_0$ is a $\+V$-relation,
@@ -229,7 +229,7 @@ $\+R_0$ and $\+R_1$, such that:
 \end{definition}
 
 The set of all "synchronous words" is naturally a "naive synchronous algebra" under concatenation.
-Moreover, any "synchronous relation" admits a syntactic "naive synchronous algebra"---this can be shown in the same fashion as \Cref{lem:syntactic-morphism-theorem}.
+Moreover, any "automatic relation" admits a syntactic "naive synchronous algebra"---this can be shown in the same fashion as \Cref{lem:syntactic-morphism-theorem}.
 
 \begin{example}[Group relations: \Cref{ex:charac-group-relation-monoids} cont'd]
 	Consider the relations
@@ -265,13 +265,13 @@ by the syntactic "naive synchronous algebra" of the relation, which shows how cr
 
 The same result can be used to prove that ``naive positive synchronous algebras''---defined analogously to "naive synchronous algebra" except that there is no "type" 1 and no unit, and hence no empty word in the free algebra---are also unable to capture the property of ``being a $\+V$-relations''.
 
-\subsection{Pseudovarieties of Synchronous Relations}
+\subsection{Pseudovarieties of Automatic Relations}
 \label{sec:varieties}
 
 We introduce the notion of "pseudovariety of synchronous algebras" 
-and "$\ast$-pseudovariety of synchronous relations". We show an "Eilenberg-Schützenberger correspondence@@sync" between these two notions. We then reformulate the "Lifting Theorem"
+and "$\ast$-pseudovariety of automatic relations". We show an "Eilenberg-Schützenberger correspondence@@sync" between these two notions. We then reformulate the "Lifting Theorem"
 to show that any "Eilenberg-Schützenberger correspondence@@lang" between monoids and regular languages
-lifts to an "Eilenberg-Schützenberger correspondence@@sync" between "synchronous algebras" and "synchronous relations".
+lifts to an "Eilenberg-Schützenberger correspondence@@sync" between "synchronous algebras" and "automatic relations".
 
 Recall that a "synchronous algebra" $\?A$ is a "quotient@@sync" of $\?B$
 when there exists a surjective "synchronous algebra morphism" from $\?B$ to $\?A$.
@@ -294,12 +294,12 @@ of "locally generated@@sync" finite "synchronous algebras" closed under
 	\item \emph{division:} if some finite "locally generated" algebra $\?A$ "divides@@sync" $\?B$ for some $\?B \in \B{V}$, then $\?A \in \B{V}$.
 \end{itemize}
 
-Because of \Cref{lem:syntactic-morphism-theorem}, a "synchronous relation" is "recognized@@sync"
+Because of \Cref{lem:syntactic-morphism-theorem}, a "automatic relation" is "recognized@@sync"
 by a finite synchronous algebra of a "pseudovariety@@syncalg" $\B{V}$ "iff"
 its "syntactic synchronous algebra" belongs to $\B{V}$.
 
-A \AP""$\ast$-pseudovariety of synchronous relations"" is a function $\+V \colon \Sigma \mapsto \+V_\Sigma$
-such that for any finite alphabet $\Sigma$, $\+V_\Sigma$ is a set of "synchronous relations" over 
+A \AP""$\ast$-pseudovariety of automatic relations"" is a function $\+V \colon \Sigma \mapsto \+V_\Sigma$
+such that for any finite alphabet $\Sigma$, $\+V_\Sigma$ is a set of "automatic relations" over 
 $\Sigma$ such that $\+V$ is closed under
 \begin{itemize}
 	\itemAP ""Boolean combinations""\emph{:} if $\+R, \+S \in \+V_{\Sigma}$, then
@@ -377,7 +377,7 @@ two words $(u,v)$ of the same length. But then $(ua, va) \not\in \+S$.
 
 \begin{restatable}{lemma}{lemmaCharacterizationPseudovar}
 	\AP\label{lemma:characterization-pseudovarieties-syncrel}
-	A class $\+V\colon \Sigma \mapsto \+V_\Sigma$ is a "$\ast$-pseudovariety of synchronous relations" if, and only if, it is closed under "Boolean combinations", "residuals" and
+	A class $\+V\colon \Sigma \mapsto \+V_\Sigma$ is a "$\ast$-pseudovariety of automatic relations" if, and only if, it is closed under "Boolean combinations", "residuals" and
 	"inverse morphisms".
 \end{restatable}
 
@@ -509,7 +509,7 @@ Let \AP$\B{V} \intro*\corrAR \+V$ denote the map (called \emph{correspondence}) 
 \[\+V\colon \Sigma \mapsto \{\+R \subseteq \Sigma^*\times \Sigma^* \mid \SyntSA{\+R} \in \B{V}\}.\]
 
 Dually, let \AP$\+V \intro*\corrRA \B{V}$ denote the \emph{correspondence} that takes
-a "$\ast$-pseudo\-variety of synchronous relations" $\+V$
+a "$\ast$-pseudo\-variety of automatic relations" $\+V$
 and maps it to the "pseudovariety of synchronous algebras" "generated@@var" by
 all $\SyntSA{\+R}$ for some $\+R \in \+V_{\Sigma}$.
 Here, the ""pseudovariety generated"" by a class $C$
@@ -521,11 +521,11 @@ see "eg" \cite[Proposition XI.1.1, p.~190]{Pin2022MathematicalFoundations} for a
 that "divide@@sync" a finite product of "algebras@@sync" of $C$.\footnote{Note that ``being "locally generated"'' is not preserved by taking "subalgebras", but this is not an issue: we restrict the construction to (finite) "locally generated" "algebras@@sync".}
 
 \AP\phantomintro(sync){Eilenberg-Schützenberger correspondence theorem}\vspace{-1em}
-\begin{restatable}[\reintro{An Eilenberg theorem for synchronous relations}]{lemma}{thmeilenberg}
+\begin{restatable}[\reintro{An Eilenberg theorem for automatic relations}]{lemma}{thmeilenberg}
 	\AP\label{lem:eilenberg-sy}
 	The correspondences $\B{V} \corrAR \+V$ and $\+V \corrRA \B{V}$ define
 	mutually inverse bijections between "pseudovarieties of
-	synchronous algebras" and "$\ast$-pseudovarieties of synchronous relations".
+	synchronous algebras" and "$\ast$-pseudovarieties of automatic relations".
 \end{restatable}
 
 \begin{proof}
@@ -535,7 +535,7 @@ that "divide@@sync" a finite product of "algebras@@sync" of $C$.\footnote{Note t
 	\proofcase{The correspondence $\B{V} \corrAR \+V$ produces varieties.}
 	First we have to show that if $\B{V}$ is a "pseudovariety
 	of synchronous algebras" and $\B{V} \corrAR \+V$, then $\+V$ is a
-	"$\ast$-pseudovarieties of synchronous relations".
+	"$\ast$-pseudovarieties of automatic relations".
 	Since $\B{V}$ is closed under finite products, $\+V$ is closed under Boolean operations.
 
 	\emph{"Syntactic derivatives":} Then let $\+R \in \+V_\Sigma$, and let $\+S$ be any other relation
@@ -550,7 +550,7 @@ that "divide@@sync" a finite product of "algebras@@sync" of $C$.\footnote{Note t
 	$\SyntSA{\psi^{-1}[\+R]}$ "divides@@sync" $\SyntSA{\+R}$. Since $\SyntSA{\+R} \in \B{V}$
 	and $\B{V}$ is closed by "division@@sync", it follows that $\SyntSA{\psi^{-1}[\+R]} \in \B{V}$
 	and hence $\psi^{-1}[\+R] \in \+V_{\Gamma}$. 
-	This concludes the proof that $\+V$ is a "$\ast$-pseudovariety of synchronous relations".
+	This concludes the proof that $\+V$ is a "$\ast$-pseudovariety of automatic relations".
 
 	\proofcase{Inverse bijections: part 1.} Assume that $\B{V} \corrAR \+V$ and $\+V \corrRA \B{W}$.
 	Then
@@ -655,7 +655,7 @@ that "divide@@sync" a finite product of "algebras@@sync" of $C$.\footnote{Note t
 \end{proof}
 
 As consequence of \Cref{lem:eilenberg-sy}, if
-$\+V$ is a "$\ast$-pseudovariety of synchronous relations"
+$\+V$ is a "$\ast$-pseudovariety of automatic relations"
 and $\B{V}$ is a "pseudovariety of synchronous algebras",
 we write \AP$\+V \intro*\corr \B{V}$
 to mean that either $\+V \corrRA \B{V}$ or, equivalently, $\B{V} \corrAR \+V$.
@@ -675,7 +675,7 @@ This relation is called an \AP""Eilenberg-Schützenberger correspondence@@sync""
 		\intro*\projL{\+V} \colon
 		\Sigma \mapsto \{\+R \subseteq \Sigma^* \times \Sigma^* \mid \exists L \in \+V_{\SigmaPair},\, \proj{\+R} = L \cap \WellFormed \},
 	\]
-	is a "$\ast$-pseudovariety of synchronous relations".
+	is a "$\ast$-pseudovariety of automatic relations".
 \end{proposition}
 
 \begin{proof}
@@ -687,7 +687,7 @@ Finally, \Cref{thm:lifting-theorem-monoids} can be elegantly rephrased
 by saying that correspondences between "pseudovarieties of monoids"
 and "$\ast$-pseudovarieties of regular languages" lift to correspondences
 between "pseudovarieties of synchronous algebras" and
-"$\ast$-pseudovarieties of synchronous relations".
+"$\ast$-pseudovarieties of automatic relations".
 
 \begin{theorem}[\reintro{Lifting Theorem: Pseudovariety Formulation}]
 	\AP\label{thm:lifting-theorem-monoids-pseudovarieties}
@@ -696,6 +696,6 @@ between "pseudovarieties of synchronous algebras" and
 	we have~$\+V \corr \B{V}$,
 	then in the "Eilenberg-Schützenberger correspondence@@sync"
 	between the "pseudovariety of synchronous algebras" $\projA{\B{V}}$ and
-	the "$\ast$-pseudovariety of synchronous relations" $\projL{\+V}$,
+	the "$\ast$-pseudovariety of automatic relations" $\projL{\+V}$,
 	we have~$\projL{\+V} \corr \projA{\B{V}}$.
 \end{theorem}

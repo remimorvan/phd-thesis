@@ -39,9 +39,6 @@
  | automatic relations
  | automatic binary relation
  | automatic@rel
- | synchronous relation
- | synchronous relations
- | synchronous@rel
  | Automatic relations
  | automatic relations
 

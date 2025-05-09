@@ -83,14 +83,14 @@
  | pseudovariety@syncalg
 
 \knowledge{notion}
- | $\ast $-pseudovariety of synchronous relations
- | $\ast $-pseudovarieties of synchronous relations
- | $\ast $-pseudo\-variety of synchronous relations
- | $*$-pseudovariety of synchronous relations
+ | $\ast $-pseudovariety of automatic relations
+ | $\ast $-pseudovarieties of automatic relations
+ | $\ast $-pseudo\-variety of automatic relations
+ | $*$-pseudovariety of automatic relations
  | pseudovariety@syncrel
  | $\ast $-pseudovariety@sync
  | $*$-pseudovariety@sync
- | $*$-pseudovarieties of synchronous relations
+ | $*$-pseudovarieties of automatic relations
  | pseudovariety of automatic relations
 
 \knowledge{notion}
@@ -114,8 +114,8 @@
  | pseudovariety@syncP
 
 \knowledge{notion}
- | $+$-pseudovariety of synchronous relations
- | $+$-pseudovarieties of synchronous relations
+ | $+$-pseudovariety of automatic relations
+ | $+$-pseudovarieties of automatic relations
  | $+$-pseudovariety@sync
 
 % -----
