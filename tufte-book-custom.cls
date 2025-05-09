@@ -308,3 +308,10 @@
 
 % Section number
 \setcounter{secnumdepth}{3}
+
+% Same counter for Figures and Table
+% https://stackoverflow.com/questions/3865036/using-a-single-count-for-figures-and-tables-in-latex
+\makeatletter
+\let\c@table\c@figure % for (1)
+\let\ftype@table\ftype@figure % for (2)
+\makeatother

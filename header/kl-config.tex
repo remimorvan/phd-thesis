@@ -1,4 +1,5 @@
-\usepackage[xcolor, hyperref, cleveref, notion, quotation, makeidx, composition]{knowledge}
+\usepackage[capitalise]{cleveref}
+\usepackage[xcolor, hyperref, notion, quotation, makeidx, composition]{knowledge}
 \usepackage{mathcommand}
 \knowledgeconfigure{quotation, protect quotation={tikzcd}}
 \knowledgeconfigure{diagnose line=true, diagnose bar=true}
@@ -32,17 +33,19 @@
 % ---
 % Correctly handling \mathop/\mathrel with \knowledgenewrobuscmd
 % ---
-\ExplSyntaxOn
-\RenewDocumentCommand\withkl{mm}{
-\int_gincr:N\knowledge_inner_modifier_count_int
-\cs_gset:cpx
-{\knowledge_inner_command:}
-{\exp_not:N\cs_gset:Npn
-\exp_not:c{\knowledge_inner_command:}
-{\knowledge_inner_modifer_re_tl\knowledge_kl_modifiers_tl\exp_not:n{#1}}
-\knowledge_kl_modifiers_tl\exp_not:n{#1}}
-\knowledge_kl_modifiers_reset:
-#2
-\int_gdecr:N\knowledge_inner_modifier_count_int
-}
-\ExplSyntaxOff
+% \ExplSyntaxOn
+% \RenewDocumentCommand\withkl{mm}{
+% \int_gincr:N\knowledge_inner_modifier_count_int
+% \cs_gset:cpx
+% {\knowledge_inner_command:}
+% {\exp_not:N\cs_gset:Npn
+% \exp_not:c{\knowledge_inner_command:}
+% {\knowledge_inner_modifer_re_tl\knowledge_kl_modifiers_tl\exp_not:n{#1}}
+% \knowledge_kl_modifiers_tl\exp_not:n{#1}}
+% \knowledge_kl_modifiers_reset:
+% #2
+% \int_gdecr:N\knowledge_inner_modifier_count_int
+% }
+% \ExplSyntaxOff
+
+\def\notionKnowledgeIndexIntroStyle#1{\textcolor{maincolor}{#1}}

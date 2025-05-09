@@ -87,6 +87,7 @@ When moreover $X = Y$, we say that it is:
 An equivalence relation over $X$ is any binary relation satisfying the three previous axioms.
 Given an equivalence class $\sim$ over a set $X$ and an element $x \in X$,
 we denote by $\intro*\equivclass[\sim]{x}$ the equivalence class of $x$ under $\sim$.
+Lastly, $\defeq$ denotes the definition symbol: $x \defeq y$ means that $x$ is defined as $y$.
 
 \section{Relational Structures}
 
@@ -431,9 +432,9 @@ some "structure"---or equivalently of itself.
 	For the converse one, denote the two "structures" by $\?A_1$ and $\?A_2$,
 	and suppose that $\?A_1$ is "homomorphically equivalent" to $\?A_2$.
 	Using the "homomorphical equivalence" of $\?A_1$ and $\?A_2$,
-	we get retractions of $\?A_2$ onto $\core{\?A_1}$ and of $\?A_1$ onto $\core{\?A_2}$.
-	It follows that we have surjective "homomorphisms" from $\core{\?A_1}$ to $\core{\?A_2}$
-	and conversely. Hence, $\core{\?A_1}$ and $\core{\?A_2}$ are "isomorphic".
+	we get retractions of $\?A_2$ onto $\core{\?A}_1$ and of $\?A_1$ onto $\core{\?A}_2$.
+	It follows that we have surjective "homomorphisms" from $\core{\?A}_1$ to $\core{\?A}_2$
+	and conversely. Hence, $\core{\?A}_1$ and $\core{\?A}_2$ are "isomorphic".
 \end{proof}
 
 \begin{proposition}
@@ -636,11 +637,18 @@ of the "corresponding@@EilenbergLang" "pseudovariety of monoids" is decidable.
 
 \subsection{Turing Machines}
 
+\begin{marginfigure}
+	\centering
+	\includegraphics[width=.8\linewidth]{fig/garoutzia.png}
+	\caption{
+		\AP Qui a hacké Garoutzia ?
+	}
+\end{marginfigure}
+\marginnote{\blockquote[Gilles Dowek, Laurence Devillers \& Serge Abiteboul, \emph{Qui a hacké Garoutzia}]{Mais dans ce sandwich absurde entre mon initialisation et ma terminaison, que m'aura-t-il vraiment manqué ? Peut-être un corps… un corps qui ressent et tutti quanti !}}
 We assume that the reader is familiar with Turing machines,
-see "eg" \cite[\S~1]{AroraBarak2009ComputationalComplexity}..
-\todo{poitner}
+see "eg" \cite[\S~1]{AroraBarak2009ComputationalComplexity}.
 Unless stated otherwise, a \AP""Turing machine"" is assumed to have a single tape,
-which is bounded on the left but infinite on the right.
+which is bounded on the left but not on the right.
 The ""configuration@@TM"" of a "Turing machine" consists of
 the content of the tape at a given point, the position of the machine's head,
 at well as its current state. It can be summarized by
