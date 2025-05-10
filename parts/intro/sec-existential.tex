@@ -28,7 +28,7 @@ every "homomorphism problem" $\?A \homto \?B$ can be seen as a SQL query evaluat
 where $\?A$ encodes a "query@@sem" in the \textsf{SELECT-FROM-WHERE}
 fragment of SQL and $\?B$ is encodes a relational database.
 This fragment can also be characterized as the fragment
-of "first-order logic" where universal quantification, union and negation are not allowed---called
+of "first-order logic" where neither universal quantification nor negation is allowed---called
 "existential-positive fragment".
 For instance, the SQL query of \Cref{ex:sql-as-hom} can be expressed by the formula
 \begin{align*}
@@ -88,8 +88,8 @@ For instance, the SQL query of \Cref{ex:sql-as-hom} can be expressed by the form
 		A "conjunctive query".
 	}
 \end{marginfigure}
-Yet another characterization of these queries is as "conjunctive queries": such a "query@CQ"
-consists of a "relational structure" together with a tuple of vertices, called ``"output@@var"''---this tuple
+Yet another characterization of these queries is as finite union of "conjunctive queries",
+that consist of a "relational structure" together with a tuple of vertices, called ``"output@@var"''---this tuple
 plays the same role as the \textsf{SELECT} statement in SQL.
 For instance, the previous query can be expressed as the "conjunctive query"
 of \Cref{fig:SQL-as-CQ}. The semantics of such a "query@CQ"
@@ -103,8 +103,8 @@ Overall, these characterizations show this query language to be quite robust.
 
 \begin{known}
 	Problems of the form $\textsf{query} \homto^? \textsf{data}$
-	exactly correspond to the evaluation of "conjunctive query". This
-	query language can also be described as the
+	exactly correspond to the evaluation of "conjunctive query". 
+	Finite unions of "conjunctive queries" can also be described as the
 	\textsf{SELECT-FROM-WHERE} fragment of SQL, or as the "existential-positive
 	fragment" of "first-order logic".
 \end{known}
@@ -326,7 +326,7 @@ needs to be recursively enumerable.}%
 \end{known}
 
 
-\subsection{Beyond Conjunctive Queries: Adding Regular Path Predicates for Human-Centered Data}
+\subsection{Adding Regular Path Predicates}
 
 \begin{marginfigure}
 	\centering
@@ -578,7 +578,7 @@ notice the regular expression in red.
 \end{known}
 
 
-\subsection{Minimization and Structure of Conjunctive Regular Path Queries}
+\subsection[Minimization and Structure of CRPQs]{Minimization and Structure of Conjunctive Regular Path Queries}
 
 While "conjunctive regular path queries" share some enjoyable properties
 of "conjunctive queries"---for instance the decidability of "semantical equivalence",
