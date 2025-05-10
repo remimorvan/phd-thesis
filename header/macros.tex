@@ -17,10 +17,6 @@
 }
 \newrobustcmd{\DPfont}[1]{\normalfont{\scshape #1}}
 
-\newrobustcmd\hypothesis[1]{
-	\begin{center}\color{maincolor}\adforn{39}~#1\end{center}
-}
-
 \usepackage{adforn}
 \newrobustcmd{\proofcase}[1]{\adforn{39}~\emph{#1}~}
 
@@ -139,6 +135,15 @@
 \medskip
 \begin{tcolorbox}[colback=cRed!20!white, colframe=cRed]
 	\textsc{Open Problem.}
+}{%
+	\end{tcolorbox}
+	\medskip
+}
+
+\newenvironment{hypothesis}{%
+\medskip
+\begin{tcolorbox}[colback=cYellow!20!white, colframe=cYellow]
+	\textsc{Hypothesis.}
 }{%
 	\end{tcolorbox}
 	\medskip

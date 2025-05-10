@@ -2,14 +2,18 @@
 
 % No more extra space around proof env.
 % https://tex.stackexchange.com/questions/232655/mysterious-vertical-space-after-theorem-proof-environments 
-\let\proof\undefined
-\declaretheoremstyle[%
-  spaceabove=.5em,%
-  headfont=\normalfont\itshape,%
-  postheadspace=1em,%
-  qed=\qedsymbol%
-]{proofstyle} 
-\declaretheorem[name={Proof},style=proofstyle,unnumbered]{proof}
+\usepackage{xpatch}
+\makeatletter
+\xpatchcmd{\proof}{\topsep6\p@\@plus6\p@\relax}{}{}{}
+\makeatother
+% \let\proof\undefined
+% \declaretheoremstyle[%
+%   spaceabove=.5em,%
+%   headfont=\normalfont\itshape,%
+%   postheadspace=1em,%
+%   qed=\qedsymbol%
+% ]{proofstyle} 
+% \declaretheorem[name={Proof},style=proofstyle,unnumbered]{proof}
 
 \declaretheoremstyle[spaceabove=.5em,bodyfont=\normalfont]{noitalics}
 \declaretheoremstyle[headfont=\normalfont\itshape,spaceabove=.5em,bodyfont=\normalfont]{noitalicsminor}
@@ -27,3 +31,14 @@
 \declaretheorem[name=Remark, refname={Remark,Remarks}, sibling=theorem, style=noitalics]{remark}
 \declaretheorem[name=Fact, refname={Fact,Facts}, sibling=theorem, style=noitalics]{fact}
 \declaretheorem[name=Claim, refname={Claim,Claims}, sibling=theorem, style=noitalicsminor]{claim}
+
+% End of env symbol for examples
+% https://tex.stackexchange.com/questions/16453/denoting-the-end-of-example-remark
+\NewCommandCopy{\proofqedsymbol}{\qedsymbol}% save the default
+\newcommand{\exampleqedsymbol}{$\diamond$}% for end of examples
+% ensure that proof has the standard symbol
+\AtBeginEnvironment{proof}{\renewcommand{\qedsymbol}{\proofqedsymbol}}
+\AtBeginEnvironment{example}{%
+  \pushQED{\qed}\renewcommand{\qedsymbol}{\smash{\rotatebox{45}{\proofqedsymbol}}}%
+}
+\AtEndEnvironment{example}{\popQED\endexample}

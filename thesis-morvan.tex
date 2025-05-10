@@ -74,6 +74,8 @@
 \frontmatter
 \include{parts/titlepage}
 \include{parts/copyright}
+% Counter for figures includes chapter number ("P" for preface)
+\renewcommand\thefigure{P.\arabic{figure}}
 \include{parts/preface}
 \include{parts/contents}
 
@@ -81,43 +83,17 @@
 % \chapter*{Abstract}
 % \addcontentsline{toc}{chapter}{Abstract}
 
+% Counter for figures includes chapter number ("R" for Résumé)
+\renewcommand\thefigure{R.\arabic{figure}}
 \chapter*{Résumé}
 \addcontentsline{toc}{chapter}{Résumé}
 
-\chapter*{Ideas/Todos}
+\input{parts/todo.tex}
 
-\begin{itemize}
-	\item \todo{Change definition of CQ/CRPQ to have vertices. This allows for better duality,
-		and also better statement for the Semantical Structure Theorem (in some prop we get
-		``foo is an edge contraction of bla'' instead of ``is a minor of'').
-		Update the definition of `one-way internal path' to allow for $n=0$.}
-	\item \todo{allow autocite in margin.}
-		\todo{citation at wrong place in margin.}
-		\todo{do NOT overwrite options for sidenote, etc.}
-		See \texttt{tufte-book-custom.cls}.
-	\item \todo{fix the proof env (``Proof (Proof sketch).'' -> ``Proof sketch.'')}
-	\item \todo{add an `end of example' and `end of remark' symbol} 
-	\item \todo{Diego finds $\Gamma_{\smallpad}$ strange}
-	\item \todo{fix $\nothomto$ arrows and $\notcongr{\+R}$}
-	\item \todo{Diego, biblio: ``some names have missing accents (esp polish), editors sometimes present sometimes not''}
-	\item \todo{We/I!}
-	\item \todo{Introduce $H^n_{\!\?A,\?B}$ notation for $\HCOperator^{\,n}_{\!\?A,\?B}(\topLatticeGuessFunctions{B})$.}
-	\item \todo{Increase distance between footnote and figure caption}
-	\item \todo{maximal under-approximation: des fois avec hyphen, des fois sans}
-\end{itemize}
-
-At the end:
-\begin{itemize}
-	\item check APs 
-	\item remove tags (\textsf{\backslash tag})
-	\item mathbb -> symbb
-	\item in bib: change inbook to incollection if no bookauthor entry
-	\item check DOIs (no http), URL, consulted version, etc.
-	\item \todo{replace all $\hdots$ (hdots) with $\dotsc$ (dotsc)}
-\end{itemize}
+% Counter for figures includes chapter number
+\renewcommand\thefigure{\thechapter.\arabic{figure}}
 
 \include{parts/intro/ch-intro}
-
 \include{parts/general-preliminaries/ch-general-preliminaries}
 
 \part{Querying Graph Databases}
