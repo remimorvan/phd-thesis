@@ -1,4 +1,4 @@
-\section{Everyone Who Wants to Do Constraint Satisfaction Always Ends in Universal Problems}
+\section{Everyone Who Wants to Do Constraint Satisfaction Always Ends Up in Universal Problems}
 % Everyone who wants to do good to the human race always ends in universal bullying.
 % - Aldous Huxley
 \label{sec:intro-universal}
@@ -65,7 +65,8 @@ depends on vertices at a bounded distance---, problems of type $\textsf{data} \h
 \end{example}
 
 For instance, "$3$-colourability" is a global property of a graph and cannot be solved
-by gluing local solutions. In particular, this implies that fixing the query
+by gluing local solutions, or with greedy algorithms.
+In particular, this implies that fixing the query
 does not necessarily result in
 a drop in the complexity: the \AP ""$3$-colourability problem""---which takes as input a finite "graph@@dir" and asks whether it is "$3$-colourable"---is already "NP"-complete!
 The next example shows that, even when the "target structure" is fixed, the "homomorphism problem"
@@ -120,11 +121,11 @@ makes a "relational structure" hard for the "homomorphism problem" when it is us
 as the "target structure".
 This question is not only motivated by theory: constraint logic programming has emerged in the 1980s
 with Prolog II and III; and modern programming languages such as answer-set programming provide an 
-efficient was of doing constraint solving.
+efficient way of doing constraint solving.
 
 \begin{figure}
 	\centering
-	\lstinputlisting[language=Prolog, breaklines=true]{fig/intro/sudoku.lp}
+	\lstinputlisting[language=myclingo]{fig/intro/sudoku.lp}
 	\caption{
 		\AP\label{fig:ex-sudoku-asp}
 		A Clingo program (answer-set programming) to solve Sudoku grids.
@@ -137,13 +138,13 @@ efficient was of doing constraint solving.
 Answer-set programming can be thought of, albeit caricaturally, as a human-readable
 SAT-solver. It deals with variables, relations between these variables,
 and logical rules between these variables. These rules take the form
-\lstinline|A :- B|, which can be understood as `if $B$, then $A$'.
+\lstinline[language=myclingo]|A :- B|, which can be understood as `if $B$, then $A$'.
 The right-hand side is parsed conjunctively while the left-hand side is parsed disjunctively:
-\lstinline|A, B :- C, D| should be understood as `if $C$ and $D$, then $A$ or $B$'.
+\lstinline[language=myclingo]|A, B :- C, D| should be understood as `if $C$ and $D$, then $A$ or $B$'.
 \Cref{fig:ex-sudoku-asp} provides
 an example of a Clingo program for solving Sudoku grids:
 \begin{itemize}
-	\item it starts by declaring three types of variables: absissa $x$, ordinates $y$ and values $n$ (representing a value in the grid), as well as their range;
+	\item it starts by declaring three types of variables: abscissa $x$, ordinates $y$ and values $n$ (representing a value in the grid), as well as their range;
 	\item it introduces a \textsf{sudoku} ternary relation, where $\textsf{sudoku}(x,y,n)$
 		represents the fact that entry $(x,y)$ of the grid has value $n$,
 		and it says that there should be exactly one value per entry;
@@ -152,11 +153,11 @@ an example of a Clingo program for solving Sudoku grids:
 	\item finally, it says that any two values on the same column, row or subgrid
 		must be different.%
 		\footnote{Recall that the left-hand side of rules is understood disjunctively,
-		and hence \lstinline|:- A, B| reads as `if $A$ and $B$, then false'.}
+		and hence \lstinline[language=myclingo]|:- A, B| reads as `if $A$ and $B$, then false'.}
 \end{itemize}
 To solve a specific grid using the program of \Cref{fig:ex-sudoku-asp},
-it suffices to add declarations of the form \lstinline|sudoku(4,1,5).|,
-where \lstinline|A.| is a shorthand for \lstinline|A :-.|.
+it suffices to add declarations of the form \lstinline[language=myclingo]|sudoku(4,1,5).|,
+where \lstinline[language=myclingo]|A.| is a shorthand for \lstinline[language=myclingo]|A :-.|.
 This specifies that the cell at position $(4,1)$ has value 5.
 
 Contrary to more classical programming languages, this paradigm does not explain \emph{how} things
@@ -178,8 +179,8 @@ proved a similar result for "undirected graphs".
 Moreover, in both cases, these dichotomies are effective: given a structure, we can decide if
 its "homomorphism problem" is in "P" or is "NP"-complete.
 These results, together with the importance of \emph{constraint satisfaction} in computer science
-lead Feder and Vardi at the end of the 1990s
-to state their infamous \emph{dichotomy conjecture}: ``for any "finite structure" $\?B$,
+led Feder and Vardi at the end of the 1990s
+to state their celebrated \emph{dichotomy conjecture}: ``for any "finite structure" $\?B$,
 the "homomorphism problem" with "target structure" $\?B$ is either "P"
 or "NP"-complete'' \cite{FederVardi1998ComputationalStructure}.
 Despite receiving lots of attention, the conjecture remained wide open for two decades, until
@@ -189,7 +190,7 @@ showed the conjecture to be true.%
 \cite{Zhuk2020CSPDichotomy} refers to Zhuk's later journal version.}
 
 However not all problems in "P" are complete for this class: some are even simpler and are complete
-for "NL" or "L", or even "FOfin"---i.e. it is a "first-order definable" class of "finite structures".
+for "NL" or "L", or even "FOfin"---i.e. when it is a "first-order definable" class of "finite structures".
 One result that will be of major importance in this thesis is a dichotomy
 theorem by Larose and Tesson separating "structures" in "FOfin" from those that are "L"-hard
 \cite{LaroseTesson2009UniversalAlgebraCSP}.
@@ -231,18 +232,20 @@ more about less and less.}}
 
 Completeness is perhaps best understood as follows:
 if a theory (a set of axioms) is consistent---"ie" it has at least one model---and complete, 
-then pick any of its model. A statement is then valid in the theory if and only
+then pick any of its models. A statement is then valid in the theory if and only
 if it is true in this model. Dually, if you are given a theory for which
 there exists a model with this property (a statement is valid in the theory "iff" it
 is true in the model), then the theory is complete.
-In essence, not only does Gödel's puts a dent in Hilbert's dream
-(``Wir müssen wissen. Wir werden wissen.'') of building solid foundations for mathematics:
-in fact, it shatters the Platonistic idea of an unequivocal \& universal mathematical world, or 
+In essence, not only does Gödel's result put a dent in Hilbert's dream
+(``Wir müssen wissen. Wir werden wissen.''%
+\footnote{``We must know. We will know.''}) of building solid foundations for mathematics:
+in fact, it shatters the Platonistic idea of an unequivocal and universal mathematical world, or 
 at the very least of one that can be captured by axioms.
 
 Ironically, what makes "Gödel's incompleteness theorem" a proper
-abomination  for computer scientists is probably Gödel's own theorem, that he proved only a year before, in his
-Ph.D. dissertation, known as "Gödel's completeness theorem": 
+abomination for computer scientists is probably another theorem of Gödel,
+known as "Gödel's completeness theorem" and that he proved
+only a year earlier in his Ph.D. dissertation: 
 first-order logic admits a complete proof system. Or, said differently,
 what is valid---that is, true on every model satisfying the axioms---is exactly what
 can be proven. 
@@ -322,7 +325,7 @@ makes decidability possible.
 	The first-order theory of every "automatic structure" is decidable.
 \end{known}
 
-Unsurprisingly, the foremost example of "automatic structure" is $\tup{\N, +}$.%
+Unsurprisingly, the foremost example of an "automatic structure" is $\tup{\N, +}$.%
 \footnote{See \Cref{ex:presburger}.}
 On the other hand, it should be noted that Peano's arithmetic, namely natural number with
 addition and multiplication $\tup{\N,+,\cdot}$ is not "automatic@@struct",
@@ -335,9 +338,11 @@ since the unfolding of any finite graph is "automatic@@struct".
 Even more generally, the "configuration graph" of any "Turing machine" is "automatic@@struct"...%
 \footnote{See \Cref{ex:turing-machine-are-automatic}.}
 
-Hence, in \Cref{ch:dichotomy-theorem}, we naturally study the "homomorphism problem" when the "input structure"
+Hence, in \Cref{ch:dichotomy-theorem}, we naturally study the "homomorphism problem" when the "source structure"
 is allowed to be any "automatic structure". Surprisingly, very little was known about this problem:
 the only known result by Köcher states that whether an "automatic graph" is "2-colourable" is undecidable \cite{Kocher2014AutomatischenGraphen}.
+Said otherwise, it is undecidable whether an "automatic graph" admits
+a "homomorphism" to the "$2$-clique".
 This led us to conjecture that actually most "homomorphism problems" on "automatic structures"
 should be undecidable, since $\clique{2}$ is actually somewhat ``simple''.
 
@@ -379,8 +384,8 @@ who proved that any "homomorphism problem" whose "target structure" does not hav
 must be "L"-hard \cite{LaroseTesson2009UniversalAlgebraCSP}.
 
 The "homomorphism problem" on "automatic structures" 
-is undecidable when the "target structure" is a "clique".
-Yet, it becomes decidable when the target is a transitive tournament.
+is undecidable when the "target structure" is a finite "clique".
+Yet, it becomes decidable when the target is a finite "transitive tournament".
 This contrast leads to conjecture that "finite duality" represents the frontier of decidability for "automatic structures". In \Cref{ch:dichotomy-theorem}, we manage to prove this result, and extend it to "regular homomorphisms".
 
 \begin{contribution}
@@ -410,15 +415,20 @@ Our dichotomy theorem hence implies the following result.
 	as a "homomorphism problem".
 \end{contribution}
 
-One of our motivation for studying this problem was actually originating
+One of our motivations for studying this problem was actually originating
 in the "$\AUT$/$\REC$-separability problem", which takes as input two "automatic relations"---namely are binary relations over finite words described by "synchronous automata"---and asks if they can be
 "separated@@rel" by a "recognizable relation", "ie" a finite union $\bigcup_i K_i \times L_i$
 of Cartesian products of "regular languages". 
 We prove this problem to be equivalent to the one taking an "automatic graph" and asks
-if it has a finite "regular colouring", which amounts to asking
+if it has a finite "regular colouring", which amounts to testing
 if there exists some $k\in\Np$ for which the graph admits a "regular homomorphism" to
 $\clique{k}$. We still don't know whether this problem is decidable, 
-even if the results of \Cref{ch:dichotomy-theorem} hint at its undecidability.
+even if the results of \Cref{ch:dichotomy-theorem} hints at its undecidability.
+Our undecidability result for "regular homomorphisms"
+actually yield, when translated back to the vocabulary of separability,
+that it is undecidable whether two "automatic relations" are "separable@@rel"
+by a "recognizable relation" that can be written as
+a finite union of $k$ Cartesian products, whenever $k \geq 2$ is \emph{fixed}.
 
 \subsection{Language-Theoretic Properties of Presentations of Automatic Structures}
 
@@ -465,7 +475,7 @@ assumptions.
 Furthermore, we show that this algebraic theory is relevant, in the following sense.
 A "synchronous automaton" encodes a pair (from a binary relation) as
 a finite word. This encoding is injective, but not
-surjective: not all finite words corresponds to encodings of pairs.
+surjective: not all finite words correspond to encodings of pairs.
 Hence, the semantics of a "synchronous automaton" can be precisely seen
 as the semantics of a classical automaton, together with the promise that it will be only
 fed inputs that corresponds to valid encodings. In other words,

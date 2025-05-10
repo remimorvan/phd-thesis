@@ -30,7 +30,7 @@ there is at most one $b \in B$, denoted by $b(a)$
 "st" $\langle \?A, a \rangle \FOmodels \phi_b(x)$, and moreover if $\?A \homto \?B$
 then $a \mapsto b(a)$ is a "homomorphism" from $\?A$ to $\?B$.%
 \footnote{The adverb ``uniformly'' in ``"uniformly first-order definable homomorphisms"''
-refers to the fact that the formulas do not depend on the "input structure".}
+refers to the fact that the formulas do not depend on the "source structure".}
 
 \begin{example}[{\Cref{ex:zigzag-defn}, continued}]
 	\AP\label{ex:zigzag-FO}
@@ -257,7 +257,7 @@ must have a successor (resp. predecessor) in $\?H$ that lives in $\textrm{Im}_{g
 \begin{example}[{\Cref{ex:zigzag-FO}, continued}]
 	\AP\label{ex:zigzag-HC-T2}
 	We depict in \Cref{fig:zigzag-graph-HC-T2} the first steps of the "hyperedge consistency algorithm@@finite"---that we will define formally after this example---, when the "target structure"
-	if $\transitiveTournament{2}$ and the "input structure" is $\zigzag{n}{2}$.
+	if $\transitiveTournament{2}$ and the "source structure" is $\zigzag{n}{2}$.
 	The second step is a fixpoint, and so the procedure stops there. Note also that
 	each $\textrm{Im}_g$ ($g\in \zigzag{n}{2}$) is non-empty. 
 \end{example}
@@ -297,7 +297,7 @@ must have a successor (resp. predecessor) in $\?H$ that lives in $\textrm{Im}_{g
 \end{marginfigure}
 
 We formalize this algorithm as the greatest fixpoint of some operator.
-Given a finite "$\sigma$-structure" $\?B$, and an arbitrary\sidenote{Note that in this part, while some results---mostly complexity/decidability ones---require the assumption that the "input structure" is finite, some results do not,
+Given a finite "$\sigma$-structure" $\?B$, and an arbitrary\sidenote{Note that in this part, while some results---mostly complexity/decidability ones---require the assumption that the "source structure" is finite, some results do not,
 and are stated for arbitrary "structures".}%
 "$\sigma$-structure" $\?A$, we say that a function $F\colon A \to \pset{B}$ is subsumed
 by $G\colon A \to \pset{B}$, denoted by \AP\(F \intro*\subsumed G\),
@@ -424,7 +424,7 @@ has "tree duality" by \Cref{prop:finite-duality-implies-tree-duality}.
 	"tree duality" (\Cref{prop:2-path-tree-duality}), and so the "hyperedge consistency algorithm@@finite"
 	decides whether a finite "$\sigma$-structure" has a "homomorphism" to $\pathGraph{2}$.
 	We represent some steps of the algorithm in \Cref{fig:zigzag-graph-HC-P2},
-	on the "input structure" $\zigzag{5}{2}$.
+	on the "source structure" $\zigzag{5}{2}$.
 	Steps $0$, $1$ and $2$ of the "hyperedge consistency algorithm@@finite"
 	are identical to \Cref{ex:zigzag-HC-T2}.
 	Yet, in step $2$, we have not reached the fixpoint.
@@ -437,7 +437,7 @@ has "tree duality" by \Cref{prop:finite-duality-implies-tree-duality}.
 	equal to $\emptyset$, and by \Cref{coro:HC-empty-implies-no-hom}
 	that $\zigzag{5}{2} \nothomto \pathGraph{2}$.
 
-	In general, on "input structure" $\zigzag{n}{2}$ (with $n\in\Np$),
+	In general, on "source structure" $\zigzag{n}{2}$ (with $n\in\Np$),
 	the smallest $k$ "st" $\HCOperator^{\,k}(\topLatticeGuessFunctions{\pathGraph{2}})(g) = \emptyset$
 	for some $g \in \zigzag{n}{2}$ is of size $\frac{n}{2} + \+O(1)$,
 	and if we want to the property to hold for \emph{all} $g$'s,

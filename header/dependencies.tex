@@ -32,15 +32,18 @@
 
 \usepackage{listings}
 \lstdefinestyle{mystyle}{
+    language={}, %You shall leave this blank 
+    tabsize=4,
+    label={lst:code_direct},
     backgroundcolor=\color{cLightGrey!30!white},   
-    % commentstyle=\color{codegreen},
+    commentstyle=\color{cDarkGrey},
     keywordstyle=\color{maincolor},
     numberstyle=\sffamily\color{cGrey}\footnotesize,
     stringstyle=\color{cBlue},
     basicstyle=\footnotesize\sffamily,
-    % breakatwhitespace=false,
+    emphstyle=\color{cOrange!50!cYellow},
+    columns=fullflexible,
     breaklines=true,
-    % captionpos=b,
     keepspaces=true,
     numbers=left,
     numbersep=10pt,
@@ -56,6 +59,29 @@
     xrightmargin=6pt,
 }
 \lstset{style=mystyle}
+\newcommand{\KeywordSymbol}[1]{\textcolor{maincolor}{#1}}
+\newcommand{\KeywordSymbolBold}[1]{\KeywordSymbol{\textbf{#1}}}
+\newcommand{\EmphSymbol}[1]{\textcolor{cOrange!50!cYellow}{#1}}
+
+\lstdefinelanguage{mysql}{
+    morekeywords={SELECT,FROM,WHERE},
+    morestring=[b]"
+}
+\lstdefinelanguage{mysparql}{
+    morekeywords={SELECT,FROM,WHERE,FILTER,LANG,CONTAINS,YEAR,LIMIT},
+    moreemph={wdt,wd,rdfs},
+    morestring=[b]",
+    literate={/}{{\KeywordSymbolBold{/}}}1
+        {*}{{\KeywordSymbolBold{$\symbf{\ast}$}}}1
+        {:}{{\EmphSymbol{:}}}1
+}
+\lstdefinelanguage{myclingo}{
+    morekeywords={show},
+    morecomment=[l]{\%},
+    literate={:-}{{\KeywordSymbol{:-}}}1 
+        {==}{{\EmphSymbol{==}}}1
+        {!=}{{\EmphSymbol{!=}}}1
+}
 
 \usepackage[most]{tcolorbox}
 \usepackage{bbding} % \HandRight

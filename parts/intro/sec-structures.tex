@@ -3,10 +3,11 @@
 This thesis is devoted to studying variations of the "homomorphism problem",
 a central concept in theoretical computer science.
 Homomorphisms capture the idea of maps preserving relational information between mathematical structures.
-They arise naturally across a variety of domains: in logic, as the mechanism behind positive-existential quantification; in database theory, as the semantics of conjunctive query evaluation; and in constraint satisfaction, as the formalization of whether a structure
+They arise naturally across a variety of domains: in logic, as the mechanism behind model-checking of "existential-positive formulas"; in database theory, as the semantics of "conjunctive query" evaluation; and in "constraint satisfaction", as the formalization of whether a structure
 satisfies a given set of rules. This thesis approaches the "homomorphism problem" as a unifying framework, by emphasizing its complementary role in data querying and constraint solving.
 
-To introduce this problem, we present a range of examples---automata acceptance, SQL query evaluation and Sudoku solving; we also present 3-colourability and SAT-solving in the next sections---that can all be encoded as "homomorphism problems".
+To introduce this problem, we present a range of examples: automata acceptance, SQL query evaluation, and Sudoku solving that can all be encoded as "homomorphism problems".%
+\footnote{We will see even further examples---3-colourability and SAT-solving---in the next sections.}
 Interestingly, they reveal a dichotomy on how problems are encoded:
 in some, the query appears on the left-hand side of the "homomorphism", 
 while on others it appears on the right-hand side.
@@ -14,14 +15,14 @@ The first type of encoding correspond to what we call \emph{existential problems
 and are rooted in the field of \emph{database theory}:
 we introduce this domain in \Cref{sec:intro-existential}.
 On the other hand, the dual encoding deals with \emph{universal problems}
-studied by the domain of \emph{constraint satisfaction}.
-It is the focus of \Cref{sec:intro-universal}.
+studied in the domain of \emph{constraint satisfaction}:
+it is the focus of \Cref{sec:intro-universal}.
 This dual perspective on the "homomorphism problem"
 forms the basis for the two-part division of this thesis.
 
 \paragraph*{Homomorphisms.}
 The simplest mathematical structure is perhaps that of a (directed) finite graph:
-it consists of a finite set of vertices (also called \emph{domain}),
+it consists of a finite set $V$ of vertices (also called \emph{domain}),
 together with a set of "edges" $\+E \subseteq V \times V$.
 A "homomorphism" between two graphs is then a
 function $f$ between vertices that preserves
@@ -73,39 +74,39 @@ an example of graph "homomorphism" in \Cref{fig:example-graph-homomorphism}.
 \begin{figure}
 	\centering
 	\begin{tikzpicture}[scale=.9]
-		\node (d0) at (-.6,.6) {};
-		\node (d1) at (-.8,0) {};
-		\node (d2) at (-1.15,-.3) {};
-		\node (d3) at (-1.4,.4) {};
-		\node (d4) at (-0.4,1.3) {};
+		% \node (d0) at (-.6,.6) {};
+		% \node (d1) at (-.8,0) {};
+		% \node (d2) at (-1.15,-.3) {};
+		% \node (d3) at (-1.4,.4) {};
+		% \node (d4) at (-0.4,1.3) {};
 
-		\draw[use Hobby shortcut, closed=true, draw=c2, fill=c2, fill opacity=.4] 
-			(d0) .. (d1) .. (d2) .. (d3) .. (d4) ;
+		% \draw[use Hobby shortcut, closed=true, draw=c2, fill=c2, fill opacity=.4] 
+		% 	(d0) .. (d1) .. (d2) .. (d3) .. (d4) ;
 
-		\node (f0) at (0.97,-1) {};
-		\node (f1) at (0.51,-.7) {};
-		\node (f2) at (.42,-1.3) {};
+		% \node (f0) at (0.97,-1) {};
+		% \node (f1) at (0.51,-.7) {};
+		% \node (f2) at (.42,-1.3) {};
 	
-		\draw[use Hobby shortcut, closed=true, draw=c2, fill=c2, fill opacity=.4] 
-			(f0) .. (f1) .. (f2) ;
+		% \draw[use Hobby shortcut, closed=true, draw=c2, fill=c2, fill opacity=.4] 
+		% 	(f0) .. (f1) .. (f2) ;
 
-		\node (c0) at (-.2,1) {};
-		\node (c1) at (-0.5,1.5) {};
-		\node (c2) at (-1,2.4) {};
-		\node (c3) at (-2.7,2.2) {};
-		\node (c4) at (-2.2,1.5) {};
-		\node (c5) at (-1.2,1.5) {};
-		\node (c6) at (-.6,.6) {};
+		% \node (c0) at (-.2,1) {};
+		% \node (c1) at (-0.5,1.5) {};
+		% \node (c2) at (-1,2.4) {};
+		% \node (c3) at (-2.7,2.2) {};
+		% \node (c4) at (-2.2,1.5) {};
+		% \node (c5) at (-1.2,1.5) {};
+		% \node (c6) at (-.6,.6) {};
 
-		\draw[use Hobby shortcut, closed=true, draw=c1, fill=c1, fill opacity=.4] 
-			(c0) .. (c1) .. (c2) .. (c3) .. (c4) .. (c5) .. (c6);
+		% \draw[use Hobby shortcut, closed=true, draw=c1, fill=c1, fill opacity=.4] 
+		% 	(c0) .. (c1) .. (c2) .. (c3) .. (c4) .. (c5) .. (c6);
 
-		\node (e0) at (1.5,0) {};
-		\node (e1) at (1,.3) {};
-		\node (e2) at (.95,-.3) {};
+		% \node (e0) at (1.5,0) {};
+		% \node (e1) at (1,.3) {};
+		% \node (e2) at (.95,-.3) {};
 	
-		\draw[use Hobby shortcut, closed=true, draw=c0, fill=c0, fill opacity=.4] 
-			(e0) .. (e1) .. (e2) ;
+		% \draw[use Hobby shortcut, closed=true, draw=c0, fill=c0, fill opacity=.4] 
+		% 	(e0) .. (e1) .. (e2) ;
 
 		% grid
 		% \foreach \x in {-4,-3,...,4} {
@@ -121,6 +122,13 @@ an example of graph "homomorphism" in \Cref{fig:example-graph-homomorphism}.
 		\foreach \i in {7,8,9,10} {
 			\node[vertex] (\i) at ($(\i*360/6: 1.2cm)+(-1.8,1.04)$) {};
 		}
+
+		\node[tiny vertex, draw=cBlue, fill=cBlue, fill opacity=.4, left=-0em of 2] {};
+		\node[tiny vertex, draw=cYellow, fill=cYellow, fill opacity=.4, left=.5em of 2] {};
+		\node[tiny vertex, draw=cYellow, fill=cYellow, fill opacity=.4, right=0em of 3] {};
+		\node[tiny vertex, draw=cYellow, fill=cYellow, fill opacity=.4, above=0em of 7] {};
+		\node[tiny vertex, draw=cBlue, fill=cBlue, fill opacity=.4, left=0em of 9] {};
+		\node[tiny vertex, draw=cRed, fill=cRed, fill opacity=.4, right=0em of 0] {};
 
 		\draw[edge, bend left] (1) to (0);
 		\draw[edge, double, bend right] (1) to (0);
@@ -142,12 +150,12 @@ an example of graph "homomorphism" in \Cref{fig:example-graph-homomorphism}.
 		\AP\label{fig:example-structure-homomorphism}
 		A "relational structure" with two kinds of binary relations (represented by
 		simple and double arrows) and three kinds of unary relations (represented by
-		red, yellow and blue potatoes).
+		small red, yellow and blue circles next to the vertices).
 	}
 \end{figure}
 To enrich the structure---but also, perhaps more enjoyably,
-to add a splash of colour to this thesis---we will consider more complex structures: 
-we allow for multiple edge relations, or even relations of higher arity linking the vertices.
+to add a splash of colour to this thesis---we will consider more complex structures
+by allowing for multiple edge relations, or even relations of higher arity linking the vertices.
 The types and arities of relations allowed in a structure are specified by its "signature" $\sigma$.
 These richer structures are known as "$\sigma$-structures" or "relational structures"---see
 \Cref{fig:example-structure-homomorphism}---, and
@@ -160,7 +168,7 @@ in the "signature" $\sigma$.
 	Is there a "homomorphism" from $\?A$ to $\?B$?
 }
 
-In the problem above, we refer to $\?A$ as the \AP""input structure""
+In the problem above, we refer to $\?A$ as the \AP""source structure""
 and to $\?B$ as the ""target structure"", and we denote by \AP$\?A \intro*\homto \?B$
 the existence of a "homomorphism" from $\?A$ to $\?B$.
 
@@ -226,7 +234,7 @@ the "homomorphism problem" should rather be understood as a \emph{framework} or
 	the automaton $\?A$ accepts $u$.
 \end{example}
 
-Note that in both \Cref{ex:auto-as-rel},
+Note that in \Cref{ex:auto-as-rel},
 not only is the existence of a homomorphism equivalent to the existence of a solution, but the set 
 of homomorphisms naturally corresponds to the set of solutions: "homomorphisms" from $\?W_u$
 to $\?A$ exactly correspond to accepting runs of the automaton over $u$.
@@ -332,7 +340,7 @@ to $\?A$ exactly correspond to accepting runs of the automaton over $u$.
 
 	Consider the following SQL query, which outputs all pairs
 	of movie titles together with their projection time.
-	\lstinputlisting[language=SQL, deletekeywords={TIME,Time,time}]{fig/intro/cinema.sql}
+	\lstinputlisting[language=mysql]{fig/intro/cinema.sql}
 
 	This query $\gamma$ can in fact be seen itself as a "relational structure" $\?Q_\gamma$:
 	its domain has six elements, corresponding to the attributes of
@@ -418,10 +426,10 @@ part of the input represents some \emph{data}---or \emph{model}---and part of it
 However, as depicted in \Cref{tab:examples-encodings-in-hom}, 
 the encodings of these problems into "homomorphism problems" can either be of two types:
 \begin{itemize}
-	\item the \emph{"query@@sem"} is encoded in the "input structure",
+	\item the \emph{"query@@sem"} is encoded in the "source structure",
 		and the \emph{data} in the "target structure": we denote
 		this family of problems by `$\textsf{query} \homto^? \textsf{data}$';
-	\item in the other cases, the \emph{data} is encoded in the "input structure"
+	\item in the other cases, the \emph{data} is encoded in the "source structure"
 		and the \emph{"query@@sem"} is the "target structure": we denote
 		these problems by `$\textsf{data} \homto^? \textsf{query}$'.
 \end{itemize}
@@ -442,7 +450,7 @@ the encodings of these problems into "homomorphism problems" can either be of tw
 		Summary of the encodings of some
 		natural model-checking problem into "homomorphism problems".
 		The last column indicates whether the structure encoding the data
-		(resp. the query) is on the left-hand side ("ie" acts as the "input structure")
+		(resp. the query) is on the left-hand side ("ie" acts as the "source structure")
 		or the right-hand hand (the "target structure")
 		of the "homomorphism problem".
 		The last two examples will be described in \Cref{sec:intro-universal}.
@@ -450,11 +458,11 @@ the encodings of these problems into "homomorphism problems" can either be of tw
 \end{table}
 
 The two situations are far from symmetric: in model-checking, the size of the
-data is usually much larger than query,%
-\sidenote[3em]{For instance, when analysing the documents in the \emph{Panama Papers} scandal,
-the data represented 2.9 TB, while the queries were a few lines long. \cite{Neo4jPanama}}
-and hence, we often study problems where the query is fixed.
-Accordingly, not only does this fundamental asymmetry between data and query roles motivates the structure of this thesis in two independent parts: it also underlies distinct research domains.
+data is usually much larger than query:
+for instance, when analysing the documents in the \emph{Panama Papers} scandal,
+the data represented 2.9 TB, while the queries were a few lines long \cite{Neo4jPanama}.
+Hence, we often study problems where the query is fixed:
+accordingly, not only does this fundamental asymmetry between data and query roles motivates the structure of this thesis in two independent parts, it also underlies distinct research domains.
 
 \begin{known}
 	Encodings of model-checking problems as "homomorphism problems" are dual by nature,
@@ -477,13 +485,13 @@ Accordingly, not only does this fundamental asymmetry between data and query rol
 % but its "data complexity" is "uniform-AC0"!\footnote{I failed to found a proper reference claiming
 % this "uniform-AC0" bound: \cite[Corollary~3.1.8]{Gradel2007FiniteModelTheory} only claims "ALogTime", however the "uniform-AC0" is trivial to show, as the formula precisely gives the shape
 % of the circuits that needs to be built.} What this means is that the complexity
-% of the model-checking problems depends more on the size of the formula than the input structure.
+% of the model-checking problems depends more on the size of the formula than the source structure.
 
 % Similarly, the "homomorphism problem" is not symmetric.
 % If the "target structure" is fixed, the problem remains "NP"-complete---for instance
 % 3-colourability and 3-SAT (\Cref{ex:graph-colouring-as-hom,ex:sat-as-hom}) are both
 % examples of "NP"-complete problems where the "target structure" is fixed.
-% However, if the "input structure" is fixed, the number of possible "homomorphisms"
+% However, if the "source structure" is fixed, the number of possible "homomorphisms"
 % from $\?A$ to $\?B$ is at most $|B|^{|A|}$ and hence polynomial. In fact, the naive algorithm
 % enumerating all possible functions and checking whether they are "homomorphisms" works
 % is "LogSpace", and even better we can build from $\?A$ a small circuit

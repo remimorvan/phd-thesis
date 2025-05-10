@@ -15,7 +15,7 @@ We now turn to the $\textsf{query} \homto^? \textsf{data}$ side of the homomorph
 For instance, if $\?G$ is the "graph@@dir" with
 two nodes $u$ and $v$ and a single edge from $u$ to $v$,
 then asking if there is a "homomorphism" from $\?G$ to a graph $\?H$ amounts
-to asking if there exists at least one edge in $\?G$.
+to asking if there exists at least one edge in $\?H$.
 
 As we would expect for any existential problem, they are monotonic:
 if a solution exists, and we add more data, then a solution still exists.
@@ -25,7 +25,7 @@ then $\?A \homto \?B'$.
 
 SQL queries (\Cref{ex:sql-as-hom}) actually represent more than a mere example:
 every "homomorphism problem" $\?A \homto \?B$ can be seen as a SQL query evaluation problem
-where $\?A$ encodes a "query@@sem" in the \textsf{SELECT-WHERE-FROM}
+where $\?A$ encodes a "query@@sem" in the \textsf{SELECT-FROM-WHERE}
 fragment of SQL and $\?B$ is encodes a relational database.
 This fragment can also be characterized as the fragment
 of "first-order logic" where universal quantification, union and negation are not allowed---called
@@ -126,15 +126,15 @@ even though most theoreticians pretend that polynomial-time is tractable,
 a polynomial-time algorithm of degree seven,
 run over a 2.9 TB database, will execute more instructions
 than there are atoms in the observable universe.
-This leads to two natural questions:
+This leads to two natural directions:
 \begin{itemize}
 	\item optimizing the size of the exponent, "ie"
 		replacing the "query@@sem" with a semantically equivalent one of smaller size,
-	\item studying the parametrized complexity of the evaluating SQL queries, when parametrized by
+	\item studying the parametrized complexity of evaluating SQL queries, when parametrized by
 		the size of the query. This provides a finer complexity notion than
 		the classical "NP"/"AC0" approach; our previous remark shows the result to be
-		slicewise polynomial ("XP"), which is not as well-behaved in practice than
-		the "fixed-parameter tractable" ("FPT") problems.
+		slicewise polynomial ("XP"), which is not as well-behaved in practice as
+		"fixed-parameter tractable" ("FPT") problems.
 \end{itemize}
 
 \begin{figure}
@@ -182,11 +182,12 @@ This leads to two natural questions:
 	}
 \end{figure}
 \paragraph*{Query minimization.}
-This problem of optimizing the \textsf{SELECT-WHERE-FROM} fragment of
+The problem of optimizing the \textsf{SELECT-FROM-WHERE} fragment of
 SQL is well-understood, precisely by using the framework of "conjunctive queries"
 and "relational structures".
 This problem amounts to, given a "finite $\sigma$-structure" $\?A$,
-deciding if there exists a strictly smaller "$\sigma$-structure" $\?A'$ "st",
+deciding if there exists a strictly smaller "$\sigma$-structure" $\?A'$ "st",%
+\footnote{Here, our size measure is simply the number of vertices of the structure.}
 for any "finite $\sigma$-structure" $\?B$, then
 \[
 	\?A \homto \?B
@@ -202,7 +203,7 @@ The property above is in fact equivalent to
 \end{equation}
 and is hence decidable.
 The optimization procedure then goes as follows:
-starting from $\?A$, we check for every possible vertex $a \in \?A$
+starting from $\?A$, we check for every possible vertex $a \in A$
 if $\?A \smallsetminus \{a\}$ is equivalent to $\?A$ in the sense of
 \Cref{eq:intro-hom-equivalence}. If some $a$ satisfy the property, we
 let $\?A \smallsetminus \{a\}$ be our new query and start the process again.
@@ -212,24 +213,39 @@ a greedy procedure---and is, by construction, a "substructure" of $\?A$,
 see \Cref{fig:intro-core}.
 In particular, it implies that the "core" does not only minimize the number of
 vertices of $\?A$ while being "semantically equivalent": it also minimizes any
-parameter that is closed under taking "substructures", such as "eg" the "tree-width".
+parameter that is closed under taking "substructures", such as "eg"
+the number of edges or the "tree-width"!
 Therefore, this notion of "core", together with seeing
-\textsf{SELECT-WHERE-FROM} queries as "relational structures"/"conjunctive queries"
+\textsf{SELECT-FROM-WHERE} queries as "relational structures"/"conjunctive queries"
 provides a remarkably robust tool for solving most optimization problem on these "queries@@CQ".
 
 \begin{known}
 	"Conjunctive queries" can be minimized by computing their "core".
-	This process minimizes the number of vertices, but also many other
-	parameters, such as "path-width", "tree-width", etc.
+	This process minimizes the number of variables/vertices, but also many other
+	parameters, such as the number of edges, the "path-width", the "tree-width", etc.
 \end{known}
 
 \paragraph*{FPT algorithms.}
+In short, the field of parametrized complexity
+studies the computational complexity of decision problems
+in a finer way than classical complexity theory: each problem
+is associated to a parameter---which is smaller than the size of the whole instance---and
+the goal is to understand the influence of the size of this parameter on the
+complexity of the problem.
+Let us mention the parametrized classes "FPT" and "W[1]", which are roughly
+the parametrized equivalent of "P" and "NP".
+The problem of whether a "graph@@undir" contains a "$k$-clique",
+when parametrized by $k$, is known to be "W[1]"-complete:
+in some sense, it means that this problem is hard, and that
+this parameter $k$ plays a crucial role in the hardness of the problem.
+
 The problem of whether a "graph@@undir" contains a "$k$-clique" easily reduces to a
-"homomorphism problem" where the "input structure" is fixed---and equal to the "$k$-clique".
+"homomorphism problem" where the "source structure" is fixed---and equal to the "$k$-clique".
 It follows that the "homomorphism problem", parametrized in the
-size of the "input structure" is "W1"-hard. Unfortunately, assuming that "W1" $\neq$ "FPT",%
+size of the "source structure" is "W1"-hard. Unfortunately, assuming that "W1" $\neq$ "FPT",%
 \footnote{This is the parametrized counterpart of "P" $\neq$ "NP".}
-it follows that there cannot be an "FPT" algorithm for evaluating "conjunctive queries".
+it follows that there cannot be an "FPT" ("ie" ``efficient'')
+algorithm for evaluating "conjunctive queries".
 Hence, a quest emerged to find classes of "conjunctive queries" with an "FPT" evaluation.
 
 \begin{marginfigure}
@@ -260,17 +276,18 @@ First, one can notice that if said query is tree-shaped,
 such as the "conjunctive query" of \Cref{fig:intro-tree-shaped-CQ}, then the naive
 bottom-up evaluation algorithm works in time that is polynomial both
 in the size of the query and in the size of the database.
-Now, assume that $\gamma$ is a "conjunctive query" that is not necessarily
-not tree-shaped, but that is equivalent to a tree-shaped "query@@CQ".
-This is equivalent to saying that the "core" of $\gamma$ is "tree-shaped".
+Now, assume that $\gamma$ is a "conjunctive query" that is not
+tree-shaped, but that is equivalent to a tree-shaped "query@@CQ".
+This is the same as saying that the "core" of $\gamma$ is "tree-shaped".
 Hence, to evaluate $\gamma$, one can instead:
 \begin{itemize}
 	\item first compute its "core",%
 	\footnote{To quote K-Maro: ``Donne-moi ton coeur, baby, ton core, baby...''}
 	\item then evaluate this "core" on the database.
 \end{itemize}
-The interest of this approach is that, while databases are ever-changing,
-queries are often handwritten and hence short. Spending effort optimising them can be beneficial, since it might lead to performance gain
+The interest of this approach is that, while databases are big and ever-changing,
+queries are short and fixed. Hence, spending effort optimizing them can be beneficial,
+since it might lead to performance gain
 for \emph{every} evaluation of the query: this is why studying the
 complexity of the evaluation problem parametrized by the size of
 the query is relevant.
@@ -278,7 +295,7 @@ Formally, the previous procedure yields an algorithm that works in time
 \[
 	\+O(f(|\text{query}|) \cdot \text{poly}(|\text{core}|, |\text{database}|)).
 \]
-This means that evaluating "conjunctive queries" that are semantically equivalent to
+This precisely means that evaluating "conjunctive queries" that are semantically equivalent to
 tree-shaped "queries@CQ" is "FPT".
 
 In fact, for this reasoning to work, the notion of ``tree-shaped'' need not
@@ -294,12 +311,13 @@ they can even be evaluated in polynomial time, but the argument is more involved
 \cite{ChekuriRajaraman2000TreeWidthPolytime}.}
 
 Remarkably, this is \emph{exactly} the limit of tractability for these "queries@CQ":
-Grohe showed that a class of "conjunctive queries"
-satisfying mild closure properties has "FPT" evaluation when parametrized in the size
-of the query "iff"
+Grohe showed that a class of "conjunctive queries" has "FPT" evaluation when parametrized in the 
+size of the query "iff"
 it has bounded ``"semantic tree-width"''---meaning that there exists $k\in\Np$ "st"
 every "query@CQ" in the class is "semantically equivalent" to a "query@CQ" 
 of "tree-width" at most $k$ \cite{Grohe2007ComplexityHomomorphism}.%
+\footnote{Technical point: Actually for the equivalence to hold, the class of queries
+needs to be recursively enumerable.}%
 \footnote{The same equivalence holds for polynomial-time evaluation.}
 
 \begin{known}
@@ -346,25 +364,30 @@ outputting all pairs $\tup{b,b'}$ "st" $b'$ is a depth-$k$ descendant of $b$---s
 However, since "homomorphisms" contract "distances@@struct", there is no
 "conjunctive query" $\tup{\?A_*, \tup{a, a'}}$ outputting all pairs $\tup{b,b'}$
 "st" $b'$ is descendant, at \emph{any} depth, of $b$.
-In other words, "conjunctive queries" are not closed under transitive closures.
+In other words, "conjunctive queries" are not closed under transitive closure.
 
 More generally, human-centered data does not usually go well with
 relational databases, as they are not designed to allow graph traversal.
-To face this issue, "graph databases", also known as knowledge graphs have
+To face this issue, "graph databases" have
 been introduced: they can essentially be modelled
-as "relational structures" whose relations are all binary: in other
+as "relational structures" whose relations are all binary. In other
 words, they correspond to edge-labelled graphs, see \Cref{fig:example-wikidata}.
+\footnote{If the reader is familiar with \emph{knowledge graphs},
+everything we are saying about "graph databases" also applies
+to knowledges graphs. While the two notions are distinct in practice,
+their fundamental concept---and hence our theoretical modelling of them---is identical:
+story data as a graph.}
 To illustrate this point, we consider
 "Wikidata", which is a "graph database" containing more than one hundred million
 vertices, whose data is used amongst others on Wikipedia. 
 
 \begin{figure}
-	\lstinputlisting[language=SQL, morekeywords={rdfs,wd,wdt,FILTER,LANG,CONTAINS}]{fig/intro/exist.rq}
-	\lstinputlisting[language=SQL, morekeywords={rdfs,wd,wdt,FILTER,LANG,CONTAINS}]{fig/intro/exist-bis.txt}
+	\lstinputlisting[language=mysparql]{fig/intro/exist.rq}
+	\lstinputlisting[language=mysparql]{fig/intro/exist-bis.txt}
 	\caption{
 		\label{fig:sparql}
 		A SPARQL query (above), together with a human-friendly translation (below).\\
-	\href{https://query.wikidata.org/\#SELECT\%20DISTINCT\%20\%3Fwork\%20\%3FworkLabel\%20\%3FauthorLabel\%0AWHERE\%0A\%7B\%0A\%20\%20\%3Fwork\%09wdt\%3AP31\%2Fwdt\%3AP279\%2a\%20wd\%3AQ7725634\%3B\%0A\%20\%20\%20\%20\%20\%20\%20\%20rdfs\%3Alabel\%20\%3FworkLabel\%3B\%0A\%20\%20\%09\%09wdt\%3AP577\%20\%3Fdate\%3B\%0A\%20\%20\%20\%20\%20\%20\%20\%20wdt\%3AP50\%20\%3Fauthor.\%0A\%20\%20\%3Fauthor\%20rdfs\%3Alabel\%20\%3FauthorLabel.\%0A\%20\%20FILTER\%28LANG\%28\%3FworkLabel\%29\%20\%3D\%20\%22fr\%22\%20\%26\%26\%20LANG\%28\%3FauthorLabel\%29\%20\%3D\%20\%22fr\%22\%29.\%0A\%20\%20FILTER\%28CONTAINS\%28\%3FworkLabel\%2C\%20\%22exist\%22\%29\%29.\%0A\%20\%20FILTER\%28YEAR\%28\%3Fdate\%29\%20\%3C\%3D\%201990\%29.\%0A\%7D\%0ALIMIT\%207}{[\raisebox{-.4ex}{\HandRight} Execute the query.]}
+	\href{https://query.wikidata.org/\#SELECT\%20DISTINCT\%20\%3Fwork\%20\%3FworkLabel\%20\%3FauthorLabel\%0AWHERE\%0A\%7B\%0A\%20\%20\%3Fwork\%09wdt\%3AP31\%2Fwdt\%3AP279\%2a\%20wd\%3AQ7725634\%3B\%0A\%20\%20\%20\%20\%20\%20\%20\%20rdfs\%3Alabel\%20\%3FworkLabel\%3B\%0A\%20\%20\%09\%09wdt\%3AP577\%20\%3Fdate\%3B\%0A\%20\%20\%20\%20\%20\%20\%20\%20wdt\%3AP50\%20\%3Fauthor.\%0A\%20\%20\%3Fauthor\%20rdfs\%3Alabel\%20\%3FauthorLabel.\%0A\%20\%20FILTER\%28LANG\%28\%3FworkLabel\%29\%20\%3D\%20\%22fr\%22\%20\%26\%26\%20LANG\%28\%3FauthorLabel\%29\%20\%3D\%20\%22fr\%22\%29.\%0A\%20\%20FILTER\%28CONTAINS\%28\%3FworkLabel\%2C\%20\%22exist\%22\%29\%29.\%0A\%20\%20FILTER\%28YEAR\%28\%3Fdate\%29\%20\%3C\%3D\%201990\%29.\%0A\%7D\%0ALIMIT\%207}{[\raisebox{-.4ex}{\HandRight} Run the query.]}
 	}
 \end{figure}
 We would like to obtain all literary works published before 1990 and whose
@@ -389,8 +412,8 @@ we are looking for variables \textsf{?work}, \textsf{?typeOfWork} (implicit),
 	\item \textsf{?work} was published on \textsf{?date}, and
 	\item \textsf{?work} was authored by \textsf{?author}.
 \end{itemize}
-They key feature of query languages for "graph databases" is illustrated
-by the \lstinline[language=SQL]{wdt : P31 / wdt : P279 *} instruction:
+The key feature of query languages for "graph databases" is illustrated
+by the \lstinline[language=mysparql]{wdt:P31/wdt:P279*} instruction:
 this expression does not refer to a single edge of the knowledge graph,
 but rather to a regular expression formed from these edges.
 These regular expressions are in fact precisely what allows for easy graph traversal!
@@ -565,12 +588,12 @@ Not only does this lead to a complexity blow-up---"semantical equivalence" is "N
 for "conjunctive queries" but "ExpSpace"-complete for "conjunctive regular path queries"---,
 it also breaks the nice theory of "cores".
 
-\begin{marginfigure}
+\begin{marginfigure}[5em]
 	\centering
 	\includegraphics[width=\linewidth]{fig/intro/Gulliver.jpg}
 	\caption{\href{https://www.musee-orsay.fr/fr/oeuvres/gulliver-lilliput-le-reveil-sur-la-plage-248152}{\emph{Gulliver à Lilliput : Le réveil sur la plage}}, André Devambez, public domain.}
 \end{marginfigure}
-As a consequence, the optimizing "conjunctive regular path queries" poses
+As a consequence, optimizing "conjunctive regular path queries" poses
 a significant challenge to untwist graph properties from automata-theoretic ones.
 This first part of this thesis is dedicated to this problem.
 After exposing the basic theory of "conjunctive regular path queries"
@@ -593,7 +616,7 @@ of "relational structures" precisely prevents this phenomenon from appearing.
 In other words, this phenomenon precisely emerges by interlacing
 the graph structure and the automata of the "query@@CRPQ".}
 We argue that measuring a union of such "queries@@CRPQ" by the maximal size
-of a query in the union is a sensitive thing to do---because the complexity
+of a query in the union is a sensible thing to do---because the complexity
 of evaluating such a union depends mostly on this parameter---, and prove
 that given a "conjunctive regular path queries" and $k\in\N$, we can
 decide if it is equivalent to a finite union of
@@ -638,6 +661,7 @@ The case of "conjunctive queries" is much simpler: if the "core"
 of the "query@CQ" has $k$ edges (resp. "tree-width" $k$),
 then any "conjunctive query" "semantically equivalent" to it must use at least $k$ edges
 (resp. have "tree-width" at least $k$).
+
 Another of our contributions is to identify a sufficient condition
 on a "query@CRPQ" so that \emph{any} "query" that is "semantically equivalent" to it
 must contain a ``complex pattern''. The strength of this theorem lies in its
@@ -655,16 +679,17 @@ or the class of all graphs of "tree-width" at most $k$.
 
 This tool proves useful to show minimality of specific examples---"ie"
 for proofs---, and to prove complexity lower bounds for our problem.
-However, this it only provides a sufficient condition, that is often not
+However, this only provides a sufficient condition, that is often not
 necessary, it fails to provide a \emph{simple} algorithm to test minimality---hence our
 brute-force algorithms.
 
+\bigskip
 Then, in \Cref{ch:semantic-tree-width-CRPQ}, we turn to the question
 of "tree-width". Similarly to "conjunctive queries", finite unions of
 "conjunctive regular path queries"
 of bounded "tree-width" can be evaluated in polynomial time.
 It begs the question of deciding when a "query@CRPQ" is actually equivalent
-to such an object.
+to a query of small "tree-width".
 
 \begin{known}
 	Barceló, Romero and Vardi \cite{BarceloRomeroVardi2016SemanticAcyclicity}
@@ -673,16 +698,15 @@ to such an object.
 	a finite union of ``acyclic''---meaning of "tree-width" 1---"queries@CRPQ".
 \end{known}
 
-The general question for "tree-width" $k$ is left open at the end
-of their paper as the authors did not know how to extend their technique to this
+The general question for "tree-width" $k$ is left open in their paper as the authors did not know how to extend their technique to this
 more general setting. We extend their result, relying again on the notion
 of "maximal under-approximation":%
 \footnote{The paper of Barceló, Romero and Vardi
 also relies on "maximal under-approximations", and this notion already existed
 for "conjunctive queries".}
-we prove that, given a "conjunctive regular path query" and
-$k\in\Np$ the existence and computability of its "maximal under-approximation"
-by finite unions of "queries@CRPQ" of "tree-width" at most $k$.
+we prove the existence and computability of the "maximal under-approximation"
+by finite unions of "queries@CRPQ" of "tree-width" of a given
+"conjunctive regular path query".
 
 \begin{contribution}
 	Given $k\in \Np$ and a "conjunctive regular path queries",
@@ -692,11 +716,11 @@ by finite unions of "queries@CRPQ" of "tree-width" at most $k$.
 \end{contribution}
 
 The proof of existence of this "maximal under-approximation" is
-actually quite hard---at least much harder than in the case minimizing
-the number of "atoms". It needs to deal with two kind of information:
+much harder than in the case minimizing
+the number of "atoms". It needs to deal with two kinds of information:
 the structure of the query, "ie" its underlying graph, and its languages,
-and so the proof precisely massages the query to, at the same time,
-preserve information about the "tree decomposition"---serving as a
+and so the proof precisely massages the query to
+preserve information, at the same time, about the "tree decomposition"---serving as a
 witness of the small "tree-width" of the "query@CRPQ"---and about the
 semantics of the "query@CRPQ".
 
@@ -711,13 +735,13 @@ but part of our construction broke. Introducing the technical tool
 to fix it\footnote{See the notions of "contractions" and "contracted path-width".}
 actually leads to a unified solution, that handles both
 the case of "tree-width" $k$ (including $k=1$) and "path-width".%
-\footnote{Lastly, note that the order of presentation of these results
+\footnote{The order of presentation of these results
 does not follow the timeline of their discovery: our work on "semantic tree-width"
 was done in 2022--23 and published at ICDT '23, while the one on minimization
 was done in 2024--25 and published at PODS '25.}
 
-Lastly, all these algorithms relies on testing the equivalence
-of "conjunctive regular path queries", which is "ExpSpace".
+Lastly, all these algorithms rely on testing the equivalence
+of "conjunctive regular path queries", which is "ExpSpace"-complete.
 It leads to resource-hungry algorithms,%
 \footnote{Although it has to be noted that it is worth running exponential
 algorithm on smallish "queries@CRPQ" in order to optimize
@@ -725,7 +749,10 @@ its evaluation on huge databases!}
 which leads to a natural quest for identifying subclasses
 of "queries@CRPQ" that admit more efficient algorithms.
 
-"Conjunctive regular path queries" over "simple regular expression",
+As witnessed by the example of \Cref{fig:sparql}, the regular expressions
+used in practice are often much simpler than the one required
+to obtain the "ExpSpace"-hardness of the equivalence problem.
+Fortunately, "conjunctive regular path queries" over "simple regular expression",
 where the "regular languages" allowed are restricted to be concatenations of
 edge labels and reflexive-transitive closure ("aka" Kleene star) of
 edge labels, were already known to have a more efficient
@@ -733,7 +760,7 @@ algorithm for testing "semantical equivalence".
 
 \begin{contribution}
 	We prove that the problem of minimizing the number of "atoms" (resp. "tree-width")
-	of "conjunctive regular path queries" over "simple regular expression"
+	of "conjunctive regular path queries" over "simple regular expressions"
 	lies in the polynomial hierarchy.
 \end{contribution}
 
@@ -748,7 +775,7 @@ is "FPT" when parametrized by the size of the "query@@sem".%
 an incomparable complexity (better preprocessing but worst polynomial exponent)---by
 Romero, Barceló and Vardi \cite{RomeroBarceloVardi2017Homomorphism}.}
 
-Whether the converse hold remains a mystery: many attempts
+Whether the converse holds remains a mystery: many attempts
 have been tried to extend Grohe's proof for "conjunctive queries" to this setting,
 but all failed, precisely because of the difficulty posed
 by the intertwining of the graph structure and the automata.
@@ -758,7 +785,7 @@ in \Cref{ch:conclu-database}.
 
 \begin{openproblemintro}
 	Characterize the classes of "CRPQs" with "FPT" evaluation
-	when parametrized in the size of the "query@CRPQ".
+	when parametrized by the size of the "query@CRPQ".
 \end{openproblemintro}
 
 To summarize, the $\textsf{query} \homto^? \textsf{data}$ formulation of the "homomorphism problem" provides a robust foundation for classical database theory. The first part of this thesis extends this framework to a richer context: graph databases and queries extended with regular path predicates.

@@ -31,9 +31,9 @@
 % ---
 
 \knowledge{notion, index={structure!input}}
- | input structure
- | input@struct
- | input side@struct
+ | source structure
+ | source@struct
+ | source side@struct
 
 \knowledge{notion, index={structure!target}}
  | target structure
