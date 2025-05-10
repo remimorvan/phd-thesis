@@ -429,16 +429,16 @@ has "tree duality" by \Cref{prop:finite-duality-implies-tree-duality}.
 	are identical to \Cref{ex:zigzag-HC-T2}.
 	Yet, in step $2$, we have not reached the fixpoint.
 	In step $7$, this is the first time
-	we have $\HCOperator^{7}(g) = \emptyset$ for some
+	we have $\HCOperator^{7}(\topLatticeGuessFunctions{\pathGraph{2}})(g) = \emptyset$ for some
 	$g\in \zigzag{5}{2}$. This propagates until step 13, 
-	when $\HCOperator^{13}(g) = \emptyset$
+	when $\HCOperator^{13}(\topLatticeGuessFunctions{\pathGraph{2}})(g) = \emptyset$
 	for all $g\in \zigzag{5}{2}$. This is of course the fixpoint of $\HCOperator$,
 	proving that $\HCFixpoint{\zigzag{5}{2}}{\pathGraph{2}}$ is the constant map
 	equal to $\emptyset$, and by \Cref{coro:HC-empty-implies-no-hom}
 	that $\zigzag{5}{2} \nothomto \pathGraph{2}$.
 
 	In general, on "input structure" $\zigzag{n}{2}$ (with $n\in\Np$),
-	the smallest $k$ "st" $\HCOperator^{\,k}(g) = \emptyset$
+	the smallest $k$ "st" $\HCOperator^{\,k}(\topLatticeGuessFunctions{\pathGraph{2}})(g) = \emptyset$
 	for some $g \in \zigzag{n}{2}$ is of size $\frac{n}{2} + \+O(1)$,
 	and if we want to the property to hold for \emph{all} $g$'s,
 	then $k$ has size $n + \+O(1)$.
@@ -516,7 +516,7 @@ instead of $\?A$.
 	$\chi_b$ appear both positively and negatively in $\widehat \phi_Y$, going from
 	the $\phi$'s to the $\widehat \phi's$ increases the "quantifier alternation" of the
 	"formulas@@FO" by one. And so the "formulas@@FO" we build to describe $\HCOperator^{\,n}(\topLatticeGuessFunctions{B})$ are of "quantifier alternation" $n$.
-	\todo{CONCLUDE SOMEWHERE THAT CONSTRUCTION IS NOT ELEMENTARY.}}
+	Automata-wise, it implies that this construction is non-elementary in $n$.}
 	\begin{align*}
 		\chi_b(x) \defeq\; &
 			\bigwedge_{\+R_{(k)} \in \sigma} \bigwedge_{i\in \intInt{1,k}}\;
@@ -846,10 +846,13 @@ on $\zigzag{n}{5}$ in only $2$ steps.
 	we would otherwise get that either $\?T \homto \?B$---contradicting that $\?T$ is a "critical obstruction" of $\?B$---or that $\?T \homto \?A$---contradicting that $\?A \homto \?B$.
 	
 	And so, there exists $t \in T$ "st" $f(t) = a = b$.
-	Consider the "congruence induced" by $f$ on $T$, namely $x \ker{f} y$ "iff"
-	$f(x) = f(y)$. Let $\?U$ be the "quotient@@struct" of $\?T$ by $\ker{f}$,
-	and let $\?U_{\?A}$ be the "substructure" of $\?U$, induced by elements
-	of $U$ that are sent via $f$ on $\?A$.
+	We let $\?T'$ be the "$\sigma$-tree" obtained from $\?T$ by identifying
+	any point $t_1 \in T$ with a point $t_2 \in T$ "st" $f(t_1) = f(t_2)$
+	and removing any "edge" in between.
+	By construction, we still have a "homomorphism" $f'$ from $\?T'$ to $\?C$.
+	Moreover, we claim that $\?T \homto \?T'$: indeed, $\?T \homto \?C$ which is  
+
+
 	\begin{claim}
 		\AP\label{claim:hyperedge-consistency-uniform-convergence-trees-are-trees}
 		$\?U_{\?A}$ is a "$\sigma$-tree".

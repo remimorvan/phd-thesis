@@ -35,6 +35,7 @@
  | $\RAT $/$\REC $-separability problem
  | $\RAT $/$\REC $-separability problems
  | $\RAT $/$\REC $-sepa\-ra\-bility problems
+ | separability problems
 
 \knowledge{notion, wrap=\DPfont, index={$\+D$-separability problem (for automatic relations)}}
  | $\kPROD[1]$-separability problem
@@ -44,7 +45,6 @@
  | $\kPROD [2]$-separability problem
  | $\kREC $-separability@problem
  | $\AUT $/$\kREC $-separability@problem
- | separability problems
 
 \knowledge{notion, wrap=\DPfont, index={$\AUT $/$\REC $-separability problem}}
  | $\AUT $/$\REC $-separability problem
@@ -60,6 +60,8 @@
  | $\RAT $/$\REC $-membership problem
  | $\DRAT $/$\REC $-membership problem
  | $\REC $-membership problem for automatic relations
+ | membership problem
+ | membership problems
 
 \knowledge{notion, wrap=\DPfont, index={$\+D$-membership problem (for automatic relations)}}
  | $\+D$-membership problem
@@ -69,8 +71,6 @@
  | $\kPROD $-membership problem
  | $\REC $-membership
  | membership problems for automatic relations
- | membership problem
- | membership problems
 
 \knowledge{notion, index={inclusion problem}}
  | inclusion problem@rel
