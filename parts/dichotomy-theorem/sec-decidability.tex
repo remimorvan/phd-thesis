@@ -872,39 +872,36 @@ on $\zigzag{n}{5}$ in only $2$ steps.
 	we would otherwise get that either $\?T \homto \?B$---contradicting that $\?T$ is a "critical obstruction" of $\?B$---or that $\?T \homto \?A$---contradicting that $\?A \homto \?B$.
 	
 	And so, there exists $t \in T$ "st" $f(t) = a = b$.
-	We let $\?T'$ be the "$\sigma$-tree" obtained from $\?T$ by identifying
-	any point $t_1 \in T$ with a point $t_2 \in T$ "st" $f(t_1) = f(t_2)$
-	and removing any "edge" in between.
-	By construction, we still have a "homomorphism" $f'$ from $\?T'$ to $\?C$.
-	Moreover, we claim that $\?T \homto \?T'$: indeed, $\?T \homto \?C$ which is  
-
+	We let $\?U$ be the "quotient structure" of $\?T$ by the "congruence induced" by $f$,
+	namely $\ker{f}$. Then, we let $\?U_{\?A}$ be the "substructure" of $\?U$
+	"induced@@substructure" by the elements that are sent via $f$ on $\?A$.
 
 	\begin{claim}
 		\AP\label{claim:hyperedge-consistency-uniform-convergence-trees-are-trees}
 		$\?U_{\?A}$ is a "$\sigma$-tree".
 	\end{claim}
-	First, we show that $\?U_{\?A}$ is "connected". This amounts to showing that for
-	every "path"\footnote{$t_i$ denotes an element of $\?T$ and $\bar h_i$ denotes a "hyperedge" of $\?T$. By definition of $\IncidenceGraph{\?T}$, $t_i \in \bar h_i$ and
-	$t_{i+1} \in \bar h_i$.}
-	\[
-		t_0,\, \bar h_0,\, t_1,\, \bar h_1,\, \dotsc,\, t_{n-1},\, \bar h_{n-1},\, t_n
-	\]
-	in $\IncidenceGraph{\?T}$, if the "path" it induces in $\?U$ is "simple@@path",
-	if $f(t_0) \in A$ and $f(t_n) \in A$,
-	then $f(t_i) \in A$ for all $i \in \intInt{0,n}$.
-	By contradiction, we assume that $f(t_i) \not\in A$ for some $i \in \intInt{0,n}$.
-	Since the only vertex that is adjacent to both $\?A$ and $\?B$ in $\?C$ is $a=b$,
-	we get that $f(t_j) = a = b$ for some $j < i$ and $f(t_{j'}) = a = b$ for some $j' > i$.
-	And hence, the "path" $f(t_0), \dotsc, f(t_n)$ is not "simple@@path", which is a contradiction.
+	% First, we show that $\?U_{\?A}$ is "connected". This amounts to showing that for
+	% every "path"\footnote{$t_i$ denotes an element of $\?T$ and $\bar h_i$ denotes a "hyperedge" of $\?T$. By definition of $\IncidenceGraph{\?T}$, $t_i \in \bar h_i$ and
+	% $t_{i+1} \in \bar h_i$.}
+	% \[
+	% 	t_0,\, \bar h_0,\, t_1,\, \bar h_1,\, \dotsc,\, t_{n-1},\, \bar h_{n-1},\, t_n
+	% \]
+	% in $\IncidenceGraph{\?T}$, if the "path" it induces in $\?U$ is "simple@@path",
+	% if $f(t_0) \in A$ and $f(t_n) \in A$,
+	% then $f(t_i) \in A$ for all $i \in \intInt{0,n}$.
+	% By contradiction, we assume that $f(t_i) \not\in A$ for some $i \in \intInt{0,n}$.
+	% Since the only vertex that is adjacent to both $\?A$ and $\?B$ in $\?C$ is $a=b$,
+	% we get that $f(t_j) = a = b$ for some $j < i$ and $f(t_{j'}) = a = b$ for some $j' > i$.
+	% And hence, the "path" $f(t_0), \dotsc, f(t_n)$ is not "simple@@path", which is a contradiction.
 
-	We then show that $\?U_{\?A}$ is "strongly acyclic@@struct". We consider a "path"
-	\[
-		t_0,\, \bar h_0,\, t_1,\, \bar h_1,\, \dotsc,\, t_{n-1},\, \bar h_{n-1},\, t_n
-	\]
-	in $\IncidenceGraph{\?U_{\?A}}$, and assume that $t_i \neq t_j$ for all pairs
-	$(i,j) \in \intInt{0,n}^2 \smallsetminus \{(0,n),\, (n,0)\}$.
-	We want to show that $t_0 \neq t_n$.
-	\todo{BIG-TODO.}
+	% We then show that $\?U_{\?A}$ is "strongly acyclic@@struct". We consider a "path"
+	% \[
+	% 	t_0,\, \bar h_0,\, t_1,\, \bar h_1,\, \dotsc,\, t_{n-1},\, \bar h_{n-1},\, t_n
+	% \]
+	% in $\IncidenceGraph{\?U_{\?A}}$, and assume that $t_i \neq t_j$ for all pairs
+	% $(i,j) \in \intInt{0,n}^2 \smallsetminus \{(0,n),\, (n,0)\}$.
+	% We want to show that $t_0 \neq t_n$.
+	% \todo{finish this.}
 
 	\begin{claim}
 		\AP\label{claim:hyperedge-consistency-uniform-convergence-tree}

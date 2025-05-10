@@ -1,0 +1,12 @@
+\node[vertex] (n) at (0,0) {};
+\node[vertex, below left=of n] (n0) {};
+\node[vertex, below right=of n] (n1) {};
+\node[vertex, below left=of n1] (n10) {};
+\node[vertex, below=of n1] (n11) {};
+\node[vertex, below right=of n1] (n12) {};
+
+\draw[edge] (n) to (n0);
+\draw[edge] (n) to (n1);
+\draw[edge] (n1) to (n10);
+\draw[edge] (n1) to (n11);
+\draw[edge] (n1) to (n12);

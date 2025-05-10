@@ -181,6 +181,26 @@ The \AP""disjoint union"" of two "structures" over a
 is obtained by taking the disjoint union of their domain and of
 their "predicate interpretations".
 
+\begin{marginfigure}
+	\centering
+	\begin{tikzpicture}
+		\input{tikz/general-prelim/product-cartesian.tex}
+	\end{tikzpicture}
+	\caption{
+		\AP\label{fig:general-prelim-product-Cartesian}
+		Two "graphs@@dir" (above and left) and their "Cartesian product" (below right).
+	}
+\end{marginfigure}
+\begin{marginfigure}
+	\centering
+	\begin{tikzpicture}
+		\input{tikz/general-prelim/product-block.tex}
+	\end{tikzpicture}
+	\caption{
+		\AP\label{fig:general-prelim-product-block}
+		Two "graphs@@dir" (above and left) and their "block product" (below right).
+	}
+\end{marginfigure}
 We now let $\sigma$ to be any "signature".
 Given two "$\sigma$-structures" $\?A$ and $\?B$, their
 ""Cartesian product"" \AP$\?A \intro*\prodstruct \?B$
@@ -194,13 +214,12 @@ in the "block product" consists of all tuples
 \land b_1 = \dotsc = b_k$ or 
 $a_1 = \dotsc = a_k
 \land \tup{b_1, \dotsc, b_k} \in \+R(\?B)$.
-
+See \Cref{fig:general-prelim-product-Cartesian,fig:general-prelim-product-block} for examples.
 The $k$-fold iteration of $\?A$ is denoted by
 $\intro*\iterstruct{\?A}{k}$ and is defined as
 \[
 	\underbrace{\?A \times \dotsc \times \?A}_{k \text{ times}}.
 \]
-\todo{example fig}
 
 \subsection{Adjacencies}
 
@@ -273,10 +292,17 @@ of a non-empty directed path from a vertex to itself.
 A ""directed acyclic graph"", or \reintro{DAG} for short,
 is any "graph@@dir" "st" that contains no "directed cycle".
 
+\begin{marginfigure}
+	\centering
+	\begin{tikzpicture}
+		\input{tikz/general-prelim/directed-tree.tex}
+	\end{tikzpicture}
+	\caption{\AP \label{fig:general-prelim-directed-tree} A "directed tree".}
+\end{marginfigure}
 A ""directed tree"" is a non-empty "graph@@dir" "st" there exists 
 a vertex $r$ with the property that for every vertex $v$,
-there exists exactly one directed path from $r$ to $v$.
-\todo{figures}
+there exists exactly one directed path from $r$ to $v$:
+see \Cref{fig:general-prelim-directed-tree}.
 
 The ""chromatic number"" of a "graph@@dir" is the least cardinal $k$
 "st" it is "$k$-colourable". We say that a "graph@@dir"
@@ -592,7 +618,6 @@ In other words, while automata states represent some information on the word
 that is updatable by appending letters on the right, monoid elements represent
 an information on the word that is updatable both by appending letters on the left or the right. 
 
-\todo{add example}
 Unsurprisingly, there is a notion of ``minimal information'' required to recognize a monoid,
 giving rise to the notions of ""syntactic monoids"" and ""syntactic morphisms"",
 see "eg" \cite[Theorem~1.7]{Bojanczyk2020MSO}.

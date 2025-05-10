@@ -1,0 +1,23 @@
+\node[vertex] (x0) at (0,1) {};
+\node[vertex] (x1) at (1,1) {};
+\node[vertex] (x2) at (2,1) {};
+\node[vertex] (y0) at (-1,0) {};
+\node[vertex] (y1) at (-1,-1) {};
+
+\foreach \x in {0,1,2} {
+	\foreach \y in {0,1} {
+		\node[vertex] (\x-\y) at (\x,-\y) {};
+	}
+}
+
+\draw[edge] (x0) to (x1);
+\draw[edge] (x1) to (x2);
+\draw[edge] (y0) to (y1);
+
+\foreach \x in {0,1,2} {
+	\draw[edge] (\x-0) to (\x-1);
+}
+\foreach \y in {0,1} {
+	\draw[edge] (0-\y) to (1-\y);
+	\draw[edge] (1-\y) to (2-\y);
+}
