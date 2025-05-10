@@ -446,7 +446,7 @@ has "tree duality" by \Cref{prop:finite-duality-implies-tree-duality}.
 
 \begin{corollary}
 	If $\?B$ has "tree duality", then $\HomFin{\?B}$ can be solved in
-	polynomial time.
+	polynomial time using the algorithm of \Cref{fig:hc-finite}.
 \end{corollary}
 
 % Finally, we will prove a proposition that we will prove useful later in \todo{TODO}.
@@ -462,7 +462,33 @@ has "tree duality" by \Cref{prop:finite-duality-implies-tree-duality}.
 % 	\todo{TODO. Rigidity?}
 % \end{proof}
 
-\todo{somewhere \AP""hyperedge consistency@@finite"" algo.}
+\begin{figure}
+	\centering
+	\begin{algorithm}[H]
+		\SetAlgoLined
+		\SetKwRepeat{Do}{do}{while}
+		\KwInput{Two "finite $\sigma$-structures" $\?A$ and $\?B$.}
+		$\textrm{Im}^{0}_a \leftarrow B$ for $a\in A$\;
+		$n \leftarrow 0$\;
+		\Do{%
+			some $\textrm{Im}_a$ has been updated
+		}{
+			\For{$a \in A$}{
+				\nosemic$\textrm{Im}^{n+1}_a \leftarrow \{ b \in \textrm{Im}^{n}_a \mid$\;
+				\pushline$\forall \langle a_1,\, \dotsc,\, a_{k-1} \rangle \in \adjacency{a}{\?A}{\+R}{i},$\;
+				$\exists \langle b_1,\, \dotsc,\, b_{k-1} \rangle \in \adjacency{b}{\?B}{\+R}{i},$\;
+				$b_1 \in F(a_1) \land \dotsc \land b_{k-1} \in F(a_{k-1})$\;
+				\popline\dosemic$\}$\;
+				\If{$\textrm{Im}^{n+1}_a = \emptyset$}{
+					\Return{false}\;
+				}
+			}
+			$n \leftarrow n+1$\;
+		}
+		\Return{true}
+	\end{algorithm}
+	\caption{\AP\label{fig:hc-finite} The ""hyperedge consistency algorithm for finite structures"".}
+\end{figure}
 
 \subsection{Hyperedge Consistency for Automatic Structures}
 \label{sec:hyperedge-consistency-automatic}
@@ -906,7 +932,42 @@ on $\zigzag{n}{5}$ in only $2$ steps.
 	\eqref{item:hc-uniform-finite-structures}, which concludes the proof of \Cref{lem:hyperedge-consistency-uniform-convergence}.
 \end{proof}
 
-\todo{ \AP""hyperedge consistency algorithm for automatic structures""}
+Putting \Cref{lem:hyperedge-consistency-preserves-regularity}
+(for computations) and \Cref{lem:hyperedge-consistency-uniform-convergence}
+(for correctness), we get (1) that the
+algorithm of \Cref{fig:hc-automatic} decides $\HomRegAut{\?B}$
+when $\?B$ has finite duality and (2) that $\HomRegAut{\?B} = \HomAut{\?B}$
+under the same assumption.
+
+\begin{figure}
+	\centering
+	\begin{algorithm}[H]
+		\SetAlgoLined
+		\SetKwRepeat{Do}{do}{while}
+		\SetKwInput{KwInvariant}{Invariant}
+		\KwInput{An "automatic presentation" $\+A$ of a "$\sigma$-structure" $\?A$ and
+		a "finite $\sigma$-structure" $\?B$.}
+		\KwInvariant{First-order formulas $\phi_{Y}(x)$ ($Y \subseteq B$)
+		"defining@first-order definable" the set of $a \in A$ "st"
+		$\textrm{Im}_a = Y$, where $\textrm{Im}_a$ is as in \Cref{fig:hc-finite}.}
+		$\phi^{0}_B(x) \leftarrow \top$\;
+		$\phi^{0}_Y(x) \leftarrow \bot$ for all $Y \subsetneq B$\;
+		$n \leftarrow 0$\;
+		\Do{%
+			some $\phi_{Y}(x)$ has been semantically updated
+		}{
+			compute $\tup{\phi^{n+1}_{Y}(x)}_{Y \subseteq B}$ from the 
+			$\tup{\phi^{n}_{Y}(x)}_{Y \subseteq B}$ using
+			\Cref{lem:hyperedge-consistency-preserves-regularity}\;
+			\If{$\semFO{\phi^{n+1}_\emptyset(x)}{\?A} \neq \emptyset$}{
+				\Return{false}\;
+			}
+			$n \leftarrow n+1$\;
+		}
+		\Return{true}
+	\end{algorithm}
+	\caption{\AP\label{fig:hc-automatic} The ""hyperedge consistency algorithm for automatic structures"".}
+\end{figure}
 
 % \begin{claim}
 % 	If $\?A \nothomto \?B$, then there

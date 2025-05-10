@@ -68,4 +68,15 @@
 \usepackage{simplewick} % \contraction for Bourbaki's logic https://tex.stackexchange.com/questions/649665/how-can-i-link-symbols-over-a-mathematical-expression-in-latex
 \usepackage{frege} % Frege
 \usepackage{csquotes}
-% \renewcommand*{\mkcitation}[1]{\newline\null\hfill---~#1}
+\renewcommand*{\mkcitation}[1]{ ---#1.}
+
+% Algorithms
+\usepackage[noend]{algorithm2e}
+\SetKwInput{KwInput}{Input}
+%https://tex.stackexchange.com/questions/37181/linebreak-in-package-algorithm2e
+\makeatletter
+\newcommand{\nosemic}{\renewcommand{\@endalgocfline}{\relax}}% Drop semi-colon ;
+\newcommand{\dosemic}{\renewcommand{\@endalgocfline}{\algocf@endline}}% Reinstate semi-colon ;
+\newcommand{\pushline}{\Indp}% Indent
+\newcommand{\popline}{\Indm\dosemic}% Undent
+\makeatother
