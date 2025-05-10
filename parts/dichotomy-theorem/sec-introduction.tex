@@ -47,7 +47,7 @@ By applying techniques based on Ramsey Theorem over infinite graphs, it was show
 \cite[Theorem 1]{BarceloHongLeLinNiskanen2019MonadicDecomposability} \cite[Corollary 2.9]{BergstrasserGanardiLinZetzsche2022RamseyQuantifiers}.
 
 \AP A natural generalization of this question is the
-""$\RAT$/$\REC$-separability problem"", which takes two $n$-ary "rational relations" 
+"$\RAT$/$\REC$-separability problem", which takes two $n$-ary "rational relations" 
 $\+R,\+R' \subseteq \Sigma^* \times \Sigma^*$ and checks whether there is a "recognizable relation" 
 $S = \bigcup_i L_{i,1} \times \cdots \times L_{i,n}$ that "separates@@rel" $\+R$ from $\+R'$, meaning that $\+R \subseteq \+S$ and $\+R' \cap \+S = \emptyset$, in which case we say that $\+R$
 and $\+R'$ are \AP""separable@@rel"" by a "recognizable relation".
@@ -270,21 +270,21 @@ both reductions for undecidability generalize Larose and Tesson's proof.
 In the case of "regular homomorphisms", the full sequence of reductions
 to prove undecidability goes as follows:
 \begin{itemize}
-	\item from the "halting problem" on "deterministic" "reversible Turing machines"
+	\item from the \DPfont{halting problem} on deterministic "reversible Turing machines"
 		to the "regular reachability problem" for "linear Turing machines";
 	\item which is reduced in turn to "regular unconnectivity in automatic graphs";
 	\item and lastly, this latter problem is reduced
 		to $\HomRegAut{\?B}$ when $\?B$ does not have "finite duality"---this
 		reduction is the adaptation of Larose and Tesson's proof.
 \end{itemize}
-To our knowledge, none of these problems---except the "halting problem"---have been studied before.
+To our knowledge, none of these problems---except the \DPfont{halting problem}---have been studied before.
 Decidability results are given in \Cref{sec:dichotomy-decidability}:
 in fact, the decidability of $\HomAut{\?B}$ when $\?B$ has "finite duality"
 is trivial, so this section is dedicated to the problem $\HomRegAut{\?B}$.
 In \Cref{sec:uniformly-first-order-definable-hom} we give a succinct
 logic-based proof of the decidability of $\HomAut{\?B}$, however the proof is
 somewhat \emph{abstract}. In \Cref{sec:hyperedge-consistency-finite,sec:hyperedge-consistency-automatic} we give a more visual solution,
-known as "hyperegde consistency algorithm@@automatic". It generalizes
+known as "hyperedge consistency algorithm@@automatic". It generalizes
 the eponymous algorithm for "finite structures", that captures
 the "homomorphism problem" when the "target structure" has "tree duality"---which is
 a supclass of "finite duality".

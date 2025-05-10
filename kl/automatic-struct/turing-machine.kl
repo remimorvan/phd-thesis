@@ -16,6 +16,7 @@
 
 \knowledge{notion, index={Turing machine!reversible}}
  | reversible
+ | reversible Turing machines
 
 \knowledge{notion, index={Turing machine!well-founded}}
  | well-founded

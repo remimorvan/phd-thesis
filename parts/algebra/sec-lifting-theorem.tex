@@ -438,7 +438,7 @@ two words $(u,v)$ of the same length. But then $(ua, va) \not\in \+S$.
 	Let $a\in \residual{u}\phi^{-1}[\Acc]$.
 	Then there exists $a' \in \?A$ such that $a \congr{\phi^{-1}[\Acc]} a'$
 	and $ua' \in \phi^{-1}[\Acc]$.
-	By \Cref{prop:inverse-morphism-preserve-congruence}
+	By \Cref{claim:inverse-morphism-preserve-congruence}
 	$a \congr{\phi^{-1}[\Acc]} a'$ implies $\phi(a) \congr{\Acc} \phi(a')$,
 	and $ua' \in \phi^{-1}[\Acc]$ yields $\phi(u)\phi(a') \in \Acc$.
 	Overall, this shows that $a \in \phi^{-1}[\residual{\phi(u)}\Acc]$.
@@ -448,12 +448,12 @@ two words $(u,v)$ of the same length. But then $(ua, va) \not\in \+S$.
 	$\phi(a) \in \residual{\phi(u)}\Acc$, so there
 	exists $b' \in \?B$ such that $\phi(a) \congr{\Acc} b'$
 	and $\phi(u)b' \in \Acc$. By surjectivity of $\phi$ and
-	\Cref{prop:inverse-morphism-preserve-congruence}, there exists $a' \in \?A$ 
+	\Cref{claim:inverse-morphism-preserve-congruence}, there exists $a' \in \?A$ 
 	such that $\phi(a') = b'$ and $a \congr{\phi^{-1}[\Acc]} a'$.
 
 	Being done with the proof of \Cref{claim:inverse-morphism-preserve-residuals},
 	we now proceed to prove \Cref{lemma:characterization-pseudovarieties-syncrel}.
-	\proofcase{Direct implication.} By \Cref{prop:inverse-morphism-preserve-residuals},
+	\proofcase{Direct implication.} By \Cref{claim:inverse-morphism-preserve-residuals},
 	the "residual" of any relation "recognized@@sync" by some "morphism@@sync"
 	$\phi$ is also "recognized@@sync" by $\phi$. Hence, being closed under
 	"syntactic derivatives" implies being closed under "residuals".
@@ -498,7 +498,7 @@ two words $(u,v)$ of the same length. But then $(ua, va) \not\in \+S$.
 	follows that $x \dep_{\SyntSA{\+R}} y$. This concludes the proof of
 	\eqref{eq:boolean-combination-of-residuals}. By taking the union, it
 	follows that any "closed subset" of $\SyntSA{\+R}$ is a Boolean combination
-	of "residuals" of $\Acc$. Applying \Cref{prop:inverse-morphism-preserve-residuals}
+	of "residuals" of $\Acc$. Applying \Cref{claim:inverse-morphism-preserve-residuals}
 	then yields that any relation "recognized@@sync" by $\phi$ is a Boolean combination of 
 	"residuals" of $\+R$. Hence, any class closed under "Boolean combinations" and
 	"residuals" is also closed under "syntactic derivatives".

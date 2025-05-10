@@ -36,6 +36,7 @@
 
 \knowledge{notion, index={hyperedge consistency!for automatic structures}}
  | hyperedge consistency algorithm for automatic structures
+ | hyperedge consistency algorithm@automatic
 
 \knowledge{notion, index={uniformly first-order definable homomorphisms}}
  | uniformly first-order definable homomorphisms

@@ -556,16 +556,6 @@ to prove that some structures don't have "finite duality".
 While $\pathGraph{k}$ and $\transitiveTournament{k}$ are similar structures,
 one has "finite duality" and the other does not.
 
-\begin{proposition}
-	\AP\label{prop:2-path-infinite-duality}
-	The "$2$-path" $\pathGraph{2}$ does not have "finite duality".
-\end{proposition}
-
-\begin{proof}
-	It can be shown that each $\zigzag{n}{2}$ ($n\in\N$) is not only an "obstruction" of
-	$\pathGraph{2}$ but actually a "critical obstruction". The conclusion follows
-	from \Cref{prop:finite-duality-iff-critical-obstructions}.
-\end{proof}
 Recall that by "Atserias' theorem", this implies that
 $\HomFin{\transitiveTournament{k}}$ is "first-order definable"\footnote{By the formula saying that
 there are no variables $x_0$, $\dotsc$, $x_{k+1}$ "st" for all $i$ there is an edge from $x_i$ to $x_{i+1}$.} but $\HomFin{\pathGraph{k}}$ is not.%
@@ -678,7 +668,7 @@ Note that $\FederVardi{\FederVardi{\?B}}$ is always "homomorphically equivalent"
 $\FederVardi{\?B}$---see "eg" \cite[\S~9.2.2, Proposition 9.1]{NesetrilPOM2012FirstOrderCSPs}---
 and so $\FederVardi{\?B}$ \emph{always} has "tree duality", no matter if $\?B$ has this property.
 
-\begin{example}[{\Cref{ex:dual-P2}, continued}]
+\begin{example}[{\Cref{ex:zigzag-defn}, continued}]
 	\label{ex:Feder-Vardi-P2}
 	Using \Cref{prop:charac-Feder-Vardi}, we can prove for instance that
 	if a "graph@@dir" $\?G$ has "tree duality", then either it is a "DAG", or $\?G$ contains
@@ -690,17 +680,13 @@ and so $\FederVardi{\?B}$ \emph{always} has "tree duality", no matter if $\?B$ h
 	Since $\?G$ has "tree duality", it follows by \Cref{prop:charac-Feder-Vardi}
 	that $\FederVardi{\?G} \homto \?G$ and hence $\?G$ also contains a self-loop.
 	
-	Note in the case that $\?G$ is "homomorphically equivalent" to the graph consisting
-	of a single self-loop---that admits $\emptyset$ as a "dual" and hence has
+	Note that, if $\?G$ contains a self-loop, then actually it is "homomorphically equivalent" to the graph consisting of a single self-loop---that admits $\emptyset$ as a "dual" and hence has
 	"tree duality". In other words, what we showed can be rephrased as: any
 	non-trivial "graph@@dir" with "tree duality" is a "DAG".
 	For instance, this implies that $\clique{2}$ does not have
-	"tree duality".%
-	\footnote{We will see in \Cref{sec:hyperedge-consistency-finite}
-	that whenever $\?B$ has "tree duality", then $\HomFin{\?B}$ is decidable in "P".
-	The example of $\clique{2}$ shows that this implication is not tight.}
+	"tree duality".
 	
-	\begin{marginfigure}
+	\begin{marginfigure}[-20em]
 		\centering
 		\begin{tikzpicture}
 			\input{tikz/dichotomy/2-path-graph-Feder-Vardi}
@@ -711,7 +697,7 @@ and so $\FederVardi{\?B}$ \emph{always} has "tree duality", no matter if $\?B$ h
 			on the "$2$-path".
 		}
 	\end{marginfigure}
-	On the other hand, we saw in \Cref{ex:dual-P2} that $\pathGraph{2}$ does not have
+	On the other hand, we saw in \Cref{ex:zigzag-defn} that $\pathGraph{2}$ does not have
 	"finite duality". However, it has "tree duality": indeed, see \Cref{fig:P2-Feder-Vardi}
 	and observe that $\FederVardi{\pathGraph{2}} \homto \pathGraph{2}$.
 \end{example}

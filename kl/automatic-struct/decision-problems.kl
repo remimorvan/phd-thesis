@@ -38,6 +38,7 @@
  | separability problems
 
 \knowledge{notion, wrap=\DPfont, index={$\+D$-separability problem (for automatic relations)}}
+ | $\+D$-separability problem
  | $\kPROD[1]$-separability problem
  | $\kREC $-separability problem
  | $\kREC [1]$-separability problem

@@ -10,6 +10,7 @@
  | $\LocTriv $-relation
  | $\LocTriv $-relations
  | $\+V$-(synchronous) relations
+ | $\symbf {\+V}$-relation
 
 \knowledge{notion}
  | group relation

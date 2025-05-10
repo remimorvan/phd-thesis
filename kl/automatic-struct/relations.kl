@@ -140,7 +140,7 @@
  | $T_{\textrm {sync}}$-multitape automaton
  | $T_{\textrm {rec}}$-multitape automaton
  | $\{\{i\} \mid i \in \intInt{1,k} \}^*$-multitape automata
-%  | $\{\{i\} \mid i \in \intInt {1,k}\}^*$-multitape automata
+ | $\{\{i\} \mid i \in \intInt {1,k}\}^*$-multitape automata
 
 \knowledge{notion, index={relation!$T$-controlled}}
  | $T$-controlled relation
@@ -172,6 +172,7 @@
  | deterministic transduction
  | determinstic\\transductions
  | one-way deterministic transductions
+ | deterministic transductions
 
  \knowledge{notion, index={transduction}}
  | transductions

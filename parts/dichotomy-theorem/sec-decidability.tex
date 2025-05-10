@@ -123,8 +123,8 @@ Before proving this lemma, we show an intermediate result.
 	The base case $\unarypred{b_i}(y)$ is trivial since
 	$\langle \?A_{a,i}, a' \rangle \FOmodels \unarypred{b_i}(y)$ "iff"
 	$a' = a$ "ie" $\langle \?A, a', a \rangle \FOmodels y = x_i$.
-	Similarly, for  $\unarypred{b_j}(y)$ ($j \neq i$),
-	$\langle \?A_{a,i}, a' \rangle$ never "models" $\unarypred{b_j}(y)$
+	Similarly, for $\unarypred{b_j}(y)$ ($j \neq i$), we have
+	$\langle \?A_{a,i}, a' \rangle \centernot{\FOmodels} \unarypred{b_j}(y)$
 	and so this is equivalent to $\langle \?A, a', a \rangle \FOmodels \bot$.
 	The other atomic cases, and inductive cases are trivial.
 
@@ -420,7 +420,7 @@ has "tree duality" by \Cref{prop:finite-duality-implies-tree-duality}.
 \end{marginfigure}
 \begin{example}[{\Cref{ex:zigzag-HC-T2}, continued}]
 	\AP\label{ex:zigzag-HC-P2}
-	While $\pathGraph{2}$ does not have "finite duality" (\Cref{prop:2-path-infinite-duality}), it has
+	While $\pathGraph{2}$ does not have "finite duality" (\Cref{ex:zigzag-defn}), it has
 	"tree duality" (\Cref{prop:2-path-tree-duality}), and so the "hyperedge consistency algorithm@@finite"
 	decides whether a finite "$\sigma$-structure" has a "homomorphism" to $\pathGraph{2}$.
 	We represent some steps of the algorithm in \Cref{fig:zigzag-graph-HC-P2},
@@ -449,6 +449,8 @@ has "tree duality" by \Cref{prop:finite-duality-implies-tree-duality}.
 	polynomial time using the algorithm of \Cref{fig:hc-finite}.
 \end{corollary}
 
+However, note that the example of $\clique{2}$ shows that the property
+of having "tree duality", is not necessary for $\HomFin{\?B}$ to be decidable in "P".
 % Finally, we will prove a proposition that we will prove useful later in \todo{TODO}.
 % \begin{proposition}
 % 	\AP\label{prop:HC-on-same-structure}

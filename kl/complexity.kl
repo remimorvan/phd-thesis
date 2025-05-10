@@ -2,13 +2,13 @@
 % Basic classes
 % ---
 
-\knowledge{notion, wrap=\textsf}
+\knowledge{wrap=\textsf}
  | coNLogTime
 
-\knowledge{notion, text={uniform-AC${}^0$}, wrap=\textsf}
+\knowledge{url={https://complexityzoo.net/Complexity\_Zoo:A\#ac0}, text={uniform-AC${}^0$}, wrap=\textsf}
  | uniform-AC0
 
-\knowledge{notion, text={AC${}^0$}, wrap=\textsf}
+\knowledge{url={https://complexityzoo.net/Complexity\_Zoo:A\#ac0}, text={AC${}^0$}, wrap=\textsf}
  | AC0
 
 \knowledge{notion, text={FO${}^{\textsf{fin}}$}, wrap=\textsf}
@@ -24,7 +24,7 @@
  | NL
  | coNL
 
-\knowledge{notion, text={$\oplus$L}, wrap=\textsf}
+\knowledge{url={https://complexityzoo.net/Complexity\_Zoo\:Symbols\#\%E2\%8A\%95P:\_Parity\_P}, text={$\oplus$L}, wrap=\textsf}
  | modL
 
 \knowledge{notion, wrap=\textsf}

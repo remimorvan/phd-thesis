@@ -86,6 +86,7 @@
  | syntactic congruence
  | syntactic congruences
  | syntactic congruences@sync
+ | syntactic congruence@sync
 
 \knowledge{notion}
  | induces@sync
