@@ -67,6 +67,11 @@
 
 \makeindex
 
+% Line numbering
+\usepackage[displaymath, mathlines]{lineno}
+\linenumbers
+\preto{\chapter}{\resetlinenumber}
+
 \begin{document}
 
 \input{kl/extra-index.tex}
@@ -112,6 +117,7 @@
 \include{parts/algebra/ch-algebra}
 \include{parts/conclu-automatic/ch-conclu-automatic}
 
+\nolinenumbers
 \begin{fullwidth}
 	\chapter*{Bibliography}
 	\chaptermark{Bibliography}
