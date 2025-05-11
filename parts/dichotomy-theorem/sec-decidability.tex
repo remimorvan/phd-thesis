@@ -45,7 +45,8 @@ refers to the fact that the formulas do not depend on the "source structure".}
 \begin{lemma}
 	\AP\label{lemma:finite-duality-uniformly-definable-homomorphisms}
 	Let $\?B$ be a finite structure. Then $\HomAll{\?B}$ is "first-order definable" "iff"
-	$\HomAll{\?B}$ has "uniformly first-order definable homomorphisms".\footnote{The same 
+	$\HomAll{\?B}$ has "uniformly first-order definable homomorphisms".%
+	\sidenote{The same 
 	equivalence holds if one replaces $\HomAll{\?B}$ with $\HomFin{\?B}$.
 	In both cases, these conditions are equivalent, by "Atserias' theorem", to asking whether $\?B$
 	has "finite duality".
@@ -285,7 +286,7 @@ must have a successor (resp. predecessor) in $\?H$ that lives in $\textrm{Im}_{g
 	when $h \in \textrm{Im}_{g}$.
 	}
 \end{figure}
-\begin{marginfigure}[-15.5em]
+\begin{marginfigure}[-21em]
 	\centering
 	\begin{tikzpicture}
 		\input{tikz/dichotomy/2-transitive-tournament}
@@ -297,7 +298,8 @@ must have a successor (resp. predecessor) in $\?H$ that lives in $\textrm{Im}_{g
 \end{marginfigure}
 
 We formalize this algorithm as the greatest fixpoint of some operator.
-Given a finite "$\sigma$-structure" $\?B$, and an arbitrary\sidenote{Note that in this part, while some results---mostly complexity/decidability ones---require the assumption that the "source structure" is finite, some results do not,
+Given a finite "$\sigma$-structure" $\?B$, and an arbitrary%
+\sidenote[][-3em]{Note that in this part, while some results---mostly complexity/decidability ones---require the assumption that the "source structure" is finite, some results do not,
 and are stated for arbitrary "structures".}%
 "$\sigma$-structure" $\?A$, we say that a function $F\colon A \to \pset{B}$ is subsumed
 by $G\colon A \to \pset{B}$, denoted by \AP\(F \intro*\subsumed G\),
@@ -408,7 +410,7 @@ has "tree duality" by \Cref{prop:finite-duality-implies-tree-duality}.
 		when the "target structure" is $\pathGraph{2}$, depicted in \Cref{fig:zigzag-graph-HC-P2-side-P2}.%
 	}
 \end{figure}
-\begin{marginfigure}[-9.5em]
+\begin{marginfigure}
 	\centering
 	\begin{tikzpicture}
 		\input{tikz/dichotomy/2-path-graph}

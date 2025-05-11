@@ -10,7 +10,8 @@ remain decidable on this larger class of "automatic structures".
 
 This notion has a remarkably eventful history:
 it was introduced by Hodgson in his Ph.D. thesis in 1976
-\cite{Hodgson1976PhD}\footnote{Unfortunately the manuscript is not available online.
+\cite{Hodgson1976PhD}%
+\sidenote[][-15em]{Unfortunately the manuscript is not available online.
 See \cite{Hodgson1983Decidabilite} for the related journal article.}, but
 the notion went largely unnoticed. The notion was rediscovered for groups
 in the late 1980s \cite{Epstein1992Word}. 
@@ -19,7 +20,7 @@ Khoussainov and Nerode in 1995 \cite{KhoussainovNerode1995AutomaticPresentations
 and Pélecq in his Ph.D. thesis from 1997
 \cite[\S~3.1.3, p.~91]{Pelecq1997Isomorphismes}
 reintroduced the notion of "automatic structures".%
-\footnote{What we call "automatic structures"
+\sidenote[][-15em]{What we call "automatic structures"
 correspond to ``synchronous automatic structures'' and ``structures automatiques synchrones'' in Shapiro's paper and Pélecq's thesis, respectively.
 Pélecq gives credit for the definition to his advisor Géraud Sénizergues.
 All three work by Shapiro, Khoussainov \& Nerode and Pélecq
@@ -36,7 +37,7 @@ An \AP""automatic presentation $\+A$ of a $\sigma$-structure"" consists of:
 		"automatic relation" $\intro*\relPres{\+R}{\+A} \subseteq (\Sigma^*)^k$, and
 	\itemAP an "automatic relation" $\reintro*\relPres{=}{\+A} \subseteq
 		\Sigma^* \times \Sigma^*$ that must be an equivalence relation.%
-	\footnote{Some readers already familiar with the notion of "automatic structures"
+	\sidenote[][-5em]{Some readers already familiar with the notion of "automatic structures"
 		might be somewhat surprised by the inclusion of this equality relation:
 		we will soon see (\Cref{prop:making-presentations-injective})
 		that in this specific setting, we do not need it.
@@ -178,10 +179,10 @@ one for each predicate. In turn, this view helps us prove the following result.
 	We prove this property using logic. Let $\+A$ be an arbitrary "automatic presentation"
 	that "represents@@struct" $\?A$. The idea to build an "injective automatic presentation" $\+A'$
 	of $\?A$ is to represent an equivalence class $\equivclass[\relPres{=}{\+A}]{u} \subseteq
-	\domainPres{\+A}$ by its "length-lexicographic"-minimal element.%
-	\footnote{The \AP""length-lexicographic order"" is defined
+	\domainPres{\+A}$ by its "length-lexicographic"-minimal element,
+	where the \AP""length-lexicographic order"" is defined
 	by first comparing the length of the word, and in case they have the same length,
-	using the "lexicographic order" to compare them. This order is a well-founded total order.}
+	using the "lexicographic order" to compare them: this order is a well-founded total order.
 
 	Concretely, $\+A'$ has the same alphabet as $\+A$.
 	Then, we define $\domainPres{\+A'}$ as the set of minimal elements
@@ -330,7 +331,7 @@ we say that it is $\+C$-complete for a class $\+C$ when:
 \end{itemize}
 
 \begin{proposition}[{""Hodgson's theorem""}]
-	\!\footnote{Decidability was originally proven in \cite[Théorème~3.5]{Hodgson1983Decidabilite}.
+	\!\sidenote[][-1em]{Decidability was originally proven in \cite[Théorème~3.5]{Hodgson1983Decidabilite}.
 	A slightly weaker form was independently reproved by Pélecq in his thesis
 	\cite[Théorème~61, p.~107]{Pelecq1997Isomorphismes}.}
 	%
@@ -563,7 +564,7 @@ by showing that:
 \begin{itemize}
 	\item $\tup{\N, \textrm{succ}}$ has a decidable weak monadic second-order logic,
 		where $\textrm{succ}$ denotes the successor relation,%
-		\footnote{This is \emph{the} classical result of automata theory and the motivation
+		\sidenote[][-2em]{This is \emph{the} classical result of automata theory and the motivation
 		for studying $\omega$-automata. Recall that weak monadic second-order 
 		logic consists of "monadic second-order logic" where monadic quantifiers are
 		restricted to finite sets.}

@@ -47,20 +47,20 @@ $\Pos[]$).
 
 \section{Set and Functions}
 
-We denote by $\N$, $\Np$ and $\Z$ the sets of natural numbers---that naturally contains zero--, the
+We denote by $\N$, $\Np$ and $\Z$ the sets of natural numbers---that naturally contains zero---,
 of strictly positive natural numbers, and of integers, respectively.
-For any $n\in\Np$, $\ZnZ{k}$ denotes the set of integers modulo $k$,
+For any $n\in\Np$, \AP$\intro*\ZnZ{k}$ denotes the set of integers modulo $k$,
 and for any $i,j \in \Z$, $\intro*\intInt{i,j}$ is the set of integers from $i$ to $j$,
 bounds included.
 
-The powerset---"ie" the set of all subsets---of set $X$
+The powerset---"ie" the set of all subsets---of a set $X$
 is denoted by $\intro*\pset{X}$, and $\intro*\psetp{X}$ is defined analogously
 except that subsets are required to be non-empty.
 
 While a function $f$ from set $X$ to set $Y$ is denoted by $f\colon X \to Y$,
 we reserve $\intro*\pto$ and $\intro*\surj$ for partial functions and surjections, respectively.
-The restriction of function $f$ to a subset $A$ of its domain is denoted by
-$\intro*\restr{f}{A}$, and the identity function $x \mapsto x$ over set $X$
+The restriction of a function $f$ to a subset $A$ of its domain is denoted by
+$\intro*\restr{f}{A}$, and the identity function $x \mapsto x$ over a set $X$
 is denoted by $\intro*\id[X]$.
 Given a function $f\colon X \to Y$ and a subset $A \subseteq X$,
 we denote by $f[A]$ the direct image of $A$ by $f$.%
@@ -94,17 +94,17 @@ Lastly, $\defeq$ denotes the definition symbol: $x \defeq y$ means that $x$ is d
 \subsection{Basic Notions on Structures}
 
 "Relational structures" generalize the concept of "graphs@@dir"
-by allowing to have (1) multiple kinds of relations and
+by allowing (1) multiple kinds of relations and
 (2) relations of higher arity. This data is made explicit in
 the "signature"---also called \emph{vocabulary}.
 We start by defining a \AP""purely relational signature"", which consists
 in a set of elements, called ""predicates"",%
 \footnote{We do \emph{not} assume this set to be finite.}
-together with for each
-of these elements a strictly positive natural number, called \emph{arity}.
+together with, for each
+of these elements, a strictly positive natural number, called \emph{arity}.
 We denote by $\+R_{(k)} \in \sigma$ the fact that "predicate" $\+R$, of arity
 $k$, is part of "signature" $\sigma$.
-Then, a ""relational signature"", or \reintro{signature} for short, consists of a "purely relational 
+Then, a \AP""relational signature"", or \reintro{signature} for short, consists of a "purely relational 
 signature" together with a set of constant symbols.%
 \footnote{Usually the notion of "signature" also allows for function symbols beyond
 the degenerate case of constants. However all the "signatures" considered in the thesis
@@ -121,7 +121,7 @@ consists of:
 We call $\+R_{(k)}$ (resp. $c(\?A)$) the \AP""interpretation@@predicate""
 of "predicate" $\+R_{(k)}$ (resp. constant $c$) in $\?A$.
 By analogy with graphs, elements of the domain are sometimes referred to as
-\emph{vertices}.
+\emph{vertices}. See \Cref{fig:example-structure-homomorphism} for an example.
 
 The \AP""graph signature"" is a "purely relational signature"
 consisting of a single binary predicate, either written $\+E$ in prefix notation
@@ -160,7 +160,7 @@ the \AP""substructure of $\?A$ induced by $X$@induced substructure"" is:
 \begin{itemize}
 	\item undefined if not all constants of $\?A$ belong to $X$,
 	\item otherwise, it is obtained from $\?A$ by restricting
-		its domain to $X$, and by intersection its $k$-ary relations
+		its domain to $X$, and by intersecting its $k$-ary relations
 		with $X^k$.
 \end{itemize}
 
@@ -208,16 +208,16 @@ their "predicate interpretations" and of their interpretations of constants.
 Their ""block product"" has the same domain and constants,
 but now the "interpretation@@predicate" of "predicate" $\+R_{(k)}$
 in the "block product" consists of all tuples
-\[\tup{\tup{a_1,b_1}, \dotsc, \tup{a_k,b_k}}\] 
-"st" either $\tup{a_1, \dotsc, a_k} \in \+R(\?A)
-\land b_1 = \dotsc = b_k$ or 
-$a_1 = \dotsc = a_k
-\land \tup{b_1, \dotsc, b_k} \in \+R(\?B)$.
+\[\tup{\tup{a_1,b_1}, \dotsc, \tup{a_k,b_k}} \quad\text{"st"}\] 
+\begin{itemize}
+	\item either $\tup{a_1, \dotsc, a_k} \in \+R(\?A)$ and $b_1 = \dotsc = b_k$, or
+	\item $a_1 = \dotsc = a_k$ and $\tup{b_1, \dotsc, b_k} \in \+R(\?B)$.
+\end{itemize} 
 See \Cref{fig:general-prelim-product-Cartesian,fig:general-prelim-product-block} for examples.
 The $k$-fold iteration of $\?A$ is denoted by
 $\intro*\iterstruct{\?A}{k}$ and is defined as
 \[
-	\underbrace{\?A \times \dotsc \times \?A}_{k \text{ times}}.
+	\underbrace{\?A \prodstruct \dotsc \prodstruct \?A}_{k \text{ times}}.
 \]
 
 \subsection{Adjacencies}
@@ -289,7 +289,7 @@ and visit each of them at most once.
 A \AP""directed cycle"" in a "graph@@dir" consists
 of a non-empty directed path from a vertex to itself.
 A ""directed acyclic graph"", or \reintro{DAG} for short,
-is any "graph@@dir" "st" that contains no "directed cycle".
+is any "graph@@dir" that contains no "directed cycle".
 
 \begin{marginfigure}
 	\centering
@@ -323,11 +323,11 @@ surjective on the domain and on the "hyperedges".
 An \AP""isomorphism"" from $\?A$ to $\?B$ is a "homomorphism" $f\colon \?A \to \?B$
 "st" there exists another homomorphism $g\colon \?B \to \?A$ with the property
 that $g \circ f = \id[A]$ and $f \circ g = \id[B]$. Equivalently,
-it is "strong onto homomorphism" that is also an "embedding".
+it is a "strong onto homomorphism" that is also an "embedding".
 Two structures are \AP""isomorphic"" if there is an "isomorphism" between them,
 and an ""automorphism"" is an "isomorphism" from a "structure" to itself.
 
-\begin{marginfigure}
+\begin{marginfigure}[-25em]
 	\centering
 	\includegraphics[width=\linewidth]{fig/escher/2-motifs-system.jpg}
 	\caption{\href{https://mcescher.com/gallery/symmetry/\#iLightbox[gallery\_image_1]/44}{\emph{2 motifs system VI(b) variant 1}}, M. C. Escher, \textcopyright~The M.C. Escher Company.}
@@ -364,8 +364,7 @@ A retraction of $\?A$ is a "substructure" $\?A'$ of $\?A$ together with
 a "homomorphism" from $\?A$ to $\?A'$ with the property that any vertex of $A'$
 is sent on itself.
 \begin{proposition}
-	Any "finite $\sigma$-structure" $\?A$ admits a unique minimal retraction---by minimal
-	we mean minimal in the number of vertices, and uniqueness is considered up to "isomorphism".
+	Any "finite $\sigma$-structure" $\?A$ admits a unique minimal (in the number of vertices) retraction.
 \end{proposition}
 
 \begin{figure}
@@ -418,7 +417,6 @@ is sent on itself.
 	For the uniqueness, consider two retractions $f_1\colon \?A \homto \?B_1$
 	and $f_2\colon \?A \homto \?B_2$. We want to prove that $\?B_1$ and $\?B_2$ are
 	"isomorphic".
-
 	Since $\?B_1$ is a "substructure" of $\?A$, consider
 	$\restr{f_2}{B_1}\colon \?B_1 \homto \?B_2$. By minimality of $\?B_2$, this "homomorphism"
 	must be surjective.
@@ -487,12 +485,12 @@ some "structure"---or equivalently of itself.
 \subsection{First-Order Logic and Beyond}
 
 We fix a "purely relational signature" $\sigma$.
-A (semantical) Boolean \AP""query@@sem"" is any subset of the
-set of "$\sigma$-structures".
+A (semantical) Boolean \AP""query@@sem"" is any subclass of the
+class of all "$\sigma$-structures".
 More generally, a $k$-ary \reintro(sem){query} is a function
 that maps any "$\sigma$-structure" to a (potentially empty) set of $k$-tuples
 of vertices.
-We now turn to more syntactical definitions of classes of queries.
+We now turn to more syntactical definitions of queries.
 
 We assume that we are given a countable infinite set of variables.
 A \AP""first-order formula"" is any formula generated by the grammar 
@@ -553,7 +551,8 @@ Then, the \AP""quantifier alternation rank"" of a formula $\phi(\bar x)$
 is the least $n\in\N$ "st" $\phi(\bar x)$ belongs to either
 $\Sigma_n$ or $\Pi_n$.
 Formulas from $\Sigma_1$ are called ""existential formulas"",
-those that neither contain negations nor universal quantifications are called \AP""existential-positive formulas"" and lastly, those that neither contain negations any quantifier
+those that neither contain negations nor universal quantifications are called \AP""existential-positive formulas"" and lastly, those that neither contain negations
+nor any quantifier
 are called ""positive quantifier-free formulas"".
 
 A relation over a "$\sigma$-structure" $\?A$ is said to be
@@ -636,7 +635,7 @@ are used interchangeably in the literature.}
 For more details on these,
 see \cite[\S XI.1, p.~189]{Pin2022MathematicalFoundations} under the name ``variety''.
 On the other hand, a ""$\ast$-pseudovariety of regular languages""
-consists of \emph{stream}, "ie" a function $\+V\colon \Sigma \mapsto \+V_{\Sigma}$ from alphabets to languages over this alphabet, with the following properties:
+consists of \emph{stream}, "ie" a function $\+V\colon \Sigma \mapsto \+V_{\Sigma}$ from alphabets to languages over this alphabet, with the following properties:%
 \footnote{See also \cite[\S XIII.3, p.~226]{Pin2022MathematicalFoundations}.}
 \begin{itemize}
 	\item it is closed under Boolean operators;
@@ -645,11 +644,8 @@ consists of \emph{stream}, "ie" a function $\+V\colon \Sigma \mapsto \+V_{\Sigma
 		then $\phi^{—1}[L] \in \+V_{\Gamma}$, and
 	\item it is closed under residuals, in the sense that for any $L \in \+V_{\Sigma}$,
 		for any $u\in\Sigma^*$, then
-		\[
-			u^{-1}L \defeq \{v \in \Sigma^* \mid uv \in L\}
-			\qquad\text{and}\qquad
-			Lu^{-1} \defeq \{v \in \Sigma^* \mid vu \in L\}
-		\]
+		$u^{-1}L \defeq \{v \in \Sigma^* \mid uv \in L\}$
+		and $Lu^{-1} \defeq \{v \in \Sigma^* \mid vu \in L\}$
 		both belong to $\+V_{\Sigma}$.
 \end{itemize}
 A seminal result by Eilenberg shows that, mapping a "pseudovariety of monoids" $\symbb{V}$
@@ -682,7 +678,7 @@ The ""configuration@@TM"" of a "Turing machine" consists of
 the content of the tape at a given point, the position of the machine's head,
 at well as its current state. It can be summarized by
 a triple $\tup{u, q, v}$, where $q$ denotes the current state,
-$u$ the word written strictly on the left of the head,
+$u$ is the word written strictly on the left of the head,
 and $v$ is the word written to the right of the head (head included).
 The \AP""initial configuration"" of a "Turing machine" $\+M$ refers to the "configuration@@TM" 
 $\tup{\varepsilon, q_0, \varepsilon}$ where $q_0$ is the initial state of $\+M$.
@@ -711,11 +707,11 @@ Here are the most important classes that appear in this document---the other one
 will all point to their respective entry in the "Complexity Zoo":
 \begin{itemize}
 	\item "FOfin" refers to "first-order definable classes", see \Cref{sec:prelim-auto-FO} for the definition;
-	\itemAP ""L"" and ""NL"" refer to probles solvage in deterministic and non-deterministic logarithmic 
+	\itemAP ""L"" and ""NL"" refer to problems solvable in deterministic and non-deterministic logarithmic 
 	space; for hardness we usually consider "first-order reductions";
 	\itemAP ""P"" (resp. ""PSpace"") refers to problems solvable in deterministic polynomial time
 	(resp. polyomial space); hardness is usually considered under logarithmic-space reductions;
-	\itemAP ""NP"" and ""coNP"" refers to the first level of the polynomial-time hierarchy
+	\itemAP ""NP"" and ""coNP"" refer to the first level of the polynomial-time hierarchy
 		\cite[\S~2]{AroraBarak2009ComputationalComplexity},
 		and ""SigmaP2"", ""PiP2"" to its second level,
 		see "eg" \cite[\S~5]{AroraBarak2009ComputationalComplexity};
@@ -729,8 +725,8 @@ will all point to their respective entry in the "Complexity Zoo":
 		\footnote{Recall that an function is said to be elementary when it
 		is bounded by a tower of exponentials of fixed height.}
 		where $\intro*\tower(n) \defeq t(n,n)$ and $t$ is the function
-		define recursively by $t(p,q) \defeq 2^{t(p-1,q)}$ and $t(0,q) \defeq q$:
-		in other words, it is a tower of exponentials whose height is given by the input;
+		defined recursively by $t(p,q) \defeq 2^{t(p-1,q)}$ and $t(0,q) \defeq q$:
+		in other words $\tower(n)$ it is a tower of exponentials whose height is given by the input;
 		hardness is defined under elementary reductions,
 		see \cite{Schmitz2016ComplexityHierarchies} for more details on this class.
 \end{itemize}
@@ -738,7 +734,7 @@ will all point to their respective entry in the "Complexity Zoo":
 \paragraph*{Computability Classes.}
 We now turn to undecidable classes: all hardness result are considered up to
 many-one reductions, "ie" instance-preserving computable functions.
-We denote by \AP""RE"" and ""coRE"" the class of recursively enumerable
+We denote by \AP""RE"" and ""coRE"" the classes of recursively enumerable
 and co-recursively enumerable problems, respectively. 
 The next levels $\Sigma^0_n$ and $\Pi^0_n$ of the \AP""arithmetical hierarchy"" can be defined 
 as the classes of sets that are "definable@@first-order" by a "first-order formula"
@@ -751,7 +747,7 @@ The ""analytical hierarchy"" is defined analogously, by replacing "first-order l
 
 
 \paragraph*{Decision Problems.}
-\AP""Connectivity in Finite Graphs"" is the decision problems
+\AP""Connectivity in Finite Graphs"" is the decision problem
 that takes as input a "graph@@dir" and two vertices $s$ and $t$,
 and asks if they are "connected".
 \AP ""Reachability in Finite Graphs"" is defined analogously,
@@ -759,5 +755,9 @@ but asks rather if there is a directed path from $s$ to $t$.
 Surprisingly, despite their resemblance, these two problems have a distinct complexity:
 "Reachability in finite graphs" is "NL"-complete, see "eg"
 \cite[Theorem~4.18]{AroraBarak2009ComputationalComplexity}, while "Connectivity in finite graphs"
-is only "L"-complete by Reingold's theorem, see "eg"
+is only in "L" by Reingold's theorem, see "eg"
 \cite[Theorem~21.21]{AroraBarak2009ComputationalComplexity}.
+In fact, the problem is "L"-complete:
+Etessami even proved that the problem
+was "L"-hard under "first-order reductions" even if the "graph@@dir" is restricted to
+be a "directed path@$k$-path" \cite[Theorem 3.2]{Etessami1997CountingLogSpace}!

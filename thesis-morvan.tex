@@ -69,8 +69,11 @@
 
 % Line numbering
 \usepackage[displaymath, mathlines]{lineno}
-\linenumbers
 \preto{\chapter}{\resetlinenumber}
+
+% /!\ Use this for reviewers (+ knowledge electronic/paper)
+\linenumbers
+\renewrobustcmd{\todo}[1]{}
 
 \begin{document}
 

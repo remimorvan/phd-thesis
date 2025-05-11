@@ -100,13 +100,14 @@ These equivalences explain why the terms \emph{recognizable language}---meaning 
 interchangeably. In fact, in this thesis as well as in most of the literature,
 we will use the generic term of ``"regular language"''.
 However, in more complex settings, for instance subsets of non-free monoids,%
-\footnote{Recall that a language is nothing else but a subset of a free monoid.}
+\sidenote[][-5em]{Recall that a language is nothing else but a subset of a free monoid.}
 the equivalence between these classes no longer holds \cite{Pin2021StackExchange}.
 
-The landscape of rationality for $k$-ary relations of finite words ($k \geq 2$) is far more complex than for languages,\footnote{Which can be seen as unary relations of finite words.} as depicted in \Cref{fig:landscape-rationality-relations}. We will briefly present these classes,
+The landscape of rationality for $k$-ary relations of finite words ($k \geq 2$) is far more complex than for languages,%
+\sidenote[][-6em]{Which can be seen as unary relations of finite words.} as depicted in \Cref{fig:landscape-rationality-relations}. We will briefly present these classes,
 although this thesis will mostly deal with the two most restrictive ones, namely
 "recognizable@@rel" and "automatic relations".%
-\footnote{It should be noted that the names
+\sidenote[][-7em]{It should be noted that the names
 of these classes were often coined independently of one another
 and the terminology should be handled with care: for instance,
 ``regular relations'' do \emph{not} correspond to the intersection of "regular functions@@bojan"
@@ -497,7 +498,8 @@ A similar construction works for the inclusion problem.
 	Inclusion and universality of "synchronous automata" is "PSpace"-complete.
 \end{property}
 Similarly, the emptiness of a "synchronous automaton" $\+A$ amounts to
-the emptiness of the classical automaton obtained by intersecting $\+A$ with $\WellFormed[\Gamma,\Sigma]$.
+the emptiness of the classical automaton obtained by intersecting $\+A$ with the
+set of "well-formed words" $\WellFormed[\Gamma,\Sigma]$.
 \begin{property}
 	\AP\label{prop:non-emptiness-problem}
 	Emptiness and non-emptiness of "synchronous automata" are "NL"-complete.
@@ -598,7 +600,7 @@ This is trivially false, and hence, concatenation is not "automatic@@struct".
 
 Despite being somewhat expressive, "automatic relations" retain some decidability properties. 
 \begin{proposition}[{\cite[Theorem 1]{BarceloHongLeLinNiskanen2019MonadicDecomposability}, see also \cite[Corollary 2.9]{BergstrasserGanardiLinZetzsche2022RamseyQuantifiers}}]
-	\!\footnote{Decidability, first in "3ExpTime" and then
+	\!\sidenote[][-7em]{Decidability, first in "3ExpTime" and then
 	in "2ExpTime" was already known in the 1970s as a consequence
 	of \Cref{prop:synchronous-implies-detrat}.
 	An "ExpTime" upper bound was incorrectly claimed in \cite[Table~1]{CartonChoffrutGrigorieff2006DecisionProblems},
@@ -668,7 +670,7 @@ independently of one another---however each head can only move from left to righ
 For the sake of convenience, we assume that the automaton can move multiple heads at every step.
 This can be formalized as follows.
 
-\begin{marginfigure}
+\begin{marginfigure}[-30em]
 	\centering
 	\includegraphics[width=\linewidth]{fig/escher/2-motifs-transitional-system.jpg}
 	\caption{\href{https://mcescher.com/gallery/symmetry/\#iLightbox[gallery\_image\_1]/57}{2 motifs, transitional system I(a) - I(a)}, M. C. Escher, \textcopyright~The M.C. Escher Company.}	
@@ -702,7 +704,7 @@ For instance:
 The semantics of the "multitape automaton"
 can be defined as the image by $\projWord$ of its semantics when seen as a
 classical automaton.%
-\footnote[][-15em]{These automata are often simply called ``$k$-tape automata''. 
+\footnote[][-5em]{These automata are often simply called ``$k$-tape automata''. 
 They are sometimes referred to as ``asynchronous automata'',
 "eg" in \cite[\S~3]{CarayolLoding2011Uniformization} or
 \cite[\S~3.1.2.2, p.~88]{Pelecq1997Isomorphismes}.
@@ -924,8 +926,8 @@ The motivation behind this somewhat strange definition is that, this way,
 			\vphantom{\Big()}
 		},
 	\]
-	\vspace{-2em}
 	\begin{align*}
+		\vspace{-2cm}
 		\frac{
 			p \transition{\pair{a}{\pad}} q \in \+A
 		}{
@@ -974,7 +976,7 @@ $\prefix$ cannot be recognized by a "deterministic multitape automaton".
 
 Clearly, the "automaton@@sync" for $\suffix$ of \Cref{fig:multitape-automaton-suffix-subword} is not "deterministic@@desync".
 But in fact, we can prove a stronger result: $\suffix$ is not even "deterministic rational@@rel".%
-\footnote{This can be shown by using "eg"
+\sidenote[][-7em]{This can be shown by using "eg"
 \cite[Lemma~IV.5.15]{Sakarovitch2009Elements} on the pair of words
 $\tup{a^n b \triangleleft, a^{n-1} b a^n b \triangleleft}$ ($n\in\N$).
 We remark that there is a typo in
@@ -1016,7 +1018,7 @@ concatenation, Kleene closure nor reversal
 
 Lastly, the "$\DRAT$/$\REC$-membership problem" is decidable.
 There is a double-exponential time algorithm for binary relations
-given by Valiant \cite{Valiant1975RegularityDeterministicPushdown}---improving Stearns's
+given by Valiant \cite{Valiant1975RegularityDeterministicPushdown}, improving Stearns's
 triple-exponential bound \cite{Stearns1967RegularityPushdown}.
 The decidability result was later extended to relations of arbitrary arity by Carton, Choffrut and 
 Grigorieff \cite[Theorem 3.7]{CartonChoffrutGrigorieff2006DecisionProblems}.

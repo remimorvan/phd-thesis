@@ -371,8 +371,8 @@ relational databases, as they are not designed to allow graph traversal.
 To face this issue, "graph databases" have
 been introduced: they can essentially be modelled
 as "relational structures" whose relations are all binary. In other
-words, they correspond to edge-labelled graphs, see \Cref{fig:example-wikidata}.
-\footnote{If the reader is familiar with \emph{knowledge graphs},
+words, they correspond to edge-labelled graphs, see \Cref{fig:example-wikidata}.%
+\sidenote[][-7em]{If the reader is familiar with \emph{knowledge graphs},
 everything we are saying about "graph databases" also applies
 to knowledges graphs. While the two notions are distinct in practice,
 their fundamental concept---and hence our theoretical modelling of them---is identical:
@@ -522,6 +522,7 @@ is provided in \Cref{tab:output-sparql}.
 		Output of the SPARQL query of \Cref{fig:sparql}.}
 \end{table}
 
+\clearpage
 We formalize the core features of SPARQL as "conjunctive regular path queries":
 they consist of "conjunctive queries", except that their atoms are no
 longer of the form $x \atom{\+R} y$ (for some binary relation $\+R \in \sigma$),
@@ -610,7 +611,7 @@ of size at most $k$, and if so we can produce it.
 We notice that, somewhat unexpectedly, there are some "conjunctive regular path queries"
 that are minimal in the sense above, but that are equivalent to a \emph{finite union}---in the 
 semantical sense---of strictly smaller "conjunctive regular path queries".%
-\footnote{This contrasts with the case of "conjunctive queries",
+\sidenote[][-5em]{This contrasts with the case of "conjunctive queries",
 where the notion of "core" and the order-theoretic properties
 of "relational structures" precisely prevents this phenomenon from appearing.
 In other words, this phenomenon precisely emerges by interlacing
@@ -729,25 +730,24 @@ capture the case $k=1$ that was already handled, and that the constructions
 of Barceló, Romero and Vardi and ours were orthogonal.
 While writing the journal version of this paper---that was originally
 published at ICDT '23---, we wanted to extend the results to "path-width",%
-\footnote{The main motivation behind this is that the evaluation of "queries@CRPQ"
+\sidenote[][-4em]{The main motivation behind this is that the evaluation of "queries@CRPQ"
 of bounded "path-width" is not only polynomial but even "NL"!}
 but part of our construction broke. Introducing the technical tool
-to fix it\footnote{See the notions of "contractions" and "contracted path-width".}
+to fix it%
+\sidenote[][]{See the notions of "contractions" and "contracted path-width".}
 actually leads to a unified solution, that handles both
 the case of "tree-width" $k$ (including $k=1$) and "path-width".%
-\footnote{The order of presentation of these results
+\sidenote[][]{The order of presentation of these results
 does not follow the timeline of their discovery: our work on "semantic tree-width"
 was done in 2022--23 and published at ICDT '23, while the one on minimization
 was done in 2024--25 and published at PODS '25.}
 
 Lastly, all these algorithms rely on testing the equivalence
 of "conjunctive regular path queries", which is "ExpSpace"-complete.
-It leads to resource-hungry algorithms,%
-\footnote{Although it has to be noted that it is worth running exponential
-algorithm on smallish "queries@CRPQ" in order to optimize
-its evaluation on huge databases!}
-which leads to a natural quest for identifying subclasses
-of "queries@CRPQ" that admit more efficient algorithms.
+It leads to resource-hungry algorithms---although it has to be noted that it is
+worth running exponential algorithms on smallish "queries@CRPQ" in order to optimize
+their evaluation on huge databases!---which leads to a natural quest
+for identifying subclasses of "queries@CRPQ" that admit more efficient algorithms.
 
 As witnessed by the example of \Cref{fig:sparql}, the regular expressions
 used in practice are often much simpler than the one required

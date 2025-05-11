@@ -120,6 +120,7 @@ all operators/constructions should preserve this "type".
 		Coloured edges represent the "dependency relation", and self-loops are not drawn. 
 	} 
 \end{figure*}
+\clearpage
 \begin{example}
 	Given a finite alphabet $\Sigma$, let $\intro*\Sync{\Sigma}$ be the "dependent set" of ""synchronous words"" defined by:
 	\vspace{-1.25em}
@@ -302,7 +303,7 @@ $\disunion{\?A}$ by first merging units,
 by adding a zero (denoted by $0$), and extending $\cdot$
 to be a total function by letting all missing products equal $0$,
 and $\consol{\phi}$ sends a word $u \in (\SigmaPair)^*$ to%
-\vspace{-1.25em}
+\vspace{-1.75em}
 \begin{multicols}{2}%
 	\begin{itemize}%
 		\item $0$ if $u$ is not "well-formed",
@@ -313,7 +314,7 @@ and $\consol{\phi}$ sends a word $u \in (\SigmaPair)^*$ to%
 		\item $\phi(\type{u}{\LL\to\BL})$ if $u \in (\Sigma\times \Sigma)^+(\pad\times \Sigma)^+$.
 	\end{itemize}
 \end{multicols}
-\vspace{-1.25em}
+\vspace{-1.75em}
 Note that this operation disregards the "dependency relation" of $\?A$.
 \begin{fact}
 	\AP\label{fact:consolidation}

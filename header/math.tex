@@ -19,7 +19,7 @@
 \newrobustcmd\Np{\N_{>0}} % strictly positive nat. numbers
 \newrobustcmd\Z{\symbb{Z}}
 \knowledgenewrobustcmd\intInt[1]{\cmdkl{\lBrack} #1 \cmdkl{\rBrack}} % real numbers
-\newrobustcmd\ZnZ[1]{\symbb{Z}/#1\symbb{Z}}
+\knowledgenewrobustcmd\ZnZ[1]{\cmdkl{\symbb{Z}/#1\symbb{Z}}}
 \newrobustcmd\R{\symbb{R}} % real numbers
 \knowledgenewrobustcmd\2{\cmdkl{\symbb{2}}} % binary alphabet 
 
@@ -56,7 +56,7 @@
 % Relational structures
 % ---
 \knowledgenewrobustcmd{\adjacency}[4]{\cmdkl{\+{Adj}_{\!#2}^{\smash{#3,#4}}(#1)}}
-\knowledgenewrobustcmd{\ball}[3]{\cmdkl{\+B}_{#1}^{#3}(#2)}
+\knowledgenewrobustcmd{\ball}[3]{\cmdkl{\+B_{#1}^{#3}(#2)}}
 
 % ---
 % Hom & core

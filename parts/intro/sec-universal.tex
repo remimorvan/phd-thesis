@@ -25,7 +25,7 @@ Moreover, while problems of the form $\textsf{query} \homto^? \textsf{data}$
 can be solved locally---whether a vertex of the data is part of a solution (a "homomorphism") only 
 depends on vertices at a bounded distance---, problems of type $\textsf{data} \homto^? \textsf{query}$ cannot.
 
-\begin{marginfigure}[-18em]
+\begin{marginfigure}[-10em]
 	\centering
 	\begin{tikzpicture}
 		\input{tikz/dichotomy/3-clique}
@@ -35,7 +35,7 @@ depends on vertices at a bounded distance---, problems of type $\textsf{data} \h
 		The "$3$-clique" $\clique{3}$.
 	}
 \end{marginfigure}
-\begin{marginfigure}[-6em]
+\begin{marginfigure}
 	\centering
 	\begin{tikzpicture}
 		\input{tikz/dichotomy/ex-3-colouring}
@@ -138,9 +138,9 @@ efficient way of doing constraint solving.
 Answer-set programming can be thought of, albeit caricaturally, as a human-readable
 SAT-solver. It deals with variables, relations between these variables,
 and logical rules between these variables. These rules take the form
-\lstinline[language=myclingo]|A :- B|, which can be understood as `if $B$, then $A$'.
+`\lstinline[language=myclingo]|A :- B|', which can be understood as `if $B$, then $A$'.
 The right-hand side is parsed conjunctively while the left-hand side is parsed disjunctively:
-\lstinline[language=myclingo]|A, B :- C, D| should be understood as `if $C$ and $D$, then $A$ or $B$'.
+`\lstinline[language=myclingo]|A, B :- C, D|' should be understood as `if $C$ and $D$, then $A$ or $B$'.
 \Cref{fig:ex-sudoku-asp} provides
 an example of a Clingo program for solving Sudoku grids:
 \begin{itemize}
@@ -153,11 +153,11 @@ an example of a Clingo program for solving Sudoku grids:
 	\item finally, it says that any two values on the same column, row or subgrid
 		must be different.%
 		\footnote{Recall that the left-hand side of rules is understood disjunctively,
-		and hence \lstinline[language=myclingo]|:- A, B| reads as `if $A$ and $B$, then false'.}
+		and hence `\lstinline[language=myclingo]|:- A, B|' reads as `if $A$ and $B$, then false'.}
 \end{itemize}
 To solve a specific grid using the program of \Cref{fig:ex-sudoku-asp},
-it suffices to add declarations of the form \lstinline[language=myclingo]|sudoku(4,1,5).|,
-where \lstinline[language=myclingo]|A.| is a shorthand for \lstinline[language=myclingo]|A :-.|.
+it suffices to add declarations of the form `\lstinline[language=myclingo]|sudoku(4,1,5).|',
+where `\lstinline[language=myclingo]|A.|' is a shorthand for `\lstinline[language=myclingo]|A :-.|'.
 This specifies that the cell at position $(4,1)$ has value 5.
 
 Contrary to more classical programming languages, this paradigm does not explain \emph{how} things
@@ -186,7 +186,7 @@ or "NP"-complete'' \cite{FederVardi1998ComputationalStructure}.
 Despite receiving lots of attention, the conjecture remained wide open for two decades, until
 Bulatov \cite{Bulatov2017DichotomyCSPs} and Zhuk \cite{Zhuk2020CSPDichotomy} independently
 showed the conjecture to be true.%
-\footnote{Both papers have in fact been first published in 2017 in the same conference:
+\sidenote[][-5em]{Both papers have in fact been first published in 2017 in the same conference:
 \cite{Zhuk2020CSPDichotomy} refers to Zhuk's later journal version.}
 
 However not all problems in "P" are complete for this class: some are even simpler and are complete
@@ -202,6 +202,12 @@ theorem by Larose and Tesson separating "structures" in "FOfin" from those that 
 
 \subsection{Automatic Structures: The Dream Is Not Over Yet}
 
+\begin{marginfigure}[-7em]
+	\centering
+	\includegraphics[width=\linewidth]{fig/Flowers_for_Algernon.jpg}
+	\caption{\emph{\href{https://commons.wikimedia.org/wiki/File:Flowers_for_Algernon.jpg}{Flowers for Algernon}}, Marshall P Baron.
+	Licensed under "CC BY SA 4.0".}
+\end{marginfigure}
 The second part of this thesis is dedicated to pushing these results to their limit.
 The "structures" handled by the "homomorphism problem", like most
 problems in computer science, are usually assumed to be "finite@@struct".
@@ -221,14 +227,6 @@ nor unsatisfiable (false is all models).
 In other words, there is no reasonable set of axioms
 to capture all mathematics: some statements must necessarily fall outside
 the scope of the theory.
-\begin{marginfigure}[-55em]
-	\centering
-	\includegraphics[width=\linewidth]{fig/Flowers_for_Algernon.jpg}
-	\caption{\emph{\href{https://commons.wikimedia.org/wiki/File:Flowers_for_Algernon.jpg}{Flowers for Algernon}}, Marshall P Baron.
-	Licensed under "CC BY SA 4.0".}
-\end{marginfigure}
-\marginnote{\blockquote[Daniel Keyes, \emph{Flowers for Algernon}]{Another case of men devoting their lives to studying more and
-more about less and less.}}
 
 Completeness is perhaps best understood as follows:
 if a theory (a set of axioms) is consistent---"ie" it has at least one model---and complete, 
@@ -242,6 +240,8 @@ In essence, not only does Gödel's result put a dent in Hilbert's dream
 in fact, it shatters the Platonistic idea of an unequivocal and universal mathematical world, or 
 at the very least of one that can be captured by axioms.
 
+\marginnote{\blockquote[Daniel Keyes, \emph{Flowers for Algernon}]{Another case of men devoting their lives to studying more and
+more about less and less.}}
 Ironically, what makes "Gödel's incompleteness theorem" a proper
 abomination for computer scientists is probably another theorem of Gödel,
 known as "Gödel's completeness theorem" and that he proved
@@ -253,8 +253,7 @@ Hence, the Gödel of 1929 could have dreamt of a complete theory for mathematics
 If a such theory existed, to determine if a statement $\phi$ was valid, it would suffice
 to enumerate in parallel all possible proofs of $\phi$ and of $\neg \phi$. By completeness, this 
 procedure would always stop, and either conclude that $\phi$ is valid, or that
-$\neg \phi$ is valid.%
-\footnote{Formally: any recursively enumerable complete first-order theory is decidable.}
+$\neg \phi$ is valid.
 Are there cardinals strictly between $\aleph_0$ and the continuum?
 Start Turing's nifty device---invented in 1936---, and you would (eventually) get an answer! In this strange world, automatic theorem proving would be a reality,
 and this thesis would probably look very different.
@@ -263,9 +262,9 @@ Sadly for the Gödel of 1929, the Gödel of 1930 came, and so… ``It's all over
 Since then, theories---such has
 "Zermelo–Fraenkel set theory plus the axiom of choice"---have been developed, and while not being complete, they 
 manage to capture most of the parts of mathematics we are interested in.%
-\footnote{For the sake of sanity, we assume
+\sidenote[][-10em]{For the sake of sanity, we assume
 throughout this introduction that the pronoun `we' excludes set theorists.}
-\begin{marginfigure}
+\begin{marginfigure}[-8em]
 	\centering
 	\[
 	\contraction{}{\tau\,}{{\vee} {\neg} {\in}}{\!\square}

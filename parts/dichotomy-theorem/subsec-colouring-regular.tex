@@ -128,14 +128,15 @@ that it is decidable whether a "Turing machine" is "linear@@TM". In fact, condit
         \item the "initial configuration" $\pad \cdot q_0 \cdot \pad$ has no predecessor;
         \item it has no infinite backward path since $\N$ is well-founded,
     \end{enumerate}
-    Moreover, $\+T'$ has no cycle,\footnote{Indeed, we encoded a strictly increasing counter inside the configurations of $\+T'$.} and so if $\+T$ is halting on an empty input, then the set of "reachable configurations" of $\+T'$ is finite, and thus regular. If $\+T$ is not halting, the set of "reachable configurations" of $\+T'$ is infinite and its projection onto $\set{\triangleright,\triangleleft}$ is an infinite set of words of the form $a^{n} b^{m}$ where $n-2 \leq m \leq n+2$. Hence, since regular languages are closed under homomorphic images, the "reachable configurations" of $\+T'$ cannot be regular.
+    Moreover, $\+T'$ has no cycle,%
+    \footnote[][-8em]{Indeed, we encoded a strictly increasing counter inside the configurations of $\+T'$.} and so if $\+T$ is halting on an empty input, then the set of "reachable configurations" of $\+T'$ is finite, and thus regular. If $\+T$ is not halting, the set of "reachable configurations" of $\+T'$ is infinite and its projection onto $\set{\triangleright,\triangleleft}$ is an infinite set of words of the form $a^{n} b^{m}$ where $n-2 \leq m \leq n+2$. Hence, since regular languages are closed under homomorphic images, the "reachable configurations" of $\+T'$ cannot be regular.
 \end{proof}
 
 
 \paragraph*{Undecidability of the regular $k$-colourability Problem.}
 We can now show undecidability for the "regular $k$-colourability problem" by reduction from the "regular reachability problem" restricted to "linear Turing machines".
 
-\begin{marginfigure}
+\begin{marginfigure}[-10em]
     \centering
     \includegraphics[width=\linewidth]{fig/germinal.jpg}
     \caption{\emph{Allégorie pour le mois de Germinal}, Louis Lafitte.}

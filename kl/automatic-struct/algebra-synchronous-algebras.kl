@@ -4,6 +4,7 @@
 
 \knowledge{notion}
  | divide@monoid
+ | divides@monoid
  | division@monoid
  | monoid division
 
