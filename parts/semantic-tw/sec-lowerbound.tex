@@ -1,0 +1,192 @@
+
+
+\section{\AP{}Lower Bounds for Deciding Semantic Tree-Width and Path-Width}
+\label{sec:lowerbound}
+
+An "ExpSpace" lower bound follows by a straightforward adaptation from the
+"ExpSpace" lower bound for the case $k=1$ \cite[Proposition 6.2]{BarceloRV16}.
+\begin{restatable}[Lower bound of \Cref{thm:decidability-semtw}]{lemma}{lowerbound}
+    \AP\label{lemma:lowerbound}
+    For every $k\geq 1$, the following problems are "ExpSpace"-hard, even if restricted to "Boolean CRPQs":
+	\begin{itemize}
+		\item the "semantic tree-width $k$ problem";
+		\item the "one-way semantic tree-width $k$ problem";
+		\item the "semantic path-width $k$ problem";
+		\item the "one-way semantic path-width $k$ problem".
+	\end{itemize}
+\end{restatable}
+
+\AP We say that a "C2RPQ" is ""connected"" when its underlying undirected graph is connected.
+We first give a small useful fact.
+
+\begin{fact}[{Implicit in \cite[Proof of Proposition 6.2]{BarceloRV16}}]
+    \AP\label{fact:connectedness}\leavevmode
+    \begin{enumerate}
+        \item Let $G, G'$ be two "databases" and $\delta$ be a "connected" "Boolean" "C2RPQ".
+            If the disjoint union $G \AP\intro*\disunion G'$ ("ie", the union assuming $\vertex{G}$ and $\vertex{G'}$ are disjoint) "satisfies" $\delta$, then either $G$ "satisfies" $\delta$ or
+            $G'$ "satisfies" $\delta$.
+        \item Let $\gamma,\delta$ be "Boolean" "C2RPQs". If $\delta$ is "connected"
+            and $\gamma \contained \delta$, then there exists a "subquery" $\gamma'$ of $\gamma$,
+            obtained as connected component of $\gamma$, such that
+            $\gamma' \contained \delta$. 
+    \end{enumerate}
+\end{fact}
+
+Notice first that if $\gamma$ and $\delta$ are "CQs" then the proof of
+\Cref{fact:connectedness} follows directly from the equivalence of $\gamma \contained \delta$ (resp.\ $G$ "satisfies" $\gamma$) and the existence of a "homomorphism" from $\delta$ to $\gamma$ (resp.\ $\gamma$ to $G$).
+
+\begin{proof}
+	We first prove the second point.
+    Write $\gamma \defeq \gamma_1 \land \hdots \land \gamma_n$ where $\gamma_1,\hdots,\gamma_n$
+    are connected components of $\gamma$, and assume by contradiction that
+    for all $i$, $\gamma_i \centernot{\contained} \delta$. Then there exists a database $G_i$
+    such that $G_i$ "satisfies" $\gamma_i$ but not $\delta$.
+    Consider the disjoint union $G = G_1 \disunion \hdots \disunion G_n$.
+
+    On the one hand, since the $\gamma_i$'s have disjoint variables
+    and $G_i$ "satisfies" $\gamma_i$ for each $i$, then $G$ "satisfies" $\gamma$.
+    On the other hand, $G$ cannot "satisfy" $\delta$:
+    if there was a "homomorphism" from $\delta$ to $G$,
+    since $\delta$ is connected, there would exist an index $i$
+    such that $\delta$ is mapped on $G_i$, which would contradict the
+    fact that $G_i$ does not "satisfy" $\delta$.
+    Hence, $G$ does not "satisfy" $\delta$, which contradicts the containment
+    $\gamma \contained \delta$.
+
+	To prove the first point, we simply apply the second one, by letting $\gamma$
+	be the conjunction of the canonical "CQ" associated with $G$ and $G'$---which
+	is in fact the canonical "CQ" associated with $G\disunion G'$. From the assumption
+    that $G \disunion G'$ "satisfies" $\delta$ it follows that $\gamma \contained \delta$
+    and so, by the first point, there is either a homomorphism from $\delta$
+    to $G$ or from $\delta$ to $G'$.
+\end{proof}
+
+We can then prove \Cref{lemma:lowerbound}.
+
+\begin{proof}[Proof of \Cref{lemma:lowerbound}]
+    Fix $k \geq 1$. We focus on "semantic tree-width", but the exact same reduction works for the other three problems.
+    We introduce an intermediate problem, called 
+    % \sideremi{Do you like the name?}
+    % \sidediego{Sure}
+    the \AP""asymmetric containment problem for tree-width $k$"":
+    given two "Boolean" "CRPQs" $\gamma$ and $\gamma'$,
+    where $\gamma$ has "tree-width" $k$, $\gamma'$ is "connected"  
+    and does \emph{not} have "semantic tree-width" $k$,
+    it asks whether $\gamma \contained \gamma'$.
+    The proof of the lemma then contains two parts:
+    \begin{enumerate}
+        \item first, we reduce the "asymmetric containment problem for tree-width $k$"
+            to the "semantic tree-width $k$ problem",
+        \item then, we prove that the "asymmetric containment problem for tree-width $k$" is
+            "ExpSpace"-hard.
+    \end{enumerate}
+    \proofcase{(1):} We reduce the instance $(\gamma, \gamma')$
+    of the "asymmetric containment problem for tree-width $k$"
+    to the instance $\gamma \land \gamma'$ of the "semantic tree-width $k$ problem". We simply have 
+    to check that $\gamma \contained \gamma'$ if and only if 
+    $\gamma \land \gamma'$ has "semantic tree-width" $k$. The left-to-right
+    implication is straightforward since $\gamma \contained \gamma'$
+    implies that $\gamma \land \gamma' \semequiv \gamma$ and $\gamma$ was assumed to
+    have "tree-width" $k$.
+    For the converse implication, if $\gamma \land \gamma' \semequiv \delta$
+    where $\delta$ is a "UC2RPQ" of "tree-width" $k$ then write
+    $\delta = \bigvee_{i=1}^n \delta_i$ where the $\delta_i$'s are "C2RPQs"
+    and let $\delta_{i,1},\hdots, \delta_{i,k_i}$ be the connected components
+    of $\delta_i$.
+    
+    Since for each $i$ we have
+    $\delta_i \contained \delta \semequiv \gamma \land \gamma' \contained \gamma'$, by 
+    \Cref{fact:connectedness}, there exists $j_i$ such that
+    $\delta_{i,j_i} \contained \gamma'$.
+    Let $\delta' \defeq \bigvee_{i=1}^n \delta_{i,j_i}$ so that, by construction
+    $\delta' \contained \gamma'$. However, note that $\delta'$ has "tree-width" at most $k$
+    but $\gamma'$ was assumed not to have "semantic tree-width" $k$,
+    hence $\delta' \strcontained \gamma'$,
+    so there exists $G'$ such that:
+    \begin{equation}
+        \AP\label{eq:subquery-reduction}
+        G' \text{ "satisfies" } \gamma'
+        \quad\text{ and }\quad
+        G' \text{ does not "satisfy" } \delta'.
+    \end{equation}
+    
+    We now prove that $\gamma \contained \gamma'$. Let $G$ be a
+    "database" "satisfying" $\gamma$. Then the disjoint union $G \disunion G'$ "satisfies" $\gamma \land \gamma'$
+    since $G$ "satisfies" $\gamma$, $G'$ "satisfies" $\gamma'$ and $\gamma$ and $\gamma'$
+    are Boolean so we can assume "wlog" that they have disjoint variables.
+    As a consequence, $G \disunion G'$ "satisfies" $\delta$ and hence $\delta'$,
+    so there exists $i$ such that $G \disunion G'$ "satisfies" $\delta_{i,j_i}$.
+    Since $\delta_{i,j_i}$ is "connected", either $G$ "satisfies"
+    $\delta_{i,j_i}$ or $G'$ "satisfies" $\delta_{i,j_i}$.
+    By \Cref{eq:subquery-reduction}, the latter cannot hold,
+    so $G$ "satisfies" $\delta_{i,j_i}$ and hence $\gamma'$.
+
+    Therefore, we have shown that for each "database" $G$ that "satisfies" 
+    $\gamma$, then $G$ "satisfies" $\gamma'$, "ie", $\gamma \contained \gamma'$. Overall,
+    $\gamma \land \gamma'$ has "semantic tree-width" $k$ if and only if
+    $\gamma \contained \gamma'$.
+
+    \medskip
+
+    \proofcase{(2):}
+    We now show that the "asymmetric containment problem for tree-width $k$" is
+    "ExpSpace"-hard.
+    It was shown in \cite[Lemma 8]{Figueira20} that
+    the "containment" of "CRPQs" was still "ExpSpace"-hard
+    when restricted to inputs of the form:
+    \begin{center}
+        \begin{tikzcd}[column sep=scriptsize]
+            \gamma() = \qvar \rar["K"] & \qvar & \contained^{?} & 
+            \qvar \rar["L_1", bend left=40] \rar["\raisebox{6pt}{\small\vdots}", phantom] \rar["L_p" below, bend right=40] & \qvar &[-2.1em] = \delta(),
+        \end{tikzcd}
+    \end{center}
+    where $K,L_1,\hdots,L_p$ are regular languages over $\A$.
+    We reduce it to the following problem:
+    \begin{center}
+        \begin{tikzcd}[column sep=scriptsize, row sep=tiny]
+            & & & & & & \qvar \ar[dr, "\#"] \ar[dd, "\#" above left] & \\
+            \gamma'() \defeq \qvar \rar["K"] & \qvar \arrow["\#" above, loop above] & \contained^{?} & 
+            \qvar \rar["L_1", bend left=40] \rar["\raisebox{6pt}{\small\vdots}", phantom] \rar["L_p" below, bend right=40] & \qvar \rar["\A^*"] & \qvar \ar[rr, "\#" below right] \ar[ur, "\#"] \ar[dr, "\#" below left] & & \qvar = \delta'(). \\
+            & & & & & & \qvar \ar[ur, "\#" below right]
+        \end{tikzcd}
+    \end{center}
+    where the right-hand side of $\delta'$ is a directed $(k+2)$-clique
+    and where $\#$ is a new symbol, i.e. $\# \not\in \A$.
+
+    We claim that $\gamma \contained \delta$ if and only if $\gamma' \contained \delta'$.
+    The forward implication is direct and the converse implication
+    simply relies on the fact that $\# \not\in \A$.\footnote{Indeed, the only possible "homomorphisms" from "expansions" of $\delta'$ to "expansions" of $\gamma'$ are the ones sending the "expansions" of "atoms" containing $L_1, \dotsc, L_p$ inside the "expansion" of the "atom" on $K$.}
+    Then, observe that $\gamma'$ has "tree-width" $1 \leq k$,
+    and that $\delta'$ is connected but do not have "semantic tree-width"
+    at most $k$.
+    
+    To prove the last point, consider a "UC2RPQ" $\Delta''$ that is
+    equivalent to $\delta'$. Pick any "expansion" $\xi'_1$ of $\delta'$.
+    Since $\Delta'' \contained \delta'$, there exists
+    an "expansion" $\xi''$ of $\Delta''$ such that there is a "homomorphism"
+    from $\xi'_1$ to $\xi''$. Dually, since $\delta' \contained \Delta''$,
+    there exists an "expansion" $\xi'_2$ of $\delta'$ such that there
+    is a "homomorphism" from $\xi'' \to \xi'_2$. Overall, we have
+    "homomorphisms" $\xi'_1 \to \xi'' \to \xi'_2$.
+    Since $\xi'_1$ and $\xi'_2$ are both "expansions" of $\delta'$,
+    they contain a $\#$-labelled directed $(k+2)$-clique,
+    and the $\#$-letter appears nowhere else.
+    Should the "homomorphism" $\xi'_1 \to \xi''$ not be injective,
+    $\xi''$ would contain a $\#$-labelled self-loop,
+    and hence, the "homomorphism" $\xi'' \to \xi'_2$ would
+    yield a $\#$-self loop in $\xi'_2$, which does not exist!
+    Hence, the "homomorphism" from $\xi'_1$ to $\xi''$
+    is injective on the $(k+2)$-clique.
+    As a result, $\xi''$ contains a $(k+2)$-clique
+    and has "tree-width" at least $k+1$.
+    We conclude that $\Delta''$ has "tree-width" at least $k+1$ by \Cref{fact:refinement-tw}, provided that $k \geq 2$.
+
+    Hence, we have shown that $\gamma \contained \delta$ if and only if $\gamma' \contained \delta'$
+    where $\gamma'$ has "tree-width" at most $k$, where $\delta'$ is "connected" and
+    has "semantic tree-width" at least $k+1$. Since our reduction
+    can be implemented in polynomial time, we conclude that the problems of
+    \Cref{lemma:lowerbound} are "ExpSpace"-hard.
+	% To deal with "path-width" and/or the case $k=1$,
+	% it suffices to use the same trick as in \cite[Proposition 6.2]{BarceloRV16}: for instance one can add in $\delta'$ on the $i$-th variable of the $(k+2)$-clique a self-loop labelled by a new symbol $\$_i$, and add in $\gamma'$ a self-loop labelled by $\$_i$ on the variable that
+	% already has a $\#$-self-loop.
+\end{proof}

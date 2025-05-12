@@ -27,11 +27,13 @@
 \knowledgenewrobustcmd\pto{\mathrel{\cmdkl{\rightharpoonup}}} % partial function
 \knowledgenewrobustcmd\surj{\mathrel{\cmdkl{\twoheadrightarrow}}} % surjection
 \knowledgenewrobustcmd{\equivclass}[2][]{\cmdkl{[}#2\cmdkl{]^{#1}}} % equivalence class
+\knowledgenewrobustcmd{\dom}{\cmdkl{\mathop{\textrm{dom}}}} % domain
 
 \knowledgenewrobustcmd\restr[2]{{% function restriction
   #1 \cmdkl{\raisebox{-.1em}{\(\vert\)}{}_{#2}}
 }}
 
+\newrobustcmd{\poly}{\mathop{\textrm{poly}}} % polynomial
 \knowledgenewrobustcmd\tower{\mathop{\cmdkl{\mathrm{tower}}}}
 
 % ---
@@ -72,6 +74,7 @@
 % ---
 % Constructions on structures
 % --- 
+\knowledgenewrobustcmd\disunion{\mathbin{\cmdkl{\uplus}}}
 \knowledgenewrobustcmd\prodstruct{\mathbin{\cmdkl{\times}}}
 \knowledgenewrobustcmd\powstruct[2]{\cmdkl{#1^{#2}}}
 \knowledgenewrobustcmd\iterstruct[2]{#1^{\cmdkl{#2}}}

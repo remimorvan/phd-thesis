@@ -96,7 +96,7 @@ all operators/constructions should preserve this "type".
 	\AP\label{def:dependency}
 	A \AP""dependency relation"" over a "typed set" $\?X$ consists of
 	a reflexive and symmetric relation $\intro*\dep$ over
-	\AP$\intro*\disunion \?X \defeq \bigcup_{\tau \in \types} X_\tau \times \{\tau\}$,
+	\AP$\intro*\bigdisunion \?X \defeq \bigcup_{\tau \in \types} X_\tau \times \{\tau\}$,
 	such that for all $\type{x}{\sigma}, \type{y}{\sigma} \in \?X$,
 	if $\type{x}{\sigma} \dep \type{y}{\sigma}$,
 	then $\type{x}{\sigma} = \type{y}{\tau}$.
@@ -299,7 +299,7 @@ Given a "synchronous algebra morphism" $\phi\colon \Sync\Sigma \to \?A$,
 define its \AP""consolidation""\footnote{Named by analogy with Tilson's construction \cite[\S 3, p.~102]{Tilson1987Categories}.} as the semigroup morphism
 $\intro*\consol{\phi}\colon (\SigmaPair)^* \to \reintro*\consol{\?A}$, where
 $\consol{\?A}$ is the monoid obtained from
-$\disunion{\?A}$ by first merging units,
+$\bigdisunion{\?A}$ by first merging units,
 by adding a zero (denoted by $0$), and extending $\cdot$
 to be a total function by letting all missing products equal $0$,
 and $\consol{\phi}$ sends a word $u \in (\SigmaPair)^*$ to%

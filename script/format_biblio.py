@@ -23,7 +23,23 @@ def format_id(id: str):
         new_id = id.capitalize()
         return new_id[:i] + new_id[i].capitalize() + new_id[i+1:]
 
+TO_REMOVE = ["editor","isbn", "issn", "timestamp", "bibsource", "biburl", "address", "urn"]
+
+def remove_useless_shit(entry: str):
+    lines = entry.split('\n')
+    def keep_line(l):
+        if '{' in l and '}' not in l:
+            return True
+        if any([x in l for x in TO_REMOVE]):
+            return False
+        if "url" in l and not "\\url" in l and "doi" in entry:
+            return False
+        return True
+    return "\n".join([l for l in lines if keep_line(l)])
+
+
 def format(entry: str):
+    entry = remove_useless_shit(entry)
     try:
         entry_list: list[str] = entry.split('{')
         if len(entry_list) < 2:

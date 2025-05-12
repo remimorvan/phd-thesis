@@ -1,0 +1,38 @@
+\chapter[{Semantic Tree-Width and Path-Width of Conjunctive Regular Path Queries}]{Semantic Tree-Width and Path-Width\\of Conjunctive Regular Path Queries}
+\label{ch:semantic-tree-width-CRPQ}
+
+\begin{chapterpresentation}
+	\begin{abstract}
+		We show that the problem of whether a query is equivalent to a query of tree-width $k$ is decidable, for the class of Unions of Conjunctive Regular Path Queries with two-way navigation (UC2RPQs). 
+		A previous result by Barceló, Romero, and Vardi \cite{BarceloRV16} has shown decidability for the case $k=1$, and here we extend this result showing that decidability in fact holds for any arbitrary $k\geq 1$. 
+		The algorithm is in "2ExpSpace", but for the restricted but practically relevant case where all regular expressions of the query are of the form $a^*$ or $(a_1 + \dotsb + a_n)$ we show that the complexity of the problem drops to "PiP2".
+		
+		We also investigate the related problem of approximating a UC2RPQ by queries of small tree-width. We exhibit an algorithm which, for any fixed number $k$, builds the maximal under-approximation of tree-width $k$ of a UC2RPQ.
+		The maximal under-approximation of tree-width $k$ of a query $\gamma$ is a query $\gamma'$ of tree-width $k$ which is contained in $\gamma$ in a maximal and unique way, that is, such that for every query $\gamma''$ of tree-width $k$, if $\gamma''$ is contained in $\gamma$ then $\gamma''$ is also contained in $\gamma'$.
+		
+		Our approach is shown to be robust, in the sense that it allows also to test equivalence with queries of a given path-width, it also covers the previously known result for $k=1$, and it allows testing whether a (one-way) UCRPQ is equivalent to a UCRPQ of a given tree-width (or path-width).
+	\end{abstract}
+	\par\bigskip\bigskip
+	\begin{acknowledgements}
+		This chapter is mostly a reproduction of the eponymous paper that was published in LMCS
+		\todo{ref}, as a selected paper from ICDT '23 \todo{ref}.
+		\todo{explain modifications}
+		It is a joint work with Diego Figueira.
+	\end{acknowledgements}
+	\clearpagepresentation
+	\chaptertocstandalone
+\end{chapterpresentation}
+
+{
+	\graphicspath{{./fig/semantic-tw}}
+	\input{parts/semantic-tw/sec-intro}
+	\input{parts/semantic-tw/sec-preliminaries}
+	\input{parts/semantic-tw/sec-maximal-under-approximations}
+	\input{parts/semantic-tw/sec-tagged-tree-decompositions}
+	\input{parts/semantic-tw/sec-proof-key-lemma}
+	\input{parts/semantic-tw/sec-simple-queries}
+	\input{parts/semantic-tw/sec-acyclic-queries}
+	\input{parts/semantic-tw/sec-path-width}
+	\input{parts/semantic-tw/sec-lowerbound}
+	\input{parts/semantic-tw/sec-discussion}
+}

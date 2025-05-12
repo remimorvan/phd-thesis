@@ -1,0 +1,296 @@
+\section{\AP{}Acyclic Queries: the Case $k=1$}
+\label{sec:acyclic-queries}
+
+
+
+Observe that in the previous sections we have treated the cases of "semantic tree-width" $k$ for every $k\geq 2$. However, the case $k=1$ remains rather elusive so far. 
+% Indeed, to prove \Cref{thm:decidability-semtw,thm:closure-under-sublanguages}
+% and the "Key Lemma" we relied on "refinements" preserving "tree-width" $k$, which is always true \emph{unless $k=1$}.
+While the "Key Lemma" holds for $k=1$, it proves the computability of an object that
+is irrelevant to study "semantic tree-width" 1, see \Cref{rk:key-lemma-tw1}. 
+The problem comes from \Cref{ex:counterex-tw1}, namely that
+$\MUA{\gamma}{\Tw[1]} \centernot{\semequiv} \MUAHom{\gamma}{\Tw[1]}$.
+This is the main obstacle why our approach does not directly yield an algorithm for the case $k=1$, which had been previously solved by Barceló, Romero and Vardi \cite{BarceloRV16}. 
+However, as we argue in this section, a rather elegant modification on the notion of "tree-width" allows to use our approach as a unifying framework for both the case $k=1$ and the cases
+$k \geq 2$. 
+Concretely, we introduce a family of classes $\set{\ContrTw}_k$ such that 
+$\MUA{\gamma}{\Tw} \semequiv \MUAHom{\gamma}{\ContrTw}$ for every $\gamma$ and $k$, and where 
+$\MUAHom{\gamma}{\ContrTw[1]} \semequiv \MUAHomBounded{\gamma}{\ContrTw[1]}{\leq\poly(\size{\gamma})}$.
+As a corollary, we reprove \cite[Theorem~6.1]{BarceloRV16}, namely that the "semantic tree-width $1$ problem" is "ExpSpace"-complete. Further, we can also solve the "one-way semantic tree-width $1$ problem", which is outside the scope of \cite{BarceloRV16}. 
+Remember that for $k=1$, the "semantic tree-width@semantic tree-width $1$ problem" and "one-way semantic tree-width $1$ problems@one-way semantic tree-width $1$ problem" are two independent problems, since there are queries of "semantic tree-width" 1 but not of "one-way semantic tree-width" 1 ("cf" \Cref{rk:closure-under-sublanguages-k1}).
+
+% Interestingly, while \cite{BarceloRV16} shows a tight bound for the "semantic tree-width $1$ problem", it 
+
+% how to test whether a "UC2RPQ" is equivalent to a "UC2RPQ" of "tree-width" 1, but not, for example, whether a "UCRPQ" is equivalent to a "UCRPQ" of "tree-width" 1 since this is a different problem ("cf" \Cref{rk:closure-under-sublanguages-k1}). In fact, our unified approach will allow also to test this property. In fact, we will introduce two alternative notions of "tree-width": \emph{one-way} and \emph{two-way}.
+
+\subsection{\AP{}Contracted Tree-Width}
+We next formally define the notion of ``"contracted tree-width"'', meaning the "tree-width" of the graph obtained by contracting paths (or directed paths) into edges. This altered notion of "tree-width" will allow us to seamlessly prove the case of $k=1$ for \Cref{thm:decidability-semtw}.
+
+\AP Given a "C2RPQ" $\gamma$, an \AP""internal path"" is a sequence of atoms\footnote{We write
+$x \symatom{\lambda} y$ to mean that there is either an "atom" $x \atom{\lambda} y$
+\textbf{or} an "atom" $x \coatom{\lambda} y$.}
+\[
+	x_0 \symatom{L_1} x_1 \symatom{L_2} \cdots \symatom{L_{n-1}} x_{n-1} \symatom{L_n} x_n
+\]
+where each $x_i$ for $i \in \lBrack 1,n-1 \rBrack$ has total degree
+exactly 2 and is existentially quantified.
+\AP Its ""contraction@@path"" is defined as the edge
+\[
+	x_0 \atom{K_1 \cdot K_2 \cdots K_{n-1} \cdot K_n} x_n,
+\]
+where $K_i \defeq L_i$ if the "atom" between $x_i$ and $x_{i+1}$ is directed from
+left to right, and $K_i \defeq L_i^{-}$ if the "atom" is directed from right to left.\footnote{Given a regular language $L$ over $\Aext$, we define a regular language $L^-$ over $\Aext$ by induction on regular expressions: $\emptyset^- \defeq \emptyset$, $(a)^- \defeq a^-$, $(a^-)^- \defeq a$, $(L_1\cdot L_2)^- \defeq L_2^- \cdot L_1^-$, $(L^*)^- \defeq (L^-)^*$ and $(L_1 + L_2)^- \defeq L_1^- + L_2^-$. Then, for any graph, there is a path from $x$ to $y$ labelled by
+a word of $L$ "iff" there is a path from $y$ to $x$ labelled by a word of $L^-$.}
+
+\AP Similarly, a ""one-way internal path"" is a sequence of atoms 
+\[
+	x_0 \atom{L_1} x_1 \atom{L_2} \cdots \atom{L_{n-1}} x_{n-1} \atom{L_n} x_n
+\]
+where each $x_i$ for $i \in \lBrack 1,n-1 \rBrack$ has exactly in-degree
+and out-degree 1 in $\gamma$ and is existentially quantified.
+\AP Its ""one-way contraction@@path"" is defined as the edge
+\[
+	x_0 \atom{L_1 \cdot L_2 \cdots L_{n-1} \cdot L_n} x_n.
+\]
+
+\AP A ""contraction"" (resp.\ ""one-way contraction"") of a "C2RPQ" is any query obtained
+by iteratively replacing some "internal paths" (resp.\ "one-way internal paths") by
+their "contraction@@path" (resp.\ "one-way contraction@@path"). By definition,
+a query is always "equivalent" to any of its "contractions" or "one-way contractions".
+
+\begin{definition}
+	\AP
+	Define the ""contracted tree-width"" (resp.\ ""one-way contracted tree-width"")
+	of a "C2RPQ" as the minimum of the "tree-width" among its "contractions" (resp.\ of its "one-way contractions"). Let $\intro*\ContrTw$ and $\intro*\ContrTwOneWay$ be, respectively, the set of all "C2RPQs" of "contracted tree-width" at most $k$ and of "CRPQs" of "one-way contracted tree-width" at most $k$.
+\end{definition}
+
+For instance, the query
+\begin{center}
+	\small
+	\begin{tikzcd}[column sep=small, row sep=small]
+		&[-1em] x_0 \ar["K", rr] \ar["L" swap, ddr] & & x_1 \ar["M", ddl] \\[-1em]
+		\gamma(x_0, x_1) \defeq & \\[-1em]
+		& & y &
+	\end{tikzcd}
+\end{center}
+has "contracted tree-width" one since the "internal path" $x_0 \atom{L} y \coatom{M} x_1$
+can be "contracted" into $x_0 \atom{LM^{-}} x_1$. On the other hand,
+its "one-way contracted tree-width" is two, since there is no non-trivial "one-way internal path"
+as $x_1$ is an "output variable".
+
+Note that, by definition:
+\begin{itemize}
+	\item the "contracted tree-width" is at most the "one-way contracted tree-width", which is
+		in turn at most the "tree-width";
+	\item for $k\geq 2$, these notions collapse (by \Cref{fact:refinement-tw});
+	\item for $k=1$, both inequalities can be strict.
+\end{itemize}
+Moreover, for any $k\geq 1$,
+"contracted tree-width" at most $k$ and "one-way contracted tree-width" 
+at most $k$ are both closed under "refinements": if a query has "tree-width" at most $k$, so does any "refinement" thereof. In fact, the "CQs" of "contracted tree-width" $1$ precisely correspond to what in \cite[\S 5.2.1, p1358]{BarceloRV16} is known as ``pseudoacyclic graph databases''.
+
+\begin{fact}
+	\AP\label{fact:tw-equiv-to-ctw}
+	Let $k \geq 1$. For any "CRPQ" $\gamma$, we have
+	$\MUA{\gamma}{\TwOneWay} \semequiv \MUAHom{\gamma}{\ContrTwOneWay}$.\\
+	Moreover, for any "C2RPQ" $\gamma$,
+	$\MUA{\gamma}{\Tw} \semequiv \MUAHom{\gamma}{\ContrTw}$.
+\end{fact}
+\begin{proof}
+	\begin{align*}
+		\MUA{\gamma}{\Tw}
+			& \semequiv \MUA{\gamma}{\ContrTw}
+			\quad\text{since "contractions" preserve semantics,} \\
+			& \semequiv \MUAHom{\gamma}{\ContrTw}
+			\quad\text{by \Cref{obs:equivalence_under_approx_homomorphism}.}
+	\end{align*}
+	The same arguments work with "one-wayness".
+\end{proof}
+
+\subsection{\AP{}The Key Lemma for Contracted Tree-Width One}
+We show next that "contracted tree-width" $1$ has all the needed properties for the analogue of "Key Lemma" for $k=1$ to hold.
+
+\begin{lemma}
+    \AP\label{lemma:bound_size_refinements_tw}
+    \AP For any "CRPQ" $\gamma$, we have
+    $\MUAHom{\gamma}{\ContrTwOneWay[1]} \semequiv \MUAHomBounded{\gamma}{\ContrTwOneWay[1]}{\leq\lOne}$, where
+    $\intro*\lOne = \Theta(\nbatoms[3]{\gamma})$.
+	Similarly, for a "C2RPQ" $\gamma$,
+	$\MUAHom{\gamma}{\ContrTw[1]} \semequiv
+		\MUAHomBounded{\gamma}{\ContrTw[1]}{\leq\lOne}$.
+\end{lemma}
+
+\begin{proof}
+	Consider the proof of the "Key Lemma" (\Cref{lemma:bound_size_refinements}).
+	We claim that:
+	\begin{enumerate}
+		\itemAP the constructions of
+			\Cref{lemma:locally_acyclic_treedec,lemma:shape-decomposition}
+			both preserve "contracted tree-width" at most 1 and "one-way contracted tree-width" at most 1;
+			\label{eq:lemma:bound_size_refinements_tw:1}
+		\itemAP the upper bound
+			$\l \in \+O(\nbatoms[2]{\gamma} \cdot 2^{\nbatoms{\gamma}})$
+			can be easily boiled down to $\lOne \in \+O(\nbatoms[3]{\gamma})$ in the special case of $k=1$.
+			\label{eq:lemma:bound_size_refinements_tw:2}
+	\end{enumerate}
+
+	\smallskip
+
+	\proofcase{\eqref{eq:lemma:bound_size_refinements_tw:1} Preservation of "contracted tree-width".}
+	We claim that all constructions of \Cref{sec:proof-key-lemma} preserve "contracted tree-width" 
+	at most 1. The setting is similar, except that now, a "trio" consists of a triple $\fun\colon \rho \to 
+	\alpha$ where $\rho$ is a "refinement" of a fixed "C2RPQ" $\gamma$, and $\alpha$ is a "C2RPQ" of
+	"\emph{contracted} tree-width@contracted tree-width" 1. We now apply the constructions not to a decomposition of $\alpha$ but to a "fine tagged tree decomposition" of a \emph{"contraction"} of $\alpha$ of "tree-width" 1.
+	
+	\begin{fact}
+		Let $\gamma$ be a "C2RPQ", $\chi$ be a "contraction" of $\gamma$, and
+		$(T, \bagmap, \tagmap)$ be a "fine tagged tree decomposition" of $\chi$ of "width" at most 1.
+		Let $z, z' \in \bagmap(b)$ for some "bag" $b \in T$. Then $\gamma \land z \atom{\lambda} z'$
+		still has "contracted tree-width" at most 1.
+	\end{fact}
+	As a consequence, the construction of \Cref{lemma:locally_acyclic_treedec}---which takes us from \Cref{fig:trio-tree-dec} to \Cref{fig:path-induced}---preserves "contracted tree-width" 1.
+	Then, \Cref{prop:connecting-tree-decompositions}---illustrated in \Cref{fig:connecting-tree-decompositions}---can be trivially adapted to our setting as follows:
+	\begin{fact}
+		Let $\gamma$, $\gamma'$ be two "C2RPQ" with a disjoint set of variables.
+		Let $z$ (resp.\ $z'$) be a variable of $\gamma$ (resp.\ $\gamma'$).
+		If both $\gamma$ and $\gamma'$ have "contracted tree-width" at most 1, then so does
+		$\gamma \land \gamma' \land z \atom{\lambda} z'$.
+	\end{fact}
+	As a consequence, the construction of \Cref{lemma:shape-decomposition}---which takes us from 
+	\Cref{fig:path-induced} to \Cref{fig:trio-result}---preserves "contracted tree-width" 1. 
+
+	\medskip
+
+	\proofcase{\eqref{eq:lemma:bound_size_refinements_tw:2} Improved upper bound.} In the proof claiming that in a sufficiently
+	long "non-branching path", we can always find two "non-full", "non-atomic bags" with the same 
+	"profile" (see the proof of \Cref{lemma:shape-decomposition}), we obtain a bound of
+	$\+O(2^{\nbatoms{\gamma}})$. We actually claim that it can be improved to obtain a polynomial 
+	bound. This is because, for "width" 1, a "non-full" "bag" $b$ contains exactly 1 variable $z_b$.
+	So, its "profile" consists  
+	simply on a set of "atoms" of $\gamma$---namely the set of "atoms" whose "refinement" "induces a 
+	path" which "leaves" the "bag" $b$ at $z_b$.
+	But we claim that in a "non-branching path", not all of these $2^{\nbatoms{\gamma}}$
+	"profiles" can occur at the same time. Indeed,
+	in "tree decompositions", the set of "bags" containing a given variable must be connected.
+	This property can be lifted to paths in "tagged tree decompositions" in the following way.
+	\begin{fact}
+		\AP\label{fact:paths-are-connected}
+		Let $(T, \bagmap, \tagmap)$ be a "tagged tree decomposition"
+		of some "homomorphism" $f\colon \rho \homto \alpha$.
+		Let $\pi$ be a path in $\rho$. Assume that:
+		\begin{itemize}
+			\item the simple path in $T$ from $b$ to $b''$ goes through $b'$,
+			\item there exists some variable $z$ of $\alpha$ such that $\tagmappath{\pi}$ 
+			  	"leaves" $b$ at $z$, and
+			\item there is no variable like that for the "bag" $b'$.
+		\end{itemize}
+		Then, there is no variable $z$ of $\alpha$ such that
+		$\tagmappath{\pi}$ "leaves" $b''$ at $z$.
+	\end{fact}
+	\begin{proof}[Proof of \Cref{fact:paths-are-connected}]
+		Fix a "tagged tree decomposition" $(T, \bagmap, \tagmap)$ of some "homomorphism" $f\colon \rho \homto \alpha$ and $\pi$ be a path in $\rho$. Let $b,b',b''$ be "bags" such that
+		the simple path in $T$ from $b$ to $b''$ goes through $b'$.
+		\AP Say that an "induced path" $\tagmappath\pi = ({b_i \choose z_i})_i$ ""visits"" a "bag" $b$
+		if $b_i = b$ for some $i$. Note that this is equivalent to saying that there exists a variable
+		$z$ of $\alpha$ "st" $\tagmappath\pi$ "leaves" $b$ at $z$.
+		Hence, \Cref{fact:paths-are-connected} boils down to the following property:
+		if $\tagmappath\pi$ "visits" both $b$ and $b''$, then it must also "visit" $b'$.
+		This property holds because by construction, the sequence $(b_i)_i$---namely the projection of
+		$\tagmappath\pi$ onto $T$---is a path in $T$, with some node repetition.
+	\end{proof}
+	As a consequence,
+	if an "atom" occurs in a "bag", but not in a latter one, then it can never occur again.
+	Hence, the number of "bags" of size $1$ in a "non-branching path" where each "bag"
+	has a different "profile" must be at most $n = \nbatoms{\gamma}$. Hence, \Cref{fact:pigeon-hole}
+	yields a bound of $\+O(\nbatoms[2]{\gamma})$.
+	Finally, we can conclude like in \Cref{sec:proof-bound-size-refinements}: we obtain a tree
+	with at most $\+O(\nbatoms{\gamma})$ leaves, and with "non-branching paths" of length
+	at most $\+O(\nbatoms[2]{\gamma})$, so the tree has size at most $\lOne \in \+O(\nbatoms[3]{\gamma})$.
+	By "local acyclicity", this concludes the proof of \Cref{lemma:bound_size_refinements_tw}.
+	The case of "one-way contracted tree-width" is completely similar.
+\end{proof}
+
+\begin{lemma}
+	\AP\label{lemma:characterisation-bounded-semantic-tw}
+	Let $k \geq 1$.
+	\begin{enumerate}
+		\item Given a "UCRPQ" $\Gamma$, it has "one-way semantic tree-width" at most $1$
+			"iff" $\Gamma \semequiv \MUAHomBounded{\Gamma}{\ContrTwOneWay[1]}{\leq\lOne}$;
+		\item Given a "UC2RPQ" $\Gamma$, it has "semantic tree-width" at most $1$
+			"iff" $\Gamma \semequiv \MUAHomBounded{\Gamma}{\ContrTw[1]}{\leq\lOne}$;
+	\end{enumerate}
+	where $\lOne \in \+O(\nbatoms[3]{\gamma})$.
+\end{lemma}
+\begin{proof}
+	To prove the first point:
+	\begin{itemize}
+		\item if $\Gamma$ is "equivalent" to a "UCRPQ" $\Delta$ of "tree-width" at most $1$, then
+			$\Delta \subseteq \MUA{\Gamma}{\Tw[1]}$ and by \Cref{fact:tw-equiv-to-ctw,lemma:bound_size_refinements_tw},
+			$\Delta \contained \MUAHomBounded{\Gamma}{\ContrTwOneWay[1]}{\leq\lOne}$,
+			and hence:
+			\[
+				\Gamma \semequiv \Delta
+				\contained \MUAHomBounded{\Gamma}{\ContrTwOneWay[1]}{\leq\lOne}
+				\contained \Gamma.
+			\]
+		\item If $\Gamma \semequiv \MUAHomBounded{\Gamma}{\ContrTwOneWay[1]}{\leq\lOne}$, 
+			then $\Gamma$ is equivalent to a "UCRPQ" of "contracted tree-width" at
+			most 1, and hence (by "contraction") it is equivalent a "UCRPQ" of "tree-width" at most 1. 
+	\end{itemize}
+	The second point can be proven similarly.
+\end{proof}
+\begin{corollary}[Upper bound of \Cref{thm:decidability-semtw} for $k=1$]
+	\AP\label{cor:sem-tw-1-pb-exp-c}
+	The "semantic tree-width $1$ problem" and "one-way semantic tree-width $1$ problem" are in "ExpSpace".
+\end{corollary}
+\begin{proof}
+	The fact that the "semantic tree-width $1$ problem" is in "ExpSpace" is actually the main result of \cite[Theorem~6.1]{BarceloRV16}, but we show how the upper bound follows as a direct corollary of \Cref{lemma:characterisation-bounded-semantic-tw} above.
+	% \diego{Here I rely on \emph{ell} being $\Theta(\nbatoms{\gamma}^2\cdot k^{\nbatoms{\gamma}+1})$.}
+	% Remember that, in the context of $\MUAHomBounded{\gamma}{\ContrTw}{\leq\l}$, we have by definition that $\l$ is polynomial in $\gamma$ when $k=1$ (but it is exponential as soon as $k>1$). Hence,
+	Since $\lOne \in \+O(\nbatoms[3]{\gamma})$,
+	$\MUAHomBounded{\gamma}{\ContrTw[1]}{\leq\lOne}$ is an exponential union of polynomial sized "C2RPQs", and thus by \Cref{prop:bound-containment-pb} the "containment problem" $\Gamma \contained \MUAHomBounded{\Gamma}{\ContrTw[1]}{\leq\lOne}$ is in "ExpSpace", and so is the "semantic tree-width $1$ problem" (since the converse "containment" $\MUAHomBounded{\Gamma}{\ContrTw[1]}{\leq\lOne} \contained \Gamma$ always holds, "cf" \Cref{rk:uctworpq}).
+	The proof for "one-way semantic tree-width $1$ problem" is analogous.
+\end{proof}
+
+Lastly, note that we can derive from \Cref{lemma:bound_size_refinements_tw} a characterization of "semantic tree-width" 1 somewhat similar to \Cref{thm:closure-under-sublanguages}.
+
+\begin{corollary}\AP
+	\label{coro:charact-semantic-treewidth-1}
+	\AP Assume that $\+L$ is "closed under sublanguages". 
+
+	\noindent
+    \proofcase{Two-way queries:} For any query $\Gamma \in \UCtwoRPQ(\+L)$, the following are equivalent:
+    \begin{enumerate}
+        \itemAP $\Gamma$ is "equivalent" to an "infinitary union" of "conjunctive queries"
+            of "contracted tree-width" at most $1$;
+        \itemAP $\Gamma$ has "semantic tree-width" at most $1$;
+        \itemAP $\Gamma$ is "equivalent" to a $\UCtwoRPQ(\+L)$ of "contracted tree-width" at most $1$;
+        \itemAP $\Gamma$ is "equivalent" to a $\UCtwoRPQ(\+L')$ of "tree-width" at most $1$,
+			where $\+L'$ is the closure of $\+L$ under concatenation and inverses, "ie"
+			$\+L'$ is the smallest class containing $\+L$ and such that  if $K, L \in \+L'$
+			then $K\cdot L \in \+L'$ and $K^{-} \in \+L'$.
+    \end{enumerate}
+	
+	\noindent
+	\proofcase{One-way queries:} Similarly, if $\Gamma \in \UCRPQ(\+L)$, then the following are equivalent:
+	\begin{enumerate}
+        \itemAP $\Gamma$ is "equivalent" to an "infinitary union" of "conjunctive queries"
+            of "one-way contracted tree-width" at most $1$;
+        \itemAP $\Gamma$ has "one-way semantic tree-width" at most $1$;
+        \itemAP $\Gamma$ is "equivalent" to a $\UCRPQ(\+L)$ of "one-way contracted tree-width" at most $1$;
+        \itemAP $\Gamma$ is "equivalent" to a $\UCRPQ(\+L')$ of "tree-width" at most $1$,
+			where $\+L'$ is the closure of $\+L$ under concatenation, "ie"
+			$\+L'$ is the smallest class containing $\+L$ and such that if $K, L \in \+L'$
+			then $K\cdot L \in \+L'$.
+    \end{enumerate}
+\end{corollary}
+
+Note in particular how point (4) of each characterization reflects that a "UCRPQ" of
+"semantic tree-width" 1 can have "one-way semantic tree-width" at least 2---as we showed in
+\Cref{rk:closure-under-sublanguages-k1}. More generally, the differences between this
+last corollary and \Cref{thm:closure-under-sublanguages} highlight the different combinatorial behaviour that "semantic tree-width" $k$ has, depending on whether $k=1$ or $k > 1$.
+
+\begin{remark}
+	Finally, note that results of \Cref{sec:sre,sec:acyclic-queries} can be joined in order to show that the "semantic tree-width 1 problems" are decidable in "PiP2" for "UC2RPQs" over the closure
+	under concatenation and inverses of "SREs"  (resp. for "UCRPQs" over the closure under concatenation of "SREs").\footnote{While this the whole class of "UCRPQs" over "SREs" has the same expressivity as "UCRPQs" over the closure under concatenation of "SREs", this is not true if one adds the constraint of having "tree-width" at most 1, see \Cref{coro:charact-semantic-treewidth-1}.}
+\end{remark}

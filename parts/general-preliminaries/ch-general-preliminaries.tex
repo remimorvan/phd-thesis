@@ -56,6 +56,7 @@ bounds included.
 The powerset---"ie" the set of all subsets---of a set $X$
 is denoted by $\intro*\pset{X}$, and $\intro*\psetp{X}$ is defined analogously
 except that subsets are required to be non-empty.
+The disjoint union of two sets is denoted by $\sqcup$.
 
 While a function $f$ from set $X$ to set $Y$ is denoted by $f\colon X \to Y$,
 we reserve $\intro*\pto$ and $\intro*\surj$ for partial functions and surjections, respectively.
@@ -178,7 +179,7 @@ is obtained from $\sigma$ by adding a set of $k$ constants.
 The \AP""disjoint union"" of two "structures" over a
 "purely relational signature" 
 is obtained by taking the disjoint union of their domain and of
-their "predicate interpretations".
+their "predicate interpretations", and is denoted by \AP$\intro*\disunion$.
 
 \begin{marginfigure}
 	\centering
@@ -718,7 +719,7 @@ will all point to their respective entry in the "Complexity Zoo":
 		hardness is usually considered under logarithmic-space reductions;
 	\itemAP ""$k$-ExpTime"" and ""$k$-ExpSpace"" are the
 		problems solvable in time and space
-		\[n \mapsto \underbrace{2^{2^{{\,\rotatebox{90}{\tiny$\ddots$}\,}^{2^{\textrm{poly}(n)}}}}}_{k \text{ times}},\]
+		\[n \mapsto \underbrace{2^{2^{{\,\rotatebox{90}{\tiny$\ddots$}\,}^{2^{\poly(n)}}}}}_{k \text{ times}},\]
 		respectively; hardness is considered under polynomial-time reductions;
 	\itemAP ""Tower"" is the class of problems that can be solved in time
 		$n\mapsto \tower(f(n))$ for some elementary function $f$,%

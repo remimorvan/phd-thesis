@@ -84,6 +84,13 @@
 		}}}%
 	$}%
 }%
+\newrobustcmd\smashxleftrightarrow[1]{%
+	\raisebox{-.04em}{$%
+		\xrightleftharpoons{\smash{\raisebox{-.1em}{%
+			\tiny{#1}%
+		}}}%
+	$}%
+}%
 
 % ---
 % Knowledge: intro in restatable
@@ -100,6 +107,14 @@
 		\intro{#1}%
 	\else%
 		\kl{#1}%
+	\fi%
+}
+
+\newrobustcmd\introinrestatableopt[1]{%
+	\ifmainstatement%
+		\intro[#1]{#1}%
+	\else%
+		\kl[#1]{#1}%
 	\fi%
 }
 

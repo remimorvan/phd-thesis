@@ -1,0 +1,162 @@
+\section{\AP{}Polynomial-Time Evaluation of Queries of Bounded Tree-Width}
+\label{apdx-sec:prop:crpq-bound-tree-width-upper-bound}
+
+\crpqboundtwupperbound*
+\begin{proof}
+    \AP
+    \knowledgenewrobustcmd{\sjoin}{\cmdkl{\ltimes}}
+    \knowledgenewrobustcmd{\costjoin}{\cmdkl{c_{sj}}}
+    A ""semi-join"" is a "CQ" of the form $q(\bar x) = R(\bar x) \land S(\bar y)$, noted $R(\bar x) \intro*\sjoin S(\bar y)$, where $\bar x$ and $\bar y$ may contain common variables and constants. \AP ""Yannakakis algorithm"" \cite{Yannakakis81} allows to evaluate any Boolean "acyclic"%
+	\footnote{%
+	An \AP""acyclic"" "CQ" over arbitrary relational structures is one which admits a "tree decomposition" whose set of "bags" are the sets of variables of its atoms (also known as ``generalized hyper tree-width 1'' or ``$\alpha$-acyclicity'' of its underlying hypergraph).
+	} 
+	"conjunctive query" $q$ on an $n$-tuple relational database in $\+O(|q| \cdot \costjoin(n))$, where $\intro*\costjoin(n)$ is the cost of performing a "semi-join": $\+O(n \cdot \log(n))$ for Turing machines, or $\+O(n)$ for a RAM model.\footnote{
+		We use Random Access Machines (RAMs) with domain $\N$, in which we assume that the RAM's memory is initialized to 0. 
+		For every fixed dimension $d \geq 1$  we have available an unbounded number of $d$-ary arrays $A$ such that for given $(n_1, \dotsc, n_d) \in \N^d$ the entry $A[n_1, \dotsc, n_d]$ at position $(n_1, \dotsc, n_d)$ can be accessed in constant time.
+		To compute $R(\bar x \, \bar y) \sjoin S(\bar y \, \bar z)$, where $\bar y$ are the only common variables between the atoms and $n_R$ and $n_S$ are the number of tuples in $R$ and $S$ respectively, we may assume that constants from the relations are encoded as numbers in binary, of size $\+O(\log(n_R + n_S))$. 
+		We first encode the relation $R$ projected onto $\bar y$, as an array $A$ of the dimension of $\bar y$ in $\+O(n_R)$, by putting a `1' in $A$ for each tuple of $R$. 
+		Then, for each tuple of $S$ we test if the $\bar y$-projection belongs to $A$, if so we put a `2' in the array $A$, this is $\+O(n_S)$. 
+		Finally, for each tuple of $R$ we output the tuple if its projection onto $\bar y$ has a `2' in $A$. This last step takes $\+O(n_R)$.
+	}
+	% \sidediego{J'ai ajouté l'algo RAM en footnote...}
+
+    We reduce the "evaluation problem" for "C2RPQs" of "tree-width" $k$ to the "evaluation problem" of Boolean acyclic "CQs". First, if we receive $\Gamma (\bar x)$, $G$ and $\bar v$ as input, we replace the "free variables" $\bar x$ of $\Gamma$ with the "graph database" nodes $\bar v$ as constants, to obtain a Boolean "C2RPQ" (with constants). Let us therefore assume that $\Gamma$ is Boolean.
+	Take any $\gamma \in \Gamma$ and a "tagged tree decomposition" $(T, \bagmap, \tagmap)$ of "width" at most $k$ of $\gamma$.\footnote{By a "tagged tree decomposition" of $\gamma$ we mean one for the identity $\gamma \homto \gamma$. The definition of "tagged tree decompositions" can be found in \Cref{sec:treedec}.}
+	It is easy to see that we can assume that the decomposition is of linear size in the number of "atoms" $\nbatoms{\gamma}$.%
+	\footnote{
+		Indeed, observe that the decomposition resulting from contracting any edge so that one "bag" is contained or equal to the other is of linear size and preserves the "width" (see, "eg", \cite{DBLP:journals/jcss/GottlobLS02}).
+		% It also follows from the fact that computing "tree decomposition" of "width" $k$ is in linear time \cite{bodlaender1993linear}.
+	}
+	 For every "bag" $v$ of the decomposition containing $\bagmap(v)=\set{x_1, \dotsc, x_t}$ consider the following relation $R_v$ consisting of all tuples of "database" nodes $(v_1, \dotsc, v_t)$ such that for every "atom" $A=x_i \atom{L} x_j$ in $\tagmap^{-1}(v)$ we have that $(v_i, v_j)$ "satisfies" $A$.
+
+
+    It then follows that 
+    \begin{enumerate}
+        \item  each $R_v$ is of size $\+O(|G|^{k+1})$, 
+        \item the "Boolean" "CQ" $q = \bigwedge_{v \in \vertex{T}} R_v(\bagmap(v))$ is "acyclic" and of size linear in $\nbatoms{\gamma}$, and 
+        \item $q$ is "equivalent" to $\gamma$.
+    \end{enumerate}
+    Hence, "Yannakakis algorithm" yields a complexity of $\+O(\size{\gamma} \cdot \costjoin(|G|^{k+1}))$. That is, $\+O(\size{\gamma} \cdot |G|^{k+1} \cdot \log{|G|})$, or $\+O(\size{\gamma} \cdot |G|^{k+1})$ in a RAM model.
+
+    We are only left with the cost of computing the relation $R_v$ for any given $v \in \vertex{T}$. Let $\+A_v= \set{A_1(y_1,z_1), \dotsc, A_s(y_s,z_s)}$ be the set of all "atoms" of $\tagmap^{-1}(v)$. Let $\bagmap(v)=\set{x_1, \dotsc, x_t}$.
+    Compute first the relation $S_i = \set{ (u,u') \in \vertex{G}^2 : (u,u') \text{ "satisfies" } A_i(y_i,z_i)}$ for every $i$; this can be done in $\+O(|G| \cdot |L_i \times \Gpm|)$, where $L_i \times \Gpm$ is the product of the NFA for the regular language $L_i$ of $A_i$ and the expanded "database" $\Gpm$.\footnote{That is, $L_i \times \Gpm$ is a  "database" having pairs $(q,v)$ where $q$ is a state for the NFA $\+A_i$ of $L_i$ and $v \in \vertex{\Gpm}$, and we have an edge $(q,v) \xrightarrow{a} (q',v')$ in $L_i \times \Gpm$ if  $q \xrightarrow{a} q'$ and $v \xrightarrow{a} v'$ are in $\+A_i$ and $\Gpm$ respectively.} Compute also the relation $U = \vertex{G}^t$ in $\+O(|G|^{t})$ (hence in $\+O(|G|^{k+1})$). Finally, we compute $R_v$ by performing $s$ nested "semi-joins" 
+    \[
+        ((U(x_1, \dotsc, x_t) \sjoin S_1(y_1,z_1)) \sjoin S_2(y_2,z_2) \dotsb )\sjoin S_s(y_s,z_s) 
+    \]
+    in $\+O(s \cdot |G|^{k+1} \cdot \costjoin(|G|^{k+1}))$, that is, in $\+O(s \cdot |G|^{k+1} \cdot \log(|G|))$ or $\+O(s \cdot |G|^{k+1})$ in a RAM model. Repeating this for every "bag" we can compute all the $R_v$'s in $\+O(\size{\gamma} \cdot |G|^{k+1} \cdot \log(|G|))$ (observe that we iterate only once on each "atom", since we are using a "``tagged'' decomposition@tagged tree decomposition") or $\+O(\size{\gamma} \cdot |G|^{k+1})$ in a RAM model.
+\end{proof}
+
+
+\section{\AP{}Alternative Upper Bound for Containment of UC2RPQs}
+\label{apdx-sec:alternative-upper-bound-containment}
+
+In \Cref{sec:maximal-under-approximations}, in order to prove the "2ExpSpace" upper bound to the 
+"semantic tree-width $k$ problem" (\Cref{lem:sem-tw-in-twoexp}), we proved an upper bound on containment
+of "UC2RPQs" (\Cref{prop:bound-containment-pb}) by relying on the notion of "bridge-width".
+In this section, we give a slightly different bound, which is more elementary (in the sense that it 
+does not rely on "bridge-width") and still yields a "2ExpSpace" upper bound to the "semantic 
+tree-width $k$ problem".
+
+\begin{proposition}
+	\AP\label{prop:bound-containment-pb-alt}
+	The "containment problem" $\Gamma \contained \Delta$ between two "UC2RPQs" can be solved in non-deterministic space $2^{c\cdot \size{\Gamma}} + p_{\Delta} \cdot 2^{c\cdot m_\Delta}$, where $m_\Delta$ is the size of the greatest disjunct of $\Delta$, namely $m_\Delta = \max{\{\size{\delta_\Delta} \mid \delta \in \Delta\}}$, $p_\Delta$
+	is the number of disjuncts of $\Delta$, and $c$ is a constant.
+\end{proposition}
+
+\begin{proof}[Proof sketch]
+    The proposition can be shown by close inspection of the standard "containment problem" for "UC2RPQs" \cite[Theorem 5]{CGLV00}: the "containment problem" is reduced, in this instance, to checking the inclusion between NFAs of the form\footnote{$\+A_\Gamma$ and $\+A_\delta$ are denoted $A_1$ and $A_3$, respectively, in \cite{CGLV00}.}
+	\begin{equation}
+		\AP\label{eq:containment-to-inclusion-regexp}
+		\+A_\Gamma \subseteq^? \bigcup_{\delta \in \Delta} \+A_\delta,
+	\end{equation}
+	where $A_\Gamma$ is a regular expression which is exponential in $\size{\Gamma}$,
+	and $\+A_\delta$ has size exponential in $\size{\delta} \leq m_\Delta$.
+	Should \eqref{eq:containment-to-inclusion-regexp} not hold, there must exist a counterexample of size at most 
+	\[
+		2^{|\+A_\Gamma|}\times \prod_{\delta \in \Delta} 2^{|\+A_\delta|}
+	\]
+	Letting $p_\Delta$ be the number
+	of queries in $\Delta$, we get that the logarithm of the expression above---representing the
+	size of the non-deterministic space needed by the algorithm---is upper bounded by
+	\[
+		c_0 \Bigl(|\+A_\Gamma| + \sum_{\delta \in \Delta} |\+A_\delta|\Bigr)
+		\mathrel{\underset{\tiny\textrm{eventually}}{\leq}}
+		2^{c\cdot \size{\Gamma}} + p_{\Delta} \cdot 2^{c\cdot n_\Delta},
+	\]
+	% \sidediego{is this notation standard?}
+	for some constants $c_0$ and $c$.
+\end{proof}
+
+\section{\AP{}Path-Width is not Closed under Refinements}
+\label{apdx-sec:path-width-not-closed-refinements}
+
+\pathwidthnotclosed*
+
+\begin{proof}
+	Let $X$ be a set of $k-1$ variables. Consider the undirected multigraph $\+G_k$ whose set of nodes is
+	$X \cup \{y_0, y_1, y_2, y_3\}$ with the following edge set:
+	\begin{itemize}
+		\item each $X \cup \{y_i\}$ ($i \in \{0,1,2,3\}$) is a clique,
+		\item there is an edge from $y_i$ to $y_{i+1}$  for $i \in \{0,1,2\}$, and
+		\item there is a second edge from $y_1$ to $y_2$.
+	\end{itemize}
+	By definition, this graph has "path-width" exactly $k$: it is as least $k$ since it contains
+	a $(k+1)$-clique---namely $X \cup \{y_i,y_{i+1}\}$---and, moreover the following sequence of bags---"cf" \Cref{subfig:pw-not-closed-original}---defines a "path decomposition" of $\+G_k$ of "width" $k$:
+	\[
+		\langle X \cup\{y_0,y_1\},\; X \cup\{y_1,y_2\},\; X \cup\{y_2,y_3\} \rangle.
+	\]
+
+	Let $\+G'_k$ be the graph obtained by "refining" the second edge from $y_1$ to $y_2$, into
+	two edges $\langle y_1, z \rangle$ and $\langle z, y_2 \rangle$, where $z$ is a new variable---see \Cref{subfig:pw-not-closed-path-dec-horizontal,subfig:pw-not-closed-path-dec-vertical}.
+	We claim that $\+G'_k$ has path-width at least $k+1$. Indeed, let
+	$\langle T, \bagmap, \tagmap \rangle$ be a "path decomposition" of $\+G'_k$.
+	% \begin{enumerate}
+	% 	\item Let $i$ be the smallest index, if it exists, "st" $X \not\subseteq b_i$,
+	% 		say $x \not\in b_i$ for some $x$. Assume moreover that $z \not\in b_i$.
+	% 		This means that either $x \not\in b_j$ for all $j \leq i$ or for all $j \geq i$.
+	% 		Assume "wlog" that we are in the first case.
+	% 		Assume that some edge $\langle u,v \rangle$ is "tagged" in a "bag" $b_j$ for some $j \leq i$.
+			
+	% 		Assume that $u$ and $v$ are distinct from $z$. Then both
+	% 		$\langle u, x \rangle$ and $\langle v, x \rangle$ are edges, so
+	% 		it means that $u$ and $v$, they have to be "tagged" somewhere, and so both $u$ and $v$
+	% 		must belong to all "bags" $b_j, b_{j+1}, \hdots, b_i, b_{i+1}$ since $b_{i+1}$ is the first "bag" containing $x$. In particular, one can "tag" the edge $\langle u,v \rangle$ in $b_{i+1}$ instead of $b_j$.
+	% 		After iterating this process, no edge is "tagged" in a "bag" $b_j$ for some $j \leq i$, and hence all of these "bags" can be removed (including $b_i$).
+	% 		Hence, the "path decomposition" has the following shape: first, we have a few bags containing $z$, and then all bags must contain $X$. 
+	% 	\item Because $\{ y_1,y_2, z \}$ is a clique, there must be a "bag" $b_i$ containing all three of them. If this "bag" is one that contains $X$ we are done: we found a bad with
+	% 	$k+2$ nodes.
+	% 	Otherwise, we are in a situation similar to \Cref{subfig:pw-not-closed-path-dec-vertical}.
+	% 	Assume "wlog" that $b_i$ occurs before all "bags" containing $X$, the other situation being symmetric. Since $\{y_1,y_2\}\cup X$ is a clique, every "bag" between $b_i$ and the first
+	% 	bag $b_j$ containing $X$ must contain $y_1$ and $y_2$.
+	% 	But then, the edge $\langle y_0,y_1 \rangle$ must be tagged somewhere: it is it before 
+	% 	$b_j$, then, using the fact that $\{y_0,y_1\}\cup X$ is a clique, we have $\{y_0,y_1,y_2\}\cup X \subseteq b_j$, and we are done. The same argument works for the edge $\langle y_2, y_3 \rangle$. So, let $j_1,j_2$ be the indices "st" $j_i > j$, with:
+	% 	\[
+	% 		X \cup \{y_0,y_1\} \subseteq b_{j_1}
+	% 		\quad\text{and}\quad 
+	% 		X \cup \{y_2,y_3\} \subseteq b_{j_2}.
+	% 	\]
+	% 	If $j_1 < j_2$ then $y_2$ belongs to both $b_j$ and $b_{j_2}$, so it also belongs to $b_{j_1}$, which must have size at least $k+2$. Dually if $j_1 > j_2$, then $y_1$ belongs to both $b_j$ and $b_{j_1}$, and hence it belongs to $b_{j_2}$ which must have size at least $k+2$.
+	% \end{enumerate}
+	
+	Note that $X \cup \{y_0, y_1\}$, $X \cup \{y_1, y_2\}$, $X \cup \{y_2, y_3\}$
+	and $\{z,y_1,y_2\}$ are cliques, so there must be "bags" of $\langle T, \bagmap, \tagmap \rangle$ containing each of them. Let $b_{0,1}$, $b_{1,2}$, $b_{2,3}$ and $b_Z$ denote these bags---note that they do not have to be distinct.
+
+	\begin{enumerate}
+		\item If $b_Z$ appears in $T$ between at least two "bags" among $b_{0,1}$, $b_{1,2}$
+		and $b_{2,3}$ (as in \Cref{subfig:pw-not-closed-path-dec-horizontal}), since $X \subseteq \bagmap(b_{i,j})$ for all $(i,j)$, then $X \subseteq \bagmap(b_z)$.
+		Hence $X \cup \{z,y_1,y_2\} \subseteq \bagmap(b_z)$
+		and so $b_z$ has $k+2$ elements.
+		\item Otherwise, "wlog" $b_z$ appears strictly before all three bags
+		$b_{0,1}$, $b_{1,2}$ and $b_{2,3}$, as in \Cref{subfig:pw-not-closed-path-dec-vertical}.
+		We consider the way $b_{0,1}$, $b_{1,2}$ and $b_{2,3}$ are ordered in the "path decomposition". If $b_{0,1}$ or $b_{2,3}$ appears first, then 
+		they are located between $b_z$ and $b_{1,2}$, which both contain $\{y_1,y_2\}$,
+		and so this bag must also contain $\{y_1,y_2\}$, and so it has size at least $k+2$.
+		Otherwise, if $b_{1,2}$ appears first, depending on the relative ordering
+		of $b_{0,1}$ and $b_{2,3}$, we either get that $y_2 \in \bagmap(b_{0,1})$
+		or that $y_1 \in \bagmap(b_{2,3})$. In both cases, we have a bag with at least
+		$k+2$ elements.
+	\end{enumerate}
+
+	In all cases, the "path decomposition" has width at least $k+1$, showing that
+	$\+G'_k$ has "path-width" at least\footnote{In fact it has "path-width" exactly $k+1$.} $k+1$.
+\end{proof}

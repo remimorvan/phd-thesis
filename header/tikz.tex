@@ -69,3 +69,12 @@
   }
   \stepcounter{row}
 }
+
+% https://tex.stackexchange.com/questions/238169/tilted-arrows-that-points-at-specific-variables-of-equation
+\usetikzlibrary{fit}
+\usetikzlibrary{arrows.meta}
+\tikzset{
+    inode/.style={
+        inner xsep=0pt,
+	}
+}

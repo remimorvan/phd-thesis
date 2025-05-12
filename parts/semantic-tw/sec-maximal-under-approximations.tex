@@ -1,0 +1,335 @@
+\section{\AP{}Maximal Under-Approximations}
+\label{sec:maximal-under-approximations}
+
+In this section, we state our key technical result, \Cref{lemma:bound_size_refinements}, which we will refer to as the ``"Key Lemma"''.
+Essentially, we follow the same structure as \Cref{thm:closure-under-sublanguages}:
+given a "C2RPQ" $\gamma$ and a natural number $k>1$, we start by
+considering its "maximal under-approximation" by "infinitary unions"
+of "conjunctive queries" of "tree-width" $k$ (\Cref{def:max-under-approx}),
+and then show that this query can in fact be expressed as a
+"UC2RPQ" of "tree-width" $k$ whose "atoms" contain "sublanguages" of those in $\gamma$ ("Key Lemma"~\ref{lemma:bound_size_refinements}).
+
+\AP For the first definitions of this section, let us fix any class $\class$ of "C2RPQs"---we will later apply these results to the class $\Tw$ of "C2RPQs" of "tree-width" at most $k$.
+
+\begin{definition}[Maximal under-approximation]
+    \AP\label{def:max-under-approx}
+    \AP Let $\gamma$ be a "C2RPQ". The \AP""maximal under-approximation"" of $\gamma$ by "infinitary unions" of $\class$-queries is $\intro*\MUA{\gamma}{\class} \defeq
+    \{ \alpha \in \class \mid \alpha \contained\gamma \}$.
+\end{definition}
+For intuition, we refer the reader back to paragraph ``Some intuitions on maximal under-approximations'' at the beginning of \Cref{sec:prelim}.
+
+
+\begin{remark}
+    \AP\label{rk:uctworpq}
+    Observe that $\MUA{\gamma}{\class}$ is an "infinitary union" of $\class$-queries,
+    that $\MUA{\gamma}{\class} \contained \gamma$, and that for every "infinitary union" of
+    $\mathcal{C}$-queries $\Delta$, if $\Delta \contained \gamma$, then $\Delta \contained \MUA{\gamma}{\class}$ ("ie", it is the unique maximal under-approximation up to "semantical equivalence").
+    Similarly, the "maximal under-approximation" of a "UC2RPQ" is simply the union of the "maximal under-approximations" of the "C2RPQs" thereof.
+\end{remark}
+
+% \subsection{Refinements and expansions}
+
+Unfortunately, the fact that a query $\alpha$ is part of this union, namely $\alpha \in \MUA{\gamma}{\class}$, does not yield any useful information on the \emph{shape} of $\alpha$---we merely know that $\alpha \contained \gamma$. We thus introduce another "infinitary union" of $\class$-queries  of a restricted shape, namely $\MUAHom{\gamma}{\class} \subseteq \MUA{\gamma}{\class}$, in which queries $\alpha \in \MUAHom{\gamma}{\class}$ come together with a witness of their "containment" in $\gamma$.
+
+
+\begin{definition}
+    \AP The "maximal under-approximation" of $\gamma$ by "infinitary unions" of homomorphic\-ally-smaller $\class$-queries is\phantomintro\MUAHom
+    \begin{align}
+        \reintro*\MUAHom{\gamma}{\class} \defeq
+        \{
+            \alpha \in \class
+            \mid
+            \exists \rho \in \Refin(\gamma),\, \exists \fun\colon \rho \surj \alpha
+        \}.
+        \AP\label{eq:MUAHom}
+    \end{align}
+\end{definition}
+
+For a basic example of "approximation" (with no constraint on $\class$),
+we refer the reader to \Cref{fig:basic-approx}.
+The resulting query $\alpha(x,y)$ is the "homomorphic image" of a "refinement" of
+$\gamma(x,y)$. Hence, $\alpha(x,y) \in \MUAHom{\gamma}{\class}$ if $\class$ is, for instance, the class of all "C2RPQs"---or more generally, if $\class$ contains $\alpha(x,y)$.
+
+\begin{example}[{\Cref{ex:CRPQ-tw3-stw2}, cont’d}]
+    \AP\label{ex:CRPQ-tw3-stw2-contd}
+    Both $\delta(\bar x)$ and $\delta'(\bar x)$ are "semantically equivalent" 
+    to queries in $\MUAHom{\gamma(\bar x)}{\Tw[2]}$.
+    Indeed, starting from $\gamma(\bar x)$,
+    we can "refine"
+	\[
+		x_0 \atom{a(bb)^+} z
+		\quad\text{into}\quad
+		x_1 \atom{a} t \atom{(bb)^+} z.
+	\]
+    Denote by $\rho(\bar x)$ the query obtained:
+    \begin{center}
+        \small
+		% \tikzset{every to/.append style={red, thick}}
+        \begin{tikzcd}[column sep=small, row sep=small]
+            &[-.5em] x_0 \ar[dr, "a"] \ar[rr, "c"] \ar[d, "a" left] & &
+            x_1 \ar[dl, "a" swap] \ar[ddl, "ab(bb)^*", pos=.7, bend left]
+                &[1.5em] &[-.5em] x_0 \ar[dr, "a"] \ar[rr, "c"] & &
+                x_1 \ar[dl, "a" swap] \ar[ddl, "ab(bb)^*", pos=.6, bend left]
+                    &[1.5em] &[-.5em] x_0 \ar[dr, "a"] \ar[rr, "c"]  & &
+                    x_1 \ar[dl, "a" swap] \ar[ddl, "ab(bb)^*", pos=.6, bend left] \\
+            \rho(\bar x) \defeq & t \ar[dr, "(bb)^+" below left, pos=.2, bend right=14] & y \ar[d, "b^+", pos=.35] & 
+                & \delta'_{\textnormal{app}}(\bar x) \defeq & & y \ar[d, "b^+" pos=.35, bend left=15] \ar[d, "(bb)^+" swap, bend right=15, pos=.35] & 
+                    & \delta'(\bar x) = & & y \ar[d, "(bb)^+" swap, pos=.35] & \\
+            & & z & 
+                & & & z & 
+                    & & & z &
+        \end{tikzcd}
+    \end{center}
+    Then merge variables $t$ and $y$: this new query $\delta'_{\textnormal{app}}(\bar x)$
+    is "equivalent" to $\delta'(\bar x)$. Moreover, since
+	$\delta'_{\textnormal{app}}(\bar x)$ has "tree-width" at most 2 and was obtained as a 
+	"homomorphic image" of a "refinement" of $\gamma(\bar x)$, we have that
+	$\delta'_{\textnormal{app}}(\bar x) \in \MUAHom{\gamma(\bar x)}{\Tw[2]}$.
+	A similar argument applies to $\delta$, by "refining" the "atom" between $x_1$ and $z$ instead.
+	\qedhere
+\end{example}
+
+
+\AP Clearly, $\MUAHom{\gamma}{\class}$---whose queries are informally called 
+""approximations""---is included, and thus semantically "contained", in $\MUA{\gamma}{\class}$, 
+since $\rho \contained \gamma$ and $\alpha \contained \rho$ in \eqref{eq:MUAHom}.
+In fact, under some assumptions on $\class$,
+the converse "containment" also holds. 
+
+\begin{fact}
+    \AP\label{obs:equivalence_under_approx_homomorphism}
+    If $\class$ is closed under "expansions" and "subqueries",
+	then for any "C2RPQ" $\gamma$, we have $\MUA{\gamma}{\class} \semequiv \MUAHom{\gamma}{\class}$.
+\end{fact}
+\begin{proof}
+	Since $\MUA{\gamma}{\class} \supseteq \MUAHom{\gamma}{\class}$,
+	it suffices to show that $\MUA{\gamma}{\class} \contained \MUAHom{\gamma}{\class}$.
+	Pick $\alpha \in \MUA{\gamma}{\class}$. Let $\xi$ be an "expansion" of $\alpha$. 
+	Since $\alpha \contained \gamma$, there exists by \Cref{prop:cont-char-exp-st}
+	an "expansion" $\xi_\gamma$ of $\gamma$ such that $\xi_\gamma \homto \xi$. 
+	Consider the restriction $\xi'$ of $\xi$ to its "homomorphic image".
+	Since $\alpha \in \class$ and $\class$ is closed both under "expansions" and "subqueries",
+	$\xi' \in \class$. Since moreover, by construction, $\xi'$ is the ("strong onto@strong onto homomorphism") "homomorphic image"
+	of an "expansion" (hence "refinement") of $\gamma$, then $\xi' \in \MUAHom{\gamma}{\class}$.
+	Hence, we have shown that for every "expansion" of $\MUA{\gamma}{\class}$,
+	there is an "expansion" of $\MUAHom{\gamma}{\class}$ with a "strong onto homomorphism" from the
+	latter to the former, which concludes the proof by \Cref{prop:cont-char-exp-st}.
+\end{proof}
+
+Note that
+in the definition of $\MUAHom{\gamma}{\class}$ we work with "strong onto homomorphisms":
+changing the definition to have any "homomorphism" would yield a slightly bigger but "semantically equivalent" class of queries---though having untamed shapes.
+
+Observe then, by \Cref{fact:refinement-tw}, that the class $\Tw$ of all "C2RPQs" of "tree-width" at 
+most $k$ is closed under "refinements" and hence under "expansions", provided that $k$ is greater 
+or equal to 2. Moreover, $\Tw$ is always closed under "subqueries" for each $k$.
+
+\begin{corollary}
+    \AP\label{coro:equivalence_under_approx_homomorphism_twk}
+    For $k \geq 2$, for all "C2RPQ" $\gamma$,
+    $\MUA{\gamma}{\Tw} \semequiv \MUAHom{\gamma}{\Tw}$.
+\end{corollary}
+
+\begin{example}[counterexample for $k=1$]
+    \AP\label{ex:counterex-tw1}
+    Consider the following query:
+    \begin{center}
+    \begin{tikzcd}[row sep=0.2em]
+        &[-2em] &[-2em] z \ar[<-, ddr, "b"] &[-2em] & & &[-2em] \\
+        \gamma(x) \;\defeq & & & \\
+		& x \ar[<-, uur, "c"] & & y. \ar[<-, ll, "a"]
+    \end{tikzcd}
+    \end{center}
+    We claim that $\MUA{\gamma}{\Tw[1]} \centernot{\contained} \MUAHom{\gamma}{\Tw[1]}$.
+	First, we claim that $\gamma \in \Exp(\MUA{\gamma}{\Tw[1]})$ since
+	$\gamma$ is an "expansion" of $\delta(x) = x \atom{abc} x$, which clearly belongs
+	to $\MUA{\gamma}{\Tw[1]}$.
+	Then, observe that $\gamma(x)$ has a single refinement: itself!
+	It follows that $\MUAHom{\gamma}{\Tw[1]}$ is finite, and consists precisely of all
+	"homomorphic images" of $\gamma(x)$ of "tree-width" at most 1, which are:
+	\[
+		\alpha_1(w) \defeq
+		\begin{tikzcd}[row sep=0.2em, ampersand replacement=\&]
+			w \ar["a", loop left] \rar["b" below, bend right=20] \& z \lar["c" above, bend right=20]
+		\end{tikzcd},\qquad
+		\alpha_2(w) \defeq
+		\begin{tikzcd}[row sep=0.2em, ampersand replacement=\&]
+			w \ar["c", loop left] \rar["a" below, bend right=20] \& y \lar["b" above, bend right=20]
+		\end{tikzcd}
+	\]
+	\[
+		\alpha_3(x) \defeq
+		\begin{tikzcd}[row sep=0.2em, ampersand replacement=\&]
+			x \rar["a" below, bend right=20] \& w \lar["c" above, bend right=20] \ar["b", loop right] 
+		\end{tikzcd},\,\qquad
+		\alpha_4(w) \defeq
+		\begin{tikzcd}[row sep=0.2em, ampersand replacement=\&]
+			w \ar["a", loop left] \ar["b", loop below] \ar["c", loop right] \& \hphantom{z}
+		\end{tikzcd}
+	\]
+	which correspond to the case when the following variable are merged: $\{x,y\}$,
+	$\{x,z\}$, $\{y,z\}$ and $\{x,y,z\}$, respectively. Note that
+	all of these queries are "CQs", from which it follows that
+	every "expansion" of a query in $\MUAHom{\gamma}{\Tw[1]}$ is one of the $\alpha_i$,
+	and has a self-loop. In particular, such an "expansion" cannot have a "homomorphism"
+	to $\gamma$. Hence, we showed that there is an "expansion" of $\MUA{\gamma}{\Tw[1]}$
+	"st" no "expansion" of $\MUAHom{\gamma}{\Tw[1]}$ can be "homomorphically mapped@homomorphism"
+	to it. Hence, by \Cref{prop:cont-char-exp-st},
+	$\MUA{\gamma}{\Tw[1]} \centernot{\contained} \MUAHom{\gamma}{\Tw[1]}$. \qedhere
+\end{example}
+
+In general, by definition,
+$\MUAHom{\gamma}{\Tw}$ is an "infinitary union" of "C2RPQs". Our main technical result shows that,
+in fact, $\MUAHom{\gamma}{\Tw}$ is always equivalent to a \emph{finite} union of "C2RPQs". This is done by bounding the length of the "refinements" occurring in the definition of $\MUAHom{\gamma}{\Tw}$.
+For any $m \geq 1$, we define:
+\AP
+\[
+    \intro*\MUAHomBounded{\gamma}{\class}{\leq m} \defeq 
+    \{ 
+        \alpha \in \class
+        \mid
+        \exists \rho \in \Refin[\leq m](\gamma),\, \exists \fun\colon \rho \surj \alpha
+    \}.
+\]
+% Our main technical lemma is then the following:
+\newcommand{\lbound}[2]{\Theta(\nbatoms[2]{#2}\cdot ({#1}+1)^{\nbatoms{#2}})}
+\begin{lemma}[""Key Lemma""]
+    \AP\label{lemma:bound_size_refinements}
+    \AP For $k \geq 2$ and "C2RPQ" $\gamma$, we have
+    $\MUAHom{\gamma}{\Tw} \semequiv \MUAHomBounded{\gamma}{\Tw}{\leq\l}$, where
+    $\intro*\l = \lbound{k}{\gamma}$.
+\end{lemma}
+% Corollary: (defined in intro-prelim.tex)
+By construction, $\MUA{\gamma}{\Tw}$ is the maximal under-approximation of $\gamma$ by
+"infinitary unions" of "C2RPQs" of "tree-width" at most $k$. Using the equivalence above and
+\Cref{coro:equivalence_under_approx_homomorphism_twk}, it follows that
+it is also the maximal under-approximation of $\gamma$ by
+a "UC2RPQ" of "tree-width" at most $k$.
+\muaexistseffective
+\begin{proof}
+	The algorithm to compute $\Gamma'$ is straightforward:
+	it enumerates $\l$-refinements, enumerates its "homomorphic images",
+	and keeps the result only if it has "tree-width" at most $k$---which can
+	be done in linear time using Bodlaender's algorithm \cite[Theorem 1.1]{bodlaender1996treewidth}.
+\end{proof}
+
+Using the "Key Lemma" as a black box---which will be proven in \Cref{sec:proof-key-lemma}---, we can now give a proof of the upper bound of \Cref{thm:decidability-semtw} for all
+cases $k\geq 2$---the case $k=1$ will be the object of \Cref{sec:acyclic-queries}.
+\begin{restatable}[Upper bound for \Cref{thm:decidability-semtw} for $k\geq 2$]{lemma}{lemsemtwintwoexp}
+    \AP\label{lem:sem-tw-in-twoexp}
+    For $k \geq 2$, the "semantic tree-width $k$ problem" for "UC2RPQ" is in "2ExpSpace".
+\end{restatable}
+Note that $\MUAHomBounded{\gamma}{\Tw}{\leq\l}$ has double-exponential size in $\size{\gamma}$,
+so testing equivalence of $\gamma$ with this "UC2RPQ" yields an algorithm in triple-exponential 
+space in $\size{\gamma}$ since "(U)C2RPQ" equivalence is "ExpSpace" \cite[Theorem 5]{CGLV00}
+---see also \cite[§ after Theorem 4.8]{Florescu:CRPQ} for a similar result on "CRPQs" without 
+inverses but with an infinite alphabet. To get a better upper bound, we first need
+the following proposition:
+\begin{proposition}
+	\AP\label{prop:bound-containment-pb}
+    The "containment problem" $\Gamma \contained \Delta$ between two "UC2RPQs" can be solved in non-deterministic space $\+O(\size{\Gamma} + \size{\Delta}^{c \cdot {n_\Delta}})$, for some constant $c$,
+	and where $n_\Delta$ is the maximal number of "atoms" of a disjunct of $\Delta$, namely $n_\Delta = \max{\{\nbatoms{\delta} \mid \delta \in \Delta\}}$. 
+\end{proposition}
+
+\begin{proof}
+	The proposition follows from the following claim.
+    \begin{claim}[implicit in \cite{Figueira20}]
+        The "containment problem" $\Gamma \contained \Delta$ between two "UC2RPQs" can be solved in non-deterministic space $\+O(\size{\Gamma} + {\size{\Delta}}^{c \cdot \bw(\Delta)})$, where $\bw(\Delta)$ is the "bridge-width" of $\Delta$ and $c$ is a constant.
+    \end{claim}
+    \AP
+    In the statement above, a ""bridge"" of a "C2RPQ" is a minimal set of "atoms" whose removal increases the number of connected components of the query, and the ""bridge-width"" of a "C2RPQ" is the maximum size of a "bridge" therein. The "bridge-width" of a union of "C2RPQs" is the maximum "bridge-width" among the "C2RPQs" it contains. In particular, the maximal number
+	of "atoms" of a disjunct is an upper bound for "bridge-width".
+\end{proof}
+
+We provide an alternative upper bound in
+\Cref{prop:bound-containment-pb-alt} (\Cref{apdx-sec:alternative-upper-bound-containment}),
+which also yields a "2ExpSpace" upper bound for \Cref{lem:sem-tw-in-twoexp}.
+
+
+
+\begin{proof}[Proof of~\Cref{lem:sem-tw-in-twoexp}]
+To test whether a query $\Gamma$ is of "semantic tree-width" $k$, it suffices to test the "containment" $\Gamma \contained \Gamma'$, where $\Gamma'$ is the "maximal under-approximation" $\bigcup_{\gamma \in \Gamma}\MUAHomBounded{\gamma}{\Tw}{\leq\l}$ given by \Cref{cor:mua-exists-effective}: a double-exponential union of single-exponential sized "C2RPQs". Thus, by the bound of \Cref{prop:bound-containment-pb} (and "Savitch's Theorem"), we obtain a double-exponential space upper bound.
+\end{proof}
+
+% \color{gray}
+% Using \Cref{lemma:bound_size_refinements} as a black box---which will be proven in \Cref{sec:proof-approximations}---, we can now give a proof of \Cref{thm:decidability-semtw,thm:closure-under-sublanguages}.
+% The upper-bound of \Cref{thm:decidability-semtw} follows directly from \Cref{cor:mua-exists-effective}: to test whether a query $\Gamma$ is of "semantic tree-width" $k$, it suffices to test the "containment" $\Gamma \contained \Gamma'$, where $\Gamma'$ is the "maximal under-approximation" given by \Cref{cor:mua-exists-effective}. The containment problem being in "ExpSpace"---see \cite[consequence of Theorem 4.8]{Florescu:CRPQ} or \cite[Theorem 5]{CGLV00}---, we obtain:
+
+% \begin{restatable}{lemma}{lemsemtwintwoexp}
+%     \AP\label{lem:sem-tw-in-twoexp}
+%     For $k \geq 1$, the "semantic tree-width $k$ problem" for "UC2RPQ" is in "2ExpSpace".
+% \end{restatable}
+
+Moreover, from the "equivalences"
+$\MUA{\gamma}{\Tw} \semequiv \MUAHom{\gamma}{\Tw}$ and
+$\MUAHom{\gamma}{\Tw} \semequiv \MUAHomBounded{\gamma}{\Tw}{\leq\l}$ of
+\Cref{coro:equivalence_under_approx_homomorphism_twk,lemma:bound_size_refinements}, we can derive
+new characterizations for queries of bounded "semantic tree-width".
+\begin{mainstatement}
+    \closureundersublanguages
+\end{mainstatement}
+
+\begin{proof}[Proof of \Cref{thm:closure-under-sublanguages}]
+    The implications
+	$\itemClosureUCRPQSimple \Rightarrow \itemClosureUCRPQ \Rightarrow \itemClosureInfCQ$
+	are straightforward:
+    they follow directly from \Cref{fact:refinement-tw}.
+    For $\itemClosureInfCQ \Rightarrow \itemClosureUCRPQSimple$, note that $\itemClosureInfCQ$ implies that
+    $\Gamma \semequiv \MUA{\Gamma}{\Tw}$, and by
+    \Cref{lemma:bound_size_refinements},
+    $\MUA{\Gamma}{\Tw} \semequiv \Delta \defeq
+    \bigvee_{\gamma \in \Gamma} \MUAHomBounded{\gamma}{\Tw}{\leq \l}$,
+    so $\Gamma$ is "equivalent" to the latter.
+    Since queries of $\Delta$ are obtained as "homomorphic" images
+    of "refinements" of $\Gamma$, all of which are labelled by "sublanguages" of
+    $\+L$, and since $\+L$ is "closed under sublanguages", it follows that
+    $\Gamma$ is "equivalent" to a $\UCtwoRPQ(\+L)$ of "tree-width" $k$.
+\end{proof}
+
+\begin{remark}
+    \AP\label{rk:closure-under-sublanguages-k1}
+	The statement of \Cref{thm:closure-under-sublanguages} does not hold for $k=1$.
+
+    $\itemClosureUCRPQ \not\Rightarrow \itemClosureInfCQ$ when $k=1$:
+    consider the "CRPQ" $\gamma(x,y) = x \atom{a^*} y \land y \atom{b} x$ of "tree-width" 1,
+    and hence of "semantic tree-width" $1$, and observe that it is not equivalent to any
+    "infinitary union" of "conjunctive queries" of "tree-width" $1$---this can be proven
+    by considering, for example, the "expansion"
+    $x \atom{a} z \atom{a} y \land y \atom{b} x$ of $\gamma(x,y)$
+    and applying \Cref{prop:cont-char-exp-st}.
+
+    $\itemClosureUCRPQSimple \not\Rightarrow \itemClosureUCRPQ$ when $k=1$:
+	by \cite[Proposition 6.4]{BarceloRV16} the "CRPQ"
+    of "semantic tree-width" 1
+    $\gamma(x) \defeq x \coatom{a} z \atom{a} y \land x \atom{b} y \semequiv x \atom{ba^- a} x$
+    is not equivalent to any "UCRPQ" of "tree-width" 1. Hence, the implication is false when $\+L$ is the class of regular languages over $\Aext$
+    that do not use any letter of the form $a^-$. \qed
+\end{remark}
+
+See \Cref{coro:charact-semantic-treewidth-1} for a similar (but different) characterization
+of queries of "semantic tree-width" at most 1.
+As an immediate corollary of \Cref{thm:closure-under-sublanguages}, by taking
+$\+L$ to be the class of all regular languages over $\A$, we obtain the following result.
+\begin{corollary}
+	\AP\label{coro:collapse-twoway-oneway-semtw}
+	Let $k \geq 2$. A "UCRPQ" has "semantic tree-width" at most $k$
+	if and only if it has "one-way semantic tree-width" at most $k$.
+\end{corollary}
+
+Lastly, using \Cref{cor:mua-exists-effective} as a black box, we can obtain an "FPT" algorithm
+for the "evaluation problem".
+\fptEvalBoundedSemTreeWidth
+\begin{proof}
+	First, compute from $\Gamma$ its "maximal under-approximation" $\Gamma'$ using
+	\Cref{cor:mua-exists-effective}
+	in single-exponential space, and hence double-exponential time.
+	Then, evaluate $G$ on $\Gamma'$ using \Cref{prop:crpq-bound-tree-width-upper-bound}.
+\end{proof}
+% The best upper bound known previously was $\+O(f'(|\Gamma|\cdot |G|^{2k+1}))$, \sidediego{$\+O(f'(\size{\Gamma}) \cdot |G|^{2k+1})$?}
+% shown in \cite[Theorem IV.11]{DBLP:conf/lics/0001BV17}. 
+This improves the database-dependency from the previously best (and first) known upper bound, which was $\+O(f'(\size{\Gamma})\cdot |G|^{2k+1})$ for a single-exponential $f'$ \cite[Theorem IV.11 \& Lemma IV.13]{DBLP:conf/lics/0001BV17}.
+We discuss open questions related to this
+in \Cref{sec:charact-tractability}.
+
+
+We are left with the proof of the "Key Lemma". But before doing so, we will need to introduce in the next \Cref{sec:treedec} some basic notions that we will need in the proof, which is deferred to \Cref{sec:proof-key-lemma}.

@@ -1,2 +1,127 @@
 \knowledgenewrobustcmd{\atom}[1]{\mathrel{\smashxrightarrow{\ensuremath{#1}}}}
 \knowledgenewrobustcmd{\coatom}[1]{\mathrel{\smashxleftarrow{\ensuremath{#1}}}}
+\knowledgenewrobustcmd{\symatom}[1]{\mathrel{\smashxleftrightarrow{\ensuremath{#1}}}}
+
+\colorlet{wrote}{cRed}
+\colorlet{advised}{cBlue}
+\newrobustcmd{\wrote}{\color{wrote}\scriptsize\text{wrote}}
+\newrobustcmd{\advised}{\color{advised}\scriptsize\text{advised}}
+
+% ---
+% Alphabets, graphs
+% ---
+
+\knowledgenewrobustcmd{\A}{\mathbb{A}} % Finite alphabet of labels
+\knowledgenewrobustcmd{\Aext}{\cmdkl{\mathbb{A}^\pm}} % Finite alphabet of labels
+\knowledgenewrobustcmd\vertex[1]{\cmdkl{V}(#1)}
+\knowledgenewrobustcmd\edges[1]{\cmdkl{E}(#1)}
+
+\knowledgenewrobustcmd\qvar{\footnotesize\bullet} % quantified variable
+
+% --- 
+% Queries
+% ---
+
+\knowledgenewrobustcmd{\atoms}[1]{\cmdkl{\textnormal{Atoms}}(#1)}
+\knowledgenewrobustcmd{\contained}{\mathrel{\cmdkl{\subseteqq}}}
+\newrobustcmd{\strcontained}{
+  \mathrel{\withkl{\kl[\contained]}{\cmdkl{%
+    \subsetneqq
+  }}}
+}
+\disablecommand\equiv
+\suggestcommand\equiv{Use instead \semequiv for semantical equivalence.}
+\knowledgenewrobustcmd{\semequiv}{\mathrel{\cmdkl{\LaTeXequiv}}}
+\knowledgenewrobustcmd{\nbatoms}[2][]{\cmdkl{\|}#2\cmdkl{\|^{#1}_{\textrm{at}}}}
+\knowledgenewrobustcmd{\size}[1]{\cmdkl{\|}#1\cmdkl{\|}}
+\knowledgenewrobustcmd{\vars}{\cmdkl{\textrm{vars}}} % set of variables of a query
+\newrobustcmd{\collapse}{\approx}
+\knowledgenewrobustcmd{\Exp}{\cmdkl{\textnormal{Exp}}} % set of expansions
+
+% --- 
+% Classes of queries
+% ---
+
+\knowledgenewrobustcmd{\UCtwoRPQ}{\cmdkl{\textnormal{UC2RPQ}}}
+\newrobustcmd{\UCRPQ}{\kl[\UCtwoRPQ]{\textnormal{UCRPQ}}}
+\newrobustcmd{\CtwoRPQ}{%
+  \withkl{\kl[\UCtwoRPQ]}{\cmdkl{%
+    \textnormal{C2RPQ}
+  }}
+}
+
+\knowledgenewrobustcmd{\UCRPQSRE}{\ensuremath{\cmdkl{\textup{UCRPQ}(\textup{SRE})}}}
+\newrobustcmd{\CRPQSRE}{%
+  \withkl{\kl[\UCRPQSRE]}{\cmdkl{%
+    \textup{CRPQ}(\textup{SRE})%
+  }}%
+}%
+
+\knowledgenewrobustcmd{\class}{\mathcal{C}}
+\knowledgenewrobustcmd{\Tw}[1][k]{\cmdkl{\mathcal{T\hspace{-.15em}w}_{#1\!}}}
+\knowledgenewrobustcmd{\Pw}[1][k]{\cmdkl{\mathcal{P\hspace{-.05em}w}_{#1\!}}}
+\knowledgenewrobustcmd{\ContrPw}[1][k]{\cmdkl{\mathcal{C\hspace{-.05em}p\hspace{-.05em}w}_{#1\!}}}
+\knowledgenewrobustcmd{\PwOneWay}[1][k]{\cmdkl{\mathcal{1P\hspace{-.05em}w}_{#1\!}}}
+% \knowledgenewrobustcmd{\ContrPwOneWay}[1][k]{\cmdkl{\mathcal{C\hspace{-.05em}p\hspace{-.05em}w}^{\smash{1w}}_{#1\!}}}
+\knowledgenewrobustcmd{\ContrPwOneWay}[1][k]{\cmdkl{\mathcal{1\hspace{-.08em}C\hspace{-.05em}p\hspace{-.05em}w}_{#1\!}}}
+\knowledgenewrobustcmd{\ContrTw}[1][k]{\cmdkl{\mathcal{C\hspace{-.05em}t\hspace{-.05em}w}_{#1\!}}}
+\knowledgenewrobustcmd{\TwOneWay}[1][k]{\cmdkl{\mathcal{1T\hspace{-.15em}w}_{#1\!}}}
+% \knowledgenewrobustcmd{\ContrTwOneWay}[1][k]{\cmdkl{\mathcal{C\hspace{-.05em}t\hspace{-.05em}w}^{\smash{1w}}_{#1\!}}}
+\knowledgenewrobustcmd{\ContrTwOneWay}[1][k]{\cmdkl{\mathcal{1\hspace{-.08em}C\hspace{-.05em}t\hspace{-.05em}w}_{#1\!}}}
+\newrobustcmd\bw{\textrm{bw}}
+
+% ---
+% Refinements & Approximations
+% ---
+
+\newcommand{\anexpansion}{\xi}
+\knowledgenewrobustcmd{\Refin}[1][]{\cmdkl{\textnormal{Ref}^{\smash{#1}}}}
+\knowledgenewrobustcmd{\MUA}[2]{\cmdkl{\ensuremath{\textnormal{App}_{#2}(#1)}}}
+\knowledgenewrobustcmd{\MUAHom}[2]{\cmdkl{\ensuremath{\textnormal{App}_{#2}^{\smash{\star}}(#1)}}}
+\knowledgenewrobustcmd{\MUAHomBounded}[3]{\cmdkl{\ensuremath{\textnormal{App}_{#2}^{\smash{\star,#3}}(#1)}}}
+\knowledgenewrobustcmd{\typeStw}{\cmdkl{\textnormal{type}}}
+\knowledgenewrobustcmd{\Qapp}[1][k]{\cmdkl{\ensuremath{\textnormal{App}_{\Tw[#1]}^{\smash{\textup{zip}}}(\gamma)}}}
+\knowledgenewrobustcmd{\contract}[1]{\cmdkl{[}#1\cmdkl{]}}
+
+\knowledgenewrobustcmd\upquery[1]{#1^{\cmdkl{\uparrow}}}
+
+% ---
+% Semantic tw > tree decompositions
+% ---
+
+\knowledgenewrobustcmd\bagmap{\cmdkl{\mathbf{v}}}
+\knowledgenewrobustcmd\tagmap{\cmdkl{\mathbf{t}}}
+\knowledgenewrobustcmd\tagmappath[1]{\cmdkl{\mathbf{t}[#1]}}
+\newrobustcmd\tagmappathprime[1]{%
+  \withkl{\kl[\tagmappath]}{%
+    \cmdkl{\mathbf{t}'[#1]}%
+  }%
+}
+
+
+% ---
+% Semantic tw > bounds
+% ---
+
+\disablecommand\ell
+\suggestcommand\ell{Use instead \l for bound on the size of refinements.}
+\knowledgerenewcommand{\l}{\cmdkl{\LaTeXell}}
+\knowledgenewrobustcmd{\lOne}{\cmdkl{\LaTeXell_1}}
+\knowledgenewrobustcmd{\avoid}{\textsf{avoid}}
+\knowledgenewrobustcmd{\trap}{\textsf{trap}}
+
+% ---
+% Semantic tw > axioms
+% ---
+
+\knowledgenewrobustcmd\itemClosureInfCQ{\cmdkl{\textup{\textrm{(1)}}}}
+\knowledgenewrobustcmd\itemClosureUCRPQ{\cmdkl{\textup{\textrm{(2)}}}}
+\knowledgenewrobustcmd\itemClosureUCRPQSimple{\cmdkl{\textup{\textrm{(3)}}}}
+
+% ---
+% Semantic tw > misc
+% ---
+
+\knowledgenewrobustcmd{\pathl}{\cmdkl{\mathbf{P}_{\!l}}} % path-l approximation query
+\knowledgenewrobustcmd\subaut[3]{#1\cmdkl{[#2,#3]}} % subautomaton
+\knowledgenewrobustcmd{\fun}{\cmdkl{f}}
