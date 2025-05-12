@@ -12,7 +12,7 @@ An example of "homomorphism" is provided in \Cref{fig:basic-hom}.
 We write $\gamma \homto \gamma'$ if there is a "homomorphism" from $\gamma$ to $\gamma'$, and $\gamma \surj \gamma'$ if there is a "strong onto homomorphism".
 \todo{change this shit}
 In the latter case, we say that $\gamma'$ is a \AP""homomorphic image"" of $\gamma$.
-It is easy to see that if $\gamma \homto \gamma'$ then $\gamma' \contained \gamma$, and in the case where $\gamma,\gamma'$ are "CQs" this is an ``if and only if'' \cite[Lemma~13]{DBLP:conf/stoc/ChandraM77}.
+It is easy to see that if $\gamma \homto \gamma'$ then $\gamma' \contained \gamma$, and in the case where $\gamma,\gamma'$ are "CQs" this is an ``if and only if'' \cite[Lemma~13]{ChandraMerlin1977Implementation}.
 % Similarly, for a tuple $\bar{v}$, we write $\gamma\homto (G, \bar{v})$ if there is a homomorphism $h$ from $\gamma$ to $G$  such that $h(\bar{x}) = \bar{v}$ and we write
 % $h: \gamma\homto (G, \bar{v})$ to make such $h$ explicit.
 %
@@ -61,7 +61,7 @@ the "maximal under-approximation" of a "CQ" by
 a finite union of "CQs" of "tree-width" at most $k$ is computable, and hence
 we can effectively decide if some "CQ" is "equivalent" to a query of "tree-width" at
 most $k$ by testing the equivalence with this maximal under-approximation.
-For more details on approximations of "CQs", see \cite{DBLP:journals/siamcomp/BarceloL014}.
+For more details on approximations of "CQs", see \cite{BarceloLibkinRomero2014Efficient}.
 Note that interestingly, changing $\Gamma'$ from
 $\bigvee \{ \gamma' \in \class \mid \gamma \surj \gamma' \}$
 to $\bigvee \{ \gamma' \in \class \mid \gamma' \contained \gamma \}$
@@ -219,8 +219,8 @@ the "evaluation" of $\Gamma(\bar x)$ over $G$, denoted by $\Gamma(G)$, is the se
 $\bar{v}$ of nodes for which there is $\anexpansion \in \Exp(\Gamma)$ such that there is a "homomorphism" $\anexpansion \homto G$ that sends $\bar x$ onto $\bar v$.  
 Similarly, "containment" of "UC2RPQs" can also be characterized in terms of expansions.
 
-\begin{proposition}[Folklore, see e.g. {\cite[Proposition 3.2]{Florescu:CRPQ}} or
-    {\cite[Theorem 2]{CGLV00}}]
+\begin{proposition}[Folklore, see e.g. {\cite[Proposition 3.2]{FlorescuLevySuciu1998Containment}} or
+    {\cite[Theorem 2]{CalvaneseDeGiacomoLenzeriniVardi2000Containment}}]
     \AP\label{prop:cont-char-exp-st} 
     Let $\Gamma_1$ and $\Gamma_2$ be "UC2RPQs". Then the following are equivalent
     \begin{itemize}
@@ -244,7 +244,7 @@ as illustrated in \Cref{fig:tree-decompositon-expansion}.
 % \sidediego{The next part in gray was moved to \Cref{sec:acyclic-queries}, I thought it was better there.}
 % \sideremi{I don't understand: what happened?}
 % This is the main reason why our approach cannot capture the case $k=1$,
-% solved by Barceló, Romero and Vardi \cite{BarceloRV16}.
+% solved by Barceló, Romero and Vardi \cite{BarceloRomeroVardi2016SemanticAcyclicity}.
 % \color{black}
 
 \begin{restatable}{fact}{refinementtw}
@@ -292,7 +292,7 @@ as illustrated in \Cref{fig:tree-decompositon-expansion}.
     a single edge by a path of edges (where the non-extremal nodes are new nodes).
 
 	This first operation preserves "tree-width" at most $k$ (even if $k = 1$),
-    see "eg" \cite[Lemma 16]{bodlaender1998arboretum}. The second operation
+    see "eg" \cite[Lemma 16]{Bodlaender1998Arboretum}. The second operation
     preserves "tree-width" at most $k$, assuming $k > 1$: if a graph $G'$
     is obtained from a graph $G$ by replacing an edge $x_0 \atom{} x_n$
     by a path $x_0 \atom{} x_1 \atom{} \cdots \atom{} x_n$, then
@@ -331,7 +331,7 @@ $\rho(x) = x \atom{a^*} t_1 \atom{a^*} t_2 \atom{a^*} x$ has "tree-width" 2.
 %     and applying \Cref{prop:cont-char-exp-st}.
 
 %     \sidediego{Can we make the (1), (2), (3) clickable?}
-%     $(2) \not\Rightarrow (3)$ when $k=1$: By \cite[Proposition 6.4]{BarceloRV16} the "CRPQ"
+%     $(2) \not\Rightarrow (3)$ when $k=1$: By \cite[Proposition 6.4]{BarceloRomeroVardi2016SemanticAcyclicity} the "CRPQ"
 %     of "semantic tree-width" 1
 %     $\gamma(x) \defeq x \coatom{a} z \atom{a} y \land x \atom{b} y \semequiv x \atom{ba^- a} x$
 %     is not equivalent to any "UCRPQ" of "tree-width" 1. Hence, the implication is false when $\+L$ is the class of regular languages over $\Aext$
@@ -341,7 +341,7 @@ $\rho(x) = x \atom{a^*} t_1 \atom{a^*} t_2 \atom{a^*} x$ has "tree-width" 2.
 \paragraph*{Fine tree decompositions}
     \AP
 	For technical reasons---the proof of \Cref{lemma:shape-decomposition}---, we will use a restrictive class of "tree decompositions" which we call ``"fine@fine tree decomposition"''\footnote{This is similar---but orthogonal---to the classical notion of
-	``nice tree decomposition'', see "eg" \cite[Definition 13.1.4, page 149]{kloks1994treewidth}.}. A \AP""fine tree decomposition"" is a "tree decomposition" $(T, \bagmap)$ in which:
+	``nice tree decomposition'', see "eg" \cite[Definition 13.1.4, page 149]{Kloks1994Treewidth}.}. A \AP""fine tree decomposition"" is a "tree decomposition" $(T, \bagmap)$ in which:
 	\begin{equation}
 		\AP\label{eq:fine-tree-dec}
 		\parbox{.65\linewidth}{every non-root "bag" can be obtained from its parent "bag" by
@@ -366,5 +366,5 @@ $\rho(x) = x \atom{a^*} t_1 \atom{a^*} t_2 \atom{a^*} x$ has "tree-width" 2.
 	% 	\item has exactly one child $b'$, and $\bagmap(b')$ is obtained from $\bagmap(b)$ by either adding a single vertex, or by removing a single vertex.
 	% \end{enumerate}
 	% A "C2RPQ" has "tree-width" $k$ if and only if it has a "nice tree decomposition" of
-	% "width" at most $k$ \cite[Lemma 13.1.2, page 149]{kloks1994treewidth}.
+	% "width" at most $k$ \cite[Lemma 13.1.2, page 149]{Kloks1994Treewidth}.
 	% In the context of a "nice tree decomposition" of "width" $k$, a ""full bag"" is any "bag" of size $k+1$.

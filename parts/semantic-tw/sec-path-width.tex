@@ -231,11 +231,11 @@ In this section, we show that, as a consequence of \Cref{thm:decidability-sempw}
 efficient algorithm for the "evaluation problem".
 \paraNLEvalBoundedSemPathWidth
 
-The class "para-NL" was introduced in \cite[Definition, p. 123]{CCDF97Advice} under the
+The class "para-NL" was introduced in \cite[Definition, p. 123]{CaiChenDowneyFellow1997Advice} under the
 name ``uniform "NL" + advice''. It was renamed "para-NL" in
-\cite[Definition 1, p. 294]{FG03Describing}. For the sake of simplicity,
+\cite[Definition 1, p. 294]{FlumGrohe2003Describing}. For the sake of simplicity,
 instead of either of those definitions, we use the characterization of "para-NL"
-proven in \cite[Theorem 4, p. 296]{FG03Describing}.
+proven in \cite[Theorem 4, p. 296]{FlumGrohe2003Describing}.
 
 We define \AP""para-NL"" as the class of parametrized languages $L \subseteq \Sigma^* \times \N$
 for which there is a Turing machine $M$ "st"
@@ -259,7 +259,7 @@ $f(\textcolor{cBlue}{k}) + \+O(\log(|\textcolor{cRed}{x}|))$,
 where $f\colon \N \to \N$ is a computable function.
 A typical example of "para-NL" problem is the model-checking problem for first-order logic on
 finite structures, when parametrized by the maximum degree of the structure
-\cite[Example 6]{FG03Describing}. 
+\cite[Example 6]{FlumGrohe2003Describing}. 
 
 To show \Cref{thm:evaluation-bounded-pathwidth}, we first focus on the evaluation of queries of bounded "path-width".
 \begin{lemma}
@@ -288,7 +288,7 @@ To show \Cref{thm:evaluation-bounded-pathwidth}, we first focus on the evaluatio
 
 \begin{proof}
 	\proofcase{Lower bound.} "NL"-hardness direected follows from the "NL"-hardness of
-	the reachability problem in directed graphs, see "eg" \cite[Theorem~4.18, p.~89]{AB09Computational}.
+	the reachability problem in directed graphs, see "eg" \cite[Theorem~4.18, p.~89]{AroraBarak2009ComputationalComplexity}.
 
 	\proofcase{Upper bound, first part: with the "path decomposition".}
 	First, we assume that a "tagged path decomposition" of width at most $k$ of the query of
@@ -343,12 +343,12 @@ To show \Cref{thm:evaluation-bounded-pathwidth}, we first focus on the evaluatio
 	Then, we claim that the original problem---when the "tagged tree decomposition" is not part of 
 	the input---also lies in "NL". This is because one can compute, from $\gamma$, a
 	"path decomposition" in (deterministic) logarithmic space by\footnote{This result is an 
-	adaption of a similar statement for "tree-width" \cite[Theorem I.1, p. 143]{EJT10Logspace}. Note that the promise that the query has bounded "path-width"---in fact bounded "tree-width" suffices---in a crucial assumption of  \cite[Theorem I.1, p. 143]{EJT10Logspace}.} 
-	\cite[Theorem 1.3, p. 2]{KM10Computing}. Then, a "path decomposition" can be turned into a 
+	adaption of a similar statement for "tree-width" \cite[Theorem I.1, p. 143]{ElberfeldJakobyTantau2010Logspace}. Note that the promise that the query has bounded "path-width"---in fact bounded "tree-width" suffices---in a crucial assumption of  \cite[Theorem I.1, p. 143]{ElberfeldJakobyTantau2010Logspace}.} 
+	\cite[Theorem 1.3, p. 2]{KintaliMunteanu2010Computing}. Then, a "path decomposition" can be turned into a 
 	"tagged path decomposition" in (deterministic) logarithmic space by tagging an "atom"
 	$x \atom{L} y$ in the first bag containing both $x$ and $y$.
 	The conclusion follows since functions computable in non-deterministic logarithmic space
-	are closed under composition \cite[Lemma 4.17, p. 88]{AB09Computational}. 
+	are closed under composition \cite[Lemma 4.17, p. 88]{AroraBarak2009ComputationalComplexity}. 
 \end{proof}
 
 We can now conclude with \Cref{thm:evaluation-bounded-pathwidth}, namely that the "evaluation problem" for "UC2RPQs" of

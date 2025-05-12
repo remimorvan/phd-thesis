@@ -210,7 +210,7 @@ a "UC2RPQ" of "tree-width" at most $k$.
 	The algorithm to compute $\Gamma'$ is straightforward:
 	it enumerates $\l$-refinements, enumerates its "homomorphic images",
 	and keeps the result only if it has "tree-width" at most $k$---which can
-	be done in linear time using Bodlaender's algorithm \cite[Theorem 1.1]{bodlaender1996treewidth}.
+	be done in linear time using Bodlaender's algorithm \cite[Theorem 1.1]{Bodlaender1996Treewidth}.
 \end{proof}
 
 Using the "Key Lemma" as a black box---which will be proven in \Cref{sec:proof-key-lemma}---, we can now give a proof of the upper bound of \Cref{thm:decidability-semtw} for all
@@ -221,8 +221,8 @@ cases $k\geq 2$---the case $k=1$ will be the object of \Cref{sec:acyclic-queries
 \end{restatable}
 Note that $\MUAHomBounded{\gamma}{\Tw}{\leq\l}$ has double-exponential size in $\size{\gamma}$,
 so testing equivalence of $\gamma$ with this "UC2RPQ" yields an algorithm in triple-exponential 
-space in $\size{\gamma}$ since "(U)C2RPQ" equivalence is "ExpSpace" \cite[Theorem 5]{CGLV00}
----see also \cite[§ after Theorem 4.8]{Florescu:CRPQ} for a similar result on "CRPQs" without 
+space in $\size{\gamma}$ since "(U)C2RPQ" equivalence is "ExpSpace" \cite[Theorem 5]{CalvaneseDeGiacomoLenzeriniVardi2000Containment}
+---see also \cite[§ after Theorem 4.8]{FlorescuLevySuciu1998Containment} for a similar result on "CRPQs" without 
 inverses but with an infinite alphabet. To get a better upper bound, we first need
 the following proposition:
 \begin{proposition}
@@ -233,7 +233,7 @@ the following proposition:
 
 \begin{proof}
 	The proposition follows from the following claim.
-    \begin{claim}[implicit in \cite{Figueira20}]
+    \begin{claim}[implicit in \cite{Figueira2020Containment}]
         The "containment problem" $\Gamma \contained \Delta$ between two "UC2RPQs" can be solved in non-deterministic space $\+O(\size{\Gamma} + {\size{\Delta}}^{c \cdot \bw(\Delta)})$, where $\bw(\Delta)$ is the "bridge-width" of $\Delta$ and $c$ is a constant.
     \end{claim}
     \AP
@@ -253,7 +253,7 @@ To test whether a query $\Gamma$ is of "semantic tree-width" $k$, it suffices to
 
 % \color{gray}
 % Using \Cref{lemma:bound_size_refinements} as a black box---which will be proven in \Cref{sec:proof-approximations}---, we can now give a proof of \Cref{thm:decidability-semtw,thm:closure-under-sublanguages}.
-% The upper-bound of \Cref{thm:decidability-semtw} follows directly from \Cref{cor:mua-exists-effective}: to test whether a query $\Gamma$ is of "semantic tree-width" $k$, it suffices to test the "containment" $\Gamma \contained \Gamma'$, where $\Gamma'$ is the "maximal under-approximation" given by \Cref{cor:mua-exists-effective}. The containment problem being in "ExpSpace"---see \cite[consequence of Theorem 4.8]{Florescu:CRPQ} or \cite[Theorem 5]{CGLV00}---, we obtain:
+% The upper-bound of \Cref{thm:decidability-semtw} follows directly from \Cref{cor:mua-exists-effective}: to test whether a query $\Gamma$ is of "semantic tree-width" $k$, it suffices to test the "containment" $\Gamma \contained \Gamma'$, where $\Gamma'$ is the "maximal under-approximation" given by \Cref{cor:mua-exists-effective}. The containment problem being in "ExpSpace"---see \cite[consequence of Theorem 4.8]{FlorescuLevySuciu1998Containment} or \cite[Theorem 5]{CalvaneseDeGiacomoLenzeriniVardi2000Containment}---, we obtain:
 
 % \begin{restatable}{lemma}{lemsemtwintwoexp}
 %     \AP\label{lem:sem-tw-in-twoexp}
@@ -299,7 +299,7 @@ new characterizations for queries of bounded "semantic tree-width".
     and applying \Cref{prop:cont-char-exp-st}.
 
     $\itemClosureUCRPQSimple \not\Rightarrow \itemClosureUCRPQ$ when $k=1$:
-	by \cite[Proposition 6.4]{BarceloRV16} the "CRPQ"
+	by \cite[Proposition 6.4]{BarceloRomeroVardi2016SemanticAcyclicity} the "CRPQ"
     of "semantic tree-width" 1
     $\gamma(x) \defeq x \coatom{a} z \atom{a} y \land x \atom{b} y \semequiv x \atom{ba^- a} x$
     is not equivalent to any "UCRPQ" of "tree-width" 1. Hence, the implication is false when $\+L$ is the class of regular languages over $\Aext$
@@ -326,8 +326,8 @@ for the "evaluation problem".
 	Then, evaluate $G$ on $\Gamma'$ using \Cref{prop:crpq-bound-tree-width-upper-bound}.
 \end{proof}
 % The best upper bound known previously was $\+O(f'(|\Gamma|\cdot |G|^{2k+1}))$, \sidediego{$\+O(f'(\size{\Gamma}) \cdot |G|^{2k+1})$?}
-% shown in \cite[Theorem IV.11]{DBLP:conf/lics/0001BV17}. 
-This improves the database-dependency from the previously best (and first) known upper bound, which was $\+O(f'(\size{\Gamma})\cdot |G|^{2k+1})$ for a single-exponential $f'$ \cite[Theorem IV.11 \& Lemma IV.13]{DBLP:conf/lics/0001BV17}.
+% shown in \cite[Theorem IV.11]{RomeroBarceloVardi2017Homomorphism}. 
+This improves the database-dependency from the previously best (and first) known upper bound, which was $\+O(f'(\size{\Gamma})\cdot |G|^{2k+1})$ for a single-exponential $f'$ \cite[Theorem IV.11 \& Lemma IV.13]{RomeroBarceloVardi2017Homomorphism}.
 We discuss open questions related to this
 in \Cref{sec:charact-tractability}.
 

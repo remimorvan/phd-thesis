@@ -4,7 +4,7 @@
 \label{sec:lowerbound}
 
 An "ExpSpace" lower bound follows by a straightforward adaptation from the
-"ExpSpace" lower bound for the case $k=1$ \cite[Proposition 6.2]{BarceloRV16}.
+"ExpSpace" lower bound for the case $k=1$ \cite[Proposition 6.2]{BarceloRomeroVardi2016SemanticAcyclicity}.
 \begin{restatable}[Lower bound of \Cref{thm:decidability-semtw}]{lemma}{lowerbound}
     \AP\label{lemma:lowerbound}
     For every $k\geq 1$, the following problems are "ExpSpace"-hard, even if restricted to "Boolean CRPQs":
@@ -19,7 +19,7 @@ An "ExpSpace" lower bound follows by a straightforward adaptation from the
 \AP We say that a "C2RPQ" is ""connected"" when its underlying undirected graph is connected.
 We first give a small useful fact.
 
-\begin{fact}[{Implicit in \cite[Proof of Proposition 6.2]{BarceloRV16}}]
+\begin{fact}[{Implicit in \cite[Proof of Proposition 6.2]{BarceloRomeroVardi2016SemanticAcyclicity}}]
     \AP\label{fact:connectedness}\leavevmode
     \begin{enumerate}
         \item Let $G, G'$ be two "databases" and $\delta$ be a "connected" "Boolean" "C2RPQ".
@@ -131,7 +131,7 @@ We can then prove \Cref{lemma:lowerbound}.
     \proofcase{(2):}
     We now show that the "asymmetric containment problem for tree-width $k$" is
     "ExpSpace"-hard.
-    It was shown in \cite[Lemma 8]{Figueira20} that
+    It was shown in \cite[Lemma 8]{Figueira2020Containment} that
     the "containment" of "CRPQs" was still "ExpSpace"-hard
     when restricted to inputs of the form:
     \begin{center}
@@ -187,6 +187,6 @@ We can then prove \Cref{lemma:lowerbound}.
     can be implemented in polynomial time, we conclude that the problems of
     \Cref{lemma:lowerbound} are "ExpSpace"-hard.
 	% To deal with "path-width" and/or the case $k=1$,
-	% it suffices to use the same trick as in \cite[Proposition 6.2]{BarceloRV16}: for instance one can add in $\delta'$ on the $i$-th variable of the $(k+2)$-clique a self-loop labelled by a new symbol $\$_i$, and add in $\gamma'$ a self-loop labelled by $\$_i$ on the variable that
+	% it suffices to use the same trick as in \cite[Proposition 6.2]{BarceloRomeroVardi2016SemanticAcyclicity}: for instance one can add in $\delta'$ on the $i$-th variable of the $(k+2)$-clique a self-loop labelled by a new symbol $\$_i$, and add in $\gamma'$ a self-loop labelled by $\$_i$ on the variable that
 	% already has a $\#$-self-loop.
 \end{proof}

@@ -10,16 +10,16 @@ While the "Key Lemma" holds for $k=1$, it proves the computability of an object 
 is irrelevant to study "semantic tree-width" 1, see \Cref{rk:key-lemma-tw1}. 
 The problem comes from \Cref{ex:counterex-tw1}, namely that
 $\MUA{\gamma}{\Tw[1]} \centernot{\semequiv} \MUAHom{\gamma}{\Tw[1]}$.
-This is the main obstacle why our approach does not directly yield an algorithm for the case $k=1$, which had been previously solved by Barceló, Romero and Vardi \cite{BarceloRV16}. 
+This is the main obstacle why our approach does not directly yield an algorithm for the case $k=1$, which had been previously solved by Barceló, Romero and Vardi \cite{BarceloRomeroVardi2016SemanticAcyclicity}. 
 However, as we argue in this section, a rather elegant modification on the notion of "tree-width" allows to use our approach as a unifying framework for both the case $k=1$ and the cases
 $k \geq 2$. 
 Concretely, we introduce a family of classes $\set{\ContrTw}_k$ such that 
 $\MUA{\gamma}{\Tw} \semequiv \MUAHom{\gamma}{\ContrTw}$ for every $\gamma$ and $k$, and where 
 $\MUAHom{\gamma}{\ContrTw[1]} \semequiv \MUAHomBounded{\gamma}{\ContrTw[1]}{\leq\poly(\size{\gamma})}$.
-As a corollary, we reprove \cite[Theorem~6.1]{BarceloRV16}, namely that the "semantic tree-width $1$ problem" is "ExpSpace"-complete. Further, we can also solve the "one-way semantic tree-width $1$ problem", which is outside the scope of \cite{BarceloRV16}. 
+As a corollary, we reprove \cite[Theorem~6.1]{BarceloRomeroVardi2016SemanticAcyclicity}, namely that the "semantic tree-width $1$ problem" is "ExpSpace"-complete. Further, we can also solve the "one-way semantic tree-width $1$ problem", which is outside the scope of \cite{BarceloRomeroVardi2016SemanticAcyclicity}. 
 Remember that for $k=1$, the "semantic tree-width@semantic tree-width $1$ problem" and "one-way semantic tree-width $1$ problems@one-way semantic tree-width $1$ problem" are two independent problems, since there are queries of "semantic tree-width" 1 but not of "one-way semantic tree-width" 1 ("cf" \Cref{rk:closure-under-sublanguages-k1}).
 
-% Interestingly, while \cite{BarceloRV16} shows a tight bound for the "semantic tree-width $1$ problem", it 
+% Interestingly, while \cite{BarceloRomeroVardi2016SemanticAcyclicity} shows a tight bound for the "semantic tree-width $1$ problem", it 
 
 % how to test whether a "UC2RPQ" is equivalent to a "UC2RPQ" of "tree-width" 1, but not, for example, whether a "UCRPQ" is equivalent to a "UCRPQ" of "tree-width" 1 since this is a different problem ("cf" \Cref{rk:closure-under-sublanguages-k1}). In fact, our unified approach will allow also to test this property. In fact, we will introduce two alternative notions of "tree-width": \emph{one-way} and \emph{two-way}.
 
@@ -87,7 +87,7 @@ Note that, by definition:
 \end{itemize}
 Moreover, for any $k\geq 1$,
 "contracted tree-width" at most $k$ and "one-way contracted tree-width" 
-at most $k$ are both closed under "refinements": if a query has "tree-width" at most $k$, so does any "refinement" thereof. In fact, the "CQs" of "contracted tree-width" $1$ precisely correspond to what in \cite[\S 5.2.1, p1358]{BarceloRV16} is known as ``pseudoacyclic graph databases''.
+at most $k$ are both closed under "refinements": if a query has "tree-width" at most $k$, so does any "refinement" thereof. In fact, the "CQs" of "contracted tree-width" $1$ precisely correspond to what in \cite[\S 5.2.1, p1358]{BarceloRomeroVardi2016SemanticAcyclicity} is known as ``pseudoacyclic graph databases''.
 
 \begin{fact}
 	\AP\label{fact:tw-equiv-to-ctw}
@@ -244,7 +244,7 @@ We show next that "contracted tree-width" $1$ has all the needed properties for 
 	The "semantic tree-width $1$ problem" and "one-way semantic tree-width $1$ problem" are in "ExpSpace".
 \end{corollary}
 \begin{proof}
-	The fact that the "semantic tree-width $1$ problem" is in "ExpSpace" is actually the main result of \cite[Theorem~6.1]{BarceloRV16}, but we show how the upper bound follows as a direct corollary of \Cref{lemma:characterisation-bounded-semantic-tw} above.
+	The fact that the "semantic tree-width $1$ problem" is in "ExpSpace" is actually the main result of \cite[Theorem~6.1]{BarceloRomeroVardi2016SemanticAcyclicity}, but we show how the upper bound follows as a direct corollary of \Cref{lemma:characterisation-bounded-semantic-tw} above.
 	% \diego{Here I rely on \emph{ell} being $\Theta(\nbatoms{\gamma}^2\cdot k^{\nbatoms{\gamma}+1})$.}
 	% Remember that, in the context of $\MUAHomBounded{\gamma}{\ContrTw}{\leq\l}$, we have by definition that $\l$ is polynomial in $\gamma$ when $k=1$ (but it is exponential as soon as $k>1$). Hence,
 	Since $\lOne \in \+O(\nbatoms[3]{\gamma})$,

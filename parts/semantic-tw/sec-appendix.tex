@@ -6,7 +6,7 @@
     \AP
     \knowledgenewrobustcmd{\sjoin}{\cmdkl{\ltimes}}
     \knowledgenewrobustcmd{\costjoin}{\cmdkl{c_{sj}}}
-    A ""semi-join"" is a "CQ" of the form $q(\bar x) = R(\bar x) \land S(\bar y)$, noted $R(\bar x) \intro*\sjoin S(\bar y)$, where $\bar x$ and $\bar y$ may contain common variables and constants. \AP ""Yannakakis algorithm"" \cite{Yannakakis81} allows to evaluate any Boolean "acyclic"%
+    A ""semi-join"" is a "CQ" of the form $q(\bar x) = R(\bar x) \land S(\bar y)$, noted $R(\bar x) \intro*\sjoin S(\bar y)$, where $\bar x$ and $\bar y$ may contain common variables and constants. \AP ""Yannakakis algorithm"" \cite{Yannakakis81Algorithms} allows to evaluate any Boolean "acyclic"%
 	\footnote{%
 	An \AP""acyclic"" "CQ" over arbitrary relational structures is one which admits a "tree decomposition" whose set of "bags" are the sets of variables of its atoms (also known as ``generalized hyper tree-width 1'' or ``$\alpha$-acyclicity'' of its underlying hypergraph).
 	} 
@@ -64,7 +64,7 @@ tree-width $k$ problem".
 \end{proposition}
 
 \begin{proof}[Proof sketch]
-    The proposition can be shown by close inspection of the standard "containment problem" for "UC2RPQs" \cite[Theorem 5]{CGLV00}: the "containment problem" is reduced, in this instance, to checking the inclusion between NFAs of the form\footnote{$\+A_\Gamma$ and $\+A_\delta$ are denoted $A_1$ and $A_3$, respectively, in \cite{CGLV00}.}
+    The proposition can be shown by close inspection of the standard "containment problem" for "UC2RPQs" \cite[Theorem 5]{CalvaneseDeGiacomoLenzeriniVardi2000Containment}: the "containment problem" is reduced, in this instance, to checking the inclusion between NFAs of the form\footnote{$\+A_\Gamma$ and $\+A_\delta$ are denoted $A_1$ and $A_3$, respectively, in \cite{CalvaneseDeGiacomoLenzeriniVardi2000Containment}.}
 	\begin{equation}
 		\AP\label{eq:containment-to-inclusion-regexp}
 		\+A_\Gamma \subseteq^? \bigcup_{\delta \in \Delta} \+A_\delta,

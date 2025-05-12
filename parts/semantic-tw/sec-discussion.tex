@@ -8,31 +8,31 @@
 % \sidediego{I've added the related work section here. But I'm not married to the idea...}
 % \subsection{\AP{}Related Work}
 % \label{sec:relwork}
-% The current paper is based on the conference paper \cite{thispaperICDT}. While the main results are essentially the same, here we also show how to extend our techniques to tackle the "semantic tree-width $1$ problem" (\Cref{sec:acyclic-queries}) and we introduce and study the "semantic path-width $k$ problems" (\Cref{sec:semantic-path-width}).
+% The current paper is based on the conference paper \cite{FigueiraMorvan2023SemanticTreeWidthICDT}. While the main results are essentially the same, here we also show how to extend our techniques to tackle the "semantic tree-width $1$ problem" (\Cref{sec:acyclic-queries}) and we introduce and study the "semantic path-width $k$ problems" (\Cref{sec:semantic-path-width}).
 
 
-% Barceló, Romero, and Vardi \cite[Theorem 6.1]{BarceloRV16} have studied the  "semantic tree-width $1$ problem" for "UC2RPQs" and shown that it is "ExpSpace"-complete. While their approach is in many ways different from ours, they also show the decidability by computing the "maximal under-approximation" of "tree-width" $1$ for "UC2RPQs". As it turns out, the "maximal under-approximation" of "UCRPQs" by "infinitary unions" of "CQs" of "tree-width" $1$ may not be expressible by a "UCRPQ" but rather by a "UC2RPQ". This is why the "semantic tree-width $1$@semantic tree-width $1$ problem" and the "\emph{one-way} semantic tree-width $1$ problems@one-way semantic tree-width $1$ problem" are different problems, and why they focused on the former.
+% Barceló, Romero, and Vardi \cite[Theorem 6.1]{BarceloRomeroVardi2016SemanticAcyclicity} have studied the  "semantic tree-width $1$ problem" for "UC2RPQs" and shown that it is "ExpSpace"-complete. While their approach is in many ways different from ours, they also show the decidability by computing the "maximal under-approximation" of "tree-width" $1$ for "UC2RPQs". As it turns out, the "maximal under-approximation" of "UCRPQs" by "infinitary unions" of "CQs" of "tree-width" $1$ may not be expressible by a "UCRPQ" but rather by a "UC2RPQ". This is why the "semantic tree-width $1$@semantic tree-width $1$ problem" and the "\emph{one-way} semantic tree-width $1$ problems@one-way semantic tree-width $1$ problem" are different problems, and why they focused on the former.
 % As we show, this difference between the one-way and two-way semantic problem is: (a) erased for "tree-width" $k$ as soon as $k>1$ ("cf" \Cref{thm:closure-under-sublanguages}) and (b) preserved for "path-width" $k$ for any $k$ ("cf" \Cref{rk:path-width:oneway-vs-twoway}).
-% With our current approach, we can re-prove \cite[Theorem 6.1]{BarceloRV16}'s result and also obtain decidability for the "one-way semantic tree-width $1$ problem" ("cf" \Cref{cor:sem-tw-1-pb-exp-c}).
+% With our current approach, we can re-prove \cite[Theorem 6.1]{BarceloRomeroVardi2016SemanticAcyclicity}'s result and also obtain decidability for the "one-way semantic tree-width $1$ problem" ("cf" \Cref{cor:sem-tw-1-pb-exp-c}).
 
 
-% On the class "conjunctive queries", the "semantic tree-width $k$ problem" becomes the "coNP"-complete problem of finding out whether the retraction of a query has "tree-width" at most $k$. Further, classes of "CQs" of bounded "semantic tree-width" precisely characterize tractable (fixed-parameter) "evaluation problem" \cite{Grohe07,DBLP:conf/cp/DalmauKV02}.\footnote{This result is on bounded-arity schemas, which was later generalized \cite{DBLP:conf/ijcai/ChenGLP20} for characterizing "FPT" "evaluation" on arbitrary schemas ---by replacing "semantic tree-width" with semantic ``submodular width'' \cite{Marx13}.} The problem of computing "maximal under-approximations" of "CQs" of a given "tree-width" has been explored in \cite{DBLP:journals/siamcomp/BarceloL014}. While "maximal under-approximations" of a given "tree-width" always exist for "CQs", this is not the case for the dual notion of ``minimal over-approximations''. The problem of when these exist is still unknown to be decidable, aside for some the special cases of acyclic "CQs" and Boolean "CQs" over binary schemas \cite{DBLP:journals/mst/BarceloRZ20}.
+% On the class "conjunctive queries", the "semantic tree-width $k$ problem" becomes the "coNP"-complete problem of finding out whether the retraction of a query has "tree-width" at most $k$. Further, classes of "CQs" of bounded "semantic tree-width" precisely characterize tractable (fixed-parameter) "evaluation problem" \cite{Grohe2007ComplexityHomomorphism,DalmauKolaitisVardi2002Constraint}.\footnote{This result is on bounded-arity schemas, which was later generalized \cite{ChenGottlobLanzingerPichler2020Semantic} for characterizing "FPT" "evaluation" on arbitrary schemas ---by replacing "semantic tree-width" with semantic ``submodular width'' \cite{Marx13Tractable}.} The problem of computing "maximal under-approximations" of "CQs" of a given "tree-width" has been explored in \cite{BarceloLibkinRomero2014Efficient}. While "maximal under-approximations" of a given "tree-width" always exist for "CQs", this is not the case for the dual notion of ``minimal over-approximations''. The problem of when these exist is still unknown to be decidable, aside for some the special cases of acyclic "CQs" and Boolean "CQs" over binary schemas \cite{BarceloRomeroZeume2020Approximation}.
 
 
 \subsection{\AP{}Complexity}
 \label{sec:discussion-complexity}
 We have studied the definability and approximation of "UC2RPQ" queries by queries of bounded "tree-width" and shown that the "maximal under-approximation" in terms of an infinitary union of "conjunctive queries" of "tree-width" $k$ can be always effectively expressed as a "UC2RPQ"
 of "tree-width" $k$ (\Cref{cor:mua-exists-effective}). 
-However, while the "semantic tree-width $1$ problem" is shown to be "ExpSpace"-complete (which was also established in \cite[Theorem 6.1, Proposition 6.2]{BarceloRV16}), we have left a gap between our lower and upper bounds in \Cref{thm:decidability-semtw} for every $k>1$.
+However, while the "semantic tree-width $1$ problem" is shown to be "ExpSpace"-complete (which was also established in \cite[Theorem 6.1, Proposition 6.2]{BarceloRomeroVardi2016SemanticAcyclicity}), we have left a gap between our lower and upper bounds in \Cref{thm:decidability-semtw} for every $k>1$.
 
 \begin{question}
     For $k > 1$, is the "semantic tree-width $k$ problem" "ExpSpace"-complete?
 \end{question}
 A related question is whether the "containment problem" between a "C2RPQ" and a "summary query" is in "ExpSpace". Should this be the case, then the "semantic tree-width $k$ problem" would be in "ExpSpace".
-We also point out that since every "path-$l$ approximation" can be expressed by a polynomial "UC2RPQ" of tree-width $2k$---this is the same idea as in \cite[Lemma IV.13]{DBLP:conf/lics/0001BV17}---, one can produce, for every "UC2RPQ" $\Delta$ a union $\Gamma$ of poly-sized "C2RPQ" of tree-width $2k$ such that $ \MUA{\Delta}{\Tw} \contained \Gamma \contained \Delta$. This implies that the following ``promise'' problem\footnote{In reference to ``promise constraint satisfaction problems''
-\cite[Definition 2.3]{bg2021pcsp}.} is decidable in "ExpSpace": given a "UC2RPQ" $\Gamma$, answer `yes' if $\Gamma$ is of "semantic tree-width" $2k$, and answer `no' if $\Gamma$ is not of "semantic tree-width" $k$. The fact that $\MUA{\Delta}{\Tw}$ can be approximated by an exponential query of tree-width $2k+1$ can also be seen as a corollary of the proof of \cite[Theorem~V.1]{DBLP:conf/lics/0001BV17}.
+We also point out that since every "path-$l$ approximation" can be expressed by a polynomial "UC2RPQ" of tree-width $2k$---this is the same idea as in \cite[Lemma IV.13]{RomeroBarceloVardi2017Homomorphism}---, one can produce, for every "UC2RPQ" $\Delta$ a union $\Gamma$ of poly-sized "C2RPQ" of tree-width $2k$ such that $ \MUA{\Delta}{\Tw} \contained \Gamma \contained \Delta$. This implies that the following ``promise'' problem\footnote{In reference to ``promise constraint satisfaction problems''
+\cite[Definition 2.3]{BrakensiekGuruswami2021PCSP}.} is decidable in "ExpSpace": given a "UC2RPQ" $\Gamma$, answer `yes' if $\Gamma$ is of "semantic tree-width" $2k$, and answer `no' if $\Gamma$ is not of "semantic tree-width" $k$. The fact that $\MUA{\Delta}{\Tw}$ can be approximated by an exponential query of tree-width $2k+1$ can also be seen as a corollary of the proof of \cite[Theorem~V.1]{RomeroBarceloVardi2017Homomorphism}.
 
-We also do not know whether the {"PiP2"} bound on the "semantic tree-width $k$ problem" for {\UCRPQSRE} has a matching lower bound. The known lower bound for the {\UCRPQSRE} "containment problem" \cite[Theorem~5.1]{FigueiraGKMNT20} does not seem to be useful to be employed in a reduction in this context, since it necessitates queries of arbitrary high "tree-width".
+We also do not know whether the {"PiP2"} bound on the "semantic tree-width $k$ problem" for {\UCRPQSRE} has a matching lower bound. The known lower bound for the {\UCRPQSRE} "containment problem" \cite[Theorem~5.1]{FigueiraEtal2020Containment} does not seem to be useful to be employed in a reduction in this context, since it necessitates queries of arbitrary high "tree-width".
 
 \subsection{\AP{}Characterization of Tractability}
 \label{sec:charact-tractability}
@@ -43,11 +43,11 @@ of "semantic tree-width" $k$ is fixed-parameter tractable---or \AP""FPT""---taki
 the query as parameter, "ie", in time $\+O(|G|^{c} \cdot f(|\Gamma|))$
 for a computable function $f$ and constant $c$, where $G$ is the "database" given as input.
 %
-While this was a known fact \cite[Corollary IV.12]{DBLP:conf/lics/0001BV17}, the dependence on the database was $c=2k+1$.  Our results show that the dependence can be improved to $c=k+1$, similarly to \cite[Theorem 6.3]{BarceloRV16} for the case $k=1$.
-It has been further shown by Feier, Gogacz and Murlak that the "evaluation" can be done with a single-exponential $f$ \cite[Theorem~22]{FGM24}.
+While this was a known fact \cite[Corollary IV.12]{RomeroBarceloVardi2017Homomorphism}, the dependence on the database was $c=2k+1$.  Our results show that the dependence can be improved to $c=k+1$, similarly to \cite[Theorem 6.3]{BarceloRomeroVardi2016SemanticAcyclicity} for the case $k=1$.
+It has been further shown by Feier, Gogacz and Murlak that the "evaluation" can be done with a single-exponential $f$ \cite[Theorem~22]{FeierGogaczMurlak24Treewidth}.
 % This improves the dependence on the size of the database,
 % namely $\+O(|G|^{2k+2} \cdot f(|\Gamma|))$, proven by
-% Romero, Barceló and Vardi \cite[Corollary IV.12]{DBLP:conf/lics/0001BV17}.
+% Romero, Barceló and Vardi \cite[Corollary IV.12]{RomeroBarceloVardi2017Homomorphism}.
 
 In a similar vein, our results show that the "evaluation problem" for "UC2RPQs"
 of "semantic path-width" $k$ is in "para-NL". It is unknown whether the semantic bounded width properties characterize all "FPT" and "para-NL" classes.
@@ -56,18 +56,18 @@ of "semantic path-width" $k$ is in "para-NL". It is unknown whether the semantic
     Does every recursively enumerable class of "CRPQs" with "para-NL" evaluation have bounded "semantic path-width"?
 \end{question}
 
-\begin{question}[Also mentioned in {\cite[\S IV-(4)]{DBLP:conf/lics/0001BV17}}]\AP\label{qu:FPTtractability}
+\begin{question}[Also mentioned in {\cite[\S IV-(4)]{RomeroBarceloVardi2017Homomorphism}}]\AP\label{qu:FPTtractability}
     Does every recursively enumerable class of "CRPQs" with "FPT" evaluation have bounded "semantic tree-width"?
 \end{question}
 
 Note that the classes of bounded "contracted path-width" or "contracted tree-width" are not counterexamples to \Cref{qu:paraNLtractability,qu:FPTtractability}, since
 the "path-width" is upper-bounded by one plus the "contracted path-width", and lower-bounded by the "contracted path-width"---and similarly for "tree-width"---and so a width is bounded "iff" its "contracted" variant is bounded.
 
-In the case of "CQs", the answer is `yes' to \Cref{qu:FPTtractability} \cite[Theorem~1]{Grohe07}
-under standard complexity-theoretic hypotheses ($W[1] \neq $ "FPT"). For \Cref{qu:paraNLtractability}, the answer is still `yes' \cite[Theorem 3.1]{ChenM13} conditional to a less standard assumption\footnote{By \cite[Theorems 3.1 \& 4.3]{ChenM13}, if the class has bounded "semantic path-width", then the problem is in $\textsf{Path} \subseteq $ "paraNL"; by \cite[Theorems 3.1 \& 5.5]{ChenM13}, if the class does not have bounded "semantic path-width", then the problem is \textsf{Tree}-hard.} (no $\textsf{Tree}$-hard problem is in "paraNL").
+In the case of "CQs", the answer is `yes' to \Cref{qu:FPTtractability} \cite[Theorem~1]{Grohe2007ComplexityHomomorphism}
+under standard complexity-theoretic hypotheses ($W[1] \neq $ "FPT"). For \Cref{qu:paraNLtractability}, the answer is still `yes' \cite[Theorem 3.1]{ChenMoritz13} conditional to a less standard assumption\footnote{By \cite[Theorems 3.1 \& 4.3]{ChenMoritz13}, if the class has bounded "semantic path-width", then the problem is in $\textsf{Path} \subseteq $ "paraNL"; by \cite[Theorems 3.1 \& 5.5]{ChenMoritz13}, if the class does not have bounded "semantic path-width", then the problem is \textsf{Tree}-hard.} (no $\textsf{Tree}$-hard problem is in "paraNL").
 
 However, attempting at answering these questions for "CRPQs" is considerably more challenging. In particular, one important technical difficulty is that a class of "CRPQs" with unbounded "tree-width" may contain queries with no "expansions" which are "maximal" in the sense of "containment". That is, for every $k$, for every query $\gamma$ of "semantic tree-width" $>k$ and "expansion" $\xi$ of "semantic tree-width" $>k$ there may be another "expansion" $\xi'$ such that $\xi' \homto \xi$ ("ie", such that $\xi \contained \xi'$).  
-% This brakes the reduction shown for "CQs" in \cite[Theorem~4.1]{Grohe07}. 
+% This brakes the reduction shown for "CQs" in \cite[Theorem~4.1]{Grohe2007ComplexityHomomorphism}. 
 In fact, for classes of "CRPQs" avoiding such problematic behavior, Question~\ref{qu:FPTtractability} can be positively answered. We next show why.
 
 \AP
@@ -96,14 +96,14 @@ We next show that, restricted to classes of "finitely-redundant" "UC2RPQ", we ca
 \begin{proof}
     \proofcase{Left-to-right} By contraposition, we show that if $\+C$ has unbounded "tree-width", then its "evaluation problem" is "W[1]"-hard via an "FPT"-reduction from the 
     \AP
-    ""parameterized clique problem"". This is the problem of, given a parameter $k$ and a simple graph $G$, whether $G$ contains a $k$-clique. We do this by a simple adaptation of the proof of Grohe \cite[Theorem~4.1]{Grohe07} for the case of "CQs".
+    ""parameterized clique problem"". This is the problem of, given a parameter $k$ and a simple graph $G$, whether $G$ contains a $k$-clique. We do this by a simple adaptation of the proof of Grohe \cite[Theorem~4.1]{Grohe2007ComplexityHomomorphism} for the case of "CQs".
 
     Given an instance $\langle G,k \rangle$ of the "parameterized clique problem", the idea is to first search for a query $\gamma \in \+C$ of ``sufficiently large'' "semantic tree-width". 
     
     \AP
     Let us call an "expansion" $\xi$ of a "UC2RPQ" to be ""maximal"" if there is no other "expansion" $\xi'$ such that $\xi \strcontained \xi'$.
     \AP
-    The ""core"" of a "CQ" is the result of repeatedly removing any atom which results in an equivalent query. It is unique up to isomorphism (see, "eg", \cite{DBLP:conf/stoc/ChandraM77}), and a "CQ" has "semantic tree-width" $k$ if{f} its "core" has "tree-width" $k$ \cite[Theorem 12]{DBLP:conf/cp/DalmauKV02}. We say that a "CQ" is `a core' if it is isomorphic to its "core".
+    The ""core"" of a "CQ" is the result of repeatedly removing any atom which results in an equivalent query. It is unique up to isomorphism (see, "eg", \cite{ChandraMerlin1977Implementation}), and a "CQ" has "semantic tree-width" $k$ if{f} its "core" has "tree-width" $k$ \cite[Theorem 12]{DalmauKolaitisVardi2002Constraint}. We say that a "CQ" is `a core' if it is isomorphic to its "core".
 
     \begin{proposition}
         \label{prop:big-expansion}
@@ -174,8 +174,8 @@ We next show that, restricted to classes of "finitely-redundant" "UC2RPQ", we ca
 
     We proceed with the reduction.
     For any value of $k$ which is big enough, we enumerate all "maximal" "expansions" of $\+C$ until we find one such "expansion" $\xi$ whose "core" contains a $K \times K$ grid as a minor, for $K = {k \choose 2}$.
-    We know that this must happen by \Cref{prop:big-expansion} and the Excluded Minor Theorem \cite{RobertsonS86}, stating that there exists a function $f : \N \to \N$ such that for every $n \in \N$ every graph of "tree-width" at least $f(n)$ contains a $(n \times n)$-grid as a minor.
-    Once we get hold of such a "maximal" "expansion" $\xi$, we proceed as in \cite[proof of Theorem~4.1]{Grohe07} to produce, in polynomial time, a "graph database" $G_\xi$ such that:
+    We know that this must happen by \Cref{prop:big-expansion} and the Excluded Minor Theorem \cite{RobertsonSeymour1986GraphMinors5}, stating that there exists a function $f : \N \to \N$ such that for every $n \in \N$ every graph of "tree-width" at least $f(n)$ contains a $(n \times n)$-grid as a minor.
+    Once we get hold of such a "maximal" "expansion" $\xi$, we proceed as in \cite[proof of Theorem~4.1]{Grohe2007ComplexityHomomorphism} to produce, in polynomial time, a "graph database" $G_\xi$ such that:
     \begin{enumerate}
         \item there is a "homomorphism" $G_\xi \homto \xi$, and
         \item $G_\xi$ "satisfies" $\xi$ if, and only if, $G$ has a clique of size $k$.
@@ -196,7 +196,7 @@ This finishes the "FPT"-reduction.
 \subsection{\AP{}Larger Classes}
 \label{sec:discussion-larger-classes}
 
-A natural and simple approach to extend the expressive power of "CRPQs" is to close the queries by transitive closure. That is, given a binary "CRPQ" $\gamma(x,y)$ we can consider "CRPQ" over the extended alphabet $\A \cup \set \gamma$, where the label $\gamma$ is interpreted as the binary relation defined by $\gamma(x,y)$. \AP This is the principle behind ""Regular Queries"" \cite{DBLP:journals/mst/ReutterRV17}. The notion of "tree-width" can be easily lifted to this class, and classes of bounded "tree-width" still have a polynomial-time "evaluation problem". However, this class has not yet been studied in the context of the "semantic tree-width". It is not known if the "semantic tree-width $k$ problem" is decidable, nor whether classes of bounded "semantic tree-width" have an "FPT" "evaluation problem".
+A natural and simple approach to extend the expressive power of "CRPQs" is to close the queries by transitive closure. That is, given a binary "CRPQ" $\gamma(x,y)$ we can consider "CRPQ" over the extended alphabet $\A \cup \set \gamma$, where the label $\gamma$ is interpreted as the binary relation defined by $\gamma(x,y)$. \AP This is the principle behind ""Regular Queries"" \cite{ReutterRomeroVardi2017RegularQueries}. The notion of "tree-width" can be easily lifted to this class, and classes of bounded "tree-width" still have a polynomial-time "evaluation problem". However, this class has not yet been studied in the context of the "semantic tree-width". It is not known if the "semantic tree-width $k$ problem" is decidable, nor whether classes of bounded "semantic tree-width" have an "FPT" "evaluation problem".
 \begin{question}
     Is the "semantic tree-width $k$ problem" for "Regular Queries" decidable?
 \end{question}
@@ -209,13 +209,13 @@ A natural and simple approach to extend the expressive power of "CRPQs" is to cl
         \toprule
         Query class & Membership problem & "Evaluation problem" \\ \midrule
         "path-width" $\leq k$ & 
-        "L"-c {\footnotesize\cite[Theorem 1.3, p. 2]{KM10Computing}}
+        "L"-c {\footnotesize\cite[Theorem 1.3, p. 2]{KintaliMunteanu2010Computing}}
         & "NL"-c {\footnotesize(\Cref{lemma:evaluation-bounded-pathwidth})}  \\
         "sem. path-w." $\leq k$ & "2ExpSpace" \& "ExpSpace"-h & "paraNL" {\footnotesize(\Cref{thm:evaluation-bounded-pathwidth})} \\ 
         & {\footnotesize(\Cref{thm:decidability-sempw})} \\ \midrule
-        "tree-width" $\leq k$ & "L"-c {\footnotesize \cite[Lemma 1.4]{EJT10Logspace}} & "P" {\footnotesize(Folklore)\footnotemark} \\
-        "sem. tree-w." $\leq k$ & "2ExpSpace" \& "ExpSpace"-h\footnotemark & "FPT" {\footnotesize\cite[Corollary V.2]{DBLP:conf/lics/0001BV17}}\footnotemark \\
-        & {\footnotesize(\Cref{thm:decidability-semtw})} & "NP"-c {\footnotesize\cite[Theorem V.3]{DBLP:conf/lics/0001BV17}}\\ \bottomrule
+        "tree-width" $\leq k$ & "L"-c {\footnotesize \cite[Lemma 1.4]{ElberfeldJakobyTantau2010Logspace}} & "P" {\footnotesize(Folklore)\footnotemark} \\
+        "sem. tree-w." $\leq k$ & "2ExpSpace" \& "ExpSpace"-h\footnotemark & "FPT" {\footnotesize\cite[Corollary V.2]{RomeroBarceloVardi2017Homomorphism}}\footnotemark \\
+        & {\footnotesize(\Cref{thm:decidability-semtw})} & "NP"-c {\footnotesize\cite[Theorem V.3]{RomeroBarceloVardi2017Homomorphism}}\\ \bottomrule
     \end{tabular}
     \caption{
         \label{table:tractability-classes-queries}
@@ -226,15 +226,15 @@ A natural and simple approach to extend the expressive power of "CRPQs" is to cl
     }
 \end{table}
 \addtocounter{footnote}{-2}
-\footnotetext{Originally proven by Chekuri \& Rajaraman \cite[Theorem 3]{CHEKURI2000211} for CQs. The generalization to "UC2RPQs" is trivial, see "eg" \Cref{prop:crpq-bound-tree-width-upper-bound}
-or \cite[Theorem IV.3]{DBLP:conf/lics/0001BV17}.}
+\footnotetext{Originally proven by Chekuri \& Rajaraman \cite[Theorem 3]{ChekuriRajaraman2000Containment} for CQs. The generalization to "UC2RPQs" is trivial, see "eg" \Cref{prop:crpq-bound-tree-width-upper-bound}
+or \cite[Theorem IV.3]{RomeroBarceloVardi2017Homomorphism}.}
 \stepcounter{footnote}
-\footnotetext{See also \cite[Theorem 6.1]{BarceloRV16} for $k=1$.}
+\footnotetext{See also \cite[Theorem 6.1]{BarceloRomeroVardi2016SemanticAcyclicity} for $k=1$.}
 \stepcounter{footnote}
-\footnotetext{See also \Cref{coro:fpt-eval-bounded-semtreewidth} and \cite[Theorem~22]{FGM24}.}
+\footnotetext{See also \Cref{coro:fpt-eval-bounded-semtreewidth} and \cite[Theorem~22]{FeierGogaczMurlak24Treewidth}.}
 
 
-"CRPQs" of small "tree-width" or "path-width" enjoy a tractable "evaluation problem", see \Cref{table:tractability-classes-queries}. However, it must be noticed that "containment" between "tree-width" $k$ or "path-width" $k$ queries is still very hard: "ExpSpace"-complete (even for $k=1$) \cite{CGLV00}. The more restrictive measure of ``"bridge-width"'' \cite{Figueira20} has been proposed as a more robust measure, which results in classes of queries which are well-behaved both for "evaluation" (since "bridge-width" $k$ implies "tree-width" $\leq k$) and for "containment" (since "containment" of bounded-"bridge-width" classes is in "PSpace").
+"CRPQs" of small "tree-width" or "path-width" enjoy a tractable "evaluation problem", see \Cref{table:tractability-classes-queries}. However, it must be noticed that "containment" between "tree-width" $k$ or "path-width" $k$ queries is still very hard: "ExpSpace"-complete (even for $k=1$) \cite{CalvaneseDeGiacomoLenzeriniVardi2000Containment}. The more restrictive measure of ``"bridge-width"'' \cite{Figueira2020Containment} has been proposed as a more robust measure, which results in classes of queries which are well-behaved both for "evaluation" (since "bridge-width" $k$ implies "tree-width" $\leq k$) and for "containment" (since "containment" of bounded-"bridge-width" classes is in "PSpace").
 It is not hard to see that "bridge-width" is closed under "refinements", and thus that this notion is amenable to our approach ("cf" \Cref{obs:equivalence_under_approx_homomorphism}).
 \begin{question}
     \AP\label{qu:semantic-bridge-width}

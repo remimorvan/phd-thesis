@@ -3,7 +3,7 @@
 
 \subsection{\AP{}Graph Databases}
 
-"Graph databases" have gained significant attention due to their ability to efficiently model and manage complex, interconnected data. Unlike traditional relational databases, they model data as entities connected by edges that represent relationships. This structure facilitates the analysis of highly interconnected data, where the topology of the connections is as crucial as the data itself, making them particularly well-suited for use cases like biology, social networks, banking, recommendation systems, and fraud detection. We refer the reader to \cite{Barcelo-pods13,DBLP:journals/sigmod/Wood12,survey-graphdbs2017} for surveys on the foundations and applications of graph databases.
+"Graph databases" have gained significant attention due to their ability to efficiently model and manage complex, interconnected data. Unlike traditional relational databases, they model data as entities connected by edges that represent relationships. This structure facilitates the analysis of highly interconnected data, where the topology of the connections is as crucial as the data itself, making them particularly well-suited for use cases like biology, social networks, banking, recommendation systems, and fraud detection. We refer the reader to \cite{Barcelo2013Querying,Wood2012Query,AnglesEtal2017Foundations} for surveys on the foundations and applications of graph databases.
 
 
 % \footnote{This paragraph was partially written with the help of ChatGPT.}
@@ -71,7 +71,7 @@ The expressive power of "CQs" is somewhat limited, since
 Since the ability to navigate paths is of importance in many "graph database" 
 scenarios, most modern graph query languages support, as a central querying mechanism,
 "conjunctive regular path queries", or "CRPQs" for short. 
-In particular, "CRPQs" form the core navigational mechanism of the new ISO standard Graph Query Language (GQL) \cite{isoGQL} and the SQL extension for querying graph-structured data SQL/PGQ \cite{isoPGQ} (see also \cite{DBLP:conf/icdt/FrancisGGLMMMPR23,DBLP:conf/pods/FrancisGGLMMMPR23}).
+In particular, "CRPQs" form the core navigational mechanism of the new ISO standard Graph Query Language (GQL) \cite{ISO2024GQL} and the SQL extension for querying graph-structured data SQL/PGQ \cite{ISO2023PGC} (see also \cite{FrancisEtal2023GPCIcdt,FrancisEtal2023GPC}).
 
 "CRPQs" are 
 defined analogously to "conjunctive queries", except that their atoms are now of the form 
@@ -162,9 +162,9 @@ We naturally extend the notations $\nbatoms{-}$ and $\size{-}$ to "unions@UC2RPQ
 \AP ""Infinitary unions"" are defined analogously, except
 that we allow for potentially infinite unions. We often use a set notation to denote the union, especially for "infinitary unions".
 
-For a more detailed introduction to "CRPQs", we refer the reader to \cite{DBLP:conf/rweb/Figueira21}.
-For a more general introduction to different query languages for "graph databases"---including "CRPQs"---see \cite{barcelo2013querying}, and for a more practical approach,
-see \cite{survey-graphdbs2017}.
+For a more detailed introduction to "CRPQs", we refer the reader to \cite{Figueira2020Containment21Foundations}.
+For a more general introduction to different query languages for "graph databases"---including "CRPQs"---see \cite{Barcelo2013Querying}, and for a more practical approach,
+see \cite{AnglesEtal2017Foundations}.
 
 \smallskip
 
@@ -187,18 +187,18 @@ $\Gamma \intro*\semequiv \Gamma'$.
 
 \paragraph{Queries of small tree-width}
 It is known that the "evaluation problem" for "UC2RPQ" is "NP"-complete, just as for "conjunctive queries"
-\cite[Theorem 7]{DBLP:conf/stoc/ChandraM77}.
+\cite[Theorem 7]{ChandraMerlin1977Implementation}.
 However, queries whose underlying structure looks like a tree---formally, queries of bounded 
-"tree-width"---can be "evaluated" in polynomial time \cite[Theorem 3]{CHEKURI2000211}.\footnote{Theorem 3 talks about query "containment" of "CQs", which is in fact equivalent to the "evaluation problem" for "CQs". Moreover, the theorem deals with ``query width'', but this parameter is equivalent up to a multiplicative constant to the "tree-width" \cite[Lemma 2]{CHEKURI2000211} assuming that the database signature arity is fixed.} 
+"tree-width"---can be "evaluated" in polynomial time \cite[Theorem 3]{ChekuriRajaraman2000Containment}.\footnote{Theorem 3 talks about query "containment" of "CQs", which is in fact equivalent to the "evaluation problem" for "CQs". Moreover, the theorem deals with ``query width'', but this parameter is equivalent up to a multiplicative constant to the "tree-width" \cite[Lemma 2]{ChekuriRajaraman2000Containment} assuming that the database signature arity is fixed.} 
 
 \AP
 "Tree-width" is a measure of how much a
 graph differs from a tree, introduced by Arnborg, Corneil and
-Proskurowski~\cite{arnborg1987complexity}.
-% who noticed that many "NP"-complete problems become polynomial-time solvable on classes of graphs of bounded tree-width \cite{arnborg1987complexity}.
+Proskurowski~\cite{ArnborgCorneilProskurowski1987Complexity}.
+% who noticed that many "NP"-complete problems become polynomial-time solvable on classes of graphs of bounded tree-width \cite{ArnborgCorneilProskurowski1987Complexity}.
 %
 For a gentle but thorough introduction to "tree-width", we refer the reader to
-\cite[\S 3.6]{sparsity12}. Formally, a \AP""tree decomposition"" of a multigraph $G$ is a
+\cite[\S 3.6]{NesetrilPOM2012Prolegomena}. Formally, a \AP""tree decomposition"" of a multigraph $G$ is a
 pair $(T, \intro*\bagmap)$ where $T$ is a tree and $\bagmap: \vertex{T} \to \pset{\vars(G)}$ is a function that associates to each node of $T$, called \AP""bag"",
 a set of vertices of $G$. When $x \in \bagmap(b)$ we shall say that the "bag"
 $b \in \vertex{T}$ \AP""contains@@tw"" vertex $v$. Further, it must satisfy the following three properties:
@@ -277,12 +277,12 @@ intersection of $\Tw$ (resp.\ $\Pw$) with the class of "CRPQs".
 	}
 \end{figure}
 
-% \begin{proposition}[Folklore, see "eg" {\cite[Theorem IV.3]{DBLP:conf/lics/0001BV17}}]
+% \begin{proposition}[Folklore, see "eg" {\cite[Theorem IV.3]{RomeroBarceloVardi2017Homomorphism}}]
 %     For each $k \geq 1$, the "evaluation problem" for "UC2RPQs" of "tree-width" at
 %     most $k$ is in polynomial time.\sideremi{Find better ref?}
 % \end{proposition}
 
-Similar statements of the following proposition can be considered Folklore (see "eg" {\cite[Theorem IV.3]{DBLP:conf/lics/0001BV17}}); however, our inability to find a proof for it with sharp bounds invites us to include a proof.
+Similar statements of the following proposition can be considered Folklore (see "eg" {\cite[Theorem IV.3]{RomeroBarceloVardi2017Homomorphism}}); however, our inability to find a proof for it with sharp bounds invites us to include a proof.
 \begin{restatable}[Proof in \Cref{apdx-sec:prop:crpq-bound-tree-width-upper-bound}]{prop}{crpqboundtwupperbound}
 	\AP\label{prop:crpq-bound-tree-width-upper-bound}
     For each $k \geq 1$, the "evaluation problem" for "UC2RPQs" of "tree-width" at
@@ -355,24 +355,24 @@ We will also study the restriction of these notions to one-way queries: a "UCRPQ
 \subsection{\AP{}Related Work}
 \label{sec:relwork}
 On the class "conjunctive queries", the "semantic tree-width $k$ problem" becomes the "coNP"-complete problem of finding out whether the retraction of a query has "tree-width"
-at most $k$. In fact, "CQs" enjoy the effective existence of unique minimal queries \cite[Theorem 12]{DBLP:conf/stoc/ChandraM77}, which happen to also minimize the tree-width. For "CRPQs" and "UC2RPQs", the question is far more challenging, and it has only been solved for the case $k = 1$ 
-by Barceló, Romero, and Vardi \cite[Theorem 6.1]{BarceloRV16}; the case $k>1$ was left widely open
-\cite[\S 7]{BarceloRV16}.
+at most $k$. In fact, "CQs" enjoy the effective existence of unique minimal queries \cite[Theorem 12]{ChandraMerlin1977Implementation}, which happen to also minimize the tree-width. For "CRPQs" and "UC2RPQs", the question is far more challenging, and it has only been solved for the case $k = 1$ 
+by Barceló, Romero, and Vardi \cite[Theorem 6.1]{BarceloRomeroVardi2016SemanticAcyclicity}; the case $k>1$ was left widely open
+\cite[\S 7]{BarceloRomeroVardi2016SemanticAcyclicity}.
 
-Furthermore, classes of "CQs" of bounded "semantic tree-width" precisely characterize tractable (and "FPT") "evaluation problem" \cite[Theorem~1.1]{Grohe07}.
-This result is on bounded-arity schemas, which was later generalized \cite[Theorem~1]{DBLP:conf/ijcai/ChenGLP20} for characterizing "FPT" "evaluation" on arbitrary schemas---by replacing "semantic tree-width" with semantic ``submodular width'' \cite{Marx13}.
+Furthermore, classes of "CQs" of bounded "semantic tree-width" precisely characterize tractable (and "FPT") "evaluation problem" \cite[Theorem~1.1]{Grohe2007ComplexityHomomorphism}.
+This result is on bounded-arity schemas, which was later generalized \cite[Theorem~1]{ChenGottlobLanzingerPichler2020Semantic} for characterizing "FPT" "evaluation" on arbitrary schemas---by replacing "semantic tree-width" with semantic ``submodular width'' \cite{Marx13Tractable}.
 
-The problem of computing "maximal under-approximations" of "CQs" of a given "tree-width" has been explored in \cite{DBLP:journals/siamcomp/BarceloL014}.
+The problem of computing "maximal under-approximations" of "CQs" of a given "tree-width" has been explored in \cite{BarceloLibkinRomero2014Efficient}.
 A "maximal under-approximations" of tree-width at most $k$ of a "CQ" $\gamma$ consists of a
 "CQ" $\delta_k$ of "tree-width" at most $k$, which under-approximates it,
 "ie" $\delta_k$ is "contained" in $\gamma$, and which is maximal, in the sense that for every "CQ" 
 $\delta'$, if $\delta'$ has "tree-width" at most $k$ and is "contained" in $\gamma$, then 
 $\delta'$ is "contained" in $\delta_k$. 
-"Maximal under-approximations" of a given "tree-width" for "CQs" always exist \cite{DBLP:journals/siamcomp/BarceloL014} and thus, a "CQ" is "semantically equivalent"
+"Maximal under-approximations" of a given "tree-width" for "CQs" always exist \cite{BarceloLibkinRomero2014Efficient} and thus, a "CQ" is "semantically equivalent"
 to a "CQ" of "tree-width" at most $k$ if, and only if, it is equivalent to its maximal under-approximation of "tree-width" at most $k$. Our solution to decide the
 "semantic tree-width $k$ problem" for "UC2RPQs" is based on this idea.
 
-While "maximal under-approximations" always exist for "CQs", this is not the case for the dual notion of ``minimal over-approximations''. The problem of when these exist is still unknown to be decidable, aside for some the special cases of acyclic "CQs" and Boolean "CQs" over binary schemas \cite{DBLP:journals/mst/BarceloRZ20}.
+While "maximal under-approximations" always exist for "CQs", this is not the case for the dual notion of ``minimal over-approximations''. The problem of when these exist is still unknown to be decidable, aside for some the special cases of acyclic "CQs" and Boolean "CQs" over binary schemas \cite{BarceloRomeroZeume2020Approximation}.
 
 
 \subsection{\AP{}Contributions}
@@ -385,7 +385,7 @@ Here we solve both the "semantic tree-width $k$ problem" and "one-way semantic t
 \end{theorem}
 In \Cref{sec:maximal-under-approximations} (\Cref{lem:sem-tw-in-twoexp}),
 we prove the upper bound for $k\geq 2$, by relying on the so-called ``"Key Lemma"'', which is our main technical result, and is proven in \Cref{sec:treedec,sec:proof-key-lemma}.
-The upper bound for the case $k=1$---which was already proven in \cite{BarceloRV16} for the (two-way) "semantic tree-width $1$ problem"---is shown in \Cref{sec:acyclic-queries} (\Cref{cor:sem-tw-1-pb-exp-c}). The lower bound is shown in \Cref{sec:lowerbound} (\Cref{lemma:lowerbound}).
+The upper bound for the case $k=1$---which was already proven in \cite{BarceloRomeroVardi2016SemanticAcyclicity} for the (two-way) "semantic tree-width $1$ problem"---is shown in \Cref{sec:acyclic-queries} (\Cref{cor:sem-tw-1-pb-exp-c}). The lower bound is shown in \Cref{sec:lowerbound} (\Cref{lemma:lowerbound}).
 
 The "Key Lemma" (\Cref{lemma:bound_size_refinements}) essentially states that
 every "UC2RPQ" has a computable ``maximal under approximation'' by a "UC2RPQ" of "tree-width" $k$ and that this approximation is well-behaved with respect to the class of languages used to label the queries under some mild assumptions on it (being ``"closed under sublanguages"''). Let us first
@@ -400,7 +400,7 @@ language of $\+L$, and (ii) for every language $L \in \+L$ there exists an NFA $
 $\{\varepsilon\}$ belongs to $\+L$.
 
 To the best of our knowledge,
-all classes of regular expressions that have been considered in the realm of regular path queries (see, "eg", \cite[\S1]{FigueiraGKMNT20}) are "closed under sublanguages". In particular, this is
+all classes of regular expressions that have been considered in the realm of regular path queries (see, "eg", \cite[\S1]{FigueiraEtal2020Containment}) are "closed under sublanguages". In particular, this is
 the case for the class $\bigl\{ \{a_1+\hdots+a_n\} \mid a_1,\hdots,a_n
 \in \A \bigr\} \cup \bigl\{ a^* \mid a \in \A \bigr\}$, which will be our focus of study in \Cref{sec:sre}. Moreover, even if some class $\+L$
 is not "closed under sublanguages", such as $\{(aa)^*\}$,
@@ -430,7 +430,7 @@ As a consequence of \Cref{cor:mua-exists-effective,prop:crpq-bound-tree-width-up
 	the algorithm runs in time
 	$\+O(f(\size{\Gamma})\cdot |G|^{k+1} \cdot \log{|G|})$ on a Turing machine, where $f$ is a doubly-exponential function---or $\+O(f(\size{\Gamma})\cdot |G|^{k+1})$ under a RAM model.
 \end{restatable*}
-Note that \cite[Theorem~22]{FGM24} shows that the statement above can be improved to have a single-exponential function $f$.
+Note that \cite[Theorem~22]{FeierGogaczMurlak24Treewidth} shows that the statement above can be improved to have a single-exponential function $f$.
 
 % Essentially, this means that to minimize the "semantic tree-width" of a query, we do not need to ``create'' new languages.
 % 138/139 and 153/154: It took me a while to see why this does not follow from the definition. It 
@@ -441,7 +441,7 @@ Note that \cite[Theorem~22]{FGM24} shows that the statement above can be improve
 % can be defined with labels in $\+L$, and if this query is equivalent to a  
 % query of small tree-width, then it is also equivalent to a query of small tree-width
 % with labels in $\+L$.
-% In particular, for any $k>1$, a "CRPQ" is equivalent to a "UC2RPQ" of "tree-width" at most $k$ if{f} it is e equivalent to "UCRPQ" of "tree-width" at most $k$, which is not true for $k=1$ ("cf" \Cref{rk:closure-under-sublanguages-k1}, also \cite[Proposition 6.4]{BarceloRV16}).
+% In particular, for any $k>1$, a "CRPQ" is equivalent to a "UC2RPQ" of "tree-width" at most $k$ if{f} it is e equivalent to "UCRPQ" of "tree-width" at most $k$, which is not true for $k=1$ ("cf" \Cref{rk:closure-under-sublanguages-k1}, also \cite[Proposition 6.4]{BarceloRomeroVardi2016SemanticAcyclicity}).
 
 Moreover, we also show that for any class $\+L$ of regular languages "closed under sublanguages", if $\Gamma \in \UCtwoRPQ(\+L)$ has "semantic tree-width" $k > 1$,
 then $\Gamma$ is equivalent to a $\UCtwoRPQ(\+L)$ of "tree-width" at most $k$.
@@ -476,7 +476,7 @@ to \Cref{rk:closure-under-sublanguages-k1} as we first need a few tools to manip
 
 The previous theorem, together with the high complexity of "semantic tree-width $k$ problem",
 motivates us to focus on the case of "CRPQs" using some "simple regular expressions" ("SRE") in \Cref{sec:sre}, where we show that the complexity of this problem is much lower.
-% coincides with the complexity of the "containment problem" over this class of "CRPQs" \cite[Corollary~5.2]{FigueiraGKMNT20}:
+% coincides with the complexity of the "containment problem" over this class of "CRPQs" \cite[Corollary~5.2]{FigueiraEtal2020Containment}:
 
 \begin{restatable*}{thm}{thmSemTwSREpitwo}
     \AP\label{thm:semtw-sre-pitwo}
@@ -487,7 +487,7 @@ We then study the problem of $k=1$: at first glance, our proof for $k\geq 2$ of
 \Cref{thm:decidability-semtw} does not capture this case, for a technical---yet crucial---reason. In
 \Cref{sec:acyclic-queries}, we explain how to adapt our proof to capture it: 
 and show the decidability the "semantic tree-width 1 problem"---which was already studied by 
-Barceló, Romero and Vardi \cite{BarceloRV16}---and of the "one-way semantic tree-width 1 problem". 
+Barceló, Romero and Vardi \cite{BarceloRomeroVardi2016SemanticAcyclicity}---and of the "one-way semantic tree-width 1 problem". 
 
 Building on the same idea, we show in \Cref{sec:semantic-path-width} that our results extend to "path-width".
 \begin{restatable*}{thm}{decidabilitySemPw}
@@ -569,7 +569,7 @@ We show that a "UCRPQ" has "semantic tree-width" at most $k$ if, and only if, it
 has "one-way semantic tree-width" at most $k$ whenever $k \geq 2$
 (\Cref{coro:collapse-twoway-oneway-semtw}). In other words, if the original query does not
 use "two-way navigation", then considering "UC2RPQs" does not help to further minimize the "tree-width". Interestingly, this is false for $k=1$ ("cf" \Cref{rk:closure-under-sublanguages-k1},
-also \cite[Proposition 6.4]{BarceloRV16}) and for "path-width", no matter the value of $k\geq 1$ (see \Cref{rk:path-width:oneway-vs-twoway}). Overall, this leads to
+also \cite[Proposition 6.4]{BarceloRomeroVardi2016SemanticAcyclicity}) and for "path-width", no matter the value of $k\geq 1$ (see \Cref{rk:path-width:oneway-vs-twoway}). Overall, this leads to
 the landscape depicted in \Cref{fig:taxonomy-semantic}.
 
 Finally, we conclude in \Cref{sec:discussion}.
@@ -584,4 +584,4 @@ or larger settings (\Cref{sec:discussion-larger-classes,sec:discussion-different
 
 % \subsection{\AP{}Conference Paper}
 % \label{sec:conf-paper-diff}
-% The current article is based on the conference paper \cite{thispaperICDT}. The main results for "tree-width" $k>1$ are essentially the same---though with improved explanations and figures, and we fixed some minor bugs in the proof of the "Key Lemma". Here we also show how to extend our techniques to tackle the "semantic tree-width $1$ problem" (\Cref{sec:acyclic-queries}) and we introduce and study the "semantic path-width $k$ problems" (\Cref{sec:semantic-path-width}). Our very partial lift of Grohe's characterization of "FPT" classes of queries (\Cref{thm:tractability-finred}) is also new.
+% The current article is based on the conference paper \cite{FigueiraMorvan2023SemanticTreeWidthICDT}. The main results for "tree-width" $k>1$ are essentially the same---though with improved explanations and figures, and we fixed some minor bugs in the proof of the "Key Lemma". Here we also show how to extend our techniques to tackle the "semantic tree-width $1$ problem" (\Cref{sec:acyclic-queries}) and we introduce and study the "semantic path-width $k$ problems" (\Cref{sec:semantic-path-width}). Our very partial lift of Grohe's characterization of "FPT" classes of queries (\Cref{thm:tractability-finred}) is also new.

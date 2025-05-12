@@ -8,11 +8,11 @@ Moreover, \UCRPQSRE{} also corresponds to "UC2RPQ" whose languages are expressed
 in other words adding two-wayness does not increase the expressivity of the class. 
 % for example, $\gamma(x,y) = x \atom{a^* \cdot (a + b) \cdot b^*} y$ is equivalent to $\gamma'(x,y) = x \atom{a^*} z \land z \atom{a+b} z' \land z' \atom{b^*} y$.
 %
-% The interest of {\UCRPQSRE} comes from the fact that it is used widely in practice, as recent studies on SPARQL query logs on Wikidata, DBpedia and other sources \cite{BonifatiMT-www19,BonifatiMT-vdlbj20} show that this kind of regular expressions cover a majority of the queries investigated, \eg, over 98\% of the 500 million expressions in the Wikidata log  (\cf~\cite[Table~1]{FigueiraGKMNT20}).
+% The interest of {\UCRPQSRE} comes from the fact that it is used widely in practice, as recent studies on SPARQL query logs on Wikidata, DBpedia and other sources \cite{BonifatiMT-www19,BonifatiMartensTimm2020SPARQL} show that this kind of regular expressions cover a majority of the queries investigated, \eg, over 98\% of the 500 million expressions in the Wikidata log  (\cf~\cite[Table~1]{FigueiraEtal2020Containment}).
 
 One interest of {\UCRPQSRE} comes from the fact that it is used widely in practice, as recent studies on SPARQL query logs on Wikidata, DBpedia and other sources show that this kind of regular expressions cover a majority of the queries investigated, "eg", 75\% of
-the ``property paths'' ("C2RPQ" "atoms") of the corpus of 1.5M queries of Bonifati, Martens and Timm \cite[Table 15]{BonifatiMT-vdlbj20}.
-An additional interest comes from the fact that the "containment problem" for {\UCRPQSRE} is much better behaved than for general "UCRPQs", since it is in {"PiP2"} \cite[Corollary 5.2]{FigueiraGKMNT20}, that is, just one level up the polynomial hierarchy compared to the "CQ" "containment problem", which is in "NP" \cite{DBLP:conf/stoc/ChandraM77}, and in sharp contrast with the costly "ExpSpace"-complete "CRPQ" "containment problem" \cite{CGLV00,Florescu:CRPQ}.
+the ``property paths'' ("C2RPQ" "atoms") of the corpus of 1.5M queries of Bonifati, Martens and Timm \cite[Table 15]{BonifatiMartensTimm2020SPARQL}.
+An additional interest comes from the fact that the "containment problem" for {\UCRPQSRE} is much better behaved than for general "UCRPQs", since it is in {"PiP2"} \cite[Corollary 5.2]{FigueiraEtal2020Containment}, that is, just one level up the polynomial hierarchy compared to the "CQ" "containment problem", which is in "NP" \cite{ChandraMerlin1977Implementation}, and in sharp contrast with the costly "ExpSpace"-complete "CRPQ" "containment problem" \cite{CalvaneseDeGiacomoLenzeriniVardi2000Containment,FlorescuLevySuciu1998Containment}.
 
 We devote this section to showing the following result.
 
@@ -137,11 +137,11 @@ and since $\+L$ is "closed under sublanguages", then $\alpha$ has only $\+L$-lab
 \begin{proof}
 	Point \eqref{lemma:MUAk-union-of-polysized-summary-test-np:2} follows directly from the definition: there are few branches in the decomposition, branches are short, and each "bag" cannot contain more than $(k+1)^2 \cdot |\+L|$ "atoms" labelled with $\+L$-languages.
 
-	For point \eqref{lemma:MUAk-union-of-polysized-summary-test-np:3}, recall that one can check if a query has "tree-width" at most $k$ in linear time, "eg" using Bodlaender's algorithm \cite[Theorem 1.1]{bodlaender1996treewidth}.
+	For point \eqref{lemma:MUAk-union-of-polysized-summary-test-np:3}, recall that one can check if a query has "tree-width" at most $k$ in linear time, "eg" using Bodlaender's algorithm \cite[Theorem 1.1]{Bodlaender1996Treewidth}.
 
 	% Points \eqref{lemma:MUAk-union-of-polysized-summary-test-np:2} and \eqref{lemma:MUAk-union-of-polysized-summary-test-np:3} follow directly from the definition---recall
 	% that one can check if a query has "tree-width" at most $k$ in linear time
-	% with Bodlaender's algorithm \cite[Theorem 1.1]{bodlaender1996treewidth}.
+	% with Bodlaender's algorithm \cite[Theorem 1.1]{Bodlaender1996Treewidth}.
 
 	To prove \eqref{lemma:MUAk-union-of-polysized-summary-test-np:1}, notice first that 
 	$\Qapp \contained \MUA{\gamma}{\Tw}$ as a consequence

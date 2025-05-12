@@ -23,7 +23,7 @@ def format_id(id: str):
         new_id = id.capitalize()
         return new_id[:i] + new_id[i].capitalize() + new_id[i+1:]
 
-TO_REMOVE = ["editor","isbn", "issn", "timestamp", "bibsource", "biburl", "address", "urn"]
+TO_REMOVE = ["editor", "isbn", "issn", "timestamp", "bibsource", "biburl", "address", "urn", "location", "month"]
 
 def remove_useless_shit(entry: str):
     lines = entry.split('\n')
