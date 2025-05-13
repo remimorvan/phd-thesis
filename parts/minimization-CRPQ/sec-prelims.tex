@@ -1,0 +1,156 @@
+\section{Preliminaries}
+\label{sec-prelims}
+
+\paragraph{Graph databases.}
+\AP ""Graph databases"" are abstracted as edge-labelled directed graphs
+$G = \langle \vertex{G}, \edges{G} \rangle$, 
+where nodes of $\intro*\vertex{G}$ represent entities and labelled edges $\intro*\edges{G} \subseteq \vertex G \times \A \times \vertex G$
+represent relations between these entities, with $\A$ being a fixed finite alphabet.
+
+\paragraph{Conjunctive regular path queries (CRPQs) and unions of CRPQs (UCRPQs).}
+\AP A ""CRPQ"" $\gamma$ is defined as a tuple $\bar z = (z_1,\hdots,z_n)$
+of ""output variables""\footnote{For technical reasons (see the definition of "equality atoms") we allow for a variable to appear multiple times.},
+together with a conjunction of ""atoms"" of the form
+\AP$\bigwedge_{j=1}^m x_j \intro*\atom{L_j} y_j$, where each $L_j$ is a regular language
+and where $m \geq 0$.
+The set of all variables occurring in $\gamma$, namely%
+\footnote{We neither assume 
+disjointness nor inclusion between $\{z_1,\hdots,z_n\}$ and $\{x_1,y_1,\hdots,x_m,y_m\}$.}
+$\{z_1,\hdots,z_n\}\cup\{x_1,y_1,\hdots,x_m,y_m\}$, is denoted by
+$\intro*\vars(\gamma)$. Variables in $\vars(\gamma)\setminus \{z_1,\hdots,z_n\}$ are existentially quantified. 
+We denote by $\intro*\atoms(\gamma)$ the set of "atoms" of $\gamma$.
+Given a "database" $G$, we say that a tuple of nodes $\bar u = (u_1,\hdots,u_n)$
+\AP""satisfies"" $\gamma$ 
+on $G$ if there is a mapping
+$\fun\colon \vars(\gamma) \to \vertex{G}$ such that $u_i = \fun(z_i)$ for all
+$1 \leq i \leq n$, and for each $1 \leq j \leq m$,
+there exists a (directed) path from $\fun(x_j)$ to $\fun(y_j)$ in $G$, labelled by
+a word from $L_j$ (if the path is empty, the label is $\varepsilon$). The \AP""evaluation"" of $\gamma$ on $G$ is then the set of all tuples that "satisfy" $\gamma$ on $G$.
+
+A ""union of CRPQs"" (\reintro{UCRPQs})
+is defined as a finite set of "CRPQs", called \AP""disjuncts"", whose tuples of "output variables" have all the same arity.
+The "evaluation" of a union is defined as the union of its "evaluations". 
+If a query has no "output variables" we call it ""Boolean"", and
+its "evaluation" can either be the set $\set{()}$, in which case we say that $G$
+\reintro{satisfies} the query, or the empty set $\set{}$.
+
+\AP Given two "UCRPQs" $\Gamma$
+and $\Gamma'$ whose "output variables" have the same arity,
+we say that $\Gamma$ is \AP""contained"" in $\Gamma'$,
+denoted by $\Gamma \intro*\contained \Gamma'$, if
+for every "graph database" $G$, for every tuple $\bar u$ of $\vertex{G}$,
+if $\bar u$ "satisfies" $\Gamma$ on $G$, then so does $\Gamma'$. We will hence reserve the symbol `$\subseteq$' for set inclusion.
+The \AP""containment problem"" for "UCRPQs" is the problem of, given
+two "UCRPQs" $\Gamma$ and $\Gamma'$, to decide if $\Gamma \contained \Gamma'$.
+When $\Gamma \contained \Gamma'$ and $\Gamma' \contained \Gamma$  we say that
+$\Gamma$ and $\Gamma'$ are \AP""equivalent"", denoted by
+$\Gamma \intro*\semequiv \Gamma'$. 
+
+\AP A ""conjunctive query"" (\reintro{CQ}) is in this context a "CRPQ" whose every atom is of the form $x \atom{a} y$ for $a \in \A$ ("ie", every language is a singleton $\set{a}$).
+\AP A ""union of CQs"" (\reintro{UCQs}) is defined as a "UCRPQ" with the same property.
+
+A \AP""canonical database"" $G$ of a "CRPQ" $\gamma$ is any "canonical database" associated
+to an "expansion" of $\gamma$, see \cite[Definition 3.1]{Florescu:CRPQ}
+for a formal definition. We denote it by \AP$G \intro*\cdb \gamma$.
+A \reintro{canonical database} of a "UCRPQ" is a "canonical database" of one
+of its "disjuncts".
+
+An \AP""evaluation map"" from a "CRPQ" $\gamma$ to a "graph database" $G$
+in a function $f$ from variables of $\gamma$ to $G$ "st"
+for any atom $x \atom{L} y$ in $\gamma$, there is path from $f(x)$ to $f(y)$ in $G$
+labelled by a word of $L$.
+
+The "containment" between "UCRPQs" $\Gamma_1 \contained \Gamma_2$ is exactly characterized
+by the fact that for all "canonical database" $G_1 \cdb \Gamma_1$,
+there exists a "disjunct" $\gamma_2$ of $\Gamma_2$ "st" there is an "evaluation map"
+from $\gamma_2$ to $G_1$.
+
+\paragraph{Homomorphisms.}
+\AP A ""homomorphism"" $\fun$ from a "CRPQ" $\gamma(x_1, \dotsc, x_m)$ to a "CRPQ" $\gamma'(y_1, \dotsc, y_m)$ is a mapping from $\vars(\gamma)$ to $\vars(\gamma')$ such that $\fun(x) \atom{L} \fun(y)$ is an "atom" of $\gamma'$ for every "atom" $x \atom{L} y$ of $\gamma$, and further $\fun(x_i)=y_i$ for every $i$.
+Such a "homomorphism" $\fun$ is \AP""strong onto"" if for every "atom" $x' \atom{L} y'$ of $\gamma'$ there is an "atom" $x \atom{L} y$ of $\gamma$ such that $\fun(x)=x'$ and $\fun(y)=y'$.
+% An example of "homomorphism" is provided in \Cref{fig:basic-hom}.
+We write $\gamma \intro*\homto \gamma'$ if there is a "homomorphism" from $\gamma$ to $\gamma'$, and $\gamma \intro*\surjto \gamma'$ if there is a "strong onto homomorphism".
+In the latter case, we say that $\gamma'$ is a \AP""homomorphic image"" of $\gamma$.
+A \reintro{homomorphism} $\fun$ from a graph database $G$ to a graph database $G'$ is a mapping from $\vertex{G}$ to $\vertex{G'}$ such that  for every edge $u \atom{a} v$ of $G$, it holds that $\fun(u) \atom{a} \fun(v)$ is an edge in $G'$. A "homomorphism" from a "CQ" to a graph database is defined analogously.  
+
+\AP It is easy to see that if $\gamma \homto \delta$ then $\delta \contained \gamma$, and in the case where $\gamma,\delta$ are "CQs" this is an ``if and only if'' \cite[Lemma 13]{DBLP:conf/stoc/ChandraM77}. 
+\AP Two "CQs" $\gamma,\delta$ are ""hom-equivalent"" if there are "homomorphisms" $\gamma \homto \delta$ and $\delta \homto \gamma$.
+Hence, for any two "CQs" $\gamma, \delta$, we have $\gamma \semequiv \delta$ if, and only if, they are "hom-equivalent".
+\AP The ""core"" of a "CQ" $\gamma$, denoted by $\intro*\core(\gamma)$
+is the result of repeatedly removing any atom which results in an equivalent query. It is unique up to isomorphism (see, "eg", \cite{DBLP:conf/stoc/ChandraM77}). We say that a "CQ" is `a core' if it is isomorphic to its "core". If $\gamma$ and $\delta$ are "hom-equivalent" then they have
+the same "core". Moreover, there is always an \AP""embedding""---"ie", a "homomorphism" which is injective both on variables and "atoms"---of $\core(\gamma)$ into $\gamma$.
+
+\paragraph*{Refinements and expansions of (U)CRPQs.}
+\AP For an NFA $\+A$ and two states $q,q'$ thereof, we denote by $\intro*\subaut{\+A}{q}{q'}$ the ""sublanguage"" of $\+A$ recognized  when considering $\set{q}$ as the set of initial states and $\set{q'}$ as the set of final states.
+\AP An ""atom $m$-refinement"" of a "CRPQ" "atom" $\gamma(x,y) = x \atom{L} y$ where $m\geq 1$ and $L$ is given by the NFA $\+A_L$ is any "CRPQ" of the form 
+\begin{equation}
+	\AP\label{eq:refinement}
+	\rho(x,y) = x \atom{L_1} t_1 \atom{L_2} \hdots \atom{L_{n-1}} t_{n-1} \atom{L_n} y
+\end{equation}
+where $1 \leq n \leq m$, $t_1,\hdots,t_{n-1}$ are fresh (existentially quantified) variables,
+and $L_1,\hdots,L_n$ are such that there exists a sequence $(q_0,\dotsc,q_n)$ of states of $\+A_L$
+such that $q_0$ is initial, $q_n$ is final, and for each $i$, $L_i$ is either of the form
+\begin{enumerate}[label=\roman*.]
+	\item $\subaut{\+A_L}{q_{i-1}}{q_{i}}$, or 
+	\item $\{a\}$ if the letter $a\in \A$ belongs to $\subaut{\+A_L}{q_{i-1}}{q_{i}}$.
+\end{enumerate}
+Additionally, if $\varepsilon \in L$, the \AP""equality atom"" ``$x = y$'' is also an \reintro{atom $m$-refinement}. Thus, an \reintro{atom $m$-refinement} can be either of the form \eqref{eq:refinement} or ``$x=y$''.
+By definition, note that the concatenation
+$L_1\cdots L_n$ is a subset of  $L$ and hence $\rho \contained \gamma$ for any "atom $m$-refinement" $\rho$ of $\gamma$.
+An \AP""atom refinement"" is an "atom $m$-refinement" for some $m$.
+
+Given a natural number $m$, an \AP""$m$-refinement"" of a "CRPQ" $\gamma(\bar x) = \bigwedge_{i} x_i \atom{L_i} y_i$ is any query resulting from: (1) replacing every "atom" by one of its "$m$-refinements@@atom", and (2)
+should some "$m$-refinements@@atom" have "equality atoms",
+collapsing the variables (and removing the identity atoms `$x=x$').
+\AP A ""refinement"" is an "$m$-refinement" for some $m$.
+Note that in a "refinement" of a "CRPQ"
+the "atom refinements" need not have the same length.
+For instance, both $\rho(x,x) = x \atom{c} x$ and $\rho'(x,y) = x \atom{a} t_1 \atom{a} y \coatom{c} y$ are "refinements" of $\gamma(x,y) = x \atom{a^*} y \coatom{c} x$.
+\AP
+We write $\intro*\Refin(\gamma(\bar x))$ to denote the set of all "refinements" of $\gamma(\bar x)$ and $\reintro*\Refin[\leq m](\gamma(\bar x))$ to the $m$-refinements. 
+
+The set of \AP""expansions"" of a "CRPQ" $\gamma$ is the set $\intro*\Exp(\gamma)$ of all "CQs" which are "refinements" of $\gamma$.
+In other words, an "expansion" of $\gamma$ is any "CQ" obtained from $\gamma$
+by replacing each "atom" $x \atom{L} y$ by a path $x \atom{w} y$ for some
+word $w \in L$. The "expansions" (resp.\ "refinements") of a "UCRPQ" are the "expansions" (resp.\ "refinements") of the "CRPQs" it contains.
+We define \AP""atom expansions"" analogously to "atom refinements". For "UCRPQs" we use  $\Exp(\Gamma)$, $\Refin(\Gamma)$ and $\Refin[\leq m](\Gamma)$ as for "CRPQs".
+
+Any "UCRPQ" is equivalent to the infinitary union of its "expansions". In light of this, 
+the semantics for "UCRPQs" can be rephrased as follows. 
+Given a "UCRPQ" $\Gamma(\bar x)$ and a graph database $G$, 
+the "evaluation" of $\Gamma(\bar x)$ on $G$, denoted by $\Gamma(G)$, is the set of tuples 
+$\bar{v}$ of nodes for which there is $\anexpansion \in \Exp(\Gamma)$ such that there is a "homomorphism" $\anexpansion \homto G$ that sends $\bar x$ onto $\bar v$. 
+
+"Containment" of "UCRPQs" can also be characterized in terms of "expansions".
+\begin{proposition}[Folklore, see e.g. {\cite[Proposition 3.2]{Florescu:CRPQ}} or
+	{\cite[Theorem 2]{four-italians}}]
+	\AP\label{prop:cont-char-exp-st} 
+	Let $\Gamma_1$ and $\Gamma_2$ be "UCRPQs". Then the following are equivalent:
+	% \begin{itemize}
+		% \item 
+		(i) $\Gamma_1 \contained \Gamma_2$;
+		% \item 
+		(ii) for every $\anexpansion_1\in \Exp(\Gamma_1)$, $\anexpansion_1 \contained \Gamma_2$;
+		% \item 
+		(iii) for every $\anexpansion_1\in \Exp(\Gamma_1)$ there is $\anexpansion_2\in \Exp(\Gamma_2)$ such that $\anexpansion_2\homto \anexpansion_1$. 
+	% \end{itemize}
+\end{proposition}
+
+
+\paragraph*{General assumptions.}
+To simplify proofs, we often assume that the regular languages are described via non-deterministic finite automata (NFA) instead of regular expressions,
+which does not affect any of our complexity bounds.
+However, for readability all our examples will be given in terms of regular expressions.
+
+\AP We denote by $\intro*\nbatoms{\gamma}$ the number of "atoms" of a "CRPQ" $\gamma$ and by $\intro*\nbvar{\gamma}$ the number of variables.
+We extend these notations to a "UCRPQ" $\Gamma$ by letting
+$\nbatoms{\Gamma} = \max_{\gamma \in \Gamma} \nbatoms{\gamma}$
+and $\nbvar{\Gamma} = \max_{\gamma \in \Gamma} \nbvar{\gamma}$. 
+We denote by $\size{\Gamma}$ the size (of a reasonable encoding) of a  "UCRPQ". 
+For a CRPQ $\gamma$, we define its  \AP""underlying graph"" $\intro*\underlying{\gamma}$ of $\gamma$ as the directed multigraph obtained from $\gamma$ by ignoring the regular languages labelling the atoms of $\gamma$. 
+
+We assume familiarity with basic concepts of directed multigraphs.
+For simplicity, thorough the paper, by `graph' we mean a directed multigraph. We also adapt implicitly in the natural way, concepts defined for "CRPQs" to (directed multi)graphs (such a "homomorphisms", "embeddings", etc.).
+A \AP""minor"" of a graph is any graph that can be obtained by removing
+edges, removing vertices---and their adjacent edges---, and \AP""contracting edges""---meaning that we identify the two endpoints of the edge and remove the edge from the graph.%
+\footnote{This definition is a trivial generalization of the notion of minors for undirected graphs.}

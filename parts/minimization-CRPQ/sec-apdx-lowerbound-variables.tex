@@ -1,0 +1,318 @@
+\section{Lower Bounds for Variable Minimization}
+\AP\label{apdx-sec:lowerbound-variables}
+
+\subsection{Equivalence with a Single Variable}
+
+\begin{theorem}
+	\AP\label{thm:variable-minimization-lowerbound}
+	There is a fixed alphabet "st" the problem of, given a "Boolean CRPQ"
+	on this alphabet with only five variables is "equivalent"
+	to a "Boolean CRPQ" with a single variable is "ExpSpace"-hard.
+\end{theorem}
+
+\begin{proof}
+	We use same idea as in \Cref{thm:minimization-lowerbound}.
+	We reduce the problem of \Cref{prop:variation-figueira} to the instance $\delta$, where
+	\begin{center}
+        \begin{tikzcd}[column sep=scriptsize]
+			&
+			&
+			&
+			x
+				\ar[dll, "\triangleright", bend right=20]
+				\ar["\marking", loop above, out=120, in=60, distance=1.8em]
+			&
+			&
+			\\[-.5em]
+			\delta() = &[-2.1em]
+            \qvar \ar[dr, "\A^*" swap, bend right=20] \ar[rrrr, "K"] &
+			&
+			&
+			&
+			\qvar,
+				\ar[ull, "\triangleleft", bend right=20]\\[-.5em]
+			&
+			&
+			\qvar \ar[rr, "L_1", bend left=20]
+				\ar[rr, "\raisebox{6pt}{\small\vdots}", phantom]
+				\ar[rr, "L_p" below, bend right=20] &
+			&
+			\qvar \ar[ur, "\A^*" swap, bend right=20]
+        \end{tikzcd}
+    \end{center}
+	where $\triangleright$, $\marking$ and $\triangleleft$ are new symbols.
+	Note that despite being named, variable $x$ is also existentially quantified.
+	
+	\begin{claim}
+		\AP\label{claim:variable-minimization-lowerbound-1}
+		If $\gamma_1 \contained \gamma_2$ then $\delta \semequiv \gamma'_1$
+		where $\gamma'_1() \defeq x \atom{\triangleright K \triangleleft} x
+		\land x \atom{\marking} x$.
+	\end{claim}
+	
+	If $\gamma_1 \contained \gamma_2$ then any word of $K$ contains a
+	factor which belongs to $\bigcap_j L_j$ and so $\gamma'_1 \contained \delta$.
+	The converse $\delta \contained \gamma'_1$ always holds.
+
+	\begin{claim}
+		\AP\label{claim:variable-minimization-lowerbound-2}
+		Conversely, if $\delta$ is "equivalent" to a "Boolean CRPQ" with
+		a single variable, then $\gamma_1 \contained \gamma_2$.
+	\end{claim}
+
+	Let $\zeta() = \bigwedge_{i=0}^n x \atom{M_i} x$ be a single-variable "Boolean CRPQ"
+	that is "equivalent" to $\delta$.
+
+	We first claim that there is some $i \in \lBrack 0,n\rBrack$
+	"st" $M_i = \{\marking\}$. Every "canonical database" of $\delta$ contains a $\marking$-self loop
+	and so from $\zeta \contained \delta$ it follows that any
+	"canonical database" of $\zeta$ contains a $\marking$-self loop, which in turns implies
+	that $M_i = \{\marking\}$ for some $i$. "Wlog", assume that $M_0 = \{\marking\}$.
+	
+	Observe that any "evaluation map" from $\zeta$ to a "canonical database"
+	of $\delta$ must send $x \in \zeta$ to $x \in \delta$ because of the $\marking$-self loop,
+	and conversely, any "evaluation map" from $\delta$ to a "canonical database"
+	of $\zeta$ must send $x \in \delta$ to $x \in \zeta$.
+
+	We remove from $\zeta$ all atoms $x \atom{M_i} x$ "st" $i \neq 0$
+	and $M_i \cap {\marking^*} \neq\emptyset$. Thanks to the
+	$\marking$-self loop, this transformation preserve the semantics of $\zeta$.
+	More generally, if $M_i$ contains a word in which the letter `$\marking$' occurs, we get remove 
+	the atom associated to $M_i$ altogether. The query obtained $\zeta'$ is clearly
+	"st" $\zeta \contained \zeta'$, but dually for any "canonical database" $G_{\zeta'}$ of
+	$\zeta'$, extend it to a "canonical database" $G_{\zeta}$ of $\zeta$ by picking, for any
+	atom that was removed, any word containing the letter `$\marking$'.
+	Since $\zeta \contained \delta$, there is an "evaluation map" from $\delta$
+	to $G_{\zeta}$. Now the atoms of $\delta$ except the $\marking$-self loop
+	do not use the letter $\marking$, and so it follows that the
+	"evaluation map" from $\delta$ to $G_{\zeta}$ actually yields
+	an "evaluation map" from $\delta$ to $G_{\zeta'}$.
+	\todo{add figure}
+	Hence, $\zeta' \contained \delta$ and thus $\zeta' \semequiv \delta$.
+
+	The same argument works for "atoms" containing a word that does not
+	start with $\triangleleft$, or that does not end $\triangleright$,
+	or that contain strictly more than one occurrence of these symbols.
+	Overall, it implies that "wlog" $\zeta$ is "equivalent" to
+	\[
+		x \atom{\marking} x \land \bigwedge_{j=1}^{m} x \atom{\triangleright N_j \triangleleft} x
+	\]
+	where $m \geq 0$ and the $N_j$'s are languages over $\A$.
+
+	Assume now, by contradiction, that for all $j \in \lBrack 1,m \rBrack$
+	"st" $N_j \not\subseteq K \cap \A^* \big(\bigwedge_i L_i\big) \A^*$. Pick for each $j$ a word $u_j$ witnessing this. 
+	The canonical database of $\zeta$ induced by these
+	words $\langle n_1, \hdots, n_m \rangle$, namely
+	\[x \atom{\marking} x \land \bigwedge_{j=1}^m x \atom{\triangleright n_j \triangleleft}\]
+	must satisfy $\delta$. But this implies that at least one $n_j$ must belong to
+	$K \cap \A^* \big(\bigcap_i L_i\big) \A^*$.
+	Contradiction.
+	
+	In fact, a argument similar to what we claimed before shows that
+	we can remove all "atoms" "st" $N_j \not\subseteq K \cap \A^* \big(\bigcap_i L_i\big) \A^*$ without changing the semantics.
+	Hence, "wlog", for each $j$, we have $N_j \subseteq K \cap \A^* \big(\bigcap_i L_i\big) \A^*$.
+
+	We then claim that each word of $K$ must belong to all $N_j$.
+	Indeed, let $u$ be a word of $K$. Let $v_i$ be a word in
+	$L_i \smallsetminus \A^* \big(\bigcap_k L_k\big) \A^*$---recall
+	that such words exist by an assumption of \Cref{prop:variation-figueira}---and
+	consider the "canonical database" of $\delta$ obtained by "expanding"
+	$K$ into $u$ and $L_i$ into $v_i$.
+	Now $\delta \contained \zeta$ so this database must satisfy $\zeta$.
+	Hence, for each $j$, $N_j$ must contain one word among $u$, $v_1, \hdots,v_m$.
+	It cannot be any $v_i$ since otherwise we would have $v_i \in N_j \subseteq
+	K \cap \A^* \big(\bigcap_k L_k\big) \A^* \subseteq \A^* \big(\bigcap_k L_k\big) \A^*$, which is a contradiction. And so $u \in N_j$.
+	Therefore, we have
+	\[
+		K \subseteq \bigcap_j N_j \subseteq K \cap \A^* \big(\bigcap_i L_i\big) \A^*
+	\]
+	from which it follows that $K \subseteq \big(\bigcap_k L_k\big)$ and hence
+	$\gamma_1 \contained \gamma_2$.
+	
+	Overall,
+	\Cref{claim:variable-minimization-lowerbound-1,claim:variable-minimization-lowerbound-2}
+	imply that $\gamma_1 \contained \gamma_2$ "iff" it is equivalent
+	to a "CRPQ" with a single variable, in which case it is actually equivalent to
+	\[\gamma'_1() \defeq x \atom{\triangleright K \triangleleft} x
+		\land x \atom{\marking} x,\]
+	which concludes the correctness of the reduction.
+\end{proof}
+
+\subsection{Variable Minimization is Harder than Containment}
+
+A \AP""class of (Boolean) CRPQs"" is a function \AP$\intro*\classCRPQ$ mapping an alphabet $\A$ 
+to a set $\classCRPQ_{\A}$ of "Boolean CRPQs", which is closed under variable renaming and alphabetic
+renaming of the languages.
+
+The \AP""disjoint conjunction"" \AP$\intro*\disconj$ of two "CRPQs" consists of
+the conjunction of the queries, up to renaming so that their variable sets are disjoint---of two queries is 
+the "class@@CRPQ" still belong to the "class@@CRPQ".
+We say that the "class@@CRPQ" is \AP""closed under disjoint conjunction""
+if $\gamma \in \classCRPQ_\A$ and $\delta \in \classCRPQ_\B$
+imply $\gamma \disconj \delta \in \classCRPQ_{\A \cup \B}$.
+
+Lastly, we say that the class is \AP""closed under variable marking""
+if \emph{one of} the three following properties holds: 
+\begin{description}
+	\itemAP[\intro*\axiomVarMarkingLoop] for any $\gamma \in \classCRPQ_{\A}$, if $y$ is a variable of $\gamma$,
+		if $a\not\in\A$, then $\gamma' \defeq \gamma \land y \atom{a} y$
+		is in $\classCRPQ_{\A\sqcup\{a\}}$, or
+	\itemAP[\intro*\axiomVarMarkingOut] for any $\gamma \in \classCRPQ_{\A}$, if $y$ is a variable of $\gamma$,	
+		if $a\not\in\A$, then $\gamma' \defeq \gamma \land y \atom{a} y'$
+		is in $\classCRPQ_{\A\sqcup\{a\}}$,
+		where $y'$ is a new variable not occurring in $\gamma$, or
+	\itemAP[\intro*\axiomVarMarkingIn] for any $\gamma \in \classCRPQ_{\A}$, if $y$ is a variable of $\gamma$,	
+		if $a\not\in\A$, then $\gamma' \defeq \gamma \land y' \atom{a} y$
+		is in $\classCRPQ_{\A\sqcup\{a\}}$,
+		where $y'$ is a new variable not occurring in $\gamma$.
+\end{description}
+
+We will sometimes write $\gamma \in \classCRPQ$ to mean that $\gamma\in\classCRPQ_{\A}$
+for some alphabet $\A$.
+
+\begin{fact}
+	Any "class@@CRPQ" defined by restricting the class of languages allowed to
+	label the "atoms" is both "closed under disjoint conjunction" and "closed under variable marking", assuming that languages of
+	the form $\{a\}$ are allowed, where $a$ is a single letter.
+\end{fact}
+
+\begin{theorem}
+	\AP\label{thm:reduction-containment-to-variable-minimization}
+	For any "class of CRPQs closed under disjoint conjunction" and
+	"closed under variable marking"
+	$\classCRPQ$, there is a polynomial-time reduction
+	from the "containment problem" for "Boolean" queries of $\classCRPQ$ to the "CRPQ" 
+	"minimization problem" restricted to queries of $\classCRPQ$. 
+	The same bound applies if we add the constraint that the target "CRPQ" must also belong to $\classCRPQ$.
+\end{theorem}
+
+Say that a "CRPQ" is \AP""degenerate@@CRPQ"" if it contains an atom labelled the language $\{\varepsilon\}$.
+Equivalently, it is "non-degenerate@@CRPQ" if it has at least one "canonical database"
+which is "non-degenerate@@db".
+
+\begin{fact}
+	\AP\label{fact:produce-non-degenerate}
+	One can turn a "degenerate CRPQ" into a "non-degenerate@@CRPQ" one by
+	iteratively identifying variables adjacent to an atom $\atom{\{\varepsilon\}}$.
+	This can be implemented in polynomial time.
+\end{fact}
+
+\begin{proof}[Proof of \Cref{thm:reduction-containment-to-variable-minimization}]
+	We assume for now that $\classCRPQ$ satisfies
+	the axiom $\axiomVarMarkingLoop$.
+	Given an instance $\gamma_1() \contained^{?} \gamma_2()$ of the "containment problem" for "Boolean" queries of $\classCRPQ$,
+	we assume "wlog" that $\gamma_1$ is "non-degenerate@@CRPQ" using \Cref{fact:produce-non-degenerate},
+	and we reduce it to the instance $\langle \delta_1 \disconj \gamma_2, \nbvar{\delta_1} \rangle$,
+	where $\delta_1$ is defined as:
+	\[
+		\delta_1() \defeq \gamma_1 \land \bigwedge_{x \in \vertex{\gamma_1}} x \atom{\marking_x} x
+	\]
+	where $\marking_x$ is a fresh letter for each $x \in \vertex{\gamma_1}$.
+	The reduction works clearly in logarithmic-space,
+	and clearly $\delta_1 \disconj \gamma_2 \in \classCRPQ$ since
+	$\classCRPQ$ is "closed under disjoint conjunction" and $\axiomVarMarkingLoop$.
+	Moreover, for it to be correct
+	we need to show that $\gamma_1 \contained \gamma_2$ "iff" $\delta_1 \disconj \gamma_2$
+	is "equivalent" to a "CRPQ" with at most $\nbvar{\delta_1}$ variables.
+
+	\begin{claim}
+		\AP\label{claim:reduction-containment-to-variable-minimization-1}
+		If $\gamma_1 \contained \gamma_2$ then $\delta_1 \disconj \gamma_2 \semequiv \delta_1$.
+	\end{claim}
+
+	Indeed, $\gamma_1 \contained \gamma_2$ implies $\delta_1 \contained \gamma_1 \contained \gamma_2$ and so $\delta_1 \disconj \gamma_2 \semequiv \delta_1$.
+
+	Actually this property is an ``if and only if''. For the converse, we will prove a stronger statement.
+
+	\begin{claim}
+		\AP\label{claim:reduction-containment-to-variable-minimization-2}
+		If $\delta_1 \disconj \gamma_2$ is "equivalent" to a "CRPQ"
+		with at most $\nbvar{\delta_1}$ variables, then $\gamma_1 \contained \gamma_2$.
+	\end{claim}
+
+	Let $\zeta$ be a "CRPQ" with at most $\nbvar{\delta_1}$ variables
+	that is equivalent to $\delta_1 \disconj \gamma_2$.
+	
+	We claim first that for each $x \in \vertex{\zeta}$ there is a
+	unique variable in $\zeta$ with a $\marking_x$-self-loop.
+	Indeed, consider any "canonical database" $Z$ of $\zeta$:
+	since $\zeta \contained \delta_1 \disconj \gamma_2$, there exists
+	a "canonical database" $D_1$ of $\delta_1$ and $G_2$ of $\gamma_2$ "st"
+	$D_1 \oplus G_2 \homto Z$ where $\oplus$ denotes the disjoint union.
+	Since $D_1$ contains a $\marking_x$-self loop for each $x\in \vertex{\gamma_1}$,
+	so does $Z$. Since this property holds for every $Z$, it follows that
+	$\zeta$ must have a self-loop atom labelled by the singleton language $\{\marking_x\}$
+	for each $x\in \vertex{\gamma_1}$.
+
+	Now observe that no variable of $\zeta$ can be labelled by two $\marking_x$-self-loops
+	with $x\in\vertex{\gamma_1}$. Indeed, $\gamma_1$ is "non-degenerate@@CRPQ", and so $\delta_1$
+	is also "non-degenerate@@CRPQ", and so there
+	exists a "canonical database" $D_1$ of $\delta_1$ which is "non-degenerate@@db".
+	Then, pick any canonical database $G_2$ of $\gamma_2$.
+	$D_1 \oplus G_2$ is a "canonical database" of $\delta_1 \disconj \gamma_2$, which is 
+	equivalent to $\zeta$, so there is an "evaluation map"
+	from $\zeta$ to $D_1 \oplus G_2$. If a variable of $\zeta$ had both a
+	$\marking_x$- and a $\marking_y$-self-loop for $x \neq y \in \vertex{\gamma_1}$,
+	then so would either $D_1$ or $G_2$. $G_2$ contains no such letters, and so it would have
+	to be $D_1$. This contradicts the definition of $D_1$.
+	Hence, no variable of $\zeta$ can be labelled by two $\marking_x$-self-loops.
+	Together with the previous paragraph and the fact that 
+	$\zeta$ has at most $\nbvar{\delta_1} = \nbvar{\gamma_1}$ variables, it follows that
+	we can assume "wlog"---up to renaming the variables of $\zeta$---that
+	$\vertex{\zeta} = \vertex{\gamma_1}$ and for each $x \in \vertex{\gamma_1}$,
+	$x \atom{\marking_x} x$ is an "atom" of $\zeta$. Moreover, this is the only self-loop in
+	$\zeta$ labelled by $\{\marking_x\}$, and for any self-loop atom $x \atom{L} x$
+	we cannot have $\marking_y \in L$ for any $y \neq x \in \vertex{\gamma_1}$. 
+	
+	We are now ready to prove that $\gamma_1 \contained \gamma_2$.
+	Let $G_1$ be a "canonical database" of $\gamma_1$, and let $D_1$ be the associated
+	"canonical database" of $\delta_1$---it is obtained by adding an $\marking_x$-self-loop
+	on every $x \in \vertex{\gamma_1}$.
+	Pick any canonical database $G_2$ of $\gamma_2$. Since $\delta_1 \disconj \gamma_2 \contained \zeta$, there exists a "canonical database" $Z$ of $\zeta$
+	"st" $Z \homto D_1 \oplus G_2$.
+	But then, since $\zeta \contained \delta_1 \disconj \gamma_2$, there exists
+	$D'_1$ and $G'_2$, which are "canonical databases" of $\delta_1$ and $\gamma_2$,
+	respectively, "st"
+	\[
+		D'_1 \oplus G'_2 \homto
+		Z \homto
+		D_1 \oplus G_2.
+	\]
+	Restrict this homomorphism to $G'_2$: we obtain 
+	\[
+		G'_2 \homto
+		Z \homto
+		D_1 \oplus G_2.
+	\]
+	Now note that, because of the previous paragraph,
+	the "homomorphism" $Z \homto D_1 \oplus G_2$ must map $x \in \vertex{Z}$  
+	to $x \in \vertex{D_1}$---because of the $\marking_x$-self-loop.
+	Since $D_1 \oplus G_2$ is a disjoint union, it follows that image of this
+	"homomorphism" is actually included in $D_1$, and so obtain a "homomorphism"
+	\[
+		G'_2 \homto Z \homto D_1.
+	\]
+	Now of course $\marking_x$-self-loop will occur in the image of any "homomorphism"
+	$Z \homto D_1$. However, in the composition $G'_2 \homto Z \homto D_1$,
+	since $G'_2$ does not use any letter of the form $\marking_x$, $x\in \vertex{\gamma_1}$,
+	we conclude we actually get a "homomorphism"
+	\[
+		G'_2 \homto G_1,
+	\]
+	which concludes the proof that $\gamma_1 \contained \gamma_2$
+	and hence of \Cref{claim:reduction-containment-to-variable-minimization-2}.
+	
+	Now \Cref{claim:reduction-containment-to-variable-minimization-1,claim:reduction-containment-to-variable-minimization-2} imply that
+	$\gamma_1 \contained \gamma_2$ "iff" $\delta_1 \disconj \gamma_2$ is "equivalent" to a "CRPQ"
+	with at most $\nbvar{\delta_1}$ variables, which concludes the reduction under the assumption
+	that $\classCRPQ$ satisfies $\axiomVarMarkingLoop$.
+
+	To conclude, note that
+	if $\classCRPQ$ satisfies either $\axiomVarMarkingOut$ or $\axiomVarMarkingIn$ then exactly the same proof works, except that the definition of $\delta_1$
+	should be changed: variables will be marked using outgoing and incoming edges, respectively.
+	Lastly, since $\delta_1 \in \classCRPQ$, then we have as a by-product of our proof
+	that $\delta_1 \disconj \gamma_2$ is equivalent to a "CRPQ" with at most $k$ atoms
+	"iff" it is equivalent to a "CRPQ" of $\classCRPQ$ with at most $k$ atoms.
+	It follows that this reduction also works it we add the constraint that
+	$\delta$ must be in $\classCRPQ$.
+\end{proof}

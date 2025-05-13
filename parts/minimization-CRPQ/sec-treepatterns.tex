@@ -1,0 +1,52 @@
+\section{Not included: Tree-like Queries}
+
+\diego{Tree patterns as CRPQs: define "standard encoding" of letters by self-loops}
+The minimization of ""tree patterns"" has been thoroughly studied \cite{min-tree-patterns}. 
+A "tree pattern" can be seen in our context as a special kind of tree-like "CRPQ". Let us call a \AP""pseudo-tree"" to any directed multigraph such that (i) it has no parallel edges (in particular no parallel self-loops) and (ii) once the self-loops are removed, it is a directed `root-to-leaves' tree.
+Let us fix an alphabet letter $e \in \A$ which will be used to model the child relation.
+A \AP""tree pattern CRPQ"" is then any "CRPQ" such that
+\begin{itemize}
+  \item the underlying directed multigraph of the query is a "pseudo-tree"; and
+  \item its "self-loops" are of the form $x \atom{a} x$ for some $a \in \A \setminus \set{e}$
+  \item its remaining "atoms" are form (a) $x \atom{e^+} y$ or (b) $x \atom{e} y$.
+\end{itemize}
+A \AP""pseudo-tree database"" is a "graph database" such that
+\begin{itemize}
+  \item the underlying directed multigraph of the query is a "pseudo-tree"; and
+  \item every "vertex" $v$ there is an edge $(v,a,v)$ for some $a \in \A \setminus \set{e}$
+  \item its remaining "edges" are of the form $(v,e,v')$.
+\end{itemize}
+
+\knowledgenewrobustcmd{\treePatEnc}[1]{\cmdkl{\textup{\bf t}_{#1}}}
+We can then define a bijection between "tree pattern CRPQs" and "tree patterns". Given a "tree pattern CRPQ" $q$, we define $\intro*\treePatEnc{q}$ to be the "tree pattern" consisting of treating self-loops as node labels, $x \atom{e^+} y$ as the descendant relation, and $x \atom{e} y$ as the child relation. It is easy to see that $\set{q \mapsto \treePatEnc{q}}$ is a bijection. 
+
+\begin{lemma}\AP\label{lem:treepat-crpq}
+  A "tree pattern CRPQ" $q$ is "atom-minimal" if, and only if, $\treePatEnc{q}$ is minimal (among tree patterns over trees).
+\end{lemma}
+\begin{proof}
+  \proofcase{Left-to-right.}
+  Observe the following:
+  \begin{claim}\AP\label{cl:atommin-over-trees=treepatmin}
+    The following are equivalent for each "tree pattern CRPQ" $q$:
+    \begin{enumerate}
+      \item $q$ is "atom-minimal" among "tree pattern CRPQs" over "pseudo-tree databases";
+      \item $\treePatEnc{q}$ is minimal among "tree patterns" over trees.
+    \end{enumerate}  
+  \end{claim}
+  \begin{claim}\AP\label{cl:equiv-overtrees-overgraphs}
+    Two "tree pattern CRPQs" are "equivalent" over "pseudo-tree databases" if, and only if, they are "equivalent" over arbitrary "graph databases".
+  \end{claim}
+  In view of \Cref{cl:atommin-over-trees=treepatmin,cl:equiv-overtrees-overgraphs} we have that
+  % \begin{remark}
+    if a "tree pattern CRPQ" $q$ is "atom-minimal" (among all "CRPQs" over arbitrary "graph databases"), then $\treePatEnc{q}$ is "minimal" (among "tree patterns" over trees).
+  % \end{remark}
+
+  \proofcase{Right-to-left.}
+  By \Cref{cl:atommin-over-trees=treepatmin,cl:equiv-overtrees-overgraphs}, it suffices to show that if a "tree pattern CRPQ" is "atom-minimal" among "tree pattern CRPQs", then it is also "atom-minimal" among all "CRPQs". In other words, if a "tree pattern CRPQs" $q$ is "equivalent" to a "CRPQ" $q'$ with fewer "atoms", then it is also equivalent to a "tree pattern CRPQ" $q''$ with fewer "atoms".
+  \diego{TBC... Rémi, the floor is yours :)}
+\end{proof}
+
+As a consequence of \cite[Theorem~3.1]{min-tree-patterns} and the previous \Cref{lem:treepat-crpq} we then have:
+\begin{corollary}
+  The "atom-minimization problem" for "tree pattern CRPQs" is "SigmaP2"-complete.
+\end{corollary}

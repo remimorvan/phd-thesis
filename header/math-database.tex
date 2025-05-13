@@ -11,7 +11,8 @@
 % Alphabets, graphs
 % ---
 
-\knowledgenewrobustcmd{\A}{\mathbb{A}} % Finite alphabet of labels
+\newrobustcmd{\A}{\mathbb{A}} % Finite alphabet of labels
+\newrobustcmd{\B}{\mathbb{B}}
 \knowledgenewrobustcmd{\Aext}{\cmdkl{\mathbb{A}^\pm}} % Finite alphabet of labels
 \knowledgenewrobustcmd\vertex[1]{\cmdkl{V}(#1)}
 \knowledgenewrobustcmd\edges[1]{\cmdkl{E}(#1)}
@@ -23,6 +24,10 @@
 % ---
 
 \knowledgenewrobustcmd{\atoms}[1]{\cmdkl{\textnormal{Atoms}}(#1)}
+\knowledgenewrobustcmd{\vars}{\cmdkl{\textrm{vars}}} % set of variables of a query
+
+\knowledgenewrobustcmd{\underlying}[1]{\cmdkl{G_{#1}}} % underlying graph
+
 \knowledgenewrobustcmd{\contained}{\mathrel{\cmdkl{\subseteqq}}}
 \newrobustcmd{\strcontained}{
   \mathrel{\withkl{\kl[\contained]}{\cmdkl{%
@@ -32,23 +37,32 @@
 \disablecommand\equiv
 \suggestcommand\equiv{Use instead \semequiv for semantical equivalence.}
 \knowledgenewrobustcmd{\semequiv}{\mathrel{\cmdkl{\LaTeXequiv}}}
+
+\knowledgenewrobustcmd{\nbvar}[2][]{\cmdkl{\|}#2\cmdkl{\|^{#1}_{\textrm{var}}}}
 \knowledgenewrobustcmd{\nbatoms}[2][]{\cmdkl{\|}#2\cmdkl{\|^{#1}_{\textrm{at}}}}
 \knowledgenewrobustcmd{\size}[1]{\cmdkl{\|}#1\cmdkl{\|}}
-\knowledgenewrobustcmd{\vars}{\cmdkl{\textrm{vars}}} % set of variables of a query
+
 \newrobustcmd{\collapse}{\approx}
+
 \knowledgenewrobustcmd{\Exp}{\cmdkl{\textnormal{Exp}}} % set of expansions
+\knowledgenewrobustcmd{\cdb}{ % canonical database
+  \mathrel{\cmdkl{%
+    \vDash^{\star}
+  }}
+}
 
 % --- 
 % Classes of queries
 % ---
 
-\knowledgenewrobustcmd{\UCtwoRPQ}{\cmdkl{\textnormal{UC2RPQ}}}
-\newrobustcmd{\UCRPQ}{\kl[\UCtwoRPQ]{\textnormal{UCRPQ}}}
-\newrobustcmd{\CtwoRPQ}{%
-  \withkl{\kl[\UCtwoRPQ]}{\cmdkl{%
-    \textnormal{C2RPQ}
-  }}
-}
+\def\ifempty#1{\ifx\empty#1\empty}
+\knowledgenewrobustcmd{\CQ}[1][]{\ifempty{#1}\textnormal{"CQ"}\else\cmdkl{\textnormal{CQ}(#1)}\fi}
+\knowledgenewrobustcmd{\CRPQ}[1][]{\ifempty{#1}\textnormal{"CRPQ"}\else\cmdkl{\textnormal{CRPQ}(#1)}\fi}
+\knowledgenewrobustcmd{\CtwoRPQ}[1][]{\ifempty{#1}\textnormal{"C2RPQ"}\else\cmdkl{\textnormal{CRPQ}(#1)}\fi}
+\knowledgenewrobustcmd{\infUCRPQ}[1][]{\ifempty{#1}\cmdkl{\textnormal{UCRPQ}^\infty}\else\cmdkl{\textnormal{UCRPQ}^\infty(#1)}\fi}
+\knowledgenewrobustcmd{\UCRPQ}[1][]{\ifempty{#1}\textnormal{"UCRPQ"}\else\cmdkl{\textnormal{UCRPQ}(#1)}\fi}
+\knowledgenewrobustcmd{\UCtwoRPQ}[1][]{\ifempty{#1}\textnormal{"UC2RPQ"}\else\cmdkl{\textnormal{UC2RPQ}(#1)}\fi}
+
 
 \knowledgenewrobustcmd{\UCRPQSRE}{\ensuremath{\cmdkl{\textup{UCRPQ}(\textup{SRE})}}}
 \newrobustcmd{\CRPQSRE}{%
@@ -125,3 +139,89 @@
 \knowledgenewrobustcmd{\pathl}{\cmdkl{\mathbf{P}_{\!l}}} % path-l approximation query
 \knowledgenewrobustcmd\subaut[3]{#1\cmdkl{[#2,#3]}} % subautomaton
 \knowledgenewrobustcmd{\fun}{\cmdkl{f}}
+
+% ---
+% Minimization > approximations
+% ---
+
+\knowledgenewrobustcmd{\App}[3]{\cmdkl{\textup{App}_{#2}^{\smash{\leq #3}}(#1)}}
+\knowledgenewrobustcmd{\AppInf}[2]{\cmdkl{\textup{App}_{#2}^{\infty}(#1)}}
+
+
+% ---
+% Minimization > segments
+% ---
+
+\knowledgenewrobustcmd{\seggraph}{\mathop{\cmdkl{\+{S\!G}}}}
+
+\knowledgenewrobustcmd{\nbseg}[2][]{\cmdkl{\|}#2\cmdkl{\|^{#1}_{\textrm{seg}}}}
+\knowledgenewrobustcmd{\nbsegmentsOw}[2][]{\cmdkl{\|}#2\cmdkl{\|^{#1}_{\textrm{1seg}}}}
+\knowledgenewrobustcmd{\nbsegmentsTw}[2][]{\cmdkl{\|}#2\cmdkl{\|^{#1}_{\textrm{2seg}}}}
+
+% ---
+% Minimization > proof decidability minimization
+% ---
+
+\newrobustcmd{\weakequiv}[1]{
+  \mathrel{\withkl{\kl[\weakequiv]}{\cmdkl{%
+    \sim_{#1}
+  }}}
+}
+\knowledge{\weakequiv}{notion}
+
+% ---
+% Minimization > lowerbounds
+% ---
+
+\knowledgenewrobustcmd{\classCRPQ}{\cmdkl{\+Q}}
+\newrobustcmd{\marking}{\triangledown}
+
+\makeatletter
+\newcommand\incircbin
+{%
+  \mathpalette\@incircbin
+}
+\newcommand\@incircbin[2]
+{%
+  \mathbin%
+  {%
+    \ooalign{\hidewidth$#1#2$\hidewidth\crcr$#1\bigcirc$}%
+  }%
+}
+\makeatother
+\knowledgenewrobustcmd{\disconj}{\mathbin{\cmdkl{\incircbin{\land}}}}
+
+\knowledgenewrobustcmd{\erasingmorphism}[2][]{\cmdkl{\phi^{#1}_{-#2}}}
+\knowledgenewrobustcmd{\autoclass}[1]{\cmdkl{\+A_{#1}}}
+\knowledgenewrobustcmd{\InclusionPb}[1][\autoclass{\classCRPQ}]{\cmdkl{\textsc{NFA Inclusion}(#1)}}
+
+\knowledgenewrobustcmd{\alphabetmarking}{\cmdkl{\mathbb{M}}}
+
+\knowledgenewrobustcmd{\axiomsCanon}{\cmdkl{\textup{(\textsf{Cnz})$_*$}}}
+\knowledgenewrobustcmd{\axiomCanonMonotonicity}{\cmdkl{\textup{(\textsf{Cnz})$_\textsf{monotonic}$}}}
+\knowledgenewrobustcmd{\axiomCanonContracted}{\cmdkl{\textup{(\textsf{Cnz})$_\textsf{contracted}$}}}
+\knowledgenewrobustcmd{\axiomCanonCore}{\cmdkl{\textup{(\textsf{Cnz})$_\textsf{str-onto}$}}}
+\knowledgenewrobustcmd{\axiomCanonNonRed}{\cmdkl{\textup{(\textsf{Cnz})$_\textsf{non-red}$}}}
+\knowledgenewrobustcmd{\axiomCanonContainment}{\cmdkl{\textup{(\textsf{Cnz})$_\textsf{containment}$}}}
+\knowledgenewrobustcmd{\axiomCanonMarking}{\cmdkl{\textup{(\textsf{Cnz})$_\textsf{marking}$}}}
+\knowledgenewrobustcmd{\axiomStrongCanonCore}{\cmdkl{\textup{(\textsf{SCnz})$_\textsf{str-onto}$}}}
+
+\knowledgenewrobustcmd{\axiomVarMarkingLoop}{\cmdkl{\textup{(\textsf{VM})$_\textsf{loop}$}}}
+\knowledgenewrobustcmd{\axiomVarMarkingOut}{\cmdkl{\textup{(\textsf{VM})$_\textsf{out}$}}}
+\knowledgenewrobustcmd{\axiomVarMarkingIn}{\cmdkl{\textup{(\textsf{VM})$_\textsf{in}$}}}
+
+% ---
+% Minimization > misc
+% ---
+
+\knowledgenewrobustcmd{\Unfold}{\mathop{\cmdkl{\+U}}} % unfolding
+
+\newcommand{\xrightarrowdbl}[2][]{%
+  \xrightarrow[#1]{#2}\mathrel{\mkern-14mu}\rightarrow
+}
+\knowledgenewrobustcmd{\surjto}{\mathrel{\cmdkl{\xrightarrowdbl{\smash{\textit{\tiny hom}}}}}}
+
+\newcommand{\orig}{\textit{orig}}
+\newcommand{\cont}{\textit{contr}}
+
+\knowledgenewrobustcmd{\Encoding}{\mathop{\cmdkl{\textrm{Enc}}}}

@@ -43,7 +43,7 @@ by simply looking at the "syntactic synchronous algebra" of $\+R$.
 	\proofcase{(1) $\Rightarrow$ (2).} Since $\+R$ is a "$\+V$-relation", there exists
 	$\+L \in \+V_{\SigmaPair}$ such that $\proj{\+R} = \+L \cap \WellFormed$.
 	Hence, there exists a morphism of monoids $\phi\colon (\SigmaPair)^* \to M$ such 
-	that $M \in \B{V}$ and $\+L = \phi^{-1}[\Acc]$ for some $\Acc \subseteq M$.
+	that $M \in \symbb{V}$ and $\+L = \phi^{-1}[\Acc]$ for some $\Acc \subseteq M$.
 	It follows that $\proj{\+R} = \+L \cap \WellFormed[\Sigma]$ rewrites as
 	``for all $u \in \WellFormed$, $\phi(u) \in \Acc$ "iff" $u \in \proj{\+R}$''.
 	Letting $\inducedalg{M}$ be the "synchronous algebra induced by the monoid" $M$, define
@@ -55,12 +55,12 @@ by simply looking at the "syntactic synchronous algebra" of $\+R$.
 	"ie" $\phi(u) \in \Acc$,
 	that is $\psi(\type{u}{\sigma}) = \type{(\phi(u))}{\sigma} \in \Acc'$.
 	Notice then that all "underlying monoids" of $\inducedalg{M}$ are $M$,
-	and hence they belong to $\B{V}$.
+	and hence they belong to $\symbb{V}$.
 
 	\proofcase{(2) $\Rightarrow$ (3).} By \Cref{lem:syntactic-morphism-theorem}, 
 	the "syntactic synchronous algebra" of $\+R$ "divides@@sync"
 	any "algebra@@sync" $\?B$ "recognizing@@sync" $\+R$.
-	In particular, its "underlying monoids" "divide@@monoid" the "underlying monoids" of $\?B$. The conclusion follows since $\B{V}$ is closed under "division@@monoid". 
+	In particular, its "underlying monoids" "divide@@monoid" the "underlying monoids" of $\?B$. The conclusion follows since $\symbb{V}$ is closed under "division@@monoid". 
 	
 	\proofcase{(3) $\Rightarrow$ (1).} Denote by $M_{\LL}, M_{\LB}$ and $M_{\BL}$ the 
 	"underlying monoids" of $\SyntSA{\+R}$. Let $\Acc \subseteq \SyntSA{\+R}$ be the accepting set 
@@ -288,16 +288,16 @@ satisfy this property. In general, we say that a "synchronous algebra" $\?A$ is 
 generated@@sync"" if every element of type $\LL\to\LB$ (resp.~$\LL\to\BL$)
 can be written as the product of an element of type $\LL$ with an element of type $\LB$ (resp.~$\BL$).
 
-A \AP""pseudovariety of synchronous algebras"" is any class $\B{V}$
+A \AP""pseudovariety of synchronous algebras"" is any class $\symbb{V}$
 of "locally generated@@sync" finite "synchronous algebras" closed under
 \begin{itemize}
-	\item \emph{finite product:} if $\?A, \?B \in \B{V}$ then $\?A \times \?B \in \B{V}$,
-	\item \emph{division:} if some finite "locally generated" algebra $\?A$ "divides@@sync" $\?B$ for some $\?B \in \B{V}$, then $\?A \in \B{V}$.
+	\item \emph{finite product:} if $\?A, \?B \in \symbb{V}$ then $\?A \times \?B \in \symbb{V}$,
+	\item \emph{division:} if some finite "locally generated" algebra $\?A$ "divides@@sync" $\?B$ for some $\?B \in \symbb{V}$, then $\?A \in \symbb{V}$.
 \end{itemize}
 
 Because of \Cref{lem:syntactic-morphism-theorem}, an "automatic relation" is "recognized@@sync"
-by a finite synchronous algebra of a "pseudovariety@@syncalg" $\B{V}$ "iff"
-its "syntactic synchronous algebra" belongs to $\B{V}$.
+by a finite synchronous algebra of a "pseudovariety@@syncalg" $\symbb{V}$ "iff"
+its "syntactic synchronous algebra" belongs to $\symbb{V}$.
 
 A \AP""$\ast$-pseudovariety of automatic relations"" is a function $\+V \colon \Sigma \mapsto \+V_\Sigma$
 such that for any finite alphabet $\Sigma$, $\+V_\Sigma$ is a set of "automatic relations" over 
@@ -505,11 +505,11 @@ two words $(u,v)$ of the same length. But then $(ua, va) \not\in \+S$.
 	"residuals" is also closed under "syntactic derivatives".
 \end{proof}
 
-Let \AP$\B{V} \intro*\corrAR \+V$ denote the map (called \emph{correspondence}) that takes a 
+Let \AP$\symbb{V} \intro*\corrAR \+V$ denote the map (called \emph{correspondence}) that takes a 
 "pseudovariety of synchronous algebras" and maps it to
-\[\+V\colon \Sigma \mapsto \{\+R \subseteq \Sigma^*\times \Sigma^* \mid \SyntSA{\+R} \in \B{V}\}.\]
+\[\+V\colon \Sigma \mapsto \{\+R \subseteq \Sigma^*\times \Sigma^* \mid \SyntSA{\+R} \in \symbb{V}\}.\]
 
-Dually, let \AP$\+V \intro*\corrRA \B{V}$ denote the \emph{correspondence} that takes
+Dually, let \AP$\+V \intro*\corrRA \symbb{V}$ denote the \emph{correspondence} that takes
 a "$\ast$-pseudo\-variety of automatic relations" $\+V$
 and maps it to the "pseudovariety of synchronous algebras" "generated@@var" by
 all $\SyntSA{\+R}$ for some $\+R \in \+V_{\Sigma}$.
@@ -524,7 +524,7 @@ that "divide@@sync" a finite product of "algebras@@sync" of $C$.\footnote{Note t
 \AP\phantomintro(sync){Eilenberg-Schützenberger correspondence theorem}\vspace{-1em}
 \begin{restatable}[\reintro{An Eilenberg theorem for automatic relations}]{lemma}{thmeilenberg}
 	\AP\label{lem:eilenberg-sy}
-	The correspondences $\B{V} \corrAR \+V$ and $\+V \corrRA \B{V}$ define
+	The correspondences $\symbb{V} \corrAR \+V$ and $\+V \corrRA \symbb{V}$ define
 	mutually inverse bijections between "pseudovarieties of
 	synchronous algebras" and "$\ast$-pseudovarieties of automatic relations".
 \end{restatable}
@@ -533,33 +533,33 @@ that "divide@@sync" a finite product of "algebras@@sync" of $C$.\footnote{Note t
 	We very roughly follow the proof schema of \cite[\S XIII.4, pp.~226--229]{Pin2022MathematicalFoundations}, which is
 	a proof of Eilenberg's theorem in the context of monoids.
 
-	\proofcase{The correspondence $\B{V} \corrAR \+V$ produces varieties.}
-	First we have to show that if $\B{V}$ is a "pseudovariety
-	of synchronous algebras" and $\B{V} \corrAR \+V$, then $\+V$ is a
+	\proofcase{The correspondence $\symbb{V} \corrAR \+V$ produces varieties.}
+	First we have to show that if $\symbb{V}$ is a "pseudovariety
+	of synchronous algebras" and $\symbb{V} \corrAR \+V$, then $\+V$ is a
 	"$\ast$-pseudovarieties of automatic relations".
-	Since $\B{V}$ is closed under finite products, $\+V$ is closed under Boolean operations.
+	Since $\symbb{V}$ is closed under finite products, $\+V$ is closed under Boolean operations.
 
 	\emph{"Syntactic derivatives":} Then let $\+R \in \+V_\Sigma$, and let $\+S$ be any other relation
 	"recognized@@sync" by $\SyntSA{\+R}$. This implies that $\SyntSA{\+S}$
-	"divides@@sync" $\SyntSA{\+R}$, and so $\SyntSA{\+S} \in \B{V}$, from which
+	"divides@@sync" $\SyntSA{\+R}$, and so $\SyntSA{\+S} \in \symbb{V}$, from which
 	we have $\SyntSA{\+S} \in \+V_\Sigma$.
 
 	\emph{"Inverse morphisms":} Lastly, if $\+R \in \+V_\Sigma$, say $\proj{\+R} = \SyntSAM[-1]{\+R}[\Acc]$,
 	if $\psi\colon \Sync\Gamma \to \Sync\Sigma$ is a "synchronous algebra morphism",
 	then $\psi^{-1}[\+R] = (\SyntSAM{\+R} \circ \psi)^{-1}[\Acc]$, so
 	$\psi^{-1}[\+R]$ is "recognized@@sync" by $\SyntSA{\+R}$, that is
-	$\SyntSA{\psi^{-1}[\+R]}$ "divides@@sync" $\SyntSA{\+R}$. Since $\SyntSA{\+R} \in \B{V}$
-	and $\B{V}$ is closed by "division@@sync", it follows that $\SyntSA{\psi^{-1}[\+R]} \in \B{V}$
+	$\SyntSA{\psi^{-1}[\+R]}$ "divides@@sync" $\SyntSA{\+R}$. Since $\SyntSA{\+R} \in \symbb{V}$
+	and $\symbb{V}$ is closed by "division@@sync", it follows that $\SyntSA{\psi^{-1}[\+R]} \in \symbb{V}$
 	and hence $\psi^{-1}[\+R] \in \+V_{\Gamma}$. 
 	This concludes the proof that $\+V$ is a "$\ast$-pseudovariety of automatic relations".
 
-	\proofcase{Inverse bijections: part 1.} Assume that $\B{V} \corrAR \+V$ and $\+V \corrRA \B{W}$.
+	\proofcase{Inverse bijections: part 1.} Assume that $\symbb{V} \corrAR \+V$ and $\+V \corrRA \symbb{W}$.
 	Then
-	\[\+V\colon \Sigma \mapsto \{\+R \subseteq \Sigma^*\times \Sigma^* \mid \SyntSA{\+R} \in \B{V}\},\]
-	and so $\B{W}$ is the "pseudovariety@@syncalg" generated by all "syntactic synchronous algebras" that 
-	belong to $\B{V}$.
-	It follows that $\B{W} \subseteq \B{V}$.
-	To prove that $\B{V} \subseteq \B{W}$, let $\?A \in \B{V}$.
+	\[\+V\colon \Sigma \mapsto \{\+R \subseteq \Sigma^*\times \Sigma^* \mid \SyntSA{\+R} \in \symbb{V}\},\]
+	and so $\symbb{W}$ is the "pseudovariety@@syncalg" generated by all "syntactic synchronous algebras" that 
+	belong to $\symbb{V}$.
+	It follows that $\symbb{W} \subseteq \symbb{V}$.
+	To prove that $\symbb{V} \subseteq \symbb{W}$, let $\?A \in \symbb{V}$.
 	Let $\Sigma_{\?A}$ be an alphabet big enough so that
 	there are injections from $\?A_{\LL}$ to $\Sigma_{\?A}\times \Sigma_{\?A}$,
 	and from $\?A_{\LB}$ and $\?A_{\BL}$ to $\Sigma_{\?A} \times \pad$ and $\pad \times \Sigma_{\?A}$,
@@ -593,14 +593,14 @@ that "divide@@sync" a finite product of "algebras@@sync" of $C$.\footnote{Note t
 		& \?A
 	\end{tikzcd}\end{center}
 	it follows that $\chi$ is in fact a surjective "synchronous algebra morphism".\footnote{See "eg" \cite[Lemma 3.2, p.~10]{Bojanczyk2015Recognisable} for a proof in a similar (but different) context.} Hence, $\?A$ is a "quotient@@sync" of $\?B_0$, which is a "subalgebra@@sync" of
-	$\?B$, which in turns in a product of "algebras@@sync" from $\B{W}$, and so $\?A \in \B{W}$.
-	It concludes the proof that $\B{V} = \B{W}$.
+	$\?B$, which in turns in a product of "algebras@@sync" from $\symbb{W}$, and so $\?A \in \symbb{W}$.
+	It concludes the proof that $\symbb{V} = \symbb{W}$.
 
-	\proofcase{Inverse bijections: part 2.} Assume now that $\+V \corrRA \B{V}$
-	and $\B{V} \corrAR \+W$. Then for each $\Sigma$, for each $\+R \in \+V_{\Sigma}$,
-	$\SyntSA{\+R} \in \B{V}$ so $\+R \in \+W_{\Sigma}$, and hence $\+V \subseteq \+W$.
+	\proofcase{Inverse bijections: part 2.} Assume now that $\+V \corrRA \symbb{V}$
+	and $\symbb{V} \corrAR \+W$. Then for each $\Sigma$, for each $\+R \in \+V_{\Sigma}$,
+	$\SyntSA{\+R} \in \symbb{V}$ so $\+R \in \+W_{\Sigma}$, and hence $\+V \subseteq \+W$.
 
-	We then want to show the converse inclusion, namely $\+W \subseteq \+V$. Let $\+R \in \+W_{\Sigma}$ for some $\Sigma$, "ie" $\SyntSA{\+R} \in \B{V}$.
+	We then want to show the converse inclusion, namely $\+W \subseteq \+V$. Let $\+R \in \+W_{\Sigma}$ for some $\Sigma$, "ie" $\SyntSA{\+R} \in \symbb{V}$.
 	Hence there exists $\Gamma$ and relations $\+S_1 \in \+V_{\Gamma_1}, \dotsc \+S_k \in \+V_{\Gamma_k}$
 	such that $\SyntSA{\+R}$ "divides@@sync"
 	$\?B \defeq \SyntSA{\+S_1} \times \cdots \times \SyntSA{\+S_k}$,
@@ -657,17 +657,17 @@ that "divide@@sync" a finite product of "algebras@@sync" of $C$.\footnote{Note t
 
 As consequence of \Cref{lem:eilenberg-sy}, if
 $\+V$ is a "$\ast$-pseudovariety of automatic relations"
-and $\B{V}$ is a "pseudovariety of synchronous algebras",
-we write \AP$\+V \intro*\corr \B{V}$
-to mean that either $\+V \corrRA \B{V}$ or, equivalently, $\B{V} \corrAR \+V$.
+and $\symbb{V}$ is a "pseudovariety of synchronous algebras",
+we write \AP$\+V \intro*\corr \symbb{V}$
+to mean that either $\+V \corrRA \symbb{V}$ or, equivalently, $\symbb{V} \corrAR \+V$.
 This relation is called an \AP""Eilenberg-Schützenberger correspondence@@sync"".
 
 \begin{proposition}
-	If~~$\B{V}$ is a "pseudovariety of monoids", then \AP$\phantomintro{\projA}$
+	If~~$\symbb{V}$ is a "pseudovariety of monoids", then \AP$\phantomintro{\projA}$
 	\begin{align*}
-		\reintro*\projA{\B{V}} & \defeq
+		\reintro*\projA{\symbb{V}} & \defeq
 		\{\?A \text{ "locally generated@@sync" finite "synchronous algebra"} \\
-		& \qquad\qquad \text{ "st" all "underlying monoids" of $\?A$ are in $\B{V}$}\}
+		& \qquad\qquad \text{ "st" all "underlying monoids" of $\?A$ are in $\symbb{V}$}\}
 	\end{align*}
 	is a "pseudovariety of synchronous algebras". Similarly,
 	if~~$\+V$ is an "$\ast$-pseudovariety of regular languages", then
@@ -694,9 +694,9 @@ between "pseudovarieties of synchronous algebras" and
 	\AP\label{thm:lifting-theorem-monoids-pseudovarieties}
 	If, in the "Eilenberg-Schützenberger correspondence@@lang"
 	between "pseudovarieties of mon\-oids" and "$\ast$-pseudovarieties of regular languages"
-	we have~$\+V \corr \B{V}$,
+	we have~$\+V \corr \symbb{V}$,
 	then in the "Eilenberg-Schützenberger correspondence@@sync"
-	between the "pseudovariety of synchronous algebras" $\projA{\B{V}}$ and
+	between the "pseudovariety of synchronous algebras" $\projA{\symbb{V}}$ and
 	the "$\ast$-pseudovariety of automatic relations" $\projL{\+V}$,
-	we have~$\projL{\+V} \corr \projA{\B{V}}$.
+	we have~$\projL{\+V} \corr \projA{\symbb{V}}$.
 \end{theorem}

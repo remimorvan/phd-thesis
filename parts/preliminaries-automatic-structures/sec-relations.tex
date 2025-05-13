@@ -262,12 +262,12 @@ We provide a slightly more general statement of "Mezei theorem".
 
 \begin{proposition}
 	\label{prop:Mezei-theorem-generalization}
-	Let $\B{V}$ be a "pseudovariety of monoids"
+	Let $\symbb{V}$ be a "pseudovariety of monoids"
 	and $\+V$ be the corresponding "pseudovariety of regular languages".
 	Let $\+R \subseteq \Gamma^* \times \Sigma^*$ be a relation.
 	The following are equivalent:
 	\begin{enumerate}
-		\item there exists a "finite monoid" $\?M \in \B{V}$, a "monoid morphism"
+		\item there exists a "finite monoid" $\?M \in \symbb{V}$, a "monoid morphism"
 		$f\colon \Gamma^* \times \Sigma^* \to \?M$ and $\Acc \subseteq \?M$
 		"st" $\+R = f^{-1}[\Acc]$;
 		\item there exists $n \in \N$
@@ -278,7 +278,7 @@ We provide a slightly more general statement of "Mezei theorem".
 	in which case we say that $\+R$ is \AP""$\+V$-recognizable@@rel"".
 \end{proposition}
 
-When $\B{V}$ is the "pseudovariety@@reglang" of all "regular languages",
+When $\symbb{V}$ is the "pseudovariety@@reglang" of all "regular languages",
 we get back \Cref{prop:Mezei-theorem}.
 
 \begin{proof}
@@ -296,10 +296,10 @@ we get back \Cref{prop:Mezei-theorem}.
 		\times \underbrace{\{v \in \Sigma^* \mid f(\varepsilon, v) = y\}}_{\defeq \;L_y}.
 	\]
 	Since $M$ is finite, the union is finite, and moreover, each $K_x$ and $L_y$ is
-	recognized by $M \in \B{V}$, and hence belong to $\+V$.
+	recognized by $M \in \symbb{V}$, and hence belong to $\+V$.
 
 	\proofcase{From products to monoids.} If $\mathcal{R} = \bigcup_{i=1}^n K_i \times L_i$ 
-		where all languages belong to $\+V$, then let $M_i,N_i \in \B{V}$
+		where all languages belong to $\+V$, then let $M_i,N_i \in \symbb{V}$
 		be their "syntactic monoids", $g_i,h_i$ be their
 		"syntactic morphism", and $\Acc_i,\Bcc_i$ be their accepting sets.
 		Consider the monoid morphism
@@ -315,7 +315,7 @@ we get back \Cref{prop:Mezei-theorem}.
 			\cdots \times (M_{i-1}\times N_{i-1}) \times
 			(\Acc_i \times \Bcc_i) \times (M_{i+1}\times N_{i+1}) \times \cdots \bigr).
 		\]
-		The conclusion follows from the fact that $\B{V}$ is closed under finite products.
+		The conclusion follows from the fact that $\symbb{V}$ is closed under finite products.
 \end{proof}
 
 Both the algebraic definition of "recognizable relations" and

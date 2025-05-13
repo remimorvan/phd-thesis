@@ -1,0 +1,72 @@
+\section{Introduction}
+\AP\label{sec:intro}
+
+Conjunctive Regular Path Queries (CRPQs) and unions of CRPQs (UCRPQs) form the backbone of graph database query languages, including the new ISO standard Graph Query Language (GQL) \cite{isoGQL} and the SQL extension for querying graph-structured data SQL/PGQ \cite{isoPGQ} (see also \cite{DBLP:conf/icdt/FrancisGGLMMMPR23,DBLP:conf/pods/FrancisGGLMMMPR23}).
+These extend the well-known classes of Conjunctive Queries (CQs) and unions of CQs (UCQs), with the ability to reason about paths in a graph. 
+Optimizing and understanding the fundamental properties of such queries has then become a major topic in graph database theory.
+
+Static optimization for CRPQs has received considerable attention. The basic study of containment and equivalence problems for CRPQs, possibly with unions and inverses, was initiated over 25 years ago \cite{Florescu:CRPQ,four-italians}, where they were shown to be "ExpSpace"-complete. These problems have also been investigated under different scenarios: restrictions on the shape of queries \cite{figueira_containment_2020}, restrictions on their regular languages \cite{FigueiraGKMNT20}, alternative semantics~\cite{FigueiraRomero23}, or under schema information~\cite{GGIM-kr22,GGIM-pods24}.
+This has enabled the study of more advanced static analysis problems motivated by the following general question: \emph{Can a given query be equivalently rewritten as one from a target fragment (which enjoys desirable properties)?}
+In the literature the problem has been studied where the target fragment are queries which either (i) avoid having infinite languages, or (ii) have a tree-like structure. This gives rise to the so-called (i) \emph{boundedness problem} for CRPQs ("ie", whether a CRPQ is equivalent to a UCQ) \cite{BarceloF019,FigueiraAnanthaAl24}, and (ii) \emph{semantic treewidth problem} for CRPQs ("ie", whether a CRPQ is equivalent to one of a given treewidth) \cite{BarceloRV16,FM2023semantic,FeierGM24}.
+	
+
+\paragraph{Minimization of queries.}
+Minimization -- that is, the problem of transforming a query into a strictly smaller equivalent 
+query -- is perhaps the most fundamental query optimization question. This problem corresponds to the question posed above, where the target fragment are queries of bounded sizes. 
+For CQs (and UCQs), minimization is well understood, and there exists a canonical unique minimal query, called the \emph{core}.
+The mechanism for obtaining such minimal query is simple: eliminate any atom from the query that results in an equivalent query ("ie", any atom which is `redundant'  in the sense of equivalence).
+In contrast, minimization of CRPQs is poorly understood from a theoretical perspective. In this case, the situation is more challenging: there is no natural notion of `core’, and it is not clear whether a notion of `canonical’ smallest query may even be possible. In particular, eliminating redundant atoms of a CRPQ as done for CQs, in general results in a query which is neither minimal nor canonical.
+
+In this paper we study the "minimization problem" for CRPQs and UCRPQs. In the case of CRPQs, we aim at minimizing the number of atoms of a CRPQ, and hence we formulate the problem as follows ($\semequiv$ denotes query equivalence, "ie", the fact that the queries output the same answer for all databases):\footnote{Note that we can always assume $k$ to be smaller than the number of "atoms" of the input query, since otherwise the instance of the "minimization problem" is trivially solvable by answering `yes'. So, whether $k$ is given in unary or binary does not affect the size of the input.}
+ 
+\decisionproblem{""Minimization problem for CRPQs@Minimization problem""}
+{A finite alphabet $\A$, a "CRPQ" $\gamma$ over $\A$ and $k \in \N$.}
+{Is there a "CRPQ" $\delta$ over $\A$ with at most $k$ "atoms" 
+such that $\gamma \semequiv \delta$?}
+\medskip
+
+On the other hand, in the case of UCRPQs, we minimize the maximum number of atoms of the CRPQs participating in a UCRPQ:
+	
+\decisionproblem{\reintro[Minimization problem]{Minimization problem for UCRPQs}}
+{A finite alphabet $\A$, a "UCRPQ" $\Gamma$ over $\A$ and $k \in \N$.}
+{Is there a "UCRPQ" $\Delta$ over $\A$ whose every "CRPQ" has at most $k$ "atoms" 
+"st" $\Gamma \semequiv \Delta$?}
+\medskip
+
+Observe that the minimization problem for CRPQs and UCRPQs are two different problems: an algorithm for the minimization problem for UCRPQs (where the equivalent query may have unions) in principle does not imply any bound on the minimization for CRPQs (where we insist in being only one CRPQ). 
+
+\paragraph{Contributions}
+We investigate the minimization problem for CRPQs and UCRPQs, and present several fundamental results. More concretely:
+\begin{itemize}
+	\item We show that the minimization problem for CRPQs and UCRPQs are both decidable. As explained before, these are different problems  and we give two very different algorithms. Contrary as what happens for CQs, minimizing a CRPQ by unions of CRPQs may result in smaller queries, hence in a sense UCRPQ minimization may be seen as a strictly more powerful approach (\Cref{prop:unionsmatter}).
+	\item For the "minimization of CRPQs", the algorithm is essentially by brute-force. By carefully bounding the sizes of the automata involved, we show that the algorithm can be implemented in "2ExpSpace" in \Cref{thm:2expspace-min-crpqs}. We also show an "ExpSpace"-hard lower bound in \Cref{thm:minimization-lowerbound}, leaving an exponential gap.
+	\item For the minimization of UCRPQs we can apply a more elegant solution, and in fact we show how to compute `maximal under-approximations' of a query by UCRPQs of a given size (\Cref{lemma:approximation-for-finclass}). The minimization then follows by testing whether the given query is equivalent to its approximation of size $k$, yielding an "ExpSpace" upper bound (\Cref{coro:upperbound-ucrpqs}), which is tight with the lower bound (\Cref{coro:lowerbounds}).
+	\item We consider subclasses of UCRPQs restricted to some commonly used regular expressions as observed in practice, namely, the so-called \AP""simple regular expressions"" (or \reintro{SRE}). These are concatenations of expressions of the form
+			(i) $a^+$ for some letter over the alphabet $a \in \A$, or 
+			(ii) $a_1 + \dotsb + a_m$ for some $a_1, \dotsc, a_m \in \A$.\footnote{Note that "eg" \cite[\S 6]{FM2023semantic} uses $a^*$ instead of $a^+$. This restriction is needed in \Cref{lem:canonization-SREs}.}
+		We show that minimization of UCRPQs having such simple regular expressions is
+		"PiP2"-complete (\Cref{thm:minimization-SRE}). %f expressions of the form $(a_1 + \dotsb + a_k)^*$ are further allowed, the complexity becomes "ExpSpace"-complete, that is, as hard as for arbitrary regular expressions.
+		%Our algorithms also imply that the minimization for unions of tree patterns has the same complexity as the minimization of tree patterns, that is, "PiP2"-complete.\sidediego{Or sigma-p-2?}
+	\item We explore some necessary and sufficient conditions for minimality. In particular, we show that non-redundancy ("ie", the fact that removing any atom results in a non-equivalent query) is necessary but not sufficient for minimality (also known to be the case for tree patterns \cite{min-tree-patterns}). We also investigate a notion of `"strong minimality"' which implies minimality (\Cref{coro:strong-min}), and can be used as a theoretical tool to prove minimality of queries.
+	This result is based on \Cref{thm:structure-theorem}, which may be of independent interest, providing a tool to extract
+	lower bounds on the number of "atoms" (and more generally properties on the underlying structure of queries, such as tree-width, path-width, etc.) that is necessary to express a "UCRPQ".
+	\item We also discuss an alternative definition of size, where instead of the number of atoms we count the number of variables: we obtain upper bounds for the "variable-minimization problem" of "CRPQs" and "UCRPQs" in \Cref{sec:discussion}.
+\end{itemize}
+	
+\paragraph{On the chosen size measure.}
+A na\"ive algorithm for the "evaluation" of a union of $t$ "CRPQs" with $k$ atoms on a graph database $G$ gives a rough bound of $O\big(t  k  (|\vertex{G}||\edges{G}| r) + t  |\vertex{G}|^{2k}\big)$, where $r$ is the maximum size of the regular expressions it contains, and $\edges{G}$, $\vertex{G}$ are the set of edges and vertices of $G$, respectively.\footnote{This is obtained by first materializing a table with the answers to each RPQ atom $x \atom{L} y$ of the query. For each vertex $u\in V(G)$, we can compute the answers to $u \atom{L} y$, by a BFS traversal on the product of $G$ and   the NFA $\+A_L$ for the regular language $L$, taking roughly $O(|\edges{G}| r)$. Then we can evaluate each "CRPQ" as if it were a "conjunctive query" on the computed tables (each table having size at most $|\vertex{G}|^2$), in $O((|\vertex{G}|^2)^k) = O(|\vertex{G}|^{2k})$.}
+As we see, the most costly dependence is on $k$, since $G$ is the largest object ("ie", the database, several orders of magnitude larger than the remaining parameters in practice). The size of regular expressions and the number of unions have a less predominant multiplicative influence on the cost.
+Further, unions can be executed in parallel, which justifies the choice of taking the maximum size of the number of atoms of the CRPQs therein.
+However, other measures may also be reasonable. For example, taking the size to be the number of variables instead of the number of atoms is explored in \Cref{sec:varmin}.
+More complex measures including the size of regular expressions and the number of unions would need to take into account the drastically different roles of the parameters in the evaluation in view of the previous discussion ("eg", a simple sum of the parameters would not be a reasonable choice).
+
+Our size measure of number of atoms is also natural from a practical perspective. In practice, systems typically evaluate CRPQs by combining   on-the-fly ``materialization'' of CRPQ atoms  with  relational database techniques, in particular using join algorithms (see "eg" \cite{milleniumDB24,eswc-crpqs24,cucumides-icdt23}).  The number of atoms (or joins) plays an important role in these algorithms.
+	
+\paragraph{Related work}
+Minimization is well-understood for CQs and corresponds to the \reintro{core} in the Chandra-Merlin theory~\cite{DBLP:conf/stoc/ChandraM77}, that is, the smallest homomorphically-equivalent query, which is unique up to renaming of variables. The "minimization problem" is then "NP"-complete.
+For UCQs, the canonical minimal query consists of minimizing each CQ and removing redundant queries ("ie", removing a CQ disjunct $q$ if there is another disjunct $q'$ such that $q \subseteq q'$), which remains "NP".
+
+However, for unbounded homomorphism-closed queries, such as CRPQs, the existence of such unique minimal queries (even seen as infinitary unions of CQs) remains rather elusive. In particular, what breaks is the ``redundancy removal'', because there could be infinite chains of ever growing queries, as for instance in the Boolean CRPQ $q() = x \atom{a^+} x$.
+
+Minimization has also been studied for the class of \emph{tree patterns}~\cite{FFM08,KS08,min-tree-patterns}. Tree patterns are simple yet widely used tree-like queries for tree-like databases such as XML. These queries allow mild recursion in the form of descendent edges, that is, atoms of the form $x \atom{a^+} y$, where $x$ is the parent of $y$. 
+Minimization of tree patterns is now well-understood \cite{min-tree-patterns}:  it is known that non-redundancy is not the same as minimality, and that the "minimization problem" is "SigmaP2"-complete, the lower bound being highly non-trivial.

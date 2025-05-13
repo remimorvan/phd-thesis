@@ -277,18 +277,11 @@ intersection of $\Tw$ (resp.\ $\Pw$) with the class of "CRPQs".
 	}
 \end{figure}
 
-% \begin{proposition}[Folklore, see "eg" {\cite[Theorem IV.3]{RomeroBarceloVardi2017Homomorphism}}]
-%     For each $k \geq 1$, the "evaluation problem" for "UC2RPQs" of "tree-width" at
-%     most $k$ is in polynomial time.\sideremi{Find better ref?}
-% \end{proposition}
-
 Similar statements of the following proposition can be considered Folklore (see "eg" {\cite[Theorem IV.3]{RomeroBarceloVardi2017Homomorphism}}); however, our inability to find a proof for it with sharp bounds invites us to include a proof.
-\begin{restatable}[Proof in \Cref{apdx-sec:prop:crpq-bound-tree-width-upper-bound}]{prop}{crpqboundtwupperbound}
+\begin{restatable}[Proof in \Cref{apdx-sec:prop:crpq-bound-tree-width-upper-bound}]{proposition}{crpqboundtwupperbound}
 	\AP\label{prop:crpq-bound-tree-width-upper-bound}
     For each $k \geq 1$, the "evaluation problem" for "UC2RPQs" of "tree-width" at
     most $k$ can be solved in time $\+O(\size{\Gamma} \cdot |G|^{k+1} \cdot \log{|G|})$ on a Turing machine,
-	% \sideremi{I've kept both complexities, but made it clear that the first one is about TM. Is it ok?} 
-	% \sidediego{yes!}
 	or $\+O(\size{\Gamma} \cdot |G|^{k+1})$ under a RAM model, where $\Gamma$ and $G$ are the input "UC2RPQ" and "graph database", respectively.
 \end{restatable}
 
@@ -447,7 +440,7 @@ Moreover, we also show that for any class $\+L$ of regular languages "closed und
 then $\Gamma$ is equivalent to a $\UCtwoRPQ(\+L)$ of "tree-width" at most $k$.
 Analogous characterizations hold for $k=1$ and/or "path-width", see \Cref{coro:charact-semantic-treewidth-1,coro:charact-semantic-pathwidth-k}.
 
-\begin{restatable*}{thm}{closureundersublanguages}
+\begin{restatable*}{theorem}{closureundersublanguages}
     \AP\label{thm:closure-under-sublanguages}
     \AP Assume that $\+L$ is "closed under sublanguages". 
     For any $k > 1$ and any query $\Gamma \in \UCtwoRPQ(\+L)$, the following are equivalent:
@@ -478,7 +471,7 @@ The previous theorem, together with the high complexity of "semantic tree-width 
 motivates us to focus on the case of "CRPQs" using some "simple regular expressions" ("SRE") in \Cref{sec:sre}, where we show that the complexity of this problem is much lower.
 % coincides with the complexity of the "containment problem" over this class of "CRPQs" \cite[Corollary~5.2]{FigueiraEtal2020Containment}:
 
-\begin{restatable*}{thm}{thmSemTwSREpitwo}
+\begin{restatable*}{theorem}{thmSemTwSREpitwo}
     \AP\label{thm:semtw-sre-pitwo}
     For $k\geq 2$, the "semantic tree-width $k$ problem" for {\UCRPQSRE} is in "Pi2".
 \end{restatable*}
@@ -490,14 +483,14 @@ and show the decidability the "semantic tree-width 1 problem"---which was alread
 Barceló, Romero and Vardi \cite{BarceloRomeroVardi2016SemanticAcyclicity}---and of the "one-way semantic tree-width 1 problem". 
 
 Building on the same idea, we show in \Cref{sec:semantic-path-width} that our results extend to "path-width".
-\begin{restatable*}{thm}{decidabilitySemPw}
+\begin{restatable*}{theorem}{decidabilitySemPw}
     \AP\label{thm:decidability-sempw}
     For each $k \geq 1$,
     the "semantic path-width $k$ problems" are decidable. Moreover, they lie in "2ExpSpace"
     and are "ExpSpace"-hard. Moreover, if $k=1$, these problems are in fact "ExpSpace"-complete.
 \end{restatable*}
 In turn, this leads to an evaluation algorithm with a remarkably low complexity.
-\begin{restatable*}{thm}{paraNLEvalBoundedSemPathWidth}
+\begin{restatable*}{theorem}{paraNLEvalBoundedSemPathWidth}
 	\AP\label{thm:evaluation-bounded-pathwidth}
 	For each $k \geq 1$, the "evaluation problem", restricted to "UC2RPQs" of
 	"semantic path-width" at most $k$ is in "para-NL" when parametrized in the size of the query.
@@ -510,7 +503,7 @@ In turn, this leads to an evaluation algorithm with a remarkably low complexity.
 	\centering
 	\subfloat[Semantic classes of "C2RPQs" related to "tree-width".]{
 		\AP\label{fig:taxonomy-semantic-tw}
-		\scalebox{1.125}{
+		% \scalebox{1.125}{
 		\begin{tikzpicture}
 			\node at (0,0) {\includegraphics[scale=.8]{taxonomy-semantic-tw.pdf}};
 			% \draw[line width=1.5pt] (0,-4) -- (0,4);
@@ -530,13 +523,13 @@ In turn, this leads to an evaluation algorithm with a remarkably low complexity.
 			\node[font=\tiny] at (-1.6,.8) {\kl[CRPQ]{\rotatebox{60}{\color{cDarkGrey}CRPQs}}};
 			\node[font=\tiny] at (-.5,2.4) {\kl[C2RPQ]{\color{cDarkGrey}C2RPQs}};
 		\end{tikzpicture}
-		}
+		% }
 	}
 	\hfill
 	\subfloat[Semantic classes of "C2RPQs" related to "path-width".]{
 		\AP\label{fig:taxonomy-semantic-pw}		
 		\centering 
-		\scalebox{1.125}{
+		% \scalebox{1.125}{
 		\begin{tikzpicture}
 			\node at (0,0) {\includegraphics[scale=.8]{taxonomy-semantic-pw.pdf}};
 			% \draw[line width=1.5pt] (0,-4) -- (0,4);
@@ -555,7 +548,7 @@ In turn, this leads to an evaluation algorithm with a remarkably low complexity.
 			\node[font=\tiny] at (-1.6,.8) {\kl[CRPQ]{\rotatebox{60}{\color{cDarkGrey}CRPQs}}};
 			\node[font=\tiny] at (-.5,2.4) {\kl[C2RPQ]{\color{cDarkGrey}C2RPQs}};
 		\end{tikzpicture}
-		}
+		% }
 	}
 	\caption{
 		\AP\label{fig:taxonomy-semantic}
@@ -574,7 +567,7 @@ the landscape depicted in \Cref{fig:taxonomy-semantic}.
 
 Finally, we conclude in \Cref{sec:discussion}.
 We provide a \emph{partial} characterization \emph{à la} Grohe of classes of "UC2RPQs" which admit a tractable evaluation in \Cref{sec:charact-tractability}.
-\begin{restatable*}{thm}{thmtractabilityfinred}
+\begin{restatable*}{theorem}{thmtractabilityfinred}
     \AP\label{thm:tractability-finred}
     Assuming $"W[1]" \neq $ "FPT", for any recursively enumerable class $\+C$ of "finitely-redundant" Boolean "UC2RPQs", the "evaluation problem" for $\+C$ is "FPT" if, and only if, $\+C$ has bounded "semantic tree-width".
 \end{restatable*}

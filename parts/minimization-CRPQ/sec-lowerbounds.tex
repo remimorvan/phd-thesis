@@ -1,0 +1,680 @@
+\section{Lower Bounds}
+\AP\label{sec:lowerbounds}
+
+In this section we give some underlying ideas for showing lower bounds for the "minimization problems". 
+
+\subsection{Equivalence with a Single Atom}
+
+"Containment of CRPQs" is "ExpSpace"-complete \cite{Florescu:CRPQ,four-italians}. Somewhat surprisingly,
+Figueira \cite[Lemma 8]{figueira_containment_2020}
+showed that there exists a finite alphabet $\A$
+"st" the problem remained "ExpSpace"-hard even if restricted to
+instances with a simple shape.
+We start by strengthening this result to fit our needs.
+
+
+\begin{proposition}[{Variation on \cite[Lemma 8]{figueira_containment_2020}}]
+	\AP\label{prop:variation-figueira}
+	There is a fixed alphabet over which the
+	"con\-tainment problem" for "Boolean CRPQs" is "ExpSpace"-hard restricted
+	to instances of the form%\sidediego{apxproof doesn't like tikz in statements...!}
+	\begin{center}
+		\begin{tikzcd}[column sep=scriptsize]
+			\hphantom{\quad\textnormal{where:}}
+			\gamma_1() = \qvar \rar["K"] & \qvar & \contained^{?} & 
+			\qvar \rar["L_1", bend left=40] \rar["\raisebox{6pt}{\small\vdots}", phantom] \rar["L_p" below, bend right=40] & \qvar &[-2.1em] = \gamma_2(),
+			\quad\textnormal{where:}
+		\end{tikzcd}
+	\end{center}
+	% \[\gamma_1() = x \atom{K} y \qquad \contained^? \qquad \bigwedge_{j \in \lBrack 1,p\rBrack} x \atom{L_j} y = \gamma_2() \text{, where:}\]
+	\begin{enumerate}
+		\item no language among $K$ or the $L_i$'s is empty or contains the empty word $\varepsilon$, and
+		\item there is no $i$ such that $\A^* L_i \A^* = \A^* \bigl( \bigcap_j L_j\bigr) \A^*$.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+
+	By inspecting \cite[Proof of Lemma 8, pp. 15--17]{figueira_containment_2020},
+	it can be noticed that
+	actually the first condition is satisfied by Figueira's reduction---using his notation,
+	neither $E$ nor $G_i\cup F_C\cup F_H$ with $i \in \lBrack 0,n\rBrack$
+	are empty.
+	
+	Moreover, we claim that the reduction can be made so that the second condition also holds.
+	Notice first that the $2^n$-tiling problem is still "ExpSpace"-complete
+	if we restrict it to instances with $n > 1$ and such that all instances admit one tiling which is
+	``locally valid'' but not valid---namely a tiling which satisfies all vertical and horizontal constraints,
+	but not the initial and final tiles conditions.
+	This can be achieved "eg" by
+	adding a new tile $t$ "st" $(t,t)$ is both a valid horizontal and vertical configuration,
+	but $t$ cannot be adjacent to any other tile.
+	Then, the second condition amounts to showing that there is no $i$ "st"
+	\[
+		\mathbb{A}^* (G_i \cup F_C \cup F_H) \mathbb{A}^* =
+		\mathbb{A}^* \Bigl( \bigcap_{0 \leq j \leq n} (G_j \cup F_C \cup F_H)\Bigr) \mathbb{A}^*
+		\]
+		which is equivalent, by elementary manipulations, to saying that for all $i \in \lBrack 0,n\rBrack$
+		\[
+			\mathbb{A}^* G_i \mathbb{A}^*
+			\not\subseteq 
+			\mathbb{A}^* \Bigl( \bigcap_{0 \leq j \leq n} G_j \Bigr) \mathbb{A}^*
+			\cup \mathbb{A}^* (F_C \cup F_H) \mathbb{A}^*.
+			\]
+			For $i=0$, this holds because we can consider a valid encoding of a tiling
+			which respects all constraints except that one vertical constraint is violated.
+			For $i \in \lBrack 1,n\rBrack$, we consider the encoding of a tiling which is locally valid.
+			Then, it has no vertical error, no horizontal error, and no encoding error, so
+			it does not belong to the right-hand side.
+			However, it belongs to $\mathbb{A}^* G_i \mathbb{A}^*$ for any $i \in \lBrack 1,n\rBrack$ since it contains a subword encoding two cells separated by exactly one row. Hence,
+			the second condition also holds.
+\end{proof}
+
+We shall use these hard instances to show that the "minimization problem" for "CRPQs" is hard.
+\begin{theorem}
+	\AP\label{thm:minimization-lowerbound}
+	The "minimization problem" for "CRPQs" is "ExpSpace"-hard. Further, there is a fixed alphabet "st" the problem of, given a "Boolean CRPQ"
+	on this alphabet with only four variables is "equivalent"
+	to a "Boolean CRPQ" with a single "atom" is "ExpSpace"-hard.
+\end{theorem}
+
+A formal proof follows the proof sketch.
+\begin{proof}[Proof sketch]
+	We reduce an instance of the problem of \Cref{prop:variation-figueira} to the instance
+	$\delta$, where
+	\begin{center}
+        \begin{tikzcd}[column sep=scriptsize]
+			\delta() = &[-2.1em]
+            \qvar \ar[dr, "\A^*" swap, bend right=10] \ar[rrr, "K", bend left=20] &
+			& &
+			\qvar.\\[-2em]
+			& & \qvar \rar["L_1", bend left=40]
+			\rar["\raisebox{6pt}{\small\vdots}", phantom]
+			\rar["L_p" below, bend right=40] &
+			\qvar \ar[ur, "\A^*" swap, bend right=10]
+        \end{tikzcd}
+    \end{center}
+	First, it is easy to see that if $\gamma_1 \contained \gamma_2$ then $\delta \semequiv \gamma_1$. Conversely, if $\delta$ is "equivalent" to a "Boolean CRPQ" with at most one atom, then $\gamma_1 \contained \gamma_2$.
+	The conditions imposed by \Cref{prop:variation-figueira} are necessary to discard one-atom queries which are self-loops and that whenever  $\gamma_1 \centernot{\contained} \gamma_2$ there is an "expansion" of $\delta$ to which any $\delta$-"equivalent" single-atom query "expansion" cannot be mapped.
+\end{proof}
+
+\begin{proof}
+	We reduce an instance of the problem of \Cref{prop:variation-figueira} to the instance
+	$\delta$, where
+		\begin{center}
+			\begin{tikzcd}[column sep=scriptsize]
+				\delta() = &[-2.1em]
+				\qvar \ar[dr, "\A^*" swap, bend right=10] \ar[rrr, "K", bend left=20] &
+				& &
+				\qvar.\\[-2em]
+				& & \qvar \rar["L_1", bend left=40]
+				\rar["\raisebox{6pt}{\small\vdots}", phantom]
+				\rar["L_p" below, bend right=40] &
+				\qvar \ar[ur, "\A^*" swap, bend right=10]
+			\end{tikzcd}
+		\end{center}
+	
+		\begin{claim}
+			\AP\label{claim:minimization-lowerbound-1}
+			If $\gamma_1 \contained \gamma_2$ then $\delta \semequiv \gamma_1$.
+		\end{claim}
+		Note first that $\delta \contained \gamma_1$.
+		Then, if $\gamma_1 \contained \gamma_2$, then every word of $K$
+		contains a factor which belongs to each $L_i$ for $i \in \lBrack 1, p\rBrack$,
+		and hence $\gamma_1 \contained \delta$ "ie" $\delta \semequiv \gamma_1$,
+		and so $\delta$ is equivalent to a "CRPQ" with a single "atom".
+	
+		\begin{claim}
+			\AP\label{claim:minimization-lowerbound-2}
+			Conversely, if $\delta$ is "equivalent" to a "Boolean CRPQ" with at most one atom,
+			then $\gamma_1 \contained \gamma_2$.
+		\end{claim}
+		Let $\zeta$ be the "Boolean CRPQ" with at most one atom which is equivalent to $\delta$. Assume first, by contradiction, that it is a self-loop, "ie" $\zeta() = x \atom{M} x$ for some language $M$.
+		Then by assumption on $K$, there exists a word $u\in K$ of size at least one.
+		Since none of the $L_i$ are empty, there exists a "canonical database"
+		$G_\delta^u$ where the atom
+		$\qvar \atom{K} \qvar$ yielded a $u$-labelled path. Since $\delta \contained \zeta$,
+		the database $G_\delta^u$ must satisfy $\zeta() = x \atom{M} x$.
+		Since every strongly connected component of $G_\delta^u$ is trivial---we assumed that none of the languages
+		of $\delta$ contained $\varepsilon$---, it must be that $\varepsilon \in M$, and hence $\zeta$
+		is the query which is always satisfied, which contradicts the equivalence $\delta \semequiv \zeta$.
+	
+		Similarly, it can be shown that $\zeta$ cannot have zero atoms since $\delta$ is non-trivial. 
+		Hence, $\zeta$ is exactly of the form $\zeta() = x \atom{M} y$ for some language $M$.
+		First, note that from $\zeta \contained \delta$, it follows that
+		\begin{equation}
+			M \subseteq \A^* \bigl( \bigcap_j L_j \bigr) \A^*.
+			% \tag{\adforn{4}}
+			\AP\label{eq:L-is-factor-of-M}
+		\end{equation}
+		Assume then, by contradiction, that there
+		exists an $i$ "st" every word of $L_i$ has a factor in $M$,
+		"ie" $L_i \subseteq \A^* M \A^*$. Then \eqref{eq:L-is-factor-of-M} implies
+		$\A^* L_i \A^* = \A^* \bigl( \bigcap_j L_j \bigr) \A^*$ which contradicts
+		the second assumption of \Cref{prop:variation-figueira}.
+		Therefore, for every $i$, there is a word $v_i \in L_i$ which contains no factor in $M$.
+		
+		We are now ready to show that $\gamma_1 \contained \gamma_2$, by first observing that
+		it boils down to showing $K \subseteq \A^* (\bigcap_j L_j ) \A^*$. Let $u \in K$.
+		Consider the following "canonical database" of $\delta$, where the $v_i$'s are words
+		defined as in the paragraph above:
+		\begin{center}
+			\begin{tikzcd}
+				\qvar
+					\rar["u", squiggly, bend left=95]
+					\rar["v_1", squiggly, bend left=15]
+					\rar["\raisebox{6pt}{\small\vdots}", phantom, bend right=25]
+					\rar["v_p" below, squiggly, bend right=95] &
+				\qvar &[-3.2em].
+			\end{tikzcd}
+		\end{center}
+		Since $\delta \contained \zeta$, it must contain a path labelled by a word of $M$.
+		But no $v_i$ contains a factor in $M$, hence it has to be $u$ that does.
+		Hence, $K \subseteq \A^* M \A^*$. Together with
+		\Cref{eq:L-is-factor-of-M}, we get $K \subseteq \A^* \bigl( \bigcap_j L_j \bigr) \A^*$,
+		which concludes the proof of \Cref{claim:minimization-lowerbound-2}.
+	
+		Overall, we showed that $\gamma_1 \contained \gamma_2$ "iff"
+		$\delta$ is equivalent to a "CRPQ" with at most one atom, which concludes the proof.
+\end{proof}
+
+Note that the assumption of $\A^* L_i \A^* = \A^* \bigl( \bigcap_j L_j\bigr) \A^*$
+in \Cref{prop:variation-figueira} in necessary for the reduction to be correct,
+otherwise $\delta()$ would be equivalent to
+\[\delta'() \defeq x \atom{K} y \land x \atom{\A^* L_i \A^*} y,\]
+and so we could have $\A^* L_i \A^* \subsetneq K$, implying that
+(1) $K \not\subseteq \A^* L_i \A^*$ and hence $\gamma_1 \centernot{\contained} \gamma_2$
+but (2) $\delta$ would be equivalent to a "CRPQ" with a single "atom", namely
+$\delta''() \defeq x\atom{\A^* L_i \A^*} y$.
+
+
+\subsection{Minimization is Harder than Containment}
+We show that, under some technical conditions, the containment problem can be reduced to the "minimization problem". This allows to transfer known lower bounds from the "containment problem" of "CRPQ" classes. Due to space constraints we only state the key definitions and lemmas.
+We first introduce an intermediary technical property called ``canonization'',
+which ensures the feasibility of the reduction.
+
+\paragraph*{Canonization.}
+We say that an "expansion" $\anexpansion$ of a "CRPQ" $\gamma$ is \AP""non-degenerate@@db""
+if no "atom refinement" in $\anexpansion$ was obtained using the empty word.
+
+\begin{fact}
+	\AP\label{fact:nb-seg-expansion}
+	If $\anexpansion$ is a "non-degenerate expansion" of $\gamma$ and
+	$\gamma$ is "fully contracted", then $\nbseg{\anexpansion} = \nbatoms{\gamma}$.
+\end{fact}
+
+A \AP""class of (Boolean) CRPQs"" is a function \AP$\intro*\classCRPQ$ mapping an alphabet $\A$ 
+to a set $\classCRPQ_{\A}$ of "Boolean CRPQs", which is closed under variable renaming and alphabetic
+renaming of the languages.
+Given a "class of CRPQs" $\classCRPQ$, the \AP""$\classCRPQ$-canonization problem""
+is the functional problem taking an alphabet $\A$
+and two "Boolean CRPQs" $\langle \gamma_1,\gamma_2\rangle$ in $\classCRPQ_{\A}$,
+and outputting an alphabet \AP$\intro*\alphabetmarking$, two other "Boolean CRPQs" $\langle \delta_1, \delta_2 \rangle$, in $\classCRPQ_{\A\sqcup \alphabetmarking}$,
+such that:
+\begin{description}
+	\itemAP[\intro*\axiomCanonMonotonicity{}:] \phantomintro*\axiomsCanon
+		$\gamma_1 \contained \gamma_2$ "iff" $\delta_1 \contained \delta_2$,
+	\itemAP[\intro*\axiomCanonCore{}:]
+		there exists a "non-degenerate@@cdb" 
+		$D_1 \in \Exp(\delta_1)$ "st", for every $D'_1 \in \Exp(\delta_1)$ and $f: D'_1 \homto D_1$ we have (i) $D'_1$ is "non-degenerate@@cdb", (ii) $f$ is "strong onto", and (iii)  $f(x)=x$ for every $x\in \vars(\delta_1)$,
+	\itemAP[\intro*\axiomCanonNonRed{}:] for each $D_1 \in \Exp(\delta_1)$,
+		for each $x,y \in \vars(\delta_1)$, there cannot be an "atom refinement" in $D_1$
+		from $x$ to $y$ and another path from $x$ to $y$ in $D_1$, disjoint from the "atom refinement" that share the same label,
+	\itemAP[\intro*\axiomCanonContracted{}:] $\delta_1$ is "fully contracted",
+	\itemAP[\intro*\axiomCanonContainment{}:] $\gamma_2 \contained \delta_2$, and 
+	\itemAP[\intro*\axiomCanonMarking{}:] each connected component of $\delta_1$ must contain at least one "atom"
+	labelled by a language $L$ "st" every word of $L$ must contain at least one letter from $\alphabetmarking$.
+\end{description}
+
+The \AP""$\classCRPQ$-strong canonization problem"" is defined similarly to the "$\classCRPQ$-canonization problem", except that $\axiomCanonCore{}$ is replaced by the axiom
+\begin{description}
+	\itemAP[\intro*\axiomStrongCanonCore{}:] 
+	for every "non-degenerate@@cdb" 
+		$D_1 \in \Exp(\delta_1)$, every $D'_1 \in \Exp(\delta_1)$, and $f: D'_1 \homto D_1$ we have (i) $D'_1$ is "non-degenerate@@cdb", (ii) $f$ is "strong onto", and (iii)  $f(x)=x$ for every $x\in \vars(\delta_1)$,
+\end{description}
+
+We show that assuming we can solve the "$\classCRPQ$-canonization problem" ("resp" "$\classCRPQ$-strong canonization problem") this problem, then the "CRPQ"
+(resp. "UCRPQ") "minimization problem"
+restricted to "CRPQs" of $\classCRPQ$ ("resp" to "UCRPQs" whose "disjuncts" are all in $\classCRPQ$) is harder than the "containment problem" over $\classCRPQ$.
+
+In the following statement, a \AP""$\classCRPQ$-canonization oracle"" (resp. \AP""$\classCRPQ$-strong canonization oracle"") is an oracle to any algorithm solving the "$\classCRPQ$-canonization problem" (resp. "$\classCRPQ$-strong canonization problem").
+
+\begin{lemma}
+	\AP\label{lem:reduction-containment-to-minimization}
+	For any class $\classCRPQ$ of "CRPQs" closed under "disjoint conjunction",
+	there is a polynomial-time algorithm
+	using a "$\classCRPQ$-canonization oracle" ("resp" "$\classCRPQ$-strong canonization oracle")
+	from the "containment problem" for "Boolean" queries of $\classCRPQ$ to the
+	"CRPQ" (resp. "UCRPQ") "minimization problem" restricted to "CRPQs" in $\classCRPQ$
+	(resp. "UCRPQs" whose "disjuncts" are all in $\classCRPQ$).
+	The reduction also applies under the restriction that the target query must also be in
+	$\classCRPQ$.
+\end{lemma}
+
+Once again, we start by giving a proof sketch before giving the full proof.
+
+\begin{proof}[Proof sketch]
+	The construction reduces some restriction of the "containment problem"
+	to some variant of the "minimization problem". The main idea is,
+	given an instance $\gamma_1 \contained^? \gamma_2$, to build "CRPQs"
+	$\delta_1$ and $\delta_2$ with some desirable properties "st" the following are equivalent: (i)
+	$\gamma_1 \contained \gamma_2$, (ii) $\delta_1 \contained \delta_2$,
+	(iii) $\delta_1 \disconj \delta_2 \semequiv \delta_1$,
+	where $\reintro*\disconj$ denotes the \reintro{disjoint conjunction} ("ie", the conjunction of "atoms" of both queries making sure that variables are disjoint), and
+	(iv) $\delta_1 \disconj \delta_2$ is equivalent to a
+	"CRPQ" whose size is at most the size of $\delta_1$.
+	Of course, (ii) $\Leftrightarrow$ (iii) always holds, as well as (iii) $\Rightarrow$ (iv).
+
+	All the difficulty lies in guaranteeing the converse property: (iv) $\Rightarrow$ (iii).
+	We will use the constructions $\gamma_i \mapsto \delta_i$, given
+	by the "canonization problem", to enforce it
+	while respecting (i) $\Leftrightarrow$ (ii). 
+	The main idea of this approach is to add some `marking' (with fresh alphabet symbols) of either the variables or the atoms of $\gamma_1$ in $\delta_1$, ensuring that
+	$\delta_1$ has some strong structure implying that---loosely speaking---any query equivalent to $\delta_1 \disconj \delta_2$ must contain $\delta_1$ as a subquery.
+	Using the assumption that $\delta_1 \disconj \delta_2$ is equivalent to a
+	"CRPQ" whose size is at most the size of $\delta_1$, we conclude that in fact $\delta_1 \disconj \delta_2 \semequiv \delta_1$, "ie" $\delta_1 \contained \delta_2$ and so $\gamma_1 \contained \gamma_2$. 
+\end{proof}
+
+\begin{proof}
+	\proofcase{Minimization in the class of "CRPQs".}
+	Let $\gamma_1 \contained^{?} \gamma_2$ be an instance of the "containment problem" for "Boolean" queries of $\classCRPQ$.
+	We apply the "$\classCRPQ$-canonization oracle" to obtain 
+	a pair $\langle \delta_1, \delta_2 \rangle$ as in the axioms $\axiomsCanon$.
+	We then map the instance $\gamma_1 \contained^{?} \gamma_2$ to 
+	$\langle \delta_1 \disconj \gamma_2, \nbatoms{\delta_1} \rangle$.
+
+	The reduction works in logarithmic space with a "$\classCRPQ$-canonization oracle",
+	and clearly $\delta_1 \disconj \delta_2 \in \classCRPQ$ since
+	both $\delta_1$ and $\delta_2$ are in $\classCRPQ$ and $\classCRPQ$ is "closed under disjoint conjunction".
+	We need to show that $\gamma_1 \contained \gamma_2$ "iff" $\delta_1 \disconj \gamma_2$
+	is "equivalent" to a "CRPQ" with at most $\nbatoms{\delta_1}$ "atoms".
+
+	\begin{claim}
+		\AP\label{claim:reduction-containment-to-minimization-1}
+		If $\gamma_1 \contained \gamma_2$, then $\delta_1 \disconj \delta_2 \semequiv \delta_1$
+		and so $\delta_1 \disconj \delta_2$ is "equivalent" to a "CRPQ" with at most $\nbatoms{\delta_1}$ "atoms".
+	\end{claim}
+
+	This follows from $\axiomCanonMonotonicity$.
+	The converse hold for the same reason, but we actually need a stronger property.
+
+	\begin{claim}
+		\AP\label{claim:reduction-containment-to-minimization-2}
+		If $\delta_1 \disconj \delta_2$ is "equivalent" to a "CRPQ"
+		with at most $\nbatoms{\delta_1}$ "atoms", then $\gamma_1 \contained \gamma_2$.
+	\end{claim}
+
+	We write $\zeta$ as $\zeta_+ \disconj \zeta_-$ where $\zeta_+$ is
+	the "disjoint conjunction" of all connected components of $\zeta$ containing
+	an "atom" whose language contains a word containing a `$\alphabetmarking$'-letter,
+	and $\zeta_-$ is the "disjoint conjunction" of all other
+	components. We want to show that $\zeta_-$ is actually empty.
+
+	Let $D_1$ be a "canonical database" of $\delta_1$ as in \axiomCanonCore{}.
+	Then pick any "canonical database" $G_2$ of $\gamma_2$.
+	By $\axiomCanonContainment$, there exists $D_2 \cdb \delta_2$ "st" $D_2 \homto G_2$.
+	Then $D_1 \oplus D_2 \cdb \delta_1 \disconj \delta_2$, so from $\delta_1 \disconj \delta_2 \semequiv \zeta$
+	it follows that there exists $Z_+ \cdb \zeta_+$, $Z_- \cdb \zeta_-$, $D'_1 \cdb \delta_1$ and $D'_2 \cdb \delta_2$
+	such that we have "homomorphisms"
+	\[
+		D'_1 \oplus D'_2
+		\xrightarrow{f}
+		Z_+ \oplus Z_-
+		\xrightarrow{g}
+		D_1 \oplus D_2
+		\xrightarrow{h}
+		D_1 \oplus G_2.
+	\]
+	By $\axiomCanonMarking$, every connected component of $D'_1$ must contain at least one edge labelled
+	by a letter of $\alphabetmarking$, and so the "homomorphism" $f_{\restriction{D'_1}}\colon
+	D'_1 \homto Z_+ \oplus Z_-$ is actually a "homomorphism" from $D'_1$ to $Z_+$.
+	Note then that $(h \circ g)_{\restriction{Z_+}}$ maps $Z_+$ onto $D_1 \oplus G_2$ but
+	since $G_2$ contains no letter $\alphabetmarking$, the image of this "homomorphism" is included in $D_1$.
+	Overall, we have "homomorphisms"
+	\[D'_1 \xrightarrow{i} Z_+ \xrightarrow{j} D_1.\] 
+	By \axiomCanonCore{}, $j\circ i$ be "strong onto" and for every $x\in \vars(\delta_1)$,
+	$j(i(x)) = x$.
+	
+	We claim that for each $x$ "external" in $D'_1$, then $i(x)$ is "external".
+	First, since $x \in \vars(\delta_1)$ is "external", then $x \in \vars(\delta_1)$
+	and so $j(i(x)) = x$. Then $j \circ i$ is "strong onto" and so $j$ be also be
+	"strong onto". It follows that the in-degree (resp. out-degree) of $i(x)$
+	is lower bounded by the in-degree (resp. out-degree) $j(i(x)) = x$.
+	So, if $x$ has in-degree or out-degree at least 2, so does $i(x)$.
+	Moreover, if $x$ has in-degree (resp. out-degree 0), then 
+	so must $i(x)$ because otherwise, $j(i(x)) = x$ should also have an incoming edge.
+	Overall, by letting $i[D'_1]$ be the image of $D'_1$ by $i$,
+	we get that the natural embedding $i[D'_1] \homto Z_+$ satisfies the assumption
+	of \Cref{coro:embedding-segments} and so $\nbseg{i[D'_1]} \leq \nbseg{Z_+}$.
+	
+	Now observe that $i\colon D'_1 \to i[D'_1]$ is injective on $\vars(\delta_1)$
+	because $j(i(x))$ for any $x\in \vars(\delta_1)$.
+	Moreover, by \axiomCanonNonRed{}, $i$ cannot identity an "atom" with another path of "atoms" and so $D'_1$ is actually isomorphic to $i[D'_1]$, from which we
+	get $\nbseg{i[D'_1]} = \nbatoms{\delta_1}$
+	and so $\nbseg{Z_+} \geq \nbatoms{\delta_1}$.
+	By \Cref{prop:seggraph-of-expansion} $\nbatoms{\zeta_+} \geq \nbseg{Z_+}$, and so $\zeta_+$ has at least $\nbatoms{\delta_1}$
+	"atoms", but since we assumed that $\zeta$ has at most $\nbatoms{\delta_1}$ "atoms",
+	it follows that $\zeta_-$ is trivial and $\zeta \semequiv \zeta_+$.
+	
+	We are now ready to prove that $\delta_1 \contained \delta_2$.
+	Let $D_1 \cdb \delta_1$. Pick any $G_2 \cdb \gamma_2$.
+	By $\axiomCanonContainment$, there exists $D_2 \cdb \delta_2$ "st" $D_2 \homto G_2$.
+	Then since $\delta_1 \disconj \delta_2 \semequiv \zeta_+$,
+	there exists $Z_+ \cdb \zeta_+$, $D'_1 \cdb \delta_1$ and $D'_2 \cdb \delta_2$ "st"
+	\[
+		D'_1 \oplus D'_2
+		\homto
+		Z_+
+		\homto
+		D_1 \oplus D_2
+		\homto
+		D_1 \oplus G_2.
+	\]
+	Because of $\alphabetmarking$, the "homomorphism" $Z_+ \homto D_1 \oplus G_2$ must in fact be
+	a homomorphism $Z_+ \homto D_1$, and so by composition we obtain a "homomorphism"
+	$D'_1 \oplus D'_2 \homto D_1$, which can be restricted to $D'_2$, yielding $D'_2 \homto D_1$.
+	Hence, $\delta_1 \contained \delta_2$, and so by $\axiomCanonMonotonicity$, $\gamma_1 \contained \gamma_2$.
+
+	Putting \Cref{claim:reduction-containment-to-minimization-1,claim:reduction-containment-to-minimization-2}
+	together shows that the reduction is correct. We now prove that this reduction also works for the other
+	variations of the problem.
+
+	\proofcase{Minimization in the class of "UCRPQs".}
+	If we allow $\zeta$ to be a "UCRPQ", then \Cref{claim:reduction-containment-to-minimization-1} still holds,
+	and we need to adapt \Cref{claim:reduction-containment-to-minimization-2}. Assume that this ``small''
+	"UCRPQ" is of the form $\zeta_1 \lor \zeta_2 \lor \cdots \lor \zeta_k$ where each $\zeta_i$ has
+	at most $\nbatoms{\delta_1}$ "atoms".
+	We say that a "disjunct" $\zeta_i$ is \AP""relevant@@prooflowerbound"" when it has
+	at least one "canonical database" $Z_i$ appearing in a pattern of the form
+	\[
+		D'_1 \oplus D'_2
+		\homto
+		Z_i
+		\homto
+		D_1 \oplus D_2
+		\homto
+		D_1 \oplus G_2.
+	\]
+	for some $D_1,D'_1 \cdb \delta_1$, $D_2,D'_2 \cdb \delta_2$ and $G_2 \cdb \gamma_2$.
+	Using $\axiomStrongCanonCore$ on $D_1$,
+	the same proof as in the case of "CRPQs" apply. We can then conclude that "wlog"
+	$\zeta_i \semequiv (\zeta_i)_+$ for all "relevant@@prooflowerbound" "disjunct".
+	The proof of $\delta_1 \contained \delta_2$---and hence $\gamma_1 \contained \gamma_2$---then goes through as before,
+	which concludes the proof.
+
+	\proofcase{If $\zeta$ is restricted to be in $\classCRPQ$.}
+	Then \Cref{claim:reduction-containment-to-minimization-2} still holds.
+	To adapt \Cref{claim:reduction-containment-to-minimization-1}, it suffices to remark that
+	$\delta_1 \in \classCRPQ$.
+\end{proof}
+
+\begin{lemma}
+	\AP\label{lem:canonization-CRPQs}
+	The "strong canonization problem" can be solved in non-deterministic logarithmic space for the class of all
+	"CRPQs", or more generally for all "classes of CRPQs" defined by restricting the
+	underlying multigraph class, provided that this class is "closed under disjoint union".
+\end{lemma}
+
+\begin{proof}
+	Given a pair $\langle\gamma_1, \gamma_2\rangle$ of "Boolean" queries
+	we assume "wlog" that $\gamma_1$ is "fully contracted" using
+	\Cref{fact:produce-fully-contracted}---which works in non-deterministic logarithmic space---,
+	and we reduce it to the pair $\langle \delta_1, \delta_2 \rangle$,
+	where $\delta_1$ is defined as
+	\[
+		\delta_1() \defeq \bigwedge_{\alpha = x \atom{L} y \in \gamma_1} x \atom{\triangleright_\alpha L \triangleleft_\alpha} y
+	\]
+	where $\triangleright_\alpha$ and $\triangleleft_\alpha$ are fresh letters for each "atom" $\alpha$ of $\gamma_1$,
+	and 
+	\[
+		\delta_2() \defeq \bigwedge_{x \atom{L} y \in \gamma_2} x \atom{\erasingmorphism[-1]{\alphabetmarking}[L]} y,
+	\]
+	where $\alpha_1, \hdots, \alpha_k$ are all the "atoms" of $\gamma_1$,
+	$\alphabetmarking \defeq \{\triangleright_{\alpha_1},\triangleleft_{\alpha_1}, \hdots,
+	\triangleright_{\alpha_k}, \triangleleft_{\alpha_k}\}$ and
+	\AP$\intro*\erasingmorphism{\alphabetmarking}\colon (\A\cup \alphabetmarking)^* \to \A^*$
+	is the monoid morphism that maps letters of $\A$ to themselves and 
+	letters of $\alphabetmarking$ to the empty word.
+
+	In other words, $\delta_1$ is similar to $\gamma_1$ except that it must read the special
+	symbol $\triangleright_{\alpha}$ before satisfying "atom" $\alpha \in \gamma_1$,
+	and read symbol $\triangleleft_{\alpha}$ after.
+	On other hand, $\delta_2$ is obtained from $\gamma_2$ by relaxing the constraints:
+	instead of having to read a path labelled by some language $L$,
+	we now must read a path such that, when we ignore these new symbols $\triangleright_{\alpha}$
+	and $\triangleleft_{\alpha}$, then it belongs to $L$.
+
+	We now need to prove that properties \axiomsCanon{} and \axiomStrongCanonCore{} hold.
+	\begin{claim}
+		\AP\label{claim:canonization-multigraph-monotonic-l-to-r}
+		If $\gamma_1 \contained \gamma_2$ then $\delta_1 \disconj \delta_2 \semequiv \delta_1$.
+	\end{claim}
+		
+	Showing that $\delta_1 \disconj \delta_2 \semequiv \delta_1$
+	amounts to showing $\delta_1 \contained \delta_2$.
+	Let $D_1$ be a "canonical database" of $\delta_1$.
+	Consider the "canonical database" of $\gamma_1$ obtained
+	by removing every edge of the form $x \atom{\triangleright_\alpha} y$
+	or $x \atom{\triangleleft_\alpha} y$, and merging variables $x$ and $y$.
+	Since $\gamma_1 \contained \gamma_2$, there exists a "canonical database"
+	$G_2$ of $\gamma_2$ and a homomorphism $f\colon G_2 \to G_1$.
+	We then define a "canonical database" $D_2$ of $\delta_2$ together
+	with a homomorphism $g\colon D_2 \to D_1$ as follows:
+	given an "atom refinement"
+	\[
+		x_0 \atom{b_1} x_1 \atom{b_2} \cdots \atom{b_n} x_n
+		\text{ in } G_2.
+	\]
+	we look at its image
+	\[
+		f(x_0) \atom{b_1} f(x_1) \atom{b_2} \cdots \atom{b_n} f(x_n)
+		\text{ in } G_1.
+	\]
+	Now some $f(x_i)$'s might be variables of $\gamma_1$ and hence
+	this might not a path in $G_1$.
+	We let $i_1 < \hdots < i_k$ denote the indices $i$ "st" $x_i \in \vertex{\gamma_1}$, so
+	that we can split the path in $G_1$ into multiples "atom refinements" 
+	of "atoms" of $\gamma_1$:
+	\begin{align*}
+		\underbrace{f(x_0) \atom{b_1} f(x_1) \atom{b_2} \cdots \atom{b_{i_1}}}_{
+			\text{end of an "atom refinement" of $\alpha_0$}
+		}
+		f(x_{i_1})
+		\underbrace{\atom{b_{i_1+1}} f(x_{i_{1}+1}) \atom{b_{i_1+2}} \cdots \atom{b_{i_2}}}_{
+			\text{"atom refinement" of $\alpha_1$}
+		}
+		f(x_{i_2})
+		\atom{b_{i_2+1}} f(x_{i_{2}+1}) \atom{b_{i_2+2}} \cdots
+		\\[1em]
+		\cdots \atom{b_{i_k}}
+		f(x_{i_k})
+		\underbrace{\atom{b_{i_k+1}} f(x_{i_{k}+1}) \atom{b_{i_k+2}} \cdots \atom{b_n} f(x_n)}_{
+			\text{beginning of an "atom refinement" of $\alpha_k$}
+		}
+	\end{align*}
+	in $G_1$.
+	For $i \in\lBrack 1,k\rBrack$, we let $f(x_{i_j})^r$ (resp. $f(x_{i_j})^l$) denote the unique variable of
+	$D_1$ "st" there is an edge from $f(x_{i_j})$ to $f(x_{i_j})^r$
+	labelled by $\triangleright_{\alpha_i}$ (resp. from $f(x_{i_j})^l$ to $f(x_{i_j})$
+	labelled by $\triangleleft_{\alpha_{i-1}}$), we obtain a path
+	\begin{align*}
+		\underbrace{f(x_0) \atom{b_1} f(x_1) \atom{b_2} \cdots \atom{b_{i_1}}}_{
+			\text{end of an "atom refinement" of $\alpha_0$}
+		}
+		f(x_{i_1})^l \atom{\triangleleft_{\alpha_{0}}} f(x_{i_1}) \atom{\triangleright_{\alpha_{1}}} f(x_{i_1})^r
+		\\[1em]
+		\underbrace{\atom{b_{i_1+1}} f(x_{i_{1}+1}) \atom{b_{i_1+2}} \cdots \atom{b_{i_2}}}_{
+			\text{"atom refinement" of $\alpha_1$}
+		}
+		f(x_{i_2})^l 
+		\atom{\triangleleft_{\alpha_{1}}} f(x_{i_2}) \atom{\triangleright_{\alpha_{1}}} f(x_{i_2})^r 
+		\atom{b_{i_2+1}} f(x_{i_{2}+1}) \atom{b_{i_2+2}} \cdots
+		\\[1em] 
+		\cdots \atom{b_{i_k}}
+		f(x_{i_k})^l \atom{\triangleleft_{\alpha_{k-1}}} f(x_{i_k}) \atom{\triangleright_{\alpha_{k}}} f(x_{i_k})^r
+		\underbrace{\atom{b_{i_k+1}} f(x_{i_{k}+1}) \atom{b_{i_k+2}} \cdots \atom{b_n} f(x_n)}_{
+			\text{beginning of an "atom refinement" of $\alpha_k$}
+		}
+	\end{align*}
+	in $D_1$. Hence, we build $D_2$ by replacing each "atom refinement"
+	$
+		x_0 \atom{b_1} x_1 \atom{b_2} \cdots \atom{b_n} x_n
+		\text{ in } G_2
+	$
+	by
+	\begin{align*}
+		x_0 \atom{b_1} x_1 \atom{b_2} \cdots \atom{b_{i_1}}
+		x_{i_1}^l \atom{\triangleleft_{\alpha_0}} x_{i_1} \atom{\triangleright_{\alpha_{1}}} x_{i_1}'
+		\atom{b_{i_1+1}} x_{i_{1}+1} \atom{b_{i_1+2}} \cdots \atom{b_{i_2}}
+		x_{i_2}^l \atom{\triangleleft_{\alpha_1}} x_{i_2} \atom{\triangleright_{\alpha_{2}}} x_{i_2}'\\
+		\atom{b_{i_2+1}} x_{i_{2}+1} \atom{b_{i_2+2}} \cdots \atom{b_{i_k}}
+		x_{i_k}^l \atom{\triangleleft_{\alpha_{k-1}}} x_{i_k} \atom{\triangleright_{\alpha_{k}}} x_{i_k}'
+		\atom{b_{i_k+1}} x_{i_{k}+1} \atom{b_{i_k+2}} \cdots \atom{b_n} x_n,
+	\end{align*}
+	where $x_{i_1}^l, x_{i_1}^r, \hdots, x_{i_k}^l, x_{i_k}^r$ are new fresh variables.
+	By construction, $D_2$ comes equipped with a "homomorphism" 
+	$g\colon D_2 \to D_1$ which sends $x_i$ to $f(x_i)$,
+	$x_{i_j}^l$ to $f(x_{i_j})^l$ and $x_{i_j}^r$ to $f(x_{i_j})^r$. Since $D_2$ is---by
+	construction---a "canonical database" of $\delta_2$, this concludes the proof that 
+	$\delta_1 \contained \delta_2$.
+
+	\begin{claim}
+		\AP\label{claim:canonization-multigraph-monotonic-r-to-l}
+		If $\delta_1 \contained \delta_2$ then $\gamma_1 \contained \gamma_2$.
+	\end{claim}
+
+	The construction is dual to \Cref{claim:canonization-multigraph-monotonic-l-to-r} and left to the
+	reader. Both claims yield $\axiomCanonMonotonicity$.
+
+	We now show that \axiomStrongCanonCore{} holds: pick a "canonical database" $D_1 \cdb \delta_1$.
+	For any $D'_1 \cdb \delta_1$, if $D'_1 \homto D_1$, then because of the letters in $\alphabetmarking$,
+	it follows that for each "atom" $\alpha_i$ of $\gamma_1$, the "atom refinement" of
+	$\alpha_i$ in $D'_1$ must be sent bijectively on the "atom refinement" of $\alpha_i$ in $D_1$,
+	and so they are equal. It follows that the homomorphism $D'_1 \to D_1$ must actually be the identity,
+	and hence $D_1$ is "maximal".
+	The same argument applied to $D'_1 \defeq D_1$ shows that the only "homomorphism" from $D_1$ itself
+	is the identity, and so in particular $D'_1$ is a "core".
+	Lastly, because of the letters of $\alphabetmarking$, no atom of $\delta_1$ contains the empty word,
+	and so in particular $D_1$ must be "non-degenerate@@db". Hence, \axiomStrongCanonCore{} holds.
+
+	Since $\gamma_1$ is "fully contracted", so is $\delta_1$, which proves \axiomCanonContracted{}.
+	For any language $L$, we have $L \subseteq \erasingmorphism[-1]{\alphabetmarking}[L]$, and so we have \axiomCanonContainment{}.
+	Finally, \axiomCanonNonRed{} and \axiomCanonMarking{} trivially hold.
+	
+	Together with that fact that
+	$\langle \gamma_1,\gamma_2 \rangle \mapsto \langle \delta_1, \delta_2\rangle$ preserves
+	the underlying multigraphs, this shows that this is a solution to "strong canonization problem"
+	for any "class of CRPQs" defined by restring the underlying class of multigraphs.
+	Note also that an NFA for $\erasingmorphism[-1]{\alphabetmarking}[L]$ can be obtained
+	from an NFA for $L$ by adding on every state a self-loop labelled by every possible letter of $\alphabetmarking$
+	and hence, this algorithm can be implemented in logarithmic space.
+\end{proof}
+
+Note however that if $L$ is a "simple regular expression", then
+$\erasingmorphism[-1]{\alphabetmarking}[L]$ does not need to be.
+Hence, the construction above does not work for "CRPQs" over "simple regular expressions".
+
+\begin{lemma}
+	\AP\label{lem:canonization-SREs}
+	The "strong canonization problem" can be solved in polynomial time
+	for the "class of CRPQs" over "simple regular expressions".
+\end{lemma}
+
+Given a "CRPQ" $\gamma$, we say that an "atom" $x\atom{L} y$ is \AP""locally redundant"" if
+there exists a path of "atoms" $z_0 \atom{L_1} z_1 \atom{L_2} \cdots \atom{L_n} z_n$
+in which $x\atom{L} y$ does not occur, and with $z_0 = x$ and $z_n = x$
+where $L_1 L_2\cdots L_n \subseteq L$.
+
+\begin{proof}[Proof of \Cref{lem:canonization-SREs}]
+	Fix a pair $\langle \gamma_1, \gamma_2 \rangle$ of "CRPQs".
+	From $\gamma_1$, we start by picking a "locally redundant atom" (if any), and remove it.
+	We iterate this process, until we get a "CRPQ" with no "locally redundant atom" $\gamma'_1$.
+	By construction, it is "equivalent" to $\gamma_1$.\footnote{Note however that in general $\gamma'_1$ cannot be
+	obtained by only keeping all atoms of $\gamma_1$ which are not "locally redundant": for instance, if $\gamma_1() =
+	x \atom{L} y \land x \atom{L} y$, then all atoms are "locally redundant".
+	Instead, we need to remove such atoms one after the other.}
+	Moreover, $\gamma'_1$ can be computed in polynomial time.
+	We then refine in $\gamma'_1$ each atom so that each "atom" is either labelled by $a$ or
+	$a^+$ for some $a\in \A$.
+
+	We then define $\langle \delta_1, \delta_2 \rangle$, where
+	$\delta_2 \defeq \gamma_2$ and
+	\[
+		\delta_1 = \Bigl(
+			\bigwedge_{x \atom{L} y \in \gamma'_1} x \atom{L} y
+		\Bigr)
+		\land 
+		\Bigl(
+			\bigwedge_{x \in \vertex{\gamma'_1}} x \atom{\marking_x} x
+		\Bigr),
+	\]
+	and we let $\alphabetmarking \defeq \{\marking_x \mid x \in \vertex{\gamma'_1}\}$.
+
+	Next, we show that \axiomCanonMonotonicity{} holds:
+	if $\gamma_1 \contained \gamma_2$ then $\delta_1 \contained \gamma'_1 \semequiv \gamma_1 \contained \gamma_2 = \delta_2$,
+	and dually if $\delta_1 \contained \delta_2$ then let $G_1 \cdb \gamma'_1$, and let $D_1$ be the associated "canonical database".
+	Since $\delta_1 \contained \delta_2$, there exists $D_2 \cdb \delta_2$ "st" $D_2 \homto D_1$ but since $D_2$ contains no
+	letter from $\alphabetmarking$, we actually get a "homomorphism" $D_2 \homto G_1$, and so $\gamma'_1 \contained \delta_2$
+	"ie" $\gamma_1 \contained \gamma_2$.
+
+	For \axiomStrongCanonCore{}, by definition of "simple regular expressions",
+	no language labelling an "atom" of $\delta_1$ contains the empty word, and hence
+	every "canonical database" of $\delta_1$ is "non-degenerate@@db".
+	Then, let $f\colon D'_1 \to D_1$ be a "homomorphism" between "canonical databases"
+	of $\delta_1$. Because of the letters of $\alphabetmarking$,
+	$f$ must send $x \in \vertex{\delta_1} \subseteq \vertex{D_1}$
+	onto $x \in \vertex{D'_1}$. We then claim that $f$ is "strong onto".
+	Let $\alpha \defeq x \atom{L} y$ be an "atom" of $\delta_1$.
+	We consider its "atom refinement" in $D_1$, and we want to show that it is
+	\emph{included in} the image of the "atom refinement" of $\alpha$ in $D'_1$:
+	\begin{itemize}
+		\item if $L = \{\marking_x\}$, this is trivial;
+		\item if $L = \{a\}$ for some letter $a$, then since
+			$\alpha$ is not "locally redundant" in $\gamma'_1$,
+			there are no other $a$-edge from $x$ to $y$ in $D_1$ (or $D'_1$),
+			and so the unique $a$-edge from $x$ to $y$ in $D'_1$
+			must be sent on the unique $a$-edge from $x$ to $y$ in $D_1$;
+		\item if $L = a^+$ for some letter $a$, then the "atom refinement" of $\alpha$ in
+			$D'_1$, say $x \atom{a^k} y$ ($k \geq 1$) is sent via $f$ on a path
+			from $x$ to $y$ in $D_1$. If the "atom refinement" of $\alpha$ in $D_1$
+			is included in this path, we are done; otherwise, when lifting
+			this path to $\delta_1$, we would obtain a path of "atoms"
+			$x \atom{L_1} \cdots \atom{L_n} y$ "st" $a^k \in L_1\cdots L_n$.
+			By definition of "simple regular expressions", all $L_i$'s must
+			be either $a$ or $a^+$, and hence in all cases $L_1 \cdots L_n \subseteq a^+$,
+			contradicting that $\alpha$ is not "locally redundant" in $\gamma'_1$. 
+	\end{itemize}
+	Thus, we have \axiomStrongCanonCore{}.
+
+	Similarly, \axiomCanonNonRed{} holds because all "atoms" of $\gamma'_1$ are labelled
+	by $a$ or $a^+$ and we removed "locally redundant atoms".
+	Thanks to the self-loops, $\delta_1$ is "fully contracted" and so \axiomCanonContracted{} holds.
+	Moreover, \axiomCanonContainment{} holds trivially since $\gamma_2 = \delta_2$,
+	and so does \axiomCanonMarking{} by definition of $\delta_1$.
+\end{proof}
+
+Motivated by \Cref{lem:reduction-containment-to-minimization}
+we show that several reasonable classes admit
+a polynomial-time algorithm for the "strong canonization problem"---see
+\Cref{lem:canonization-CRPQs,lem:canonization-SREs}.
+
+\begin{corollary}
+	\AP\label{coro:lowerbounds}
+	The "CRPQ" and "UCRPQ" "minimization problems" are:
+	\begin{enumerate}
+		\itemAP\label{expspace-h:pw1}"ExpSpace"-hard, even
+		if restricted to queries of path-width at most 1,
+		\itemAP\label{pspace:forest} "PSpace"-hard when restricted to "forest-shaped CRPQs",\footnote{By \AP""forest-shaped CRPQs"" we mean queries whose "underlying graph" has no undirected cycle.}
+		\itemAP\label{pip2:crpqsre} "PiP2"-hard when restricted to "CRPQs" over "simple regular expressions".
+	\end{enumerate}
+	All hardness results are under polynomial-time reductions.
+\end{corollary}
+
+\begin{proof}
+	From \Cref{lem:reduction-containment-to-minimization,lem:canonization-CRPQs,lem:canonization-SREs} we can derive the stated hardness results when combined with known hardness results for the "containment problem":
+	\Cref{expspace-h:pw1} follows from the "ExpSpace" lower bound of \cite[Lemma 8]{figueira_containment_2020} (or its strengthening \Cref{prop:variation-figueira}).
+%
+	\Cref{pspace:forest} follows from the trivial "PSpace" lower bound from regular language containment which is also the lower bound for one-atom "CRPQs".
+%
+	\Cref{pip2:crpqsre} follows from the known "PiP2"-lower bound for "CRPQ(SRE)" queries implied by \cite[Theorem 4.2]{FigueiraGKMNT20}.
+\end{proof}

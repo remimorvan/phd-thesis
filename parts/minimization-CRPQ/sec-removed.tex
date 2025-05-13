@@ -1,0 +1,139 @@
+
+% TREE PATTERNS (SUB?)SECTION HERE:
+\input{sec-treepatterns}  
+\section{other things removed}
+\paragraph{Strong Redundancy}
+\diego{Remove an "atom" $\alpha = x \atom{L} y$ of a "CRPQ" $q$ if $L$ contains the language induced by the concatenation of the languages on a path from $x$ to $y$ on $q \setminus \set{\alpha}$. We obtain $q \semequiv q \setminus \set\alpha$. It is therefore in "PSpace" to test if there is a "strongly redundant" "atom".}
+\paragraph{Completion}
+\diego{adding an atom between two existing variables with the induced langauge. Granted, this actually increases the number of atoms! But in conjunction with "redundancy" or even "weak-redundancy" it may lead to smaller queries. In the example of \Cref{fig:ex-equiv-queries} we can see the passage from left to right as the result of performing: first completion, then redundancy elimination and last contraction.}
+\paragraph{Weak Redundancy}
+\diego{We can apply Completion, Contraction and (strong) Redundancy. Is there a limit on how many times these have to be applied?}
+
+A ""weak-homomorphism"" from a "CRPQ" $q$ to another "CRPQ" $q'$ is a mapping $h: \vars(q) \to \vars(q')$ such that for every atom $x \atom{L} y$ of $q$ there is a path $h(x) \atom{L_1} \dotsb \atom{L_n} h(y)$ from $h(x)$ to $h(y)$  in $q'$ where $L_1 \dotsb L_n \subseteq L$.
+\begin{lemma}
+  The "weak-homomorphism" relation is reflexive and transitive.
+  If there is a "weak-homomorphism" from $q$ to $q'$, then $q' \contained q$.
+\end{lemma}
+An "atom" $\alpha$ of $q$ is ""weakly-redundant"" if there is a "weak-homomorphism" from $q$ to $q \setminus \set\alpha$.
+\diego{Question: is there a notion of ``core''?}
+
+=====================
+
+Say that a class $\classCRPQ$ of CRPQs satisfies the \AP""uniform small model property""
+if for every $\gamma \in \classCRPQ$, there exists a function
+$\intro*\shrink{\gamma}\colon \Exp(\gamma) \times \N \to \Exp(\gamma)$ "st":
+\begin{enumerate}
+  \item for each $\gamma \in \classCRPQ$, for each $n \in \N$ and $\delta \in \classCRPQ$,
+  if $\nbatoms{\delta} \leq n$ then for any $G \in \Exp(\gamma)$, $G \models \delta$ "iff"
+  $\shrink{\gamma}(G, n) \models \delta$, and
+  \item the size of $\shrink{\gamma}(G, n)$ only depends on $\gamma$ and $n$---but not $G$.
+\end{enumerate} 
+Note that $\shrink{\gamma}(G, n) \defeq G$ trivially satisfies the first point but not the second one.
+In the name "uniform small model property" ``uniform'' refers to the fact
+that the way we shrink $G$ onto $\shrink{\gamma}(G,n)$ is the same for all $\delta$---provided that $\nbatoms{\delta} \leq n$. The ``small model property'' part refers to the fact that to check if
+$\gamma \contained \delta$, it suffices to check that all canonical databases of $\gamma$
+of size at most $\nbatoms{\shrink{\gamma}(-, \nbatoms{\delta})}$ are models of $\delta$.
+
+\begin{proposition}
+  \AP\label{prop:containment-uniform-smp}
+  If $\classCRPQ$ has the "uniform small model property", if $\gamma \in \classCRPQ$ and $\Delta$ 
+  is a finite union of $\classCRPQ$-queries, then
+  $\gamma \contained \Delta$ "iff" for every "canonical database" $G$ of $\gamma$,
+  $\shrink{\gamma}(G, m) \models \Delta$
+  where $m \defeq \max{\set{\nbatoms{\delta} \mid \delta \in \Delta}}$.
+\end{proposition}
+
+\begin{proof}
+  The left-to-right implication is trivial. For the right-to-left implication, 
+  let $G$ by any "canonical database" of $\gamma$,
+  and assume by contradiction that $G \not\models \Delta$.
+  Then for all $\delta \in \Delta$, $G \not\models \delta$,
+  and so $\shrink{\gamma}(G, m) \not\models \delta$.
+  It follows that $\shrink{\gamma}(G, m) \not\models \Delta$.
+  Contradiction.
+\end{proof}
+
+\begin{proposition}
+  \AP\label{prop:tree-patterns-uniform-smp}
+  The class of tree patterns---and more generally CRPQs over $(a, a^+)$ or even over $(a, a^*)$---
+  has the "uniform small model property", where $\shrink{\gamma}(G, n)$ consists
+  in shrinking every "atom refinement" of size at least $n+1$ to an "atom refinement" of
+  size $n$.
+\end{proposition}
+
+\begin{proof}
+  TODO. Addref?
+\end{proof}
+
+\begin{corollary}
+  \AP\label{coro:containment-union-tree-patterns-better}
+  The containment problem of deciding if $\gamma \contained \Delta$, given:
+  \begin{itemize}
+    \item an integer $n$,
+    \item a "tree pattern" $\gamma$ of size at most $n$,
+    \item a union of "tree patterns" $\Delta$ "st" each $\delta \in \Delta$ has size at most $n$
+    and deciding if a "tree pattern" $\delta$ belongs to $\Delta$ can be done in "NP" ("wrt" $n$),
+  \end{itemize} 
+  can be solved in "PiP2".
+\end{corollary}
+
+\begin{proof}
+  By \Cref{prop:containment-uniform-smp,prop:tree-patterns-uniform-smp},
+  $\gamma \contained \Delta$ "iff" for every "canonical database" $G$ of $\gamma$,
+  there exists $\delta \in \Delta$ "st"
+  $\shrink{\gamma}(G, n) \models \delta$.
+  In turn, this is equivalent to asking that for every "canonical database" $G$ of $\gamma$
+  of size at most $|\shrink{\gamma}(-, n)|$, then there exists $\delta\in \Delta$
+  "st" $G \models \delta$.
+  This concludes the proof that the problem lies in "PiP2" since by \Cref{prop:tree-patterns-uniform-smp}, $\nbatoms{\shrink{\gamma}(-, n)} = n^2$ so this
+  upper bound is polynomial.
+\end{proof}
+
+\begin{proof}[Proof of \Cref{proof:union-tree-patterns}]
+  \proofcase{Upper bound.}
+  A "tree pattern" $\gamma$ is equivalent to a finite union of smaller "tree patterns"
+  "iff" $\gamma \contained \App{\gamma}{\+C}{\textit{poly}}$ by \Cref{prop:max-under-approx},
+  where $\+C$ is the class of all trees which are strictly smaller as "tree patterns"
+  than $\gamma$.
+  \remi{TODO: well not exactly…
+  Also: size of tree pattern $\neq$ size of its CRPQ encoding (because of node labels). Solution: consider classes of queries, not of graphs.}
+  But then \remi{also argue this point}
+  \[
+    \App{\gamma}{\+C}{\textit{poly}} \semequiv 
+    \{
+      \alpha \in \CRPQ[\+C] \mid \exists \rho \in \Refin[\leq m](\gamma), 
+      \rho \surjto \alpha
+    \}.
+  \]
+  Each $\alpha$ has polynomial (in fact linear) size,
+  and testing if $\alpha$ belongs to this latter union can be done in "NP" by definition,
+  so \Cref{coro:containment-union-tree-patterns-better} provides an algorithm in "PiP2"
+  for the problem.
+
+  \proofcase{Lower bound.} \remi{todo}
+\end{proof}
+
+\remi{Check if it also works for "CRPQs" over simple regular expressions.}
+
+\remi{What about minimization of variables?}
+\input{sec-treelike}
+
+\section{Removed from Discussion}
+\subsection{Tree patterns} Tree pattern minimization on the class of tree patterns is "PiP2". Tree pattern minimization on the class of unions of tree patterns may be better. Possibly the example of \cite[Fig.~9]{min-tree-patterns} is minimal, and yet it is equivalent to a union of small conjunctive queries.
+Our results on "SRE" yield that unions of tree pattern minimization is still "PiP2", and hence that by going to a more expressive formalism we don't lose in complexity.
+
+\begin{conjecture}
+If a tree-like CRPQ is equivalent to a CRPQ of size $k$, then it is equivalent to a tree-like CRPQ of size $k$.
+\end{conjecture}
+
+
+
+\begin{openproblem}
+    What's the exact complexity of CRPQ (atom or variable) minimization?
+\end{openproblem}
+
+\paragraph{Graphs with transitive edges} A very simple query language is the case of graphs with edges and transitive edges, which naturally corresponds to CRPQs having only two possible languages $a$ and $a^+$. In this simple case the upper bound for CRPQ minimality can be improved to XXX.
+
+\begin{openproblem}
+    Does minimization of CRPQ on SRE have a better complexity than "2ExpSpace"?
+\end{openproblem}
