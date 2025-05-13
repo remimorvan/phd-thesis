@@ -5,15 +5,15 @@ In this section we give some underlying ideas for showing lower bounds for the "
 
 \subsection{Equivalence with a Single Atom}
 
-"Containment of CRPQs" is "ExpSpace"-complete \cite{Florescu:CRPQ,four-italians}. Somewhat surprisingly,
-Figueira \cite[Lemma 8]{figueira_containment_2020}
+"Containment of CRPQs" is "ExpSpace"-complete \cite{FlorescuLevySuciu1998Containment,CalvaneseDeGiacomoLenzeriniVardi2000Containment}. Somewhat surprisingly,
+Figueira \cite[Lemma 8]{Figueira2020Containment}
 showed that there exists a finite alphabet $\A$
 "st" the problem remained "ExpSpace"-hard even if restricted to
 instances with a simple shape.
 We start by strengthening this result to fit our needs.
 
 
-\begin{proposition}[{Variation on \cite[Lemma 8]{figueira_containment_2020}}]
+\begin{proposition}[{Variation on \cite[Lemma 8]{Figueira2020Containment}}]
 	\AP\label{prop:variation-figueira}
 	There is a fixed alphabet over which the
 	"con\-tainment problem" for "Boolean CRPQs" is "ExpSpace"-hard restricted
@@ -35,7 +35,7 @@ We start by strengthening this result to fit our needs.
 
 \begin{proof}
 
-	By inspecting \cite[Proof of Lemma 8, pp. 15--17]{figueira_containment_2020},
+	By inspecting \cite[Proof of Lemma 8, pp. 15--17]{Figueira2020Containment},
 	it can be noticed that
 	actually the first condition is satisfied by Figueira's reduction---using his notation,
 	neither $E$ nor $G_i\cup F_C\cup F_H$ with $i \in \lBrack 0,n\rBrack$
@@ -672,9 +672,9 @@ a polynomial-time algorithm for the "strong canonization problem"---see
 
 \begin{proof}
 	From \Cref{lem:reduction-containment-to-minimization,lem:canonization-CRPQs,lem:canonization-SREs} we can derive the stated hardness results when combined with known hardness results for the "containment problem":
-	\Cref{expspace-h:pw1} follows from the "ExpSpace" lower bound of \cite[Lemma 8]{figueira_containment_2020} (or its strengthening \Cref{prop:variation-figueira}).
+	\Cref{expspace-h:pw1} follows from the "ExpSpace" lower bound of \cite[Lemma 8]{Figueira2020Containment} (or its strengthening \Cref{prop:variation-figueira}).
 %
 	\Cref{pspace:forest} follows from the trivial "PSpace" lower bound from regular language containment which is also the lower bound for one-atom "CRPQs".
 %
-	\Cref{pip2:crpqsre} follows from the known "PiP2"-lower bound for "CRPQ(SRE)" queries implied by \cite[Theorem 4.2]{FigueiraGKMNT20}.
+	\Cref{pip2:crpqsre} follows from the known "PiP2"-lower bound for "CRPQ(SRE)" queries implied by \cite[Theorem 4.2]{FigueiraEtal2020Containment}.
 \end{proof}

@@ -24,7 +24,7 @@
 	Take any $\gamma \in \Gamma$ and a "tagged tree decomposition" $(T, \bagmap, \tagmap)$ of "width" at most $k$ of $\gamma$.\footnote{By a "tagged tree decomposition" of $\gamma$ we mean one for the identity $\gamma \homto \gamma$. The definition of "tagged tree decompositions" can be found in \Cref{sec:treedec}.}
 	It is easy to see that we can assume that the decomposition is of linear size in the number of "atoms" $\nbatoms{\gamma}$.%
 	\footnote{
-		Indeed, observe that the decomposition resulting from contracting any edge so that one "bag" is contained or equal to the other is of linear size and preserves the "width" (see, "eg", \cite{DBLP:journals/jcss/GottlobLS02}).
+		Indeed, observe that the decomposition resulting from contracting any edge so that one "bag" is contained or equal to the other is of linear size and preserves the "width" (see, "eg", \cite{GottlobLeoneScarcelloHypertreeDecompositions}).
 		% It also follows from the fact that computing "tree decomposition" of "width" $k$ is in linear time \cite{bodlaender1993linear}.
 	}
 	 For every "bag" $v$ of the decomposition containing $\bagmap(v)=\set{x_1, \dotsc, x_t}$ consider the following relation $R_v$ consisting of all tuples of "database" nodes $(v_1, \dotsc, v_t)$ such that for every "atom" $A=x_i \atom{L} x_j$ in $\tagmap^{-1}(v)$ we have that $(v_i, v_j)$ "satisfies" $A$.

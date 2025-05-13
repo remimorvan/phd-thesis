@@ -1,7 +1,7 @@
 \section{Not included: Tree-like Queries}
 
 \diego{Tree patterns as CRPQs: define "standard encoding" of letters by self-loops}
-The minimization of ""tree patterns"" has been thoroughly studied \cite{min-tree-patterns}. 
+The minimization of ""tree patterns"" has been thoroughly studied \cite{CzerwinskiMartensNiewerthParys2018Minimization}. 
 A "tree pattern" can be seen in our context as a special kind of tree-like "CRPQ". Let us call a \AP""pseudo-tree"" to any directed multigraph such that (i) it has no parallel edges (in particular no parallel self-loops) and (ii) once the self-loops are removed, it is a directed `root-to-leaves' tree.
 Let us fix an alphabet letter $e \in \A$ which will be used to model the child relation.
 A \AP""tree pattern CRPQ"" is then any "CRPQ" such that
@@ -46,7 +46,7 @@ We can then define a bijection between "tree pattern CRPQs" and "tree patterns".
   \diego{TBC... Rémi, the floor is yours :)}
 \end{proof}
 
-As a consequence of \cite[Theorem~3.1]{min-tree-patterns} and the previous \Cref{lem:treepat-crpq} we then have:
+As a consequence of \cite[Theorem~3.1]{CzerwinskiMartensNiewerthParys2018Minimization} and the previous \Cref{lem:treepat-crpq} we then have:
 \begin{corollary}
   The "atom-minimization problem" for "tree pattern CRPQs" is "SigmaP2"-complete.
 \end{corollary}

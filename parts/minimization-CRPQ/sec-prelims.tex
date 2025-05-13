@@ -50,7 +50,7 @@ $\Gamma \intro*\semequiv \Gamma'$.
 \AP A ""union of CQs"" (\reintro{UCQs}) is defined as a "UCRPQ" with the same property.
 
 A \AP""canonical database"" $G$ of a "CRPQ" $\gamma$ is any "canonical database" associated
-to an "expansion" of $\gamma$, see \cite[Definition 3.1]{Florescu:CRPQ}
+to an "expansion" of $\gamma$, see \cite[Definition 3.1]{FlorescuLevySuciu1998Containment}
 for a formal definition. We denote it by \AP$G \intro*\cdb \gamma$.
 A \reintro{canonical database} of a "UCRPQ" is a "canonical database" of one
 of its "disjuncts".
@@ -73,11 +73,11 @@ We write $\gamma \intro*\homto \gamma'$ if there is a "homomorphism" from $\gamm
 In the latter case, we say that $\gamma'$ is a \AP""homomorphic image"" of $\gamma$.
 A \reintro{homomorphism} $\fun$ from a graph database $G$ to a graph database $G'$ is a mapping from $\vertex{G}$ to $\vertex{G'}$ such that  for every edge $u \atom{a} v$ of $G$, it holds that $\fun(u) \atom{a} \fun(v)$ is an edge in $G'$. A "homomorphism" from a "CQ" to a graph database is defined analogously.  
 
-\AP It is easy to see that if $\gamma \homto \delta$ then $\delta \contained \gamma$, and in the case where $\gamma,\delta$ are "CQs" this is an ``if and only if'' \cite[Lemma 13]{DBLP:conf/stoc/ChandraM77}. 
+\AP It is easy to see that if $\gamma \homto \delta$ then $\delta \contained \gamma$, and in the case where $\gamma,\delta$ are "CQs" this is an ``if and only if'' \cite[Lemma 13]{ChandraMerlin1977Implementation}. 
 \AP Two "CQs" $\gamma,\delta$ are ""hom-equivalent"" if there are "homomorphisms" $\gamma \homto \delta$ and $\delta \homto \gamma$.
 Hence, for any two "CQs" $\gamma, \delta$, we have $\gamma \semequiv \delta$ if, and only if, they are "hom-equivalent".
 \AP The ""core"" of a "CQ" $\gamma$, denoted by $\intro*\core(\gamma)$
-is the result of repeatedly removing any atom which results in an equivalent query. It is unique up to isomorphism (see, "eg", \cite{DBLP:conf/stoc/ChandraM77}). We say that a "CQ" is `a core' if it is isomorphic to its "core". If $\gamma$ and $\delta$ are "hom-equivalent" then they have
+is the result of repeatedly removing any atom which results in an equivalent query. It is unique up to isomorphism (see, "eg", \cite{ChandraMerlin1977Implementation}). We say that a "CQ" is `a core' if it is isomorphic to its "core". If $\gamma$ and $\delta$ are "hom-equivalent" then they have
 the same "core". Moreover, there is always an \AP""embedding""---"ie", a "homomorphism" which is injective both on variables and "atoms"---of $\core(\gamma)$ into $\gamma$.
 
 \paragraph*{Refinements and expansions of (U)CRPQs.}
@@ -122,8 +122,8 @@ the "evaluation" of $\Gamma(\bar x)$ on $G$, denoted by $\Gamma(G)$, is the set 
 $\bar{v}$ of nodes for which there is $\anexpansion \in \Exp(\Gamma)$ such that there is a "homomorphism" $\anexpansion \homto G$ that sends $\bar x$ onto $\bar v$. 
 
 "Containment" of "UCRPQs" can also be characterized in terms of "expansions".
-\begin{proposition}[Folklore, see e.g. {\cite[Proposition 3.2]{Florescu:CRPQ}} or
-	{\cite[Theorem 2]{four-italians}}]
+\begin{proposition}[Folklore, see e.g. {\cite[Proposition 3.2]{FlorescuLevySuciu1998Containment}} or
+	{\cite[Theorem 2]{CalvaneseDeGiacomoLenzeriniVardi2000Containment}}]
 	\AP\label{prop:cont-char-exp-st} 
 	Let $\Gamma_1$ and $\Gamma_2$ be "UCRPQs". Then the following are equivalent:
 	% \begin{itemize}

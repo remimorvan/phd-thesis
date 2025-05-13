@@ -8,7 +8,7 @@ Several open problems are left by our work, more prominently, the complexity gap
 
 Another approach for an algorithm for query answering of a "(U)CRPQs" $\gamma$ on a "graph database" $G$ is by first guessing a variable assignment $f: \vars(\gamma) \to \vertex{G}$ and then checking, for each "atom" $x \atom{L} y$ of $\gamma$, that there is a path in $G$ from $f(x)$ to $f(y)$ with label in $L$. 
 
-This implementation approach privileges minimizing the number of \emph{variables} as opposed to the number of \emph{atoms} of a "(U)CRPQ", and gives rise to the corresponding \reintro{variable-minimization problem(s)}. From a practical perspective, as already mentioned in the Introduction, systems commonly evaluate CRPQs via join algorithms. Recent \emph{worst-case optimal} joins algorithms work by ordering the variables and assigning potential values to these, and hence the number of variables may also be a relevant parameter in these cases~\cite{cucumides-icdt23,milleniumDB24}. 
+This implementation approach privileges minimizing the number of \emph{variables} as opposed to the number of \emph{atoms} of a "(U)CRPQ", and gives rise to the corresponding \reintro{variable-minimization problem(s)}. From a practical perspective, as already mentioned in the Introduction, systems commonly evaluate CRPQs via join algorithms. Recent \emph{worst-case optimal} joins algorithms work by ordering the variables and assigning potential values to these, and hence the number of variables may also be a relevant parameter in these cases~\cite{CucumidesReutterVrgoc2024SizeBounds,VrgocEtal2024MillenniumDB}. 
  % 
 \decisionproblem{""Variable-minimization problem"" for "CRPQs" ("resp" for "UCRPQ")}
 {A finite alphabet $\A$, a  "CRPQ" ("resp" "UCRPQ") $\gamma$ over $\A$ and $k \in \N$.}
@@ -47,10 +47,10 @@ By adaptations of the algorithms of \Cref{sec:upperCRPQ,sec:upperUCRPQ} we can d
 
 We believe that the techniques of \Cref{sec:upperUCRPQ} should also yield a method to compute "maximal under-approximations" for unions of tree patterns, as well as a "PiP2" upper bound for the minimization problem of unions of tree patterns, contrasting with
 the "SigmaP2"-completeness of minimization of tree patterns 
-proven by Czerwiński, Martens, Niewerth \& Parys \cite[Theorem 3.1]{min-tree-patterns}.
+proven by Czerwiński, Martens, Niewerth \& Parys \cite[Theorem 3.1]{CzerwinskiMartensNiewerthParys2018Minimization}.
 \todo{``We leave the details for a future long version of this article.''}
 
-A \AP""tree pattern""---see "eg" \cite[\S 2.2]{min-tree-patterns}---over node variables
+A \AP""tree pattern""---see "eg" \cite[\S 2.2]{CzerwinskiMartensNiewerthParys2018Minimization}---over node variables
 $\A$ is a directed tree, whose nodes have a label from $\A\sqcup\{*\}$, and whose
 edges are partition into simple edges and transitive edges.
 
@@ -84,14 +84,14 @@ See \Cref{fig:encoding-tree-pattern} for an example. Note that this "encoding" i
 	Given two "tree patterns" $\tau_1$, $\tau_2$ over $\A$, the following are equivalent:
 	\begin{itemize}
 		\item $\tau_1 \contained \tau_2$ as "tree patterns"---in the sense of
-			\cite[Definition 2.2]{min-tree-patterns}, and
+			\cite[Definition 2.2]{CzerwinskiMartensNiewerthParys2018Minimization}, and
 		\item $\Encoding(\tau_1) \contained \Encoding(\tau_2)$ as "CRPQs".
 	\end{itemize}
 \end{proposition}
 
 \begin{proof}[Proof sketch]
 	This follows from the characterization of containment for "tree patterns"
-	using ``canonical tree models''---see \cite[\S4.2]{min-tree-patterns}\footnote{Note
+	using ``canonical tree models''---see \cite[\S4.2]{CzerwinskiMartensNiewerthParys2018Minimization}\footnote{Note
 	however that the authors assume the set of labels to be infinite, and label `$*$'-nodes
 	by $z$-nodes where $z$ is a new label: this assumption can be removed by
 	allowed unlabelled nodes in the model.}---and the characterization of "containment" for "CRPQs"

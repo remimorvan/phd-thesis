@@ -14,7 +14,7 @@ As it turns out, having unions may help in minimizing the (maximum) number of at
 	There exist "CRPQs" which are "minimal" among "CRPQs" but not among "UCRPQs".
 \end{proposition}
 \begin{proof}
-	The following example is inspired from \cite[Example 1.2]{FigueiraM23}.
+	The following example is inspired from \cite[Example 1.2]{FigueiraMorvan2025SemanticTreeWidthLMCS}.
 	Consider the following "CRPQs":\leavevmode
 	\begin{center}
 		\small
@@ -329,7 +329,7 @@ Our "ExpSpace" upper bound relies on the following technical lemma.
 	trivially closed under "minors".
 	Each $\alpha \in \App{\Gamma}{\+C}{m}$ has at most $k$ edges,
 	and $\App{\Gamma}{\+C}{m}$ contains exponentially many queries,
-	so by \cite[Proposition 3.11]{FM2023semantic} (see also proof of \Cref{thm:2expspace-min-crpqs}), it can be solved
+	so by \cite[Proposition 3.11]{FigueiraMorvan2025SemanticTreeWidthLMCS} (see also proof of \Cref{thm:2expspace-min-crpqs}), it can be solved
 	in "ExpSpace".
 	Finally, "ExpSpace"-hardness will follow from \Cref{thm:minimization-lowerbound}.
 \end{proof}
@@ -353,7 +353,7 @@ Our "ExpSpace" upper bound relies on the following technical lemma.
 	The intuition is that if a counterexample includes an atom expansion $x \atom{a^n} y$ of some atom $x \atom{a^+} y$, where $n$ is greater than the maximum number of atoms in $\Delta$ (plus one), then the expansion obtained by replacing $x \atom{a^n} y$ with $x \atom{a^{n-1}} y$ must also be a counterexample. Hence, a minimal counterexample must have all atom expansions bounded by the maximum number of atoms in $\Delta$.
 
 	\begin{proof}
-		This fact follows from a standard technique as used in, "eg", \cite{FigueiraGKMNT20}.
+		This fact follows from a standard technique as used in, "eg", \cite{FigueiraEtal2020Containment}.
 		Take any counterexample $\anexpansion \in \Exp(\Gamma)$ as in the statement, and suppose it is of minimal size. By means of contradiction, assume $\nbatoms{\anexpansion} > \max_{\gamma \in \Gamma}\nbatoms{\gamma} \cdot (\max_{\delta \in \Delta}\nbatoms{\delta}+1)$. 
 		Then, it contains an "atom expansion" $x \atom{a^m} y$ of size $m>\max_{\delta \in \Delta}\nbatoms{\delta}+1$. 
 		Consider removing one atom from such expansion ("ie", replacing $x \atom{a^m} y$ with $x \atom{a^{m-1}} y$), obtaining some expansion $\anexpansion' \in \Exp(\Gamma)$ of smaller size. By minimality $\anexpansion'$ is not a counterexample: in other words there is  $\anexpansion'' \in \Exp(\delta)$ such that $h:\anexpansion'' \homto \anexpansion'$ for some $\delta \in \Delta$ and $h$. Since $x \atom{a^{m-1}} y$ contains more than $\nbatoms{\delta}$ "atoms", there must be some $a$-"atom" of $x \atom{a^{m-1}} y$ which either (1) has no $h$-preimage or (2) every $h$-preimage is in an "atom expansion" of a $\A^*$-"atom" or a $a^+$-"atom" of $\delta$. We can then replace the $a$-atom with two $a$-atoms in $\anexpansion'$ and do similarly in the atom expansions of $\anexpansion''$ in the $h$-preimage, obtaining that $\anexpansion' \contained \delta$. But this is in contradiction with our hypothesis, hence any minimal counterexample is of size smaller or equal to $\max_{\gamma \in \Gamma}\nbatoms{\gamma} \cdot (\max_{\delta \in \Delta}\nbatoms{\delta}+1)$.
@@ -364,7 +364,7 @@ Our "ExpSpace" upper bound relies on the following technical lemma.
 	(and observing that equivalent queries without concatenations can be obtained in polynomial time)
 	its negation $\gamma \centernot{\contained} \Delta_{\textnormal{App}}$ can be tested by guessing a polynomial sized "expansion" $\anexpansion$ of $\gamma$ and then testing $\anexpansion \centernot{\contained} \Delta_{\textnormal{App}}$.
 	In turn, $\anexpansion \contained \Delta_{\textnormal{App}}$ can be tested in "NP" by 
-	\cite[Theorem 4.2]{FigueiraGKMNT20}.\footnote{Simply by (1) guessing a polynomial size "CRPQ" $\delta$, (2) testing $\delta \in \Delta_{\textnormal{App}}$ in "NP" by \Cref{lemma:approximation-for-finclass}, and (3) guessing a (small) expansion $\anexpansion'$ of $\delta$ and testing $\anexpansion' \homto \anexpansion$.}
+	\cite[Theorem 4.2]{FigueiraEtal2020Containment}.\footnote{Simply by (1) guessing a polynomial size "CRPQ" $\delta$, (2) testing $\delta \in \Delta_{\textnormal{App}}$ in "NP" by \Cref{lemma:approximation-for-finclass}, and (3) guessing a (small) expansion $\anexpansion'$ of $\delta$ and testing $\anexpansion' \homto \anexpansion$.}
 
 	This yields a "PiP2" algorithm for testing $\gamma \contained \Delta_{\textnormal{App}}$, and thus also for $\Gamma \contained \Delta_{\textnormal{App}}$.
 	"PiP2"-hardness follows from \Cref{coro:lowerbounds}.
