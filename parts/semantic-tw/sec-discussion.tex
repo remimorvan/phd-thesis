@@ -41,7 +41,7 @@ Our result implies that for each $k$
 the "evaluation problem" for "UC2RPQs" $\Gamma$
 of "semantic tree-width" $k$ is fixed-parameter tractable---or \AP""FPT""---taking
 the query as parameter, "ie", in time $\+O(|G|^{c} \cdot f(|\Gamma|))$
-for a computable function $f$ and constant $c$, where $G$ is the "database" given as input.
+for a computable function $f$ and constant $c$, where $G$ is the "database@@graph" given as input.
 %
 While this was a known fact \cite[Corollary IV.12]{RomeroBarceloVardi2017Homomorphism}, the dependence on the database was $c=2k+1$.  Our results show that the dependence can be improved to $c=k+1$, similarly to \cite[Theorem 6.3]{BarceloRomeroVardi2016SemanticAcyclicity} for the case $k=1$.
 It has been further shown by Feier, Gogacz and Murlak that the "evaluation" can be done with a single-exponential $f$ \cite[Theorem~22]{FeierGogaczMurlak24Treewidth}.
@@ -81,14 +81,14 @@ Let us call a "UC2RPQ" ""finitely-redundant"" if there is no infinite chain $\xi
     }
 \end{figure}
 \AP
-Observe that the classes of "CQs" and "UCQs" are "finitely-redundant", and also the class of "CRPQs" with ``""no directed cycles""'', meaning no directed cycle in its underlying directed graph and no empty word $\epsilon$ in the "atom" languages.
+Observe that the classes of "CQs" and "UCQs" are "finitely-redundant", and also the class of ""loopless CRPQs"", meaning no directed cycle in its underlying directed graph and no empty word $\epsilon$ in the "atom" languages.
 
 \begin{lemma}
-    The class of "CRPQs" with "no directed cycles" is "finitely-redundant".
+    The class of "loopless CRPQs" is "finitely-redundant".
 \end{lemma}
 \begin{proof}
-    By means of contradiction, let $\gamma$ have "no directed cycles" and suppose there is an infinite chain $\xi_1(\bar x) \strcontained \xi_2(\bar x) \strcontained \dotsb$ of "expansions" of $\gamma$. Hence, there must be an "atom" "expansion" which grows arbitrarily in the chain. Take $\xi_i$ such that it contains an "atom" "expansion" of size bigger than $\xi_1$. Since such "atom" "expansion" is a directed path (as we are dealing with one-way "CRPQs"), the fact that $\xi_i \homto \xi_1$ implies that there is some cycle in $\xi_1$.
-    Since $\gamma$ cannot contain the empty word in the "atom" languages, this is in contradiction with the hypothesis that there are "no directed cycles" in $\gamma$.
+    By means of contradiction, let $\gamma$ be "loopless" and suppose there is an infinite chain $\xi_1(\bar x) \strcontained \xi_2(\bar x) \strcontained \dotsb$ of "expansions" of $\gamma$. Hence, there must be an "atom" "expansion" which grows arbitrarily in the chain. Take $\xi_i$ such that it contains an "atom" "expansion" of size bigger than $\xi_1$. Since such "atom" "expansion" is a directed path (as we are dealing with one-way "CRPQs"), the fact that $\xi_i \homto \xi_1$ implies that there is some cycle in $\xi_1$.
+    Since $\gamma$ cannot contain the empty word in the "atom" languages, this is in contradiction with the hypothesis that there are no "directed cycles" in $\gamma$.
 \end{proof}
 
 We next show that, restricted to classes of "finitely-redundant" "UC2RPQ", we can obtain a characterization of "evaluation" in "FPT".
@@ -178,12 +178,12 @@ We next show that, restricted to classes of "finitely-redundant" "UC2RPQ", we ca
     Once we get hold of such a "maximal" "expansion" $\xi$, we proceed as in \cite[proof of Theorem~4.1]{Grohe2007ComplexityHomomorphism} to produce, in polynomial time, a "graph database" $G_\xi$ such that:
     \begin{enumerate}
         \item there is a "homomorphism" $G_\xi \homto \xi$, and
-        \item $G_\xi$ "satisfies" $\xi$ if, and only if, $G$ has a clique of size $k$.
+        \item $G_\xi$ "satisfies@@db" $\xi$ if, and only if, $G$ has a clique of size $k$.
     \end{enumerate}
-Now consider the "UC2RPQ" $\Gamma \in \+C$ of which $\xi$ is an expansion, and observe that if $G_\xi$ "satisfies" $\Gamma$, then we must have that $G_\xi$ also "satisfies" $\xi$, by the fact that $G_\xi \homto \xi$ and $\xi$ is "maximal". Hence, the following are equivalent:
+Now consider the "UC2RPQ" $\Gamma \in \+C$ of which $\xi$ is an expansion, and observe that if $G_\xi$ "satisfies@@db" $\Gamma$, then we must have that $G_\xi$ also "satisfies@@db" $\xi$, by the fact that $G_\xi \homto \xi$ and $\xi$ is "maximal". Hence, the following are equivalent:
 \begin{itemize}
-    \item $G_\xi$ "satisfies" $\Gamma$, 
-    \item $G_\xi$ "satisfies" $\xi$,
+    \item $G_\xi$ "satisfies@@db" $\Gamma$, 
+    \item $G_\xi$ "satisfies@@db" $\xi$,
     \item $G$ contains a $k$-clique.
 \end{itemize}
 This finishes the "FPT"-reduction.

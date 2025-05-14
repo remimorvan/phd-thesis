@@ -10,6 +10,7 @@
  | constraint satisfaction problems
  | CSP
  | CSPs
+ | constraint satisfaction
 
 % ---
 % De Bruijn-Erdos

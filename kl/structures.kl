@@ -99,6 +99,7 @@
  | undirected graphs
  | undirected graph
  | \emph {undirected} graph
+ | graph@undir
 
 \knowledge{notion, index={path!undirected}}
  | undirected path
@@ -112,6 +113,7 @@
 
 \knowledge{notion, index={directed cycle}}
  | directed cycle
+ | directed cycles
 
 \knowledge{notion, index={directed acyclic graph}}
  | DAG
@@ -136,6 +138,7 @@
 \knowledge{notion, index={tree!directed}}
  | directed tree
  | directed trees
+ | tree-shaped
 
 \knowledge{notion, index={tree!$\sigma$-tree}}
  | $\sigma $-tree
@@ -156,6 +159,7 @@
  | substructure
  | finite subgraph
  | substructures
+ | subgraphs
 
 \knowledge{notion, index={substructure!induced}}
  | induced substructure
@@ -181,9 +185,15 @@
 
 
 % ---
-% Queries
+% Queries & misc
 % ---
 
 \knowledge{notion, index={query}}
  | queries@sem
  | query@sem
+
+\knowledge{notion}
+ | minor
+
+\knowledge{notion}
+ | minor-closed

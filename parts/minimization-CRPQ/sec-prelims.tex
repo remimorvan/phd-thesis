@@ -19,27 +19,27 @@ disjointness nor inclusion between $\{z_1,\hdots,z_n\}$ and $\{x_1,y_1,\hdots,x_
 $\{z_1,\hdots,z_n\}\cup\{x_1,y_1,\hdots,x_m,y_m\}$, is denoted by
 $\intro*\vars(\gamma)$. Variables in $\vars(\gamma)\setminus \{z_1,\hdots,z_n\}$ are existentially quantified. 
 We denote by $\intro*\atoms(\gamma)$ the set of "atoms" of $\gamma$.
-Given a "database" $G$, we say that a tuple of nodes $\bar u = (u_1,\hdots,u_n)$
-\AP""satisfies"" $\gamma$ 
+Given a "database@@graph" $G$, we say that a tuple of nodes $\bar u = (u_1,\hdots,u_n)$
+\AP""satisfies@@db"" $\gamma$ 
 on $G$ if there is a mapping
 $\fun\colon \vars(\gamma) \to \vertex{G}$ such that $u_i = \fun(z_i)$ for all
 $1 \leq i \leq n$, and for each $1 \leq j \leq m$,
 there exists a (directed) path from $\fun(x_j)$ to $\fun(y_j)$ in $G$, labelled by
-a word from $L_j$ (if the path is empty, the label is $\varepsilon$). The \AP""evaluation"" of $\gamma$ on $G$ is then the set of all tuples that "satisfy" $\gamma$ on $G$.
+a word from $L_j$ (if the path is empty, the label is $\varepsilon$). The \AP""evaluation"" of $\gamma$ on $G$ is then the set of all tuples that "satisfy@@db" $\gamma$ on $G$.
 
 A ""union of CRPQs"" (\reintro{UCRPQs})
 is defined as a finite set of "CRPQs", called \AP""disjuncts"", whose tuples of "output variables" have all the same arity.
 The "evaluation" of a union is defined as the union of its "evaluations". 
 If a query has no "output variables" we call it ""Boolean"", and
 its "evaluation" can either be the set $\set{()}$, in which case we say that $G$
-\reintro{satisfies} the query, or the empty set $\set{}$.
+\reintro(db){satisfies} the query, or the empty set $\set{}$.
 
 \AP Given two "UCRPQs" $\Gamma$
 and $\Gamma'$ whose "output variables" have the same arity,
 we say that $\Gamma$ is \AP""contained"" in $\Gamma'$,
 denoted by $\Gamma \intro*\contained \Gamma'$, if
 for every "graph database" $G$, for every tuple $\bar u$ of $\vertex{G}$,
-if $\bar u$ "satisfies" $\Gamma$ on $G$, then so does $\Gamma'$. We will hence reserve the symbol `$\subseteq$' for set inclusion.
+if $\bar u$ "satisfies@@db" $\Gamma$ on $G$, then so does $\Gamma'$. We will hence reserve the symbol `$\subseteq$' for set inclusion.
 The \AP""containment problem"" for "UCRPQs" is the problem of, given
 two "UCRPQs" $\Gamma$ and $\Gamma'$, to decide if $\Gamma \contained \Gamma'$.
 When $\Gamma \contained \Gamma'$ and $\Gamma' \contained \Gamma$  we say that

@@ -1,0 +1,61 @@
+% ---
+% Basic stuff only needed for lowerbound
+% ---
+
+\knowledge{notion}
+ | locally redundant
+ | locally redundant atom
+ | locally redundant atoms
+
+ \knowledge{notion}
+ | degenerate@CRPQ
+ | degenerate CRPQ
+ | non-degenerate@CRPQ
+
+\knowledge{notion}
+ | non-degenerate@db
+ | non-degenerate@cdb
+ | non-degenerate expansion
+
+\knowledge{notion}
+ | fully contracted
+ | non-fully contracted CRPQ
+
+\knowledge{notion}
+ | disjoint conjunction
+
+
+% ---
+% Classes
+% ---
+
+\knowledge{notion}
+ | class of (Boolean) CRPQs
+ | class@CRPQ
+ | class of CRPQs
+ | classes of CRPQs
+
+\knowledge{notion}
+ | closed under disjoint conjunction
+ | class of CRPQs closed under disjoint conjunction
+
+\knowledge{notion}
+ | closed under variable marking
+
+\knowledge{notion}
+ | relevant@prooflowerbound
+
+ \knowledge{notion}
+ | $\classCRPQ $-canonization problem
+ | canonization problem
+
+\knowledge{notion}
+ | $\classCRPQ $-strong canonization problem
+ | strong canonization problem
+
+\knowledge{notion}
+ | $\classCRPQ $-canonization oracle
+
+\knowledge{notion}
+ | $\classCRPQ $-strong canonization oracle
+ | strong canonization oracle

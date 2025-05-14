@@ -1,0 +1,68 @@
+% ---
+% Semantic tree-width 
+% ---
+
+\knowledge{notion}
+ | semantic tree-width $k$ problem
+ | semantic tree-width $1$ problem
+ | semantic tree-width 1 problem
+ | semantic tree-width 1 problems
+
+\knowledge{notion}
+ | one-way semantic tree-width $k$ problem
+ | one-way semantic tree-width $1$ problem
+ | one-way semantic tree-width 1 problem
+
+\knowledge{notion}
+ | semantic tree-width
+ | sem. tree-w.
+
+\knowledge{notion}
+ | one-way semantic tree-width
+
+\knowledge{notion}
+ | asymmetric containment problem for tree-width $k$
+% ---
+% Maximal under-approximations
+% ---
+
+\knowledge{notion}
+ | maximal under-approximation by infinitary unions
+ | maximal under-approximation
+ | maximal under-approximations
+ | Maximal under-approximations
+
+\knowledge{notion}
+ | approximations
+ | approximation
+
+\knowledge{notion}
+ | infinitary unions
+ | infinitary union
+ | Infinitary unions
+ | infinitary UCQ
+
+\knowledge{notion}
+ | trio
+ | Trio
+
+\knowledge{notion}
+ | Key Lemma
+ | key lemma
+
+% ---
+% Semantic path-width 
+% ---
+
+\knowledge{notion}
+ | one-way semantic path-width
+
+\knowledge{notion}
+ | semantic path-width
+ | sem. path-w.
+
+\knowledge{notion}
+ | semantic path-width $k$ problems
+ | semantic path-width $k$ problem
+ | one-way semantic path-width $k$ problem
+

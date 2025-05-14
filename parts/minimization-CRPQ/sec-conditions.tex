@@ -414,14 +414,14 @@ Finally, we show that checking strong minimality is at least as hard as checking
 \begin{proof}
 	We use the same reduction as in \Cref{prop:lowerbound-non-redundant}.
 	If $\delta$ is "strongly minimal", then it is "minimal", and so it is
-	"non-rendundant", and hence
+	"non-redundant", and hence
 	by the proof of \Cref{prop:lowerbound-non-redundant},
 	$x' \atom{K} y' \centernot{\contained} \bigwedge_i x \atom{L_i} y$.
 	
 	We prove the converse implication: assume that
 		$x' \atom{K} y' \centernot{\contained} \bigwedge_i x \atom{L_i} y$.
 	Then there exists $\#u\# \in K$ "st" $x' \atom{\#u\#} y'$
-	does not "satisfy" $\bigwedge_i x \atom{L_i} y$.
+	does not "satisfy@@db" $\bigwedge_i x \atom{L_i} y$.
 	Consider the "expansion" $\anexpansion$ obtained by replacing $K$ with $\#u\#$, and replacing 
 	$L_i$ with $@_i$ for each $i$.
 	Then $\anexpansion$ is a "core" because of the fresh letters $\#$ and $@_i$.

@@ -22,9 +22,9 @@ We first give a small useful fact.
 \begin{fact}[{Implicit in \cite[Proof of Proposition 6.2]{BarceloRomeroVardi2016SemanticAcyclicity}}]
     \AP\label{fact:connectedness}\leavevmode
     \begin{enumerate}
-        \item Let $G, G'$ be two "databases" and $\delta$ be a "connected" "Boolean" "C2RPQ".
-            If the disjoint union $G \AP\intro*\disunion G'$ ("ie", the union assuming $\vertex{G}$ and $\vertex{G'}$ are disjoint) "satisfies" $\delta$, then either $G$ "satisfies" $\delta$ or
-            $G'$ "satisfies" $\delta$.
+        \item Let $G, G'$ be two "databases@@graph" and $\delta$ be a "connected" "Boolean" "C2RPQ".
+            If the disjoint union $G \AP\intro*\disunion G'$ ("ie", the union assuming $\vertex{G}$ and $\vertex{G'}$ are disjoint) "satisfies@@db" $\delta$, then either $G$ "satisfies@@db" $\delta$ or
+            $G'$ "satisfies@@db" $\delta$.
         \item Let $\gamma,\delta$ be "Boolean" "C2RPQs". If $\delta$ is "connected"
             and $\gamma \contained \delta$, then there exists a "subquery" $\gamma'$ of $\gamma$,
             obtained as connected component of $\gamma$, such that
@@ -33,30 +33,30 @@ We first give a small useful fact.
 \end{fact}
 
 Notice first that if $\gamma$ and $\delta$ are "CQs" then the proof of
-\Cref{fact:connectedness} follows directly from the equivalence of $\gamma \contained \delta$ (resp.\ $G$ "satisfies" $\gamma$) and the existence of a "homomorphism" from $\delta$ to $\gamma$ (resp.\ $\gamma$ to $G$).
+\Cref{fact:connectedness} follows directly from the equivalence of $\gamma \contained \delta$ (resp.\ $G$ "satisfies@@db" $\gamma$) and the existence of a "homomorphism" from $\delta$ to $\gamma$ (resp.\ $\gamma$ to $G$).
 
 \begin{proof}
 	We first prove the second point.
     Write $\gamma \defeq \gamma_1 \land \hdots \land \gamma_n$ where $\gamma_1,\hdots,\gamma_n$
     are connected components of $\gamma$, and assume by contradiction that
     for all $i$, $\gamma_i \centernot{\contained} \delta$. Then there exists a database $G_i$
-    such that $G_i$ "satisfies" $\gamma_i$ but not $\delta$.
+    such that $G_i$ "satisfies@@db" $\gamma_i$ but not $\delta$.
     Consider the disjoint union $G = G_1 \disunion \hdots \disunion G_n$.
 
     On the one hand, since the $\gamma_i$'s have disjoint variables
-    and $G_i$ "satisfies" $\gamma_i$ for each $i$, then $G$ "satisfies" $\gamma$.
-    On the other hand, $G$ cannot "satisfy" $\delta$:
+    and $G_i$ "satisfies@@db" $\gamma_i$ for each $i$, then $G$ "satisfies@@db" $\gamma$.
+    On the other hand, $G$ cannot "satisfy@@db" $\delta$:
     if there was a "homomorphism" from $\delta$ to $G$,
     since $\delta$ is connected, there would exist an index $i$
     such that $\delta$ is mapped on $G_i$, which would contradict the
-    fact that $G_i$ does not "satisfy" $\delta$.
-    Hence, $G$ does not "satisfy" $\delta$, which contradicts the containment
+    fact that $G_i$ does not "satisfy@@db" $\delta$.
+    Hence, $G$ does not "satisfy@@db" $\delta$, which contradicts the containment
     $\gamma \contained \delta$.
 
 	To prove the first point, we simply apply the second one, by letting $\gamma$
 	be the conjunction of the canonical "CQ" associated with $G$ and $G'$---which
 	is in fact the canonical "CQ" associated with $G\disunion G'$. From the assumption
-    that $G \disunion G'$ "satisfies" $\delta$ it follows that $\gamma \contained \delta$
+    that $G \disunion G'$ "satisfies@@db" $\delta$ it follows that $\gamma \contained \delta$
     and so, by the first point, there is either a homomorphism from $\delta$
     to $G$ or from $\delta$ to $G'$.
 \end{proof}
@@ -103,24 +103,24 @@ We can then prove \Cref{lemma:lowerbound}.
     so there exists $G'$ such that:
     \begin{equation}
         \AP\label{eq:subquery-reduction}
-        G' \text{ "satisfies" } \gamma'
+        G' \text{ "satisfies@@db" } \gamma'
         \quad\text{ and }\quad
-        G' \text{ does not "satisfy" } \delta'.
+        G' \text{ does not "satisfy@@db" } \delta'.
     \end{equation}
     
     We now prove that $\gamma \contained \gamma'$. Let $G$ be a
-    "database" "satisfying" $\gamma$. Then the disjoint union $G \disunion G'$ "satisfies" $\gamma \land \gamma'$
-    since $G$ "satisfies" $\gamma$, $G'$ "satisfies" $\gamma'$ and $\gamma$ and $\gamma'$
+    "database@@graph" "satisfying@@db" $\gamma$. Then the disjoint union $G \disunion G'$ "satisfies@@db" $\gamma \land \gamma'$
+    since $G$ "satisfies@@db" $\gamma$, $G'$ "satisfies@@db" $\gamma'$ and $\gamma$ and $\gamma'$
     are Boolean so we can assume "wlog" that they have disjoint variables.
-    As a consequence, $G \disunion G'$ "satisfies" $\delta$ and hence $\delta'$,
-    so there exists $i$ such that $G \disunion G'$ "satisfies" $\delta_{i,j_i}$.
-    Since $\delta_{i,j_i}$ is "connected", either $G$ "satisfies"
-    $\delta_{i,j_i}$ or $G'$ "satisfies" $\delta_{i,j_i}$.
+    As a consequence, $G \disunion G'$ "satisfies@@db" $\delta$ and hence $\delta'$,
+    so there exists $i$ such that $G \disunion G'$ "satisfies@@db" $\delta_{i,j_i}$.
+    Since $\delta_{i,j_i}$ is "connected", either $G$ "satisfies@@db"
+    $\delta_{i,j_i}$ or $G'$ "satisfies@@db" $\delta_{i,j_i}$.
     By \Cref{eq:subquery-reduction}, the latter cannot hold,
-    so $G$ "satisfies" $\delta_{i,j_i}$ and hence $\gamma'$.
+    so $G$ "satisfies@@db" $\delta_{i,j_i}$ and hence $\gamma'$.
 
-    Therefore, we have shown that for each "database" $G$ that "satisfies" 
-    $\gamma$, then $G$ "satisfies" $\gamma'$, "ie", $\gamma \contained \gamma'$. Overall,
+    Therefore, we have shown that for each "database@@graph" $G$ that "satisfies@@db" 
+    $\gamma$, then $G$ "satisfies@@db" $\gamma'$, "ie", $\gamma \contained \gamma'$. Overall,
     $\gamma \land \gamma'$ has "semantic tree-width" $k$ if and only if
     $\gamma \contained \gamma'$.
 

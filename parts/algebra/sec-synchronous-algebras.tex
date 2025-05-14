@@ -337,18 +337,18 @@ Let us continue with a slightly less trivial example of "algebra@synchronous alg
 % 	\begin{itemize}
 % 		\item its "underlying monoids" of "type" $\LL$,
 % 			$\LB$ and $\BL$ are
-% 			$\Z/p\Z$, $\Z/q\Z$ and $\Z/r\Z$ under addition, respectively.
-% 		\item $(\?Z_{p,q,r})_{\LL\to\LB} = \Z/p\Z \times \Z/q\Z$ and \\
-% 			$(\?Z_{p,q,r})_{\LL\to\BL} = \Z/p\Z \times \Z/r\Z$,
+% 			$\ZnZ{p}$, $\ZnZ{q}$ and $\ZnZ{r}$ under addition, respectively.
+% 		\item $(\?Z_{p,q,r})_{\LL\to\LB} = \ZnZ{p} \times \ZnZ{q}$ and \\
+% 			$(\?Z_{p,q,r})_{\LL\to\BL} = \ZnZ{p} \times \ZnZ{r}$,
 % 			with natural addition
 % 		\item the units are the zeroes,
-% 		\item $\dep$ identifies $\bar x \in \Z/p\Z$ with
-% 		$(\bar x, \bar 0) \in \Z/p\Z \times \Z/q\Z$
-% 		and with $(\bar x, \bar 0) \in \Z/p\Z \times \Z/r\Z$,
-% 		\item similarly, it identifies $\bar x \in \Z/q\Z$ with
-% 		$(\bar 0, \bar x) \in \Z/p\Z \times \Z/q\Z$
-% 		and dually, it identifies  $\bar x \in \Z/r\Z$ 
-% 		with $(\bar 0, \bar x) \in \Z/p\Z \times \Z/r\Z$.
+% 		\item $\dep$ identifies $\bar x \in \ZnZ{p}$ with
+% 		$(\bar x, \bar 0) \in \ZnZ{p} \times \ZnZ{q}$
+% 		and with $(\bar x, \bar 0) \in \ZnZ{p} \times \ZnZ{r}$,
+% 		\item similarly, it identifies $\bar x \in \ZnZ{q}$ with
+% 		$(\bar 0, \bar x) \in \ZnZ{p} \times \ZnZ{q}$
+% 		and dually, it identifies  $\bar x \in \ZnZ{r}$ 
+% 		with $(\bar 0, \bar x) \in \ZnZ{p} \times \ZnZ{r}$.
 % 	\end{itemize}
 % 	This "algebra@@sync" "recognizes@@sync" recognizes "eg"
 % 	\begin{align*}
@@ -376,14 +376,14 @@ Let us continue with a slightly less trivial example of "algebra@synchronous alg
 	Fix $p,q \in \N_{>0}$. Let $\?Z_{p,q}$ denote the algebra whose "underlying monoids" are:
 	\begin{itemize}
 		\item the trivial monoid $(0,+)$ for "type" $\LL$,
-		\item the cyclic monoid $(\Z/p\Z,+)$ for "type" $\LB$,
-		\item the cyclic monoid $(\Z/q\Z,+)$ for "type" $\BL$.
+		\item the cyclic monoid $(\ZnZ{p},+)$ for "type" $\LB$,
+		\item the cyclic monoid $(\ZnZ{q},+)$ for "type" $\BL$.
 	\end{itemize}
 	Moreover, the sets $Z_{\LL\to\LB}$ and $Z_{\LL\to\BL}$ are defined
-	as $\Z/p\Z$ and $\Z/q\Z$, respectively.
-	The product is addition---we identify $\type{0}{\LL}$ with the zero of $\Z/p\Z$ and
-	of $\Z/q\Z$. We denote by $\bar k$ the equivalence class of $k\in \Z$ in
-	$\Z/n\Z$ when $n$ is clear from context.
+	as $\ZnZ{p}$ and $\ZnZ{q}$, respectively.
+	The product is addition---we identify $\type{0}{\LL}$ with the zero of $\ZnZ{p}$ and
+	of $\ZnZ{q}$. We denote by $\bar k$ the equivalence class of $k\in \Z$ in
+	$\ZnZ{n}$ when $n$ is clear from context.
 	The "dependency relation" identifies (1) all units together and (2) $\type{x}{\sigma}$ with $\type{1}{\tau} \cdot \type{x}{\sigma}$ and $\type{x}{\sigma} \cdot \type{1}{\tau}$ when the "types" are "compatible@@type".
 	
 	Let $\phi\colon \Sync\Sigma \to \?Z_{p,q}$ be the "synchronous algebra morphism"
@@ -405,7 +405,7 @@ Let us continue with a slightly less trivial example of "algebra@synchronous alg
 			& |u| < |v| \text{ and } (|v| - |u| \bmod{q}) \in J.
 		\hphantom{\text{ or}}\big\},
 	\end{align*}
-	where $I \subseteq \Z/p\Z$ and $J \subseteq \Z/q\Z$ are such that $\bar 0 \not\in I$
+	where $I \subseteq \ZnZ{p}$ and $J \subseteq \ZnZ{q}$ are such that $\bar 0 \not\in I$
 	and $\bar 0 \not\in J$. This last condition is necessary because the accepting set
 	has to be a "closed subset" of $\?Z_{p,q}$: if $\bar 0$ was in $I$, then we would need
 	$\bar 0 \in J$, but also to add $\type{\bar 0}{\LL}$ to the accepting set: this would "recognize@@sync"
@@ -415,7 +415,7 @@ Let us continue with a slightly less trivial example of "algebra@synchronous alg
 			& |u| < |v| \text{ and } (|v| - |u| \bmod{q}) \in J, \text{ or } |u| = |v| \big\}.
 	\end{align*}
 	Note also that all relations $\+R^{I,J}$ with $\bar 0 \not\in I$
-	and $\bar 0 \not\in J$ are "group relations": letting $G$ be the group $\Z/p\Z \times \Z/q\Z$,
+	and $\bar 0 \not\in J$ are "group relations": letting $G$ be the group $\ZnZ{p} \times \ZnZ{q}$,
 	$\+R$ can be written as $\WellFormed\cap \psi^{-1}[I \times \{0\} \cup \{0\} \times J]$ where $\psi \colon (\SigmaPair)^* \to G$ is the monoid morphism defined by $\psi\pair{a}{b} \defeq 
 	(\bar 0, \bar 0)$, $\psi\pair{a}{\pad} \defeq (\bar 1, \bar 0)$ and $\psi\pair{\pad}{a} \defeq
 	(\bar 0, \bar 1)$.

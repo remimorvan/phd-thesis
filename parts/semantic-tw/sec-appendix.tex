@@ -27,7 +27,7 @@
 		Indeed, observe that the decomposition resulting from contracting any edge so that one "bag" is contained or equal to the other is of linear size and preserves the "width" (see, "eg", \cite{GottlobLeoneScarcelloHypertreeDecompositions}).
 		% It also follows from the fact that computing "tree decomposition" of "width" $k$ is in linear time \cite{bodlaender1993linear}.
 	}
-	 For every "bag" $v$ of the decomposition containing $\bagmap(v)=\set{x_1, \dotsc, x_t}$ consider the following relation $R_v$ consisting of all tuples of "database" nodes $(v_1, \dotsc, v_t)$ such that for every "atom" $A=x_i \atom{L} x_j$ in $\tagmap^{-1}(v)$ we have that $(v_i, v_j)$ "satisfies" $A$.
+	 For every "bag" $v$ of the decomposition containing $\bagmap(v)=\set{x_1, \dotsc, x_t}$ consider the following relation $R_v$ consisting of all tuples of "database@@graph" nodes $(v_1, \dotsc, v_t)$ such that for every "atom" $A=x_i \atom{L} x_j$ in $\tagmap^{-1}(v)$ we have that $(v_i, v_j)$ "satisfies@@db" $A$.
 
 
     It then follows that 
@@ -39,7 +39,7 @@
     Hence, "Yannakakis algorithm" yields a complexity of $\+O(\size{\gamma} \cdot \costjoin(|G|^{k+1}))$. That is, $\+O(\size{\gamma} \cdot |G|^{k+1} \cdot \log{|G|})$, or $\+O(\size{\gamma} \cdot |G|^{k+1})$ in a RAM model.
 
     We are only left with the cost of computing the relation $R_v$ for any given $v \in \vertex{T}$. Let $\+A_v= \set{A_1(y_1,z_1), \dotsc, A_s(y_s,z_s)}$ be the set of all "atoms" of $\tagmap^{-1}(v)$. Let $\bagmap(v)=\set{x_1, \dotsc, x_t}$.
-    Compute first the relation $S_i = \set{ (u,u') \in \vertex{G}^2 : (u,u') \text{ "satisfies" } A_i(y_i,z_i)}$ for every $i$; this can be done in $\+O(|G| \cdot |L_i \times \Gpm|)$, where $L_i \times \Gpm$ is the product of the NFA for the regular language $L_i$ of $A_i$ and the expanded "database" $\Gpm$.\footnote{That is, $L_i \times \Gpm$ is a  "database" having pairs $(q,v)$ where $q$ is a state for the NFA $\+A_i$ of $L_i$ and $v \in \vertex{\Gpm}$, and we have an edge $(q,v) \xrightarrow{a} (q',v')$ in $L_i \times \Gpm$ if  $q \xrightarrow{a} q'$ and $v \xrightarrow{a} v'$ are in $\+A_i$ and $\Gpm$ respectively.} Compute also the relation $U = \vertex{G}^t$ in $\+O(|G|^{t})$ (hence in $\+O(|G|^{k+1})$). Finally, we compute $R_v$ by performing $s$ nested "semi-joins" 
+    Compute first the relation $S_i = \set{ (u,u') \in \vertex{G}^2 : (u,u') \text{ "satisfies@@db" } A_i(y_i,z_i)}$ for every $i$; this can be done in $\+O(|G| \cdot |L_i \times \Gpm|)$, where $L_i \times \Gpm$ is the product of the NFA for the regular language $L_i$ of $A_i$ and the expanded "database@@graph" $\Gpm$.\footnote{That is, $L_i \times \Gpm$ is a  "database@@graph" having pairs $(q,v)$ where $q$ is a state for the NFA $\+A_i$ of $L_i$ and $v \in \vertex{\Gpm}$, and we have an edge $(q,v) \xrightarrow{a} (q',v')$ in $L_i \times \Gpm$ if  $q \xrightarrow{a} q'$ and $v \xrightarrow{a} v'$ are in $\+A_i$ and $\Gpm$ respectively.} Compute also the relation $U = \vertex{G}^t$ in $\+O(|G|^{t})$ (hence in $\+O(|G|^{k+1})$). Finally, we compute $R_v$ by performing $s$ nested "semi-joins" 
     \[
         ((U(x_1, \dotsc, x_t) \sjoin S_1(y_1,z_1)) \sjoin S_2(y_2,z_2) \dotsb )\sjoin S_s(y_s,z_s) 
     \]

@@ -93,15 +93,15 @@ The set of all variables occurring in $\gamma$, namely\footnote{We neither assum
 disjointness nor inclusion between $\{z_1,\hdots,z_n\}$ and $\{x_1,y_1,\hdots,x_m,y_m\}$}
 $\{z_1,\hdots,z_n\}\cup\{x_1,y_1,\hdots,x_m,y_m\}$, is denoted by
 $\intro*\vars(\gamma)$.
-Given a "database" $G$, we say that a tuple of nodes $\bar u = (u_1,\hdots,u_n)$
-\AP""satisfies"" $\gamma$ 
+Given a "database@@graph" $G$, we say that a tuple of nodes $\bar u = (u_1,\hdots,u_n)$
+\AP""satisfies@@db"" $\gamma$ 
 on $G$ if there is a mapping
 $\fun\colon \vars(\gamma) \to \vertex{G}$ such that $u_i = \fun(z_i)$ for all
 $1 \leq i \leq n$, and for each $1 \leq j \leq m$,
 there exists a path from $\fun(x_i)$ to $\fun(y_i)$ in $G$, labelled by
-a word from $L_i$ (if the path is empty, the label is $\epsilon$). The \AP""evaluation"" of $\gamma$ on $G$ is then the set of all tuples that "satisfy" $\gamma$.
+a word from $L_i$ (if the path is empty, the label is $\epsilon$). The \AP""evaluation"" of $\gamma$ on $G$ is then the set of all tuples that "satisfy@@db" $\gamma$.
 %
-For example, $(\text{author}_2, \text{author}_5)$ "satisfies" $\gamma_2$ 
+For example, $(\text{author}_2, \text{author}_5)$ "satisfies@@db" $\gamma_2$ 
 on the "graph database" $G$ of \Cref{fig:example-graph-database} via
 the function that maps $x$ to $\text{author}_2$, $y$ to $\text{author}_5$,
 $z$ to $\text{paper}_2$, and $z'$ to $\text{author}_3$.
@@ -127,7 +127,7 @@ but not $(\text{author}_1, \text{author}_4)$.
 %
 \AP If a query has no "output variables" we call it ""Boolean"", and
 its "evaluation" can either be the set $\set{()}$, in which case we say that $G$
-\reintro{satisfies} the query, or the empty set $\set{}$. For example, $G$ "satisfies" the
+\reintro(db){satisfies} the query, or the empty set $\set{}$. For example, $G$ "satisfies@@db" the
 "Boolean CRPQ"
 \[\gamma_4() = x \atom{\wrote} y\]
 if, and only if, the database contains one author together with one paper they wrote.
@@ -172,13 +172,13 @@ see \cite{AnglesEtal2017Foundations}.
 \AP %It is often interesting to compare queries together. 
 The ""evaluation problem"" for "UC2RPQ" is the problem of, given
 a "UC2RPQ" $\Gamma$, a "graph database" $G$ and a tuple $\bar u$ of elements of $G$,
-whether $\bar u$ "satisfies" $\Gamma$ on $G$. 
+whether $\bar u$ "satisfies@@db" $\Gamma$ on $G$. 
 Given two "UC2RPQ" $\Gamma$
 and $\Gamma'$ whose "output variables" have the same arity,
 we say that $\Gamma$ is \AP""contained"" in $\Gamma'$,
 denoted by $\Gamma \intro*\contained \Gamma'$ if
 for every "graph database" $G$, for every tuple $\bar u$ of $G$,
-if $\bar u$ "satisfies" $\Gamma$ on $G$, then so does $\Gamma'$ (we will hence reserve the symbol `$\subseteq$' for set inclusion---note in particular that inclusion (of the "UC2RPQs", seen as sets of "C2RPQs") implies "containment", but the converse does not hold). 
+if $\bar u$ "satisfies@@db" $\Gamma$ on $G$, then so does $\Gamma'$ (we will hence reserve the symbol `$\subseteq$' for set inclusion---note in particular that inclusion (of the "UC2RPQs", seen as sets of "C2RPQs") implies "containment", but the converse does not hold). 
 The \AP""containment problem"" for "UC2RPQs" is the problem of, given
 two "UC2RPQs" $\Gamma$ and $\Gamma'$, to decide if $\Gamma \contained \Gamma'$.
 When $\Gamma$ is "contained" in $\Gamma'$ and vice versa, we say that
@@ -337,9 +337,9 @@ We will also study the restriction of these notions to one-way queries: a "UCRPQ
     in the path from
     $\mu(y)$ to $\mu(z)$ is even or odd. In the first case, the "atom" $x_0\atom{a(bb)^+} z$ becomes
     redundant since we can deduce the existence of such a path from the conjunction
-    $x \atom{a} y \atom{(bb)^+} z$, and hence the "database" "satisfies" $\delta(\bar x)$ via $\mu$.
+    $x \atom{a} y \atom{(bb)^+} z$, and hence the "database@@graph" "satisfies@@db" $\delta(\bar x)$ via $\mu$.
     Symmetrically, in the second case, the "atom" $x_1 \atom{b(bb)^*} z$ becomes redundant,
-    and the "database" "satisfies" $\delta'(\bar x)$ via $\mu$. 
+    and the "database@@graph" "satisfies@@db" $\delta'(\bar x)$ via $\mu$. 
     Thus, $\gamma(\bar x)$
     is "contained", and hence "equivalent" (the other "containment" being trivial), to
     the "UCRPQ" $\delta(\bar x) \lor \delta'(\bar x)$ of "tree-width" 2.
@@ -473,7 +473,7 @@ motivates us to focus on the case of "CRPQs" using some "simple regular expressi
 
 \begin{restatable*}{theorem}{thmSemTwSREpitwo}
     \AP\label{thm:semtw-sre-pitwo}
-    For $k\geq 2$, the "semantic tree-width $k$ problem" for {\UCRPQSRE} is in "Pi2".
+    For $k\geq 2$, the "semantic tree-width $k$ problem" for {\UCRPQSRE} is in "PiP2".
 \end{restatable*}
 
 We then study the problem of $k=1$: at first glance, our proof for $k\geq 2$ of

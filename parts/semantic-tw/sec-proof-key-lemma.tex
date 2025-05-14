@@ -259,7 +259,7 @@ is what we call the "profile" of a "bag".
         %     $b = \tagmap(e)$ for some $e \in \atoms{\rho}$ where both endpoints of $e$ are variables of $\gamma$,
         %     \ie~were not created by "refinement";
         \itemAP otherwise, when $b$ is "non-atomic", we assign to each variable
-            $z \in \bagmap(b) \subseteq \vertex{\alpha}$ a ""type""\phantomintro{\typeStw}
+            $z \in \bagmap(b) \subseteq \vertex{\alpha}$ a ""type@@stw""\phantomintro{\typeStw}
             \begin{align*}
                 \reintro*\typeStw_z^b \defeq
                 \bigl\{ x \atom{L} y \text{ "atom" of $\gamma$} \;\big\vert\; {} &
@@ -267,7 +267,7 @@ is what we call the "profile" of a "bag".
                     &\text{of $x \atom{L} y$ in $\rho$ "leaves" $b$ at $z$}
                 \bigr\},
             \end{align*}
-			where each "type" is potentially the empty set.
+			where each "type@@stw" is potentially the empty set.
             Then the ""profile"" of $b$ is the multiset of the types of $z$
             when $z$ ranges over $\bagmap(b)$.
     \end{itemize}
@@ -369,7 +369,7 @@ illustrated in \Cref{fig:shortening-paths}.
     The construction makes use of some crucial ingredients to guarantee its correctness.
     \begin{itemize}
         \item First, an "atom" $y \atom{L} y'$ of $\gamma$ cannot occur
-            in two different "types", allowing us to do the "condensation" of each "atom refinement" independently---this property is guaranteed by the fact that we started
+            in two different "types@@stw", allowing us to do the "condensation" of each "atom refinement" independently---this property is guaranteed by the fact that we started
 			with a "locally acyclic" "fine tagged tree decomposition", so an "atom" of $\gamma$ cannot leave a given "bag" at two different variables, by
 			\Cref{fact:acyclic-decomposition-leave-forever}.
         \item Second, this "condensation" forces us to add new "atoms" in $\alpha$ (to preserve the
@@ -390,7 +390,7 @@ illustrated in \Cref{fig:shortening-paths}.
     be as in the informal proof.
     Note that given an "atom" $x \atom{L} y$ of $\gamma$ and
 	a "bag", there is at most
-    one variable of $\alpha$ "st" $x \atom{L} y$ is in the "type" of this variable
+    one variable of $\alpha$ "st" $x \atom{L} y$ is in the "type@@stw" of this variable
 	at this bag, by \Cref{fact:acyclic-decomposition-leave-forever}.
 	% Symbolically: for all $b \in T$, for all $x, y \in \bagmap(b)$,
 	% if $\typeStw_x^b = \typeStw_y^b$, then $x=y$.
@@ -398,7 +398,7 @@ illustrated in \Cref{fig:shortening-paths}.
     For every "atom" $x \atom{L} y$ of $\gamma$, let 
     $\pi(x \atom{L} y) \defeq t_0 \atom{L_1} \hdots \atom{L_n} t_n$
     be its "refinement" in $\rho$.
-    If $x \atom{L} y$ is not in some "type" of the "profile" of $b$
+    If $x \atom{L} y$ is not in some "type@@stw" of the "profile" of $b$
     (or equivalently, of $b'$), leave it as is.
     Otherwise, let $i$ (resp.\ $j$) be the unique
     index (by acyclicity) such that

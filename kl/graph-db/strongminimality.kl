@@ -1,0 +1,62 @@
+\knowledge{notion}
+ | internal variable
+ | internal variables
+ | internal
+ | Internal variables
+
+\knowledge{notion}
+ | external
+ | external variable
+ | external variables
+
+\knowledge{notion}
+ | one-way internal path
+ | internal path
+
+\knowledge{notion}
+| one-way segment
+| one-way segments
+| segment
+| segments
+| Segments
+
+\knowledge{notion}
+| contraction
+| Contractions
+| contract
+| contractions
+
+\knowledge{notion}
+| contract@var
+| contraction@var
+| contracting@var
+ | contraction of internal variable
+ | contracting internal variables
+
+\knowledge{notion}
+ | strong minimality
+ | strongly minimal
+
+\knowledge{notion}
+ | incident@segment
+
+\knowledge{notion}
+ | segment graph
+
+\knowledge{notion}
+ | cyclic segment
+
+\knowledge{notion}
+ | Semantical Structure
+
+\knowledge{notion}
+ | hom-minimal
+ | hom-minimality
+
+\knowledge{notion}
+ | minor
+ | minors
+
+\knowledge{notion}
+ | contracting edges
+ | edge contraction

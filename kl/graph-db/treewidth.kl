@@ -1,0 +1,140 @@
+% ---
+% Tree-width
+% ---
+
+\knowledge{notion}
+ | tree decomposition
+ | tree decompositions
+ | Tree decomposition
+
+\knowledge{notion}
+ | full bag
+ | full
+ | non-full
+ | full bags
+ | non-full bags
+
+\knowledge{notion}
+ | bag
+ | bags
+
+\knowledge{notion}
+ | contains@tw
+ | contained@tw
+ | containing@tw
+
+\knowledge{notion}
+ | width
+
+\knowledge{notion}
+ | tree-width
+ | Tree-width
+
+\knowledge{notion}
+ | fine tree decomposition
+ | fineness
+ | fine
+ | fine tree decompositions
+
+\knowledge{notion}
+ | tagged tree decomposition
+ | tagged tree decompositions
+ | tagged path decomposition
+
+\knowledge{notion}
+ | tagged
+ | tagging
+ | tag
+
+\knowledge{notion}
+ | fine tagged tree decomposition
+ | fine tagged tree decom\-position
+ | fine tagged tree decompositions
+
+\knowledge{notion}
+ | cyclic@path
+ | acyclic@path
+ | cyclic path
+ | acyclic path
+ | acyclic paths
+
+\knowledge{notion}
+ | locally acyclic
+ | local acyclicity
+
+ \knowledge{notion}
+ | simple path
+
+\knowledge{notion}
+ | non-branching path
+ | non-branching paths
+ | Non-branching path
+
+\knowledge{notion}
+ | Path induced
+ | path induced
+ | induced path
+ | induces
+ | induce
+ | induced
+ | induces the path
+ | induces a path
+
+\knowledge{notion}
+ | link
+
+\knowledge{notion}
+ | leaves
+ | leaving
+
+\knowledge{notion}
+ | visit
+ | visits
+
+% ---
+% Path-width
+% ---
+
+\knowledge{notion}
+ | path-width
+
+\knowledge{notion}
+ | path decomposition
+ | path decompositions
+ | Path decomposition
+
+\knowledge{notion}
+ | internal path
+ | internal paths
+
+\knowledge{notion}
+ | contraction@path
+
+\knowledge{notion}
+ | contracted path-width
+
+\knowledge{notion}
+ | one-way contracted path-width
+
+\knowledge{notion}
+ | contracted tree-width
+
+\knowledge{notion}
+ | contraction
+ | contractions
+ | contracted
+
+ \knowledge{notion}
+ | one-way internal path
+ | one-way internal paths
+
+\knowledge{notion}
+ | one-way contraction@path
+
+\knowledge{notion}
+ | one-way contraction
+ | one-way contractions
+
+\knowledge{notion}
+ | one-way contracted tree-width
+ | one-wayness

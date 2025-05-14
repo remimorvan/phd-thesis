@@ -1,0 +1,294 @@
+% ---
+% queries (basic)
+% ---
+
+\knowledge{notion}
+ | evaluation
+ | evaluated
+ | evaluations
+ | evaluates
+ | evaluate
+
+\knowledge{notion}
+ | evaluation map
+
+\knowledge{notion}
+ | evaluation problem
+ | Evaluation problem
+
+\knowledge{notion}
+ | atom
+ | atoms
+
+\knowledge{notion}
+ | output variables
+ | free variables
+ | free
+ | Output variables
+ | output variable
+ | output@var
+
+\knowledge{notion}
+ | Boolean
+ | Boolean CRPQ
+ | Boolean CRPQs
+
+\knowledge{notion}
+ | conjunctive query
+ | conjunctive queries
+ | CQ
+ | CQs
+ | Conjunctive queries
+ | query@CQ
+ | queries@CQ
+
+\knowledge{notion}
+ | unions of CQs
+ | union of CQs
+ | UCQs
+ | UCQ
+
+\knowledge{notion}
+ | disjunct
+ | disjuncts
+
+\knowledge{notion}
+ | CRPQ
+ | CRPQs
+ | conjunctive regular path queries
+ | conjunctive regular path query
+ | query@CRPQ
+ | queries@CRPQ
+
+\knowledge{notion, index={loopless}}
+ | loopless
+ | loopless CRPQs
+
+\knowledge{notion}
+ | UCRPQ
+ | (U)CRPQ
+ | (U)CRPQs
+ | UCRPQs
+ | unions of CRPQs
+ | union of CRPQs
+
+\knowledge{notion}
+ | UCRPQ(SRE)
+
+\knowledge{notion}
+ | CRPQ(SRE)
+
+\knowledge{notion}
+ | C2RPQ
+ | C2RPQs
+ | conjunctive two-way regular path query
+ | CRPQ with two-way navigation
+ | two-way navigation
+
+ \knowledge{notion}
+ | subquery
+ | subqueries
+
+\knowledge{notion}
+ | UC2RPQ
+ | (U)C2RPQ
+ | UC2RPQs
+ | unions of C2RPQs
+ | union of C2RPQs
+
+\knowledge{notion}
+ | simple regular expression
+ | simple regular expressions
+ | SRE
+ | SREs
+
+\knowledge{notion}
+ | (i)@sre
+
+\knowledge{notion}
+ | (ii)@sre
+
+\knowledge{notion}
+ | (iii)@sre
+
+\knowledge{notion}
+ | recursive atom
+ | recursive atoms
+ | recursive@rat
+
+\knowledge{notion}
+ | non-recursive atom
+ | non-recursive atoms
+ | non-recursive@nrat
+ 
+\knowledge{notion}
+ | Regular Queries
+
+% ---
+% Queries (expansions, containement, etc.)
+% ---
+
+\knowledge{notion}
+ | containment
+ | contained
+ | contains
+ | contain
+ | Containment
+
+\knowledge{notion}
+ | containment problem
+ | con\-tainment problem
+ | Containment of CRPQs
+
+\knowledge{notion}
+ | equivalent
+ | Equivalent
+ | equivalence
+ | semantic equivalence
+ | semantically equivalent
+ | equivalences
+ | semantical equivalence
+
+\knowledge{notion}
+ | expansion
+ | expansions
+ | Expansion
+ | Expansions
+ | expanding
+
+\knowledge{notion}
+ | atom expansion
+ | atom expansions
+
+% ---
+% Refinements
+% ---
+
+\knowledge{notion}
+ | atom refinement
+ | atom refinements
+
+\knowledge{notion}
+ | atom $m$-refinement
+ | atom $m$-refinements
+ | atom $m'$-refinements
+ | $m$-refinements@atom
+
+\knowledge{notion}
+ | equality atom
+ | equality atoms
+
+\knowledge{notion}
+ | condensation
+ | condensations
+ | condense
+ | condensing
+
+\knowledge{notion}
+ | refinements
+ | refinement
+ | refine
+ | refining
+ | Refinements
+
+ \knowledge{notion}
+ | $m$-refinements
+ | $m$-refinement
+
+\knowledge{notion}
+ | refinement length
+
+% ---
+% Acyclic CQs
+% ---
+
+\knowledge{notion}
+ | semi-join
+ | semi-joins
+
+\knowledge{notion}
+ | Yannakakis algorithm
+
+\knowledge{notion}
+ | acyclic
+
+\knowledge{notion}
+ | minimal
+ | minimality
+ | non-minimal
+
+ \knowledge{notion}
+ | redundant atom
+ | redundant
+ | non-redundant
+ | non-redundancy
+ | redundancy
+
+\knowledge{notion}
+ | variable minimal
+
+ \knowledge{notion}
+ | subdivision
+ | subdivisions
+
+\knowledge{notion}
+ | maximal under-approximation
+ | maximal under-approximations
+
+\knowledge{notion}
+ | contraction length
+
+\knowledge{notion}
+ | type@var
+
+\knowledge{notion}
+ | explicit approximation
+
+\knowledge{notion}
+ | contained@approx
+
+\knowledge{notion}
+ | underlying graphs
+ | underlying graph
+
+\knowledge{notion}
+ | sublanguages
+ | sublanguage
+
+\knowledge{notion}
+ | closed under sublanguages
+
+\knowledge{notion}
+ | $\gamma$-type
+
+\knowledge{notion}
+ | basic path
+ | basic paths
+
+% ---
+% Summary queries
+% ---
+
+\knowledge{notion}
+ | $k$-summary query
+ | $k$-summary queries
+ | summary query
+ | summary queries
+ | Summary queries
+
+\knowledge{notion}
+ | path-$l$ approximation
+ | path-$l$ approximations
+
+\knowledge{notion}
+ | semantics@summary
+
+\knowledge{notion}
+ | refinement@summary
+ | refinements@summary
+
+\knowledge{notion}
+ | tree decomposition@summary
+
+\knowledge{notion}
+ | homomorphism@summary

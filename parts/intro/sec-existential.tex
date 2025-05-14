@@ -110,7 +110,7 @@ Overall, these characterizations show this query language to be quite robust.
 \end{known}
 
 We now turn to the complexity of evaluating these "queries@CQ".
-As we have seen, "conjunctive query "evaluation boils down to
+As we have seen, "conjunctive query evaluation" boils down to
 "homomorphism problems" of the form $\textsf{query} \homto^? \textsf{data}$.
 Assuming that the "query@@sem" if fixed,
 the naive algorithm to solve the "homomorphism problem"---consisting in enumerating
@@ -268,11 +268,11 @@ Hence, a quest emerged to find classes of "conjunctive queries" with an "FPT" ev
 	\end{tikzpicture}
 	\caption{
 		\AP\label{fig:intro-tree-shaped-CQ}
-		A tree-shaped "conjunctive query" over a "signature"
+		A "tree-shaped" "conjunctive query" over a "signature"
 		with three binary relations denoted by $a$, $b$ and~$c$.
 	}
 \end{marginfigure}
-First, one can notice that if said query is tree-shaped,
+First, one can notice that if said query is "tree-shaped",
 such as the "conjunctive query" of \Cref{fig:intro-tree-shaped-CQ}, then the naive
 bottom-up evaluation algorithm works in time that is polynomial both
 in the size of the query and in the size of the database.
@@ -664,7 +664,7 @@ then any "conjunctive query" "semantically equivalent" to it must use at least $
 (resp. have "tree-width" at least $k$).
 
 Another of our contributions is to identify a sufficient condition
-on a "query@CRPQ" so that \emph{any} "query" that is "semantically equivalent" to it
+on a "query@CRPQ" so that \emph{any} "query@CRPQ" that is "semantically equivalent" to it
 must contain a ``complex pattern''. The strength of this theorem lies in its
 general applicability, as the notion of ``complex pattern''
 is formalized as a ``"minor-closed" class
@@ -766,7 +766,7 @@ algorithm for testing "semantical equivalence".
 
 A consequence of our work on "tree-width" is that,
 given a "conjunctive regular path query" that is promised to be equivalent
-to a "query@CPRQ" of "tree-width" $k$, we can first compute said
+to a "query@CRPQ" of "tree-width" $k$, we can first compute said
 equivalent query of small "tree-width" by using our algorithm,
 and then evaluate it on any database. This proves that the evaluation
 problem for "conjunctive regular path queries" of bounded "semantic tree-width"

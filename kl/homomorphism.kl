@@ -9,6 +9,7 @@
 \knowledge{notion, index={homomorphically equivalent}}
  | homomorphically equivalent
  | homomorphical equivalence
+ | hom-equivalent
 
 \knowledge{notion, index={congruence!of a relational structure}}
  | congruence@struct
@@ -51,6 +52,11 @@
 \knowledge{notion, index={homomorphism!strong onto}}
  | strong onto
  | strong onto homomorphism
+ | strong onto homomorphisms
+
+\knowledge{notion}
+ | homomorphic image
+ | homomorphic images
 
 \knowledge{notion, index={isomorphism}}
  | isomorphism

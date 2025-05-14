@@ -21,7 +21,7 @@ We devote this section to showing the following result.
 
 % Observe that, for the particular case of an "SRE" $e$, $\+A_e[q,q']$ is also expressible via an "SRE". In fact, "SRE" is "effectively closed under sublanguages". 
 Observe that "simple regular expressions" are "closed under sublanguages". Hence, in the light of
-\Cref{thm:closure-under-sublanguages}, the "maximal under-approximation" of a {\UCRPQSRE} query by infinitary unions of "CQs" of "tree-width" $k$ is always equivalent to a {\UCRPQSRE} query  of "tree-width" $k$. We will see how the construction of the "maximal under-approximation" of the previous section can be exploited to improve the complexity from "2ExpSpace" down to "PiTwo".
+\Cref{thm:closure-under-sublanguages}, the "maximal under-approximation" of a {\UCRPQSRE} query by infinitary unions of "CQs" of "tree-width" $k$ is always equivalent to a {\UCRPQSRE} query  of "tree-width" $k$. We will see how the construction of the "maximal under-approximation" of the previous section can be exploited to improve the complexity from "2ExpSpace" down to "PiP2".
 
 \subsection{\AP{}Summary Queries}
 We will first show that the "maximal under-approximation" of "tree-width" $k$ of a "UC2RPQ" can be expressed as a union of polynomial sized ``summary'' queries. Each "summary query" represents a union of exponentially-bounded "C2RPQs" sharing some \emph{common structure}. 
@@ -60,7 +60,7 @@ A \AP""refinement@@summary"" of a "$k$-summary query" is any "C2RPQ" obtained by
 replacing "atoms" with "atom refinements", and 
 each "path-$l$ approximation" $\pathl(X, Y, \delta)$ with any
 $\alpha(\bar z) \in \MUA{\delta}{\Pw}$ verifying \eqref{eq:pathl:rootleafppty}. By definition,
-a "database" satisfies a "$k$-summary query" if and only if it
+a "database@@graph" satisfies a "$k$-summary query" if and only if it
 satisfies one of its "refinements@@summary".
 
 A \AP ""tree decomposition@@summary"" of a "$k$-summary query" $\gamma$ consists of
