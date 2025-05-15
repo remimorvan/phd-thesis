@@ -103,6 +103,14 @@
  | SREs
 
 \knowledge{notion}
+ | positive simple regular expressions
+ | positive simple regular expression
+ | simple regular expression@positive
+ | simple regular expressions@positive
+ | SRE@positive
+ | SREs@positive
+
+\knowledge{notion}
  | (i)@sre
 
 \knowledge{notion}

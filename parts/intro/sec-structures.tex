@@ -241,35 +241,7 @@ to $\?A$ exactly correspond to accepting runs of the automaton over $u$.
 
 \begin{table}
 	\centering%
-	{%
-		\footnotesize%
-		\begin{tabular}{cccc}
-			\multicolumn{4}{c}{\textsc{Movies}} \\ \toprule
-			id & title & length & director \\ \midrule
-			197 & Eyes Wide Shut & 159 & Stanley Kubrick \\ 
-			205 & J'ai tué ma mère & 96 & Xavier Dolan \\
-			304 & Amadeus & 161 & Miloš Forman \\
-			321 & 120 Battements par minute & 143 & Robin Campillo \\ \bottomrule
-		\end{tabular}
-		\\\bigskip%
-		\begin{tabular}{cc}
-			\multicolumn{2}{c}{\textsc{Rooms}} \\ \toprule
-			id & capacity  \\ \midrule
-			1 & 108 \\
-			2 & 124 \\
-			3 & 96 \\
-			4 & 102 \\ \bottomrule
-		\end{tabular}%
-		\hspace{1cm}%
-		\begin{tabular}{ccc}
-			\multicolumn{3}{c}{\textsc{Projections}} \\ \toprule
-			movie\_id & room\_id & time \\ \midrule
-			197 & 2 & 2025-03-28 14:00 \\
-			205 & 3 & 2025-03-28 14:30 \\
-			321 & 4 & 2025-03-28 14:30 \\
-			197 & 1 & 2025-03-28 17:00 \\ \bottomrule
-		\end{tabular}
-	}
+	\input{tikz/intro/relational-database-cinema.tex}
 	\caption{
 		\AP\label{fig:example-db-as-rel}
 		A "relational database" consisting of three tables, representing data

@@ -26,38 +26,6 @@ Remember that for $k=1$, the "semantic tree-width@semantic tree-width $1$ proble
 \subsection{\AP{}Contracted Tree-Width}
 We next formally define the notion of ``"contracted tree-width"'', meaning the "tree-width" of the graph obtained by contracting paths (or directed paths) into edges. This altered notion of "tree-width" will allow us to seamlessly prove the case of $k=1$ for \Cref{thm:decidability-semtw}.
 
-\AP Given a "C2RPQ" $\gamma$, an \AP""internal path"" is a sequence of atoms\footnote{We write
-$x \symatom{\lambda} y$ to mean that there is either an "atom" $x \atom{\lambda} y$
-\textbf{or} an "atom" $x \coatom{\lambda} y$.}
-\[
-	x_0 \symatom{L_1} x_1 \symatom{L_2} \cdots \symatom{L_{n-1}} x_{n-1} \symatom{L_n} x_n
-\]
-where each $x_i$ for $i \in \lBrack 1,n-1 \rBrack$ has total degree
-exactly 2 and is existentially quantified.
-\AP Its ""contraction@@path"" is defined as the edge
-\[
-	x_0 \atom{K_1 \cdot K_2 \cdots K_{n-1} \cdot K_n} x_n,
-\]
-where $K_i \defeq L_i$ if the "atom" between $x_i$ and $x_{i+1}$ is directed from
-left to right, and $K_i \defeq L_i^{-}$ if the "atom" is directed from right to left.\footnote{Given a regular language $L$ over $\Aext$, we define a regular language $L^-$ over $\Aext$ by induction on regular expressions: $\emptyset^- \defeq \emptyset$, $(a)^- \defeq a^-$, $(a^-)^- \defeq a$, $(L_1\cdot L_2)^- \defeq L_2^- \cdot L_1^-$, $(L^*)^- \defeq (L^-)^*$ and $(L_1 + L_2)^- \defeq L_1^- + L_2^-$. Then, for any graph, there is a path from $x$ to $y$ labelled by
-a word of $L$ "iff" there is a path from $y$ to $x$ labelled by a word of $L^-$.}
-
-\AP Similarly, a ""one-way internal path"" is a sequence of atoms 
-\[
-	x_0 \atom{L_1} x_1 \atom{L_2} \cdots \atom{L_{n-1}} x_{n-1} \atom{L_n} x_n
-\]
-where each $x_i$ for $i \in \lBrack 1,n-1 \rBrack$ has exactly in-degree
-and out-degree 1 in $\gamma$ and is existentially quantified.
-\AP Its ""one-way contraction@@path"" is defined as the edge
-\[
-	x_0 \atom{L_1 \cdot L_2 \cdots L_{n-1} \cdot L_n} x_n.
-\]
-
-\AP A ""contraction"" (resp.\ ""one-way contraction"") of a "C2RPQ" is any query obtained
-by iteratively replacing some "internal paths" (resp.\ "one-way internal paths") by
-their "contraction@@path" (resp.\ "one-way contraction@@path"). By definition,
-a query is always "equivalent" to any of its "contractions" or "one-way contractions".
-
 \begin{definition}
 	\AP
 	Define the ""contracted tree-width"" (resp.\ ""one-way contracted tree-width"")
