@@ -10,10 +10,6 @@
  | external variables
 
 \knowledge{notion}
- | one-way internal path
- | internal path
-
-\knowledge{notion}
 | one-way segment
 | one-way segments
 | segment
@@ -45,9 +41,11 @@
 
 \knowledge{notion}
  | cyclic segment
+ | cyclic@segment
 
 \knowledge{notion}
  | Semantical Structure
+ | semantical structure theorem
 
 \knowledge{notion}
  | hom-minimal

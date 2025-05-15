@@ -13,6 +13,10 @@
  | evaluation map
 
 \knowledge{notion}
+ | evaluation map@cq
+ | evaluation map@CQ
+
+\knowledge{notion}
  | evaluation problem
  | Evaluation problem
 
@@ -234,10 +238,6 @@
 
 \knowledge{notion}
  | variable minimal
-
- \knowledge{notion}
- | subdivision
- | subdivisions
 
 \knowledge{notion}
  | maximal under-approximation

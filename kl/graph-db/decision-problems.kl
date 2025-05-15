@@ -4,3 +4,14 @@
 \knowledge{notion, wrap=\DPfont}
  | minimization problem@CRPQ
  | CRPQ minimization
+ | minimization problem
+ | minimization problems
+ | Minimization problem
+ | Minimization problem@CRPQ
+ | CRPQ minimization
+ | minimization of CRPQs
+
+\knowledge{notion}
+ | Variable-minimization problem
+ | variable-minimization problem
+ | variable-minimization problem(s)

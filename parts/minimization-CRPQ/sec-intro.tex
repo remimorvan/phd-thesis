@@ -18,8 +18,8 @@ The mechanism for obtaining such minimal query is simple: eliminate any atom fro
 In contrast, minimization of CRPQs is poorly understood from a theoretical perspective. In this case, the situation is more challenging: there is no natural notion of `core’, and it is not clear whether a notion of `canonical’ smallest query may even be possible. In particular, eliminating redundant atoms of a CRPQ as done for CQs, in general results in a query which is neither minimal nor canonical.
 
 In this paper we study the "minimization problem" for CRPQs and UCRPQs. In the case of CRPQs, we aim at minimizing the number of atoms of a CRPQ, and hence we formulate the problem as follows ($\semequiv$ denotes query equivalence, "ie", the fact that the queries output the same answer for all databases):\footnote{Note that we can always assume $k$ to be smaller than the number of "atoms" of the input query, since otherwise the instance of the "minimization problem" is trivially solvable by answering `yes'. So, whether $k$ is given in unary or binary does not affect the size of the input.}
- 
-\decisionproblem{""Minimization problem for CRPQs@Minimization problem""}
+
+\decisionproblem{""Minimization problem for CRPQs@Minimization problem@CRPQ""}
 {A finite alphabet $\A$, a "CRPQ" $\gamma$ over $\A$ and $k \in \N$.}
 {Is there a "CRPQ" $\delta$ over $\A$ with at most $k$ "atoms" 
 such that $\gamma \semequiv \delta$?}

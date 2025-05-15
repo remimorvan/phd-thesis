@@ -62,9 +62,6 @@
  | locally acyclic
  | local acyclicity
 
- \knowledge{notion}
- | simple path
-
 \knowledge{notion}
  | non-branching path
  | non-branching paths

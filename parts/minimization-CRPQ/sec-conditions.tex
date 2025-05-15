@@ -3,11 +3,14 @@
 This section explores some necessary and sufficient conditions for a query to be "minimal".
 We start with some necessary definitions.
 \AP
+We say that a (U)CRPQ is \AP""minimal"" if it is not equivalent to any (U)CRPQ having less maximum number of atoms.
 An ""internal variable"" of a "CRPQ" $\gamma$ is any non-"output variable" with both in-degree and out-degree 1.
 A non-"internal variable" is called \AP""external"".
-A \AP""one-way internal path""\footnote{This definition comes from \cite[\S 7]{FigueiraMorvan2025SemanticTreeWidthLMCS}, 
+A \AP""one-way internal path"",%
+\footnote{This definition comes from \cite[\S 7]{FigueiraMorvan2025SemanticTreeWidthLMCS}, 
 under the name `one-way internal path'; there is also an equivalent
-notion for C2RPQs.}, or "internal path" for short, from $x_0$ to $x_n$ of a "CRPQ" $\gamma$ is a \emph{simple}\footnote{Meaning that all nodes are pairwise disjoint,
+notion for C2RPQs.}
+or "internal path" for short, from $x_0$ to $x_n$ of a "CRPQ" $\gamma$ is a \emph{simple}\footnote{Meaning that all nodes are pairwise disjoint,
 except that potentially $x_0 = x_n$.} path
 \begin{align}
 	x_0 \atom{L_1} x_1 \atom{L_2} \cdots \atom{L_n} x_n 
@@ -16,7 +19,7 @@ except that potentially $x_0 = x_n$.} path
 in $\gamma$ where $n > 0$ and every $x_i$ is "internal" with $i \in \lBrack 1,n-1\rBrack$.
 A \AP""segment"" of a "CRPQ" $\gamma$ is a maximal "internal 
 path" in $\gamma$, where ``maximal'' means that it cannot be extended on the left
-or on the right. We say that a "segment" is cyclic if $x_0 = x_n$.
+or on the right. We say that a "segment" is \AP""cyclic@@segment"" if $x_0 = x_n$.
 We identify two cyclic "segments" if they are equal up to circular permutation.
 We say that a "segment" as in \eqref{eq:path-internal} is \AP""incident@@segment""
 to a variable $y$ if $y = x_i$ for some $i$.
@@ -76,6 +79,7 @@ However, this is a more difficult problem, since it involves testing for query e
 \begin{proof}
 	The upper bound is trivial: for every "atom" we remove it and check "equivalence".
 	
+	\todo{move this! this is forward ref}
 	For the lower bound, we use the construction of \Cref{prop:variation-figueira} for containment. Let $\delta() 
 	\defeq x' \atom{K} y' \land \bigwedge_i x \atom{L_i} y$ be the "disjoint conjunction" of $\gamma_1()$ and $\gamma_2()$ as defined in \Cref{prop:variation-figueira}.
 	We first strengthen the construction to ensure the following two properties:
@@ -127,8 +131,7 @@ Say that an "expansion" $\anexpansion$ of a "UCRPQ" $\Gamma$ is \AP""hom-minimal
 A "UCRPQ" $\Gamma$ is \AP""strongly minimal"" if 
 it has a "hom-minimal" "expansion" $\anexpansion \in \Exp(\Gamma)$ "st" $\nbseg{\core(\anexpansion)} = \nbatoms{\Gamma}$. We will next show that this is a sufficient condition for minimality.
 
-
-Informally, the segment graph $\reintro*\seggraph(\gamma)$ of a "CRPQ" $\gamma$ is the directed multigraph obtained by replacing segments of $\gamma$ with edges in its "underlying graph", as illustrated in \Cref{fig:segment-graph}. The main motivation behind the notion of "segments" is 
+Informally, the segment graph $\reintro*\seggraph(\gamma)$ of a "CRPQ" $\gamma$ is the directed multigraph obtained by replacing "segments" of $\gamma$ with edges in its "underlying graph", as illustrated in \Cref{fig:segment-graph}. The main motivation behind the notion of "segments" is 
 that it is essentially dual to the notion of "atom refinements".
 
 \begin{definition}
@@ -198,7 +201,7 @@ See \Cref{fig:seggraph-of-expansion} for an example.
 	\begin{enumerate}
 		\item contracting some edges---corresponding to "atom refinements"
 			for the word $\varepsilon$,
-				 \item potentially removing isolated vertices,\footnote{This can happen "eg" in the "atom refinement" of $x \atom{a^*} x$ when dealing with the empty word.} , and
+				 \item potentially removing isolated vertices,\footnote{This can happen "eg" in the "atom refinement" of $x \atom{a^*} x$ when dealing with the empty word.} and
 		\item "refining" some edges---corresponding to "atom refinements"
 			for words of length at least 2.
 	\end{enumerate}
