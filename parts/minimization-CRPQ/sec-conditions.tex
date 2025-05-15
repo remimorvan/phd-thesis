@@ -156,21 +156,28 @@ that it is essentially dual to the notion of "atom refinements".
 	graph" by "contracting internal variables". 
 \end{fact}
 
+A \AP""minor"" of a graph is any graph that can be obtained by removing
+edges, removing vertices---and their adjacent edges---, and \AP""contracting edges""---meaning that we identify the two endpoints of the edge and remove the edge from the graph.%
+\footnote{This definition is a trivial generalization of the notion of minors for undirected graphs.} Moreover, we say that a "class of CRPQs" is ""minor-closed"" when, for every
+"query@@CRPQ" is the class, any other "query@@CRPQ" whose "underlying graph@@dir" 
+is a "minor" of the "underlying graph@@dir" of the first query must also
+belong to the class.
+
 \begin{figure}
 	\centering
 	\subfloat[A "CRPQ" $\gamma$.]{%
 		\AP\label{fig:example-crpq}%
-		\includegraphics[width=.45\linewidth]{fig/minimization-crpq/example-crpq.pdf}
+		\includegraphics[width=.41\linewidth]{fig/minimization-crpq/example-crpq.pdf}
 	}
-	\hfill%
+	\hfill
 	\subfloat[An "expansion" $\xi$ of $\gamma$, together with its "segments".]{%
 		\AP\label{fig:segments-expansion}%	
-		\includegraphics[width=.31\linewidth]{fig/minimization-crpq/segments-expansion.pdf}
+		\includegraphics[width=.32\linewidth]{fig/minimization-crpq/segments-expansion.pdf}
 	}
-	\hfill%
+	\hfill
 	\subfloat[The "segment graph" of $\xi$.]{%
 		\AP\label{fig:segment-graph-expansion}%
-		\includegraphics[width=.2\linewidth]{fig/minimization-crpq/segment-graph-expansion.pdf}
+		\includegraphics[width=.21\linewidth]{fig/minimization-crpq/segment-graph-expansion.pdf}
 	}
 	\caption{%
 	\AP\label{fig:seggraph-of-expansion}
