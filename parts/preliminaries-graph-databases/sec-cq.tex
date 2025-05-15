@@ -174,7 +174,10 @@ of computational efficiency.
 \end{proof}
 
 Even worth, when turning to the \emph{static analysis} of these queries, 
-the problems become undecidable.
+the problems become undecidable. Given two (semantical) "queries" $\phi$ and $\psi$,
+we say that they are "semantically equivalent"---implicitly
+over "finite@@struct" "relational databases"---when for every "finite@@struct" "relational databases" $\?D$, we have $\?D \in \phi$ "iff" $\?D \in \phi'$.
+This fact is denoted by \AP$\phi \intro*\semequiv \phi'$.
 
 \begin{proposition}[Trakhtenbrot $\ast$ Databases, see "eg" {\cite[Corollary~6.3.2]{AbiteboulHullVianu1995Databases}}]
 	\!\footnote{This result is often incorrectly confused with
@@ -189,14 +192,11 @@ the problems become undecidable.
 In turn, it means that there is no hope to optimize a SQL query from the
 fragment \eqref{eq:sql-fo}, in the sense of \Cref{sec:intro-existential}.%
 
-\begin{proposition}[Folklore than is unfortunately often not mentionned]
-	
+\begin{proposition}[Folklore than is unfortunately often not mentionned, see "eg"
+	{\cite[Remark~5.3]{AdlerWeyer2012TreeWidthFirstOrder}}]
+	Given a "first-order formula" $\phi$ and $k\in\N$, it is undecidable
+	whether $\phi$ is "semantically equivalent" to a "formula" with at most $k$ variables.
 \end{proposition}
-\footnote{This follows from a generic idea that, provided that logics
-is sufficiently expressive, then minimization is harder than equivalence:
-see \Cref{sec:lowerbounds,apdx-sec:lowerbound-variables} for four (4) reductions
-of this kind!}
-
 
 
 \subsection{Conjunctive Queries to the Rescue}
