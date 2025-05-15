@@ -34,14 +34,14 @@ the Ph.D. advisor of person $y$.
         \node (p2) [below = 2.5em of a3] {paper$_2$};
         \node (p3) [below = 2.5em of a4] {paper$_3$};
 
-        \draw[wrote] (a1) edge[->] node[fill=white] {\footnotesize wrote} (p1)
-            (a2) edge[->] node[fill=white] {\footnotesize wrote} (p1)
-            (a2) edge[->] node[fill=white] {\footnotesize wrote} (p2)
-            (a3) edge[->] node[fill=white] {\footnotesize wrote} (p2)
-            (a4) edge[->] node[fill=white] {\footnotesize wrote} (p3)
-            (a5) edge[->] node[fill=white] {\footnotesize wrote} (p3);
-        \draw[advised] (a4) edge[->, bend right=40] node[fill=white] {\footnotesize advised} (a3)
-            (a5) edge[->, bend right=40] node[fill=white] {\footnotesize advised} (a4);
+        \draw[wrote] (a1) to[edge, ->] node[fill=white] {\footnotesize wrote} (p1)
+            (a2) to[edge, ->] node[fill=white] {\footnotesize wrote} (p1)
+            (a2) to[edge, ->] node[fill=white] {\footnotesize wrote} (p2)
+            (a3) to[edge, ->] node[fill=white] {\footnotesize wrote} (p2)
+            (a4) to[edge, ->] node[fill=white] {\footnotesize wrote} (p3)
+            (a5) to[edge, ->] node[fill=white] {\footnotesize wrote} (p3);
+        \draw[advised] (a4) to[edge, ->, bend right=60] node[fill=white] {\footnotesize advised} (a3)
+            (a5) to[edge, ->, bend right=60] node[fill=white] {\footnotesize advised} (a4);
     \end{tikzpicture}
     \caption{%
         \AP\label{fig:example-graph-database}%

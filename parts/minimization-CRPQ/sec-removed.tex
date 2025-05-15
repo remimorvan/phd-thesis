@@ -24,8 +24,8 @@ if for every $\gamma \in \classCRPQ$, there exists a function
 $\intro*\shrink{\gamma}\colon \Exp(\gamma) \times \N \to \Exp(\gamma)$ "st":
 \begin{enumerate}
   \item for each $\gamma \in \classCRPQ$, for each $n \in \N$ and $\delta \in \classCRPQ$,
-  if $\nbatoms{\delta} \leq n$ then for any $G \in \Exp(\gamma)$, $G \models \delta$ "iff"
-  $\shrink{\gamma}(G, n) \models \delta$, and
+  if $\nbatoms{\delta} \leq n$ then for any $G \in \Exp(\gamma)$, $G \FOmodels \delta$ "iff"
+  $\shrink{\gamma}(G, n) \FOmodels \delta$, and
   \item the size of $\shrink{\gamma}(G, n)$ only depends on $\gamma$ and $n$---but not $G$.
 \end{enumerate} 
 Note that $\shrink{\gamma}(G, n) \defeq G$ trivially satisfies the first point but not the second one.
@@ -39,17 +39,17 @@ of size at most $\nbatoms{\shrink{\gamma}(-, \nbatoms{\delta})}$ are models of $
   If $\classCRPQ$ has the "uniform small model property", if $\gamma \in \classCRPQ$ and $\Delta$ 
   is a finite union of $\classCRPQ$-queries, then
   $\gamma \contained \Delta$ "iff" for every "canonical database" $G$ of $\gamma$,
-  $\shrink{\gamma}(G, m) \models \Delta$
+  $\shrink{\gamma}(G, m) \FOmodels \Delta$
   where $m \defeq \max{\set{\nbatoms{\delta} \mid \delta \in \Delta}}$.
 \end{proposition}
 
 \begin{proof}
   The left-to-right implication is trivial. For the right-to-left implication, 
   let $G$ by any "canonical database" of $\gamma$,
-  and assume by contradiction that $G \not\models \Delta$.
-  Then for all $\delta \in \Delta$, $G \not\models \delta$,
-  and so $\shrink{\gamma}(G, m) \not\models \delta$.
-  It follows that $\shrink{\gamma}(G, m) \not\models \Delta$.
+  and assume by contradiction that $G \not\FOmodels \Delta$.
+  Then for all $\delta \in \Delta$, $G \not\FOmodels \delta$,
+  and so $\shrink{\gamma}(G, m) \not\FOmodels \delta$.
+  It follows that $\shrink{\gamma}(G, m) \not\FOmodels \Delta$.
   Contradiction.
 \end{proof}
 
@@ -81,10 +81,10 @@ of size at most $\nbatoms{\shrink{\gamma}(-, \nbatoms{\delta})}$ are models of $
   By \Cref{prop:containment-uniform-smp,prop:tree-patterns-uniform-smp},
   $\gamma \contained \Delta$ "iff" for every "canonical database" $G$ of $\gamma$,
   there exists $\delta \in \Delta$ "st"
-  $\shrink{\gamma}(G, n) \models \delta$.
+  $\shrink{\gamma}(G, n) \FOmodels \delta$.
   In turn, this is equivalent to asking that for every "canonical database" $G$ of $\gamma$
   of size at most $|\shrink{\gamma}(-, n)|$, then there exists $\delta\in \Delta$
-  "st" $G \models \delta$.
+  "st" $G \FOmodels \delta$.
   This concludes the proof that the problem lies in "PiP2" since by \Cref{prop:tree-patterns-uniform-smp}, $\nbatoms{\shrink{\gamma}(-, n)} = n^2$ so this
   upper bound is polynomial.
 \end{proof}
