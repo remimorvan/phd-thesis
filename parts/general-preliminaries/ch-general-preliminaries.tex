@@ -490,6 +490,7 @@ some "structure"---or equivalently of itself.
 \section{Logic Related Notions}
 
 \subsection{First-Order Logic and Beyond}
+\label{sec:prelim-fo}
 
 We fix a "purely relational signature" $\sigma$.
 A (semantical) Boolean \AP""query@@sem"" is any subclass of the
@@ -526,6 +527,16 @@ a trivial induction on the formula, by interpreting:
 \end{itemize}
 Given a "$\sigma$-structure" $\?A$, we then denote by \AP$\intro*\semFO{\phi(\bar x)}{\?A}$
 the set of tuples $\bar a$ "st" $\tup{\?A, \bar a} \FOmodels \phi(\bar x)$.
+
+\begin{remark}
+	\label{rk:prelim-formula-tuple}
+	For technical reasons---that will be explained in \todo{ref}---,
+	we allow variable repetition in $\bar x$. The only constraint on $\bar x$
+	is that the set of variables occurring in $\bar x$ 
+	should exactly be the set of free variables of $\bar x$.
+	Strictly speaking, the data $\phi(\bar x)$ is richer than just a
+	formula, however we will abusively still this pair \emph{formula}.
+\end{remark}
 
 We now define the classes $\Pi_n$ and $\Sigma_n$ ($n\in\N$) of "first-order formulas"
 as least fixpoints, with the property that $\Sigma_0 \subseteq \Sigma_1 \subseteq \dotsc$ and dually for $\Pi_n$.

@@ -30,7 +30,7 @@ Each tuple of some relation $\+R_{(k)}(\?D)$ is called a \emph{fact}.
 From a practical perspective, relations model the tables,
 while each fact correspond to some row: for 
 instance the database of \Cref{fig:relational-database-cinema}
-has three relations and twelve facts.%
+has three relations, twelve facts and no constants.%
 \footnote{Many variations on the definition above exists:
 for instance the columns of the table are often given a name (called \emph{attribute}),
 see "eg" \cite[\S\!\S~3.1--3.2]{AbiteboulHullVianu1995Databases}.
@@ -43,6 +43,8 @@ This structure has the property that each vertex belongs to some "hyperedge":
 in other words, it has no \AP""isolated vertices"".
 This mapping is in fact one-to-one: "relational databases" over $\sigma$
 are in bijection with "$\sigma$-structures" with no "isolated vertices".
+\AP""Pointed relational databases"" are defined analogously to
+"pointed relational structures".
 
 As mentioned in \Cref{ch:intro}, from a theoretical perspective,
 a very natural way of querying these "structures"
@@ -70,6 +72,7 @@ has a multiset semantics rather than a set-based semantics…}
 	The equivalence between \emph{relational algebra} and the fragment
 	\eqref{eq:sql-fo} of SQL is however straightforward.
 	See also \cite[Theorem~5.4.6]{AbiteboulHullVianu1995Databases}.}
+	\AP\label{prop:codd-thm}
 	"First-order logic" over "$\sigma$-structures" with no "isolated vertices"
 	is equally expressive to the SQL fragment defined in \eqref{eq:sql-fo}.
 	Moreover, this equivalence is effective.
@@ -139,11 +142,11 @@ Take for instance the "first-order formula"
 $\neg \textsc{Room}(x,y)$:
 we expressed it in SQL as
 \[
-	\textrm{all pairs}
+	\textrm{All pairs}
 	\mathrel{\sqlop{ EXCEPT }}
 	(\sqlop{SELECT DISTINCT } x, y \mathrel{\sqlop{ FROM }} \textsc{Room})\; 
 \]
-where `all pairs' is a query outputting all pairs in the database.
+where `All pairs' is a query outputting all pairs in the database.
 The equivalence, or more precisely the fact that the semantics
 of the "first-order formula" over the "relational structure"
 is included in the semantics of the SQL query over the "relational structure", is
@@ -179,31 +182,209 @@ we say that they are "semantically equivalent"---implicitly
 over "finite@@struct" "relational databases"---when for every "finite@@struct" "relational databases" $\?D$, we have $\?D \in \phi$ "iff" $\?D \in \phi'$.
 This fact is denoted by \AP$\phi \intro*\semequiv \phi'$.
 
-\begin{proposition}[Trakhtenbrot $\ast$ Databases, see "eg" {\cite[Corollary~6.3.2]{AbiteboulHullVianu1995Databases}}]
+\begin{proposition}[Trakhtenbrot $\ast$ Databases, see "eg" {\cite[Theorem~6.3.1 \& Corollary~6.3.2]{AbiteboulHullVianu1995Databases}}]
 	\!\footnote{This result is often incorrectly confused with
 	"Trakhtenbrot's theorem", which deals with all "relational structures".
 	However, the notion of "semantical equivalence" differs when considered
 	over "relational databases" or all "relational structures".}
 	\AP\label{prop:Trakhtenbrot-db}
-	It is undecidable whether two "first-order formulas"
-	are "semantically equivalent" over all "relational databases".
+	It is undecidable whether a
+	"first-order formula" is satisfiable over finite "relational databases".
+	In turn, validity and "semantical equivalence" are also undecidable.
 \end{proposition}
 
 In turn, it means that there is no hope to optimize a SQL query from the
 fragment \eqref{eq:sql-fo}, in the sense of \Cref{sec:intro-existential}.%
 
-\begin{proposition}[Folklore than is unfortunately often not mentionned, see "eg"
+\begin{corollary}[Folklore than is unfortunately often not mentionned, see "eg"
 	{\cite[Remark~5.3]{AdlerWeyer2012TreeWidthFirstOrder}}]
+	\label{coro:undecidability-minimization}
 	Given a "first-order formula" $\phi$ and $k\in\N$, it is undecidable
-	whether $\phi$ is "semantically equivalent" to a "formula" with at most $k$ variables.
-\end{proposition}
-
+	whether $\phi$ is "semantically equivalent" to a "formula@@FO" with at most $k$ variables.
+\end{corollary}
 
 \subsection{Conjunctive Queries to the Rescue}
 
+The undecidability results of \Cref{prop:Trakhtenbrot-db,coro:undecidability-minimization},
+together with the fact that queries occurring in practice---see \Cref{sec:intro-cq}---are
+much simpler than the formulas occurring in the undecidability proof motivate
+the study of well-behaved query fragments.
 
+"Conjunctive queries" arise as either the fragment
+\begin{align}
+	\phi_{(k)}\; & \mathrel{{:}{:}{=}} \sqlop{SELECT DISTINCT} \textrm{ attribute}_1, \dotsc, \textrm{ attribute}_k\notag\\
+	& \hphantom{\mathrel{{:}{:}{=}}} \sqlop{FROM } \phi_{(i_1)}, \dotsc, \phi_{(i_n)}\label{eq:sql-cq}\\
+	& \hphantom{\mathrel{{:}{:}{=}}} \sqlop{WHERE} \textrm{ some condition} \notag\\
+	& \;\mid \textrm{some table of arity $k$} \notag
+\end{align}
+of SQL, where, once again, $i_1 + \dotsc + i_n = k$ and the condition after $\sqlop{WHERE}$
+is a conjunction of equalities between attributes.
+From the proof of \Cref{prop:codd-thm} it actually follows that this fragment is exactly
+as expressive as the fragment of "first-order logic", restricted to "relational databases",
+generated by 
+\begin{align}
+	\phi \mathrel{{:}{:}{=}} \+R_{(k)}(x_1,\dotsc,x_k) \mid \phi \land \phi \mid \exists x.\; \phi,
+	\label{eq:fo-cq}
+\end{align}
+where $\+R_{(k)}$ ranges over the "signature".
+
+Now observe that, when dealing with the fragment \eqref{eq:fo-cq},
+the "first-order formula" $(\exists x.\; \phi(x, \bar y)) \land \psi(\bar z)$
+is equivalent to $\exists x'.\; (\phi(x', \bar y) \land \psi(\bar z))$
+where $x'$ is any variable that occurs neither in $\bar y$ nor in $\bar z$.
+For instance, we have 
+\[
+	(\exists x.\, \+P(x)) \land (\exists x.\, \exists y.\,\+R(x,y))
+	\semequiv
+	\exists z.\,\exists x.\, \exists y.\, \+P(z) \land \+R(x,y).
+\]
+This leads to a simple rewriting system that puts every formula from 
+\eqref{eq:fo-cq} in so-called "prenex form".
+
+\begin{proposition}[""Prenex form""]
+	\AP\label{prop:prenex-form}
+	Every formula from \eqref{eq:fo-cq} can be written in the form
+	\begin{align}
+		\exists \bar x.\, \bigwedge_{i=1}^n \+R^i_{(k_i)}(y^i_1,\dotsc,y^i_{k_i}).
+		\label{eq:prenex-fo}
+	\end{align}
+\end{proposition}
+
+\Cref{prop:prenex-form} has remarkable consequences.
+Translating back the "formulas@@FO" in "prenex form" to 
+SQL queries, it implies that the fragment \eqref{eq:sql-cq}
+is no more expressive than its induction-free fragment
+\begin{align}
+	\phi_{(k)}\; & \mathrel{{:}{:}{=}} \sqlop{SELECT DISTINCT} \textrm{ attribute}_1, \dotsc, \textrm{ attribute}_k\notag\\
+	& \hphantom{\mathrel{{:}{:}{=}}} \sqlop{FROM } \textrm{table}_{(i_1)}, \dotsc, \textrm{table}_{(i_n)}\label{eq:sql-cq-bis}\\
+	& \hphantom{\mathrel{{:}{:}{=}}} \sqlop{WHERE} \textrm{ some condition}. \notag
+\end{align}
+
+Formally, we define a \AP"conjunctive query" to be
+any "first-order formula" in "prenex form"---see \Cref{eq:prenex-fo}.
+Recall that, as mentioned in \Cref{rk:prelim-formula-tuple},
+we assume that "formulas" comes with a tuple of variables,
+containing all free variables, potentially with repetition.
+Hence, a \AP""conjunctive query"", or \reintro{CQ} for short, amounts to a finite set
+of atomic formulas of the form $\+R_{(k)}(x_1,\hdots,x_k)$, called ""atoms@@cq"",
+together with tuple of variables $\bar x$, called ""free variables@@cq""
+or ""output variables@@cq"". The set of atoms is denoted conjunctively.
+So, an example of "conjunctive query" is
+\begin{align*}
+	\gamma(\textsf{title}, \textsf{time}) \defeq\; 
+	& \textsc{Movies}(\textsf{movie\_id}, \textsf{title}, \textsf{length}, \textsf{director}) \\
+	& \land
+	\textsc{Projections}(\textsf{movie\_id}, \textsf{room\_id}, \textsf{time}).
+\end{align*} 
+Semantically, it is interpreted as the "first-order formula" in "prenex form"
+in which every variable that is not an "output variable" is quantified existentially,
+giving in our case
+\begin{align*}
+	\gamma(\textsf{title}, \textsf{time}) \defeq\; 
+	& \exists \textsf{movie\_id}.\, 
+	\exists \textsf{length}.\, 
+	\exists \textsf{director}.\,
+	\exists \textsf{room\_id}.\, \\
+	& \hphantom{\land~} \textsc{Movies}(\textsf{movie\_id}, \textsf{title}, \textsf{length}, \textsf{director}) \\
+	& \land
+	\textsc{Projections}(\textsf{movie\_id}, \textsf{room\_id}, \textsf{time}).
+\end{align*} 
+
+Interestingly, the semantics of "conjunctive queries" can be described using "homomorphisms",
+via the theory of \emph{duality}.
+\begin{definition}
+	The "canonical database" associated to a "conjunctive query"
+	\[
+		\gamma(\bar x) = \bigwedge_{i=1}^n \+R^i_{(k_i)}(y^i_1,\dotsc,y^i_{k_i})
+	\]
+	over the "purely relational signature" $\sigma$ is the "pointed relational database"
+	over $\sigma$ with tuple $\bar x$ and whose facts are
+	$\+R^i_{(k_i)}(y^i_1,\dotsc,y^i_{k_i})$ for $i \in \intInt{1,n}$.
+\end{definition}
+We say that a "conjunctive query" is ""Boolean@@cq"" when it has no "output variables".
+In this case, its "canonical database" is not only a "pointed relational database" but
+in fact a "relational database".
+
+\begin{proposition}[""Duality""]
+	\AP\label{prop:duality}
+	Let $\gamma(\bar x)$ be a "conjunctive query",
+	and let $\tup{\?G, \bar x}$ denote its "canonical database".%
+	\footnote{We denote the "canonical database" using the Roman
+	uppercase associated with the Greek letter used to denote
+	the query.}
+	For any "pointed relational database" $\tup{\?D, \bar d}$,
+	we have
+	\[
+		\bar d \in \semFO{\gamma(\bar x)}{\?D}
+		\qquad\text{"iff"}\qquad
+		\tup{\?G, \bar x} \homto \tup{\?D, \bar d}.
+	\]
+\end{proposition}
+
+\begin{proof}
+	This follows from the definition of "homomorphisms" and
+	the semantics of "first-order logic".
+\end{proof}
+
+Duality has \emph{many} consequences. First, the following evaluation problem
+lies in "NP", as it can be encoded into a "homomorphism problem".
+\decisionproblem{""Conjunctive Query Evaluation""}{
+	A "signature" $\sigma$,
+	a "conjunctive query" $\gamma(\bar x)$ over $\sigma$,
+	and a "pointed relational $\sigma$-database" $\tup{\?D, \bar d}$.
+}{
+	Does $\bar d \in \semFO{\gamma(\bar x)}{\?D}$?
+}
+For "Boolean conjunctive queries", both tuples are empty, and so
+this amounts to asking whether the query is true on the "database@@rel".
+More importantly, "duality" has the consequence that
+"semantical equivalence", as well as the finer notion of "containment@@cq",
+are decidable for "CQs".
+
+Given two "CQs" $\gamma(\bar x)$ and $\gamma'(\bar x')$,
+we say that $\gamma(\bar x)$ is ""contained"" in $\gamma'(\bar x')$
+whenever (1) $\bar x$ and $\bar x'$ have the same arity, and (2)
+$\semFO{\gamma(\bar x)}{\?D} \subseteq \semFO{\gamma'(\bar x')}{\?D}$
+for every "relational database" $\?D$. This is denoted by
+$\gamma(\bar x) \intro*\contained \gamma'(\bar x')$.
+Clearly, "semantical equivalence" can be obtained as the symmetric
+closure of "containment".
+
+\begin{proposition}
+	Let $\gamma(\bar x)$ and $\gamma'(\bar x')$ be two "CQs".
+	The following are equivalent:
+	\begin{enumerate}
+		\item $\gamma(\bar x) \intro*\contained \gamma'(\bar x')$;
+		\item $\tup{\?G, \bar x} \FOmodels \gamma'(\bar x')$;
+		\item $\tup{\?G', \bar x'} \homto \tup{\?G, \bar x}$,
+	\end{enumerate}
+	where $\tup{\?G, \bar x}$ and $\tup{\?G', \bar x'}$ are the "canonical databases"
+	of $\gamma(\bar x)$ and $\gamma'(\bar x')$, respectively.
+\end{proposition}
+
+\begin{proof}
+	\proofcase{(1) $\Rightarrow$ (2).}
+	By "duality", $\tup{\?G, \bar x}$ is a model of $\gamma(\bar x)$,
+	and so, since this query is "contained" in $\gamma'(\bar x')$,
+	it follows that $\tup{\?G, \bar x} \FOmodels \gamma'(\bar x')$.
+
+	\proofcase{(2) $\Rightarrow$ (3).} By "duality".
+
+	\proofcase{(3) $\Rightarrow$ (1).} Assume that
+	$\tup{\?G', \bar x'} \homto \tup{\?G, \bar x}$,
+	and let us prove that $\gamma(\bar x) \contained \gamma'(\bar x')$.
+	Let $\tup{\?D, \bar d}$ be a "pointed relational database",
+	and assume that $\tup{\?D, \bar d} \FOmodels \gamma(\bar x)$.
+	By "duality", we get $\tup{\?G, \bar x} \homto \tup{\?D, \bar d}$,
+	and by precomposing with any "homomorphism" witnessing
+	that $\tup{\?G', \bar x'} \homto \tup{\?G, \bar x}$,
+	we get that $\tup{\?G', \bar x} \homto \tup{\?D, \bar d}$.
+	Once again, by "duality", this amounts to $\tup{\?D, \bar d} \FOmodels \gamma'(\bar x')$,
+	which concludes the proof that $\gamma(\bar x) \contained \gamma'(\bar x')$.
+\end{proof}
 
 \begin{itemize}
+	\item combined complexity / data complexity
 	\item duality w/ table of equivalence (vertex <-> variable ; disjoint union <-> disjoint conjunctions)
 	\itemAP $\intro*\underlying{\gamma}$ and ""underlying graph""
 	\itemAP ""equality atom""
