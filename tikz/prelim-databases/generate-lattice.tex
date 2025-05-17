@@ -4,12 +4,15 @@
 width = 17 -- half-width
 height = 17 -- half-height
 -- height and width (in cm) of the tikzpicture
-display_width = 10
-display_height = 10
+display_width = 11
+display_height = 11
 -- decay rates 
-x_opacity_decay = 0.3
+x_opacity_decay = 0.5
 y_opacity_decay = 1.5
-pos_decay = 1.5
+pos_decay = 1.6
+
+cdb_x = 4
+cdb_y = -9
 
 dx = display_width / (2 * width)
 dy = display_height / (2 * height)
@@ -40,8 +43,12 @@ function is_above(x1,y1,x2,y2) -- check if (x1,y1) is above (x2,y2)
 end
 
 function get_color(x,y)
-	if y - x == 17 then
+	if y - x == 17 and is_above(x, y, cdb_x, cdb_y) then
+		return "c0!50!c1"
+	elseif y - x == 17 then
 		return "c0"
+	elseif is_above(x, y, cdb_x, cdb_y) then
+		return "c1"
 	elseif y + x == -17 then
 		return "c2"
 	else
@@ -50,7 +57,7 @@ function get_color(x,y)
 end
 
 function process_opacity(x)
-	return (1/(1+math.exp(3.5-20*x)))
+	return 0.3+0.7*(1/(1+math.exp(3-20*x)))
 end
 
 function get_opacity(x,y)
@@ -80,7 +87,9 @@ function get_edge_color(x1,y1,x2,y2)
 	c2 = get_color(x2,y2)
 	if c1 == c2 then
 		return c1
-	else 
+	elseif c1 ~= "black" and c2 ~= "black" then
+		return c1
+	else
 		return "black"
 	end
 end

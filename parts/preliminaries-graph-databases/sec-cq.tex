@@ -16,9 +16,11 @@ in \Cref{fig:relational-database-cinema}.
 	}
 \end{table}
 
-Formally, a \AP""relational database"" $\?D$ over a "purely relational signature" $\sigma$
+Formally, a \AP""pointed relational database"" $\tup{\?D, \bar d}$
+over a "purely relational signature" $\sigma$
 consists of, for each "predicate" $\+R$ of arity $k$ in $\sigma$,
-a $k$-ary relation $\+R_{(k)}(\?D)$.%
+a $k$-ary relation $\+R_{(k)}(\?D)$, as well as a tuple $\bar d$ of elements.%
+A \AP""relational database"" is a "pointed relational database" whose tuple is empty.
 \footnote{It is often asked that at least one $\+R_{(k)}(\?D)$ is non-empty.
 Whether this condition is imposed does change the theory---for instance the "first-order sentences"
 that are valid over all non-empty structures is a strict subset of
@@ -38,13 +40,11 @@ This is usually done to make the syntax of relational algebra for readable,
 however this is only syntactic sugar \cite[Proposition~5.1.2]{AbiteboulHullVianu1995Databases}.}
 
 Naturally, each "relational database" yields a "$\sigma$-structure" whose
-domain is the set of elements occurring in some fact of the database.
-This structure has the property that each vertex belongs to some "hyperedge":
-in other words, it has no \AP""isolated vertices"".
+domain is the set of elements occurring in some fact of the database or in the tuple.
+This structure has the property that each vertex belongs to some "hyperedge" or
+is a constant: in other words, it has no \AP""isolated vertices"".
 This mapping is in fact one-to-one: "relational databases" over $\sigma$
 are in bijection with "$\sigma$-structures" with no "isolated vertices".
-\AP""Pointed relational databases"" are defined analogously to
-"pointed relational structures".
 
 \begin{hypothesisnotation}
 	We identify (pointed) "relational databases" with (pointed) "relational structures"
@@ -449,22 +449,18 @@ order over the quotient of "relational databases" by the equivalence class induc
 which happens to be partially ordered set of "cores". Hence, we will interchangeably
 use to term \emph{preordering} or \emph{(partial) ordering}.}
 admits a unique minimal element, which is the empty database.
-For "non-Boolean queries", the ``empty database'' does not exist---where would the constants live?---and there is one minimal element for each "predicate" $\+R_{(k)}$,
-consisting of the "relational database" with a single fact
-$\+R_{(k)}(x_1,\hdots,x_k)$.%
-\footnote{It is important that all vertices are disjoint!
-Indeed, while we do have $\+R_{(k)}(x_1,\hdots,x_k) \homto \+R_{(k)}(x,\hdots,x)$,
-there is no "homomorphism" going the other way.}
-There is always a unique maximal element: the "database@@rel" with
+For "non-Boolean queries", there is also a minimal "relational database" with
+no facts, but that has constants.%
+Similarly, there is always a unique maximal element: the "database@@rel" with
 a unique vertex $x$ and such that $\+R_{(k)}(x,\dotsc,x)$ holds for
-every $\+R_{(k)} \in \sigma$.
-
+every $\+R_{(k)} \in \sigma$, and all constants are interpreted as this vertex $x$.
 We now prove that this poset has a non-trivial structure, assuming that the "signature"
 is itself non-trivial.
 
 \begin{proposition}
+	\AP\label{prop:poset-reldb}
 	Assume that $\sigma$ contains at least one symbol of arity at least 2,
-	then the poset of "relational structures"
+	then the poset of "relational databases"
 	admits infinite chains, infinite co-chains and infinite antichains.
 \end{proposition}
 
@@ -494,91 +490,6 @@ is itself non-trivial.
 	Finally, $\tup{\?C_p}_{p \text{ prime}}$ is an infinite antichain.
 \end{proof}
 
-\begin{marginfigure}
-	\centering
-	\scalebox{.8}{
-	\begin{tikzpicture}[
-		font=\footnotesize
-	]
-		\node[vertex] (empty) at (0, 0) {};
-		\node[right=2pt of empty] {$\emptyset$};
-
-		\node[vertex] (p1) at (0, 0.7) {};
-		\node[right=2pt of p1] {$\pathGraph{1}$};
-		\node (p2) at (0, 1.4) {$\vdots$};
-		\node[vertex] (p3) at (0, 2.1) {};
-		\node[right=2pt of p3] {$\pathGraph{n}$};
-		\node[vertex] (p4) at (0, 2.8) {};
-		\node[right=2pt of p4] {$\pathGraph{n+1}$};
-		\node (p5) at (0, 3.5) {$\vdots$};
-
-		\node[vertex] (c1) at (0, 8.4) {};
-		\node[left=2pt of c1] {$\?C_1$};
-		\node[vertex] (c2) at (-0.425, 7.7) {};
-		\node[left=2pt of c2] {$\?C_2$};
-		\node (c4) at (-0.85, 7.0) {\rotatebox{-16}{$\vdots$}};
-		\node[vertex] (c8) at (-1.275, 6.3) {};
-		\node[left=2pt of c8] {$\?C_{2^n}$};
-		\node[vertex] (c16) at (-1.7, 5.6) {};
-		\node[left=2pt of c16] {$\?C_{2^{n+1}}$};
-		\node (c32) at (-2.125, 4.9) {\rotatebox{-16}{$\vdots$}};
-
-		\node[vertex] (c3) at (0.425, 7.7) {};
-		\node[below right=2pt of c3] {$\?C_3$};
-		\node (c9) at (0.85, 7.0) {\rotatebox{16}{$\vdots$}};
-		\node[vertex] (c27) at (1.275, 6.3) {};
-		\node[right=2pt of c27] {$\?C_{3^n}$};
-		\node[vertex] (c81) at (1.7, 5.6) {};
-		\node[right=2pt of c81] {$\?C_{3^{n+1}}$};
-		\node (c243) at (2.125, 4.9) {\rotatebox{16}{$\vdots$}};
-
-		\node[vertex] (c6) at (0, 7.0) {};
-		\node[below right=2pt of c6] {$\?C_6$};
-		\node (c36) at (0, 6.3) {$\vdots$};
-		\node[vertex] (c216) at (0, 5.6) {};
-		\node[below right=2pt of c216] {$\?C_{6^n}$};
-		\node (c1296) at (0, 4.9) {$\vdots$};
-
-		\node[vertex] (c5) at (1.275, 7.7) {};
-		\node[below right=2pt of c5] {$\?C_5$};
-		\node (c7) at (2.125, 7.7) {$\cdots$};
-
-		% Edges: path chain
-		\draw[edge] (empty) -- (p1);
-		\draw[edge] (p1) -- (p2);
-		\draw[edge] (p2) -- (p3);
-		\draw[edge] (p3) -- (p4);
-		\draw[edge] (p4) -- (p5);
-
-		% Edges: cycle cochain
-		\draw[edge] (c32) -- (c16);
-		\draw[edge] (c16) -- (c8);
-		\draw[edge] (c8) -- (c4);
-		\draw[edge] (c4) -- (c2);
-		\draw[edge] (c2) -- (c1);
-		\draw[edge] (c243) -- (c81);
-		\draw[edge] (c81) -- (c27);
-		\draw[edge] (c27) -- (c9);
-		\draw[edge] (c9) -- (c3);
-
-		\draw[edge] (c3) -- (c1);
-		\draw[edge] (c5) -- (c1);
-		\draw[edge] (c6) -- (c2);
-		\draw[edge] (c6) -- (c3);
-		\draw[edge] (c216) -- (c36);
-		\draw[edge] (c36) -- (c6);
-		\draw[edge] (c216) -- (c8);
-		\draw[edge] (c216) -- (c27);
-
-		\draw[edge] (p5) to[out=90,in=-101.25] (c32);
-		\draw[edge] (p5) to[out=90,in=-78.75] (c243);
-		\draw[edge] (p5) -- (c1296);
-	\end{tikzpicture}
-	}
-	\caption{\AP\label{fig:poset-reldb} The poset of "relational databases" over a "signature"
-	containing at least one binary "predicate".}
-\end{marginfigure}
-
 \begin{figure}
 	\centering
 	\begin{tikzpicture}[
@@ -595,32 +506,69 @@ is itself non-trivial.
 		\node[above left=2pt of -9 8, color=c0] {\rotatebox{-45}{$\vdots$}};
 
 		\node[below left=2pt of 0 -17, color=c2] {$\emptyset$};
-		\node[below left=2pt of -1 -16, color=c2] {$\pathGraph{1}$};
-		\node[below left=2pt of -2 -15, color=c2] {$\pathGraph{2}$};
+		\node[below left=2pt of -1 -16, color=c2] {$\?P_1$};
+		\node[below left=2pt of -2 -15, color=c2] {$\?P_2$};
 		\node[below left=2pt of -4 -13, color=c2] {\rotatebox{30}{$\vdots$}};
-		\node[below left=2pt of -6 -11, color=c2] {$\pathGraph{n}$};
-		\node[below left=2pt of -7 -10, color=c2] {$\pathGraph{n+1}$};
-		\node[above left=2pt of -9 -8, color=c2] {\rotatebox{45}{$\vdots$}};
+		\node[below left=2pt of -6 -11, color=c2] {$\?P_{n}$};
+		\node[below left=2pt of -7 -10, color=c2] {$\?P_{n+1}$};
+		\node[above left=.3cm of -9 -8, color=c2] {\rotatebox{45}{$\vdots$}};
+
+		\node[circle, fill=white, minimum size= 5pt] at (4 -9) {};
+		\node[circle, fill=c1, opacity=1, minimum size= 5pt, outer sep=1mm] at (4 -9) {};
+
+		\node[color=c1, align=left, text width=3.8cm, outer sep=3mm] at (3.5, -5) (label-cdb)
+			{"\textcolor{c1}{canonical database}@canonical database" $\?G$ of a
+			"\textcolor{c1}{Boolean conjunctive query}@Boolean conjunctive query" $\gamma$};
+		\draw[draw=c1,->] (label-cdb) edge[->,out=90,in=-90] (4 -9);
+		\draw [thick, decorate,decoration={brace,amplitude=5pt,raise=4ex}, color=c1]
+  			(0 17) -- (13 4);
 	\end{tikzpicture}
 	\caption{\AP\label{fig:poset-reldb} The poset of "relational databases" over a "signature"
-	containing at single binary "predicate". "Homomorphisms" go from bottom to top.
-	An infinite chain is represented in red, and an infinite co-chain in blue.}
+	containing at single binary "predicate", where "homomorphisms" go from bottom to top.
+	An infinite chain is represented in red, and an infinite co-chain in blue.
+	A large yellow dot represents the "canonical database" of a "conjunctive query",
+	while the semantics of this "conjunctive query" is represented with normal-size yellow dots.}
 \end{figure}
+Based on \Cref{prop:poset-reldb}, we provide an illustration of the ordered set
+of "relational databases" in \Cref{fig:poset-reldb}. Notice that, since the semantics
+of "conjunctive queries" is closed under "homomorphisms", they are represented by an upper-closed set. Moreover, this set has a unique minimum, corresponding to its "canonical database".
+Notice how this representation naturally represents the concept of "duality":
+\begin{itemize}
+	\item points of the poset ("ie" "relational databases") are in natural
+		bijection with upper-closed set that admit a minimum ("ie" "conjunctive queries");
+	\item a "conjunctive query" is "contained" in another "iff", by definition,
+		the semantics of the former is included in that of the latter, which happens
+		"iff" the "canonical database" of the former is above the "canonical databse" of the latter
+		in \Cref{fig:poset-reldb}.
+\end{itemize}
 
 \begin{remark}
+	\label{rk:database-vs-structures}
 	À propos "relational databases" "vs" "relational structures",
-	these posets actually only marginally differ 
+	these posets are actually isomorphic 
 	since a "relational structure" is always "homomorphically equivalent"
-	to the structure in which we removed "isolated vertices" that are not constants.
-	The main difference is hence that "pointed relational structures" always 
-	have a unique minimal element, which is the "structure" with a single
-	vertex and no "hyperedge".
+	to the structure in which we removed "isolated vertices".
 \end{remark}
+
+\paragraph*{The Heyting Algebra of Relational Databases}
+
+\Cref{prop:poset-reldb} shows that the poset of "relational databases" has a somewhat
+complex structure, in the sense that it is infinite height, co-height and width.
+However, we next show that it has a rich algebraic structure.
+
+In light of \Cref{rk:database-vs-structures}, the "Cartesian product"
+of two "relational databases" $\tup{\?D_1,\bar d_1}$ and $\tup{\?D_2,\bar d_2}$
+is well-defined: we consider their product $\tup{\?D_1,\bar d_1} \prodstruct \tup{\?D_2,\bar d_2}$
+as "relational structures", and remove all "isolated vertices".
+It is routine to check that this "Cartesian product" in indeed a Cartesian product in
+the categorical sense, "ie" that it satisfies the universal property
+that first it has "homomorphisms" to both $\tup{\?D_1,\bar d_1}$ and $\tup{\?D_2,\bar d_2}$,
+and \todo{finish} \todo{\projHom{i}}
+
+
 
 The \AP""disjoint conjunction"" \AP$\intro*\disconj$ of two "CRPQs" consists of
 the conjunction of the queries, up to renaming so that their variable sets are disjoint.
-
-
 
 \begin{itemize}
 	\item combined complexity / data complexity
