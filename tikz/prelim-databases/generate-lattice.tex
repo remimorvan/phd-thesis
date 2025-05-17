@@ -1,0 +1,128 @@
+\begin{luacode}
+-- parameters to tweak
+-- nb of nodes in the lattice
+width = 17 -- half-width
+height = 17 -- half-height
+-- height and width (in cm) of the tikzpicture
+display_width = 10
+display_height = 10
+-- decay rates 
+x_opacity_decay = 0.3
+y_opacity_decay = 1.5
+pos_decay = 1.5
+
+dx = display_width / (2 * width)
+dy = display_height / (2 * height)
+
+function grid_to_picture_x(x)
+	-- returns the position in the picture from the coordinates in the grid
+	return x * dx * (math.abs(x)/width)^(pos_decay-1)
+end 
+function grid_to_picture_y(y)
+	-- returns the position in the picture from the coordinates in the grid
+	return y * dy * (math.abs(y)/height)^(pos_decay-1)
+end
+
+function is_part_of_grid(x,y)
+	in_square = x >= -width and x <= width and y >= -height and y <= height
+	in_check = (x+y)%2 ~= 0
+	in_diamond = math.abs(x) <= height - math.abs(y)
+	return in_square and in_check and in_diamond
+end
+
+function is_above(x1,y1,x2,y2) -- check if (x1,y1) is above (x2,y2)
+	if y1 < y2 then
+		return false
+	end
+	delta_y = y1 - y2 -- >= 0
+	delta_x = math.abs(x2 - x1)
+	return (delta_x <= delta_y)
+end
+
+function get_color(x,y)
+	if y - x == 17 then
+		return "c0"
+	elseif y + x == -17 then
+		return "c2"
+	else
+		return "black" 
+	end
+end
+
+function process_opacity(x)
+	return (1/(1+math.exp(3.5-20*x)))
+end
+
+function get_opacity(x,y)
+	if y == 0 then
+		return process_opacity(0)
+	elseif math.abs(y) == height then
+		return process_opacity(1)
+	elseif math.abs(y) == 1 and math.abs(x) < width-1 then
+		return process_opacity(0.01)
+	elseif math.abs(x) == 1 and math.abs(y) < height-1 then
+		return process_opacity(0.02)
+	elseif math.abs(x) == 0 and math.abs(y) < height-1 then
+		return process_opacity(0)
+	else
+		x_opac = (math.abs(x)/width)^x_opacity_decay
+		y_opac = (math.abs(y)/height)^y_opacity_decay
+		return process_opacity(x_opac * y_opac)
+	end
+end
+
+function get_scale(x,y)
+	return 2*get_opacity(x,y)^0.3
+end
+
+function get_edge_color(x1,y1,x2,y2)
+	c1 = get_color(x1,y1)
+	c2 = get_color(x2,y2)
+	if c1 == c2 then
+		return c1
+	else 
+		return "black"
+	end
+end
+
+function get_edge_opacity(x1,y1,x2,y2)
+	o1 = get_opacity(x1,y1)
+	o2 = get_opacity(x2,y2)
+	return math.min(o1,o2)
+end
+
+-- define coordinates
+for x = -width,width do
+	for y = -height,height do
+		if is_part_of_grid(x,y) then
+			tex.print(string.format("\\coordinate (%i %i) at (%.4f, %.4f) {};", x, y, grid_to_picture_x(x), grid_to_picture_y(y)))
+		end
+	end 
+end 
+-- draw edges
+for x = -width,width do
+	for y = -height,height do
+		if is_part_of_grid(x,y) then
+			above = {{x-1,y+1}, {x+1, y+1}}
+			for _, coord in ipairs(above) do 
+				x2, y2 = coord[1], coord[2]
+				if is_part_of_grid(x2,y2) then
+					tex.print(string.format("\\draw[color=%s, opacity=%.4f] (%i %i) to[-] (%i %i);", get_edge_color(x,y,x2,y2), get_edge_opacity(x,y,x2,y2), x, y, x2, y2))
+				end
+			end
+		end
+	end 
+end 
+-- draw grid
+for x = -width,width do
+	for y = -height,height do
+		if is_part_of_grid(x,y) then
+			-- white background
+			tex.print(string.format("\\node[circle,fill=white, minimum size=%.4f pt] at (%i %i) {};", get_scale(x,y), x, y))
+			-- proper colour
+			tex.print(string.format("\\node[circle,fill=%s, minimum size=%.4f pt, opacity=%.4f] at (%i %i) {};", get_color(x,y), get_scale(x,y), get_opacity(x,y), x, y))
+		end
+	end 
+end 
+
+\end{luacode}

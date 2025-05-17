@@ -579,6 +579,33 @@ is itself non-trivial.
 	containing at least one binary "predicate".}
 \end{marginfigure}
 
+\begin{figure}
+	\centering
+	\begin{tikzpicture}[
+		font=\footnotesize,
+		every node/.style={inner sep=0pt,outer sep=0pt}
+	]
+		\input{tikz/prelim-databases/generate-lattice.tex}
+		\node[above left=2pt of 0 17, color=c0] {$\?C_1$};
+		\node[above left=2pt of -1 16, color=c0] {$\?C_2$};
+		\node[above left=2pt of -2 15, color=c0] {$\?C_4$};
+		\node[above left=2pt of -4 13, color=c0] {\rotatebox{-30}{$\vdots$}};
+		\node[above left=2pt of -6 11, color=c0] {$\?C_{2^n}$};
+		\node[above left=2pt of -7 10, color=c0] {$\?C_{2^{n+1}}$};
+		\node[above left=2pt of -9 8, color=c0] {\rotatebox{-45}{$\vdots$}};
+
+		\node[below left=2pt of 0 -17, color=c2] {$\emptyset$};
+		\node[below left=2pt of -1 -16, color=c2] {$\pathGraph{1}$};
+		\node[below left=2pt of -2 -15, color=c2] {$\pathGraph{2}$};
+		\node[below left=2pt of -4 -13, color=c2] {\rotatebox{30}{$\vdots$}};
+		\node[below left=2pt of -6 -11, color=c2] {$\pathGraph{n}$};
+		\node[below left=2pt of -7 -10, color=c2] {$\pathGraph{n+1}$};
+		\node[above left=2pt of -9 -8, color=c2] {\rotatebox{45}{$\vdots$}};
+	\end{tikzpicture}
+	\caption{\AP\label{fig:poset-reldb} The poset of "relational databases" over a "signature"
+	containing at single binary "predicate". "Homomorphisms" go from bottom to top.
+	An infinite chain is represented in red, and an infinite co-chain in blue.}
+\end{figure}
 
 \begin{remark}
 	À propos "relational databases" "vs" "relational structures",
