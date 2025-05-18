@@ -344,7 +344,7 @@ lies in "NP", as it can be encoded into a "homomorphism problem".
 	a "conjunctive query" $\gamma(\bar x)$ over $\sigma$,
 	and a "pointed relational $\sigma$-database" $\tup{\?D, \bar d}$.
 }{
-	Does $\bar d \in \semFO{\gamma(\bar x)}{\?D}$?
+	Does $\bar d \in \semFO{\gamma(\bar x)}{\?D}$?
 }
 For "Boolean conjunctive queries", both tuples are empty, and so
 this amounts to asking whether the query is true on the "database@@rel".
@@ -553,6 +553,31 @@ Notice how this representation naturally represents the concept of "duality":
 		in \Cref{fig:poset-reldb}.
 \end{itemize}
 
+\begin{marginfigure}
+	\centering
+	\directlua{width = 2.3; height = 1.4}
+\input{tikz/prelim-databases/abstract-lattice.lua}%do not indent!!!
+	\begin{tikzpicture}[every node/.style={inner sep=0pt,outer sep=0pt},font=\tiny]
+		\directlua{draw_lattice()}
+		\begin{scope}
+			\directlua{make_clip()}
+			\directlua{draw_cq(.5, -.6, 'c0', 'x')}
+			\directlua{draw_cq(.65, .2, 'c2', 'y')}
+			\node[below=2pt of x, c0] {$\gamma$};
+			\node[below=2pt of y, c2] {$\delta$};
+		\end{scope}
+	\end{tikzpicture}
+	\caption{
+		\AP\label{fig:poset-reldb-simple}
+		A more abstract view of the poset of "relational databases":
+		we represent two "conjunctive queries" $\gamma$ (in red) and $\delta$ (in blue).
+		The semantics of each query is represented by a filled diamond,
+		and its "canonical database" by a large dot.
+	}
+\end{marginfigure}
+For the sake of simplicity---and compilation time…---,
+we abstract the picture of \Cref{fig:poset-reldb} into \Cref{fig:poset-reldb-simple}.
+
 \begin{remark}
 	\label{rk:database-vs-structures}
 	À propos "relational databases" "vs" "relational structures",
@@ -603,6 +628,41 @@ Going back to the poset structure, this implies that any pair of points must hav
 	ordered by $\homto$.
 \end{fact}
 
+\begin{marginfigure}
+	\centering
+	\directlua{width = 2.3; height = 1.4}
+\input{tikz/prelim-databases/abstract-lattice.lua}%do not indent!!!
+	\begin{tikzpicture}[x=1cm, y=1cm, every node/.style={inner sep=0pt,outer sep=0pt}, font=\tiny]
+		\directlua{draw_lattice()}
+		\begin{scope}
+\begin{luacode}
+			x0 = 0
+			y0 = -.5
+			dist = .5
+			slope = height/width
+			draw_db(x0-dist, y0+dist*slope, 'cBlue', '1')
+			draw_db(x0+dist, y0+dist*slope, 'cRed', '2')
+			draw_db(x0, y0, 'cYellow', 'prod')
+			draw_db(x0, y0+2*dist*slope, 'cPurple', 'union')
+\end{luacode}
+			\node[left=3.5pt of 1, cBlue] {$\?D_1$};
+			\node[right=3.5pt of 2, cRed] {$\?D_2$};
+			\node[below=3.5pt of prod, cYellow] {$\?D_1 \prodstruct \?D_2$};
+			\node[above=3.5pt of union, cPurple] {$\?D_1 \disunion \?D_2$};
+			\draw (prod) edge[->] (1);
+			\draw (prod) edge[->] (2);
+			\draw (1) edge[->] (union);
+			\draw (2) edge[->] (union);
+		\end{scope}
+	\end{tikzpicture}
+	\caption{
+		\AP\label{fig:distributive-lattice-rel-db}
+		The distributive lattice structure of "relational databases": 
+		we represent two "structures", as well as their least upper bound
+		and greatest lower bound, and the natural homomorphism they come equipped with
+		(projections and canonical embeddings).
+	}
+\end{marginfigure}
 Similarly, the "disjoint union" satisfies the property dual to \Cref{fig:cartesian-product-diagram}.
 \begin{fact}
 	Given two finite "relational databases", their "disjoint union"
@@ -611,7 +671,8 @@ Similarly, the "disjoint union" satisfies the property dual to \Cref{fig:cartesi
 \end{fact}
 
 Put together, these facts imply that the poset of "relational databases" is
-actually a bounded lattice! It is moreover distributive
+actually a bounded lattice, as depicted in \Cref{fig:distributive-lattice-rel-db}.
+It is moreover distributive
 since the isomorphism
 \[
 	\?A \prodstruct (\?B \disunion \?C) \isom (\?A \prodstruct \?B) \disunion (\?A \prodstruct \?C)
@@ -685,6 +746,46 @@ $ac$-paths and $\delta(x) \defeq a \atom{b} y \atom{c} z$ asks for the source of
 then $\gamma(x) \weakunion \delta(x)$ will be "homomorphically equivalent" to
 $\alpha(x) \defeq x \atom{a} y$ which outputs all sources of $a$-edges.
 
+\begin{marginfigure}
+	\centering
+	\directlua{width = 2.3; height = 1.4}
+\input{tikz/prelim-databases/abstract-lattice.lua}%do not indent!!!
+	\begin{tikzpicture}[x=1cm, y=1cm, every node/.style={inner sep=0pt,outer sep=0pt}, font=\tiny]
+		\directlua{draw_lattice()}
+		\begin{scope}
+\begin{luacode}
+			make_clip()
+			x0 = 0
+			y0 = -.5
+			dist = .5
+			slope = height/width
+			draw_cq(x0, y0, 'cYellow', 'prod')
+			draw_cq(x0-dist, y0+dist*slope, 'cBlue', '1')
+			draw_cq(x0+dist, y0+dist*slope, 'cRed', '2')
+			draw_cq(x0, y0+2*dist*slope, 'cPurple', 'union')
+\end{luacode}
+			\node[left=3.5pt of 1, cBlue] {$\gamma_1$};
+			\node[right=3.5pt of 2, cRed] {$\gamma_2$};
+			\node[below=3.5pt of prod, cYellow] {$\gamma_1 \weakunion \gamma_2$};
+			\node[above=3.5pt of union, cPurple!70!black] {$\gamma_1 \disconj \gamma_2$};
+		\end{scope}
+	\end{tikzpicture}
+	\caption{
+		\AP\label{fig:distributive-lattice-cq}
+		The distributive lattice structure of "Boolean conjunctive queries": 
+		we represent two "structures", as well as their least upper bound
+		and greatest lower bound, and the natural homomorphism they come equipped with
+		(projections and canonical embeddings).
+	}
+\end{marginfigure}
+The distributive lattice structure of "conjunctive queries"
+is depicted in \Cref{fig:distributive-lattice-cq}. Observe how this
+choice of representation makes obvious the fact that:
+the "disjoint conjunction" of two "CQs" is actually its
+conjunction in the semantical sense, but
+their "weak union" is strictly bigger than their semantical union,
+unless we are in a degenerate case.
+
 We summarized the properties of the two distributive lattices
 in \Cref{tab:distributive-lattices}. Note that, all notions
 occurring in this table, be it the orders or the binary operators,
@@ -753,7 +854,7 @@ does satisfy the property it is the greatest formula $\chi$
 "st" $\psi \land \chi$ entails $\psi$.}
 
 \begin{proposition}
-	\!\footnote{The fact that "conjunctive queries" and "conjunctive queries" form
+	\!\footnote{The fact that "relational databases" and "conjunctive queries" form
 	a bounded distributive lattice is folklore.}
 	The bounded distributive lattice of "conjunctive queries" is actually
 	a Heyting algebra.
@@ -925,12 +1026,47 @@ in the sense that if a solution exists to each problem, then a common solution e
 	see \label{sec:minimization-lowerbounds,apdx-sec:lowerbound-variables}.}
 \end{proof}
 
+\begin{marginfigure}
+	\centering
+	\directlua{width = 2.3; height = 1.4}
+\input{tikz/prelim-databases/abstract-lattice.lua}%do not indent!!!
+	\begin{tikzpicture}[x=1cm, y=1cm, every node/.style={inner sep=0pt,outer sep=0pt}, font=\tiny]
+		\directlua{draw_lattice()}
+		\begin{scope}
+\begin{luacode}
+			make_clip()
+			x0 = 0
+			y0 = -.5
+			dist = .5
+			slope = height/width
+			draw_cq(x0+.1, y0-.2, 'cGrey', 'cq')
+			draw_db(x0-dist, y0+dist*slope, 'cGreen', 'p1')
+			draw_db(x0+dist, y0+dist*slope, 'cGreen', 'p2')
+			draw_db(x0-1.5, y0+.5, 'cRed', 'n1')
+			draw_db(x0-.3, y0-.2, 'cRed', 'n2')
+			draw_db(x0+.67, y0-.4, 'cRed', 'n3')
+\end{luacode}
+			\node[above=3.5pt of p1, cGreen] {$\?D^+_1$};
+			\node[above=3.5pt of p2, cGreen] {$\?D^+_2$};
+			\node[below=3.5pt of cq, cGrey!70!black] {$\gamma$};
+			\node[below=3.5pt of n1, cRed] {$\?D^-_1$};
+			\node[below=3.5pt of n2, cRed] {$\?D^-_2$};
+			\node[above=3.5pt of n3, cRed] {$\?D^-_3$};
+		\end{scope}
+	\end{tikzpicture}
+	\caption{
+		\AP\label{fig:prelim-db-ex-synthesis}
+		An instance of the "synthesis problem for CQs", as well as one valid
+		solution for this instance.
+	}
+\end{marginfigure}
 We now turn to the "synthesis problem", also called \emph{passive learning},
 \emph{reverse engineering}. The idea behind the problem is to infer a
 "query@@sem" from examples: these examples take the form
 of models, taking the form of "pointed relational databases", together
 with the knowledge of whether this model should be part of the "query@@sem"
-(\emph{positive examples}) or not (\emph{negative examples}).%
+(\emph{positive examples}) or not (\emph{negative examples}),
+see \Cref{fig:prelim-db-ex-synthesis}.%
 \footnote{For the sake of readability, we use the notations
 for "Boolean queries" and non-"pointed databases@@rel".
 However, all results extend trivially to the non-Boolean case.}
@@ -947,11 +1083,46 @@ However, all results extend trivially to the non-Boolean case.}
 }
 
 \begin{proposition}
+	\label{prop:algo-synthesis-cq}
 	The "synthesis problem for CQs" is "coNExp".
 \end{proposition}
 
-\todo{figure}
-
+\begin{figure}
+	\centering
+	\directlua{width = 4; height = 2.67}
+\input{tikz/prelim-databases/abstract-lattice.lua}%do not indent!!!
+\begin{tikzpicture}[x=1cm, y=1cm, every node/.style={inner sep=0pt,outer sep=0pt}, font=\small]
+	\directlua{draw_lattice()}
+	\begin{scope}
+\begin{luacode}
+		make_clip()
+		x0 = -1.33
+		y0 = -0.67
+		dist1 = 0.5
+		dist2 = 1.0
+		slope = height/width
+		draw_cq(x0+dist2, y0-dist2*slope, 'cGrey', 'union')
+		draw_cq(x0-dist1, y0+dist1*slope, 'cGreen', 'p1')
+		draw_cq(x0+dist1, y0+dist1*slope, 'cGreen', 'p2')
+		-- position of union of p1 and p2 : (x0, y0)
+		draw_cq(x0+2*dist2, y0, 'cGreen', 'p3')
+		draw_db(x0+dist2-0.2, y0-dist2*slope+0.5, 'cRed', 'n1')
+		draw_db(x0+dist2+1.0, y0-dist2*slope-0.2, 'cRed', 'n2')
+\end{luacode}
+		\node[left=6pt of p1, cGreen] {$\delta^+_1$};
+		\node[right=6pt of p2, cGreen] {$\delta^+_2$};
+		\node[right=6pt of p3, cGreen] {$\delta^+_3$};
+		\node[below=6pt of union, cDarkGrey] {$\upsilon$};
+		\node[right=6pt of n1, cRed] {$\?D^-_1$};
+		\node[right=6pt of n2, cRed] {$\?D^-_2$};
+	\end{scope}
+\end{tikzpicture}
+	\caption{
+		\AP\label{fig:ex-synthesis-cq-negative}
+		A negative instance of the "synthesis problem" and the construction
+		done in the proof of \Cref{prop:algo-synthesis-cq}.
+	}
+\end{figure}
 \begin{proof}
 	We denote by $\delta^+_1$, $\dotsc$, $\delta^+_p$ the "canonical conjunctive queries"
 	of $\?D^+_1$, $\dotsc$, $\?D^+_p$.
@@ -969,7 +1140,8 @@ However, all results extend trivially to the non-Boolean case.}
 	the sizes of the $\delta^+_i$'s, it is exponential,
 	and hence we obtain a "coNExp" algorithm.
 	Then, we prove---or rather notice---its correctness: by construction,
-	the "weak union" is the least upper bound of "CQs"! \emph{Voilà.}
+	the "weak union" is the least upper bound of "CQs",
+	see \Cref{fig:ex-synthesis-cq-negative}! \emph{Voilà.}
 \end{proof}
 
 In fact there is a matching lower-bound, even if the "signature" is fixed,
