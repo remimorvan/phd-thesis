@@ -52,6 +52,9 @@
  | 3ExpTime
  | $k$-ExpTime
 
+\knowledge{wrap=\textsf, url={https://complexityzoo.net/Complexity\_Zoo:C\#conexp}}
+ | coNExp
+
 \knowledge{notion, wrap=\textsf}
  | ExpSpace
  | 2ExpSpace

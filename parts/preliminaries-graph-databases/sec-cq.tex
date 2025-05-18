@@ -330,6 +330,8 @@ in fact a "relational database".
 	\]
 \end{proposition}
 
+\todo{ref to Chandra-Merlin}
+
 \begin{proof}
 	This follows from the definition of "homomorphisms" and
 	the semantics of "first-order logic".
@@ -398,7 +400,11 @@ closure of "containment".
 	which concludes the proof that $\gamma(\bar x) \contained \gamma'(\bar x')$.
 \end{proof}
 
-As a consequence of \Cref{prop:containment-hom}, "containment" (and hence "semantical equivalence") of "conjunctive queries" is decidable, and in fact is "NP"-complete.
+\begin{corollary}
+	\label{coro:prelim-db-containment-cq}
+	"Containment" (and hence "semantical equivalence") of "conjunctive queries" is
+	decidable, and in fact is "NP"-complete.
+\end{corollary}
 
 
 \subsection{The Preordered Set of Conjunctive Queries}
@@ -612,10 +618,10 @@ since the isomorphism
 \]
 holds for any "databases@@rel" $\?A$, $\?B$ and $\?C$.
 But then, by "duality", we get that the poset of "conjunctive queries"
-under "containment" is also a "distributive lattice"!
+under "containment" is also a distributive lattice!
 We shall see that the greatest lower bound and least upper bound
 have a natural logical interpretation, and that moreover
-this structure of "distributive lattice" will help us
+this structure of distributive lattice will help us
 deal with "CQs": in particular, it will be at the heart of
 solving the "synthesis problem". 
 
@@ -786,16 +792,234 @@ Similarly, as expected, we have
 	\delta(\bar y).
 \]
 
+In \todo{addrefs}, we will apply some of the theory we developed here
+to better understand the expressivity of \emph{conjunctive queries}.
+
+\subsection{Conjunctive Queries of Small Tree-Width}
+
+Recall that, by "duality", "conjunctive query evaluation" is "NP"-complete:
+this begs the question of finding classes of "CQs" with faster evaluation.
+\todo{}
+
+\subsection{Static Analysis of Conjunctive Queries}
+
+\paragraph*{Minimization.}
+As we have already seen, the first consequence of "duality" is that
+"containment" and "semantical equivalence" are both
+decidable, see \Cref{coro:prelim-db-containment-cq}.
+We shall now see that the rich theory of "relational structures",
+and in particular the concept of "cores" trivializes the question of minimization.
+
+Fix a "relational signature" $\sigma$.
+A ""subquery@@CQ"" of $\gamma(\bar x)$ is any "CQ" over $\sigma$
+obtained by removing variable and/or atoms from $\gamma$:
+to ensure that we still obtain a "CQ" over $\sigma$, "output variables" 
+cannot be removed.
+In terms of "duality", this amounts to taking the "canonical conjunctive query" of
+a "substructure" of the "canonical database".%
+\footnote{Careful: if $\gamma'$ is a subquery of $\gamma$, then $\gamma \contained \gamma'$!
+The fewer constraints there is, the easier it is to satisfy them…}
+We then say that a class $\+C$ of "conjunctive queries" over $\sigma$ is ""monotone@@classCQ""
+if for any "CQ" $\gamma(\bar x) \in \+C$, for any "subquery@@CQ" $\gamma'(\bar x)$ of
+$\gamma(\bar x)$, we must have $\gamma'(\bar x) \in \+C$.
+"Monotone classes of CQs" naturally model the notion of ``simplicity'', in the sense that
+a "CQ" is ``simple'' "wrt" $\+C$ whenever it belongs to $\+C$. The "monotonicity@@classCQ"
+assumption precisely assures that the class formalizes an idea of ``simplicity''
+and not ``the "CQ" has exactly fourteen atoms, two ternary "hyperedges", three legs,
+a moustache and a mustard watch.''
+Typical examples of "monotone classes of CQs" include:
+\begin{itemize}
+	\item "CQs" with at most $k \in \N$ "atoms",
+	\item "CQs" with at most $k$ variables,
+	\item "CQs" of "tree-width" at most $k$,
+	\item "CQs" of "path-width" at most $k$,
+	\item "CQs" in which all "cliques" are of size at most $k$, etc.
+\end{itemize}
+
+We define the ""core@@CQ"" of a "conjunctive query" to be
+the "canonical conjunctive query" of the "core" of its "canonical database".
+The operation is still denoted by $\intro*\coreCQ{-}$.
+\begin{proposition}
+	\AP\label{prop:minimization-CQ}
+	Let $\gamma(\bar x)$ be a "conjunctive query" and $\+C$ be
+	a "monotone class of CQs". Then $\gamma(\bar x)$ is "semantically equivalent"
+	to a "CQ" in $\+C$ if, and only if, its "core@@CQ" $\coreCQ{\gamma}(\bar x)$
+	belongs to $\+C$.
+\end{proposition}
+
+\begin{proof}
+	This follows from \Cref{prop:equiv-core-isomorphic}
+	and the fact that the "core" of a "structure" is always
+	a "substructure" of it.
+\end{proof}
+
+Not only does this imply that we can solve the $\+C$-minimization problem,
+but actually that all these problems can be solved simultaneously,
+in the sense that if a solution exists to each problem, then a common solution exists!
+
+\decisionproblem{""CQ minimization problem over $\+C$""}{
+	A "conjunctive query".
+}{
+	Is it "semantically equivalent" to a "CQ" of $\+C$?
+}
+
+\begin{corollary}
+	\label{coro:decision-minimization-cq}
+	For each "monotone class of CQs" $\+C$---described as an oracle---,
+	the problem of ""CQ minimization problem over $\+C$"" is "NP".
+	Furthermore, it is "NP"-hard for some classes $\+C$.
+\end{corollary}
+
+\begin{proof}
+	\proofcase{Upper bound.}
+	A naïve algorithm would be to first compute the "core", and using the oracle
+	to test if it belongs to $\+C$.
+	However, computing the "core" is not in "NP": intuitively,
+	we first need to guess a substructure that is "homomorphically equivalent"
+	to the whole---which is "NP"---,
+	and then check that no strictly smaller structure satisfies the property---which is "coNP".%
+	\footnote{In fact, deciding if a "structure" is a "core" is actually
+	"coNP"-complete, even for undirected graphs, \cite[Theorem~7]{HellNesetril1992Core}.}
+	So, let not be naïve! We start with a "conjunctive query"
+	$\gamma(\bar x)$, guess a "subquery" $\gamma'(\bar x)$,
+	and then check if (1)%
+	\footnote{In fact $\gamma \contained \gamma'$ always holds so
+	it suffices to check that $\gamma' \contained \gamma'$.}
+	$\gamma'(\bar x) \semequiv \gamma(\bar)$ and
+	if (2) $\gamma'(\bar x) \in \+C$.
+	The algorithm is clearly in "NP", and moreover it is correct
+	by \Cref{prop:equiv-core-isomorphic} and monotonicity.
+
+	\proofcase{Lower bound.} We prove that the minimization problem
+	is "NP"-hard for the class $\+C$ of "conjunctive queries" with
+	at most $3$ variables.
+	In fact, by "duality", we rather prove that the problem
+	of, given a "structure", deciding if it is "homomorphically equivalent"
+	to a "structure" with at most $3$ vertices is "NP"-hard.
+	We reduce "$3$-colourability" to this latter problem.
+	Given an instance $\?G$ of "$3$-colourability", we reduce
+	it to:
+	\begin{itemize}
+		\item $\?G \disunion \clique{3}$ if $\?G$ does not contain any self-loop;
+		\item any negative instance otherwise, "eg" $\clique{4}$.
+	\end{itemize}
+	If $\?G$ is "$3$-colourable", then it has no "self-loop"
+	and moreover $\?G \homto \clique{3} \homto \clique{3}$
+	and hence $\?G \disunion \marked{\clique{3}} \homto \clique{3}$, 
+	from which we get that $\?G \disunion \clique{3} \semequiv \clique{3}$,
+	and hence $\?G \disunion \clique{3}$ is "semantically equivalent" to a "structure"
+	with at most $3$ vertices.
+	Conversely, assume that the right-hand side of the reduction is "semantically equivalent" to a 
+	"structure" with at most $3$ vertices. Then $\?G$ does not contain any self-loop
+	and moreover, we get that $\?G \disunion \clique{3}$ is "homomorphically equivalent"
+	to a structure with 3 vertices.
+	In particular, we get a "homomorphism" from $\?G$ to a structure with 3 vertices,
+	and from the assumption that $\?G$ does not contain any self-loop,
+	we actually get a "homomorphism" from $\?G$ to $\clique{3}$.
+	This concludes the reduction.%
+	\footnote{The trick used for the lower bound, 
+	namely that of reducing a "homomorphism"/"containment" problem
+	to a minimization problem "via" a "disjoint union", will be used in a
+	much trickier way in \Cref{ch:minimization-CRPQ}
+	to prove "ExpSpace" lower bounds on the "minimization problem for CRPQs", 
+	see \label{sec:minimization-lowerbounds,apdx-sec:lowerbound-variables}.}
+\end{proof}
+
+We now turn to the "synthesis problem", also called \emph{passive learning},
+\emph{reverse engineering}. The idea behind the problem is to infer a
+"query@@sem" from examples: these examples take the form
+of models, taking the form of "pointed relational databases", together
+with the knowledge of whether this model should be part of the "query@@sem"
+(\emph{positive examples}) or not (\emph{negative examples}).%
+\footnote{For the sake of readability, we use the notations
+for "Boolean queries" and non-"pointed databases@@rel".
+However, all results extend trivially to the non-Boolean case.}
+
+\decisionproblem{""Synthesis Problem for CQs""}{
+	Integers $n,p\in \Np$, and
+	"pointed relational databases"
+	$\?D^+_1$, $\dotsc$, $\?D^+_p$, 
+	$\?D^-_1$, $\dotsc$, $\?D^-_n$.
+}{
+	Is there a "conjunctive query" $\gamma$ "st"
+	$\?D^+_i \FOmodels \gamma$ for all $i\in \intInt{1,p}$
+	and $\?D^-_j \centernot{\FOmodels} \gamma$ for all $j\in \intInt{1,n}$?
+}
+
+\begin{proposition}
+	The "synthesis problem for CQs" is "coNExp".
+\end{proposition}
+
+\todo{figure}
+
+\begin{proof}
+	We denote by $\delta^+_1$, $\dotsc$, $\delta^+_p$ the "canonical conjunctive queries"
+	of $\?D^+_1$, $\dotsc$, $\?D^+_p$.
+	We now consider their "weak union"
+	\[
+		\upsilon \defeq \delta^+_1 \weakunion \cdots \weakunion \delta^+_p.
+	\]
+	We then test for each $j\in \intInt{1,n}$ if 
+	$\?D^-_j \centernot{\FOmodels} \upsilon$: this will be
+	the output of our algorithm!
+	
+	First, each test $\?D^-_j \centernot{\FOmodels} \upsilon$
+	can be done in "coNP" in the size of $\?D^-_j$ and of
+	$\upsilon$. Since the size of $\upsilon$ is the product of
+	the sizes of the $\delta^+_i$'s, it is exponential,
+	and hence we obtain a "coNExp" algorithm.
+	Then, we prove---or rather notice---its correctness: by construction,
+	the "weak union" is the least upper bound of "CQs"! \emph{Voilà.}
+\end{proof}
+
+In fact there is a matching lower-bound, even if the "signature" is fixed,
+but the  proof is far from trivial.
+Willard proved the "coNExp"-hardness in
+\cite[Theorem~3]{Willard2010Testing} when the "signature" is part of the input%
+\footnote{The result is actually phrased for "constraint satisfaction problems".},
+and ten Cate and Dalmau proved the same lower bound
+for some fixed "signature" \cite[Theorem~2]{tenCateDalmau2015Product}.%
+\footnote{They refer to the "synthesis problem@@CQ" as the ``CQ-definability problem''.}
+In both cases, the reduction is from an exponential tiling problem.
+
+\paragraph*{Active learning.}
+Active learning, "aka" Angluin-style learning is a setting where
+two players interact (\emph{a priori} adversarially): \emph{Student} tries
+to lean a "query@@sem" that only \emph{Teacher} knows. To achieve this,
+they can ask two kinds of questions.\footnote{``Questions'' are usually called 
+``query'' but we avoid this terminology here for obvious reasons.}
+\begin{itemize}
+	\item Membership questions: they provide a model and asks if it satisfies the "query@@sem";
+	\item Equivalence questions: they provide a "query@@sem" and ask Teacher if
+		it is "semantically equivalent" to theirs; if yes, the game stops, otherwise
+		Teachers provides a counter-example in the form of a model satisfying
+		one "query@@sem" but not the other.
+\end{itemize}
+Of course, Student always has a winning strary: enumerate all queries
+and ask for equivalence… The difficult and hence interesting question
+is that of \emph{efficient} learning.
+
+Ten Cate, Dalmau and Kolaitis proved that 
+the class of all "conjunctive queries" could be
+learned with polynomially many questions \cite[Theorem~A]{tenCateDalmauKolaitis2013Learning},
+but not with polynomially many questions of a given kind provided
+that the "signature" is non-trivial \cite[Theorem~B]{tenCateDalmauKolaitis2013Learning}---"ie"
+both kinds of questions are necessary to be able to learn efficiently!
+By relying on the distributive lattice structure of "relational databases",
+ten Cate and Dalmau then exhibited a subclass of "conjunctive queries",
+known as ``$c$-acylic'', that can be learned with
+polynomially many membership queries
+and no equivalence query \cite[Theorem~5.2]{tenCateDalmau2021ActiveLearning}.
+
+
+\subsection{Unions of Conjunctive Queries}
 
 \begin{itemize}
 	\item combined complexity / data Complexity
 	\itemAP $\intro*\underlying{\gamma}$ and ""underlying graph""
-	\itemAP ""equality atom""
-	\itemAP ""evaluation map@@cq"" (explain why notion is necessary by pointing to "evaluation map" for CRPQs)
+	% \itemAP ""evaluation map@@cq"" (explain why notion is necessary by pointing to "evaluation map" for CRPQs)
 	\itemAP ""disjunct""
 \end{itemize}
-
-\subsection{Static Analysis of Conjunctive Queries}
 
 \subsection{Intermezzo: Parametrized Complexity Classes}
 
