@@ -57,20 +57,22 @@ function get_color(x,y)
 end
 
 function process_opacity(x)
-	return 0.3+0.7*(1/(1+math.exp(3-20*x)))
+	return 1/(1+math.exp(2.5-20*x))
 end
 
 function get_opacity(x,y)
 	if y == 0 then
-		return process_opacity(0)
+		return 0
 	elseif math.abs(y) == height then
 		return process_opacity(1)
 	elseif math.abs(y) == 1 and math.abs(x) < width-1 then
-		return process_opacity(0.01)
-	elseif math.abs(x) == 1 and math.abs(y) < height-1 then
-		return process_opacity(0.02)
-	elseif math.abs(x) == 0 and math.abs(y) < height-1 then
 		return process_opacity(0)
+	elseif math.abs(x) == 1 and math.abs(y) < height-1 then
+		y_opac = (math.abs(y/3)/height)^y_opacity_decay
+		return process_opacity(y_opac)
+	elseif math.abs(x) == 0 and math.abs(y) < height-1 then
+		y_opac = (math.abs(y/4)/height)^y_opacity_decay
+		return process_opacity(y_opac)
 	else
 		x_opac = (math.abs(x)/width)^x_opacity_decay
 		y_opac = (math.abs(y)/height)^y_opacity_decay

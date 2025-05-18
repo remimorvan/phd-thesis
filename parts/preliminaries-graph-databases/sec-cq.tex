@@ -2,6 +2,8 @@
 
 \subsection{SQL and First-Order Logic}
 
+\todo{figures + explain binary relations (nice figures) and $\atom{a}$ notation.}
+
 The most common model of databases is by far that of "relational databases",
 in which data is stored in \emph{tables}: an example is depicted
 in \Cref{fig:relational-database-cinema}.
@@ -400,6 +402,7 @@ As a consequence of \Cref{prop:containment-hom}, "containment" (and hence "seman
 
 
 \subsection{The Preordered Set of Conjunctive Queries}
+\label{sec:prelim-db-poset-cq}
 
 \begin{marginfigure}
 	\centering
@@ -412,7 +415,7 @@ As a consequence of \Cref{prop:containment-hom}, "containment" (and hence "seman
 over $\sigma$  order by the homomorphism ordering.'' Symbolically: 
 \[
 	\tup{\kl[CQ]{\textrm{CQ}_\sigma},\; \contained }
-	\cong
+	\isom
 	\tup{\kl[relational database]{\textrm{RelDb}_\sigma},\; \cohomto }.
 \]
 Naturally, to go from "relational databases" to "conjunctive queries",
@@ -511,17 +514,19 @@ is itself non-trivial.
 		\node[below left=2pt of -4 -13, color=c2] {\rotatebox{30}{$\vdots$}};
 		\node[below left=2pt of -6 -11, color=c2] {$\?P_{n}$};
 		\node[below left=2pt of -7 -10, color=c2] {$\?P_{n+1}$};
-		\node[above left=.3cm of -9 -8, color=c2] {\rotatebox{45}{$\vdots$}};
+		\node[below left=2pt of -9 -8, color=c2] {\rotatebox{45}{$\vdots$}};
 
-		\node[circle, fill=white, minimum size= 5pt] at (4 -9) {};
-		\node[circle, fill=c1, opacity=1, minimum size= 5pt, outer sep=1mm] at (4 -9) {};
+		\node[circle, fill=white, minimum size=4pt] at (4 -9) {};
+		\node[circle, fill=c1, opacity=1, minimum size= 4pt, outer sep=1mm] at (4 -9) {};
 
-		\node[color=c1, align=left, text width=3.8cm, outer sep=3mm] at (3.5, -5) (label-cdb)
+		\node[color=c1, align=left, text width=3.8cm, outer sep=1mm] at (3.5, -5) (label-cdb)
 			{"\textcolor{c1}{canonical database}@canonical database" $\?G$ of a
 			"\textcolor{c1}{Boolean conjunctive query}@Boolean conjunctive query" $\gamma$};
-		\draw[draw=c1,->] (label-cdb) edge[->,out=90,in=-90] (4 -9);
-		\draw [thick, decorate,decoration={brace,amplitude=5pt,raise=4ex}, color=c1]
-  			(0 17) -- (13 4);
+		\draw[draw=c1, semithick] (label-cdb) edge[->,out=90,in=-90] ($(4 -9)+(0, -.1)$);
+		\draw[draw=c1, semithick, decorate,decoration={brace,amplitude=5pt,raise=.5em}]
+  			(0 17) -- (15 2)
+			node[color=c1, midway, above right=5mm, align=left, text width=3.8cm]
+				{semantics of $\gamma$};
 	\end{tikzpicture}
 	\caption{\AP\label{fig:poset-reldb} The poset of "relational databases" over a "signature"
 	containing at single binary "predicate", where "homomorphisms" go from bottom to top.
@@ -538,7 +543,7 @@ Notice how this representation naturally represents the concept of "duality":
 		bijection with upper-closed set that admit a minimum ("ie" "conjunctive queries");
 	\item a "conjunctive query" is "contained" in another "iff", by definition,
 		the semantics of the former is included in that of the latter, which happens
-		"iff" the "canonical database" of the former is above the "canonical databse" of the latter
+		"iff" the "canonical database" of the former is above the "canonical database" of the latter
 		in \Cref{fig:poset-reldb}.
 \end{itemize}
 
@@ -550,34 +555,244 @@ Notice how this representation naturally represents the concept of "duality":
 	to the structure in which we removed "isolated vertices".
 \end{remark}
 
-\paragraph*{The Heyting Algebra of Relational Databases}
+\paragraph*{The Distributive Lattice of Relational Databases}
 
 \Cref{prop:poset-reldb} shows that the poset of "relational databases" has a somewhat
 complex structure, in the sense that it is infinite height, co-height and width.
 However, we next show that it has a rich algebraic structure.
 
+\begin{marginfigure}
+	\centering
+	\begin{tikzcd}[row sep=huge]
+		\tup{\?D_1,\bar d_1} &[-4em] &[-4em] \tup{\?D_2,\bar d_2} \\ 
+		& \tup{\?D_1,\bar d_1} \prodstruct \tup{\?D_2,\bar d_2}
+			\ar[ul, "\projHom{1}" swap] \ar[ur, "\projHom{2}"]
+		& \\
+		& \tup{\?U, \bar u} \ar[u, "g", dashed]
+			\ar[uul, "f_1", bend left] \ar[uur, "f_2" swap, bend right]
+		&
+	\end{tikzcd}
+	\caption{\AP\label{fig:cartesian-product-diagram} Universal property satisfied
+	by the "Cartesian product".}
+\end{marginfigure}
 In light of \Cref{rk:database-vs-structures}, the "Cartesian product"
 of two "relational databases" $\tup{\?D_1,\bar d_1}$ and $\tup{\?D_2,\bar d_2}$
+whose tuples have the same arity
 is well-defined: we consider their product $\tup{\?D_1,\bar d_1} \prodstruct \tup{\?D_2,\bar d_2}$
 as "relational structures", and remove all "isolated vertices".
+We slightly abuse the notation and still denote this product by $\reintro{\prodstruct}$.
 It is routine to check that this "Cartesian product" in indeed a Cartesian product in
 the categorical sense, "ie" that it satisfies the universal property
-that first it has "homomorphisms" to both $\tup{\?D_1,\bar d_1}$ and $\tup{\?D_2,\bar d_2}$,
-and \todo{finish} \todo{\projHom{i}}
+that first it has "homomorphisms" $\projHom{1}$ and $\projHom{2}$ to both $\tup{\?D_1,\bar d_1}$ and $\tup{\?D_2,\bar d_2}$, and that moreover it is the smallest object satisfying this property,
+in the sense that for every "relational database" $\tup{\?U, \bar u}$ with "homomorphisms"
+$f_1$ and $f_2$ to $\tup{\?D_1,\bar d_1}$ and $\tup{\?D_2,\bar d_2}$, 
+then there exists a unique "homomorphism" $g$ from $\tup{\?U, \bar}$ to
+$\tup{\?D_1,\bar d_1}$ and $\tup{\?D_2,\bar d_2}$ such that
+the diagram of \Cref{fig:cartesian-product-diagram} commutes:
+this "homomorphism" $g$ is actually $f_1 \times f_2\colon u \mapsto \tup{f_1(u), f_2(u)}$.
+Going back to the poset structure, this implies that any pair of points must have an infimum.
+\begin{fact}
+	Given two finite "relational databases", their "Cartesian product"
+	is their greatest lower bound in the poset of "relational databases"
+	ordered by $\homto$.
+\end{fact}
+
+Similarly, the "disjoint union" satisfies the property dual to \Cref{fig:cartesian-product-diagram}.
+\begin{fact}
+	Given two finite "relational databases", their "disjoint union"
+	is their least upper bound in the poset of "relational databases"
+	ordered by $\homto$.
+\end{fact}
+
+Put together, these facts imply that the poset of "relational databases" is
+actually a bounded lattice! It is moreover distributive
+since the isomorphism
+\[
+	\?A \prodstruct (\?B \disunion \?C) \isom (\?A \prodstruct \?B) \disunion (\?A \prodstruct \?C)
+\]
+holds for any "databases@@rel" $\?A$, $\?B$ and $\?C$.
+But then, by "duality", we get that the poset of "conjunctive queries"
+under "containment" is also a "distributive lattice"!
+We shall see that the greatest lower bound and least upper bound
+have a natural logical interpretation, and that moreover
+this structure of "distributive lattice" will help us
+deal with "CQs": in particular, it will be at the heart of
+solving the "synthesis problem". 
 
 
+\paragraph*{The Distributive Lattice of Conjunctive Queries.}
 
-The \AP""disjoint conjunction"" \AP$\intro*\disconj$ of two "CRPQs" consists of
-the conjunction of the queries, up to renaming so that their variable sets are disjoint.
+Given two "CQs" $\gamma(\bar x)$ and $\delta(\bar y)$,
+where $\bar x$ and $\bar y$ have the same arity, we define
+its \AP""disjoint conjunction"", denoted by
+$\gamma(\bar x) \intro*\disconj \delta(\bar y)$,
+to be the "CQs" obtained by taking the "disjoint union" of "atoms" 
+of the "CQs" and then identifying the elements of $\bar x$ and $\bar y$ pointwise.
+For instance, letting $\gamma(x) \defeq x \atom{a} y$ be the query
+asking for all elements with an outgoing $a$-edge,
+and $\delta(x) \defeq x \atom{b} y$ be the query
+asking for all elements with an outgoing $a$-edge,
+then their "disjoint conjunction" $\gamma(x) \disconj \delta(x)$ is
+\[
+	\alpha(x) \defeq x \atom{a} y \land x \atom{b} y'
+\]
+and outputs all elements with both an outgoing $a$-edge and an outgoing $b$-edge.%
+\footnote{As for "disjoint union", the name "disjoint conjunction" is slightly abusive
+but justified by its universal property.}
+
+\begin{fact}
+	The "canonical database" of the "disjoint conjunction"
+	equals the "disjoint union" of the "canonical databases".
+	By "duality", it follows that
+	the "disjoint conjunction" is the greatest lower bound
+	of two "CQs".%
+	\footnote{Careful: "duality" is precisely a \emph{dual} isomorphism,
+	"ie" it reverses the order. Hence, a least upper bound ("disjoint union")
+	becomes a greatest lower bound ("disjoint conjunction").}
+\end{fact}
+
+The other operator (the dual of "Cartesian product")
+does not have such a nice intuitive interpretation---however
+it does not mean that it will be less useful, on the contrary!
+While "conjunctive queries" are not closed under
+union---we will see this in \todo{ref}---, this operator
+acts as the best approximation of it.
+
+\begin{definition}
+	We define the \AP""weak union"" \AP$\intro*\weakunion$ of two "CQs"
+	with the same number of "output variables"
+	as the "canonical CQ" of the "Cartesian produt" of their "canonical databases".
+\end{definition}
+
+By construction, it is their greatest upper bound,
+in the sense that
+$\gamma(\bar x) \contained \gamma(\bar x) \weakunion \delta(\bar y)$,
+$\delta(\bar y) \contained \gamma(\bar x) \weakunion \delta(\bar y)$,
+and $\gamma(\bar x) \weakunion \delta(\bar y)$ is the smallest "CQ" satisfying this property.
+
+For instance, if $\gamma() \defeq x \atom{a} y$ asks for the existence of an $a$-edge
+and $\delta() \defeq x \atom{b} y$, then $\gamma() \weakunion \delta()$ is the empty "CQ",
+"ie" the "CQ" that always true: knowing that a "database" contains either an $a$-edge
+or a $b$-edge is as good as knowing nothing in terms of "CQ" expressivity.
+On the other hand, if $\gamma(x) \defeq x \atom{a} y \atom{b} z$ asks the source of all 
+$ac$-paths and $\delta(x) \defeq a \atom{b} y \atom{c} z$ asks for the source of all $bc$-paths,
+then $\gamma(x) \weakunion \delta(x)$ will be "homomorphically equivalent" to
+$\alpha(x) \defeq x \atom{a} y$ which outputs all sources of $a$-edges.
+
+We summarized the properties of the two distributive lattices
+in \Cref{tab:distributive-lattices}. Note that, all notions
+occurring in this table, be it the orders or the binary operators,
+require the "CQs" to the same number of "output variables",
+and the (pointed) "relational databases" to have tuples of the same size,
+and so in fact we obtain two lattices for every possible arity/tuple size.
+This also motivates the somewhat counter-intuitive definition of the
+"disjoint union" for "structures" over "signatures" that are not
+"purely relational@@signature".
+
+\begin{table}
+	\centering
+	\begin{tabular}{ccc}
+		\toprule
+		 & "Conjunctive Queries" & "Relational Databases" \\ \midrule
+		\multirow{2}{*}{preorder} & \multirow{2}{*}{"containment" $\contained$} & existence of\\
+		& & "homomorphisms" $\homto$ \\
+		least upper bound & "weak union" $\weakunion$ & "disjoint union" $\disunion$ \\
+		greatest lower bound & "disjoint conjunction" $\disconj$ & "Cartesian product" $\prodstruct$ \\ 
+		\multirow{2}{*}{greatest element} & \multirow{2}{*}{``true'' (empty "CQ")} & single vertex \\
+		& & will all "hyperedges" \\
+		\multirow{2}{*}{least element} & single variable & \multirow{2}{*}{empty "database@@rel"}
+		\\
+		& will all "hyperedges" & \\ \bottomrule
+	\end{tabular}
+	\caption{
+		\AP\label{tab:distributive-lattices}
+		The distributive lattices of "conjunctive queries" and "relational databases".
+		By "duality", one can go from one lattice to the \emph{opposite} of the other
+		by taking "canonical databases" or "canonical conjunctive queries".}
+\end{table}
+
+Amongst bounded distributive lattices, the better behaved are
+the Boolean algebras, in which every element has a complement.
+In our case, this would be an operator $\neg$ "st" for every "database@@rel" $\?D$,
+then $\?D \prodstruct {\neg \?D}$ would be "homomorphically equivalent" to
+the empty database and $\?D \disunion {\neg \?D}$ to the greatest database,
+"ie" consisting of a single vertex and all possible "hyperedges" over it.
+
+\begin{proposition}
+	The distributive lattice of "databases@@rel" (and hence of
+	"conjunctive queries") does not admit complementation.
+\end{proposition}
+
+\begin{proof}
+	Assume that the "signature" is non-trivial and let $\?D$ be a non-trivial "database@@rel",
+	"ie" neither the least nor greatest element of the lattice.
+	To ensure that $\?D \disunion {\neg \?D}$ is "homomorphical equivalent"
+	to the greatest database, $\neg \?D$ must actually be "homomorphical equivalent" to 
+	the greatest database itself,
+	but then $\?D \prodstruct {\neg \?D}$ would be non-empty.
+\end{proof}
+
+However, "conjunctive queries" still have a bit more structure: we shall
+see that they are a Heyting algebra, namely that it is a bounded distributive lattice
+with the extra property that for every $\gamma(\bar x)$ and $\delta(\bar y)$,
+where $\bar x$ and $\bar y$ have the same arity, then there exists
+a greatest element $\chi(\bar z)$ "st"
+\[
+	\gamma(\bar x) \disconj \chi(\bar z) \contained \delta(\Bar z). 
+\]
+This greatest element $\chi(\bar z)$ is denoted by $\gamma(\bar x) \impH \delta(\bar y)$, and is called \emph{implication}.%
+\footnote{Heyting algebras were introduced to model intuitionistic logic.
+It is not hard to see that the implication $\phi \Rightarrow \psi$
+does satisfy the property it is the greatest formula $\chi$
+"st" $\psi \land \chi$ entails $\psi$.}
+
+\begin{proposition}
+	\!\footnote{The fact that "conjunctive queries" and "conjunctive queries" form
+	a bounded distributive lattice is folklore.}
+	The bounded distributive lattice of "conjunctive queries" is actually
+	a Heyting algebra.
+\end{proposition}
+
+\begin{proof}
+	We use "duality" to prove this and in fact
+	rather prove that "relational databases" form a ``co-Heyting algebra'',
+	in the sense that for any "databases" $\tup{\?G, \bar g}$ and $\tup{\?D, \bar d}$,
+	there exists a least element $\tup{\?X, \bar x}$ "st"
+	\[
+		\tup{\?G, \bar g} \disunion \tup{\?X, \bar x} \cohomto \tup{\?D, \bar d}:
+	\]
+	$\tup{\?X, \bar x}$ is actually obtained by taking the "disjoint union"
+	of all "connected components" of $\tup{\?D, \bar d}$ 
+	that cannot be "mapped homomorphically" to $\tup{\?G, \bar g}$.
+	The operator $\impH$ can then be explicitly constructed by "duality".
+\end{proof}
+
+By construction of $\impH$, it comes naturally equipped with some
+form of Currying, in the sense that
+\[
+	\tup{\?A, \bar a}
+	\FOmodels \gamma(\bar x) \impH \delta(\bar y)
+	\quad\text{"iff"}\quad
+	\tup{\?A, \bar a} \disunion \tup{\?G, \bar x}
+	\FOmodels \delta(\bar y),
+\]
+for any "CQs" $\gamma(\bar x)$ and $\delta(\bar y)$
+and any "relational database" $\tup{\?A, \bar a}$,
+where $\tup{\?G, \bar x}$ denotes the "canonical database" of $\gamma(\bar x)$.
+Similarly, as expected, we have
+\[
+	\gamma(\bar x) \disconj (\gamma(\bar x) \impH \delta(\bar y))
+	\semequiv
+	\delta(\bar y).
+\]
+
 
 \begin{itemize}
-	\item combined complexity / data complexity
-	\item duality w/ table of equivalence (vertex <-> variable ; disjoint union <-> disjoint conjunctions)
+	\item combined complexity / data Complexity
 	\itemAP $\intro*\underlying{\gamma}$ and ""underlying graph""
 	\itemAP ""equality atom""
 	\itemAP ""evaluation map@@cq"" (explain why notion is necessary by pointing to "evaluation map" for CRPQs)
 	\itemAP ""disjunct""
-	\itemAP ""conjunctive query evaluation""
 \end{itemize}
 
 \subsection{Static Analysis of Conjunctive Queries}

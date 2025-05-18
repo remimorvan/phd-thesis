@@ -183,6 +183,11 @@ The \AP""disjoint union"" of two "structures" over a
 "purely relational signature" 
 is obtained by taking the disjoint union of their domain and of
 their "predicate interpretations", and is denoted by \AP$\intro*\disunion$.
+Over other "signatures", we same apply construction but then identify the constants
+in both structures.%
+\footnote{Hence this union is not entirely disjoint, however we keep the name
+for uniformity. As we will see in \Cref{sec:prelim-db-poset-cq}, this construction
+actually satisfies the universal property of co-products.}
 
 \begin{marginfigure}
 	\centering
@@ -204,7 +209,7 @@ their "predicate interpretations", and is denoted by \AP$\intro*\disunion$.
 		Two "graphs@@dir" (above and left) and their "block product" (below right).
 	}
 \end{marginfigure}
-We now let $\sigma$ to be any "signature".
+Let again $\sigma$ to be any "signature".
 Given two "$\sigma$-structures" $\?A$ and $\?B$, their
 ""Cartesian product"" \AP$\?A \intro*\prodstruct \?B$
 is defined by taking the Cartesian product of their domain, of
@@ -223,6 +228,10 @@ $\intro*\iterstruct{\?A}{k}$ and is defined as
 \[
 	\underbrace{\?A \prodstruct \dotsc \prodstruct \?A}_{k \text{ times}}.
 \]
+Note that by construction, the "disjoint union", "Cartesian product" and "block product"
+of two "structures" over a "signature" yields a "structure" over the \emph{same} "signature".%
+\footnote{This is what motivated the somewhat strange definition
+of "disjoint union" for "structures" over "signatures" that are not "purely relational@@signature".}
 
 \subsection{Adjacencies}
 
@@ -331,7 +340,7 @@ An \AP""isomorphism"" from $\?A$ to $\?B$ is a "homomorphism" $f\colon \?A \to \
 "st" there exists another homomorphism $g\colon \?B \to \?A$ with the property
 that $g \circ f = \id[A]$ and $f \circ g = \id[B]$. Equivalently,
 it is a "strong onto homomorphism" that is also an "embedding".
-Two structures are \AP""isomorphic"" if there is an "isomorphism" between them,
+Two structures are \AP""isomorphic"", denoted by $\intro*\isom$, if there is an "isomorphism" between them,
 and an ""automorphism"" is an "isomorphism" from a "structure" to itself.
 
 \begin{marginfigure}

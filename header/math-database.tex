@@ -42,6 +42,8 @@
 
 \newrobustcmd{\collapse}{\approx}
 
+\knowledgenewrobustcmd\impH{\mathbin{\cmdkl{\Rightarrow}}}
+
 \knowledgenewrobustcmd{\Exp}{\cmdkl{\textnormal{Exp}}} % set of expansions
 \knowledgenewrobustcmd{\cdb}{ % canonical database
   \mathrel{\cmdkl{%
@@ -188,6 +190,7 @@
 }
 \makeatother
 \knowledgenewrobustcmd{\disconj}{\mathbin{\cmdkl{\incircbin{\land}}}}
+\knowledgenewrobustcmd{\weakunion}{\mathbin{\cmdkl{\incircbin{\lor}}}}
 
 \knowledgenewrobustcmd{\erasingmorphism}[2][]{\cmdkl{\phi^{#1}_{-#2}}}
 \knowledgenewrobustcmd{\autoclass}[1]{\cmdkl{\+A_{#1}}}
