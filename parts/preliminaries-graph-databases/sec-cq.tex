@@ -1063,7 +1063,7 @@ Typical examples of "monotone classes of CQs" include:
 \begin{itemize}
 	\item "CQs" with at most $k \in \N$ "atoms",
 	\item "CQs" with at most $k$ variables,
-	\item "CQs" of "tree-width" at most $k$,
+	\item "CQs" of "tree-width" at most $k$ (defined in \Cref{sec:prelim-db-tw}),
 	\item "CQs" of "path-width" at most $k$,
 	\item "CQs" in which all "cliques" are of size at most $k$, etc.
 \end{itemize}
@@ -1326,6 +1326,7 @@ and no equivalence query \cite[Theorem~5.2]{tenCateDalmau2021ActiveLearning}.
 \end{itemize}
 
 \subsection{Conjunctive Queries of Small Tree-Width}
+\AP\label{sec:prelim-db-tw}
 
 Recall that, by "duality", "conjunctive query evaluation" is "NP"-complete:
 this begs the question of finding classes of "CQs" with faster evaluation.
@@ -1489,13 +1490,48 @@ a "tree decomposition".
 	for $\+H_b$---runs in $\+O(\log(|D|^{k+1})) = \+O(\log(|D|))$.
 	Overall, we get an algorithm that runs in time
 	\[
-		\+O(|T|\cdot |D|^{k+1}) = \+O(|T|\cdot |D|^{k+1}),
+		\+O(|T|\cdot |D|^{k+1}) = \+O(|\vars{\gamma}|\cdot |D|^{k+1}),
 	\]
 	up to logarithmic factors.
 \end{proof}
 
+Note also that, given a "tree decomposition" of a "structure" $\?A$,
+and a "substructure" $\?B$ of $\?A$, by intersecting each "bag" with $B$,
+we obtain a "tree decomposition" of $\?B$. It follows that the "tree-width"
+of a "substructure" is always upper bounded by the "tree-width" of the full "structure".
+In other words, "conjunctive queries" of "tree-width" at most $k\in\N$
+form a "monotone class of CQs".
+
 \paragraph*{Bounded Semantic Tree-Width.}
-\todo{}
+As mentioned in \Cref{sec:intro-existential}, \Cref{prop:eval-CQ-bounded-tw}
+together with the notion of "core" actually yields a tractability result
+for a larger class of queries than those of bounded tree-width.
+
+\begin{proposition}
+	For any $k\in\N$, the "CQ evaluation problem",
+	restricted to "conjunctive queries" that are "semantically equivalent" 
+	to a "CQ" of "tree-width" at most $k$ is "fixed parameter tractable"
+	when parametrized by the size of the query.
+\end{proposition}
+
+\begin{proof}
+	The algorithm goes as follows:
+	we start by computing the "core@@CQ" $\core\gamma(\bar x)$
+	of the "CQ" $\gamma(\bar x)$, and then instead of evaluating
+	$\gamma(\bar x)$ on the "database", we instead evaluate
+	$\core\gamma(\bar x)$, using the polynomial-time algorithm
+	of \Cref{prop:eval-CQ-bounded-tw}.
+	Overall, the algorithm runs in time
+	\[
+		\+O(f(\size{\gamma})\cdot|\vars(\gamma)|\cdot |D|^{k+1}),
+	\]
+	up to logarithmic factors, and where $f(\size{\gamma})$
+	is the time required to compute the "core@@CQ" of
+	$\gamma$.\footnote{This can be done in exponential time.}
+	Hence, the problem is "FPT" when parametrized by $\size{\gamma}$.
+\end{proof}
+
+In fact, \todo{} improved this result. In a surprising twist, 
 
 \begin{marginfigure}
 	\centering
@@ -1504,7 +1540,7 @@ a "tree decomposition".
 		When you learn that English has no word for ``epsilonesquement''
 		two days before the final deadline for handing out your manuscript.
 		\href{https://commons.wikimedia.org/wiki/File:Edvard_Munch,_1893,_The_Scream,_oil,_tempera_and_pastel_on_cardboard,_91_x_73_cm,_National_Gallery_of_Norway.jpg}{\emph{Skrik}},
-		Edvard Munch, public domain.
+		by Edvard Munch.
 	}
 \end{marginfigure}
 \paragraph{Bounded Path-Width.}
