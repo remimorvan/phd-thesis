@@ -189,11 +189,11 @@ With the previous results in place, we now show that the semantic tree-width $k$
   It suffices to show the statement for any $\CRPQSRE~\gamma$. Remember that $\gamma$ is of "semantic tree-width" $k$ if, and only if, $\gamma \contained \Qapp$. The first ingredient to this proof is the fact that this "containment" has a polynomial counterexample property.
 %   \begin{restatable}{clm}{claimpolysizedcounterexamplesre}
 %     \AP\labelwithproof{claim:poly-sized-counterexample-sre}
-%     If $\gamma \centernot{\contained} \Qapp$ then there is a polynomial-sized "expansion" $\anexpansion$ of $\gamma$ such that $\anexpansion \centernot{\contained} \Qapp$.
+%     If $\gamma \notcontained \Qapp$ then there is a polynomial-sized "expansion" $\anexpansion$ of $\gamma$ such that $\anexpansion \notcontained \Qapp$.
 %   \end{restatable}
   
   \begin{claim}\AP\label{claim:poly-sized-counterexample-sre}
-    If $\gamma \centernot{\contained} \MUAHom{\gamma}{\Tw} $ then there is a polynomial-sized "expansion" $\anexpansion$ of $\gamma$ such that $\anexpansion \centernot{\contained} \MUAHom{\gamma}{\Tw} $.
+    If $\gamma \notcontained \MUAHom{\gamma}{\Tw} $ then there is a polynomial-sized "expansion" $\anexpansion$ of $\gamma$ such that $\anexpansion \notcontained \MUAHom{\gamma}{\Tw} $.
   \end{claim}
   \begin{proof}
     \newcommand{\Qalt}{\+U}
@@ -204,7 +204,7 @@ With the previous results in place, we now show that the semantic tree-width $k$
     We will work with the infinitary union of "conjunctive queries" $\Qalt\defeq\MUAHom{\gamma}{\Tw} \cap \textnormal{"CQ"}$. Note that $\Qalt=\set{ \alpha \in \textnormal{"CQ"} \mid \alpha \in \Tw \text{ and there is } \anexpansion \in \Exp(\gamma) \text{ "st" } \anexpansion \surj \alpha }$.
     It is easy to see that $\Qalt \semequiv \MUAHom{\gamma}{\Tw}$ as a consequence of \Cref{fact:refinement-tw}.
 	% (and thus $\Qalt \semequiv \Qapp$).
-    By \Cref{prop:cont-char-exp-st}, we have $\gamma \centernot{\contained} \Qalt$ if, and only if, there is some "expansion" $\anexpansion$ of $\gamma$ such that $\anexpansion \centernot{\contained} \Qalt$. In turn, this happens if, and only if, there is no $\delta \in \Qalt$ such that $\delta \homto \anexpansion$.
+    By \Cref{prop:cont-char-exp-st}, we have $\gamma \notcontained \Qalt$ if, and only if, there is some "expansion" $\anexpansion$ of $\gamma$ such that $\anexpansion \notcontained \Qalt$. In turn, this happens if, and only if, there is no $\delta \in \Qalt$ such that $\delta \homto \anexpansion$.
     
     Take any such counterexample $\anexpansion$ of minimal size (in number of atoms). We show that for any "internal path" of $\anexpansion$ of the shape
     \[\pi = x_0 \atom{a} x_1 \atom{a} x_1 \dotsb x_{m-1}\atom{a} x_m,\]
@@ -217,7 +217,7 @@ With the previous results in place, we now show that the semantic tree-width $k$
 	is---still---not a counterexample.  In the first case (i), we actually obtain that $\delta \homto \anexpansion'_{+l}$. In the second case (ii), we have to replace each atom $z \atom{a} z'$ in the $g$-preimage of $x_i \atom{a} x_{i+1}$ in $\anexpansion''$ by an $a$-path of length $l$, obtaining some "expansion" $\anexpansion''_{+l}$ of $\gamma$. We also replace each atom in the $\fun_1$-preimage of $x_i \atom{a} x_{i+1}$ by an $a$-path of length $l$ obtaining some $\delta_{+l}$ such that $\anexpansion''_{+l} \surj \delta_{+l} \homto \anexpansion'_{+l}$. Further, $\delta_{+l} \in \Tw$ since $\Tw$ is closed under "refinements" by \Cref{fact:refinement-tw}.
     In both cases this shows that $\anexpansion'_{+l}$ is \emph{not} a counterexample. 
 	In particular, for $l=m-n-1$, we have $\anexpansion'_{+l}=\anexpansion$, and this would contradict the fact that $\anexpansion$ is a counterexample.
-	Therefore, there exists a counterexample of polynomial (quadratic) size whenever $\gamma \centernot{\contained} \MUAHom{\gamma}{\Tw}$.
+	Therefore, there exists a counterexample of polynomial (quadratic) size whenever $\gamma \notcontained \MUAHom{\gamma}{\Tw}$.
   \end{proof}
 %   This is because any path $x_0 \atom{a}  \dotsb \atom{a} x_m$ in an expansion $\anexpansion$ of $\gamma$ such that $m > \nbatoms{\gamma}$ and $\anexpansion \contained \Qapp$ can be `pumped' to an even longer path of any length greater than $m$ obtaining another expansion $\anexpansion'$ such that $\anexpansion' \contained \Qapp$. This implies that a minimal counterexample must be of polynomial size. \ifspaceallows{The proof uses rather standard techniques and can be found in \Cref{appendix:sre}.}{}
   The second ingredient is that testing whether a "CQ" is a counterexample is in "coNP".
@@ -252,6 +252,6 @@ With the previous results in place, we now show that the semantic tree-width $k$
   \end{proof}
 
 
-  As a consequence of the two claims, we obtain a "SigmaP2"~algorithm for non-containment of $\gamma \contained \Qapp$: We first guess an "expansion" $\anexpansion$ of $\gamma$ of polynomial size, and we then test $\anexpansion \centernot{\contained} \Qapp$ in "coNP". This gives a {"PiP2"} algorithm for the "semantic tree-width $k$ problem", which is correct by
+  As a consequence of the two claims, we obtain a "SigmaP2"~algorithm for non-containment of $\gamma \contained \Qapp$: We first guess an "expansion" $\anexpansion$ of $\gamma$ of polynomial size, and we then test $\anexpansion \notcontained \Qapp$ in "coNP". This gives a {"PiP2"} algorithm for the "semantic tree-width $k$ problem", which is correct by
   \Cref{lemma:MUAk-union-of-polysized-summary-test-np,claim:poly-sized-counterexample-sre}.
 \end{proof}

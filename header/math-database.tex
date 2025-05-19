@@ -29,12 +29,14 @@
 \knowledgenewrobustcmd{\underlying}[1]{\cmdkl{G_{#1}}} % underlying graph
 
 \knowledgenewrobustcmd{\contained}{\mathrel{\cmdkl{\subseteqq}}}
+\newrobustcmd{\notcontained}{\mathrel{\kl[\contained]{\not\subseteqq}}}
 \newrobustcmd{\strcontained}{
   \mathrel{\withkl{\kl[\contained]}{\cmdkl{%
     \subsetneqq
   }}}
 }
 \knowledgenewrobustcmd{\semequiv}{\mathrel{\cmdkl{\equiv}}}
+\newrobustcmd{\notsemequiv}{\mathrel{\kl[\semequiv]{\not\equiv}}}
 
 \knowledgenewrobustcmd{\nbvar}[2][]{\cmdkl{\|}#2\cmdkl{\|^{#1}_{\textrm{var}}}}
 \knowledgenewrobustcmd{\nbatoms}[2][]{\cmdkl{\|}#2\cmdkl{\|^{#1}_{\textrm{at}}}}

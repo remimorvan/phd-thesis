@@ -17,7 +17,7 @@
 % Hom-reg relation 
 % ---
 \knowledgenewrobustcmd{\homregto}{\mathrel{\cmdkl{\smashxrightarrow{reg hom}}}}
-\newrobustcmd{\nothomregto}{\mathrel{\kl[\homregto]{\centernot{\smashxrightarrow{reg hom}}}}}
+\newrobustcmd{\nothomregto}{\mathrel{\kl[\homregto]{\cancel{\smashxrightarrow{reg hom}}}}}
 
 % ---
 % Interpretations & Automatic presentations
@@ -248,14 +248,16 @@
 \knowledgenewrobustcmd\quotient[2]{\cmdkl{{#1}/{#2}}}
 \knowledgenewrobustcmd\residual[2][]{#2^{\cmdkl{-1}}_{\kl[\type]{#1}}}
 
-\newcommand{\asympbar}{\mathrel{\raisebox{-.1em}{\scalebox{.6}{\ensuremath{\setstackgap{S}{0pt}%
-	\stackMath\mathrel{\stackon{\frown}{\stackon{\raisebox{.135em}{\rule{.6em}{.08em}}}{\smile}}}}}}}}
+\newcommand{\asympbar}{\raisebox{-.1em}{\scalebox{.6}{\ensuremath{\setstackgap{S}{0pt}%
+	\stackMath\mathrel{\stackon{\frown}{\stackon{\raisebox{.135em}{\rule{.6em}{.08em}}}{\smile}}}}}}}
+% \newcommand{\notasympbar}{\raisebox{-.1em}{\scalebox{.6}{\ensuremath{\setstackgap{S}{0pt}%
+% 	\stackMath\mathrel{\stackon{\frown}{\stackon{\raisebox{.135em}{\rule{.6em}{.08em}}}{\smile}}}}}}}
 
 \knowledgenewrobustcmd\congr[1]{%
 	\mathrel{\cmdkl{\asympbar_{#1}}}%
 }
 \newrobustcmd\notcongr[1]{%
-	\mathrel{\kl[\congr]{\centernot{\asympbar_{#1}}}}
+	\mathrel{\kl[\congr]{\cancel{\asympbar}_{#1}}}%
 }
 
 \knowledgenewrobustcmd\compos{%

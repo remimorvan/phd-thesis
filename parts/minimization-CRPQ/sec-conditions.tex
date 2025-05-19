@@ -423,10 +423,10 @@ Finally, we show that checking strong minimality is at least as hard as checking
 	If $\delta$ is "strongly minimal", then it is "minimal", and so it is
 	"non-redundant", and hence
 	by the proof of \Cref{prop:lowerbound-non-redundant},
-	$x' \atom{K} y' \centernot{\contained} \bigwedge_i x \atom{L_i} y$.
+	$x' \atom{K} y' \notcontained \bigwedge_i x \atom{L_i} y$.
 	
 	We prove the converse implication: assume that
-		$x' \atom{K} y' \centernot{\contained} \bigwedge_i x \atom{L_i} y$.
+		$x' \atom{K} y' \notcontained \bigwedge_i x \atom{L_i} y$.
 	Then there exists $\#u\# \in K$ "st" $x' \atom{\#u\#} y'$
 	does not "satisfy@@db" $\bigwedge_i x \atom{L_i} y$.
 	Consider the "expansion" $\anexpansion$ obtained by replacing $K$ with $\#u\#$, and replacing 
@@ -440,6 +440,6 @@ Finally, we show that checking strong minimality is at least as hard as checking
 	cannot be mapped on $x' \atom{\# u \#} y'$, and so they must be mapped on
 	$\bigwedge_i x \atom{@_i} y$, and hence $\anexpansion' = \anexpansion$.
 	Hence, this shows that $\delta$ is "strongly minimal".
-	Overall, we showed that $x' \atom{K} y' \centernot{\contained} \bigwedge_i x \atom{L_i} y$
+	Overall, we showed that $x' \atom{K} y' \notcontained \bigwedge_i x \atom{L_i} y$
 	"iff" $\delta$ is "strongly minimal", which concludes our reduction.
 \end{proof}

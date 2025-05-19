@@ -95,7 +95,7 @@ A formal proof follows the proof sketch.
         \end{tikzcd}
     \end{center}
 	First, it is easy to see that if $\gamma_1 \contained \gamma_2$ then $\delta \semequiv \gamma_1$. Conversely, if $\delta$ is "equivalent" to a "Boolean CRPQ" with at most one atom, then $\gamma_1 \contained \gamma_2$.
-	The conditions imposed by \Cref{prop:variation-figueira} are necessary to discard one-atom queries which are self-loops and that whenever  $\gamma_1 \centernot{\contained} \gamma_2$ there is an "expansion" of $\delta$ to which any $\delta$-"equivalent" single-atom query "expansion" cannot be mapped.
+	The conditions imposed by \Cref{prop:variation-figueira} are necessary to discard one-atom queries which are self-loops and that whenever  $\gamma_1 \notcontained \gamma_2$ there is an "expansion" of $\delta$ to which any $\delta$-"equivalent" single-atom query "expansion" cannot be mapped.
 \end{proof}
 
 \begin{proof}
@@ -183,7 +183,7 @@ in \Cref{prop:variation-figueira} in necessary for the reduction to be correct,
 otherwise $\delta()$ would be equivalent to
 \[\delta'() \defeq x \atom{K} y \land x \atom{\A^* L_i \A^*} y,\]
 and so we could have $\A^* L_i \A^* \subsetneq K$, implying that
-(1) $K \not\subseteq \A^* L_i \A^*$ and hence $\gamma_1 \centernot{\contained} \gamma_2$
+(1) $K \not\subseteq \A^* L_i \A^*$ and hence $\gamma_1 \notcontained \gamma_2$
 but (2) $\delta$ would be equivalent to a "CRPQ" with a single "atom", namely
 $\delta''() \defeq x\atom{\A^* L_i \A^*} y$.
 

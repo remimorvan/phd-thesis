@@ -847,7 +847,7 @@ a greatest element $\chi(\bar z)$ "st"
 \[
 	\gamma(\bar x) \disconj \chi(\bar z) \contained \delta(\Bar z). 
 \]
-This greatest element $\chi(\bar z)$ is denoted by $\gamma(\bar x) \impH \delta(\bar y)$, and is called \emph{implication}.%
+This greatest element $\chi(\bar z)$ is denoted by \AP$\gamma(\bar x) \intro*\impH \delta(\bar y)$, and is called \emph{implication}.%
 \footnote{Heyting algebras were introduced to model intuitionistic logic.
 It is not hard to see that the implication $\phi \Rightarrow \psi$
 does satisfy the property it is the greatest formula $\chi$
@@ -1040,14 +1040,14 @@ in the sense that if a solution exists to each problem, then a common solution e
 			dist = .5
 			slope = height/width
 			draw_cq(x0+.1, y0-.2, 'cGrey', 'cq')
-			draw_db(x0-dist, y0+dist*slope, 'cGreen', 'p1')
-			draw_db(x0+dist, y0+dist*slope, 'cGreen', 'p2')
+			draw_db(x0-dist, y0+dist*slope, 'cBlue', 'p1')
+			draw_db(x0+dist, y0+dist*slope, 'cBlue', 'p2')
 			draw_db(x0-1.5, y0+.5, 'cRed', 'n1')
 			draw_db(x0-.3, y0-.2, 'cRed', 'n2')
 			draw_db(x0+.67, y0-.4, 'cRed', 'n3')
 \end{luacode}
-			\node[above=3.5pt of p1, cGreen] {$\?D^+_1$};
-			\node[above=3.5pt of p2, cGreen] {$\?D^+_2$};
+			\node[above=3.5pt of p1, cBlue] {$\?D^+_1$};
+			\node[above=3.5pt of p2, cBlue] {$\?D^+_2$};
 			\node[below=3.5pt of cq, cGrey!70!black] {$\gamma$};
 			\node[below=3.5pt of n1, cRed] {$\?D^-_1$};
 			\node[below=3.5pt of n2, cRed] {$\?D^-_2$};
@@ -1079,7 +1079,7 @@ However, all results extend trivially to the non-Boolean case.}
 }{
 	Is there a "conjunctive query" $\gamma$ "st"
 	$\?D^+_i \FOmodels \gamma$ for all $i\in \intInt{1,p}$
-	and $\?D^-_j \centernot{\FOmodels} \gamma$ for all $j\in \intInt{1,n}$?
+	and $\?D^-_j \notFOmodels \gamma$ for all $j\in \intInt{1,n}$?
 }
 
 \begin{proposition}
@@ -1102,16 +1102,16 @@ However, all results extend trivially to the non-Boolean case.}
 		dist2 = 1.0
 		slope = height/width
 		draw_cq(x0+dist2, y0-dist2*slope, 'cGrey', 'union')
-		draw_cq(x0-dist1, y0+dist1*slope, 'cGreen', 'p1')
-		draw_cq(x0+dist1, y0+dist1*slope, 'cGreen', 'p2')
+		draw_cq(x0-dist1, y0+dist1*slope, 'cBlue', 'p1')
+		draw_cq(x0+dist1, y0+dist1*slope, 'cBlue', 'p2')
 		-- position of union of p1 and p2 : (x0, y0)
-		draw_cq(x0+2*dist2, y0, 'cGreen', 'p3')
+		draw_cq(x0+2*dist2, y0, 'cBlue', 'p3')
 		draw_db(x0+dist2-0.2, y0-dist2*slope+0.5, 'cRed', 'n1')
 		draw_db(x0+dist2+1.0, y0-dist2*slope-0.2, 'cRed', 'n2')
 \end{luacode}
-		\node[left=6pt of p1, cGreen] {$\delta^+_1$};
-		\node[right=6pt of p2, cGreen] {$\delta^+_2$};
-		\node[right=6pt of p3, cGreen] {$\delta^+_3$};
+		\node[left=6pt of p1, cBlue] {$\delta^+_1$};
+		\node[right=6pt of p2, cBlue] {$\delta^+_2$};
+		\node[right=6pt of p3, cBlue] {$\delta^+_3$};
 		\node[below=6pt of union, cDarkGrey] {$\upsilon$};
 		\node[right=6pt of n1, cRed] {$\?D^-_1$};
 		\node[right=6pt of n2, cRed] {$\?D^-_2$};
@@ -1131,10 +1131,10 @@ However, all results extend trivially to the non-Boolean case.}
 		\upsilon \defeq \delta^+_1 \weakunion \cdots \weakunion \delta^+_p.
 	\]
 	We then test for each $j\in \intInt{1,n}$ if 
-	$\?D^-_j \centernot{\FOmodels} \upsilon$: this will be
+	$\?D^-_j \notFOmodels \upsilon$: this will be
 	the output of our algorithm!
 	
-	First, each test $\?D^-_j \centernot{\FOmodels} \upsilon$
+	First, each test $\?D^-_j \notFOmodels \upsilon$
 	can be done in "coNP" in the size of $\?D^-_j$ and of
 	$\upsilon$. Since the size of $\upsilon$ is the product of
 	the sizes of the $\delta^+_i$'s, it is exponential,

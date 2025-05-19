@@ -347,7 +347,7 @@ Our "ExpSpace" upper bound relies on the following technical lemma.
 	We first begin with an easy small counterexample property.
 	\begin{claim}
 		\AP\label{cl:small-counterexample-SRE}
-		Let $\Gamma, \Delta \in \text{"UCRPQ"}$ containing only atoms with expressions of the form \AP""(i)@@sre"" $a^+$, or ""(ii)@@sre"" $a_1 + \dotsb + a_k$. Additionally, $\Delta$ may also have expressions of the form ""(iii)@@sre"" $\A^*$. If $\Gamma \centernot{\contained} \Delta$, then there exists $\anexpansion \in \Exp(\Gamma)$ such that (a) $\anexpansion \centernot{\contained} \Delta$ and (b) $\nbatoms{\anexpansion} \leq O(\max_{\gamma \in \Gamma}\nbatoms{\gamma} \cdot \max_{\delta \in \Delta}\nbatoms{\delta})$.
+		Let $\Gamma, \Delta \in \text{"UCRPQ"}$ containing only atoms with expressions of the form \AP""(i)@@sre"" $a^+$, or ""(ii)@@sre"" $a_1 + \dotsb + a_k$. Additionally, $\Delta$ may also have expressions of the form ""(iii)@@sre"" $\A^*$. If $\Gamma \notcontained \Delta$, then there exists $\anexpansion \in \Exp(\Gamma)$ such that (a) $\anexpansion \notcontained \Delta$ and (b) $\nbatoms{\anexpansion} \leq O(\max_{\gamma \in \Gamma}\nbatoms{\gamma} \cdot \max_{\delta \in \Delta}\nbatoms{\delta})$.
 	\end{claim}
 
 	The intuition is that if a counterexample includes an atom expansion $x \atom{a^n} y$ of some atom $x \atom{a^+} y$, where $n$ is greater than the maximum number of atoms in $\Delta$ (plus one), then the expansion obtained by replacing $x \atom{a^n} y$ with $x \atom{a^{n-1}} y$ must also be a counterexample. Hence, a minimal counterexample must have all atom expansions bounded by the maximum number of atoms in $\Delta$.
@@ -362,7 +362,7 @@ Our "ExpSpace" upper bound relies on the following technical lemma.
 	Given a "UCRPQ(SRE)" $\Gamma$, the construction of \Cref{lemma:approximation-for-finclass} yields its "maximal under-approximation" by "UCRPQs" of at most $k$ atoms as a "UCRPQ" $\Delta_{\textnormal{App}}$ whose every regular expression is a concatenation of expressions of the form "(i)@@sre", "(ii)@@sre" and "(iii)@@sre" above.
 	It suffices then to test $\gamma \contained \Delta_{\textnormal{App}}$ for every "CRPQ(SRE)" $\gamma$ in $\Gamma$. Due to \Cref{cl:small-counterexample-SRE}
 	(and observing that equivalent queries without concatenations can be obtained in polynomial time)
-	its negation $\gamma \centernot{\contained} \Delta_{\textnormal{App}}$ can be tested by guessing a polynomial sized "expansion" $\anexpansion$ of $\gamma$ and then testing $\anexpansion \centernot{\contained} \Delta_{\textnormal{App}}$.
+	its negation $\gamma \notcontained \Delta_{\textnormal{App}}$ can be tested by guessing a polynomial sized "expansion" $\anexpansion$ of $\gamma$ and then testing $\anexpansion \notcontained \Delta_{\textnormal{App}}$.
 	In turn, $\anexpansion \contained \Delta_{\textnormal{App}}$ can be tested in "NP" by 
 	\cite[Theorem 4.2]{FigueiraEtal2020Containment}.\footnote{Simply by (1) guessing a polynomial size "CRPQ" $\delta$, (2) testing $\delta \in \Delta_{\textnormal{App}}$ in "NP" by \Cref{lemma:approximation-for-finclass}, and (3) guessing a (small) expansion $\anexpansion'$ of $\delta$ and testing $\anexpansion' \homto \anexpansion$.}
 

@@ -42,7 +42,8 @@
 \knowledgenewrobustcmd{\transition}[1]{\mathrel{\cmdkl{\smashxrightarrow{\ensuremath{#1}}}}}
 
 \knowledgenewrobustcmd{\semFO}[2]{\cmdkl{\lBrack} #1 \cmdkl{\rBrack^{#2}}} % semantics of FO
-\knowledgenewrobustcmd\FOmodels{\mathrel{\cmdkl{\models}}} % models relation
+\knowledgenewrobustcmd\FOmodels{\mathrel{\cmdkl{\vDash}}} % models relation
+\newrobustcmd\notFOmodels{\mathrel{\kl[\FOmodels]{\nvDash}}}
 
 \knowledgenewrobustcmd\pmAlpha[1]{#1^{\pm}}
 
@@ -63,9 +64,8 @@
 % ---
 \knowledgenewrobustcmd{\homto}{\mathrel{\cmdkl{\smashxrightarrow{hom}}}}
 \newrobustcmd{\cohomto}{\mathrel{\kl[\homto]{\smashxleftarrow{hom}}}}
-\RequirePackage{centernot}
-\newrobustcmd{\nothomto}{\mathrel{\kl[\homto]{\centernot{\smashxrightarrow{hom}}}}}
-\newrobustcmd{\notcohomto}{\mathrel{\kl[\homto]{\centernot{\smashxleftarrow{hom}}}}}
+\newrobustcmd{\nothomto}{\mathrel{\kl[\homto]{\cancel{\smashxrightarrow{hom}}}}}
+\newrobustcmd{\notcohomto}{\mathrel{\kl[\homto]{\cancel{\smashxleftarrow{hom}}}}}
 
 \knowledgenewrobustcmd\core[1]{\cmdkl{\check{{#1}}}}
 \knowledgenewrobustcmd\coreCQ[1]{\cmdkl{\check{{#1}}}}
