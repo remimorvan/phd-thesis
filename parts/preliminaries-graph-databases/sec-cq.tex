@@ -2,8 +2,6 @@
 
 \subsection{SQL and First-Order Logic}
 
-\todo{figures + explain binary relations (nice figures) and $\atom{a}$ notation.}
-
 The most common model of databases is by far that of "relational databases",
 in which data is stored in \emph{tables}: an example is depicted
 in \Cref{fig:relational-database-cinema}.
@@ -314,8 +312,8 @@ their seminal 1977 paper \cite{ChandraMerlin1977Implementation}.
 \begin{marginfigure}
 	\centering
 	\begin{tikzcd}
-		x \rar["b"] \dar["a"] & x' \dar["a"] \\
-		y & y'
+		x \rar["b"] \dar["a"] & y \dar["a"] \\
+		x' & y'
 	\end{tikzcd}
 	\caption{\AP\label{fig:prelim-db-ex-db}
 	The "canonical database" of $\gamma() \defeq x \atom{a} x' \land x \atom{b} y \land y \atom{a} y'$.}
@@ -356,8 +354,39 @@ in fact a "relational database".
 	This follows from the definition of "homomorphisms" and
 	the semantics of "first-order logic".
 \end{proof}
+\begin{marginfigure}
+	\centering
+	\begin{tikzpicture}
+		\node[vertex] at (0,0) (u) {};
+		\node[vertex] at (1,0) (v) {};
+		\node[vertex] at (2,0) (w) {};
+		\draw[edge] (u) to node[above, midway] {$b$} (v);
+		\draw[edge] (v) to node[above, midway] {$a$} (w);
+		\draw[edge] (u) to[loop above, out=120, in=60, looseness=8] node[above] {$a$} (u);
+		\node[below=2pt of u] {$u$};
+		\node[below=2pt of v] {$v$};
+		\node[below=2pt of w] {$w$};
+	\end{tikzpicture}
+	\caption{\AP\label{fig:prelim-db-stupid-ex}
+		A "relational database" satisfying the "conjunctive query" of 
+		\Cref{fig:prelim-db-ex-db}.
+	}
+\end{marginfigure}
+For instance, consider the "relational database" of \Cref{fig:prelim-db-stupid-ex}.
+It satisfies the "Boolean query" 
+\[
+	\gamma() \defeq x \atom{a} x' \land x \atom{b} y \land y \atom{a} y'
+\]
+asking if there is a $b$-edge ($x \atom{b} y$) whose extremities
+have outgoing $a$-edges ($x \atom{a} x'$ and $y \atom{a} y'$):
+indeed, there is a $b$-edge from $u$ to $v$, and both $u$ and $v$
+have outgoing $a$-edges. In terms of "duality", this is
+witnessed by the "homomorphism" from the
+"canonical database" of \Cref{fig:prelim-db-ex-db} to the
+"database@@rel" of \Cref{fig:prelim-db-stupid-ex},
+that sends $x$ and $x'$ onto $u$, $y$ onto $v$ and $y'$ onto $w$.
 
-Duality has \emph{many} consequences. First, the following evaluation problem
+"Duality" has \emph{many} consequences. First, the following evaluation problem
 lies in "NP", as it can be encoded into a "homomorphism problem".
 \decisionproblem{""Conjunctive Query Evaluation""}{
 	A "signature" $\sigma$,
@@ -371,6 +400,7 @@ this amounts to asking whether the query is true on the "database@@rel".%
 \footnote{Indeed, for "Boolean CQs",
 $\semFO{\gamma()}{\?D}$ is either empty (that we interpret as \emph{false}),
 or equal to the singleton consisting of the empty tuple (that we interpret as \emph{true}).}
+It is fact "NP"-complete \cite[Theorem 7]{ChandraMerlin1977Implementation}.
 More importantly, "duality" has the consequence that
 "semantical equivalence", as well as the finer notion of "containment",
 are decidable for "CQs".
@@ -662,10 +692,10 @@ the categorical sense, "ie" that it satisfies the universal property
 that it has "homomorphisms" $\projHom{1}$ and $\projHom{2}$ to both $\tup{\?D_1,\bar d_1}$ and $\tup{\?D_2,\bar d_2}$, and that moreover it is the smallest object satisfying this property,
 in the sense that for every "relational database" $\tup{\?U, \bar u}$ with "homomorphisms"
 $f_1$ and $f_2$ to $\tup{\?D_1,\bar d_1}$ and $\tup{\?D_2,\bar d_2}$, 
-then there exists a unique "homomorphism" $g$ from $\tup{\?U, \bar u}$ to
+then there exists a unique "homomorphism" $\?G$ from $\tup{\?U, \bar u}$ to
 $\tup{\?D_1,\bar d_1} \prodstruct \tup{\?D_2,\bar d_2}$ such that
 the diagram of \Cref{fig:cartesian-product-diagram} commutes:
-this "homomorphism" $g$ is actually $f_1 \times f_2\colon u \mapsto \tup{f_1(u), f_2(u)}$.
+this "homomorphism" $\?G$ is actually $f_1 \times f_2\colon u \mapsto \tup{f_1(u), f_2(u)}$.
 Going back to the poset structure, this implies that any pair of points must have an infimum.
 \begin{fact}
 	Given two finite "relational databases", their "Cartesian product"
@@ -1002,12 +1032,6 @@ to better understand the expressivity of \emph{conjunctive queries}.
 However we first take a brief detour in the direction of classes
 with tractable evaluation.
 
-\subsection{Conjunctive Queries of Small Tree-Width}
-
-Recall that, by "duality", "conjunctive query evaluation" is "NP"-complete:
-this begs the question of finding classes of "CQs" with faster evaluation.
-\todo{}
-
 \subsection{Static Analysis of Conjunctive Queries}
 \label{sec:prelim-db-static-analysis-cq}
 
@@ -1301,12 +1325,303 @@ and no equivalence query \cite[Theorem~5.2]{tenCateDalmau2021ActiveLearning}.
 	\itemAP ""disjunct""
 \end{itemize}
 
-\subsection{Intermezzo: Parametrized Complexity Classes}
+\subsection{Conjunctive Queries of Small Tree-Width}
 
+Recall that, by "duality", "conjunctive query evaluation" is "NP"-complete:
+this begs the question of finding classes of "CQs" with faster evaluation.
+We will see that queries whose underlying structure looks like
+a tree---formally, queries of bounded "tree-width"---can be "evaluated" in polynomial time.
+
+\paragraph*{Tree-Width.}
+\AP "Tree-width" is a measure of how much a
+graph differs from a tree---the notion was introduced and rediscovered
+numerous times in the 1970 and 1980s; however the first paper
+that seems to make a substantial connection between "tree-width" and tractability
+seems to be the work of Arnborg and Proskurowski~\cite{ArnborgProskurowski1989LinearTreewidth}.
+For a gentle but thorough introduction to "tree-width", we also refer the reader to
+\cite[\S~3.6]{NesetrilPOM2012Prolegomena}.
+
+Formally, a \AP""tree decomposition"" of an "undirected graph" $\?G$ is a
+pair $\tup{\?T, \intro*\bagmap}$ where $\?T$ is a tree and $\bagmap: \vertex{\?T} \to \pset{\vertex{\?G}}$ is a function that associates to each node of $\?T$, called \AP""bag"",
+a set of vertices of $\?G$. When $x \in \bagmap(b)$ we shall say that the "bag"
+$b \in \vertex{\?T}$ \AP""contains@@tw"" vertex $v$. Further, it must satisfy the following three properties:
 \begin{itemize}
-	\itemAP ""FPT""
-	\itemAP ""W1""
-	\itemAP ""XP""
+    \item each vertex $v$ of $\?G$ is "contained@@tw" in at least one "bag" of $\?T$,
+    \item for each edge $\{u,v\}$ of $\?G$, there is at least one "bag" of $\?T$
+        that "contains@@tw" both $u$ and $v$, and 
+    \item for every vertex $v$ of $\?G$, the set of bags of $\?T$ "containing@@tw" $v$ is a 
+        connected subset of $\vertex{\?T}$.
 \end{itemize}
 
-\subsection{Beyond Conjunctive Queries}
+\begin{figure}
+	\centering
+	\hfill
+	\subfloat[``Full'' representation of $\tup{\?T, \bagmap}$.]{%
+		\AP\label{fig:ex-tree-dec-full}
+		\includegraphics[scale=.65]{fig/semantic-tw/ex-tree-dec-full.pdf}%
+	}
+	\hfill
+	\subfloat[``Concise'' representation of $\tup{\?T, \bagmap}$]{%
+		\AP\label{fig:ex-tree-dec-concise}
+		\hspace{.5cm}
+		\includegraphics[scale=1.3]{fig/semantic-tw/ex-tree-dec-concise.pdf}
+		\hspace{.5cm}
+	}
+	\hfill
+	\caption{
+		\AP\label{fig:ex-tree-dec}
+		Two different representations of the same "tree decomposition" $\tup{\?T, \bagmap}$ of a 
+		"directed graph" $\?G$ with six 
+		vertices. The underlying tree is a path with four nodes and each "bag" contains 3 
+		vertices---hence the "decomposition@tree decomposition" has "width" 2.
+	}
+\end{figure}
+We give an example of "tree decomposition" in \Cref{fig:ex-tree-dec}:
+\begin{itemize}
+	\item In \Cref{fig:ex-tree-dec-full}, we give the ``full'' representation of
+	the "decomposition@tree decomposition": we draw $\?T$,
+	and inside each of the four "bags" $b$ of $\?T$
+	we represent a copy of $\?G$. Nodes of $\?G$ belonging to $b$ are highlighted, while the others are dimmed. Sometimes, we will only write the
+	name of the nodes contained in the "bag", instead of drawing the graph.
+	\item In \Cref{fig:ex-tree-dec-concise}, we give a ``concise'' representation:
+	we draw over $\?G$ a coloured shape for each "bag" of $\?T$. This representation is ambiguous---the structure of $\?T$ is not made explicit---and will only be used for
+	the most simple cases.
+\end{itemize}
+
+The \AP""width"" of a "tree decomposition" $\tup{\?T, \bagmap}$ is the maximum size of a "bag" minus one, "ie" $\max{|\bagmap(b)|-1 \mid b\in T}$.
+The \AP""tree-width"" of $\?G$ is the minimum of the "width" of all "tree decompositions" of $\?G$. 
+The notion can be directly generalized to arbitrary "relational structures":
+instead of asking that every edge $\{u,v\}$ is contained in some "bag",
+we required that for every "hyperedge" $\tup{x_1,\dotsc,x_k}$,
+there exists a "bag" than contains all $x_i$'s.
+The \reintro{tree-width} of a "CQ" is naturally defined as
+the "tree-width" of its "canonical database".
+The "undirected graphs" of "tree-width" at most $1$ are exactly
+the forests, "ie" the "disjoint unions" of trees.
+On the other hand, the "graph@@dir" of \Cref{fig:ex-tree-dec} has "tree-width" $2$.
+
+\begin{proposition}[{\cite[Theorem~3]{ChekuriRajaraman2000Containment}}]
+	\!\footnote{Theorem 3 talks about query "containment" of "CQs", which is in fact equivalent
+	to the "evaluation problem" for "CQs". Moreover, the theorem deals with ``query width'',
+	but this parameter is equivalent up to a multiplicative constant to the "tree-width"
+	\cite[Lemma~2]{ChekuriRajaraman2000Containment} assuming that the "signature" is fixed.} 
+	\AP\label{prop:eval-CQ-bounded-tw}
+	For any fixed "signature" $\sigma$,
+	for every $k\in\N$, "conjunctive query evaluation" can
+	be solved in polynomial time when restricted to "CQs" of
+	"tree-width" at most $k$.
+\end{proposition}
+
+\Cref{prop:eval-CQ-bounded-tw}, as most algorithms on structures of
+"bounded tree-width" actually relies on the ability to compute
+a "tree decomposition".
+\begin{proposition}[{Bodlaender's algorithm \cite[Theorem~1.1]{Bodlaender1996Treewidth}}]
+	\!\footnote{The fact that $k$ is fixed is crucial: if it is also
+	part of the input, the problem become "NP"-complete
+	\cite[Theorem~3.3]{ArnborgCorneilProskurowski1987Complexity}}
+	\label{prop:bodlaender}
+	For every \emph{fixed} $k\in\Np$, there is a linear-time algorithm
+	which takes as input a "finite structure" and decides
+	if it has "tree-width" at most $k$, in which case it also
+	outputs a witness of the form of a "tree decomposition" of "width" at most $k$. 
+\end{proposition}
+
+\begin{proof}[Proof sketch of {\Cref{prop:eval-CQ-bounded-tw}}]
+	We are given as input a "CQ" $\gamma(\bar x)$ of "tree-width" at most $k$,
+	and a "pointed relational database" $\tup{\?D,\bar d}$, and need
+	to decide if $\tup{\?D, \bar d} \FOmodels \gamma(\bar x)$.
+	"Wlog", using Bodlaender's algorithm (\Cref{prop:bodlaender}),
+	we assume that we also have a "tree decomposition" $\tup{\?T,\bagmap}$
+	of the "canonical database" $\tup{\?G, \bar x}$ of $\gamma(\bar x)$.
+
+	We do a bottom-up algorithm on the tree $\?T$,
+	which maintains a set $\+H$ of partial "homomorphisms" from
+	$\tup{\?G, \bar x}$ to $\tup{\?D, \bar d}$.
+	In light of \Cref{fig:ex-tree-dec-full}, the idea is to compute
+	for each "bag" where the "variables" it contains could be mapped
+	on the "databases".
+	Formally, we want this procedure
+	to satisfy the following invariant:
+	when dealing with "bag" $b$, a partial "homomorphism"
+	$f\colon \tup{\?G, \bar x} \pto \tup{\?D, \bar d}$ belongs to $\+H_b$ if, and only if,
+	\begin{itemize}
+		\item the "domain" of $f$ is $\bagmap(b)$, and
+		\item $f$ can be extended into a partial "homomorphism"
+			$\tilde f\colon \tup{\?G, \bar x} \pto \tup{\?D, \bar d}$
+			defined exactly on the union of $\bagmap(b')$ where $b'$ ranges
+			over vertices that are bellow $b$ in the tree $\?T$.
+	\end{itemize}
+	For leaves $b$, the procedure is easy: we enumerate every possible map
+	from $\bagmap(b)$ to $\?D$, and only keep those that define a 
+	partial "homomorphism" $\tup{\?G, \bar x} \pto \tup{\?D, \bar d}$: this
+	yields a set $\+H_b$ of partial "homomorphisms".
+	Then, when dealing with a node $b$ whose children are $b_1,\hdots,b_k$,
+	again we enumerate every possible map $f$
+	from $\bagmap(b)$ to $\?D$, but then only keep those that
+	(1) define a partial "homomorphism" $\tup{\?G, \bar x} \pto \tup{\?D, \bar d}$,
+	and (2) agree with the children "bags", in the sense that there must exist
+	partial "homomorphisms" $f_1 \in \+H_{b_1}$, $\dotsc$, $f_k \in \+H_{b_k}$
+	"st" $f$ and $f_i$ agree on their common vertices,
+	"ie" $\restr{f}{\bagmap(b)\cap \bagmap(b_i)} = \restr{f_i}{\bagmap(b)\cap \bagmap(b_i)}$
+	for all $i \in \lBrack 1,k\rBrack$.
+	
+	The correctness of this procedure follows from the assumption that,
+	in a "tree decomposition", the set of "bags" "containing@@bag" any node
+	must be a connected subset: in some sense this is what allows us to make
+	consistent choices.
+	Then, to decide if $\tup{\?D, \bar d} \FOmodels \gamma(\bar x)$,
+	we check if the set of partial "homomorphisms" associated to the root
+	is non-empty. If so, since every vertex must appear in some "bag",
+	the invariant yields the existence of a "homomorphism" 
+	from $\tup{\?G, \bar x}$ to $\tup{\?D, \bar d}$.
+	Otherwise, there is no such "homomorphism". Correctness follows by "duality".
+
+	Lastly, concerning the complexity, observe that the "tree decomposition"
+	has "width" at most $k$, so there at most
+	$|D|^{k+1}$ maps from any fixed "bag" to $\?D$: we can enumerate them all
+	in polynomial time since $k$ is fixed! 
+	To compute the partial "homomorphisms" $f$ that agree with
+	some partial "homomorphisms" from $\+H_{b_1}$, $\dotsc$, $\+H_{b_k}$,
+	we can first sort each table $\+H_{b_i}$ according to their value on $\bagmap(b)$,
+	and then use a dichotomy search. Sorting can be done
+	in $\+O(|D|^{k+1}\log(|D|^{k+1})) = \+O(|D|^{k+1}\log(|D|))$,
+	and the dichotomy search---one for each partial "homomorphisms" that is a candidate
+	for $\+H_b$---runs in $\+O(\log(|D|^{k+1})) = \+O(\log(|D|))$.
+	Overall, we get an algorithm that runs in time
+	\[
+		\+O(|T|\cdot |D|^{k+1}) = \+O(|T|\cdot |D|^{k+1}),
+	\]
+	up to logarithmic factors.
+\end{proof}
+
+\paragraph*{Bounded Semantic Tree-Width.}
+\todo{}
+
+\begin{marginfigure}
+	\centering
+	\includegraphics[width=\linewidth]{fig/prelim-db/Munch.jpg}
+	\caption{
+		When you learn that English has no word for ``epsilonesquement''
+		two days before the final deadline for handing out your manuscript.
+		\href{https://commons.wikimedia.org/wiki/File:Edvard_Munch,_1893,_The_Scream,_oil,_tempera_and_pastel_on_cardboard,_91_x_73_cm,_National_Gallery_of_Norway.jpg}{\emph{Skrik}},
+		Edvard Munch, public domain.
+	}
+\end{marginfigure}
+\paragraph{Bounded Path-Width.}
+We now focus on "path-width", which is a parameter upper-bounded
+by the "tree-width".
+So, if a "class of CQs" has bounded "path-width", then
+it has bounded "tree-width" and so by \Cref{prop:eval-CQ-bounded-tw}
+it can be evaluated in polynomial time.
+We shall see that "CQs" of small "path-width"
+can in fact be evaluated even more efficiently, namely in "NL"!
+We define a ""path decomposition"" to be a "tree decomposition" $\tup{\?T,\bagmap}$
+in which $\?T$ is a path, such as in \Cref{fig:ex-tree-dec}.
+The \AP""path-width"" of a "structure" is the minimum of the "width" of
+all of its "path decompositions".
+
+\begin{lemma}[{\cite[Lemma~8.10]{FigueiraMorvan2025SemanticTreeWidthLMCS}}]
+	\!\footnote[][5em]{\cite[Lemma~8.10]{FigueiraMorvan2025SemanticTreeWidthLMCS},
+	corresponding to \Cref{lemma:evaluation-bounded-pathwidth} in this thesis,
+	actually proved this result over the larger class of "UC2RPQs" of bounded 
+	"path-width". The proof of the upper bound is exactly the same,
+	but the lowerbound is \emph{marginally} harder.}%
+	\footnote{While writing the previous footnote,
+	I was shocked to discover that there does not 
+	seem to be an English equivalent for ``\href{}{epsilonequesment}'',
+	which would roughly translate as ``epsilonly''...}
+	\AP\label{lemma:evaluation-bounded-pathwidth-cq}
+	For each $k \geq 1$, the "CQ evaluation problem", restricted to "CQs" of
+	"path-width" at most $k$, is "NL"-complete.
+\end{lemma}
+
+\begin{figure*}[tb]
+	\centering
+	\subfloat[Partial homomorphism computed at the fourth step of the algorithm.]{
+		\includegraphics[width=.45\linewidth]{fig/semantic-tw/eval-pw-nl-1.pdf}
+	}
+	\hfill
+	\subfloat[Partial homomorphism computed at the fifth step of the algorithm.]{
+		\includegraphics[width=.45\linewidth]{fig/semantic-tw/eval-pw-nl-2.pdf}
+	}
+	\caption{
+		\AP\label{fig:eval-pw-nl}
+		Algorithm to evaluate a "CQ" of "path-width" at most $k$ (here $k=2$)
+		in "NL". Each subfigure represents a "path decomposition" of the "CQ"
+		(on the left-hand side) and a "relational database" (on the right-hand side),
+		together with a partial "homomorphism" from the first to the second.
+	}
+\end{figure*}
+
+\begin{proof}
+	\proofcase{Lower bound.}
+	We reduce the problem of "Reachability in finite graphs"
+	"NL"-hardness directly follows from the "NL"-hardness of
+	the "reachability problem in directed graphs".
+	Given an instance $\tup{\?G,s,t}$ of this problem,
+	we reduce it to
+	\[
+		\tup{\?G', s, t} \FOmodels^?
+		\rho(x_1,x_n) \defeq x_1 \to x_2 \land x_2 \to x_3 \land \dotsc \land x_{n-1} \to x_n,
+	\]
+	where $n = |G|$ and $\?G'$ is the "graph@@dir" obtained
+	from $\?G$ by adding a self-loop on $t$.
+	Clearly, there is a path from $s$ to $t$
+	in $\?G$ "iff" there is a path from $s$ to $t$ of length at most $n$ in $\?G$---by pigeon-hole principle---, which in turn is equivalent to asking for a path from $s$ to $t$
+	of length \emph{exactly} $n$ in $\?G'$ thanks to the extra self-loop.
+	To conclude, note that $\rho$ has "path-width" one.
+
+	\proofcase{Upper bound, first part: with the "path decomposition".}
+	First, we assume that a "path decomposition" of width at most $k$ of the query of
+	is also provided as part of the input. Moreover, we assume "wlog" that the input is "C2RPQ"---the extension to "UC2RPQ" being straightforward. So, we are given as input:
+	\begin{itemize}
+		\item a "database@@relpointed" $\tup{\?D, \bar d}$,
+		\item a "CQ" $\gamma(\bar x)$, and
+		\item a "path decomposition" $\langle T, \bagmap \rangle$ of "width" at 	
+			most $k$ of $\gamma(\bar x)$.
+	\end{itemize}
+	The algorithm, illustrated in \Cref{fig:eval-pw-nl}, maintains a partial "homomorphism"
+	$f\colon \?G \pto \?D$.
+	We scan the "bags" of the decomposition from top to bottom.
+	\begin{itemize}
+		\item Initially---before even scanning the first "bag"---$f$ is the map with empty domain.
+		\item Then, when scanning the $i$-th bag $b_i$,
+			we start by restricting $f$ to variables of $\dom(f)\cap \bagmap(b_i)$.
+			Then, we extend $f$ so that it is defined on the whole "bag" $\bagmap(b_i)$.
+			For every variable $y$ in $\bagmap(b_i) \smallsetminus\dom(f)$:
+			\begin{itemize}
+				\item if it belongs to $\bar x$, say $y = x_i$, 
+					we let $f(x_i) \defeq u_i$;
+				\item otherwise, we non-deterministically guess the value of $f(y)$.
+			\end{itemize}
+			We then check, for every "atom" $\+R_{(k)}(x_1,\hdots,x_k)$ of $\gamma(\bar x)$ 
+			"st" all $x_j$'s occur in $\bagmap(b_i)$ if
+			$\tup{f(x_1), \dotsc, f(x_k)} \in \+R_{(k)}(\?D)$.
+			If not, we reject. 
+	\end{itemize}
+	If the algorithm manages to scan the whole bag decomposition without rejecting, it accepts.
+
+	Completeness of the algorithm is trivial. Correctness follows from the fact that if
+	a variable occurs in "bags" $b_i$ and $b_k$ with $i \leq k$, then it must also belong to every
+	"bag" $b_j$ for $j \in \lBrack i,k \rBrack$. As a consequence, a variable $x$ is assigned 
+	exactly one value $f(x)$ during the whole process. 
+
+	Concerning the space complexity,
+	by construction, at the $i$-th step of the algorithm, $f$ is defined exactly on $b_i$, so on at most $k+1$ variables.
+	And so, $f$ can be stored in space $(k+1)\log(|D|)$.
+	We also need a counter with $\log(|T|)$ bits to scan through the "tagged path decomposition".
+	Overall, the algorithm runs in non-deterministic space
+	$\+O(k\log(|G|) + \log(|T|)) = \+O(\log(|G|) + \log(|T|))$,
+	which is logarithmic in the size of the input.
+
+	\proofcase{Upper bound, second part: without the "path decomposition".}
+	Then, we claim that the original problem---when the "tagged tree decomposition" is not part of 
+	the input---also lies in "NL". This is because one can compute, from $\gamma$, a
+	"path decomposition" in (deterministic) logarithmic space by\footnote{This result is an 
+	adaption of a similar statement for "tree-width" \cite[Theorem I.1, p. 143]{ElberfeldJakobyTantau2010Logspace}. Note that the promise that the query has bounded "path-width"---in fact bounded "tree-width" suffices---in a crucial assumption of  \cite[Theorem I.1, p. 143]{ElberfeldJakobyTantau2010Logspace}.} 
+	\cite[Theorem 1.3, p. 2]{KintaliMunteanu2010Computing}. Then, a "path decomposition" can be turned into a 
+	"tagged path decomposition" in (deterministic) logarithmic space by tagging an "atom"
+	$x \atom{L} y$ in the first bag containing both $x$ and $y$.
+	The conclusion follows since functions computable in non-deterministic logarithmic space
+	are closed under composition \cite[Lemma 4.17, p. 88]{AroraBarak2009ComputationalComplexity}. 
+\end{proof}

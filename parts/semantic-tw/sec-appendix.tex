@@ -33,12 +33,12 @@
     It then follows that 
     \begin{enumerate}
         \item  each $R_v$ is of size $\+O(|G|^{k+1})$, 
-        \item the "Boolean" "CQ" $q = \bigwedge_{v \in \vertex{T}} R_v(\bagmap(v))$ is "acyclic" and of size linear in $\nbatoms{\gamma}$, and 
+        \item the "Boolean" "CQ" $q = \bigwedge_{v \in \vertex{\?T}} R_v(\bagmap(v))$ is "acyclic" and of size linear in $\nbatoms{\gamma}$, and 
         \item $q$ is "equivalent" to $\gamma$.
     \end{enumerate}
     Hence, "Yannakakis algorithm" yields a complexity of $\+O(\size{\gamma} \cdot \costjoin(|G|^{k+1}))$. That is, $\+O(\size{\gamma} \cdot |G|^{k+1} \cdot \log{|G|})$, or $\+O(\size{\gamma} \cdot |G|^{k+1})$ in a RAM model.
 
-    We are only left with the cost of computing the relation $R_v$ for any given $v \in \vertex{T}$. Let $\+A_v= \set{A_1(y_1,z_1), \dotsc, A_s(y_s,z_s)}$ be the set of all "atoms" of $\tagmap^{-1}(v)$. Let $\bagmap(v)=\set{x_1, \dotsc, x_t}$.
+    We are only left with the cost of computing the relation $R_v$ for any given $v \in \vertex{\?T}$. Let $\+A_v= \set{A_1(y_1,z_1), \dotsc, A_s(y_s,z_s)}$ be the set of all "atoms" of $\tagmap^{-1}(v)$. Let $\bagmap(v)=\set{x_1, \dotsc, x_t}$.
     Compute first the relation $S_i = \set{ (u,u') \in \vertex{G}^2 : (u,u') \text{ "satisfies@@db" } A_i(y_i,z_i)}$ for every $i$; this can be done in $\+O(|G| \cdot |L_i \times \Gpm|)$, where $L_i \times \Gpm$ is the product of the NFA for the regular language $L_i$ of $A_i$ and the expanded "database@@graph" $\Gpm$.\footnote{That is, $L_i \times \Gpm$ is a  "database@@graph" having pairs $(q,v)$ where $q$ is a state for the NFA $\+A_i$ of $L_i$ and $v \in \vertex{\Gpm}$, and we have an edge $(q,v) \xrightarrow{a} (q',v')$ in $L_i \times \Gpm$ if  $q \xrightarrow{a} q'$ and $v \xrightarrow{a} v'$ are in $\+A_i$ and $\Gpm$ respectively.} Compute also the relation $U = \vertex{G}^t$ in $\+O(|G|^{t})$ (hence in $\+O(|G|^{k+1})$). Finally, we compute $R_v$ by performing $s$ nested "semi-joins" 
     \[
         ((U(x_1, \dotsc, x_t) \sjoin S_1(y_1,z_1)) \sjoin S_2(y_2,z_2) \dotsb )\sjoin S_s(y_s,z_s) 

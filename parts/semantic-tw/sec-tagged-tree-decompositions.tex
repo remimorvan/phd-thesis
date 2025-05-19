@@ -45,8 +45,8 @@ the "tree decomposition" of $\alpha$, and more importantly by how $\rho$ is mapp
     \AP Let $\fun\colon \rho \homto \alpha$ be a "homomorphism" between two "C2RPQs".
     A ""tagged tree decomposition""
     of $\fun$ is a triple $(T, \bagmap, \intro*\tagmap)$ where
-    $(T, \bagmap)$ is a "tree decomposition" of $\alpha$,
-    and $\tagmap$ is a mapping $\tagmap\colon \atoms{\rho} \to \vertex{T}$, called \AP""tagging"",
+    $\tup{\?T, \bagmap}$ is a "tree decomposition" of $\alpha$,
+    and $\tagmap$ is a mapping $\tagmap\colon \atoms{\rho} \to \vertex{\?T}$, called \AP""tagging"",
     such that for each "atom" $e = x \atom{\lambda} y \in \atoms{\rho}$, we have that $\bagmap(\tagmap(e))$ "contains@@tw" both $\fun(x)$ and
     $\fun(y)$.
 \end{definition}
@@ -65,8 +65,8 @@ the "tree decomposition" of $\alpha$, and more importantly by how $\rho$ is mapp
 In other words, $\tagmap$ gives,
 for each "atom" of $\rho$, a witnessing "bag" that "contains@@tw" it, in the sense that
 it contains the image by $\fun$ of the atom's source and target.
-By definition, given a "tree decomposition" $(T, \bagmap)$ of $\alpha$ and a "homomorphism"
-$\fun\colon \rho \surj \alpha$, there is always one way (usually many) of extending $(T, \bagmap)$
+By definition, given a "tree decomposition" $\tup{\?T, \bagmap}$ of $\alpha$ and a "homomorphism"
+$\fun\colon \rho \surj \alpha$, there is always one way (usually many) of extending $\tup{\?T, \bagmap}$
 into a "tagged tree decomposition" of $\fun$.
 
 We provide an example of "homomorphism" $\fun\colon \rho \surj \alpha$ in \Cref{fig:trio}. Note 

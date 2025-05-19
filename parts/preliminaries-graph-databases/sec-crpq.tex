@@ -183,68 +183,9 @@ A \AP""class of (Boolean) CRPQs"" is a function \AP$\intro*\classCRPQ$ mapping a
 to a set $\classCRPQ_{\A}$ of "Boolean CRPQs", which is closed under variable renaming and alphabetic
 renaming of the languages.
 
-\subsection{Small tree-width}
-
-
-It is known that the "evaluation problem" for "UC2RPQ" is "NP"-complete, just as for "conjunctive queries"
-\cite[Theorem 7]{ChandraMerlin1977Implementation}.
-However, queries whose underlying structure looks like a tree---formally, queries of bounded 
-"tree-width"---can be "evaluated" in polynomial time \cite[Theorem 3]{ChekuriRajaraman2000Containment}.\footnote{Theorem 3 talks about query "containment" of "CQs", which is in fact equivalent to the "evaluation problem" for "CQs". Moreover, the theorem deals with ``query width'', but this parameter is equivalent up to a multiplicative constant to the "tree-width" \cite[Lemma 2]{ChekuriRajaraman2000Containment} assuming that the database signature arity is fixed.} 
-
-\AP
-"Tree-width" is a measure of how much a
-graph differs from a tree, introduced by Arnborg, Corneil and
-Proskurowski~\cite{ArnborgCorneilProskurowski1987Complexity}.
-% who noticed that many "NP"-complete problems become polynomial-time solvable on classes of graphs of bounded tree-width \cite{ArnborgCorneilProskurowski1987Complexity}.
-%
-For a gentle but thorough introduction to "tree-width", we refer the reader to
-\cite[\S 3.6]{NesetrilPOM2012Prolegomena}. Formally, a \AP""tree decomposition"" of a multigraph $G$ is a
-pair $(T, \intro*\bagmap)$ where $T$ is a tree and $\bagmap: \vertex{T} \to \pset{\vars(G)}$ is a function that associates to each node of $T$, called \AP""bag"",
-a set of vertices of $G$. When $x \in \bagmap(b)$ we shall say that the "bag"
-$b \in \vertex{T}$ \AP""contains@@tw"" vertex $v$. Further, it must satisfy the following three properties:
-\begin{itemize}
-    \item each vertex $v$ of $\gamma$ is "contained@@tw" in at least one "bag" of $T$;
-    \item for each edge $u \atom{} v$ of $G$, there is at least one "bag" of $T$
-        that "contains@@tw" both $u$ and $v$; and 
-    \item for each vertex $v$ of $G$, the set of bags of $T$ "containing@@tw" $v$ is a 
-        connected subset of $\vertex{T}$.
-\end{itemize}
-The \AP""width"" of $(T, \bagmap)$ is the maximum of $|\bagmap(b)|-1$ when $b$ ranges over
-$\vertex{T}$.
-
-\begin{figure}
-	\centering
-	\subfloat[``Full'' representation of $(T, \bagmap)$.]{%
-		\AP\label{fig:ex-tree-dec-full}
-		\includegraphics[scale=.5]{fig/semantic-tw/ex-tree-dec-full.pdf}%
-	}
-	\hfill
-	\subfloat[``Concise'' representation of $(T, \bagmap)$]{%
-		\AP\label{fig:ex-tree-dec-concise}
-		\includegraphics[scale=1.1]{fig/semantic-tw/ex-tree-dec-concise.pdf}
-	}
-	\caption{
-		\AP\label{fig:ex-tree-dec}
-		Two different representations of the same "tree decomposition" $(T, \bagmap)$ of a 
-		multigraph $G$ with six 
-		vertices. The underlying tree is a path with four nodes and each "bag" contains 3 
-		vertices---hence the "decomposition@tree decomposition" has "width" 2.
-	}
-\end{figure}
-We give an example of "tree decomposition" in \Cref{fig:ex-tree-dec}:
-\begin{itemize}
-	\item In \Cref{fig:ex-tree-dec-full}, we give the ``full'' representation of
-	the "decomposition@tree decomposition": we draw $T$, and inside each "bag" $b$ of $T$
-	we represent a copy of $G$. Nodes of $G$ belonging to $b$ are highlighted, while the others are dimmed. Sometimes, we will only write the
-	name of the nodes contained in the "bag", instead of drawing the graph.
-	\item In \Cref{fig:ex-tree-dec-concise}, we give a ``concise'' representation:
-	we draw over $G$ a coloured shape for each "bag" of $T$. This representation is ambiguous---the structure of $T$ is not made explicit---and will only be used when no ambiguity can arise.
-\end{itemize}
-
-The \AP""tree-width"" of $G$ is the minimum of the "width" of all "tree decompositions" of $G$. The \reintro{tree-width} of a "C2RPQ" is the "tree-width" of its underlying multigraph. 
+The \reintro{tree-width} of a "C2RPQ" is the "tree-width" of its underlying multigraph. 
 We denote by $\intro*\Tw$ (resp.\ $\intro*\TwOneWay$) the set of all "C2RPQs" (resp.\ "CRPQs") of "tree-width" at most $k$. The \reintro{tree-width} of a "UC2RPQ" is simply the maximum of the "tree-width" of its "C2RPQs".
-\AP
-A ""path decomposition"" is a "tree decomposition" $(T,\bagmap)$ in which $T$ is a path. The \AP""path-width"" of $\gamma$ is the minimum of the "width" among all "path decompositions" of $\gamma$. The \reintro{path-width} of a "C2RPQ" and "UC2RPQ" are defined analogously. We denote by \AP$\intro*\Pw$ (resp.\ $\intro*\PwOneWay$) the set of all "C2RPQs" (resp.\ "CRPQs") of "path-width" at most $k$. The relationship between these classes is depicted in \Cref{fig:taxonomy-syntactic}:
+\AP The \reintro{path-width} of a "C2RPQ" and "UC2RPQ" are defined analogously. We denote by \AP$\intro*\Pw$ (resp.\ $\intro*\PwOneWay$) the set of all "C2RPQs" (resp.\ "CRPQs") of "path-width" at most $k$. The relationship between these classes is depicted in \Cref{fig:taxonomy-syntactic}:
 note that $\TwOneWay$ and $\PwOneWay$ are not explicitly drawn, but correspond to the
 intersection of $\Tw$ (resp.\ $\Pw$) with the class of "CRPQs".
 

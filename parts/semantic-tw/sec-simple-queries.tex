@@ -63,7 +63,7 @@ a "database@@graph" satisfies a "$k$-summary query" if and only if it
 satisfies one of its "refinements@@summary".
 
 A \AP ""tree decomposition@@summary"" of a "$k$-summary query" $\gamma$ consists of
-a pair $(T, \bagmap)$ with $\bagmap: \vertex{T} \to \pset{\vars(\gamma)}$
+a pair $\tup{\?T, \bagmap}$ with $\bagmap: \vertex{\?T} \to \pset{\vars(\gamma)}$
 such that:
 \begin{itemize}
 	\item for every classical "atom" $x \atom{L} y$ in $\gamma$,
@@ -94,7 +94,7 @@ then $\delta(\bar z') \contained \gamma(\bar z)$.
 
 Let us fix $\+L$ to be any class  "closed under sublanguages". For every $\gamma \in \CtwoRPQ(\+L)$, we define \AP $\intro*\Qapp$ as the set of all "$k$-summary queries" $\alpha$ such that:
 \begin{enumerate}[label=\roman*.]
-	\item $\alpha$ has a "fine tagged tree decomposition" $(T, \bagmap)$ of "width" at most $k$,
+	\item $\alpha$ has a "fine tagged tree decomposition" $\tup{\?T, \bagmap}$ of "width" at most $k$,
 	\item there exists a "strong onto" "homomorphism@@summary" from a "refinement" $\rho$ of $\gamma$ to $\alpha$, 
 	\item $T$ has at most $2\nbatoms{\gamma}$ leaves, and every
 		"non-branching path" of $T$ consisting only of "non-atomic" "bags" must contain at most two "non-full bags".
@@ -108,7 +108,7 @@ and since $\+L$ is "closed under sublanguages", then $\alpha$ has only $\+L$-lab
 	% define \AP $\intro*\Qapp$ as the set of all
 	% "$k$-summary queries" $\alpha$ such that:
 	% \begin{enumerate}[label=(\roman*)]
-	% 	\item $\alpha$ has a "fine tagged tree decomposition" $(T, \bagmap)$ of "width" at most $k$,
+	% 	\item $\alpha$ has a "fine tagged tree decomposition" $\tup{\?T, \bagmap}$ of "width" at most $k$,
 	% 	\item there exists a "homomorphism@@summary" from a "refinement" $\rho$ of $\gamma$
 	% 		to $\alpha$, and
 	% 	\item $T$ has at most $2\nbatoms{\gamma}$ leaves, and every
@@ -136,11 +136,11 @@ and since $\+L$ is "closed under sublanguages", then $\alpha$ has only $\+L$-lab
 \begin{proof}
 	Point \eqref{lemma:MUAk-union-of-polysized-summary-test-np:2} follows directly from the definition: there are few branches in the decomposition, branches are short, and each "bag" cannot contain more than $(k+1)^2 \cdot |\+L|$ "atoms" labelled with $\+L$-languages.
 
-	For point \eqref{lemma:MUAk-union-of-polysized-summary-test-np:3}, recall that one can check if a query has "tree-width" at most $k$ in linear time, "eg" using Bodlaender's algorithm \cite[Theorem 1.1]{Bodlaender1996Treewidth}.
+	For point \eqref{lemma:MUAk-union-of-polysized-summary-test-np:3}, recall that one can check if a query has "tree-width" at most $k$ in linear time, "eg" using Bodlaender's algorithm (\Cref{prop:bodlaender}).
 
 	% Points \eqref{lemma:MUAk-union-of-polysized-summary-test-np:2} and \eqref{lemma:MUAk-union-of-polysized-summary-test-np:3} follow directly from the definition---recall
 	% that one can check if a query has "tree-width" at most $k$ in linear time
-	% with Bodlaender's algorithm \cite[Theorem 1.1]{Bodlaender1996Treewidth}.
+	% with Bodlaender's algorithm (\Cref{prop:bodlaender}).
 
 	To prove \eqref{lemma:MUAk-union-of-polysized-summary-test-np:1}, notice first that 
 	$\Qapp \contained \MUA{\gamma}{\Tw}$ as a consequence

@@ -239,7 +239,7 @@ proven in \cite[Theorem 4, p. 296]{FlumGrohe2003Describing}.
 
 We define \AP""para-NL"" as the class of parametrized languages $L \subseteq \Sigma^* \times \N$
 for which there is a Turing machine $M$ "st"
-\begin{center}\begin{tikzpicture}[>={Classical TikZ Rightarrow}]
+\begin{center}\begin{tikzpicture}[>={Classical TikZ Rightarrow},font=\normalsize]
 	\node (first) {%
 		$M \text{ accepts } \langle \textcolor{cRed}{x},\, \textcolor{cBlue}{k}\rangle%
 		\quad\text{"iff"}\quad
@@ -267,91 +267,18 @@ To show \Cref{thm:evaluation-bounded-pathwidth}, we first focus on the evaluatio
 	For each $k \geq 1$, the "evaluation problem", restricted to "UC2RPQs" of
 	"path-width" at most $k$, is "NL"-complete.
 \end{lemma}
-
-\begin{figure}
-	\centering
-	\subfloat[Partial homomorphism computed at the fourth step of the algorithm.]{
-		\includegraphics[scale=.7]{eval-pw-nl-1.pdf}
-	}
-	\hfill
-	\subfloat[Partial homomorphism computed at the fifth step of the algorithm.]{
-		\includegraphics[scale=.7]{eval-pw-nl-2.pdf}
-	}
-	\caption{
-		\AP\label{fig:eval-pw-nl}
-		Algorithm to evaluate "C2RPQs" of "path-width" at most $k$ (here $k=2$)
-		in non-deterministic logspace. Each subfigure represents: (i) on the left-hand side, a
-		"path decomposition" of a "C2RPQ", (ii) on the right-hand side, a "graph database",
-		and (iii) a partial "homomorphism" from the "C2RPQ" to the "database@@graph".
-	}
-\end{figure}
-
 \begin{proof}
-	\proofcase{Lower bound.} "NL"-hardness direected follows from the "NL"-hardness of
-	the reachability problem in directed graphs, see "eg" \cite[Theorem~4.18, p.~89]{AroraBarak2009ComputationalComplexity}.
-
-	\proofcase{Upper bound, first part: with the "path decomposition".}
-	First, we assume that a "tagged path decomposition" of width at most $k$ of the query of
-	is also provided as part of the input. Moreover, we assume "wlog" that the input is "C2RPQ"---the extension to "UC2RPQ" being straightforward. So, we are given as input:
-	\begin{itemize}
-		\item a database together with a tuple of nodes $G(\bar u)$,
-		\item a "C2RPQ" $\gamma(\bar x)$, and
-		\item a "tagged path decomposition" $\langle T, \bagmap, \tagmap \rangle$ of "width" at 	
-			most $k$ of $\gamma(\bar x)$.
-	\end{itemize}
-	The algorithm, illustrated in \Cref{fig:eval-pw-nl}, maintains a partial homomorphism
-	$f\colon X \pto G$
-	of these variables onto $G$.
-	We scan the "bags" of the decomposition from left to right.
-	\begin{itemize}
-		\item Initially---before even scanning the first "bag"---$f$ is the map with empty domain.
-		\item Then, when scanning the $i$-th bag $b_i$,
-			we start by restricting $f$ to variables of $\dom(f)\cap b_i$.
-			Then, we extend $f$ so that it is defined on the whole "bag" $b_i$.
-			For every variable $y$ in $b_i \smallsetminus\dom(f)$:
-			\begin{itemize}
-				\item if it belongs to $\bar x$, say $y = x_i$, 
-					we let $f(x_i) \defeq u_i$;
-				\item otherwise, we non-deterministically guess the value of $f(y)$.
-			\end{itemize}
-			We then check, for every "atom" $x \atom{L} y$ of $\gamma(\bar x)$ which is "tagged" in 
-			the current "bag" $b_i$ if there is a path from $f(x)$ to $f(y)$ labelled by a word of $L$ in $G$. If not, we reject. 
-	\end{itemize}
-	If the algorithm manages to scan the whole bag decomposition without rejecting, it accepts.
-
-	Completeness of the algorithm is trivial. Correctness follows from the fact that if
-	a variable occurs in "bags" $b_i$ and $b_k$ with $i \leq k$, then it must also belong to every
-	"bag" $b_j$ for $j \in \lBrack i,k \rBrack$. As a consequence, a variable $x$ is assigned 
-	exactly one value $f(x)$ during the whole process. 
-
-	Concerning the space complexity:
-	\begin{itemize}
-		\item By construction, at the $i$-th step of the algorithm, $f$ is defined exactly on $b_i$, so on at most $k+1$ variables.
-		So, $f$ can be stored in space $(k+1)\log(|G|)$;
-		\item we need a counter with $\log(|T|)$ bits to scan through the "tagged path decomposition",
-		\item each atomic check---checking if there is an $L$-labelled path from $f(x)$ to $f(y)$---can be done in non-deterministic space $c\cdot (\log(|G|) + \log(|\+A_L|))$,
-		where $\+A_L$ is an NFA for $L$, using a straightforward adaptation of the "NL" algorithm for graph connectivity; note that these atomic checks are
-		independent of one another, so we can reuse this space.
-	\end{itemize}
-	Overall, the algorithm runs in non-deterministic space
-	$\+O(k\log(|G|) + \log(|T|)) = \+O(\log(|G|) + \log(|T|))$,
-	which is logarithmic in the size of the input.
-
-	\smallskip
-
-	\proofcase{Upper bound, second part: without the "path decomposition".}
-	Then, we claim that the original problem---when the "tagged tree decomposition" is not part of 
-	the input---also lies in "NL". This is because one can compute, from $\gamma$, a
-	"path decomposition" in (deterministic) logarithmic space by\footnote{This result is an 
-	adaption of a similar statement for "tree-width" \cite[Theorem I.1, p. 143]{ElberfeldJakobyTantau2010Logspace}. Note that the promise that the query has bounded "path-width"---in fact bounded "tree-width" suffices---in a crucial assumption of  \cite[Theorem I.1, p. 143]{ElberfeldJakobyTantau2010Logspace}.} 
-	\cite[Theorem 1.3, p. 2]{KintaliMunteanu2010Computing}. Then, a "path decomposition" can be turned into a 
-	"tagged path decomposition" in (deterministic) logarithmic space by tagging an "atom"
-	$x \atom{L} y$ in the first bag containing both $x$ and $y$.
-	The conclusion follows since functions computable in non-deterministic logarithmic space
-	are closed under composition \cite[Lemma 4.17, p. 88]{AroraBarak2009ComputationalComplexity}. 
+	The exact same proof as for "CQs" works, see \Cref{lemma:evaluation-bounded-pathwidth}.%
+	\footnote{For the full proof, see \cite[Lemma~8.10]{FigueiraMorvan2025SemanticTreeWidthLMCS}.}
+	To get the "NL" complexity, we require an extra argument:
+	namely that each atomic check---checking if there is an $L$-labelled path from $f(x)$ to $f(y)$---can be done in non-deterministic space. 
+	In fact, using a straightforward adaptation of the "NL" algorithm for graph reachability,
+	we obtain an algorithm in $\+O(\log(|D|) + \log(|\+A_L|))$
+	where $\+A_L$ is an NFA for $L$, ; note that these atomic checks are
+	independent of one another, so we can reuse this space.
 \end{proof}
 
-We can now conclude with \Cref{thm:evaluation-bounded-pathwidth}, namely that the "evaluation problem" for "UC2RPQs" of
+We can now conclude and prove that the "evaluation problem" for "UC2RPQs" of
 "semantic path-width" $k$ is in "para-NL".
 \begin{proof}[Proof of \Cref{thm:evaluation-bounded-pathwidth}.]
 	Given a "UC2RPQ"
