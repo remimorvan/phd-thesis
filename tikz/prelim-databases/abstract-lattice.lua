@@ -16,7 +16,7 @@ function draw_cq(x, y, colour, label)
 end
 
 function draw_db(x, y, colour, label)
-	tex.print(string.format("\\node[circle, fill=%s, minimum size=2pt, outer sep=1pt] (%s) at (%f,%f) {};", colour, label, x, y))
+	tex.print(string.format("\\node[circle, fill=%s, minimum size=2.5pt, outer sep=1pt] (%s) at (%f,%f) {};", colour, label, x, y))
 end
 
 \end{luacode}
