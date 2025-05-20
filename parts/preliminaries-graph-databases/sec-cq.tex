@@ -1523,10 +1523,10 @@ for a larger class of queries than those of bounded tree-width.
 
 \begin{proof}
 	The algorithm goes as follows:
-	we start by computing the "core@@CQ" $\core\gamma(\bar x)$
+	we start by computing the "core@@CQ" $\coreCQ\gamma(\bar x)$
 	of the "CQ" $\gamma(\bar x)$, and then instead of evaluating
 	$\gamma(\bar x)$ on the "database", we instead evaluate
-	$\core\gamma(\bar x)$, using the polynomial-time algorithm
+	$\coreCQ\gamma(\bar x)$, using the polynomial-time algorithm
 	of \Cref{prop:eval-CQ-bounded-tw}.
 	Overall, the algorithm runs in time
 	\[
@@ -1886,7 +1886,7 @@ can be lifted to "UCQs", for instance:
 \begin{itemize}
 	\item starting from a "UCQ" $\gamma_1 \lor \dotsc \lor \gamma_k$,
 		the "UCQ" obtained by (1) considering the "cores@@CQ"
-		$\coreCQ{\gamma_1}$, $\dotsc$, $\coreCQ{\gamma_k}$,
+		$\coreCQ\gamma_1$, $\dotsc$, $\coreCQ\gamma_k$,
 		(2) putting aside those that are "contained" in another "core",
 		and (3) taking their union
 		yields a "UCQ" that is "semantically equivalent" to the
