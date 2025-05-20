@@ -1,50 +1,50 @@
-\section{\AP{}Polynomial-Time Evaluation of Queries of Bounded Tree-Width}
-\label{apdx-sec:prop:crpq-bound-tree-width-upper-bound}
+% \section{\AP{}Polynomial-Time Evaluation of Queries of Bounded Tree-Width}
+% \label{apdx-sec:prop:crpq-bound-tree-width-upper-bound}
 
-\crpqboundtwupperbound*
-\begin{proof}
-    \AP
-    \knowledgenewrobustcmd{\sjoin}{\cmdkl{\ltimes}}
-    \knowledgenewrobustcmd{\costjoin}{\cmdkl{c_{sj}}}
-    A ""semi-join"" is a "CQ" of the form $q(\bar x) = R(\bar x) \land S(\bar y)$, noted $R(\bar x) \intro*\sjoin S(\bar y)$, where $\bar x$ and $\bar y$ may contain common variables and constants. \AP ""Yannakakis algorithm"" \cite{Yannakakis81Algorithms} allows to evaluate any Boolean "acyclic"%
-	\footnote{%
-	An \AP""acyclic"" "CQ" over arbitrary relational structures is one which admits a "tree decomposition" whose set of "bags" are the sets of variables of its atoms (also known as ``generalized hyper tree-width 1'' or ``$\alpha$-acyclicity'' of its underlying hypergraph).
-	} 
-	"conjunctive query" $q$ on an $n$-tuple relational database in $\+O(|q| \cdot \costjoin(n))$, where $\intro*\costjoin(n)$ is the cost of performing a "semi-join": $\+O(n \cdot \log(n))$ for Turing machines, or $\+O(n)$ for a RAM model.\footnote{
-		We use Random Access Machines (RAMs) with domain $\N$, in which we assume that the RAM's memory is initialized to 0. 
-		For every fixed dimension $d \geq 1$  we have available an unbounded number of $d$-ary arrays $A$ such that for given $(n_1, \dotsc, n_d) \in \N^d$ the entry $A[n_1, \dotsc, n_d]$ at position $(n_1, \dotsc, n_d)$ can be accessed in constant time.
-		To compute $R(\bar x \, \bar y) \sjoin S(\bar y \, \bar z)$, where $\bar y$ are the only common variables between the atoms and $n_R$ and $n_S$ are the number of tuples in $R$ and $S$ respectively, we may assume that constants from the relations are encoded as numbers in binary, of size $\+O(\log(n_R + n_S))$. 
-		We first encode the relation $R$ projected onto $\bar y$, as an array $A$ of the dimension of $\bar y$ in $\+O(n_R)$, by putting a `1' in $A$ for each tuple of $R$. 
-		Then, for each tuple of $S$ we test if the $\bar y$-projection belongs to $A$, if so we put a `2' in the array $A$, this is $\+O(n_S)$. 
-		Finally, for each tuple of $R$ we output the tuple if its projection onto $\bar y$ has a `2' in $A$. This last step takes $\+O(n_R)$.
-	}
-	% \sidediego{J'ai ajouté l'algo RAM en footnote...}
+% \crpqboundtwupperbound*
+% \begin{proof}
+%     \AP
+%     \knowledgenewrobustcmd{\sjoin}{\cmdkl{\ltimes}}
+%     \knowledgenewrobustcmd{\costjoin}{\cmdkl{c_{sj}}}
+%     A ""semi-join"" is a "CQ" of the form $q(\bar x) = R(\bar x) \land S(\bar y)$, noted $R(\bar x) \intro*\sjoin S(\bar y)$, where $\bar x$ and $\bar y$ may contain common variables and constants. \AP ""Yannakakis algorithm"" \cite{Yannakakis81Algorithms} allows to evaluate any Boolean "acyclic"%
+% 	\footnote{%
+% 	An \AP""acyclic"" "CQ" over arbitrary relational structures is one which admits a "tree decomposition" whose set of "bags" are the sets of variables of its atoms (also known as ``generalized hyper tree-width 1'' or ``$\alpha$-acyclicity'' of its underlying hypergraph).
+% 	} 
+% 	"conjunctive query" $q$ on an $n$-tuple relational database in $\+O(|q| \cdot \costjoin(n))$, where $\intro*\costjoin(n)$ is the cost of performing a "semi-join": $\+O(n \cdot \log(n))$ for Turing machines, or $\+O(n)$ for a RAM model.\footnote{
+% 		We use Random Access Machines (RAMs) with domain $\N$, in which we assume that the RAM's memory is initialized to 0. 
+% 		For every fixed dimension $d \geq 1$  we have available an unbounded number of $d$-ary arrays $A$ such that for given $(n_1, \dotsc, n_d) \in \N^d$ the entry $A[n_1, \dotsc, n_d]$ at position $(n_1, \dotsc, n_d)$ can be accessed in constant time.
+% 		To compute $R(\bar x \, \bar y) \sjoin S(\bar y \, \bar z)$, where $\bar y$ are the only common variables between the atoms and $n_R$ and $n_S$ are the number of tuples in $R$ and $S$ respectively, we may assume that constants from the relations are encoded as numbers in binary, of size $\+O(\log(n_R + n_S))$. 
+% 		We first encode the relation $R$ projected onto $\bar y$, as an array $A$ of the dimension of $\bar y$ in $\+O(n_R)$, by putting a `1' in $A$ for each tuple of $R$. 
+% 		Then, for each tuple of $S$ we test if the $\bar y$-projection belongs to $A$, if so we put a `2' in the array $A$, this is $\+O(n_S)$. 
+% 		Finally, for each tuple of $R$ we output the tuple if its projection onto $\bar y$ has a `2' in $A$. This last step takes $\+O(n_R)$.
+% 	}
+% 	% \sidediego{J'ai ajouté l'algo RAM en footnote...}
 
-    We reduce the "evaluation problem" for "C2RPQs" of "tree-width" $k$ to the "evaluation problem" of Boolean acyclic "CQs". First, if we receive $\Gamma (\bar x)$, $G$ and $\bar v$ as input, we replace the "free variables" $\bar x$ of $\Gamma$ with the "graph database" nodes $\bar v$ as constants, to obtain a Boolean "C2RPQ" (with constants). Let us therefore assume that $\Gamma$ is Boolean.
-	Take any $\gamma \in \Gamma$ and a "tagged tree decomposition" $(T, \bagmap, \tagmap)$ of "width" at most $k$ of $\gamma$.\footnote{By a "tagged tree decomposition" of $\gamma$ we mean one for the identity $\gamma \homto \gamma$. The definition of "tagged tree decompositions" can be found in \Cref{sec:treedec}.}
-	It is easy to see that we can assume that the decomposition is of linear size in the number of "atoms" $\nbatoms{\gamma}$.%
-	\footnote{
-		Indeed, observe that the decomposition resulting from contracting any edge so that one "bag" is contained or equal to the other is of linear size and preserves the "width" (see, "eg", \cite{GottlobLeoneScarcelloHypertreeDecompositions}).
-		% It also follows from the fact that computing "tree decomposition" of "width" $k$ is in linear time \cite{bodlaender1993linear}.
-	}
-	 For every "bag" $v$ of the decomposition containing $\bagmap(v)=\set{x_1, \dotsc, x_t}$ consider the following relation $R_v$ consisting of all tuples of "database@@graph" nodes $(v_1, \dotsc, v_t)$ such that for every "atom" $A=x_i \atom{L} x_j$ in $\tagmap^{-1}(v)$ we have that $(v_i, v_j)$ "satisfies@@db" $A$.
+%     We reduce the "evaluation problem" for "C2RPQs" of "tree-width" $k$ to the "evaluation problem" of Boolean acyclic "CQs". First, if we receive $\Gamma (\bar x)$, $G$ and $\bar v$ as input, we replace the "free variables" $\bar x$ of $\Gamma$ with the "graph database" nodes $\bar v$ as constants, to obtain a Boolean "C2RPQ" (with constants). Let us therefore assume that $\Gamma$ is Boolean.
+% 	Take any $\gamma \in \Gamma$ and a "tagged tree decomposition" $(T, \bagmap, \tagmap)$ of "width" at most $k$ of $\gamma$.\footnote{By a "tagged tree decomposition" of $\gamma$ we mean one for the identity $\gamma \homto \gamma$. The definition of "tagged tree decompositions" can be found in \Cref{sec:treedec}.}
+% 	It is easy to see that we can assume that the decomposition is of linear size in the number of "atoms" $\nbatoms{\gamma}$.%
+% 	\footnote{
+% 		Indeed, observe that the decomposition resulting from contracting any edge so that one "bag" is contained or equal to the other is of linear size and preserves the "width" (see, "eg", \cite{GottlobLeoneScarcelloHypertreeDecompositions}).
+% 		% It also follows from the fact that computing "tree decomposition" of "width" $k$ is in linear time \cite{bodlaender1993linear}.
+% 	}
+% 	 For every "bag" $v$ of the decomposition containing $\bagmap(v)=\set{x_1, \dotsc, x_t}$ consider the following relation $R_v$ consisting of all tuples of "database@@graph" nodes $(v_1, \dotsc, v_t)$ such that for every "atom" $A=x_i \atom{L} x_j$ in $\tagmap^{-1}(v)$ we have that $(v_i, v_j)$ "satisfies@@db" $A$.
 
 
-    It then follows that 
-    \begin{enumerate}
-        \item  each $R_v$ is of size $\+O(|G|^{k+1})$, 
-        \item the "Boolean" "CQ" $q = \bigwedge_{v \in \vertex{\?T}} R_v(\bagmap(v))$ is "acyclic" and of size linear in $\nbatoms{\gamma}$, and 
-        \item $q$ is "equivalent" to $\gamma$.
-    \end{enumerate}
-    Hence, "Yannakakis algorithm" yields a complexity of $\+O(\size{\gamma} \cdot \costjoin(|G|^{k+1}))$. That is, $\+O(\size{\gamma} \cdot |G|^{k+1} \cdot \log{|G|})$, or $\+O(\size{\gamma} \cdot |G|^{k+1})$ in a RAM model.
+%     It then follows that 
+%     \begin{enumerate}
+%         \item  each $R_v$ is of size $\+O(|G|^{k+1})$, 
+%         \item the "Boolean" "CQ" $q = \bigwedge_{v \in \vertex{\?T}} R_v(\bagmap(v))$ is "acyclic" and of size linear in $\nbatoms{\gamma}$, and 
+%         \item $q$ is "equivalent" to $\gamma$.
+%     \end{enumerate}
+%     Hence, "Yannakakis algorithm" yields a complexity of $\+O(\size{\gamma} \cdot \costjoin(|G|^{k+1}))$. That is, $\+O(\size{\gamma} \cdot |G|^{k+1} \cdot \log{|G|})$, or $\+O(\size{\gamma} \cdot |G|^{k+1})$ in a RAM model.
 
-    We are only left with the cost of computing the relation $R_v$ for any given $v \in \vertex{\?T}$. Let $\+A_v= \set{A_1(y_1,z_1), \dotsc, A_s(y_s,z_s)}$ be the set of all "atoms" of $\tagmap^{-1}(v)$. Let $\bagmap(v)=\set{x_1, \dotsc, x_t}$.
-    Compute first the relation $S_i = \set{ (u,u') \in \vertex{G}^2 : (u,u') \text{ "satisfies@@db" } A_i(y_i,z_i)}$ for every $i$; this can be done in $\+O(|G| \cdot |L_i \times \Gpm|)$, where $L_i \times \Gpm$ is the product of the NFA for the regular language $L_i$ of $A_i$ and the expanded "database@@graph" $\Gpm$.\footnote{That is, $L_i \times \Gpm$ is a  "database@@graph" having pairs $(q,v)$ where $q$ is a state for the NFA $\+A_i$ of $L_i$ and $v \in \vertex{\Gpm}$, and we have an edge $(q,v) \xrightarrow{a} (q',v')$ in $L_i \times \Gpm$ if  $q \xrightarrow{a} q'$ and $v \xrightarrow{a} v'$ are in $\+A_i$ and $\Gpm$ respectively.} Compute also the relation $U = \vertex{G}^t$ in $\+O(|G|^{t})$ (hence in $\+O(|G|^{k+1})$). Finally, we compute $R_v$ by performing $s$ nested "semi-joins" 
-    \[
-        ((U(x_1, \dotsc, x_t) \sjoin S_1(y_1,z_1)) \sjoin S_2(y_2,z_2) \dotsb )\sjoin S_s(y_s,z_s) 
-    \]
-    in $\+O(s \cdot |G|^{k+1} \cdot \costjoin(|G|^{k+1}))$, that is, in $\+O(s \cdot |G|^{k+1} \cdot \log(|G|))$ or $\+O(s \cdot |G|^{k+1})$ in a RAM model. Repeating this for every "bag" we can compute all the $R_v$'s in $\+O(\size{\gamma} \cdot |G|^{k+1} \cdot \log(|G|))$ (observe that we iterate only once on each "atom", since we are using a "``tagged'' decomposition@tagged tree decomposition") or $\+O(\size{\gamma} \cdot |G|^{k+1})$ in a RAM model.
-\end{proof}
+%     We are only left with the cost of computing the relation $R_v$ for any given $v \in \vertex{\?T}$. Let $\+A_v= \set{A_1(y_1,z_1), \dotsc, A_s(y_s,z_s)}$ be the set of all "atoms" of $\tagmap^{-1}(v)$. Let $\bagmap(v)=\set{x_1, \dotsc, x_t}$.
+%     Compute first the relation $S_i = \set{ (u,u') \in \vertex{G}^2 : (u,u') \text{ "satisfies@@db" } A_i(y_i,z_i)}$ for every $i$; this can be done in $\+O(|G| \cdot |L_i \times \Gpm|)$, where $L_i \times \Gpm$ is the product of the NFA for the regular language $L_i$ of $A_i$ and the expanded "database@@graph" $\Gpm$.\footnote{That is, $L_i \times \Gpm$ is a  "database@@graph" having pairs $(q,v)$ where $q$ is a state for the NFA $\+A_i$ of $L_i$ and $v \in \vertex{\Gpm}$, and we have an edge $(q,v) \xrightarrow{a} (q',v')$ in $L_i \times \Gpm$ if  $q \xrightarrow{a} q'$ and $v \xrightarrow{a} v'$ are in $\+A_i$ and $\Gpm$ respectively.} Compute also the relation $U = \vertex{G}^t$ in $\+O(|G|^{t})$ (hence in $\+O(|G|^{k+1})$). Finally, we compute $R_v$ by performing $s$ nested "semi-joins" 
+%     \[
+%         ((U(x_1, \dotsc, x_t) \sjoin S_1(y_1,z_1)) \sjoin S_2(y_2,z_2) \dotsb )\sjoin S_s(y_s,z_s) 
+%     \]
+%     in $\+O(s \cdot |G|^{k+1} \cdot \costjoin(|G|^{k+1}))$, that is, in $\+O(s \cdot |G|^{k+1} \cdot \log(|G|))$ or $\+O(s \cdot |G|^{k+1})$ in a RAM model. Repeating this for every "bag" we can compute all the $R_v$'s in $\+O(\size{\gamma} \cdot |G|^{k+1} \cdot \log(|G|))$ (observe that we iterate only once on each "atom", since we are using a "``tagged'' decomposition@tagged tree decomposition") or $\+O(\size{\gamma} \cdot |G|^{k+1})$ in a RAM model.
+% \end{proof}
 
 
 \section{\AP{}Alternative Upper Bound for Containment of UC2RPQs}

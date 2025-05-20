@@ -8,7 +8,7 @@
 The complex landscape of rationality for finite-word relations 
 described in \Cref{sec:preliminaries-automatic-structures-relations}
 yields a natural question of \emph{effectivity}: given a relation in some class,
-can we decide if it belongs to a fixed subclass? 
+can we decide if it belongs to a given subclass? 
 % Recall that \AP"rational relations" $\RAT$ are those definable by "multitape automata",
 % with heads possibly moving asynchronously;
 % "automatic relations"
@@ -49,11 +49,17 @@ By applying techniques based on Ramsey Theorem over infinite graphs, it was show
 \AP A natural generalization of this question is the
 "$\RAT$/$\REC$-separability problem", which takes two $n$-ary "rational relations" 
 $\+R,\+R' \subseteq \Sigma^* \times \Sigma^*$ and checks whether there is a "recognizable relation" 
-$S = \bigcup_i L_{i,1} \times \cdots \times L_{i,n}$ that "separates@@rel" $\+R$ from $\+R'$, meaning that $\+R \subseteq \+S$ and $\+R' \cap \+S = \emptyset$, in which case we say that $\+R$
+$\+S = \bigcup_i L_{i,1} \times \cdots \times L_{i,n}$ that "separates@@rel" $\+R$ from $\+R'$, meaning that $\+R \subseteq \+S$ and $\+R' \cap \+S = \emptyset$, in which case we say that $\+R$
 and $\+R'$ are \AP""separable@@rel"" by a "recognizable relation".
 In other words, this problem asks whether we can \emph{overapproximate} $\+R$ with a recognizable 
 relation $\+S$ that is constrained not to intersect with $\+R'$. Separability problems of this kind abound in theoretical computer science, in particular
-in formal language theory where they have gained a lot of attention over the last few years---see "eg" \cite{PlaceZeitoun2016SeparatingRegularLanguages,Kopczynski2016InvisiblePushdownLanguages,CzerwinskiMartensRooijenZeitounZetzsche2017DecidableSeparabilityPiecewiseTestable,ClementeCzerwinskiLasotaPaperman2017RegularSeparabilityParikhAutomata}. 
+in formal language theory where they have gained a lot of attention over the last few years,
+in a large variety of settings---see "eg" \cite{PlaceZeitoun2016SeparatingRegularLanguages}
+for "first-order definable" languages over finite and $\omega$-words,
+\cite{ColcombetGoolMorvan2022FOSeparation} for their extension to countable ordinals,
+\cite{CzerwinskiMartensRooijenZeitounZetzsche2017DecidableSeparabilityPiecewiseTestable} for piecewise languages,
+\cite{Kopczynski2016InvisiblePushdownLanguages} for separability question
+over pushdown languages, or \cite{ClementeCzerwinskiLasotaPaperman2017RegularSeparabilityParikhAutomata} for Parikh automata. 
 
 In this chapter, we focus on the following problem:
 \decisionproblem{
@@ -165,10 +171,10 @@ Moreover, Larose and Tesson proved a dichotomy theorem for "CSPs" with small com
 	then $\HomFin{\?B}$ is "L"-hard under "first-order reductions".
 \end{proposition}
 
-Observe that this last proposition only allow for "finite structures" on the
+Observe that this last proposition only allows for "finite structures" on the
 "source side@@struct" of the problem.
 This chapter will generalize some results---including the latter---on the "homomorphism problem"
-from "finite structures" to "automatic structures". The study of "CSPs" beyond finite set
+from "finite structures" to "automatic structures". The study of "CSPs" beyond "finite structures"
 is far from a new topic, and has been the subject of many works in the past decade:
 see for instance \cite{KlinKopczynskiOchremiakTorunczyk2015LocallyFiniteCSP} for "CSPs"
 over ``nominal structures'', "ie" "structures" with ``atoms'',
@@ -292,6 +298,6 @@ However, the proof of correctness of our algorithm is non-trivial
 and relies on providing a fine understanding of the behaviour of the algorithm
 for "finite structures" in the special case of "target structures"
 that have "finite duality".
-We conclude in \Cref{sec:dichotomy-discussion}, by discussing on
+We conclude in \Cref{sec:dichotomy-discussion}, by discussing
 conjectures and related problems.
 

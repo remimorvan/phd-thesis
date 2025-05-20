@@ -43,3 +43,7 @@
   \pushQED{\qed}\renewcommand{\qedsymbol}{\smash{\rotatebox{45}{\proofqedsymbol}}}%
 }
 \AtEndEnvironment{example}{\popQED\endexample}
+\AtBeginEnvironment{remark}{%
+  \pushQED{\qed}\renewcommand{\qedsymbol}{\smash{\rotatebox{45}{\proofqedsymbol}}}%
+}
+\AtEndEnvironment{remark}{\popQED\endremark}
