@@ -1574,13 +1574,13 @@ it has bounded "tree-width" and so by \Cref{prop:eval-CQ-bounded-tw}
 it can be evaluated in polynomial time.
 We shall see that "CQs" of small "path-width"
 can in fact be evaluated even more efficiently, namely in "NL"!
-We define a ""path decomposition"" to be a "tree decomposition" $\tup{\?T,\bagmap}$
+We define a \AP""path decomposition"" to be a "tree decomposition" $\tup{\?T,\bagmap}$
 in which $\?T$ is a path, such as in \Cref{fig:ex-tree-dec}.
 The \AP""path-width"" of a "structure" is the minimum of the "width" of
 all of its "path decompositions".
 
 \begin{lemma}[{\cite[Lemma~8.10]{FigueiraMorvan2025SemanticTreeWidthLMCS}}]
-	\!\footnote[][5em]{\cite[Lemma~8.10]{FigueiraMorvan2025SemanticTreeWidthLMCS},
+	\!\footnote[][-5em]{\cite[Lemma~8.10]{FigueiraMorvan2025SemanticTreeWidthLMCS},
 	corresponding to \Cref{lemma:evaluation-bounded-pathwidth} in this thesis,
 	actually proved this result over the larger class of "UC2RPQs" of bounded 
 	"path-width". The proof of the upper bound is exactly the same,
@@ -1664,19 +1664,17 @@ all of its "path decompositions".
 	Concerning the space complexity,
 	by construction, at the $i$-th step of the algorithm, $f$ is defined exactly on $b_i$, so on at most $k+1$ variables.
 	And so, $f$ can be stored in space $(k+1)\log(|D|)$.
-	We also need a counter with $\log(|T|)$ bits to scan through the "tagged path decomposition".
+	We also need a counter with $\log(|T|)$ bits to scan through the "path decomposition".
 	Overall, the algorithm runs in non-deterministic space
-	$\+O(k\log(|G|) + \log(|T|)) = \+O(\log(|G|) + \log(|T|))$,
+	$\+O(k\log(|D|) + \log(|T|)) = \+O(\log(|D|) + \log(|T|))$,
 	which is logarithmic in the size of the input.
 
 	\proofcase{Upper bound, second part: without the "path decomposition".}
-	Then, we claim that the original problem---when the "tagged tree decomposition" is not part of 
+	Then, we claim that the original problem---when the "tree decomposition" is not part of 
 	the input---also lies in "NL". This is because one can compute, from $\gamma$, a
 	"path decomposition" in (deterministic) logarithmic space by\footnote{This result is an 
 	adaption of a similar statement for "tree-width" \cite[Theorem I.1, p. 143]{ElberfeldJakobyTantau2010Logspace}. Note that the promise that the query has bounded "path-width"---in fact bounded "tree-width" suffices---in a crucial assumption of  \cite[Theorem I.1, p. 143]{ElberfeldJakobyTantau2010Logspace}.} 
-	\cite[Theorem 1.3, p. 2]{KintaliMunteanu2010Computing}. Then, a "path decomposition" can be turned into a 
-	"tagged path decomposition" in (deterministic) logarithmic space by tagging an "atom"
-	$x \atom{L} y$ in the first bag containing both $x$ and $y$.
+	\cite[Theorem 1.3, p. 2]{KintaliMunteanu2010Computing}.
 	The conclusion follows since functions computable in non-deterministic logarithmic space
 	are closed under composition \cite[Lemma 4.17, p. 88]{AroraBarak2009ComputationalComplexity}. 
 \end{proof}
@@ -1734,8 +1732,7 @@ precisely helps us understand this.
 Formally, we define a ""union of conjunctive queries"", or \reintro{UCQ} for short,
 as a finite set of "conjunctive queries" that all have the same number
 of "output variables". This set is denoted disjunctively.
-Its semantics is defined as the union of the semantics of the "conjunctive queries" it
-contains.
+Its semantics is defined as the union of the semantics of the "conjunctive queries" it contains.%
 \footnote[][2em]{Strictly speaking it is not necessary
 to assume that these "output variables" are equal, however we can assume "wlog" that
 it is the case, by $\alpha$-renaming.}
