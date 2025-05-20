@@ -333,6 +333,11 @@ is the "pointed relational database" of \Cref{fig:prelim-db-ex-db}.
 We say that a "conjunctive query" is ""Boolean@@cq"" when it has no "output variables".
 In this case, its "canonical database" is not only a "pointed relational database" but
 in fact a "relational database".
+Naturally, "Boolean queries" are denoted by $\gamma()$.
+We will sometimes denote some query (either ""Boolean@@cq"" or not)
+by $\gamma$ (with no brackets): this is simply to ease the notations when
+no ambiguity can arise---we will often explicitly mention the tuple of "output variables"
+when introducing the query, and then simply the notation in a second time.
 
 \begin{proposition}[""Duality""]
 	\AP\label{prop:duality}
@@ -385,6 +390,10 @@ witnessed by the "homomorphism" from the
 "canonical database" of \Cref{fig:prelim-db-ex-db} to the
 "database@@rel" of \Cref{fig:prelim-db-stupid-ex},
 that sends $x$ and $x'$ onto $u$, $y$ onto $v$ and $y'$ onto $w$.
+As witnessed by this example, the "homomorphism" $\?G \to \?D$ actually has a
+natural meaning when thinking about model checking.
+For this reason, such a "homomorphism" is also called an "evaluation map"---or even
+abusively \emph{homomorphism}---from $\gamma$ to $\?D$.
 
 "Duality" has \emph{many} consequences. First, the following evaluation problem
 lies in "NP", as it can be encoded into a "homomorphism problem".
@@ -1065,9 +1074,8 @@ Typical examples of "monotone classes of CQs" include:
 	\item "CQs" in which all "cliques" are of size at most $k$, etc.
 \end{itemize}
 
-We define the ""core@@CQ"" of a "conjunctive query" to be
-the "canonical conjunctive query" of the "core" of its "canonical database".
-The operation is still denoted by $\intro*\coreCQ{-}$.
+We define the ""core@@CQ"" of a "conjunctive query", still denoted by $\intro*\coreCQ{-}$,
+to be the "canonical conjunctive query" of the "core" of its "canonical database".
 \begin{proposition}
 	\AP\label{prop:minimization-CQ}
 	Let $\gamma(\bar x)$ be a "conjunctive query" and $\+C$ be
@@ -1094,8 +1102,8 @@ in the sense that if a solution exists to each problem, then a common solution e
 
 \begin{corollary}
 	\label{coro:decision-minimization-cq}
-	For each "monotone class of CQs" $\+C$---described as an oracle---,
-	the problem of ""CQ minimization problem over $\+C$"" is "NP".
+	For each "monotone class of CQs" $\+C$, assumed to be described as an oracle,
+	the ""CQ minimization problem over $\+C$"" is "NP".
 	Furthermore, it is "NP"-hard for some classes $\+C$.
 \end{corollary}
 
@@ -1215,6 +1223,26 @@ However, all results extend trivially to the non-Boolean case.}
 	The "synthesis problem for CQs" is "coNExp".
 \end{proposition}
 
+\begin{proof}
+	We denote by $\delta^+_1$, $\dotsc$, $\delta^+_p$ the "canonical conjunctive queries"
+	of $\?D^+_1$, $\dotsc$, $\?D^+_p$.
+	We now consider their "weak union"
+	\[
+		\upsilon \defeq \delta^+_1 \weakunion \cdots \weakunion \delta^+_p.
+	\]
+	We then test for each $j\in \intInt{1,n}$ if 
+	$\?D^-_j \notFOmodels \upsilon$: this will be
+	the output of our algorithm!
+	
+	First, each test $\?D^-_j \notFOmodels \upsilon$
+	can be done in "coNP" in the size of $\?D^-_j$ and of
+	$\upsilon$. Since the size of $\upsilon$ is the product of
+	the sizes of the $\delta^+_i$'s, it is exponential,
+	and hence we obtain a "coNExp" algorithm.
+	Then, we prove---or rather notice---its correctness: by construction,
+	the "weak union" is the least upper bound of "CQs",
+	see \Cref{fig:ex-synthesis-cq-negative}! \emph{Voilà.}
+\end{proof}
 \begin{figure}
 	\centering
 	\directlua{width = 4; height = 2.67}
@@ -1251,26 +1279,6 @@ However, all results extend trivially to the non-Boolean case.}
 		done in the proof of \Cref{prop:algo-synthesis-cq}.
 	}
 \end{figure}
-\begin{proof}
-	We denote by $\delta^+_1$, $\dotsc$, $\delta^+_p$ the "canonical conjunctive queries"
-	of $\?D^+_1$, $\dotsc$, $\?D^+_p$.
-	We now consider their "weak union"
-	\[
-		\upsilon \defeq \delta^+_1 \weakunion \cdots \weakunion \delta^+_p.
-	\]
-	We then test for each $j\in \intInt{1,n}$ if 
-	$\?D^-_j \notFOmodels \upsilon$: this will be
-	the output of our algorithm!
-	
-	First, each test $\?D^-_j \notFOmodels \upsilon$
-	can be done in "coNP" in the size of $\?D^-_j$ and of
-	$\upsilon$. Since the size of $\upsilon$ is the product of
-	the sizes of the $\delta^+_i$'s, it is exponential,
-	and hence we obtain a "coNExp" algorithm.
-	Then, we prove---or rather notice---its correctness: by construction,
-	the "weak union" is the least upper bound of "CQs",
-	see \Cref{fig:ex-synthesis-cq-negative}! \emph{Voilà.}
-\end{proof}
 
 In fact there is a matching lower-bound, even if the "signature" is fixed,
 but the  proof is far from trivial.
@@ -1650,7 +1658,7 @@ all of its "path decompositions".
 
 	Completeness of the algorithm is trivial. Correctness follows from the fact that if
 	a variable occurs in "bags" $b_i$ and $b_k$ with $i \leq k$, then it must also belong to every
-	"bag" $b_j$ for $j \in \lBrack i,k \rBrack$. As a consequence, a variable $x$ is assigned 
+	"bag" $b_j$ for $j \in \intInt{i,k}$. As a consequence, a variable $x$ is assigned 
 	exactly one value $f(x)$ during the whole process. 
 
 	Concerning the space complexity,
@@ -1858,14 +1866,14 @@ is well-behaved with respect to "duality": this is mostly because their semantic
 is "closed under homomorphisms". Hopefully, one could hope to find larger
 query languages satisfying this property, and then deduce decidability results via "duality".
 Both unfortunately and expectedly, it turns out that there
-are no other first-order queries which are "closed under homomorphism".
-\begin{proposition}[\AP""Rossman's theorem"", {\cite[Theorem~1.7]{Rossman2008Homomorphism}}]
+are no other first-order queries which are "closed under homomorphism".\AP
+\begin{proposition}[""Rossman's theorem"", {\cite[Theorem~1.7]{Rossman2008Homomorphism}}]
 	\!\footnote{Actually the full statement of the theorem is
 	slightly more precise and relates the quantifier-rank of the formulas.
 	The original construction was far from optimal, and it was
 	recently shown by the same author
 	that this rank can actually be preserved by the construction
-	\cite[Theorem~1.4]{Rossman2025Equirank}.}
+	\cite[Theorem~1.4]{Rossman2025Equirank}.}%
 	\footnote{Both references mention "first-order sentences"; however we do not see
 	any reason why it would not apply to all "first-order formulas".}
 	The semantics over "finite relational structures"
