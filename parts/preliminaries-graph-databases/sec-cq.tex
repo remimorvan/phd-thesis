@@ -1406,6 +1406,9 @@ On the other hand, the "graph@@dir" of \Cref{fig:ex-tree-dec} has "tree-width" $
 	to the "evaluation problem" for "CQs". Moreover, the theorem deals with ``query width'',
 	but this parameter is equivalent up to a multiplicative constant to the "tree-width"
 	\cite[Lemma~2]{ChekuriRajaraman2000Containment} assuming that the "signature" is fixed.} 
+	\footnote{An equivalent result was in fact proven a decade ealier
+	by Freuder \cite[Theorem~3]{Freuder1990Complexity} using the
+	vocabulary of "constraint satisfaction problems".}
 	\AP\label{prop:eval-CQ-bounded-tw}
 	For any fixed "signature" $\sigma$,
 	for every $k\in\N$, "conjunctive query evaluation" can
@@ -1502,6 +1505,15 @@ of a "substructure" is always upper bounded by the "tree-width" of the full "str
 In other words, "conjunctive queries" of "tree-width" at most $k\in\N$
 form a "monotone class of CQs".
 
+Grohe, Schwentick and Segoufin proved that there
+are no graph property other than "tree-width" that ensures
+polynomial time evaluation 
+\cite[Corollary~19]{GroheSchwentickSegoufin2001Evaluation}.%
+Importantly, this statement deals with \emph{graph properties},
+"ie" with classes of CQs defined by restricting their underlying "structure".
+We will see next that actually there are other classes of CQs
+with tractable evaluation.
+
 \paragraph*{Bounded Semantic Tree-Width.}
 As mentioned in \Cref{sec:intro-existential}, \Cref{prop:eval-CQ-bounded-tw}
 together with the notion of "core" actually yields a tractability result
@@ -1531,7 +1543,33 @@ for a larger class of queries than those of bounded tree-width.
 	Hence, the problem is "FPT" when parametrized by $\size{\gamma}$.
 \end{proof}
 
-In fact, \todo{} improved this result. In a surprising twist, 
+In fact, Dalmau, Kolaitis and Vardi improved this result: in a surprising twist, 
+one does not need to explicitly the "core" to efficiently evaluate
+a "CQ" that is "semantically equivalent" to one of small "tree-width".
+They proved that this class could actually be evaluated in polynomial time
+\cite[Corollary~5]{DalmauKolaitisVardi2002Constraint}.
+Remarkably, Grohe then proved the converse implication: these 
+are the only classes of CQs that are tractable!
+\begin{proposition}[""Grohe's theorem"" {\cite[Theorem~1.1]{Grohe2007ComplexityHomomorphism}}]
+	Assuming that "W[1]" $\neq$ "FPT", for any recursively enumerable
+	class of "CQs", the following are equivalent:
+	\begin{enumerate}
+		\item there exists $k\in\N$ "st" the "tree-width" of the "cores@@cq"
+			of the queries in the class is bounded by $k$;
+		\item its evaluation problem is "fixed parameter tractable"
+			when parametrized by the size of the "query";
+		\item its evaluation problem can be solved in polynomial time.
+	\end{enumerate}
+\end{proposition}
+The difficult implication in this theorem is of course (3) $\Rightarrow$ (1).
+Grohe proves it by contraposition, by generalizing
+the ideas of \cite{GroheSchwentickSegoufin2001Evaluation}:
+in short, given a class whose "cores" have unbounded "tree-width",
+using the Excluded Minor Theorem \cite[$\ast$ (1.5)]{RobertsonSeymour1986GraphMinors5}
+one can find an "query" in the class whose "core" 
+contains an arbitrarily large "grid". In turn, the clique problem,
+which is "W[1]"-hard, is then reduced to the evaluation problem
+for these "queries" with big grids.
 
 \begin{marginfigure}
 	\centering
