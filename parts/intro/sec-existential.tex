@@ -29,8 +29,7 @@ every "homomorphism problem" $\?A \homto \?B$ can be seen as a SQL query evaluat
 where $\?A$ encodes a "query@@sem" in the \textsf{SELECT-FROM-WHERE}
 fragment of SQL and $\?B$ is encodes a relational database.
 This fragment can also be characterized as the fragment
-of "first-order logic" where neither universal quantification nor negation is allowed---called
-"existential-positive fragment".
+of "first-order logic" where neither universal quantification, nor negation nor union is allowed.
 For instance, the SQL query of \Cref{ex:sql-as-hom} can be expressed by the formula
 \begin{align*}
 	\phi(\textsf{title}, \textsf{time}) \defeq\; 
@@ -89,7 +88,7 @@ For instance, the SQL query of \Cref{ex:sql-as-hom} can be expressed by the form
 		A "conjunctive query".
 	}
 \end{marginfigure}
-Yet another characterization of these queries is as finite union of "conjunctive queries",
+Yet another characterization of these queries as "conjunctive queries",
 that consist of a "relational structure" together with a tuple of vertices, called ``"output@@var"''---this tuple
 plays the same role as the \textsf{SELECT} statement in SQL.
 For instance, the previous query can be expressed as the "conjunctive query"

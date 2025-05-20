@@ -1029,8 +1029,6 @@ Similarly, as expected, we have
 In \Cref{sec:prelim-db-static-analysis-cq,sec:prelim-db-ucq},
 we will apply some of the theory we developed here
 to better understand the expressivity of \emph{conjunctive queries}.
-However we first take a brief detour in the direction of classes
-with tractable evaluation.
 
 \subsection{Static Analysis of Conjunctive Queries}
 \label{sec:prelim-db-static-analysis-cq}
@@ -1315,16 +1313,6 @@ polynomially many membership queries
 and no equivalence query \cite[Theorem~5.2]{tenCateDalmau2021ActiveLearning}.
 
 
-\subsection{Unions of Conjunctive Queries}
-\label{sec:prelim-db-ucq}
-
-\begin{itemize}
-	\item combined complexity / data Complexity
-	\itemAP $\intro*\underlying{\gamma}$ and ""underlying graph""
-	% \itemAP ""evaluation map@@cq"" (explain why notion is necessary by pointing to "evaluation map" for CRPQs)
-	\itemAP ""disjunct""
-\end{itemize}
-
 \subsection{Conjunctive Queries of Small Tree-Width}
 \AP\label{sec:prelim-db-tw}
 
@@ -1571,16 +1559,6 @@ contains an arbitrarily large "grid". In turn, the clique problem,
 which is "W[1]"-hard, is then reduced to the evaluation problem
 for these "queries" with big grids.
 
-\begin{marginfigure}
-	\centering
-	\includegraphics[width=\linewidth]{fig/prelim-db/Munch.jpg}
-	\caption{
-		When you learn that English has no word for ``epsilonesquement''
-		two days before the final deadline for handing out your manuscript.
-		\href{https://commons.wikimedia.org/wiki/File:Edvard_Munch,_1893,_The_Scream,_oil,_tempera_and_pastel_on_cardboard,_91_x_73_cm,_National_Gallery_of_Norway.jpg}{\emph{Skrik}},
-		by Edvard Munch.
-	}
-\end{marginfigure}
 \paragraph{Bounded Path-Width.}
 We now focus on "path-width", which is a parameter upper-bounded
 by the "tree-width".
@@ -1599,11 +1577,7 @@ all of its "path decompositions".
 	corresponding to \Cref{lemma:evaluation-bounded-pathwidth} in this thesis,
 	actually proved this result over the larger class of "UC2RPQs" of bounded 
 	"path-width". The proof of the upper bound is exactly the same,
-	but the lowerbound is \emph{marginally} harder.}%
-	\footnote{While writing the previous footnote,
-	I was shocked to discover that there does not 
-	seem to be an English equivalent for ``\href{}{epsilonequesment}'',
-	which would roughly translate as ``epsilonly''...}
+	but the lowerbound is \emph{marginally} harder.}
 	\AP\label{lemma:evaluation-bounded-pathwidth-cq}
 	For each $k \geq 1$, the "CQ evaluation problem", restricted to "CQs" of
 	"path-width" at most $k$, is "NL"-complete.
@@ -1699,3 +1673,219 @@ all of its "path decompositions".
 	The conclusion follows since functions computable in non-deterministic logarithmic space
 	are closed under composition \cite[Lemma 4.17, p. 88]{AroraBarak2009ComputationalComplexity}. 
 \end{proof}
+
+\subsection{Unions of Conjunctive Queries}
+\label{sec:prelim-db-ucq}
+
+\begin{marginfigure}
+	\centering
+	\directlua{width = 2.3; height = 1.4}
+\input{tikz/prelim-databases/abstract-lattice.lua}%do not indent!!!
+	\begin{tikzpicture}[every node/.style={inner sep=0pt,outer sep=0pt},font=\footnotesize]
+		\directlua{draw_lattice()}
+		\begin{scope}
+\begin{luacode}
+			make_clip()
+			x = -1.25
+			y = -.2
+			d1 = .5
+			d2 = .75
+			d3 = .9
+			d4 = .85
+			h = height ; w = width ; s = h/w
+			colour = "cBlue"
+			tex.print(string.format("\\begin{scope}[xshift=%f cm, yshift=%f cm]", x, y+height))
+			tex.print(string.format("\\draw[draw=%s, fill=%s, fill opacity=.4] (0,%f) -- (%f,%f) -- (%f, %f) -- (%f,%f) -- (%f,%f) -- (%f,%f) -- (%f,%f) -- (%f,%f) -- (%f, 0) -- cycle;", colour, colour, -height, d1, -h+d1*s, d1+d2, -h+(d1-d2)*s, d1+d2+d3, -h+(d1-d2+d3)*s, d1+d2+d3+d4, -h+(d1-d2+d3-d4)*s, d1+d2+d3+d4+w, (d1-d2+d3-d4)*s, d1+d2+d3+d4+w, h, -w, h, -width))
+			-- tex.print(string.format("\\node[circle, fill=%s, minimum size=4pt, outer sep=1pt] at (0,%f) {};", colour, -height))
+			tex.print("\\end{scope}")
+\end{luacode}
+		\end{scope}
+	\end{tikzpicture}
+	\caption{
+		\AP\label{fig:ex-ucq} Semantics of a "union of conjunctive queries" (in blue)
+		in the distributive lattice of "relational databases".
+	}
+\end{marginfigure}
+\begin{marginfigure}
+	\centering
+	\includegraphics[width=\linewidth]{fig/prelim-db/Houches.jpg}
+	\caption{
+		The study of (co-)"UCQs" is intriguingly popular amongst finite model theorists. 
+		\href{https://fr.m.wikipedia.org/wiki/Fichier:TER\_en\_gare\_des\_Houches\_(Haute-Savoie).JPG}{\emph{TER en Gare des Houches}}, by Florian Pépellin,
+		licensed under "CC BY SA 3.0".
+	}
+\end{marginfigure}
+We now show that the desirable properties of "conjunctive queries" can be
+lifted to finite unions of such queries.
+As mentioned in \Cref{sec:prelim-db-poset-cq}, "conjunctive queries"
+are not closed under semantical union: for instance,
+the "query" ``the "database@@rel" contains either an $a$-edge or a $b$-edge''
+cannot be expressed by a "conjunctive query".
+In fact, our graphical depiction of the distributive lattice of "relational databases"
+precisely helps us understand this.
+
+Formally, we define a ""union of conjunctive queries"", or \reintro{UCQ} for short,
+as a finite set of "conjunctive queries" that all have the same number
+of "output variables". This set is denoted disjunctively.
+Its semantics is defined as the union of the semantics of the "conjunctive queries" it
+contains.
+\footnote[][2em]{Strictly speaking it is not necessary
+to assume that these "output variables" are equal, however we can assume "wlog" that
+it is the case, by $\alpha$-renaming.}
+For instance, if $\gamma(x) = x \atom{a} y$ outputs all vertices
+with an outgoing $a$-edge and $\delta(x') = x' \atom{b} y' \atom{c} z'$
+outputs all vertices with an outgoing $bc$-path, then
+$\gamma(x) \lor \delta(x')$ is the "UCQ" asking for all nodes
+that are either the source of an $a$-edge or of a $bc$-path.
+We denote "UCQs" with capital Greek letters,
+and \AP we call ""disjunct"" of $\Gamma$ any "conjunctive query" belonging to a
+"UCQ" $\Gamma$.
+
+Notice that "union of conjunctive queries" are also "closed under homomorphisms".
+Graphically, we represent them as… unions of "conjunctive queries":
+instead of being diamond-shaped, "UCQs" will hence be depicted
+as inverted mountain ranges, see \Cref{fig:ex-ucq}.
+By the proof of \Cref{prop:codd-thm}, we can notice that "union of conjunctive queries"
+are as expressive as "existential-positive formulas", "ie" "first-order formulas"
+without universal quantifiers and negation.
+
+\begin{proposition}
+	Let $\Gamma$ be a "UCQ". The following are equivalent:
+	\begin{enumerate}
+		\item $\Gamma$ is "sementically equivalent" to a "conjunctive query";
+		\item the semantics of $\Gamma$ contains a unique "minimal element";
+		\item some "disjunct" of $\Gamma$ "contains@@contained" all "disjuncts";
+		\item $\Gamma$ is "sementically equivalent" to one of its "disjuncts";
+		\item $\Gamma$ is "sementically equivalent" to the "weak union" of its "disjuncts";
+	\end{enumerate}
+\end{proposition}
+\begin{figure}
+	\centering
+	\subfloat[Two "CQs" $\gamma$ and $\delta$ whose semantical union is
+		equivalent to a "CQ".]{
+\directlua{width = 2.3; height = 1.4}
+\input{tikz/prelim-databases/abstract-lattice.lua}%do not indent!!!
+	\begin{tikzpicture}[every node/.style={inner sep=0pt,outer sep=0pt},font=\footnotesize]
+		\directlua{draw_lattice()}
+		\begin{scope}
+			\directlua{make_clip()}
+			\directlua{draw_cq(.5, -.6, 'c0', 'x')}
+			\directlua{draw_cq(.65, .2, 'c2', 'y')}
+			\node[below=2pt of x, c0] {$\gamma$};
+			\node[below=2pt of y, c2] {$\delta$};
+		\end{scope}
+	\end{tikzpicture}
+	}
+	\hfil
+	\subfloat[Two "CQs" $\gamma$ and $\delta$ whose semantical union is not
+		equivalent to a "CQ". We also represented their "weak union".]{
+	\directlua{width = 2.3; height = 1.4}
+\input{tikz/prelim-databases/abstract-lattice.lua}%do not indent!!!
+	\begin{tikzpicture}[every node/.style={inner sep=0pt,outer sep=0pt},font=\footnotesize]
+		\directlua{draw_lattice()}
+		\begin{scope}
+			\directlua{make_clip()}
+			\directlua{draw_cq(.167, -.607, 'cPurple', 'z')}
+			\directlua{draw_cq(.5, -.4, 'c0', 'x')}
+			\directlua{draw_cq(-.5, -.2, 'c2', 'y')}
+			\node[below=2pt of x, c0] {$\gamma$};
+			\node[below=2pt of y, c2] {$\delta$};
+			\node[below=3.5pt of z, cPurple] {$\gamma \weakunion \delta$};
+		\end{scope}
+	\end{tikzpicture}
+	}
+	\caption{
+		\label{fig:ucq-equiv-cq} When is a "union of conjunctive queries"
+		actually equivalent to a "conjunctive query"?
+	}
+\end{figure}
+ 
+\begin{proof}
+	All the intuitions are provided in \Cref{fig:ucq-equiv-cq}.
+	
+	\proofcase{(1) $\Rightarrow$ (2).} If $\Gamma$ is "semantically equivalent"
+	to a "CQ" $\delta$, then the "canonical database" $\?D$ of $\delta$ is
+	the unique minimal element in the semantics of $\Gamma$.
+
+	\proofcase{(2) $\Rightarrow$ (3).} If the "semantics" of $\Gamma$
+	contains a unique minimal element, say $\?D$, then since $\?D \FOmodels \Gamma$,
+	there exists a "disjunct" $\gamma$ of $\Gamma$ "st" $\?D \FOmodels \gamma$.
+	By minimality of $\?D$, it follows that $\gamma$ is actually the "canonical CQ" of $\?D$,
+	and again by minimality of $\?D$ it follows that all "disjuncts" are "contained" in $\gamma$.
+
+	\proofcase{(3) $\Rightarrow$ (4).} If $\Gamma = \gamma_1 \lor \dotsc \lor \gamma_k$
+	has a "disjunct", say $\gamma_i$, that contains all other disjuncts, then
+	\[
+		\Gamma = \gamma_1 \lor \dotsc \lor \gamma_k \contained
+		\gamma_i \lor \dotsc \lor \gamma_i \semequiv \gamma_i \contained \Gamma
+	\]
+	and so $\Gamma$ is "semantically equivalent" to its "disjunct" $\gamma_i$.
+
+	\proofcase{(4) $\Rightarrow$ (5).} If $\Gamma = \gamma_1 \lor \dotsc \lor \gamma_k$ is "semantically equivalent" to
+	one of its disjuncts, say $\gamma_i$, then
+	for each $j$ we have $\gamma_j \contained \Gamma \semequiv \gamma_i$,
+	and so by definition of the "weak union" as the least upper bound,
+	it follows that $\gamma_1 \weakunion \dotsc \weakunion \gamma_k \semequiv \gamma_i$.
+
+	\proofcase{(5) $\Rightarrow$ (1).} If $\Gamma$ is "semantically equivalent" to the
+	"weak union" of its "disjuncts", then since this query is a "CQ", it
+	is equivalent to a "CQ"…
+\end{proof}
+
+\begin{proposition}
+	Given two "UCQs" $\Gamma$ and $\Delta$, we have $\Gamma \contained \Delta$
+	if, and only if, for every "disjunct" $\gamma \in \Gamma$, there exists
+	a "disjunct" $\delta \in \Delta$ "st" $\gamma \contained \delta$.
+\end{proposition}
+
+\begin{proof}
+	The right-to-left implication is trivial.
+	For the converse one, assume that $\Gamma \contained \Delta$,
+	and let $\gamma$ be a "disjunct" of $\Gamma$.
+	Letting $\?G$ be its "canonical database", we have by "duality" that
+	$\?G \FOmodels \Gamma$
+	and since $\Gamma \contained \Delta$, it follows that $\?G \FOmodels \Delta$,
+	and hence $\?G \FOmodels \delta$ for some "disjunct" $\delta \in \Delta$,
+	and so, by "duality", $\gamma \contained \delta$. 
+\end{proof}
+
+\begin{corollary}
+	"Containment" and "semantical equivalence" of "unions of conjunctive queries"
+	are "NP"-complete.
+\end{corollary}
+
+Essentially, these results are permitted, at least in part, by the fact that semantical union
+is well-behaved with respect to "duality": this is mostly because their semantics 
+is "closed under homomorphisms". Hopefully, one could hope to find larger
+query languages satisfying this property, and then deduce decidability results via "duality".
+Both unfortunately and expectedly, it turns out that there
+are no other first-order queries which are "closed under homomorphism".
+\begin{proposition}[\AP""Rossman's theorem"", {\cite[Theorem~1.7]{Rossman2008Homomorphism}}]
+	\!\footnote{Actually the full statement of the theorem is
+	slightly more precise and relates the quantifier-rank of the formulas.
+	The original construction was far from optimal, and it was
+	recently shown by the same author
+	that this rank can actually be preserved by the construction
+	\cite[Theorem~1.4]{Rossman2025Equirank}.}
+	\footnote{Both references mention "first-order sentences"; however we do not see
+	any reason why it would not apply to all "first-order formulas".}
+	The semantics over "finite relational structures"
+	of a "first-order sentence" is "closed under homomorphisms"
+	if, and only if, it is equivalent to a "union of conjunctive queries".
+\end{proposition}
+
+We leave to the reader the care to show that the other properties of "CQs"
+can be lifted to "UCQs", for instance:
+\begin{itemize}
+	\item starting from a "UCQ" $\gamma_1 \lor \dotsc \lor \gamma_k$,
+		the "UCQ" obtained by (1) considering the "cores@@CQ"
+		$\coreCQ{\gamma_1}$, $\dotsc$, $\coreCQ{\gamma_k}$,
+		(2) putting aside those that are "contained" in another "core",
+		and (3) taking their union
+		yields a "UCQ" that is "semantically equivalent" to the
+		original one, and minimal under most reasonable metrics;
+	\item the evaluation of "UCQs" of bounded "tree-width"---we naturally
+		extend the notion of "tree-width" to unions by letting it
+		be the maximum of the "tree-width" of its "disjuncts"---is
+		polynomial time. 
+\end{itemize}
