@@ -7,3 +7,4 @@ semantical
 human-centered
 hyperedges
 homomorphical
+substentially
