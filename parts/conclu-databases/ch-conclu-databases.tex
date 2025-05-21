@@ -18,7 +18,7 @@ and the "ExpSpace" lower bounds in the decision problems
 studied in \Cref{ch:minimization-CRPQ,ch:semantic-tree-width-CRPQ},
 we believe that the most interesting questions "wrt" to minimization
 are actually those related to \emph{structure}, and more precisely those that try to
-connect these notions of minimality between themselves.
+connect the different notions of minimality together.
 
 \conjAtomVariableMinimal*
 
@@ -27,15 +27,17 @@ The question of whether the seminal results of \cite{CzerwinskiMartensNiewerthPa
 to their encoding as "CRPQs" remain open.
 \conjTreePatternsAsCRPQs*
 
-On a similar note, an interesting question is whether two goals can be simultaneously minimized.
+On a similar note, an interesting question is whether two goals
+("eg" the number of variables and the number of "atoms")
+can be simultaneously minimized.
 For "CQs", this is always the case by \Cref{prop:minimization-CQ}. However, this question
 seems quite hard for "CRPQs", even on concrete examples.
 We say that a "CRPQ" is ""forest-shaped"" if its underlying "directed graph"
 is a "disjoint union" of "directed trees".
 \begin{question}
-	Given a "Boolean CRPQ", assuming that (1) it is "equivalent@@sem" to
-	a "forest-shaped" "CRPQ" and (2) it is "equivalent@@sem" to a "CRPQ"
-  with at most $k$ "atoms", then is it "equivalent@@sem" to a 
+	Is it the case that every "Boolean CRPQ" that is (1) "equivalent@@sem" to
+	a "forest-shaped" "CRPQ" and (2) "equivalent@@sem" to a "CRPQ"
+  with at most $k$ "atoms" is necessarily "equivalent@@sem" to a 
   "forest-shaped" "CRPQ" with at most $k$ "atoms"?
 \end{question}
 We conjecture the answer to this question to be yes, but we were unable to prove it:
@@ -47,11 +49,11 @@ should be "equivalent@@sem" to a "forest-shaped" "CRPQ" with at most $2^k$ "atom
 \paragraph*{Maximal Under-Approximations.}
 Both the result on "UCRPQ minimization" of \Cref{ch:minimization-CRPQ}
 and of "semantic tree-width" minimization of \Cref{ch:semantic-tree-width-CRPQ} 
-relies on the existence---and computability---of "maximal under-approximations".
+rely on the existence---and computability---of "maximal under-approximations".
 In the first case, the target class consists of finitely many graphs (\Cref{lemma:approximation-for-finclass}), but in the second case,
 it is infinite (\Cref{lemma:bound_size_refinements}): as such the proof is significantly harder.
-Having the remarkable genericity of the equivalent theorem for "CQs" in mind
-(\Cref{prop:minimization-CQ}), we could only hope to be able to capture 
+Having the remarkable genericity of \Cref{prop:minimization-CQ} in mind,
+we could only hope to be able to capture 
 both \Cref{lemma:approximation-for-finclass,lemma:bound_size_refinements}.
 
 \begin{question}
@@ -69,7 +71,7 @@ both \Cref{lemma:approximation-for-finclass,lemma:bound_size_refinements}.
 \end{marginfigure}
 As we have seen in \Cref{sec:prelim-db-relational}, "duality"---namely the existence of
 a dual "isomorphism" between queries and models---provides a remarkable framework to
-study "conjunctive queries". For the more complex language of "conjunctive regular path queries"
+study "conjunctive queries". For the more complex language of "conjunctive regular path queries",
 however, this isomorphism fails, making static analysis much harder.
 We thought that part of the enjoyable properties of "conjunctive queries"
 could be recovered for "CRPQs" by considering the notion of "profinite databases".
@@ -137,9 +139,9 @@ be indexed by a directed set rather than $\N$: in the case we would obtain
 an object \[\varprojlim\limits_{n\in\tup{\Np,\mid}} \?C_{n},\] where we order $\Np$ by divisibility,
 and whose semantics is ``the database contains a directed cycle''!
 
-\paragraph{Why should we consider such complex objects?}
-For two reasons: first, profinite models actually arise
-by consider Stone duality. Roughly, Stone duality is a theory that,
+\paragraph{How Profinite Databases Arise.}
+Profinite models naturally arise
+by considering Stone duality. Roughly, Stone duality is a theory that,
 starting from a logic and its models, adds new idealized/abstract models which
 are necessary to make the theory compact, well-behaved and nicely describable.
 For instance, applied to first-order logic over all structures,
@@ -159,7 +161,7 @@ and assume that $\gamma() \semequiv \delta()$. Over "CQs", it would mean that
 their "core@@CQ" are "isomorphic" (by \Cref{prop:equiv-core-isomorphic} and "duality"),
 but over "CRPQs", we do not have such a nice characterization.
 However, pick a "canonical database" $\?G_0 \cdb \gamma$. From the
-fact that $\gamma \contained \delta$, we get the existence of $\?D_0 \cdb \?delta$
+fact that $\gamma \contained \delta$, we get the existence of $\?D_0 \cdb \delta$
 "st" $\?G_0 \cohomto \?D_0$. In turn, using the converse "containment" $\delta \contained \gamma$,
 we get that there exists $\?G_1 \cdb \gamma_1$ "st" $\?D_0 \cohomto \?G_1$. By induction,
 we obtain an infinite sequence
@@ -213,7 +215,7 @@ are "semantically equivalent"!
 	}
 \end{figure}
 
-\paragraph{Why do we want to consider such objects?}
+\paragraph{What Profinite Databases Could Help Us Achieve.}
 In the previous chapters, we presented two results that where conditional
 to the existence of "hom-minimal expansions":
 \begin{itemize}
@@ -223,9 +225,9 @@ to the existence of "hom-minimal expansions":
 	\item a very partial generalization of "Grohe's theorem" to
 		"finitely-redundant" Boolean "UC2RPQs" (\Cref{thm:tractability-finred}).
 \end{itemize}
-However, very simple "CRPQs" such as $\gamma() \defeq x \atom{\A^*} x$,
+However, a very simple "CRPQ" such as $\gamma() \defeq x \atom{\A^*} x$,
 expressing that the "database@@graph" contains "directed cycle" no do not
-have "hom-minimal expansions", but is does have a "hom-minimal" 
+have "hom-minimal expansions", but it does have a "hom-minimal" 
 "profinite database", which is \[\varprojlim\limits_{n\in\tup{\Np,\mid}} \?C_{n}.\]
 More generally, by Zorn's lemma, every "CRPQ" admits at least 
 one "hom-minimal" "profinite database", see \Cref{fig:poset-reldb-profinite}!
@@ -259,9 +261,10 @@ the Stone dual of the Heyting algebra of "conjunctive queries" is isomorphic
 to the space of "profinite databases", which seems to point towards the fact
 that "profinite databases" are natural objects.
 
-One the negative side, we do not know what to do with this result…
-One of the main difficulty however seems to define a notion of
-``$\+C$-profinite databases'' which makes sense when $\+C$ is a "minor-closed" "class of CRPQs".
+On the negative side, we do not know what to do with this result…
+One of the main difficulties however is to find a reasonable definition for the notion of
+``$\+C$-profinite databases''. We would like this notion to be defined at least whenever $\+C$ is a "minor-closed" "class of CRPQs", and intuitively $\+C$-profinite databases should
+generalize the $\+C$-finite databases.
 For instance, for "tree-width", we might have that "homomorphisms"
 \[
 	\?G \cohomto \?D \cohomto \?G'
