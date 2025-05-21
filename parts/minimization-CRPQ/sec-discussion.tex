@@ -18,9 +18,9 @@ As before, a "(U)CRPQ" is \AP""variable minimal"" if there is no "equivalent" "(
 
 It is worth observing that for "conjunctive queries" (and for "tree patterns") minimizing the number of variables or minimizing the number of atoms is equivalent: a query is minimal in the number of variables "iff" it is minimal in the number of atoms.
 However, for "CRPQs" and "UCRPQs" it is not: $\gamma(x,y) = x \atom{a} y \land x \atom{a+b} y$ is "variable minimal", but it is not (atom) "minimal" since it is "equivalent" to $\gamma'(x,y) = x \atom{a} y$. We further conjecture that there are (atom) "minimal" "CRPQs" which are not "variable minimal".
-\begin{conjecture}
+\begin{restatable}{conjecture}{conjAtomVariableMinimal}
   There exist (atom) "minimal" "CRPQs" which are not "variable minimal".
-\end{conjecture}
+\end{restatable}
 
 By adaptations of the algorithms of \Cref{sec:upperCRPQ,sec:upperUCRPQ} we can derive some upper bounds, which are likely to be sub-optimal.
 \begin{theorem}
@@ -59,7 +59,7 @@ edges are partition into simple edges and transitive edges.
 	\subfloat[A "tree pattern" $\tau$. Double arrows represent transitive edges.]{
 		\includegraphics{fig/minimization-crpq/tree-pattern-example.pdf}
 	}
-	\hfill
+	\hfil
 	\subfloat[Its "encoding" $\Encoding(\tau)$ as a "CRPQ".]{
 		\includegraphics{fig/minimization-crpq/tree-pattern-example-enc.pdf}
 	}
@@ -99,5 +99,9 @@ See \Cref{fig:encoding-tree-pattern} for an example. Note that this "encoding" i
 \end{proof}
 
 We do not fully understand the relation between tree pattern minimization and "CRPQ minimization", 
-we conjecture that if a tree pattern is minimal among tree patterns, then its "encoding" as a 
-"CRPQ" should also be minimal, up to "contracting internal variables", among "CRPQs" but we have failed so far to prove this. 
+and conjecture that this encoding actually preserves minimality, but we have failed so far to prove this. 
+
+\begin{restatable}{conjecture}{conjTreePatternsAsCRPQs}
+	If a "tree pattern" is minimal among "tree patterns", 
+	then its "encoding" as a "CRPQ" should also be minimal among "CRPQs", up to "contracting internal variables".
+\end{restatable}

@@ -1,20 +1,14 @@
 \section{Tree-Like Queries}
 
-\diego{Show that for pseudo-tree queries the minimization pb is in PSpace? And that if langauges are ``simple'', then it matches the complexity for "tree pattern" minimization, namely "SigmaP2"?}
-
-\textcolor{Dark Ruby Red}{WARNING: In this section, all CRPQs are assumed to be positive, meaning
-that no language can contain the empty word.}
+\begin{hypothesis}
+	 In this section, all "CRPQs" are assumed to be positive, meaning
+	that no language can contain the empty word.
+\end{hypothesis}
 
 \subsection{Forest-Shaped and DAG-Shaped Queries}
 
-Say that a "CRPQ" is \AP""forest-shaped"" if its underlying directed multigraph 
-is a directed simple forest---without self loops---, with the arrows going from roots to leaves.
-
 We say that a CRPQ is \AP""semantically forest-shaped"" if it is
 "semantically equivalent" to a CRPQ which is "forest-shaped".
-A \AP""maximal canonical database"" of $\gamma$ is a "canonical database"
-$G$ of $\gamma$ "st" for all "canonical database" $H$ of $\gamma$,
-if $G \cohomto H$, then $H \cohomto G$.
 
 Say that a CRPQ is \AP""DAG-shaped"" if its underlying directed multigraph
 is a DAG---parallel edges are allowed, not self loops. If $\delta$ is "DAG-shaped",
@@ -42,7 +36,7 @@ The rest of this section is devoted to proving the following result.
 	\begin{enumerate}
 		\item $\delta$ is "semantically forest-shaped",
 		\item $\delta$ is "DAG-shaped" and
-			for all "maximal canonical database" $D$ of $\delta$, the "core" of $D$ is a forest,
+			for every "hom-minimal canonical database" $\?D$ of $\delta$, the "core" of $\?D$ is a forest,
 		\item $\delta$ is "DAG-shaped" and $\delta \semequiv \Unfold(\delta)$. 
 	\end{enumerate}
 \end{theorem}
@@ -53,13 +47,9 @@ a "CRPQ" is "semantically forest-shaped" in "2ExpSpace".
 
 \subsection{Semantically DAG-Shaped Queries}
 
-\begin{proposition}
+\begin{fact}
 	A "CRPQ" is "semantically DAG-shaped" "iff" it is "DAG-shaped".
-\end{proposition}
-
-\begin{proof}
-todo
-\end{proof}
+\end{fact}
 
 \begin{corollary}
 	\AP\label{coro:sem-forest-implies-DAG}
@@ -69,17 +59,17 @@ todo
 \subsection{Semantically Forest-Shaped}
 
 From the fact that a "CRPQ" $\delta$ is equivalent to a "forest-shaped" query $\phi$
-we know that for all "canonical database" $D_0$ of $\delta$, since $\delta \contained \phi$,
-there exists a "canonical database" $F_0$ of $\phi$ "st" $D_0 \cohomto F_0$.
-But dually since $\phi \contained \delta$, there exists $D_1 \cdb \delta$ "st" $F_0 \cohomto D_1$.
+we know that for all "canonical database" $\?D_0$ of $\delta$, since $\delta \contained \phi$,
+there exists a "canonical database" $\?F_0$ of $\phi$ "st" $\?D_0 \cohomto \?F_0$.
+But dually since $\phi \contained \delta$, there exists $\?D_1 \cdb \delta$ "st" $\?F_0 \cohomto \?D_1$.
 By induction---and the axiom of choice---we obtain an infinite co-chain of "homomorphisms"
 \[
-	D_0 \cohomto F_0 \cohomto D_1 \cohomto F_1 \cohomto \cdots \cohomto D_n \cohomto F_n \cohomto \cdots.
+	\?D_0 \cohomto \?F_0 \cohomto \?D_1 \cohomto \?F_1 \cohomto \cdots \cohomto \?D_n \cohomto \?F_n \cohomto \cdots.
 \]
 We show that co-chains of forests are actually quite simple.
 
 \begin{fact}
-	If $F_0 \cohomto F_1 \cohomto \cdots \cohomto F_n \cohomto \cdots$
+	If $\?F_0 \cohomto \?F_1 \cohomto \cdots \cohomto \?F_n \cohomto \cdots$
 	is an infinite co-chain of "homomorphisms" betweens "forests", 
 	then there exists $n \in \N$ "st" all $F_m$ with $m\geq n$
 	are "hom-equivalent" to one another.
@@ -97,8 +87,8 @@ We show that co-chains of forests are actually quite simple.
 \begin{corollary}
 	\AP\label{coro:all-cdb-are-dominated-by-forests}
 	If $\delta$ is "semantically forest-shaped", then for any
-	$D \cdb \delta$, there exists $D' \cdb \delta$ such that
-	$D \cohomto D'$, $D'$ is "maximal" and the core of $D'$ is a forest.
+	$\?D \cdb \delta$, there exists $\?D' \cdb \delta$ such that
+	$\?D \cohomto \?D'$, $\?D'$ is "hom-minimal" and the "core" of $\?D'$ is a forest.
 \end{corollary}
 
 We can now proceed with the proof of \Cref{thm:charac-semantically-forest-shaped}, after giving a
@@ -106,11 +96,11 @@ proposition that will prove useful.
 
 \begin{proposition}
 	\AP\label{prop:hom-from-forest}
-	Let $F$ be a forest and $D$ a graph. If $F \homto D$ then $F \homto \Unfold(D)$.
+	Let $\?F$ be a forest and $\?D$ a graph. If $\?F \homto \?D$ then $F \homto \Unfold(D)$.
 \end{proposition}
 
 \begin{proof}
-	The "homomorphism" $F \homto \Unfold(D)$ can be defined by induction on $F$, from roots
+	The "homomorphism" $\?F \homto \Unfold(\?D)$ can be defined by induction on $F$, from roots
 	to leaves.
 \end{proof}
 
@@ -119,11 +109,11 @@ proposition that will prove useful.
 	\Cref{coro:sem-forest-implies-DAG,coro:all-cdb-are-dominated-by-forests}.
 
 	\proofcase{$(2) \Rightarrow (3)$.} By \Cref{fact:unfolding-is-forest} we have $\delta \contained \Unfold(\delta)$ so it suffices to prove the converse "containment".
-	Let $U$ be a "canonical database" of $\Unfold(\delta)$. Then there exists $D \cdb \delta$
-	"st" $U = \Unfold(D)$. By \Cref{coro:all-cdb-are-dominated-by-forests} there exists
-	$D' \cdb \delta$ "st" $D \cohomto D'$ and the core of $D'$ is a forest. So $D \cohomto \core(D')$, and so by \Cref{prop:hom-from-forest}, since $\core(D')$ is a "forest",
-	then $\Unfold(D) \cohomto \core(D')$ "ie" $\Unfold(D) \cohomto D'$, which proves
-	that $\Unfold(D) \FOmodels \delta$. Therefore, $\Unfold(\delta) \contained \delta$.
+	Let $U$ be a "canonical database" of $\Unfold(\delta)$. Then there exists $\?D \cdb \delta$
+	"st" $\?U = \Unfold(\?D)$. By \Cref{coro:all-cdb-are-dominated-by-forests} there exists
+	$\?D' \cdb \delta$ "st" $\?D \cohomto \?D'$ and the core of $\?D'$ is a forest. So $\?D \cohomto \core\?D'$, and so by \Cref{prop:hom-from-forest}, since $\core\?D'$ is a "forest",
+	then $\Unfold(\?D) \cohomto \core\?D'$ "ie" $\Unfold(\?D) \cohomto \?D'$, which proves
+	that $\Unfold(\?D) \FOmodels \delta$. Therefore, $\Unfold(\delta) \contained \delta$.
 
 	\proofcase{$(3) \Rightarrow (1)$.} This is because $\Unfold(\delta)$ is "forest-shaped"
 		by \Cref{fact:unfolding-is-forest}.

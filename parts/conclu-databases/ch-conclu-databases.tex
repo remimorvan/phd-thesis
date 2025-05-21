@@ -2,7 +2,267 @@
 \label{ch:conclu-database}
 \renewcommand\thefigure{\thechapter.\arabic{figure}}
 
-% Extend the notion of `strong minimality` using the axioms used in the lower bound (`str-onto`): call such canonical databases / extensions `structurally minimal'.
-% Prove or disprove the following result: ``a CRPQ has one-way semantic tree-width at least $k$ "iff" it has an expansion that is structurally minimal and whose core has tree-width at least $k$''. In general: what about minor-closed classes?
-% Extend Grohe's Theorem to CRPQs (or maybe to a subclass of CRPQs, "eg" those whose
-% structurally minimal canonical databases characterize membership to minor-closed classes).
+\section{Minimization Problems}
+
+Rather than closing the complexity gaps between our "$k$-ExpSpace" upper bounds
+and the "ExpSpace" lower bounds in the decision problems
+studied in \Cref{ch:minimization-CRPQ,ch:semantic-tree-width-CRPQ},
+we believe that the most interesting questions "wrt" to minimization
+are actually those related to \emph{structure}, and more precisely those that try to
+connect these notions of minimality between themselves.
+
+\conjAtomVariableMinimal*
+
+\paragraph*{Minimization \& Trees.}
+The question of whether the seminal results of \cite{CzerwinskiMartensNiewerthParys2018Minimization} could be lifted from "tree patterns"
+to their encoding as "CRPQs" remain open.
+\conjTreePatternsAsCRPQs*
+
+On a similar note, an interesting question is whether two goals can be simultaneously minimized.
+For "CQs", this is always the case by \Cref{prop:minimization-CQ}. However, this question
+seems quite hard for "CRPQs", even on concrete examples.
+We say that a "CRPQ" is ""forest-shaped"" if its underlying "directed graph"
+is a "disjoint union" of "directed trees".
+\begin{question}
+	Given a "Boolean CRPQ", assuming that (1) it is "equivalent@@sem" to
+	a "forest-shaped" "CRPQ" and (2) it is "equivalent@@sem" to a "CRPQ"
+  with at most $k$ "atoms", then is it "equivalent@@sem" to a 
+  "forest-shaped" "CRPQ" with at most $k$ "atoms"?
+\end{question}
+We conjecture the answer to this question to be yes, but we were unable to prove it:
+we only managed to prove that, under these assumptions, the query
+should be "equivalent@@sem" to a "forest-shaped" "CRPQ" with at most $2^k$ "atoms"
+(\Cref{thm:charac-semantically-forest-shaped}).
+
+
+\paragraph*{Maximal Under-Approximations.}
+Both the result on "UCRPQ minimization" of \Cref{ch:minimization-CRPQ}
+and of "semantic tree-width" minimization of \Cref{ch:semantic-tree-width-CRPQ} 
+relies on the existence---and computability---of "maximal under-approximations".
+In the first case, the target class consists of finitely many "graphs" (\Cref{lemma:approximation-for-finclass}), but in the second case,
+it is infinite (\Cref{lemma:bound_size_refinements}): as such the proof is significantly harder.
+Having the remarkable genericity of the equivalent theorem for "CQs" in mind
+(\Cref{prop:minimization-CQ}), we could only hope to be able to capture 
+both \Cref{lemma:approximation-for-finclass,lemma:bound_size_refinements}.
+
+\begin{question}
+	Given a class $\+C$ of "graphs@@dir" that is "closed under minors",
+	do "maximal under-approximations" by "UC(2)RPQs" over $\+C$ always exist?
+	If so, are they computable?
+\end{question}
+
+\section{Profinite Databases}
+
+\begin{marginfigure}
+	\centering
+	\includegraphics[width=\linewidth]{fig/escher/CL3.jpg}
+	\caption{\href{https://mcescher.com/gallery/symmetry/\#iLightbox[gallery\_image_1]/12}{\emph{Circle Limit III}}, M. C. Escher, \textcopyright~The M.C. Escher Company.}
+\end{marginfigure}
+As we have seen in \Cref{sec:prelim-db-relational}, "duality"---namely the existence of
+a dual "isomorphism" between queries and models---provides a remarkable framework to
+study "conjunctive queries". For the more complex language of "conjunctive regular path queries"
+however, this isomorphism fails, making static analysis much harder.
+We thought that part of the enjoyable properties of "conjunctive queries"
+could be recovered for "CRPQs" by considering the notion of "profinite databases".
+In short, a \AP""profinite database"" consists of, a ``projective system'' of finite "graph databases",
+"ie" an $\omega$-sequence of "homomorphisms"
+\[
+	\?G_0 \cohomto \?G_1 \cohomto \dotsc \cohomto \?G_n \cohomto \?G_{n+1} \cohomto \dotsc
+\]
+that we denote by $\varprojlim\limits_{n\in\N} \?G_n$.
+
+\smallskip
+
+A typical example of such a system can be obtained as follows:
+just like we did in \Cref{sec:prelim-db-relational},
+we let $\?C_n$ ($n\in\Np$) denote the directed cycle with domain $\ZnZ{n}$
+and with an edge from $i$ to $j$ "iff" $i+1 = j$, see \Cref{fig:conclu-db-cycles}.
+Recall that $\?C_n \homto \?C_m$ "iff" $n$ is a multiple of $m$.
+In particular, we have
+\[
+	\?C_1 \cohomto \?C_2 \cohomto \dotsc \cohomto \?C_{2^n} \cohomto \?C_{2^{n+1}} \cohomto \dotsc.
+\]
+\begin{figure}
+	\centering
+	\begin{tikzpicture}
+		\foreach \i in {0,...,5} {
+			\pgfmathtruncatemacro\j{mod(\i, 3)}
+			\node[vertex, draw=c\j, fill=c\j, fill opacity=.4] (s\i) at (\i*360/6: 1.2cm) {};
+		}
+		\foreach \i in {0,...,5} {
+			\pgfmathtruncatemacro\ip{mod(\i+1, 6)}
+			\draw[edge] (s\i) to (s\ip);
+		}
+
+		\foreach \i in {0,1,2} {
+			\node[vertex, draw=c\i, fill=c\i, fill opacity=.4] (t\i) at ($(\i*360/3: .9cm)+(5, 0)$) {};
+		}
+		\foreach \i in {0,1,2} {
+			\pgfmathtruncatemacro\ip{mod(\i+1, 3)}
+			\draw[edge] (t\i) to (t\ip);
+		}
+	\end{tikzpicture}
+	\caption{\AP\label{fig:conclu-db-cycles} The "graphs@@dir" $\?C_6$
+	(left) and $\?C_3$ (right) and a "homomorphism" from the former
+	to the latter, described by colour coding. (Replica of \Cref{fig:prelim-db-cycles}.)}
+\end{figure}
+
+The crucial point is that "projective system" have a natural semantics:
+we define the semantics of \[\varprojlim\limits_{n\in\N} \?G_n\]
+as the set of points that above some element of this sequence,
+"ie" as
+\[
+	\?H \vDash \semFO{\varprojlim\limits_{n\in\N} \?G_n}
+	\quad\text{when}\quad
+	\exists n.\; \?G_n \homto \?H.
+\]
+For instance
+\[\varprojlim\limits_{n\in\N} \?C_{2^n}\] has a simple
+semantical interpretation:
+letting $\?G$ be a "graph database", for any $n\in\N$, we get that $\?C_{2^n} \homto \?G$
+if, and only if, $\?G$ contains a "directed cycle" of length $2^n$.
+And so, there exists $n\in\N$ "st" $\?C_{2^n} \homto \?G$ if, and only if, $\?G$ contains
+a "directed cycle" whose length is a power of 2.
+In fact the true definition of projective system allows the sequence to
+be indexed by a directed set rather than $\N$: in the case we would obtain
+an object \[\varprojlim\limits_{n\in\tup{\Np,\mid}} \?C_{n},\] where we order $\Np$ by divisibility,
+and whose semantics is ``the database contains a directed cycle''!
+
+\paragraph{Why should we consider such complex objects?}
+For two reasons: first, profinite models actually arise
+by consider Stone duality. Roughly, Stone duality is a theory that,
+starting from a logic and its models, adds new idealized/abstract models which
+are necessary to make the theory compact, well-behaved and nicely describable.
+For instance, applied to first-order logic over all structures,
+this construction does nothing! This is precisely because this logic is already
+\href{https://en.wikipedia.org/wiki/Compactness\_theorem}{compact}.
+On the other hand, when applied to "regular languages" of finite words,
+we obtained profinite words, which are exactly the models needed to describe
+"pseudovarieties"! We refer the reader to \cite{GehrkeGool2024Topological}
+for a not so short survey of the topic.
+
+Second, "profinite databases" naturally appear when dealing with the semantics
+of "CRPQs".%
+\footnote{They actually are at the heart of
+the proof of \Cref{thm:charac-semantically-forest-shaped}!}
+Indeed, let $\gamma()$ and $\delta()$ be "CRPQs",
+and assume that $\gamma() \semequiv \delta()$. Over "CQs", it would mean that
+their "core@@CQ" are "isomorphic" (by \Cref{prop:equiv-core-isomorphic} and "duality"),
+but over "CRPQs", we do not have such a nice characterization.
+However, pick a "canonical database" $\?G_0 \cdb \gamma$. From the
+fact that $\gamma \contained \delta$, we get the existence of $\?D_0 \cdb \?delta$
+"st" $\?G_0 \cohomto \?D_0$. In turn, using the converse "containment" $\delta \contained \gamma$,
+we get that there exists $\?G_1 \cdb \gamma_1$ "st" $\?D_0 \cohomto \?G_1$. By induction,
+we obtain an infinite sequence
+\[
+	\?G_0 \cohomto \?D_0 \cohomto \dotsc. \cohomto \?G_n \cohomto \?D_n \cohomto
+	\?G_{n+1} \cohomto \?D_{n+1} \cohomto \dotsc.
+\]
+In other words, we get that the "profinite databases"
+\[\varprojlim_{n\in\N} \?G_{n}
+\quad\text{and}\quad
+\varprojlim_{n\in\N} \?D_{n}\]
+are "semantically equivalent"!
+
+\begin{figure}
+	\centering
+	\begin{tikzpicture}[
+		font=\footnotesize,
+		every node/.style={inner sep=0pt,outer sep=0pt}
+	]
+		\input{tikz/generate-lattice-profinite.tex}
+\begin{luacode}
+		function bloop(x,y)
+			tex.print(string.format("\\node[circle,fill=white, minimum size=%.4f pt] at (%i %i) {};", get_scale(x,y), x, y))
+			-- proper colour
+			tex.print(string.format("\\node[circle,fill=%s, minimum size=%.4f pt, opacity=%.4f] at (%i %i) {};", "cOrange", 2.5*get_scale(x,y), get_opacity(x,y), x, y))
+		end
+		bloop(-1,0)
+		bloop(0,1)
+		bloop(-1,2)
+		bloop(0,3)
+		bloop(-1,4)
+		bloop(-2,5)
+		bloop(-3,6)
+		bloop(-4,7)
+		bloop(-3,8)
+		bloop(-4,9)
+		bloop(-5,10)
+\end{luacode}
+	\draw[thick, cOrange] (-5 10) to (-4 9) to (-3 8)
+		to (-4 7) to (-3 6) to (-2 5) to (-1 4) to (0 3) to (-1 2) to (0 1) to (-1 0);
+	\fill[white, path fading=myfading, fill opacity=.4] (0,0) circle[radius=1cm];
+	\fill[white, path fading=myfading, fill opacity=.2] (0,0) circle[radius=.4cm];
+
+	\end{tikzpicture}
+	\caption{\AP\label{fig:poset-reldb-profinite}
+	Semantics of a "query@@sem" that does admit a "hom-minimal" model
+	(in yellow),
+	together with a "profinite database" built out of its models
+	in an effort to lift the opaque veil of the infinite structure of the distributive lattice
+	of "graph databases" (in orange).
+	}
+\end{figure}
+
+\paragraph{Why do we want to consider such objects?}
+In the previous chapters, we presented two results that where conditional
+to the existence of "hom-minimal expansions":
+\begin{itemize}
+	\item the "semantical structure theorem" (\Cref{thm:structure-theorem}), which
+		provides lower bounds on the complexity required to express a "CRPQ"---and which is,
+		to out knowledge, actually the only result of this form for "CRPQs";
+	\item a very partial generalization of "Grohe's theorem" to
+		"finite redundant" Boolean "UC2RPQs" (\Cref{thm:tractability-finred}).
+\end{itemize}
+However, very simple "CRPQs" such as $\gamma() \defeq x \atom{\A^*} x$,
+expressing that the "database" contains "directed cycle" no do not
+have "hom-minimal expansions", but is does have a "hom-minimal" 
+"profinite database", which is \[\varprojlim\limits_{n\in\tup{\Np,\mid}} \?C_{n}.\]
+More generally, by Zorn's lemma, every "CRPQ" admits at least 
+one "hom-minimal" "profinite database", see \Cref{fig:poset-reldb-profinite}!
+
+\begin{question}
+	Can we generalize \Cref{thm:structure-theorem,thm:tractability-finred}
+	to handle "hom-minimal" "profinite databases" rather than
+	"hom-minimal" "finite databases"?
+\end{question}
+
+A positive answer to this question would provide a necessary and sufficient condition
+on all "CRPQs" to be expressibly by simple "CRPQs", and might
+lead to a characterization of tractable classes of "CRPQs"---which are results we can only dream of
+given our current knowledge.
+
+\quFPTtractability*
+
+\begin{marginfigure}[-10em]
+	\centering
+	\includegraphics[width=\linewidth]{fig/Munch.jpg}
+	\caption{
+		When your Ph.D. student talks about
+		the Stone dual space of the Heyting algebra of "conjunctive queries" for the forth
+		time this month.
+		\href{https://commons.wikimedia.org/wiki/File:Edvard\_Munch,\_1893,\_The_Scream,\_oil,\_tempera\_and\_pastel\_on\_cardboard,\_91\_x\_73\_cm,\_National\_Gallery\_of\_Norway.jpg}{\emph{Skrik}},
+		by Edvard Munch.
+	}
+\end{marginfigure}
+One the positive side, we managed to prove---in an unpublished work with Sam van Gool---that
+the Stone dual of the Heyting algebra of "conjunctive queries" is isomorphic
+to the space of "profinite databases", which seems to point towards the fact
+that "profinite databases" are natural objects.
+
+One the negative side, we do not know what to do with this result…
+One of the main difficulty however seems to define a notion of
+``$\+C$-profinite databases'' which makes sense when $\+C$ is a "minor-closed" "class of CRPQs".
+For instance, for "tree-width", we might have that "homomorphisms"
+\[
+	\?G \cohomto \?D \cohomto \?G'
+\]
+where $\?G$ and $\?G'$ have "tree-width" at most $k$,
+but where $\?D$ is nowhere having "semantic tree-width" at most $k$…
+More abstractly: "homomorphisms" do not interact that well with the notion of "minor".%
+\footnote{This contrasts with the fact that "minor-closed classes" are closed under taking "cores".}
+
+\clearpage
+\begin{subappendices}
+	\input{parts/conclu-databases/sec-treelike.tex}
+\end{subappendices}
