@@ -111,8 +111,8 @@ proposition that will prove useful.
 	\proofcase{$(2) \Rightarrow (3)$.} By \Cref{fact:unfolding-is-forest} we have $\delta \contained \Unfold(\delta)$ so it suffices to prove the converse "containment".
 	Let $U$ be a "canonical database" of $\Unfold(\delta)$. Then there exists $\?D \cdb \delta$
 	"st" $\?U = \Unfold(\?D)$. By \Cref{coro:all-cdb-are-dominated-by-forests} there exists
-	$\?D' \cdb \delta$ "st" $\?D \cohomto \?D'$ and the core of $\?D'$ is a forest. So $\?D \cohomto \core\?D'$, and so by \Cref{prop:hom-from-forest}, since $\core\?D'$ is a "forest",
-	then $\Unfold(\?D) \cohomto \core\?D'$ "ie" $\Unfold(\?D) \cohomto \?D'$, which proves
+	$\?D' \cdb \delta$ "st" $\?D \cohomto \?D'$ and the core of $\?D'$ is a forest. So $\?D \cohomto \core{\?D}'$, and so by \Cref{prop:hom-from-forest}, since $\core{\?D}'$ is a "forest",
+	then $\Unfold(\?D) \cohomto \core{\?D}'$ "ie" $\Unfold(\?D) \cohomto \?D'$, which proves
 	that $\Unfold(\?D) \FOmodels \delta$. Therefore, $\Unfold(\delta) \contained \delta$.
 
 	\proofcase{$(3) \Rightarrow (1)$.} This is because $\Unfold(\delta)$ is "forest-shaped"
