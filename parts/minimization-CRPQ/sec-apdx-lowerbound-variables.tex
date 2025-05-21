@@ -102,7 +102,7 @@
 	Assume now, by contradiction, that for all $j \in \lBrack 1,m \rBrack$
 	"st" $N_j \not\subseteq K \cap \A^* \big(\bigwedge_i L_i\big) \A^*$. Pick for each $j$ a word $u_j$ witnessing this. 
 	The canonical database of $\zeta$ induced by these
-	words $\langle n_1, \hdots, n_m \rangle$, namely
+	words $\langle n_1, \dotsc, n_m \rangle$, namely
 	\[x \atom{\marking} x \land \bigwedge_{j=1}^m x \atom{\triangleright n_j \triangleleft}\]
 	must satisfy $\delta$. But this implies that at least one $n_j$ must belong to
 	$K \cap \A^* \big(\bigcap_i L_i\big) \A^*$.
@@ -119,7 +119,7 @@
 	consider the "canonical database" of $\delta$ obtained by "expanding"
 	$K$ into $u$ and $L_i$ into $v_i$.
 	Now $\delta \contained \zeta$ so this database must satisfy $\zeta$.
-	Hence, for each $j$, $N_j$ must contain one word among $u$, $v_1, \hdots,v_m$.
+	Hence, for each $j$, $N_j$ must contain one word among $u$, $v_1, \dotsc,v_m$.
 	It cannot be any $v_i$ since otherwise we would have $v_i \in N_j \subseteq
 	K \cap \A^* \big(\bigcap_k L_k\big) \A^* \subseteq \A^* \big(\bigcap_k L_k\big) \A^*$, which is a contradiction. And so $u \in N_j$.
 	Therefore, we have
@@ -141,7 +141,7 @@
 \subsection{Variable Minimization is Harder than Containment}
 
 We say that the "class@@CRPQ" is \AP""closed under disjoint conjunction""
-if $\gamma \in \classCRPQ_\A$ and $\delta \in \classCRPQ_\B$
+if $\gamma \in \classCRPQ_{\A}$ and $\delta \in \classCRPQ_{\B}$
 imply $\gamma \disconj \delta \in \classCRPQ_{\A \cup \B}$.
 
 Lastly, we say that the class is \AP""closed under variable marking""

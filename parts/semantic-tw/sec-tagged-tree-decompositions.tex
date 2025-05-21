@@ -21,16 +21,16 @@ the "tree decomposition" of $\alpha$, and more importantly by how $\rho$ is mapp
 \begin{figure}[tbp]
 	\centering
 	\subfloat[A query $\gamma$ of "tree-width" 3.]{%
-		\includegraphics[width=.25\linewidth]{trio-query.pdf}
+		\includegraphics[width=.2\linewidth]{trio-query.pdf}
 	}
 	\hfill
 	\subfloat[A "refinement" $\rho$ of $\gamma$.]{%
 		\AP\label{fig:trio-refinement}
-		\includegraphics[width=.35\linewidth]{trio-refinement.pdf}
+		\includegraphics[width=.27\linewidth]{trio-refinement.pdf}
 	}
 	\hfill
 	\subfloat[A homomorphic image $\alpha$ of $\rho$ of "tree-width" 2. See \Cref{fig:trio-tree-dec} for a "tree decomposition" of $\alpha$ (ignoring the dashed blue lines).]{%
-		\includegraphics[width=.35\linewidth]{trio-approximation.pdf}
+		\includegraphics[width=.3\linewidth]{trio-approximation.pdf}
 	}
 	\caption{
 		\AP\label{fig:trio}
@@ -51,7 +51,7 @@ the "tree decomposition" of $\alpha$, and more importantly by how $\rho$ is mapp
     $\fun(y)$.
 \end{definition}
 
-\begin{figure}[tbp]
+\begin{figure*}[tbp]
 	\centering
 	\includegraphics[width=\linewidth]{trio-tree-dec.pdf}
 	\caption{
@@ -60,7 +60,7 @@ the "tree decomposition" of $\alpha$, and more importantly by how $\rho$ is mapp
 		(Recall that some bags are omitted for the sake of readability. These bags
 		are there to make the decomposition "fine".)
 	}
-\end{figure}
+\end{figure*}
 
 In other words, $\tagmap$ gives,
 for each "atom" of $\rho$, a witnessing "bag" that "contains@@tw" it, in the sense that
@@ -146,7 +146,7 @@ Moreover, note that a single atom $x_0 \atom{\lambda} x_1$ of $\rho$ "induces th
     % \[	
             \textstyle{
                 % {\tagmap(A) \choose \fun(y)},\,
-                {b_{1} \choose \fun(y)}, \hdots,
+                {b_{1} \choose \fun(y)}, \dotsc,
                 {b_{n} \choose \fun(y)},
                 % {\tagmap(B) \choose \fun(y)}
             }
@@ -214,7 +214,7 @@ contain at most $k$ variables\footnote{Recall
 that in a decomposition of "width" $k$, "bags" are allowed to contain at most $k+1$ variables.}.
 Such "bags" will prove useful in the next section because of the following property.
 
-\begin{figure}
+\begin{figure*}
     \centering
     \includegraphics[width=\linewidth]{connecting-tree-decompositions.pdf}
     \caption{%
@@ -223,7 +223,7 @@ Such "bags" will prove useful in the next section because of the following prope
         and one of its "fine tagged tree decomposition"
 		of "width" at most $k$ (bottom).
     }
-\end{figure}
+\end{figure*}
 
 \begin{proposition}
     \AP\label{prop:connecting-tree-decompositions}
@@ -235,9 +235,9 @@ Such "bags" will prove useful in the next section because of the following prope
 	and let $Z = \bagmap(b) \cap \bagmap'(b')$. In particular, we have
 	% Let $Z$ be the set of variables in common between $\bagmap(b)$ and $\bagmap'(b')$, so that we have
     \[
-        \bagmap(b) = \{x_1,\hdots,x_n\}\cup Z
+        \bagmap(b) = \{x_1,\dotsc,x_n\}\cup Z
         \;\text{ and }\;
-        \bagmap'(b') = \{y_1,\hdots,y_n\}\cup Z,
+        \bagmap'(b') = \{y_1,\dotsc,y_n\}\cup Z,
     \]
 	from some variables "st" the $x_i$'s are disjoint from the $y_i$'s.
 	Assume moreover that $\vars{\gamma} \cap \vars{\gamma'} \subseteq Z$.
@@ -258,21 +258,21 @@ The proof of \Cref{prop:connecting-tree-decompositions} is elementary and illust
 
 \begin{proof}
    	We connect $T$ with $T'$ with $2n \leq 2k$ bags:
-    start from $b_0 \defeq b$, which contains $\{x_1,\hdots,x_n\}\cup Z$. Then create
+    start from $b_0 \defeq b$, which contains $\{x_1,\dotsc,x_n\}\cup Z$. Then create
     the following bags:
     \begin{itemize}
-        \item $\bagmap(b_1) \defeq \{x_1,x_2,\hdots,x_n\}\cup\{y_1\}\cup Z
+        \item $\bagmap(b_1) \defeq \{x_1,x_2,\dotsc,x_n\}\cup\{y_1\}\cup Z
             = \bagmap(b_0) \cup \{y_1\}$, 
-        \item $\bagmap(b_2) \defeq \{x_2,\hdots,x_n\}\cup\{y_1\}\cup Z
+        \item $\bagmap(b_2) \defeq \{x_2,\dotsc,x_n\}\cup\{y_1\}\cup Z
             = \bagmap(b_1) \smallsetminus \{x_1\}$,
-        \item $\bagmap(b_{2i-1}) \defeq \{x_i,\hdots,x_n\}\cup\{y_1,\hdots,y_i\}\cup Z
+        \item $\bagmap(b_{2i-1}) \defeq \{x_i,\dotsc,x_n\}\cup\{y_1,\dotsc,y_i\}\cup Z
             = \bagmap(b_{2i-2}) \cup \{y_i\}$,
-        \item $\bagmap(b_{2i}) \defeq \{x_{i+1},\hdots,x_n\}\cup\{y_1,\hdots,y_i\}\cup Z
+        \item $\bagmap(b_{2i}) \defeq \{x_{i+1},\dotsc,x_n\}\cup\{y_1,\dotsc,y_i\}\cup Z
             = \bagmap(b_{2i-1}) \smallsetminus \{x_i\}$
     \end{itemize}
     for $1 \leq i \leq n$, and observe that $\bagmap(b_{2n}) = \bagmap'(b')$.
     Then, "tag" every atom of $\delta$ in the first bag of
-	$\langle b_1, \hdots, b_{2n-1} \rangle$ containing both variables of the "atom".
+	$\langle b_1, \dotsc, b_{2n-1} \rangle$ containing both variables of the "atom".
 	Such a bag always exists:
 	\begin{itemize}
 		\item an "atom" of the form $x_i \atom{L} z$ is "tagged" in $b_0$;

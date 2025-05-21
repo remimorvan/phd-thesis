@@ -51,22 +51,22 @@ We start by strengthening this result to fit our needs.
 	but $t$ cannot be adjacent to any other tile.
 	Then, the second condition amounts to showing that there is no $i$ "st"
 	\[
-		\mathbb{A}^* (G_i \cup F_C \cup F_H) \mathbb{A}^* =
-		\mathbb{A}^* \Bigl( \bigcap_{0 \leq j \leq n} (G_j \cup F_C \cup F_H)\Bigr) \mathbb{A}^*
+		\symbb{A}^* (G_i \cup F_C \cup F_H) \symbb{A}^* =
+		\symbb{A}^* \Bigl( \bigcap_{0 \leq j \leq n} (G_j \cup F_C \cup F_H)\Bigr) \symbb{A}^*
 		\]
 		which is equivalent, by elementary manipulations, to saying that for all $i \in \lBrack 0,n\rBrack$
 		\[
-			\mathbb{A}^* G_i \mathbb{A}^*
+			\symbb{A}^* G_i \symbb{A}^*
 			\not\subseteq 
-			\mathbb{A}^* \Bigl( \bigcap_{0 \leq j \leq n} G_j \Bigr) \mathbb{A}^*
-			\cup \mathbb{A}^* (F_C \cup F_H) \mathbb{A}^*.
+			\symbb{A}^* \Bigl( \bigcap_{0 \leq j \leq n} G_j \Bigr) \symbb{A}^*
+			\cup \symbb{A}^* (F_C \cup F_H) \symbb{A}^*.
 			\]
 			For $i=0$, this holds because we can consider a valid encoding of a tiling
 			which respects all constraints except that one vertical constraint is violated.
 			For $i \in \lBrack 1,n\rBrack$, we consider the encoding of a tiling which is locally valid.
 			Then, it has no vertical error, no horizontal error, and no encoding error, so
 			it does not belong to the right-hand side.
-			However, it belongs to $\mathbb{A}^* G_i \mathbb{A}^*$ for any $i \in \lBrack 1,n\rBrack$ since it contains a subword encoding two cells separated by exactly one row. Hence,
+			However, it belongs to $\symbb{A}^* G_i \symbb{A}^*$ for any $i \in \lBrack 1,n\rBrack$ since it contains a subword encoding two cells separated by exactly one row. Hence,
 			the second condition also holds.
 \end{proof}
 
@@ -426,8 +426,8 @@ Once again, we start by giving a proof sketch before giving the full proof.
 	\[
 		\delta_2() \defeq \bigwedge_{x \atom{L} y \in \gamma_2} x \atom{\erasingmorphism[-1]{\alphabetmarking}[L]} y,
 	\]
-	where $\alpha_1, \hdots, \alpha_k$ are all the "atoms" of $\gamma_1$,
-	$\alphabetmarking \defeq \{\triangleright_{\alpha_1},\triangleleft_{\alpha_1}, \hdots,
+	where $\alpha_1, \dotsc, \alpha_k$ are all the "atoms" of $\gamma_1$,
+	$\alphabetmarking \defeq \{\triangleright_{\alpha_1},\triangleleft_{\alpha_1}, \dotsc,
 	\triangleright_{\alpha_k}, \triangleleft_{\alpha_k}\}$ and
 	\AP$\intro*\erasingmorphism{\alphabetmarking}\colon (\A\cup \alphabetmarking)^* \to \A^*$
 	is the monoid morphism that maps letters of $\A$ to themselves and 
@@ -469,7 +469,7 @@ Once again, we start by giving a proof sketch before giving the full proof.
 	\]
 	Now some $f(x_i)$'s might be variables of $\gamma_1$ and hence
 	this might not a path in $G_1$.
-	We let $i_1 < \hdots < i_k$ denote the indices $i$ "st" $x_i \in \vertex{\gamma_1}$, so
+	We let $i_1 < \dotsc < i_k$ denote the indices $i$ "st" $x_i \in \vertex{\gamma_1}$, so
 	that we can split the path in $G_1$ into multiples "atom refinements" 
 	of "atoms" of $\gamma_1$:
 	\begin{align*}
@@ -528,7 +528,7 @@ Once again, we start by giving a proof sketch before giving the full proof.
 		x_{i_k}^l \atom{\triangleleft_{\alpha_{k-1}}} x_{i_k} \atom{\triangleright_{\alpha_{k}}} x_{i_k}'
 		\atom{b_{i_k+1}} x_{i_{k}+1} \atom{b_{i_k+2}} \cdots \atom{b_n} x_n,
 	\end{align*}
-	where $x_{i_1}^l, x_{i_1}^r, \hdots, x_{i_k}^l, x_{i_k}^r$ are new fresh variables.
+	where $x_{i_1}^l, x_{i_1}^r, \dotsc, x_{i_k}^l, x_{i_k}^r$ are new fresh variables.
 	By construction, $D_2$ comes equipped with a "homomorphism" 
 	$g\colon D_2 \to D_1$ which sends $x_i$ to $f(x_i)$,
 	$x_{i_j}^l$ to $f(x_{i_j})^l$ and $x_{i_j}^r$ to $f(x_{i_j})^r$. Since $D_2$ is---by

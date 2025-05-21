@@ -194,7 +194,7 @@ Our approach exploits having unions at our disposal, enabling the possibility of
 
 For a graph class $\+C$ (remember that these are directed multigraphs) we denote by \AP$\intro*\CQ[\+C]$, $\intro*\CRPQ[\+C]$, $\intro*\UCRPQ[\+C]$, $\intro*\infUCRPQ[\+C]$, the class of "CQs", of "CRPQs", of finite unions of "CRPQs" 
 and of infinite unions of "CRPQs" $\gamma$ such that $\underlying{\gamma} \in \+C$.
-Given a graph class $\+C$ and a "UCRPQ" $\Gamma$, we define $\AppInf{\Gamma}{\+C}$ to be the (infinite) set of all $\CRPQ[\+C]$ queries which are "contractions" of "CQs" "contained" in $\Gamma$. More formally:\footnote{Note that the "contraction" of a "CQ" is a "CRPQ": this is why $\AppInf{\Gamma}{\+C}$ is an infinite union of "CRPQs" and not of "CQs".}
+Given a graph class $\+C$ and a "UCRPQ" $\Gamma$, we define $\AppInf{\Gamma}{\+C}$ to be the (infinite) set of all $\CRPQ[\+C]$ queries which are "contractions" of "CQs" "contained" in $\Gamma$. More formally:\footnote[][-4em]{Note that the "contraction" of a "CQ" is a "CRPQ": this is why $\AppInf{\Gamma}{\+C}$ is an infinite union of "CRPQs" and not of "CQs".}
 \[
 	\intro*\AppInf{\Gamma}{\+C} \defeq \{
 		\alpha \in \CRPQ[\+C] \mid \exists \xi \in \Exp(\Gamma), \exists \eta \in \CQ \text{ s.t. }
@@ -257,9 +257,9 @@ Our "ExpSpace" upper bound relies on the following technical lemma.
 	We have that $\AppInf{\Gamma}{\+C}\semequiv \App{\Gamma}{\+C}{+\infty}$. Indeed, $\AppInf{\Gamma}{\+C}\contained \App{\Gamma}{\+C}{+\infty}$ as the former is a subset of the latter. On the other hand, $\App{\Gamma}{\+C}{+\infty}\contained \AppInf{\Gamma}{\+C}$ follows from Proposition \ref{prop:max-under-approx} and the fact that $\App{\Gamma}{\+C}{+\infty}\contained \Gamma$ by construction.
 	
 	Let $\nbatoms{\+C}\defeq \max{\set{\nbatoms{G} \mid G \in \+C}}$ and $r_{\Gamma}$ be the maximum number of states over the NFAs describing the languages appearing in $\Gamma$. 
-	We claim that $\App{\Gamma}{\+C}{+\infty} \semequiv \App{\Gamma}{\+C}{O(\nbatoms{\Gamma}\cdot r_{\Gamma}\cdot \nbatoms{\+C})}$.
+	We claim that $\App{\Gamma}{\+C}{+\infty} \semequiv \App{\Gamma}{\+C}{\+O(\nbatoms{\Gamma}\cdot r_{\Gamma}\cdot \nbatoms{\+C})}$.
 	The right-to-left containment is trivial, so it suffices to show
-	$\App{\Gamma}{\+C}{+\infty} \contained \App{\Gamma}{\+C}{O(\nbatoms{\Gamma}\cdot r_{\Gamma}\cdot \nbatoms{\+C})}$.
+	$\App{\Gamma}{\+C}{+\infty} \contained \App{\Gamma}{\+C}{\+O(\nbatoms{\Gamma}\cdot r_{\Gamma}\cdot \nbatoms{\+C})}$.
 
 	We define an \AP""explicit approximation"" of $\Gamma$ over $\+C$ as a tuple
 	$\vec{\alpha} = \tup{\rho, \eta, \alpha, h, \orig, \cont}$ consisting of the following:
@@ -298,21 +298,21 @@ Our "ExpSpace" upper bound relies on the following technical lemma.
 
 	If $k-1>\nbvar{\Gamma}$, then path $x_0 \atom{} x_1 \atom{} \cdots \atom{} x_k$ contains a variable satisfying the condition above, and hence we can apply the simplification. Overall, this shows that any "explicit approximation" is "contained@@approx"
 	in an "explicit approximation" of "contraction length" at most
-	$O(\nbvar{\Gamma})\leq O(\nbatoms{\Gamma})$.
+	$\+O(\nbvar{\Gamma})\leq \+O(\nbatoms{\Gamma})$.
 
 	\proofcase{2\textsuperscript{nd} step: bounding the size of $\rho$.}
 	We now show that we can bound the \AP""refinement length"" of an "explicit approximation",
 	namely the maximal length of an "atom refinement" in $\rho$.
 	Let $\vec{\alpha_1}$ be an "explicit approximation" of "contraction length" at most
-	$O(\nbatoms{\Gamma})$. Then $\eta_1$ has at most $O(\nbatoms{\Gamma}\cdot\nbatoms{\+C})$
+	$\+O(\nbatoms{\Gamma})$. Then $\eta_1$ has at most $\+O(\nbatoms{\Gamma}\cdot\nbatoms{\+C})$
 	"atoms". It follows then, by the pigeonhole principle, that we can bound the
-	"refinement length" of $\rho_1$ by $O(\nbatoms{\Gamma}\cdot r_{\Gamma}\cdot\nbatoms{\alpha})$. Indeed, if the length of an "atom refinement" of $\rho_1$  is greater than this bound, there are two  atoms in the refinement $x\atom{L_i} y$ and  $x’\atom{L_j} y’$, with $i<j$, mapped to the same atom via $h_1$ and whose corresponding NFA states $q_i$ and $q_j$ in the definition of refinements are the same. We can then remove the path between $y$ and $y’$.
+	"refinement length" of $\rho_1$ by $\+O(\nbatoms{\Gamma}\cdot r_{\Gamma}\cdot\nbatoms{\alpha})$. Indeed, if the length of an "atom refinement" of $\rho_1$  is greater than this bound, there are two  atoms in the refinement $x\atom{L_i} y$ and  $x’\atom{L_j} y’$, with $i<j$, mapped to the same atom via $h_1$ and whose corresponding NFA states $q_i$ and $q_j$ in the definition of refinements are the same. We can then remove the path between $y$ and $y’$.
 	In conclusion, this shows that $\App{\Gamma}{\+C}{+\infty} \contained \App{\Gamma}{\+C}{O(\nbatoms{\Gamma}\cdot r_{\Gamma}\cdot \nbatoms{\+C})}$.
 
-	\proofcase{Conclusion: Expressing \& computing $\App{\Gamma}{\+C}{O(\nbatoms{\Gamma}\cdot r_{\Gamma} \cdot \nbatoms{\+C})}$ as a "UCRPQ".} 
-	In order to compute $\App{\Gamma}{\+C}{O(\nbatoms{\Gamma}\cdot r_{\Gamma} \cdot \nbatoms{\+C})}$ we can enumerate the finitely many $m$-refinements $\rho$ of $\Gamma$, where $m=O(\nbatoms{\Gamma}\cdot r_{\Gamma} \cdot \nbatoms{\+C})$, and the finitely many "CRPQs"  $\eta$ with at most $O(\nbatoms{\Gamma} \cdot \nbatoms{\+C})$ atoms such that $\rho\homto \eta$. The only issue here is that we have infinitely many possibilities to choose languages labelling the atoms that are not in the "homomorphic image" of $\rho \homto \eta$. However, we can  choose the most general language $\A^*$ obtaining a query equivalent to $\App{\Gamma}{\+C}{m}$. 
-	Note that each "CRPQ" has at most $O(\nbatoms{\Gamma} \cdot \nbatoms{\+C})$ atoms and its languages are concatenations of
-	 $O(\nbatoms{\Gamma} \cdot \nbatoms{\+C})$ "sublanguages" of $\Gamma$ or $\A^*$, and
+	\proofcase{Conclusion: Expressing \& computing $\App{\Gamma}{\+C}{\+O(\nbatoms{\Gamma}\cdot r_{\Gamma} \cdot \nbatoms{\+C})}$ as a "UCRPQ".} 
+	In order to compute $\App{\Gamma}{\+C}{\+O(\nbatoms{\Gamma}\cdot r_{\Gamma} \cdot \nbatoms{\+C})}$ we can enumerate the finitely many $m$-refinements $\rho$ of $\Gamma$, where $m=\+O(\nbatoms{\Gamma}\cdot r_{\Gamma} \cdot \nbatoms{\+C})$, and the finitely many "CRPQs"  $\eta$ with at most $\+O(\nbatoms{\Gamma} \cdot \nbatoms{\+C})$ atoms such that $\rho\homto \eta$. The only issue here is that we have infinitely many possibilities to choose languages labelling the atoms that are not in the "homomorphic image" of $\rho \homto \eta$. However, we can  choose the most general language $\A^*$ obtaining a query equivalent to $\App{\Gamma}{\+C}{m}$. 
+	Note that each "CRPQ" has at most $\+O(\nbatoms{\Gamma} \cdot \nbatoms{\+C})$ atoms and its languages are concatenations of
+	 $\+O(\nbatoms{\Gamma} \cdot \nbatoms{\+C})$ "sublanguages" of $\Gamma$ or $\A^*$, and
 	so they can be described by NFAs of polynomial size on $\size{\Gamma}$ and $\nbatoms{\+C}$.
 \end{proof}
 
@@ -324,7 +324,7 @@ Our "ExpSpace" upper bound relies on the following technical lemma.
 \begin{proof}
 	It suffices to test if the "UCRPQ" $\Gamma$ is "equivalent"
 	to $\App{\Gamma}{\+C}{m}$ where $\+C$ is the class of all graphs
-	with at most $k$ edges and $m=O(\nbatoms{\Gamma}\cdot r_{\Gamma} \cdot \nbatoms{\+C})$ as in the proof of \Cref{lemma:approximation-for-finclass}. 
+	with at most $k$ edges and $m=\+O(\nbatoms{\Gamma}\cdot r_{\Gamma} \cdot \nbatoms{\+C})$ as in the proof of \Cref{lemma:approximation-for-finclass}. 
 	The correctness follows from \Cref{prop:max-under-approx} since $\+C$ is
 	trivially closed under "minors".
 	Each $\alpha \in \App{\Gamma}{\+C}{m}$ has at most $k$ edges,
@@ -347,7 +347,7 @@ Our "ExpSpace" upper bound relies on the following technical lemma.
 	We first begin with an easy small counterexample property.
 	\begin{claim}
 		\AP\label{cl:small-counterexample-SRE}
-		Let $\Gamma, \Delta \in \text{"UCRPQ"}$ containing only atoms with expressions of the form \AP""(i)@@sre"" $a^+$, or ""(ii)@@sre"" $a_1 + \dotsb + a_k$. Additionally, $\Delta$ may also have expressions of the form ""(iii)@@sre"" $\A^*$. If $\Gamma \notcontained \Delta$, then there exists $\anexpansion \in \Exp(\Gamma)$ such that (a) $\anexpansion \notcontained \Delta$ and (b) $\nbatoms{\anexpansion} \leq O(\max_{\gamma \in \Gamma}\nbatoms{\gamma} \cdot \max_{\delta \in \Delta}\nbatoms{\delta})$.
+		Let $\Gamma, \Delta \in \text{"UCRPQ"}$ containing only atoms with expressions of the form \AP""(i)@@sre"" $a^+$, or ""(ii)@@sre"" $a_1 + \dotsb + a_k$. Additionally, $\Delta$ may also have expressions of the form ""(iii)@@sre"" $\A^*$. If $\Gamma \notcontained \Delta$, then there exists $\anexpansion \in \Exp(\Gamma)$ such that (a) $\anexpansion \notcontained \Delta$ and (b) $\nbatoms{\anexpansion} \leq \+O(\max_{\gamma \in \Gamma}\nbatoms{\gamma} \cdot \max_{\delta \in \Delta}\nbatoms{\delta})$.
 	\end{claim}
 
 	The intuition is that if a counterexample includes an atom expansion $x \atom{a^n} y$ of some atom $x \atom{a^+} y$, where $n$ is greater than the maximum number of atoms in $\Delta$ (plus one), then the expansion obtained by replacing $x \atom{a^n} y$ with $x \atom{a^{n-1}} y$ must also be a counterexample. Hence, a minimal counterexample must have all atom expansions bounded by the maximum number of atoms in $\Delta$.

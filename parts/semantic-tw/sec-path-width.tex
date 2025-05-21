@@ -238,10 +238,10 @@ instead of either of those definitions, we use the characterization of "para-NL"
 proven in \cite[Theorem 4, p. 296]{FlumGrohe2003Describing}.
 
 We define \AP""para-NL"" as the class of parametrized languages $L \subseteq \Sigma^* \times \N$
-for which there is a Turing machine $M$ "st"
+for which there is a "Turing machine" $\+M$ "st"
 \begin{center}\begin{tikzpicture}[>={Classical TikZ Rightarrow},font=\normalsize]
 	\node (first) {%
-		$M \text{ accepts } \langle \textcolor{cRed}{x},\, \textcolor{cBlue}{k}\rangle%
+		$\+M \text{ accepts } \langle \textcolor{cRed}{x},\, \textcolor{cBlue}{k}\rangle%
 		\quad\text{"iff"}\quad
 		\langle$%
 	};
@@ -254,7 +254,7 @@ for which there is a Turing machine $M$ "st"
 	\draw[->, cRed] (fromX) to[out=60, in=-120] (toX.south);
 	\draw[->, cBlue] (fromK) to[out=120, in=-60] (toK.south);
 \end{tikzpicture}\end{center}
-and, moreover, $M$ runs in non-deterministic space
+and, moreover, $\+M$ runs in non-deterministic space
 $f(\textcolor{cBlue}{k}) + \+O(\log(|\textcolor{cRed}{x}|))$,
 where $f\colon \N \to \N$ is a computable function.
 A typical example of "para-NL" problem is the model-checking problem for first-order logic on

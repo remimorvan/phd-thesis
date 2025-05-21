@@ -106,7 +106,7 @@ has a multiset semantics rather than a set-based semantics…}
 		\item a table of arity $k$, modelled as a relation $\+R_{(k)}$,
 			is encoded as the atomic formula
 			\[
-				\phi_{(k)}(x_1,\hdots,x_k) \defeq \+R_{(k)}(x_1,\hdots,x_k)
+				\phi_{(k)}(x_1,\dotsc,x_k) \defeq \+R_{(k)}(x_1,\dotsc,x_k)
 			\]
 			with $k$ free variables which are all fresh;
 		\item a query
@@ -117,7 +117,7 @@ has a multiset semantics rather than a set-based semantics…}
 			\end{align*}
 			is encoded as
 			\[
-				\psi(y_1,\hdots,y_k) \defeq
+				\psi(y_1,\dotsc,y_k) \defeq
 				\exists \bar x.\;
 				\tilde\phi^1_{(i_1)}(x^1_1,\dotsc,x^1_{i_1})
 				\land \dotsc \land
@@ -284,7 +284,7 @@ we assume that formulas come with a tuple of variables,
 containing all free variables.
 Hence, a $k$-ary \AP""conjunctive query"" over a "purely relational signature" $\sigma$,
 or \reintro{CQ} for short, amounts to a finite set
-of atomic formulas of the form $\+R_{(k)}(x_1,\hdots,x_k)$,
+of atomic formulas of the form $\+R_{(k)}(x_1,\dotsc,x_k)$,
 called ""atoms@@cq"", with $\+R_{(k)} \in \sigma$,
 together with tuple of $k$ variables $\bar x$, called ""free variables@@cq""
 or ""output variables@@cq"".%
@@ -504,7 +504,7 @@ over $\sigma$ under the homomorphism ordering.'' Symbolically:
 Naturally, to go from "relational databases" to "conjunctive queries",
 we associate to any "pointed relational database" $\tup{\?G, \bar g}$
 a ""canonical conjunctive query"" $\gamma(\bar g)$ with one "atom"
-$\+R_{(k)}(x_1,\hdots,x_k)$ for every "hyperedge" $\tup{x_1,\hdots,x_k} \in \+R_{(k)}(\?G)$.
+$\+R_{(k)}(x_1,\dotsc,x_k)$ for every "hyperedge" $\tup{x_1,\dotsc,x_k} \in \+R_{(k)}(\?G)$.
 This map is precisely the inverse of the construction defining "canonical database@@cqs@@cq".
 
 This dual isomorphism has many consequences: essentially every theory that deals with
@@ -591,7 +591,7 @@ is itself non-trivial.
 	It is then routine to check that for $n,m\in\Np$, we have $\?C_n \homto \?C_m$
 	"iff" $n$ is a multiple of $m$. In particular,%
 	\footnote{In fact, we obtain a \emph{projective system}. We will discuss
-	projective limits in \todo{ref conclu}.}
+	projective limits in \Cref{ch:conclu-database}.}
 	we have
 	\[
 		\?C_1 \cohomto \?C_2 \cohomto \?C_4 \cohomto \cdots \cohomto \?C_{2^n} \cohomto \?C_{2^{n+1}} \cohomto \cdots.
@@ -1474,7 +1474,7 @@ a "tree decomposition".
 	from $\bagmap(b)$ to $\?D$, and only keep those that define a 
 	partial "homomorphism" $\tup{\?G, \bar x} \pto \tup{\?D, \bar d}$: this
 	yields a set $\+H_b$ of partial "homomorphisms".
-	Then, when dealing with a node $b$ whose children are $b_1,\hdots,b_k$,
+	Then, when dealing with a node $b$ whose children are $b_1,\dotsc,b_k$,
 	again we enumerate every possible map $f$
 	from $\bagmap(b)$ to $\?D$, but then only keep those that
 	(1) define a partial "homomorphism" $\tup{\?G, \bar x} \pto \tup{\?D, \bar d}$,
@@ -1681,7 +1681,7 @@ all of its "path decompositions".
 					we let $f(x_i) \defeq u_i$;
 				\item otherwise, we non-deterministically guess the value of $f(y)$.
 			\end{itemize}
-			We then check, for every "atom" $\+R_{(k)}(x_1,\hdots,x_k)$ of $\gamma(\bar x)$ 
+			We then check, for every "atom" $\+R_{(k)}(x_1,\dotsc,x_k)$ of $\gamma(\bar x)$ 
 			"st" all $x_j$'s occur in $\bagmap(b_i)$ if
 			$\tup{f(x_1), \dotsc, f(x_k)} \in \+R_{(k)}(\?D)$.
 			If not, we reject. 

@@ -34,14 +34,14 @@ A query like the one before is defined to be equivalent to the (infinitary) unio
 \end{align}
 that is, the root and leaf "bags" contain precisely the vertices of $X$ and $Y$, respectively.
  See \Cref{fig:l-path-example} for an example.
-\begin{figure}
+\begin{figure*}
   \centering
   \includegraphics[width = \textwidth]{summary-example.pdf}
   \caption{
 	\AP\label{fig:l-path-example}
 	Consider the "path-$l$ approximation" $\pathl(\set{x_1,x_2}, \set{y_1,y_2},\delta)$ where $l=2$ and $\delta$ is depicted on the left. Its semantics contains the "approximation" $\alpha(x_1,x_2,y_1,y_2) \in \MUA{\delta}{\Pw[l]}$ depicted in the middle because it has "path decomposition" of "width" $l$ verifying \eqref{eq:pathl:rootleafppty}, as shown on the right.
 	}
-\end{figure}
+\end{figure*}
 
 \AP We now simply define a ""$k$-summary query"" as a "C2RPQ" extended with "path-$l$ approximation" atoms for any $l\leq k$, with the expected semantics.
 A \AP""refinement@@summary"" of a "$k$-summary query" is any "C2RPQ" obtained by
@@ -190,7 +190,9 @@ With the previous results in place, we now show that the semantic tree-width $k$
     Let us call any atom with a language of the form $a^*$ a ""recursive atom"", and any other atom a ""non-recursive atom"".
     Let $n$ be the number of "non-recursive atoms" of $\gamma$. Hence, any refinement $\rho \in \Refin(\gamma)$ has $n$ atoms deriving from "non-recursive@@nrat" "atom refinements", all the remaining ones derive from "recursive@@rat" "atom refinements".
 
-    We will work with the infinitary union of "conjunctive queries" $\Qalt\defeq\MUAHom{\gamma}{\Tw} \cap \textnormal{"CQ"}$. Note that $\Qalt=\set{ \alpha \in \textnormal{"CQ"} \mid \alpha \in \Tw \text{ and there is } \anexpansion \in \Exp(\gamma) \text{ "st" } \anexpansion \surj \alpha }$.
+    We will work with the infinitary union of "conjunctive queries"
+	\[\Qalt\defeq\MUAHom{\gamma}{\Tw} \cap \textnormal{"CQ"}.\]
+	Note that $\Qalt=\set{ \alpha \in \textnormal{"CQ"} \mid \alpha \in \Tw \text{ and there is } \anexpansion \in \Exp(\gamma) \text{ "st" } \anexpansion \surj \alpha }$.
     It is easy to see that $\Qalt \semequiv \MUAHom{\gamma}{\Tw}$ as a consequence of \Cref{fact:refinement-tw}.
 	% (and thus $\Qalt \semequiv \Qapp$).
     By \Cref{prop:cont-char-exp-st}, we have $\gamma \notcontained \Qalt$ if, and only if, there is some "expansion" $\anexpansion$ of $\gamma$ such that $\anexpansion \notcontained \Qalt$. In turn, this happens if, and only if, there is no $\delta \in \Qalt$ such that $\delta \homto \anexpansion$.
@@ -234,7 +236,8 @@ With the previous results in place, we now show that the semantic tree-width $k$
         \begin{enumerate}
           \item guessing the "conjunctive query" $\delta_{\textup{path}}$ via its "fine" "path decomposition" of "width" $k$,
           \item checking that there is a partial "homomorphism" to $\gamma$ ("ie", a "homomorphism" from the subquery of $\gamma$ restricted to current "bag"'s variables to $\gamma$),
-          \item ensuring that the "CQ" $\delta_{\textup{path}}$ being built is an element of $\pathl(X, Y, \bigwedge_{1 \leq i \leq n} A_i(x_i,y_i))$, which requires to also guess a homomorphism $\rho \homto \delta_{\textup{path}}$ from a refinement $\rho$ of $\bigwedge_{1 \leq i \leq n} A_i(x_i,y_i)$.
+          \item ensuring that the "CQ" $\delta_{\textup{path}}$ being built is an element of
+		  \[\pathl(X, Y, \bigwedge_{1 \leq i \leq n} A_i(x_i,y_i)),\] which requires to also guess a homomorphism $\rho \homto \delta_{\textup{path}}$ from a refinement $\rho$ of $\bigwedge_{1 \leq i \leq n} A_i(x_i,y_i)$.
         \end{enumerate}
         Further, a simple test can ensure that the first and last bags of the decomposition  coincide with the guessed assignment $\mu$.
         Since the number of pointers (bounded by $k+1$) is fixed, this subroutine is in "NL", and hence in polynomial time. This yields an "NP" algorithm for testing $\xi \contained \Qapp$.

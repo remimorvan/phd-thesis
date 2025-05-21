@@ -48,7 +48,7 @@ tree decomposition" of $\fun$.
 %         \textcolor{red}{Attention: use "contraction"}
 %     }
 % \end{figure}
-\begin{figure}[tbp]
+\begin{figure*}[tbp]
 	\centering
 	\includegraphics[width=\linewidth]{trio-tree-dec-acyclic.pdf}
 	\caption{
@@ -56,7 +56,7 @@ tree decomposition" of $\fun$.
         Changing the blue "atom refinement" of $\gamma$ (see \Cref{fig:trio-tree-dec})
 		so that it induces an "acyclic path".
 	}
-\end{figure}
+\end{figure*}
 
 Note that the fact that $f'$ is a "trio" implies in particular that
 $\rho'$ is a "refinement" of $\gamma$.
@@ -97,9 +97,9 @@ $(T, \bagmap, \tagmap)$ of \Cref{fig:trio-tree-dec} for the blue "atom refinemen
 followed by applying \Cref{fact:restriction_tagged_treedec}.
 In \Cref{fig:trio-tree-dec}, the "induced path" was "leaving" the "bag" $b_2$ both
 at the first and at the second purple vertex. This leads in \Cref{fig:path-induced}
-to a new atom between these vertices. The same phenomenon happens to "bags" $b_3, \hdots, b_{n-1}$.
+to a new atom between these vertices. The same phenomenon happens to "bags" $b_3, \dotsc, b_{n-1}$.
 Lastly, note that because the "atoms" tagged in "bags"
-$b^{\text{blue}}_2, \hdots, b^{\text{blue}}_{n-1}$ are not in the image of $f'$,
+$b^{\text{blue}}_2, \dotsc, b^{\text{blue}}_{n-1}$ are not in the image of $f'$,
 these bags were removed by \Cref{fact:restriction_tagged_treedec}.
 
 \begin{proof}[Formal proof of \Cref{lemma:locally_acyclic_treedec}]
@@ -123,10 +123,10 @@ these bags were removed by \Cref{fact:restriction_tagged_treedec}.
         \Bigl\langle
             {b_{i_0} \choose \fun(z_0)},
 			{b_{i_0+1} \choose \fun(z_1)},
-			\hdots,
+			\dotsc,
 			{b_{i_1} \choose \fun(z_1)},
 			{b_{i_1+1} \choose \fun(z_2)},
-			\hdots,
+			\dotsc,
 			{b_{i_{n-1}} \choose \fun(z_{n-1})},
 			{b_{i_{n-1}+1} \choose \fun(z_n)}
         \Bigr\rangle
@@ -145,10 +145,10 @@ these bags were removed by \Cref{fact:restriction_tagged_treedec}.
     % \begin{details} 
     %   Indeed, if we had $n(j) = n(j')$ then we would have
     %   $i_{k-1} < j < j' \leq i_k$, so in the sequence
-    %   $(b_{i_{k-1}+1}, \hdots, b_{i_k})$ we would find the same bag,
+    %   $(b_{i_{k-1}+1}, \dotsc, b_{i_k})$ we would find the same bag,
     %   namely $b_j = b_{j'}$, at two different indices, which would
     %   contradict the fact that
-    %   \[(b_{i_{k-1}+1}, \hdots, b_{i_k})\] is 
+    %   \[(b_{i_{k-1}+1}, \dotsc, b_{i_k})\] is 
     %   a simple path in $T$ by "ip3".
     % \end{details}
   
@@ -177,7 +177,7 @@ these bags were removed by \Cref{fact:restriction_tagged_treedec}.
     Observe then that the "path induced" by 
     $\pi'$ in $(T', \bagmap', \tagmap')$ is simply
     % \[
-    %     (b_1, \hdots, b_{j-1}, b_{j}, b_{j'}, b_{j'+1}, \hdots, b_n),
+    %     (b_1, \dotsc, b_{j-1}, b_{j}, b_{j'}, b_{j'+1}, \dotsc, b_n),
     % \]
     \[
         \tagmappathprime{\pi'} =
@@ -185,10 +185,10 @@ these bags were removed by \Cref{fact:restriction_tagged_treedec}.
 		\Bigl\langle
             {b_{i_0} \choose \fun(z_0)},
 			{b_{i_0+1} \choose \fun(z_1)},
-			\hdots,
+			\dotsc,
 			{b_{j} \choose \fun(z_{n(j)})},
             {b_{j'} \choose \fun(z_{n(j')})},
-			\hdots,
+			\dotsc,
 			{b_{i_{n-1}} \choose \fun(z_{n-1})},
 			{b_{i_{n-1}+1} \choose \fun(z_n)}
         \Bigr\rangle
@@ -238,16 +238,16 @@ To prove \Cref{lemma:shape-decomposition}, we will try to find, in a long "non-b
 some kind of shortcut. The piece of information that is relevant to finding this shortcut
 is what we call the "profile" of a "bag".
 
-\begin{figure}[tbp]
+\begin{figure*}[tbp]
 	\centering
-	\includegraphics[scale=.48]{trio-tree-dec-long-path.pdf}
+	\includegraphics[width=\linewidth]{trio-tree-dec-long-path.pdf}
 	\caption{
 		\AP\label{fig:trio-tree-dec-long-path}
         "Profiles" of the "bags" in the "non-branching path" between $b_1$ and $b_n$ in the "fine tagged tree decomposition" obtained from \Cref{fig:trio-tree-dec} after applying 
 		\Cref{lemma:locally_acyclic_treedec,fact:restriction_tagged_treedec} to both the
 		red and blue "atom refinements".
 	}
-\end{figure}
+\end{figure*}
 
 \begin{definition}[Types and Profiles]
     \AP Given a "trio" $\fun\colon \rho \surj \alpha$ and a "fine tagged tree decomposition"
@@ -322,7 +322,7 @@ while preserving every needed property of the "trio".
 We give first an informal and then a formal proof of \Cref{claim:shortening-paths}, which are 
 illustrated in \Cref{fig:shortening-paths}.
 
-\begin{figure}
+\begin{figure*}
     \centering%
     \subfloat[An "approximation" $\alpha$.]{%
         \AP\label{fig:shortening-paths-approx}%
@@ -350,13 +350,13 @@ illustrated in \Cref{fig:shortening-paths}.
 		(see \Cref{fig:shortening-paths-approx-result})
 		by applying "condensations" to the "atom refinements" involved.
     }
-\end{figure}
+\end{figure*}
 
 \begin{proof}[Informal proof of \Cref{claim:shortening-paths}]
     \AP\label{proof-claim:shortening-paths}
     If $b$ and $b'$ have the same "profile", then in particular they have the same cardinality $m$,
     which is smaller or equal to $k$ by assumption.
-    Let $\bagmap(b) = \{x_1,\hdots, x_m\}$ and $\bagmap(b') = \{y_1,\hdots,y_m\}$ be such that: 
+    Let $\bagmap(b) = \{x_1,\dotsc, x_m\}$ and $\bagmap(b') = \{y_1,\dotsc,y_m\}$ be such that: 
     $\typeStw^{b}_{x_i} = \typeStw^{b'}_{y_i}$ for all $1 \leq i \leq m$.
 	Note that the $x_i$'s don't need to be distinct from the $y_i$'s.
 	Essentially, we can then "condense"
@@ -383,9 +383,9 @@ illustrated in \Cref{fig:shortening-paths}.
 
 \begin{proof}[Formal proof of \Cref{claim:shortening-paths}]
     Let
-    \[\bagmap(b) = \{x_1,\hdots, x_m\}
+    \[\bagmap(b) = \{x_1,\dotsc, x_m\}
     \text{ and }
-    \bagmap(b') =\{y_1,\hdots,y_m\}
+    \bagmap(b') =\{y_1,\dotsc,y_m\}
     \]
     be as in the informal proof.
     Note that given an "atom" $x \atom{L} y$ of $\gamma$ and
@@ -396,19 +396,19 @@ illustrated in \Cref{fig:shortening-paths}.
 	% if $\typeStw_x^b = \typeStw_y^b$, then $x=y$.
 
     For every "atom" $x \atom{L} y$ of $\gamma$, let 
-    $\pi(x \atom{L} y) \defeq t_0 \atom{L_1} \hdots \atom{L_n} t_n$
+    $\pi(x \atom{L} y) \defeq t_0 \atom{L_1} \dotsc \atom{L_n} t_n$
     be its "refinement" in $\rho$.
     If $x \atom{L} y$ is not in some "type@@stw" of the "profile" of $b$
     (or equivalently, of $b'$), leave it as is.
     Otherwise, let $i$ (resp.\ $j$) be the unique
     index (by acyclicity) such that
-    $\tagmappath{t_0 \atom{L_1} \hdots \atom{L_n} t_n}$ "leaves" $b$
+    $\tagmappath{t_0 \atom{L_1} \dotsc \atom{L_n} t_n}$ "leaves" $b$
     at $\fun(t_i)$ (resp.\ "leaves" $b'$ at $\fun(t_j)$).
     Define
     \[
 		\pi'(x \atom{L} y) \defeq
-        t_0 \atom{L_1} \hdots \atom{L_i} t_i \atom{\contract{L_{i+1}\cdots L_j}}
-        t_j \atom{L_{j+1}} \hdots \atom{L_n} t_n
+        t_0 \atom{L_1} \dotsc \atom{L_i} t_i \atom{\contract{L_{i+1}\cdots L_j}}
+        t_j \atom{L_{j+1}} \dotsc \atom{L_n} t_n
     \]
     when $i \leq j$ and otherwise the definition is symmetric.
     Then, let $\rho'$ be the "refinement" of $\gamma$ obtained by simultaneously
@@ -451,7 +451,7 @@ illustrated in \Cref{fig:shortening-paths}.
 	\hfill
     \subfloat[The ``new'' "refinement" $\rho'$ of $\gamma$.]{%
         \AP\label{fig:trio-result-refinement}
-        \includegraphics[width=.3\linewidth]{trio-refinement-result.pdf}
+        \includegraphics[width=.28\linewidth]{trio-refinement-result.pdf}
     }
 	\hfill
     \subfloat[The ``new'' "approximation" $\alpha'$ of "tree-width" 2.]{

@@ -259,17 +259,6 @@ $\semFO{\gamma(\bar x)}{\?G}$.%
 \footnote{Hence, our reuse of $\FOmodels$ and $\semFO{-}{-}$ is actually
 a very reasonable abuse of notation!}
 
-\begin{marginfigure}
-	\centering
-	\begin{tikzpicture}
-		\input{tikz/intro/3-transitive-tournament}
-	\end{tikzpicture}
-	\caption{
-		\AP\label{fig:3-transitive-tournament-crpq}
-		The "$3$-transitive tournament" $\transitiveTournament{3}$.
-        (Replica of \Cref{fig:3-transitive-tournament}.)
-	}
-\end{marginfigure}
 Note however that this does not mean that the theory of "CRPQs" boils down
 to the theory of "CQ": one reason is first that the construction
 $\?G \mapsto \tilde{\?G}$ actually depends on the query---we need to restrict
@@ -283,6 +272,17 @@ and if only $\atom{a^*}$ occurs in the query, then $\tilde{\?G}$ is the
 "$k$-transitive tournament", see \Cref{fig:3-transitive-tournament-crpq}.
 From a very simple "structure" of "path-width" 1, we obtained a "structure" of
 unbounded "tree-width"!
+\begin{marginfigure}[-10em]
+	\centering
+	\begin{tikzpicture}
+		\input{tikz/intro/3-transitive-tournament}
+	\end{tikzpicture}
+	\caption{
+		\AP\label{fig:3-transitive-tournament-crpq}
+		The "$3$-transitive tournament" $\transitiveTournament{3}$.
+        (Replica of \Cref{fig:3-transitive-tournament}.)
+	}
+\end{marginfigure}
 
 \decisionproblem{""Conjunctive Regular Path Queries Evaluation""}{
     An alphabet $\?A$,
@@ -486,10 +486,10 @@ collapses to $\gamma^{\collapse}(x,x) \defeq x \atom{K} x \land x \atom{L} z$.
 \AP An ""atom $m$-refinement"" of a "C2RPQ" "atom" $\gamma(x,y) = x \atom{L} y$ where $L$ is given by the NFA $\+A_L$ is any "C2RPQ" of the form 
 \begin{equation}
     \AP\label{eq:refinement}
-    \rho(x,y) = x \atom{L_1} t_1 \atom{L_2} \hdots \atom{L_{n-1}} t_{n-1} \atom{L_n} y
+    \rho(x,y) = x \atom{L_1} t_1 \atom{L_2} \dotsc \atom{L_{n-1}} t_{n-1} \atom{L_n} y
 \end{equation}
-where $1 \leq n \leq m$, $t_1,\hdots,t_{n-1}$ are fresh (existentially quantified) variables,
-and $L_1,\hdots,L_n$ are such that there exists a sequence $(q_0,\dotsc,q_n)$ of states of $\+A_L$
+where $1 \leq n \leq m$, $t_1,\dotsc,t_{n-1}$ are fresh (existentially quantified) variables,
+and $L_1,\dotsc,L_n$ are such that there exists a sequence $(q_0,\dotsc,q_n)$ of states of $\+A_L$
 such that $q_0$ is initial, $q_n$ is final, and for each $i$, $L_i$ is either of the form
 \begin{enumerate}[label=\roman*.]
 	\item $\subaut{\+A_L}{q_i}{q_{i+1}}$,
@@ -518,10 +518,10 @@ An example is provided in \Cref{fig:basic-refinement}.
 
 \begin{definition}
     \AP\label{def:atom-contraction}
-    \AP Given an "atom refinement" $\rho = x \atom{L_1} t_1 \atom{L_2} \hdots \atom{L_{n-1}} t_{n-1} \atom{L_n} y$ of $\gamma = x \atom{L} y$ as in \eqref{eq:refinement}, define
+    \AP Given an "atom refinement" $\rho = x \atom{L_1} t_1 \atom{L_2} \dotsc \atom{L_{n-1}} t_{n-1} \atom{L_n} y$ of $\gamma = x \atom{L} y$ as in \eqref{eq:refinement}, define
     a ""condensation"" of $\rho$ between $t_i$ and $t_j$, where $0 \leq i,j \leq n$ and $j > i+1$, as any "C2RPQ" of the form:
     \[
-        \rho' = x \atom{L_1} t_1 \atom{L_2} \hdots \atom{L_i} \textcolor{maincolor}{t_i \atom{K} t_j} \atom{L_{j+1}} \hdots
+        \rho' = x \atom{L_1} t_1 \atom{L_2} \dotsc \atom{L_i} \textcolor{maincolor}{t_i \atom{K} t_j} \atom{L_{j+1}} \dotsc
         \atom{L_{n-1}} t_{n-1} \atom{L_n} y
     \]
     such that $\textcolor{maincolor}{K = \+A[q_i,q_j]}$.
@@ -570,11 +570,6 @@ this example, $x \atom{a^+ + b^+} y$ is "equivalent" to the union of
 $x \atom{a^+} y$ and $x \atom{b^+} y$, which are both "refinements"
 of the original "C2RPQ".
 
-\begin{marginfigure}[8em]
-    \centering
-    \includegraphics[width=\linewidth]{fig/prelim-db/Russia.png}
-    \caption{\emph{Serio-comic war map for the year 1877}, by F. W. Rose.}
-\end{marginfigure}
 \paragraph*{Expansions.}
 Remember that a "C2RPQ" whose languages are
 of the form $\set{a}$ or $\set{a^-}$ for $a \in \A$ is in effect a "CQ".
@@ -584,6 +579,11 @@ by replacing each "atom" $x \atom{L} y$ by a path $x \atom{w} y$ for some
 word $w \in L$.
 For instance, $\xi(x,y) = x \atom{a} t_1 \coatom{a} t_2 \atom{a} t_3 \coatom{a} y$
 is an "expansion" of $\rho(x,y) = x \atom{(aa^-)^*} y$.
+\begin{marginfigure}[-4em]
+    \centering
+    \includegraphics[width=\linewidth]{fig/prelim-db/Russia.png}
+    \caption{\emph{Serio-comic war map for the year 1877}, by F. W. Rose.}
+\end{marginfigure}
 
 \paragraph{Canonical databases.}
 We define the \AP""canonical databases@@CRPQ"" of a "C2RPQ" as the "canonical databases@@CQ"

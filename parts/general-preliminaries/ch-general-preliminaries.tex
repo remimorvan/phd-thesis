@@ -596,216 +596,255 @@ but is not "existential-positive@@formula".
 On the other hand, $\exists x.\, \exists y.\, \+R(x,y)$ is "primitive-positive@@formula",
 and hence also "existential-positive@@formula".
 
-% A relation over a "$\sigma$-structure" $\?A$ is said to be
-% \AP""first-order definable"" when it can be written as
-% $\semFO{\phi(\bar x)}{\?A}$ for some "first-order formula" $\phi(\bar x)$.
-% Moreover, a class of "$\sigma$-structures" is said to be \reintro{first-order definable},
-% when there exists a "first-order sentence" $\phi$ "st" the class of "structures" $\?A$
-% "st" $\?A \FOmodels \phi$ is precisely the class itself.
+A relation over a "$\sigma$-structure" $\?A$ is said to be
+\AP""first-order definable"" when it can be written as
+$\semFO{\phi(\bar x)}{\?A}$ for some "first-order formula" $\phi(\bar x)$.
+Moreover, a class of "$\sigma$-structures" is said to be \reintro{first-order definable},
+when there exists a "first-order sentence" $\phi$ "st" the class of "structures" $\?A$
+"st" $\?A \FOmodels \phi$ is precisely the class itself.
 
-% \AP""First-order logic"" simply consists of the syntax of "first-order formulas" together
-% with their semantics. Lastly, \AP""monadic second-order logic""
-% (resp. ""second-order logic"") is obtained from "first-order logic"
-% by also allowing quantifications over subsets of the structure
-% (resp. relations of arbitrary arity over the structure).
+\AP""First-order logic"" simply consists of the syntax of "first-order formulas" together
+with their semantics. Lastly, \AP""monadic second-order logic""
+(resp. ""second-order logic"") is obtained from "first-order logic"
+by also allowing quantifications over subsets of the structure
+(resp. relations of arbitrary arity over the structure).
 
-% \subsection{Automata Theory}
+\subsection{Automata Theory}
 
-% Given a set $X$, we denote by $X^*$ and $X^+$ the set of finite words
-% over $X$, and of non-empty finite words over $X$, respectively.
-% The empty word is denoted by $\varepsilon$.
-% An \emph{alphabet} is nothing else but a finite set, and we denote by
-% $\intro*\2$ the binary alphabet $\{0,1\}$.
+Given a set $X$, we denote by $X^*$ and $X^+$ the set of finite words
+over $X$, and of non-empty finite words over $X$, respectively.
+The empty word is denoted by $\varepsilon$.
+An \emph{alphabet} is nothing else but a finite set, and we denote by
+$\intro*\2$ the binary alphabet $\{0,1\}$.
 
-% In an automaton $\+A$, we denote by \AP $p \intro*\transition{a} q \in \+A$
-% the fact that there is an $a$-labelled transition from $p$ to $q$.
-% A \AP""regular language"" is any language---"ie" subset of $\Sigma^*$ for some alphabet $\Sigma$---that
-% can be recognized by a finite-state automaton.
+In an automaton $\+A$, we denote by \AP $p \intro*\transition{a} q \in \+A$
+the fact that there is an $a$-labelled transition from $p$ to $q$.
+A \AP""regular language"" is any language---"ie" subset of $\Sigma^*$ for some alphabet $\Sigma$---that
+can be recognized by a finite-state automaton.
 
-% The signature of words over $\Sigma$ has a binary "predicate" $\preceq$
-% as well as a unary predicate $a$ for each $a\in \Sigma$.
-% A word $w_0 \cdots w_{n-1}$ of length $n$
-% can be seen as a "structure" over the signature of $\Sigma$-words
-% by taking $\intInt{0,n-1}$ as its domain, "interpreting@@predicate"
-% $\preceq$ naturally, and interpreting $a\in \Sigma$
-% as the set of $i \in \intInt{0,n-1}$ "st" $w_i = a$.
-% It is well-known%
-% \footnote{See \Cref{sec:preliminaries-automatic-structures-relations-landscape} for details.}
-% that a language is "regular@@lang" if, and only if, it is definable in "monadic second-order logic".
-% When $\Sigma = \2$, the signature of $\Sigma$-words is also called 
-% the \AP""signature of binary strings"".
+The signature of words over $\Sigma$ has a binary "predicate" $\preceq$
+as well as a unary predicate $a$ for each $a\in \Sigma$.
+A word $w_0 \cdots w_{n-1}$ of length $n$
+can be seen as a "structure" over the signature of $\Sigma$-words
+by taking $\intInt{0,n-1}$ as its domain, "interpreting@@predicate"
+$\preceq$ naturally, and interpreting $a\in \Sigma$
+as the set of $i \in \intInt{0,n-1}$ "st" $w_i = a$.
+It is well-known%
+\footnote{See \Cref{sec:preliminaries-automatic-structures-relations-landscape} for details.}
+that a language is "regular@@lang" if, and only if, it is definable in "monadic second-order logic".
+When $\Sigma = \2$, the signature of $\Sigma$-words is also called 
+the \AP""signature of binary strings"".
 
-% \subsection{Monoids}
+\subsection{Monoids}
 
-% We refer the reader to Pin's seminal lecture notes \cite{Pin2022MathematicalFoundations}
-% for an introduction to algebraic language theory.
+We refer the reader to Pin's seminal lecture notes \cite{Pin2022MathematicalFoundations}
+for an introduction to algebraic language theory.
 
-% A \AP""monoid"" $\?M = \tup{M,{\cdot},1}$ is a set $M$ together with an associative binary operator $\cdot$ called \emph{product}, and an element $1 \in M$, called \emph{unit}, "st" $x\cdot 1 = x = 1 \cdot x$ for all $x\in M$.
-% %An \AP""idempotent"" is any element $x\in M$ "st" $x = x^2$.
-% A \AP""monoid morphism"" is a function between monoids that preserve the product and unit.
+A \AP""monoid"" $\?M = \tup{M,{\cdot},1}$ is a set $M$ together with an associative binary operator $\cdot$ called \emph{product}, and an element $1 \in M$, called \emph{unit}, "st" $x\cdot 1 = x = 1 \cdot x$ for all $x\in M$.
+%An \AP""idempotent"" is any element $x\in M$ "st" $x = x^2$.
+A \AP""monoid morphism"" is a function between monoids that preserve the product and unit.
 
-% "Monoids"---or rather "monoid morphisms"---can be used to recognize languages as $\Sigma^*$
-% is itself a monoid under concatenation---actually, it is \emph{the free monoid} over $\Sigma$.
-% A language $L$ is "regular@@lang" if, and only if, there exists a "finite monoid" $\?M$,
-% and subset $\Acc \subseteq M$ (called \emph{accepting elements}), and a "monoid morphism"
-% $\phi\colon \Sigma^* \to M$ "st" $L = \phi^{-1}[\Acc]$.
-% Another way of thinking of the pair $\tup{\phi, M}$ is as follows:
-% a deterministic complete semiautomaton can be described as a set $Q$ together
-% with a monoid right action of $\Sigma^*$ over $Q$. On the other hand,
-% a surjective monoid morphism $\phi\colon \Sigma^* \surj M$ consists of both a monoid
-% left action and a monoid right action of $\Sigma^*$ over a set $M$,
-% with the property that $u \cdot (x \cdot v) = (u \cdot x) \cdot v$ for all 
-% $x\in M$ and $u,v \in \Sigma^*$.
-% In other words, while automata states represent some information on the word
-% that is updatable by appending letters on the right, monoid elements represent
-% an information on the word that is updatable both by appending letters on the left or the right. 
+"Monoids"---or rather "monoid morphisms"---can be used to recognize languages as $\Sigma^*$
+is itself a monoid under concatenation---actually, it is \emph{the free monoid} over $\Sigma$.
+A language $L$ is "regular@@lang" if, and only if, there exists a "finite monoid" $\?M$,
+and subset $\Acc \subseteq M$ (called \emph{accepting elements}), and a "monoid morphism"
+$\phi\colon \Sigma^* \to M$ "st" $L = \phi^{-1}[\Acc]$.
+Another way of thinking of the pair $\tup{\phi, M}$ is as follows:
+a deterministic complete semiautomaton can be described as a set $Q$ together
+with a monoid right action of $\Sigma^*$ over $Q$. On the other hand,
+a surjective monoid morphism $\phi\colon \Sigma^* \surj M$ consists of both a monoid
+left action and a monoid right action of $\Sigma^*$ over a set $M$,
+with the property that $u \cdot (x \cdot v) = (u \cdot x) \cdot v$ for all 
+$x\in M$ and $u,v \in \Sigma^*$.
+In other words, while automata states represent some information on the word
+that is updatable by appending letters on the right, monoid elements represent
+an information on the word that is updatable both by appending letters on the left or the right. 
 
-% Unsurprisingly, there is a notion of ``minimal information'' required to recognize a monoid,
-% giving rise to the notions of ""syntactic monoids"" and ""syntactic morphisms"",
-% see "eg" \cite[Theorem~1.7]{Bojanczyk2020MSO}.
+Unsurprisingly, there is a notion of ``minimal information'' required to recognize a monoid,
+giving rise to the notions of ""syntactic monoids"" and ""syntactic morphisms"",
+see "eg" \cite[Theorem~1.7]{Bojanczyk2020MSO}.
 
-% Submonoids and quotient structures are defined analogously to
-% "substructures" and "quotient structures" for "relational structures".
-% We say that a "monoid" \AP""divides@@monoid"" another one if it is
-% a submonoid of one of its quotients.
-% A \AP""pseudovariety of monoids"" $\symbb{V}$%
-% consists in a set of "finite monoids" closed under finite Cartesian products
-% and "monoid division".%
-% \footnote{``Pseudovariety of \emph{foo}'' and ``variety of finite \emph{foo}''
-% are used interchangeably in the literature.}
-% For more details on these,
-% see \cite[\S XI.1, p.~189]{Pin2022MathematicalFoundations} under the name ``variety''.
-% On the other hand, a ""$\ast$-pseudovariety of regular languages""
-% consists of \emph{stream}, "ie" a function $\+V\colon \Sigma \mapsto \+V_{\Sigma}$ from alphabets to languages over this alphabet, with the following properties:%
-% \footnote{See also \cite[\S XIII.3, p.~226]{Pin2022MathematicalFoundations}.}
-% \begin{itemize}
-% 	\item it is closed under Boolean operators;
-% 	\item it is closed under preimages by "monoid morphisms", in the sense that
-% 		for every monoid morphism $\phi\colon \Gamma^* \to \Sigma^*$, for any $L \in \+V_{\Sigma}$,
-% 		then $\phi^{—1}[L] \in \+V_{\Gamma}$, and
-% 	\item it is closed under residuals, in the sense that for any $L \in \+V_{\Sigma}$,
-% 		for any $u\in\Sigma^*$, then
-% 		$u^{-1}L \defeq \{v \in \Sigma^* \mid uv \in L\}$
-% 		and $Lu^{-1} \defeq \{v \in \Sigma^* \mid vu \in L\}$
-% 		both belong to $\+V_{\Sigma}$.
-% \end{itemize}
-% A seminal result by Eilenberg shows that, mapping a "pseudovariety of monoids" $\symbb{V}$
-% to the stream associating to $\Sigma$ the set of languages over $\Sigma$ that are recognized
-% by a "monoid" from $\symbb{V}$ yields a "$*$-pseudovariety of regular languages",
-% and moreover, this operation is a bijection!
-% This result generalizes Schützenberger's infamous theorem, showing that
-% star-free languages are exactly those recognized by aperiodic monoids:
-% for this reason, this bijection is called the \AP""Eilenberg-Schützenberger correspondence@@lang"".%
-% \footnote{See \cite[Theorem XIII.4.10, p.~228]{Pin2022MathematicalFoundations} for more details.}
+Submonoids and quotient structures are defined analogously to
+"substructures" and "quotient structures" for "relational structures".
+We say that a "monoid" \AP""divides@@monoid"" another one if it is
+a submonoid of one of its quotients.
+A \AP""pseudovariety of monoids"" $\symbb{V}$%
+consists in a set of "finite monoids" closed under finite Cartesian products
+and "monoid division".%
+\footnote{``Pseudovariety of \emph{foo}'' and ``variety of finite \emph{foo}''
+are used interchangeably in the literature.}
+For more details on these,
+see \cite[\S XI.1, p.~189]{Pin2022MathematicalFoundations} under the name ``variety''.
+On the other hand, a ""$\ast$-pseudovariety of regular languages""
+consists of \emph{stream}, "ie" a function $\+V\colon \Sigma \mapsto \+V_{\Sigma}$ from alphabets to languages over this alphabet, with the following properties:%
+\footnote{See also \cite[\S XIII.3, p.~226]{Pin2022MathematicalFoundations}.}
+\begin{itemize}
+	\item it is closed under Boolean operators;
+	\item it is closed under preimages by "monoid morphisms", in the sense that
+		for every monoid morphism $\phi\colon \Gamma^* \to \Sigma^*$, for any $L \in \+V_{\Sigma}$,
+		then $\phi^{—1}[L] \in \+V_{\Gamma}$, and
+	\item it is closed under residuals, in the sense that for any $L \in \+V_{\Sigma}$,
+		for any $u\in\Sigma^*$, then
+		$u^{-1}L \defeq \{v \in \Sigma^* \mid uv \in L\}$
+		and $Lu^{-1} \defeq \{v \in \Sigma^* \mid vu \in L\}$
+		both belong to $\+V_{\Sigma}$.
+\end{itemize}
+A seminal result by Eilenberg shows that, mapping a "pseudovariety of monoids" $\symbb{V}$
+to the stream associating to $\Sigma$ the set of languages over $\Sigma$ that are recognized
+by a "monoid" from $\symbb{V}$ yields a "$*$-pseudovariety of regular languages",
+and moreover, this operation is a bijection!
+This result generalizes Schützenberger's infamous theorem, showing that
+star-free languages are exactly those recognized by aperiodic monoids:
+for this reason, this bijection is called the \AP""Eilenberg-Schützenberger correspondence@@lang"".%
+\footnote{See \cite[Theorem XIII.4.10, p.~228]{Pin2022MathematicalFoundations} for more details.}
 
-% Lastly, given a stream of regular languages $\+V$, the \AP""$\+V$-membership problem@@lang""
-% takes as input an alphabet $\Sigma$ and a "regular language" $L \subseteq \Sigma^*$,
-% and asks if $L \in \+V_{\Sigma}$. When $\+V$ is a "pseudovariety of regular languages",
-% a powerful technique to solve this problem is to prove that the membership problem
-% of the "corresponding@@EilenbergLang" "pseudovariety of monoids" is decidable.
+Lastly, given a stream of regular languages $\+V$, the \AP""$\+V$-membership problem@@lang""
+takes as input an alphabet $\Sigma$ and a "regular language" $L \subseteq \Sigma^*$,
+and asks if $L \in \+V_{\Sigma}$. When $\+V$ is a "pseudovariety of regular languages",
+a powerful technique to solve this problem is to prove that the membership problem
+of the "corresponding@@EilenbergLang" "pseudovariety of monoids" is decidable.
 
-% \section{Computability and Complexity}
+\section{Computability and Complexity}
 
-% \subsection{Turing Machines}
+\subsection{Turing Machines}
 
-% \marginnote{\blockquote[Gilles Dowek, Laurence Devillers \& Serge Abiteboul, \emph{Qui a hacké Garoutzia}]{Mais dans ce sandwich absurde entre mon initialisation et ma terminaison, que m'aura-t-il vraiment manqué ? Peut-être un corps… un corps qui ressent et tutti quanti !}}
-% We assume that the reader is familiar with Turing machines,
-% see "eg" \cite[\S~1]{AroraBarak2009ComputationalComplexity}.
-% Unless stated otherwise, a \AP""Turing machine"" is assumed to have a single tape,
-% which is bounded on the left but not on the right.
-% The ""configuration@@TM"" of a "Turing machine" consists of
-% the content of the tape at a given point, the position of the machine's head,
-% at well as its current state. It can be summarized by
-% a triple $\tup{u, q, v}$, where $q$ denotes the current state,
-% $u$ is the word written strictly on the left of the head,
-% and $v$ is the word written to the right of the head (head included).
-% The \AP""initial configuration"" of a "Turing machine" $\+M$ refers to the "configuration@@TM" 
-% $\tup{\varepsilon, q_0, \varepsilon}$ where $q_0$ is the initial state of $\+M$.
-% A "configuration@@TM" is \AP""reachable@@configuration"" whenever
-% it can be obtained from the "initial configurations" by applying a finite sequence
-% of transitions of the machine.
+\marginnote{\blockquote[Gilles Dowek, Laurence Devillers \& Serge Abiteboul, \emph{Qui a hacké Garoutzia}]{Mais dans ce sandwich absurde entre mon initialisation et ma terminaison, que m'aura-t-il vraiment manqué ? Peut-être un corps… un corps qui ressent et tutti quanti !}}
+We assume that the reader is familiar with Turing machines,
+see "eg" \cite[\S~1]{AroraBarak2009ComputationalComplexity}.
+Unless stated otherwise, a \AP""Turing machine"" is assumed to have a single tape,
+which is bounded on the left but not on the right.
+The ""configuration@@TM"" of a "Turing machine" consists of
+the content of the tape at a given point, the position of the machine's head,
+at well as its current state. It can be summarized by
+a triple $\tup{u, q, v}$, where $q$ denotes the current state,
+$u$ is the word written strictly on the left of the head,
+and $v$ is the word written to the right of the head (head included).
+The \AP""initial configuration"" of a "Turing machine" $\+M$ refers to the "configuration@@TM" 
+$\tup{\varepsilon, q_0, \varepsilon}$ where $q_0$ is the initial state of $\+M$.
+A "configuration@@TM" is \AP""reachable@@configuration"" whenever
+it can be obtained from the "initial configurations" by applying a finite sequence
+of transitions of the machine.
 
-% \subsection{Elements of Complexity Theory}
+\subsection{Elements of Complexity Theory}
 
-% We assume familiarity with basic complexity classes, see "eg"
-% \cite[\S\!\S~2--5]{AroraBarak2009ComputationalComplexity}.
-% We say that two decision problems are \AP""computationally equivalent""
-% when there are many-one reductions between them.
+We assume familiarity with basic complexity classes, see "eg"
+\cite[\S\!\S~2--5]{AroraBarak2009ComputationalComplexity}.
+We say that two decision problems are \AP""computationally equivalent""
+when there are many-one reductions between them.
 
-% % REPLACE NEXT PARAGRAPH WITH: WHEN FIGURE WILL BE DONE.
-% % In the following hierarchy, we
-% % describe the different complexity classes that appear in this document:
-% % those appearing in bold play a `crucial role' in this thesis and are briefly defined
-% % in this document; the other ones---they are often only mentioned when talking about
-% % the literature---point to the "Complexity Zoo".
-% % We also mention a few decisions problems studied in this thesis---they will be introduced
-% % as needed.
+% REPLACE NEXT PARAGRAPH WITH: WHEN FIGURE WILL BE DONE.
+% In the following hierarchy, we
+% describe the different complexity classes that appear in this document:
+% those appearing in bold play a `crucial role' in this thesis and are briefly defined
+% in this document; the other ones---they are often only mentioned when talking about
+% the literature---point to the "Complexity Zoo".
+% We also mention a few decisions problems studied in this thesis---they will be introduced
+% as needed.
 
-% \paragraph*{Complexity Classes.}
-% Here are the most important classes that appear in this document---the other ones
-% will all point to their respective entry in the "Complexity Zoo":
-% \begin{itemize}
-% 	\item "FOfin" refers to "first-order definable classes", see \Cref{sec:prelim-auto-FO} for the definition;
-% 	\itemAP ""L"" and ""NL"" refer to problems solvable in deterministic and non-deterministic logarithmic 
-% 	space; for hardness we usually consider "first-order reductions";
-% 	\itemAP ""P"" (resp. ""PSpace"") refers to problems solvable in deterministic polynomial time
-% 	(resp. polyomial space); hardness is usually considered under logarithmic-space reductions;
-% 	\itemAP ""NP"" and ""coNP"" refer to the first level of the polynomial-time hierarchy
-% 		\cite[\S~2]{AroraBarak2009ComputationalComplexity},
-% 		and ""SigmaP2"", ""PiP2"" to its second level,
-% 		see "eg" \cite[\S~5]{AroraBarak2009ComputationalComplexity};
-% 		hardness is usually considered under logarithmic-space reductions;
-% 	\itemAP ""$k$-ExpTime"" and ""$k$-ExpSpace"" are the
-% 		problems solvable in time and space
-% 		\[n \mapsto \underbrace{2^{2^{{\,\rotatebox{90}{\tiny$\ddots$}\,}^{2^{\poly(n)}}}}}_{k \text{ times}},\]
-% 		respectively; hardness is considered under polynomial-time reductions;
-% 	\itemAP ""Tower"" is the class of problems that can be solved in time
-% 		$n\mapsto \tower(f(n))$ for some elementary function $f$,%
-% 		\footnote{Recall that an function is said to be elementary when it
-% 		is bounded by a tower of exponentials of fixed height.}
-% 		where $\intro*\tower(n) \defeq t(n,n)$ and $t$ is the function
-% 		defined recursively by $t(p,q) \defeq 2^{t(p-1,q)}$ and $t(0,q) \defeq q$:
-% 		in other words $\tower(n)$ it is a tower of exponentials whose height is given by the input;
-% 		hardness is defined under elementary reductions,
-% 		see \cite{Schmitz2016ComplexityHierarchies} for more details on this class.
-% \end{itemize}
+\paragraph*{Complexity Classes.}
+Here are the most important classes that appear in this document---the other ones
+will all point to their respective entry in the "Complexity Zoo":
+\begin{itemize}
+	\item "FOfin" refers to "first-order definable classes", see \Cref{sec:prelim-auto-FO} for the definition;
+	\itemAP ""L"" and ""NL"" refer to problems solvable in deterministic and non-deterministic logarithmic 
+	space; for hardness we usually consider "first-order reductions";
+	\itemAP ""P"" (resp. ""PSpace"") refers to problems solvable in deterministic polynomial time
+	(resp. polyomial space); hardness is usually considered under logarithmic-space reductions;
+	\itemAP ""NP"" and ""coNP"" refer to the first level of the polynomial-time hierarchy
+		\cite[\S~2]{AroraBarak2009ComputationalComplexity},
+		and ""SigmaP2"", ""PiP2"" to its second level,
+		see "eg" \cite[\S~5]{AroraBarak2009ComputationalComplexity};
+		hardness is usually considered under logarithmic-space reductions;
+	\itemAP ""$k$-ExpTime"" and ""$k$-ExpSpace"" are the
+		problems solvable in time and space
+		\[n \mapsto \underbrace{2^{2^{{\,\rotatebox{90}{\tiny$\ddots$}\,}^{2^{\poly(n)}}}}}_{k \text{ times}},\]
+		respectively; hardness is considered under polynomial-time reductions;
+	\itemAP ""Tower"" is the class of problems that can be solved in time
+		$n\mapsto \tower(f(n))$ for some elementary function $f$,%
+		\footnote{Recall that an function is said to be elementary when it
+		is bounded by a tower of exponentials of fixed height.}
+		where $\intro*\tower(n) \defeq t(n,n)$ and $t$ is the function
+		defined recursively by $t(p,q) \defeq 2^{t(p-1,q)}$ and $t(0,q) \defeq q$:
+		in other words $\tower(n)$ it is a tower of exponentials whose height is given by the input;
+		hardness is defined under elementary reductions,
+		see \cite{Schmitz2016ComplexityHierarchies} for more details on this class.
+\end{itemize}
 
-% \paragraph*{Computability Classes.}
-% We now turn to undecidable classes: all hardness result are considered up to
-% many-one reductions, "ie" instance-preserving computable functions.
-% We denote by \AP""RE"" and ""coRE"" the classes of recursively enumerable
-% and co-recursively enumerable problems, respectively. 
-% The next levels $\Sigma^0_n$ and $\Pi^0_n$ of the \AP""arithmetical hierarchy"" can be defined 
-% as the classes of sets that are "definable@@first-order" by a "first-order formula"
-% from the fragments $\Sigma_n$ and $\Pi_n$, respectively, in the structure $\tup{\N,+,\cdot}$.
-% It can be shown that $\Sigma^0_0 = \Pi^0_0$ corresponds to the class of all decidable problems,
-% and $\Sigma^0_1 =$ "RE" and $\Pi^0_1$ = "coRE". The only other levels that will be of interest
-% to us will be \AP""Sigma0-2"" and ""Pi0-2"".
-% The ""analytical hierarchy"" is defined analogously, by replacing "first-order logic" with
-% "second-order logic".
+\paragraph*{Computability Classes.}
+We now turn to undecidable classes: all hardness result are considered up to
+many-one reductions, "ie" instance-preserving computable functions.
+We denote by \AP""RE"" and ""coRE"" the classes of recursively enumerable
+and co-recursively enumerable problems, respectively. 
+The next levels $\Sigma^0_n$ and $\Pi^0_n$ of the \AP""arithmetical hierarchy"" can be defined 
+as the classes of sets that are "definable@@first-order" by a "first-order formula"
+from the fragments $\Sigma_n$ and $\Pi_n$, respectively, in the structure $\tup{\N,+,\cdot}$.
+It can be shown that $\Sigma^0_0 = \Pi^0_0$ corresponds to the class of all decidable problems,
+and $\Sigma^0_1 =$ "RE" and $\Pi^0_1$ = "coRE". The only other levels that will be of interest
+to us will be \AP""Sigma0-2"" and ""Pi0-2"".
+The ""analytical hierarchy"" is defined analogously, by replacing "first-order logic" with
+"second-order logic".
 
 
-% \paragraph*{Decision Problems.}
-% \AP""Connectivity in Finite Graphs"" is the decision problem
-% that takes as input a "graph@@dir" and two vertices $s$ and $t$,
-% and asks if they are "connected".
-% \AP ""Reachability in Finite Graphs"" is defined analogously,
-% but asks rather if there is a directed path from $s$ to $t$.
-% Surprisingly, despite their resemblance, these two problems have a distinct complexity:
-% "Reachability in finite graphs" is "NL"-complete, see "eg"
-% \cite[Theorem~4.18]{AroraBarak2009ComputationalComplexity}, while "Connectivity in finite graphs"
-% is only in "L" by Reingold's theorem, see "eg"
-% \cite[Theorem~21.21]{AroraBarak2009ComputationalComplexity}.
-% In fact, the problem is "L"-complete:
-% Etessami even proved that the problem
-% was "L"-hard under "first-order reductions" even if the "graph@@dir" is restricted to
-% be a "directed path@$k$-path" \cite[Theorem 3.2]{Etessami1997CountingLogSpace}!
+\paragraph*{Decision Problems.}
+\AP""Connectivity in Finite Graphs"" is the decision problem
+that takes as input a "graph@@dir" and two vertices $s$ and $t$,
+and asks if they are "connected".
+\AP ""Reachability in Finite Graphs"" is defined analogously,
+but asks rather if there is a directed path from $s$ to $t$.
+Surprisingly, despite their resemblance, these two problems have a distinct complexity:
+"Reachability in finite graphs" is "NL"-complete, see "eg"
+\cite[Theorem~4.18]{AroraBarak2009ComputationalComplexity}, while "Connectivity in finite graphs"
+is only in "L" by Reingold's theorem, see "eg"
+\cite[Theorem~21.21]{AroraBarak2009ComputationalComplexity}.
+In fact, the problem is "L"-complete:
+Etessami even proved that the problem
+was "L"-hard under "first-order reductions" even if the "graph@@dir" is restricted to
+be a "directed path@$k$-path" \cite[Theorem 3.2]{Etessami1997CountingLogSpace}!
 
-% \subsection{Parametrized Complexity}
+\subsection{Parametrized Complexity}
 
-% \todo{!!!}
-% \begin{itemize}
-% 	\itemAP ""FPT""
-% 	\itemAP ""W1""
-% 	\itemAP ""XP""
-% \end{itemize}
+A parametrized language is any subset $L \subseteq \Sigma^* \times \N$:
+the first component represents an instance, and the second a parameter.
+We define \AP""FPT"" as the class of \reintro{fixed-parameter tractable}
+problems, for which there is a "Turing machine" $\+M$ "st"
+\begin{center}\begin{tikzpicture}[>={Classical TikZ Rightarrow},font=\normalsize]
+	\node (first) {%
+		$\+M \text{ accepts } \langle \textcolor{cRed}{x},\, \textcolor{cBlue}{k}\rangle%
+		\quad\text{"iff"}\quad
+		\langle$%
+	};
+	\node[inode, cRed, right=-3.5pt of first.base east, anchor=base west](toX){$x$};
+	\node[inode, right=0pt of toX.base east, anchor=base west](comma){$,\,$};
+	\node[inode, cBlue, right=0pt of comma.base east, anchor=base west](toK){$k$};    
+	\node[inode, right=-.5pt of toK.base east, anchor=base west]{$\rangle \in L,$};
+	\node[cRed, below left= .3cm and .2cm of toX](fromX){input};
+	\node[cBlue, below right= .3cm and .2cm of toK](fromK){parameter};
+	\draw[->, cRed] (fromX) to[out=60, in=-120] (toX.south);
+	\draw[->, cBlue] (fromK) to[out=120, in=-60] (toK.south);
+\end{tikzpicture}\end{center}
+and, moreover, $\+M$ runs in time
+$\+O(f(\textcolor{cBlue}{k})\cdot |\textcolor{cRed}{x}|^c)$,
+for constant $c$ that does not depend on $\textcolor{cRed}{x}$ nor $\textcolor{cBlue}{k}$,
+and where $f\colon \N \to \N$ is a computable function.
+
+""XP"" is the class of slicewise polynomial-time problems $L \subseteq \Sigma^* \times \N$:
+"st", for every bounded value of the parameter,
+then the resulting language must be in "P".
+Formally, for each $k\in\N$, we ask that the (classical) problem 
+\[
+\{ u \in \Sigma^* \mid \tup{u,k} \in L \}
+\]
+belongs to $P$.
+
+Note that "FPT" is, by construction, included in "XP".
+However, an algorithm that runs in time $\+O(|\textcolor{cRed}{x}|^{\textcolor{cBlue}{k}})$
+is a typical example of algorithm that is "XP" but not "FPT".
+
+The class \AP""W1"", which we will not formally define here,
+can roughly be seen as the equivalent of "NP". See \cite{CyganEtal2015ParametrizedBook}
+for a formal definitions.
+Some problems in "XP" belong to "FPT", and are considered to be tractable,
+"ie" efficiently solvable in practical. On the other hand, others problems,
+such as the $k$-clique problem, when parametrized by $k$,
+are in "XP" but are "W1"-hard, and hence conjectured not be in "FPT".
+We think of these problems as non-tractable.

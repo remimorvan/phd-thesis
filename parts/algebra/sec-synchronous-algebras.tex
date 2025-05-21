@@ -737,12 +737,12 @@ but $\type{\pair{bb}{\pad}}{\LB} \type{\pair{b}{\pad}}{\LB} \not\in \+R$.
 \proofcase{Types $\LB$ and $\BL$.} Again, using the fact that "dependent" elements must either both belong to $\+R$ or both to $\negrel\+R$, we have
 \begin{align*}
 	\type{\pair{a}{\pad}}{\LB} & \notcongr{\+R} \type{\varepsilon}{\BL},
-	& \type{\pair{a}{\pad}}{\LB} & \notcongr{\+R} \type{\pair{\pad\pad}{bb}}{\BL},
-	& \type{\pair{b}{\pad}}{\LB} & \notcongr{\+R} \type{\varepsilon}{\BL},
+	& \type{\pair{a}{\pad}}{\LB} & \notcongr{\+R} \type{\pair{\pad\pad}{bb}}{\BL} \\
+	\type{\pair{b}{\pad}}{\LB} & \notcongr{\+R} \type{\varepsilon}{\BL},
 	& \type{\pair{b}{\pad}}{\LB} & \notcongr{\+R} \type{\pair{\pad\pad}{bb}}{\BL},\\
 	\type{\varepsilon}{\LB} & \notcongr{\+R} \type{\pair{\pad}{a}}{\BL},
-	& \type{\varepsilon}{\LB} & \notcongr{\+R} \type{\pair{\pad}{b}}{\BL},
-	& \type{\pair{bb}{\pad\pad}}{\LB} & \notcongr{\+R} \type{\pair{\pad}{a}}{\BL},
+	& \type{\varepsilon}{\LB} & \notcongr{\+R} \type{\pair{\pad}{b}}{\BL} \\
+	\type{\pair{bb}{\pad\pad}}{\LB} & \notcongr{\+R} \type{\pair{\pad}{a}}{\BL},
 	& \type{\pair{bb}{\pad\pad}}{\LB} & \notcongr{\+R} \type{\pair{\pad}{b}}{\BL}.
 \end{align*}
 We claim that $\type{\pair{a}{\pad}}{\LB} \congr{\+R} \type{\pair{\pad}{a}}{\BL}$. Note that there is no,
@@ -762,7 +762,7 @@ The dual argument (using now the fact that both sides do \emph{not} belong to $\
 \[
 	\type{\varepsilon}{\LB} \congr{\+R} \type{\varepsilon}{\BL},\quad
 	\type{\varepsilon}{\LB} \congr{\+R} \type{\pair{\pad\pad}{bb}}{\BL},\quad
-	\type{\pair{bb}{\pad\pad}}{\LB} \congr{\+R} \type{\varepsilon}{\BL}\quad\text{and}\quad
+	\type{\pair{bb}{\pad\pad}}{\LB} \congr{\+R} \type{\varepsilon}{\BL}\text{ and }
 	\type{\pair{bb}{\pad\pad}}{\LB} \congr{\+R} \type{\pair{\pad\pad}{bb}}{\BL}.
 \]
 
