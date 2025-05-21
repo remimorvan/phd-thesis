@@ -569,12 +569,12 @@ Once again, we start by giving a proof sketch before giving the full proof.
 
 Note however that if $L$ is a "simple regular expression@@positive", then
 $\erasingmorphism[-1]{\alphabetmarking}[L]$ does not need to be.
-Hence, the construction above does not work for "CRPQs" over "simple regular expressions@@positive".
+Hence, the construction above does not work for "CRPQs" over "positive simple regular expressions".
 
 \begin{lemma}
 	\AP\label{lem:canonization-SREs}
 	The "strong canonization problem" can be solved in polynomial time
-	for the "class of CRPQs" over "simple regular expressions@@positive".
+	for the "class of CRPQs" over "positive simple regular expressions".
 \end{lemma}
 
 Given a "CRPQ" $\gamma$, we say that an "atom" $x\atom{L} y$ is \AP""locally redundant"" if
@@ -614,7 +614,7 @@ where $L_1 L_2\cdots L_n \subseteq L$.
 	letter from $\alphabetmarking$, we actually get a "homomorphism" $D_2 \homto G_1$, and so $\gamma'_1 \contained \delta_2$
 	"ie" $\gamma_1 \contained \gamma_2$.
 
-	For \axiomStrongCanonCore{}, by definition of "simple regular expressions@@positive",
+	For \axiomStrongCanonCore{}, by definition of "positive simple regular expressions",
 	no language labelling an "atom" of $\delta_1$ contains the empty word, and hence
 	every "canonical database" of $\delta_1$ is "non-degenerate@@db".
 	Then, let $f\colon D'_1 \to D_1$ be a "homomorphism" between "canonical databases"
@@ -637,7 +637,7 @@ where $L_1 L_2\cdots L_n \subseteq L$.
 			is included in this path, we are done; otherwise, when lifting
 			this path to $\delta_1$, we would obtain a path of "atoms"
 			$x \atom{L_1} \cdots \atom{L_n} y$ "st" $a^k \in L_1\cdots L_n$.
-			By definition of "simple regular expressions@@positive", all $L_i$'s must
+			By definition of "positive simple regular expressions", all $L_i$'s must
 			be either $a$ or $a^+$, and hence in all cases $L_1 \cdots L_n \subseteq a^+$,
 			contradicting that $\alpha$ is not "locally redundant" in $\gamma'_1$. 
 	\end{itemize}
@@ -662,7 +662,7 @@ a polynomial-time algorithm for the "strong canonization problem"---see
 		\itemAP\label{expspace-h:pw1}"ExpSpace"-hard, even
 		if restricted to queries of path-width at most 1,
 		\itemAP\label{pspace:forest} "PSpace"-hard when restricted to "forest-shaped CRPQs",\footnote{By \AP""forest-shaped CRPQs"" we mean queries whose "underlying graph" has no undirected cycle.}
-		\itemAP\label{pip2:crpqsre} "PiP2"-hard when restricted to "CRPQs" over "simple regular expressions@@positive".
+		\itemAP\label{pip2:crpqsre} "PiP2"-hard when restricted to "CRPQs" over "positive simple regular expressions".
 	\end{enumerate}
 	All hardness results are under polynomial-time reductions.
 \end{corollary}

@@ -41,6 +41,4 @@
  | CRPQ minimization
  | minimization of CRPQs
  | minimization problem for CRPQs
-
-\knowledge{notion, wrap=\DPfont}
  | UCRPQ minimization

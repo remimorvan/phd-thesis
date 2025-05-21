@@ -1,19 +1,11 @@
 \section{Introduction}
 \AP\label{sec:intro}
-
-Conjunctive Regular Path Queries (CRPQs) and unions of CRPQs (UCRPQs) form the backbone of graph database query languages, including the new ISO standard Graph Query Language (GQL) \cite{ISO2024GQL} and the SQL extension for querying graph-structured data SQL/PGQ \cite{ISO2023PGQ} (see also \cite{FrancisEtal2023GQL,FrancisEtal2023GPC}).
-These extend the well-known classes of Conjunctive Queries (CQs) and unions of CQs (UCQs), with the ability to reason about paths in a graph. 
-Optimizing and understanding the fundamental properties of such queries has then become a major topic in graph database theory.
-
-Static optimization for CRPQs has received considerable attention. The basic study of containment and equivalence problems for CRPQs, possibly with unions and inverses, was initiated over 25 years ago \cite{FlorescuLevySuciu1998Containment,CalvaneseDeGiacomoLenzeriniVardi2000Containment}, where they were shown to be "ExpSpace"-complete. These problems have also been investigated under different scenarios: restrictions on the shape of queries \cite{Figueira2020Containment}, restrictions on their regular languages \cite{FigueiraEtal2020Containment}, alternative semantics~\cite{FigueiraRomero23}, or under schema information~\cite{GutierresBasultoGutowskiIbanezGarciaMurlak2022Finite,GutierresBasultoGutowskiIbanezGarciaMurlak2024Containment}.
-This has enabled the study of more advanced static analysis problems motivated by the following general question: \emph{Can a given query be equivalently rewritten as one from a target fragment (which enjoys desirable properties)?}
-In the literature the problem has been studied where the target fragment are queries which either (i) avoid having infinite languages, or (ii) have a tree-like structure. This gives rise to the so-called (i) \emph{boundedness problem} for CRPQs ("ie", whether a CRPQ is equivalent to a UCQ) \cite{BarceloFigueiraRomero2019Boundedness,FigueiraKrishnaSwostikMishraPadmanabha2024Boundedness}, and (ii) \emph{semantic treewidth problem} for CRPQs ("ie", whether a CRPQ is equivalent to one of a given treewidth) \cite{BarceloRomeroVardi2016SemanticAcyclicity,FigueiraMorvan2025SemanticTreeWidthLMCS,FeierGogaczMurlak24Treewidth}.
 	
 
 \paragraph{Minimization of queries.}
 Minimization -- that is, the problem of transforming a query into a strictly smaller equivalent 
-query -- is perhaps the most fundamental query optimization question. This problem corresponds to the question posed above, where the target fragment are queries of bounded sizes. 
-For CQs (and UCQs), minimization is well understood, and there exists a canonical unique minimal query, called the \emph{core}.
+query -- is perhaps the most fundamental query optimization question.
+For CQs (and UCQs), minimization is well understood, and there exists a canonical unique minimal query, namely the "core".
 The mechanism for obtaining such minimal query is simple: eliminate any atom from the query that results in an equivalent query ("ie", any atom which is `redundant'  in the sense of equivalence).
 In contrast, minimization of CRPQs is poorly understood from a theoretical perspective. In this case, the situation is more challenging: there is no natural notion of `core’, and it is not clear whether a notion of `canonical’ smallest query may even be possible. In particular, eliminating redundant atoms of a CRPQ as done for CQs, in general results in a query which is neither minimal nor canonical.
 
@@ -35,7 +27,7 @@ On the other hand, in the case of UCRPQs, we minimize the maximum number of atom
 
 Observe that the minimization problem for CRPQs and UCRPQs are two different problems: an algorithm for the minimization problem for UCRPQs (where the equivalent query may have unions) in principle does not imply any bound on the minimization for CRPQs (where we insist in being only one CRPQ). 
 
-\paragraph{Contributions}
+\paragraph{Contributions.}
 We investigate the minimization problem for CRPQs and UCRPQs, and present several fundamental results. More concretely:
 \begin{itemize}
 	\item We show that the minimization problem for CRPQs and UCRPQs are both decidable. As explained before, these are different problems  and we give two very different algorithms. Contrary as what happens for CQs, minimizing a CRPQ by unions of CRPQs may result in smaller queries, hence in a sense UCRPQ minimization may be seen as a strictly more powerful approach (\Cref{prop:unionsmatter}).
@@ -60,11 +52,6 @@ More complex measures including the size of regular expressions and the number o
 
 Our size measure of number of atoms is also natural from a practical perspective. In practice, systems typically evaluate CRPQs by combining   on-the-fly ``materialization'' of CRPQ atoms  with  relational database techniques, in particular using join algorithms (see "eg" \cite{VrgocEtal2024MillenniumDB,KaralisBigerlHeidrichSherifNgongaNgomo2024Efficient,CucumidesReutterVrgoc2024SizeBounds}).  The number of atoms (or joins) plays an important role in these algorithms.
 	
-\paragraph{Related work}
-Minimization is well-understood for CQs and corresponds to the \reintro{core} in the Chandra-Merlin theory~\cite{ChandraMerlin1977Implementation}, that is, the smallest homomorphically-equivalent query, which is unique up to renaming of variables. The "minimization problem" is then "NP"-complete.
-For UCQs, the canonical minimal query consists of minimizing each CQ and removing redundant queries ("ie", removing a CQ disjunct $q$ if there is another disjunct $q'$ such that $q \subseteq q'$), which remains "NP".
-
-However, for unbounded homomorphism-closed queries, such as CRPQs, the existence of such unique minimal queries (even seen as infinitary unions of CQs) remains rather elusive. In particular, what breaks is the ``redundancy removal'', because there could be infinite chains of ever growing queries, as for instance in the Boolean CRPQ $q() = x \atom{a^+} x$.
-
+\paragraph{Related work.}
 Minimization has also been studied for the class of \emph{tree patterns}~\cite{FlescaFurfaroMasciari2008Minimization,KimelfeldSagiv2008Revisiting,CzerwinskiMartensNiewerthParys2018Minimization}. Tree patterns are simple yet widely used tree-like queries for tree-like databases such as XML. These queries allow mild recursion in the form of descendent edges, that is, atoms of the form $x \atom{a^+} y$, where $x$ is the parent of $y$. 
-Minimization of tree patterns is now well-understood \cite{CzerwinskiMartensNiewerthParys2018Minimization}:  it is known that non-redundancy is not the same as minimality, and that the "minimization problem" is "SigmaP2"-complete, the lower bound being highly non-trivial.
+Minimization of tree patterns is now well-understood \cite{CzerwinskiMartensNiewerthParys2018Minimization}: it is known that non-redundancy is not the same as minimality, and that the "minimization problem" is "SigmaP2"-complete, the lower bound being highly non-trivial.

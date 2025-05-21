@@ -22,7 +22,6 @@ The proof of \Cref{thm:2expspace-min-crpqs} is based on a key lemma stated below
 We star by giving a proof sketch of this lemma before giving the full
 detailed proof.
 
-\todo{check that proof sketch/proof don't overlap}
 \begin{proof}[Proof sketch]
 	The idea is to define the "CRPQ" $\beta$ as the "CRPQ" obtained from $\alpha$ by replacing each regular language $L$ by a suitable regular language $\tilde{L}$, which depends also on $\gamma$. Consider the following equivalence relation on $\A^*$, where $\A$ is the underlying alphabet. Given $u,v\in \A^*$, we write $u \intro*\weakequiv{\gamma} v$ if for every NFA $\+A$ appearing on $\gamma$, and pair of states $p,q$ of $\+A$:
 	$$\text{$u$ is accepted by $\subaut{\+A}{p}{q}$ $\iff$  $v$ is accepted by $\subaut{\+A}{p}{q}$}.$$

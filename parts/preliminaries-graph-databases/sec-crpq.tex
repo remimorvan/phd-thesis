@@ -812,6 +812,15 @@ In \Cref{ch:minimization-CRPQ} we will actually need a marginally smaller subcla
 we define \AP""positive simple regular expressions"" analogously to
 "simple regular expressions" but by replacing $a^*$ with $a^+$.
 
+\subsection{Static Analysis}
+
+Static optimization for CRPQs has received considerable attention. Beyond the basic study of containment and equivalence problems for CRPQs that we already mentioned,
+let us highlight that
+these problems have also been investigated under different scenarios: restrictions on the shape of queries \cite{Figueira2020Containment}, restrictions on their regular languages \cite{FigueiraEtal2020Containment}, alternative semantics~\cite{FigueiraRomero23}, or under schema information~\cite{GutierresBasultoGutowskiIbanezGarciaMurlak2022Finite,GutierresBasultoGutowskiIbanezGarciaMurlak2024Containment}.
+This has enabled the study of more advanced static analysis problems motivated by the following general question: \emph{Can a given query be equivalently rewritten as one from a target fragment (which enjoys desirable properties)?}
+In the literature the problem has been studied where the target fragment are queries which either (i) avoid having infinite languages, or (ii) have a tree-like structure. This gives rise to the so-called (i) \emph{boundedness problem} for CRPQs ("ie", whether a CRPQ is equivalent to a UCQ) \cite{BarceloFigueiraRomero2019Boundedness,FigueiraKrishnaSwostikMishraPadmanabha2024Boundedness}, and (ii) \emph{semantic treewidth problem} for CRPQs ("ie", whether a CRPQ is equivalent to one 
+that is tree-shaped) \cite{BarceloRomeroVardi2016SemanticAcyclicity}.
+
 In the next chapters,
 we focus on the problems of minimizing the number of "atoms"
 (\Cref{ch:minimization-CRPQ}) and "tree-width" (\Cref{ch:minimization-CRPQ})
