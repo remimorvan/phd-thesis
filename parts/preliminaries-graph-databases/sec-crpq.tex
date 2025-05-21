@@ -420,6 +420,7 @@ While this is indeed an issue, it only illustrate part of the difficulty
 posed by "CRPQs", and so we turn to a slightly more involved example.
 
 \begin{example}[{Simplification of \cite[Figure~3]{FlorescuLevySuciu1998Containment}.}]
+    \label{ex:ex-containment-non-uniform}
     Consider the "Boolean" "CRPQs"
     \[
         \gamma() \defeq w \atom{a} x \atom{a+b} y \atom{b} z
@@ -566,6 +567,11 @@ this example, $x \atom{a^+ + b^+} y$ is "equivalent" to the union of
 $x \atom{a^+} y$ and $x \atom{b^+} y$, which are both "refinements"
 of the original "C2RPQ".
 
+\begin{marginfigure}[8em]
+    \centering
+    \includegraphics[width=\linewidth]{fig/prelim-db/Russia.png}
+    \caption{\emph{Serio-comic war map for the year 1877}, by F. W. Rose.}
+\end{marginfigure}
 \paragraph*{Expansions.}
 Remember that a "C2RPQ" whose languages are
 of the form $\set{a}$ or $\set{a^-}$ for $a \in \A$ is in effect a "CQ".
@@ -594,29 +600,126 @@ $\bar{v}$ of nodes for which:
     $\tup{\?G, \bar u} \homto \tup{\?H, \bar v}$.
 \end{itemize}
 In this specific case, since $\anexpansion$ is a "CQ", the notion of "evaluation map"
-coincides with that of "homomorphism" and so we will also
-denote by $\anexpansion \homto \tup{\?H, \bar v}$ the existence of an "evaluation map".
-"Duality" justifies that we use these two notions interchangeably, which we will
+coincides with that of "homomorphism":
+"duality" justifies that we use these two notions interchangeably, which we will
 happily do from now on.
 
 Similarly, "containment" of "UC2RPQs" can also be characterized in terms of "expansions".
 \begin{proposition}[Folklore]
-    \AP\label{prop:cont-char-exp-st} 
     \!\footnote{The proof is elementary,
     see "eg" \cite[Proposition 3.2]{FlorescuLevySuciu1998Containment} 
     or \cite[Theorem 2]{CalvaneseDeGiacomoLenzeriniVardi2000Containment}.}
-    Let $\Gamma_1$ and $\Gamma_2$ be "UC2RPQs". Then the following are equivalent
+    \footnote{The proposition works for "Boolean" as well as "non-Boolean" queries:
+    we dropped the tuples of variables for the sake of readability.}
+    \AP\label{prop:cont-char-exp-st}
+    Let $\Gamma_1$ and $\Gamma_2$ be "UC2RPQs". The following are equivalent:
     \begin{itemize}
         \item $\Gamma_1 \contained \Gamma_2$;
-        \item for every $\anexpansion_1\in \Exp(\Gamma_1)$, $\anexpansion_1 \contained \Gamma_2$;
-        \item for every $\anexpansion_1\in \Exp(\Gamma_1)$ there is $\anexpansion_2\in \Exp(\Gamma_2)$ such that $\anexpansion_2\homto \anexpansion_1$. 
+        \item for every $\anexpansion_1\in \Exp(\Gamma_1)$, we have $\anexpansion_1 \contained \Gamma_2$;
+        \item for every $\anexpansion_1\in \Exp(\Gamma_1)$ there exists $\anexpansion_2\in \Exp(\Gamma_2)$ such that $\anexpansion_2\homto \anexpansion_1$;
+        \item for every $\?G_1 \cdb \Gamma_1$, we have $\?G_1 \FOmodels \Gamma_2$;
+        \item for every $\?G_1 \cdb \Gamma_1$, there exists $\?G_2 \cdb \Gamma_2$
+        "st" $\?G_2 \homto \?G_1$;
     \end{itemize}
 \end{proposition}
 
-Note that since an "expansion" of $\gamma$ is also a "refinement" of $\gamma$, it also
-holds that $\gamma$ is "semantically equivalent" to the "infinitary union" of its "refinements".
+\begin{marginfigure}
+    \centering
+    \begin{tikzpicture}
+        \node[vertex] (0) at (0,0) {};
+        \node[vertex,right=1cm of 0] (1) {};
+        \node[vertex,right=1cm of 1] (2) {};
+        \node[vertex,right=1cm of 2] (3) {};
+        \node[vertex,below right = 1.5cm and .5cm of 0] (a) {};
+        \node[vertex,right =1cm of a] (b) {};
+        \node[vertex,right =1cm of b] (c) {};
+        \draw[edge] (0) edge node[above] {$a$} (1)
+            (1) edge[cRed] node[above, cRed] {$a$} (2)
+            (2) edge node[above] {$b$} (3)
+            (a) edge node[above] {$a$} (b)
+            (b) edge node[above] {$b$} (c);
+        \draw[edge, dotted] (a) edge[out=90,in=-90] (1)
+            (b) edge[out=90,in=-90] (2)
+            (c) edge[out=90,in=-90] (3);
+    \end{tikzpicture}
+    \caption{\AP\label{fig:ex-containment-non-uniform-a} "Homomorphism"
+    from $\?D$ to $\?G_a$.}
+\end{marginfigure}
+\begin{marginfigure}
+    \centering
+    \begin{tikzpicture}
+        \node[vertex] (0) at (0,0) {};
+        \node[vertex,right=1cm of 0] (1) {};
+        \node[vertex,right=1cm of 1] (2) {};
+        \node[vertex,right=1cm of 2] (3) {};
+        \node[vertex,below right = 1.5cm and .5cm of 0] (a) {};
+        \node[vertex,right =1cm of a] (b) {};
+        \node[vertex,right =1cm of b] (c) {};
+        \draw[edge] (0) edge node[above] {$a$} (1)
+            (1) edge[cBlue] node[above, cBlue] {$b$} (2)
+            (2) edge node[above] {$b$} (3)
+            (a) edge node[above] {$a$} (b)
+            (b) edge node[above] {$b$} (c);
+        \draw[edge, dotted] (a) edge[out=90,in=-90] (0)
+            (b) edge[out=90,in=-90] (1)
+            (c) edge[out=90,in=-90] (2);
+    \end{tikzpicture}
+    \caption{\AP\label{fig:ex-containment-non-uniform-b} "Homomorphism"
+    from $\?D$ to $\?G_b$.}
+\end{marginfigure}
 
-\todo{canonical databases} $\intro*\cdb$ and ""canonical database""
+As an example, we consider the queries
+\[
+    \gamma() \defeq w \atom{a} x \atom{a+b} y \atom{b} z
+    \quad\text{and}\quad 
+    \delta() \defeq x \atom{a} y \atom{b} z
+\]
+from \Cref{ex:ex-containment-non-uniform}.
+Then $\delta()$ has a unique "canonical database@@CRPQ" that we denote
+by $\?D$, and $\gamma()$ has two "canonical databases@@CRPQ" 
+$\?G_a$ and $\?G_b$. We represent them in \Cref{fig:ex-containment-non-uniform-a,fig:ex-containment-non-uniform-b},
+together with witnesses that $\gamma() \contained \delta()$.
+
+\Cref{prop:cont-char-exp-st} by itself is not enough to conclude to the "decidability" of
+"containment" since the set of "expansions" or "canonical databases@@CRPQ"
+of a "UC2RPQ", or even simply "CRPQs", is infinite.
+To get decidability, the easiest way is by proving a small model property.
+\begin{proposition}[Small model property for C2RPQs, folklore]
+    \label{prop:pigeonssssssss}
+    Given two "C2RPQs" $\gamma_1(\bar x_1)$ and $\gamma_2(\bar x_2)$, if $\gamma_1(\bar x_1) \notcontained \gamma_2(\bar x_2)$, then there exists $\tup{\?G_1, \bar u_1} \cdb \gamma_1(\bar x_1)$ of size at most $f(\size{\gamma_1}+\size{\gamma_2})$ "st"
+    $\tup{\?G_1, \bar u_1} \notFOmodels \gamma_2(\bar x_2)$,
+    where $f$ is a doubly-exponential function.
+\end{proposition}
+
+\begin{marginfigure}
+    \centering
+    \includegraphics[width=\linewidth]{fig/prelim-db/pigeon.jpg}
+    \caption{Fun interlude: try spotting the difference with \Cref{prop:pigeonssssssss}.
+    \href{https://commons.wikimedia.org/wiki/File:Spinifex\_Pigeon\_0A2A1585.jpg}{\emph{Spinifex Pigeon}}, by JJ Harrison, licensed under "CC BY SA 3.0".}
+\end{marginfigure}
+\begin{proof}[Proof sketch]
+    We start with some $\tup{\?G_1, \bar u_1} \cdb \gamma_1(\bar x_1)$ of arbitrary size
+    such that $\tup{\?G_1, \bar u_1} \notFOmodels \gamma_2(\bar x_2)$.
+    On then look at how $\gamma_2$ maps into $\?G_1$ in the following sense:
+    in an "atom refinement" in $\?G_1$
+    \[
+        x_0 \atom{a_1} x_1 \atom{a_2} \dotsc \atom{a_n} x_n
+    \]
+    we associate to every sequence $a_1 a_{2} \cdots a_i$ the function
+    which takes a tuple of set of automaton states (one set for each automaton of $\gamma_2$),
+    and returns the tuple of set of states they can reach after reading $a_i a_{i+1} \cdots a_j$.
+    By pigeon-hole principle, if $n$ has at least double-exponential size, then there must exist
+    two indices $i < j$ that have the same behaviour.
+    Then, shrinking \[
+        x_0 \atom{a_1} x_1 \atom{a_2} \dotsc \atom{a_n} x_n
+    \quad\text{into}\quad
+        x_0 \atom{a_1} x_1 \atom{a_2} \dotsc \atom{a_i} x_i = x_j \atom{a_{j+1}} \dotsc \atom{a_n} x_n
+    \]
+    yields a strictly smaller "canonical database" $\?G'_1$ of $\gamma_1$
+    that behaves like $\?G_1$ "wrt" to the automata of $\gamma_2$,
+    and so since we had $\tup{\?G_1, \bar u_1} \notFOmodels\ \gamma_2(\bar x_2)$,
+    we still have $\tup{\?G'_1, \bar u_1} \notFOmodels\ \gamma_2(\bar x_2)$.
+\end{proof}
 
 
 \subsection{Queries Over Simple Languages}
