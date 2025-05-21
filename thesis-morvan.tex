@@ -83,8 +83,8 @@
 \makeindex
 
 % Line numbering
-\usepackage[displaymath, mathlines]{lineno}
-\preto{\chapter}{\resetlinenumber}
+% \usepackage[displaymath, mathlines]{lineno}
+% \preto{\chapter}{\resetlinenumber}
 
 % /!\ Use this for reviewers (+ knowledge electronic/paper)
 % \linenumbers
@@ -103,8 +103,6 @@
 \include{parts/contents}
 
 \mainmatter
-% \chapter*{Abstract}
-% \addcontentsline{toc}{chapter}{Abstract}
 
 % Counter for figures includes chapter number ("R" for Résumé)
 \renewcommand\thefigure{R.\arabic{figure}}
@@ -151,5 +149,8 @@
 \end{fullwidth}
 
 \printindex
+
+\input{parts/short-abstract}
+
 
 \end{document}
