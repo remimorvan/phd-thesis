@@ -160,7 +160,7 @@ queries, see \Cref{fig:prelim-db-crpq-as-struct}.
     that sends $\bar x$ to $\bar u$, and such that for every
     atom $x \atom{L} y$ of $\gamma$, there exists a path from $f(x)$ to
     $f(y)$ in $\?G$ labelled by some word of $L$. See \Cref{fig:prelim-db-evaluation-map}
-    for an example.
+    for an example.%
 
     When such an "evaluation map" exists, we say that $\tup{\?G,\bar u}$
     \AP""satisfies@@db"" $\gamma(\bar x)$, which we still denote by
@@ -198,6 +198,24 @@ queries, see \Cref{fig:prelim-db-crpq-as-struct}.
     a "graph database" (below), and an "evaluation map" from the former
     to the latter.}
 \end{figure}
+"Evaluation maps" are, as \Cref{fig:prelim-db-evaluation-map} hints at,
+well-behaved "wrt" "homomorphisms": formally, if
+$f\colon \gamma(\bar x) \to \tup{\?G, \bar u}$,
+and $g\colon \tup{\?G, \bar u} \to \tup{\?G', \bar u'}$ is a "homomorphism",
+then their composition $g\circ f\colon \gamma(\bar x) \to \tup{\?G', \bar u'}$ is still
+an "evaluation map".%
+\begin{fact}
+    In particular, the semantics of "CRPQs" is
+    "closed under homomorphisms".
+\end{fact}
+When $\gamma(\bar x)$ is a "CQ", an "evaluation maps" $\gamma(\bar x) \to \tup{\?H, \bar v}$
+exactly corresponds "homomorphisms" $\tup{\?G, \bar x} \to \tup{\?H, \bar v}$,
+where $\tup{\?G, \bar x}$ denotes the "canonical database" of $\gamma(\bar x)$.%
+\footnote{Because of this, the terminology is sometimes abused in the literature, where "evaluations maps" 
+for "CRPQs" can be referred to as ``homomorphisms''…
+We refuse this etymological blasphemy: "conjunctive 
+regular path queries" and "graph databases" are not of the same type---formally, these "structures" do not share the same "signature"---so they cannot be homomorphic.
+Partially out of defiance we actually considered calling "evaluation maps" ``heteromorphisms'' since they are constraint-preserving maps between objects having a different structure.}
 
 Naturally, any "CQ" can be seen as a "CRPQ" by
 identifying $\atom{a}$ with $\atom{\set{a}}$.
@@ -267,6 +285,15 @@ unbounded "tree-width"!
 	Does $\bar u \in \semFO{\gamma(\bar x)}{\?G}$?
 }
 
+When dealing with "CRPQs", we will assume in our proofs that the "regular languages"
+are specified by non-deterministic finite automata; however we will use
+regular expressions in every example for the sake of readability.
+Given a "CRPQ" $\gamma$, we denote its number of "variables"
+and "atoms" by \AP$\intro*\nbvar{\gamma}$ and $\intro*\nbatoms{\gamma}$, respectively.
+On the other hand $\intro*\size{\gamma}$ denotes the size of any reasonable representation
+of the "query@CRPQ": we agree to take the sum of its number of "atoms" with
+the sum of the size of automata used to describe $\gamma$.
+
 \begin{proposition}
     The "conjunctive regular path queries evaluation problem" is "NP"-complete.
 \end{proposition}
@@ -279,34 +306,46 @@ unbounded "tree-width"!
     For each "atom", each check consists in checking if there is a
     path from some vertices to another labelled by a word of some language,
     which can be done in "NL" "eg" by an easy
-    adaptation of the "NL" algorithm for "graph reachability".
+    adaptation of the "NL" algorithm for "reachability in finite graphs".
 \end{proof}
 
 \todo{tree-width}
 
+Overall, the algorithms for "CQ evaluation" extend effortlessly to "CRPQs". 
+
+\subsection{Deciding Equivalence of Conjunctive Regular Path Queries}
+
 "CRPQs" form the core navigational mechanism of the new ISO standard Graph Query Language (GQL) \cite{ISO2024GQL} and the SQL extension for querying graph-structured data SQL/PGQ \cite{ISO2023PGQ} (see also \cite{FrancisEtal2023GQL,FrancisEtal2023GPC}).
+Hence, the static analysis of "conjunctive regular path queries" is of the foremost
+importance.
 
+$\intro*\Exp$ and ""expansion""
+$\intro*\cdb$ and ""canonical database""
 
-\AP Formally, a ""CRPQ"" $\gamma$ is defined as a tuple $\bar z = (z_1,\hdots,z_n)$
-of ""output variables"", "aka" \reintro{free variables},\footnote{For technical reasons (see the definition of "equality atoms") we allow for a variable to appear multiple times.}
-together with a conjunction of ""atoms"" of the form
-$\bigwedge_{j=1}^m x_j \atom{L_j} y_j$, where each $L_j$ is a regular language and where $m \geq 0$.
-The set of all variables occurring in $\gamma$, namely\footnote{We neither assume 
-disjointness nor inclusion between $\{z_1,\hdots,z_n\}$ and $\{x_1,y_1,\hdots,x_m,y_m\}$}
-$\{z_1,\hdots,z_n\}\cup\{x_1,y_1,\hdots,x_m,y_m\}$, is denoted by
-$\intro*\vars{\gamma}$.
-Given a "database@@graph" $G$, we say that a tuple of nodes $\bar u = (u_1,\hdots,u_n)$
-\AP""satisfies@@db"" $\gamma$ 
-on $G$ if there is a mapping
-$\fun\colon \vars{\gamma} \to \vertex{G}$ such that $u_i = \fun(z_i)$ for all
-$1 \leq i \leq n$, and for each $1 \leq j \leq m$,
-there exists a path from $\fun(x_i)$ to $\fun(y_i)$ in $G$, labelled by
-a word from $L_i$ (if the path is empty, the label is $\epsilon$). The \AP""evaluation"" of $\gamma$ on $G$ is then the set of all tuples that "satisfy@@db" $\gamma$.
-%
-For example, $(\text{author}_2, \text{author}_5)$ "satisfies@@db" $\gamma_2$ 
-on the "graph database" $G$ of \Cref{fig:example-graph-database} via
-the function that maps $x$ to $\text{author}_2$, $y$ to $\text{author}_5$,
-$z$ to $\text{paper}_2$, and $z'$ to $\text{author}_3$.
+\todo{containment}
+
+\todo{""simple regular expression"" and ""positive simple regular expression""}
+
+\subsection{Beyond Conjunctive Regular Path Queries}
+
+-regular path queries 
+
+- unions
+
+- two-way 
+
+- extended CRPQs
+
+- sql + recursion ()
+
+- mso
+
+- datalog / monadic / linear
+
+\subsection{Analysis of Conjunctive Regular Path Queries}
+
+small intro of the next two chapters
++ brief litterature review
 
 \AP
 The language of "CRPQ" can be extended to navigate edges in both directions. 
@@ -333,10 +372,6 @@ its "evaluation" can either be the set $\set{()}$, in which case we say that $G$
 \[\gamma_4() = x \atom{\wrote} y\]
 if, and only if, the database contains one author together with one paper they wrote.
 
-We denote the set of "atoms" of a "C2RPQ" $\gamma$ by \AP$\intro*\atoms\gamma$, and by 
-$\intro*\nbatoms{\gamma}$ we denote its number of "atoms", "ie", $|\atoms\gamma|$.
-Moreover, we denote by $\intro*\size{\gamma}$ the sum of its number of "atoms" with
-the sum of the size of NFAs used to describe $\gamma$.
 
 \AP Finally, a ""union of CQs"" (\reintro{UCQs}) (resp.\ ""union of CRPQs"" (\reintro{UCRPQs}), resp.\ ""union of C2RPQs"" (\reintro{UC2RPQs}))  
 is defined as a finite set of "CQs" (resp.\ "CRPQs", resp.\ "C2RPQs"), whose
@@ -364,31 +399,10 @@ see \cite{AnglesEtal2017Foundations}.
 
 \smallskip
 
-% \paragraph*{Containement and equivalence}
-\AP %It is often interesting to compare queries together. 
-The ""evaluation problem"" for "UC2RPQ" is the problem of, given
-a "UC2RPQ" $\Gamma$, a "graph database" $G$ and a tuple $\bar u$ of elements of $G$,
-whether $\bar u$ "satisfies@@db" $\Gamma$ on $G$. 
-Given two "UC2RPQ" $\Gamma$
-and $\Gamma'$ whose "output variables" have the same arity,
-we say that $\Gamma$ is \AP""contained"" in $\Gamma'$,
-denoted by $\Gamma \intro*\contained \Gamma'$ if
-for every "graph database" $G$, for every tuple $\bar u$ of $G$,
-if $\bar u$ "satisfies@@db" $\Gamma$ on $G$, then so does $\Gamma'$ (we will hence reserve the symbol `$\subseteq$' for set inclusion---note in particular that inclusion (of the "UC2RPQs", seen as sets of "C2RPQs") implies "containment", but the converse does not hold). 
-The \AP""containment problem"" for "UC2RPQs" is the problem of, given
-two "UC2RPQs" $\Gamma$ and $\Gamma'$, to decide if $\Gamma \contained \Gamma'$.
-When $\Gamma$ is "contained" in $\Gamma'$ and vice versa, we say that
-$\Gamma$ and $\Gamma'$ are \AP""semantically equivalent"", denoted by
-$\Gamma \intro*\semequiv \Gamma'$. 
 
 \begin{itemize}
-	\itemAP $\intro*\Exp$ and ""expansion""
-	\itemAP $\intro*\cdb$ and ""canonical database""
 	\itemAP $\intro*\Refin$, ""atom refinement"", ""refinement""
 	\itemAP $\intro*\contract{L_i \cdots L_{j}}$, ""one-way contraction"", ""contraction"" and ""condensation"" -> unify terminology; ""contracting internal variables"", ""internal path""
-	\itemAP $\intro*\nbatoms{\gamma}$, $\intro*\nbvar{\gamma}$
-	\itemAP ""evaluation map""
-	\itemAP ""simple regular expression"" and ""positive simple regular expression""
 \end{itemize}
 
 A \AP""class of (Boolean) CRPQs"" is a function \AP$\intro*\classCRPQ$ mapping an alphabet $\A$ 
