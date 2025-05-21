@@ -48,7 +48,7 @@ should be "equivalent@@sem" to a "forest-shaped" "CRPQ" with at most $2^k$ "atom
 Both the result on "UCRPQ minimization" of \Cref{ch:minimization-CRPQ}
 and of "semantic tree-width" minimization of \Cref{ch:semantic-tree-width-CRPQ} 
 relies on the existence---and computability---of "maximal under-approximations".
-In the first case, the target class consists of finitely many "graphs" (\Cref{lemma:approximation-for-finclass}), but in the second case,
+In the first case, the target class consists of finitely many graphs (\Cref{lemma:approximation-for-finclass}), but in the second case,
 it is infinite (\Cref{lemma:bound_size_refinements}): as such the proof is significantly harder.
 Having the remarkable genericity of the equivalent theorem for "CQs" in mind
 (\Cref{prop:minimization-CQ}), we could only hope to be able to capture 
@@ -116,7 +116,7 @@ In particular, we have
 	to the latter, described by colour coding. (Replica of \Cref{fig:prelim-db-cycles}.)}
 \end{figure}
 
-The crucial point is that "projective system" have a natural semantics:
+The crucial point is that projective system have a natural semantics:
 we define the semantics of \[\varprojlim\limits_{n\in\N} \?G_n\]
 as the set of points that above some element of this sequence,
 "ie" as
@@ -147,7 +147,7 @@ this construction does nothing! This is precisely because this logic is already
 \href{https://en.wikipedia.org/wiki/Compactness\_theorem}{compact}.
 On the other hand, when applied to "regular languages" of finite words,
 we obtained profinite words, which are exactly the models needed to describe
-"pseudovarieties"! We refer the reader to \cite{GehrkeGool2024Topological}
+"pseudovarieties of monoids"! We refer the reader to \cite{GehrkeGool2024Topological}
 for a not so short survey of the topic.
 
 Second, "profinite databases" naturally appear when dealing with the semantics
@@ -221,10 +221,10 @@ to the existence of "hom-minimal expansions":
 		provides lower bounds on the complexity required to express a "CRPQ"---and which is,
 		to out knowledge, actually the only result of this form for "CRPQs";
 	\item a very partial generalization of "Grohe's theorem" to
-		"finite redundant" Boolean "UC2RPQs" (\Cref{thm:tractability-finred}).
+		"finitely-redundant" Boolean "UC2RPQs" (\Cref{thm:tractability-finred}).
 \end{itemize}
 However, very simple "CRPQs" such as $\gamma() \defeq x \atom{\A^*} x$,
-expressing that the "database" contains "directed cycle" no do not
+expressing that the "database@@graph" contains "directed cycle" no do not
 have "hom-minimal expansions", but is does have a "hom-minimal" 
 "profinite database", which is \[\varprojlim\limits_{n\in\tup{\Np,\mid}} \?C_{n}.\]
 More generally, by Zorn's lemma, every "CRPQ" admits at least 

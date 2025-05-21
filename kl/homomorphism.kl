@@ -5,11 +5,17 @@
 \knowledge{notion, index={homomorphism}}
  | homomorphism
  | homomorphisms
+ | Homomorphisms
+ | Homomorphism
+ | mapped homomorphically
 
 \knowledge{notion, index={homomorphically equivalent}}
  | homomorphically equivalent
  | homomorphical equivalence
  | hom-equivalent
+ | homomorphic equivalence
+ | homomorphical equivalent
+ | hom-equivalence
 
 \knowledge{notion, index={congruence!of a relational structure}}
  | congruence@struct
@@ -26,6 +32,7 @@
  | core
  | $\sigma $-core
  | cores
+%  | cores@cq
 
 % ---
 % Homomorphism problem

@@ -13,7 +13,7 @@ see \cite{AnglesEtal2017Foundations}.
 \Cref{sec:prelim-db-relational} shows that "conjunctive queries"---and "unions
 thereof@UCQ"---is a reasonable query language: it is expressive enough to capture
 many of the queries that are written in practice in SQL, but small enough
-to be amenable to static analysis thanks to "duality".
+to be amenable to static analysis thanks to "duality@@CQ".
 However, "conjunctive queries", and in fact the larger language
 of "first-order logic", or \emph{relational calculus},
 is remarkably powerless against ``graph-traversal queries''.
@@ -69,11 +69,11 @@ properties; in fact, even the full "first-order logic" cannot express such prope
     \]
     Then clearly, $\tup{\?P_n,p_0,p_n} \FOmodels \gamma_2(x,y)$
     and so $\tup{\?P_n,p_0,p_n} \FOmodels \delta_i(x,y)$ for some $i\in \intInt{1,k}$.
-    By "duality", there exists a "homomorphism" from the "canonical database@@cq"
+    By "duality@@CQ", there exists a "homomorphism" from the "canonical database@@cq"
     $\tup{\?D_i,x,y}$ of $\delta_i(x,y)$ to $\tup{\?P_n,p_0,p_n}$.
     However, the "distance@@struct" from $x$ to $y$ in $\?G_i$ is strictly
     upper bounded by $n$, since $n$ was chosen to be
-    strictly greater than the "diameter" of $\?D_i$, and the distance from "x" to $y$
+    strictly greater than the "diameter" of $\?D_i$, and the distance from $x$ to $y$
     is exactly $n$.
     Since "homomorphisms" contract distances, we have reached a contradiction.
     And hence, the property of \Cref{prop:fo-no-trans} is not "first-order definable".%
@@ -83,7 +83,7 @@ properties; in fact, even the full "first-order logic" cannot express such prope
     In all cases, the proof relies on an idea that "first-order queries" are local.
     In our proof, the notion of locality---formalized by the fact that "homomorphisms" contract
     the "distances@@struct"---is extremely strong, but is only valid over the "first-order queries"
-    amenable to "duality", "ie" "UCQs". This results in a very simple proof,
+    amenable to "duality@@CQ", "ie" "UCQs". This results in a very simple proof,
     which however relies on a highly non-trivial result, namely "Rossman's theorem".
     On the other hand, a proof based on Ehrenfeucht–Fraïssé games or
     Gaifman/Hanf-locality does not rely on any deep theorem, but the notion of
@@ -91,7 +91,7 @@ properties; in fact, even the full "first-order logic" cannot express such prope
 \end{proof}
 
 Queries such as the one of \Cref{prop:fo-no-trans} do not arise
-over all kinds of "databases": for instance, 
+over all kinds of databases: for instance, 
 transitive closures of tables---or of projections of table---
 for \Cref{fig:relational-database-cinema} would not make any sense.
 On the other hand, it is a very natural construction
@@ -279,7 +279,7 @@ notice "eg" that if $\?G$ is a "directed path"
 \[
     u_0 \atom{a} u_1 \atom{a} \dotsc \atom{a} u_n,
 \]
-and if only $\atom{a^*}$ occurs in the "query", then $\tilde{\?G}$ is the
+and if only $\atom{a^*}$ occurs in the query, then $\tilde{\?G}$ is the
 "$k$-transitive tournament", see \Cref{fig:3-transitive-tournament-crpq}.
 From a very simple "structure" of "path-width" 1, we obtained a "structure" of
 unbounded "tree-width"!
@@ -295,7 +295,7 @@ unbounded "tree-width"!
 When dealing with "CRPQs", we will assume in our proofs that the "regular languages"
 are specified by non-deterministic finite automata; however we will use
 regular expressions in every example for the sake of readability.
-Given a "CRPQ" $\gamma$, we denote its number of "variables"
+Given a "CRPQ" $\gamma$, we denote its number of variables
 and "atoms" by \AP$\intro*\nbvar{\gamma}$ and $\intro*\nbatoms{\gamma}$, respectively.
 On the other hand $\intro*\size{\gamma}$ denotes the size of any reasonable representation
 of the "query@CRPQ": we agree to take the sum of its number of "atoms" with
@@ -306,7 +306,7 @@ the sum of the size of automata used to describe $\gamma$.
 \end{proposition}
 
 \begin{proof}
-    The lower bound already holds for "CQs" by \Cref{prop:duality}.
+    The lower bound already holds for "CQs" by \Cref{prop:duality@@CQ}.
     The upper bound can be proven by (1) guess a function from the variables
     of the "query@CRPQ" to the vertices of the "database@@graph",
     and (2) checking that it is an "evaluation map". 
@@ -387,7 +387,7 @@ into $\gamma_2(x,y) \defeq x \atom{L} y$ is equivalent to asking for $K \subsete
 Since language inclusion for non-deterministic automata is "PSpace"-hard, it follows
 that there is no hope for "containment" to be as easy for "CRPQs" as it is for "conjunctive queries"…
 
-Static analysis of "conjunctive queries" relied on "duality" theory,
+Static analysis of "conjunctive queries" relied on "duality@@CQ" theory,
 which associated to each "CQ" a "canonical database@@CQ". 
 We show here that for "CRPQs", or even for "UC2RPQs", we can associate
 to each query an \emph{infinite} set of "canonical databases@@CRPQ", which will help us
@@ -400,7 +400,7 @@ see "eg" \Cref{fig:basic-hom}. These "homomorphisms" behave nicely "wrt" to "eva
 \footnote{\emph{Déjà vu?}}
 in the sense that for every "homomorphism" of "CRPQs" $f\colon \gamma'(\bar x') \to \gamma(\bar x)$,
 for every "evaluation map" $g\colon \gamma(\bar x) \to \tup{\?H, \bar v}$,
-then their "composition" $g \circ f\colon \gamma'(\bar x') \to \tup{\?H, \bar v}$
+then their composition $g \circ f\colon \gamma'(\bar x') \to \tup{\?H, \bar v}$
 is still an "evaluation map".
 \begin{fact}
     \label{fact:hom-implies-contained}
@@ -451,7 +451,7 @@ The idea behind "canonical databases" for "C(2)RPQs" is as follows
 starting from a "CRPQ" $\gamma(\bar x) = \bigwedge_{i=1}^n y_i \atom{L_i} z_i$,
 we look every possible choice of words $\tup{u_i \in L_i}_{i\in \intInt{1,n}}$.
 Replacing $\atom{L_i}$ by a directed path labelled by $u_i$ yields a "pointed graph database"
-that "satisfies" $\gamma(\bar x)$ by construction. These will precisely be
+that "satisfies@@db" $\gamma(\bar x)$ by construction. These will precisely be
 the "canonical databases@@CRPQ" of our "CRPQ"! We illustrate the notion on
 \Cref{fig:first-ex-cdb-wow-im-moved}.
 \begin{figure*}
@@ -604,7 +604,7 @@ $\bar{v}$ of nodes for which:
 \end{itemize}
 In this specific case, since $\anexpansion$ is a "CQ", the notion of "evaluation map"
 coincides with that of "homomorphism":
-"duality" justifies that we use these two notions interchangeably, which we will
+"duality@@CQ" justifies that we use these two notions interchangeably, which we will
 happily do from now on.
 
 Similarly, "containment" of "UC2RPQs" can also be characterized in terms of "expansions".
@@ -683,7 +683,7 @@ by $\?D$, and $\gamma()$ has two "canonical databases@@CRPQ"
 $\?G_a$ and $\?G_b$. We represent them in \Cref{fig:ex-containment-non-uniform-a,fig:ex-containment-non-uniform-b},
 together with witnesses that $\gamma() \contained \delta()$.
 
-\Cref{prop:cont-char-exp-st} by itself is not enough to conclude to the "decidability" of
+\Cref{prop:cont-char-exp-st} by itself is not enough to conclude to the decidability of
 "containment" since the set of "expansions" or "canonical databases@@CRPQ"
 of a "UC2RPQ", or even simply "CRPQs", is infinite.
 To get decidability, the easiest way is by proving a small model property.
@@ -775,6 +775,15 @@ can be reformulated as
 The proof of \Cref{prop:containment-figueira} is by reduction
 from the exponential-space tiling problem,
 and relies on encoding exponential-sized counters in polynomial space.
+
+\paragraph*{Hom-Minimality.}
+We say that a "graph database" $\tup{\?G,\bar u}$ satisfying a ""semantical query"" $\gamma(\bar x)$
+is \AP""hom-minimal"" if for every other "graph database" $\tup{\?G',\bar v}$,
+if $\tup{\?G',\bar v}$ also satisfies $\gamma(\bar x)$ and
+if $\tup{\?G', \bar v} \homto \tup{\?G, \bar u}$ then $\tup{\?G', \bar v} \semequiv \tup{\?G, \bar u}$. Graphically, this literally corresponds to the minimal elements of a set in
+\Cref{fig:distributive-lattice-rel-db}.
+In the definition, the quantification over all ``$\tup{\?G',\bar v}$ that satisfy $\gamma(\bar x)$''
+can actually be replaced, for "UC2RPQs", by a quantification over all "canonical databases".
 
 \subsection{Queries Over Simple Languages}
 

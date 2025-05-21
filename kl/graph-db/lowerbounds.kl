@@ -21,19 +21,10 @@
  | fully contracted
  | non-fully contracted CRPQ
 
-\knowledge{notion}
- | disjoint conjunction
-
 
 % ---
 % Classes
 % ---
-
-\knowledge{notion}
- | class of (Boolean) CRPQs
- | class@CRPQ
- | class of CRPQs
- | classes of CRPQs
 
 \knowledge{notion}
  | closed under disjoint conjunction

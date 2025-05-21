@@ -5,10 +5,12 @@
  | cliques
  | clique
 
-\knowledge{notion, index={path!graph}}
+\knowledge{notion, index={path!directed}}
  | $2$-path
  | path
  | $k$-path
+ | directed paths
+ | directed path
 
 \knowledge{notion, index={transitive tournament}}
  | $2$-transitive tournament

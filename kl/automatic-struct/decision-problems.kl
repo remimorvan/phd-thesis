@@ -98,6 +98,8 @@
  | Reachability in Finite Graphs
  | finite graph reachability problem
  | Reachability in finite graphs
+ | reachability in finite graphs
+ | reachability problem in finite graphs
 
 \knowledge{notion, wrap=\DPfont, index={connectivity in automatic graphs}}
  | Connectivity in Automatic Graphs

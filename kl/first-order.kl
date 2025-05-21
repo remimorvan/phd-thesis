@@ -9,14 +9,16 @@
  | first-order formulas
  | formula@FO
  | formulas@FO
+ | first-order queries
 
 \knowledge{notion, index={first-order!sentence}}
  | first-order sentence
  | first-order sentences
  | sentences@FO
 
-\knowledge{notion, index={model}}
- | models
+\knowledge{notion}
+ | prenex form
+ | Prenex form
 
 \knowledge{notion, index={quantifier alternation}}
  | quantifier alternation
@@ -74,13 +76,21 @@
  | existential sentences
  | existential formula
  | existential formulas
+ | existential FO
 
 \knowledge{notion, index={formula!existential-positive}}
  | existential-positive sentences
  | existential-positive formula
  | existential-positive formulas
  | existential-positive fragment
+ | existential-positive@formula
 
+\knowledge{notion}
+ | primitive-positive formulas
+ | primitive-positive@formula
+ | primitive-positive formula
+ | primitive-positive fragment
+ | primitive-positive sentences
 
 \knowledge{notion, index={formula!positive quantifier-free}}
  | positive quantifier-free formula

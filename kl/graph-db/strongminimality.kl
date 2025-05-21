@@ -50,10 +50,8 @@
 \knowledge{notion}
  | hom-minimal
  | hom-minimality
-
-\knowledge{notion}
- | minor
- | minors
+ | hom-minimal expansions
+ | hom-minimal canonical database
 
 \knowledge{notion}
  | contracting edges

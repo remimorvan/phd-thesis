@@ -11,6 +11,7 @@
 
 \knowledge{notion, index={signature!purely relational signature}}
  | purely relational signature
+ | purely relational@signature
 
 \knowledge{notion, index={predicate}}
  | predicate
@@ -59,6 +60,7 @@
  | interpreted@pred
  | predicate interpretations
  | interpretation@predicates
+ | interpret@pred
 
 \knowledge{notion, index={structure!finite}}
  | finite $\sigma $-structures
@@ -70,6 +72,9 @@
  | finiteness@structure
  | finite@structure
  | finite relational structure
+ | finite relational structures
+ | finite $\signatureCRPQ {\A }$-structure
+ | finite databases
 
 \knowledge{notion} 
  | edge
@@ -175,6 +180,7 @@
 
 \knowledge{notion, index={disjoint union}}
  | disjoint union
+ | disjoint unions
 
 \knowledge{notion, index={Cartesian product}}
  | Cartesian product
@@ -191,9 +197,16 @@
 \knowledge{notion, index={query}}
  | queries@sem
  | query@sem
+ | semantical queries
+ | (semantical) query
+ | (semantical) queries
+ | semantical query
 
 \knowledge{notion}
  | minor
+ | minors
 
 \knowledge{notion}
  | minor-closed
+ | closed under minors
+ | minor-closed classes

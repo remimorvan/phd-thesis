@@ -1,6 +1,20 @@
 \knowledge{notion}
  | relational database
  | relational databases
+ | database@rel
+ | databases@rel
+ | Relational Databases
+
+\knowledge{notion}
+ | pointed relational database
+ | pointed relational $\sigma $-database
+ | pointed relational databases
+ | pointed databases@rel
+ | database@relpointed
+
+\knowledge{notion}
+ | isolated vertices
+ | isolated variables
 
 \knowledge{notion}
  | Graph databases
@@ -8,17 +22,13 @@
  | graph database
  | database@graph
  | databases@graph
-
-\knowledge{notion}
- | maximal canonical database
- | maximal
- | maximality
-
-\knowledge{notion}
- | canonical database
- | canonical databases
+ | pointed graph database
 
 \knowledge{notion}
  | satisfies@db
  | satisfy@db
  | satisfying@db
+
+\knowledge{notion}
+ | profinite databases
+ | profinite database

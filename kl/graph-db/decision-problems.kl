@@ -1,5 +1,35 @@
 \knowledge{notion, wrap=\DPfont}
  | conjunctive query evaluation
+ | Conjunctive Query Evaluation
+ | CQ evaluation problem
+ | CQ evaluation
+
+\knowledge{notion, wrap=\DPfont}
+ | CQ minimization problem over $\+C$
+
+\knowledge{notion, wrap=\DPfont}
+ | synthesis problem
+ | synthesis problem for CQs
+ | Synthesis Problem for CQs
+ | synthesis problem@CQ
+
+% ---
+% CRPQs
+% ---
+
+\knowledge{notion, wrap=\DPfont}
+ | Conjunctive Regular Path Queries Evaluation
+ | conjunctive regular path queries evaluation problem
+
+\knowledge{notion, wrap=\DPfont}
+ | containment problem
+ | con\-tainment problem
+ | Containment of CRPQs
+
+\knowledge{notion, wrap=\DPfont}
+ | Variable-minimization problem
+ | variable-minimization problem
+ | variable-minimization problem(s)
 
 \knowledge{notion, wrap=\DPfont}
  | minimization problem@CRPQ
@@ -10,8 +40,7 @@
  | Minimization problem@CRPQ
  | CRPQ minimization
  | minimization of CRPQs
+ | minimization problem for CRPQs
 
-\knowledge{notion}
- | Variable-minimization problem
- | variable-minimization problem
- | variable-minimization problem(s)
+\knowledge{notion, wrap=\DPfont}
+ | UCRPQ minimization

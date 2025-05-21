@@ -67,7 +67,7 @@ the "path-width" is upper-bounded by one plus the "contracted path-width", and l
 In the case of "CQs", the answer is `yes' to \Cref{qu:FPTtractability} \cite[Theorem~1]{Grohe2007ComplexityHomomorphism}
 under standard complexity-theoretic hypotheses ($W[1] \neq $ "FPT"). For \Cref{qu:paraNLtractability}, the answer is still `yes' \cite[Theorem 3.1]{ChenMoritz13} conditional to a less standard assumption\footnote{By \cite[Theorems 3.1 \& 4.3]{ChenMoritz13}, if the class has bounded "semantic path-width", then the problem is in $\textsf{Path} \subseteq $ "paraNL"; by \cite[Theorems 3.1 \& 5.5]{ChenMoritz13}, if the class does not have bounded "semantic path-width", then the problem is \textsf{Tree}-hard.} (no $\textsf{Tree}$-hard problem is in "paraNL").
 
-However, attempting at answering these questions for "CRPQs" is considerably more challenging. In particular, one important technical difficulty is that a class of "CRPQs" with unbounded "tree-width" may contain queries with no "expansions" which are "maximal" in the sense of "containment". That is, for every $k$, for every query $\gamma$ of "semantic tree-width" $>k$ and "expansion" $\xi$ of "semantic tree-width" $>k$ there may be another "expansion" $\xi'$ such that $\xi' \homto \xi$ ("ie", such that $\xi \contained \xi'$).  
+However, attempting at answering these questions for "CRPQs" is considerably more challenging. In particular, one important technical difficulty is that a class of "CRPQs" with unbounded "tree-width" may contain queries with no "expansions" which are "hom-minimal" in the sense of "containment". That is, for every $k$, for every query $\gamma$ of "semantic tree-width" $>k$ and "expansion" $\xi$ of "semantic tree-width" $>k$ there may be another "expansion" $\xi'$ such that $\xi' \homto \xi$ ("ie", such that $\xi \contained \xi'$).  
 % This brakes the reduction shown for "CQs" in \cite[Theorem~4.1]{Grohe2007ComplexityHomomorphism}. 
 In fact, for classes of "CRPQs" avoiding such problematic behavior, Question~\ref{qu:FPTtractability} can be positively answered. We next show why.
 
@@ -103,21 +103,21 @@ We next show that, restricted to classes of "finitely-redundant" "UC2RPQ", we ca
     
     \todo{update this shit}
     \AP
-    Let us call an "expansion" $\xi$ of a "UC2RPQ" to be ""maximal"" if there is no other "expansion" $\xi'$ such that $\xi \strcontained \xi'$.
+    Let us call an "expansion" $\xi$ of a "UC2RPQ" to be ""hom-minimal"" if there is no other "expansion" $\xi'$ such that $\xi \strcontained \xi'$.
     \AP
     Recall that the "core" of a "CQ" is the result of repeatedly removing any atom which results in an equivalent query. It is unique up to isomorphism---see ---, and a "CQ" has "semantic tree-width" $k$ if{f} its "core" has "tree-width" $k$ \cite[Theorem 12]{DalmauKolaitisVardi2002Constraint}. We say that a "CQ" is `a core' if it is isomorphic to its "core".
 
     \begin{proposition}
         \label{prop:big-expansion}
-        For any $k \geq 3$, if a "finitely-redundant" "C2RPQ" has "semantic tree-width" $\geq k$, then there is a "maximal" "expansion" thereof of "semantic tree-width" $\geq k$.
+        For any $k \geq 3$, if a "finitely-redundant" "C2RPQ" has "semantic tree-width" $\geq k$, then there is a "hom-minimal" "expansion" thereof of "semantic tree-width" $\geq k$.
     \end{proposition}
 
     \begin{proof}
         Let $\gamma$ be a "finitely-redundant" "C2RPQ".
-        Consider the "infinitary UCQ" \[\Xi \defeq \{\core{\xi} \mid \xi \text{ is a "maximal" "expansion" of } \gamma \}.\]
+        Consider the "infinitary UCQ" \[\Xi \defeq \{\core{\xi} \mid \xi \text{ is a "hom-minimal" "expansion" of } \gamma \}.\]
         Since $\gamma$ is "finitely-redundant", we have $\gamma \semequiv \Xi$.
         We prove the fact by contraposition.
-        If all "maximal" "expansions" of $\gamma$ have "semantic tree-width" $\leq k-1$,
+        If all "hom-minimal" "expansions" of $\gamma$ have "semantic tree-width" $\leq k-1$,
         then all "CQs" of $\Xi$ have "tree-width" $\leq k-1$, and so
         by the implication $\itemClosureInfCQ \Rightarrow \itemClosureUCRPQSimple$ of \Cref{thm:closure-under-sublanguages}, query $\gamma$ has "semantic tree-width" at most $k-1$.
         Note that for \Cref{thm:closure-under-sublanguages} to apply, we need $k-1 > 1$
@@ -125,18 +125,18 @@ We next show that, restricted to classes of "finitely-redundant" "UC2RPQ", we ca
     \end{proof}
 
     \begin{proposition}
-        The set of all "maximal" "expansions" of queries from $\+C$ is recursively enumerable.
+        The set of all "hom-minimal" "expansions" of queries from $\+C$ is recursively enumerable.
     \end{proposition}
 
     \begin{proof}
         \AP We first show that given an "expansion" $\xi$ of some "C2RPQ" $\gamma$, it is 
-        decidable whether $\xi$ is "maximal". This follows from the following claim:
+        decidable whether $\xi$ is "hom-minimal". This follows from the following claim:
         there exists an "expansion" $\xi'$ of $\gamma$ "st" $\xi' \homto \xi$ and
         $\xi \nothomto \xi'$ "iff"
         there exists such an "expansion" whose "atom expansions" have length at most
         $2^m \cdot |\xi|\cdot |\A|^{2|\xi|}$ where $|\xi|$ is the number of variables of $\xi$ and
         $m$ is the greatest number of states of an NFA labelling an "atom" of $\gamma$. 
-        Decidability of "maximality" clearly follows from this claim: it suffices to check if 
+        Decidability of "hom-minimality" clearly follows from this claim: it suffices to check if 
         $\xi' \homto \xi$ implies $\xi \homto \xi'$ for all ``small'' $\xi'$.
 
         To prove the claim, let $\xi'$ be an "expansion" of $\gamma$, and assume that there is 
@@ -170,19 +170,19 @@ We next show that, restricted to classes of "finitely-redundant" "UC2RPQ", we ca
         $\xi$ to $\xi'$, which is not possible. Hence, there cannot be any "homomorphism" from
         $\xi$ to $\xi''$, which concludes the proof.
 
-        Finally, to enumerate all "maximal" "expansions" of queries from $\+C$,
-        it suffices to enumerate all "expansions" of queries from $\+C$---which is doable since $\+C$ is recursively enumerable---and only keep those which are "maximal", using the previous algorithm.
+        Finally, to enumerate all "hom-minimal" "expansions" of queries from $\+C$,
+        it suffices to enumerate all "expansions" of queries from $\+C$---which is doable since $\+C$ is recursively enumerable---and only keep those which are "hom-minimal", using the previous algorithm.
     \end{proof}
 
     We proceed with the reduction.
-    For any value of $k$ which is big enough, we enumerate all "maximal" "expansions" of $\+C$ until we find one such "expansion" $\xi$ whose "core" contains a $K \times K$ grid as a minor, for $K = {k \choose 2}$.
+    For any value of $k$ which is big enough, we enumerate all "hom-minimal" "expansions" of $\+C$ until we find one such "expansion" $\xi$ whose "core" contains a $K \times K$ grid as a minor, for $K = {k \choose 2}$.
     We know that this must happen by \Cref{prop:big-expansion} and the Excluded Minor Theorem \cite{RobertsonSeymour1986GraphMinors5}, stating that there exists a function $f : \N \to \N$ such that for every $n \in \N$ every graph of "tree-width" at least $f(n)$ contains a $(n \times n)$-grid as a minor.
-    Once we get hold of such a "maximal" "expansion" $\xi$, we proceed as in \cite[proof of Theorem~4.1]{Grohe2007ComplexityHomomorphism} to produce, in polynomial time, a "graph database" $G_\xi$ such that:
+    Once we get hold of such a "hom-minimal" "expansion" $\xi$, we proceed as in \cite[proof of Theorem~4.1]{Grohe2007ComplexityHomomorphism} to produce, in polynomial time, a "graph database" $G_\xi$ such that:
     \begin{enumerate}
         \item there is a "homomorphism" $G_\xi \homto \xi$, and
         \item $G_\xi$ "satisfies@@db" $\xi$ if, and only if, $G$ has a clique of size $k$.
     \end{enumerate}
-Now consider the "UC2RPQ" $\Gamma \in \+C$ of which $\xi$ is an expansion, and observe that if $G_\xi$ "satisfies@@db" $\Gamma$, then we must have that $G_\xi$ also "satisfies@@db" $\xi$, by the fact that $G_\xi \homto \xi$ and $\xi$ is "maximal". Hence, the following are equivalent:
+Now consider the "UC2RPQ" $\Gamma \in \+C$ of which $\xi$ is an expansion, and observe that if $G_\xi$ "satisfies@@db" $\Gamma$, then we must have that $G_\xi$ also "satisfies@@db" $\xi$, by the fact that $G_\xi \homto \xi$ and $\xi$ is "hom-minimal". Hence, the following are equivalent:
 \begin{itemize}
     \item $G_\xi$ "satisfies@@db" $\Gamma$, 
     \item $G_\xi$ "satisfies@@db" $\xi$,

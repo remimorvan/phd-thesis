@@ -11,6 +11,9 @@
 
 \knowledge{notion}
  | evaluation map
+ | Evaluation maps
+ | evaluation maps
+ | evaluations maps
 
 \knowledge{notion}
  | evaluation map@cq
@@ -23,6 +26,7 @@
 \knowledge{notion}
  | atom
  | atoms
+ | atoms@cq
 
 \knowledge{notion}
  | output variables
@@ -31,11 +35,21 @@
  | Output variables
  | output variable
  | output@var
+ | free variables@cq
+ | output variables@cq
 
 \knowledge{notion}
  | Boolean
  | Boolean CRPQ
  | Boolean CRPQs
+ | non-Boolean
+ | Boolean@cq
+ | Boolean CQs
+ | Boolean queries
+ | Boolean query
+ | non-Boolean queries
+ | Boolean conjunctive queries
+ | Boolean conjunctive query
 
 \knowledge{notion}
  | conjunctive query
@@ -45,16 +59,24 @@
  | Conjunctive queries
  | query@CQ
  | queries@CQ
+ | Conjunctive Queries
 
 \knowledge{notion}
  | unions of CQs
  | union of CQs
  | UCQs
  | UCQ
+ | union of conjunctive queries
+ | unions of conjunctive queries
+ | Unions of conjunctive regular path queries
 
 \knowledge{notion}
  | disjunct
  | disjuncts
+
+\knowledge{notion}
+ | Regular path queries
+ | RPQ
 
 \knowledge{notion}
  | CRPQ
@@ -88,10 +110,12 @@
  | conjunctive two-way regular path query
  | CRPQ with two-way navigation
  | two-way navigation
+ | C(2)RPQs
 
  \knowledge{notion}
  | subquery
  | subqueries
+ | subquery@CQ
 
 \knowledge{notion}
  | UC2RPQ
@@ -99,6 +123,8 @@
  | UC2RPQs
  | unions of C2RPQs
  | union of C2RPQs
+ | UC(2)RPQs
+ | unions of conjunctive two-way regular path queries
 
 \knowledge{notion}
  | simple regular expression
@@ -137,6 +163,16 @@
  | Regular Queries
 
 % ---
+% Operators
+% ---
+
+\knowledge{notion}
+ | disjoint conjunction
+
+\knowledge{notion}
+ | weak union
+
+% ---
 % Queries (expansions, containement, etc.)
 % ---
 
@@ -146,12 +182,7 @@
  | contains
  | contain
  | Containment
-
-\knowledge{notion}
- | containment problem
- | con\-tainment problem
- | Containment of CRPQs
-
+ 
 \knowledge{notion}
  | equivalent
  | Equivalent
@@ -160,6 +191,7 @@
  | semantically equivalent
  | equivalences
  | semantical equivalence
+ | equivalent@sem
 
 \knowledge{notion}
  | expansion
@@ -258,6 +290,7 @@
 \knowledge{notion}
  | underlying graphs
  | underlying graph
+ | underlying graph@dir
 
 \knowledge{notion}
  | sublanguages
@@ -300,3 +333,27 @@
 
 \knowledge{notion}
  | homomorphism@summary
+
+% ---
+% Classes
+% ---
+
+\knowledge{notion}
+ | class of CQs
+
+\knowledge{notion}
+ | monotone@classCQ
+ | monotonicity@classCQ
+ | Monotone classes of CQs
+ | monotone classes of CQs
+ | monotone class of CQs
+
+\knowledge{notion}
+ | class of (Boolean) CRPQs
+ | class@CRPQ
+ | class of CRPQs
+ | classes of CRPQs
+
+\knowledge{notion}
+ | closed under homomorphisms
+ | closed under homomorphism

@@ -22,6 +22,7 @@
  | contains@tw
  | contained@tw
  | containing@tw
+ | containing@bag
 
 \knowledge{notion}
  | width
