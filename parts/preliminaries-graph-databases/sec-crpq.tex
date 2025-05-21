@@ -739,7 +739,7 @@ for "UC2RPQs". However, this does not give an optimal algorithm.
 Overtime, this proof has been simplified to eventually climax
 to the following result.
 \begin{proposition}[{\cite[Lemma 8]{Figueira2020Containment}}]
-	\AP\label{prop:variation-figueira-simple}
+	\AP\label{prop:containment-figueira}
 	There is a fixed alphabet over which the
 	"con\-tainment problem" for "Boolean CRPQs" is already "ExpSpace"-hard
     when restricted
@@ -767,21 +767,47 @@ we have that
 (\gamma_2() \defeq x \atom{L} y)
 \]
 is rather equivalent to $K \contained^? \A^* L \A^*$,
-and so the problem of \Cref{prop:variation-figueira-simple}
+and so the problem of \Cref{prop:containment-figueira}
 can be reformulated as
 \[
     K \subseteq^? \A^* \big( \bigcap_{i=1}^p L_i \big) \A^*.
 \]
-The proof of \Cref{prop:variation-figueira-simple} is by reduction
+The proof of \Cref{prop:containment-figueira} is by reduction
 from the exponential-space tiling problem,
 and relies on encoding exponential-sized counters in polynomial space.
 
 \subsection{Queries Over Simple Languages}
 
-\todo{""simple regular expression"" and ""positive simple regular expression""}
+The high complexity of \Cref{prop:containment-figueira,prop:variation-figueira-simple} motivate
+the quest for fragments of "conjunctive regular path queries" with better complexity.
+We will present a fragment {\UCRPQSRE} that
+has a "containment problem" that is much better behaved than for general "UCRPQs",
+and moreover is widely used in practice.
+
+\AP A ""simple regular expression"", or \reintro{SRE}, is a regular expression the form $a^*$ for some letter $a \in \A$ or of the form $a_1 + \dotsb + a_m$ for some $a_1, \dotsc, a_m \in \A$. 
+\AP Let \intro*{\UCRPQSRE} be the set of all "UCRPQ" whose languages are expressed via "simple regular expressions". Observe that {\UCRPQSRE} is "semantically equivalent" to the class of "UCRPQs" over the closure under concatenation of "simple regular expressions"
+since $\gamma(x,y) = x \atom{e_1 \cdot e_2} y$ is equivalent to $\gamma'(x,y) = x \atom{e_1} z \land  z \atom{e_2} y$.
+Moreover, \UCRPQSRE{} also corresponds to "UC2RPQ" whose languages are expressed via "SREs";
+in other words adding two-wayness does not increase the expressivity of the class. 
+
+\begin{proposition}[{\cite[Corollary 5.2]{FigueiraEtal2020Containment}}]
+    "Containment" of {\UCRPQSRE} is "PiP2"-complete.
+\end{proposition}
+
+In other words, this problem is just one level up the polynomial hierarchy compared to the "CQ" "containment problem", which sharply contrasts with the costly "ExpSpace"-completeness result
+for the full class of "UC2RPQs"!
+Moreover, recent studies on SPARQL query logs on Wikidata, DBpedia and other sources show that this kind of regular expressions cover a majority of the queries investigated, "eg", 75\% of
+the ``property paths'' ("C2RPQ" "atoms") of the corpus of 1.5M queries of Bonifati, Martens and Timm \cite[Table 15]{BonifatiMartensTimm2020SPARQL}.
+
+In \Cref{ch:minimization-CRPQ} we will actually need a marginally smaller subclass of these:
+we define \AP""positive simple regular expressions"" analogously to
+"simple regular expressions" but by replacing $a^*$ with $a^+$.
+
+\todo{fixed nb languages}
 
 \subsection{Beyond Conjunctive Regular Path Queries}
 
+\todo{}
 - extended CRPQs
 
 - sql + recursion ()
@@ -792,5 +818,6 @@ and relies on encoding exponential-sized counters in polynomial space.
 
 \subsection{Analysis of Conjunctive Regular Path Queries}
 
+\todo{}
 small intro of the next two chapters
 + brief litterature review (ex: bridgewidth)

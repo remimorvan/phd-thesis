@@ -1,18 +1,7 @@
 \section{\AP{}Semantic Tree-Width for Simple Queries}
 \label{sec:sre}
 
-\AP Let \intro*{\UCRPQSRE} be the set of all "UCRPQ" whose languages are expressed via "simple regular expressions". Observe that {\UCRPQSRE} is "semantically equivalent" to the class of "UCRPQs" over the closure under concatenation of "simple regular expressions"
-since $\gamma(x,y) = x \atom{e_1 \cdot e_2} y$ is equivalent to $\gamma'(x,y) = x \atom{e_1} z \land  z \atom{e_2} y$.
-Moreover, \UCRPQSRE{} also corresponds to "UC2RPQ" whose languages are expressed via "SREs";
-in other words adding two-wayness does not increase the expressivity of the class. 
-% for example, $\gamma(x,y) = x \atom{a^* \cdot (a + b) \cdot b^*} y$ is equivalent to $\gamma'(x,y) = x \atom{a^*} z \land z \atom{a+b} z' \land z' \atom{b^*} y$.
-%
-% The interest of {\UCRPQSRE} comes from the fact that it is used widely in practice, as recent studies on SPARQL query logs on Wikidata, DBpedia and other sources \cite{BonifatiMT-www19,BonifatiMartensTimm2020SPARQL} show that this kind of regular expressions cover a majority of the queries investigated, \eg, over 98\% of the 500 million expressions in the Wikidata log  (\cf~\cite[Table~1]{FigueiraEtal2020Containment}).
-
-One interest of {\UCRPQSRE} comes from the fact that it is used widely in practice, as recent studies on SPARQL query logs on Wikidata, DBpedia and other sources show that this kind of regular expressions cover a majority of the queries investigated, "eg", 75\% of
-the ``property paths'' ("C2RPQ" "atoms") of the corpus of 1.5M queries of Bonifati, Martens and Timm \cite[Table 15]{BonifatiMartensTimm2020SPARQL}.
-An additional interest comes from the fact that the "containment problem" for {\UCRPQSRE} is much better behaved than for general "UCRPQs", since it is in {"PiP2"} \cite[Corollary 5.2]{FigueiraEtal2020Containment}, that is, just one level up the polynomial hierarchy compared to the "CQ" "containment problem", which is in "NP" \cite{ChandraMerlin1977Implementation}, and in sharp contrast with the costly "ExpSpace"-complete "CRPQ" "containment problem" \cite{CalvaneseDeGiacomoLenzeriniVardi2000Containment,FlorescuLevySuciu1998Containment}.
-
+\todo{small intro}
 We devote this section to showing the following result.
 
 % Main theorem : introduced in intro-prelim.tex
