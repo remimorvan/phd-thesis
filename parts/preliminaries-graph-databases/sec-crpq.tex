@@ -1,78 +1,291 @@
 \section{Graph Databases}
+\label{sec:prelim-db-graph}
 
-\AP ""Graph databases"" are abstracted as edge-labelled directed graphs
-$G = \langle \vertex{G}, \edges{G} \rangle$, 
-where nodes of $\intro*\vertex{G}$ represent entities and labelled edges $\intro*\edges{G} \subseteq \vertex G \times \A \times \vertex G$
-represent relations between these entities, with $\A$ being a fixed finite alphabet.
-For instance, \Cref{fig:example-graph-database} depicts a "graph database",
-whose nodes are authors and papers, on the alphabet
-$\A = \{\text{\color{wrote}wrote},\,\text{\color{advised}advised}\}$.
-Edges $x \atom{\wrote} y$ indicate that the person $x$ wrote the paper $y$,
-while edges $x \atom{\advised} y$ indicate that person $x$ was
-the Ph.D. advisor of person $y$.
+\subsection{Conjunctive Regular Path Queries}
 
-\begin{figure}[ht]
+\Cref{sec:prelim-db-relational} shows that "conjunctive queries"---and "unions
+thereof@UCQ"---is a reasonable query language: it is expressive enough to capture
+many of the queries that are written in practice in SQL, but small enough
+to be amenable to static analysis thanks to "duality".
+However, "conjunctive queries", and in fact the larger language
+of "first-order logic", or \emph{relational calculus},
+is remarkably powerless against ``graph-traversal queries''.
+
+\begin{figure}[h]
     \centering
     \begin{tikzpicture}
-        \node (a1) {author$_1$};
-        \node (a2) [right = of a1] {author$_2$};
-        \node (a3) [right = of a2] {author$_3$};
-        \node (a4) [right = of a3] {author$_4$};
-        \node (a5) [right = of a4] {author$_5$};
-        \node (p1) [below = 2.5em of a2] {paper$_1$};
-        \node (p2) [below = 2.5em of a3] {paper$_2$};
-        \node (p3) [below = 2.5em of a4] {paper$_3$};
-
-        \draw[wrote] (a1) to[edge, ->] node[fill=white] {\footnotesize wrote} (p1)
-            (a2) to[edge, ->] node[fill=white] {\footnotesize wrote} (p1)
-            (a2) to[edge, ->] node[fill=white] {\footnotesize wrote} (p2)
-            (a3) to[edge, ->] node[fill=white] {\footnotesize wrote} (p2)
-            (a4) to[edge, ->] node[fill=white] {\footnotesize wrote} (p3)
-            (a5) to[edge, ->] node[fill=white] {\footnotesize wrote} (p3);
-        \draw[advised] (a4) to[edge, ->, bend right=60] node[fill=white] {\footnotesize advised} (a3)
-            (a5) to[edge, ->, bend right=60] node[fill=white] {\footnotesize advised} (a4);
+        \input{tikz/prelim-databases/ex-graph-db.tex}
     \end{tikzpicture}
     \caption{%
         \AP\label{fig:example-graph-database}%
-        A "graph database" with eight nodes and eight edges on a two-letter alphabet.
+        A "relational database" with two binary "predicates".
     }
 \end{figure}
-
-\AP Being a subclass of relational databases, "graph databases" can be queried by the
-predominant query language of ""conjunctive queries"", "aka" "CQs", 
-which consists of the closure under projection---"aka" existential quantification---of conjunctions of atoms of the form $x \atom{a} y$
-for some letter $a \in \A$. For instance, the "conjunctive query"
+We illustrate this idea on a simplified example---to see a real example,
+see \Cref{fig:sparql,fig:example-wikidata,tab:output-sparql,fig:intro-SPARQL-as-CRPQ}.
+We depict in \Cref{fig:example-graph-database} a "relational database"
+over the "purely relational signature" with two binary "predicates"
+$\atom{\wrote}$ and $\atom{\advised}$. Vertices of the "structure"
+represent people, and an edge $x \atom{\wrote} y$ indicate
+that the person $x$ wrote the paper $y$, while edges $x \atom{\advised} y$
+indicate that person $x$ was the Ph.D. advisor of person $y$.
+While "conjunctive queries" can express properties like
 \[
     \gamma_1(x, y) = x \atom{\wrote} z
-        \land y \atom{\wrote} z    
+        \land y \atom{\wrote} z,   
 \]
-returns, when "evaluated" on the "graph database" $G$
-defined in \Cref{fig:example-graph-database}, all pairs of nodes $(u, v)$ such that $u$ is a co-author
-of $v$. Each variable not appearing in the left-hand side of 
-the definition of a "conjunctive query" (in this example, $z$) is implicitly 
-existentially quantified. 
-Note that, to the cost of losing the information of which variable is existentially quantified, every "CQ"
-can be seen as a "graph database", where each variable is a node, and each atom is an edge; 
-hence, we sometimes use "graph database" terminology for "CQs".
+that asks for all pairs of co-authors, it cannot express transitive-based
+properties; in fact, even the full "first-order logic" cannot express such properties.
+\begin{proposition}
+    \label{prop:fo-no-trans}
+    There is not "first-order formula" $\gamma_2(x,y)$
+    that ouputs all pairs "st" $x$ is a scientific ancestor of $y$---"ie"
+    "st" there is a non-empty path from $x$ to $y$ that only consists
+    of $\advised$ edges.
+\end{proposition}
 
-The expressive power of "CQs" is somewhat limited, since
-"CQs" cannot express, for example, transitive closure.
-Since the ability to navigate paths is of importance in many "graph database" 
-scenarios, most modern graph query languages support, as a central querying mechanism,
-"conjunctive regular path queries", or "CRPQs" for short. 
-In particular, "CRPQs" form the core navigational mechanism of the new ISO standard Graph Query Language (GQL) \cite{ISO2024GQL} and the SQL extension for querying graph-structured data SQL/PGQ \cite{ISO2023PGQ} (see also \cite{FrancisEtal2023GQL,FrancisEtal2023GPC}).
+\begin{proof}
+    Assume by contraction that this would be the case. Clearly, $\gamma_2(x,y)$
+    is closed under "homomorphisms", and so by "Rossman's theorem",
+    it would be equivalent to a "UCQ", say
+    $\delta_1(x,y) \lor \dotsc \lor \delta_k(x,y)$.
+    We let $n$ be strictly greater than the "diameter" of any $\delta_i$,
+    and define $\tup{\?P_n,p_0,p_n}$ to be the "pointed relational database"
+    consisting the facts
+    \[
+        p_0 \atom{\wrote} p_1 \atom{\wrote} \dotsc \atom{\wrote} p_n,
+    \]
+    which is actually a shorthand for
+    \[
+        \{p_0 \atom{\wrote} p_1,\; p_1 \atom{\wrote} p_2,\;
+        \dotsc,\;p_{n-1} \atom{\wrote} p_n\}.
+    \]
+    Then clearly, $\tup{\?P_n,p_0,p_n} \FOmodels \gamma_2(x,y)$
+    and so $\tup{\?P_n,p_0,p_n} \FOmodels \delta_i(x,y)$ for some $i\in \intInt{1,k}$.
+    By "duality", there exists a "homomorphism" from the "canonical database"
+    $\tup{\?D_i,x,y}$ of $\delta_i(x,y)$ to $\tup{\?P_n,p_0,p_n}$.
+    However, the "distance@@struct" from $x$ to $y$ in $\?G_i$ is strictly
+    upper bounded by $n$, since $n$ was chosen to be
+    strictly greater than the "diameter" of $\?D_i$, and the distance from "x" to $y$
+    is exactly $n$.
+    Since "homomorphisms" contract distances, we have reached a contradiction.
+    And hence, the property of \Cref{prop:fo-no-trans} is not "first-order definable".%
+    \footnote{A much more common way of proving \Cref{prop:fo-no-trans} is by using the notion
+    of Ehrenfeucht–Fraïssé games, see "eg" \cite[Proposition~2.3.28]{Kolaitis2007FiniteModelTheory}.
+    or Gaifman/Hanf-locality, see "eg" \cite{Barcelo2009Locality}.
+    In all cases, the proof relies on an idea that "first-order queries" are local.
+    In our proof, the notion of locality---formalized by the fact that "homomorphisms" contract
+    the "distances@@struct"---is extremely strong, but is only valid over the "first-order queries"
+    amenable to "duality", "ie" "UCQs". This results in a very simple proof,
+    which however relies on a highly non-trivial result, namely "Rossman's theorem".
+    On the other hand, a proof based on Ehrenfeucht–Fraïssé games or
+    Gaifman/Hanf-locality does not rely on any deep theorem, but the notion of
+    locality it manipulates is much more complex, as it captures all "first-order queries".}
+\end{proof}
 
-"CRPQs" are 
-defined analogously to "conjunctive queries", except that their atoms are now of the form 
-$x \atom{L} y$ where $L$ is an arbitrary regular language over the alphabet $\A$. For 
-instance the "evaluation" of the "CRPQ"
+Queries such as the one of \Cref{prop:fo-no-trans} do not arise
+over all kinds of "databases": for instance, 
+transitive closures of tables---or of projections of table---
+for \Cref{fig:relational-database-cinema} would not make any sense.
+On the other hand, it is a very natural construction
+for databases such as the ones of \Cref{fig:example-graph-database,fig:example-wikidata}.
+Transitive closures naturally arise in databases whose nodes are homogeneous,
+and in particular for human-centered data---see for instance \cite{Neo4jPanama}.
+Rather than encoding this kind of data into "relational databases",
+by inferring from the examples of \Cref{fig:example-graph-database,fig:example-wikidata},
+we model "graph databases" as edge-labelled directed graphs, or equivalently
+as "relational structures" over a finite "signature" consisting only of
+binary "predicates".
+\AP Formally, given an alphabet $\?A$, a ""graph database"" over $\?A$
+consists of a pair \AP$\?G = \tup{G, \edges{G}}$,
+where $\intro*\edges{G} \subseteq \vertex G \times \A \times \vertex G$
+is a set of labelled edges---sometimes also called atoms.
+
+This definition was motivated by the need to have database models
+centred around the notion of paths.
+We then naturally extend the language of "conjunctive queries"
+to allow for path navigation: this is done by allowing these queries
+to ask for the existence of a \emph{path} between two variables
+labelled by a given regular language. For instance,
+$x \atom{ (ab)^*} y$ asks that there is path from $x$
+to $y$ that alternates between $\atom{a}$ and $\atom{b}$ edges.
+
+\begin{definition}[CRPQ: syntax]
+    A \AP""conjunctive regular path query"", or \reintro{CRPQ} for short,
+    $\gamma(\bar x)$ over $\A$ consists
+    of a set of triples $\tup{y,L,z}$ together with a tuple of variables $\bar x$,
+    where $L$ is a "regular language" over $\A$, and $y$ and $z$ are variables.
+    We denote by \AP$x \intro*\atom{L} y$ the triple $\tup{x,L,y}$,
+    called ""atom"". The set $\intro*\atoms{\gamma}$ of "atoms" is denoted conjunctively.
+    We denote by $\vars{\gamma}$ the set of variables occurring in $\gamma$. As for
+    "CQs", variables of $\bar x$ are called \reintro{output variables}.
+\end{definition}
+
+An example of "conjunctive regular path query" is 
 \[
-    \gamma_2(x, y) = x \atom{\wrote} z
+    \gamma_3(x, y) \defeq x \atom{\wrote} z
+        \land z' \atom{\wrote} z 
+        \land y \atom{({\advised})^*} z',
+\]
+which intuitively asks for, in a given "graph databases",
+all pairs of people $\tup{x,y}$ such that
+\begin{itemize}
+    \item $x$ has written some paper $z$, and some person $z'$ also wrote $z$,
+    \item this $z'$ can be reached from $y$ by taking an arbitrary sequence
+        of $\atom{\advised}$ edges.
+\end{itemize}
+Reformulating the constraints, we get that $x$ and $z'$ should be co-authors,
+and that $z'$ should be a scientific descendant---in the broad sense---of $y$.
+Hence, the query asks for all pairs $\tup{x,y}$ "st" $x$ is a co-author of a
+``scientific descendant'' of $y$.
+
+By definition, "conjunctive regular path queries" over $\A$ can be seen
+as "finite@@struct" "pointed structures" over the infinite "signature"
+$\intro*\signatureCRPQ{\A}$ that has a binary "predicate" $\atom{L}$ for each "regular language"
+$L \subseteq \A^*$: this leads to a natural depiction of these
+queries, see \Cref{fig:prelim-db-crpq-as-struct}.
+\begin{marginfigure}
+    \centering
+    \begin{tikzpicture}
+        \input{tikz/prelim-databases/ex-crpq.tex}
+    \end{tikzpicture}
+    \caption{\AP\label{fig:prelim-db-crpq-as-struct} Graphical representation
+    of the "CRPQ" $\gamma_3(x,y)$.}
+\end{marginfigure}
+
+\begin{definition}[CRPQ: semantics]
+    Given a "CRPQ" $\gamma(\bar x)$ and a "pointed graph database"
+    $\tup{\?G,\bar u}$, an \AP""evaluation map"" from $\gamma(\bar x)$
+    to $\tup{\?G, \bar u}$ is a function from $\vars{\gamma}$ to $G$
+    that sends $\bar x$ to $\bar u$, and such that for every
+    atom $x \atom{L} y$ of $\gamma$, there exists a path from $f(x)$ to
+    $f(y)$ in $\?G$ labelled by some word of $L$. See \Cref{fig:prelim-db-evaluation-map}
+    for an example.
+
+    When such an "evaluation map" exists, we say that $\tup{\?G,\bar u}$
+    \AP""satisfies@@db"" $\gamma(\bar x)$, which we still denote by
+    $\tup{\?G,\bar u} \reintro*\FOmodels \gamma(\bar x)$
+    or $\bar u \in \reintro*\semFO{\gamma(\bar x)}{\?G}$.
+    The set $\semFO{\gamma(\bar x)}{\?G}$ is called the ""evaluation""
+    of $\gamma(\bar x)$ over $\?G$.
+\end{definition}
+
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        % Query
+        \begin{scope}[xshift=2cm]
+            \input{tikz/prelim-databases/ex-crpq.tex}
+        \end{scope}
+
+        % Graph
+        \begin{scope}[yshift=-3cm]
+            \input{tikz/prelim-databases/ex-graph-db.tex}
+        \end{scope}
+
+        % Evaluation map
+        \begin{scope}[on background layer]
+            \draw[rounded corners=4pt, dashed, cGrey] (1.1,-1.6) rectangle (6.1,1.2);
+            \draw[rounded corners=4pt, dashed, cGrey] (-1.1,-5) rectangle (10.5,-2.2);
+
+            \draw[edge, dotted] (x) edge[out=-135,in=135] (a2);
+            \draw[edge, dotted] (z) edge[out=-90,in=85] (p2);
+            \draw[edge, dotted] (z') edge[out=-45,in=135] (a3);
+            \draw[edge, dotted] (y) edge[out=-60,in=45] (a5);
+        \end{scope}
+    \end{tikzpicture}
+    \caption{\AP\label{fig:prelim-db-evaluation-map} A "conjunctive regular path query" (above), 
+    a "graph database" (below), and an "evaluation map" from the former
+    to the latter.}
+\end{figure}
+
+Naturally, any "CQ" can be seen as a "CRPQ" by
+identifying $\atom{a}$ with $\atom{\set{a}}$.
+Hence, by \Cref{prop:fo-no-trans}, it follows that
+"CRPQs" are strictly more expressive than "CQs".
+An alternative but equivalent definition for the semantics of
+"CRPQs" is to encode them as "primitive-positive formulas" over the
+infinite "signature" $\signatureCRPQ{\A}$.
+Exactly like for "conjunctive queries", we encode "eg"
+\[
+\gamma_3(x, y) = x \atom{\wrote} z
         \land z' \atom{\wrote} z 
         \land y \atom{({\advised})^*} z'
 \]
-on $G$ yields every pair of persons $(u,v)$ such that $u$ is a co-author of a
-``scientific descendant'' of $v$. 
+as
+\[
+\tilde\gamma_3(x, y) \defeq
+    \exists z.\, \exists z'.\,
+        x \atom{\wrote} z
+        \land z' \atom{\wrote} z 
+        \land y \atom{({\advised})^*} z'.
+\]
+To evaluate a "primitive-positive formula" $\tilde\gamma(\bar x)$ over $\signatureCRPQ{\A}$,
+we need to build a "finite $\signatureCRPQ{\A}$-structure"
+out of a "graph database" $\?G$: we let $\tilde{\?G}$ share the same
+vertices as $\?G$ and, for every "regular language" $L$ "st" $\atom{L}$ occurs in 
+$\phi$, we "interpret@@pred" the "predicate" $\atom{L}$ as the set of pairs
+$\tup{u,v}$ of vertices "st" there is a path from $u$ to $v$ labelled by a word of $L$.%
+\footnote{This can be computed in "NL" "eg" by doing a "Cartesian product"
+between $\?G$ and an automaton for $L$, followed by a suitable projection.}
+It is then routine to check that the first-order semantics
+$\semFO{\tilde\gamma(\bar x)}{\tilde{\?G}}$ coincides with the "CRPQ" semantics
+$\semFO{\gamma(\bar x)}{\?G}$.%
+\footnote{And hence, our reuse of $\FOmodels$ and $\semFO{-}{-}$ is actually
+a very reasonable abuse of notation!}
+
+\begin{marginfigure}
+	\centering
+	\begin{tikzpicture}
+		\input{tikz/intro/3-transitive-tournament}
+	\end{tikzpicture}
+	\caption{
+		\AP\label{fig:3-transitive-tournament-crpq}
+		The "$3$-transitive tournament" $\transitiveTournament{3}$.
+        (Replica of \Cref{fig:3-transitive-tournament}.)
+	}
+\end{marginfigure}
+Note however that this does not mean that the theory of "CRPQs" boils down
+to the theory of "CQ": one reason is first that the construction
+$\?G \mapsto \tilde{\?G}$ actually depends on the query---we need to restrict
+our construction to languages occurring in the query in order to obtain a \emph{"finite@@struct"} "structure@finite structure". Even more importantly, the construction
+$\?G \mapsto \tilde{\?G}$ actually fails to preserve any interesting property:
+notice "eg" that if $\?G$ is a "directed path"
+\[
+    u_0 \atom{a} u_1 \atom{a} \dotsc \atom{a} u_n,
+\]
+and if only $\atom{a^*}$ occurs in the "query", then $\tilde{\?G}$ is the
+"$k$-transitive tournament", see \Cref{fig:3-transitive-tournament-crpq}.
+From a very simple "structure" of "path-width" 1, we obtained a "structure" of
+unbounded "tree-width"!
+
+\decisionproblem{""Conjunctive Regular Path Queries Evaluation""}{
+    An alphabet $\?A$,
+	a "conjunctive regular path query" $\gamma(\bar x)$ over $\?A$,
+	and a "pointed graph database" $\tup{\?G, \bar u}$.
+}{
+	Does $\bar u \in \semFO{\gamma(\bar x)}{\?G}$?
+}
+
+\begin{proposition}
+    The "conjunctive regular path queries evaluation problem" is "NP"-complete.
+\end{proposition}
+
+\begin{proof}
+    The lower bound already holds for "CQs" by \Cref{prop:duality}.
+    The upper bound can be proven by (1) guess a function from the variables
+    of the "query@CRPQ" to the vertices of the "database@@graph",
+    and (2) checking that it is an "evaluation map". 
+    For each "atom", each check consists in checking if there is a
+    path from some vertices to another labelled by a word of some language,
+    which can be done in "NL" "eg" by an easy
+    adaptation of the "NL" algorithm for "graph reachability".
+\end{proof}
+
+\todo{tree-width}
+
+"CRPQs" form the core navigational mechanism of the new ISO standard Graph Query Language (GQL) \cite{ISO2024GQL} and the SQL extension for querying graph-structured data SQL/PGQ \cite{ISO2023PGQ} (see also \cite{FrancisEtal2023GQL,FrancisEtal2023GPC}).
+
 
 \AP Formally, a ""CRPQ"" $\gamma$ is defined as a tuple $\bar z = (z_1,\hdots,z_n)$
 of ""output variables"", "aka" \reintro{free variables},\footnote{For technical reasons (see the definition of "equality atoms") we allow for a variable to appear multiple times.}
@@ -81,11 +294,11 @@ $\bigwedge_{j=1}^m x_j \atom{L_j} y_j$, where each $L_j$ is a regular language a
 The set of all variables occurring in $\gamma$, namely\footnote{We neither assume 
 disjointness nor inclusion between $\{z_1,\hdots,z_n\}$ and $\{x_1,y_1,\hdots,x_m,y_m\}$}
 $\{z_1,\hdots,z_n\}\cup\{x_1,y_1,\hdots,x_m,y_m\}$, is denoted by
-$\intro*\vars(\gamma)$.
+$\intro*\vars{\gamma}$.
 Given a "database@@graph" $G$, we say that a tuple of nodes $\bar u = (u_1,\hdots,u_n)$
 \AP""satisfies@@db"" $\gamma$ 
 on $G$ if there is a mapping
-$\fun\colon \vars(\gamma) \to \vertex{G}$ such that $u_i = \fun(z_i)$ for all
+$\fun\colon \vars{\gamma} \to \vertex{G}$ such that $u_i = \fun(z_i)$ for all
 $1 \leq i \leq n$, and for each $1 \leq j \leq m$,
 there exists a path from $\fun(x_i)$ to $\fun(y_i)$ in $G$, labelled by
 a word from $L_i$ (if the path is empty, the label is $\epsilon$). The \AP""evaluation"" of $\gamma$ on $G$ is then the set of all tuples that "satisfy@@db" $\gamma$.
@@ -328,12 +541,12 @@ $\intro*\underlying{\gamma}$ and ""underlying graph""
 % \footnote{We neither assume 
 % disjointness nor inclusion between $\{z_1,\hdots,z_n\}$ and $\{x_1,y_1,\hdots,x_m,y_m\}$.}
 % $\{z_1,\hdots,z_n\}\cup\{x_1,y_1,\hdots,x_m,y_m\}$, is denoted by
-% $\intro*\vars(\gamma)$. Variables in $\vars(\gamma)\setminus \{z_1,\hdots,z_n\}$ are existentially quantified. 
+% $\intro*\vars{\gamma}$. Variables in $\vars{\gamma}\setminus \{z_1,\hdots,z_n\}$ are existentially quantified. 
 % We denote by $\intro*\atoms(\gamma)$ the set of "atoms" of $\gamma$.
 % Given a "database@@graph" $G$, we say that a tuple of nodes $\bar u = (u_1,\hdots,u_n)$
 % \AP""satisfies@@db"" $\gamma$ 
 % on $G$ if there is a mapping
-% $\fun\colon \vars(\gamma) \to \vertex{G}$ such that $u_i = \fun(z_i)$ for all
+% $\fun\colon \vars{\gamma} \to \vertex{G}$ such that $u_i = \fun(z_i)$ for all
 % $1 \leq i \leq n$, and for each $1 \leq j \leq m$,
 % there exists a (directed) path from $\fun(x_j)$ to $\fun(y_j)$ in $G$, labelled by
 % a word from $L_j$ (if the path is empty, the label is $\varepsilon$). The \AP""evaluation"" of $\gamma$ on $G$ is then the set of all tuples that "satisfy@@db" $\gamma$ on $G$.
@@ -377,7 +590,7 @@ $\intro*\underlying{\gamma}$ and ""underlying graph""
 % from $\gamma_2$ to $G_1$.
 
 % \paragraph{Homomorphisms.}
-% \AP A ""homomorphism"" $\fun$ from a "CRPQ" $\gamma(x_1, \dotsc, x_m)$ to a "CRPQ" $\gamma'(y_1, \dotsc, y_m)$ is a mapping from $\vars(\gamma)$ to $\vars(\gamma')$ such that $\fun(x) \atom{L} \fun(y)$ is an "atom" of $\gamma'$ for every "atom" $x \atom{L} y$ of $\gamma$, and further $\fun(x_i)=y_i$ for every $i$.
+% \AP A ""homomorphism"" $\fun$ from a "CRPQ" $\gamma(x_1, \dotsc, x_m)$ to a "CRPQ" $\gamma'(y_1, \dotsc, y_m)$ is a mapping from $\vars{\gamma}$ to $\vars{\gamma'}$ such that $\fun(x) \atom{L} \fun(y)$ is an "atom" of $\gamma'$ for every "atom" $x \atom{L} y$ of $\gamma$, and further $\fun(x_i)=y_i$ for every $i$.
 % Such a "homomorphism" $\fun$ is \AP""strong onto"" if for every "atom" $x' \atom{L} y'$ of $\gamma'$ there is an "atom" $x \atom{L} y$ of $\gamma$ such that $\fun(x)=x'$ and $\fun(y)=y'$.
 % % An example of "homomorphism" is provided in \Cref{fig:basic-hom}.
 % We write $\gamma \intro*\homto \gamma'$ if there is a "homomorphism" from $\gamma$ to $\gamma'$, and $\gamma \intro*\surjto \gamma'$ if there is a "strong onto homomorphism".
@@ -476,7 +689,7 @@ $\intro*\underlying{\gamma}$ and ""underlying graph""
 % %
 % % \paragraph*{Homomorphisms}
 % \AP
-% A homomorphism $\fun$ from a "C2RPQ" $\gamma(x_1, \dotsc, x_m)$ to a "C2RPQ" $\gamma'(y_1, \dotsc, y_m)$ is a mapping from $\vars(\gamma)$ to $\vars(\gamma')$ such that $\fun(x) \atom{L} \fun(y)$ is an "atom" of $\gamma'$ for every "atom" $x \atom{L} y$ of $\gamma$, and further $\fun(x_i)=y_i$ for every $i$.
+% A homomorphism $\fun$ from a "C2RPQ" $\gamma(x_1, \dotsc, x_m)$ to a "C2RPQ" $\gamma'(y_1, \dotsc, y_m)$ is a mapping from $\vars{\gamma}$ to $\vars{\gamma'}$ such that $\fun(x) \atom{L} \fun(y)$ is an "atom" of $\gamma'$ for every "atom" $x \atom{L} y$ of $\gamma$, and further $\fun(x_i)=y_i$ for every $i$.
 % Such a "homomorphism" $\fun$ is \AP""strong onto"" if for every "atom" $x' \atom{L} y'$ of $\gamma'$ there is an "atom" $x \atom{L} y$ of $\gamma$ such that $\fun(x)=x'$ and $\fun(y)=y'$.
 % An example of "homomorphism" is provided in \Cref{fig:basic-hom}.
 % We write $\gamma \homto \gamma'$ if there is a "homomorphism" from $\gamma$ to $\gamma'$, and $\gamma \surj \gamma'$ if there is a "strong onto homomorphism".
@@ -542,12 +755,12 @@ $\intro*\underlying{\gamma}$ and ""underlying graph""
 % \paragraph*{Equality Atoms}
 % \AP"C2RPQs" with ""equality atoms"" are queries of the form $\gamma(\bar{x}) = \delta \land I$, 
 % where $\delta$ is a "C2RPQ" (without equality atoms) and $I$ is a conjunction of "equality atoms" of the form $x=y$. 
-% Again, we denote by $\vars(\gamma)$ the set of variables appearing in the (equality and non-equality) atoms of $\gamma$. 
-% We define the binary relation $=_\gamma$ over $\vars(\gamma)$ to be the reflexive-symmetric-transitive closure of the binary relation $\{(x, y) \mid \text{$x=y$ is an "equality atom" in $\gamma$}\}$. 
+% Again, we denote by $\vars{\gamma}$ the set of variables appearing in the (equality and non-equality) atoms of $\gamma$. 
+% We define the binary relation $=_\gamma$ over $\vars{\gamma}$ to be the reflexive-symmetric-transitive closure of the binary relation $\{(x, y) \mid \text{$x=y$ is an "equality atom" in $\gamma$}\}$. 
 % In other words, we have $x=_\gamma y$ if the equality $x=y$ is forced by the "equality atoms" of $\gamma$. 
 % Note that every "C2RPQ" with "equality atoms" $\gamma(\bar{x}) = \delta \land I$ is equivalent to a "C2RPQ" without "equality atoms"  $\gamma^{\collapse}$, 
 % which is obtained from $\gamma$ by collapsing each equivalence class of the relation $=_\gamma$ into a single variable. 
-% This transformation gives us a \emph{canonical} renaming from $\vars(\gamma)$ to $\vars(\gamma^{\collapse})$. For instance, $\gamma(x,y) \defeq x \atom{K} y \land y \atom{L} z \land x = y$
+% This transformation gives us a \emph{canonical} renaming from $\vars{\gamma}$ to $\vars{\gamma^{\collapse}}$. For instance, $\gamma(x,y) \defeq x \atom{K} y \land y \atom{L} z \land x = y$
 % collapses to $\gamma^{\collapse}(x,x) \defeq x \atom{K} x \land x \atom{L} z$.
 
 % \paragraph*{Refinements}

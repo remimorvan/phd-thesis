@@ -576,9 +576,25 @@ Then, the \AP""quantifier alternation rank"" of a formula $\phi(\bar x)$
 is the least $n\in\N$ "st" $\phi(\bar x)$ belongs to either
 $\Sigma_n$ or $\Pi_n$.
 Formulas from $\Sigma_1$ are called ""existential formulas"",
-those that contain neither negations nor universal quantifications are called \AP""existential-positive formulas"" and lastly, those that contain neither negations
-nor any quantifier
-are called ""positive quantifier-free formulas"".
+and we define a few important fragments of this logic in \Cref{tab:fragments-exist-FO}
+by restricting which operators are allowed to build formulas.
+
+\begin{table}
+	\begin{tabular}{cc}
+		\toprule
+		Fragment of "existential FO" & Operators allowed \\ \midrule
+		\AP""existential-positive formulas"" & $\exists$, $\land$, $\lor$ \\
+		\AP""primitive-positive formulas"" & $\exists$, $\land$ \\
+		\AP""positive quantifier-free formulas"" & $\land$ \\ \bottomrule
+	\end{tabular}
+	\caption{\AP\label{tab:fragments-exist-FO}
+	A few fragments of "existential formulas" defined by restricting the operators
+	that are allowed.}
+\end{table}
+For instance, $\exists x.\, \exists y.\, \neg \+R(x,y)$ is an "existential formula"
+but is not "existential-positive@@formula".
+On the other hand, $\exists x.\, \exists y.\, \+R(x,y)$ is "primitive-positive@@formula",
+and hence also "existential-positive@@formula".
 
 A relation over a "$\sigma$-structure" $\?A$ is said to be
 \AP""first-order definable"" when it can be written as

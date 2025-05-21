@@ -1,0 +1,17 @@
+	\node (a1) {author$_1$};
+	\node (p1) [below right=1cm and 0cm of a1] {paper$_1$};
+	\node (a2) [above right=1cm and 0cm of p1] {author$_2$};
+	\node (p2) [below right=1cm and 0cm of a2] {paper$_2$};
+	\node (a3) [above right=1cm and 0cm of p2] {author$_3$};
+	\node (a4) [right = 1cm of a3] {author$_4$};
+	\node (p3) [below right=1cm and 0cm of a4] {paper$_3$};
+	\node (a5) [above right=1cm and 0cm of p3] {author$_5$};
+
+	\draw[wrote,edge] (a1) edge node[fill=white] {\footnotesize wrote} (p1)
+		(a2) edge node[fill=white] {\footnotesize wrote} (p1)
+		(a2) edge node[fill=white] {\footnotesize wrote} (p2)
+		(a3) edge node[fill=white] {\footnotesize wrote} (p2)
+		(a4) edge node[fill=white] {\footnotesize wrote} (p3)
+		(a5) edge node[fill=white] {\footnotesize wrote} (p3);
+	\draw[advised,edge] (a4) edge node[fill=white, yshift=1em] {\footnotesize advised} (a3)
+		(a5) edge node[fill=white, yshift=1em] {\footnotesize advised} (a4);

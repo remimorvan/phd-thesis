@@ -6,7 +6,7 @@ Several open problems are left by our work, more prominently, the complexity gap
 \subsection{Variable minimization}
 \AP\label{sec:varmin}
 
-Another approach for an algorithm for query answering of a "(U)CRPQs" $\gamma$ on a "graph database" $G$ is by first guessing a variable assignment $f: \vars(\gamma) \to \vertex{G}$ and then checking, for each "atom" $x \atom{L} y$ of $\gamma$, that there is a path in $G$ from $f(x)$ to $f(y)$ with label in $L$. 
+Another approach for an algorithm for query answering of a "(U)CRPQs" $\gamma$ on a "graph database" $G$ is by first guessing a variable assignment $f: \vars{\gamma} \to \vertex{G}$ and then checking, for each "atom" $x \atom{L} y$ of $\gamma$, that there is a path in $G$ from $f(x)$ to $f(y)$ with label in $L$. 
 
 This implementation approach privileges minimizing the number of \emph{variables} as opposed to the number of \emph{atoms} of a "(U)CRPQ", and gives rise to the corresponding \reintro{variable-minimization problem(s)}. From a practical perspective, as already mentioned in the Introduction, systems commonly evaluate CRPQs via join algorithms. Recent \emph{worst-case optimal} joins algorithms work by ordering the variables and assigning potential values to these, and hence the number of variables may also be a relevant parameter in these cases~\cite{CucumidesReutterVrgoc2024SizeBounds,VrgocEtal2024MillenniumDB}. 
  % 

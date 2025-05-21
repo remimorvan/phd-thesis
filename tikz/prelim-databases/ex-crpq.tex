@@ -1,0 +1,13 @@
+\node[vertex] at (0,0) (x) {};
+\node[vertex, below right=1cm and .5cm of x] (z) {};
+\node[vertex, above right=1cm and .5cm of z] (z') {};
+\node[vertex, right=1.5cm of z'] (y) {};
+
+\node[above=2pt of x] {$x$};
+\node[above=2pt of y] {$y$};
+
+\draw[edge, wrote]
+	(x) edge node[fill=white, xshift=-.2em] {\footnotesize wrote} (z)
+	(z') edge node[fill=white, xshift=.2em] {\footnotesize wrote} (z);
+\draw[edge, advised]
+	(y) edge[bend right] node[fill=white, yshift=1em] {\footnotesize advised${}^*$} (z');

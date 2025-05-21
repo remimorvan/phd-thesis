@@ -106,7 +106,7 @@ the blue path of \Cref{fig:trio-refinement}---which starts at the top-most verte
 follows the blue atoms, and reaches the bottom-most vertex.
 \AP Informally, in the context of a "tagged tree decomposition" $(T, \bagmap, \tagmap)$ of  $\fun\colon \rho \homto \alpha$, given a path $\pi$ of $\rho$, say $x_0 \atom{\lambda_1} x_1 \atom{\lambda_2} \cdots \atom{\lambda_n} x_n$, the "path induced" by $\pi$, denoted by $\tagmappath{\pi}$, is informally defined as the following ``path'' in
 $T\times \alpha$, seen as a sequence of pairs of "bags" and variables
-from $V(T) \times \vars(\alpha)$:
+from $V(T) \times \vars{\alpha}$:
 \begin{itemize}
     \item it starts with the "bag" $\tagmap(x_0 \atom{\lambda_1} x_1)$ of $T$ and the variable $\fun(x_0)$ of $\alpha$; in \Cref{fig:trio-tree-dec}, this corresponds to bag $b^{\text{blue}}_1$;
 	\item it then goes to $\langle \tagmap(x_0 \atom{\lambda_1} x_1), \fun(x_1) \rangle$;
@@ -240,7 +240,7 @@ Such "bags" will prove useful in the next section because of the following prope
         \bagmap'(b') = \{y_1,\hdots,y_n\}\cup Z,
     \]
 	from some variables "st" the $x_i$'s are disjoint from the $y_i$'s.
-	Assume moreover that $\vars(\gamma) \cap \vars(\gamma') \subseteq Z$.
+	Assume moreover that $\vars{\gamma} \cap \vars{\gamma'} \subseteq Z$.
     Then, for any conjunction $\delta$ of "atoms" the form:
 	\begin{itemize}
 		\item $x_i \atom{L} y_i$ for some $i \in \lBrack 1, n \rBrack$,
@@ -283,5 +283,5 @@ The proof of \Cref{prop:connecting-tree-decompositions} is elementary and illust
 	Observe that the decomposition obtained is indeed a "fine tagged tree decomposition":
 	in particular, it satisfies that for each variable $t$, the set of all $b \in T$
 	containing $t$ is a connected subtree of $T$, thanks to the assumption that
-	$\vars(\gamma) \cap \vars(\gamma') \subseteq Z$.
+	$\vars{\gamma} \cap \vars{\gamma'} \subseteq Z$.
 \end{proof} 

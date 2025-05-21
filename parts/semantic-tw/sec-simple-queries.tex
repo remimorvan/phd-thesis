@@ -63,7 +63,7 @@ a "database@@graph" satisfies a "$k$-summary query" if and only if it
 satisfies one of its "refinements@@summary".
 
 A \AP ""tree decomposition@@summary"" of a "$k$-summary query" $\gamma$ consists of
-a pair $\tup{\?T, \bagmap}$ with $\bagmap: \vertex{\?T} \to \pset{\vars(\gamma)}$
+a pair $\tup{\?T, \bagmap}$ with $\bagmap: \vertex{\?T} \to \pset{\vars{\gamma}}$
 such that:
 \begin{itemize}
 	\item for every classical "atom" $x \atom{L} y$ in $\gamma$,
@@ -227,13 +227,13 @@ With the previous results in place, we now show that the semantic tree-width $k$
   \end{claim}
   % \begin{proof}[Informal proof]
   %   We first guess a polynomial-sized "$k$-summary query" $\delta_{\textup{zip}}$ and test in "NP" that it is part of $\Qapp$ by \Cref{lemma:MUAk-union-of-polysized-summary-test-np}. 
-  %   We now guess a valuation $\mu :  \vars(\delta_{\textup{zip}}) \to \vars(\gamma)$ and test that it is a "homomorphism" $\anexpansion \homto \gamma$, where $\anexpansion$ is an expansion of the "CRPQ" resulting from discarding the "path-$l$ approximation" atoms of $\delta_{\textup{zip}}$, which can be done in \nl. It remains to check that each atom $\pathl(X,Y,\hat \delta)$ of $\delta$ has an "expansion" $\hat\anexpansion$ such that $h : \hat\anexpansion \homto \gamma$ for a "homomorphism" such that $h(x)=\mu(x)$ for all $x \in X \cup Y$. This can be done via an \nl algorithm using $l+1$ pointers to traverse the "width"-$l$ "fine" "path decomposition" of $\hat\anexpansion$, simultaneously guessing $\hat\anexpansion$, the "expansion" of $\gamma$ which homomorphically maps to $\hat\anexpansion$, and the valuation of $h$.
+  %   We now guess a valuation $\mu :  \vars{\delta_{\textup{zip}}} \to \vars{\gamma}$ and test that it is a "homomorphism" $\anexpansion \homto \gamma$, where $\anexpansion$ is an expansion of the "CRPQ" resulting from discarding the "path-$l$ approximation" atoms of $\delta_{\textup{zip}}$, which can be done in \nl. It remains to check that each atom $\pathl(X,Y,\hat \delta)$ of $\delta$ has an "expansion" $\hat\anexpansion$ such that $h : \hat\anexpansion \homto \gamma$ for a "homomorphism" such that $h(x)=\mu(x)$ for all $x \in X \cup Y$. This can be done via an \nl algorithm using $l+1$ pointers to traverse the "width"-$l$ "fine" "path decomposition" of $\hat\anexpansion$, simultaneously guessing $\hat\anexpansion$, the "expansion" of $\gamma$ which homomorphically maps to $\hat\anexpansion$, and the valuation of $h$.
   % \end{proof}
   \begin{proof}
         We first guess a polynomial-sized "$k$-summary query" $\delta_{\textup{zip}}$ and test in "NP" that it is part of $\Qapp$ by \Cref{lemma:MUAk-union-of-polysized-summary-test-np}. 
         Let us call $\Delta$ be the equivalent {\UCRPQSRE} query, given by \Cref{lemma:MUAk-union-of-polysized-summary-test-np} \textit{cum} \Cref{lemma:bound_size_refinements}.
         We have to check that there is some "expansion" $\delta$ of $\Delta$ such that there is a "homomorphism" $\delta \homto \xi$. 
-        We first guess a valuation $\mu :  \vars(\delta_{\textup{zip}}) \to \vars(\xi)$.
+        We first guess a valuation $\mu :  \vars{\delta_{\textup{zip}}} \to \vars{\xi}$.
         Now it remains to check that:
         \begin{enumerate}
           \item For every "CRPQ" atom $x \atom{a^*} y$ of $\delta_{\textup{zip}}$ there is an $a$-path in $\xi$ from $\mu(x)$ to $\mu(y)$.

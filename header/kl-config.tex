@@ -4,11 +4,12 @@
 \knowledgeconfigure{quotation, protect quotation={tikzcd}}
 \knowledgeconfigure{diagnose line=true, diagnose bar=true}
 
+% \def\notionKnowledgeIndexIntroStyle#1{\textcolor{maincolor}{\textbf{#1}}}
+
 \IfKnowledgePaperModeTF{
-    %
 }{
     % If we are NOT in paper mode (i.e. in composition mode or electronic mode)
-    \knowledgestyle{intro notion}{color={KlDefn}, emphasize}
+    \knowledgestyle{intro notion}{color={KlDefn}, emphasize, index style=textbf}
     \knowledgestyle{notion}{color={KlLink}}
     \hypersetup{
         colorlinks=true,
@@ -48,4 +49,4 @@
 % }
 % \ExplSyntaxOff
 
-\def\notionKnowledgeIndexIntroStyle#1{\textcolor{maincolor}{#1}}
+% \def\notionKnowledgeIndexIntroStyle#1{\textcolor{maincolor}{#1}}

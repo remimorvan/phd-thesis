@@ -213,9 +213,9 @@ such that:
 		$\gamma_1 \contained \gamma_2$ "iff" $\delta_1 \contained \delta_2$,
 	\itemAP[\intro*\axiomCanonCore{}:]
 		there exists a "non-degenerate@@cdb" 
-		$D_1 \in \Exp(\delta_1)$ "st", for every $D'_1 \in \Exp(\delta_1)$ and $f: D'_1 \homto D_1$ we have (i) $D'_1$ is "non-degenerate@@cdb", (ii) $f$ is "strong onto", and (iii)  $f(x)=x$ for every $x\in \vars(\delta_1)$,
+		$D_1 \in \Exp(\delta_1)$ "st", for every $D'_1 \in \Exp(\delta_1)$ and $f: D'_1 \homto D_1$ we have (i) $D'_1$ is "non-degenerate@@cdb", (ii) $f$ is "strong onto", and (iii)  $f(x)=x$ for every $x\in \vars{\delta_1}$,
 	\itemAP[\intro*\axiomCanonNonRed{}:] for each $D_1 \in \Exp(\delta_1)$,
-		for each $x,y \in \vars(\delta_1)$, there cannot be an "atom refinement" in $D_1$
+		for each $x,y \in \vars{\delta_1}$, there cannot be an "atom refinement" in $D_1$
 		from $x$ to $y$ and another path from $x$ to $y$ in $D_1$, disjoint from the "atom refinement" that share the same label,
 	\itemAP[\intro*\axiomCanonContracted{}:] $\delta_1$ is "fully contracted",
 	\itemAP[\intro*\axiomCanonContainment{}:] $\gamma_2 \contained \delta_2$, and 
@@ -227,7 +227,7 @@ The \AP""$\classCRPQ$-strong canonization problem"" is defined similarly to the 
 \begin{description}
 	\itemAP[\intro*\axiomStrongCanonCore{}:] 
 	for every "non-degenerate@@cdb" 
-		$D_1 \in \Exp(\delta_1)$, every $D'_1 \in \Exp(\delta_1)$, and $f: D'_1 \homto D_1$ we have (i) $D'_1$ is "non-degenerate@@cdb", (ii) $f$ is "strong onto", and (iii)  $f(x)=x$ for every $x\in \vars(\delta_1)$,
+		$D_1 \in \Exp(\delta_1)$, every $D'_1 \in \Exp(\delta_1)$, and $f: D'_1 \homto D_1$ we have (i) $D'_1$ is "non-degenerate@@cdb", (ii) $f$ is "strong onto", and (iii)  $f(x)=x$ for every $x\in \vars{\delta_1}$,
 \end{description}
 
 We show that assuming we can solve the "$\classCRPQ$-canonization problem" ("resp" "$\classCRPQ$-strong canonization problem") this problem, then the "CRPQ"
@@ -329,11 +329,11 @@ Once again, we start by giving a proof sketch before giving the full proof.
 	since $G_2$ contains no letter $\alphabetmarking$, the image of this "homomorphism" is included in $D_1$.
 	Overall, we have "homomorphisms"
 	\[D'_1 \xrightarrow{i} Z_+ \xrightarrow{j} D_1.\] 
-	By \axiomCanonCore{}, $j\circ i$ be "strong onto" and for every $x\in \vars(\delta_1)$,
+	By \axiomCanonCore{}, $j\circ i$ be "strong onto" and for every $x\in \vars{\delta_1}$,
 	$j(i(x)) = x$.
 	
 	We claim that for each $x$ "external" in $D'_1$, then $i(x)$ is "external".
-	First, since $x \in \vars(\delta_1)$ is "external", then $x \in \vars(\delta_1)$
+	First, since $x \in \vars{\delta_1}$ is "external", then $x \in \vars{\delta_1}$
 	and so $j(i(x)) = x$. Then $j \circ i$ is "strong onto" and so $j$ be also be
 	"strong onto". It follows that the in-degree (resp. out-degree) of $i(x)$
 	is lower bounded by the in-degree (resp. out-degree) $j(i(x)) = x$.
@@ -344,8 +344,8 @@ Once again, we start by giving a proof sketch before giving the full proof.
 	we get that the natural embedding $i[D'_1] \homto Z_+$ satisfies the assumption
 	of \Cref{coro:embedding-segments} and so $\nbseg{i[D'_1]} \leq \nbseg{Z_+}$.
 	
-	Now observe that $i\colon D'_1 \to i[D'_1]$ is injective on $\vars(\delta_1)$
-	because $j(i(x))$ for any $x\in \vars(\delta_1)$.
+	Now observe that $i\colon D'_1 \to i[D'_1]$ is injective on $\vars{\delta_1}$
+	because $j(i(x))$ for any $x\in \vars{\delta_1}$.
 	Moreover, by \axiomCanonNonRed{}, $i$ cannot identity an "atom" with another path of "atoms" and so $D'_1$ is actually isomorphic to $i[D'_1]$, from which we
 	get $\nbseg{i[D'_1]} = \nbatoms{\delta_1}$
 	and so $\nbseg{Z_+} \geq \nbatoms{\delta_1}$.

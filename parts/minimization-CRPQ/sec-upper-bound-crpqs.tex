@@ -76,7 +76,7 @@ detailed proof.
 	\[
 		x_j \atom{u_{j,1}} h_{j,1} \atom{u_{j,2}} \cdots \atom{u_{j,\ell-1}} h_{j,\ell-1}\atom{u_{j,\ell}} y_j
 	\]
-	where each $h_{j,p}$ is the image via $f$ of some variable in $\vars(\gamma)=\{s_1,t_1,\dots,s_r,t_r\}$ and each path $x \atom{u_{j,p}} x’$ satisfies that all of its internal variables are not  images via $f$ of variables in $\vars(\gamma)$. Note that $\ell\leq  (\nbvar{\gamma} +1)$. We say that the paths of the form $x \atom{u_{j,p}} x’$ are the ""basic paths"" of  $\anexpansion_\alpha$ with respect to $f$. Since $\typeMin{\gamma}{u_j}\subseteq \typeMin{\gamma}{z_j}$, each path $x_j \atom{z_j} y_j$ in $\anexpansion_\beta$ can be decomposed into
+	where each $h_{j,p}$ is the image via $f$ of some variable in $\vars{\gamma}=\{s_1,t_1,\dots,s_r,t_r\}$ and each path $x \atom{u_{j,p}} x’$ satisfies that all of its internal variables are not  images via $f$ of variables in $\vars{\gamma}$. Note that $\ell\leq  (\nbvar{\gamma} +1)$. We say that the paths of the form $x \atom{u_{j,p}} x’$ are the ""basic paths"" of  $\anexpansion_\alpha$ with respect to $f$. Since $\typeMin{\gamma}{u_j}\subseteq \typeMin{\gamma}{z_j}$, each path $x_j \atom{z_j} y_j$ in $\anexpansion_\beta$ can be decomposed into
 	\[
 		x_j \atom{z_{j,1}} g_{j,1} \atom{z_{j,2}} \cdots \atom{z_{j,\ell-1}} g_{j,\ell-1}\atom{z_{j,\ell}} y_j
 	\]
@@ -87,7 +87,7 @@ detailed proof.
 		\[
 		k_0 \atom{w_{i,1}} k_1 \atom{w_{i,2}} \cdots \atom{w_{i,n-1}} k_{n-1}\atom{w_{i,n}} k_n
 	\]
-	where $w_i=w_{i,1}\cdots w_{i,n}$, $k_0=f(t_i)$, $k_n=f(s_i)$ and each path $k_{q-1} \atom{w_{i,q}} k_q$ is a "basic path" of $\anexpansion_\alpha$ w.r.t.\ $f$. Each path $k_{q-1} \atom{w_{i,q}} k_q$ has a corresponding "basic path" $k’_{q-1} \atom{w_{i,q}’} k_q’$ of $\anexpansion_\beta$ w.r.t.\ $f$ defined in the natural way: if $k_o\in \vars(\alpha)=\{x_1,y_1,\dots,x_m,y_m\}$, then $k_o’=k_o$; if $k_o=h_{j,p}$, then $k_o’=g_{j,p}$; and if $w_{i,q}= u_{j,p}$, then $w_{i,q}’= z_{j,p}$. In particular, we have that $w_{i,q} \weakequiv{\gamma} w_{i,q}’$ and that the following path belongs to $\anexpansion_\beta$:
+	where $w_i=w_{i,1}\cdots w_{i,n}$, $k_0=f(t_i)$, $k_n=f(s_i)$ and each path $k_{q-1} \atom{w_{i,q}} k_q$ is a "basic path" of $\anexpansion_\alpha$ w.r.t.\ $f$. Each path $k_{q-1} \atom{w_{i,q}} k_q$ has a corresponding "basic path" $k’_{q-1} \atom{w_{i,q}’} k_q’$ of $\anexpansion_\beta$ w.r.t.\ $f$ defined in the natural way: if $k_o\in \vars{\alpha}=\{x_1,y_1,\dots,x_m,y_m\}$, then $k_o’=k_o$; if $k_o=h_{j,p}$, then $k_o’=g_{j,p}$; and if $w_{i,q}= u_{j,p}$, then $w_{i,q}’= z_{j,p}$. In particular, we have that $w_{i,q} \weakequiv{\gamma} w_{i,q}’$ and that the following path belongs to $\anexpansion_\beta$:
 	\[
 		k_0’ \atom{w_{i,1}’} k_1’ \atom{w_{i,2}’} \cdots \atom{w_{i,n-1}’} k_{n-1}’\atom{w_{i,n}’} k_n’
 	\]

@@ -1,4 +1,5 @@
 \section{Relational Databases}
+\label{sec:prelim-db-relational}
 
 \subsection{SQL and First-Order Logic}
 
@@ -1395,6 +1396,8 @@ the "tree-width" of its "canonical database".
 The "undirected graphs" of "tree-width" at most $1$ are exactly
 the forests, "ie" the "disjoint unions" of trees.
 On the other hand, the "graph@@dir" of \Cref{fig:ex-tree-dec} has "tree-width" $2$.
+The "$k$-clique" has "tree-width" exactly $k-1$ since any "tree decomposition"
+of $\clique{k}$ must actually contain a "bag" that contains all vertices of $\clique{k}$.
 
 \begin{proposition}[{\cite[Theorem~3]{ChekuriRajaraman2000Containment}}]
 	\!\footnote{Theorem 3 talks about query "containment" of "CQs", which is in fact equivalent
@@ -1530,7 +1533,7 @@ for a larger class of queries than those of bounded tree-width.
 	of \Cref{prop:eval-CQ-bounded-tw}.
 	Overall, the algorithm runs in time
 	\[
-		\+O(f(\size{\gamma})\cdot|\vars(\gamma)|\cdot |D|^{k+1}),
+		\+O(f(\size{\gamma})\cdot|\vars{\gamma}|\cdot |D|^{k+1}),
 	\]
 	up to logarithmic factors, and where $f(\size{\gamma})$
 	is the time required to compute the "core@@CQ" of
@@ -1556,6 +1559,12 @@ are the only classes of CQs that are tractable!
 		\item its evaluation problem can be solved in polynomial time.
 	\end{enumerate}
 \end{proposition}
+
+\begin{marginfigure}
+	\centering
+	\includegraphics[width=\linewidth]{fig/escher/e133.jpg}
+	\caption{\href{https://mcescher.com/gallery/watercolor/\#iLightbox[gallery\_image_1]/3}{\emph{E~133}}, M. C. Escher, \textcopyright~The M.C. Escher Company.}
+\end{marginfigure}
 The difficult implication in this theorem is (3) $\Rightarrow$ (1).
 Grohe proves it by contraposition, by generalizing
 the ideas of \cite{GroheSchwentickSegoufin2001Evaluation}:
@@ -1751,7 +1760,7 @@ instead of being diamond-shaped, "UCQs" will hence be depicted
 as inverted mountain ranges, see \Cref{fig:ex-ucq}.
 By the proof of \Cref{prop:codd-thm}, we can notice that "union of conjunctive queries"
 are as expressive as "existential-positive formulas", "ie" "first-order formulas"
-without universal quantifiers and negation.
+built out of $\exists$, $\land$ and $\lor$.
 
 \begin{proposition}
 	Let $\Gamma$ be a "UCQ". The following are equivalent:

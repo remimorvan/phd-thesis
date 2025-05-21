@@ -17,6 +17,8 @@
 \knowledgenewrobustcmd\vertex[1]{\cmdkl{V}(#1)}
 \knowledgenewrobustcmd\edges[1]{\cmdkl{\+E}(#1)}
 
+\knowledgenewrobustcmd\signatureCRPQ[1]{\cmdkl{\sigma_{\textsf{Reg}(#1^*)}}}
+
 \knowledgenewrobustcmd\qvar{\footnotesize\bullet} % quantified variable
 \knowledgenewrobustcmd{\Gpm}{\cmdkl{G^\pm}}
 
@@ -25,7 +27,7 @@
 % ---
 
 \knowledgenewrobustcmd{\atoms}[1]{\cmdkl{\textnormal{Atoms}}(#1)}
-\knowledgenewrobustcmd{\vars}{\cmdkl{\textrm{vars}}} % set of variables of a query
+\knowledgenewrobustcmd{\vars}[1]{\cmdkl{\textrm{vars}}(#1)} % set of variables of a query
 
 \knowledgenewrobustcmd{\underlying}[1]{\cmdkl{G_{#1}}} % underlying graph
 
