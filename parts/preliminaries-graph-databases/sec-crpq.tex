@@ -1,13 +1,12 @@
 \section{Graph Databases}
 \label{sec:prelim-db-graph}
 
-\todo{TODOS}
-\begin{itemize}
-	\itemAP $\intro*\Refin$, ""atom refinement"", ""refinement""
-	\itemAP $\intro*\contract{L_i \cdots L_{j}}$, ""one-way contraction"", ""contraction"" and ""condensation"" -> unify terminology; ""contracting internal variables"", ""internal path""
-\end{itemize}
+\todo{$\intro*\underlying{\gamma}$ and ""underlying graph""}
 
-$\intro*\underlying{\gamma}$ and ""underlying graph""
+For a detailed introduction to "CRPQs", the reader can also
+see \cite{Figueira2020Containment21Foundations}.
+For a more general introduction to different query languages for "graph databases"---including "CRPQs"---see \cite{Barcelo2013Querying}, and for a more practical approach,
+see \cite{AnglesEtal2017Foundations}.
 
 \subsection{Conjunctive Regular Path Queries}
 
@@ -383,6 +382,10 @@ equivalent to a \emph{finite} union.
 "CRPQs" form the core navigational mechanism of the new ISO standard Graph Query Language (GQL) \cite{ISO2024GQL} and the SQL extension for querying graph-structured data SQL/PGQ \cite{ISO2023PGQ} (see also \cite{FrancisEtal2023GQL,FrancisEtal2023GPC}).
 Hence, the static analysis of "conjunctive regular path queries" is of the foremost
 importance: we prove in this subsection that "semantical equivalence" of "CRPQs" is decidable.
+Notice however that the "containment" of $\gamma_1(x,y) \defeq x \atom{K} y$
+into $\gamma_2(x,y) \defeq x \atom{L} y$ is equivalent to asking for $K \subseteq L$.
+Since language inclusion for non-deterministic automata is "PSpace"-hard, it follows
+that there is no hope for "containment" to be as easy for "CRPQs" as it is for "conjunctive queries"…
 
 Static analysis of "conjunctive queries" relied on "duality" theory,
 which associated to each "CQ" a "canonical database@@CQ". 
@@ -691,12 +694,6 @@ To get decidability, the easiest way is by proving a small model property.
     where $f$ is a doubly-exponential function.
 \end{proposition}
 
-\begin{marginfigure}
-    \centering
-    \includegraphics[width=\linewidth]{fig/prelim-db/pigeon.jpg}
-    \caption{Fun interlude: try spotting the difference with \Cref{prop:pigeonssssssss}.
-    \href{https://commons.wikimedia.org/wiki/File:Spinifex\_Pigeon\_0A2A1585.jpg}{\emph{Spinifex Pigeon}}, by JJ Harrison, licensed under "CC BY SA 3.0".}
-\end{marginfigure}
 \begin{proof}[Proof sketch]
     We start with some $\tup{\?G_1, \bar u_1} \cdb \gamma_1(\bar x_1)$ of arbitrary size
     such that $\tup{\?G_1, \bar u_1} \notFOmodels \gamma_2(\bar x_2)$.
@@ -720,7 +717,64 @@ To get decidability, the easiest way is by proving a small model property.
     and so since we had $\tup{\?G_1, \bar u_1} \notFOmodels\ \gamma_2(\bar x_2)$,
     we still have $\tup{\?G'_1, \bar u_1} \notFOmodels\ \gamma_2(\bar x_2)$.
 \end{proof}
+\begin{marginfigure}[-15em]
+    \centering
+    \includegraphics[width=\linewidth]{fig/prelim-db/pigeon.jpg}
+    \caption{Fun interlude: try spotting the difference with \Cref{prop:pigeonssssssss}.
+    \href{https://commons.wikimedia.org/wiki/File:Spinifex\_Pigeon\_0A2A1585.jpg}{\emph{Spinifex Pigeon}}, by JJ Harrison, licensed under "CC BY SA 3.0".}
+\end{marginfigure}
 
+In particular \Cref{prop:pigeonssssssss} implies that "containment" is decidable
+for "UC2RPQs". However, this does not give an optimal algorithm.
+
+\begin{proposition}
+    \!{Proven independently in \cite[Theorem 5]{CalvaneseDeGiacomoLenzeriniVardi2000Containment} for "C2RPQs"
+    and in \cite[§ after Theorem 4.8]{FlorescuLevySuciu1998Containment} for "CRPQs" without 
+    inverses but with an infinite alphabet.}
+    \label{prop:containment-expspace-complete}
+    Containment of "UC2RPQs" is "ExpSpace"-complete. The lower bound already
+    holds for "Boolean CRPQs".
+\end{proposition}
+
+Overtime, this proof has been simplified to eventually climax
+to the following result.
+\begin{proposition}[{\cite[Lemma 8]{Figueira2020Containment}}]
+	\AP\label{prop:variation-figueira-simple}
+	There is a fixed alphabet over which the
+	"con\-tainment problem" for "Boolean CRPQs" is already "ExpSpace"-hard
+    when restricted
+	to instances of the form
+	\begin{center}
+		\begin{tikzcd}[column sep=scriptsize]
+			\hphantom{\quad\textnormal{where:}}
+			\gamma_1() = \qvar \rar["K"] & \qvar & \contained^{?} & 
+			\qvar \rar["L_1", bend left=40] \rar["\raisebox{6pt}{\small\vdots}", phantom] \rar["L_p" below, bend right=40] & \qvar &[-2.1em] = \gamma_2().
+		\end{tikzcd}
+	\end{center}
+\end{proposition}
+
+Observe that, while the "containment"
+\[
+(\gamma_1(x,y) \defeq x \atom{K} y)
+\contained^? 
+(\gamma_2(x,y) \defeq x \atom{L} y)
+\]
+is equivalent to $K \contained^? L$,
+we have that 
+\[
+(\gamma_1() \defeq x \atom{K} y)
+\contained^? 
+(\gamma_2() \defeq x \atom{L} y)
+\]
+is rather equivalent to $K \contained^? \A^* L \A^*$,
+and so the problem of \Cref{prop:variation-figueira-simple}
+can be reformulated as
+\[
+    K \subseteq^? \A^* \big( \bigcap_{i=1}^p L_i \big) \A^*.
+\]
+The proof of \Cref{prop:variation-figueira-simple} is by reduction
+from the exponential-space tiling problem,
+and relies on encoding exponential-sized counters in polynomial space.
 
 \subsection{Queries Over Simple Languages}
 
@@ -739,28 +793,4 @@ To get decidability, the easiest way is by proving a small model property.
 \subsection{Analysis of Conjunctive Regular Path Queries}
 
 small intro of the next two chapters
-+ brief litterature review
-
-
-% -----------####
-%##############
-%
-\subsection{Old}
-%
-%###############
-% -------###########
-\AP If a query has no "output variables" we call it ""Boolean"", and
-its "evaluation" can either be the set $\set{()}$, in which case we say that $G$
-\reintro(db){satisfies} the query, or the empty set $\set{}$. For example, $G$ "satisfies@@db" the
-"Boolean CRPQ"
-\[\gamma_4() = x \atom{\wrote} y\]
-if, and only if, the database contains one author together with one paper they wrote.
-
-A ""subquery"" of a "C2RPQ" $\gamma$ is any "C2RPQ" resulting from removing some "atoms" (possibly none) from $\gamma$. A \reintro{subquery} of  "UC2RPQ" is a union of "subqueries" of the "C2RPQs" therein.
-
-
-For a more detailed introduction to "CRPQs", we refer the reader to \cite{Figueira2020Containment21Foundations}.
-For a more general introduction to different query languages for "graph databases"---including "CRPQs"---see \cite{Barcelo2013Querying}, and for a more practical approach,
-see \cite{AnglesEtal2017Foundations}.
-
-\smallskip
++ brief litterature review (ex: bridgewidth)
