@@ -1,6 +1,10 @@
 \section{Relational Databases}
 \label{sec:prelim-db-relational}
 
+We assume familiarity with basic SQL and the concept of tables---however 
+a very high-level understanding of these notions should be more than enough
+to follow this chapter.
+
 \subsection{SQL and First-Order Logic}
 
 The most common model of databases is by far that of "relational databases",
@@ -120,7 +124,7 @@ has a multiset semantics rather than a set-based semantics…}
 				\tilde\phi^n_{(i_n)}(x^n_1,\dotsc,x^n_{i_n})
 				\land \theta,
 			\]
-			with $y_1$, $\dotsc$, $y_k$ being the variable associated
+			with $y_1$, $\dotsc$, $y_k$ being the variables associated
 			to the attributes---"eg" if $\textrm{attribute}_1$ is the
 			third attribute of $\phi^2$, then $y_1 \defeq x^2_3$---
 			and $\bar x$ is the tuple of all variables of the form $x^i_j$
@@ -345,7 +349,7 @@ is the "pointed relational database" of \Cref{fig:prelim-db-ex-db}.
 Naturally, "Boolean queries" are denoted by $\gamma()$.
 In this case, its "canonical database@@cq" is not only a "pointed relational database" but
 in fact a "relational database".
-We will sometimes denote some query (either "Boolean@@cq" or not)
+We will sometimes denote some queries (either "Boolean@@cq" or not)
 by $\gamma$ (with no brackets): this is simply to ease the notations when
 no ambiguity can arise---we will often explicitly mention the tuple of "output variables"
 when introducing the query, and then simply the notation in a second time.
@@ -641,11 +645,11 @@ is itself non-trivial.
 \end{figure}
 Based on \Cref{prop:poset-reldb}, we provide an illustration of the ordered set
 of "relational databases" in \Cref{fig:poset-reldb}. Notice that, since the semantics
-of "conjunctive queries" is closed under "homomorphisms", they are represented by an upper-closed set. Moreover, this set has a unique minimum, corresponding to its "canonical database@@cq".
+of "conjunctive queries" is closed under "homomorphisms", they are represented by upper-closed sets. Moreover, this set has a unique minimum, corresponding to its "canonical database@@cq".
 Notice how this representation naturally represents the concept of "duality@@CQ":
 \begin{itemize}
 	\item points of the poset ("ie" "relational databases") are in natural
-		bijection with upper-closed set that admit a minimum ("ie" "conjunctive queries");
+		bijection with upper-closed sets that admit a minimum ("ie" "conjunctive queries");
 	\item a "conjunctive query" is "contained" in another "iff"
 		the "canonical database@@cq" of the first is below that of the second
 		in \Cref{fig:poset-reldb}.
@@ -852,7 +856,7 @@ of the "CQs" and then identifying the elements of $\bar x$ and $\bar y$ pointwis
 For instance, letting $\gamma(x) \defeq x \atom{a} y$ be the query
 asking for all elements with an outgoing $a$-edge,
 and $\delta(x) \defeq x \atom{b} y$ be the query
-asking for all elements with an outgoing $a$-edge,
+asking for all elements with an outgoing $b$-edge,
 then their "disjoint conjunction" $\gamma(x) \disconj \delta(x)$ is
 \[
 	\alpha(x) \defeq x \atom{a} y \land x \atom{b} y',
@@ -944,7 +948,7 @@ unless we are in a degenerate case.
 We summarize the properties of the two distributive lattices
 in \Cref{tab:distributive-lattices}. Note that all notions
 occurring in this table, be it the orders or the binary operators,
-require the "CQs" to the same number of "output variables",
+require the "CQs" to have the same number of "output variables",
 and the (pointed) "relational databases" to have tuples of the same size,
 and so in fact we obtain two lattices for every possible arity/tuple size.
 % Note also motivates the somewhat counter-intuitive definition of the
@@ -996,7 +1000,7 @@ consisting of a single vertex and all possible "hyperedges" over it.
 \end{proof}
 
 However, "conjunctive queries" still have a bit more structure: we shall
-see that they are a Heyting algebra, namely that it is a bounded distributive lattice
+see that they form a Heyting algebra, namely that it is a bounded distributive lattice
 with the extra property that for every $\gamma(\bar x)$ and $\delta(\bar y)$,
 where $\bar x$ and $\bar y$ have the same arity, then there exists
 a greatest element $\chi(\bar z)$ "st"
@@ -1006,7 +1010,7 @@ a greatest element $\chi(\bar z)$ "st"
 This greatest element $\chi(\bar z)$ is denoted by \AP$\gamma(\bar x) \intro*\impH \delta(\bar y)$, and is called \emph{implication}.%
 \footnote{Heyting algebras were introduced to model intuitionistic logic.
 It is not hard to see that the implication $\phi \Rightarrow \psi$
-does satisfy the property it is the greatest formula $\chi$
+does satisfy the property that it is the greatest formula $\chi$
 "st" $\phi \land \chi$ entails $\psi$.}
 
 \begin{proposition}
@@ -1076,7 +1080,7 @@ if for any "CQ" $\gamma(\bar x) \in \+C$, for any "subquery@@CQ" $\gamma'(\bar x
 $\gamma(\bar x)$, we must have $\gamma'(\bar x) \in \+C$.
 "Monotone classes of CQs" naturally model the notion of ``simplicity'', in the sense that
 a "CQ" is ``simple'' "wrt" $\+C$ whenever it belongs to $\+C$. The "monotonicity@@classCQ"
-assumption precisely assures that the class formalizes an idea of ``simplicity''
+assumption precisely ensures that the class formalizes an idea of ``simplicity''
 and not ``the "CQ" has exactly fourteen atoms, two ternary "hyperedges", three legs,
 a moustache and a mustard watch.''
 Typical examples of "monotone classes of CQs" include:
@@ -1309,7 +1313,7 @@ Active learning, "aka" Angluin-style learning is a setting where
 two players interact (\emph{a priori} adversarially): \emph{Student} tries
 to lean a "query@@sem" that only \emph{Teacher} knows. To achieve this,
 they can ask two kinds of questions.\footnote{``Questions'' are usually called 
-``query'' but we avoid this terminology here for obvious reasons.}
+``queries'' but we avoid this terminology here for obvious reasons.}
 \begin{itemize}
 	\item Membership questions: they provide a model and asks if it satisfies the "query@@sem";
 	\item Equivalence questions: they provide a "query@@sem" and ask Teacher if
@@ -1317,7 +1321,7 @@ they can ask two kinds of questions.\footnote{``Questions'' are usually called
 		Teachers provides a counter-example in the form of a model satisfying
 		one "query@@sem" but not the other.
 \end{itemize}
-Of course, Student always has a winning strary: enumerate all queries
+Of course, Student always has a winning strategy: enumerate all queries
 and ask for equivalence… The difficult and hence interesting question
 is that of \emph{efficient} learning.
 
@@ -1398,7 +1402,7 @@ We give an example of "tree decomposition" in \Cref{fig:ex-tree-dec}:
 	the most simple cases.
 \end{itemize}
 
-The \AP""width"" of a "tree decomposition" $\tup{\?T, \bagmap}$ is the maximum size of a "bag" minus one, "ie" $\max{|\bagmap(b)|-1 \mid b\in T}$.
+The \AP""width"" of a "tree decomposition" $\tup{\?T, \bagmap}$ is the maximum size of a "bag" minus one, "ie" $\max{\set{|\bagmap(b)|-1 \mid b\in T}}$.
 The \AP""tree-width"" of $\?G$ is the minimum of the "width" of all "tree decompositions" of $\?G$. 
 The notion can be directly generalized to arbitrary "relational structures":
 instead of asking that every edge $\{u,v\}$ is contained in some "bag",
@@ -1777,7 +1781,7 @@ Notice that "union of conjunctive queries" are also "closed under homomorphisms"
 Graphically, we represent them as… unions of "conjunctive queries":
 instead of being diamond-shaped, "UCQs" will hence be depicted
 as inverted mountain ranges, see \Cref{fig:ex-ucq}.
-By the proof of \Cref{prop:codd-thm}, we can notice that "union of conjunctive queries"
+By the proof of \Cref{prop:codd-thm}, we can notice that "unions of conjunctive queries"
 are as expressive as "existential-positive formulas", "ie" "first-order formulas"
 built out of $\exists$, $\land$ and $\lor$.
 
