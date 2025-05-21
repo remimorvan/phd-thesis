@@ -3,10 +3,368 @@
 
 \subsection{\AP{}Graph Databases}
 
-"Graph databases" have gained significant attention due to their ability to efficiently model and manage complex, interconnected data. Unlike traditional relational databases, they model data as entities connected by edges that represent relationships.
-This structure facilitates the analysis of highly interconnected data, where the topology of the connections is as crucial as the data itself, making them particularly well-suited for use cases like biology, social networks, banking, recommendation systems, and fraud detection. We refer the reader to \cite{Barcelo2013Querying,Wood2012Query,AnglesEtal2017Foundations} for surveys on the foundations and applications of graph databases.
+"Graph databases" have gained significant attention due to their ability to efficiently model and manage complex, interconnected data. Unlike traditional relational databases, they model data as entities connected by edges that represent relationships. This structure facilitates the analysis of highly interconnected data, where the topology of the connections is as crucial as the data itself, making them particularly well-suited for use cases like biology, social networks, banking, recommendation systems, and fraud detection. We refer the reader to \cite{Barcelo2013Querying,Wood2012Query,AnglesEtal2017Foundations} for surveys on the foundations and applications of graph databases.
 
-\todo{}
+
+% \footnote{This paragraph was partially written with the help of ChatGPT.}
+% The growing need to handle large-scale,
+% dynamic datasets with intricate relationships motivates further exploration of this model,
+% as it provides both scalability and performance benefits in contexts where relationships between data points are central.
+
+\AP ""Graph databases"" are abstracted as edge-labelled directed graphs
+$G = \langle \vertex{G}, \edges{G} \rangle$, 
+where nodes of $\intro*\vertex{G}$ represent entities and labelled edges $\intro*\edges{G} \subseteq \vertex G \times \A \times \vertex G$
+represent relations between these entities, with $\A$ being a fixed finite alphabet.
+For instance, \Cref{fig:example-graph-database} depicts a "graph database",
+whose nodes are authors and papers, on the alphabet
+$\A = \{\text{\color{wrote}wrote},\,\text{\color{advised}advised}\}$.
+Edges $x \atom{\wrote} y$ indicate that the person $x$ wrote the paper $y$,
+while edges $x \atom{\advised} y$ indicate that person $x$ was
+the Ph.D. advisor of person $y$.
+
+\begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}
+        \node (a1) {author$_1$};
+        \node (a2) [right = of a1] {author$_2$};
+        \node (a3) [right = of a2] {author$_3$};
+        \node (a4) [right = of a3] {author$_4$};
+        \node (a5) [right = of a4] {author$_5$};
+        \node (p1) [below = 2.5em of a2] {paper$_1$};
+        \node (p2) [below = 2.5em of a3] {paper$_2$};
+        \node (p3) [below = 2.5em of a4] {paper$_3$};
+
+        \draw[wrote] (a1) to[edge, ->] node[fill=white] {\footnotesize wrote} (p1)
+            (a2) to[edge, ->] node[fill=white] {\footnotesize wrote} (p1)
+            (a2) to[edge, ->] node[fill=white] {\footnotesize wrote} (p2)
+            (a3) to[edge, ->] node[fill=white] {\footnotesize wrote} (p2)
+            (a4) to[edge, ->] node[fill=white] {\footnotesize wrote} (p3)
+            (a5) to[edge, ->] node[fill=white] {\footnotesize wrote} (p3);
+        \draw[advised] (a4) to[edge, ->, bend right=60] node[fill=white] {\footnotesize advised} (a3)
+            (a5) to[edge, ->, bend right=60] node[fill=white] {\footnotesize advised} (a4);
+    \end{tikzpicture}
+    \caption{%
+        \AP\label{fig:example-graph-database}%
+        A "graph database" with eight nodes and eight edges on a two-letter alphabet.
+    }
+\end{figure}
+
+\AP Being a subclass of relational databases, "graph databases" can be queried by the
+predominant query language of ""conjunctive queries"", "aka" "CQs", 
+which consists of the closure under projection---"aka" existential quantification---of conjunctions of atoms of the form $x \atom{a} y$
+for some letter $a \in \A$. For instance, the "conjunctive query"
+\[
+    \gamma_1(x, y) = x \atom{\wrote} z
+        \land y \atom{\wrote} z    
+\]
+returns, when "evaluated" on the "graph database" $G$
+defined in \Cref{fig:example-graph-database}, all pairs of nodes $(u, v)$ such that $u$ is a co-author
+of $v$. Each variable not appearing in the left-hand side of 
+the definition of a "conjunctive query" (in this example, $z$) is implicitly 
+existentially quantified. 
+Note that, to the cost of losing the information of which variable is existentially quantified, every "CQ"
+can be seen as a "graph database", where each variable is a node, and each atom is an edge; 
+hence, we sometimes use "graph database" terminology for "CQs".
+
+The expressive power of "CQs" is somewhat limited, since
+"CQs" cannot express, for example, transitive closure.
+Since the ability to navigate paths is of importance in many "graph database" 
+scenarios, most modern graph query languages support, as a central querying mechanism,
+"conjunctive regular path queries", or "CRPQs" for short. 
+In particular, "CRPQs" form the core navigational mechanism of the new ISO standard Graph Query Language (GQL) \cite{ISO2024GQL} and the SQL extension for querying graph-structured data SQL/PGQ \cite{ISO2023PGQ} (see also \cite{FrancisEtal2023GQL,FrancisEtal2023GPC}).
+
+"CRPQs" are 
+defined analogously to "conjunctive queries", except that their atoms are now of the form 
+$x \atom{L} y$ where $L$ is an arbitrary regular language over the alphabet $\A$. For 
+instance the "evaluation" of the "CRPQ"
+\[
+    \gamma_2(x, y) = x \atom{\wrote} z
+        \land z' \atom{\wrote} z 
+        \land y \atom{({\advised})^*} z'
+\]
+on $G$ yields every pair of persons $(u,v)$ such that $u$ is a co-author of a
+``scientific descendant'' of $v$. 
+
+\AP Formally, a ""CRPQ"" $\gamma$ is defined as a tuple $\bar z = (z_1,\hdots,z_n)$
+of ""output variables"", "aka" \reintro{free variables},\footnote{For technical reasons (see the definition of "equality atoms") we allow for a variable to appear multiple times.}
+together with a conjunction of ""atoms"" of the form
+$\bigwedge_{j=1}^m x_j \atom{L_j} y_j$, where each $L_j$ is a regular language and where $m \geq 0$.
+The set of all variables occurring in $\gamma$, namely\footnote{We neither assume 
+disjointness nor inclusion between $\{z_1,\hdots,z_n\}$ and $\{x_1,y_1,\hdots,x_m,y_m\}$}
+$\{z_1,\hdots,z_n\}\cup\{x_1,y_1,\hdots,x_m,y_m\}$, is denoted by
+$\intro*\vars(\gamma)$.
+Given a "database@@graph" $G$, we say that a tuple of nodes $\bar u = (u_1,\hdots,u_n)$
+\AP""satisfies@@db"" $\gamma$ 
+on $G$ if there is a mapping
+$\fun\colon \vars(\gamma) \to \vertex{G}$ such that $u_i = \fun(z_i)$ for all
+$1 \leq i \leq n$, and for each $1 \leq j \leq m$,
+there exists a path from $\fun(x_i)$ to $\fun(y_i)$ in $G$, labelled by
+a word from $L_i$ (if the path is empty, the label is $\varepsilon$). The \AP""evaluation"" of $\gamma$ on $G$ is then the set of all tuples that "satisfy@@db" $\gamma$.
+%
+For example, $(\text{author}_2, \text{author}_5)$ "satisfies@@db" $\gamma_2$ 
+on the "graph database" $G$ of \Cref{fig:example-graph-database} via
+the function that maps $x$ to $\text{author}_2$, $y$ to $\text{author}_5$,
+$z$ to $\text{paper}_2$, and $z'$ to $\text{author}_3$.
+
+\AP
+The language of "CRPQ" can be extended to navigate edges in both directions. 
+Consider the expanded database $\intro*\Gpm$ obtained from $G$ by 
+% keeping the same vertices, copying the edges of $G$, and 
+adding, for every edge $x \atom{a} y$ in $G$, an extra edge $y \atom{a^-} x$.
+We obtain a graph database on the alphabet $\intro*\Aext = \A \cup \A^-$ where
+$\A^- = \set{a^- \mid a \in \A}$. We then define the syntax of
+a \AP""CRPQ with two-way navigation"", or \reintro{C2RPQ}, as a "CRPQ" on the alphabet $\Aext$.
+Its \reintro{evaluation} is defined as the "evaluation" of the "CRPQ" on $\Gpm$.
+For instance, the "evaluation" of the "C2RPQ"
+\[
+    \gamma_3(x, y) = x \atom{({\wrote}\cdot{\wrote}^-)^*} y
+\]
+on the "graph database" of \Cref{fig:example-graph-database} returns all pairs of
+individuals linked by a chain of co-authorship.
+It includes $(\text{author}_1, \text{author}_3)$ or $(\text{author}_1, \text{author}_1)$
+but not $(\text{author}_1, \text{author}_4)$.
+%
+\AP If a query has no "output variables" we call it ""Boolean"", and
+its "evaluation" can either be the set $\set{()}$, in which case we say that $G$
+\reintro(db){satisfies} the query, or the empty set $\set{}$. For example, $G$ "satisfies@@db" the
+"Boolean CRPQ"
+\[\gamma_4() = x \atom{\wrote} y\]
+if, and only if, the database contains one author together with one paper they wrote.
+
+To simplify proofs, we assume that all the regular languages are described via 
+non-deterministic  finite automata (NFA) instead of regular expressions,
+which does not affect any of our complexity bounds.
+However, for readability all our examples will be given in terms of regular expressions.
+We denote the set of "atoms" of a "C2RPQ" $\gamma$ by \AP$\intro*\atoms\gamma$, and by 
+$\intro*\nbatoms{\gamma}$ we denote its number of "atoms", "ie", $|\atoms\gamma|$.
+Moreover, we denote by $\intro*\size{\gamma}$ the sum of its number of "atoms" with
+the sum of the size of NFAs used to describe $\gamma$.
+
+
+\AP Finally, a ""union of CQs"" (\reintro{UCQs}) (resp.\ ""union of CRPQs"" (\reintro{UCRPQs}), resp.\ ""union of C2RPQs"" (\reintro{UC2RPQs}))  
+is defined as a finite set of "CQs" (resp.\ "CRPQs", resp.\ "C2RPQs"), whose
+tuples of "output variables" have all the same arity. 
+\AP
+A ""subquery"" of a "C2RPQ" $\gamma$ is any "C2RPQ" resulting from removing some "atoms" (possibly none) from $\gamma$. A \reintro{subquery} of  "UC2RPQ" is a union of "subqueries" of the "C2RPQs" therein.
+The "evaluation" of a union is defined as the union of its "evaluations", for instance the following "UCQ"
+\begin{align*}
+    \Gamma_5 & = \gamma_{5}^1(x, y) \lor \gamma_{5}^2(x, y) \\
+    & \text{ where }
+    \gamma_{5}^1(x, y) = x \atom{\wrote} y %\\
+    \text{ and }
+    \gamma_{5}^2(x, y) = x \coatom{\advised} z \land
+        z \atom{\wrote} y
+\end{align*}
+"evaluates" to the set of pairs $(x,y)$ such that $y$ is a paper written by either $x$
+or their advisor.
+We naturally extend the notations $\nbatoms{-}$ and $\size{-}$ to "unions@UC2RPQs".
+\AP ""Infinitary unions"" are defined analogously, except
+that we allow for potentially infinite unions. We often use a set notation to denote the union, especially for "infinitary unions".
+
+For a more detailed introduction to "CRPQs", we refer the reader to \cite{Figueira2020Containment21Foundations}.
+For a more general introduction to different query languages for "graph databases"---including "CRPQs"---see \cite{Barcelo2013Querying}, and for a more practical approach,
+see \cite{AnglesEtal2017Foundations}.
+
+\smallskip
+
+% \paragraph*{Containement and equivalence}
+\AP %It is often interesting to compare queries together. 
+The ""evaluation problem"" for "UC2RPQ" is the problem of, given
+a "UC2RPQ" $\Gamma$, a "graph database" $G$ and a tuple $\bar u$ of elements of $G$,
+whether $\bar u$ "satisfies@@db" $\Gamma$ on $G$. 
+Given two "UC2RPQ" $\Gamma$
+and $\Gamma'$ whose "output variables" have the same arity,
+we say that $\Gamma$ is \AP""contained"" in $\Gamma'$,
+denoted by $\Gamma \intro*\contained \Gamma'$ if
+for every "graph database" $G$, for every tuple $\bar u$ of $G$,
+if $\bar u$ "satisfies@@db" $\Gamma$ on $G$, then so does $\Gamma'$ (we will hence reserve the symbol `$\subseteq$' for set inclusion---note in particular that inclusion (of the "UC2RPQs", seen as sets of "C2RPQs") implies "containment", but the converse does not hold). 
+The \AP""containment problem"" for "UC2RPQs" is the problem of, given
+two "UC2RPQs" $\Gamma$ and $\Gamma'$, to decide if $\Gamma \contained \Gamma'$.
+When $\Gamma$ is "contained" in $\Gamma'$ and vice versa, we say that
+$\Gamma$ and $\Gamma'$ are \AP""semantically equivalent"", denoted by
+$\Gamma \intro*\semequiv \Gamma'$.  
+
+\paragraph{Queries of small tree-width}
+It is known that the "evaluation problem" for "UC2RPQ" is "NP"-complete, just as for "conjunctive queries"
+\cite[Theorem 7]{ChandraMerlin1977Implementation}.
+However, queries whose underlying structure looks like a tree---formally, queries of bounded 
+"tree-width"---can be "evaluated" in polynomial time \cite[Theorem 3]{ChekuriRajaraman2000Containment}.\footnote{Theorem 3 talks about query "containment" of "CQs", which is in fact equivalent to the "evaluation problem" for "CQs". Moreover, the theorem deals with ``query width'', but this parameter is equivalent up to a multiplicative constant to the "tree-width" \cite[Lemma 2]{ChekuriRajaraman2000Containment} assuming that the database signature arity is fixed.} 
+
+\AP
+"Tree-width" is a measure of how much a
+graph differs from a tree, introduced by Arnborg, Corneil and
+Proskurowski~\cite{ArnborgCorneilProskurowski1987Complexity}.
+% who noticed that many "NP"-complete problems become polynomial-time solvable on classes of graphs of bounded tree-width \cite{ArnborgCorneilProskurowski1987Complexity}.
+%
+For a gentle but thorough introduction to "tree-width", we refer the reader to
+\cite[\S 3.6]{NesetrilPOM2012Prolegomena}. Formally, a \AP""tree decomposition"" of a multigraph $G$ is a
+pair $(T, \intro*\bagmap)$ where $T$ is a tree and $\bagmap: \vertex{T} \to \pset{\vars(G)}$ is a function that associates to each node of $T$, called \AP""bag"",
+a set of vertices of $G$. When $x \in \bagmap(b)$ we shall say that the "bag"
+$b \in \vertex{T}$ \AP""contains@@tw"" vertex $v$. Further, it must satisfy the following three properties:
+\begin{itemize}
+    \item each vertex $v$ of $\gamma$ is "contained@@tw" in at least one "bag" of $T$;
+    \item for each edge $u \atom{} v$ of $G$, there is at least one "bag" of $T$
+        that "contains@@tw" both $u$ and $v$; and 
+    \item for each vertex $v$ of $G$, the set of bags of $T$ "containing@@tw" $v$ is a 
+        connected subset of $\vertex{T}$.
+\end{itemize}
+The \AP""width"" of $(T, \bagmap)$ is the maximum of $|\bagmap(b)|-1$ when $b$ ranges over
+$\vertex{T}$.
+
+\begin{figure}
+	\centering
+	\subfloat[``Full'' representation of $(T, \bagmap)$.]{%
+		\AP\label{fig:ex-tree-dec-full}
+		\includegraphics[scale=.5]{ex-tree-dec-full.pdf}%
+	}
+	\hfill
+	\subfloat[``Concise'' representation of $(T, \bagmap)$]{%
+		\AP\label{fig:ex-tree-dec-concise}
+		\includegraphics[scale=1.1]{ex-tree-dec-concise.pdf}
+	}
+	\caption{
+		\AP\label{fig:ex-tree-dec}
+		Two different representations of the same "tree decomposition" $(T, \bagmap)$ of a 
+		multigraph $G$ with six 
+		vertices. The underlying tree is a path with four nodes and each "bag" contains 3 
+		vertices---hence the "decomposition@tree decomposition" has "width" 2.
+	}
+\end{figure}
+We give an example of "tree decomposition" in \Cref{fig:ex-tree-dec}:
+\begin{itemize}
+	\item In \Cref{fig:ex-tree-dec-full}, we give the ``full'' representation of
+	the "decomposition@tree decomposition": we draw $T$, and inside each "bag" $b$ of $T$
+	we represent a copy of $G$. Nodes of $G$ belonging to $b$ are highlighted, while the others are dimmed. Sometimes, we will only write the
+	name of the nodes contained in the "bag", instead of drawing the graph.
+	\item In \Cref{fig:ex-tree-dec-concise}, we give a ``concise'' representation:
+	we draw over $G$ a coloured shape for each "bag" of $T$. This representation is ambiguous---the structure of $T$ is not made explicit---and will only be used when no ambiguity can arise.
+\end{itemize}
+
+The \AP""tree-width"" of $G$ is the minimum of the "width" of all "tree decompositions" of $G$. The \reintro{tree-width} of a "C2RPQ" is the "tree-width" of its underlying multigraph. 
+We denote by $\intro*\Tw$ (resp.\ $\intro*\TwOneWay$) the set of all "C2RPQs" (resp.\ "CRPQs") of "tree-width" at most $k$. The \reintro{tree-width} of a "UC2RPQ" is simply the maximum of the "tree-width" of its "C2RPQs".
+\AP
+A ""path decomposition"" is a "tree decomposition" $(T,\bagmap)$ in which $T$ is a path. The \AP""path-width"" of $\gamma$ is the minimum of the "width" among all "path decompositions" of $\gamma$. The \reintro{path-width} of a "C2RPQ" and "UC2RPQ" are defined analogously. We denote by \AP$\intro*\Pw$ (resp.\ $\intro*\PwOneWay$) the set of all "C2RPQs" (resp.\ "CRPQs") of "path-width" at most $k$. The relationship between these classes is depicted in \Cref{fig:taonomy-syntactic}:
+note that $\TwOneWay$ and $\PwOneWay$ are not explicitly drawn, but correspond to the
+intersection of $\Tw$ (resp.\ $\Pw$) with the class of "CRPQs".
+
+\begin{figure}
+	\centering
+	\scalebox{1.125}{
+	\begin{tikzpicture}
+		\node at (0,0) {\includegraphics[scale=.8]{taxonomy-syntactic.pdf}};
+		% \draw[line width=1.5pt] (0,-4) -- (0,4);
+		% \draw[line width=1.5pt] (-3,0) -- (3,0);
+		% \draw[line width=.5pt] (1,-4) -- (1,4);
+		% \draw[line width=.5pt] (-3,1) -- (3,1);
+		% \draw[line width=.5pt] (-1,-4) -- (-1,4);
+		% \draw[line width=.5pt] (-3,-1) -- (3,-1);
+		\node[font=\small] at (.5,-1.5)
+			{$\withkl{\kl[\Pw]}{\cmdkl{\color{cYellow}\mathcal{P\hspace{-.15em}w}_{1\!}}}$};
+		\node[font=\small] at (-.5,0) 
+			{$\withkl{\kl[\Pw]}{\cmdkl{\color{cYellow}\mathcal{P\hspace{-.15em}w}_{k\!}}}$};
+		\node[font=\small] at (2.05,.2)
+			{$\withkl{\kl[\Tw]}{\cmdkl{\color{cBlue}\mathcal{T\hspace{-.15em}w}_{1\!}}}$};
+		\node[font=\small] at (1.4,1.8)
+			{$\withkl{\kl[\Tw]}{\cmdkl{\color{cBlue}\mathcal{T\hspace{-.15em}w}_{k\!}}}$};
+		\node[font=\tiny] at (-1.5,.5) {\kl[CRPQ]{\color{cDarkGrey}CRPQs}};
+		\node[font=\tiny] at (-.5,2.4) {\kl[C2RPQ]{\color{cDarkGrey}C2RPQs}};
+	\end{tikzpicture}
+	}
+	\caption{
+		\AP\label{fig:taonomy-syntactic}
+		Clickable taxonomy of syntactic classes studied in this chapter.
+	}
+\end{figure}
+
+Similar statements of the following proposition can be considered Folklore (see "eg" {\cite[Theorem IV.3]{RomeroBarceloVardi2017Homomorphism}}); however, our inability to find a proof for it with sharp bounds invites us to include a proof.
+\begin{restatable}[Proof in \Cref{apdx-sec:prop:crpq-bound-tree-width-upper-bound}]{proposition}{crpqboundtwupperbound}
+	\AP\label{prop:crpq-bound-tree-width-upper-bound}
+    For each $k \geq 1$, the "evaluation problem" for "UC2RPQs" of "tree-width" at
+    most $k$ can be solved in time $\+O(\size{\Gamma} \cdot |G|^{k+1} \cdot \log{|G|})$ on a Turing machine,
+	or $\+O(\size{\Gamma} \cdot |G|^{k+1})$ under a RAM model, where $\Gamma$ and $G$ are the input "UC2RPQ" and "graph database", respectively.
+\end{restatable}
+
+
+
+In practice, "graph databases" tend to be huge and often changing, while queries
+are in comparison very small.
+This motivates the following question, given some natural $k \geq 1$: 
+
+\begin{center}
+    \AP 
+    Given a "UC2RPQ" $\Gamma$, is it "equivalent" to a "UC2RPQ" $\Gamma'$ of "tree-width" at most $k$?\\
+    That is, does it have ""semantic tree-width"" at most $k$?
+\end{center}
+This problem is called the ""semantic tree-width $k$ problem"".
+Should it be decidable in a constructive way---that is, decidable, and if the answer is positive, we can compute a witnessing $\Gamma'$ from $\Gamma$---, then one could, once and for all,
+compute $\Gamma'$ from $\Gamma$ and, whenever one wants to "evaluate" $\Gamma$ on a
+database, "evaluate" $\Gamma'$ instead.
+
+We will also study the restriction of these notions to one-way queries: a "UCRPQ" has \AP""one-way semantic tree-width"" at most $k$ if it is equivalent to a "UCRPQ" of "tree-width" at most $k$. The \AP""one-way semantic tree-width $k$ problem"" is the problem of, given a "UCRPQ" $\Gamma$, whether it has "one-way semantic tree-width" at most $k$.
+
+\begin{example}
+    \AP\label{ex:CRPQ-tw3-stw2}
+    Consider the following "CRPQs",\footnote{In this graphical representation,
+	we interpret a labelled graph as the "CRPQ" defined as
+	the conjunction of the "atoms" induced by the labelled edges of the graph.
+	For instance, $\gamma(\bar x)$ is a conjunction of six "atoms".}
+    where $\bar x = (x_0,x_1,y,z)$:\leavevmode
+    \begin{center}
+        \small
+        \begin{tikzcd}[column sep=small, row sep=small]
+            &[-.5em] x_0 \ar[dr, "a"] \ar[rr, "c"] \ar[ddr, "a(bb)^+" swap, pos=.6, bend right] & &
+            x_1 \ar[dl, "a" swap] \ar[ddl, "ab(bb)^*", pos=.7, bend left]
+                &[1.5em] &[-.5em] x_0 \ar[dr, "a"] \ar[rr, "c"] \ar[ddr, "a(bb)^+" swap, pos=.6, bend right] & &
+                x_1 \ar[dl, "a" swap] 
+                    &[1.5em] &[-.5em] x_0 \ar[dr, "a"] \ar[rr, "c"]  & &
+                    x_1 \ar[dl, "a" swap] \ar[ddl, "ab(bb)^*", pos=.6, bend left] \\
+            \gamma(\bar x) \defeq & & y \ar[d, "b^+", pos=.35] & 
+                & \delta(\bar x) \defeq & & y \ar[d, "b(bb)^*" pos=.35] & 
+                    & \delta'(\bar x) \defeq & & y \ar[d, "(bb)^+" swap, pos=.35] & \\
+            & & z & 
+                & & & z & 
+                    & & & z &
+        \end{tikzcd}
+    \end{center}
+    \noindent
+    The underlying graph of $\gamma(\bar x)$ being the directed 4-clique, $\gamma 
+    (\bar x)$ has "tree-width" 3. We claim that $\gamma(\bar x)$ is equivalent to the "UCRPQ"
+    $\delta(\bar x) \lor \delta'(\bar x)$, and hence has "one-way semantic tree-width" at most 2.
+
+    Indeed, given a "graph database" satisfying $\gamma(\bar x)$ via some mapping $\mu$, 
+    it suffices to make a case disjunction on whether the number of $b$-labelled "atoms"
+    in the path from
+    $\mu(y)$ to $\mu(z)$ is even or odd. In the first case, the "atom" $x_0\atom{a(bb)^+} z$ becomes
+    redundant since we can deduce the existence of such a path from the conjunction
+    $x \atom{a} y \atom{(bb)^+} z$, and hence the "database@@graph" "satisfies@@db" $\delta(\bar x)$ via $\mu$.
+    Symmetrically, in the second case, the "atom" $x_1 \atom{b(bb)^*} z$ becomes redundant,
+    and the "database@@graph" "satisfies@@db" $\delta'(\bar x)$ via $\mu$. 
+    Thus, $\gamma(\bar x)$
+    is "contained", and hence "equivalent" (the other "containment" being trivial), to
+    the "UCRPQ" $\delta(\bar x) \lor \delta'(\bar x)$ of "tree-width" 2.
+\end{example}
+
+\subsection{\AP{}Related Work}
+\label{sec:relwork}
+On the class "conjunctive queries", the "semantic tree-width $k$ problem" becomes the "coNP"-complete problem of finding out whether the retraction of a query has "tree-width"
+at most $k$. In fact, "CQs" enjoy the effective existence of unique minimal queries \cite[Theorem 12]{ChandraMerlin1977Implementation}, which happen to also minimize the tree-width. For "CRPQs" and "UC2RPQs", the question is far more challenging, and it has only been solved for the case $k = 1$ 
+by Barceló, Romero, and Vardi \cite[Theorem 6.1]{BarceloRomeroVardi2016SemanticAcyclicity}; the case $k>1$ was left widely open
+\cite[\S 7]{BarceloRomeroVardi2016SemanticAcyclicity}.
+
+Furthermore, classes of "CQs" of bounded "semantic tree-width" precisely characterize tractable (and "FPT") "evaluation problem" \cite[Theorem~1.1]{Grohe2007ComplexityHomomorphism}.
+This result is on bounded-arity schemas, which was later generalized \cite[Theorem~1]{ChenGottlobLanzingerPichler2020Semantic} for characterizing "FPT" "evaluation" on arbitrary schemas---by replacing "semantic tree-width" with semantic ``submodular width'' \cite{Marx13Tractable}.
+
+The problem of computing "maximal under-approximations" of "CQs" of a given "tree-width" has been explored in \cite{BarceloLibkinRomero2014Efficient}.
+A "maximal under-approximations" of tree-width at most $k$ of a "CQ" $\gamma$ consists of a
+"CQ" $\delta_k$ of "tree-width" at most $k$, which under-approximates it,
+"ie" $\delta_k$ is "contained" in $\gamma$, and which is maximal, in the sense that for every "CQ" 
+$\delta'$, if $\delta'$ has "tree-width" at most $k$ and is "contained" in $\gamma$, then 
+$\delta'$ is "contained" in $\delta_k$. 
+"Maximal under-approximations" of a given "tree-width" for "CQs" always exist \cite{BarceloLibkinRomero2014Efficient} and thus, a "CQ" is "semantically equivalent"
+to a "CQ" of "tree-width" at most $k$ if, and only if, it is equivalent to its maximal under-approximation of "tree-width" at most $k$. Our solution to decide the
+"semantic tree-width $k$ problem" for "UC2RPQs" is based on this idea.
+
+While "maximal under-approximations" always exist for "CQs", this is not the case for the dual notion of ``minimal over-approximations''. The problem of when these exist is still unknown to be decidable, aside for some the special cases of acyclic "CQs" and Boolean "CQs" over binary schemas \cite{BarceloRomeroZeume2020Approximation}.
 
 
 \subsection{\AP{}Contributions}
@@ -26,7 +384,6 @@ every "UC2RPQ" has a computable ``maximal under approximation'' by a "UC2RPQ" of
 explain this assumption before formalizing the statement above (stated as \Cref{cor:mua-exists-effective}).
 
 For a class $\+L$ of languages, let $\intro*\UCtwoRPQ(\+L)$ denote the class of all "UC2RPQs" whose atoms are all labelled by languages from $\+L$.
-\AP For an NFA $\+A$ and two states $q,q'$ thereof, we denote by $\intro*\subaut{\+A}{q}{q'}$ the ""sublanguage"" of $\+A$ recognized  when considering $\set{q}$ as the set of initial states and $\set{q'}$ as the set of final states.
 \AP We say that $\+L$ is ""closed under sublanguages"" if
 (i) it contains every language of the form $\{a\}$,
 where $a \in \A$ is any (positive) letter such that either $a$ or $a^-$ occur in a word of a
@@ -193,8 +550,7 @@ In turn, this leads to an evaluation algorithm with a remarkably low complexity.
 	}
 	\caption{
 		\AP\label{fig:taxonomy-semantic}
-		Clickable taxonomy of semantic classes studied in this chapter, where $k \geq 2$.
-		(To be compared with \Cref{fig:taxonomy-syntactic}.)
+		Clickable taxonomy of semantic classes studied in this paper, where $k \geq 2$.
 	}
 \end{figure}
 Interestingly, the proof for "tree-width" 1 and "path-width" $k$ ($k \geq 1$)

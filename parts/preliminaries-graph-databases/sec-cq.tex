@@ -301,7 +301,7 @@ Interestingly, the semantics of "conjunctive queries" can be described using "ho
 via the theory of \emph{duality}: this was first noticed by Chandra and Merlin in
 their seminal 1977 paper \cite{ChandraMerlin1977Implementation}.
 \begin{definition}
-	The "canonical database" associated to a "conjunctive query"
+	The "canonical database@@cq" associated to a "conjunctive query"
 	\[
 		\gamma(\bar x) = \bigwedge_{i=1}^n \+R^i_{(k_i)}(y^i_1,\dotsc,y^i_{k_i})
 	\]
@@ -317,7 +317,7 @@ their seminal 1977 paper \cite{ChandraMerlin1977Implementation}.
 		x' & y'
 	\end{tikzcd}
 	\caption{\AP\label{fig:prelim-db-ex-db}
-	The "canonical database" of $\gamma() \defeq x \atom{a} x' \land x \atom{b} y \land y \atom{a} y'$.}
+	The "canonical database@@cq" of $\gamma() \defeq x \atom{a} x' \land x \atom{b} y \land y \atom{a} y'$.}
 \end{marginfigure}
 Since it is somewhat impractical to graphically depict $k$-ary relations for $k \geq 3$,
 and since "signatures" that consist only of "unary predicates" are a degenerate case,
@@ -325,14 +325,14 @@ we will often consider examples in which all relations are binary.
 We will denote these relations by $\atom{a}$, where $a$ ranges over some alphabet $\A$:
 moreover, we will often not take the trouble to precise what alphabet we are using
 as any alphabet containing all letters occuring in the example will do.
-For instance, the "canonical database" of the "conjunctive query"
+For instance, the "canonical database@@cq" of the "conjunctive query"
 \[
 	\gamma() \defeq x \atom{a} x' \land x \atom{b} y \land y \atom{a} y'
 \]
 is the "pointed relational database" of \Cref{fig:prelim-db-ex-db}.
 
 We say that a "conjunctive query" is ""Boolean@@cq"" when it has no "output variables".
-In this case, its "canonical database" is not only a "pointed relational database" but
+In this case, its "canonical database@@cq" is not only a "pointed relational database" but
 in fact a "relational database".
 Naturally, "Boolean queries" are denoted by $\gamma()$.
 We will sometimes denote some query (either ""Boolean@@cq"" or not)
@@ -343,8 +343,8 @@ when introducing the query, and then simply the notation in a second time.
 \begin{proposition}[""Duality""]
 	\AP\label{prop:duality}
 	Let $\gamma(\bar x)$ be a "conjunctive query",
-	and let $\tup{\?G, \bar x}$ denote its "canonical database".%
-	\footnote{By convention, we denote the "canonical database" using the Roman
+	and let $\tup{\?G, \bar x}$ denote its "canonical database@@cq".%
+	\footnote{By convention, we denote the "canonical database@@cq" using the Roman
 	uppercase associated with the Greek letter used to denote
 	the query.}
 	For any "pointed relational database" $\tup{\?D, \bar d}$,
@@ -388,7 +388,7 @@ have outgoing $a$-edges ($x \atom{a} x'$ and $y \atom{a} y'$):
 indeed, there is a $b$-edge from $u$ to $v$, and both $u$ and $v$
 have outgoing $a$-edges. In terms of "duality", this is
 witnessed by the "homomorphism" from the
-"canonical database" of \Cref{fig:prelim-db-ex-db} to the
+"canonical database@@cq" of \Cref{fig:prelim-db-ex-db} to the
 "database@@rel" of \Cref{fig:prelim-db-stupid-ex},
 that sends $x$ and $x'$ onto $u$, $y$ onto $v$ and $y'$ onto $w$.
 As witnessed by this example, the "homomorphism" $\?G \to \?D$ actually has a
@@ -438,7 +438,7 @@ closure of "containment".
 		\item $\tup{\?G, \bar x} \FOmodels \gamma'(\bar x')$;
 		\item $\tup{\?G', \bar x'} \homto \tup{\?G, \bar x}$,
 	\end{enumerate}
-	where $\tup{\?G, \bar x}$ and $\tup{\?G', \bar x'}$ are the "canonical databases"
+	where $\tup{\?G, \bar x}$ and $\tup{\?G', \bar x'}$ are the "canonical database@@cqs@@cq"
 	of $\gamma(\bar x)$ and $\gamma'(\bar x')$, respectively.
 \end{proposition}
 
@@ -491,14 +491,14 @@ Naturally, to go from "relational databases" to "conjunctive queries",
 we associate to any "pointed relational database" $\tup{\?G, \bar g}$
 a ""canonical conjunctive query"" $\gamma(\bar g)$ with one "atom"
 $\+R_{(k)}(x_1,\hdots,x_k)$ for every "hyperedge" $\tup{x_1,\hdots,x_k} \in \+R_{(k)}(\?G)$.
-This map is precisely the inverse of the construction defining "canonical databases".
+This map is precisely the inverse of the construction defining "canonical database@@cqs@@cq".
 
 This dual isomorphism has many consequences: essentially every theory that deals with
 "relational databases" can be applied to study "conjunctive queries"!
 
 \begin{corollary}[{of "duality" and \Cref{prop:equiv-core-isomorphic}}]
 	Two "conjunctive queries" are "semantically equivalent" "iff"
-	the "core" of their "canonical database" are "isomorphic".
+	the "core" of their "canonical database@@cq" are "isomorphic".
 \end{corollary}
 
 \paragraph*{Graphical depiction of the preordered set of relational databases.}
@@ -623,18 +623,18 @@ is itself non-trivial.
 	\caption{\AP\label{fig:poset-reldb} The poset of "relational databases" over a "signature"
 	containing at single binary "predicate", where "homomorphisms" go from bottom to top.
 	An infinite chain is represented in red, and an infinite co-chain in blue.
-	A large yellow dot represents the "canonical database" of a "conjunctive query",
+	A large yellow dot represents the "canonical database@@cq" of a "conjunctive query",
 	while the semantics of this "conjunctive query" is represented with normal-size yellow dots.}
 \end{figure}
 Based on \Cref{prop:poset-reldb}, we provide an illustration of the ordered set
 of "relational databases" in \Cref{fig:poset-reldb}. Notice that, since the semantics
-of "conjunctive queries" is closed under "homomorphisms", they are represented by an upper-closed set. Moreover, this set has a unique minimum, corresponding to its "canonical database".
+of "conjunctive queries" is closed under "homomorphisms", they are represented by an upper-closed set. Moreover, this set has a unique minimum, corresponding to its "canonical database@@cq".
 Notice how this representation naturally represents the concept of "duality":
 \begin{itemize}
 	\item points of the poset ("ie" "relational databases") are in natural
 		bijection with upper-closed set that admit a minimum ("ie" "conjunctive queries");
 	\item a "conjunctive query" is "contained" in another "iff"
-		the "canonical database" of the first is below that of the second
+		the "canonical database@@cq" of the first is below that of the second
 		in \Cref{fig:poset-reldb}.
 \end{itemize}
 
@@ -657,7 +657,7 @@ Notice how this representation naturally represents the concept of "duality":
 		A more abstract view of the poset of "relational databases":
 		we represent two "conjunctive queries" $\gamma$ (in red) and $\delta$ (in blue).
 		The semantics of each query is represented by a filled diamond,
-		and its "canonical database" by a large dot.
+		and its "canonical database@@cq" by a large dot.
 	}
 \end{marginfigure}
 For the sake of simplicity---and compilation time of this document!---,
@@ -849,8 +849,8 @@ which outputs all elements with both an outgoing $a$-edge and an outgoing $b$-ed
 but justified by its universal property.}
 
 \begin{fact}
-	The "canonical database" of the "disjoint conjunction"
-	equals the "disjoint union" of the "canonical databases".
+	The "canonical database@@cq" of the "disjoint conjunction"
+	equals the "disjoint union" of the "canonical database@@cqs@@cq".
 	By "duality", it follows that
 	the "disjoint conjunction" is the greatest lower bound
 	of two "CQs".%
@@ -869,7 +869,7 @@ acts as the best approximation of it.
 \begin{definition}
 	We define the \AP""weak union"" \AP$\intro*\weakunion$ of two "CQs"
 	with the same number of "output variables"
-	as the "canonical CQ" of the "Cartesian produt" of their "canonical databases".
+	as the "canonical CQ" of the "Cartesian produt" of their "canonical database@@cqs@@cq".
 \end{definition}
 
 By construction, it is their greatest upper bound,
@@ -957,7 +957,7 @@ and so in fact we obtain two lattices for every possible arity/tuple size.
 		\AP\label{tab:distributive-lattices}
 		The distributive lattices of "conjunctive queries" and "relational databases".
 		By "duality", one can go from one lattice to the \emph{opposite} of the other
-		by taking "canonical databases" or "canonical conjunctive queries".}
+		by taking "canonical database@@cqs@@cq" or "canonical conjunctive queries".}
 \end{table}
 
 Amongst bounded distributive lattices, the better behaved are
@@ -1027,7 +1027,7 @@ form of Currying, in the sense that
 \]
 for any "CQs" $\gamma(\bar x)$ and $\delta(\bar y)$
 and any "relational database" $\tup{\?A, \bar a}$,
-where $\tup{\?G, \bar x}$ denotes the "canonical database" of $\gamma(\bar x)$.
+where $\tup{\?G, \bar x}$ denotes the "canonical database@@cq" of $\gamma(\bar x)$.
 Similarly, as expected, we have
 \[
 	\gamma(\bar x) \disconj (\gamma(\bar x) \impH \delta(\bar y))
@@ -1055,7 +1055,7 @@ obtained by removing variable and/or atoms from $\gamma$:
 to ensure that we still obtain a "CQ" over $\sigma$, "output variables" 
 cannot be removed.
 In terms of "duality", this amounts to taking the "canonical conjunctive query" of
-a "substructure" of the "canonical database".%
+a "substructure" of the "canonical database@@cq".%
 \footnote{Careful: if $\gamma'$ is a subquery of $\gamma$, then $\gamma \contained \gamma'$!
 The fewer constraints there is, the easier it is to satisfy them…}
 We then say that a class $\+C$ of "conjunctive queries" over $\sigma$ is ""monotone@@classCQ""
@@ -1076,7 +1076,7 @@ Typical examples of "monotone classes of CQs" include:
 \end{itemize}
 
 We define the ""core@@CQ"" of a "conjunctive query", still denoted by $\intro*\coreCQ{-}$,
-to be the "canonical conjunctive query" of the "core" of its "canonical database".
+to be the "canonical conjunctive query" of the "core" of its "canonical database@@cq".
 \begin{proposition}
 	\AP\label{prop:minimization-CQ}
 	Let $\gamma(\bar x)$ be a "conjunctive query" and $\+C$ be
@@ -1392,7 +1392,7 @@ instead of asking that every edge $\{u,v\}$ is contained in some "bag",
 we required that for every "hyperedge" $\tup{x_1,\dotsc,x_k}$,
 there exists a "bag" than contains all $x_i$'s.
 The \reintro{tree-width} of a "CQ" is naturally defined as
-the "tree-width" of its "canonical database".
+the "tree-width" of its "canonical database@@cq".
 The "undirected graphs" of "tree-width" at most $1$ are exactly
 the forests, "ie" the "disjoint unions" of trees.
 On the other hand, the "graph@@dir" of \Cref{fig:ex-tree-dec} has "tree-width" $2$.
@@ -1434,7 +1434,7 @@ a "tree decomposition".
 	to decide if $\tup{\?D, \bar d} \FOmodels \gamma(\bar x)$.
 	"Wlog", using Bodlaender's algorithm (\Cref{prop:bodlaender}),
 	we assume that we also have a "tree decomposition" $\tup{\?T,\bagmap}$
-	of the "canonical database" $\tup{\?G, \bar x}$ of $\gamma(\bar x)$.
+	of the "canonical database@@cq" $\tup{\?G, \bar x}$ of $\gamma(\bar x)$.
 
 	We do a bottom-up algorithm on the tree $\?T$,
 	which maintains a set $\+H$ of partial "homomorphisms" from
@@ -1549,8 +1549,9 @@ They proved that this class could actually be evaluated in polynomial time
 Remarkably, Grohe then proved the converse implication: these 
 are the only classes of CQs that are tractable!
 \begin{proposition}[""Grohe's theorem"" {\cite[Theorem~1.1]{Grohe2007ComplexityHomomorphism}}]
+	Let $\sigma$ be a fixed "signature".
 	Assuming that "W[1]" $\neq$ "FPT", for any recursively enumerable
-	class of "CQs", the following are equivalent:
+	class of "CQs" over $\sigma$, the following are equivalent:
 	\begin{enumerate}
 		\item there exists $k\in\N$ "st" the "tree-width" of the "cores@@cq"
 			of the queries in the class is bounded by $k$;
@@ -1574,6 +1575,9 @@ one can find an "query" in the class whose "core"
 contains an arbitrarily large "grid". In turn, the clique problem,
 which is "W[1]"-hard, is then reduced to the evaluation problem
 for these "queries" with big grids.
+
+"Grohe's theorem" deals with fixed "signatures": it was later generalized \cite[Theorem~1]{ChenGottlobLanzingerPichler2020Semantic} for characterizing "FPT" "evaluation" when the "signature" is also part. This is done by replacing the notion of "tree-width" with 
+that of ``submodular width'', introduced by Marx in \cite{Marx13Tractable}.
 
 \paragraph{Bounded Path-Width.}
 We now focus on "path-width", which is a parameter upper-bounded
@@ -1817,7 +1821,7 @@ built out of $\exists$, $\land$ and $\lor$.
 	All the intuitions are provided in \Cref{fig:ucq-equiv-cq}.
 	
 	\proofcase{(1) $\Rightarrow$ (2).} If $\Gamma$ is "semantically equivalent"
-	to a "CQ" $\delta$, then the "canonical database" $\?D$ of $\delta$ is
+	to a "CQ" $\delta$, then the "canonical database@@cq" $\?D$ of $\delta$ is
 	the unique minimal element in the semantics of $\Gamma$.
 
 	\proofcase{(2) $\Rightarrow$ (3).} If the "semantics" of $\Gamma$
@@ -1855,7 +1859,7 @@ built out of $\exists$, $\land$ and $\lor$.
 	The right-to-left implication is trivial.
 	For the converse one, assume that $\Gamma \contained \Delta$,
 	and let $\gamma$ be a "disjunct" of $\Gamma$.
-	Letting $\?G$ be its "canonical database", we have by "duality" that
+	Letting $\?G$ be its "canonical database@@cq", we have by "duality" that
 	$\?G \FOmodels \Gamma$
 	and since $\Gamma \contained \Delta$, it follows that $\?G \FOmodels \Delta$,
 	and hence $\?G \FOmodels \delta$ for some "disjunct" $\delta \in \Delta$,

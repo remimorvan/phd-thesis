@@ -1,6 +1,62 @@
 \section{\AP{}Preliminaries}
 \label{sec:prelim}
 
+\paragraph*{Some intuitions on maximal under-approximations}
+Given a "conjunctive query" $\gamma$,
+the union of all "conjunctive queries"
+that are "contained" in $\gamma$ is "semantically equivalent" to the union
+$\bigvee \{ \gamma' \mid \gamma \surj \gamma' \}$. Naturally, this statement borders on the trivial since $\gamma'$ belongs to this union. It becomes interesting when we add a restriction:
+given a class $\class$ of "CQs" (to which $\gamma$ may not belong) closed under "subqueries", then $\Gamma' \defeq \bigvee \{ \gamma' \in \class \mid \gamma \surj \gamma' \}$ is the maximal under-approximations
+of $\gamma$ by finite unions of "conjunctive queries" of $\class$, in the following sense:
+\begin{enumerate}[label=\roman*.]
+	\item (finite) $\Gamma'$ is a finite union of "CQs" of $\class$,
+	\item (under-approximation) $\Gamma' \contained \gamma$, and
+	\item (maximality) for any finite union $\Delta$ of "CQs" of $\class$, if $\Delta \contained \gamma$, then $\Delta \contained \Gamma'$.
+\end{enumerate}
+
+\begin{proof}
+Only the last point is non-trivial, and follows from the fact that if
+$\Delta \contained \gamma$, then for each $\delta \in \Delta$, $\delta \contained \gamma$,
+so there is a "homomorphism" $f\colon \gamma \to \delta$. The image $\delta'$
+of $f$ is a "subquery" of $\delta$, and $\+C$ is closed under "subqueries",
+so it belongs to $\+C$, and hence to $\Gamma'$. Since there is a trivial homomorphism
+from $\delta'$ to $\delta$, we moreover have that $\delta \contained \delta'$.
+Hence, for each "CQ" $\delta \in \Delta$, there is a CQ $\delta' \in \Gamma'$ such
+that $\delta \contained \delta'$, and hence $\Delta \contained \Gamma'$.
+\end{proof}
+
+As a consequence, we deduce that for each $k \geq 1$,
+the "maximal under-approximation" of a "CQ" by
+a finite union of "CQs" of "tree-width" at most $k$ is computable, and hence
+we can effectively decide if some "CQ" is "equivalent" to a query of "tree-width" at
+most $k$ by testing the equivalence with this maximal under-approximation.
+For more details on approximations of "CQs", see \cite{BarceloLibkinRomero2014Efficient}.
+Note that interestingly, changing $\Gamma'$ from
+$\bigvee \{ \gamma' \in \class \mid \gamma \surj \gamma' \}$
+to $\bigvee \{ \gamma' \in \class \mid \gamma' \contained \gamma \}$
+preserves both under-approximation and maximality, but $\Gamma'$ is now an infinite
+union of "CQs" of $\+C$.
+
+Unfortunately, these results cannot be straightforwardly extended to "conjunctive regular
+path queries" since the previous proof implicitly relied on two points:
+\begin{enumerate}
+	\item the equivalence between the
+	"containment" $\gamma' \contained \gamma$ and the existence of a "homomorphism"
+	$\gamma \homto \gamma'$, and
+	\item the possibility to restrict $\gamma'$ to its image $\gamma \homto \gamma'$ while 
+	obtaining a semantically bigger query.
+\end{enumerate}
+These two crucial ingredients is what allows us to build a finite set $\Gamma'$ from $\gamma$.
+For "CRPQs", the second point still holds, but not the first one.
+For instance, the "CQ" $\gamma(x,y) = x \atom{a} z \atom{b} y$ is
+contained in (in fact "equivalent" to) the "CRPQ" $\gamma'(x,y) = x \atom{ab} y$,
+but there is no "homomorphism" from $\gamma'(x,y)$ to $\gamma(x,y)$.
+Our main result shows that to find "maximal under-approximations" of "C2RPQs",
+it suffices to take "homomorphic images" of so-called ``"refinements"'' of $\gamma$,
+instead of "homomorphic images" of $\gamma$ itself. The next paragraphs are devoted to
+introducing "refinements" and tools related to them.
+
+\paragraph*{Refinements and Tree-Width.}
 Our approach to proving \Cref{thm:decidability-semtw,thm:closure-under-sublanguages}
 and the "Key Lemma" heavily rely on "refinements". One crucial property
 that these objects satisfy is that they preserve "tree-width" $k$, unless $k=1$,
