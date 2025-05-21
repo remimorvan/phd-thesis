@@ -32,7 +32,6 @@
  | core
  | $\sigma $-core
  | cores
-%  | cores@cq
 
 % ---
 % Homomorphism problem
