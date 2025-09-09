@@ -16,10 +16,10 @@
 
 \paragraph*{Notations.}
 We try to use notations that syntactically reflect their type:
-for instance, given a set $X$, we use Roman lowercases ($x,y,z,\dotsc$)
-to denote elements of $X$, Roman uppercases for its subsets ($A, B, C, \dotsc$),
+for instance, given a set $X$, we use Roman lowercase letters ($x,y,z,\dotsc$)
+to denote elements of $X$, Roman uppercase letters for its subsets ($A, B, C, \dotsc$),
 and cursive letters ($\+X, \dotsc$) for sets of subsets of $X$.
-Functions are denoted by $f, g, h$, etc. and relations by
+Functions are denoted by $f, g, h$, etc., and relations by
 uppercase cursive letters ($\+R, \+S, \dotsc$).
 
 Tuples $\tup{x_1,\dotsc,x_k}$ are sometimes denoted by $\bar x$.
@@ -29,7 +29,7 @@ On the other hand, Greek letters are used to either denote queries ($\gamma, \de
 formulas ($\phi, \chi, \psi, \dotsc$) or monoid morphisms ($\phi, \chi, \psi, \eta$). When possible, we try to
 use the letter to recall the semantics of the object: for instance in
 \Cref{ch:semantic-tree-width-CRPQ}, $\gamma$ will be used to denote a base query,
-$\alpha$ for one of its "\textbf{a}pproximation@approximation",
+$\alpha$ for one of its "\textbf{a}pproximations@approximations",
 $\rho$ for a "\textbf{r}efinements@refinement" and
 $\chi$ for an "e\textbf{x}pansion@expansion".
 We reserve boldface letters for `complex objects' ("eg"
@@ -84,7 +84,7 @@ When moreover $X = Y$, we say that it is:
 	\itemAP ""reflexive@@rel"" when $\tup{x,x} \in \+R$ for all $x$;
 	\itemAP ""symmetric@@rel"" when $\tup{x,y} \in \+R$ "iff" $\tup{y,x} \in \+R$
 		for all $x,y$;
-	\itemAP transitive when $\tup{x,y} \in \+R$ and $\tup{y,z} \in \+R$
+	\itemAP ""transitive@@rel"" when $\tup{x,y} \in \+R$ and $\tup{y,z} \in \+R$
 		imply $\tup{x,z} \in \+R$
 		for all $x,y,z$.
 \end{itemize}
@@ -184,7 +184,7 @@ The \AP""disjoint union"" of two "structures" over a
 "purely relational signature" 
 is obtained by taking the disjoint union of their domain and of
 their "predicate interpretations", and is denoted by \AP$\intro*\disunion$.
-Over other "signatures", we same apply construction but then identify the constants
+Over other "signatures", we apply the same construction but then identify the constants
 in both structures.%
 \footnote{Hence this union is not entirely disjoint, however we keep the name
 for uniformity. As we will see in \Cref{sec:prelim-db-poset-cq}, this construction
@@ -284,10 +284,10 @@ The \AP""distance@@struct"" between two vertices of a "$\sigma$-structure"
 is defined as half of their distance in the "incidence graph".%
 \footnote{By construction the "incidence graph" is bipartite and hence
 the distance between two vertices of the "structure" is even.}
-The \AP""diameter"" of a "structure" is the maximum over $u$
-of the minimum over $v$ of the "distance@@struct" between vertices $u$ and $v$.
+The \AP""diameter"" of a "structure" is the maximum over $u$ and $v$
+of the "distance@@struct" between vertices $u$ and $v$.
 
-The ball \AP$\intro*\ball{\?A}{a}{m}$ centred at vertex $a\in A$ and of radium $r\in\N$ of
+The ball \AP$\intro*\ball{\?A}{a}{m}$ centred at vertex $a\in A$ and of radius $r\in\N$ of
 a "$\sigma$-structure" $\?A$ is the "substructure" of $\?A$ induced by
 all vertices at "distance@@struct" at most $r$.
 A "structure" is said to be \AP""locally finite@@structure""
@@ -361,12 +361,7 @@ for any tuple $\tup{a'_1,\dotsc,a'_k} \in A^k$ "st" $a_i \sim a'_i$ for each $i\
 then $\tup{a'_1,\dotsc,a'_k} \in \+R(\?A)$.
 The \AP""quotient structure"" defined by a "congruence@@struct" $\sim$
 on a "structure" $\?A$ has the equivalence classes of $\sim$ as its domain,
-and natural "interpretation@@predicates" of the "predicates" and constants.
-
-Given a "homomorphism" $f\colon \?A \to \?B$,
-the \AP""congruence induced"" by $f$, and denoted by $\intro*\ker{f}$
-is defined by $a \ker{f} a'$ "iff" $f(a) = f(a')$ for all $a, a' \in A$.
-It is routine to check that it is indeed a "congruence@@struct" on $\?A$.
+and the natural "interpretation@@predicates" of the "predicates" and constants.
 
 We will often implicitly use Noether's first isomorphism theorem:
 the "substructure" of $\?B$ "induced@@substructure" by the image $f[A]$
@@ -381,7 +376,9 @@ A retraction of $\?A$ is a "substructure" $\?A'$ of $\?A$ together with
 a "homomorphism" from $\?A$ to $\?A'$ with the property that any vertex of $A'$
 is sent on itself.
 \begin{proposition}
-	Any "finite $\sigma$-structure" $\?A$ admits a unique minimal (in the number of vertices) retraction.
+	Any "finite $\sigma$-structure" $\?A$ admits a unique%
+	\footnote{Throughout this thesis, by ``unique'' we mean ``unique up to isomorphism''.}
+	minimal---in the number of vertices---retraction.
 \end{proposition}
 
 \begin{figure}
@@ -438,13 +435,13 @@ is sent on itself.
 	$\restr{f_2}{B_1}\colon \?B_1 \homto \?B_2$. By minimality of $\?B_2$, this "homomorphism"
 	must be surjective.
 	By symmetry, $\restr{f_1}{B_2}\colon \?B_2 \homto \?B_1$ is also a surjective "homomorphism".
-	By composition, we obtain surjective "homomorphism" from $\?B_1$ to itself and from $\?B_2$ to itself. By finiteness, these surjective "homomorphisms" must actually be "automorphisms".
+	By composition, we obtain a surjective "homomorphism" from $\?B_1$ to itself and from $\?B_2$ to itself. By finiteness, these surjective "homomorphisms" must actually be "automorphisms".
 	Hence, it follows that $\restr{f_2}{B_1}$ and $\restr{f_1}{B_2}$ are "isomorphisms",
 	and hence $\?B_1$ is "isomorphic" to~$\?B_2$.
 \end{proof}
 
 This unique minimal retraction of $\?A$ is called \AP""core"" of $\?A$ and
-is denoted by \AP$\intro*\core{\?B}$.
+is denoted by \AP$\intro*\core{\?A}$.
 By construction, the "core" of $\?A$ is a "substructure" of $\?A$ to which it is "homomorphically equivalent", see \Cref{fig:prelim-core}.
 In general, a \reintro{core} is any "$\sigma$-structure" such that is the "core" of
 some "structure"---or equivalently of itself.
@@ -470,7 +467,7 @@ some "structure"---or equivalently of itself.
 \begin{proposition}
 	\AP\label{prop:equiv-core-isomorphic}
 	Two "finite structures" are "homomorphically equivalent" if,
-	and only if, their "core" are "isomorphic".
+	and only if, their "cores" are "isomorphic".
 \end{proposition}
 
 \begin{proof}
@@ -517,7 +514,7 @@ A \AP""first-order formula"" is any formula generated by the grammar
 	\phi \mathrel{{:}{:}{=}} \+R(x_1,\dotsc,x_k) \mid \neg \phi \mid \phi \lor \phi \mid \phi \land \phi
 	\mid \exists x.\, \phi \mid \forall x.\, \phi,
 \]
-where the $x_i$'s ranges over the set of variables and $\+R_{(k)}$ over the "signature" $\sigma$.
+where the $x_i$'s range over the set of variables and $\+R_{(k)}$ over the "signature" $\sigma$.
 
 \begin{hypothesis}
 We assume that, even when not mentioned explicitly, the "signature" contains
@@ -527,7 +524,7 @@ as equality.
 
 A \AP""first-order sentence"" is any "first-order formula" with no free variable.
 Given a "first-order formula" $\phi$ with free variables $\bar x$, denoted by $\phi(\bar x)$,
-and a "pointed $\sigma$-structure" $\tup{\?A,\bar a}$ where the arity of $\bar a$ coincide with
+and a "pointed $\sigma$-structure" $\tup{\?A,\bar a}$ where the arity of $\bar a$ coincides with
 the one of $\bar x$, we denote by $\tup{\?A,\bar a} \intro*\FOmodels \phi(\bar x)$
 the fact that $\tup{\?A,\bar a}$ is a model of $\phi(\bar x)$: this can be defined by
 a trivial induction on the formula, by interpreting:
@@ -599,7 +596,7 @@ and hence also "existential-positive@@formula".
 A relation over a "$\sigma$-structure" $\?A$ is said to be
 \AP""first-order definable"" when it can be written as
 $\semFO{\phi(\bar x)}{\?A}$ for some "first-order formula" $\phi(\bar x)$.
-Moreover, a class of "$\sigma$-structures" is said to be \reintro{first-order definable},
+Moreover, a class of "$\sigma$-structures" is said to be \reintro{first-order definable}
 when there exists a "first-order sentence" $\phi$ "st" the class of "structures" $\?A$
 "st" $\?A \FOmodels \phi$ is precisely the class itself.
 
@@ -611,6 +608,7 @@ by also allowing quantifications over subsets of the structure
 
 \subsection{Automata Theory}
 
+We assume the reader to be familiar with the basic notions of automata theory.
 Given a set $X$, we denote by $X^*$ and $X^+$ the set of finite words
 over $X$, and of non-empty finite words over $X$, respectively.
 The empty word is denoted by $\varepsilon$.
@@ -622,7 +620,7 @@ the fact that there is an $a$-labelled transition from $p$ to $q$.
 A \AP""regular language"" is any language---"ie" subset of $\Sigma^*$ for some alphabet $\Sigma$---that
 can be recognized by a finite-state automaton.
 
-The signature of words over $\Sigma$ has a binary "predicate" $\preceq$
+The signature of words over an alphabet $\Sigma$ has a binary "predicate" $\preceq$
 as well as a unary predicate $a$ for each $a\in \Sigma$.
 A word $w_0 \cdots w_{n-1}$ of length $n$
 can be seen as a "structure" over the signature of $\Sigma$-words
@@ -652,10 +650,9 @@ $\phi\colon \Sigma^* \to M$ "st" $L = \phi^{-1}[\Acc]$.
 Another way of thinking of the pair $\tup{\phi, M}$ is as follows:
 a deterministic complete semiautomaton can be described as a set $Q$ together
 with a monoid right action of $\Sigma^*$ over $Q$. On the other hand,
-a surjective monoid morphism $\phi\colon \Sigma^* \surj M$ consists of both a monoid
+any monoid morphism $\phi\colon \Sigma^* \to M$ yields both a monoid
 left action and a monoid right action of $\Sigma^*$ over a set $M$,
-with the property that $u \cdot (x \cdot v) = (u \cdot x) \cdot v$ for all 
-$x\in M$ and $u,v \in \Sigma^*$.
+with the properties that $u \cdot (x \cdot v) = (u \cdot x) \cdot v$.
 In other words, while automata states represent some information on the word
 that is updatable by appending letters on the right, monoid elements represent
 an information on the word that is updatable both by appending letters on the left or the right. 
@@ -676,7 +673,8 @@ are used interchangeably in the literature.}
 For more details on these,
 see \cite[\S XI.1, p.~189]{Pin2022MathematicalFoundations} under the name ``variety''.
 On the other hand, a ""$\ast$-pseudovariety of regular languages""
-consists of \emph{stream}, "ie" a function $\+V\colon \Sigma \mapsto \+V_{\Sigma}$ from alphabets to languages over this alphabet, with the following properties:%
+consists of \emph{stream}, "ie" a function $\+V$ from alphabets to languages over this alphabet---for which the image of an alphabet $\Sigma$ is denoted by
+$\+V_{\Sigma}$ rather than $\+V(\Sigma)$---, and with the following properties:%
 \footnote{See also \cite[\S XIII.3, p.~226]{Pin2022MathematicalFoundations}.}
 \begin{itemize}
 	\item it is closed under Boolean operators;
@@ -693,7 +691,7 @@ A seminal result by Eilenberg shows that, mapping a "pseudovariety of monoids" $
 to the stream associating to $\Sigma$ the set of languages over $\Sigma$ that are recognized
 by a "monoid" from $\symbb{V}$ yields a "$*$-pseudovariety of regular languages",
 and moreover, this operation is a bijection!
-This result generalizes Schützenberger's infamous theorem, showing that
+This result generalizes Schützenberger's famous theorem, showing that
 star-free languages are exactly those recognized by aperiodic monoids:
 for this reason, this bijection is called the \AP""Eilenberg-Schützenberger correspondence@@lang"".%
 \footnote{See \cite[Theorem XIII.4.10, p.~228]{Pin2022MathematicalFoundations} for more details.}
@@ -771,8 +769,9 @@ will all point to their respective entry in the "Complexity Zoo":
 \end{itemize}
 
 \paragraph*{Computability Classes.}
-We now turn to undecidable classes: all hardness result are considered up to
-many-one reductions, "ie" instance-preserving computable functions.
+We now turn to undecidable classes: all hardness results are considered up to
+many-one reductions, "ie" computable functions preserving both membership and non-membership
+to the problem.
 We denote by \AP""RE"" and ""coRE"" the classes of recursively enumerable
 and co-recursively enumerable problems, respectively. 
 The next levels $\Sigma^0_n$ and $\Pi^0_n$ of the \AP""arithmetical hierarchy"" can be defined 
@@ -799,7 +798,7 @@ is only in "L" by Reingold's theorem, see "eg"
 In fact, the problem is "L"-complete:
 Etessami even proved that the problem
 was "L"-hard under "first-order reductions" even if the "graph@@dir" is restricted to
-be a "directed path@$k$-path" \cite[Theorem 3.2]{Etessami1997CountingLogSpace}!
+be a "directed path@$k$-path" \cite[Theorem 4.2]{Etessami1997CountingLogSpace}!
 
 \subsection{Parametrized Complexity}
 
@@ -842,9 +841,9 @@ is a typical example of algorithm that is "XP" but not "FPT".
 
 The class \AP""W1"", which we will not formally define here,
 can roughly be seen as the equivalent of "NP". See \cite{CyganEtal2015ParametrizedBook}
-for a formal definitions.
+for a formal definition.
 Some problems in "XP" belong to "FPT", and are considered to be tractable,
-"ie" efficiently solvable in practical. On the other hand, others problems,
+"ie" efficiently solvable in practice. On the other hand, others problems,
 such as the $k$-clique problem, when parameterized by $k$,
-are in "XP" but are "W1"-hard, and hence conjectured not be in "FPT".
+are in "XP" but are "W1"-hard, and hence conjectured not to be in "FPT".
 We think of these problems as non-tractable.
