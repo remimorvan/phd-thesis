@@ -2,7 +2,7 @@
 \label{sec:semantic-path-width}
 % \diego{``Deciding Boundedness'' n'est pas ce qu'on fait...}
 
-In this section, we extend our results to "path-width". Our motivation lies in the fact that "UC2RPQs" of bounded "semantic path-width" admit a "paraNL"\footnote{This is the parametrized counterpart of non-deterministic logspace.} algorithm for the 
+In this section, we extend our results to "path-width". Our motivation lies in the fact that "UC2RPQs" of bounded "semantic path-width" admit a "paraNL"\footnote{This is the parameterized counterpart of non-deterministic logspace.} algorithm for the 
 "evaluation problem"---see \Cref{thm:evaluation-bounded-pathwidth}---to be compared with "FPT" for bounded "semantic tree-width".
 
 \subsection{\AP{}Path-Width of Queries}
@@ -30,7 +30,7 @@ are decidable (\Cref{thm:decidability-sempw}), and then
 after showing that evaluation of "UC2RPQs" of bounded "path-width" is "NL" (\Cref{lemma:evaluation-bounded-pathwidth}) we deduce that for the "evaluation problem" for
 "UC2RPQs" of bounded "semantic path-width" (in particular, this captures the
 case of "UCRPQs" of bounded "one-way semantic path-width") is in
-"para-NL" when parametrized in the size of the query (\Cref{thm:evaluation-bounded-pathwidth}).
+"para-NL" when parameterized in the size of the query (\Cref{thm:evaluation-bounded-pathwidth}).
 
 \subsection{\AP{}Deciding Bounded Semantic Path-Width}
 
@@ -237,7 +237,7 @@ name ``uniform "NL" + advice''. It was renamed "para-NL" in
 instead of either of those definitions, we use the characterization of "para-NL"
 proven in \cite[Theorem 4, p. 296]{FlumGrohe2003Describing}.
 
-We define \AP""para-NL"" as the class of parametrized languages $L \subseteq \Sigma^* \times \N$
+We define \AP""para-NL"" as the class of parameterized languages $L \subseteq \Sigma^* \times \N$
 for which there is a "Turing machine" $\+M$ "st"
 \begin{center}\begin{tikzpicture}[>={Classical TikZ Rightarrow},font=\normalsize]
 	\node (first) {%
@@ -258,7 +258,7 @@ and, moreover, $\+M$ runs in non-deterministic space
 $f(\textcolor{cBlue}{k}) + \+O(\log(|\textcolor{cRed}{x}|))$,
 where $f\colon \N \to \N$ is a computable function.
 A typical example of "para-NL" problem is the model-checking problem for first-order logic on
-finite structures, when parametrized by the maximum degree of the structure
+finite structures, when parameterized by the maximum degree of the structure
 \cite[Example 6]{FlumGrohe2003Describing}. 
 
 To show \Cref{thm:evaluation-bounded-pathwidth}, we first focus on the evaluation of queries of bounded "path-width".

@@ -148,7 +148,7 @@ and (2) there exists only finitely many "predicates" $\+R_{(k)} \in \sigma$
 "st" $\+R_{(k)}(\?A)$ is non-empty.
 
 A \AP""substructure"" of a "$\sigma$-structure" $\?A$ is another
-"$\sigma$-structure" $\?A'$ "st":
+"$\sigma$-structure" $\?A'$ such that:
 \begin{itemize}
 	\item the domain $A'$ of $\?A'$ is a subset of $A$,
 	\item each "interpretation@@predicate" of a "predicate" in $\?A'$ 
@@ -803,7 +803,7 @@ be a "directed path@$k$-path" \cite[Theorem 3.2]{Etessami1997CountingLogSpace}!
 
 \subsection{Parametrized Complexity}
 
-A parametrized language is any subset $L \subseteq \Sigma^* \times \N$:
+A parameterized language is any subset $L \subseteq \Sigma^* \times \N$:
 the first component represents an instance, and the second a parameter.
 We define \AP""FPT"" as the class of \reintro{fixed-parameter tractable}
 problems, for which there is a "Turing machine" $\+M$ "st"
@@ -845,6 +845,6 @@ can roughly be seen as the equivalent of "NP". See \cite{CyganEtal2015Parametriz
 for a formal definitions.
 Some problems in "XP" belong to "FPT", and are considered to be tractable,
 "ie" efficiently solvable in practical. On the other hand, others problems,
-such as the $k$-clique problem, when parametrized by $k$,
+such as the $k$-clique problem, when parameterized by $k$,
 are in "XP" but are "W1"-hard, and hence conjectured not be in "FPT".
 We think of these problems as non-tractable.

@@ -103,10 +103,12 @@ provides a flexible framework to encode problems.
 	Observe that, by definition of the relations $\+R_j$,
 	given a clause $\psi$ containing variables $x,y,z$, 
 	$f$ is a "homomorphism" from $\?F_\psi$ to $\?B$ "iff"
-	$f$, seen as a valuation, satisfies $\psi$.\footnote{For instance,
+	$f$, seen as a valuation,%
+	\footnote{For instance,
 	if all variables are positive, then all valuations except the one putting
 	all variables to false satisfy the formula. This is why $\+R_0$ is defined
 	on $\?B$ as $\set{0,1}^3\smallsetminus \set{\tup{0,0,0}}$.}
+	satisfies $\psi$.
 	By taking conjunction, the conclusion follows: "homomorphisms" from
 	$\?F_\phi$ to $\?B$ exactly correspond to valuations satisfying $\phi$.
 	In particular, there is a "homomorphism" from $\?F_\phi$ to $\?B$ "iff"
@@ -178,7 +180,7 @@ A decade later, Hell and Ne\v{s}et\v{r}il \cite{HellNesetril1990ComplexityColori
 proved a similar result for "undirected graphs".
 Moreover, in both cases, these dichotomies are effective: given a structure, we can decide if
 its "homomorphism problem" is in "P" or is "NP"-complete.
-These results, together with the importance of \emph{constraint satisfaction} in computer science
+These results, together with the importance of \emph{constraint satisfaction} in computer science,
 led Feder and Vardi at the end of the 1990s
 to state their celebrated \emph{dichotomy conjecture}: ``for any "finite structure" $\?B$,
 the "homomorphism problem" with "target structure" $\?B$ is either "P"
@@ -212,8 +214,8 @@ The second part of this thesis is dedicated to pushing these results to their li
 The "structures" handled by the "homomorphism problem", like most
 problems in computer science, are usually assumed to be "finite@@struct".
 We discuss in this section the generalization of the problem to
-infinite structures. This motivated by two facts: not only infinite structures
-naturally arise as from computational models---the runs of a machine
+infinite structures. This is motivated by two facts: not only do infinite structures
+naturally arise from computational models---the runs of a machine
 usually form an infinite "structure"---, they can also model `mathematical universes'.
 
 Von Neumann would have said ``It's all over''%
@@ -221,9 +223,9 @@ Von Neumann would have said ``It's all over''%
 \cite{2009Logicomix}, however this claim seems undocumented \cite{Mancosu2011Logicomix}.}
 after hearing Gödel expose his infamous "incompleteness theorem" in 1930:
 any \emph{effective} (recursively enumerable)
-consistent theory that is expressive enough to express the arithmetic
+consistent theory that is expressive enough to express arithmetic
 is incomplete---"ie" it contains statements that are neither valid (true in all models),
-nor unsatisfiable (false is all models).
+nor unsatisfiable (false in all models).
 In other words, there is no reasonable set of axioms
 to capture all mathematics: some statements must necessarily fall outside
 the scope of the theory.
@@ -302,7 +304,7 @@ not be understood, some of it restrictions might be axiomatized.
 In 1929, Presburger proved that a natural set of axioms for doing
 arithmetic with only addition is also both complete and decidable---the formulas
 that are valid in this theory exactly correspond to the sentences that are true on $\tup{\N,+}$.
-Around the same time, Tarski formalized Euclide's geometry as a first-order theory, and proved
+Around the same time, Tarski formalized Euclidean geometry as a first-order theory, and proved
 that is was complete and decidable, see \cite{TarskiGivant1999Geometry}.
 
 Hence, logic is not completely useless at capturing complex infinite structures!
@@ -389,7 +391,7 @@ This contrast leads to conjecture that "finite duality" represents the frontier 
 
 \begin{contribution}
 	We provide a dichotomy theorem for "automatic structures":
-	for any "finite structure" $\?B$, the "homomorphism problems" with "target structure" $\?B$
+	for any "finite structure" $\?B$, the "homomorphism problem" with "target structure" $\?B$
 	is either in "NL" or is undecidable. The same holds for "regular homomorphisms".
 	Moreover, in both cases, these two problems are decidable precisely when $\?B$ has "finite duality".
 \end{contribution}
@@ -398,9 +400,9 @@ Part of the proof, namely the `undecidability' part, are proven
 by generalizing Larose and Tesson's reduction, although proving that the
 `base problem' of the reduction is undecidable is non-trivial.
 For proving the decidability of "regular homomorphisms" when $\?B$ has finite duality,
-we provide two alternative proofs: a logical-one---which is quite abstract but somewhat short---and
+we provide two alternative proofs: a logical one---which is short but quite abstract---and
 a graph-theoretical one---the algorithm is much more concrete, but the proof of correctness is 
-quite long. This last proof actually provides new hindsights on an existing algorithm from the literature, called "hyperedge consistency algorithm@@finite".
+quite long. This last proof actually provides new hindsights on an existing algorithm from the literature, known as the "hyperedge consistency algorithm@@finite".
 
 Since the "configuration graph" of any "Turing machine" is an "automatic graph",
 it follows that this dichotomy theorem\footnote{See \Cref{thm:dichotomy-theorem-automatic-structures} for a formal statement.} can be understood
@@ -409,22 +411,24 @@ semantical property of a Turing machine is undecidable.
 Our dichotomy theorem hence implies the following result.
 
 \begin{contribution}
-	Any non-trivial---"ie" "non-first-order definable"---property on the "configuration graph"
+	Any non-trivial%
+	\footnote{``Non-trivial'' should here be understood as "non-first-order definable".}
+	property on the "configuration graph"
 	of a "Turing machine" is undecidable, provided that this property can be expressed
 	as a "homomorphism problem".
 \end{contribution}
 
 One of our motivations for studying this problem was actually originating
-in the "$\AUT$/$\REC$-separability problem", which takes as input two "automatic relations"---namely are binary relations over finite words described by "synchronous automata"---and asks if they can be
+in the "$\AUT$/$\REC$-separability problem", which takes as input two "automatic relations"---namely the binary relations over finite words described by "synchronous automata"---and asks if they can be
 "separated@@rel" by a "recognizable relation", "ie" a finite union $\bigcup_i K_i \times L_i$
 of Cartesian products of "regular languages". 
-We prove this problem to be equivalent to the one taking an "automatic graph" and asks
-if it has a finite "regular colouring", which amounts to testing
+We prove this problem to be equivalent to the one taking an "automatic graph" and asking
+whether it has a finite "regular colouring", which amounts to testing
 if there exists some $k\in\Np$ for which the graph admits a "regular homomorphism" to
 $\clique{k}$. We still don't know whether this problem is decidable, 
-even if the results of \Cref{ch:dichotomy-theorem} hints at its undecidability.
+even if the results of \Cref{ch:dichotomy-theorem} hint at its undecidability.
 Our undecidability result for "regular homomorphisms"
-actually yield, when translated back to the vocabulary of separability,
+actually yields, when translated back to the vocabulary of separability,
 that it is undecidable whether two "automatic relations" are "separable@@rel"
 by a "recognizable relation" that can be written as
 a finite union of $k$ Cartesian products, whenever $k \geq 2$ is \emph{fixed}.

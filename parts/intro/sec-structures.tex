@@ -2,7 +2,7 @@
 
 This thesis is devoted to studying variations of the "homomorphism problem",
 a central concept in theoretical computer science.
-Homomorphisms capture the idea of maps preserving relational information between mathematical structures.
+Homomorphisms capture the idea of maps preserving relational information from a mathematical structure to another.
 They arise naturally across a variety of domains: in logic, as the mechanism behind model-checking of "primitive-positive formulas"; in database theory, as the semantics of "conjunctive query" evaluation; and in "constraint satisfaction", as the formalization of whether a structure
 satisfies a given set of rules. This thesis approaches the "homomorphism problem" as a unifying framework, by emphasizing its complementary role in data querying and constraint solving.
 
@@ -24,8 +24,8 @@ forms the basis for the two-part division of this thesis.
 The simplest mathematical structure is perhaps that of a (directed) finite graph:
 it consists of a finite set $V$ of vertices (also called \emph{domain}),
 together with a set of "edges" $\+E \subseteq V \times V$.
-A "homomorphism" between two graphs is then a
-function $f$ between vertices that preserves
+Then, a "homomorphism" from a graph to another is a
+function $f$ between their vertices that preserves
 the "edges", in the sense that if $\tup{u,v}$ is an edge, then
 $\tup{f(u),f(v)}$ must also be an edge: we depict
 an example of graph "homomorphism" in \Cref{fig:example-graph-homomorphism}.
@@ -229,7 +229,7 @@ the "homomorphism problem" should rather be understood as a \emph{framework} or
 	$\?W_u$ with $\intInt{0,|u|}$ as its domain,
 	where $0$ is initial, $|u|$ is final, and
 	for each $i \in \intInt{1,|u|}$, there is an edge from $i-1$ to $i$
-	whose type is given by the $i$-th letter of $u$, see \Cref{fig:example-automaton-as-rel}..
+	whose type is given by the $i$-th letter of $u$, see \Cref{fig:example-automaton-as-rel}.
 	Then, there is a "homomorphism" from $\?W_u$ to $\?A$ if, and only if, 
 	the automaton $\?A$ accepts $u$.
 \end{example}
@@ -283,7 +283,7 @@ to $\?A$ exactly correspond to accepting runs of the automaton over $u$.
 		\node[vertex] at (0,0) (0) {};
 		\node[font=\tiny, right=2em of 5] {\textsf{movie\_id}};
 		\node[font=\tiny, right=2em of 4] {\textsf{title}};
-		\node[font=\tiny, right=2em of 3] {\textsf{length}};
+		\node[font=\tiny, right=2em of 3] {\textsf{duration}};
 		\node[font=\tiny, right=2em of 2] {\textsf{director}};
 		\node[font=\tiny, right=2em of 1] {\textsf{room\_id}};
 		\node[font=\tiny, right=2em of 0] {\textsf{time}};
@@ -357,7 +357,7 @@ is of a different nature than the reductions of \Cref{ex:auto-as-rel,ex:sql-as-h
 \end{marginfigure}
 \begin{example}[Sudoku grids]
 	\AP\label{ex:sudoku-as-hom}
-	We represent an empty sudoku grid as the "relational structure"
+	We represent an empty Sudoku grid as the "relational structure"
 	whose domain is $\intInt{1,9} \times \intInt{1,9}$---corresponding to coordinates in the grid---with
 	three kinds of binary "predicates": $\+R$, $\+C$ and $\+S$,
 	that describe when two coordinates are on the same row, column or 3$\ast$3-square, respectively.
@@ -375,15 +375,15 @@ is of a different nature than the reductions of \Cref{ex:auto-as-rel,ex:sql-as-h
 	Moreover, each unary relation $P_k$ ($k \in \intInt{1,9}$) is defined
 	to hold only on $\{i\}$.
 
-	Then, a prefilled grid $G$ can be completed if, and only if,
-	$\?S_G$ has a "homomorphism" to $\?T$.%
+	Then, a prefilled grid $G$ can be completed if, and only if,%
 	\footnote{In fact, for this example we could use only one binary predicate instead of three.
 	Note that this encoding is actually quite close
 	to graph colouring (\Cref{ex:graph-colouring-as-hom}) with an extra trick
 	to force some values. This trick---formally called "marked structure"---will
 	actually prove crucial in \Cref{ch:dichotomy-theorem}.}
+	$\?S_G$ has a "homomorphism" to $\?T$.
 	More precisely, "homomorphisms" $f\colon \?S_G \to \?T$ exactly correspond to
-	complete Sudoku grid that extend $G$, with $f(\tup{i,j})$ giving
+	complete Sudoku grids that extend $G$, with $f(\tup{i,j})$ giving
 	the number contained in cell $\tup{i,j}$.
 \end{example}
 
@@ -396,7 +396,7 @@ All three problems we presented can actually be seen as instances of model-check
 part of the input represents some \emph{data}---or \emph{model}---and part of it represents a
 \emph{"query@@sem"}---or \emph{logical question/specification}.
 However, as depicted in \Cref{tab:examples-encodings-in-hom}, 
-the encodings of these problems into "homomorphism problems" can either be of two types:
+the encodings of these problems into "homomorphism problems" can be of two types:
 \begin{itemize}
 	\item the \emph{"query@@sem"} is encoded in the "source structure",
 		and the \emph{data} in the "target structure": we denote
@@ -430,7 +430,7 @@ the encodings of these problems into "homomorphism problems" can either be of tw
 \end{table}
 
 The two situations are far from symmetric: in model-checking, the size of the
-data is usually much larger than query:
+data is usually much larger than the query:
 for instance, when analysing the documents in the \emph{Panama Papers} scandal,
 the data represented 2.9 TB, while the queries were a few lines long \cite{Neo4jPanama}.
 Hence, we often study problems where the query is fixed:

@@ -179,7 +179,7 @@ As a consequence of \Cref{cor:mua-exists-effective,prop:crpq-bound-tree-width-up
 \begin{restatable*}[FPT evaluation for bounded "semantic tree-width"]{cor}{fptEvalBoundedSemTreeWidth}
 	\AP\label{coro:fpt-eval-bounded-semtreewidth}
 	For each $k\geq 1$, the "evaluation problem" for "C2RPQs" of "semantic tree-width"
-	at most $k$ is fixed-parameter tractable---"FPT"---when parametrized in the size of
+	at most $k$ is fixed-parameter tractable---"FPT"---when parameterized in the size of
 	the query. More precisely on input $\langle \Gamma, G \rangle$,
 	the algorithm runs in time
 	$\+O(f(\size{\Gamma})\cdot |G|^{k+1} \cdot \log{|G|})$ on a Turing machine, where $f$ is a doubly-exponential function---or $\+O(f(\size{\Gamma})\cdot |G|^{k+1})$ under a RAM model.
@@ -254,7 +254,7 @@ In turn, this leads to an evaluation algorithm with a remarkably low complexity.
 \begin{restatable*}{theorem}{paraNLEvalBoundedSemPathWidth}
 	\AP\label{thm:evaluation-bounded-pathwidth}
 	For each $k \geq 1$, the "evaluation problem", restricted to "UC2RPQs" of
-	"semantic path-width" at most $k$ is in "para-NL" when parametrized in the size of the query.
+	"semantic path-width" at most $k$ is in "para-NL" when parameterized in the size of the query.
 	More precisely, the problem, on input $\langle \Gamma, G \rangle$, can be solved in
 	non-deterministic space $f(|\Gamma|) + \log(|G|)$, where $f$ is a single exponential
 	function.
