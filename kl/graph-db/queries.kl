@@ -69,6 +69,7 @@
  | union of conjunctive queries
  | unions of conjunctive queries
  | Unions of conjunctive regular path queries
+%  | unions of conjunctive regular path queries
 
 \knowledge{notion}
  | disjunct
