@@ -1833,7 +1833,12 @@ built out of $\exists$, $\land$ and $\lor$.
 We say that a "graph database" $\tup{\?G,\bar u}$ satisfying a ""semantical query"" $\gamma(\bar x)$
 is \AP""hom-minimal"" if for every other "graph database" $\tup{\?G',\bar v}$,
 if $\tup{\?G',\bar v}$ also satisfies $\gamma(\bar x)$ and
-if $\tup{\?G', \bar v} \homto \tup{\?G, \bar u}$ then $\tup{\?G', \bar v} \semequiv \tup{\?G, \bar u}$. Graphically, this literally corresponds to the minimal elements of a set in
+if $\tup{\?G', \bar v} \homto \tup{\?G, \bar u}$ then $\tup{\?G', \bar v} \semequiv \tup{\?G, \bar u}$.%
+\footnote{Recall that we defined $\semequiv$ only for queries, but the notion
+can be extended to "relational databases" by "duality@@CQ". In practice,
+$\tup{\?G', \bar v} \semequiv \tup{\?G, \bar u}$ holds "iff"
+they are "homomorphically equivalent".}
+Graphically, this literally corresponds to the minimal elements of a set in
 \Cref{fig:distributive-lattice-rel-db}.
 In the definition, the quantification over all ``$\tup{\?G',\bar v}$ that satisfy $\gamma(\bar x)$''
 can actually be replaced, for "UCQs", by a quantification over all "canonical databases".

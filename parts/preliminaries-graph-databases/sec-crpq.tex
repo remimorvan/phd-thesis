@@ -52,7 +52,7 @@ properties; in fact, even the full "first-order logic" cannot express such prope
 \end{proposition}
 
 \begin{proof}
-    Assume by contraction that this would be the case. Clearly, $\gamma_2(x,y)$
+    Assume by contradiction that this would be the case. Clearly, $\gamma_2(x,y)$
     is closed under "homomorphisms", and so by "Rossman's theorem",
     it would be equivalent to a "UCQ", say
     $\delta_1(x,y) \lor \dotsc \lor \delta_k(x,y)$.
@@ -92,7 +92,7 @@ properties; in fact, even the full "first-order logic" cannot express such prope
 
 Queries such as the one of \Cref{prop:fo-no-trans} do not arise
 over all kinds of databases: for instance, 
-transitive closures of tables---or of projections of table---
+transitive closures of tables---or of projections of tables---
 for \Cref{fig:relational-database-cinema} would not make any sense.
 On the other hand, it is a very natural construction
 for databases such as the ones of \Cref{fig:example-graph-database,fig:example-wikidata}.
@@ -114,14 +114,18 @@ We then naturally extend the language of "conjunctive queries"
 to allow for path navigation: this is done by allowing these queries
 to ask for the existence of a \emph{path} between two variables
 labelled by a given regular language. For instance,
-$x \atom{ (ab)^*} y$ asks that there is path from $x$
+$x \atom{ (ab)^*} y$ asks that there is a path from $x$
 to $y$ that alternates between $\atom{a}$ and $\atom{b}$ edges.
 
 \begin{definition}[CRPQ: syntax]
     A \AP""conjunctive regular path query"", or \reintro{CRPQ} for short,
     $\gamma(\bar x)$ over $\A$ consists
     of a set of triples $\tup{y,L,z}$ together with a tuple of variables $\bar x$,
-    where $L$ is a "regular language" over $\A$, and $y$ and $z$ are variables.
+    where $L$ is a "regular language" over $\A$, and $y$ and $z$ are variables.%
+    \footnote{In practice, $L$ is specified as a regular expression. For all results
+    of this thesis, however, we assume that it is represented as an NFA. This makes
+    little difference as both representations are equivalent up to a polynomial
+    blow-up.}
     We denote by \AP$x \intro*\atom{L} y$ the triple $\tup{x,L,y}$,
     called ""atom"". The set $\intro*\atoms{\gamma}$ of "atoms" is denoted conjunctively.
     We denote by $\vars{\gamma}$ the set of variables occurring in $\gamma$. As for
@@ -134,7 +138,7 @@ An example of "conjunctive regular path query" is
         \land z' \atom{\wrote} z 
         \land y \atom{({\advised})^*} z',
 \]
-which intuitively asks for, in a given "graph databases",
+which intuitively asks for, in a given "graph database",
 all pairs of people $\tup{x,y}$ such that
 \begin{itemize}
     \item $x$ has written some paper $z$, and some person $z'$ also wrote $z$,
@@ -207,16 +211,17 @@ queries, see \Cref{fig:prelim-db-crpq-as-struct}.
 \end{figure}
 "Evaluation maps" are, as \Cref{fig:prelim-db-evaluation-map} hints at,
 well-behaved "wrt" "homomorphisms": formally, if
-$f\colon \gamma(\bar x) \to \tup{\?H, \bar v}$,
+$f\colon \gamma(\bar x) \to \tup{\?H, \bar v}$ is an "evaluation map",
 and $g\colon \tup{\?H, \bar v} \to \tup{\?H', \bar v'}$ is a "homomorphism",
 then their composition $g\circ f\colon \gamma(\bar x) \to \tup{\?H', \bar v'}$ is still
 an "evaluation map".%
 \begin{fact}
+    \AP\label{fact:prelim-db-crpq-closed-under-hom}
     In particular, the semantics of "CRPQs" is
     "closed under homomorphisms".
 \end{fact}
-When $\gamma(\bar x)$ is a "CQ", an "evaluation maps" $\gamma(\bar x) \to \tup{\?H, \bar v}$
-exactly corresponds "homomorphisms" $\tup{\?G, \bar x} \to \tup{\?H, \bar v}$,
+When $\gamma(\bar x)$ is a "CQ", an "evaluation map" $\gamma(\bar x) \to \tup{\?H, \bar v}$
+exactly corresponds to "homomorphisms" $\tup{\?G, \bar x} \to \tup{\?H, \bar v}$,
 where $\tup{\?G, \bar x}$ denotes the "canonical database@@cq" of $\gamma(\bar x)$.%
 \footnote{Because of this, the terminology is sometimes abused in the literature, where "evaluations maps" 
 for "CRPQs" can be referred to as ``homomorphisms''…
@@ -260,7 +265,7 @@ $\semFO{\gamma(\bar x)}{\?G}$.%
 a very reasonable abuse of notation!}
 
 Note however that this does not mean that the theory of "CRPQs" boils down
-to the theory of "CQ": one reason is first that the construction
+to the theory of "CQs": one reason is first that the construction
 $\?G \mapsto \tilde{\?G}$ actually depends on the query---we need to restrict
 our construction to languages occurring in the query in order to obtain a \emph{"finite@@struct"} "structure@finite structure". Even more importantly, the construction
 $\?G \mapsto \tilde{\?G}$ actually fails to preserve any interesting property:
@@ -270,8 +275,10 @@ notice "eg" that if $\?G$ is a "directed path"
 \]
 and if only $\atom{a^*}$ occurs in the query, then $\tilde{\?G}$ is the
 "$k$-transitive tournament", see \Cref{fig:3-transitive-tournament-crpq}.
-From a very simple "structure" of "path-width" 1, we obtained a "structure" of
+From a very simple "structure" of "path-width" 1, we can obtain a "structure" of
 unbounded "tree-width"!
+Hence, "CRPQs" deserve to be studied for their own sake.
+
 \begin{marginfigure}[-10em]
 	\centering
 	\begin{tikzpicture}
@@ -299,7 +306,7 @@ Given a "CRPQ" $\gamma$, we denote its number of variables
 and "atoms" by \AP$\intro*\nbvar{\gamma}$ and $\intro*\nbatoms{\gamma}$, respectively.
 On the other hand $\intro*\size{\gamma}$ denotes the size of any reasonable representation
 of the "query@CRPQ": we agree to take the sum of its number of "atoms" with
-the sum of the size of automata used to describe $\gamma$.
+the sum of the size of automata (NFAs) used to describe $\gamma$.
 
 \begin{proposition}
     The "conjunctive regular path queries evaluation problem" is "NP"-complete.
@@ -307,11 +314,11 @@ the sum of the size of automata used to describe $\gamma$.
 
 \begin{proof}
     The lower bound already holds for "CQs" by \Cref{prop:duality@@CQ}.
-    The upper bound can be proven by (1) guess a function from the variables
+    The upper bound can be proven by (1) guessing a function from the variables
     of the "query@CRPQ" to the vertices of the "database@@graph",
     and (2) checking that it is an "evaluation map". 
-    For each "atom", each check consists in checking if there is a
-    path from some vertices to another labelled by a word of some language,
+    For each "atom", each check consists in verifying if there is a
+    path from some vertex to another one that is labelled by a word of some language,
     which can be done in "NL" "eg" by an easy
     adaptation of the "NL" algorithm for "reachability in finite graphs".
 \end{proof}
@@ -321,7 +328,7 @@ the sum of the size of automata used to describe $\gamma$.
 Overall, the algorithms for "CQ evaluation" extend effortlessly to "CRPQs". 
 Let us point out that we defined "graph databases" as a subclass of
 "relational structures" and not as "relational databases":
-the motivation is behind this definition is that,
+the motivation behind this definition is that,
 in light "eg" of the Wikidata example of \Cref{sec:intro-existential}---or  
 of the Panama Papers \cite{Neo4jPanama}!---the vertices of "graph databases"
 are first-class citizens!
@@ -332,7 +339,7 @@ We mention here a few sub/subclasses of "CRPQs" that will play an important role
 the best example of "RPQ" is perhaps that of $\gamma(x,y) = x \atom{\A^*} y$
 that described a simple reachability constraint.
 
-On the other direction, the languages used in "CRPQs" can be extended to navigate edges in both directions. 
+In the other direction, the languages used in "CRPQs" can be extended to navigate edges in both directions. 
 Formally, given a "graph database" $\?G$,
 we consider the expanded database $\intro*\Gpm$ obtained from $\?G$ by 
 adding, for every edge $x \atom{a} y$ in $\?G$, an extra edge $y \atom{a^-} x$.
@@ -367,8 +374,8 @@ that we allow for potentially infinite unions. We often use a set notation to de
     \[
         \bigvee \{
             \gamma \mid
-            \gamma \text{ "canonical CQ" of some } \?G \in \phi\qedhere
-        \}.
+            \gamma \text{ "canonical CQ" of some } \?G \in \phi
+        \}.\qedhere
     \]
 \end{proof}
 These infinite objects will mostly appear as intermediate objects
@@ -397,7 +404,7 @@ decide "containment", and hence "semantical equivalence".
 can be seen as "relational structures" over $\signatureCRPQ{\A}$ and $\signatureCRPQ{\Aext}$,
 respectively. As such, they come equipped with a notion of "homomorphism" between them,
 see "eg" \Cref{fig:basic-hom}. These "homomorphisms" behave nicely "wrt" to "evaluation maps",%
-\footnote{\emph{Déjà vu?}}
+\footnote{\emph{Déjà vu?} See the paragraph before \Cref{fact:prelim-db-crpq-closed-under-hom}.}
 in the sense that for every "homomorphism" of "CRPQs" $f\colon \gamma'(\bar x') \to \gamma(\bar x)$,
 for every "evaluation map" $g\colon \gamma(\bar x) \to \tup{\?H, \bar v}$,
 then their composition $g \circ f\colon \gamma'(\bar x') \to \tup{\?H, \bar v}$
@@ -419,7 +426,7 @@ makes the static analysis of "CRPQs" hard---or interesting, depending on the poi
 The previous example, while important, can actually seem somewhat degenerate: the only problems
 seems to occur from the fact that an atom $\atom{ab}$ essentially has access to an
 internal variable that the "homomorphism" cannot manipulate.
-While this is indeed an issue, it only illustrate part of the difficulty
+While this is indeed an issue, it only illustrates part of the difficulty
 posed by "CRPQs", and so we turn to a slightly more involved example.
 
 \begin{example}[{Simplification of \cite[Figure~3]{FlorescuLevySuciu1998Containment}.}]
@@ -447,9 +454,9 @@ posed by "CRPQs", and so we turn to a slightly more involved example.
     ``canonical database \emph{covered by a query mapping}'' in \cite{FlorescuLevySuciu1998Containment}.}
 \end{example}
 
-The idea behind "canonical databases" for "C(2)RPQs" is as follows
+The idea behind "canonical databases" for "C(2)RPQs" is as follows:
 starting from a "CRPQ" $\gamma(\bar x) = \bigwedge_{i=1}^n y_i \atom{L_i} z_i$,
-we look every possible choice of words $\tup{u_i \in L_i}_{i\in \intInt{1,n}}$.
+we look at every possible choice of words $\tup{u_i \in L_i}_{i\in \intInt{1,n}}$.
 Replacing $\atom{L_i}$ by a directed path labelled by $u_i$ yields a "pointed graph database"
 that "satisfies@@db" $\gamma(\bar x)$ by construction. These will precisely be
 the "canonical databases@@CRPQ" of our "CRPQ"! We illustrate the notion on
@@ -494,7 +501,7 @@ such that $q_0$ is initial, $q_n$ is final, and for each $i$, $L_i$ is either of
 \begin{enumerate}[label=\roman*.]
 	\item $\subaut{\+A_L}{q_i}{q_{i+1}}$,
 	\item $\{a\}$ if the letter $a\in \A$ belongs to $\subaut{\+A_L}{q_i}{q_{i+1}}$, or 
-	\item $\{a^{-}\}$ if $a^{-} \in \A^{-}$ belongs to $\subaut{\+A}{q_i}{q_{i+1}}$.
+	\item $\{a^{-}\}$ if $a^{-} \in \A^{-}$ belongs to $\subaut{\+A_L}{q_i}{q_{i+1}}$.
 \end{enumerate}
 Additionally, if $\varepsilon \in L$, the "equality atom" ``$x = y$'' is also an atom $m$-refinement. Thus, an \reintro{atom $m$-refinement} can be either of the form \eqref{eq:refinement} or ``$x=y$''.
 
@@ -524,7 +531,7 @@ An example is provided in \Cref{fig:basic-refinement}.
         \rho' = x \atom{L_1} t_1 \atom{L_2} \dotsc \atom{L_i} \textcolor{maincolor}{t_i \atom{K} t_j} \atom{L_{j+1}} \dotsc
         \atom{L_{n-1}} t_{n-1} \atom{L_n} y
     \]
-    such that $\textcolor{maincolor}{K = \+A[q_i,q_j]}$.
+    such that $\textcolor{maincolor}{K = \+A_L[q_i,q_j]}$.
 	\begin{fact}
 		\AP\label{fact:refinement-contained}
 		Every "condensation" $\rho'$ of $\rho$ is a "refinement" of $\gamma$, and $\rho \contained \rho' \contained \gamma$.
@@ -554,8 +561,8 @@ Given a natural number $m$, an \AP""$m$-refinement"" of a "C2RPQ" $\gamma(\bar x
 should some "$m$-refinements@@atom" have "equality atoms",
 collapsing the variables.
 \AP A ""refinement"" is an "$m$-refinement" for some $m$.
-Note that any "atom $m$-refinements" is, by definition, also an
-"atom $m'$-refinements" when $m \leq m'$: as a consequence, in the "refinement" of a "C2RPQ"
+Note that any "atom $m$-refinement" is, by definition, also an
+"atom $m'$-refinement" when $m \leq m'$: as a consequence, in the "refinement" of a "C2RPQ"
 the "atom refinements" need not have the same length.
 For instance, both $\rho(x,x) = x \atom{c} x$ and $\rho'(x,y) = x \atom{a} t_1 \atom{a} y \coatom{c} y$ are "refinements" of $\gamma(x,y) = x \atom{a^*} y \coatom{c} x$.
 
@@ -697,7 +704,7 @@ To get decidability, the easiest way is by proving a small model property.
 \begin{proof}[Proof sketch]
     We start with some $\tup{\?G_1, \bar u_1} \cdb \gamma_1(\bar x_1)$ of arbitrary size
     such that $\tup{\?G_1, \bar u_1} \notFOmodels \gamma_2(\bar x_2)$.
-    On then look at how $\gamma_2$ maps into $\?G_1$ in the following sense:
+    We then look at how $\gamma_2$ maps into $\?G_1$ in the following sense:
     in an "atom refinement" in $\?G_1$
     \[
         x_0 \atom{a_1} x_1 \atom{a_2} \dotsc \atom{a_n} x_n
@@ -705,7 +712,7 @@ To get decidability, the easiest way is by proving a small model property.
     we associate to every sequence $a_1 a_{2} \cdots a_i$ the function
     which takes a tuple of set of automaton states (one set for each automaton of $\gamma_2$),
     and returns the tuple of set of states they can reach after reading $a_i a_{i+1} \cdots a_j$.
-    By pigeon-hole principle, if $n$ has at least double-exponential size, then there must exist
+    By the pigeon-hole principle, if $n$ has at least double-exponential size, then there must exist
     two indices $i < j$ that have the same behaviour.
     Then, shrinking \[
         x_0 \atom{a_1} x_1 \atom{a_2} \dotsc \atom{a_n} x_n
@@ -720,7 +727,7 @@ To get decidability, the easiest way is by proving a small model property.
 \begin{marginfigure}[-15em]
     \centering
     \includegraphics[width=\linewidth]{fig/prelim-db/pigeon.jpg}
-    \caption{Fun interlude: try spotting the difference with \Cref{prop:pigeonssssssss}.
+    \caption{Fancy pigeon.
     \href{https://commons.wikimedia.org/wiki/File:Spinifex\_Pigeon\_0A2A1585.jpg}{\emph{Spinifex Pigeon}}, by JJ Harrison, licensed under "CC BY SA 3.0".}
 \end{marginfigure}
 
@@ -728,11 +735,11 @@ In particular \Cref{prop:pigeonssssssss} implies that "containment" is decidable
 for "UC2RPQs". However, this does not give an optimal algorithm.
 
 \begin{proposition}
-    \!{Proven independently in \cite[Theorem 5]{CalvaneseDeGiacomoLenzeriniVardi2000Containment} for "C2RPQs"
+    \!\footnote{Proven independently in \cite[Theorem 5]{CalvaneseDeGiacomoLenzeriniVardi2000Containment} for "C2RPQs"
     and in \cite[§ after Theorem 4.8]{FlorescuLevySuciu1998Containment} for "CRPQs" without 
     inverses but with an infinite alphabet.}
     \label{prop:containment-expspace-complete}
-    Containment of "UC2RPQs" is "ExpSpace"-complete. The lower bound already
+    The "containment problem" for "UC2RPQs" is "ExpSpace"-complete. The lower bound already
     holds for "Boolean CRPQs".
 \end{proposition}
 
@@ -774,20 +781,20 @@ can be reformulated as
 \]
 The proof of \Cref{prop:containment-figueira} is by reduction
 from the exponential-space tiling problem,
-and relies on encoding exponential-sized counters in polynomial space.
+and relies on encoding counters with exponential value in polynomial space.
 
 \subsection{Queries Over Simple Languages}
 
-The high complexity of \Cref{prop:containment-figueira,prop:variation-figueira-simple} motivate
+The high complexity of \Cref{prop:containment-figueira,prop:containment-expspace-complete} motivates
 the quest for fragments of "conjunctive regular path queries" with better complexity.
 We will present a fragment {\UCRPQSRE} that
 has a "containment problem" that is much better behaved than for general "UCRPQs",
 and moreover is widely used in practice.
 
-\AP A ""simple regular expression"", or \reintro{SRE}, is a regular expression the form $a^*$ for some letter $a \in \A$ or of the form $a_1 + \dotsb + a_m$ for some $a_1, \dotsc, a_m \in \A$. 
+\AP A ""simple regular expression"", or \reintro{SRE}, is a regular expression of the form $a^*$ for some letter $a \in \A$ or of the form $a_1 + \dotsb + a_m$ for some $a_1, \dotsc, a_m \in \A$. 
 \AP Let \intro*{\UCRPQSRE} be the set of all "UCRPQ" whose languages are expressed via "simple regular expressions". Observe that {\UCRPQSRE} is "semantically equivalent" to the class of "UCRPQs" over the closure under concatenation of "simple regular expressions"
 since $\gamma(x,y) = x \atom{e_1 \cdot e_2} y$ is equivalent to $\gamma'(x,y) = x \atom{e_1} z \land  z \atom{e_2} y$.
-Moreover, \UCRPQSRE{} also corresponds to "UC2RPQ" whose languages are expressed via "SREs";
+Moreover, \UCRPQSRE{} also corresponds to "UC2RPQs" whose languages are expressed via "SREs";
 in other words adding two-wayness does not increase the expressivity of the class. 
 
 \begin{proposition}[{\cite[Corollary 5.2]{FigueiraEtal2020Containment}}]
