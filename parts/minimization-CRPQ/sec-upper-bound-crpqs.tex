@@ -7,7 +7,7 @@ In this section we show that the "minimization problem" for "CRPQs" is decidable
 	The "minimization problem" for "CRPQs" is in "2ExpSpace".
 \end{theorem}
 
-The proof of \Cref{thm:2expspace-min-crpqs} is based on a key lemma stated below. Intuitively, this lemma tells us that if a "CRPQ" $\gamma$ is "equivalent" to another "CRPQ" $\alpha$, then $\gamma$ is also equivalent to a "CRPQ" $\beta$, where $\beta$ has the same “shape” than $\alpha$ but the sizes of the NFAs appearing in $\beta$ are bounded by the size of $\gamma$. In particular, if $\gamma$  is equivalent to a  "CRPQ" with at most $k$ atoms, then it is equivalent to a "CRPQ" with at most $k$ atoms and NFAs of bounded sizes, and hence the search space in the minimization problem becomes finite. A careful analysis of this idea yields our "2ExpSpace" upper bound.
+The proof of \Cref{thm:2expspace-min-crpqs} is based on a key lemma stated below. Intuitively, this lemma tells us that if a "CRPQ" $\gamma$ is "equivalent" to another "CRPQ" $\alpha$, then $\gamma$ is also equivalent to a "CRPQ" $\beta$, where $\beta$ has the same “shape” than $\alpha$ but the sizes of the NFAs appearing in $\beta$ are bounded by the size of $\gamma$. In particular, if $\gamma$  is equivalent to a  "CRPQ" with at most $k$ atoms, then it is equivalent to a "CRPQ" with at most $k$ atoms and NFAs whose size is bounded by a function of $k$, and hence the search space in the minimization problem becomes finite. A careful analysis of this idea yields our "2ExpSpace" upper bound.
 
 \begin{lemma}
 	\AP\label{lemma:crpq-size-bound}
@@ -19,7 +19,7 @@ The proof of \Cref{thm:2expspace-min-crpqs} is based on a key lemma stated below
 	\end{enumerate}
 \end{lemma}
 
-We star by giving a proof sketch of this lemma before giving the full
+We start by giving a proof sketch of this lemma before giving the full
 detailed proof.
 
 \begin{proof}[Proof sketch]
@@ -27,10 +27,12 @@ detailed proof.
 	$$\text{$u$ is accepted by $\subaut{\+A}{p}{q}$ $\iff$  $v$ is accepted by $\subaut{\+A}{p}{q}$}.$$
 	Recall that  $\subaut{\+A}{p}{q}$ denote the "sublanguage" of $\+A$ recognized  when considering $\set{p}$ as the set of initial states and $\set{q}$ as the set of final states. %So in a sense, whenever $u \weakequiv{\gamma} v$ holds, then $u$ and 
 	For $u\in \A^*$, we define its \AP""$\gamma$-type"" to be:
-	\[
-		\AP\intro*\typeMin{\gamma}{u} \defeq \{
-		([u_1]_{\weakequiv{\gamma}},\dots,[u_\ell]_{\weakequiv{\gamma}}) \mid \text{$\ell\leq (\nbvar{\gamma} +1)$, and $u_1,\dots,u_\ell\in \A^*$ satisfy that $u=u_1\cdots u_\ell$} \}.
-	\]
+	\phantomintro{\typeMin}
+	\begin{align*}
+		\AP\reintro*\typeMin{\gamma}{u} \defeq \{
+		([u_1]_{\weakequiv{\gamma}},\dots,[u_\ell]_{\weakequiv{\gamma}}) & \mid \text{$\ell\leq (\nbvar{\gamma} +1)$,}\\
+		& \quad \text{ and $u_1,\dots,u_\ell\in \A^*$ "st" $u=u_1\cdots u_\ell$} \}.
+	\end{align*}
 	The idea is that $\typeMin{\gamma}{u}$ encodes all the possible ways $u$ can be broken into $\ell\leq (\nbvar{\gamma}+1)$ subwords: we are not interested in the particular subwords $u_i$, but in their equivalence classes $[u_i]_{\weakequiv{\gamma}}$ with respect to $\weakequiv{\gamma}$.
 
 	We define the sought "CRPQ" $\beta$ to be the "CRPQ" obtained from $\alpha$ by replacing each regular language $L$ by $\tilde{L}$, where:
@@ -45,7 +47,9 @@ detailed proof.
 
 	The idea is to modify $\eta_\alpha$ into another expansion $\eta_\beta$ with  $\eta_\beta\to \anexpansion_\beta$, as desired. Note that $f$ maps the external variables of $\eta_\alpha$ to external or internal variables in $\anexpansion_\alpha$. This determines a subdivision for each path $x_j \atom{u_j} y_j$ of $\anexpansion_\alpha$ into smaller or `basic paths’, whose endpoints correspond to external variables of $\xi_\alpha$ or images of the external variables  of $\eta_\alpha$ via $f$. The number of these paths is hence bounded by $\nbvar{\gamma} +1$. Since $\typeMin{\gamma}{u_j}\subseteq \typeMin{\gamma}{z_j}$, then each path $x_j \atom{z_j} y_j$ in $\anexpansion_\beta$ can also be subdivided in an equivalent way than  $x_j \atom{u_j} y_j$. Overall, the decomposition of $\anexpansion_\alpha$  into basic paths can be `simulated’ in $\anexpansion_\beta$. This gives us a homomorphism from $\eta_\beta$ to $\anexpansion_\beta$, where $\eta_\beta$ is obtained from $\eta_\alpha$ in the following way: for each path $t_i \atom{w_i} s_i$ in $\eta_\alpha$, where $w_i\in M_i$, the image of the path via $f$ induces a subdivision of $t_i \atom{w_i} s_i$ into basic paths  of $\anexpansion_\alpha$. We can replace each of these basic paths by its equivalent basic path in $\anexpansion_\beta$. As the label of these paths are equivalent w.r.t to the relation $\weakequiv{\gamma}$, membership in $M_i$ is maintained after this transformation. Hence $\eta_\beta$ is indeed an expansion of $\gamma$.
 
-	For condition (2), it is easy to see that every equivalence class $C$ of the relation $\weakequiv{\gamma}$ can be accepted by an NFA $\+A_C$ of single-exponential size on $\size{\gamma}$. Also, for each word $u\in \A^*$, and  each tuple $\bar{c} =(C_1,\dots,C_\ell)\in \typeMin{\gamma}{u}$, there is a single-exponential size NFA $\+A_{\bar{c}}$  accepting the language $\{z\in \A^*\mid \bar{c} \in \typeMin{\gamma}{z}\}$. By intersecting these NFAs, we obtain an NFA $\+A_{u}$ accepting the language $\{z\in \A^*\mid \typeMin{\gamma}{u}\subseteq \typeMin{\gamma}{z}\}$. It is easy to see that the number of tuples of the form $(C_1,\dots,C_\ell)$ is at most single-exponential, and then the size of $\+A_{u}$ is at most double-exponential. It follows that  the number of possible  $\typeMin{\gamma}{u}$ is at most double-exponential, and hence the languages  $\tilde{L}$ in $\beta$ can be described by a union of double-exponential many NFAs, each of size at most double-exponential. Overall, each $\tilde{L}$ can be described by an NFA of at most double-exponential size on $\size{\gamma}$.
+	For condition (2), it is easy to see that every equivalence class $C$ of the relation $\weakequiv{\gamma}$ can be accepted by an NFA $\+A_C$ of single-exponential size on $\size{\gamma}$. Also, for each word $u\in \A^*$, and  each tuple $\bar{c} =(C_1,\dots,C_\ell)\in \typeMin{\gamma}{u}$, there is a single-exponential size NFA $\+A_{\bar{c}}$  accepting the language $\{z\in \A^*\mid \bar{c} \in \typeMin{\gamma}{z}\}$. By intersecting these NFAs, we obtain an NFA $\+A_{u}$ accepting the language
+	\[\{z\in \A^*\mid \typeMin{\gamma}{u}\subseteq \typeMin{\gamma}{z}\}.\] 
+	It is easy to see that the number of tuples of the form $(C_1,\dots,C_\ell)$ is at most single-exponential, and then the size of $\+A_{u}$ is at most double-exponential. It follows that  the number of possible  $\typeMin{\gamma}{u}$ is at most double-exponential, and hence the languages  $\tilde{L}$ in $\beta$ can be described by a union of double-exponential many NFAs, each of size at most double-exponential. Overall, each $\tilde{L}$ can be described by an NFA of at most double-exponential size on $\size{\gamma}$.
 \end{proof}
 
 \begin{proof}[Proof details]
@@ -114,7 +118,7 @@ Using this lemma, we can then easily deduce the desired "2ExpSpace" upper bound.
 \begin{proof}[Proof of \Cref{thm:2expspace-min-crpqs}]
 	The "2ExpSpace" algorithm proceeds as follows. Let $\gamma$ be a "CRPQ"  over $\A$ and $k\in\N$. Let $f$ be the double-exponential function from \Cref{lemma:crpq-size-bound}. We enumerate all possible directed multigraphs with at most $k$ edges. For each of these graphs, we enumerate all the possible "CRPQs" $\beta$ obtained by labelling each edge with an NFA of size bounded by $f(\size{\gamma})$. If for some of these $\beta$, we have that $\beta\semequiv \gamma$ then we accept the instance, otherwise we reject it. \Cref{lemma:crpq-size-bound} ensures that this algorithm is correct.
 
-	It remains to show that  $\beta\semequiv \gamma$ can be carried out in "2ExpSpace". We use a proposition from \cite[Proposition 3.11, p. 17]{FigueiraMorvan2025SemanticTreeWidthLMCS} stating that containment $\Gamma\contained \Delta$, for "UCRPQs" $\Gamma$ and  $\Delta$, can be solved in non-deterministic space $\+O(\size{\Gamma} + \size{\Delta}^{c\cdot \nbatoms{\Delta}})$, where $c$ is a constant. This implies that $\beta\contained \gamma$ can be checked in space $\+O(\size{\beta} + \size{\gamma}^{c\cdot \nbatoms{\gamma}})$, and then within "2ExpSpace". The containment $\gamma\contained \beta$ can be solved in space $\+O(\size{\gamma} + \size{\beta}^{c\cdot k})$, and hence also in "2ExpSpace".
+	It remains to show that  $\beta\semequiv \gamma$ can be carried out in "2ExpSpace". We use \Cref{prop:bound-containment-pb}, which states that containment $\Gamma\contained \Delta$, for "UCRPQs" $\Gamma$ and  $\Delta$, can be solved in non-deterministic space $\+O(\size{\Gamma} + \size{\Delta}^{c\cdot \nbatoms{\Delta}})$, where $c$ is a constant. This implies that $\beta\contained \gamma$ can be checked in space $\+O(\size{\beta} + \size{\gamma}^{c\cdot \nbatoms{\gamma}})$, and then within "2ExpSpace". The containment $\gamma\contained \beta$ can be solved in space $\+O(\size{\gamma} + \size{\beta}^{c\cdot k})$, and hence also in "2ExpSpace".
 \end{proof}
 
 

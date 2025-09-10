@@ -3,11 +3,11 @@
 This section explores some necessary and sufficient conditions for a query to be "minimal".
 We start with some necessary definitions.
 \AP
-We say that a (U)CRPQ is \AP""minimal"" if it is not equivalent to any (U)CRPQ having less maximum number of atoms.
+We say that a (U)CRPQ is \AP""minimal"" if it is not equivalent to any (U)CRPQ having strictly fewer atoms.
 An ""internal variable"" of a "CRPQ" $\gamma$ is any non-"output variable" with both in-degree and out-degree 1.
 A non-"internal variable" is called \AP""external"".
 A \AP""one-way internal path"",%
-\footnote{This definition comes from \cite[\S 7]{FigueiraMorvan2025SemanticTreeWidthLMCS}, 
+\footnote{This definition comes from \cite[\S~7]{FigueiraMorvan2025SemanticTreeWidthLMCS}, 
 under the name `one-way internal path'; there is also an equivalent
 notion for C2RPQs.}
 or "internal path" for short, from $x_0$ to $x_n$ of a "CRPQ" $\gamma$ is a \emph{simple}\footnote{Meaning that all nodes are pairwise disjoint,
@@ -20,13 +20,15 @@ in $\gamma$ where $n > 0$ and every $x_i$ is "internal" with $i \in \lBrack 1,n-
 A \AP""segment"" of a "CRPQ" $\gamma$ is a maximal "internal 
 path" in $\gamma$, where ``maximal'' means that it cannot be extended on the left
 or on the right. We say that a "segment" is \AP""cyclic@@segment"" if $x_0 = x_n$.
-We identify two cyclic "segments" if they are equal up to circular permutation.
+We identify two cyclic "segments" if they are equal up to circular permutation.%
+\footnote{The endpoint of a "cyclic segment" can either be "internal@@variable" or not,
+see \Cref{fig:segments}.}
 We say that a "segment" as in \eqref{eq:path-internal} is \AP""incident@@segment""
 to a variable $y$ if $y = x_i$ for some $i$.
 
 \begin{figure}
 	\centering
-	\subfloat[The "segments" of $\gamma$---labels are omitted. Each "segment" has a different color. "Internal variables" are the smaller circles.]{%
+	\subfloat[The "segments" of $\gamma$---labels are omitted. Each "segment" has a different colour. "Internal variables" are the smaller circles.]{%
 		\AP\label{fig:segments}%
 		\includegraphics[width=.6\linewidth]{fig/minimization-crpq/segments.pdf}
 	}
@@ -53,7 +55,8 @@ and we extend this notation to "UCRPQs" by letting $\nbseg{\Gamma} \defeq
 \subsection{Necessary Conditions: Contractions and Redundancy}
 
 \paragraph{Contractions.}
-One simple (and tractable) way to make a query smaller is to `contract' any two consecutive atoms in a path with just one atom having the concatenation of the languages.
+One simple (and tractable) way to make a query smaller is to `contract' any two consecutive atoms sharing an "internal variable", and replacing them with
+a single atom having the concatenation of the languages.
 A "CRPQ" $\gamma$ is \AP""fully contracted"" if it cannot be "contracted".
 In other words, $\gamma$ is "fully contracted" "iff" $\nbseg{\gamma} = \nbatoms{\gamma}$.
 A "contraction" of a "UCRPQ" is a "contraction" of a "CRPQ" therein (obtaining the "UCRPQ" where one "CRPQ" $\gamma$ was replaced by a "contraction" of $\gamma$). A "UCRPQ" is then \reintro{fully contracted} if each "CRPQ" therein is "fully contracted".
@@ -63,7 +66,10 @@ A "contraction" of a "UCRPQ" is a "contraction" of a "CRPQ" therein (obtaining t
 	"Contractions" preserve "semantic equivalence". Further, from a "UCRPQ" $\Gamma$ one can produce, in polynomial time, an "equivalent" one that is "fully contracted" with $\nbseg{\Gamma}$ "atoms".
 \end{fact}
 
-In particular, if a "UCRPQ" $\Gamma$ is "minimal" then $\Gamma$ is "fully contracted" and $\nbseg{\Gamma} = \nbatoms{\Gamma}$; in other words, $\nbseg{\Gamma}$ is an upper bound on the number of atoms of the "minimal" equivalent query.
+In particular, if a "UCRPQ" $\Gamma$ is "minimal" then $\Gamma$ is "fully contracted" and $\nbseg{\Gamma} = \nbatoms{\Gamma}$;%
+\footnote{As for $\nbseg{\Gamma}$, we define $\nbatoms{\Gamma}$ to be the maximum
+of the number of "atoms" of a "disjunct" of $\Gamma$.}
+in other words, $\nbseg{\Gamma}$ is an upper bound on the number of atoms of the "minimal" equivalent query.
 
 \paragraph{Redundancy.}
 Another way to reduce the number of atoms of a query is to remove any \AP""redundant atom"", that is, any "atom" whose removal results in an "equivalent" query. 
@@ -76,10 +82,68 @@ However, this is a more difficult problem, since it involves testing for query e
 	Testing whether a "(U)CRPQ@UCRPQ" is "non-redundant" is "ExpSpace"-complete.
 \end{proposition}
 
+In order to prove this result, we first need to mention a variation of
+\Cref{prop:containment-figueira}.
+
+\begin{proposition}[{Variation of \Cref{prop:containment-figueira}}]
+	\AP\label{prop:variation-figueira}
+	There is a fixed alphabet over which the
+	"con\-tainment problem" for "Boolean CRPQs" is "ExpSpace"-hard restricted
+	to instances of the form%\sidediego{apxproof doesn't like tikz in statements...!}
+	\begin{center}
+		\begin{tikzcd}[column sep=scriptsize]
+			\hphantom{\quad\textnormal{where:}}
+			\gamma_1() = \qvar \rar["K"] & \qvar & \contained^{?} & 
+			\qvar \rar["L_1", bend left=40] \rar["\raisebox{6pt}{\small\vdots}", phantom] \rar["L_p" below, bend right=40] & \qvar &[-2.1em] = \gamma_2(),
+		\end{tikzcd}
+	\end{center}
+	% \[\gamma_1() = x \atom{K} y \qquad \contained^? \qquad \bigwedge_{j \in \lBrack 1,p\rBrack} x \atom{L_j} y = \gamma_2() \text{, where:}\]
+	where moreover:
+	\begin{enumerate}
+		\item no language among $K$ or the $L_i$'s is empty or contains the empty word $\varepsilon$, and
+		\item there is no $i$ such that $\A^* L_i \A^* = \A^* \bigl( \bigcap_j L_j\bigr) \A^*$.
+	\end{enumerate}
+\end{proposition}
+
 \begin{proof}
+	By inspecting \cite[Proof of Lemma 8, pp. 15--17]{Figueira2020Containment},
+	it can be noticed that
+	actually the first condition is satisfied by Figueira's reduction---using his notation,
+	neither $E$ nor $G_i\cup F_C\cup F_H$ with $i \in \lBrack 0,n\rBrack$
+	are empty.
+	
+	Moreover, we claim that the reduction can be made so that the second condition also holds.
+	Notice first that the $2^n$-tiling problem is still "ExpSpace"-complete
+	if we restrict it to instances with $n > 1$ and such that all instances admit one tiling which is
+	``locally valid'' but not valid---namely a tiling which satisfies all vertical and horizontal constraints,
+	but not the initial and final tiles conditions.
+	This can be achieved "eg" by
+	adding a new tile $t$ "st" $(t,t)$ is both a valid horizontal and vertical configuration,
+	but $t$ cannot be adjacent to any other tile.
+	Then, the second condition amounts to showing that there is no $i$ "st"
+	\[
+		\symbb{A}^* (G_i \cup F_C \cup F_H) \symbb{A}^* =
+		\symbb{A}^* \Bigl( \bigcap_{0 \leq j \leq n} (G_j \cup F_C \cup F_H)\Bigr) \symbb{A}^*
+		\]
+		which is equivalent, by elementary manipulations, to saying that for all $i \in \lBrack 0,n\rBrack$
+		\[
+			\symbb{A}^* G_i \symbb{A}^*
+			\not\subseteq 
+			\symbb{A}^* \Bigl( \bigcap_{0 \leq j \leq n} G_j \Bigr) \symbb{A}^*
+			\cup \symbb{A}^* (F_C \cup F_H) \symbb{A}^*.
+		\]
+		For $i=0$, this holds because we can consider a valid encoding of a tiling
+		which respects all constraints except that one vertical constraint is violated.
+		For $i \in \lBrack 1,n\rBrack$, we consider the encoding of a tiling which is locally valid.
+		Then, it has no vertical error, no horizontal error, and no encoding error, so
+		it does not belong to the right-hand side.
+		However, it belongs to $\symbb{A}^* G_i \symbb{A}^*$ for any $i \in \lBrack 1,n\rBrack$ since it contains a subword encoding two cells separated by exactly one row. Hence,
+		the second condition also holds.
+\end{proof}
+
+\begin{proof}[Proof of \Cref{prop:lowerbound-non-redundant}]
 	The upper bound is trivial: for every "atom" we remove it and check "equivalence".
 	
-	\todo{move this! this is forward ref}
 	For the lower bound, we use the construction of \Cref{prop:variation-figueira} for containment. Let $\delta() 
 	\defeq x' \atom{K} y' \land \bigwedge_i x \atom{L_i} y$ be the "disjoint conjunction" of $\gamma_1()$ and $\gamma_2()$ as defined in \Cref{prop:variation-figueira}.
 	We first strengthen the construction to ensure the following two properties:
@@ -127,9 +191,12 @@ While in the case of "conjunctive queries" "non-redundancy" is the same as "mini
 We have seen some sound ways to reduce the size of queries. But how can we ensure that a query is actually minimal? Here we give a theoretical tool which can ensure this by means of finding some "expansion" which is a witness for the query to have ``many atoms''. We call this "strong minimality".
 
 A "UCRPQ" $\Gamma$ is \AP""strongly minimal"" if 
-it has a "hom-minimal" "expansion" $\anexpansion \in \Exp(\Gamma)$ "st" $\nbseg{\core(\anexpansion)} = \nbatoms{\Gamma}$. We will next show that this is a sufficient condition for minimality.
+it has a "hom-minimal"%
+\footnote{Naturally, we say that an "expansion" is "hom-minimal" whenever
+its "canonical database" is "hom-minimal".}
+"expansion" $\anexpansion \in \Exp(\Gamma)$ "st" $\nbseg{\core{\anexpansion}} = \nbatoms{\Gamma}$. We will next show that this is a sufficient condition for minimality.
 
-Informally, the segment graph $\reintro*\seggraph(\gamma)$ of a "CRPQ" $\gamma$ is the directed multigraph obtained by replacing "segments" of $\gamma$ with edges in its "underlying graph", as illustrated in \Cref{fig:segment-graph}. The main motivation behind the notion of "segments" is 
+Informally, the segment graph $\reintro*\seggraph(\gamma)$ of a "CRPQ" $\gamma$ is the directed multigraph obtained by first taking the "underlying graph", and then replacing "segments" of $\gamma$ with edges, as illustrated in \Cref{fig:segment-graph}. The main motivation behind the notion of "segments" is 
 that it is essentially dual to the notion of "atom refinements".
 
 \begin{definition}
@@ -205,13 +272,13 @@ See \Cref{fig:seggraph-of-expansion} for an example.
 	the "underlying graph" of $\gamma$ by:
 	\begin{enumerate}
 		\item contracting some edges---corresponding to "atom refinements"
-			for the word $\varepsilon$,
-				 \item potentially removing isolated vertices,\footnote{This can happen "eg" in the "atom refinement" of $x \atom{a^*} x$ when dealing with the empty word.} and
+			for $\varepsilon$,
+				 \item potentially removing isolated vertices, and
 		\item "refining" some edges---corresponding to "atom refinements"
 			for words of length at least 2.
 	\end{enumerate}
 	Let $G'$ be the "underlying graph" of $\gamma$ to which we applied 
-	all operation of type (1) and (2). By construction,
+	all operations of type (1) and (2). By construction,
 	$G'$ is a "minor" of $\underlying{\gamma}$.
 	Notice then that if $H$ is a graph obtained by "refining" one edge of $G'$,
 	then $\seggraph(H)$ and $\seggraph(G')$ are isomorphic.
@@ -231,7 +298,7 @@ number of "atoms"---but also on the structure---required to express a query.
 	Let $\Gamma$ be a "UCRPQ".
 	Let $\anexpansion$ be a "hom-minimal" "expansion" of $\Gamma$,
 	and $\Delta$ be any "UCRPQ" "equivalent" to $\Gamma$.
-	Then there exists some $\delta \in \Delta$ "st" the "segment graph" $\seggraph(\core(\anexpansion))$
+	Then there exists some $\delta \in \Delta$ "st" the "segment graph" $\seggraph(\core\anexpansion)$
 	of the "core" of $\anexpansion$ is a "minor" of the "underlying graph" of $\delta$. 
 \end{theorem}
 
@@ -244,16 +311,16 @@ number of "atoms"---but also on the structure---required to express a query.
 	$\anexpansion'_\Gamma \homto \anexpansion_\Gamma$ and so,
 	by "hom-minimality" of $\anexpansion_\Gamma$, it is "hom-equivalent" to $\anexpansion'_\Gamma$. In turn, this implies that $\anexpansion_\Delta$ is "hom-equivalent" to $\anexpansion_\Gamma$, 
 	and thus there exists an "embedding" of
-	$\core(\anexpansion_\Gamma)$ into $\anexpansion_\Delta$.
+	$\core{\anexpansion_\Gamma}$ into $\anexpansion_\Delta$.
 	Note moreover that such an "embedding" must send variables of
 	in-degree 0 (resp. out-degree 0) to nodes of in-degree 0 (resp. out-degree 0)
 	and so by \Cref{coro:embedding-segments},
-	there is an "embedding" from $\seggraph(\core(\anexpansion_\Gamma))$
+	there is an "embedding" from $\seggraph(\core{\anexpansion_\Gamma})$
 	into $\seggraph(\anexpansion_\Delta)$.
 	Letting $\delta$ be the "disjunct" of $\Delta$ of which $\anexpansion_\Delta$ is an "expansion",
 	\Cref{prop:seggraph-of-expansion} implies that $\seggraph(\anexpansion_\Delta)$ is a
 	"minor" of the "underlying graph" of $\delta$.
-	Hence, $\seggraph(\core(\anexpansion_\Gamma))$ is a subgraph of a "minor", and hence a "minor", of the "underlying graph" of $\delta$.
+	Hence, $\seggraph(\core{\anexpansion_\Gamma})$ is a subgraph of a "minor", and hence a "minor", of the "underlying graph" of $\delta$.
 \end{proof}
 
 \begin{corollary}[of \Cref{thm:structure-theorem}]
@@ -262,17 +329,17 @@ number of "atoms"---but also on the structure---required to express a query.
 \end{corollary}
 
 \begin{proof}
-	The number of edges of $\seggraph(\core(\anexpansion))$ equals $\nbseg{\core(\anexpansion)}$, and a "minor" can only decrease the number of edges.
+	The number of edges of $\seggraph(\core{\anexpansion})$ equals $\nbseg{\core{\anexpansion}}$, and a "minor" can only decrease the number of edges.
 \end{proof}
 
 In fact, it can be seen that the assumption that $\anexpansion$ is "hom-minimal" in
 \Cref{thm:structure-theorem} is necessary as otherwise the statement would be false (see \Cref{rk:structure-theorem} for details).
 %
 Also, note in particular that \Cref{thm:structure-theorem} implies
-$\nbseg{\core(\anexpansion)} \leq \nbatoms{\Delta}$. 
+$\nbseg{\core{\anexpansion}} \leq \nbatoms{\Delta}$. 
 But it can also be used to obtain lower bounds on, for instance,
 the tree-width of $\Delta$, and hence the one-way semantic tree-width\footnote{Defined in
-\cite[\S 1, p. 7]{FigueiraMorvan2025SemanticTreeWidthLMCS}.} of $\Gamma$, 
+\cite[\S~1, p. 7]{FigueiraMorvan2025SemanticTreeWidthLMCS}.} of $\Gamma$, 
 or more generally to prove that $\Gamma$ cannot be "equivalent" to a "UCRPQ" whose
 underlying graphs all belong to a "minor"-closed class of graphs.
 
@@ -387,9 +454,9 @@ underlying graphs all belong to a "minor"-closed class of graphs.
 	For $n,m \in \Np$, let $\anexpansion_{n,m}(x,y) \defeq x \atom{a^n} y \land x \atom{a^{2m}} y$.
 	There are two cases:
 	\begin{enumerate}
-		\item \AP\label{rk:structure-theorem:1} If $n \neq 2m$, then $\nbseg{\core(\anexpansion_{n,m})} = 2$
+		\item \AP\label{rk:structure-theorem:1} If $n \neq 2m$, then $\nbseg{\core{\anexpansion_{n,m}}} = 2$
 			but $\anexpansion_{n,m}$ is not "hom-minimal" since $\anexpansion_{2m,m} \homto \anexpansion_{n,m}$ but $\anexpansion_{n,m} \nothomto \anexpansion_{2m,m}$.
-		\item If $n = 2m$, then $\nbseg{\core(\anexpansion_{n,m})} = 1$
+		\item If $n = 2m$, then $\nbseg{\core{\anexpansion_{n,m}}} = 1$
 		and $\anexpansion_{n,m}$ is "hom-minimal".
 	\end{enumerate}
 	Hence, using \Cref{thm:structure-theorem}, we can only get a lower bound of

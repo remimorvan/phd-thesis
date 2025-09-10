@@ -5,72 +5,8 @@ In this section we give some underlying ideas for showing lower bounds for the "
 
 \subsection{Equivalence with a Single Atom}
 
-"Containment of CRPQs" is "ExpSpace"-complete \cite{FlorescuLevySuciu1998Containment,CalvaneseDeGiacomoLenzeriniVardi2000Containment}. Somewhat surprisingly,
-Figueira \cite[Lemma 8]{Figueira2020Containment}
-showed that there exists a finite alphabet $\A$
-"st" the problem remained "ExpSpace"-hard even if restricted to
-instances with a simple shape.
-We start by strengthening this result to fit our needs.
-
-
-\begin{proposition}[{Variation on \cite[Lemma 8]{Figueira2020Containment}}]
-	\AP\label{prop:variation-figueira}
-	There is a fixed alphabet over which the
-	"con\-tainment problem" for "Boolean CRPQs" is "ExpSpace"-hard restricted
-	to instances of the form%\sidediego{apxproof doesn't like tikz in statements...!}
-	\begin{center}
-		\begin{tikzcd}[column sep=scriptsize]
-			\hphantom{\quad\textnormal{where:}}
-			\gamma_1() = \qvar \rar["K"] & \qvar & \contained^{?} & 
-			\qvar \rar["L_1", bend left=40] \rar["\raisebox{6pt}{\small\vdots}", phantom] \rar["L_p" below, bend right=40] & \qvar &[-2.1em] = \gamma_2(),
-			\quad\textnormal{where moreover:}
-		\end{tikzcd}
-	\end{center}
-	% \[\gamma_1() = x \atom{K} y \qquad \contained^? \qquad \bigwedge_{j \in \lBrack 1,p\rBrack} x \atom{L_j} y = \gamma_2() \text{, where:}\]
-	\begin{enumerate}
-		\item no language among $K$ or the $L_i$'s is empty or contains the empty word $\varepsilon$, and
-		\item there is no $i$ such that $\A^* L_i \A^* = \A^* \bigl( \bigcap_j L_j\bigr) \A^*$.
-	\end{enumerate}
-\end{proposition}
-
-\begin{proof}
-
-	By inspecting \cite[Proof of Lemma 8, pp. 15--17]{Figueira2020Containment},
-	it can be noticed that
-	actually the first condition is satisfied by Figueira's reduction---using his notation,
-	neither $E$ nor $G_i\cup F_C\cup F_H$ with $i \in \lBrack 0,n\rBrack$
-	are empty.
-	
-	Moreover, we claim that the reduction can be made so that the second condition also holds.
-	Notice first that the $2^n$-tiling problem is still "ExpSpace"-complete
-	if we restrict it to instances with $n > 1$ and such that all instances admit one tiling which is
-	``locally valid'' but not valid---namely a tiling which satisfies all vertical and horizontal constraints,
-	but not the initial and final tiles conditions.
-	This can be achieved "eg" by
-	adding a new tile $t$ "st" $(t,t)$ is both a valid horizontal and vertical configuration,
-	but $t$ cannot be adjacent to any other tile.
-	Then, the second condition amounts to showing that there is no $i$ "st"
-	\[
-		\symbb{A}^* (G_i \cup F_C \cup F_H) \symbb{A}^* =
-		\symbb{A}^* \Bigl( \bigcap_{0 \leq j \leq n} (G_j \cup F_C \cup F_H)\Bigr) \symbb{A}^*
-		\]
-		which is equivalent, by elementary manipulations, to saying that for all $i \in \lBrack 0,n\rBrack$
-		\[
-			\symbb{A}^* G_i \symbb{A}^*
-			\not\subseteq 
-			\symbb{A}^* \Bigl( \bigcap_{0 \leq j \leq n} G_j \Bigr) \symbb{A}^*
-			\cup \symbb{A}^* (F_C \cup F_H) \symbb{A}^*.
-			\]
-			For $i=0$, this holds because we can consider a valid encoding of a tiling
-			which respects all constraints except that one vertical constraint is violated.
-			For $i \in \lBrack 1,n\rBrack$, we consider the encoding of a tiling which is locally valid.
-			Then, it has no vertical error, no horizontal error, and no encoding error, so
-			it does not belong to the right-hand side.
-			However, it belongs to $\symbb{A}^* G_i \symbb{A}^*$ for any $i \in \lBrack 1,n\rBrack$ since it contains a subword encoding two cells separated by exactly one row. Hence,
-			the second condition also holds.
-\end{proof}
-
-We shall use these hard instances to show that the "minimization problem" for "CRPQs" is hard.
+We shall use the hard instances of \Cref{prop:variation-figueira}
+to show that the "minimization problem" for "CRPQs" is hard.
 \begin{theorem}
 	\AP\label{thm:minimization-lowerbound}
 	The "minimization problem" for "CRPQs" is "ExpSpace"-hard. Further, there is a fixed alphabet "st" the problem of, given a "Boolean CRPQ"
