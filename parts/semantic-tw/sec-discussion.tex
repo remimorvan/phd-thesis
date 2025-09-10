@@ -3,7 +3,7 @@
 \section{\AP{}Discussion}
 \label{sec:discussion}
 
-% Observe that the proof of our main theorem, \Cref{thm:decidability-semtw}, was divided into the upper-bound for $k \geq 2$ (\Cref{lem:sem-tw-in-twoexp}), the upper-bound for $k=1$ (\Cref{cor:sem-tw-1-pb-exp-c}), and the lower-bound for all $k$ (\Cref{lemma:lowerbound}). One could have proved the upper-bound for all $k$ by using "contracted tree-width" right from the beginning. But we preferred to keep things ``as simple as possible'' for the case $k \geq 2$ using the classical notion of "tree-width".
+% Observe that the proof of our main theorem, \Cref{thm:decidability-semtw}, was divided into the upper bound for $k \geq 2$ (\Cref{lem:sem-tw-in-twoexp}), the upper bound for $k=1$ (\Cref{cor:sem-tw-1-pb-exp-c}), and the lower bound for all $k$ (\Cref{lemma:lowerbound}). One could have proved the upper bound for all $k$ by using "contracted tree-width" right from the beginning. But we preferred to keep things ``as simple as possible'' for the case $k \geq 2$ using the classical notion of "tree-width".
 
 % \sidediego{I've added the related work section here. But I'm not married to the idea...}
 % \subsection{\AP{}Related Work}
@@ -62,7 +62,7 @@ of "semantic path-width" $k$ is in "para-NL". It is unknown whether the semantic
 \end{restatable}
 
 Note that the classes of bounded "contracted path-width" or "contracted tree-width" are not counterexamples to \Cref{qu:paraNLtractability,qu:FPTtractability}, since
-the "path-width" is upper-bounded by one plus the "contracted path-width", and lower-bounded by the "contracted path-width"---and similarly for "tree-width"---and so a width is bounded "iff" its "contracted" variant is bounded.
+the "path-width" is upper bounded by one plus the "contracted path-width", and lower bounded by the "contracted path-width"---and similarly for "tree-width"---and so a width is bounded "iff" its "contracted" variant is bounded.
 
 In the case of "CQs", the answer is `yes' to \Cref{qu:FPTtractability} \cite[Theorem~1]{Grohe2007ComplexityHomomorphism}
 under standard complexity-theoretic hypotheses ($W[1] \neq $ "FPT"). For \Cref{qu:paraNLtractability}, the answer is still `yes' \cite[Theorem 3.1]{ChenMoritz13} conditional to a less standard assumption\footnote{By \cite[Theorems 3.1 \& 4.3]{ChenMoritz13}, if the class has bounded "semantic path-width", then the problem is in $\textsf{Path} \subseteq $ "paraNL"; by \cite[Theorems 3.1 \& 5.5]{ChenMoritz13}, if the class does not have bounded "semantic path-width", then the problem is \textsf{Tree}-hard.} (no $\textsf{Tree}$-hard problem is in "paraNL").

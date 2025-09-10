@@ -1,0 +1,22 @@
+\node[vertex] (x0) at (0,1) {};
+\node[vertex] (x1) at (1,1) {};
+\node[vertex] (x2) at (2,1) {};
+\node[vertex] (y0) at (-1,0) {};
+\node[vertex] (y1) at (-1,-1) {};
+\node[vertex] (y2) at (-1,-2) {};
+
+\foreach \x in {0,1,2} {
+	\foreach \y in {0,1,2} {
+		\node[vertex] (\x-\y) at (\x,-\y) {};
+	}
+}
+
+\draw[edge] (x0) to node [above] {$a$} (x1);
+\draw[edge] (x1) to node [above] {$b$} (x2);
+\draw[edge] (y0) to node [left] {$a$} (y1);
+\draw[edge] (y1) to node [left] {$c$} (y2);
+\draw[edge] (0-0) to node [above right=0cm] {$a$} (1-1);
+
+\node[above=0cm of x0] {$x$};
+\node[left=0cm of y0] {$x$};
+\node[above left=0cm of 0-0] {$x$};

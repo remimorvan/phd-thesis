@@ -205,7 +205,7 @@ This fact is denoted by \AP$\phi \intro*\semequiv \phi'$.
 	and the notion of "semantical equivalence" differs when considered
 	over "relational databases" or all "relational structures".
 	But the proof of undecidability in the two settings do not differ
-	substentially.}
+	substantially.}
 	\AP\label{prop:Trakhtenbrot-db}
 	It is undecidable whether a
 	"first-order formula" is satisfiable over finite "relational databases".
@@ -226,7 +226,7 @@ fragment \eqref{eq:sql-fo}, in the sense of \Cref{sec:intro-existential}.%
 
 The undecidability results of \Cref{prop:Trakhtenbrot-db,coro:undecidability-minimization},
 together with the fact that queries occurring in practice---see \Cref{sec:intro-cq}---are
-much simpler than the formulas occurring in the undecidability proofs motivate
+much simpler than the formulas occurring in the undecidability proofs, motivate
 the study of well-behaved query fragments.
 We will focus on "conjunctive queries", which arise from the grammar
 \begin{align}
@@ -313,7 +313,7 @@ giving in our case
 \end{align*} 
 
 Interestingly, the semantics of "conjunctive queries" can be described using "homomorphisms",
-via the theory of \emph{duality@@CQ}: this was first noticed by Chandra and Merlin in
+via the theory of \emph{"duality@@CQ"}: this was first noticed by Chandra and Merlin in
 their seminal 1977 paper \cite{ChandraMerlin1977Implementation}.
 \begin{definition}
 	The \AP""canonical database@@cq"" associated to a "conjunctive query"
@@ -338,7 +338,7 @@ Since it is somewhat impractical to graphically depict $k$-ary relations for $k 
 and since "signatures" that consist only of unary "predicates" are a degenerate case,
 we will often consider examples in which all relations are binary.
 We will denote these relations by $\atom{a}$, where $a$ ranges over some alphabet $\A$:
-moreover, we will often not make the effort to precise what alphabet we are using,
+moreover, we will often not make the effort to specify which alphabet we are using,
 as any alphabet containing all letters occuring in the example will do.
 For instance, the "canonical database@@cq" of the "conjunctive query"
 \[
@@ -448,11 +448,11 @@ closure of "containment".
 	Let $\gamma(\bar x)$ and $\gamma'(\bar x')$ be two "conjunctive queries".
 	The following are equivalent:
 	\begin{enumerate}
-		\item $\gamma(\bar x) \intro*\contained \gamma'(\bar x')$;
+		\item $\gamma(\bar x) \contained \gamma'(\bar x')$;
 		\item $\tup{\?G, \bar x} \FOmodels \gamma'(\bar x')$;
 		\item $\tup{\?G', \bar x'} \homto \tup{\?G, \bar x}$,
 	\end{enumerate}
-	where $\tup{\?G, \bar x}$ and $\tup{\?G', \bar x'}$ are the "canonical database@@cqs@@cq"
+	where $\tup{\?G, \bar x}$ and $\tup{\?G', \bar x'}$ are the "canonical databases@@cq"
 	of $\gamma(\bar x)$ and $\gamma'(\bar x')$, respectively.
 \end{proposition}
 
@@ -495,7 +495,8 @@ closure of "containment".
 "Duality@@CQ" takes its name from the fact that \Cref{prop:containment-hom} can be simply rephrased as
 ``the preordered set of "conjunctive queries" over $\sigma$ under
 "containment" is \emph{dually isomorphic} to the preordered set of "relational databases"
-over $\sigma$ under the homomorphism ordering.'' Symbolically: 
+over $\sigma$ under the homomorphism ordering.'' Symbolically, letting
+$\textrm{RelDb}_\sigma$ denote the set of all "relational databases" over $\sigma$, we have 
 \[
 	\tup{\kl[CQ]{\textrm{CQ}_\sigma},\; \contained }
 	\isom
@@ -505,7 +506,7 @@ Naturally, to go from "relational databases" to "conjunctive queries",
 we associate to any "pointed relational database" $\tup{\?G, \bar g}$
 a ""canonical conjunctive query"" $\gamma(\bar g)$ with one "atom"
 $\+R_{(k)}(x_1,\dotsc,x_k)$ for every "hyperedge" $\tup{x_1,\dotsc,x_k} \in \+R_{(k)}(\?G)$.
-This map is precisely the inverse of the construction defining "canonical database@@cqs@@cq".
+This map is precisely the inverse of the construction defining "canonical databases@@cq".
 
 This dual isomorphism has many consequences: essentially every theory that deals with
 "relational databases" can be applied to study "conjunctive queries"!
@@ -867,7 +868,7 @@ but justified by its universal property.}
 
 \begin{fact}
 	The "canonical database@@cq" of the "disjoint conjunction"
-	equals the "disjoint union" of the "canonical database@@cqs@@cq".
+	equals the "disjoint union" of the "canonical databases@@cq".
 	By "duality@@CQ", it follows that
 	the "disjoint conjunction" is the greatest lower bound
 	of two "CQs".%
@@ -886,8 +887,19 @@ acts as the best approximation of it.
 \begin{definition}
 	We define the \AP""weak union"" \AP$\intro*\weakunion$ of two "CQs"
 	with the same number of "output variables"
-	as the "canonical CQ" of the "Cartesian product" of their "canonical database@@cqs@@cq".
+	as the "canonical CQ" of the "Cartesian product" of their "canonical databases@@cq".
 \end{definition}
+
+More explicitly, the "weak union" of two "CQs" $\gamma(x_1, \hdots, \bar x_n)$
+and $\delta(x_1, \hdots, x_n)$ is defined as follows:
+\begin{itemize}
+	\item its variables are the pairs of variables of $\gamma(\bar x)$ and of $\delta(\bar x)$,
+	\item for any $\+R_{(k)} \in \sigma$, there is an "atom" $\+R(\tup{y_1, z_1}, \dotsc, \tup{y_k, z_k})$ "iff" $\+R(y_1, \dotsc, y_k)$ and $\+R(z_1, \dotsc, z_k)$ are "atoms" of
+	$\gamma(\bar x)$ and of $\delta(\bar x)$, respectively, and
+	\item its "output variables" are $\tup{x_1, x_1}$, $\tup{x_2, x_2}$,
+	$\dotsc$, $\tup{x_n, x_n}$---which we rename as $x_1$, $x_2$, $\dotsc$, $x_n$ to keep
+	the same signature.
+\end{itemize}
 
 By construction, it is their greatest upper bound,
 in the sense that
@@ -895,15 +907,32 @@ $\gamma(\bar x) \contained \gamma(\bar x) \weakunion \delta(\bar y)$,
 $\delta(\bar y) \contained \gamma(\bar x) \weakunion \delta(\bar y)$,
 and $\gamma(\bar x) \weakunion \delta(\bar y)$ is the smallest "CQ" satisfying this property.
 
-For instance, if $\gamma() \defeq x \atom{a} y$ asks for the existence of an $a$-edge
-and $\delta() \defeq x \atom{b} y$ asks for a $b$-edge,
-then $\gamma() \weakunion \delta()$ is the empty "CQ",
+\begin{marginfigure}[-6cm]
+	\centering
+	\begin{tikzpicture}
+		\input{tikz/prelim-databases/weak-union-cq.tex}
+	\end{tikzpicture}
+	\caption{
+		\AP\label{fig:prelim-db-weak-union-cq}
+		Two "CQs" (above and left)
+		$\gamma(x) \defeq x \atom{a} y \atom{b} z$
+		and $\delta(x) \defeq x \atom{a} y \atom{c} z$ and
+		their "weak union" $\gamma(x) \weakunion \delta(x)$ (below right).
+	}
+\end{marginfigure}
+For instance, letting $\gamma() \defeq x \atom{a} y$ be the "CQ" asking
+for the existence of an $a$-edge,
+and letting $\delta() \defeq x \atom{b} y$ be the one asking for a $b$-edge,
+then $\gamma() \weakunion \delta()$ is ("semantically equivalent" to) the empty "CQ",
 "ie" the "CQ" that always true: knowing that a "database@@graph" contains either an $a$-edge
 or a $b$-edge is as good as knowing nothing in terms of "CQ" expressivity.
-On the other hand, if $\gamma(x) \defeq x \atom{a} y \atom{b} z$ outputs the source of all 
-$ab$-paths and $\delta(x) \defeq x \atom{a} y \atom{c} z$ outputs the source of all $ac$-paths,
-then $\gamma(x) \weakunion \delta(x)$ will be "homomorphically equivalent" to
+On the other hand, letting $\gamma(x) \defeq x \atom{a} y \atom{b} z$ be the "query@@CQ"
+outputting the source of all 
+$ab$-paths and $\delta(x) \defeq x \atom{a} y \atom{c} z$ be the "CQ" outputting
+the source of all $ac$-paths,
+then $\gamma(x) \weakunion \delta(x)$ is "homomorphically equivalent" to
 $\upsilon(x) \defeq x \atom{a} y$ which outputs all sources of $a$-edges.
+The query $\gamma(x) \weakunion \delta(x)$ is depicted in \Cref{fig:prelim-db-weak-union-cq}.
 
 \begin{marginfigure}
 	\centering
@@ -965,16 +994,16 @@ and so in fact we obtain two lattices for every possible arity/tuple size.
 		least upper bound & "weak union" $\weakunion$ & "disjoint union" $\disunion$ \\
 		greatest lower bound & "disjoint conjunction" $\disconj$ & "Cartesian product" $\prodstruct$ \\ 
 		\multirow{2}{*}{greatest element} & \multirow{2}{*}{``true'' (empty "CQ")} & single vertex \\
-		& & will all "hyperedges" \\
+		& & with all "hyperedges" \\
 		\multirow{2}{*}{least element} & single variable & \multirow{2}{*}{empty "database@@rel"}
 		\\
-		& will all "hyperedges" & \\ \bottomrule
+		& with all "hyperedges" & \\ \bottomrule
 	\end{tabular}
 	\caption{
 		\AP\label{tab:distributive-lattices}
 		The distributive lattices of "conjunctive queries" and "relational databases".
 		By "duality@@CQ", one can go from one lattice to the \emph{opposite} of the other
-		by taking "canonical database@@cqs@@cq" or "canonical conjunctive queries".}
+		by taking "canonical databases@@cq" or "canonical conjunctive queries".}
 \end{table}
 
 Amongst bounded distributive lattices, the better behaved are
@@ -992,8 +1021,8 @@ consisting of a single vertex and all possible "hyperedges" over it.
 \begin{proof}
 	Assume that the "signature" is non-trivial and let $\?D$ be a non-trivial "database@@rel",
 	"ie" neither the least nor greatest element of the lattice.
-	To ensure that $\?D \disunion {\neg \?D}$ is "homomorphical equivalent"
-	to the greatest database, $\neg \?D$ must actually be "homomorphical equivalent" to 
+	To ensure that $\?D \disunion {\neg \?D}$ is "homomorphically equivalent"
+	to the greatest database, $\neg \?D$ must actually be "homomorphically equivalent" to 
 	the greatest database itself,
 	but then $\?D \prodstruct {\neg \?D}$ would be non-empty.
 	Hence, $\neg \?D$ cannot exist.
@@ -1014,8 +1043,6 @@ does satisfy the property that it is the greatest formula $\chi$
 "st" $\phi \land \chi$ entails $\psi$.}
 
 \begin{proposition}
-	\!\footnote{The fact that "relational databases" and "conjunctive queries" form
-	a bounded distributive lattice is folklore.}
 	The bounded distributive lattice of "conjunctive queries" is actually
 	a Heyting algebra.
 \end{proposition}
@@ -1064,17 +1091,17 @@ As we have already seen, the first consequence of "duality@@CQ" is that
 "containment" and "semantical equivalence" are both
 decidable, see \Cref{coro:prelim-db-containment-cq}.
 We shall now see that the rich theory of "relational structures",
-and in particular the concept of "cores" trivializes the question of minimization.
+and in particular the concept of "cores", trivializes the question of minimization.
 
 Fix a "relational signature" $\sigma$.
 A ""subquery@@CQ"" of $\gamma(\bar x)$ is any "CQ" over $\sigma$
-obtained by removing variable and/or atoms from $\gamma$:
+obtained by removing variables and/or atoms from $\gamma$:
 to ensure that we still obtain a "CQ" over $\sigma$, "output variables" 
 cannot be removed.
 In terms of "duality@@CQ", this amounts to taking the "canonical conjunctive query" of
 a "substructure" of the "canonical database@@cq".%
 \footnote{Careful: if $\gamma'$ is a subquery of $\gamma$, then $\gamma \contained \gamma'$!
-The fewer constraints there is, the easier it is to satisfy them…}
+The fewer constraints there are, the easier it is to satisfy them…}
 We then say that a class $\+C$ of "conjunctive queries" over $\sigma$ is ""monotone@@classCQ""
 if for any "CQ" $\gamma(\bar x) \in \+C$, for any "subquery@@CQ" $\gamma'(\bar x)$ of
 $\gamma(\bar x)$, we must have $\gamma'(\bar x) \in \+C$.
@@ -1127,7 +1154,7 @@ in the sense that if a solution exists to each problem, then a common solution e
 
 \begin{proof}
 	\proofcase{Upper bound.}
-	A naïve algorithm would be to first compute the "core", and using the oracle
+	A naïve algorithm would be to first compute the "core", and then to use the oracle
 	to test if it belongs to $\+C$.
 	However, computing the "core" is not in "NP": intuitively,
 	we first need to guess a substructure that is "homomorphically equivalent"
@@ -1215,9 +1242,8 @@ in the sense that if a solution exists to each problem, then a common solution e
 	}
 \end{marginfigure}
 We now turn to the "synthesis problem", also called \emph{passive learning},
-\emph{reverse engineering}. The idea behind the problem is to infer a
-"query@@sem" from examples: these examples take the form
-of models, taking the form of "pointed relational databases", together
+or \emph{reverse engineering}. The idea behind the problem is to infer a
+"query@@sem" from examples: these examples are models, taking the form of "pointed relational databases", together
 with the knowledge of whether this model should be part of the "query@@sem"
 (\emph{positive examples}) or not (\emph{negative examples}),
 see \Cref{fig:prelim-db-ex-synthesis}.%
@@ -1298,7 +1324,7 @@ However, all results extend trivially to the non-Boolean case.}
 	}
 \end{figure}
 
-In fact there is a matching lower-bound, even if the "signature" is fixed,
+In fact there is a matching lower bound, even if the "signature" is fixed,
 but the  proof is far from trivial.
 Willard proved the "coNExp"-hardness in
 \cite[Theorem~3]{Willard2010Testing} when the "signature" is part of the input%
@@ -1318,7 +1344,7 @@ they can ask two kinds of questions.\footnote{``Questions'' are usually called
 	\item Membership questions: they provide a model and asks if it satisfies the "query@@sem";
 	\item Equivalence questions: they provide a "query@@sem" and ask Teacher if
 		it is "semantically equivalent" to theirs; if yes, the game stops, otherwise
-		Teachers provides a counter-example in the form of a model satisfying
+		Teacher provides a counter-example in the form of a model satisfying
 		one "query@@sem" but not the other.
 \end{itemize}
 Of course, Student always has a winning strategy: enumerate all queries
@@ -1339,7 +1365,7 @@ and no equivalence query \cite[Theorem~5.2]{tenCateDalmau2021ActiveLearning}.
 
 
 \subsection{Conjunctive Queries of Small Tree-Width}
-\AP\label{sec:prelim-db-tw}
+\label{sec:prelim-db-tw}
 
 Recall that, by "duality@@CQ", "conjunctive query evaluation" is "NP"-complete:
 this begs the question of finding classes of "CQs" with faster evaluation.
@@ -1407,7 +1433,7 @@ The \AP""tree-width"" of $\?G$ is the minimum of the "width" of all "tree decomp
 The notion can be directly generalized to arbitrary "relational structures":
 instead of asking that every edge $\{u,v\}$ is contained in some "bag",
 we require that for every "hyperedge" $\tup{x_1,\dotsc,x_k}$,
-there exists a "bag" than contains all $x_i$'s.
+there exists a "bag" that contains all $x_i$'s.
 The \reintro{tree-width} of a "CQ" is naturally defined as
 the "tree-width" of its "canonical database@@cq".
 The "undirected graphs" of "tree-width" at most $1$ are exactly
@@ -1417,7 +1443,7 @@ The "$k$-clique" has "tree-width" exactly $k-1$ since any "tree decomposition"
 of $\clique{k}$ must actually contain a "bag" that contains all vertices of $\clique{k}$.
 
 \begin{proposition}[{\cite[Theorem~3]{ChekuriRajaraman2000Containment}}]
-	\!\footnote{Theorem 3 talks about query "containment" of "CQs", which is in fact equivalent
+	\!\footnote{Theorem~3 of \cite{ChekuriRajaraman2000Containment} talks about query "containment" of "CQs", which is in fact equivalent
 	to the "evaluation problem" for "CQs". Moreover, the theorem deals with ``query width'',
 	but this parameter is equivalent up to a multiplicative constant to the "tree-width"
 	\cite[Lemma~2]{ChekuriRajaraman2000Containment} assuming that the "signature" is fixed.} 
@@ -1502,9 +1528,9 @@ a "tree decomposition".
 	To compute the partial "homomorphisms" $f$ that agree with
 	some partial "homomorphisms" from $\+H_{b_1}$, $\dotsc$, $\+H_{b_k}$,
 	we can first sort each table $\+H_{b_i}$ according to their value on $\bagmap(b)$,
-	and then use a dichotomy search. Sorting can be done
+	and then use a binary search. Sorting can be done
 	in $\+O(|D|^{k+1}\log(|D|^{k+1})) = \+O(|D|^{k+1}\log(|D|))$,
-	and the dichotomy search---one for each partial "homomorphisms" that is a candidate
+	and the binary search---one for each partial "homomorphism" that is a candidate
 	for $\+H_b$---runs in $\+O(\log(|D|^{k+1})) = \+O(\log(|D|))$.
 	Overall, we get an algorithm that runs in time
 	\[
@@ -1525,7 +1551,10 @@ are no graph property other than "tree-width" that ensures
 polynomial time evaluation 
 \cite[Corollary~19]{GroheSchwentickSegoufin2001Evaluation}.
 Importantly, this statement deals with \emph{graph properties},
-"ie" with classes of CQs defined by restricting their underlying "structure".
+"ie" with classes of CQs defined by restricting their underlying graph.%
+\footnote{Formally, each "relational structure" is associated to an undirected graph
+with the same vertices, and with an edge between two variables if they appear in
+the same "hyperedge".}
 We will see next that actually there are other classes of CQs
 with tractable evaluation.
 
@@ -1537,7 +1566,7 @@ for a larger class of queries than those of bounded tree-width.
 \begin{proposition}
 	For any $k\in\N$, the "CQ evaluation problem",
 	restricted to "conjunctive queries" that are "semantically equivalent" 
-	to a "CQ" of "tree-width" at most $k$ is "fixed-parameter tractable"
+	to a "CQ" of "tree-width" at most $k$, is "fixed-parameter tractable"
 	when parameterized by the size of the query.
 \end{proposition}
 
@@ -1558,13 +1587,27 @@ for a larger class of queries than those of bounded tree-width.
 	Hence, the problem is "FPT" when parameterized by $\size{\gamma}$.
 \end{proof}
 
-In fact, Dalmau, Kolaitis and Vardi improved this result: in a surprising twist, 
-one does not need to explicitly construct the "core" to efficiently evaluate
-a "CQ" that is "semantically equivalent" to one of small "tree-width".
-They proved that this class could actually be evaluated in polynomial time
+In fact, Dalmau, Kolaitis and Vardi improved this result and
+proved that this class could actually be evaluated in polynomial time
 \cite[Corollary~5]{DalmauKolaitisVardi2002Constraint}---importantly,
 this is a \emph{promise} problem: we work under the assumption that the input
-does have bounded "tree-width" but we do not need to verify this claim.
+is "equivalent@@sem" to one of bounded "tree-width", but we do not need to verify this claim.
+This is far from trivial, since computing the "core"
+of a "structure" is hard in general \cite[Theorem~7]{HellNesetril1992Core}, and so
+one cannot naively first compute the core of the "query", and then evaluate it, to
+achieve polynomial time.%
+\footnote{Dalmau, Kolaitis and Vardi's result in fact imply that,
+for any $k\in\N$, we can compute in polynomial-time the "core" of a
+"CQ" $\gamma(\bar x)$ under the promise that this "core" has "tree-width" at most $k$.
+Indeed, it suffices for each "subquery" $\gamma'(\bar x)$ of $\gamma(bar x)$ with
+exactly one less variable,
+to let $\tup{\?G', \bar x}$ denote its "canonical database", and check if
+$\tup{\?G', \bar x} \FOmodels \gamma(\bar x)$. The latter can be done in polynomial time
+using \cite[Corollary~5]{DalmauKolaitisVardi2002Constraint}. If the procedure fails
+for each $\gamma'(\bar x)$, then $\gamma(bar x)$ must be a "core". Otherwise,
+if it succeeds for some $\gamma'(\bar x)$ we iterate the procedure until we obtain a "core".
+We thank Antoine Amarilli for pointing this out to us.}
+
 Remarkably, Grohe then proved the converse implication: these 
 are the only classes of CQs that are tractable!
 \begin{proposition}[""Grohe's theorem"" {\cite[Theorem~1.1]{Grohe2007ComplexityHomomorphism}}]
@@ -1595,11 +1638,11 @@ contains an arbitrarily large grid. In turn, the clique problem,
 which is "W[1]"-hard, is then reduced to the evaluation problem
 for these queries with big grids.
 
-"Grohe's theorem" deals with fixed "signatures": it was later generalized \cite[Theorem~1]{ChenGottlobLanzingerPichler2020Semantic} for characterizing "FPT" "evaluation" when the "signature" is also part. This is done by replacing the notion of "tree-width" with 
+"Grohe's theorem" deals with fixed "signatures": it was later generalized \cite[Theorem~1]{ChenGottlobLanzingerPichler2020Semantic} for characterizing "FPT" "evaluation" when the "signature" is also part of the input. This is done by replacing the notion of "tree-width" with 
 that of ``submodular width'', introduced by Marx in \cite{Marx13Tractable}.
 
 \paragraph{Bounded Path-Width.}
-We now focus on "path-width", which is a parameter upper-bounded
+We now focus on "path-width", which is a parameter upper bounded
 by the "tree-width".
 So, if a "class of CQs" has bounded "path-width", then
 it has bounded "tree-width" and so by \Cref{prop:eval-CQ-bounded-tw}
@@ -1612,11 +1655,13 @@ The \AP""path-width"" of a "structure" is the minimum of the "width" of
 all of its "path decompositions".
 
 \begin{lemma}[{\cite[Lemma~8.10]{FigueiraMorvan2025SemanticTreeWidthLMCS}}]
-	\!\footnote[][5em]{\cite[Lemma~8.10]{FigueiraMorvan2025SemanticTreeWidthLMCS},
+	\!\footnote[][5em]{Recall that this problem deals with ``combined complexity'':
+	both the "query" and the data are part of the input.}%
+	\footnote{\cite[Lemma~8.10]{FigueiraMorvan2025SemanticTreeWidthLMCS},
 	corresponding to \Cref{lemma:evaluation-bounded-pathwidth} in this thesis,
 	actually proved this result over the larger class of "UC2RPQs" of bounded 
 	"path-width". The proof of the upper bound is exactly the same,
-	but the lowerbound is \emph{marginally} harder.}
+	but the lower bound is \emph{marginally} harder.}
 	\AP\label{lemma:evaluation-bounded-pathwidth-cq}
 	For each $k \geq 1$, the "CQ evaluation problem", restricted to "CQs" of
 	"path-width" at most $k$, is "NL"-complete.
@@ -1643,8 +1688,7 @@ all of its "path decompositions".
 \begin{proof}
 	\proofcase{Lower bound.}
 	We reduce the problem of "Reachability in finite graphs"
-	"NL"-hardness directly follows from the "NL"-hardness of
-	the "reachability problem in finite graphs".
+	which is "NL"-hard.
 	Given an instance $\tup{\?G,s,t}$ of this problem,
 	we reduce it to
 	\[
@@ -1654,7 +1698,7 @@ all of its "path decompositions".
 	where $n = |G|$ and $\?G'$ is the "graph@@dir" obtained
 	from $\?G$ by adding a self-loop on $t$.
 	Clearly, there is a path from $s$ to $t$
-	in $\?G$ "iff" there is a path from $s$ to $t$ of length at most $n$ in $\?G$---by pigeon-hole principle---, which in turn is equivalent to asking for a path from $s$ to $t$
+	in $\?G$ "iff" there is a path from $s$ to $t$ of length at most $n$ in $\?G$---by the pigeon-hole principle---, which in turn is equivalent to asking for a path from $s$ to $t$
 	of length \emph{exactly} $n$ in $\?G'$ thanks to the extra self-loop.
 	To conclude, note that $\rho$ has "path-width" one.
 
@@ -1784,6 +1828,15 @@ as inverted mountain ranges, see \Cref{fig:ex-ucq}.
 By the proof of \Cref{prop:codd-thm}, we can notice that "unions of conjunctive queries"
 are as expressive as "existential-positive formulas", "ie" "first-order formulas"
 built out of $\exists$, $\land$ and $\lor$.
+
+\paragraph*{Hom-Minimality.}
+We say that a "graph database" $\tup{\?G,\bar u}$ satisfying a ""semantical query"" $\gamma(\bar x)$
+is \AP""hom-minimal"" if for every other "graph database" $\tup{\?G',\bar v}$,
+if $\tup{\?G',\bar v}$ also satisfies $\gamma(\bar x)$ and
+if $\tup{\?G', \bar v} \homto \tup{\?G, \bar u}$ then $\tup{\?G', \bar v} \semequiv \tup{\?G, \bar u}$. Graphically, this literally corresponds to the minimal elements of a set in
+\Cref{fig:distributive-lattice-rel-db}.
+In the definition, the quantification over all ``$\tup{\?G',\bar v}$ that satisfy $\gamma(\bar x)$''
+can actually be replaced, for "UCQs", by a quantification over all "canonical databases".
 
 \begin{proposition}
 	Let $\Gamma$ be a "UCQ". The following are equivalent:
@@ -1920,10 +1973,10 @@ can be lifted to "UCQs", for instance:
 		and (3) taking their union
 		yields a "UCQ" that is "semantically equivalent" to the
 		original one, and minimal under most reasonable metrics;
-	\item the evaluation of "UCQs" of bounded "tree-width"---we naturally
+	\item the evaluation of "UCQs" of bounded "tree-width" can be done in
+		polynomial time---we naturally
 		extend the notion of "tree-width" to unions by letting it
-		be the maximum of the "tree-width" of its "disjuncts"---is
-		polynomial time. 
+		be the maximum of the "tree-width" of its "disjuncts".
 \end{itemize}
 
 In the next section, we will deal with a class of queries "closed
