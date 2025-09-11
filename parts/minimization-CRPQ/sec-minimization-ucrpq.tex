@@ -195,14 +195,18 @@ Our approach exploits having unions at our disposal, enabling the possibility of
 For a graph class $\+C$ (remember that these are directed multigraphs) we denote by \AP$\intro*\CQ[\+C]$, $\intro*\CRPQ[\+C]$, $\intro*\UCRPQ[\+C]$, $\intro*\infUCRPQ[\+C]$, the class of "CQs", of "CRPQs", of finite unions of "CRPQs" 
 and of infinite unions of "CRPQs" $\gamma$ such that $\underlying{\gamma} \in \+C$.
 Given a graph class $\+C$ and a "UCRPQ" $\Gamma$, we define $\AppInf{\Gamma}{\+C}$ to be the (infinite) set of all $\CRPQ[\+C]$ queries which are "contractions" of "CQs" "contained" in $\Gamma$. More formally:\footnote[][-4em]{Note that the "contraction" of a "CQ" is a "CRPQ": this is why $\AppInf{\Gamma}{\+C}$ is an infinite union of "CRPQs" and not of "CQs".}
-\[
-	\intro*\AppInf{\Gamma}{\+C} \defeq \{
-		\alpha \in \CRPQ[\+C] \mid \exists \xi \in \Exp(\Gamma), \exists \eta \in \CQ \text{ s.t. }
-		\xi \homto \eta \text{ and } \alpha \text{ is a "contraction" of } \eta
+\AP\phantomintro{\AppInf}
+\begin{align*}
+	\reintro*\AppInf{\Gamma}{\+C} \defeq \{
+		\alpha \in \CRPQ[\+C] & \mid \exists \xi \in \Exp(\Gamma), \exists \eta \in \CQ \text{ "st" }
+		\xi \homto \eta \\
+		& \qquad \text{ and } \alpha \text{ is a "contraction" of } \eta
 	\}.
-\]
+\end{align*}
+	
 \begin{proposition}
 	\AP\label{prop:max-under-approx}
+	Let $\Gamma$ be a "UCRPQ".
 	If $\+C$ is a graph class closed under taking "minors", then
 	$\AppInf{\Gamma}{\+C}$ is a \AP""maximal under-approximation"" of $\Gamma$ by $\infUCRPQ[\+C]$ queries, in the sense that:
 	\begin{enumerate}
@@ -232,7 +236,7 @@ Given a graph class $\+C$ and a "UCRPQ" $\Gamma$, we define $\AppInf{\Gamma}{\+C
 	\[\AppInf{\gamma}{\+C} \semequiv \{
 		\alpha \in \CQ[\+C] \mid \exists \xi \in \Exp(\gamma), 
 		\xi \surjto \alpha
-	\}.\]
+	\}.\qedhere\]
 \end{remark}
 
 Our "ExpSpace" upper bound relies on the following technical lemma.
@@ -240,7 +244,7 @@ Our "ExpSpace" upper bound relies on the following technical lemma.
 \begin{lemma}
 	\AP\label{lemma:approximation-for-finclass}
 	If $\+C$ is finite and closed under taking "minors", then $\AppInf{\Gamma}{\+C}$ is equivalent to a query $\Delta\in \UCRPQ[\+C]$ with exponentially many "CRPQs", each "CRPQ" of $\Delta$ being of size polynomial in $\size{\Gamma} + \max{\set{\nbatoms{G} \mid G \in \+C}}$.
-	Further, the membership $\delta \in^? \Delta$ can be tested "NP". 
+	Further, the membership $\delta \in^? \Delta$ can be tested in "NP". 
 	In particular, this "UCRPQ" $\Delta$ can be computed in exponential time from $\Gamma$.
 \end{lemma}
 
@@ -248,11 +252,15 @@ Our "ExpSpace" upper bound relies on the following technical lemma.
 	We start by observing that $\AppInf{\Gamma}{\+C}$ admits an equivalent and more flexible definition in terms of "refinements". This definition will allow us to effectively compute our desired equivalent query $\Delta$, by considering "refinements" of bounded lengths.
 
 	For each $m \in \N\cup\{+\infty\}$, we define the $\infUCRPQ[\+C]$
-	\[\AP\intro*\App{\Gamma}{\+C}{m} \defeq \{
-		\alpha \in \CRPQ[\+C] \mid \exists \rho \in \Refin[\leq m](\Gamma), 
+	\AP\phantomintro{\App}
+	\begin{align*}
+	\reintro*\App{\Gamma}{\+C}{m} \defeq \{
+		\alpha \in \CRPQ[\+C] & \mid \exists \rho \in \Refin[\leq m](\Gamma), 
 		\exists \eta \in \CRPQ \text{ s.t. }
-		\rho \homto \eta \text{ and } \alpha \text{ is a "contraction" of } \eta
-	\}.\]
+		\rho \homto \eta \\
+		& \qquad \text{ and } \alpha \text{ is a "contraction" of } \eta
+	\}.
+	\end{align*}
 
 	We have that $\AppInf{\Gamma}{\+C}\semequiv \App{\Gamma}{\+C}{+\infty}$. Indeed, $\AppInf{\Gamma}{\+C}\contained \App{\Gamma}{\+C}{+\infty}$ as the former is a subset of the latter. On the other hand, $\App{\Gamma}{\+C}{+\infty}\contained \AppInf{\Gamma}{\+C}$ follows from Proposition \ref{prop:max-under-approx} and the fact that $\App{\Gamma}{\+C}{+\infty}\contained \Gamma$ by construction.
 	
@@ -305,7 +313,7 @@ Our "ExpSpace" upper bound relies on the following technical lemma.
 	namely the maximal length of an "atom refinement" in $\rho$.
 	Let $\vec{\alpha_1}$ be an "explicit approximation" of "contraction length" at most
 	$\+O(\nbatoms{\Gamma})$. Then $\eta_1$ has at most $\+O(\nbatoms{\Gamma}\cdot\nbatoms{\+C})$
-	"atoms". It follows then, by the pigeonhole principle, that we can bound the
+	"atoms". It follows then, by the pigeon-hole principle, that we can bound the
 	"refinement length" of $\rho_1$ by $\+O(\nbatoms{\Gamma}\cdot r_{\Gamma}\cdot\nbatoms{\alpha})$. Indeed, if the length of an "atom refinement" of $\rho_1$  is greater than this bound, there are two  atoms in the refinement $x\atom{L_i} y$ and  $x’\atom{L_j} y’$, with $i<j$, mapped to the same atom via $h_1$ and whose corresponding NFA states $q_i$ and $q_j$ in the definition of refinements are the same. We can then remove the path between $y$ and $y’$.
 	In conclusion, this shows that $\App{\Gamma}{\+C}{+\infty} \contained \App{\Gamma}{\+C}{O(\nbatoms{\Gamma}\cdot r_{\Gamma}\cdot \nbatoms{\+C})}$.
 

@@ -108,9 +108,12 @@
 % \input{parts/abstract-french.tex}
 % \input{parts/todo.tex}
 
+% Counter for figures includes chapter number ("R" for résumé)
+\renewcommand\thefigure{P.\arabic{figure}}
+\include{parts/resume-fr/ch-resume-fr}
+
 % Counter for figures includes chapter number
 \renewcommand\thefigure{\thechapter.\arabic{figure}}
-
 \include{parts/intro/ch-intro}
 \include{parts/general-preliminaries/ch-general-preliminaries}
 
