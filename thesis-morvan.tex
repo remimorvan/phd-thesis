@@ -95,7 +95,8 @@
 
 \input{kl/extra-index.tex}
 
-\frontmatter
+% \frontmatter
+\mainmatter
 \include{parts/titlepage}
 \include{parts/copyright}
 % Counter for figures includes chapter number ("P" for preface)
@@ -103,14 +104,17 @@
 \include{parts/preface}
 \include{parts/contents}
 
-\mainmatter
-
 % \input{parts/abstract-french.tex}
 % \input{parts/todo.tex}
 
-% Counter for figures includes chapter number ("R" for résumé)
-\renewcommand\thefigure{P.\arabic{figure}}
-\include{parts/resume-fr/ch-resume-fr}
+% {
+% 	% Counter for figures includes chapter number ("R" for résumé)
+% 	\setcounter{figure}{0}
+% 	\renewcommand\thefigure{R.\arabic{figure}}
+% 	\chaptermark{Résumé en français}
+% 	\markboth{Résumé en français}{Résumé en français}
+% 	\include{parts/resume-fr/ch-resume-fr}
+% }
 
 % Counter for figures includes chapter number
 \renewcommand\thefigure{\thechapter.\arabic{figure}}

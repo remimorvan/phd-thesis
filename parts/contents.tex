@@ -2,6 +2,10 @@
 { % env necessary for the parskip not to leak in the rest of the doc.
 	\setlength{\parskip}{0em}
 	\setcounter{tocdepth}{1}
+	\chaptermark{}
+	\markboth{}{}
+	\fancyhead{}
+	\renewcommand{\contentsname}{Contents}
 	\tableofcontents
 }
 % \listoffigures

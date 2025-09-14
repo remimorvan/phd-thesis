@@ -26,6 +26,128 @@ qui forment les fondements de la \emph{théorie des bases de données}, que nous
 dans le domaine des \emph{problèmes de satisfaction de contraintes}, présenté dans la dernière partie de ce résumé. Cette dualité intrinsèque du problème du morphisme---ou plutôt de l'encodage
 de problèmes naturels dans le problème du morphisme---guidera cette thèse jusque dans sa structure, que l'on peut notamment observer par sa division en deux parties.
 
+\begin{figure}
+	\centering
+	\begin{tikzpicture}
+		\foreach \i in {0,1,...,5}{
+			\node[vertex] (\i) at (\i*360/6: 1.2cm) {};
+		}
+
+		\draw[edge] (1) to (0);
+		\draw[edge] (2) to (1);
+		\draw[edge] (3) to (2);
+		\draw[edge] (3) to (4);
+		\draw[edge] (5) to (4);
+		\draw[edge] (5) to (0);
+
+		\node[vertex] at (4.33,.66) (a) {};
+		\node[vertex] at (5.66,.66) (b) {};
+		\node[vertex] at (5.66,-.66) (c) {};
+		\node[vertex] at (4.33,-.66) (d) {};
+		\node[vertex] at (6.8,0) (e) {};
+
+		\draw[edge] (d) to (a);
+		\draw[edge] (a) to (b);
+		\draw[edge] (b) to (c);
+		\draw[edge] (d) to (c);
+		\draw[edge] (b) to (e);
+		\draw[edge] (e) to (c);
+
+		\draw[edge, draw=cBlue, dotted, out=-20, in=160] (3) to (d);
+		\draw[edge, draw=cBlue, dotted, out=-25, in=170] (2) to (a);
+		\draw[edge, draw=cBlue, dotted, out=5, in=130] (1) to (b);
+		\draw[edge, draw=cBlue, dotted, out=10, in=145] (0) to (c);
+		\draw[edge, draw=cBlue, dotted, out=-20, in=195] (5) to (d);
+		\draw[edge, draw=cBlue, dotted, out=-30, in=210] (4) to (c);
+	\end{tikzpicture}
+	\caption{
+		\AP\label{fig:example-graph-homomorphism-fr}
+		Deux graphes (en noir) et un homomorphisme (flèches pointillées bleues) du graphe de gauche vers celui de droite.
+		(Reproduction de \Cref{fig:example-graph-homomorphism}.)
+	}
+\end{figure}
+La structure mathématique la plus simple est peut-être celle d’un graphe fini (orienté) :
+elle consiste en un ensemble fini $V$ de sommets (également appelé \emph{domaine}),
+ainsi qu’en un ensemble d’\emph{arêtes} $\+E \subseteq V \times V$.
+Un \emph{morphisme} d’un graphe vers un autre est alors une fonction $f$ définie sur leurs sommets qui préserve les arêtes, au sens où, si $\tup{u,v}$ est une arête, alors $\tup{f(u),f(v)}$ doit également en être une :
+nous représentons un exemple de morphisme de graphes en \Cref{fig:example-graph-homomorphism-fr}.
+La notion plus riche de $\sigma$-structure, non explicitée dans ce résumé, généralise
+la notion de graphe en permettant d'avoir plusieurs types de relations.
+
+\decisionproblem{Le \textsc{problème de morphisme} sur $\sigma$}{
+	Deux $\sigma$-structures $\?A$ et $\?B$.
+}{
+	Existe-t-il un morphisme de $\?A$ vers $\?B$ ?
+}
+Au-delà d'un simple problème de décision, qui se trouve être "NP"-complet,
+le \textsc{problème de morphisme} sur $\sigma$ peut en fait être vu comme un 
+cadre dans lequel reformuler des problèmes naturels.
+
+Considérons la requête SQL suivante, qui renvoie toutes les paires
+de titres de films avec leur heure de projection.
+\lstinputlisting[language=mysql]{fig/intro/cinema.sql}
+
+Cette requête $\gamma$ peut en fait être vue elle-même comme une structure relationnelle $\?Q_\gamma$ :
+son domaine comporte six éléments, correspondant aux attributs des tables
+\textsc{Movies} et \textsc{Projections}, fusionnés sur l’attribut
+$\textsf{Projections.movie\_id} = \textsf{Movies.id}$.
+Les relations \textsc{Movies} et \textsc{Projections} consistent chacune en un unique tuple,
+et la relation \textsc{Rooms} est vide, comme représenté dans la \Cref{fig:example-sql-as-rel}.
+
+Alors, l’ensemble des paires $\tup{x, y}$
+telles qu’il existe un morphisme de $\?Q_\gamma$ vers la base de données relationnelle,
+envoyant $\textsf{title}$ sur $x$ et $\textsf{time}$ sur $y$,
+est exactement l’ensemble de sortie de la requête SQL sur la base de données.
+
+\begin{marginfigure}[2em]
+	\centering%
+	\begin{tikzpicture}[scale=1.3]
+		\draw[step=.3333] (0, 0) grid (3, 3);
+		\draw[very thick, step=1] (0, 0) grid (3, 3);
+
+		\setcounter{row}{1}
+		\setrow { }{2}{ }  {5}{ }{1}  { }{9}{ }
+		\setrow {8}{ }{ }  {2}{ }{3}  { }{ }{6}
+		\setrow { }{3}{ }  { }{6}{ }  { }{7}{ }
+
+		\setrow { }{ }{1}  { }{ }{ }  {6}{ }{ }
+		\setrow {5}{4}{ }  { }{ }{ }  { }{1}{9}
+		\setrow { }{ }{2}  { }{ }{ }  {7}{ }{ }
+
+		\setrow { }{9}{ }  { }{3}{ }  { }{8}{ }
+		\setrow {2}{ }{ }  {8}{ }{4}  { }{ }{7}
+		\setrow { }{1}{ }  {9}{ }{7}  { }{6}{ }
+	\end{tikzpicture}
+	\caption{
+		\AP\label{fig:intro-sudoku-fr}
+		Une grille de Sudoku préremplie.
+		(Reproduction de \Cref{fig:intro-sudoku}.)
+	}
+\end{marginfigure}
+Donnons maintenant un second exemple : nous représentons une grille de Sudoku vide comme la structure relationnelle
+dont le domaine est $\intInt{1,9} \times \intInt{1,9}$ — correspondant aux coordonnées de la grille — avec
+trois sortes de prédicats binaires : $\+R$, $\+C$ et $\+S$,
+qui décrivent quand deux coordonnées sont sur la même ligne, la même colonne ou le même carré 3$\ast$3.
+Pour gérer les grilles préremplies, nous ajoutons neuf prédicats unaires $P_k$ ($k \in \intInt{1,9}$),
+et si la coordonnée $\tup{i,j}$ est préremplie avec le nombre $k$, alors le prédicat $P_k$ doit
+valoir sur l’élément $\tup{i,j}$.
+Étant donnée une grille préremplie $G$, nous notons $\?S_G$ la structure relationnelle associée.
+
+Nous définissons ensuite la structure cible $\?T$ comme ayant $\intInt{1,9}$ pour domaine,
+chaque sommet représentant une valeur possible remplissant une case.
+Les relations binaires $\+R$, $\+C$ et $\+S$ consistent toutes trois
+en l’ensemble des paires $\tup{x,y}$ telles que $x \neq y$. Cela traduit le fait que,
+si deux cases sont sur la même ligne, la même colonne ou le même carré 3$\ast$3, elles doivent
+avoir des valeurs différentes.
+De plus, chaque relation unaire $P_k$ ($k \in \intInt{1,9}$) est définie
+comme ne valant que sur $\{i\}$.
+
+Alors, une grille préremplie $G$ peut être complétée si, et seulement si,
+$\?S_G$ admet un morphisme vers $\?T$.
+Plus précisément, les morphismes $f\colon \?S_G \to \?T$ correspondent exactement
+aux grilles de Sudoku complètes qui étendent $G$, avec $f(\tup{i,j})$ donnant
+le nombre contenu dans la case $\tup{i,j}$.
+
 \section*{}
 
 \section*{}
