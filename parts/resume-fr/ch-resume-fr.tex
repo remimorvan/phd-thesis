@@ -1,7 +1,9 @@
 \begin{french}
 
-\chapter*{Résumé en français}
-\addcontentsline{toc}{chapter}{Résumé en français}
+\chapter*{Résumé étendu en français}
+\addcontentsline{toc}{chapter}{Résumé étendu en français}
+\chaptermark{Résumé français}
+\markboth{Résumé français}{Résumé français}
 
 \emph{Ce résumé est une version abrégée du \Cref{ch:intro}. Nous recommandons plutôt la lecture dudit chapitre pour avoir une compréhension plus globale de la thèse.}
 
@@ -83,23 +85,42 @@ Au-delà d'un simple problème de décision, qui se trouve être "NP"-complet,
 le \textsc{problème de morphisme} sur $\sigma$ peut en fait être vu comme un 
 cadre dans lequel reformuler des problèmes naturels.
 
-Considérons la requête SQL suivante, qui renvoie toutes les paires
-de titres de films avec leur heure de projection.
+\paragraph*{Bases de données.}
+Considérons une requête SQL, disons la requête $\gamma$ suivante,
+qui retourne les titres de films ainsi que leur horaire de projection.
 \lstinputlisting[language=mysql]{fig/intro/cinema.sql}
+Une base de données $\?D$ peut-être décrite comme une $\sigma$-structure---où
+la signature $\sigma$ décrit le \emph{schéma} de la base---, notée également $\?D$.
+Il est possible de construire%
+\footnote{Voir \Cref{ex:sql-as-hom} pour plus de détails.}
+de manière assez triviale---notamment en temps linéaire---une $\sigma$-structure
+$\?Q_{\gamma}$, contenant notamment deux sommets \texttt{title} et \texttt{time},
+tels que pour toute paire d'élements $\tup{x, y}$ de la base de données,
+il existe un morphisme de $\?Q_{\gamma}$ vers $\?D$ envoyant \texttt{title}
+vers $x$ et \texttt{time} vers $y$ si, et seulement si,
+la paire $\tup{x,y}$ est une sortie valide de la requête $\gamma$
+lorsqu'elle est évaluée sur $\?D$, c'est-à-dire que le film $x$ est projeté à
+l'horaire $y$. Autrement dit, ce problème de requêtage peut-être formulé comme
+un \textsc{problème de morphisme}.%
+\footnote{\emph{Stricto sensu} le problème de morphisme mentionné dans ce paragraphe
+ne rentre par dans le cadre décrit précédemment, puisqu'il doit gérer par constantes
+(\texttt{title} et \texttt{time}). En fait, il est possible de gérer ces constantes
+en les faisant passer dans la signature, et donc ce problème s'incrit en fait
+bien dans le cadre étudié.}
 
-Cette requête $\gamma$ peut en fait être vue elle-même comme une structure relationnelle $\?Q_\gamma$ :
-son domaine comporte six éléments, correspondant aux attributs des tables
-\textsc{Movies} et \textsc{Projections}, fusionnés sur l’attribut
-$\textsf{Projections.movie\_id} = \textsf{Movies.id}$.
-Les relations \textsc{Movies} et \textsc{Projections} consistent chacune en un unique tuple,
-et la relation \textsc{Rooms} est vide, comme représenté dans la \Cref{fig:example-sql-as-rel}.
-
-Alors, l’ensemble des paires $\tup{x, y}$
-telles qu’il existe un morphisme de $\?Q_\gamma$ vers la base de données relationnelle,
-envoyant $\textsf{title}$ sur $x$ et $\textsf{time}$ sur $y$,
-est exactement l’ensemble de sortie de la requête SQL sur la base de données.
-
-\begin{marginfigure}[2em]
+\paragraph*{Sudoku.}
+Donnons maintenant un second exemple, dans un domaine tout à fait différent.
+Nous considérons une grille de Sudoku $G$, telle que celle \Cref{fig:intro-sudoku-fr}.
+Cette grille peut-être encodée comme une $\sigma$-structure $\?S_{G}$,
+ayant un sommet par case de la grille.%
+\footnote{Voir \Cref{ex:sudoku-as-hom} pour les détails de cet encodage.}
+On peut alors définir une $\sigma$-structure $\?T$ dont les sommets
+sont les entiers $1, 2, \dotsc, 9$, de sorte que
+les morphismes $f$ de $\?S_{G}$ vers $\?T$ décrivent exactement les complétions de la grille
+de Sudoku. Notamment, étant donné un tel morphisme $f$ et une position $\tup{i,j}$,
+la valeur $f(i,j)$ est la valeur rentrée dans la grille en position $\tup{i,j}$ lorsque
+complétée selon $f$.
+\begin{marginfigure}
 	\centering%
 	\begin{tikzpicture}[scale=1.3]
 		\draw[step=.3333] (0, 0) grid (3, 3);
@@ -124,32 +145,196 @@ est exactement l’ensemble de sortie de la requête SQL sur la base de données
 		(Reproduction de \Cref{fig:intro-sudoku}.)
 	}
 \end{marginfigure}
-Donnons maintenant un second exemple : nous représentons une grille de Sudoku vide comme la structure relationnelle
-dont le domaine est $\intInt{1,9} \times \intInt{1,9}$ — correspondant aux coordonnées de la grille — avec
-trois sortes de prédicats binaires : $\+R$, $\+C$ et $\+S$,
-qui décrivent quand deux coordonnées sont sur la même ligne, la même colonne ou le même carré 3$\ast$3.
-Pour gérer les grilles préremplies, nous ajoutons neuf prédicats unaires $P_k$ ($k \in \intInt{1,9}$),
-et si la coordonnée $\tup{i,j}$ est préremplie avec le nombre $k$, alors le prédicat $P_k$ doit
-valoir sur l’élément $\tup{i,j}$.
-Étant donnée une grille préremplie $G$, nous notons $\?S_G$ la structure relationnelle associée.
 
-Nous définissons ensuite la structure cible $\?T$ comme ayant $\intInt{1,9}$ pour domaine,
-chaque sommet représentant une valeur possible remplissant une case.
-Les relations binaires $\+R$, $\+C$ et $\+S$ consistent toutes trois
-en l’ensemble des paires $\tup{x,y}$ telles que $x \neq y$. Cela traduit le fait que,
-si deux cases sont sur la même ligne, la même colonne ou le même carré 3$\ast$3, elles doivent
-avoir des valeurs différentes.
-De plus, chaque relation unaire $P_k$ ($k \in \intInt{1,9}$) est définie
-comme ne valant que sur $\{i\}$.
+Ces deux exemples illustrent que le \textsc{problème de morphisme} est versatile et peut encoder
+des problèmes naturels d'une grande diversité.
+Notons cependant une distinction assez notable entre les deux exemples décrits :
+\begin{itemize}
+	\item dans le cas des bases de données, les données sont encodées à droite du morphisme,
+	et la logique à gauche : on demande s'il y a un morphisme de $\?Q_{\gamma}$ (la structure
+	encodant la requête) vers $\?D$ (la base de données);
+	\item au contraire, pour le Sudoku, on encode les données à gauche du morphisme, et
+	la logique à droite : on demande s'il y a un morphisme de $\?S_{G}$ (la structure représentant
+	la grille) vers $\?T$ (la structure représentant les contraintes du Sudoku).
+\end{itemize}
+Cette asymétrie entre ces deux encodages a pour conséquence que l'on, bien que ces deux exemples
+partagent le même cadre, nous allons généralement étudier des questions différentes sur le
+\textsc{problème de morphisme} selon qu'on soit dans le premier cas ou le second.
+Il est généralement pertinent d'étudier ce qu'il se passe lorsque l'on fixe
+la logique et que les données sont variables : dans le cas des bases de données,
+cela revient à fixer le côté gauche du morphisme, mais dans le cas du Sudoku, cela
+correspond à fixer le côté droit. Il en résulte, notamment des propriétés de monotonie et de 
+complexité assez différentes. Nous séparerons le reste de cette thèse, et de ce résumé,
+en deux parties.
+ 
+\section*{Requêtes SQL \& bases de données}
 
-Alors, une grille préremplie $G$ peut être complétée si, et seulement si,
-$\?S_G$ admet un morphisme vers $\?T$.
-Plus précisément, les morphismes $f\colon \?S_G \to \?T$ correspondent exactement
-aux grilles de Sudoku complètes qui étendent $G$, avec $f(\tup{i,j})$ donnant
-le nombre contenu dans la case $\tup{i,j}$.
+L'exemple donné précédemment se généralise aisément : on peut alors montrer
+que toute requête SQL de la forme
+\[
+	\sqlop{SELECT} \dotsc \sqlop{FROM} \dotsc \sqlop{WHERE}
+\]
+satisfait la même propriété, c'est-à-dire qu'évaluer une requête $\gamma$ de cette forme
+sur une base de données $\?D$ revient à résoudre un \textsc{problème de morphisme} où $\gamma$ est encodé à gauche et $\?D$ à droite.
+L'algorithme naïf pour résoudre le \textsc{problème de morphisme} consiste essentiellement
+à énumérer chacune des
+\[|\text{structure de droite}|^{|\text{structure de gauche}|}\]
+fonctions allant de la structure de gauche à celle de droite, et à vérifier pour chacune si c'est 
+un morphisme. Dans ce cas, la structure de droite étant une base de données, 
+sachant que celles-ci peuvent faire plusieurs téraoctets en pratique, une requête de taille moyenne
+peut faire exploser la complexité de cet algorithme et le rendre inefficaces.
 
-\section*{}
+\paragraph*{Optimisation de requêtes conjonctives.}
+Une question centrale de la théorie des bases de données consiste donc à optimiser la taille 
+des requêtes : c'est-à-dire, étant donné une requête, peut-on en trouver une qui est équivalente---"ie" qui retourne les mêmes réponses sur toute base de données---mais qui est plus succincte ?
+Ce problème, \emph{a priori} difficile, est particulièrement bien compris dans pour les requêtes du
+fragment \sqlop{SELECT}-\sqlop{FROM}-\sqlop{WHERE} de SQL, qui correspond de manière
+plus abstraite au fragment existentiel positif de la logique du premier ordre,
+ou encore aux \emph{requêtes conjonctives}.
+Cette optimisation est précisément permise par le prisme offert par le \textsc{problème de morphisme}, et à l'encodage d'une telle requête comme une $\sigma$-structure.
+Par cette méthode, nous pouvons, à partir de chaque requête conjonctive $\gamma$,
+construire une requête $\widehat{\gamma}$, qui lui est sémantiquement équivalent---donc qui 
+fournira les mêmes réponses sur toute base de données---et qui par ailleurs est plus petite.
+De manière remarquable, ici, « plus petite » peut-être compris
+au sens de « utilisant moins de variables », mais aussi dans un sens bien plus générique :
+toute mesure de taille raisonnable,%
+\footnote{Formellement, par raisonnable on entend « clos par sous-structure »}
+est optimisée par cette requête $\widehat{\gamma}$.
 
-\section*{}
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \input{tikz/prelim-databases/ex-graph-db.tex}
+    \end{tikzpicture}
+    \caption{%
+        \AP\label{fig:example-graph-database-fr}%
+        Une base de données graphe avec deux types d'arêtes.
+		(Reproduction de \Cref{fig:example-graph-database}.)
+    }
+\end{figure}
+\paragraph*{Au-delà des requêtes conjonctives.}
+Malheureusement, bien que les requêtes conjonctives soient particulièrement faciles
+à optimiser, leur expressivité est relativement limitée.
+Ceci est particulièrement le cas pour lorsqu'il s'agit de
+requêter des bases de données graphes,%
+\footnote{Appelées aussi « bases de données orientées graphe ».}
+qui sont particulièrement utiles
+pour stocker, par exemple, des données bibliographiques, biologiques, ou de classification.%
+Une telle base de données est décrite en \Cref{fig:example-graph-database-fr}. Elle contient
+deux types d'arêtes : $x \atom{\wrote} y$ indique qu'une personne $x$ a écrit un article $y$,
+alors que $x \atom{\advised} y$ indique qu'une personne $x$ a supervisé la thèse de $y$.
+On peut alors montrer qu'il est impossible d'exprimer la requête « l'ensemble des paires $y, z$
+telles que $z$ est l'ancêtre scientifique de $y$ » avec une requête conjonctive,
+ou de manière équivalente avec une requête du fragment
+\sqlop{SELECT}-\sqlop{FROM}-\sqlop{WHERE} de SQL.
+Pour pallier ce manque, les \emph{requêtes conjonctives à chemins réguliers}---
+« conjonctive regular path queries », ou « CRPQ », en anglais---proposent de rajouter
+un nouveau mécanisme dans le langage de requête :
+permettre d'exiger l'existence d'un chemin allant d'un point $x$ et $y$,
+et dont la suite d'étiquettes appartient à un langage régulier.
+Par exemple, la CRPQ
+\[
+    \gamma(x, y) \defeq x \atom{\wrote} z
+        \land z' \atom{\wrote} z 
+        \land y \atom{({\advised})^*} z',
+\]
+demande toutes les paires $\tup{x,y}$ vérifiant les contraintes suivantes :
+\begin{itemize}
+	\item $x$ a écrit $z$,
+	\item $z'$ a écrit $z$, et
+	\item il y a un chemin de $y$ à $z'$ étiquetté par un mot du language
+		$({\advised})^*$.
+\end{itemize}
+Autrement dit, cette requête demande toutes les paires de personnes $\tup{x,y}$
+telles que $x$ a co-écrit un article avec un descendant scientifique de $y$.
+
+Les CRPQ modélisent le principal mécanisme de requêtage utilisé par les langages
+pour sur les bases de données graphes, comme SPARQL. L'optimisation de ces requêtes
+est donc un problème primordial en théorie des bases de données.
+Alors que les CRPQs étendent les requêtes conjonctives, les bonnes propriétés d'optimisation
+de ces dernières ne se généralisent malheureusement pas à la classe des CRPQs, et leur
+optimisation est loin d'être triviale : c'est le cœur du problème que nous étudions dans
+la première moitié de cette thèse.
+
+\begin{contribution}
+	Étant donné une requête conjonctive à chemins réguliers et un entier $k$, nous pouvons décider
+	s'il existe une requête équivalente utilisant au plus $k$ contraintes/atomes, et auquel cas produire
+	ladite requête.
+\end{contribution}
+
+Le nombre de contraintes, ou \emph{atomes}, c'est-à-dire le nombre de termes de la
+forme $x \atom{L} y$ où $L$ est un langage régulier, est une mesure pertinente de la complexité
+d'évaluation d'une CRPQ. 
+Cependant, nous avons également montré que, surprenamment, il existait des requêtes minimales dans 
+le sens précédent---c'est-à-dire qui ne sont pas équivalentes à une CRPQ avec strictement moins 
+d'atomes---, mais qui sont équivalentes à une \emph{union finie} de CRPQs utilisant chacune 
+strictement moins d'atomes. Par ailleurs, l'évaluation d'une telle union étant facilement 
+parallélisable, sa complexité dépend avant tout du nombre maximal d'atomes, quand bien même le 
+nombre de CRPQ dans l'union serait élevé.
+
+\begin{contribution}
+	Étant donné une requête conjonctive à chemins réguliers et un entier $k$, nous pouvons décider
+	s'il existe une \emph{union finie} de CRPQs qui lui est équivalente, et dont chaque
+	CRPQ utilise au plus $k$ atomes. Par ailleurs, cette procédure est effective : si la réponse est oui, nous pouvons produire cette union.
+\end{contribution}
+
+Lorsque la réponse à ces problèmes est « oui », il est aisé de comprendre pourquoi : l'algorithme
+produit un témoin de ce fait, c'est-à-dire une requête équivalente et plus petite.
+Cependant, lorsqu'il répond par la négative, il est moins aisé de comprendre pourquoi.
+Par ailleurs, mathématiquement, même sur des petites requêtes concrètes, il est difficile de
+justifier pourquoi elles sont optimales.
+
+\begin{contribution}
+	Nous donnons une condition suffisante pour qu'une requête soit difficile à exprimer, 
+	c'est-à-dire ne soit pas équivalente à une autre requête plus petite.
+\end{contribution}
+
+Le tour de force du résultat précédent se situe notamment dans le fait que « plus petit »
+peut y être interprété de façon assez large, et ne se limite pas à la mesure du nombre d'atomes.
+Il se révèle en outre particulièrement utile pour démontrer des bornes inférieures de complexité.
+Malheureusement, cette condition est seulement suffisante, mais n'est pas nécessaire.
+Trouver une condition qui soit nécessaire et suffisante à la minimalité d'une CRPQ est
+en fait le principal problème laissé ouvert par cette thèse et diverses
+pistes sont discutées en conclusion. Une telle condition, s'il s'avérait effective et efficace,
+pourrait permettre de résoudre de nombreux problèmes, ou d'améliorer certains algorithmes.
+
+Dans un second temps, nous nous intéressons à la question de la \emph{largeur arborescente}.
+Il se trouve que c'est une mesure de la complexité d'une CRPQ, qui est en un sens plus fine que
+le nombre d'atomes. Barceló, Romero et Vardi ont trouvé en 2016 un algorithme permettant,
+étant donnée une CPRQ, de décider s'il était équivalente à une union finie
+de CRPQs en forme d'arbre, c'est-à-dire de largeur arborescente $1$.
+De leur propre aveu, le cas général de la largeur arborescente $k$ (pour $k$ un entier arbitraire) 
+leur échappait encore.
+
+\begin{contribution}
+	Nous donnons un algorithme qui prend en entrée une requête conjonctive à chemins réguliers
+	et un entier $k$, et qui décide s'il existe une union finie de CRPQs de
+	largeur arborescente au plus $k$, et auquel cas la produit.
+\end{contribution}
+
+Malheureusement l'algorithme précédent, ainsi que ceux optimisant le nombre d'atomes,
+sont relativement peu efficaces et fonctionnent en espace exponentiel, voire doublement exponentiel. En outre, dans chacun de ces cas, nous avons démontré des bornes de complexité
+inférieures qui sont également en espace exponentiel : le problème ne vient pas tant du
+fait que nos algorithmes soient peu efficaces, mais plutôt que, du fait de leur grande expressivité,
+l'optimisation de CRPQ est un problème intrinsèquement difficile.
+Nous nous intéressons donc à un fragment de ce langage de requête, obtenu en n'autorisant que
+certains langages réguliers dans les atomes : une étude empirique récente montre que
+75\% des atomes écrits en pratique sont effectivement de cette forme.
+Nous donnons dans ce cas des algorithmes bien plus efficaces.
+
+\begin{contribution}
+	Nous montrons que la minimisation du nombre d'atomes (resp. de
+	la largeur arborescente) d'une CRPQ n'utilisant que des expressions régulières simples
+	est un problème situé dans la hiérarchie polynomiale.
+\end{contribution}
+
+En bref, les problèmes de morphismes où la logique est encodée à gauche fournit un solide
+fondement à la théorie des bases de données, et à l'optimisation des requêtes conjonctives.
+Dans la première partie de cette thèse, nous avons étendu une partie de ces résultats d'optimisation
+aux \emph{requêtes conjonctives avec chemins réguliers} (CRPQs).
+
+\section*{Problèmes de satisfaction de contraintes}
+
+
 
 \end{french}
