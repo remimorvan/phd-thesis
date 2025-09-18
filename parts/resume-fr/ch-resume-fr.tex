@@ -425,9 +425,10 @@ Notre résultat s'inscrit dans le domaine de la théorie algébrique des langage
 En bref, tous les langages réguliers ne se valent pas : certains sont intrinsèquement
 plus compliqués à décrire que d'autres. Ici, le terme « plus compliqué » ne
 doit pas tant être compris au sens de « avoir plus d'états » mais « nécessite
-une « forme d'automate » plus complexe ». Formellement, cette notion de complexité
-est notamment liée à la complexité de circuits à la compilation. Pour comprendre
-quels langages sont « simples »---formellement, lesquels appartiennent à une certaine
+une forme d'automate plus complexe ». Formellement, cette notion de complexité
+est notamment liée à la complexité de circuits à la compilation.%
+\footnote{En termes techniques, la notion de simplicité se traduit techniquement par « le langage appartient-il à une pseudovariété de langages fixée ».}
+Pour comprendre quels langages sont « simples »---formellement, lesquels appartiennent à une certaine
 classe de langages qui satisfont de bonnes propriétés de clôture---, la théorie
 algébrique des langages a été développées depuis les années 1960s.
 Essentiellement, cette théorie associe à chaque langage une structure algébrique---un
@@ -463,8 +464,7 @@ automates synchrones.
 \begin{contribution}
 	Nous montrons que, dès que l'on peut décider si un langage appartient à une telle 
 	classe---ce qui revient essentiellement à dire que ce langage peut être décrit par un automate 
-	avec une « forme simple »\footnote{La notion de « simplicité » est encodée par la notion de 
-	pseudovariétée.}---, alors on peut toujours décider si un automate synchrone est équivalent à un autre automate synchrone de « forme simple ».
+	avec une « forme simple »---, alors on peut toujours décider si un automate synchrone est équivalent à un autre automate synchrone de « forme simple ».
 \end{contribution}
 Notons que ce résultat est en fait un meta-théorème : ce n'est pas une caractérisation d'une classe,
 mais une façon de produire, à partir d'un algorithme qui caractérise des langages, un autre 
