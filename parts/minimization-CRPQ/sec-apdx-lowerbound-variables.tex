@@ -6,8 +6,8 @@
 \begin{theorem}
 	\AP\label{thm:variable-minimization-lowerbound}
 	There is a fixed alphabet "st" the problem of, given a "Boolean CRPQ"
-	on this alphabet with only five variables is "equivalent"
-	to a "Boolean CRPQ" with a single variable is "ExpSpace"-hard.
+	on this alphabet with only five variables, whether it is "equivalent"
+	to a "Boolean CRPQ" with a single variable, is "ExpSpace"-hard.
 \end{theorem}
 
 \begin{proof}
@@ -140,11 +140,10 @@
 
 \subsection{Variable Minimization is Harder than Containment}
 
-We say that the "class@@CRPQ" is \AP""closed under disjoint conjunction""
+We say that a "class@@CRPQ" $\classCRPQ$ is \AP""closed under disjoint conjunction""
 if $\gamma \in \classCRPQ_{\A}$ and $\delta \in \classCRPQ_{\B}$
 imply $\gamma \disconj \delta \in \classCRPQ_{\A \cup \B}$.
-
-Lastly, we say that the class is \AP""closed under variable marking""
+Moreover, we say that the class is \AP""closed under variable marking""
 if \emph{one of} the three following properties holds: 
 \begin{description}
 	\itemAP[\intro*\axiomVarMarkingLoop] for any $\gamma \in \classCRPQ_{\A}$, if $y$ is a variable of $\gamma$,
