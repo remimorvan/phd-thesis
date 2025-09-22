@@ -234,7 +234,7 @@ Given a graph class $\+C$ and a "UCRPQ" $\Gamma$, we define $\AppInf{\Gamma}{\+C
 \begin{remark}
 	If $\+C$ is closed under taking "subgraphs" and "expansions", then
 	\[\AppInf{\gamma}{\+C} \semequiv \{
-		\alpha \in \CQ[\+C] \mid \exists \xi \in \Exp(\gamma), 
+		\alpha \in \CQ[\+C] \mid \exists \xi \in \Exp(\gamma),\;
 		\xi \surjto \alpha
 	\}.\qedhere\]
 \end{remark}
@@ -270,15 +270,16 @@ Our "ExpSpace" upper bound relies on the following technical lemma.
 	$\App{\Gamma}{\+C}{+\infty} \contained \App{\Gamma}{\+C}{\+O(\nbatoms{\Gamma}\cdot r_{\Gamma}\cdot \nbatoms{\+C})}$.
 
 	We define an \AP""explicit approximation"" of $\Gamma$ over $\+C$ as a tuple
-	$\vec{\alpha} = \tup{\rho, \eta, \alpha, h, \orig, \cont}$ consisting of the following:
+	\[\vec{\alpha} = \tup{\rho, \eta, \alpha, h, \orig, \cont}\]
+	consisting of:
 	\begin{itemize}
 		\item queries $\rho \in \Refin(\Gamma)$, $\eta \in \CRPQ$ and
 			$\alpha \in \CRPQ[\+C]$,
 		\item a "homomorphism" $h\colon \rho \homto \eta$,
 		\item witnesses that $\alpha$ is a "contraction" of $\eta$, in the form of
-			a function $\orig \colon \vars{\alpha} \to \vars{\eta}$,
+			a function $\orig$ from $\vars{\alpha}$ to $\vars{\eta}$,
 			saying from which variable of $\eta$ a variable of $\alpha$ originates,
-			and a function $\cont \colon \atoms(\eta) \to \atoms(\alpha)$
+			and a function $\cont \colon \atoms{\eta} \to \atoms{\alpha}$
 			saying onto which atom of $\alpha$ an atom of $\eta$ is contracted ("ie", the functions $\orig,\cont$ must meet the expected properties).
 	\end{itemize}
 	We say that an "explicit approximation" $\vec{\alpha_1}$ is \AP""contained@@approx"" in
@@ -291,7 +292,7 @@ Our "ExpSpace" upper bound relies on the following technical lemma.
 	% We assume "wlog" that $\gamma$ has no isolated vertices.
 	We define the \AP""contraction length"" of an "explicit approximation" $\vec{\alpha}$
 	as the size of the longest path in $\eta$ whose atoms are all sent on the same
-	atom of $\alpha$ via $\cont$. In symbols, this is $\max{\set{|\cont^{-1}(\mu)| : \mu \in \atoms(\alpha)}}$.
+	atom of $\alpha$ via $\cont$. In symbols, this is $\max{\set{|\cont^{-1}(\mu)| : \mu \in \atoms{\alpha}}}$.
 	We show that any "explicit approximation" $\vec{\alpha_1}$ is "contained@@approx"
 	in an "explicit approximation" $\vec{\alpha_2}$ of bounded "contraction length".
 
@@ -344,11 +345,12 @@ Our "ExpSpace" upper bound relies on the following technical lemma.
 
 \subsection{CRPQs over Simple Regular Expressions}
 
-\AP Let ""UCRPQ(SRE)"" ("resp" ""CRPQ(SRE)"") be the set of all "UCRPQs" ("resp" "CRPQs") whose languages are expressed via "SREs@@positive" (as defined in \Cref{sec:intro}). We show that if we restrict the regular expressions we obtain a much better complexity for the "minimization problem" for "UCRPQs".
+\AP Let ""UCRPQ(SRE)"" ("resp" ""CRPQ(SRE)"") be the set of all "UCRPQs" ("resp" "CRPQs") whose languages are expressed via "positive simple regular expressions", as defined in \Cref{sec:prelim-db-sre}. We show that if we restrict the regular expressions we obtain a much better complexity for the "minimization problem" for "UCRPQs".
+Throughout this chapter, we will shorten ``positive simple regular expression''
+to ``"simple regular expression@@positive"''.
 
 \begin{theorem}\AP\label{thm:minimization-SRE}
-	The "minimization problem" for "UCRPQ(SRE)" is "PiP2"-complete.%
-	\footnote{By this we mean the "minimization problem" for "UCRPQs" whose input instances are "UCRPQ(SRE)".}
+	The "minimization problem", restricted to the class of "UCRPQs" over "simple regular expressions@@positive", is "PiP2"-complete.
 \end{theorem}
 
 \begin{proof}

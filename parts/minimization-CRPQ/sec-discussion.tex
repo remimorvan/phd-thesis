@@ -1,18 +1,18 @@
 \section{Discussion}
-\AP\label{sec:discussion}
+\label{sec:discussion}
 
 Several open problems are left by our work, more prominently, the complexity gap for "CRPQ minimization". Below we discuss further avenues for future research.
 
 \subsection{Variable minimization}
-\AP\label{sec:varmin}
+\label{sec:varmin}
 
-Another approach for an algorithm for query answering of a "(U)CRPQs" $\gamma$ on a "graph database" $G$ is by first guessing a variable assignment $f: \vars{\gamma} \to \vertex{G}$ and then checking, for each "atom" $x \atom{L} y$ of $\gamma$, that there is a path in $G$ from $f(x)$ to $f(y)$ with label in $L$. 
+Another classical algorithm for query answering for "(U)CRPQs" consists in, given a "query@CRPQ" $\gamma$ and a "graph database" $G$, to first guess a variable assignment $f: \vars{\gamma} \to \vertex{G}$ and then check, for each "atom" $x \atom{L} y$ of $\gamma$, that there is a path in $G$ from $f(x)$ to $f(y)$ with label in $L$. 
 
-This implementation approach privileges minimizing the number of \emph{variables} as opposed to the number of \emph{atoms} of a "(U)CRPQ", and gives rise to the corresponding \reintro{variable-minimization problem(s)}. From a practical perspective, as already mentioned in the Introduction, systems commonly evaluate CRPQs via join algorithms. Recent \emph{worst-case optimal} joins algorithms work by ordering the variables and assigning potential values to these, and hence the number of variables may also be a relevant parameter in these cases~\cite{CucumidesReutterVrgoc2024SizeBounds,VrgocEtal2024MillenniumDB}. 
+This implementation approach privileges minimizing the number of \emph{variables} as opposed to the number of \emph{atoms} of a "(U)CRPQ", and gives rise to the corresponding \reintro{variable-minimization problem(s)}. From a practical perspective, systems commonly evaluate CRPQs via join algorithms. Recent \emph{worst-case optimal} joins algorithms work by ordering the variables and assigning potential values to these, and hence the number of variables may also be a relevant parameter in these cases~\cite{CucumidesReutterVrgoc2024SizeBounds,VrgocEtal2024MillenniumDB}. 
  % 
 \decisionproblem{""Variable-minimization problem"" for "CRPQs" ("resp" for "UCRPQ")}
 {A finite alphabet $\A$, a  "CRPQ" ("resp" "UCRPQ") $\gamma$ over $\A$ and $k \in \N$.}
-{Does there exists a "CRPQ" ("resp" "UCRPQ") $\delta$ over $\A$ with at most $k$ variables 
+{Does there exist a "CRPQ" ("resp" "UCRPQ") $\delta$ over $\A$ with at most $k$ variables 
 ("resp" whose every "CRPQ" has at most $k$ variables) "st" $\gamma \semequiv \delta$?}
 As before, a "(U)CRPQ" is \AP""variable minimal"" if there is no "equivalent" "(U)CRPQ" smaller in the number of variables.
 
@@ -28,9 +28,9 @@ By adaptations of the algorithms of \Cref{sec:upperCRPQ,sec:upperUCRPQ} we can d
 \end{theorem}
 
 \begin{proof}
-  For the case of "CRPQ" "variable-minimization problem", it suffices to observe, in the proof of \Cref{lemma:crpq-size-bound}, that since each NFA of the proof has size double-exponential, there there cannot be more than a triply-exponential number of distinct NFA, and hence that the underlying multigraph of queries to be considered has a triply-exponential number of edges. Thus, there are `only' a quadruply-exponential number of such triply-exponential queries. For each such query we test if it is equivalent to the original query in "4ExpSpace".
+  For the case of the "CRPQ" "variable-minimization problem", it suffices to observe, in the proof of \Cref{lemma:crpq-size-bound}, that since each NFA of the proof has size double-exponential, there there cannot be more than a triply-exponential number of distinct NFAs, and hence that the underlying multigraph of queries to be considered has a triply-exponential number of edges. Thus, there are `only' a quadruply-exponential number of such triply-exponential queries. For each such query we test if it is equivalent to the original query in "4ExpSpace".
 
-  For the case of "UCRPQ" "variable-minimization problem", let $\+C_k$ be the (infinite) set of multigraphs having at most $k$ vertices. Via the same argument as in the proof of \Cref{lemma:approximation-for-finclass}, 
+  For the case of the "UCRPQ" "variable-minimization problem", let $\+C_k$ be the (infinite) set of multigraphs having at most $k$ vertices. Via the same argument as in the proof of \Cref{lemma:approximation-for-finclass}, 
   we obtain that each $\CRPQ[\+C_k]$ in the union of "CRPQs" expressing
   $\AppInf{\Gamma}{\+C_k}=\App{\Gamma}{\+C_k}{\+O(\nbatoms{\Gamma}\cdot r_{\Gamma}\nbatoms{\+C})}$
   has atoms consisting in a concatenation of

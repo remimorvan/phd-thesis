@@ -1,5 +1,5 @@
 \section{Lower Bounds}
-\AP\label{sec:minimization-lowerbounds}
+\label{sec:minimization-lowerbounds}
 
 In this section we give some underlying ideas for showing lower bounds for the "minimization problems". 
 
@@ -9,8 +9,9 @@ We shall use the hard instances of \Cref{prop:variation-figueira}
 to show that the "minimization problem" for "CRPQs" is hard.
 \begin{theorem}
 	\AP\label{thm:minimization-lowerbound}
-	The "minimization problem" for "CRPQs" is "ExpSpace"-hard. Further, there is a fixed alphabet "st" the problem of, given a "Boolean CRPQ"
-	on this alphabet with only four variables is "equivalent"
+	The "minimization problem" for "CRPQs" is "ExpSpace"-hard.
+	Further, there is a fixed alphabet "st" the problem of, given a "Boolean CRPQ"
+	on this alphabet with only four variables, whether it is "equivalent"
 	to a "Boolean CRPQ" with a single "atom" is "ExpSpace"-hard.
 \end{theorem}
 
@@ -34,84 +35,71 @@ A formal proof follows the proof sketch.
 	The conditions imposed by \Cref{prop:variation-figueira} are necessary to discard one-atom queries which are self-loops and that whenever  $\gamma_1 \notcontained \gamma_2$ there is an "expansion" of $\delta$ to which any $\delta$-"equivalent" single-atom query "expansion" cannot be mapped.
 \end{proof}
 
-\begin{proof}
-	We reduce an instance of the problem of \Cref{prop:variation-figueira} to the instance
-	$\delta$, where
-		\begin{center}
-			\begin{tikzcd}[column sep=scriptsize]
-				\delta() = &[-2.1em]
-				\qvar \ar[dr, "\A^*" swap, bend right=10] \ar[rrr, "K", bend left=20] &
-				& &
-				\qvar.\\[-2em]
-				& & \qvar \rar["L_1", bend left=40]
-				\rar["\raisebox{6pt}{\small\vdots}", phantom]
-				\rar["L_p" below, bend right=40] &
-				\qvar \ar[ur, "\A^*" swap, bend right=10]
-			\end{tikzcd}
-		\end{center}
+\begin{proof}[Proof details]
+	We use the reduction described in the proof sketch.
 	
-		\begin{claim}
-			\AP\label{claim:minimization-lowerbound-1}
-			If $\gamma_1 \contained \gamma_2$ then $\delta \semequiv \gamma_1$.
-		\end{claim}
-		Note first that $\delta \contained \gamma_1$.
-		Then, if $\gamma_1 \contained \gamma_2$, then every word of $K$
-		contains a factor which belongs to each $L_i$ for $i \in \lBrack 1, p\rBrack$,
-		and hence $\gamma_1 \contained \delta$ "ie" $\delta \semequiv \gamma_1$,
-		and so $\delta$ is equivalent to a "CRPQ" with a single "atom".
+	\begin{claim}
+		\AP\label{claim:minimization-lowerbound-1}
+		If $\gamma_1 \contained \gamma_2$ then $\delta \semequiv \gamma_1$.
+	\end{claim}
+	Note first that $\delta \contained \gamma_1$.
+	Then, if $\gamma_1 \contained \gamma_2$, then every word of $K$
+	contains a factor which belongs to each $L_i$ for $i \in \lBrack 1, p\rBrack$,
+	and hence $\gamma_1 \contained \delta$ "ie" $\delta \semequiv \gamma_1$,
+	and so $\delta$ is equivalent to a "CRPQ" with a single "atom".
+
+	\begin{claim}
+		\AP\label{claim:minimization-lowerbound-2}
+		Conversely, if $\delta$ is "equivalent" to a "Boolean CRPQ" with at most one atom,
+		then $\gamma_1 \contained \gamma_2$.
+	\end{claim}
+	Let $\zeta$ be the "Boolean CRPQ" with at most one atom which is equivalent to $\delta$. Assume first, by contradiction, that it is a self-loop, "ie" $\zeta() = x \atom{M} x$ for some language $M$.
+	Then by assumption on $K$, there exists a word $u\in K$ of size at least one.
+	Since none of the $L_i$ are empty, there exists a "canonical database"
+	$G_\delta^u$ where the atom
+	$\qvar \atom{K} \qvar$ yielded a $u$-labelled path. Since $\delta \contained \zeta$,
+	the database $G_\delta^u$ must satisfy $\zeta() = x \atom{M} x$.
+	Since every strongly connected component of $G_\delta^u$ is trivial---we assumed that none of the languages
+	of $\delta$ contained $\varepsilon$---, it must be that $\varepsilon \in M$, and hence $\zeta$
+	is the query which is always satisfied, which contradicts the equivalence $\delta \semequiv \zeta$.
+
+	Similarly, it can be shown that $\zeta$ cannot have zero atoms since $\delta$ is non-trivial. 
+	Hence, $\zeta$ is exactly of the form $\zeta() = x \atom{M} y$ for some language $M$.
+	First, note that from $\zeta \contained \delta$, it follows that
+	\begin{equation}
+		M \subseteq \A^* \bigl( \bigcap_j L_j \bigr) \A^*.
+		% \tag{\adforn{4}}
+		\AP\label{eq:L-is-factor-of-M}
+	\end{equation}
+	Assume then, by contradiction, that there
+	exists an $i$ "st" every word of $L_i$ has a factor in $M$,
+	"ie" $L_i \subseteq \A^* M \A^*$. Then \eqref{eq:L-is-factor-of-M} implies
+	$\A^* L_i \A^* = \A^* \bigl( \bigcap_j L_j \bigr) \A^*$ which contradicts
+	the second assumption of \Cref{prop:variation-figueira}.
+	Therefore, for every $i$, there is a word $v_i \in L_i$ which contains no factor in $M$.
 	
-		\begin{claim}
-			\AP\label{claim:minimization-lowerbound-2}
-			Conversely, if $\delta$ is "equivalent" to a "Boolean CRPQ" with at most one atom,
-			then $\gamma_1 \contained \gamma_2$.
-		\end{claim}
-		Let $\zeta$ be the "Boolean CRPQ" with at most one atom which is equivalent to $\delta$. Assume first, by contradiction, that it is a self-loop, "ie" $\zeta() = x \atom{M} x$ for some language $M$.
-		Then by assumption on $K$, there exists a word $u\in K$ of size at least one.
-		Since none of the $L_i$ are empty, there exists a "canonical database"
-		$G_\delta^u$ where the atom
-		$\qvar \atom{K} \qvar$ yielded a $u$-labelled path. Since $\delta \contained \zeta$,
-		the database $G_\delta^u$ must satisfy $\zeta() = x \atom{M} x$.
-		Since every strongly connected component of $G_\delta^u$ is trivial---we assumed that none of the languages
-		of $\delta$ contained $\varepsilon$---, it must be that $\varepsilon \in M$, and hence $\zeta$
-		is the query which is always satisfied, which contradicts the equivalence $\delta \semequiv \zeta$.
-	
-		Similarly, it can be shown that $\zeta$ cannot have zero atoms since $\delta$ is non-trivial. 
-		Hence, $\zeta$ is exactly of the form $\zeta() = x \atom{M} y$ for some language $M$.
-		First, note that from $\zeta \contained \delta$, it follows that
-		\begin{equation}
-			M \subseteq \A^* \bigl( \bigcap_j L_j \bigr) \A^*.
-			% \tag{\adforn{4}}
-			\AP\label{eq:L-is-factor-of-M}
-		\end{equation}
-		Assume then, by contradiction, that there
-		exists an $i$ "st" every word of $L_i$ has a factor in $M$,
-		"ie" $L_i \subseteq \A^* M \A^*$. Then \eqref{eq:L-is-factor-of-M} implies
-		$\A^* L_i \A^* = \A^* \bigl( \bigcap_j L_j \bigr) \A^*$ which contradicts
-		the second assumption of \Cref{prop:variation-figueira}.
-		Therefore, for every $i$, there is a word $v_i \in L_i$ which contains no factor in $M$.
-		
-		We are now ready to show that $\gamma_1 \contained \gamma_2$, by first observing that
-		it boils down to showing $K \subseteq \A^* (\bigcap_j L_j ) \A^*$. Let $u \in K$.
-		Consider the following "canonical database" of $\delta$, where the $v_i$'s are words
-		defined as in the paragraph above:
-		\begin{center}
-			\begin{tikzcd}
-				\qvar
-					\rar["u", squiggly, bend left=95]
-					\rar["v_1", squiggly, bend left=15]
-					\rar["\raisebox{6pt}{\small\vdots}", phantom, bend right=25]
-					\rar["v_p" below, squiggly, bend right=95] &
-				\qvar &[-3.2em].
-			\end{tikzcd}
-		\end{center}
-		Since $\delta \contained \zeta$, it must contain a path labelled by a word of $M$.
-		But no $v_i$ contains a factor in $M$, hence it has to be $u$ that does.
-		Hence, $K \subseteq \A^* M \A^*$. Together with
-		\Cref{eq:L-is-factor-of-M}, we get $K \subseteq \A^* \bigl( \bigcap_j L_j \bigr) \A^*$,
-		which concludes the proof of \Cref{claim:minimization-lowerbound-2}.
-	
-		Overall, we showed that $\gamma_1 \contained \gamma_2$ "iff"
-		$\delta$ is equivalent to a "CRPQ" with at most one atom, which concludes the proof.
+	We are now ready to show that $\gamma_1 \contained \gamma_2$, by first observing that
+	it boils down to showing $K \subseteq \A^* (\bigcap_j L_j ) \A^*$. Let $u \in K$.
+	Consider the following "canonical database" of $\delta$, where the $v_i$'s are words
+	defined as in the paragraph above:
+	\begin{center}
+		\begin{tikzcd}
+			\qvar
+				\rar["u", squiggly, bend left=95]
+				\rar["v_1", squiggly, bend left=15]
+				\rar["\raisebox{6pt}{\small\vdots}", phantom, bend right=25]
+				\rar["v_p" below, squiggly, bend right=95] &
+			\qvar &[-3.2em].
+		\end{tikzcd}
+	\end{center}
+	Since $\delta \contained \zeta$, it must contain a path labelled by a word of $M$.
+	But no $v_i$ contains a factor in $M$, hence it has to be $u$ that does.
+	Hence, $K \subseteq \A^* M \A^*$. Together with
+	\Cref{eq:L-is-factor-of-M}, we get $K \subseteq \A^* \bigl( \bigcap_j L_j \bigr) \A^*$,
+	which concludes the proof of \Cref{claim:minimization-lowerbound-2}.
+
+	Overall, we showed that $\gamma_1 \contained \gamma_2$ "iff"
+	$\delta$ is equivalent to a "CRPQ" with at most one atom, which concludes the proof.
 \end{proof}
 
 Note that the assumption of $\A^* L_i \A^* = \A^* \bigl( \bigcap_j L_j\bigr) \A^*$
@@ -136,7 +124,7 @@ if no "atom refinement" in $\anexpansion$ was obtained using the empty word.
 \begin{fact}
 	\AP\label{fact:nb-seg-expansion}
 	If $\anexpansion$ is a "non-degenerate expansion" of $\gamma$ and
-	$\gamma$ is "fully contracted", then $\nbseg{\anexpansion} = \nbatoms{\gamma}$.
+	$\gamma$ is "fully contracted", then $\nbseg{\anexpansion} = \nbatoms{\gamma}$.%
 \end{fact}
 
 Given a "class of CRPQs" $\classCRPQ$, the \AP""$\classCRPQ$-canonization problem""
@@ -166,8 +154,8 @@ The \AP""$\classCRPQ$-strong canonization problem"" is defined similarly to the 
 		$D_1 \in \Exp(\delta_1)$, every $D'_1 \in \Exp(\delta_1)$, and $f: D'_1 \homto D_1$ we have (i) $D'_1$ is "non-degenerate@@cdb", (ii) $f$ is "strong onto", and (iii)  $f(x)=x$ for every $x\in \vars{\delta_1}$,
 \end{description}
 
-We show that assuming we can solve the "$\classCRPQ$-canonization problem" ("resp" "$\classCRPQ$-strong canonization problem") this problem, then the "CRPQ"
-(resp. "UCRPQ") "minimization problem"
+\bigskip
+We show that assuming we can solve the "$\classCRPQ$-canonization problem" ("resp" "$\classCRPQ$-strong canonization problem"), then the "CRPQ" (resp. "UCRPQ") "minimization problem"
 restricted to "CRPQs" of $\classCRPQ$ ("resp" to "UCRPQs" whose "disjuncts" are all in $\classCRPQ$) is harder than the "containment problem" over $\classCRPQ$.
 
 In the following statement, a \AP""$\classCRPQ$-canonization oracle"" (resp. \AP""$\classCRPQ$-strong canonization oracle"") is an oracle to any algorithm solving the "$\classCRPQ$-canonization problem" (resp. "$\classCRPQ$-strong canonization problem").
@@ -175,8 +163,8 @@ In the following statement, a \AP""$\classCRPQ$-canonization oracle"" (resp. \AP
 \begin{lemma}
 	\AP\label{lem:reduction-containment-to-minimization}
 	For any class $\classCRPQ$ of "CRPQs" closed under "disjoint conjunction",
-	there is a polynomial-time algorithm
-	using a "$\classCRPQ$-canonization oracle" ("resp" "$\classCRPQ$-strong canonization oracle")
+	there is a polynomial-time reduction,
+	using a "$\classCRPQ$-canonization oracle" ("resp" "$\classCRPQ$-strong canonization oracle"),
 	from the "containment problem" for "Boolean" queries of $\classCRPQ$ to the
 	"CRPQ" (resp. "UCRPQ") "minimization problem" restricted to "CRPQs" in $\classCRPQ$
 	(resp. "UCRPQs" whose "disjuncts" are all in $\classCRPQ$).
@@ -341,6 +329,11 @@ Once again, we start by giving a proof sketch before giving the full proof.
 	$\delta_1 \in \classCRPQ$.
 \end{proof}
 
+Motivated by \Cref{lem:reduction-containment-to-minimization}
+we show that several reasonable classes admit
+a polynomial-time algorithm for the "strong canonization problem"---see
+\Cref{lem:canonization-CRPQs,lem:canonization-SREs}.
+
 \begin{lemma}
 	\AP\label{lem:canonization-CRPQs}
 	The "strong canonization problem" can be solved in non-deterministic logarithmic space for the class of all
@@ -409,18 +402,28 @@ Once again, we start by giving a proof sketch before giving the full proof.
 	that we can split the path in $G_1$ into multiples "atom refinements" 
 	of "atoms" of $\gamma_1$:
 	\begin{align*}
-		\underbrace{f(x_0) \atom{b_1} f(x_1) \atom{b_2} \cdots \atom{b_{i_1}}}_{
+		& \underbrace{f(x_0) \atom{b_1} f(x_1) \atom{b_2} \cdots \atom{b_{i_1}}}_{
 			\text{end of an "atom refinement" of $\alpha_0$}
 		}
 		f(x_{i_1})
 		\underbrace{\atom{b_{i_1+1}} f(x_{i_{1}+1}) \atom{b_{i_1+2}} \cdots \atom{b_{i_2}}}_{
 			\text{"atom refinement" of $\alpha_1$}
 		}
-		f(x_{i_2})
-		\atom{b_{i_2+1}} f(x_{i_{2}+1}) \atom{b_{i_2+2}} \cdots
-		\\[1em]
-		\cdots \atom{b_{i_k}}
-		f(x_{i_k})
+		f(x_{i_2}) \\[1em]
+		& \hphantom{%
+			\underbrace{f(x_0) \atom{b_1} f(x_1) \atom{b_2} \cdots \atom{b_{i_1}}}_{
+				\text{end of an "atom refinement" of $\alpha_0$}
+			}
+			f(x_{i_1})%
+		}
+		\atom{b_{i_2+1}} f(x_{i_{2}+1}) \atom{b_{i_2+2}}
+		\cdots \atom{b_{i_k}} f(x_{i_k}) \\[1em]
+		& \hphantom{%
+			\underbrace{f(x_0) \atom{b_1} f(x_1) \atom{b_2} \cdots \atom{b_{i_1}}}_{
+				\text{end of an "atom refinement" of $\alpha_0$}
+			}
+			f(x_{i_1})%
+		}
 		\underbrace{\atom{b_{i_k+1}} f(x_{i_{k}+1}) \atom{b_{i_k+2}} \cdots \atom{b_n} f(x_n)}_{
 			\text{beginning of an "atom refinement" of $\alpha_k$}
 		}
@@ -431,21 +434,20 @@ Once again, we start by giving a proof sketch before giving the full proof.
 	labelled by $\triangleright_{\alpha_i}$ (resp. from $f(x_{i_j})^l$ to $f(x_{i_j})$
 	labelled by $\triangleleft_{\alpha_{i-1}}$), we obtain a path
 	\begin{align*}
-		\underbrace{f(x_0) \atom{b_1} f(x_1) \atom{b_2} \cdots \atom{b_{i_1}}}_{
+		& \underbrace{f(x_0) \atom{b_1} f(x_1) \atom{b_2} \cdots \atom{b_{i_1}}}_{
 			\text{end of an "atom refinement" of $\alpha_0$}
 		}
 		f(x_{i_1})^l \atom{\triangleleft_{\alpha_{0}}} f(x_{i_1}) \atom{\triangleright_{\alpha_{1}}} f(x_{i_1})^r
 		\\[1em]
-		\underbrace{\atom{b_{i_1+1}} f(x_{i_{1}+1}) \atom{b_{i_1+2}} \cdots \atom{b_{i_2}}}_{
+		& \underbrace{\atom{b_{i_1+1}} f(x_{i_{1}+1}) \atom{b_{i_1+2}} \cdots \atom{b_{i_2}}}_{
 			\text{"atom refinement" of $\alpha_1$}
 		}
 		f(x_{i_2})^l 
-		\atom{\triangleleft_{\alpha_{1}}} f(x_{i_2}) \atom{\triangleright_{\alpha_{1}}} f(x_{i_2})^r 
-		\atom{b_{i_2+1}} f(x_{i_{2}+1}) \atom{b_{i_2+2}} \cdots
-		\\[1em] 
-		\cdots \atom{b_{i_k}}
-		f(x_{i_k})^l \atom{\triangleleft_{\alpha_{k-1}}} f(x_{i_k}) \atom{\triangleright_{\alpha_{k}}} f(x_{i_k})^r
-		\underbrace{\atom{b_{i_k+1}} f(x_{i_{k}+1}) \atom{b_{i_k+2}} \cdots \atom{b_n} f(x_n)}_{
+		\atom{\triangleleft_{\alpha_{1}}} f(x_{i_2}) \atom{\triangleright_{\alpha_{1}}} f(x_{i_2})^r \\[1em]
+		& \atom{b_{i_2+1}} f(x_{i_{2}+1}) \atom{b_{i_2+2}} \cdots
+		\atom{b_{i_k}}
+		f(x_{i_k})^l \atom{\triangleleft_{\alpha_{k-1}}} f(x_{i_k}) \atom{\triangleright_{\alpha_{k}}} f(x_{i_k})^r \\[1em]
+		& \underbrace{\atom{b_{i_k+1}} f(x_{i_{k}+1}) \atom{b_{i_k+2}} \cdots \atom{b_n} f(x_n)}_{
 			\text{beginning of an "atom refinement" of $\alpha_k$}
 		}
 	\end{align*}
@@ -458,9 +460,11 @@ Once again, we start by giving a proof sketch before giving the full proof.
 	\begin{align*}
 		x_0 \atom{b_1} x_1 \atom{b_2} \cdots \atom{b_{i_1}}
 		x_{i_1}^l \atom{\triangleleft_{\alpha_0}} x_{i_1} \atom{\triangleright_{\alpha_{1}}} x_{i_1}'
-		\atom{b_{i_1+1}} x_{i_{1}+1} \atom{b_{i_1+2}} \cdots \atom{b_{i_2}}
-		x_{i_2}^l \atom{\triangleleft_{\alpha_1}} x_{i_2} \atom{\triangleright_{\alpha_{2}}} x_{i_2}'\\
-		\atom{b_{i_2+1}} x_{i_{2}+1} \atom{b_{i_2+2}} \cdots \atom{b_{i_k}}
+		\atom{b_{i_1+1}} x_{i_{1}+1} \atom{b_{i_1+2}} \cdots \\
+		\cdots \atom{b_{i_2}}
+		x_{i_2}^l \atom{\triangleleft_{\alpha_1}} x_{i_2} \atom{\triangleright_{\alpha_{2}}} x_{i_2}'
+		\atom{b_{i_2+1}} x_{i_{2}+1} \atom{b_{i_2+2}} \cdots \\
+		\cdots \atom{b_{i_k}}
 		x_{i_k}^l \atom{\triangleleft_{\alpha_{k-1}}} x_{i_k} \atom{\triangleright_{\alpha_{k}}} x_{i_k}'
 		\atom{b_{i_k+1}} x_{i_{k}+1} \atom{b_{i_k+2}} \cdots \atom{b_n} x_n,
 	\end{align*}
@@ -586,11 +590,6 @@ where $L_1 L_2\cdots L_n \subseteq L$.
 	and so does \axiomCanonMarking{} by definition of $\delta_1$.
 \end{proof}
 
-Motivated by \Cref{lem:reduction-containment-to-minimization}
-we show that several reasonable classes admit
-a polynomial-time algorithm for the "strong canonization problem"---see
-\Cref{lem:canonization-CRPQs,lem:canonization-SREs}.
-
 \begin{corollary}
 	\AP\label{coro:lowerbounds}
 	The "CRPQ" and "UCRPQ" "minimization problems" are:
@@ -598,6 +597,7 @@ a polynomial-time algorithm for the "strong canonization problem"---see
 		\itemAP\label{expspace-h:pw1}"ExpSpace"-hard, even
 		if restricted to queries of path-width at most 1,
 		\itemAP\label{pspace:forest} "PSpace"-hard when restricted to "forest-shaped CRPQs",\footnote{By \AP""forest-shaped CRPQs"" we mean queries whose "underlying graph" has no undirected cycle.}
+		or even a single "atom",
 		\itemAP\label{pip2:crpqsre} "PiP2"-hard when restricted to "CRPQs" over "positive simple regular expressions".
 	\end{enumerate}
 	All hardness results are under polynomial-time reductions.
