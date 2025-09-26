@@ -1,10 +1,10 @@
-\section{\AP{}Introduction}
+\section{Introduction}
 \label{sec:stw-intro}
 
 \subsection{Conjunctive Regular Path Queries of Small Tree Width}
 
-In this chapter, we consider the problem of, given a "C2RPQ", deciding
-if it is equivalent to a "query" of small "tree-width".
+In this chapter, we consider the problem of, given a "C2RPQ", or a "union of C2RPQs", deciding
+if it is equivalent to a "query@C2RPQ" of small "tree-width".
 We depict the relationship of the different notions of
 "tree-width" and "path-width" of "C2RPQs" in \Cref{fig:taxonomy-syntactic},
 where we denote by $\intro*\Tw$ (resp.\ $\intro*\TwOneWay$) the set of all "C2RPQs" (resp.\ "CRPQs") of "tree-width" at most $k$. 
@@ -42,13 +42,14 @@ Lastly, the \reintro{tree-width} (resp. \reintro{path-width}) of a "UC2RPQ" is s
 	}
 \end{figure}
 
-Similar statements of the following proposition can be considered Folklore (see "eg" {\cite[Theorem IV.3]{RomeroBarceloVardi2017Homomorphism}}).
-It can be proven is the same fasion as \Cref{prop:eval-CQ-bounded-tw}.
-\begin{proposition}{crpqboundtwupperbound}
+Similar statements of the following proposition can be considered
+folklore (see "eg" {\cite[Theorem IV.3]{RomeroBarceloVardi2017Homomorphism}}).
+It can be proven in the same fashion as \Cref{prop:eval-CQ-bounded-tw}.
+\begin{proposition}
 	\AP\label{prop:crpq-bound-tree-width-upper-bound}
     For each $k \geq 1$, the "evaluation problem" for "UC2RPQs" of "tree-width" at
     most $k$ can be solved in time $\+O(\size{\Gamma} \cdot |G|^{k+1} \cdot \log{|G|})$ on a Turing machine,
-	or $\+O(\size{\Gamma} \cdot |G|^{k+1})$ under a RAM model, where $\Gamma$ and $G$ are the input "UC2RPQ" and "graph database", respectively.
+	or $\+O(\size{\Gamma} \cdot |G|^{k+1})$ using a RAM model, where $\Gamma$ and $G$ are the input "UC2RPQ" and "graph database", respectively.
 \end{proposition}
 
 
@@ -70,6 +71,8 @@ We will also study the restriction of these notions to one-way queries: a "UCRPQ
 
 \begin{example}
     \AP\label{ex:CRPQ-tw3-stw2}
+	\!\footnote{This example uses exactly the same idea as
+	\Cref{prop:unionsmatter}.}
     Consider the following "CRPQs",
     where $\bar x = (x_0,x_1,y,z)$:\leavevmode
     \begin{center}
@@ -77,15 +80,19 @@ We will also study the restriction of these notions to one-way queries: a "UCRPQ
         \begin{tikzcd}[column sep=small, row sep=small]
             &[-.5em] x_0 \ar[dr, "a"] \ar[rr, "c"] \ar[ddr, "a(bb)^+" swap, pos=.6, bend right] & &
             x_1 \ar[dl, "a" swap] \ar[ddl, "ab(bb)^*", pos=.7, bend left]
-                &[1.5em] &[-.5em] x_0 \ar[dr, "a"] \ar[rr, "c"] \ar[ddr, "a(bb)^+" swap, pos=.6, bend right] & &
+                &[1.5em] \\
+            \gamma(\bar x) \defeq & & y \ar[d, "b^+", pos=.35] & \\
+            & & z & & 
+        \end{tikzcd}
+
+        \begin{tikzcd}[column sep=small, row sep=small]
+            &[-.5em] x_0 \ar[dr, "a"] \ar[rr, "c"] \ar[ddr, "a(bb)^+" swap, pos=.6, bend right] & &
                 x_1 \ar[dl, "a" swap] 
                     &[1.5em] &[-.5em] x_0 \ar[dr, "a"] \ar[rr, "c"]  & &
                     x_1 \ar[dl, "a" swap] \ar[ddl, "ab(bb)^*", pos=.6, bend left] \\
-            \gamma(\bar x) \defeq & & y \ar[d, "b^+", pos=.35] & 
-                & \delta(\bar x) \defeq & & y \ar[d, "b(bb)^*" pos=.35] & 
+            \delta(\bar x) \defeq & & y \ar[d, "b(bb)^*" pos=.35] & 
                     & \delta'(\bar x) \defeq & & y \ar[d, "(bb)^+" swap, pos=.35] & \\
             & & z & 
-                & & & z & 
                     & & & z &
         \end{tikzcd}
     \end{center}
@@ -107,18 +114,21 @@ We will also study the restriction of these notions to one-way queries: a "UCRPQ
     the "UCRPQ" $\delta(\bar x) \lor \delta'(\bar x)$ of "tree-width" 2.
 \end{example}
 
-\subsection{\AP{}Related Work}
+\subsection{Related Work}
 \label{sec:relwork}
-On the class "conjunctive queries", the "semantic tree-width $k$ problem" becomes the "coNP"-complete problem of finding out whether the retraction of a query has "tree-width"
-at most $k$. In fact, "CQs" enjoy the effective existence of unique minimal queries \cite[Theorem 12]{ChandraMerlin1977Implementation}, which happen to also minimize the tree-width. For "CRPQs" and "UC2RPQs", the question is far more challenging, and it has only been solved for the case $k = 1$ 
+\todo{WTF? WHY "coNP" and not "NP"?}
+On the class of "conjunctive queries", the "semantic tree-width $k$ problem" becomes the "coNP"-complete problem of finding out whether a query has a retraction of "tree-width"
+at most $k$. In fact, "CQs" enjoy the effective existence of unique minimal queries \cite[Theorem 12]{ChandraMerlin1977Implementation} (the "core"), which happen to also minimize the tree-width. For "CRPQs" and "UC2RPQs", the question is far more challenging, and it has only been solved for the case $k = 1$ 
 by Barceló, Romero, and Vardi \cite[Theorem 6.1]{BarceloRomeroVardi2016SemanticAcyclicity}; the case $k>1$ was left widely open
 \cite[\S~7]{BarceloRomeroVardi2016SemanticAcyclicity}.
 
-Furthermore, classes of "CQs" of bounded "semantic tree-width" precisely characterize tractable (and "FPT") "evaluation problem" \cite[Theorem~1.1]{Grohe2007ComplexityHomomorphism}.
+Furthermore, having bounded "semantic tree-width" precisely describes
+the classes of "CQs" that have a tractable (both in the sense of polynomial time
+and "FPT") "evaluation problem" \cite[Theorem~1.1]{Grohe2007ComplexityHomomorphism}.
 This result is on bounded-arity schemas, which was later generalized \cite[Theorem~1]{ChenGottlobLanzingerPichler2020Semantic} for characterizing "FPT" "evaluation" on arbitrary schemas---by replacing "semantic tree-width" with semantic ``submodular width'' \cite{Marx13Tractable}.
 
 The problem of computing "maximal under-approximations" of "CQs" of a given "tree-width" has been explored in \cite{BarceloLibkinRomero2014Efficient}.
-A "maximal under-approximations" of tree-width at most $k$ of a "CQ" $\gamma$ consists of a
+A "maximal under-approximation" of tree-width at most $k$ of a "CQ" $\gamma$ consists of a
 "CQ" $\delta_k$ of "tree-width" at most $k$, which under-approximates it,
 "ie" $\delta_k$ is "contained" in $\gamma$, and which is maximal, in the sense that for every "CQ" 
 $\delta'$, if $\delta'$ has "tree-width" at most $k$ and is "contained" in $\gamma$, then 
@@ -155,14 +165,13 @@ $\{\varepsilon\}$ belongs to $\+L$.
 
 To the best of our knowledge,
 all classes of regular expressions that have been considered in the realm of regular path queries (see, "eg", \cite[\S1]{FigueiraEtal2020Containment}) are "closed under sublanguages". In particular, this is
-the case for the class $\bigl\{ \{a_1+\dotsc+a_n\} \mid a_1,\dotsc,a_n
-\in \A \bigr\} \cup \bigl\{ a^* \mid a \in \A \bigr\}$, which will be our focus of study in \Cref{sec:sre}. Moreover, even if some class $\+L$
+the case for the class of "simple regular expressions", which will be our focus of study in \Cref{sec:sre}. Moreover, even if some class $\+L$
 is not "closed under sublanguages", such as $\{(aa)^*\}$,
 then it is contained in a minimal class "closed under sublanguages"---$\{a, a(aa)^*, (aa)^*\}$ in 
 this example.
 
 We can now state the main implication of the "Key Lemma" (whose formal statement requires some extra definitions).
-\begin{restatable*}[Existence of the "maximal under-approximation"]{cor}{muaexistseffective}
+\begin{restatable*}[Existence of the "maximal under-approximation"]{corollary}{muaexistseffective}
     \AP\label{cor:mua-exists-effective}
     % Fix $k > 1$ and a class $\+L$ of regular languages closed under "sublanguages". Then, every $\UCtwoRPQ(\+L)$ query has a 
     % "maximal under-approximation" by infinitary unions of $\Tw$ queries that can be effectively computed as a $\UCtwoRPQ(\+L)$ query in "ExpSpace".

@@ -6,7 +6,8 @@
 	\begin{abstract}
 		We show that the problem of whether a query is equivalent to a query of tree-width $k$ is decidable, for the class of Unions of Conjunctive Regular Path Queries with two-way navigation (UC2RPQs). 
 		A previous result by Barceló, Romero, and Vardi \cite{BarceloRomeroVardi2016SemanticAcyclicity} has shown decidability for the case $k=1$, and here we extend this result showing that decidability in fact holds for any arbitrary $k\geq 1$. 
-		The algorithm is in "2ExpSpace", but for the restricted but practically relevant case where all regular expressions of the query are of the form $a^*$ or $(a_1 + \dotsb + a_n)$ we show that the complexity of the problem drops to "PiP2".
+		The algorithm is in "2ExpSpace", but for the restricted but practically relevant case of
+		"simple regular expressions", we show that the complexity of the problem drops to "PiP2".
 		
 		We also investigate the related problem of approximating a UC2RPQ by queries of small tree-width. We exhibit an algorithm which, for any fixed number $k$, builds the maximal under-approximation of tree-width $k$ of a UC2RPQ.
 		The maximal under-approximation of tree-width $k$ of a query $\gamma$ is a query $\gamma'$ of tree-width $k$ which is contained in $\gamma$ in a maximal and unique way, that is, such that for every query $\gamma''$ of tree-width $k$, if $\gamma''$ is contained in $\gamma$ then $\gamma''$ is also contained in $\gamma'$.
