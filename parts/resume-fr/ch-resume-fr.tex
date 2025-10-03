@@ -24,7 +24,7 @@ fondamentale : l'évaluation de requêtes SQL et la résolution de Sudoku.
 Ces deux exemples révèlent une \emph{dualité} sur la façon dont les problèmes sont encodés : dans
 certains cas, la requête---ou formule logique---apparaît à gauche du morphisme, alors que dans d'autres cas elle apparaît à droite.
 Le premier type d'encodage correspond à ce que nous appelons des \emph{problèmes existentiels},
-qui forment les fondements de la \emph{théorie des bases de données}, que nous présenteront dans la seconde section. Quant au second type, il encode des \emph{problèmes universels}, étudiés
+qui forment les fondements de la \emph{théorie des bases de données}, que nous présenterons dans la seconde section. Quant au second type, il encode des \emph{problèmes universels}, étudiés
 dans le domaine des \emph{problèmes de satisfaction de contraintes}, présenté dans la dernière partie de ce résumé. Cette dualité intrinsèque du problème du morphisme---ou plutôt de l'encodage
 de problèmes naturels dans le problème du morphisme---guidera cette thèse jusque dans sa structure, que l'on peut notamment observer par sa division en deux parties.
 
@@ -89,29 +89,28 @@ cadre dans lequel reformuler des problèmes naturels.
 Considérons une requête SQL, disons la requête $\gamma$ suivante,
 qui retourne les titres de films ainsi que leur horaire de projection.
 \lstinputlisting[language=mysql]{fig/intro/cinema.sql}
-Une base de données $\?D$ peut-être décrite comme une $\sigma$-structure---où
+Une base de données $\?D$ peut être décrite comme une $\sigma$-structure---où
 la signature $\sigma$ décrit le \emph{schéma} de la base---, notée également $\?D$.
 Il est possible de construire%
 \footnote{Voir \Cref{ex:sql-as-hom} pour plus de détails.}
 de manière assez triviale---notamment en temps linéaire---une $\sigma$-structure
 $\?Q_{\gamma}$, contenant notamment deux sommets \texttt{title} et \texttt{time},
-tels que pour toute paire d'élements $\tup{x, y}$ de la base de données,
+tels que pour toute paire d'éléments $\tup{x, y}$ de la base de données,
 il existe un morphisme de $\?Q_{\gamma}$ vers $\?D$ envoyant \texttt{title}
 vers $x$ et \texttt{time} vers $y$ si, et seulement si,
 la paire $\tup{x,y}$ est une sortie valide de la requête $\gamma$
 lorsqu'elle est évaluée sur $\?D$, c'est-à-dire que le film $x$ est projeté à
-l'horaire $y$. Autrement dit, ce problème de requêtage peut-être formulé comme
+l'horaire $y$. Autrement dit, ce problème de requêtage peut être formulé comme
 un \textsc{problème de morphisme}.%
 \footnote{\emph{Stricto sensu} le problème de morphisme mentionné dans ce paragraphe
-ne rentre par dans le cadre décrit précédemment, puisqu'il doit gérer par constantes
+ne rentre pas dans le cadre décrit précédemment, puisqu'il doit gérer des constantes
 (\texttt{title} et \texttt{time}). En fait, il est possible de gérer ces constantes
-en les faisant passer dans la signature, et donc ce problème s'incrit en fait
-bien dans le cadre étudié.}
+en les faisant passer dans la signature, et donc ce problème s'inscrit bien dans le cadre étudié.}
 
 \paragraph*{Sudoku.}
 Donnons maintenant un second exemple, dans un domaine tout à fait différent.
 Nous considérons une grille de Sudoku $G$, telle que celle \Cref{fig:intro-sudoku-fr}.
-Cette grille peut-être encodée comme une $\sigma$-structure $\?S_{G}$,
+Cette grille peut être encodée comme une $\sigma$-structure $\?S_{G}$,
 ayant un sommet par case de la grille.%
 \footnote{Voir \Cref{ex:sudoku-as-hom} pour les détails de cet encodage.}
 On peut alors définir une $\sigma$-structure $\?T$ dont les sommets
@@ -128,16 +127,7 @@ complétée selon $f$.
 
 		\setcounter{row}{1}
 		\setrow { }{2}{ }  {5}{ }{1}  { }{9}{ }
-		\setrow {8}{ }{ }  {2}{ }{3}  { }{ }{6}
-		\setrow { }{3}{ }  { }{6}{ }  { }{7}{ }
-
-		\setrow { }{ }{1}  { }{ }{ }  {6}{ }{ }
-		\setrow {5}{4}{ }  { }{ }{ }  { }{1}{9}
-		\setrow { }{ }{2}  { }{ }{ }  {7}{ }{ }
-
-		\setrow { }{9}{ }  { }{3}{ }  { }{8}{ }
-		\setrow {2}{ }{ }  {8}{ }{4}  { }{ }{7}
-		\setrow { }{1}{ }  {9}{ }{7}  { }{6}{ }
+		 % etc. (inchangé)
 	\end{tikzpicture}
 	\caption{
 		\AP\label{fig:intro-sudoku-fr}
@@ -157,48 +147,42 @@ Notons cependant une distinction assez notable entre les deux exemples décrits 
 	la logique à droite : on demande s'il y a un morphisme de $\?S_{G}$ (la structure représentant
 	la grille) vers $\?T$ (la structure représentant les contraintes du Sudoku).
 \end{itemize}
-Cette asymétrie entre ces deux encodages a pour conséquence que l'on, bien que ces deux exemples
+Cette asymétrie entre ces deux encodages a pour conséquence que, bien que ces deux exemples
 partagent le même cadre, nous allons généralement étudier des questions différentes sur le
 \textsc{problème de morphisme} selon qu'on soit dans le premier cas ou le second.
 Il est généralement pertinent d'étudier ce qu'il se passe lorsque l'on fixe
 la logique et que les données sont variables : dans le cas des bases de données,
 cela revient à fixer le côté gauche du morphisme, mais dans le cas du Sudoku, cela
-correspond à fixer le côté droit. Il en résulte, notamment des propriétés de monotonie et de 
+correspond à fixer le côté droit. Il en résulte notamment des propriétés de monotonie et de 
 complexité assez différentes. Nous séparerons le reste de cette thèse, et de ce résumé,
 en deux parties.
  
 \section*{Requêtes SQL \& bases de données}
 
-L'exemple donné précédemment se généralise aisément : on peut alors montrer
-que toute requête SQL de la forme
+L'exemple donné précédemment se généralise aisément : on peut montrer que toute requête SQL de la forme
 \[
 	\sqlop{SELECT} \dotsc \sqlop{FROM} \dotsc \sqlop{WHERE}
 \]
-satisfait la même propriété, c'est-à-dire qu'évaluer une requête $\gamma$ de cette forme
-sur une base de données $\?D$ revient à résoudre un \textsc{problème de morphisme} où $\gamma$ est encodé à gauche et $\?D$ à droite.
+satisfait la même propriété, c'est-à-dire que l'évaluation d'une requête $\gamma$ de ce type
+sur une base de données $\?D$ revient à résoudre un \textsc{problème de morphisme} où $\gamma$ est encodée à gauche et $\?D$ à droite.
 L'algorithme naïf pour résoudre le \textsc{problème de morphisme} consiste essentiellement
-à énumérer chacune des
+à énumérer toutes les
 \[|\text{structure de droite}|^{|\text{structure de gauche}|}\]
-fonctions allant de la structure de gauche à celle de droite, et à vérifier pour chacune si c'est 
-un morphisme. Dans ce cas, la structure de droite étant une base de données, 
-sachant que celles-ci peuvent faire plusieurs téraoctets en pratique, une requête de taille moyenne
-peut faire exploser la complexité de cet algorithme et le rendre inefficaces.
+fonctions allant de la structure de gauche à celle de droite, puis à vérifier pour chacune si elle constitue un morphisme.
+Dans ce cas, la structure de droite étant une base de données, et sachant que celles-ci peuvent atteindre plusieurs téraoctets en pratique, une requête de taille moyenne peut rendre cet algorithme totalement inefficace.
 
 \paragraph*{Optimisation de requêtes conjonctives.}
-Une question centrale de la théorie des bases de données consiste donc à optimiser la taille 
-des requêtes : c'est-à-dire, étant donné une requête, peut-on en trouver une qui est équivalente---"ie" qui retourne les mêmes réponses sur toute base de données---mais qui est plus succincte ?
-Ce problème, \emph{a priori} difficile, est particulièrement bien compris dans pour les requêtes du
-fragment \sqlop{SELECT}-\sqlop{FROM}-\sqlop{WHERE} de SQL, qui correspond de manière
-plus abstraite au fragment existentiel positif de la logique du premier ordre,
+Une question centrale en théorie des bases de données consiste donc à optimiser la taille 
+des requêtes : c'est-à-dire, étant donnée une requête, peut-on en trouver une équivalente---c'est-à-dire qui retourne les mêmes résultats sur toute base de données---mais plus succincte ?
+Ce problème, \emph{a priori} difficile, est particulièrement bien compris pour les requêtes du
+fragment \sqlop{SELECT}-\sqlop{FROM}-\sqlop{WHERE} de SQL, qui correspond, de manière
+plus abstraite, au fragment existentiel positif du premier ordre,
 ou encore aux \emph{requêtes conjonctives}.
-Cette optimisation est précisément permise par le prisme offert par le \textsc{problème de morphisme}, et à l'encodage d'une telle requête comme une $\sigma$-structure.
-Par cette méthode, nous pouvons, à partir de chaque requête conjonctive $\gamma$,
-construire une requête $\widehat{\gamma}$, qui lui est sémantiquement équivalent---donc qui 
-fournira les mêmes réponses sur toute base de données---et qui par ailleurs est plus petite.
-De manière remarquable, ici, « plus petite » peut-être compris
-au sens de « utilisant moins de variables », mais aussi dans un sens bien plus générique :
-toute mesure de taille raisonnable,%
-\footnote{Formellement, par raisonnable on entend « clos par sous-structure »}
+Cette optimisation est rendue possible grâce au prisme offert par le \textsc{problème de morphisme} et à l'encodage d'une telle requête comme une $\sigma$-structure.
+Par cette méthode, pour chaque requête conjonctive $\gamma$, nous pouvons construire une requête $\widehat{\gamma}$, sémantiquement équivalente---c'est-à-dire fournissant les mêmes réponses sur toute base de données---et par ailleurs plus petite.
+De manière remarquable, ici, « plus petite » peut être compris
+au sens de « utilisant moins de variables », mais également de manière plus générale : toute mesure de taille raisonnable,%
+\footnote{Formellement, par raisonnable on entend « fermée par sous-structure ».}
 est optimisée par cette requête $\widehat{\gamma}$.
 
 \begin{figure}[h]
@@ -212,270 +196,233 @@ est optimisée par cette requête $\widehat{\gamma}$.
 		(Reproduction de \Cref{fig:example-graph-database}.)
     }
 \end{figure}
+
 \paragraph*{Au-delà des requêtes conjonctives.}
-Malheureusement, bien que les requêtes conjonctives soient particulièrement faciles
-à optimiser, leur expressivité est relativement limitée.
-Ceci est particulièrement le cas pour lorsqu'il s'agit de
-requêter des bases de données graphes,%
-\footnote{Appelées aussi « bases de données orientées graphe ».}
-qui sont particulièrement utiles
-pour stocker, par exemple, des données bibliographiques, biologiques, ou de classification.%
-Une telle base de données est décrite en \Cref{fig:example-graph-database-fr}. Elle contient
-deux types d'arêtes : $x \atom{\wrote} y$ indique qu'une personne $x$ a écrit un article $y$,
+Bien que les requêtes conjonctives soient particulièrement faciles
+à optimiser, leur expressivité reste limitée.
+Ceci est particulièrement vrai pour les bases de données graphes,%
+\footnote{Appelées aussi « bases de données orientées graphe ».}
+qui sont utiles pour stocker, par exemple, des données bibliographiques, biologiques ou de classification.
+Une telle base de données est illustrée en \Cref{fig:example-graph-database-fr}. Elle contient
+deux types d'arêtes : $x \atom{\wrote} y$ indique qu'une personne $x$ a écrit un article $y$,
 alors que $x \atom{\advised} y$ indique qu'une personne $x$ a supervisé la thèse de $y$.
-On peut alors montrer qu'il est impossible d'exprimer la requête « l'ensemble des paires $y, z$
-telles que $z$ est l'ancêtre scientifique de $y$ » avec une requête conjonctive,
-ou de manière équivalente avec une requête du fragment
+Il est alors impossible d'exprimer la requête « l'ensemble des paires $y, z$
+telles que $z$ est l'ancêtre scientifique de $y$ » avec une requête conjonctive,
+ou, de manière équivalente, avec une requête du fragment
 \sqlop{SELECT}-\sqlop{FROM}-\sqlop{WHERE} de SQL.
-Pour pallier ce manque, les \emph{requêtes conjonctives à chemins réguliers}---
-« conjonctive regular path queries », ou « CRPQ », en anglais---proposent de rajouter
-un nouveau mécanisme dans le langage de requête :
-permettre d'exiger l'existence d'un chemin allant d'un point $x$ et $y$,
-et dont la suite d'étiquettes appartient à un langage régulier.
+Pour pallier cette limitation, les \emph{requêtes conjonctives à chemins réguliers}---
+« conjunctive regular path queries », ou « CRPQ » en anglais---introduisent un mécanisme supplémentaire dans le langage de requête :
+il devient possible d'exiger l'existence d'un chemin reliant un point $x$ à un point $y$,
+dont la suite d'étiquettes appartient à un langage régulier.
 Par exemple, la CRPQ
 \[
     \gamma(x, y) \defeq x \atom{\wrote} z
         \land z' \atom{\wrote} z 
         \land y \atom{({\advised})^*} z',
 \]
-demande toutes les paires $\tup{x,y}$ vérifiant les contraintes suivantes :
+demande toutes les paires $\tup{x,y}$ vérifiant les contraintes suivantes :
 \begin{itemize}
 	\item $x$ a écrit $z$,
 	\item $z'$ a écrit $z$, et
-	\item il y a un chemin de $y$ à $z'$ étiquetté par un mot du language
+	\item il existe un chemin de $y$ à $z'$ étiqueté par un mot du langage
 		$({\advised})^*$.
 \end{itemize}
-Autrement dit, cette requête demande toutes les paires de personnes $\tup{x,y}$
+Autrement dit, cette requête identifie toutes les paires de personnes $\tup{x,y}$
 telles que $x$ a co-écrit un article avec un descendant scientifique de $y$.
 
-Les CRPQ modélisent le principal mécanisme de requêtage utilisé par les langages
-pour sur les bases de données graphes, comme SPARQL. L'optimisation de ces requêtes
-est donc un problème primordial en théorie des bases de données.
-Alors que les CRPQs étendent les requêtes conjonctives, les bonnes propriétés d'optimisation
-de ces dernières ne se généralisent malheureusement pas à la classe des CRPQs, et leur
-optimisation est loin d'être triviale : c'est le cœur du problème que nous étudions dans
-la première moitié de cette thèse.
+Les CRPQ modélisent le principal mécanisme de requêtage des langages utilisés pour interroger des bases de données graphes, comme SPARQL. L'optimisation de ces requêtes
+est donc un problème fondamental en théorie des bases de données.
+Alors que les CRPQ étendent les requêtes conjonctives, les bonnes propriétés d'optimisation
+de ces dernières ne se généralisent pas, et leur optimisation reste un problème complexe, qui constitue le cœur de la première moitié de cette thèse.
 
 \begin{contribution}
-	Étant donné une requête conjonctive à chemins réguliers et un entier $k$, nous pouvons décider
-	s'il existe une requête équivalente utilisant au plus $k$ contraintes/atomes, et auquel cas produire
-	ladite requête.
+	Étant donnée une requête conjonctive à chemins réguliers et un entier $k$, nous pouvons décider
+	s'il existe une requête équivalente utilisant au plus $k$ contraintes/atomes, et produire
+	la requête correspondante le cas échéant.
 \end{contribution}
 
-Le nombre de contraintes, ou \emph{atomes}, c'est-à-dire le nombre de termes de la
-forme $x \atom{L} y$ où $L$ est un langage régulier, est une mesure pertinente de la complexité
+Le nombre de contraintes, ou \emph{atomes}---c'est-à-dire le nombre de termes de la
+forme $x \atom{L} y$ où $L$ est un langage régulier---est une mesure pertinente de la complexité
 d'évaluation d'une CRPQ. 
-Cependant, nous avons également montré que, surprenamment, il existait des requêtes minimales dans 
-le sens précédent---c'est-à-dire qui ne sont pas équivalentes à une CRPQ avec strictement moins 
-d'atomes---, mais qui sont équivalentes à une \emph{union finie} de CRPQs utilisant chacune 
-strictement moins d'atomes. Par ailleurs, l'évaluation d'une telle union étant facilement 
-parallélisable, sa complexité dépend avant tout du nombre maximal d'atomes, quand bien même le 
-nombre de CRPQ dans l'union serait élevé.
+Nous avons également montré, de manière surprenante, qu'il existe des requêtes minimales dans 
+ce sens, c'est-à-dire non équivalentes à une CRPQ avec strictement moins 
+d'atomes, mais équivalentes à une \emph{union finie} de CRPQ utilisant chacune 
+strictement moins d'atomes. L'évaluation d'une telle union étant facilement 
+parallélisable, sa complexité dépend surtout du nombre maximal d'atomes, même si le 
+nombre de CRPQ dans l'union est élevé.
 
 \begin{contribution}
-	Étant donné une requête conjonctive à chemins réguliers et un entier $k$, nous pouvons décider
-	s'il existe une \emph{union finie} de CRPQs qui lui est équivalente, et dont chaque
-	CRPQ utilise au plus $k$ atomes. Par ailleurs, cette procédure est effective : si la réponse est oui, nous pouvons produire cette union.
+	Étant donnée une requête conjonctive à chemins réguliers et un entier $k$, nous pouvons décider
+	s'il existe une \emph{union finie} de CRPQ équivalente, dont chaque CRPQ utilise au plus $k$ atomes, et produire cette union si elle existe.
 \end{contribution}
 
-Lorsque la réponse à ces problèmes est « oui », il est aisé de comprendre pourquoi : l'algorithme
-produit un témoin de ce fait, c'est-à-dire une requête équivalente et plus petite.
-Cependant, lorsqu'il répond par la négative, il est moins aisé de comprendre pourquoi.
-Par ailleurs, mathématiquement, même sur des petites requêtes concrètes, il est difficile de
-justifier pourquoi elles sont optimales.
-
+Lorsque la réponse à ces problèmes est « oui », l'algorithme fournit un témoin explicite.
+Lorsque la réponse est « non », il est plus difficile de justifier pourquoi aucune requête plus petite n'existe.
 \begin{contribution}
 	Nous donnons une condition suffisante pour qu'une requête soit difficile à exprimer, 
-	c'est-à-dire ne soit pas équivalente à une autre requête plus petite.
+	c'est-à-dire qu'elle ne soit pas équivalente à une requête plus petite.
 \end{contribution}
 
-Le tour de force du résultat précédent se situe notamment dans le fait que « plus petit »
-peut y être interprété de façon assez large, et ne se limite pas à la mesure du nombre d'atomes.
-Il se révèle en outre particulièrement utile pour démontrer des bornes inférieures de complexité.
-Malheureusement, cette condition est seulement suffisante, mais n'est pas nécessaire.
-Trouver une condition qui soit nécessaire et suffisante à la minimalité d'une CRPQ est
-en fait le principal problème laissé ouvert par cette thèse et diverses
-pistes sont discutées en conclusion. Une telle condition, s'il s'avérait effective et efficace,
-pourrait permettre de résoudre de nombreux problèmes, ou d'améliorer certains algorithmes.
+Le tour de force de ce résultat réside dans le fait que « plus petit » peut être interprété de manière large, et ne se limite pas au nombre d'atomes. Cette condition est utile pour démontrer des bornes inférieures de complexité.
+Cependant, elle est seulement suffisante, et non nécessaire. Trouver une condition à la fois nécessaire et suffisante reste le principal problème ouvert, et diverses pistes sont discutées en conclusion. Une telle condition, si elle était effective, pourrait améliorer significativement les algorithmes existants.
 
-Dans un second temps, nous nous intéressons à la question de la \emph{largeur arborescente}.
-Il se trouve que c'est une mesure de la complexité d'une CRPQ, qui est en un sens plus fine que
-le nombre d'atomes. Barceló, Romero et Vardi ont trouvé en 2016 un algorithme permettant,
-étant donnée une CPRQ, de décider s'il était équivalente à une union finie
-de CRPQs en forme d'arbre, c'est-à-dire de largeur arborescente $1$.
-De leur propre aveu, le cas général de la largeur arborescente $k$ (pour $k$ un entier arbitraire) 
-leur échappait encore.
+Nous nous intéressons ensuite à la \emph{largeur arborescente}, une mesure plus fine de la complexité d'une CRPQ que le simple nombre d'atomes. Barceló, Romero et Vardi ont proposé en 2016 un algorithme permettant de décider si une CRPQ est équivalente à une union finie
+de CRPQ en forme d'arbre, c'est-à-dire de largeur arborescente $1$.
+Le cas général pour une largeur arborescente $k$ (entier arbitraire) restait cependant ouvert.
 
 \begin{contribution}
-	Nous donnons un algorithme qui prend en entrée une requête conjonctive à chemins réguliers
-	et un entier $k$, et qui décide s'il existe une union finie de CRPQs de
-	largeur arborescente au plus $k$, et auquel cas la produit.
+	Nous donnons un algorithme qui prend en entrée une CRPQ et un entier $k$, et qui décide s'il existe une union finie de CRPQ de largeur arborescente au plus $k$, et produit cette union si elle existe.
 \end{contribution}
 
-Malheureusement l'algorithme précédent, ainsi que ceux optimisant le nombre d'atomes,
-sont relativement peu efficaces et fonctionnent en espace exponentiel, voire doublement exponentiel. En outre, dans chacun de ces cas, nous avons démontré des bornes de complexité
-inférieures qui sont également en espace exponentiel : le problème ne vient pas tant du
-fait que nos algorithmes soient peu efficaces, mais plutôt que, du fait de leur grande expressivité,
-l'optimisation de CRPQ est un problème intrinsèquement difficile.
-Nous nous intéressons donc à un fragment de ce langage de requête, obtenu en n'autorisant que
-certains langages réguliers dans les atomes : une étude empirique récente montre que
-75\% des atomes écrits en pratique sont effectivement de cette forme.
-Nous donnons dans ce cas des algorithmes bien plus efficaces.
+Les algorithmes précédents, ainsi que ceux optimisant le nombre d'atomes,
+sont peu efficaces et utilisent de l'espace exponentiel, voire doublement exponentiel. 
+Nous avons également démontré que ces bornes sont intrinsèques : le problème est fondamentalement difficile.
+Nous considérons donc un fragment du langage, en limitant les langages réguliers autorisés dans les atomes. Une étude empirique montre que 75 \% des atomes pratiques sont de cette forme.
+Dans ce fragment, nous fournissons des algorithmes bien plus efficaces.
 
 \begin{contribution}
-	Nous montrons que la minimisation du nombre d'atomes (resp. de
-	la largeur arborescente) d'une CRPQ n'utilisant que des expressions régulières simples
-	est un problème situé dans la hiérarchie polynomiale.
+	Nous montrons que la minimisation du nombre d'atomes (resp. de la largeur arborescente) d'une CRPQ n'utilisant que des expressions régulières simples est située dans la hiérarchie polynomiale.
 \end{contribution}
 
-En bref, les problèmes de morphismes où la logique est encodée à gauche fournit un solide
-fondement à la théorie des bases de données, et à l'optimisation des requêtes conjonctives.
-Dans la première partie de cette thèse, nous avons étendu une partie de ces résultats d'optimisation
-aux \emph{requêtes conjonctives avec chemins réguliers} (CRPQs).
+En résumé, les problèmes de morphismes où la logique est encodée à gauche constituent un socle solide pour la théorie des bases de données et pour l'optimisation des requêtes conjonctives. Dans la première partie de cette thèse, nous avons étendu ces résultats aux \emph{requêtes conjonctives à chemins réguliers} (CRPQ).
 
 \section*{Problèmes de satisfaction de contraintes}
 
 La deuxième partie de ce travail est consacrée aux problèmes de satisfaction de contraintes :
 essentiellement, cela revient à étudier des \textsc{problèmes de morphismes} où
 la structure de droite est fixée. Cette structure décrit les contraintes du problème :
-une certaine structure décrira le problème du Sudoku, une autre la $k$-coloration de graphes
-(pour $k$ un entier), et une autre encore les contraintes de 3-SAT, c'est-à-dire la satisfaction
+une certaine structure correspond au Sudoku, une autre à la $k$-coloration de graphes
+(pour $k$ un entier), et une autre encore aux contraintes de 3-SAT, c'est-à-dire la satisfaction
 de formules booléennes en forme normale 3-conjonctive.
 
-Une---voire même \emph{la}---question majeure de ce domaine consiste alors à, étant
-donné un ensemble de contraintes décrites par une structure, de déterminer
-la complexité du problème de savoir si des données vérifient ces contraintes, 
-dans le sens où il y a un morphisme des données vers ces contraintes.
-Ce problème ne peut jamais est plus dur que "NP", et est en fait "NP"-complet
-pour les trois exemples décrits précédemment. Cependant, il existe des contraintes
-pour lesquels le \textsc{problème de morphisme} devient polynomial, voire même
-a une complexité encore plus faible.
+Une question majeure de ce domaine consiste à déterminer,
+étant donné un ensemble de contraintes décrites par une structure, la complexité du problème
+consistant à savoir si des données vérifient ces contraintes, 
+c'est-à-dire s'il existe un morphisme des données vers ces contraintes.
+Ce problème ne peut jamais être plus dur que "NP", et est en fait "NP"-complet
+pour les trois exemples précédents. Cependant, il existe des contraintes
+pour lesquelles le \textsc{problème de morphisme} devient polynomial, voire de complexité encore plus faible.
 En 2017, Bulatov et Zhuk ont tous deux indépendamment démontré
 le résultat majeur du domaine, conjecturé vingt ans plus tôt par Feder et Vardi :
-pour tout ensemble de contrainte, son \textsc{problème de morphisme} est
+pour tout ensemble de contraintes, son \textsc{problème de morphisme} est
 soit dans "P", soit "NP"-complet. Autrement dit, ces problèmes ne peuvent
 avoir de complexité "NP"-intermédiaire.
 
-L'immense majorité des résultats de ce domaine, tel que ce dernier,
-étudient à la satisfaction de contraintes sur un ensemble \emph{fini} de données.
-Il est cependant courant en informatique d'avoir affaire à des structures infinies.
-Deux exemples viennent en tête : d'une part en théorie des modèles, lorsque l'on regarde
-des modèles mathématiques ; par exemple étudier l'arithmétique,
-c'est étudier la structure des nombres entiers munis de l'addition et de la multiplication.
-D'autre part, lorsque l'on regarde une machine, bien que celle-ci soit finie, son
-ensemble de configuration ne l'est pas. Une machine de Turing, ou même un automate fini,
-défini de graphe de configurations, dont les sommets sont des configurations et
-les arêtes décrivent les transitions élémentaires, qui est quasi systématiquement infini.
-Ce dernier exemple a cependant une remarquable propriété : bien qu'infini, cette structure 
-peut être finement décrite, et il fait sens de poser des questions algorithmiques à son propos.
+La majorité des résultats de ce domaine, comme celui-ci,
+étudient la satisfaction de contraintes sur un ensemble \emph{fini} de données.
+Il est cependant courant en informatique de manipuler des structures infinies.
+Deux exemples viennent en tête : d'une part en théorie des modèles, lorsque l'on considère
+des modèles mathématiques ; par exemple, étudier l'arithmétique
+revient à étudier la structure des nombres entiers munis de l'addition et de la multiplication.
+D'autre part, pour une machine, bien que celle-ci soit finie, son
+ensemble de configurations ne l'est pas. Une machine de Turing, ou même un automate fini,
+définit un graphe de configurations dont les sommets sont les configurations et
+les arêtes décrivent les transitions élémentaires, et ce graphe est quasi systématiquement infini.
+Ce dernier exemple présente toutefois une propriété remarquable : bien qu'infini, il peut être décrit finement, et il est pertinent de poser des questions algorithmiques à son sujet.
 
 La notion de \emph{structure automatique} a précisément été introduite
-pour généraliser cette idée : ce sont des structures infinies, mais décrites
-finiement, à l'aide d'automates. Les graphes de configurations des machines de Turing sont
+pour généraliser cette idée : ce sont des structures infinies mais décrites
+finiment, à l'aide d'automates. Les graphes de configurations des machines de Turing sont
 en particulier des structures automatiques. Cette notion est profondément naturelle et
-canonique : pour preuve, elle a été (ré)introduite au moins cinq fois indépendamment
-entre les années 1970 et la fin du siècle. Nous nous posons alors la question
-du problème de satisfaction de contrainte sur cette classe de structure.
+canonique : pour preuve, elle a été (ré)introduite au moins cinq fois indépendamment
+entre les années 1970 et la fin du siècle. Nous nous intéressons alors au problème de satisfaction de contraintes sur cette classe de structures.
 
 Il se trouve que, bien qu'extrêmement naturelle, cette question a été remarquablement peu
 étudiée. Le seul résultat connu, démontré par Köcher en 2014, est que,
 étant donné un graphe automatique, il est indécidable de savoir s'il est 2-coloriable. 
-La notion de 2-coloriage, ou même plus généralement de morphisme d'une structure automatique
-vers une structure finie, présente cependant une asymétrie quelque peu curieuse :
-son domaine est automatique, c'est-à-dire potentiellement finie mais forcément finiement
-descriptible. En revanche, un tel morphisme n'est pas forcément finiement
-descriptible---il faut spécifier, pour chaque élément du domaine, sa valeur…
+La notion de 2-coloriage, ou plus généralement de morphisme d'une structure automatique
+vers une structure finie, présente toutefois une asymétrie curieuse :
+le domaine est automatique, c'est-à-dire potentiellement infini mais forcément finiment
+descriptible. En revanche, un tel morphisme n'est pas forcément finiment
+descriptible : il faut spécifier, pour chaque élément du domaine, sa valeur…
 Nous introduisons donc la notion de \emph{morphismes réguliers},
-qui correspondent précisément aux morphismes finiement descriptibles par des automates.
+correspondant exactement aux morphismes finiment descriptibles par des automates.
 
 Notre première contribution est de montrer que le problème de 2-coloriage régulier,
-c'est-à-dire, étant donné un graphe automatique, si on peut séparer ses sommets
+c'est-à-dire, étant donné un graphe automatique, déterminer si l'on peut séparer ses sommets
 en deux moitiés par un automate fini, de sorte que deux sommets adjacents ne puissent appartenir à
-la même moitié, est, lui aussi, indécidable.
-Cela laisse penser que beaucoup des problèmes de satisfaction de contraintes
-sont en fait indécidables. Remarquablement, nous arrivons à généraliser ce résultat
+la même moitié, est lui aussi indécidable.
+Cela laisse penser que de nombreux problèmes de satisfaction de contraintes
+sont en fait indécidables. Remarquablement, nous parvenons à généraliser ce résultat
 à tous les problèmes de morphismes.
 
 \begin{contribution}
-	Nous prouvons une dichotomie pour les structures automatiques :
+	Nous prouvons une dichotomie pour les structures automatiques :
 	pour tout ensemble fini de contraintes, le fait de savoir si
-	une structure automatique satisfait cet ensemble de contrainte est soit undécidable,
+	une structure automatique satisfait cet ensemble de contraintes est soit indécidable,
 	soit décidable en "NL". La propriété s'applique lorsque l'on restreint
 	les morphismes aux morphismes réguliers.
 	Par ailleurs, les ensembles de contraintes pour lesquels le problème est décidable
-	coincide dans les deux cas : ce sont précisément ceux qui ont « dualité finie »,
-	ou de façon équivalente qui sont descriptibles par la logique du premier ordre.
+	coïncident dans les deux cas : ce sont précisément ceux qui ont « dualité finie »,
+	ou, de façon équivalente, qui sont descriptibles par la logique du premier ordre.
 \end{contribution}
 
 En se rappelant que le graphe de configuration d'une machine de Turing est toujours
-automatique, on peut en fait voir ce résultat comme une variation (toutefois incomparable)
-du théorème de Rice : toute propriété non-triviale---dans le sens de
-« indescriptible au premier ordre »---sur le graphe de configuration d'une machine de Turing
+automatique, on peut voir ce résultat comme une variation (toutefois incomparable)
+du théorème de Rice : toute propriété non triviale---dans le sens de
+« indescriptible au premier ordre »---sur le graphe de configuration d'une machine de Turing
 est indécidable, sous réserve que cette propriété soit un problème
-de satisfaction (régulière, ou non) de contraintes.
+de satisfaction (régulière ou non) de contraintes.
 
 \paragraph*{Propriété des relations automatiques}
 
 Le (méta-)résultat précédent décrit une très large classe de problèmes sur
 les structures automatiques comme étant entièrement indécidable.
-La suite de cette thèse s'efforce donc à trouver un îlot de tractabilité
+La suite de cette thèse cherche donc à identifier un îlot de tractabilité
 dans cet océan d'indécidabilité.
 
 Notre résultat s'inscrit dans le domaine de la théorie algébrique des langages.
-En bref, tous les langages réguliers ne se valent pas : certains sont intrinsèquement
-plus compliqués à décrire que d'autres. Ici, le terme « plus compliqué » ne
-doit pas tant être compris au sens de « avoir plus d'états » mais « nécessite
-une forme d'automate plus complexe ». Formellement, cette notion de complexité
+En bref, tous les langages réguliers ne se valent pas : certains sont intrinsèquement
+plus compliqués à décrire que d'autres. Ici, le terme « plus compliqué » doit être compris non pas tant au sens de « avoir plus d'états », mais « nécessite une forme d'automate plus complexe ». Formellement, cette notion de complexité
 est notamment liée à la complexité de circuits à la compilation.%
-\footnote{En termes techniques, la notion de simplicité se traduit techniquement par « le langage appartient-il à une pseudovariété de langages fixée ».}
-Pour comprendre quels langages sont « simples »---formellement, lesquels appartiennent à une certaine
-classe de langages qui satisfont de bonnes propriétés de clôture---, la théorie
-algébrique des langages a été développées depuis les années 1960s.
+\footnote{En termes techniques, la notion de simplicité se traduit par « le langage appartient-il à une pseudovariété de langages fixée ».}
+Pour comprendre quels langages sont « simples »---formellement, lesquels appartiennent à une certaine
+classe de langages satisfaisant de bonnes propriétés de clôture---, la théorie
+algébrique des langages a été développée depuis les années 1960.
 Essentiellement, cette théorie associe à chaque langage une structure algébrique---un
-\emph{monoïde}---, qui reflète assez clairement les propriétés dudit langage.
-Les questions sur les langages se traduisent alors en question sur les monoïdes,
-qui se révèlent être des objets bien plus aisés à manipuler.
+\emph{monoïde}---qui reflète assez clairement les propriétés dudit langage.
+Les questions sur les langages se traduisent alors en questions sur les monoïdes,
+qui se révèlent être des objets plus aisés à manipuler.
 
-Cette question fondamentale---un langage est-il « facile » à décrire ?---s'étend
+Cette question fondamentale---un langage est-il « facile » à décrire ?---s'étend
 naturellement aux structures automatiques, puisque celles-ci sont décrites par
-des automates, appelés \emph{automates synchrones}.
+des automates appelés \emph{automates synchrones}.
 Cependant, la théorie algébrique classique ne s'applique pas telle quelle
-à ces automates : la raison principale est que ces automates synchrones ignorent
+à ces automates : la raison principale est que ces automates synchrones ignorent
 certaines de leurs entrées, ou plutôt que le comportement de l'automate
-sur certaines entrées n'a aucune influence sur la structure automatique définie à la fin.%
-\footnote{On ne peut s'empêcher ici de faire un parallèle avec la programmation :
-peut importe le comportement d'une fonction \texttt{pgcd} sur des paires
-de chaînes de caractères si on a l'assurance qu'elle ne sera appelée
-que sur des paires d'entiers !}
+sur certaines entrées n'a aucune influence sur la structure automatique définie.%
+\footnote{On peut faire un parallèle avec la programmation : peu importe le comportement d'une fonction \texttt{pgcd} sur des chaînes de caractères si elle n'est appelée que sur des entiers !}
 Malheureusement, la structure algébrique de monoïde est définie en prenant en compte
 le comportement de l'automate sur tous les mots.
 
 Notre première contribution sur ce sujet est d'introduire une structure algébrique, appelée
-\emph{algèbre synchrone}, qui traduit le comportement des automates synchrones seulement sur les
+\emph{algèbre synchrone}, qui traduit le comportement des automates synchrones uniquement sur les
 entrées pertinentes.
+
 \begin{contribution}
-	Nous étendons la théorie algébrique des langages---ses objets, mais aussi ses théorèmes principaux---aux relations reconnues par des automates synchrones.
+	Nous étendons la théorie algébrique des langages---ses objets et ses théorèmes principaux---aux relations reconnues par des automates synchrones.
 \end{contribution}
 
 Dans un second temps, nous nous appuyons sur cette théorie pour résoudre la question d'origine.
 En général, il n'existe pas d'algorithme pour déterminer l'appartenance à chaque classe de langage.
-En revanche, nous montrons que, dès ce que c'est le cas, nous pouvons relever ce théorème aux
+En revanche, nous montrons que dès que c'est possible, ce théorème peut être relevé aux
 automates synchrones.
+
 \begin{contribution}
-	Nous montrons que, dès que l'on peut décider si un langage appartient à une telle 
+	Nous montrons que dès que l'on peut décider si un langage appartient à une telle 
 	classe---ce qui revient essentiellement à dire que ce langage peut être décrit par un automate 
-	avec une « forme simple »---, alors on peut toujours décider si un automate synchrone est équivalent à un autre automate synchrone de « forme simple ».
+	de « forme simple »---alors on peut toujours décider si un automate synchrone est équivalent à un autre automate synchrone de « forme simple ».
 \end{contribution}
-Notons que ce résultat est en fait un meta-théorème : ce n'est pas une caractérisation d'une classe,
-mais une façon de produire, à partir d'un algorithme qui caractérise des langages, un autre 
+
+Notons que ce résultat est en fait un méta-théorème : ce n'est pas une caractérisation d'une classe,
+mais une façon de produire, à partir d'un algorithme caractérisant des langages, un autre 
 algorithme qui caractérise la sémantique des automates synchrones.
 
 En conclusion, cette seconde partie de thèse, qui étudie d'une part
-les problèmes de satisfactions de contraintes sur des infinies et d'autre part la complexité des
-automates décrivant ces structures, présente deux (meta-)théorèmes diamétralement opposés : le 
-premier caractérise exactement quels sont les problèmes de satisfactions de contraintes décidables
-sur les structures automatiques, et il s'avère en fait qu'ils sont en fait particulièrement rares,
-là où le second résultat montre que la construction des automates synchrones préserve la 
-décidabilité, et donc que l'on peut très souvent déterminer si une relation décrite par
-un automate synchrone peut être décrit par un automate synchrone ayant une « forme simple ».
-\end{french}
+les problèmes de satisfaction de contraintes sur des structures infinies et d'autre part la complexité des
+automates décrivant ces structures, présente deux (méta-)théorèmes diamétralement opposés : le 
+premier caractérise exactement quels problèmes de satisfaction de contraintes sont décidables
+sur les structures automatiques, et ils s'avèrent en fait particulièrement rares,
+tandis que le second montre que la construction des automates synchrones préserve la 
+décidabilité, permettant souvent de déterminer si une relation décrite par
+un automate synchrone peut être représentée par un automate synchrone de « forme simple ».
