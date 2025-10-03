@@ -1,4 +1,4 @@
-\knowledge{notion}
+\knowledge{notion, index={automatic presentation}}
  | presentation
  | presentations
  | automatic presentation
@@ -18,13 +18,13 @@
  | represented@struct
  | represents@struct
 
-\knowledge{notion}
+\knowledge{notion, index={automatic presentation!injective}}
  | injective@pres
  | injective presentations
  | injective presentation
  | injective automatic presentation
 
-\knowledge{notion}
+\knowledge{notion, index={automatic structure}}
  | automatic@struct
  | automaticity@struct
  | automatic structure
@@ -44,27 +44,27 @@
  | non-automaticity@struct
  | automatic semigroups
 
-\knowledge{notion}
+\knowledge{notion, index={Hodgson's theorem}}
  | Hodgson's theorem
 
 % ---
 % Beyond automatic structures
 % ---
 
-\knowledge{notion}
+\knowledge{notion, index={automatic structure!$\omega$-}}
  | $\omega $-automatic structures
 
-\knowledge{notion}
+\knowledge{notion, index={automatic structure!tree-}}
  | tree-automatic structures
  | tree-automatic ordinals
 
-\knowledge{notion}
+\knowledge{notion, index={automatic structure!$\omega$-tree-}}
  | $\omega $-tree-automatic structures
  | $\omega $-tree-automatic ordinals
  | $\omega $-tree-automaticity
  | $\omega $-tree-automatic Boolean algebras
 
-\knowledge{notion}
+\knowledge{notion, index={automatic structure!higher-order}}
  | higher-order automatic structures
  | higher-order automatic
  | higher-order automatic structure

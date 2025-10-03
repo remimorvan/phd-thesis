@@ -1,58 +1,58 @@
-\knowledge{notion}
+\knowledge{notion, index={internal variable}}
  | internal variable
  | internal variables
  | internal
  | Internal variables
 
-\knowledge{notion}
+\knowledge{notion, index={external variable}}
  | external
  | external variable
  | external variables
 
-\knowledge{notion}
+\knowledge{notion, index={one-way segment}}
 | one-way segment
 | one-way segments
 | segment
 | segments
 | Segments
 
-\knowledge{notion}
+\knowledge{notion, index={contraction}}
 | contraction
 | Contractions
 | contract
 | contractions
 
-\knowledge{notion}
+\knowledge{notion, index={contracting variables}}
 | contract@var
 | contraction@var
 | contracting@var
  | contraction of internal variable
  | contracting internal variables
 
-\knowledge{notion}
+\knowledge{notion, index={strong minimality}}
  | strong minimality
  | strongly minimal
 
 \knowledge{notion}
  | incident@segment
 
-\knowledge{notion}
+\knowledge{notion, index={segment graph}}
  | segment graph
 
-\knowledge{notion}
+\knowledge{notion, index={segment!cyclic}}
  | cyclic segment
  | cyclic@segment
 
-\knowledge{notion}
+\knowledge{notion, index={semantical structure theorem}}
  | Semantical Structure
  | semantical structure theorem
 
-\knowledge{notion}
+\knowledge{notion, index={hom-minimality}}
  | hom-minimal
  | hom-minimality
  | hom-minimal expansions
  | hom-minimal canonical database
 
-\knowledge{notion}
+\knowledge{notion, index={edge contraction}}
  | contracting edges
  | edge contraction

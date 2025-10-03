@@ -2,7 +2,7 @@
 % Monoids
 % -----
 
-\knowledge{notion}
+\knowledge{notion, index={monoid!division}}
  | divide@monoid
  | divides@monoid
  | division@monoid
@@ -12,20 +12,20 @@
 % Classical algebras
 % -----
 
-\knowledge{notion}
+\knowledge{notion, index={synchronous algebra}}
  | synchronous algebras
  | synchronous algebra
  | algebra@sync
  | algebras@sync
 
-\knowledge{notion}
+\knowledge{notion, index={Cartesian product!of algebras}}
  | product
 
-\knowledge{notion}
+\knowledge{notion, index={underlying monoid}}
  | underlying monoids
  | underlying monoid
 
-\knowledge{notion}
+\knowledge{notion, index={relation!recognized by a synchronous algebras}}
  | recognize@sync
  | recognizes@sync
  | recognized@sync
@@ -35,7 +35,7 @@
 % \knowledge{notion}
 %  | free synchronous algebra
 
-\knowledge{notion}
+\knowledge{notion, index={synchronous algebra!morphism}}
  | synchronous algebra morphisms
  | synchronous algebra morphism
  | Morphisms of synchronous algebras
@@ -44,63 +44,63 @@
  | morphisms@sync
  | morphisms of synchronous algebras
 
-\knowledge{notion}
+\knowledge{notion, index={synchronous algebra!isomorphism}}
  | isomorphisms@sync
  | isomorphisms of synchronous algebras
 
-\knowledge{notion}
+\knowledge{notion, index={synchronous algebra!syntactic}}
  | syntactic synchronous algebra
  | syntactic synchronous algebras
  | syntactic algebra@sync
  | syntactic algebras@sync
 
-\knowledge{notion}
+\knowledge{notion, index={synchronous algebra!syntactic morphism}}
  | syntactic synchronous algebra morphism
  | syntactic morphism@sync
  | syntactic synchronous morphism
  | syntactic morphisms@sync
 
-\knowledge{notion}
+\knowledge{notion, index={congruence (for synchronous relations)}}
  | congruence@sync
  | Congruences@sync
 
-\knowledge{notion}
+\knowledge{notion, index={subalgebra}}
  | subalgebra@sync
  | subalgebras
 
-\knowledge{notion}
+\knowledge{notion, index={synchronous algebra!division}}
  | divides@sync
  | division@sync
  | divide@sync
 
-\knowledge{notion}
+\knowledge{notion, index={locally generated algebra}}
  | locally generated@sync
  | locally generated
  | locally generated algebras
 
-\knowledge{notion}
+\knowledge{notion, index={quotient structure}}
  | quotient structure@sync
  | quotient structures@sync
  | quotient@sync
 
-\knowledge{notion}
+\knowledge{notion, index={syntactic congruence}}
  | syntactic congruence
  | syntactic congruences
  | syntactic congruences@sync
  | syntactic congruence@sync
 
-\knowledge{notion}
+\knowledge{notion, index={synchronous algebra!induced by a monoid}}
  | induces@sync
  | synchronous algebra induced by the monoid
 
-\knowledge{notion}
+\knowledge{notion, index={consolidation}}
  | consolidation
 
 % -----
 % Positive algebras
 % -----
 
-\knowledge{notion}
+\knowledge{notion, index={synchronous algebra!positive}}
  | positive synchronous algebras
  | positive synchronous algebra
  | positive algebras@sync
@@ -108,16 +108,16 @@
  | algebra@syncP
  | algebras@syncP
 
-\knowledge{notion}
+\knowledge{notion, index={underlying semigroup}}
  | underlying semigroups
  | underlying semigroup
 
-\knowledge{notion}
+\knowledge{notion, index={synchronous algebra!syntactic, positive}}
  | syntactic positive synchronous algebra
  | syntactic positive synchronous algebras
  | syntactic positive algebra@sync
 
-\knowledge{notion}
+\knowledge{notion, index={synchronous algebra!morphism of positive synchronous algebras}}
  | morphism of positive synchronous algebras
  | Morphisms of positive synchronous algebras
  | positive synchronous algebras morphisms
@@ -128,11 +128,11 @@
  | positive synchronous algebra morphisms
  | morphisms@syncP
 
-\knowledge{notion}
+\knowledge{notion, index={synchronous algebra!syntactic positive synchronous algebra morphism}}
  | syntactic morphism@syncP
  | syntactic positive synchronous algebra morphism
 
-\knowledge{notion}
+\knowledge{notion, index={synchronous algebra!positive synchronous algebra induced by (…)}}
  | induces@syncP
  | positive synchronous algebra induced
 
@@ -145,5 +145,5 @@
 % \knowledge{notion}
 %  | syntactic congruences@syncP
 
-\knowledge{notion}
+\knowledge{notion, index={synchronous algebra!naive}}
  | naive synchronous algebra

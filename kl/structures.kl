@@ -182,7 +182,7 @@
  | disjoint union
  | disjoint unions
 
-\knowledge{notion, index={Cartesian product}}
+\knowledge{notion, index={Cartesian product!of structures}}
  | Cartesian product
  | Cartesian products
 
@@ -206,7 +206,7 @@
  | minor
  | minors
 
-\knowledge{notion}
+\knowledge{notion, index={class!minor-closed}}
  | minor-closed
  | closed under minors
  | minor-closed classes

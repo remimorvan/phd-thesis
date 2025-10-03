@@ -1,10 +1,10 @@
-\knowledge{notion}
+\knowledge{notion, index={complement (of a relation)}}
  | complement@rel
 
-\knowledge{notion}
+\knowledge{notion, index={synchronous words}}
  | synchronous words
 
-\knowledge{notion}
+\knowledge{notion, index={$\+V$-relations}}
  | $\+V$-relation
  | $\+V$-relations
  | $\LocTriv $-relation
@@ -12,20 +12,20 @@
  | $\+V$-(synchronous) relations
  | $\symbf {\+V}$-relation
 
-\knowledge{notion}
+\knowledge{notion, index={group relation}}
  | group relation
  | group relations
 
-\knowledge{notion}
+\knowledge{notion, index={commutative relation}}
  | commutative relations
  | commutative relation
 
-\knowledge{notion}
+\knowledge{notion, index={nilpotent relation}}
  | nilpotent relations
  | $\Nil $-relations
  | $\Nil $-relation
 
-\knowledge{notion}
+\knowledge{notion, index={almost length-preserving relation}}
  | almost length-preserving
  | bounded length discrepancy
  | almost length-preserving relations

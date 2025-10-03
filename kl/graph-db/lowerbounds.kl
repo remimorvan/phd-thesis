@@ -2,22 +2,22 @@
 % Basic stuff only needed for lower bound
 % ---
 
-\knowledge{notion}
+\knowledge{notion, index={atom!locally redundant}}
  | locally redundant
  | locally redundant atom
  | locally redundant atoms
 
- \knowledge{notion}
+ \knowledge{notion, index={conjunctive regular path query!degenerate}}
  | degenerate@CRPQ
  | degenerate CRPQ
  | non-degenerate@CRPQ
 
-\knowledge{notion}
+\knowledge{notion, index={database!non-degenerate}}
  | non-degenerate@db
  | non-degenerate@cdb
  | non-degenerate expansion
 
-\knowledge{notion}
+\knowledge{notion, index={conjunctive regular path query!fully contracted}}
  | fully contracted
  | non-fully contracted CRPQ
 
@@ -26,27 +26,27 @@
 % Classes
 % ---
 
-\knowledge{notion}
+\knowledge{notion, index={closed under!disjoint conjunction}}
  | closed under disjoint conjunction
  | class of CRPQs closed under disjoint conjunction
 
-\knowledge{notion}
+\knowledge{notion, index={closed under!variable marking}}
  | closed under variable marking
 
 \knowledge{notion}
  | relevant@prooflowerbound
 
- \knowledge{notion}
+ \knowledge{notion, index={canonization problem}}
  | $\classCRPQ $-canonization problem
  | canonization problem
 
-\knowledge{notion}
+\knowledge{notion, index={strong canonization problem}}
  | $\classCRPQ $-strong canonization problem
  | strong canonization problem
 
-\knowledge{notion}
+\knowledge{notion, index={canonization oracle}}
  | $\classCRPQ $-canonization oracle
 
-\knowledge{notion}
+\knowledge{notion, index={strong canonization oracle}}
  | $\classCRPQ $-strong canonization oracle
  | strong canonization oracle

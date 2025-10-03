@@ -27,7 +27,7 @@
 \knowledge{notion, wrap=\DPfont, index={regular reachability problem}}
  | regular reachability problem
  
-\knowledge{notion, wrap=\DPfont, index={$\+D$-separability problem for $\+C$-relations}}
+\knowledge{notion, wrap=\DPfont, index={$\+D$-separability problem!for $\+C$-relations}}
  | $\+D$-separability problem for $\+C$-relations
  | separation problem@rel
  | separability@problemrel
@@ -37,7 +37,7 @@
  | $\RAT $/$\REC $-sepa\-ra\-bility problems
  | separability problems
 
-\knowledge{notion, wrap=\DPfont, index={$\+D$-separability problem (for automatic relations)}}
+\knowledge{notion, wrap=\DPfont, index={$\+D$-separability problem!for automatic relations}}
  | $\+D$-separability problem
  | $\kPROD[1]$-separability problem
  | $\kREC $-separability problem
@@ -54,7 +54,7 @@
  | $\REC $-separability problem
  | $\REC $-separability problem for automatic relations
 
-\knowledge{notion, wrap=\DPfont, index={$\+D$-membership problem for $\+C$-relations}}
+\knowledge{notion, wrap=\DPfont, index={$\+D$-membership problem!for $\+C$-relations}}
  | $\+D$-membership problem for $\+C$-relations
  | $\+C$/$\+D$-membership problem
  | membership@problemrel
@@ -64,7 +64,7 @@
  | membership problem
  | membership problems
 
-\knowledge{notion, wrap=\DPfont, index={$\+D$-membership problem (for automatic relations)}}
+\knowledge{notion, wrap=\DPfont, index={$\+D$-membership problem!for automatic relations}}
  | $\+D$-membership problem
  | $\REC $-membership problem
  | $\REC $-membership@problem

@@ -2,19 +2,19 @@
 % Classical semigroup stuff
 % -----
 
-\knowledge{notion}
+\knowledge{notion, index={nilpotent semigroup}}
  | nilpotent
  | nilpotent semigroups
 
-\knowledge{notion}
+\knowledge{notion, index={idempotent element}}
  | idempotent
 
-\knowledge{notion}
+\knowledge{notion, index={nilpotent power}}
  | idempotent power
 
-\knowledge{notion}
+\knowledge{notion, index={aperiodic}}
  | aperiodic
  | aperiodic semigroups
 
-\knowledge{notion}
+\knowledge{notion, index={locally trivial semigroup}}
  | Locally trivial semigroups

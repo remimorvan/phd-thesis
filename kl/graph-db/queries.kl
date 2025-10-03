@@ -2,33 +2,33 @@
 % queries (basic)
 % ---
 
-\knowledge{notion}
+\knowledge{notion, index={evaluation!of a query}}
  | evaluation
  | evaluated
  | evaluations
  | evaluates
  | evaluate
 
-\knowledge{notion}
+\knowledge{notion, index={evaluation!map, for CRPQs}}
  | evaluation map
  | Evaluation maps
  | evaluation maps
  | evaluations maps
 
-\knowledge{notion}
+\knowledge{notion, index={evaluation!map, for CQs}}
  | evaluation map@cq
  | evaluation map@CQ
 
-\knowledge{notion}
+\knowledge{notion, index={evaluation!problem}}
  | evaluation problem
  | Evaluation problem
 
-\knowledge{notion}
+\knowledge{notion, index={atom}}
  | atom
  | atoms
  | atoms@cq
 
-\knowledge{notion}
+\knowledge{notion, index={output variable}}
  | output variables
  | free variables
  | free
@@ -38,7 +38,7 @@
  | free variables@cq
  | output variables@cq
 
-\knowledge{notion}
+\knowledge{notion, index={conjunctive regular path query!Boolean}}
  | Boolean
  | Boolean CRPQ
  | Boolean CRPQs
@@ -51,7 +51,7 @@
  | Boolean conjunctive queries
  | Boolean conjunctive query
 
-\knowledge{notion}
+\knowledge{notion, index={conjunctive query}}
  | conjunctive query
  | conjunctive queries
  | CQ
@@ -61,7 +61,7 @@
  | queries@CQ
  | Conjunctive Queries
 
-\knowledge{notion}
+\knowledge{notion, index={conjuctive query!union of}}
  | unions of CQs
  | union of CQs
  | UCQs
@@ -71,15 +71,15 @@
  | Unions of conjunctive regular path queries
 %  | unions of conjunctive regular path queries
 
-\knowledge{notion}
+\knowledge{notion, index={disjunct}}
  | disjunct
  | disjuncts
 
-\knowledge{notion}
+\knowledge{notion, index={regular path query}}
  | Regular path queries
  | RPQ
 
-\knowledge{notion}
+\knowledge{notion, index={conjunctive regular path query}}
  | CRPQ
  | CRPQs
  | conjunctive regular path queries
@@ -87,11 +87,11 @@
  | query@CRPQ
  | queries@CRPQ
 
-\knowledge{notion, index={loopless}}
+\knowledge{notion, index={conjunctive regular path query!loopless}}
  | loopless
  | loopless CRPQs
 
-\knowledge{notion}
+\knowledge{notion, index={conjunctive regular path query!union of}}
  | UCRPQ
  | (U)CRPQ
  | (U)CRPQs
@@ -99,13 +99,13 @@
  | unions of CRPQs
  | union of CRPQs
 
-\knowledge{notion}
+\knowledge{notion, index={conjunctive regular path query!union of, over simple regular expressions}}
  | UCRPQ(SRE)
 
-\knowledge{notion}
+\knowledge{notion, index={conjunctive regular path query!over simple regular expressions}}
  | CRPQ(SRE)
 
-\knowledge{notion}
+\knowledge{notion, index={conjunctive regular path query!with two-way navigation (C2RPQ)}}
  | C2RPQ
  | C2RPQs
  | conjunctive two-way regular path query
@@ -113,12 +113,12 @@
  | two-way navigation
  | C(2)RPQs
 
- \knowledge{notion}
+ \knowledge{notion, index={subquery}}
  | subquery
  | subqueries
  | subquery@CQ
 
-\knowledge{notion}
+\knowledge{notion, index={conjunctive regular path query!union of, with two-way navigation}}
  | UC2RPQ
  | (U)C2RPQ
  | UC2RPQs
@@ -127,13 +127,13 @@
  | UC(2)RPQs
  | unions of conjunctive two-way regular path queries
 
-\knowledge{notion}
+\knowledge{notion, index={simple regular expression}}
  | simple regular expression
  | simple regular expressions
  | SRE
  | SREs
 
-\knowledge{notion}
+\knowledge{notion, index={simple regular expression!positive}}
  | positive simple regular expressions
  | positive simple regular expression
  | simple regular expression@positive
@@ -150,41 +150,41 @@
 \knowledge{notion}
  | (iii)@sre
 
-\knowledge{notion}
+\knowledge{notion, index={recursive atom}}
  | recursive atom
  | recursive atoms
  | recursive@rat
 
-\knowledge{notion}
+\knowledge{notion, index={non-recursive atom}}
  | non-recursive atom
  | non-recursive atoms
  | non-recursive@nrat
  
-\knowledge{notion}
+\knowledge{notion, index={regular query}}
  | Regular Queries
 
 % ---
 % Operators
 % ---
 
-\knowledge{notion}
+\knowledge{notion, index={disjoint conjunction}}
  | disjoint conjunction
 
-\knowledge{notion}
+\knowledge{notion, index={weak union}}
  | weak union
 
 % ---
 % Queries (expansions, containement, etc.)
 % ---
 
-\knowledge{notion}
+\knowledge{notion, index={containment}}
  | containment
  | contained
  | contains
  | contain
  | Containment
  
-\knowledge{notion}
+\knowledge{notion, index={semantic equivalence}}
  | equivalent
  | Equivalent
  | equivalence
@@ -194,14 +194,14 @@
  | semantical equivalence
  | equivalent@sem
 
-\knowledge{notion}
+\knowledge{notion, index={expansion}}
  | expansion
  | expansions
  | Expansion
  | Expansions
  | expanding
 
-\knowledge{notion}
+\knowledge{notion, index={atom!expansion}}
  | atom expansion
  | atom expansions
 
@@ -209,101 +209,101 @@
 % Refinements
 % ---
 
-\knowledge{notion}
+\knowledge{notion, index={atom!refinement}}
  | atom refinement
  | atom refinements
 
-\knowledge{notion}
+\knowledge{notion, index={atom!$m$-refinement}}
  | atom $m$-refinement
  | atom $m$-refinements
  | atom $m'$-refinements
  | $m$-refinements@atom
 
-\knowledge{notion}
+\knowledge{notion, index={atom!equality}}
  | equality atom
  | equality atoms
 
-\knowledge{notion}
+\knowledge{notion, index={condensation}}
  | condensation
  | condensations
  | condense
  | condensing
 
-\knowledge{notion}
+\knowledge{notion, index={refinement}}
  | refinements
  | refinement
  | refine
  | refining
  | Refinements
 
- \knowledge{notion}
+ \knowledge{notion, index={$m$-refinement}}
  | $m$-refinements
  | $m$-refinement
 
-\knowledge{notion}
+\knowledge{notion, index={refinement!length}}
  | refinement length
 
 % ---
 % Acyclic CQs
 % ---
 
-\knowledge{notion}
+\knowledge{notion, index={semi-join}}
  | semi-join
  | semi-joins
 
-\knowledge{notion}
+\knowledge{notion, index={Yannakakis algorithm}}
  | Yannakakis algorithm
 
 \knowledge{notion}
  | acyclic
 
-\knowledge{notion}
+\knowledge{notion, index={conjuctive regular path query!minimal}}
  | minimal
  | minimality
  | non-minimal
 
- \knowledge{notion}
+ \knowledge{notion, index={atom!redundant}}
  | redundant atom
  | redundant
  | non-redundant
  | non-redundancy
  | redundancy
 
-\knowledge{notion}
+\knowledge{notion, index={conjuctive regular path query!variable-minimal}}
  | variable minimal
 
-\knowledge{notion}
+\knowledge{notion, index={maximal under-approximation}}
  | maximal under-approximation
  | maximal under-approximations
 
-\knowledge{notion}
+\knowledge{notion, index={contraction length}}
  | contraction length
 
-\knowledge{notion}
+\knowledge{notion, index={type!of a variable}}
  | type@var
 
-\knowledge{notion}
+\knowledge{notion, index={explicit approximation}}
  | explicit approximation
 
 \knowledge{notion}
  | contained@approx
 
-\knowledge{notion}
+\knowledge{notion, index={underlying graph}}
  | underlying graphs
  | underlying graph
  | underlying graph@dir
 
-\knowledge{notion}
+\knowledge{notion, index={sublanguage}}
  | sublanguages
  | sublanguage
 
-\knowledge{notion}
+\knowledge{notion, index={closed under sublanguages}}
  | closed under sublanguages
 
-\knowledge{notion}
+\knowledge{notion, index={type!$\gamma$-}}
  | $\gamma$-type
 
-\knowledge{notion}
+\knowledge{notion, index={basic path}}
  | basic path
  | basic paths
 
@@ -311,25 +311,25 @@
 % Summary queries
 % ---
 
-\knowledge{notion}
+\knowledge{notion, index={summary query}}
  | $k$-summary query
  | $k$-summary queries
  | summary query
  | summary queries
  | Summary queries
 
-\knowledge{notion}
+\knowledge{notion, index={path-$l$ approximation}}
  | path-$l$ approximation
  | path-$l$ approximations
 
-\knowledge{notion}
+\knowledge{notion, index={summary query!semantics of}}
  | semantics@summary
 
-\knowledge{notion}
+\knowledge{notion, index={summary query!refinement}}
  | refinement@summary
  | refinements@summary
 
-\knowledge{notion}
+\knowledge{notion, index={summary query!tree decomposition}}
  | tree decomposition@summary
 
 \knowledge{notion}
@@ -339,22 +339,21 @@
 % Classes
 % ---
 
-\knowledge{notion}
+\knowledge{notion, index={class!of CQs}}
  | class of CQs
 
-\knowledge{notion}
+\knowledge{notion, index={class!of CQs (monotone)}}
  | monotone@classCQ
  | monotonicity@classCQ
  | Monotone classes of CQs
  | monotone classes of CQs
  | monotone class of CQs
 
-\knowledge{notion}
+\knowledge{notion, index={class!of CRPQs}}
  | class of (Boolean) CRPQs
  | class@CRPQ
  | class of CRPQs
  | classes of CRPQs
 
-\knowledge{notion}
+\knowledge{notion, index={class!closed under homomorphisms}}
  | closed under homomorphisms
- | closed under homomorphism

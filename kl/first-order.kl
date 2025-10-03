@@ -111,7 +111,7 @@
  | $\omega $-order-invariant@FO
  | $\omega $-order-invariant first-order formula
 
-\knowledge{url={https://en.wikipedia.org/wiki/L\%C3\%B6wenheim\%E2\%80\%93Skolem_theorem}, index={Lowenheim–Skolem theorem@Löwenheim–Skolem theorem}}
+\knowledge{url={https://en.wikipedia.org/wiki/L\%C3\%B6wenheim\%E2\%80\%93Skolem_theorem}}
  | upward Löwenheim–Skolem theorem
 
 \knowledge{notion, index={Presburger arithmetic}}

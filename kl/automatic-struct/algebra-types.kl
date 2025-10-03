@@ -1,17 +1,17 @@
-\knowledge{notion}
+\knowledge{notion, index={letter-type}}
  | letter-type
  | letter-types
 
-\knowledge{notion}
+\knowledge{notion, index={type}}
  | types
  | type
 
-\knowledge{notion}
+\knowledge{notion, index={type!compatible}}
  | compatible@type
  | compatibility@type
  | compatible type
 
-\knowledge{notion}
+\knowledge{notion, index={typed set}}
  | $\types $-typed set
  | typed set
  | typed
@@ -19,28 +19,28 @@
  | $\typesEps $-typed sets
  | 2-typed sets
 
-\knowledge{notion}
+\knowledge{notion, index={typed set!map between}}
  | map between typed sets
  | maps of typed sets
 
-\knowledge{notion}
+\knowledge{notion, index={dependency relation}}
  | dependency relation
  | mutually dependent
  | dependency
  | dependency relations
  | dependent
 
-\knowledge{notion}
+\knowledge{notion, index={locally transitive}}
  | locally transitive
 
-\knowledge{notion}
+\knowledge{notion, index={dependent set}}
  | dependent set
  | dependent sets
 
 % \knowledge{notion}
 %  | dependent set induced by a set
 
-\knowledge{notion}
+\knowledge{notion, index={closed subset}}
  | closed subset
  | closed subsets
  | closed

@@ -1,22 +1,22 @@
-\knowledge{notion}
+\knowledge{notion, index={database!relational}}
  | relational database
  | relational databases
  | database@rel
  | databases@rel
  | Relational Databases
 
-\knowledge{notion}
+\knowledge{notion, index={database!pointed relational}}
  | pointed relational database
  | pointed relational $\sigma $-database
  | pointed relational databases
  | pointed databases@rel
  | database@relpointed
 
-\knowledge{notion}
+\knowledge{notion, index={isolated vertex}}
  | isolated vertices
  | isolated variables
 
-\knowledge{notion}
+\knowledge{notion, index={database!graph}}
  | Graph databases
  | graph databases
  | graph database
@@ -24,11 +24,11 @@
  | databases@graph
  | pointed graph database
 
-\knowledge{notion}
+\knowledge{notion, index={database!to satisfy a query}}
  | satisfies@db
  | satisfy@db
  | satisfying@db
 
-\knowledge{notion}
+\knowledge{notion, index={database!profinite}}
  | profinite databases
  | profinite database

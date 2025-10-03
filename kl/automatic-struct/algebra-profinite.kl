@@ -2,32 +2,32 @@
 % Profinite stuff
 % -----
 
-\knowledge{notion}
+\knowledge{notion, index={profinite!dependency}}
  | profinite dependencies
  | profinite dependency
 
-\knowledge{notion}
+\knowledge{notion, index={profinite!equality}}
  | profinite equalities
  | profinite equality
 
-\knowledge{notion}
+\knowledge{notion, index={profinite!implication}}
  | profinite implication
 
- \knowledge{notion}
+ \knowledge{notion, index={profinite!equivalence}}
  | profinite equivalences
  | profinite equivalence
 
-\knowledge{notion}
+\knowledge{notion, index={Cauchy sequence}}
  | Cauchy sequences
  | Cauchy sequence
  | Cauchy
 
-\knowledge{notion}
+\knowledge{notion, index={profinite!word}}
  | Profinite words
  | profinite word
  | profinite words
 
-\knowledge{notion}
+\knowledge{notion, index={profinite!to satisfy a profinite dependency}}
  | satisfies@profdep
  | satisfy@profdep
  | satisfying@profdep
@@ -38,17 +38,17 @@
  | defined@profdep
  | defines@profdep
 
-\knowledge{notion}
+\knowledge{notion, index={typing}}
  | typing
  | typings
 
-\knowledge{notion}
+\knowledge{notion, index={typing consistent with (…)}}
  | consistent@typing
  | typings consistent
  | typing consistent
  | well-typed
 
-\knowledge{notion}
+\knowledge{notion, index={profinite!dependencies induced by a profinite equation}}
  | profinite dependencies induced by a profinite equation
  | profinite dependencies induced by
  | profinite dependencies induced
@@ -80,16 +80,16 @@
 % \knowledge{notion}
 %  | $\+E$-closure
 
-\knowledge{notion}
+\knowledge{notion, index={free pro-$\B {V}$ positive synchronous algebra}}
  | free pro-$\B {V}$ positive synchronous algebra
 
 % Weird equations 
 
-\knowledge{notion}
+\knowledge{notion, index={profinite!explicit equivalence}}
  | explicit profinite equivalence
  | explicit profinite equivalences
 
-\knowledge{notion}
+\knowledge{notion, index={profinite!to satisfy a profinite equivalence}}
  | satisfies@profequiv
  | satisfied@profequiv
  | satisfy@profequiv

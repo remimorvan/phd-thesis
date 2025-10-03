@@ -72,27 +72,27 @@ However, attempting at answering these questions for "CRPQs" is considerably mor
 In fact, for classes of "CRPQs" avoiding such problematic behavior, Question~\ref{qu:FPTtractability} can be positively answered. We next show why.
 
 \AP
-Let us call a "UC2RPQ" ""finitely-redundant"" if there is no infinite chain $\xi_1(\bar x) \strcontained \xi_2(\bar x) \strcontained \dotsb$ among its "expansions". See \Cref{fig:example-infinite-chain} for a non-example.
+Let us call a "UC2RPQ" ""finitely redundant"" if there is no infinite chain $\xi_1(\bar x) \strcontained \xi_2(\bar x) \strcontained \dotsb$ among its "expansions". See \Cref{fig:example-infinite-chain} for a non-example.
 \begin{figure}
     \centering%
     \includegraphics[width=.7\linewidth]{example-infinite-chain.pdf}
     \caption{%
         \AP\label{fig:example-infinite-chain}%
-        $(i)$ A simple non-"finitely-redundant" Boolean "CRPQ". $(ii)$ For every $n$, there is a "homomorphism" from the $(n+1)$-"expansion" to the $n$-"expansion", but no "homomorphism" in the converse direction.
+        $(i)$ A simple non-"finitely redundant" Boolean "CRPQ". $(ii)$ For every $n$, there is a "homomorphism" from the $(n+1)$-"expansion" to the $n$-"expansion", but no "homomorphism" in the converse direction.
     }
 \end{figure}
 \AP
-Observe that the classes of "CQs" and "UCQs" are "finitely-redundant", and also the class of ""loopless CRPQs"", meaning no directed cycle in its underlying directed graph and no empty word $\varepsilon$ in the "atom" languages.
+Observe that the classes of "CQs" and "UCQs" are "finitely redundant", and also the class of ""loopless CRPQs"", meaning no directed cycle in its underlying directed graph and no empty word $\varepsilon$ in the "atom" languages.
 
 \begin{lemma}
-    The class of "loopless CRPQs" is "finitely-redundant".
+    The class of "loopless CRPQs" is "finitely redundant".
 \end{lemma}
 \begin{proof}
     By means of contradiction, let $\gamma$ be "loopless" and suppose there is an infinite chain $\xi_1(\bar x) \strcontained \xi_2(\bar x) \strcontained \dotsb$ of "expansions" of $\gamma$. Hence, there must be an "atom" "expansion" which grows arbitrarily in the chain. Take $\xi_i$ such that it contains an "atom" "expansion" of size bigger than $\xi_1$. Since such "atom" "expansion" is a directed path (as we are dealing with one-way "CRPQs"), the fact that $\xi_i \homto \xi_1$ implies that there is some cycle in $\xi_1$.
     Since $\gamma$ cannot contain the empty word in the "atom" languages, this is in contradiction with the hypothesis that there are no "directed cycles" in $\gamma$.
 \end{proof}
 
-We next show that, restricted to classes of "finitely-redundant" "UC2RPQ", we can obtain a characterization of "evaluation" in "FPT".
+We next show that, restricted to classes of "finitely redundant" "UC2RPQ", we can obtain a characterization of "evaluation" in "FPT".
 \thmtractabilityfinred
 \begin{proof}
     \proofcase{Left-to-right} By contraposition, we show that if $\+C$ has unbounded "tree-width", then its "evaluation problem" is "W[1]"-hard via an "FPT"-reduction from the 
@@ -109,13 +109,13 @@ We next show that, restricted to classes of "finitely-redundant" "UC2RPQ", we ca
 
     \begin{proposition}
         \label{prop:big-expansion}
-        For any $k \geq 3$, if a "finitely-redundant" "C2RPQ" has "semantic tree-width" $\geq k$, then there is a "hom-minimal" "expansion" thereof of "semantic tree-width" $\geq k$.
+        For any $k \geq 3$, if a "finitely redundant" "C2RPQ" has "semantic tree-width" $\geq k$, then there is a "hom-minimal" "expansion" thereof of "semantic tree-width" $\geq k$.
     \end{proposition}
 
     \begin{proof}
-        Let $\gamma$ be a "finitely-redundant" "C2RPQ".
+        Let $\gamma$ be a "finitely redundant" "C2RPQ".
         Consider the "infinitary UCQ" \[\Xi \defeq \{\core{\xi} \mid \xi \text{ is a "hom-minimal" "expansion" of } \gamma \}.\]
-        Since $\gamma$ is "finitely-redundant", we have $\gamma \semequiv \Xi$.
+        Since $\gamma$ is "finitely redundant", we have $\gamma \semequiv \Xi$.
         We prove the fact by contraposition.
         If all "hom-minimal" "expansions" of $\gamma$ have "semantic tree-width" $\leq k-1$,
         then all "CQs" of $\Xi$ have "tree-width" $\leq k-1$, and so

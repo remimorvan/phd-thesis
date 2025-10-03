@@ -1,34 +1,34 @@
-\knowledge{notion}
+\knowledge{notion, index={Grohe's theorem}}
  | Grohe's theorem
 
-\knowledge{notion}
+\knowledge{notion, index={Rossman's theorem}}
  | Rossman's theorem
 
 % ---
 % bridge-width
 % ---
 
-\knowledge{notion}
+\knowledge{notion, index={bridge-width}}
   | bridge-width
 
-\knowledge{notion}
+\knowledge{notion, index={bridge}}
   | bridge
 
 % ---
 % Profiles
 % ---
 
-\knowledge{notion}
+\knowledge{notion, index={bag!atomic}}
  | atomic
  | atomic bags
  | non-atomic
  | non-atomic bags
 
-\knowledge{notion}
+\knowledge{notion, index={profile}}
  | profile
  | profiles
  | Profiles
 
-\knowledge{notion}
+\knowledge{notion, index={type!for tree decompositions}}
  | type@stw
  | types@stw

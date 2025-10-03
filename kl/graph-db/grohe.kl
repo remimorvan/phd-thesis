@@ -1,6 +1,6 @@
-\knowledge{notion}
- | finitely-redundant
- | finite-redundancy
+\knowledge{notion, index={conjunctive regular path query!finitely redundant}}
+ | finitely redundant
+ | finite redundancy
 
-\knowledge{notion}
+\knowledge{notion, index={parameterized clique problem}}
  | parameterized clique problem

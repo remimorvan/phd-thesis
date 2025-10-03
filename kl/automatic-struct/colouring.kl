@@ -49,7 +49,7 @@
  | separable@rel
  | $\+V$-separable@rel
 
-\knowledge{notion, index={automaton|$k$-coloured}}
+\knowledge{notion, index={automaton|{$k$}-coloured}}
  | $k$-coloured automaton
  | $k$-coloured automata
 

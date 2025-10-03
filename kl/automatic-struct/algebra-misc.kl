@@ -1,11 +1,11 @@
-\knowledge{notion}
+\knowledge{notion, index={locally trivial language}}
   | locally trivial languages
 
 % -----
 % My cute theorems 
 % -----
 
-\knowledge{notion}
+\knowledge{notion, index={Lifting Theorem!for monoids}}
  | Lifting Theorem
  | lifting theorem
  | Lifting Theorem: Elementary Formulation
@@ -14,23 +14,23 @@
  | lifting theorem@monoids
  | Lifting theorem
 
-\knowledge{notion}
+\knowledge{notion, index={Lifting Theorem!for semigroups}}
  | lifting theorem@semigroups
  | Lifting Theorem for Semigroups
 
-\knowledge{notion}
+\knowledge{notion, index={Lifting Theorem!for pseudovarieties}}
  | Lifting Theorem: Pseudovariety Formulation
  | lifting theorem@monoidspseudovar
 
-\knowledge{notion}
+\knowledge{notion, index={syntactic morphism theorem}}
  | syntactic morphism theorem@sync
  | Syntactic morphism theorem@sync
 
-\knowledge{notion}
+\knowledge{notion, index={Eilenberg-Schützenberger correspondence!for synchronous relations}}
  | Eilenberg-Schützenberger correspondence theorem@sync
  | An Eilenberg theorem for automatic relations
 
-\knowledge{notion}
+\knowledge{notion, index={Reiterman theorem!for synchronous algebras}}
  | Reiterman-style characterization of pseudovarieties@sync
  | A Reiterman theorem for positive synchronous algebras@sync
 
@@ -39,11 +39,11 @@
 % Path Algebras
 % ---
 
-\knowledge{notion}
+\knowledge{notion, index={fully-preordered language}}
 | fully-preordered@lang
 | fully-preordered languages
 
-\knowledge{notion}
+\knowledge{notion, index={path algebras}}
 | $\Omega $-path algebras
 | $\WellFormed $-path algebras
 | $\Omega _T$-path algebras
@@ -53,19 +53,19 @@
 % Monads
 % ---
 
-\knowledge{notion}
+\knowledge{notion, index={monad!functor}}
  | monad functor
  | Monad functors
  | Monads functors
  | monad functors
 
-\knowledge{notion}
+\knowledge{notion, index={monad!Kleene's}}
  | Kleene's monad
 
-\knowledge{notion}
+\knowledge{notion, index={monad!Wilke's}}
  | Wilke's monad
 
-\knowledge{notion}
+\knowledge{notion, index={monad!adjunction}}
  | monad adjunction
 
 

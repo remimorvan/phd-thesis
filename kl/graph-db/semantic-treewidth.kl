@@ -2,51 +2,52 @@
 % Semantic tree-width 
 % ---
 
-\knowledge{notion}
+\knowledge{notion, index={semantic tree-width problem}}
  | semantic tree-width $k$ problem
  | semantic tree-width $1$ problem
  | semantic tree-width 1 problem
  | semantic tree-width 1 problems
 
-\knowledge{notion}
+\knowledge{notion, index={semantic tree-width problem!one-way}}
  | one-way semantic tree-width $k$ problem
  | one-way semantic tree-width $1$ problem
  | one-way semantic tree-width 1 problem
 
-\knowledge{notion}
+\knowledge{notion, index={semantic tree-width}}
  | semantic tree-width
  | sem. tree-w.
 
-\knowledge{notion}
+\knowledge{notion, index={semantic tree-width!one-way}}
  | one-way semantic tree-width
 
-\knowledge{notion}
+\knowledge{notion, index={asymmetric containment problem}}
  | asymmetric containment problem for tree-width $k$
+
 % ---
 % Maximal under-approximations
 % ---
 
-\knowledge{notion}
+\knowledge{notion, index={maximal under-approximation}}
  | maximal under-approximation by infinitary unions
  | maximal under-approximation
  | maximal under-approximations
  | Maximal under-approximations
 
-\knowledge{notion}
+\knowledge{notion, index={approximation}}
  | approximations
  | approximation
 
-\knowledge{notion}
+\knowledge{notion, index={infinitary union}}
  | infinitary unions
  | infinitary union
  | Infinitary unions
  | infinitary UCQ
 
-\knowledge{notion}
+\knowledge{notion, index={trio}}
  | trio
  | Trio
 
-\knowledge{notion}
+\knowledge{notion, index={key lemma}}
  | Key Lemma
  | key lemma
 
@@ -54,14 +55,14 @@
 % Semantic path-width 
 % ---
 
-\knowledge{notion}
+\knowledge{notion, index={semantic path-width!one-way}}
  | one-way semantic path-width
 
-\knowledge{notion}
+\knowledge{notion, index={semantic path-width}}
  | semantic path-width
  | sem. path-w.
 
-\knowledge{notion}
+\knowledge{notion, index={semantic path-width!problem}}
  | semantic path-width $k$ problems
  | semantic path-width $k$ problem
  | one-way semantic path-width $k$ problem

@@ -2,42 +2,42 @@
 % Tree-width
 % ---
 
-\knowledge{notion}
+\knowledge{notion, index={tree decomposition}}
  | tree decomposition
  | tree decompositions
  | Tree decomposition
 
-\knowledge{notion}
+\knowledge{notion, index={bag!full}}
  | full bag
  | full
  | non-full
  | full bags
  | non-full bags
 
-\knowledge{notion}
+\knowledge{notion, index={bag}}
  | bag
  | bags
 
-\knowledge{notion}
+\knowledge{notion, index={bag!containing}}
  | contains@tw
  | contained@tw
  | containing@tw
  | containing@bag
 
-\knowledge{notion}
+\knowledge{notion, index={tree decomposition!width}}
  | width
 
-\knowledge{notion}
+\knowledge{notion, index={tree-width}}
  | tree-width
  | Tree-width
 
-\knowledge{notion}
+\knowledge{notion, index={tree decomposition!fine}}
  | fine tree decomposition
  | fineness
  | fine
  | fine tree decompositions
 
-\knowledge{notion}
+\knowledge{notion, index={tree decomposition!tagged}}
  | tagged tree decomposition
  | tagged tree decompositions
  | tagged path decomposition
@@ -47,28 +47,28 @@
  | tagging
  | tag
 
-\knowledge{notion}
+\knowledge{notion, index={tree decomposition!finite tagged}}
  | fine tagged tree decomposition
  | fine tagged tree decom\-position
  | fine tagged tree decompositions
 
-\knowledge{notion}
+\knowledge{notion, index={cyclic path}}
  | cyclic@path
  | acyclic@path
  | cyclic path
  | acyclic path
  | acyclic paths
 
-\knowledge{notion}
+\knowledge{notion, index={locally acyclic}}
  | locally acyclic
  | local acyclicity
 
-\knowledge{notion}
+\knowledge{notion, index={non-branching path}}
  | non-branching path
  | non-branching paths
  | Non-branching path
 
-\knowledge{notion}
+\knowledge{notion, index={path induced}}
  | Path induced
  | path induced
  | induced path
@@ -78,14 +78,14 @@
  | induces the path
  | induces a path
 
-\knowledge{notion}
+\knowledge{notion, index={link}}
  | link
 
-\knowledge{notion}
+\knowledge{notion, index={leaving (a path leaving a decomposition)}}
  | leaves
  | leaving
 
-\knowledge{notion}
+\knowledge{notion, index={visiting (a path visiting a bag)}}
  | visit
  | visits
 
@@ -93,46 +93,46 @@
 % Path-width
 % ---
 
-\knowledge{notion}
+\knowledge{notion, index={path-width}}
  | path-width
 
-\knowledge{notion}
+\knowledge{notion, index={path decomposition}}
  | path decomposition
  | path decompositions
  | Path decomposition
 
-\knowledge{notion}
+\knowledge{notion, index={internal path}}
  | internal path
  | internal paths
 
-\knowledge{notion}
+\knowledge{notion, index={contraction (of a path)}}
  | contraction@path
 
-\knowledge{notion}
+\knowledge{notion, index={path-width!contracted}}
  | contracted path-width
 
-\knowledge{notion}
+\knowledge{notion, index={path-width!one-way contracted}}
  | one-way contracted path-width
 
-\knowledge{notion}
+\knowledge{notion, index={tree-width!contracted}}
  | contracted tree-width
 
-\knowledge{notion}
+\knowledge{notion, index={contraction}}
  | contraction
  | contractions
  | contracted
 
- \knowledge{notion}
+ \knowledge{notion, index={internal path!one-way}}
  | one-way internal path
  | one-way internal paths
 
 \knowledge{notion}
  | one-way contraction@path
 
-\knowledge{notion}
+\knowledge{notion, index={one-way contraction}}
  | one-way contraction
  | one-way contractions
 
-\knowledge{notion}
+\knowledge{notion, index={tree-width!one-way contracted}}
  | one-way contracted tree-width
  | one-wayness

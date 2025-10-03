@@ -1,20 +1,20 @@
 
-\knowledge{notion}
+\knowledge{notion, index={conjunctive regular path query!forest shaped}}
  | forest-shaped
  | forest-shaped CRPQ
  | forest-shaped CRPQs
 
-\knowledge{notion}
+\knowledge{notion, index={conjunctive regular path query!semantically forest-shaped}}
  | semantically forest-shaped
 
-\knowledge{notion}
+\knowledge{notion, index={conjunctive regular path query!DAG-shaped}}
  | DAG-shaped
  | DAG-shaped CRPQ
 
-\knowledge{notion}
+\knowledge{notion, index={unfolding}}
  | unfolding
 
-\knowledge{notion}
+\knowledge{notion, index={conjunctive regular path query!semantically DAG-shaped}}
  | semantically DAG-shaped
 
 \knowledge{notion}

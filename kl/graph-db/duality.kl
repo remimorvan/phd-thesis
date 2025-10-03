@@ -1,25 +1,25 @@
-\knowledge{notion}
+\knowledge{notion, index={canonical database!of a CQ}}
  | canonical database@cq
  | canonical database@CQ
  | canonical databases@CQ
  | canonical database@cqs
 
-\knowledge{notion}
+\knowledge{notion, index={canonical CQ}}
  | canonical CQ
  | canonical conjunctive query
  | canonical conjunctive queries
 
-\knowledge{notion}
+\knowledge{notion, index={core!of a CQ}}
  | core@CQ
  | cores@CQ
  | cores@cq
 
-\knowledge{notion}
+\knowledge{notion, index={canonical database!of a CRPQ}}
  | canonical databases@CRPQ
  | canonical database@CRPQ
  | canonical database
  | canonical databases
 
-\knowledge{notion}
+\knowledge{notion, index={duality!for CQs}}
  | Duality@CQ
  | duality@CQ
