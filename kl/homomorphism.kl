@@ -19,9 +19,6 @@
 \knowledge{notion, index={congruence!of a relational structure}}
  | congruence@struct
 
-\knowledge{notion, index={congruence!induced by a homomorphism}}
- | congruence induced
-
 \knowledge{notion, index={quotient structure}}
  | quotient@struct
  | quotient structure

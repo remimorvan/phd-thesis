@@ -197,9 +197,9 @@ which is "non-degenerate@@db".
 	and we reduce it to the instance $\langle \delta_1 \disconj \gamma_2, \nbvar{\delta_1} \rangle$,
 	where $\delta_1$ is defined as:
 	\[
-		\delta_1() \defeq \gamma_1 \land \bigwedge_{x \in \vertex{\gamma_1}} x \atom{\marking_x} x
+		\delta_1() \defeq \gamma_1 \land \bigwedge_{x \in \gamma_1} x \atom{\marking_x} x
 	\]
-	where $\marking_x$ is a fresh letter for each $x \in \vertex{\gamma_1}$.
+	where $\marking_x$ is a fresh letter for each $x \in \gamma_1$.
 	The reduction works clearly in logarithmic-space,
 	and clearly $\delta_1 \disconj \gamma_2 \in \classCRPQ$ since
 	$\classCRPQ$ is "closed under disjoint conjunction" and $\axiomVarMarkingLoop$.
@@ -225,41 +225,41 @@ which is "non-degenerate@@db".
 	Let $\zeta$ be a "CRPQ" with at most $\nbvar{\delta_1}$ variables
 	that is equivalent to $\delta_1 \disconj \gamma_2$.
 	
-	We claim first that for each $x \in \vertex{\zeta}$ there is a
+	We claim first that for each $x \in \zeta$ there is a
 	unique variable in $\zeta$ with a $\marking_x$-self-loop.
 	Indeed, consider any "canonical database" $Z$ of $\zeta$:
 	since $\zeta \contained \delta_1 \disconj \gamma_2$, there exists
 	a "canonical database" $D_1$ of $\delta_1$ and $G_2$ of $\gamma_2$ "st"
 	$D_1 \oplus G_2 \homto Z$ where $\oplus$ denotes the disjoint union.
-	Since $D_1$ contains a $\marking_x$-self loop for each $x\in \vertex{\gamma_1}$,
+	Since $D_1$ contains a $\marking_x$-self loop for each $x\in \gamma_1$,
 	so does $Z$. Since this property holds for every $Z$, it follows that
 	$\zeta$ must have a self-loop atom labelled by the singleton language $\{\marking_x\}$
-	for each $x\in \vertex{\gamma_1}$.
+	for each $x\in \gamma_1$.
 
 	Now observe that no variable of $\zeta$ can be labelled by two $\marking_x$-self-loops
-	with $x\in\vertex{\gamma_1}$. Indeed, $\gamma_1$ is "non-degenerate@@CRPQ", and so $\delta_1$
+	with $x\in \gamma_1$. Indeed, $\gamma_1$ is "non-degenerate@@CRPQ", and so $\delta_1$
 	is also "non-degenerate@@CRPQ", and so there
 	exists a "canonical database" $D_1$ of $\delta_1$ which is "non-degenerate@@db".
 	Then, pick any canonical database $G_2$ of $\gamma_2$.
 	$D_1 \oplus G_2$ is a "canonical database" of $\delta_1 \disconj \gamma_2$, which is 
 	equivalent to $\zeta$, so there is an "evaluation map"
 	from $\zeta$ to $D_1 \oplus G_2$. If a variable of $\zeta$ had both a
-	$\marking_x$- and a $\marking_y$-self-loop for $x \neq y \in \vertex{\gamma_1}$,
+	$\marking_x$- and a $\marking_y$-self-loop for $x \neq y \in \gamma_1$,
 	then so would either $D_1$ or $G_2$. $G_2$ contains no such letters, and so it would have
 	to be $D_1$. This contradicts the definition of $D_1$.
 	Hence, no variable of $\zeta$ can be labelled by two $\marking_x$-self-loops.
 	Together with the previous paragraph and the fact that 
 	$\zeta$ has at most $\nbvar{\delta_1} = \nbvar{\gamma_1}$ variables, it follows that
 	we can assume "wlog"---up to renaming the variables of $\zeta$---that
-	$\vertex{\zeta} = \vertex{\gamma_1}$ and for each $x \in \vertex{\gamma_1}$,
+	$\zeta = \gamma_1$ and for each $x \in \gamma_1$,
 	$x \atom{\marking_x} x$ is an "atom" of $\zeta$. Moreover, this is the only self-loop in
 	$\zeta$ labelled by $\{\marking_x\}$, and for any self-loop atom $x \atom{L} x$
-	we cannot have $\marking_y \in L$ for any $y \neq x \in \vertex{\gamma_1}$. 
+	we cannot have $\marking_y \in L$ for any $y \neq x \in \gamma_1$. 
 	
 	We are now ready to prove that $\gamma_1 \contained \gamma_2$.
 	Let $G_1$ be a "canonical database" of $\gamma_1$, and let $D_1$ be the associated
 	"canonical database" of $\delta_1$---it is obtained by adding an $\marking_x$-self-loop
-	on every $x \in \vertex{\gamma_1}$.
+	on every $x \in \gamma_1$.
 	Pick any canonical database $G_2$ of $\gamma_2$. Since $\delta_1 \disconj \gamma_2 \contained \zeta$, there exists a "canonical database" $Z$ of $\zeta$
 	"st" $Z \homto D_1 \oplus G_2$.
 	But then, since $\zeta \contained \delta_1 \disconj \gamma_2$, there exists
@@ -277,8 +277,8 @@ which is "non-degenerate@@db".
 		D_1 \oplus G_2.
 	\]
 	Now note that, because of the previous paragraph,
-	the "homomorphism" $Z \homto D_1 \oplus G_2$ must map $x \in \vertex{Z}$  
-	to $x \in \vertex{D_1}$---because of the $\marking_x$-self-loop.
+	the "homomorphism" $Z \homto D_1 \oplus G_2$ must map $x \in Z$  
+	to $x \in D_1$---because of the $\marking_x$-self-loop.
 	Since $D_1 \oplus G_2$ is a disjoint union, it follows that image of this
 	"homomorphism" is actually included in $D_1$, and so obtain a "homomorphism"
 	\[
@@ -286,7 +286,7 @@ which is "non-degenerate@@db".
 	\]
 	Now of course $\marking_x$-self-loop will occur in the image of any "homomorphism"
 	$Z \homto D_1$. However, in the composition $G'_2 \homto Z \homto D_1$,
-	since $G'_2$ does not use any letter of the form $\marking_x$, $x\in \vertex{\gamma_1}$,
+	since $G'_2$ does not use any letter of the form $\marking_x$, $x\in \gamma_1$,
 	we conclude we actually get a "homomorphism"
 	\[
 		G'_2 \homto G_1,

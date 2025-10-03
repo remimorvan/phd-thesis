@@ -1,8 +1,6 @@
 \section{Graph Databases}
 \label{sec:prelim-db-graph}
 
-\todo{$\intro*\underlying{\gamma}$ and ""underlying graph""}
-
 For a detailed introduction to "CRPQs", the reader can also
 see \cite{Figueira2020Containment21Foundations}.
 For a more general introduction to different query languages for "graph databases"---including "CRPQs"---see \cite{Barcelo2013Querying}, and for a more practical approach,
@@ -103,9 +101,9 @@ by inferring from the examples of \Cref{fig:example-graph-database,fig:example-w
 we model "graph databases" as edge-labelled directed graphs, or equivalently
 as "relational structures" over a finite "signature" consisting only of
 binary "predicates".
-\AP Formally, given an alphabet $\?A$, a ""graph database"" over $\?A$
+\AP Formally, given an alphabet $\A$, a ""graph database"" over $\A$
 consists of a pair \AP$\?G = \tup{G, \edges{G}}$,
-where $\intro*\edges{G} \subseteq \vertex G \times \A \times \vertex G$
+where $\intro*\edges{G} \subseteq G \times \A \times G$
 is a set of labelled edges---sometimes also called atoms.
 
 This definition was motivated by the need to have database models
@@ -127,9 +125,9 @@ to $y$ that alternates between $\atom{a}$ and $\atom{b}$ edges.
     little difference as both representations are equivalent up to a polynomial
     blow-up.}
     We denote by \AP$x \intro*\atom{L} y$ the triple $\tup{x,L,y}$,
-    called ""atom"". The set $\intro*\atoms{\gamma}$ of "atoms" is denoted conjunctively.
-    We denote by $\vars{\gamma}$ the set of variables occurring in $\gamma$. As for
-    "CQs", variables of $\bar x$ are called \reintro{output variables}.
+    called \reintro{atom}. The set $\intro*\atoms{\gamma}$ of "atoms" is denoted conjunctively.
+    We denote by $\intro*\vars{\gamma}$ the set of variables occurring in $\gamma$. As for
+    "CQs", variables of $\bar x$ are called \AP""output variables"".
 \end{definition}
 
 An example of "conjunctive regular path query" is 
@@ -618,7 +616,7 @@ Similarly, "containment" of "UC2RPQs" can also be characterized in terms of "exp
 \begin{proposition}[Folklore]
     \!\footnote{The proof is elementary,
     see "eg" \cite[Proposition 3.2]{FlorescuLevySuciu1998Containment} 
-    or \cite[Theorem 2]{CalvaneseDeGiacomoLenzeriniVardi2000Containment}.}
+    or \cite[Theorem 2]{CalvaneseDeGiacomoLenzeriniVardi2000Containment}.}%
     \footnote{The proposition works for "Boolean" as well as "non-Boolean" queries:
     we dropped the tuples of variables for the sake of readability.}
     \AP\label{prop:cont-char-exp-st}
@@ -739,7 +737,7 @@ for "UC2RPQs". However, this does not give an optimal algorithm.
     and in \cite[§ after Theorem 4.8]{FlorescuLevySuciu1998Containment} for "CRPQs" without 
     inverses but with an infinite alphabet.}
     \label{prop:containment-expspace-complete}
-    The "containment problem" for "UC2RPQs" is "ExpSpace"-complete. The lower bound already
+    The \AP""containment problem"" for "UC2RPQs" is "ExpSpace"-complete. The lower bound already
     holds for "Boolean CRPQs".
 \end{proposition}
 

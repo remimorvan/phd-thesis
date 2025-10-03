@@ -52,7 +52,7 @@ a "database@@graph" satisfies a "$k$-summary query" if and only if it
 satisfies one of its "refinements@@summary".
 
 A \AP ""tree decomposition@@summary"" of a "$k$-summary query" $\gamma$ consists of
-a pair $\tup{\?T, \bagmap}$ with $\bagmap: \vertex{\?T} \to \pset{\vars{\gamma}}$
+a pair $\tup{\?T, \bagmap}$ with $\bagmap: T \to \pset{\vars{\gamma}}$
 such that:
 \begin{itemize}
 	\item for every classical "atom" $x \atom{L} y$ in $\gamma$,
@@ -197,7 +197,7 @@ With the previous results in place, we now show that the semantic tree-width $k$
 	% (and thus $\Qalt \semequiv \Qapp$).
     By \Cref{prop:cont-char-exp-st}, we have $\gamma \notcontained \Qalt$ if, and only if, there is some "expansion" $\anexpansion$ of $\gamma$ such that $\anexpansion \notcontained \Qalt$. In turn, this happens if, and only if, there is no $\delta \in \Qalt$ such that $\delta \homto \anexpansion$.
     
-    Take any such counterexample $\anexpansion$ of minimal size (in number of atoms). We show that for any "internal path" of $\anexpansion$ of the shape
+    Take any such counterexample $\anexpansion$ of minimal size (in number of atoms). We show that for any "(two-way) internal path" of $\anexpansion$ of the shape
     \[\pi = x_0 \atom{a} x_1 \atom{a} x_1 \dotsb x_{m-1}\atom{a} x_m,\]
     we have $m \leq n+1$. Hence, since $\anexpansion$ is an "expansion" of a {\CRPQSRE}, this means that the size of each \AP""atom expansion""---namely an "expansion" obtained from a query by only expanding one "atom"---of $\anexpansion$ is linearly bounded in the size of $\gamma$, and thus that $\anexpansion$ is quadratically bounded.
 

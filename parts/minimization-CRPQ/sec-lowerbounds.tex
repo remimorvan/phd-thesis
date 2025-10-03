@@ -127,7 +127,7 @@ if no "atom refinement" in $\anexpansion$ was obtained using the empty word.
 	$\gamma$ is "fully contracted", then $\nbseg{\anexpansion} = \nbatoms{\gamma}$.%
 \end{fact}
 
-Given a "class of CRPQs" $\classCRPQ$, the \AP""$\classCRPQ$-canonization problem""
+Given a \AP""class of CRPQs"" $\intro*\classCRPQ$, the \AP""$\classCRPQ$-canonization problem""
 is the functional problem taking an alphabet $\A$
 and two "Boolean CRPQs" $\langle \gamma_1,\gamma_2\rangle$ in $\classCRPQ_{\A}$,
 and outputting an alphabet \AP$\intro*\alphabetmarking$, two other "Boolean CRPQs" $\langle \delta_1, \delta_2 \rangle$, in $\classCRPQ_{\A\sqcup \alphabetmarking}$,
@@ -398,7 +398,7 @@ a polynomial-time algorithm for the "strong canonization problem"---see
 	\]
 	Now some $f(x_i)$'s might be variables of $\gamma_1$ and hence
 	this might not a path in $G_1$.
-	We let $i_1 < \dotsc < i_k$ denote the indices $i$ "st" $x_i \in \vertex{\gamma_1}$, so
+	We let $i_1 < \dotsc < i_k$ denote the indices $i$ "st" $x_i \in \gamma_1$, so
 	that we can split the path in $G_1$ into multiples "atom refinements" 
 	of "atoms" of $\gamma_1$:
 	\begin{align*}
@@ -542,10 +542,10 @@ where $L_1 L_2\cdots L_n \subseteq L$.
 		\Bigr)
 		\land 
 		\Bigl(
-			\bigwedge_{x \in \vertex{\gamma'_1}} x \atom{\marking_x} x
+			\bigwedge_{x \in \gamma'_1} x \atom{\marking_x} x
 		\Bigr),
 	\]
-	and we let $\alphabetmarking \defeq \{\marking_x \mid x \in \vertex{\gamma'_1}\}$.
+	and we let $\alphabetmarking \defeq \{\marking_x \mid x \in \gamma'_1\}$.
 
 	Next, we show that \axiomCanonMonotonicity{} holds:
 	if $\gamma_1 \contained \gamma_2$ then $\delta_1 \contained \gamma'_1 \semequiv \gamma_1 \contained \gamma_2 = \delta_2$,
@@ -559,8 +559,8 @@ where $L_1 L_2\cdots L_n \subseteq L$.
 	every "canonical database" of $\delta_1$ is "non-degenerate@@db".
 	Then, let $f\colon D'_1 \to D_1$ be a "homomorphism" between "canonical databases"
 	of $\delta_1$. Because of the letters of $\alphabetmarking$,
-	$f$ must send $x \in \vertex{\delta_1} \subseteq \vertex{D_1}$
-	onto $x \in \vertex{D'_1}$. We then claim that $f$ is "strong onto".
+	$f$ must send $x \in \delta_1 \subseteq D_1$
+	onto $x \in D'_1$. We then claim that $f$ is "strong onto".
 	Let $\alpha \defeq x \atom{L} y$ be an "atom" of $\delta_1$.
 	We consider its "atom refinement" in $D_1$, and we want to show that it is
 	\emph{included in} the image of the "atom refinement" of $\alpha$ in $D'_1$:
@@ -596,7 +596,7 @@ where $L_1 L_2\cdots L_n \subseteq L$.
 	\begin{enumerate}
 		\itemAP\label{expspace-h:pw1}"ExpSpace"-hard, even
 		if restricted to queries of path-width at most 1,
-		\itemAP\label{pspace:forest} "PSpace"-hard when restricted to "forest-shaped CRPQs",\footnote{By \AP""forest-shaped CRPQs"" we mean queries whose "underlying graph" has no undirected cycle.}
+		\itemAP\label{pspace:forest} "PSpace"-hard when restricted to "forest-shaped CRPQs",
 		or even a single "atom",
 		\itemAP\label{pip2:crpqsre} "PiP2"-hard when restricted to "CRPQs" over "positive simple regular expressions".
 	\end{enumerate}

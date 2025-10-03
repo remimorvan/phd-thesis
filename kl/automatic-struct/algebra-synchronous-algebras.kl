@@ -93,7 +93,7 @@
  | induces@sync
  | synchronous algebra induced by the monoid
 
-\knowledge{notion, index={consolidation}}
+\knowledge{notion}
  | consolidation
 
 % -----

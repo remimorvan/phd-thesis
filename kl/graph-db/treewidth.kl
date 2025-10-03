@@ -104,6 +104,7 @@
 \knowledge{notion, index={internal path}}
  | internal path
  | internal paths
+ | (two-way) internal path
 
 \knowledge{notion, index={contraction (of a path)}}
  | contraction@path

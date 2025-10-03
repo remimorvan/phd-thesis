@@ -3,6 +3,7 @@
  | internal variables
  | internal
  | Internal variables
+ | internal@variable
 
 \knowledge{notion, index={external variable}}
  | external
@@ -21,13 +22,6 @@
 | Contractions
 | contract
 | contractions
-
-\knowledge{notion, index={contracting variables}}
-| contract@var
-| contraction@var
-| contracting@var
- | contraction of internal variable
- | contracting internal variables
 
 \knowledge{notion, index={strong minimality}}
  | strong minimality

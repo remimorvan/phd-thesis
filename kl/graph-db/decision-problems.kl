@@ -3,6 +3,7 @@
  | Conjunctive Query Evaluation
  | CQ evaluation problem
  | CQ evaluation
+ | evaluation problem@cq
 
 \knowledge{notion, wrap=\DPfont, index={conjunctive query!minimization problem}}
  | CQ minimization problem over $\+C$
@@ -20,6 +21,8 @@
 \knowledge{notion, wrap=\DPfont, index={conjunctive regular path query!evaluation problem}}
  | Conjunctive Regular Path Queries Evaluation
  | conjunctive regular path queries evaluation problem
+ | Evaluation problem@crpq
+ | evaluation problem
 
 \knowledge{notion, wrap=\DPfont, index={conjunctive regular path query!containment problem}}
  | containment problem

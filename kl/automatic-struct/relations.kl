@@ -7,6 +7,10 @@
  | symmetric@rel
  | symmetric relation
 
+\knowledge{notion}
+ | transitive@rel
+ | transitive relation
+
 \knowledge{notion, index={relation!functional}}
  | functional relations
  | functional relation
@@ -55,7 +59,7 @@
  | synchronous automata
  | synchronous@auto
 
-\knowledge{notion, index={convolution!of words}}
+\knowledge{notion}
  | convolution@word
 
 \knowledge{notion, index={well-formed words}}
@@ -125,7 +129,7 @@
  | two-way\\rational@rel
  | two-way\\rational relations
 
-\knowledge{notion, index={automaton!deterministic two-way multitape}}
+\knowledge{notion}
  | deterministic two-way multitape automata
 
 \knowledge{notion, index={relation!deterministic two-way rational}}

@@ -19,22 +19,21 @@
  | evaluation map@cq
  | evaluation map@CQ
 
-\knowledge{notion, index={evaluation!problem}}
- | evaluation problem
- | Evaluation problem
-
 \knowledge{notion, index={atom}}
  | atom
  | atoms
  | atoms@cq
 
-\knowledge{notion, index={output variable}}
+\knowledge{notion, index={output variable!of a CRPQ}}
  | output variables
  | free variables
  | free
  | Output variables
  | output variable
+ | output@vars
  | output@var
+
+\knowledge{notion, index={output variable!of a CQ}}
  | free variables@cq
  | output variables@cq
 
@@ -68,8 +67,6 @@
  | UCQ
  | union of conjunctive queries
  | unions of conjunctive queries
- | Unions of conjunctive regular path queries
-%  | unions of conjunctive regular path queries
 
 \knowledge{notion, index={disjunct}}
  | disjunct
@@ -98,6 +95,8 @@
  | UCRPQs
  | unions of CRPQs
  | union of CRPQs
+ | Unions of conjunctive regular path queries
+ | unions of conjunctive regular path queries
 
 \knowledge{notion, index={conjunctive regular path query!union of, over simple regular expressions}}
  | UCRPQ(SRE)
@@ -120,6 +119,7 @@
 
 \knowledge{notion, index={conjunctive regular path query!union of, with two-way navigation}}
  | UC2RPQ
+ | (U)C(2)RPQ
  | (U)C2RPQ
  | UC2RPQs
  | unions of C2RPQs
@@ -184,11 +184,10 @@
  | contain
  | Containment
  
-\knowledge{notion, index={semantic equivalence}}
+\knowledge{notion, index={semantical equivalence}}
  | equivalent
  | Equivalent
  | equivalence
- | semantic equivalence
  | semantically equivalent
  | equivalences
  | semantical equivalence
@@ -215,6 +214,7 @@
 
 \knowledge{notion, index={atom!$m$-refinement}}
  | atom $m$-refinement
+ | atom $m'$-refinement
  | atom $m$-refinements
  | atom $m'$-refinements
  | $m$-refinements@atom
@@ -271,10 +271,6 @@
 
 \knowledge{notion, index={conjuctive regular path query!variable-minimal}}
  | variable minimal
-
-\knowledge{notion, index={maximal under-approximation}}
- | maximal under-approximation
- | maximal under-approximations
 
 \knowledge{notion, index={contraction length}}
  | contraction length
@@ -339,10 +335,7 @@
 % Classes
 % ---
 
-\knowledge{notion, index={class!of CQs}}
- | class of CQs
-
-\knowledge{notion, index={class!of CQs (monotone)}}
+\knowledge{notion, index={monotone class of CQs}}
  | monotone@classCQ
  | monotonicity@classCQ
  | Monotone classes of CQs

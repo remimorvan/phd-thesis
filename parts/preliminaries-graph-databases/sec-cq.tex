@@ -195,7 +195,7 @@ of computational efficiency.
 
 Even worse, when turning to the \emph{static analysis} of these queries, 
 the problems become undecidable. Given two "(semantical) queries" $\phi$ and $\psi$,
-we say that they are "semantically equivalent"---implicitly
+we say that they are \AP""semantically equivalent""---implicitly
 over "finite@@struct" "relational databases"---when for every "finite@@struct" "relational databases" $\?D$, we have $\?D \in \phi$ "iff" $\?D \in \phi'$.
 This fact is denoted by \AP$\phi \intro*\semequiv \phi'$.
 
@@ -286,8 +286,8 @@ Hence, a $k$-ary \AP""conjunctive query"" over a "purely relational signature" $
 or \reintro{CQ} for short, amounts to a finite set
 of atomic formulas of the form $\+R_{(k)}(x_1,\dotsc,x_k)$,
 called ""atoms@@cq"", with $\+R_{(k)} \in \sigma$,
-together with tuple of $k$ variables $\bar x$, called ""free variables@@cq""
-or ""output variables@@cq"".%
+together with tuple of $k$ variables $\bar x$, called \AP""free variables@@cq""
+or \reintro(cq){output variables}.%
 \footnote{A $k$-ary "CQ" over a "purely relational signature"
 is equivalent to a "Boolean" "CQ" over a "relational signature"
 with $k$ constants.}
@@ -926,7 +926,7 @@ and letting $\delta() \defeq x \atom{b} y$ be the one asking for a $b$-edge,
 then $\gamma() \weakunion \delta()$ is ("semantically equivalent" to) the empty "CQ",
 "ie" the "CQ" that always true: knowing that a "database@@graph" contains either an $a$-edge
 or a $b$-edge is as good as knowing nothing in terms of "CQ" expressivity.
-On the other hand, letting $\gamma(x) \defeq x \atom{a} y \atom{b} z$ be the "query@@CQ"
+On the other hand, letting $\gamma(x) \defeq x \atom{a} y \atom{b} z$ be the "query@CQ"
 outputting the source of all 
 $ab$-paths and $\delta(x) \defeq x \atom{a} y \atom{c} z$ be the "CQ" outputting
 the source of all $ac$-paths,
@@ -1146,9 +1146,9 @@ in the sense that if a solution exists to each problem, then a common solution e
 }
 
 \begin{corollary}
-	\label{coro:decision-minimization-cq}
+	\AP\label{coro:decision-minimization-cq}
 	For each "monotone class of CQs" $\+C$, assumed to be described as an oracle,
-	the ""CQ minimization problem over $\+C$"" is "NP".
+	the "CQ minimization problem over $\+C$" is "NP".
 	Furthermore, it is "NP"-hard for some classes $\+C$.
 \end{corollary}
 
@@ -1382,15 +1382,15 @@ For a gentle but thorough introduction to "tree-width", we also refer the reader
 \cite[\S~3.6]{NesetrilPOM2012Prolegomena}.
 
 Formally, a \AP""tree decomposition"" of an "undirected graph" $\?G$ is a
-pair $\tup{\?T, \intro*\bagmap}$ where $\?T$ is a tree and $\bagmap: \vertex{\?T} \to \pset{\vertex{\?G}}$ is a function that associates to each node of $\?T$, called \AP""bag"",
+pair $\tup{\?T, \intro*\bagmap}$ where $\?T$ is a tree and $\bagmap: T \to \pset{G}$ is a function that associates to each node of $\?T$, called \AP""bag"",
 a set of vertices of $\?G$. When $x \in \bagmap(b)$ we shall say that the "bag"
-$b \in \vertex{\?T}$ \AP""contains@@tw"" vertex $v$. Further, it must satisfy the following three properties:
+$b \in T$ \AP""contains@@tw"" vertex $v$. Further, it must satisfy the following three properties:
 \begin{itemize}
     \item each vertex $v$ of $\?G$ is "contained@@tw" in at least one "bag" of $\?T$,
     \item for each edge $\{u,v\}$ of $\?G$, there is at least one "bag" of $\?T$
         that "contains@@tw" both $u$ and $v$, and 
     \item for every vertex $v$ of $\?G$, the set of bags of $\?T$ "containing@@tw" $v$ is a 
-        connected subset of $\vertex{\?T}$.
+        connected subset of $T$.
 \end{itemize}
 
 \begin{figure}
@@ -1437,16 +1437,16 @@ there exists a "bag" that contains all $x_i$'s.
 The \reintro{tree-width} of a "CQ" is naturally defined as
 the "tree-width" of its "canonical database@@cq".
 The "undirected graphs" of "tree-width" at most $1$ are exactly
-the forests, "ie" the "disjoint unions" of trees.
+the \AP""forests"", "ie" the "disjoint unions" of trees.
 On the other hand, the "graph@@dir" of \Cref{fig:ex-tree-dec} has "tree-width" $2$.
 The "$k$-clique" has "tree-width" exactly $k-1$ since any "tree decomposition"
 of $\clique{k}$ must actually contain a "bag" that contains all vertices of $\clique{k}$.
 
 \begin{proposition}[{\cite[Theorem~3]{ChekuriRajaraman2000Containment}}]
 	\!\footnote{Theorem~3 of \cite{ChekuriRajaraman2000Containment} talks about query "containment" of "CQs", which is in fact equivalent
-	to the "evaluation problem" for "CQs". Moreover, the theorem deals with ``query width'',
+	to the "evaluation problem@@cq" for "CQs". Moreover, the theorem deals with ``query width'',
 	but this parameter is equivalent up to a multiplicative constant to the "tree-width"
-	\cite[Lemma~2]{ChekuriRajaraman2000Containment} assuming that the "signature" is fixed.} 
+	\cite[Lemma~2]{ChekuriRajaraman2000Containment} assuming that the "signature" is fixed.}%
 	\footnote{An equivalent result was in fact proven a decade ealier
 	by Freuder \cite[Theorem~3]{Freuder1990Complexity} using the
 	vocabulary of "constraint satisfaction problems".}
@@ -1594,7 +1594,7 @@ this is a \emph{promise} problem: we work under the assumption that the input
 is "equivalent@@sem" to one of bounded "tree-width", but we do not need to verify this claim.
 This is far from trivial, since computing the "core"
 of a "structure" is hard in general \cite[Theorem~7]{HellNesetril1992Core}, and so
-one cannot naively first compute the core of the "query", and then evaluate it, to
+one cannot naively first compute the core of the "query@CQ", and then evaluate it, to
 achieve polynomial time.%
 \footnote{Dalmau, Kolaitis and Vardi's result in fact imply that,
 for any $k\in\N$, we can compute in polynomial-time the "core" of a
@@ -1644,7 +1644,7 @@ that of ``submodular width'', introduced by Marx in \cite{Marx13Tractable}.
 \paragraph{Bounded Path-Width.}
 We now focus on "path-width", which is a parameter upper bounded
 by the "tree-width".
-So, if a "class of CQs" has bounded "path-width", then
+So, if a class of CQs has bounded "path-width", then
 it has bounded "tree-width" and so by \Cref{prop:eval-CQ-bounded-tw}
 it can be evaluated in polynomial time.
 We shall see that "CQs" of small "path-width"
@@ -1656,7 +1656,7 @@ all of its "path decompositions".
 
 \begin{lemma}[{\cite[Lemma~8.10]{FigueiraMorvan2025SemanticTreeWidthLMCS}}]
 	\!\footnote[][5em]{Recall that this problem deals with ``combined complexity'':
-	both the "query" and the data are part of the input.}%
+	both the "query@CQ" and the data are part of the input.}%
 	\footnote{\cite[Lemma~8.10]{FigueiraMorvan2025SemanticTreeWidthLMCS},
 	corresponding to \Cref{lemma:evaluation-bounded-pathwidth} in this thesis,
 	actually proved this result over the larger class of "UC2RPQs" of bounded 
@@ -1830,7 +1830,7 @@ are as expressive as "existential-positive formulas", "ie" "first-order formulas
 built out of $\exists$, $\land$ and $\lor$.
 
 \paragraph*{Hom-Minimality.}
-We say that a "graph database" $\tup{\?G,\bar u}$ satisfying a ""semantical query"" $\gamma(\bar x)$
+We say that a "graph database" $\tup{\?G,\bar u}$ satisfying a "semantical query" $\gamma(\bar x)$
 is \AP""hom-minimal"" if for every other "graph database" $\tup{\?G',\bar v}$,
 if $\tup{\?G',\bar v}$ also satisfies $\gamma(\bar x)$ and
 if $\tup{\?G', \bar v} \homto \tup{\?G, \bar u}$ then $\tup{\?G', \bar v} \semequiv \tup{\?G, \bar u}$.%

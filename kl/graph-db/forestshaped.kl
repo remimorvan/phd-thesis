@@ -11,7 +11,7 @@
  | DAG-shaped
  | DAG-shaped CRPQ
 
-\knowledge{notion, index={unfolding}}
+\knowledge{notion}
  | unfolding
 
 \knowledge{notion, index={conjunctive regular path query!semantically DAG-shaped}}

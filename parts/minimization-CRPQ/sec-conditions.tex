@@ -10,7 +10,7 @@ A \AP""one-way internal path"",%
 \footnote{This definition comes from \cite[\S~7]{FigueiraMorvan2025SemanticTreeWidthLMCS}, 
 under the name `one-way internal path'; there is also an equivalent
 notion for C2RPQs.}
-or "internal path" for short, from $x_0$ to $x_n$ of a "CRPQ" $\gamma$ is a \emph{simple}\footnote{Meaning that all nodes are pairwise disjoint,
+or ""internal path"" for short, from $x_0$ to $x_n$ of a "CRPQ" $\gamma$ is a \emph{simple}\footnote{Meaning that all nodes are pairwise disjoint,
 except that potentially $x_0 = x_n$.} path
 \begin{align}
 	x_0 \atom{L_1} x_1 \atom{L_2} \cdots \atom{L_n} x_n 
@@ -55,15 +55,17 @@ and we extend this notation to "UCRPQs" by letting $\nbseg{\Gamma} \defeq
 \subsection{Necessary Conditions: Contractions and Redundancy}
 
 \paragraph{Contractions.}
-One simple (and tractable) way to make a query smaller is to `contract' any two consecutive atoms sharing an "internal variable", and replacing them with
-a single atom having the concatenation of the languages.
+One simple (and tractable) way to make a query smaller is to `contract'
+any two consecutive atoms sharing an "internal variable", and replacing them with
+a single atom having the concatenation of the languages: we call this
+new query \AP""contraction"".
 A "CRPQ" $\gamma$ is \AP""fully contracted"" if it cannot be "contracted".
 In other words, $\gamma$ is "fully contracted" "iff" $\nbseg{\gamma} = \nbatoms{\gamma}$.
 A "contraction" of a "UCRPQ" is a "contraction" of a "CRPQ" therein (obtaining the "UCRPQ" where one "CRPQ" $\gamma$ was replaced by a "contraction" of $\gamma$). A "UCRPQ" is then \reintro{fully contracted} if each "CRPQ" therein is "fully contracted".
 
 \begin{fact}
 	\AP\label{fact:produce-fully-contracted}
-	"Contractions" preserve "semantic equivalence". Further, from a "UCRPQ" $\Gamma$ one can produce, in polynomial time, an "equivalent" one that is "fully contracted" with $\nbseg{\Gamma}$ "atoms".
+	"Contractions" preserve "semantical equivalence". Further, from a "UCRPQ" $\Gamma$ one can produce, in polynomial time, an "equivalent" one that is "fully contracted" with $\nbseg{\Gamma}$ "atoms".
 \end{fact}
 
 In particular, if a "UCRPQ" $\Gamma$ is "minimal" then $\Gamma$ is "fully contracted" and $\nbseg{\Gamma} = \nbatoms{\Gamma}$;%
@@ -189,12 +191,15 @@ While in the case of "conjunctive queries" "non-redundancy" is the same as "mini
 \subsection{A Sufficient Condition: Strong Minimality}
 
 We have seen some sound ways to reduce the size of queries. But how can we ensure that a query is actually minimal? Here we give a theoretical tool which can ensure this by means of finding some "expansion" which is a witness for the query to have ``many atoms''. We call this "strong minimality".
-
 A "UCRPQ" $\Gamma$ is \AP""strongly minimal"" if 
 it has a "hom-minimal"%
 \footnote{Naturally, we say that an "expansion" is "hom-minimal" whenever
 its "canonical database" is "hom-minimal".}
 "expansion" $\anexpansion \in \Exp(\Gamma)$ "st" $\nbseg{\core{\anexpansion}} = \nbatoms{\Gamma}$. We will next show that this is a sufficient condition for minimality.
+
+We denote by \AP$\intro*\underlying{\gamma}$ the ""underlying graph"" of a CRPQ $\gamma$,
+namely the directed graph whose vertices are variables of $\gamma$,
+and with an edge from $x$ to $y\in \gamma$ whenever there is some atom from $x$ to $y$ in $\gamma$.
 
 Informally, the segment graph $\reintro*\seggraph(\gamma)$ of a "CRPQ" $\gamma$ is the directed multigraph obtained by first taking the "underlying graph", and then replacing "segments" of $\gamma$ with edges, as illustrated in \Cref{fig:segment-graph}. The main motivation behind the notion of "segments" is 
 that it is essentially dual to the notion of "atom refinements".
@@ -218,7 +223,7 @@ that it is essentially dual to the notion of "atom refinements".
 \begin{fact}
 	\AP\label{fact:segment-graph-is-contraction}
 	The "segment graph" of $\gamma$ can always be obtained from its "underlying
-	graph" by "contracting internal variables". 
+	graph" by contracting internal variables. 
 \end{fact}
 
 A \AP""minor"" of a graph is any graph that can be obtained by removing

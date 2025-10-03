@@ -6,7 +6,7 @@ Several open problems are left by our work, more prominently, the complexity gap
 \subsection{Variable minimization}
 \label{sec:varmin}
 
-Another classical algorithm for query answering for "(U)CRPQs" consists in, given a "query@CRPQ" $\gamma$ and a "graph database" $G$, to first guess a variable assignment $f: \vars{\gamma} \to \vertex{G}$ and then check, for each "atom" $x \atom{L} y$ of $\gamma$, that there is a path in $G$ from $f(x)$ to $f(y)$ with label in $L$. 
+Another classical algorithm for query answering for "(U)CRPQs" consists in, given a "query@CRPQ" $\gamma$ and a "graph database" $G$, to first guess a variable assignment $f: \vars{\gamma} \to G$ and then check, for each "atom" $x \atom{L} y$ of $\gamma$, that there is a path in $G$ from $f(x)$ to $f(y)$ with label in $L$. 
 
 This implementation approach privileges minimizing the number of \emph{variables} as opposed to the number of \emph{atoms} of a "(U)CRPQ", and gives rise to the corresponding \reintro{variable-minimization problem(s)}. From a practical perspective, systems commonly evaluate CRPQs via join algorithms. Recent \emph{worst-case optimal} joins algorithms work by ordering the variables and assigning potential values to these, and hence the number of variables may also be a relevant parameter in these cases~\cite{CucumidesReutterVrgoc2024SizeBounds,VrgocEtal2024MillenniumDB}. 
  % 
@@ -103,5 +103,5 @@ and conjecture that this encoding actually preserves minimality, but we have fai
 
 \begin{restatable}{conjecture}{conjTreePatternsAsCRPQs}
 	If a "tree pattern" is minimal among "tree patterns", 
-	then its "encoding" as a "CRPQ" should also be minimal among "CRPQs", up to "contracting internal variables".
+	then its "encoding" as a "CRPQ" should also be minimal among "CRPQs", up to contracting "internal variables".
 \end{restatable}

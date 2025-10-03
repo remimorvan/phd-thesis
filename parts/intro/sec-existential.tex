@@ -208,7 +208,7 @@ starting from $\?A$, we check for every possible vertex $a \in A$
 if $\?A \smallsetminus \{a\}$ is equivalent to $\?A$ in the sense of
 \Cref{eq:intro-hom-equivalence}. If some $a$ satisfy the property, we
 let $\?A \smallsetminus \{a\}$ be our new query and start the process again.
-Otherwise, we get a minimal "query@@CQ", called "core" of $\?A$.
+Otherwise, we get a minimal "query@CQ", called "core" of $\?A$.
 This "core" is unique---which is not obvious since we defined it with
 a greedy procedure---and is, by construction, a "substructure" of $\?A$,
 see \Cref{fig:intro-core}.
@@ -280,7 +280,7 @@ such as the "conjunctive query" of \Cref{fig:intro-tree-shaped-CQ}, then the nai
 bottom-up evaluation algorithm works in time that is polynomial both
 in the size of the query and in the size of the database.
 Now, assume that $\gamma$ is a "conjunctive query" that is not
-tree-shaped, but that is equivalent to a tree-shaped "query@@CQ".
+tree-shaped, but that is equivalent to a tree-shaped "query@CQ".
 This is the same as saying that the "core" of $\gamma$ is "tree-shaped".
 Hence, to evaluate $\gamma$, one can instead:
 \begin{itemize}
@@ -303,7 +303,7 @@ tree-shaped "queries@CQ" is "FPT".
 
 In fact, for this reasoning to work, the notion of ``tree-shaped'' need not
 be as restrictive as what is shown in \Cref{fig:SQL-as-CQ}: for instance,
-edges could be reversed. More generally, if the "query@@CQ" has "tree-width"
+edges could be reversed. More generally, if the "query@CQ" has "tree-width"
 at most $k$, then we still get a polynomial-time evaluation algorithm---where the order
 of the polynomial depends on $k$. In turns, it means that for every $k\in\Np$,
 evaluating "conjunctive queries" that are semantically equivalent to
