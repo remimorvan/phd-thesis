@@ -89,22 +89,25 @@
 
 % /!\ Use this for reviewers (+ knowledge electronic/paper)
 % \linenumbers
-\renewrobustcmd{\todo}[1]{\textcolor{red}{todo: #1}}
+% \renewrobustcmd{\todo}[1]{\textcolor{red}{todo: #1}}
+\renewrobustcmd{\todo}[1]{}
 
 \begin{document}
 
 \input{kl/extra-index.tex}
 
-% \frontmatter
-\mainmatter
-\include{parts/titlepage}
+\frontmatter
+\includepdf[pages={1}]{parts/frontcover.pdf}
+% \include{parts/titlepage}
+\pagestyle{plain}
 \include{parts/copyright}
 % Counter for figures includes chapter number ("P" for preface)
 \renewcommand\thefigure{P.\arabic{figure}}
 \include{parts/preface}
 \include{parts/contents}
-\input{parts/todo.tex}
+% \input{parts/todo.tex}
 
+\mainmatter
 {
 	% Counter for figures includes chapter number ("R" for résumé)
 	\setcounter{figure}{0}
@@ -149,7 +152,7 @@
 \end{fullwidth}
 
 \printindex
-
+\cleardoublepage
 \input{parts/short-abstract}
 
 
