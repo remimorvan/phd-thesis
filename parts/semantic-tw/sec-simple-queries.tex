@@ -1,4 +1,4 @@
-\section{\AP{}Semantic Tree-Width for Simple Queries}
+\section{Semantic Tree-Width for Simple Queries}
 \label{sec:sre}
 
 \todo{small intro}
@@ -11,7 +11,7 @@ We devote this section to showing the following result.
 Observe that "simple regular expressions" are "closed under sublanguages". Hence, in the light of
 \Cref{thm:closure-under-sublanguages}, the "maximal under-approximation" of a {\UCRPQSRE} query by infinitary unions of "CQs" of "tree-width" $k$ is always equivalent to a {\UCRPQSRE} query  of "tree-width" $k$. We will see how the construction of the "maximal under-approximation" of the previous section can be exploited to improve the complexity from "2ExpSpace" down to "PiP2".
 
-\subsection{\AP{}Summary Queries}
+\subsection{Summary Queries}
 We will first show that the "maximal under-approximation" of "tree-width" $k$ of a "UC2RPQ" can be expressed as a union of polynomial sized ``summary'' queries. Each "summary query" represents a union of exponentially-bounded "C2RPQs" sharing some \emph{common structure}. 
 "Summary queries" are normal "UC2RPQ" queries extended with some special kind of atoms, called ``"path-$l$ approximations"''. 
 Intuitively, they represent a "maximal under-approximation" of "tree-width" $l$ of queries of the form $\bigwedge_i x_i \atom{L_i} y_i$ such that $x_i \neq y_j$ for all $i,j$. 
@@ -169,7 +169,7 @@ and since $\+L$ is "closed under sublanguages", then $\alpha$ has only $\+L$-lab
 \end{proof}
 
 
-\subsection{\AP{}Semantic Tree-Width Problem}
+\subsection{Semantic Tree-Width Problem}
 With the previous results in place, we now show that the semantic tree-width $k$ problem is in {"PiP2"} for \UCRPQSRE, for every $k>1$.
 
 \thmSemTwSREpitwo*

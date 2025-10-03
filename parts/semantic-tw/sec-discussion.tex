@@ -1,6 +1,6 @@
 % !TeX root = ../main-crpq-tw-lmcs.tex
 
-\section{\AP{}Discussion}
+\section{Discussion}
 \label{sec:discussion}
 
 % Observe that the proof of our main theorem, \Cref{thm:decidability-semtw}, was divided into the upper bound for $k \geq 2$ (\Cref{lem:sem-tw-in-twoexp}), the upper bound for $k=1$ (\Cref{cor:sem-tw-1-pb-exp-c}), and the lower bound for all $k$ (\Cref{lemma:lowerbound}). One could have proved the upper bound for all $k$ by using "contracted tree-width" right from the beginning. But we preferred to keep things ``as simple as possible'' for the case $k \geq 2$ using the classical notion of "tree-width".
@@ -19,7 +19,7 @@
 % On the class "conjunctive queries", the "semantic tree-width $k$ problem" becomes the "coNP"-complete problem of finding out whether the retraction of a query has "tree-width" at most $k$. Further, classes of "CQs" of bounded "semantic tree-width" precisely characterize tractable (fixed-parameter) "evaluation problem" \cite{Grohe2007ComplexityHomomorphism,DalmauKolaitisVardi2002Constraint}.\footnote{This result is on bounded-arity schemas, which was later generalized \cite{ChenGottlobLanzingerPichler2020Semantic} for characterizing "FPT" "evaluation" on arbitrary schemas ---by replacing "semantic tree-width" with semantic ``submodular width'' \cite{Marx13Tractable}.} The problem of computing "maximal under-approximations" of "CQs" of a given "tree-width" has been explored in \cite{BarceloLibkinRomero2014Efficient}. While "maximal under-approximations" of a given "tree-width" always exist for "CQs", this is not the case for the dual notion of ``minimal over-approximations''. The problem of when these exist is still unknown to be decidable, aside for some the special cases of acyclic "CQs" and Boolean "CQs" over binary schemas \cite{BarceloRomeroZeume2020Approximation}.
 
 
-\subsection{\AP{}Complexity}
+\subsection{Complexity}
 \label{sec:discussion-complexity}
 We have studied the definability and approximation of "UC2RPQ" queries by queries of bounded "tree-width" and shown that the "maximal under-approximation" in terms of an infinitary union of "conjunctive queries" of "tree-width" $k$ can be always effectively expressed as a "UC2RPQ"
 of "tree-width" $k$ (\Cref{cor:mua-exists-effective}). 
@@ -34,7 +34,7 @@ We also point out that since every "path-$l$ approximation" can be expressed by 
 
 We also do not know whether the {"PiP2"} bound on the "semantic tree-width $k$ problem" for {\UCRPQSRE} has a matching lower bound. The known lower bound for the {\UCRPQSRE} "containment problem" \cite[Theorem~5.1]{FigueiraEtal2020Containment} does not seem to be useful to be employed in a reduction in this context, since it necessitates queries of arbitrary high "tree-width".
 
-\subsection{\AP{}Characterization of Tractability}
+\subsection{Characterization of Tractability}
 \label{sec:charact-tractability}
 
 Our result implies that for each $k$
@@ -195,7 +195,7 @@ This finishes the "FPT"-reduction.
 \proofcase{Right-to-left} This direction does not need any of the hypotheses (neither "finite-redundancy",  $"W[1]" \neq $ "FPT", nor r.e.), by \Cref{coro:fpt-eval-bounded-semtreewidth}.
 \end{proof}
 
-\subsection{\AP{}Larger Classes}
+\subsection{Larger Classes}
 \label{sec:discussion-larger-classes}
 
 A natural and simple approach to extend the expressive power of "CRPQs" is to close the queries by transitive closure. That is, given a binary "CRPQ" $\gamma(x,y)$ we can consider "CRPQ" over the extended alphabet $\A \cup \set \gamma$, where the label $\gamma$ is interpreted as the binary relation defined by $\gamma(x,y)$. \AP This is the principle behind ""Regular Queries"" \cite{ReutterRomeroVardi2017RegularQueries}. The notion of "tree-width" can be easily lifted to this class, and classes of bounded "tree-width" still have a polynomial-time "evaluation problem". However, this class has not yet been studied in the context of the "semantic tree-width". It is not known if the "semantic tree-width $k$ problem" is decidable, nor whether classes of bounded "semantic tree-width" have an "FPT" "evaluation problem".
@@ -203,7 +203,7 @@ A natural and simple approach to extend the expressive power of "CRPQs" is to cl
     Is the "semantic tree-width $k$ problem" for "Regular Queries" decidable?
 \end{question}
 
-\subsection{\AP{}Different Notions}
+\subsection{Different Notions}
 \label{sec:discussion-different-notions}
 
 \begin{table}[bht]
