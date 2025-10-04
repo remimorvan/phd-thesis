@@ -531,7 +531,7 @@ represented by a single point. In other words, points are in one-to-one correspo
 with "cores". Then, we represent a point $\core{\?G}$ below another point $\core{\?D}$
 whenever $\core{\?G} \homto \core{\?D}$.
 For "Boolean queries", this ordering%
-\footnote{Formally, from the preordering over "relational databases" we obtained a partial
+\footnote[][-5cm]{Formally, from the preordering over "relational databases" we obtained a partial
 order over the quotient of "relational databases" by the equivalence class induced by $\homto$,
 which happens to be the poset of "cores". Hence, we will interchangeably
 use to terms \emph{preordering} and \emph{(partial) ordering}.}
@@ -1199,7 +1199,7 @@ in the sense that if a solution exists to each problem, then a common solution e
 	and from the assumption that $\?G$ does not contain any self-loop,
 	we actually get a "homomorphism" from $\?G$ to $\clique{3}$.
 	This concludes the reduction.%
-	\footnote{The trick used for the lower bound, 
+	\footnote[][-3cm]{The trick used for the lower bound, 
 	namely that of reducing a "homomorphism"/"containment" problem
 	to a minimization problem "via" a "disjoint union", will be used in a
 	much trickier way in \Cref{ch:minimization-CRPQ}
@@ -1207,6 +1207,15 @@ in the sense that if a solution exists to each problem, then a common solution e
 	see \Cref{sec:minimization-lowerbounds,apdx-sec:lowerbound-variables}.}
 \end{proof}
 
+We now turn to the "synthesis problem", also called \emph{passive learning},
+or \emph{reverse engineering}. The idea behind the problem is to infer a
+"query@@sem" from examples: these examples are models, taking the form of "pointed relational databases", together
+with the knowledge of whether this model should be part of the "query@@sem"
+(\emph{positive examples}) or not (\emph{negative examples}),
+see \Cref{fig:prelim-db-ex-synthesis}.%
+\footnote{For the sake of readability, we use the notations
+for "Boolean queries" and non-"pointed databases@@rel".
+However, all results extend trivially to the non-Boolean case.}
 \begin{marginfigure}
 	\centering
 	\directlua{width = 2.3; height = 1.4}
@@ -1241,15 +1250,6 @@ in the sense that if a solution exists to each problem, then a common solution e
 		solution for this instance.
 	}
 \end{marginfigure}
-We now turn to the "synthesis problem", also called \emph{passive learning},
-or \emph{reverse engineering}. The idea behind the problem is to infer a
-"query@@sem" from examples: these examples are models, taking the form of "pointed relational databases", together
-with the knowledge of whether this model should be part of the "query@@sem"
-(\emph{positive examples}) or not (\emph{negative examples}),
-see \Cref{fig:prelim-db-ex-synthesis}.%
-\footnote{For the sake of readability, we use the notations
-for "Boolean queries" and non-"pointed databases@@rel".
-However, all results extend trivially to the non-Boolean case.}
 
 \decisionproblem{""Synthesis Problem for CQs""}{
 	Integers $n,p\in \Np$, and
@@ -1338,7 +1338,7 @@ In both cases, the reduction is from an exponential tiling problem.
 Active learning, "aka" Angluin-style learning is a setting where
 two players interact (\emph{a priori} adversarially): \emph{Student} tries
 to lean a "query@@sem" that only \emph{Teacher} knows. To achieve this,
-they can ask two kinds of questions.\footnote{``Questions'' are usually called 
+they can ask two kinds of questions.\footnote[][-1.5cm]{``Questions'' are usually called 
 ``queries'' but we avoid this terminology here for obvious reasons.}
 \begin{itemize}
 	\item Membership questions: they provide a model and asks if it satisfies the "query@@sem";
@@ -1583,7 +1583,7 @@ for a larger class of queries than those of bounded tree-width.
 	\]
 	up to logarithmic factors, and where $f(\size{\gamma})$
 	is the time required to compute the "core@@CQ" of
-	$\gamma$.\footnote{This can be done in exponential time.}
+	$\gamma$.\footnote[][-2cm]{This can be done in exponential time.}
 	Hence, the problem is "FPT" when parameterized by $\size{\gamma}$.
 \end{proof}
 
@@ -1596,7 +1596,7 @@ This is far from trivial, since computing the "core"
 of a "structure" is hard in general \cite[Theorem~7]{HellNesetril1992Core}, and so
 one cannot naively first compute the core of the "query@CQ", and then evaluate it, to
 achieve polynomial time.%
-\footnote{Dalmau, Kolaitis and Vardi's result in fact imply that,
+\footnote[][-4cm]{Dalmau, Kolaitis and Vardi's result in fact imply that,
 for any $k\in\N$, we can compute in polynomial-time the "core" of a
 "CQ" $\gamma(\bar x)$ under the promise that this "core" has "tree-width" at most $k$.
 Indeed, it suffices for each "subquery" $\gamma'(\bar x)$ of $\gamma(bar x)$ with
@@ -1787,15 +1787,6 @@ all of its "path decompositions".
 		in the distributive lattice of "relational databases".
 	}
 \end{marginfigure}
-\begin{marginfigure}
-	\centering
-	\includegraphics[width=\linewidth]{fig/prelim-db/Houches.jpg}
-	\caption{
-		The study of (co-)"UCQs" is intriguingly popular amongst finite model theorists. 
-		\href{https://fr.m.wikipedia.org/wiki/Fichier:TER\_en\_gare\_des\_Houches\_(Haute-Savoie).JPG}{\emph{TER en Gare des Houches}}, by Florian Pépellin,
-		licensed under "CC BY SA 3.0".
-	}
-\end{marginfigure}
 We now show that the desirable properties of "conjunctive queries" can be
 lifted to finite unions of such queries.
 As mentioned in \Cref{sec:prelim-db-poset-cq}, "conjunctive queries"
@@ -1820,6 +1811,16 @@ that are either the source of an $a$-edge or of a $bc$-path.
 We denote "UCQs" with capital Greek letters,
 and \AP we call ""disjunct"" of $\Gamma$ any "conjunctive query" belonging to a
 "UCQ" $\Gamma$.
+
+\begin{marginfigure}
+	\centering
+	\includegraphics[width=\linewidth]{fig/prelim-db/Houches.jpg}
+	\caption{
+		The study of (co-)"UCQs" is intriguingly popular amongst finite model theorists. 
+		\href{https://fr.m.wikipedia.org/wiki/Fichier:TER\_en\_gare\_des\_Houches\_(Haute-Savoie).JPG}{\emph{TER en Gare des Houches}}, by Florian Pépellin,
+		licensed under "CC BY SA 3.0".
+	}
+\end{marginfigure}
 
 Notice that "union of conjunctive queries" are also "closed under homomorphisms".
 Graphically, we represent them as… unions of "conjunctive queries":

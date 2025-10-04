@@ -92,7 +92,7 @@ qui retourne les titres de films ainsi que leur horaire de projection.
 Une base de données $\?D$ peut être décrite comme une $\sigma$-structure---où
 la signature $\sigma$ décrit le \emph{schéma} de la base---, notée également $\?D$.
 Il est possible de construire%
-\footnote{Voir \Cref{ex:sql-as-hom} pour plus de détails.}
+\sidenote[][-5cm]{Voir \Cref{ex:sql-as-hom} pour plus de détails.}
 de manière assez triviale---notamment en temps linéaire---une $\sigma$-structure
 $\?Q_{\gamma}$, contenant notamment deux sommets \texttt{title} et \texttt{time},
 tels que pour toute paire d'éléments $\tup{x, y}$ de la base de données,
@@ -102,7 +102,7 @@ la paire $\tup{x,y}$ est une sortie valide de la requête $\gamma$
 lorsqu'elle est évaluée sur $\?D$, c'est-à-dire que le film $x$ est projeté à
 l'horaire $y$. Autrement dit, ce problème de requêtage peut être formulé comme
 un \textsc{problème de morphisme}.%
-\footnote{\emph{Stricto sensu} le problème de morphisme mentionné dans ce paragraphe
+\sidenote[][-7cm]{\emph{Stricto sensu} le problème de morphisme mentionné dans ce paragraphe
 ne rentre pas dans le cadre décrit précédemment, puisqu'il doit gérer des constantes
 (\texttt{title} et \texttt{time}). En fait, il est possible de gérer ces constantes
 en les faisant passer dans la signature, et donc ce problème s'inscrit bien dans le cadre étudié.}
@@ -112,14 +112,14 @@ Donnons maintenant un second exemple, dans un domaine tout à fait différent.
 Nous considérons une grille de Sudoku $G$, telle que celle \Cref{fig:intro-sudoku-fr}.
 Cette grille peut être encodée comme une $\sigma$-structure $\?S_{G}$,
 ayant un sommet par case de la grille.%
-\footnote{Voir \Cref{ex:sudoku-as-hom} pour les détails de cet encodage.}
+\footnote[][-5cm]{Voir \Cref{ex:sudoku-as-hom} pour les détails de cet encodage.}
 On peut alors définir une $\sigma$-structure $\?T$ dont les sommets
 sont les entiers $1, 2, \dotsc, 9$, de sorte que
 les morphismes $f$ de $\?S_{G}$ vers $\?T$ décrivent exactement les complétions de la grille
 de Sudoku. Notamment, étant donné un tel morphisme $f$ et une position $\tup{i,j}$,
 la valeur $f(i,j)$ est la valeur rentrée dans la grille en position $\tup{i,j}$ lorsque
 complétée selon $f$.
-\begin{marginfigure}
+\begin{marginfigure}[-4cm]
 	\centering%
 	\begin{tikzpicture}[scale=1.3]
 		\draw[step=.3333] (0, 0) grid (3, 3);
@@ -391,7 +391,7 @@ Cependant, la théorie algébrique classique ne s'applique pas telle quelle
 à ces automates : la raison principale est que ces automates synchrones ignorent
 certaines de leurs entrées, ou plutôt que le comportement de l'automate
 sur certaines entrées n'a aucune influence sur la structure automatique définie.%
-\footnote{On peut faire un parallèle avec la programmation : peu importe le comportement d'une fonction \texttt{pgcd} sur des chaînes de caractères si elle n'est appelée que sur des entiers !}
+\footnote[][-3cm]{On peut faire un parallèle avec la programmation : peu importe le comportement d'une fonction \texttt{pgcd} sur des chaînes de caractères si elle n'est appelée que sur des entiers !}
 Malheureusement, la structure algébrique de monoïde est définie en prenant en compte
 le comportement de l'automate sur tous les mots.
 
