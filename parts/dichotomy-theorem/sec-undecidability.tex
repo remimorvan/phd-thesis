@@ -247,7 +247,7 @@ of $\HomAut{\?B}$ by reduction from the following problem.
 	from the complement of "connectivity in automatic graphs" to $\HomAut{\marked{\?B}}$.
 \end{lemma}
 
-\begin{marginfigure}
+\begin{marginfigure}[-3.5cm]
 	\centering
 	\begin{tikzpicture}
 		\input{tikz/dichotomy/graph-to-struct-graph}
@@ -257,7 +257,7 @@ of $\HomAut{\?B}$ by reduction from the following problem.
 		A "graph@@dir" $\?G$.
 	}
 \end{marginfigure}
-\begin{marginfigure}
+\begin{marginfigure}[-.5cm]
 	\centering
 	\begin{tikzpicture}
 		\input{tikz/dichotomy/graph-to-struct-struct}
@@ -608,35 +608,34 @@ We then prove a lower bound on the complexity of "regular unconnectivity in auto
 	"Regular unconnectivity in automatic graphs" is "RE"-hard.
 \end{lemma}
 
-\begin{marginfigure}[-20em]%
-	\centering
-	\begin{tikzpicture}
-		\input{tikz/dichotomy/conf-graph-wf-RTM}
-	\end{tikzpicture}
-	\caption{
-		\AP\label{fig:reduction-regreach-to-regunconnect-lhs}
-		"Configuration graph" of a "linear Turing machine".
-		(Replica of \Cref{fig:reduction-wf-RTM-to-colouring-config-graph-wf-RTM}.)
-	}
-\end{marginfigure}%
-\begin{marginfigure}%
-	\centering
-	\begin{tikzpicture}
-		\input{tikz/dichotomy/reduction-regreach-to-regunconnect}
-	\end{tikzpicture}
-	\caption{
-		\AP\label{fig:reduction-regreach-to-regunconnect-rhs}
-		The instance of "regular unconnectivity in automatic graphs"
-		to which the "Turing machine" of \Cref{fig:reduction-regreach-to-regunconnect-lhs}
-		is reduced. Colours indicate the different "connected components".
-	}
-\end{marginfigure}%
-
 \begin{proof}
 	We reduce the "regular reachability problem" on "linear Turing machines",
 	which is "RE"-hard by \Cref{lem:regular-reachability},
 	to "regular unconnectivity in automatic graphs".
 
+	\begin{marginfigure}
+		\centering
+		\begin{tikzpicture}
+			\input{tikz/dichotomy/conf-graph-wf-RTM}
+		\end{tikzpicture}
+		\caption{
+			\AP\label{fig:reduction-regreach-to-regunconnect-lhs}
+			"Configuration graph" of a "linear Turing machine".
+			(Replica of \Cref{fig:reduction-wf-RTM-to-colouring-config-graph-wf-RTM}.)
+		}
+	\end{marginfigure}%
+	\begin{marginfigure}%
+		\centering
+		\begin{tikzpicture}
+			\input{tikz/dichotomy/reduction-regreach-to-regunconnect}
+		\end{tikzpicture}
+		\caption{
+			\AP\label{fig:reduction-regreach-to-regunconnect-rhs}
+			The instance of "regular unconnectivity in automatic graphs"
+			to which the "Turing machine" of \Cref{fig:reduction-regreach-to-regunconnect-lhs}
+			is reduced. Colours indicate the different "connected components".
+		}
+	\end{marginfigure}%
 	Given a "linear Turing machine" $\+T$ with
 	configuration graph $\confGraph = \tup{V, \+E}$,
 	we reduce it to the "automatic graph" $\+G = \tup{V', \+E'}$ where:

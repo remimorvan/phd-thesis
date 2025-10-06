@@ -67,17 +67,19 @@ $\gamma(x,y)$. Hence, $\alpha(x,y) \in \MUAHom{\gamma}{\class}$ if $\class$ is, 
 		% \tikzset{every to/.append style={red, thick}}
         \begin{tikzcd}[column sep=small, row sep=small]
             &[-.5em] x_0 \ar[dr, "a"] \ar[rr, "c"] \ar[d, "a" left] & &
-            x_1 \ar[dl, "a" swap] \ar[ddl, "ab(bb)^*", pos=.7, bend left]
-                &[1.5em] &[-.5em] x_0 \ar[dr, "a"] \ar[rr, "c"] & &
-                x_1 \ar[dl, "a" swap] \ar[ddl, "ab(bb)^*", pos=.6, bend left]
-                    &[1.5em] &[-.5em] x_0 \ar[dr, "a"] \ar[rr, "c"]  & &
-                    x_1 \ar[dl, "a" swap] \ar[ddl, "ab(bb)^*", pos=.6, bend left] \\
-            \rho(\bar x) \defeq & t \ar[dr, "(bb)^+" below left, pos=.2, bend right=14] & y \ar[d, "b^+", pos=.35] & 
-                & \delta'_{\textnormal{app}}(\bar x) \defeq & & y \ar[d, "b^+" pos=.35, bend left=15] \ar[d, "(bb)^+" swap, bend right=15, pos=.35] & 
-                    & \delta'(\bar x) = & & y \ar[d, "(bb)^+" swap, pos=.35] & \\
+            x_1 \ar[dl, "a" swap] \ar[ddl, "ab(bb)^*", pos=.7, bend left] \\
+            \rho(\bar x) \defeq & t \ar[dr, "(bb)^+" below left, pos=.2, bend right=14] & y \ar[d, "b^+", pos=.35] & \\
             & & z & 
-                & & & z & 
-                    & & & z &
+        \end{tikzcd}
+        \begin{tikzcd}[column sep=small, row sep=small]
+            &[1.5em] &[-.5em] x_0 \ar[dr, "a"] \ar[rr, "c"] & &
+            x_1 \ar[dl, "a" swap] \ar[ddl, "ab(bb)^*", pos=.6, bend left]
+                &[1.5em] &[-.5em] x_0 \ar[dr, "a"] \ar[rr, "c"]  & &
+                x_1 \ar[dl, "a" swap] \ar[ddl, "ab(bb)^*", pos=.6, bend left] \\
+            & \delta'_{\textnormal{app}}(\bar x) \defeq & & y \ar[d, "b^+" pos=.35, bend left=15] \ar[d, "(bb)^+" swap, bend right=15, pos=.35] & 
+                & \delta'(\bar x) = & & y \ar[d, "(bb)^+" swap, pos=.35] & \\
+            & & & z & 
+                & & & z &
         \end{tikzcd}
     \end{center}
     Then merge variables $t$ and $y$: this new query $\delta'_{\textnormal{app}}(\bar x)$
@@ -304,7 +306,7 @@ new characterizations for queries of bounded "semantic tree-width".
     of "semantic tree-width" 1
     $\gamma(x) \defeq x \coatom{a} z \atom{a} y \land x \atom{b} y \semequiv x \atom{ba^- a} x$
     is not equivalent to any "UCRPQ" of "tree-width" 1. Hence, the implication is false when $\+L$ is the class of regular languages over $\Aext$
-    that do not use any letter of the form $a^-$. \qed
+    that do not use any letter of the form $a^-$.
 \end{remark}
 
 See \Cref{coro:charact-semantic-treewidth-1} for a similar (but different) characterization

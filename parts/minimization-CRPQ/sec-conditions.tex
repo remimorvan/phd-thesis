@@ -179,12 +179,15 @@ While in the case of "conjunctive queries" "non-redundancy" is the same as "mini
 	There are "fully contracted" "non-redundant" "CRPQs" which are not "minimal".
 \end{proposition}
 
+
+\begin{figure}
+	\centering
+	\includegraphics[scale=.8]{fig/minimization-crpq/ex-equiv-queries.pdf}
+	\caption{
+		\AP\label{fig:ex-equiv-queries}"Equivalent" "CRPQs". The leftmost query is "fully contracted", "non-redundant" and not "minimal", since it is "equivalent" to the rightmost query.
+	}
+\end{figure}
 \begin{proof}
-	\begin{figure}
-		\includegraphics[scale=.8]{fig/minimization-crpq/ex-equiv-queries.pdf}
-		\caption{"Equivalent" "CRPQs". The leftmost query is "fully contracted", "non-redundant" and not "minimal", since it is "equivalent" to the rightmost query.}
-		\AP\label{fig:ex-equiv-queries}
-	\end{figure}
 	\Cref{fig:ex-equiv-queries} contains a simple witnessing example. It is trivial to see that the "CRPQs" in the figure are all "equivalent" and that the leftmost query is "non-redundant" and "fully contracted". However, it is not "minimal" since it is "equivalent" to the rightmost "CRPQ".
 \end{proof}
 
@@ -257,6 +260,7 @@ belong to the class.
 	}
 \end{figure}
 
+\medskip
 \begin{proposition}
 	\AP\label{prop:seggraph-of-expansion}
 	Let $\gamma$ be a "CRPQ" and $\anexpansion$ be an "expansion" of $\gamma$.
