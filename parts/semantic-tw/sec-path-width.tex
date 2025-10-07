@@ -110,7 +110,7 @@ As done for "contracted tree-width", we define "contracted path-width".
 \begin{definition}
 	\AP
 	Define the ""contracted path-width"" (resp.\ ""one-way contracted path-width"")
-	of a "C2RPQ" as the minimum of the "path-width" among its "contractions" (resp.\ of its "one-way contractions"). Let $\intro*\ContrPw$ and $\intro*\ContrPwOneWay$ be, respectively, the set of all "C2RPQs" of "contracted path-width" at most $k$ and of "CRPQs" of "one-way contracted path-width" at most $k$.
+	of a "C2RPQ" as the minimum of the "path-width" among its "contractions@@2w" (resp.\ of its "one-way contractions"). Let $\intro*\ContrPw$ and $\intro*\ContrPwOneWay$ be, respectively, the set of all "C2RPQs" of "contracted path-width" at most $k$ and of "CRPQs" of "one-way contracted path-width" at most $k$.
 \end{definition}
 The statements and proofs of this section are analogous to the ones of \Cref{sec:acyclic-queries} in the context of "contracted tree-width" 1. We keep the order and structure to make this correspondence evident.
 
@@ -129,7 +129,7 @@ at most $k$ are both closed under "refinements": if a query has width at most $k
 	\begin{align*}
 		\MUA{\gamma}{\PwOneWay}
 			& \semequiv \MUA{\gamma}{\ContrPwOneWay}
-			\quad\text{since "contractions" preserves the semantics,} \\
+			\quad\text{since "contractions@@2w" preserves the semantics,} \\
 			& \semequiv \MUAHom{\gamma}{\ContrPwOneWay}
 			\quad\text{by \Cref{obs:equivalence_under_approx_homomorphism}.}
 	\end{align*}
@@ -148,7 +148,7 @@ at most $k$ are both closed under "refinements": if a query has width at most $k
 \begin{proof}
 	Consider the proof of the "Key Lemma" (\Cref{lemma:bound_size_refinements}):
 	both constructions (\Cref{lemma:locally_acyclic_treedec,lemma:shape-decomposition}) preserve the "contracted path-width" of $\alpha$ if the operations are applied
-	to a suitable "path decomposition" of a "contraction" of $\alpha$ of width $k$.
+	to a suitable "path decomposition" of a "contraction@@2w" of $\alpha$ of width $k$.
 \end{proof}
 
 \begin{lemma}

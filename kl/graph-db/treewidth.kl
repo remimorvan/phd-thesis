@@ -119,9 +119,21 @@
  | contracted tree-width
 
 \knowledge{notion, index={contraction}}
- | contraction
- | contractions
- | contracted
+ | contraction@1w
+ | contractions@1w
+ | contracted@1w
+ | Contractions@1w
+ | contract@1w
+ | one-way contraction
+ | one-way contractions
+
+\knowledge{notion, index={contraction}}
+ | contraction@2w
+ | contractions@2w
+ | contracted@2w
+ | Contractions@2w
+ | contract@2w
+ | two-way contractions
 
  \knowledge{notion, index={internal path!one-way}}
  | one-way internal path
@@ -129,10 +141,6 @@
 
 \knowledge{notion}
  | one-way contraction@path
-
-\knowledge{notion, index={one-way contraction}}
- | one-way contraction
- | one-way contractions
 
 \knowledge{notion, index={tree-width!one-way contracted}}
  | one-way contracted tree-width

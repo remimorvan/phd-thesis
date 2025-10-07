@@ -1,7 +1,20 @@
 \section{Preliminaries}
 \label{sec:prelim}
 
-\paragraph*{Some intuitions on maximal under-approximations}
+\paragraph*{Contractions.}
+We define \AP""two-way contractions"" (or \reintro(2w){contractions} for short in this chapter) analogously to "one-way contractions" by redefining
+the notion of "internal variable".
+In the context of one-wayness, it designated any variable with both in-degree and out-degree one.
+Now, for a variable to be "internal@internal variable", we only ask that its total degree is two.
+Concretely, this means that "two-way contractions" can also contract paths
+like $x \atom{K} y \coatom{L} z $
+into a single "atom" $x \atom{KL^{-1}} z$.%
+\footnote{
+	Naturally, we can equally "contract@@2w" 
+	$x \coatom{K} y \atom{L} z$ into the "atom" $x \atom{K^{-1}L} z$.
+}
+
+\paragraph*{Some Intuitions on Maximal Under-Approximations.}
 Given a "conjunctive query" $\gamma$,
 the union of all "conjunctive queries"
 that are "contained" in $\gamma$ is "semantically equivalent" to the union

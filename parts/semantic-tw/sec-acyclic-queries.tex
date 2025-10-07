@@ -23,13 +23,12 @@ Remember that for $k=1$, the "semantic tree-width@semantic tree-width $1$ proble
 
 \subsection{Contracted Tree-Width}
 We next formally define the notion of ``"contracted tree-width"'', meaning the "tree-width" of the graph obtained by contracting paths (or directed paths) into edges. This altered notion of "tree-width" will allow us to seamlessly prove the case of $k=1$ for \Cref{thm:decidability-semtw}.
-We define the ""one-way contraction"" of a "CRPQ" analogously to "contractions", except
-that we only contract "one-way internal paths".
+Recall that a "one-way contraction" of a "CRPQ" is defined analogously to a "(two-way) contraction@contraction@2w", except that we only contract "one-way internal paths".
 
 \begin{definition}
 	\AP
 	Define the ""contracted tree-width"" (resp.\ ""one-way contracted tree-width"")
-	of a "C2RPQ" as the minimum of the "tree-width" among its "contractions" (resp.\ of its "one-way contractions"). Let $\intro*\ContrTw$ and $\intro*\ContrTwOneWay$ be, respectively, the set of all "C2RPQs" of "contracted tree-width" at most $k$ and of "CRPQs" of "one-way contracted tree-width" at most $k$.
+	of a "C2RPQ" as the minimum of the "tree-width" among its "contractions@@2w" (resp.\ of its "one-way contractions"). Let $\intro*\ContrTw$ and $\intro*\ContrTwOneWay$ be, respectively, the set of all "C2RPQs" of "contracted tree-width" at most $k$ and of "CRPQs" of "one-way contracted tree-width" at most $k$.
 \end{definition}
 
 For instance, the query
@@ -42,7 +41,7 @@ For instance, the query
 	\end{tikzcd}
 \end{center}
 has "contracted tree-width" one since the "internal path" $x_0 \atom{L} y \coatom{M} x_1$
-can be "contracted" into $x_0 \atom{LM^{-}} x_1$. On the other hand,
+can be "contracted@@2w" into $x_0 \atom{LM^{-}} x_1$. On the other hand,
 its "one-way contracted tree-width" is two, since there is no non-trivial "one-way internal path"
 as $x_1$ is an "output variable".
 
@@ -68,7 +67,7 @@ at most $k$ are both closed under "refinements": if a query has "tree-width" at 
 	\begin{align*}
 		\MUA{\gamma}{\Tw}
 			& \semequiv \MUA{\gamma}{\ContrTw}
-			\quad\text{since "contractions" preserve semantics,} \\
+			\quad\text{since "contractions@@2w" preserve semantics,} \\
 			& \semequiv \MUAHom{\gamma}{\ContrTw}
 			\quad\text{by \Cref{obs:equivalence_under_approx_homomorphism}.}
 	\end{align*}
@@ -108,10 +107,10 @@ We show next that "contracted tree-width" $1$ has all the needed properties for 
 	We claim that all constructions of \Cref{sec:proof-key-lemma} preserve "contracted tree-width" 
 	at most 1. The setting is similar, except that now, a "trio" consists of a triple $\fun\colon \rho \to 
 	\alpha$ where $\rho$ is a "refinement" of a fixed "C2RPQ" $\gamma$, and $\alpha$ is a "C2RPQ" of
-	"\emph{contracted} tree-width@contracted tree-width" 1. We now apply the constructions not to a decomposition of $\alpha$ but to a "fine tagged tree decomposition" of a \emph{"contraction"} of $\alpha$ of "tree-width" 1.
+	"\emph{contracted} tree-width@contracted tree-width" 1. We now apply the constructions not to a decomposition of $\alpha$ but to a "fine tagged tree decomposition" of a \emph{"contraction@@2w"} of $\alpha$ of "tree-width" 1.
 	
 	\begin{fact}
-		Let $\gamma$ be a "C2RPQ", $\chi$ be a "contraction" of $\gamma$, and
+		Let $\gamma$ be a "C2RPQ", $\chi$ be a "contraction@@2w" of $\gamma$, and
 		$(T, \bagmap, \tagmap)$ be a "fine tagged tree decomposition" of $\chi$ of "width" at most 1.
 		Let $z, z' \in \bagmap(b)$ for some "bag" $b \in T$. Then $\gamma \land z \atom{\lambda} z'$
 		still has "contracted tree-width" at most 1.
@@ -203,7 +202,7 @@ We show next that "contracted tree-width" $1$ has all the needed properties for 
 			\]
 		\item If $\Gamma \semequiv \MUAHomBounded{\Gamma}{\ContrTwOneWay[1]}{\leq\lOne}$, 
 			then $\Gamma$ is equivalent to a "UCRPQ" of "contracted tree-width" at
-			most 1, and hence (by "contraction") it is equivalent a "UCRPQ" of "tree-width" at most 1. 
+			most 1, and hence (by "contraction@@2w") it is equivalent a "UCRPQ" of "tree-width" at most 1. 
 	\end{itemize}
 	The second point can be proven similarly.
 \end{proof}

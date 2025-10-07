@@ -58,14 +58,14 @@ and we extend this notation to "UCRPQs" by letting $\nbseg{\Gamma} \defeq
 One simple (and tractable) way to make a query smaller is to `contract'
 any two consecutive atoms sharing an "internal variable", and replacing them with
 a single atom having the concatenation of the languages: we call this
-new query \AP""contraction"".
-A "CRPQ" $\gamma$ is \AP""fully contracted"" if it cannot be "contracted".
+new query \AP""contraction@@1w"".
+A "CRPQ" $\gamma$ is \AP""fully contracted"" if it cannot be "contracted@@1w".
 In other words, $\gamma$ is "fully contracted" "iff" $\nbseg{\gamma} = \nbatoms{\gamma}$.
-A "contraction" of a "UCRPQ" is a "contraction" of a "CRPQ" therein (obtaining the "UCRPQ" where one "CRPQ" $\gamma$ was replaced by a "contraction" of $\gamma$). A "UCRPQ" is then \reintro{fully contracted} if each "CRPQ" therein is "fully contracted".
+A "contraction@@1w" of a "UCRPQ" is a "contraction@@1w" of a "CRPQ" therein (obtaining the "UCRPQ" where one "CRPQ" $\gamma$ was replaced by a "contraction@@1w" of $\gamma$). A "UCRPQ" is then \reintro{fully contracted} if each "CRPQ" therein is "fully contracted".
 
 \begin{fact}
 	\AP\label{fact:produce-fully-contracted}
-	"Contractions" preserve "semantical equivalence". Further, from a "UCRPQ" $\Gamma$ one can produce, in polynomial time, an "equivalent" one that is "fully contracted" with $\nbseg{\Gamma}$ "atoms".
+	"Contractions@@1w" preserve "semantical equivalence". Further, from a "UCRPQ" $\Gamma$ one can produce, in polynomial time, an "equivalent" one that is "fully contracted" with $\nbseg{\Gamma}$ "atoms".
 \end{fact}
 
 In particular, if a "UCRPQ" $\Gamma$ is "minimal" then $\Gamma$ is "fully contracted" and $\nbseg{\Gamma} = \nbatoms{\Gamma}$;%
