@@ -1,7 +1,7 @@
 % !TeX root = ../main-crpq-tw-lmcs.tex
 
 \section{Discussion}
-\label{sec:discussion}
+\label{sec:discussion-stw}
 
 % Observe that the proof of our main theorem, \Cref{thm:decidability-semtw}, was divided into the upper bound for $k \geq 2$ (\Cref{lem:sem-tw-in-twoexp}), the upper bound for $k=1$ (\Cref{cor:sem-tw-1-pb-exp-c}), and the lower bound for all $k$ (\Cref{lemma:lowerbound}). One could have proved the upper bound for all $k$ by using "contracted tree-width" right from the beginning. But we preferred to keep things ``as simple as possible'' for the case $k \geq 2$ using the classical notion of "tree-width".
 
@@ -20,7 +20,7 @@
 
 
 \subsection{Complexity}
-\label{sec:discussion-complexity}
+\label{sec:discussion-stw-complexity}
 We have studied the definability and approximation of "UC2RPQ" queries by queries of bounded "tree-width" and shown that the "maximal under-approximation" in terms of an infinitary union of "conjunctive queries" of "tree-width" $k$ can be always effectively expressed as a "UC2RPQ"
 of "tree-width" $k$ (\Cref{cor:mua-exists-effective}). 
 However, while the "semantic tree-width $1$ problem" is shown to be "ExpSpace"-complete (which was also established in \cite[Theorem 6.1, Proposition 6.2]{BarceloRomeroVardi2016SemanticAcyclicity}), we have left a gap between our lower and upper bounds in \Cref{thm:decidability-semtw} for every $k>1$.
@@ -196,7 +196,7 @@ This finishes the "FPT"-reduction.
 \end{proof}
 
 \subsection{Larger Classes}
-\label{sec:discussion-larger-classes}
+\label{sec:discussion-stw-larger-classes}
 
 A natural and simple approach to extend the expressive power of "CRPQs" is to close the queries by transitive closure. That is, given a binary "CRPQ" $\gamma(x,y)$ we can consider "CRPQ" over the extended alphabet $\A \cup \set \gamma$, where the label $\gamma$ is interpreted as the binary relation defined by $\gamma(x,y)$. \AP This is the principle behind ""Regular Queries"" \cite{ReutterRomeroVardi2017RegularQueries}. The notion of "tree-width" can be easily lifted to this class, and classes of bounded "tree-width" still have a polynomial-time "evaluation problem". However, this class has not yet been studied in the context of the "semantic tree-width". It is not known if the "semantic tree-width $k$ problem" is decidable, nor whether classes of bounded "semantic tree-width" have an "FPT" "evaluation problem".
 \begin{question}
@@ -204,7 +204,7 @@ A natural and simple approach to extend the expressive power of "CRPQs" is to cl
 \end{question}
 
 \subsection{Different Notions}
-\label{sec:discussion-different-notions}
+\label{sec:discussion-stw-different-notions}
 
 \begin{table}[bht]
     \begin{tabular}{ccc}
