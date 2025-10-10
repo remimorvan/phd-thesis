@@ -1,5 +1,5 @@
 \usepackage[capitalise]{cleveref}
-\usepackage[xcolor, hyperref, notion, quotation, makeidx, electronic]{knowledge}
+\usepackage[xcolor, hyperref, notion, quotation, makeidx, paper]{knowledge}
 \usepackage{mathcommand}
 \knowledgeconfigure{quotation, protect quotation={tikzcd}}
 \knowledgeconfigure{diagnose line=true, diagnose bar=true}
@@ -7,6 +7,8 @@
 % \def\notionKnowledgeIndexIntroStyle#1{\textcolor{maincolor}{\textbf{#1}}}
 
 \IfKnowledgePaperModeTF{
+    % In paper mode
+    \knowledgestyle{intro notion}{color={KlDefn}, emphasize, index style=textbf}
 }{
     % If we are NOT in paper mode (i.e. in composition mode or electronic mode)
     \knowledgestyle{intro notion}{color={KlDefn}, emphasize, index style=textbf}
